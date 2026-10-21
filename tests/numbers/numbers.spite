@@ -3,7 +3,7 @@ func Numbers(): Integer {
     var holder = Holder()
     holder.small = 5
     holder.large = 9
-    holder.negative = 255
+    holder.negative = -1
     holder.positive = 5
     holder.whole = 1000
     holder.bigger = 2000
@@ -32,7 +32,7 @@ func Numbers(): Integer {
     if holder.small.to_integer() == 5 {
         total = total + 128
     }
-    if holder.whole.to_byte() == 232 {
+    if holder.small.to_byte() == 5 {
         total = total + 256
     }
     if holder.whole.sum(holder.bigger) == 3000 {

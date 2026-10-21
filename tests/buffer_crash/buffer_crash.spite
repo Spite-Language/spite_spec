@@ -3,8 +3,6 @@ func BufferCrash(): Integer {
     var bytes = Buffer(16)
     bytes.append(65)
     var missing = bytes.read_integer_little_endian_at(0)
-    if missing == 7 {
-        return 2
-    }
+    crash missing
     return 0
 }

@@ -4,9 +4,12 @@ func BufferBytes(): Integer {
     bytes.append(65)
     bytes.append_integer_little_endian(1200)
     bytes.append_integer_big_endian(1200)
-    var first = bytes.read_byte_at(0)
+    var first = bytes[0]
     var little = bytes.read_integer_little_endian_at(1)
     var big = bytes.read_integer_big_endian_at(5)
+    crash first
+    crash little
+    crash big
     if first == 65 and little == 1200 and big == 1200 {
         return 0
     }
