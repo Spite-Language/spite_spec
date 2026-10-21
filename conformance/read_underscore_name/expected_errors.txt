@@ -1,1 +1,1 @@
-conformance/read_underscore_name/read_underscore_name.spite:3: error: '_counted' is declared only to be returned on the next line: write 'return 3', since 'return' already makes the value the function's Integer (in ReadUnderscoreName.ReadUnderscoreName)
+conformance/read_underscore_name/read_underscore_name.spite:3: error: '_counted' is read, so it must not start with an underscore: only a parameter the body ignores is named that way (in ReadUnderscoreName.ReadUnderscoreName)
