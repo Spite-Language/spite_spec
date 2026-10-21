@@ -1,0 +1,7 @@
+enum JobKind {
+    'Knight'
+}
+
+func EnumValueName() {
+    load "../../../SpiteCompiler/.spite/library/common"
+}

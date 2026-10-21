@@ -1,0 +1,5 @@
+func AbbreviatedName() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var item_cnt = 1
+    var total = item_cnt + 1
+}

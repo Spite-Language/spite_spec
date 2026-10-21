@@ -1,0 +1,1 @@
+conformance/naming/naming.spite:1: error: an enum is named in PascalCase, and found 'job_kind'

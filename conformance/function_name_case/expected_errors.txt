@@ -1,0 +1,1 @@
+conformance/function_name_case/function_name_case.spite:6: error: the function 'calcTotal' must be written in snake_case: lowercase words joined by underscores (in FunctionNameCase)

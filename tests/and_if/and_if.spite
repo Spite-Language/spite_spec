@@ -1,8 +1,8 @@
 func AndIf(): Integer {
     load "../../../SpiteCompiler/.spite/library/common"
-    var a = 1
-    var b = 0
-    if a == 1 and b == 1 {
+    var first = 1
+    var second = 0
+    if first == 1 and second == 1 {
         return 1
     }
     return 0

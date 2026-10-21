@@ -1,0 +1,8 @@
+func FunctionNameCase() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    calcTotal()
+}
+
+func calcTotal() {
+    var total = 1
+}

@@ -1,0 +1,1 @@
+conformance/enum_value_name/enum_value_name.spite:1: error: the enum value 'Knight' must be written in snake_case: lowercase words joined by underscores (in EnumValueName)

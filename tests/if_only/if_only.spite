@@ -1,7 +1,7 @@
 func IfOnly(): Integer {
     load "../../../SpiteCompiler/.spite/library/common"
-    var a = 0
-    if a == 1 {
+    var first = 0
+    if first == 1 {
         return 1
     }
     return 0

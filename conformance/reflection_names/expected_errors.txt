@@ -1,0 +1,1 @@
+conformance/reflection_names/table.spite:1: error: the attribute 'attributes' has a name reflection gives every object: 'value.attributes' lists its attributes, and JsonReader, JsonWriter and every attribute walk read through it, and one of its own would hide it. Name it something else, like 'table_attributes' (in Table)

@@ -1,0 +1,1 @@
+conformance/abbreviated_name/abbreviated_name.spite:3: error: 'item_cnt' abbreviates: write 'count' instead of 'cnt'. Spite has no abbreviations outside its own keywords (in AbbreviatedName.AbbreviatedName)

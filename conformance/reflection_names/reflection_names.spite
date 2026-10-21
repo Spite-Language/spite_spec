@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReflectionNames() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var table = Table()
+    var writer = JsonWriter<Table>()
+    var text = writer.write(table)
+    console.print(text)
+}
