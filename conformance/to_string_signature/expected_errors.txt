@@ -1,0 +1,1 @@
+conformance/to_string_signature/thing.spite:3: error: 'to_string' is called by the compiler wherever the object is used as text, so it is declared exactly 'func to_string(): String' (in Thing)

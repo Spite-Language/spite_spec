@@ -1,0 +1,1 @@
+conformance/reserved_signature/thing.spite:3: error: 'drop' is called by the compiler when the last reference to an object goes, so it is declared exactly 'func drop()' (in Thing)

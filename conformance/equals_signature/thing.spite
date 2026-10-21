@@ -1,0 +1,5 @@
+var size = 1
+
+func equals(other: Thing, _strict: Boolean): Boolean {
+    return size == other.size
+}

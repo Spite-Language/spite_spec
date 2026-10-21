@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReservedSignature() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var thing = Thing()
+    var other = Thing()
+    var same = thing == other
+    console.print(same)
+}

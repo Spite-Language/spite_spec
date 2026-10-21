@@ -1,0 +1,5 @@
+func EqualsSignature(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var thing = Thing()
+    return thing.size
+}

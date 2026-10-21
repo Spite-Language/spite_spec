@@ -1,0 +1,1 @@
+conformance/from_conversion/celsius.spite:3: error: 'Celsius.from_integer' makes a Celsius from another value, and a conversion belongs to the value converted: declare 'to_celsius()' on the class it converts from, the integer, or take the value in the constructor (in Celsius)

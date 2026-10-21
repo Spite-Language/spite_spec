@@ -1,0 +1,7 @@
+var console = Console()
+var ruler = Ruler()
+
+func PlainGetAt() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    console.print(ruler[2])
+}

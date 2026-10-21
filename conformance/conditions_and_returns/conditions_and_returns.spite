@@ -1,0 +1,23 @@
+var console = Console()
+
+func ConditionsAndReturns() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var count = 3
+    if count {
+        console.print("non zero")
+    }
+    while "text" {
+        count = count - 1
+    }
+    var quiet = silent()
+    var noisy = loud()
+    console.print(quiet, noisy)
+}
+
+func silent() {
+    return 5
+}
+
+func loud(): Integer {
+    return
+}

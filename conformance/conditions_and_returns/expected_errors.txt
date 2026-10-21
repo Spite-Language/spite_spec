@@ -1,0 +1,1 @@
+conformance/conditions_and_returns/conditions_and_returns.spite:22: error: 'loud' returns an Integer, so 'return' needs a value (in ConditionsAndReturns.loud)

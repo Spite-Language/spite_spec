@@ -1,0 +1,1 @@
+conformance/equals_signature/thing.spite:3: error: 'equals' is called by the compiler for '==' and '!=', so it is declared exactly 'func equals(other: Thing): Boolean' (in Thing)
