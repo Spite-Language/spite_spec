@@ -1,0 +1,18 @@
+union Creature {
+    Cat
+    Dog
+    Fish
+}
+
+func SwitchOneCaseIf(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var cat = Cat()
+    return fins_of(cat)
+}
+
+func fins_of(creature: Creature): Integer {
+    switch creature {
+        Fish: return 3
+        _: return 0
+    }
+}

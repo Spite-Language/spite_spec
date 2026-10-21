@@ -1,0 +1,1 @@
+conformance/switch_same_as_rest/switch_same_as_rest.spite:14: error: the case 'Cat' does the same as '_:': remove it and let '_:' answer for it (in SwitchSameAsRest.describe)

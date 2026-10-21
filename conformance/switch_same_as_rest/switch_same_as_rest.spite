@@ -1,0 +1,27 @@
+union Creature {
+    Cat
+    Dog
+    Fish
+}
+
+func SwitchSameAsRest() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var cat = Cat()
+    describe(cat)
+}
+
+func describe(creature: Creature) {
+    switch creature {
+        Cat: describe_a_pet()
+        Fish: describe_a_fish()
+        _: describe_a_pet()
+    }
+}
+
+func describe_a_pet() {
+    var pets = 1
+}
+
+func describe_a_fish() {
+    var fish = 1
+}

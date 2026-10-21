@@ -1,0 +1,1 @@
+conformance/switch_rest_not_last/switch_rest_not_last.spite:14: error: '_:' answers for every member without a case of its own, so it is the last case (in SwitchRestNotLast.describe)

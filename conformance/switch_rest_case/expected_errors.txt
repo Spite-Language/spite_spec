@@ -1,0 +1,1 @@
+conformance/switch_rest_case/switch_rest_case.spite:19: error: the cases 'Cat' and 'Dog' do the same thing: write it once, as the last case '_:' (in SwitchRestCase.repeated)
