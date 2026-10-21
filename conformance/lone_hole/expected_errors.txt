@@ -1,0 +1,1 @@
+conformance/lone_hole/lone_hole.spite:6: error: '"{counter.click_count.clicks}"' is a text of one value and nothing else: assign the value directly, 'counter.label.text = counter.click_count.clicks' (in LoneHole.LoneHole)

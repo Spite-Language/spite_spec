@@ -1,0 +1,19 @@
+var console = Console()
+
+func NullComparison() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    announce()
+}
+
+func try_get_name(): String? {
+    return null
+}
+
+func announce() {
+    var name = try_get_name()
+    if name == null {
+        console.print("nothing")
+    } else {
+        console.print(name)
+    }
+}

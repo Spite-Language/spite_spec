@@ -1,0 +1,1 @@
+conformance/repeated_branch_call/repeated_branch_call.spite:13: error: 'source.slice(0, end_index)' is computed in both branches: compute it once before the 'if' (in RepeatedBranchCall.flush)

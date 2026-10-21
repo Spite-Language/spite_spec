@@ -1,0 +1,1 @@
+conformance/joined_text/joined_text.spite:6: error: text written down is not joined with '+': put the value inside it, like "hello {name}". Two values are still joined with '+' (in JoinedText.JoinedText)

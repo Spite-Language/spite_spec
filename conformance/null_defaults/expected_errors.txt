@@ -1,0 +1,1 @@
+conformance/null_defaults/null_defaults.spite:2: error: the attribute 'target' is declared 'Monster', not 'Monster?', so '= null' would make a default Monster rather than nothing: write 'var target: Monster? = null' for none yet, narrowed before use, or 'var target = Monster()' for a default, or keep '= null' and assign it at the top of the constructor (in NullDefaults)

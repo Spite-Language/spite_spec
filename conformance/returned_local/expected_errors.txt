@@ -1,0 +1,1 @@
+conformance/returned_local/returned_local.spite:14: error: 'whole' is declared only to be returned on the next line: write 'return scaled.round()', since 'return' already makes the value the function's Integer (in ReturnedLocal.rounded)

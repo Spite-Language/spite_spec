@@ -1,0 +1,7 @@
+var console = Console()
+
+func EntryConstructorArguments(arguments: Arguments) {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var argument_count = arguments.count()
+    console.print(argument_count)
+}

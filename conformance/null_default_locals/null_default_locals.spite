@@ -1,0 +1,8 @@
+var console = Console()
+
+func NullDefaultLocals() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var count: Integer = null
+    var label: String = null
+    console.print(count, label)
+}
