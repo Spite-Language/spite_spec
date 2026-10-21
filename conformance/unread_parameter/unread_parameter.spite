@@ -1,0 +1,8 @@
+func UnreadParameter(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    return twice(3)
+}
+
+func twice(amount: Integer): Integer {
+    return 2
+}

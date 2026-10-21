@@ -1,0 +1,17 @@
+var console = Console()
+
+func WrittenNotRead() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var total = 1
+    total = 2
+    var label = "count"
+    label = "{label} of things"
+    console.print(label)
+    var shown = count_twice(3)
+    console.print(shown)
+}
+
+func count_twice(amount: Integer): Integer {
+    amount = 0
+    return 2
+}

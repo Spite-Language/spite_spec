@@ -1,0 +1,19 @@
+var console = Console()
+
+func UnusedNames() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var forgotten = 1
+    var _counted = 3
+    console.print(_counted)
+    var _spare = 2
+    helper(4, 5, 6)
+}
+
+func helper(used: Integer, spare: Integer, _ignored: Integer) {
+    console.print(used)
+    if used > 1 {
+        var inner = "never read"
+    }
+}
+
+func set_anything(value: Integer) { }

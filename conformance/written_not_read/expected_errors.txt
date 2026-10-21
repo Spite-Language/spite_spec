@@ -1,0 +1,1 @@
+conformance/written_not_read/written_not_read.spite:5: error: 'total' is never read: remove it (in WrittenNotRead.WrittenNotRead)
