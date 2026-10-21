@@ -1,0 +1,8 @@
+var console = Console()
+
+func OldAmpersand() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var value = 6
+    var masked = value & 3
+    console.print(masked)
+}

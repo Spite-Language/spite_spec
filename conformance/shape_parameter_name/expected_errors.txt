@@ -1,0 +1,1 @@
+conformance/shape_parameter_name/shape_parameter_name.spite:2: error: a shape names the types it needs, not the names they are given: write the type alone, since a class satisfies it whatever it calls its parameters

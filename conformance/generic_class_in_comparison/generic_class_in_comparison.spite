@@ -1,0 +1,8 @@
+var found = 0
+
+func GenericClassInComparison() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    if found < List<Integer> {
+        found = 1
+    }
+}

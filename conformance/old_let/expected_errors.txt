@@ -1,0 +1,1 @@
+conformance/old_let/old_let.spite:5: error: Spite has no 'let': a variable is declared 'var name = value'

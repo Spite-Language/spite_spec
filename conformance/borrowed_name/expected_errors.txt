@@ -1,0 +1,1 @@
+conformance/borrowed_name/borrowed_name.spite:5: error: 'none' cannot name a variable, because Spite reads the word as a mistake anywhere it is used: the empty value is written 'null'

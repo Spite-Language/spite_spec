@@ -1,0 +1,1 @@
+conformance/class_keyword/class_keyword.spite:1: error: there is no 'class' keyword: a file is a class, named after the file, and its attributes and functions are written at the top of that file

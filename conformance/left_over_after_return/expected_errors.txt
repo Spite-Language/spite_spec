@@ -1,0 +1,1 @@
+conformance/left_over_after_return/left_over_after_return.spite:11: error: 'attribute' is left over after the end of the statement: a statement is one line

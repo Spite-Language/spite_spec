@@ -1,0 +1,1 @@
+conformance/old_shift/old_shift.spite:6: error: Spite has no '<<': bits are functions on the whole numbers, write 'value.shifted_left(count)'

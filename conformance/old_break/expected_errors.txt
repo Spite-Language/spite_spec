@@ -1,0 +1,1 @@
+conformance/old_break/old_break.spite:8: error: Spite has no 'break': a loop stops in its own condition

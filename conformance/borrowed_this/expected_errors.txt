@@ -1,0 +1,1 @@
+conformance/borrowed_this/borrowed_this.spite:6: error: a class reads its own attributes and calls its own functions by name: write 'name', not 'this.name'

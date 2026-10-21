@@ -1,0 +1,8 @@
+var console = Console()
+
+func DeclarationOrder() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    console.print(label)
+}
+
+var label = "late"

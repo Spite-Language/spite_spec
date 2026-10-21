@@ -1,0 +1,1 @@
+conformance/file_scope_statement/file_scope_statement.spite:3: error: a file holds declarations and nothing else, so a statement cannot stand here

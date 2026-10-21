@@ -1,0 +1,7 @@
+var console = Console()
+
+func LoadFolderName() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "Engine-Plugin"
+    console.print("never built")
+}

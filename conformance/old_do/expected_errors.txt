@@ -1,0 +1,1 @@
+conformance/old_do/old_do.spite:6: error: Spite has no 'do': an 'if' on a value that may be null narrows it in place, 'if value { ... } else { ... }', and inside the block 'value' is the value itself

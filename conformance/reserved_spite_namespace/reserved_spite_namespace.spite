@@ -1,0 +1,4 @@
+func ReservedSpiteNamespace() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "spite"
+}

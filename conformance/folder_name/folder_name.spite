@@ -1,0 +1,6 @@
+var console = Console()
+
+func FolderName() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    console.print("never built")
+}

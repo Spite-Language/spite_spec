@@ -1,0 +1,1 @@
+conformance/borrowed_operators/borrowed_operators.spite:5: error: Spite writes 'and' and 'or' as words: there is no '&&' or '||'

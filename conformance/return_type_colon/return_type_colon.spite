@@ -1,0 +1,8 @@
+func ReturnTypeColon() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    add_one(1)
+}
+
+func add_one(value: Integer) Integer {
+    return value + 1
+}

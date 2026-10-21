@@ -1,0 +1,7 @@
+var console = Console()
+
+func BorrowedName() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var none: Long = 0
+    console.print(none)
+}

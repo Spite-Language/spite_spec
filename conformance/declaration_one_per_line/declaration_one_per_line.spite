@@ -1,0 +1,7 @@
+enum Job {
+    'knight', 'mage'
+}
+
+func DeclarationOnePerLine() {
+    load "../../../SpiteCompiler/.spite/library/common"
+}

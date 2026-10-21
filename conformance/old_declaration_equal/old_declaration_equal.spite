@@ -1,0 +1,8 @@
+enum Job = {
+    'knight'
+    'mage'
+}
+
+func OldDeclarationEqual() {
+    load "../../../SpiteCompiler/.spite/library/common"
+}

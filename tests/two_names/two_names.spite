@@ -1,10 +1,9 @@
 func TwoNames(): Integer {
     load "../../../SpiteCompiler/.spite/library/common"
     var maker = Maker()
-    var other: Other? = null
-    return shared(maker, other)
+    return shared(maker)
 }
 
-func shared(maker: Maker, _other: Other?): Integer {
+func shared(maker: Maker): Integer {
     return maker.shared()
 }

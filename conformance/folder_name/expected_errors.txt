@@ -1,0 +1,1 @@
+conformance/folder_name/BadFolder: error: the folder 'BadFolder' is not named in snake_case: every folder is lowercase words joined by '_', so rename it 'bad_folder'

@@ -1,0 +1,8 @@
+var console = Console()
+var total = 0
+
+func BorrowedSyntax() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    total += 1
+    console.print(total)
+}

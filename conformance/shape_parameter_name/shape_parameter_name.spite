@@ -1,0 +1,10 @@
+type Drawable {
+    render(scale: Integer): String
+}
+
+var console = Console()
+
+func ShapeParameterName() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    console.print("unreached")
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func OldReferenceType() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    console.print("never built")
+}
+
+func rename(monster: &Monster) {
+    monster.name = "rat"
+}

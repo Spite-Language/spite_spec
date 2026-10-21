@@ -1,0 +1,1 @@
+conformance/enum_number_too_large/enum_number_too_large.spite:1: error: 'large' would be number 2147483648 of enum 'Size', which does not fit an Integer: an enum value's number is an Integer (in EnumNumberTooLarge)

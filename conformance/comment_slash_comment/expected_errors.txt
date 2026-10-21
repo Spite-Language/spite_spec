@@ -1,0 +1,1 @@
+conformance/comment_slash_comment/comment_slash_comment.spite:1: error: Spite has no '//': a comment is one line starting with '#' and holding a link to a heading

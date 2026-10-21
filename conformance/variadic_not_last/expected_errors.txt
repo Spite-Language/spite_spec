@@ -1,0 +1,1 @@
+conformance/variadic_not_last/variadic_not_last.spite:8: error: '...lines' takes every argument from here on, so it is the last parameter: move it to the end (in VariadicNotLast.log)

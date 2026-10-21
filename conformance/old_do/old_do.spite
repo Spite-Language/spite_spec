@@ -1,0 +1,9 @@
+var console = Console()
+var target: String? = null
+
+func OldDo() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    if target do name {
+        console.print(name)
+    }
+}

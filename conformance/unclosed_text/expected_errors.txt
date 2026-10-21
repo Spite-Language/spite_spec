@@ -1,0 +1,1 @@
+conformance/unclosed_text/unclosed_text.spite:2: error: this text never closes: a text is written on one line, and a line break inside it is written as a backslash and n

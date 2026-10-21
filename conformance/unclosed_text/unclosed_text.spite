@@ -1,0 +1,8 @@
+var console = Console()
+var greeting = "one
+two"
+
+func UnclosedText() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    console.print(greeting)
+}

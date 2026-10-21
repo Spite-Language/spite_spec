@@ -1,0 +1,10 @@
+var loads = 0
+
+func LoadFunction() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    loads = 1
+}
+
+func load(id: String): Integer {
+    return loads + id.length()
+}

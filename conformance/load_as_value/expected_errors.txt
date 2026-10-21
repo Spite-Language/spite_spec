@@ -1,0 +1,1 @@
+conformance/load_as_value/load_as_value.spite:3: error: 'load' is a statement on a line of its own, like 'load "folder"': it is not a function, and it has no value

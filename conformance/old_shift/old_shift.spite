@@ -1,0 +1,8 @@
+var console = Console()
+
+func OldShift() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var value = 1
+    var shifted = value << 3
+    console.print(shifted)
+}

@@ -1,0 +1,1 @@
+conformance/overlapping_load/overlapping_load.spite:6: error: 'conformance/overlapping_load/kingdom/physics' and the loaded 'conformance/overlapping_load/kingdom' lie one inside the other, so their files would be loaded twice: load only the outer folder, whose subfolders are already its namespaces

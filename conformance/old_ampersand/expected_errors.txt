@@ -1,0 +1,1 @@
+conformance/old_ampersand/old_ampersand.spite:6: error: Spite has no '&': bits are functions on the whole numbers, 'bits_and(mask)', and 'and' joins conditions

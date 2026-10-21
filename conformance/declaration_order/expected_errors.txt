@@ -1,0 +1,1 @@
+conformance/declaration_order/declaration_order.spite:8: error: a variable comes after the constructor here, but a file is ordered: the singleton line, generic lines, enums, unions, types, variables, the constructor, then functions (in DeclarationOrder)

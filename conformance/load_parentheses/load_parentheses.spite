@@ -1,0 +1,4 @@
+func LoadParentheses() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load("level")
+}

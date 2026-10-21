@@ -1,0 +1,1 @@
+conformance/reserved_spite_namespace/reserved_spite_namespace.spite:3: error: 'spite' is reserved for the built-in Spite namespace: name the folder something else

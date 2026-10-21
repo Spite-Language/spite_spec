@@ -1,0 +1,1 @@
+conformance/return_type_colon/return_type_colon.spite:6: error: a function's answer is written after a ':', as in 'func total(): Integer', and found 'Integer'

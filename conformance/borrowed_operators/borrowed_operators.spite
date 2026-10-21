@@ -1,0 +1,8 @@
+var console = Console()
+
+func BorrowedOperators() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    if true && false {
+        console.print("both")
+    }
+}

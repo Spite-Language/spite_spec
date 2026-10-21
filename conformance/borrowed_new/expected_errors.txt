@@ -1,0 +1,1 @@
+conformance/borrowed_new/borrowed_new.spite:5: error: there is no 'new' in Spite: a class is made by calling its own name, like 'Creature("rat")'
