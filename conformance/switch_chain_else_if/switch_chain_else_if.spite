@@ -1,0 +1,16 @@
+func SwitchChainElseIf(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    return seconds_for(2)
+}
+
+func seconds_for(light: Integer): Integer {
+    if light == 0 {
+        return 30
+    } else if light == 1 {
+        return 5
+    } else if light == 2 {
+        return 20
+    } else {
+        return 0
+    }
+}

@@ -1,0 +1,13 @@
+var console = Console()
+
+func ReturningGuard() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    announce("ada")
+}
+
+func announce(name: String) {
+    if name.is_empty() {
+        return
+    }
+    console.print(name)
+}

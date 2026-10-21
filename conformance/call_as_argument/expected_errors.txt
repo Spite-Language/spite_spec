@@ -1,0 +1,1 @@
+conformance/call_as_argument/call_as_argument.spite:13: error: 'count_words(source)' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name (in CallAsArgument.rejected)

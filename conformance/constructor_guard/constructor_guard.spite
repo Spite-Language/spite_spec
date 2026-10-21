@@ -1,0 +1,5 @@
+func ConstructorGuard(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var gate = Gate(1)
+    return gate.size
+}

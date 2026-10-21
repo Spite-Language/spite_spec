@@ -1,0 +1,9 @@
+var console = Console()
+
+func ComputedReceiver() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var start = 3
+    var offset = 4
+    var furthest = (start + offset).maximum(10)
+    console.print(furthest)
+}

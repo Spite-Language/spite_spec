@@ -1,1 +1,0 @@
-conformance/old_nullable_spelling/old_nullable_spelling.spite:1: error: 'Nullable<T>' was replaced by a '?' after the type: write 'Monster?' for a value that may be null

@@ -1,0 +1,17 @@
+func SwitchChainOr(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    return width_of("byte")
+}
+
+func width_of(word: String): Integer {
+    if word == "byte" or word == "tiny" {
+        return 1
+    }
+    if word == "short" {
+        return 2
+    }
+    if word == "integer" or word == "float" {
+        return 4
+    }
+    return 0
+}

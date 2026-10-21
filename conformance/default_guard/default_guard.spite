@@ -1,0 +1,104 @@
+var console = Console()
+var handle = 0
+
+func DefaultGuard() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var open = is_open()
+    var code = first_code("a")
+    var divided = ratio(1.0)
+    var text = label(true)
+    var sent = send(1, 2)
+    var answer = real_answers(3)
+    var walked = walk(4)
+    var kept = kept_count(true, false, true)
+    var gate = Gate(1)
+    console.print(open, code, divided, text, sent, answer, walked, kept, gate.size)
+    find_name(false)
+    checked(5)
+}
+
+func is_open(): Boolean {
+    if handle == -1 {
+        return false
+    }
+    return true
+}
+
+func first_code(text: String): Integer {
+    if text.is_empty() {
+        return 0
+    }
+    return text.code_at(0)
+}
+
+func ratio(divisor: Float): Float {
+    if divisor <= 0.0 {
+        return 0.0
+    }
+    return 1.0 / divisor
+}
+
+func label(ready: Boolean): String {
+    if not ready {
+        return ""
+    }
+    return "ready"
+}
+
+func find_name(missing: Boolean): String? {
+    var name: String? = "kal"
+    if missing {
+        return null
+    }
+    if not name {
+        return null
+    }
+    return name
+}
+
+func send(count: Integer, limit: Integer): Boolean {
+    if count < 0 or count > limit {
+        return false
+    }
+    if count == 0 and limit == 0 {
+        return false
+    }
+    return true
+}
+
+func real_answers(value: Integer): Integer {
+    if value < 0 {
+        return -1
+    }
+    if value == 1 {
+        return 1
+    }
+    return value
+}
+
+func walk(steps: Integer): Integer {
+    var index = 0
+    while index < steps {
+        if index > 2 {
+            return 0
+        }
+        index = index + 1
+    }
+    return index
+}
+
+func checked(value: Integer) {
+    if value > 3 {
+        console.print("big")
+    } else if value < 0 {
+        return
+    }
+    console.print(value)
+}
+
+func kept_count(first: Boolean, second: Boolean, third: Boolean): Integer {
+    if first and second or not third {
+        return 0
+    }
+    return 1
+}

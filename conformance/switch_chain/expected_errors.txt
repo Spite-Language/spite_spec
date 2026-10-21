@@ -1,0 +1,1 @@
+conformance/switch_chain/switch_chain.spite:19: error: these 3 'if's each compare 'index' with a value and return, which is what a 'switch' says: write 'switch index { 0: return "monday"  1: return "tuesday"  2: return "wednesday"  _: return "later" }' (in SwitchChain.day_name)

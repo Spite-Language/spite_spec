@@ -1,0 +1,1 @@
+conformance/constructor_as_argument/constructor_as_argument.spite:7: error: 'CounterButton(screen.id)' is constructed inside an argument of 'screen.add': a constructor call is never an argument, so make it first on a line of its own, 'var counter_button = CounterButton(screen.id)', and pass 'counter_button' (in ConstructorAsArgument.ConstructorAsArgument)

@@ -1,0 +1,1 @@
+conformance/constructor_guard/gate.spite:4: error: this 'if' only leaves the constructor, and a constructor is setup, not logic: take already resolved values, or write 'crash starting_size >= 0' when this is a bug (in Gate.Gate)

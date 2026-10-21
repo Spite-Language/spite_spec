@@ -1,0 +1,1 @@
+conformance/nested_if_else/nested_if_else.spite:16: error: this 'if'/'else' is inside a branch of another 'if'/'else': move it into a function named for what it decides, or, when both test which member of a union or which value of an enum a value is, use one 'switch' (in NestedIfElse.describe)
