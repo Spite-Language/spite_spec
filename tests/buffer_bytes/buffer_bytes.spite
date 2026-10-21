@@ -1,0 +1,14 @@
+func BufferBytes(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var bytes = Buffer(16)
+    bytes.append(65)
+    bytes.append_integer_little_endian(1200)
+    bytes.append_integer_big_endian(1200)
+    var first = bytes.read_byte_at(0)
+    var little = bytes.read_integer_little_endian_at(1)
+    var big = bytes.read_integer_big_endian_at(5)
+    if first == 65 and little == 1200 and big == 1200 {
+        return 0
+    }
+    return 1
+}

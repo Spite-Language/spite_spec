@@ -1,0 +1,7 @@
+func Counter() {
+    value()
+}
+
+func value(): Integer {
+    return 7
+}

@@ -1,0 +1,3 @@
+func count(): Integer {
+    return 9
+}

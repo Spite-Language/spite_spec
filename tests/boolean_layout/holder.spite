@@ -1,0 +1,19 @@
+var flag: Boolean = false
+var count = 0
+
+func Holder() {
+    flag = false
+    count = 0
+}
+
+func set_flag(value: Boolean) {
+    flag = value
+}
+
+func flag_is_set(): Boolean {
+    return flag
+}
+
+func count_value(): Integer {
+    return count
+}

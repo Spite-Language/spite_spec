@@ -1,0 +1,7 @@
+func IfOnly(): Integer {
+    var a = 0
+    if a {
+        return 1
+    }
+    return 0
+}

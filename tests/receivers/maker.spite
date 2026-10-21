@@ -1,0 +1,7 @@
+func Maker() {
+    make()
+}
+
+func make(): Counter {
+    return Counter()
+}

@@ -1,0 +1,5 @@
+func BufferOverflow(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var bytes = Buffer(2000)
+    return 0
+}

@@ -1,0 +1,7 @@
+func Maker() {
+    shared()
+}
+
+func shared(): Integer {
+    return 3
+}

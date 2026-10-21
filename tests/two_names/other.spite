@@ -1,0 +1,3 @@
+func shared(): Integer {
+    return 9
+}

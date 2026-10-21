@@ -1,0 +1,8 @@
+func OrIf(): Integer {
+    var a = 1
+    var b = 0
+    if a or b {
+        return 1
+    }
+    return 0
+}

@@ -1,0 +1,10 @@
+func Divisions(): Integer {
+    var total = 0
+    var index = 1
+    while index <= 4 {
+        total = total + 100 / index
+        index = index + 1
+    }
+    var seven = 7
+    return total + 100 % seven
+}

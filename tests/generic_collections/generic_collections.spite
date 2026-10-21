@@ -1,0 +1,8 @@
+func GenericCollections(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var texts = List<String>()
+    var numbers = List<Integer>()
+    var named: List<String> = List<String>()
+    var book = Dictionary<String, Integer>()
+    return texts.count() + numbers.count() + named.count() + book.count()
+}

@@ -1,0 +1,6 @@
+func AndValue(): Integer {
+    var a = 1
+    var b = 0
+    var c = a and b
+    return c
+}

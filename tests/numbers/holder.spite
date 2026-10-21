@@ -1,0 +1,15 @@
+var small: Byte = 0
+var large: Byte = 0
+var negative: Tiny = 0
+var positive: Tiny = 0
+var whole: Integer = 0
+var bigger: Integer = 0
+
+func Holder() {
+    small = 0
+    large = 0
+    negative = 0
+    positive = 0
+    whole = 0
+    bigger = 0
+}

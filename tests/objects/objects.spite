@@ -1,0 +1,6 @@
+func Objects(): Integer {
+    var counter = Counter()
+    counter.count = 5
+    counter.bump()
+    return counter.value()
+}

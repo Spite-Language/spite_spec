@@ -1,0 +1,8 @@
+func AndIf(): Integer {
+    var a = 1
+    var b = 0
+    if a and b {
+        return 1
+    }
+    return 0
+}

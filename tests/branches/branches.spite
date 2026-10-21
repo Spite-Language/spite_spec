@@ -1,0 +1,18 @@
+func Branches(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var total = 0
+    var index = 1
+    while index <= 10 {
+        if index < 6 {
+            total = total + index
+        } else {
+            total = total + 1
+        }
+        index = index + 1
+    }
+    if total > 15 {
+        return total + 1
+    } else {
+        return total
+    }
+}

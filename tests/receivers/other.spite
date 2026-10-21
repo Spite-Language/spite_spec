@@ -1,0 +1,7 @@
+func Other() {
+    value()
+}
+
+func value(): Integer {
+    return 11
+}

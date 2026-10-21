@@ -1,0 +1,142 @@
+var console = Console()
+var program = Program()
+var compiler = "..\\SpiteCompiler\\.spite\\spite.exe"
+var passed = 0
+var failed = 0
+var found_folders = List<String>()
+var parent_folder = ""
+
+func Runner() {
+    var named = named_folders()
+    if named.is_empty() {
+        named = every_folder()
+    }
+    named.each(run_one)
+    console.print("{passed} passed, {failed} failed")
+    if failed > 0 {
+        program.exit(1)
+    }
+}
+
+func named_folders(): List<String> {
+    var named = List<String>()
+    var arguments = Arguments()
+    var index = 0
+    while index < arguments.count() {
+        var argument = arguments.get(index)
+        var without_slash = trimmed_slash(argument)
+        named.append(without_slash)
+        index = index + 1
+    }
+    return named
+}
+
+func every_folder(): List<String> {
+    found_folders = List<String>()
+    keep_folders_in("tests")
+    keep_folders_in("conformance")
+    return found_folders
+}
+
+func keep_folders_in(parent: String) {
+    parent_folder = parent
+    var directory = Directory(parent)
+    var entries = directory.entries()
+    entries.each(keep_folder)
+}
+
+func keep_folder(entry: Directory.Entry) {
+    if entry == Directory {
+        var name = entry.name
+        found_folders.append("{parent_folder}/{name}")
+    }
+}
+
+func trimmed_slash(folder: String): String {
+    var forward = folder.replace("\\", "/")
+    if forward.ends_with("/") {
+        var last = forward.length() - 1
+        return forward.slice(0, last)
+    }
+    return forward
+}
+
+func run_one(folder: String) {
+    if folder.starts_with("tests/") {
+        run_test(folder)
+        return
+    }
+    if folder.starts_with("conformance/") {
+        run_conformance(folder)
+        return
+    }
+    fail(folder, "a test is tests/<name> or conformance/<name>")
+}
+
+func run_test(folder: String) {
+    var wanted = expected_text(folder, "expected_exit_code.txt")
+    assert wanted
+    var no_arguments = List<String>()
+    var compile = Process("{compiler} {folder} 2>&1 1>nul", no_arguments)
+    var compiled = compile.run()
+    if compiled != 0 {
+        var errors = compile.output()
+        fail(folder, "it did not compile: {errors}")
+        return
+    }
+    var executable = executable_of(folder)
+    var running = Process("{executable} >nul 2>&1", no_arguments)
+    var answered = running.run()
+    var answer = answered.to_string()
+    if answer != wanted {
+        fail(folder, "it answered {answer}, and {wanted} was expected")
+        return
+    }
+    passed = passed + 1
+}
+
+func run_conformance(folder: String) {
+    var wanted = expected_text(folder, "expected_errors.txt")
+    assert wanted
+    var no_arguments = List<String>()
+    var compile = Process("{compiler} {folder} 2>&1 1>nul", no_arguments)
+    var compiled = compile.run()
+    if compiled == 0 {
+        fail(folder, "it compiled, and it must fail")
+        return
+    }
+    var output = compile.output()
+    var errors = cleaned(output)
+    if errors != wanted {
+        fail(folder, "the errors differ\n  expected: {wanted}\n  got:      {errors}")
+        return
+    }
+    passed = passed + 1
+}
+
+func expected_text(folder: String, name: String): String? {
+    var file = File("{folder}/{name}")
+    var text = file.read()
+    if not text {
+        fail(folder, "it has no {name}")
+        return null
+    }
+    return cleaned(text)
+}
+
+func executable_of(folder: String): String {
+    var directory = Directory(folder)
+    var name = directory.name
+    var windows_folder = folder.replace("/", "\\")
+    return "{windows_folder}\\.spite\\build\\{name}.exe"
+}
+
+func cleaned(text: String): String {
+    var without_returns = text.replace("\r", "")
+    return without_returns.trim()
+}
+
+func fail(folder: String, why: String) {
+    console.print("FAILED {folder}: {why}")
+    failed = failed + 1
+}

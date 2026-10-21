@@ -1,0 +1,7 @@
+func BufferCrash(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var bytes = Buffer(16)
+    bytes.append(65)
+    var missing = bytes.read_integer_little_endian_at(0)
+    return 0
+}

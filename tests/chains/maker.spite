@@ -1,0 +1,16 @@
+func Maker() {
+    count()
+}
+
+func helper(): Maker {
+    return Maker()
+}
+
+func answer(): Integer {
+    var thing = helper()
+    return thing.count()
+}
+
+func count(): Integer {
+    return 5
+}

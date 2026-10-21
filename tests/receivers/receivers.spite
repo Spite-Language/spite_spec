@@ -1,0 +1,7 @@
+func Receivers(): Integer {
+    var maker = Maker()
+    var made = maker.make()
+    var counted = made.value()
+    var other = Other().value()
+    return counted + other
+}

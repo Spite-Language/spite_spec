@@ -1,0 +1,10 @@
+func TwoNames(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var maker = Maker()
+    var other: Other? = null
+    return shared(maker, other)
+}
+
+func shared(maker: Maker, _other: Other?): Integer {
+    return maker.shared()
+}

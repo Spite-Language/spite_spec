@@ -1,0 +1,63 @@
+func Numbers(): Integer {
+    load "../../../SpiteCompiler/.spite/library/common"
+    var holder = Holder()
+    holder.small = 5
+    holder.large = 9
+    holder.negative = 255
+    holder.positive = 5
+    holder.whole = 1000
+    holder.bigger = 2000
+    var total = 0
+    if holder.small.less_than(holder.large) {
+        total = total + 1
+    }
+    if holder.large.greater_than(holder.small) {
+        total = total + 2
+    }
+    if holder.small.equals(holder.small) {
+        total = total + 4
+    }
+    if holder.small.equals(holder.large) {
+        total = total + 8
+    }
+    if holder.negative.less_than(holder.positive) {
+        total = total + 16
+    }
+    if holder.whole.less_than(holder.bigger) {
+        total = total + 32
+    }
+    if holder.whole.equals(holder.whole) {
+        total = total + 64
+    }
+    if holder.small.to_integer() == 5 {
+        total = total + 128
+    }
+    if holder.whole.to_byte() == 232 {
+        total = total + 256
+    }
+    if holder.whole.sum(holder.bigger) == 3000 {
+        total = total + 512
+    }
+    if holder.small.minimum(holder.large) == 5 {
+        total = total + 1024
+    }
+    if holder.whole.maximum(holder.bigger) == 2000 {
+        total = total + 2048
+    }
+    if holder.negative.absolute() == 1 {
+        total = total + 4096
+    }
+    if holder.whole.subtract(holder.bigger) == -1000 {
+        total = total + 8192
+    }
+    if holder.small.multiply(holder.large) == 45 {
+        total = total + 16384
+    }
+    if holder.whole.divide(holder.bigger) == 0 {
+        total = total + 32768
+    }
+    if holder.whole.remainder(holder.bigger) == 1000 {
+        total = total + 65536
+    }
+    return total
+}
