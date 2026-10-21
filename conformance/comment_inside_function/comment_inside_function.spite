@@ -1,0 +1,4 @@
+func CommentInsideFunction() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    # notes.md#a-real-heading
+}

@@ -1,0 +1,4 @@
+# nowhere/missing.md#anything
+func CommentMissingFile() {
+    load "../../../SpiteCompiler/.spite/library/common"
+}

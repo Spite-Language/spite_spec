@@ -1,0 +1,7 @@
+# helper.spite
+var console = Console()
+
+func SpiteLinkOutsideFinal() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    console.print("linked")
+}
