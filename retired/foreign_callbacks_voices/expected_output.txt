@@ -1,0 +1,5 @@
+voice 1 started true
+voice 1 ended with buffer 100
+voice 2 started true
+voice 2 ended with buffer 200
+buffers ended 2
