@@ -15,7 +15,7 @@ func AnyKeys() {
     by_color['green'] = 5
     crash by_color['green']
     var color_count = by_color.count()
-    var has_blue = by_color.has('blue')
+    var has_blue = by_color.contains('blue')
     console.print("green", by_color['green'], "count", color_count, "has blue", has_blue)
     var ada = Player("ada")
     var grace = Player("grace")
@@ -24,7 +24,7 @@ func AnyKeys() {
     parties[ada] = Party("red team")
     parties[grace] = Party("blue team")
     crash parties[ada]
-    var equal_found = parties.has(also_ada)
+    var equal_found = parties.contains(also_ada)
     console.print("ada is in", parties[ada].name, "an equal name is another key", equal_found)
     var flags = Dictionary<Boolean, String>()
     flags[true] = "yes"

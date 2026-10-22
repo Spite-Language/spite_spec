@@ -9,7 +9,7 @@ func insert(entity: Integer, component: $component_type) {
 }
 
 func has(entity: Integer): Boolean {
-    return components.has(entity)
+    return components.contains(entity)
 }
 
 func of(entity: Integer): $component_type {

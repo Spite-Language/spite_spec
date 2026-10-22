@@ -11,8 +11,8 @@ func Dictionaries() {
     ages["ada"] = 37
     crash ages["ada"]
     var ages_count = ages.count()
-    var has_ada = ages.has("ada")
-    var has_bob = ages.has("bob")
+    var has_ada = ages.contains("ada")
+    var has_bob = ages.contains("bob")
     console.print(ages_count, has_ada, has_bob, ages["ada"], ages["bob"] == 0)
     if ages["grace"] {
         console.print("grace is", ages["grace"])
@@ -52,7 +52,7 @@ func Dictionaries() {
     console.print(pets["tom"].kind, pet_values_count)
     pets.remove("rex")
     var pets_count = pets.count()
-    var has_rex = pets.has("rex")
+    var has_rex = pets.contains("rex")
     console.print(pets_count, has_rex)
 }
 

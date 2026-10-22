@@ -12,7 +12,7 @@ func Shelf() {
     }
 }
 
-func book_at(at: Integer, old: Book): Book {
+func book_at(at: Integer, _old: Book): Book {
     crash books[at]
     return books[at]
 }
