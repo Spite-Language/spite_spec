@@ -1,2 +1,2 @@
-spite.fault	read-violation	-	-	-	address=0x0	code=0xc0000005	at=fixture.dll+0x...	foreign=read_integer_at	library=tests/native_fault_foreign/fixture.dll	from=tests/native_fault_foreign/native_fault_foreign.spite:15
 before the fault 5
+spite.fault	read-violation	-	-	-	address=0x0	code=0xc0000005	at=fixture.dll+0x...	foreign=read_integer_at	library=tests/native_fault_foreign/fixture.dll	from=tests/native_fault_foreign/native_fault_foreign.spite:15

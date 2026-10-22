@@ -12,6 +12,6 @@ func NativeFaultForeign() {
 
 func read_nothing() {
     var nowhere: Long = 0
-    var value = fixture.read_integer_little_endian_at(nowhere)
+    var value = fixture.read_integer_at(nowhere)
     console.print(value)
 }

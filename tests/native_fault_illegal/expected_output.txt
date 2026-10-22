@@ -1,2 +1,2 @@
-spite.fault	illegal-instruction	-	-	-	code=0xc000001d	at=fixture.dll+0x...	foreign=stop_here	library=tests/native_fault_illegal/fixture.dll	from=tests/native_fault_illegal/native_fault_illegal.spite:12
 before the fault
+spite.fault	illegal-instruction	-	-	-	code=0xc000001d	at=fixture.dll+0x...	foreign=stop_here	library=tests/native_fault_illegal/fixture.dll	from=tests/native_fault_illegal/native_fault_illegal.spite:12
