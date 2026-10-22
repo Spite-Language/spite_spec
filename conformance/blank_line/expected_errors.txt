@@ -1,1 +1,1 @@
-formatted diagnostics/blank_line/blank_line.spite
+formatted conformance/blank_line/blank_line.spite

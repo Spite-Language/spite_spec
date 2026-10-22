@@ -185,8 +185,9 @@ func optional_text(folder: String, name: String): String {
 func run_conformance(folder: String) {
     var wanted = expected_text(folder, "expected_errors.txt")
     assert wanted
+    var flags = optional_text(folder, "flags.txt")
     var no_arguments = List<String>()
-    var compile = Process("{compiler} {folder} 2>&1 1>nul", no_arguments)
+    var compile = Process("{compiler} {folder} {flags} 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     if compiled == 0 {
         fail(folder, "it compiled, and it must fail")
