@@ -1,1 +1,2 @@
 before the crash
+spite: the program stopped at tests/crash_scope_values/crash_scope_values.spite:24 in CrashScopeValues.load_level

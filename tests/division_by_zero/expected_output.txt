@@ -1,2 +1,2 @@
-spite: 'total / parts' divided by zero, at tests/division_by_zero/division_by_zero.spite:24 in DivisionByZero.share
 5 0
+spite: 'total / parts' divided by zero, at tests/division_by_zero/division_by_zero.spite:26 in DivisionByZero.share

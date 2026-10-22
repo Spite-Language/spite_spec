@@ -1,1 +1,2 @@
 width 0
+spite: the program stopped at tests/crash_missing_value/crash_missing_value.spite:12 in CrashMissingValue.show

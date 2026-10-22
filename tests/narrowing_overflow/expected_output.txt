@@ -1,2 +1,2 @@
-spite: 200, an Integer, does not fit in a Tiny, at tests/narrowing_overflow/narrowing_overflow.spite:12 in NarrowingOverflow.shrunk
 200
+spite: 200, an Integer, does not fit in a Tiny, at tests/narrowing_overflow/narrowing_overflow.spite:14 in NarrowingOverflow.shrunk
