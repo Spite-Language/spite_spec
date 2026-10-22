@@ -1,0 +1,10 @@
+var console = Console()
+
+func ArgumentCountMissing() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var mover = Mover()
+    mover.update_each(2)
+    var counted = Mover.argument_count("render_each")
+    console.print(counted)
+}

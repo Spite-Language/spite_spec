@@ -1,0 +1,1 @@
+conformance/argument_count_missing/argument_count_missing.spite:8: error: 'Mover' has no function named 'render_each', so 'argument_count' has nothing to count: name a function it has, or ask 'Mover.has_function("render_each")' first and count only where it answers true (in ArgumentCountMissing.ArgumentCountMissing)

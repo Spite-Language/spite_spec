@@ -12,14 +12,14 @@ func CountUndoesProof() {
 func counting() {
     crash items[0]
     var total = count()
-    var first = items[0]
+    var first = items[0].upper_case()
     console.print(first, total)
 }
 
 func trusting() {
     crash items[0]
     var total = items.count()
-    var first = items[0]
+    var first = items[0].upper_case()
     console.print(first, total)
 }
 

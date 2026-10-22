@@ -1,0 +1,9 @@
+var label = ""
+
+func Shouter(starting_label: String) {
+    label = starting_label
+}
+
+func shout(text: String): String {
+    return "{text}!"
+}

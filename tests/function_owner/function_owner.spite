@@ -1,11 +1,18 @@
 var console = Console()
+var label = "the program"
 
 func FunctionOwner() {
     load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var change = shouted
     var owner = change.owner
-    console.print(owner)
+    var quiet = change("quiet")
+    console.print(owner.label, quiet)
+    var shouter = Shouter("the shouter")
+    var shout = shouter.shout
+    var bound = shout.owner
+    var loud = shout("loud")
+    console.print(bound.label, loud)
 }
 
 func shouted(text: String): String {

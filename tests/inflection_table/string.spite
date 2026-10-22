@@ -1,0 +1,3 @@
+func irregulars(): Dictionary<String, String> {
+    return {"person": "people", "sheaf": "sheaves"}
+}
