@@ -1,0 +1,11 @@
+type Labelled {
+    label(): String
+}
+
+var console = Console()
+
+func GenericConstraintNullable() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var shelf = Shelf<Tag?>()
+    console.print(shelf.count)
+}

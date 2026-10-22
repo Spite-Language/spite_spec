@@ -1,0 +1,7 @@
+var console = Console()
+
+func GenericUndeclaredValue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var game = Game()
+    console.print(game.score)
+}

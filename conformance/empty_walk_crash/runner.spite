@@ -1,0 +1,10 @@
+var steps = 0
+
+func run() {
+    crash Runner.functions.filter_name_ends_with("_each").count() > 0
+    steps = steps + 1
+}
+
+func update() {
+    steps = steps + 2
+}

@@ -1,0 +1,8 @@
+var console = Console()
+
+func FoldedCrashAndSide() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var runner = Runner<Mover>()
+    runner.run(true)
+    console.print("never")
+}

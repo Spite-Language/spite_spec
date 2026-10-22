@@ -1,0 +1,17 @@
+ready
+spite> 'reload' answers in a program built with --hot-reload, which swaps its code while it runs, and this one was not
+spite> the program is not stopped at a breakpoint: 'break hero.spite:12' sets one
+spite> the program is not stopped at a breakpoint: 'break hero.spite:12' sets one
+spite> the program is not stopped at a breakpoint: 'break hero.spite:12' sets one
+spite> scores holds no keys
+spite> ann
+spite> true
+spite> false
+spite> '_swap' is private to values, and the prompt calls what code outside the class may call
+spite> "the {hour} show" has a hole, and the prompt reads a text literal as it is written: \{ writes a brace, and 'eval' makes text from values
+spite> a "quoted" show
+spite> a "quoted" show
+spite> the program declares no enum
+spite> grow() ran, and it answers nothing, so nothing can follow it
+spite> 2
+spite> 

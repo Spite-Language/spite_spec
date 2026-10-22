@@ -1,0 +1,1 @@
+--check --executable-path=.spite/elsewhere_check.exe

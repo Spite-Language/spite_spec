@@ -1,0 +1,7 @@
+var person = ""
+var people = ""
+
+func Crowd(new_person: String, new_people: String) {
+    person = new_person
+    people = new_people
+}

@@ -1,0 +1,4 @@
+func LoadGitWithoutCommit() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "github.com/example/engine"
+}

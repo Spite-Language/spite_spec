@@ -1,0 +1,4 @@
+func LoadGitBranchPin() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "github.com/example/engine@main"
+}

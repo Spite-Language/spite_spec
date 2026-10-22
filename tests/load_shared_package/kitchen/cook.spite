@@ -1,0 +1,8 @@
+func Cook() {
+    load "../spices"
+}
+
+func salted(): Integer {
+    var salt = Salt()
+    return salt.grains
+}

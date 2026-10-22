@@ -1,0 +1,11 @@
+var console = Console()
+
+func LoadInWhile() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var passes = 0
+    while passes < 2 {
+        load "extras"
+        passes = passes + 1
+    }
+    console.print(passes)
+}

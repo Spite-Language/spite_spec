@@ -1,0 +1,8 @@
+var console = Console()
+
+func EmptyWalkCrash() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var runner = Runner()
+    runner.run()
+    console.print("never")
+}

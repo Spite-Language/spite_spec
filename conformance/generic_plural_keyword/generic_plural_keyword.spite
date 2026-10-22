@@ -1,0 +1,7 @@
+var console = Console()
+
+func GenericPluralKeyword() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var box = Box<Integer>(3)
+    console.print(box.held)
+}

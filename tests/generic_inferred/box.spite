@@ -1,0 +1,8 @@
+generic $held_type
+
+var held: $held_type = null
+
+func Box(new_held: $held_type?) {
+    crash new_held
+    held = new_held
+}

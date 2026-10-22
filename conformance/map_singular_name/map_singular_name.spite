@@ -1,0 +1,11 @@
+var console = Console()
+
+func MapSingularName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var monsters = List<Monster>()
+    var rat = Monster("rat")
+    monsters.append(rat)
+    var names = monsters.map_name()
+    var counted = names.count()
+    console.print(counted)
+}

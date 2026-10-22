@@ -1,0 +1,46 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+union Shape {
+    Circle
+    Square
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func CodegenKindTests() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var dictionary_kind = Kind<Dictionary<String, Integer>>()
+    var list_kind = Kind<List<Integer>>()
+    var enum_kind = Kind<Mood>()
+    var symbol_kind = Kind<Symbol>()
+    var shape_kind = Kind<Circle>()
+    var named_kind = Kind<Square>()
+    var number_kind = Kind<Byte>()
+    var nullable_kind = Kind<String?>()
+    var dictionary_text = dictionary_kind.describe()
+    var list_text = list_kind.describe()
+    var enum_text = enum_kind.describe()
+    var symbol_text = symbol_kind.describe()
+    var shape_text = shape_kind.describe()
+    var named_text = named_kind.describe()
+    var number_text = number_kind.describe()
+    var nullable_text = nullable_kind.describe()
+    console.print(dictionary_text)
+    console.print(list_text)
+    console.print(enum_text)
+    console.print(symbol_text)
+    console.print(shape_text)
+    console.print(named_text)
+    console.print(number_text)
+    console.print(nullable_text)
+    var circle = Circle()
+    var square = Square()
+    console.print(circle.radius, square.name)
+}
