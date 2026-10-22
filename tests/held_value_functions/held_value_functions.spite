@@ -2,7 +2,6 @@ var console = Console()
 var kept_check: Spite.Function<String, Boolean>? = null
 
 func HeldValueFunctions() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var greeting = "hello there"
     var check = greeting.contains

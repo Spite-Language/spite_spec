@@ -1,7 +1,6 @@
 var console = Console()
 
 func WiderComparison() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var count = 3
     var total: Long = 4294967296

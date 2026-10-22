@@ -3,7 +3,6 @@ var ledger = Ledger()
 var program = Program()
 
 func LockedWaits() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var counting = Parallel(counted)
     var first = Concurrent(record_first)

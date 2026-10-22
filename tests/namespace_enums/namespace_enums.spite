@@ -5,7 +5,6 @@ enum Mood {
 var console = Console()
 
 func NamespaceEnums() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var count = Shop.enums.count()
     console.print("Shop declares", count, "enums")

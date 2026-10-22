@@ -5,7 +5,6 @@ var columns = Columns()
 var metronome = Metronome()
 
 func SingletonCircle() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var parents = world.parent_count()
     var counted = entities.column_count()

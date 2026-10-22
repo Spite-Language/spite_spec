@@ -6,7 +6,6 @@ type Named {
 var console = Console()
 
 func Shapes() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var planet = Planet("mars", 3389)
     var pet = Pet("rex", 12, "dog")

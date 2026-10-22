@@ -2,7 +2,6 @@ var console = Console()
 var kept = List<Velocity>()
 
 func FoundItemBorrows() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var velocities = Vector<Velocity>()
     var fast = Velocity(3.0, "fast")

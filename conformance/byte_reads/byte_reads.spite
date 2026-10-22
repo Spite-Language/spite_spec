@@ -1,7 +1,6 @@
 var console = Console()
 
 func ByteReads() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var header = Buffer()
     header.append_integer(12)

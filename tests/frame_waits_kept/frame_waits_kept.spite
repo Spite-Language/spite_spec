@@ -6,7 +6,6 @@ var queue = Queue()
 var frames = 0
 
 func FrameWaitsKept() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     while frames < 3 {
         frames = frames + 1

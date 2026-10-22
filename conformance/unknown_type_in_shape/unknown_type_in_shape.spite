@@ -7,7 +7,6 @@ var console = Console()
 var watched = List<Eyed>()
 
 func UnknownTypeInShape() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var eye = Component.Eye()
     var seen = {entity: 1, eye: eye}

@@ -1,7 +1,6 @@
 var console = Console()
 
 func DefaultHandles() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var join_waits = LevelReader.function_waits("join")
     var collect_waits = LevelReader.function_waits("collect")

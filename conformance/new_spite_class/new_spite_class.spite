@@ -1,7 +1,6 @@
 var console = Console()
 
 func NewSpiteClass() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var wrench = Spite.Gadget("wrench")
     console.print(wrench.name)

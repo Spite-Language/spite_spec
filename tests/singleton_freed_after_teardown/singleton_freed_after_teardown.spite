@@ -4,7 +4,6 @@ var second = Store<String>()
 var console = Console()
 
 func SingletonFreedAfterTeardown() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     reuser.touch()
     first.record("first")

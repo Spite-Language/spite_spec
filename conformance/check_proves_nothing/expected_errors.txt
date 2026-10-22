@@ -1,1 +1,1 @@
-conformance/check_proves_nothing/check_proves_nothing.spite:11: error: 'tracker' is already narrowed by 'assert tracker' on line 10: remove this check (in CheckProvesNothing.drop)
+conformance/check_proves_nothing/check_proves_nothing.spite:10: error: 'tracker' is already narrowed by 'assert tracker' on line 9: remove this check (in CheckProvesNothing.drop)

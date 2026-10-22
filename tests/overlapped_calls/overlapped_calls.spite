@@ -6,7 +6,6 @@ var right = Tally()
 var loud = Loud()
 
 func OverlappedCalls() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     physics.step()
     audio.step()

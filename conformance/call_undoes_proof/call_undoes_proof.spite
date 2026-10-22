@@ -4,7 +4,6 @@ var names = List<String>()
 var greetings = 0
 
 func CallUndoesProof() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     target = Monster()
     names.append("ada")

@@ -3,7 +3,6 @@ var plain = DynamicLibrary("tests/foreign_callback_dropped/fixture.dll", 'identi
 var clicks = Clicks()
 
 func ForeignCallbackDropped() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     keep_and_click()
     console.print("the callback is dropped")

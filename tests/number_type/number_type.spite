@@ -6,7 +6,6 @@ enum Shade {
 var console = Console()
 
 func NumberType() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var counts = Tally<Integer>()
     var whole: List<Integer> = [3, 9, 4]

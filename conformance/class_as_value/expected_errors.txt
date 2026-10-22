@@ -1,1 +1,1 @@
-conformance/class_as_value/class_as_value.spite:6: error: 'Health' is a class, not a value: write 'Health()' to make one, and give it a name with 'var ... = '; for the class itself, pass it where a 'Spite.Class' is wanted (in ClassAsValue.ClassAsValue)
+conformance/class_as_value/class_as_value.spite:5: error: 'Health' is a class, not a value: write 'Health()' to make one, and give it a name with 'var ... = '; for the class itself, pass it where a 'Spite.Class' is wanted (in ClassAsValue.ClassAsValue)

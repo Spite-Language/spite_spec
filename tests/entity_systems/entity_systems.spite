@@ -1,0 +1,78 @@
+union Combatant {
+    Player
+    Monster
+}
+
+var console = Console()
+var fighters = List<Combatant>()
+var monsters = List<Monster>()
+
+func EntitySystems() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var index = 0
+    while index < 200000 {
+        var monster = Monster(index)
+        monsters.append(monster)
+        fighters.append(monster)
+        if index % 100 == 0 {
+            var player = Player(index)
+            fighters.append(player)
+        }
+        index = index + 1
+    }
+    var round = 0
+    while round < 40 {
+        fight()
+        move()
+        round = round + 1
+    }
+    var standing = 0
+    var fighter_index = 0
+    while fighter_index < fighters.count() {
+        var counted = fighters[fighter_index]
+        crash counted
+        if counted.health > 0 {
+            standing = standing + 1
+        }
+        fighter_index = fighter_index + 1
+    }
+    var first = monsters[0]
+    crash first
+    var player_seen = Player(7)
+    console.print(standing, first.x, first.y)
+    var monster_text = first.describe()
+    var player_text = player_seen.describe()
+    console.print(monster_text)
+    console.print(player_text)
+}
+
+func fight() {
+    var index = 0
+    while index < fighters.count() {
+        var fighter = fighters[index]
+        crash fighter
+        var hits = fighter.attack - fighter.defense
+        if hits > 0 and fighter.health > 0 {
+            wound(fighter)
+        }
+        index = index + 1
+    }
+}
+
+func wound(fighter: Combatant) {
+    switch fighter {
+        Player: fighter.health = fighter.health - 2
+        Monster: fighter.health = fighter.health - 1
+    }
+}
+
+func move() {
+    var index = 0
+    while index < monsters.count() {
+        var monster = monsters[index]
+        crash monster
+        monster.x = monster.x + monster.speed
+        monster.y = monster.y + monster.speed
+        index = index + 1
+    }
+}

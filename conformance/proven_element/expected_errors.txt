@@ -1,1 +1,1 @@
-conformance/proven_element/proven_element.spite:9: error: 'codes[index]' is already proven by the loop condition 'index < codes.count()', so this 'crash' proves nothing: remove it (in ProvenElement.ProvenElement)
+conformance/proven_element/proven_element.spite:8: error: 'codes[index]' is already proven by the loop condition 'index < codes.count()', so this 'crash' proves nothing: remove it (in ProvenElement.ProvenElement)

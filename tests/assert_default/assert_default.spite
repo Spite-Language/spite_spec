@@ -1,7 +1,6 @@
 var console = Console()
 
 func AssertDefault() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var ten_by_two = safe_divide(10, 2)
     report(ten_by_two)

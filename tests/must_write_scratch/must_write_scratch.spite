@@ -1,7 +1,6 @@
 var console = Console()
 
 func MustWriteScratch() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     load "scratch"
     var scratch = Scratch()

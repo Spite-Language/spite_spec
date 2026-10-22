@@ -3,7 +3,6 @@ var orders = List<Order>()
 var tags = List<Tag>()
 
 func SharedCopies() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var index = 0
     while index < 3 {

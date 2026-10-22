@@ -1,1 +1,1 @@
-conformance/inline_singleton/inline_singleton.spite:6: error: 'Build' is a singleton: bind it once beside the attributes, 'var build = Build()', and use 'build.target_operating_system' (in InlineSingleton.InlineSingleton)
+conformance/inline_singleton/inline_singleton.spite:5: error: 'Build' is a singleton: bind it once beside the attributes, 'var build = Build()', and use 'build.target_operating_system' (in InlineSingleton.InlineSingleton)

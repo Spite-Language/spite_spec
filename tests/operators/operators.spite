@@ -1,7 +1,6 @@
 var console = Console()
 
 func Operators() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first = Displacement(1, 2)
     var second = Displacement(3, 4)

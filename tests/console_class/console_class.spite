@@ -3,7 +3,6 @@ var another = Console()
 var local_console = Console()
 
 func ConsoleClass() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var namespace_text = ""
     if console.class.namespace {

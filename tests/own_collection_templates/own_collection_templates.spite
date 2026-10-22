@@ -1,7 +1,6 @@
 var console = Console()
 
 func OwnCollectionTemplates() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var velocities = Vector<Velocity>()
     var fast = Velocity(3.0, "fast")

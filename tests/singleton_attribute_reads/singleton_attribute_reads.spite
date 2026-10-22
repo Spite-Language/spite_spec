@@ -3,7 +3,6 @@ var registry = Registry()
 var kept = List<String>()
 
 func SingletonAttributeReads() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     registry.add("alpha")
     registry.add("beta")

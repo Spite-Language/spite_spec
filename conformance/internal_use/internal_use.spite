@@ -1,7 +1,6 @@
 var console = Console()
 
 func InternalUse() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var floor = Spite.Internal.Memory()
     console.print("{Spite.Internal.Lock()}")

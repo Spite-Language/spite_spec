@@ -6,7 +6,6 @@ union Pet {
 var console = Console()
 
 func JsonUnwritable() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var owner = Owner()
     var owner_json = JsonWriter<Owner>()

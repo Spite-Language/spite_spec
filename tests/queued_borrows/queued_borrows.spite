@@ -3,7 +3,6 @@ var world = World()
 var positions = Column<Position>()
 
 func QueuedBorrows() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first = Position()
     first.left = 3

@@ -5,7 +5,6 @@ var sha256 = Sha256()
 var digits = "0123456789abcdef"
 
 func Hashes() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var samples = ["", "abc", "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"]
     var index = 0

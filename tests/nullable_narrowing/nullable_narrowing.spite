@@ -2,7 +2,6 @@ var console = Console()
 var held: Box? = null
 
 func NullableNarrowing() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     print_box(held)
     held = Box(42)

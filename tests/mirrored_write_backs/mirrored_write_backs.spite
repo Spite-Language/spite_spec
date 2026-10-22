@@ -2,7 +2,6 @@ var console = Console()
 var shelf = Shelf()
 
 func MirroredWriteBacks() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     kept()
     replaced()

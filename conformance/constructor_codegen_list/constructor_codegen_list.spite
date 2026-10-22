@@ -1,7 +1,6 @@
 var console = Console()
 
 func ConstructorCodegenList() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var sword = Weapon<Integer, true>(10)
     console.print(sword.damage)

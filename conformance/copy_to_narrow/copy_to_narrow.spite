@@ -1,7 +1,6 @@
 var tracker: Tracker? = null
 
 func CopyToNarrow() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     drop()
 }

@@ -1,1 +1,1 @@
-conformance/member_template_mistakes/member_template_mistakes.spite:9: error: 'sum_name': the member 'name' of 'Repository' is a String, but 'sum_' needs it to return a numeric type (in MemberTemplateMistakes.MemberTemplateMistakes)
+conformance/member_template_mistakes/member_template_mistakes.spite:8: error: 'sum_name': the member 'name' of 'Repository' is a String, but 'sum_' needs it to return a numeric type (in MemberTemplateMistakes.MemberTemplateMistakes)

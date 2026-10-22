@@ -1,7 +1,6 @@
 var console = Console()
 
 func GroupedOperandText() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first: Double = 1.5
     var second: Double = 2.5

@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassAndNamespace() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var shader = Engine.Renderer.Shader()
     console.print(shader.name)

@@ -4,7 +4,6 @@ var velocities = Vector<Velocity>()
 var mover = Mover()
 
 func VectorRows() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var entity = 0
     while entity < 6 {

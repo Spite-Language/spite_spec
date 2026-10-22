@@ -4,7 +4,6 @@ var log = List<String>()
 var ticks = 0
 
 func StateMachines() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var counting = Concurrent(count_down)
     var tagging = Concurrent(tag_in_expression)

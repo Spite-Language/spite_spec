@@ -1,5 +1,4 @@
 func LentArguments() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var keeping = Runner<System.Keep>()
     keeping.run(1)

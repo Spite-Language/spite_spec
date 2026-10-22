@@ -1,1 +1,1 @@
-conformance/enum_value_templates/enum_value_templates.spite:7: error: 'filter_draft' could read 'stage' or 'review', whose enums both list 'draft': write the comparison as a Boolean member of Post, or pass a function (in EnumValueTemplates.EnumValueTemplates)
+conformance/enum_value_templates/enum_value_templates.spite:6: error: 'filter_draft' could read 'stage' or 'review', whose enums both list 'draft': write the comparison as a Boolean member of Post, or pass a function (in EnumValueTemplates.EnumValueTemplates)

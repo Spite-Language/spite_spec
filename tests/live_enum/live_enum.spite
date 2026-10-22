@@ -8,7 +8,6 @@ var mood: Mood = 'angry'
 var other: Mood = 'calm'
 
 func LiveEnum() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var described = describe()
     console.print(described)

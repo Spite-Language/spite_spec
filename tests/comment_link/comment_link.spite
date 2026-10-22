@@ -3,7 +3,6 @@ var console = Console()
 
 # notes.md#why-this-program-exists
 func CommentLink() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     console.print("a comment that links to a section is fine")
 }

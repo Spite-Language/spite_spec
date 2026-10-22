@@ -6,7 +6,6 @@ type Pair {
 var store = Store<Point>()
 
 func WalkedRowLocals() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var index = 0
     while index < 3 {

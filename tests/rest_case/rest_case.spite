@@ -7,7 +7,6 @@ union Creature {
 var console = Console()
 
 func RestCase() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var cat = Cat()
     describe(cat)

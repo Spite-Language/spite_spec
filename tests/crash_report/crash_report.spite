@@ -1,7 +1,6 @@
 var console = Console()
 
 func CrashReport() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     console.print("before the crash")
     announce(0 - 1)

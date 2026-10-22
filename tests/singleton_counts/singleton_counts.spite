@@ -2,7 +2,6 @@ var console = Console()
 var tally = Tally<Integer>()
 
 func SingletonCounts() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     tally.counted.append(1)
     var first_fetcher = Fetcher()

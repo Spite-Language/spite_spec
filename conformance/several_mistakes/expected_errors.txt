@@ -1,1 +1,1 @@
-conformance/several_mistakes/several_mistakes.spite:8: error: this class has no function 'missing_function' (in SeveralMistakes.SeveralMistakes)
+conformance/several_mistakes/several_mistakes.spite:7: error: this class has no function 'missing_function' (in SeveralMistakes.SeveralMistakes)

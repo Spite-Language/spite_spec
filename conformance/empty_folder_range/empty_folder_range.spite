@@ -1,5 +1,4 @@
 func EmptyFolderRange() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var schedule = Schedule()
     schedule.add_system_greet()

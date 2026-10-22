@@ -1,7 +1,6 @@
 var names = ["ada", "bo"]
 
 func AssertRuns() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var index = 0
     while index < 1000 {

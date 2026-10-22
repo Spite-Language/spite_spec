@@ -1,7 +1,6 @@
 var console = Console()
 
 func WrappingFunctions() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var hash: UnsignedInteger = 4000000000
     var tripled = hash.wrapping_multiply(3)

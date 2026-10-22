@@ -18,7 +18,6 @@ type Sample {
 var console = Console()
 
 func TypeSize() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var pair_size = PointPair.size
     var padded_size = Padded.size

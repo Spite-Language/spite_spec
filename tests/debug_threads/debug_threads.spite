@@ -1,7 +1,6 @@
 var console = Console()
 
 func DebugThreads() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first = Parallel(describe)
     var second = Parallel(describe)

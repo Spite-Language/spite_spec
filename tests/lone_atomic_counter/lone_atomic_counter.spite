@@ -2,7 +2,6 @@ var console = Console()
 var ledger = Ledger()
 
 func LoneAtomicCounter() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var round = 0
     while round < 3 {

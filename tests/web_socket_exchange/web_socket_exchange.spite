@@ -3,7 +3,6 @@ var server = HttpServer()
 var log = List<String>()
 
 func WebSocketExchange() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     crash server.listen_locally(47913)
     var serving = Concurrent(serve_three)

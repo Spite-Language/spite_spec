@@ -1,7 +1,6 @@
 var console = Console()
 
 func PlainCounts() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var summer = Summer(1000000)
     var sum = Parallel(summer.total)

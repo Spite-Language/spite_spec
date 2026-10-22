@@ -3,7 +3,6 @@ var crates = Vector<Crate>()
 var trails = Items<Trail>()
 
 func VectorTemplateWalk() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var apples = Crate("apples", 3)
     crates.append(apples)

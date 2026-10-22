@@ -1,7 +1,6 @@
 var console = Console()
 
 func WrittenCodegenInFrame() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var velocity = Vector3(1.0, 0.5, 0.25)
     var axis = Vector3(0.0, 1.0, 0.0)

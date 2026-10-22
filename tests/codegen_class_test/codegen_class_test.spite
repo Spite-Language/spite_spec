@@ -6,7 +6,6 @@ union Part {
 var console = Console()
 
 func CodegenClassTest() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var store = Store()
     var stored_health = Health()

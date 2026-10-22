@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReopenLibrary() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var monster = Monster()
     var rat = Creatures.Rat()

@@ -3,7 +3,6 @@ var tally = Tally()
 var mailbox = Mailbox()
 
 func CoarseLocks() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first = Counter(20000)
     var first_run = Parallel(first.count_up)

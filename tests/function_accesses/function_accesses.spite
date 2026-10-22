@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionAccesses() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var update = Movement.functions['update_each']
     crash update

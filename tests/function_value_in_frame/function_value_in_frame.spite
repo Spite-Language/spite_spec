@@ -2,7 +2,6 @@ var console = Console()
 var step = 1
 
 func FunctionValueInFrame() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var scorer = Scorer()
     var total = 0

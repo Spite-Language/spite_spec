@@ -1,1 +1,1 @@
-conformance/bulk_removal/bulk_removal.spite:7: error: 'remove_where' removes from the collection it is called on, and 'names.filter(is_short)' makes a new one that nothing keeps: call it on the collection itself, with one test that says everything to remove (in BulkRemoval.BulkRemoval)
+conformance/bulk_removal/bulk_removal.spite:6: error: 'remove_where' removes from the collection it is called on, and 'names.filter(is_short)' makes a new one that nothing keeps: call it on the collection itself, with one test that says everything to remove (in BulkRemoval.BulkRemoval)

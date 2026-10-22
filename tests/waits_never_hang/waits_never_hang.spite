@@ -13,7 +13,6 @@ var board = Board()
 var log = List<String>()
 
 func WaitsNeverHang() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var through_and = Concurrent(right_of_and)
     started("the right side of 'and'", through_and.finished)

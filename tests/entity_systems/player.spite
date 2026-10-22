@@ -1,0 +1,30 @@
+var name = "hero"
+var title = "the brave"
+var health = 120
+var maximum_health = 120
+var mana = 50
+var attack = 12
+var defense = 4
+var speed = 3
+var x = 0
+var y = 0
+var level = 1
+var experience = 0
+var gold = 0
+var is_alive = true
+var inventory = List<String>()
+var quests = List<String>()
+var guild = "none yet"
+var stamina = 100
+var luck = 5
+var serial = 0
+
+func Player(starting_serial: Integer) {
+    serial = starting_serial
+}
+
+func describe(): String {
+    var carried = inventory.count()
+    var questing = quests.count()
+    return "{name} {title} {health}/{maximum_health} mana {mana} level {level} xp {experience} gold {gold} alive {is_alive} items {carried} quests {questing} guild {guild} stamina {stamina} luck {luck} serial {serial} at {x},{y} speed {speed}"
+}

@@ -1,7 +1,6 @@
 var console = Console()
 
 func FailedConstructor() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var textures = Asset.Pak<Asset.Texture>()
     var grass = Asset.Texture()

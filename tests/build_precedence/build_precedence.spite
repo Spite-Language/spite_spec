@@ -2,7 +2,6 @@ var build = Build()
 var console = Console()
 
 func BuildPrecedence() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     load "engine"
     console.print("plugins from", build.plugins_folder)

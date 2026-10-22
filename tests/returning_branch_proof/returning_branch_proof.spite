@@ -3,7 +3,6 @@ var document: Document? = null
 var kind = 3
 
 func ReturningBranchProof() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     document = Document()
     var plain = describe()

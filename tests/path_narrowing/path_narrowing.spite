@@ -1,7 +1,6 @@
 var console = Console()
 
 func PathNarrowing() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     run()
 }

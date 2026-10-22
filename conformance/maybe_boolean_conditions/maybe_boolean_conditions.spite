@@ -1,7 +1,6 @@
 var console = Console()
 
 func MaybeBooleanConditions() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     halted(true)
     tested(true)

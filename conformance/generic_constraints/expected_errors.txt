@@ -1,1 +1,1 @@
-conformance/generic_constraints/generic_constraints.spite:6: error: 'Pet' does not fit type 'Printable', which 'Shelf' requires of $item_type: it has no function 'to_string' (in GenericConstraints.GenericConstraints)
+conformance/generic_constraints/generic_constraints.spite:5: error: 'Pet' does not fit type 'Printable', which 'Shelf' requires of $item_type: it has no function 'to_string' (in GenericConstraints.GenericConstraints)

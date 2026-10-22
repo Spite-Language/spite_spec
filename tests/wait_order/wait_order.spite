@@ -6,7 +6,6 @@ var current = List<String>()
 var earlier = List<String>()
 
 func WaitOrder() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var summing = Concurrent(sum_in_order)
     var naming = Concurrent(text_in_order)

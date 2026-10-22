@@ -12,7 +12,6 @@ var shelf_work = ShelfWork()
 var rack_work = RackWork()
 
 func OwnedObjects() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     echo.listen(drum.meter)
     var apart = List<Task>()

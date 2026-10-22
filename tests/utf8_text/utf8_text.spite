@@ -1,7 +1,6 @@
 var console = Console()
 
 func Utf8Text() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var greeting = "olá, 世界 😀"
     var bytes = greeting.to_bytes()

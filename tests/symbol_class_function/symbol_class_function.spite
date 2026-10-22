@@ -1,7 +1,6 @@
 var console = Console()
 
 func SymbolClassFunction() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var replication = Replication()
     var encoded = replication.encode()

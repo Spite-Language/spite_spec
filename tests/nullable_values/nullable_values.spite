@@ -3,7 +3,6 @@ var target: Monster? = null
 var bonus: Integer? = null
 
 func NullableValues() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     report()
     target = Monster("rat")

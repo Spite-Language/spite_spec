@@ -3,7 +3,6 @@ var glyphs = ["space", "bang", "quote", "hash"]
 var cursor = 1
 
 func StructuralIndex() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var code = 33
     crash glyphs[code - 32]

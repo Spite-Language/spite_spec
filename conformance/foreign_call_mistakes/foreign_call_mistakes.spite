@@ -2,7 +2,6 @@ var console = Console()
 var library = DynamicLibrary("fixture.dll", 'identity', "")
 
 func ForeignCallMistakes() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     call_through(library)
     var stored = library.store(console)

@@ -1,1 +1,1 @@
-conformance/namespace_nullable/namespace_nullable.spite:10: error: 'ns' only copies 'NamespaceNullable.namespace' so it can be narrowed: narrow 'NamespaceNullable.namespace' itself ('assert NamespaceNullable.namespace') and use it directly (in NamespaceNullable.probe)
+conformance/namespace_nullable/namespace_nullable.spite:9: error: 'ns' only copies 'NamespaceNullable.namespace' so it can be narrowed: narrow 'NamespaceNullable.namespace' itself ('assert NamespaceNullable.namespace') and use it directly (in NamespaceNullable.probe)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func DeepCopies() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var team = Team("red")
     var ada = Member("ada", 3)

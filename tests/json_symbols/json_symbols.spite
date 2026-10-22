@@ -6,7 +6,6 @@ enum Color {
 var console = Console()
 
 func JsonSymbols() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var marker = Marker()
     var found = Symbol("blue")

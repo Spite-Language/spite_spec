@@ -2,7 +2,6 @@ var world = World()
 var runner = Runner<Moving>()
 
 func WalkedRows() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     world.spawn()
     runner.run()

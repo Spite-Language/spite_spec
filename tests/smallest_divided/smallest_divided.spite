@@ -1,7 +1,6 @@
 var console = Console()
 
 func SmallestDivided() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var lowest = Integer.smallest
     var divisor = -1

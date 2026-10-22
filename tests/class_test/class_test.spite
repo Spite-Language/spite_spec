@@ -7,7 +7,6 @@ var console = Console()
 var favorite: Shape? = null
 
 func ClassTest() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var shape: Shape = Circle()
     console.print(shape == Circle)

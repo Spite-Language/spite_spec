@@ -1,7 +1,6 @@
 var console = Console()
 
 func OverlappedReads() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first_file = File(".spite/overlapped_first.txt")
     var second_file = File(".spite/overlapped_second.txt")

@@ -14,7 +14,6 @@ var frames = 0
 var most_in_flight = 0
 
 func FrameWaits() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var file = File(".spite/frame_waits_report.txt")
     file.write("sales are up")

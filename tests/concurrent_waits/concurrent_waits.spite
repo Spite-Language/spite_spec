@@ -3,7 +3,6 @@ var program = Program()
 var log = List<String>()
 
 func ConcurrentWaits() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var slow_sleeper = Sleeper("slow", 150, log)
     var fast_sleeper = Sleeper("fast", 10, log)

@@ -4,7 +4,6 @@ var prices = Dictionary<String, Integer>()
 var handle = -1
 
 func LeavingIf() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     prices["apple"] = 3
     var found = length_of("abc")

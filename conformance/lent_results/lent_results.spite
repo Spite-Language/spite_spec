@@ -6,7 +6,6 @@ var listed = List<Layout>()
 var scores = Scores()
 
 func LentResults() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first = Layout()
     layouts.insert(first)

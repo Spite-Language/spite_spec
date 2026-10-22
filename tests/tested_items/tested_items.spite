@@ -4,7 +4,6 @@ var maybe_points = List<Point?>()
 var names = List<String>()
 
 func TestedItems() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var index = 0
     while index < 3 {

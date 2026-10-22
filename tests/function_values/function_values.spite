@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionValues() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var robot = Robot("unit")
     var functions = robot.functions

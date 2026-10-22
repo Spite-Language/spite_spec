@@ -2,7 +2,6 @@ var console = Console()
 var window = Window()
 
 func EndlessLockedLoop() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var counting = Parallel(window.frames)
     window.run()

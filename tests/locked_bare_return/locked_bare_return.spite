@@ -2,7 +2,6 @@ var console = Console()
 var tally = Tally()
 
 func LockedBareReturn() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var runs = List<Parallel<Integer>>()
     var index = 0

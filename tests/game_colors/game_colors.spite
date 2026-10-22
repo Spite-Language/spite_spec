@@ -2,7 +2,6 @@ var console = Console()
 var color_text = ColorText()
 
 func GameColors() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var texts = [
         "#ff8000"

@@ -1,1 +1,1 @@
-conformance/function_value_mistakes/function_value_mistakes.spite:6: error: a Spite.Function<Nothing> cannot be used where a Spite.Function<String, String> is needed (in FunctionValueMistakes.FunctionValueMistakes)
+conformance/function_value_mistakes/function_value_mistakes.spite:5: error: a Spite.Function<Nothing> cannot be used where a Spite.Function<String, String> is needed (in FunctionValueMistakes.FunctionValueMistakes)

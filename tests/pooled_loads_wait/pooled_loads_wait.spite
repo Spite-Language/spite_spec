@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func PooledLoadsWait() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var level = File(".spite/pooled_loads_wait.txt")
     level.write("forest")

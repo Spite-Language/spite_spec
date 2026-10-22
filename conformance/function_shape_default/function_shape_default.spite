@@ -5,7 +5,6 @@ type Weapon {
 var console = Console()
 
 func FunctionShapeDefault() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var holder = Holder<Weapon>()
     console.print(holder.count)

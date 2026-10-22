@@ -1,7 +1,6 @@
 var console = Console()
 
 func EmptyPlural() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var lines = List<String>()
     var count = Count()

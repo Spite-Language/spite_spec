@@ -1,2 +1,2 @@
 adding the sizes
-spite: 'sizes[index]' is outside its list: a bound proves only the top of an index, and this one is below 0 or the list changed, at tests/proven_read_outside/proven_read_outside.spite:11 in ProvenReadOutside.ProvenReadOutside
+spite: 'sizes[index]' is outside its list: a bound proves only the top of an index, and this one is below 0 or the list changed, at tests/proven_read_outside/proven_read_outside.spite:10 in ProvenReadOutside.ProvenReadOutside

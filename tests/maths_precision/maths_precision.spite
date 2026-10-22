@@ -1,7 +1,6 @@
 var console = Console()
 
 func MathsPrecision() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var narrow: Float = 2.0
     var wide: Double = 2.0

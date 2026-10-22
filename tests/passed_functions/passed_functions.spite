@@ -2,7 +2,6 @@ var console = Console()
 var greeted = 0
 
 func PassedFunctions() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var names = ["Ada", "Grace", "Barbara", "Edsger"]
     names.each(say_hello)

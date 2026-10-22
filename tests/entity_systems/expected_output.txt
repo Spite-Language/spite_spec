@@ -1,0 +1,3 @@
+202000 80 80
+slime ooze 60/100 mana 10 level 1 xp 25 gold 3 boss false flying false hidden false aggression 4 sight 12 loot 0 zone meadow fire 0 ice 0 serial 0
+hero the brave 120/120 mana 50 level 1 xp 0 gold 0 alive true items 0 quests 0 guild none yet stamina 100 luck 5 serial 7 at 0,0 speed 3

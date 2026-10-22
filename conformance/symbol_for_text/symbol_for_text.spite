@@ -6,7 +6,6 @@ enum Mood {
 var console = Console()
 
 func SymbolForText() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var greeting = greet('world')
     var answers = SymbolForText.has_function('greet')

@@ -1,1 +1,1 @@
-conformance/reflection_read_only/reflection_read_only.spite:7: error: 'name' is read-only: 'Class' answers it through get_name() and has no set_name(value) (in ReflectionReadOnly.ReflectionReadOnly)
+conformance/reflection_read_only/reflection_read_only.spite:6: error: 'name' is read-only: 'Class' answers it through get_name() and has no set_name(value) (in ReflectionReadOnly.ReflectionReadOnly)

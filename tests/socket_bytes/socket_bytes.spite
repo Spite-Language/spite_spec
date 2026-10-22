@@ -3,7 +3,6 @@ var program = Program()
 var server = Socket()
 
 func SocketBytes() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     crash server.listen_at("127.0.0.1", 47313)
     var nobody = server.accept_client_now()

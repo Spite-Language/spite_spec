@@ -1,7 +1,6 @@
 var console = Console()
 
 func SymbolCodegen() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var person = Person("Ada", 36)
     person.age = 37

@@ -1,7 +1,6 @@
 var console = Console()
 
 func Functions() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var fibonacci_value = fibonacci(10)
     console.print(fibonacci_value)

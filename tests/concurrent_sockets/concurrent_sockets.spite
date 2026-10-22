@@ -2,7 +2,6 @@ var console = Console()
 var server = Socket()
 
 func ConcurrentSockets() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     crash server.listen_locally(47311)
     var serving = Concurrent(serve_two)

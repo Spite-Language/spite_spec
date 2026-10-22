@@ -2,7 +2,6 @@ var console = Console()
 var plain = DynamicLibrary("tests/foreign_callback_context_dropped/fixture.dll", 'identity', "")
 
 func ForeignCallbackContextDropped() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     keep_and_tick()
     var second = Ticker("second")

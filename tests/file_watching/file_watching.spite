@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func FileWatching() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var folder = Directory(".spite/file_watching")
     var inner = Directory("{folder.path}/inner")

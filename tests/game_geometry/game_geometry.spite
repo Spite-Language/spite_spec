@@ -1,7 +1,6 @@
 var console = Console()
 
 func GameGeometry() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     boxes()
     culling()

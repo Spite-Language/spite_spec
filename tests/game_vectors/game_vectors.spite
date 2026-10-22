@@ -1,7 +1,6 @@
 var console = Console()
 
 func GameVectors() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     three()
     two_and_four()

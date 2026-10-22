@@ -4,7 +4,6 @@ var counts = Holder<Integer>()
 var words = Holder<List<String>>()
 
 func CodegenDefaults() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var gauge = gauges.value()
     var count = counts.value()

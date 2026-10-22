@@ -4,7 +4,6 @@ var zlib = Zlib()
 var gzip = Gzip()
 
 func Encodings() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var samples = ["", "f", "fo", "foo", "foob", "fooba", "foobar"]
     samples.each(show_base64)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReflectionSources() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     load "package"
     load "mod"

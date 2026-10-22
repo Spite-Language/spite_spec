@@ -3,7 +3,6 @@ var count = 1
 var label = "counter"
 
 func InteractiveLoop() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     console.print("started")
 }

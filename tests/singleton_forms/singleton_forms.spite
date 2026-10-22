@@ -4,7 +4,6 @@ var journal = Journal()
 var settings = Settings()
 
 func SingletonForms() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     journal.note("starting")
     var working = List<Parallel<Integer>>()

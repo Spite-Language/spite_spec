@@ -2,7 +2,6 @@ var console = Console()
 var teams = List<Team>()
 
 func FusedChains() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var ann = Person("ann", 34, false)
     var red = Team("red", 4, true, ann)

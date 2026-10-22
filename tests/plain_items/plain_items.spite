@@ -15,7 +15,6 @@ var positions = Column<Position>()
 var velocities = Column<Velocity>()
 
 func PlainItems() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     numbers.append(3)
     numbers.append(5)

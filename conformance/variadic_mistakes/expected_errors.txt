@@ -1,1 +1,1 @@
-conformance/variadic_mistakes/variadic_mistakes.spite:7: error: this call passes a whole List<String>, but the last parameter is written with '...', so it takes the values one by one: pass the elements themselves, separated by commas (in VariadicMistakes.VariadicMistakes)
+conformance/variadic_mistakes/variadic_mistakes.spite:6: error: this call passes a whole List<String>, but the last parameter is written with '...', so it takes the values one by one: pass the elements themselves, separated by commas (in VariadicMistakes.VariadicMistakes)

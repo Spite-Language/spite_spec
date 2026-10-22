@@ -2,7 +2,6 @@ var console = Console()
 var kept = List<Crafter>()
 
 func ParallelHandover() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var crafter = Crafter()
     crafter.want(1)

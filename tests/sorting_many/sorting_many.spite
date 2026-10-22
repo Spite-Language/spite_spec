@@ -1,7 +1,6 @@
 var console = Console()
 
 func SortingMany() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var numbers = List<Integer>()
     var index = 0

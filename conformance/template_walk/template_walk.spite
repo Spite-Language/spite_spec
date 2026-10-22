@@ -2,7 +2,6 @@ var console = Console()
 var items = List<Item>()
 
 func TemplateWalk() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var apple = Item("apple", 3, true)
     items.append(apple)

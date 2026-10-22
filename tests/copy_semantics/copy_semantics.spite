@@ -1,7 +1,6 @@
 var console = Console()
 
 func CopySemantics() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var original = Counter(5)
     var alias = original

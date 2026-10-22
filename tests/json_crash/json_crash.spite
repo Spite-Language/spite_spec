@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonCrash() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var reader = JsonReader<Tally>()
     var tally = reader.read_or_crash("\{\"count\": 3}")

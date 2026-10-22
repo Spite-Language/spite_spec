@@ -2,7 +2,6 @@ var console = Console()
 var pet: Pet? = null
 
 func TypeMistakes() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     console.print(pet.name)
     var other = Pet()

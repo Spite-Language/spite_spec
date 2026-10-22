@@ -7,7 +7,6 @@ union Message {
 var console = Console()
 
 func UnionValueMembers() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     console.print("never compiled")
 }

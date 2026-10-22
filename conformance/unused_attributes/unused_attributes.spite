@@ -6,7 +6,6 @@ var _kept_for_later = 0
 var mover = Mover()
 
 func UnusedAttributes() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     visits = visits + 1
     written = "assigned, and never read"

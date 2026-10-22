@@ -4,7 +4,6 @@ var labels = Column<Label>()
 var scores = Scores()
 
 func LentResults() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first = Layout(1)
     layouts.insert(4, first)

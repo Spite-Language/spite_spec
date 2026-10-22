@@ -4,7 +4,6 @@ var velocities = Column<Velocity>()
 var runner = Runner<Mover>()
 
 func IgnoredLentArgument() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var position = Position()
     positions.values.append(position)

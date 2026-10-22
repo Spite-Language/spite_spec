@@ -7,7 +7,6 @@ var watcher = WalkWatcher()
 var scribbler = WalkScribbler()
 
 func ClassWalk() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     counter.count_up()
     holder.note()

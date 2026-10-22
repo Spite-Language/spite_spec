@@ -1,7 +1,6 @@
 var console = Console()
 
 func GameMatrices() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     basics()
     transforms()

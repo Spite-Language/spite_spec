@@ -1,1 +1,1 @@
-conformance/vector_template_walk/vector_template_walk.spite:28: error: this 'while' walks every element of 'crates' only to call 'seal' on each: write 'crates.each_seal()' (in VectorTemplateWalk.seal_all)
+conformance/vector_template_walk/vector_template_walk.spite:27: error: this 'while' walks every element of 'crates' only to call 'seal' on each: write 'crates.each_seal()' (in VectorTemplateWalk.seal_all)

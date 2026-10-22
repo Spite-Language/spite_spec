@@ -3,7 +3,6 @@ var names = List<String>()
 var scores = [3, 1, 2]
 
 func Lists() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     names.append("ada")
     names.append("grace")

@@ -1,0 +1,33 @@
+var name = "slime"
+var kind = "ooze"
+var health = 100
+var maximum_health = 100
+var mana = 10
+var attack = 9
+var defense = 3
+var speed = 2
+var x = 0
+var y = 0
+var level = 1
+var experience_given = 25
+var gold_carried = 3
+var is_boss = false
+var is_flying = false
+var is_hidden = false
+var aggression = 4
+var sight_range = 12
+var loot = List<String>()
+var spawn_zone = "meadow"
+var resist_fire = 0
+var resist_ice = 0
+var serial = 0
+
+func Monster(starting_serial: Integer) {
+    serial = starting_serial
+    x = starting_serial % 97
+}
+
+func describe(): String {
+    var looted = loot.count()
+    return "{name} {kind} {health}/{maximum_health} mana {mana} level {level} xp {experience_given} gold {gold_carried} boss {is_boss} flying {is_flying} hidden {is_hidden} aggression {aggression} sight {sight_range} loot {looted} zone {spawn_zone} fire {resist_fire} ice {resist_ice} serial {serial}"
+}

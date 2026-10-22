@@ -1,1 +1,1 @@
-conformance/old_list_names/old_list_names.spite:7: error: List has no method 'add', which does not say where: write 'append' to add at the end, or 'prepend' at the start (in OldListNames.OldListNames)
+conformance/old_list_names/old_list_names.spite:6: error: List has no method 'add', which does not say where: write 'append' to add at the end, or 'prepend' at the start (in OldListNames.OldListNames)

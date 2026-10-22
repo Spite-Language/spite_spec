@@ -3,7 +3,6 @@ var names = Vector<String>()
 var labels = Items<String>()
 
 func TextItemsPassed() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     names.append("Ada")
     names.each(greet)

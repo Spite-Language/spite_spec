@@ -1,7 +1,6 @@
 var console = Console()
 
 func WiderRightOperand() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var count = 3
     var total: Long = 5000000000

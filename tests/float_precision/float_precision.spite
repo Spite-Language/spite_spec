@@ -1,7 +1,6 @@
 var console = Console()
 
 func FloatPrecision() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var tenth: Float = 0.1
     var same = tenth == 0.1

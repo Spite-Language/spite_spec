@@ -1,2 +1,2 @@
 looking for the settings
-spite: the program stopped at tests/crash_receiver/crash_receiver.spite:8 in CrashReceiver.CrashReceiver
+spite: the program stopped at tests/crash_receiver/crash_receiver.spite:7 in CrashReceiver.CrashReceiver

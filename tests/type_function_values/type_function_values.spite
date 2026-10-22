@@ -5,7 +5,6 @@ type Sleepy {
 var console = Console()
 
 func TypeFunctionValues() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var quick = QuickNapper()
     var plain = nap_through(quick)

@@ -3,7 +3,6 @@ var answers = List<Boolean?>()
 var seen = List<String>()
 
 func AssertMaybeBoolean() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     answers.append(true)
     answers.append(false)

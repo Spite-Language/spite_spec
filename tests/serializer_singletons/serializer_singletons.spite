@@ -1,7 +1,6 @@
 var console = Console()
 
 func SerializerSingletons() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var player = Player()
     player.score = 9

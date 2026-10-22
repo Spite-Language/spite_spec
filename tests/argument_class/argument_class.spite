@@ -3,7 +3,6 @@ var healths = Column<Health>()
 var runner = Runner<HealSystem>()
 
 func ArgumentClass() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var first = Health()
     healths.values.append(first)

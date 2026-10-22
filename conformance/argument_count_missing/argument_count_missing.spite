@@ -1,7 +1,6 @@
 var console = Console()
 
 func ArgumentCountMissing() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var mover = Mover()
     mover.update_each(2)

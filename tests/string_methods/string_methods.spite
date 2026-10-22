@@ -1,7 +1,6 @@
 var console = Console()
 
 func StringMethods() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var text = "  Hello, Spite World  "
     var trimmed = text.trim()

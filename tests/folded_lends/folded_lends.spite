@@ -4,7 +4,6 @@ var markers = Column<Marker>()
 var tags = Column<Tags>()
 
 func FoldedLends() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var layout = Layout()
     layouts.insert(1, layout)

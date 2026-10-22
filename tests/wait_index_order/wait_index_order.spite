@@ -4,7 +4,6 @@ var slot = 0
 var values = [0, 0, 0]
 
 func WaitIndexOrder() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var writing = Concurrent(write_late)
     var moving = Concurrent(move_slot)

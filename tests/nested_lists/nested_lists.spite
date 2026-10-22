@@ -5,7 +5,6 @@ var kept = List<List<String>>()
 var replaced = List<List<Long>>()
 
 func NestedLists() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var round = 0
     var total = 0

@@ -2,7 +2,6 @@ var console = Console()
 var held: Box? = null
 
 func NarrowedNameReassigned() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     after_null()
     in_a_loop()

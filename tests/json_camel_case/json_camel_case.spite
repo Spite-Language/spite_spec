@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonCamelCase() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var camel_reader = JsonReader<ItemRecord>()
     var camel = camel_reader.read(

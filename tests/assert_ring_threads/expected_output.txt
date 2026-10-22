@@ -1,3 +1,3 @@
 asked 64000
-spite: the program stopped at tests/assert_ring_threads/assert_ring_threads.spite:21 in AssertRingThreads.AssertRingThreads (total=64000)
-spite.assert	38199931	tests/assert_ring_threads/assert_ring_threads.spite:34	AssertRingThreads	refuse	answered=nothing	repeated=64000
+spite: the program stopped at tests/assert_ring_threads/assert_ring_threads.spite:20 in AssertRingThreads.AssertRingThreads (total=64000)
+spite.assert	38199931	tests/assert_ring_threads/assert_ring_threads.spite:33	AssertRingThreads	refuse	answered=nothing	repeated=64000

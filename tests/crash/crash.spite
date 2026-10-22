@@ -2,7 +2,6 @@ var console = Console()
 var names = Dictionary<String, String>()
 
 func Crash() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     names["ada"] = "Ada Lovelace"
     var length_of_name = name_length("ada")

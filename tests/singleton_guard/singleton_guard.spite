@@ -2,7 +2,6 @@ var console = Console()
 var cache = TextureCache()
 
 func SingletonGuard() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var loading = List<Parallel<Integer>>()
     var start = 0

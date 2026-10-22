@@ -1,7 +1,6 @@
 var console = Console()
 
 func ProvenReadOutside() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var sizes = [3, 5, 8]
     var total = 0

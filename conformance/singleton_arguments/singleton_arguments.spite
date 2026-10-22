@@ -3,7 +3,6 @@ var starting_name = "main"
 var registry = Registry(starting_name)
 
 func SingletonArguments() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     console.print(registry.name)
 }

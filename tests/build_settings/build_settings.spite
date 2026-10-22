@@ -3,7 +3,6 @@ var build = Build()
 var environment = Environment()
 
 func BuildSettings() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     if build.serve {
         console.print("serving: given to the compiler, so the other branch was never generated")

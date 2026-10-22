@@ -3,7 +3,6 @@ var library = DynamicLibrary("fixture.dll", 'identity', "")
 var marks = List<Integer>()
 
 func ForeignCallbackMistakes() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     through_a_variable()
     nowhere()

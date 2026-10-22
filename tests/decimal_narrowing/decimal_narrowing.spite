@@ -1,7 +1,6 @@
 var console = Console()
 
 func DecimalNarrowing() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var measured = 3.75
     var whole: Integer = measured

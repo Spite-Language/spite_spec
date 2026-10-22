@@ -9,7 +9,6 @@ var tally = Tally()
 var audit = Audit(sum)
 
 func RowOfClasses() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var together = List<Task>()
     together.append(sum)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func CrashMissingItem() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var clip = Clip()
     clip.keys.append(0.0)

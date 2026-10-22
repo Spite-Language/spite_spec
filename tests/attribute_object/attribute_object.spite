@@ -1,5 +1,4 @@
 func AttributeObject() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var world = World()
     var player_bundle = PlayerBundle()

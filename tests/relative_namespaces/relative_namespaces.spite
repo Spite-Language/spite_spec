@@ -1,5 +1,4 @@
 func RelativeNamespaces() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var opening = Window.System.OpenWindow()
     opening.run()

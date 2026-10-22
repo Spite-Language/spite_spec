@@ -1,7 +1,6 @@
 var console = Console()
 
 func GenericVectors() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var tile = Vector3(3, 4, 12)
     var other = Vector3(1, -2, 2)

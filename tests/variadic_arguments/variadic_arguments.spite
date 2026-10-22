@@ -5,7 +5,6 @@ type Describable {
 var console = Console()
 
 func VariadicArguments() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     log("a", "b", "c")
     log()

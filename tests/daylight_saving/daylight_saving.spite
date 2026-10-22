@@ -2,7 +2,6 @@ var console = Console()
 var zones = TimeZones()
 
 func DaylightSaving() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var new_york = zones.find("America/New_York")
     crash new_york

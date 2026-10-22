@@ -1,1 +1,1 @@
-conformance/every_attribute/every_attribute.spite:7: error: 'count_attributes' calls 'count_attribute' once for every attribute, so 'count_attribute' has to return nothing (in EveryAttribute.EveryAttribute)
+conformance/every_attribute/every_attribute.spite:6: error: 'count_attributes' calls 'count_attribute' once for every attribute, so 'count_attribute' has to return nothing (in EveryAttribute.EveryAttribute)

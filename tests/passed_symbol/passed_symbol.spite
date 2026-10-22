@@ -6,7 +6,6 @@ var runners = List<Runnable>()
 var console = Console()
 
 func PassedSymbol() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     add_systems()
     runners.each_run()

@@ -2,7 +2,6 @@ var console = Console()
 var build = Build()
 
 func ProcessSettings() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var echoed = echoing(["-script=a b", "-plain=x", "two words", "say \"hi\"", "C:\\a b\\"])
     echoed.run()

@@ -1,7 +1,6 @@
 var console = Console()
 
 func MathsOtherSpellings() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var side = 2.0
     var root = side.sqrt()

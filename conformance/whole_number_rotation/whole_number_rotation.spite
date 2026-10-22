@@ -1,7 +1,6 @@
 var console = Console()
 
 func WholeNumberRotation() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var turn = Quaternion<Integer>()
     var size = turn.length()

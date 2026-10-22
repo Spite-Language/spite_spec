@@ -2,7 +2,6 @@ var console = Console()
 var fixture = DynamicLibrary("tests/native_fault_illegal/fixture.dll", 'identity', "")
 
 func NativeFaultIllegal() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     console.print("before the fault")
     halt()

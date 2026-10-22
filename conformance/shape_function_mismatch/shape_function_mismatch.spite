@@ -5,7 +5,6 @@ type Renderable {
 var console = Console()
 
 func ShapeFunctionMismatch() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var silent = Silent()
     show(silent)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func BackendWords() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var map = Map("harbour", 3)
     var near = map.far(2, 5)

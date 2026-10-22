@@ -1,7 +1,6 @@
 var console = Console()
 
 func EnumValueTemplates() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var posts = List<Post>()
     var drafts = posts.filter_draft()

@@ -1,7 +1,6 @@
 var console = Console()
 
 func CountProvesNoKey() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var names = Dictionary<Integer, String>()
     names[7] = "seven"

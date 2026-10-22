@@ -1,1 +1,1 @@
-conformance/failed_constructor/failed_constructor.spite:6: error: there is no generic class 'Asset.Pak' here: a name is looked up in this class's own namespace, its folder, each parent folder, then the whole program (in FailedConstructor.FailedConstructor)
+conformance/failed_constructor/failed_constructor.spite:5: error: there is no generic class 'Asset.Pak' here: a name is looked up in this class's own namespace, its folder, each parent folder, then the whole program (in FailedConstructor.FailedConstructor)

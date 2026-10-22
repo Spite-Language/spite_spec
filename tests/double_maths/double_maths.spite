@@ -1,7 +1,6 @@
 var console = Console()
 
 func DoubleMaths() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var turn = Quaternion<Double>()
     var up = Vector3<Double>(0.0, 1.0, 0.0)

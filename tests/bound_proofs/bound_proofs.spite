@@ -1,7 +1,6 @@
 var console = Console()
 
 func BoundProofs() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var spans = [2, 0, 4, 5, 1, 3, 9, 9]
     var records = records_of(spans)

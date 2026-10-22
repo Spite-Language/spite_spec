@@ -1,7 +1,6 @@
 var console = Console()
 
 func GenericConstraints() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var books = Shelf<Book>()
     var dune = Book("Dune")

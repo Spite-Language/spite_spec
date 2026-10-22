@@ -10,7 +10,6 @@ type Labeled {
 var console = Console()
 
 func PrintableValues() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var count = 3
     var wide: Long = 9000000000

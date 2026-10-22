@@ -1,7 +1,6 @@
 var console = Console()
 
 func WaitingSystems() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var level = File(".spite/waiting_systems_level.txt")
     level.write("forest")

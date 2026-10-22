@@ -1,7 +1,6 @@
 var console = Console()
 
 func WalkWithFunction() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var names = ["ada", "grace"]
     var index = 0

@@ -5,7 +5,6 @@ var target: Monster? = null
 var turn = 1
 
 func InteractivePaths() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var rat = Monster("rat", 3)
     monsters.append(rat)

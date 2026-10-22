@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryTypeArguments() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var scores = Dictionary<Integer>()
     var nested = Dictionary<String, Integer, Integer>()

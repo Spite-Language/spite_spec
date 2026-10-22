@@ -3,7 +3,6 @@ var program = Program()
 var board = Board()
 
 func ConcurrentWaitCycleInPlace() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     start_both()
     board.both_held = true

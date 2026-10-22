@@ -1,1 +1,1 @@
-conformance/json_split/json_split.spite:7: error: there is no 'Json': it is two classes, 'JsonWriter<T>()' whose 'write(value)' makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?' (in JsonSplit.JsonSplit)
+conformance/json_split/json_split.spite:6: error: there is no 'Json': it is two classes, 'JsonWriter<T>()' whose 'write(value)' makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?' (in JsonSplit.JsonSplit)

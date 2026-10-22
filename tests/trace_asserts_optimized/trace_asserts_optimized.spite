@@ -2,7 +2,6 @@ var console = Console()
 var names = ["ada", "bo"]
 
 func TraceAssertsOptimized() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var index = 0
     while index < 3 {

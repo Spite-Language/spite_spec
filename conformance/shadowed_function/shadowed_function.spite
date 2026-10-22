@@ -2,7 +2,6 @@ var console = Console()
 var greeting = "hello"
 
 func ShadowedFunction() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var file_stem = file_stem("notes/today.txt")
     console.print(file_stem)

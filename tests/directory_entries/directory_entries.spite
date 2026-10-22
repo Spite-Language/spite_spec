@@ -1,7 +1,6 @@
 var console = Console()
 
 func DirectoryEntries() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var tree = Directory("tests/directory_entries/tree")
     console.print(tree.path)

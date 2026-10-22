@@ -4,7 +4,6 @@ var cooked = ["bread"]
 var never_cooked_id = "cake"
 
 func CrashCompound() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     recipes["bread"] = "flour, water"
     var checked = check("bread", 1)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func ProvenRanges() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var values = List<Integer>()
     var index = 0

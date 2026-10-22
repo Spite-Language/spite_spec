@@ -2,7 +2,6 @@ var console = Console()
 var clock = Clock()
 
 func BinaryFiles() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var store = File(".spite/binary_files.bin")
     var header = Buffer(0)

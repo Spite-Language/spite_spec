@@ -1,1 +1,1 @@
-conformance/print_without_to_string/print_without_to_string.spite:12: error: 'Crate' does not fit type 'Printable': it has no function 'to_string' (in PrintWithoutToString.PrintWithoutToString)
+conformance/print_without_to_string/print_without_to_string.spite:11: error: 'Crate' does not fit type 'Printable': it has no function 'to_string' (in PrintWithoutToString.PrintWithoutToString)

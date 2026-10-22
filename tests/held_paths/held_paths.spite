@@ -2,7 +2,6 @@ var console = Console()
 var copier = Copier()
 
 func HeldPaths() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var index = 0
     var total = 0

@@ -3,7 +3,6 @@ var first = Journal()
 var again = Journal()
 
 func Singletons() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     first.record("from the entry")
     var worker = Worker()

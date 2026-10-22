@@ -1,7 +1,6 @@
 var console = Console()
 
 func ConfiguredTables() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var tariff = Tariff()
     var cheap = tariff.price(1000)

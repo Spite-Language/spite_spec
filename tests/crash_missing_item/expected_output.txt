@@ -1,2 +1,2 @@
 key 0
-spite: the program stopped at tests/crash_missing_item/crash_missing_item.spite:15 in CrashMissingItem.read
+spite: the program stopped at tests/crash_missing_item/crash_missing_item.spite:14 in CrashMissingItem.read

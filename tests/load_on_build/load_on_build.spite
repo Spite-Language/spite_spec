@@ -2,7 +2,6 @@ var build = Build()
 var console = Console()
 
 func LoadOnBuild() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     load "kitchen"
     if build.flavor == "sweet" {

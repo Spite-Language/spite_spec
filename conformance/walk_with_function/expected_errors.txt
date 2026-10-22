@@ -1,1 +1,1 @@
-conformance/walk_with_function/walk_with_function.spite:8: error: this 'while' walks every element of 'names' only to call 'say_hello' with each: write 'names.each(say_hello)' (in WalkWithFunction.WalkWithFunction)
+conformance/walk_with_function/walk_with_function.spite:7: error: this 'while' walks every element of 'names' only to call 'say_hello' with each: write 'names.each(say_hello)' (in WalkWithFunction.WalkWithFunction)

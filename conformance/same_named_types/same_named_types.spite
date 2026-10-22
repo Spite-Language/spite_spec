@@ -1,5 +1,4 @@
 func SameNamedTypes() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var task = Recipes.CookTask()
     var soup = Recipes.Soup()

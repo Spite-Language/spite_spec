@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryTemplates() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var shelf = Dictionary<String, Book>()
     var atlas = Book("atlas", 120, true)

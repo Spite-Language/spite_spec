@@ -4,7 +4,6 @@ var again = Column<Health>()
 var labels = Column<Label>()
 
 func GenericSingletons() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var health = Health()
     healths.values.append(health)

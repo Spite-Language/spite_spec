@@ -1,7 +1,6 @@
 var console = Console()
 
 func CountBoundProofs() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var line = "exporter,blender,mesh,hero"
     var parts = line.split(",")

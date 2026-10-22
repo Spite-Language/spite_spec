@@ -1,7 +1,6 @@
 var console = Console()
 
 func Accessors() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var account = Account("ada")
     account.balance = 50

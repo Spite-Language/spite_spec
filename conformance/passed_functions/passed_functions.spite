@@ -1,7 +1,6 @@
 var console = Console()
 
 func PassedFunctions() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var names = ["Ada", "Grace"]
     var greetings = names.map(say_hello)

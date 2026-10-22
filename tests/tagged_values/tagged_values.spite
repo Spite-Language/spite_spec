@@ -7,7 +7,6 @@ var console = Console()
 var kinds = List<String>()
 
 func TaggedValues() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var count = 3
     var total: Long = 40000000000

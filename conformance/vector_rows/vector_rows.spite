@@ -3,7 +3,6 @@ var keeper = Keeper()
 var last: Moving? = null
 
 func VectorRows() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     world.spawn()
     crash world.positions[0] and world.velocities[0]

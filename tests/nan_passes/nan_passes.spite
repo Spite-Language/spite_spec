@@ -1,7 +1,6 @@
 var console = Console()
 
 func NanPasses() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var gap = Float.not_a_number
     var wide = Double.not_a_number

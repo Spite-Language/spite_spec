@@ -1,7 +1,6 @@
 var console = Console()
 
 func PrivateWalk() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var gadget = Gadget()
     gadget.adopt()

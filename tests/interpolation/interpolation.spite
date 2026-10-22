@@ -1,7 +1,6 @@
 var console = Console()
 
 func Interpolation() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var person = Person("ada", 36)
     var greeting = person.greeting()

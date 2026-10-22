@@ -1,5 +1,5 @@
 hello ada
-spite.assert	f969dad0	tests/trace_asserts/trace_asserts.spite:15	TraceAsserts	greet	answered=nothing
+spite.assert	f969dad0	tests/trace_asserts/trace_asserts.spite:14	TraceAsserts	greet	answered=nothing
 hello bo
-spite.assert	f969dad0	tests/trace_asserts/trace_asserts.spite:15	TraceAsserts	greet	answered=nothing
+spite.assert	f969dad0	tests/trace_asserts/trace_asserts.spite:14	TraceAsserts	greet	answered=nothing
 done

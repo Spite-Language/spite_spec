@@ -21,7 +21,6 @@ var follower: Circle? = null
 var circles = List<Circle>()
 
 func InteractiveInspection() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     names.append("ann")
     names.append("bob")

@@ -1,1 +1,1 @@
-conformance/template_walk/template_walk.spite:32: error: this 'while' walks every element of 'items' only to call 'restock' on each: write 'items.each_restock()' (in TemplateWalk.restock_all)
+conformance/template_walk/template_walk.spite:31: error: this 'while' walks every element of 'items' only to call 'restock' on each: write 'items.each_restock()' (in TemplateWalk.restock_all)

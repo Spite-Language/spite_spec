@@ -1,7 +1,6 @@
 var console = Console()
 
 func LongLineConstruction() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var world = World()
     var button = world.create_entity_from_bundle(

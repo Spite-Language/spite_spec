@@ -1,1 +1,1 @@
-conformance/operator_function_call/operator_function_call.spite:7: error: 'set_height' is what writing 'height' calls: write 'point.height = 4' (in OperatorFunctionCall.OperatorFunctionCall)
+conformance/operator_function_call/operator_function_call.spite:6: error: 'set_height' is what writing 'height' calls: write 'point.height = 4' (in OperatorFunctionCall.OperatorFunctionCall)

@@ -1,1 +1,1 @@
-conformance/shape_mismatch/shape_mismatch.spite:12: error: 'Object' does not fit type 'Named': it has no function 'size' (in ShapeMismatch.ShapeMismatch)
+conformance/shape_mismatch/shape_mismatch.spite:11: error: 'Object' does not fit type 'Named': it has no function 'size' (in ShapeMismatch.ShapeMismatch)

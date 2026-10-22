@@ -1,7 +1,6 @@
 var console = Console()
 
 func ParameterWriteQuestion() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var asker = Asker<Mover>()
     var answer = asker.ask()

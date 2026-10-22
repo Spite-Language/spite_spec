@@ -9,7 +9,6 @@ var keyboards = Vector<Keyboard>()
 var input = Input()
 
 func LentToCalls() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var index = 0
     while index < 2 {

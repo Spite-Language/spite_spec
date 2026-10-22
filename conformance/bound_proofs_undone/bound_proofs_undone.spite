@@ -1,7 +1,6 @@
 var console = Console()
 
 func BoundProofsUndone() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var spans = [1, 2, 3, 4]
     var at = 0

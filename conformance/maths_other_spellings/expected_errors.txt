@@ -1,1 +1,1 @@
-conformance/maths_other_spellings/maths_other_spellings.spite:7: error: Float has no function 'sqrt': Spite spells it 'square_root', since no name is abbreviated (in MathsOtherSpellings.MathsOtherSpellings)
+conformance/maths_other_spellings/maths_other_spellings.spite:6: error: Float has no function 'sqrt': Spite spells it 'square_root', since no name is abbreviated (in MathsOtherSpellings.MathsOtherSpellings)

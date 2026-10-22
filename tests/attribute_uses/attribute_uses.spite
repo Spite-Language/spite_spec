@@ -3,7 +3,6 @@ var lamp = Lamp()
 var shelf = Shelf()
 
 func AttributeUses() {
-    load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var lines = List<String>()
     show_attributes(lamp, lines)
