@@ -1,1 +1,1 @@
-conformance/generic_class_in_comparison/generic_class_in_comparison.spite:6: error: expected a value and found '='
+conformance/generic_class_in_comparison/generic_class_in_comparison.spite:5: error: 'List' is a class, not a value: write 'List()' to make one, and give it a name with 'var ... = '; for the class itself, pass it where a 'Spite.Class' is wanted (in GenericClassInComparison.GenericClassInComparison)
