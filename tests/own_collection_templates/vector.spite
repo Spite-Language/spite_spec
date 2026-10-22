@@ -1,11 +1,13 @@
 func average_member(member: Spite.AttributeDeclaration<$element_type>): Float? {
-    assert item_count != 0
+    assert not is_empty()
     var total = 0.0
     var index = 0
-    while index < item_count {
-        var item = values.item_at(items, index)
+    while index < count() {
+        var item = get_at(index)
+        crash item
         total = total + item.attributes[member]
         index = index + 1
     }
+    var item_count = count()
     return total / item_count
 }
