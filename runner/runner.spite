@@ -165,7 +165,7 @@ func run_test(folder: String) {
         var expected_output = optional_text(folder, "expected_output.txt")
         var printed = running.output()
         var output = cleaned(printed)
-        if output != expected_output {
+        if not matches(output, expected_output) {
             fail(folder, "the output differs\n  expected: {expected_output}\n  got:      {output}")
             return
         }
@@ -194,7 +194,7 @@ func run_conformance(folder: String) {
     }
     var output = compile.output()
     var errors = cleaned(output)
-    if errors != wanted {
+    if not matches(errors, wanted) {
         fail(folder, "the errors differ\n  expected: {wanted}\n  got:      {errors}")
         return
     }
@@ -216,6 +216,54 @@ func executable_of(folder: String): String {
     var name = directory.name
     var windows_folder = folder.replace("/", "\\")
     return "{windows_folder}\\.spite\\build\\{name}.exe"
+}
+
+func matches(got: String, wanted: String): Boolean {
+    var got_lines = got.split("\n")
+    var wanted_lines = wanted.split("\n")
+    if got_lines.count() != wanted_lines.count() {
+        return false
+    }
+    var index = 0
+    while index < wanted_lines.count() {
+        var wanted_line = wanted_lines[index]
+        var got_line = got_lines[index]
+        crash got_line
+        if not line_matches(got_line, wanted_line) {
+            return false
+        }
+        index = index + 1
+    }
+    return true
+}
+
+func line_matches(got: String, wanted: String): Boolean {
+    if not wanted.contains("...") {
+        return got == wanted
+    }
+    var pieces = wanted.split("...")
+    var first = pieces[0]
+    crash first
+    if not got.starts_with(first) {
+        return false
+    }
+    var at = first.length()
+    var index = 1
+    while index < pieces.count() {
+        var piece = pieces[index]
+        var got_length = got.length()
+        var rest = got.slice(at, got_length)
+        var found = rest.index_of(piece)
+        if index == pieces.count() - 1 {
+            return rest.ends_with(piece)
+        }
+        if found < 0 {
+            return false
+        }
+        at = at + found + piece.length()
+        index = index + 1
+    }
+    return true
 }
 
 func cleaned(text: String): String {
