@@ -1,8 +1,9 @@
 func best_member(member: Spite.AttributeDeclaration<$element_type>): List<$element_type> {
     var best = List<$element_type>()
     var index = 0
-    while index < item_count {
-        var item = values.read_value(items, index)
+    while index < count() {
+        var item = get_at(index)
+        crash item
         if item.attributes[member] > 2 {
             best.append(item)
         }
