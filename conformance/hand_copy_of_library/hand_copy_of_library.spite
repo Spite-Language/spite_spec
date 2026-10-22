@@ -2,9 +2,9 @@ var console = Console()
 
 func HandCopyOfLibrary() {
     load "../../../SpiteCompiler/.spite/library/windows"
-    var left = Matrix4()
-    var right = Matrix4()
-    var target = Matrix4()
+    var left = Matrix4<Float>()
+    var right = Matrix4<Float>()
+    var target = Matrix4<Float>()
     target.set_product(left, right)
     console.print(target.column_0_row_0)
 }

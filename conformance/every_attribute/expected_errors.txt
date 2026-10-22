@@ -1,1 +1,1 @@
-conformance/every_attribute/every_attribute.spite:6: error: 'count_attributes' calls 'count_attribute' once for every attribute, so 'count_attribute' has to return nothing (in EveryAttribute.EveryAttribute)
+conformance/every_attribute/holder.spite:6: error: a List<Integer> has no codegen value named '$value_type': List<$element_type>, Dictionary<$key_type, $value_type> and $value_type? name theirs, and a generic class names its own (in Holder.describe)

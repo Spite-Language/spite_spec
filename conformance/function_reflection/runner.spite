@@ -12,6 +12,5 @@ func run() {
 }
 
 func value_argument(argument: Symbol<$system_type.run_each>): argument.class {
-    var value = argument.class()
-    return value
+    return argument.class()
 }
