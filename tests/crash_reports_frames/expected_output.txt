@@ -1,0 +1,4 @@
+spite: the program stopped at tests/crash_reports_frames/crash_reports_frames.spite:11 in CrashReportsFrames.inner (depth=3)
+spite.frame	tests/crash_reports_frames/crash_reports_frames.spite:11	CrashReportsFrames	inner
+spite.frame	tests/crash_reports_frames/crash_reports_frames.spite:7	CrashReportsFrames	outer
+spite.frame	tests/crash_reports_frames/crash_reports_frames.spite:3	CrashReportsFrames	CrashReportsFrames

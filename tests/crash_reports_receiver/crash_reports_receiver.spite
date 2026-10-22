@@ -1,0 +1,9 @@
+func CrashReportsReceiver() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    check()
+}
+
+func check() {
+    var settings = File("saves/missing_settings.txt")
+    crash settings.exists()
+}

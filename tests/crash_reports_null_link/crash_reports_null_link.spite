@@ -1,0 +1,15 @@
+var console = Console()
+
+func CrashReportsNullLink() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var rig = Rig()
+    rig.skeleton = Skeleton()
+    show(rig)
+    rig.skeleton = null
+    show(rig)
+}
+
+func show(rig: Rig) {
+    crash rig.skeleton
+    console.print("bones", rig.skeleton.bones)
+}

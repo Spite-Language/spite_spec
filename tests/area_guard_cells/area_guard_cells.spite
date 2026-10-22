@@ -1,0 +1,25 @@
+var console = Console()
+var cells = List<Integer>()
+
+func AreaGuardCells() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var filled = 0
+    while filled < 6 {
+        cells.append(filled * 10)
+        filled = filled + 1
+    }
+    show(2, 3)
+}
+
+func show(rows: Integer, stride: Integer) {
+    crash rows * stride <= cells.count()
+    var row = 0
+    while row < rows {
+        var column = 0
+        while column < stride {
+            console.print(cells[row * stride + column])
+            column = column + 1
+        }
+        row = row + 1
+    }
+}

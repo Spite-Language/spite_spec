@@ -1,0 +1,32 @@
+var console = Console()
+
+func TerminalIfNotLast() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    greet("ada")
+    greet("")
+    greet_each()
+}
+
+func find_name(text: String): String? {
+    assert not text.is_empty()
+    return text
+}
+
+func greet(text: String) {
+    var name = find_name(text)
+    if name {
+        console.print("hello", name)
+    }
+    console.print("greeted")
+}
+
+func greet_each() {
+    var passes = 0
+    while passes < 2 {
+        var name = find_name("bo")
+        if name {
+            console.print("hello", name)
+        }
+        passes = passes + 1
+    }
+}

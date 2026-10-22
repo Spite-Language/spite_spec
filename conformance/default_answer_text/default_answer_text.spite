@@ -1,0 +1,13 @@
+var console = Console()
+var names = ["ada", "bo"]
+
+func DefaultAnswerText() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = name_of(1)
+    console.print(name)
+}
+
+func name_of(index: Integer): String {
+    assert index < names.count()
+    return names[index]
+}

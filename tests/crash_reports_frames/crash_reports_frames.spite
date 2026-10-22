@@ -1,0 +1,12 @@
+func CrashReportsFrames() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    outer(3)
+}
+
+func outer(depth: Integer) {
+    inner(depth)
+}
+
+func inner(depth: Integer) {
+    crash depth > 5
+}

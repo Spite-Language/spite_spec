@@ -1,0 +1,14 @@
+var console = Console()
+var ages = Dictionary<String, Integer>()
+
+func CrashReportsMissingKey() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    ages["ann"] = 0
+    show("ann")
+    show("bea")
+}
+
+func show(name: String) {
+    crash ages[name]
+    console.print(name, ages[name])
+}

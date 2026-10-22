@@ -1,0 +1,1 @@
+conformance/nested_index_read/nested_index_read.spite:11: error: 'rows[index]' is read inside the index of 'values': compute it first into a named 'var' and pass the name (in NestedIndexRead.show)

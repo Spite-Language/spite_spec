@@ -1,0 +1,13 @@
+var console = Console()
+
+func AssertInEntryConstructor() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = find("ada")
+    assert name
+    console.print(name)
+}
+
+func find(text: String): String? {
+    assert not text.is_empty()
+    return text
+}

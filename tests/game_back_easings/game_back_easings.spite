@@ -1,0 +1,16 @@
+var console = Console()
+var easing = Easing()
+
+func GameBackEasings() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var start = easing.in_back(0.0)
+    var dips = easing.in_back(0.5)
+    var finish = easing.in_back(1.0)
+    var overshoots = easing.out_back(0.5)
+    var starts_at_zero = start == 0.0
+    var dips_below = dips < 0.0
+    var overshoots_above = overshoots > 1.0
+    console.print(starts_at_zero, dips_below, overshoots_above)
+    var ends_at_one = finish > 0.9999 and finish < 1.0001
+    console.print(ends_at_one)
+}

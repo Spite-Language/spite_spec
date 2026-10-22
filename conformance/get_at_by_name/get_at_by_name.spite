@@ -1,0 +1,12 @@
+var console = Console()
+var names = ["ada"]
+
+func GetAtByName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    show()
+}
+
+func show() {
+    crash names.get_at(0)
+    console.print(names.get_at(0).upper_case())
+}

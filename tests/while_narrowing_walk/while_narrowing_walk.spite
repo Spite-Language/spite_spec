@@ -1,0 +1,19 @@
+var console = Console()
+
+func WhileNarrowingWalk() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Box()
+    first.label = "first"
+    var second = Box()
+    second.label = "second"
+    first.inner = second
+    walk(first)
+}
+
+func walk(start: Box) {
+    var current: Box? = start
+    while current {
+        console.print(current.label)
+        current = current.inner
+    }
+}

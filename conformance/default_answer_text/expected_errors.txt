@@ -1,0 +1,1 @@
+conformance/default_answer_text/default_answer_text.spite:11: error: this 'assert' would answer a default String ("") that a caller cannot tell from a real one: return a value ('if index >= names.count() { return "" }'), make the result 'String?', or 'crash index < names.count()' if this is a developer mistake (in DefaultAnswerText.name_of)

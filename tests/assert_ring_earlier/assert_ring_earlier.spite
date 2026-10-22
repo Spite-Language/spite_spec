@@ -1,0 +1,18 @@
+func AssertRingEarlier() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var index = 0
+    while index < 20 {
+        first_check(index)
+        second_check(index)
+        index = index + 1
+    }
+    crash index < 20
+}
+
+func first_check(index: Integer) {
+    assert index < 0
+}
+
+func second_check(index: Integer) {
+    assert index > 100
+}

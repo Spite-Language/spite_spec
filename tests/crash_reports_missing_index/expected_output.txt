@@ -1,0 +1,2 @@
+key 0
+spite: the program stopped at tests/crash_reports_missing_index/crash_reports_missing_index.spite:13 in CrashReportsMissingIndex.read (clip.keys[start + 1] is missing: index 3, count 2)

@@ -1,0 +1,12 @@
+var console = Console()
+
+func AssertOnPlainValue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tracker = Tracker()
+    show(tracker)
+}
+
+func show(tracker: Tracker) {
+    assert tracker
+    console.print(tracker.name)
+}

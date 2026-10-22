@@ -1,0 +1,1 @@
+conformance/assert_in_entry_constructor/assert_in_entry_constructor.spite:6: error: 'assert' is not allowed in a constructor: a constructor is setup, not logic. Take already resolved values, or use 'crash' when absence is a bug (in AssertInEntryConstructor.AssertInEntryConstructor)

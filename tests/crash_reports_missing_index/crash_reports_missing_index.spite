@@ -1,0 +1,15 @@
+var console = Console()
+
+func CrashReportsMissingIndex() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var clip = Clip()
+    clip.keys.append(0.0)
+    clip.keys.append(0.0)
+    read(clip, 0)
+    read(clip, 2)
+}
+
+func read(clip: Clip, start: Integer) {
+    crash clip.keys[start + 1]
+    console.print("key", clip.keys[start + 1])
+}

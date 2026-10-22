@@ -1,0 +1,18 @@
+var console = Console()
+var ages = Dictionary<String, Integer>()
+
+func NarrowedReadLocal() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    ages["ada"] = 36
+    show("ada")
+    show("bo")
+}
+
+func show(name: String) {
+    var age = ages[name]
+    if age {
+        console.print(name, age)
+    } else {
+        console.print(name, "unknown")
+    }
+}

@@ -1,0 +1,19 @@
+var console = Console()
+var color_text = ColorText()
+
+func GameNamedColors() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tomato = color_text.named_hex("tomato")
+    var unknown = color_text.named_hex("not a colour")
+    var unknown_is_empty = unknown == ""
+    console.print(tomato, unknown_is_empty)
+    show(" TOMATO ")
+    show("transparent")
+}
+
+func show(text: String) {
+    var color = color_text.read(text)
+    crash color
+    var hex = color.to_hex()
+    console.print(hex)
+}

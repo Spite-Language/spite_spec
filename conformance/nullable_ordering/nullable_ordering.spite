@@ -1,0 +1,13 @@
+var console = Console()
+
+func NullableOrdering() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = counted("abc")
+    var bigger = count > 2
+    console.print(bigger)
+}
+
+func counted(text: String): Integer? {
+    assert not text.is_empty()
+    return text.length()
+}

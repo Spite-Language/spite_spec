@@ -1,0 +1,1 @@
+conformance/assert_in_constructor/gate.spite:4: error: 'assert' is not allowed in a constructor: a constructor is setup, not logic. Take already resolved values, or use 'crash' when absence is a bug (in Gate.Gate)

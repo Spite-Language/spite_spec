@@ -1,0 +1,17 @@
+var console = Console()
+var tracker: Tracker? = null
+
+func NarrowingSnapshotCopy() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    tracker = Tracker()
+    report()
+}
+
+func report() {
+    var before = tracker
+    tracker = null
+    if before {
+        console.print("had", before.name)
+    }
+    console.print("done")
+}

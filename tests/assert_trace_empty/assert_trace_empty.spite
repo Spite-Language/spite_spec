@@ -1,0 +1,10 @@
+func AssertTraceEmpty() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var words = split_words("")
+    crash words.count() > 0
+}
+
+func split_words(text: String): List<String> {
+    assert not text.is_empty()
+    return text.split(" ")
+}

@@ -1,0 +1,14 @@
+var console = Console()
+
+func NullableComparison() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var present = find("ada")
+    var missing = find("")
+    var other_missing = find("")
+    console.print(present == "ada", missing == "ada", missing != "ada", missing == other_missing, "ada" == present)
+}
+
+func find(text: String): String? {
+    assert not text.is_empty()
+    return text
+}

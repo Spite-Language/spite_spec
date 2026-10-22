@@ -1,0 +1,38 @@
+var console = Console()
+
+func CrashesMap() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var checked = positive(4)
+    var is_four = checked == 4
+    console.print(is_four)
+    var map = File("tests/crashes_map/.spite/build/crashes_map.crashes")
+    var text = map.read()
+    if text {
+        show(text)
+    } else {
+        console.print("no map")
+    }
+}
+
+func positive(value: Integer): Integer? {
+    assert value > 0
+    return value
+}
+
+func show(text: String) {
+    var lines = text.lines()
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if index == 0 {
+            var header = line.starts_with("# spite crashes 1 ")
+            console.print(header)
+        }
+        if line.contains("crashes_map.spite") {
+            var length = line.length()
+            var site = line.slice(9, length)
+            console.print(site)
+        }
+        index = index + 1
+    }
+}
