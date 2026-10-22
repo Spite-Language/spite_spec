@@ -1,0 +1,15 @@
+var console = Console()
+var name = ""
+
+func Part(given: String) {
+    name = given
+}
+
+func replace_through(box: Box) {
+    box.part = Part("second")
+    console.print("using", name)
+}
+
+func drop() {
+    console.print("dropped", name)
+}

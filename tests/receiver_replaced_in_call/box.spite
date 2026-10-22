@@ -1,0 +1,13 @@
+var console = Console()
+var part = Part("first")
+
+func run() {
+    part.replace_through(this)
+    var other = Part("third")
+    use_after(part, other)
+}
+
+func use_after(held: Part, other: Part) {
+    part = other
+    console.print("still", held.name)
+}
