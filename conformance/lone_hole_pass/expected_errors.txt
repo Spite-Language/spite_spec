@@ -1,0 +1,1 @@
+conformance/lone_hole_pass/lone_hole_pass.spite:6: error: '"{clicks}"' is a text of one value and nothing else: pass the value directly, 'show(clicks)' (in LoneHolePass.LoneHolePass)

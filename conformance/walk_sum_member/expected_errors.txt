@@ -1,0 +1,1 @@
+conformance/walk_sum_member/walk_sum_member.spite:25: error: this 'while' walks every element of 'items' only to add up 'price': write 'var total = items.sum_price()' (in WalkSumMember.walk)

@@ -1,0 +1,32 @@
+var console = Console()
+var items = List<Item>()
+
+func WalkAllMember() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var apple = Item("apple", 3, true)
+    items.append(apple)
+    var pear = Item("pear", 5, false)
+    items.append(pear)
+    var answer = walk()
+    console.print(answer, apple.name, apple.price, apple.in_stock)
+}
+
+func is_cheap(item: Item): Boolean {
+    return item.price < 4
+}
+
+func price_of(item: Item): Integer {
+    return item.price
+}
+
+func walk(): Boolean {
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        if not item.in_stock {
+            return false
+        }
+        index = index + 1
+    }
+    return true
+}

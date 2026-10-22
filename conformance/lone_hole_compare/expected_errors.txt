@@ -1,0 +1,1 @@
+conformance/lone_hole_compare/lone_hole_compare.spite:6: error: '"{clicks}"' is a text of one value and nothing else: write its text as 'clicks.to_string()' (in LoneHoleCompare.LoneHoleCompare)

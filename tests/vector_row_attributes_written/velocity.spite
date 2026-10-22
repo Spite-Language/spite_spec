@@ -1,0 +1,9 @@
+var across = 0
+
+func Velocity(new_across: Integer) {
+    across = new_across
+}
+
+func slow_down() {
+    across = across / 2
+}

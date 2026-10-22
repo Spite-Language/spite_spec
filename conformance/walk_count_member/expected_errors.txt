@@ -1,0 +1,1 @@
+conformance/walk_count_member/walk_count_member.spite:25: error: this 'while' walks every element of 'items' only to ...: write 'var total = items.count_in_stock()' (in WalkCountMember.walk)

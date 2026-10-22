@@ -1,0 +1,8 @@
+var console = Console()
+
+func LoneHoleCompare() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var clicks = 3
+    var none_yet = "{clicks}" == "0"
+    console.print(none_yet)
+}

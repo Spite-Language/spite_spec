@@ -1,0 +1,1 @@
+conformance/walk_copy/walk_copy.spite:25: error: this 'while' walks every element of 'items' only to ...: write 'var result = items.copy()' (in WalkCopy.walk)

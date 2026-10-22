@@ -1,0 +1,11 @@
+var console = Console()
+
+func LoneHolePass() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var clicks = 3
+    show("{clicks}")
+}
+
+func show(text: String) {
+    console.print(text)
+}
