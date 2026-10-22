@@ -1,1 +1,1 @@
-conformance/old_type_spellings/old_type_spellings.spite:8: error: 'Int' is spelled 'Integer' (in OldTypeSpellings.OldTypeSpellings)
+conformance/old_type_spellings/old_type_spellings.spite:7: error: 'Int' is spelled 'Integer' (in OldTypeSpellings.OldTypeSpellings)

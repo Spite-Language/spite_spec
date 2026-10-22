@@ -1,8 +1,6 @@
-var pool = ThreadPool()
 var position: Long = 0
 var speed = 0
 var awake = false
-var worker = -2
 
 func Particle(starting_speed: Integer) {
     speed = starting_speed
@@ -11,5 +9,4 @@ func Particle(starting_speed: Integer) {
 
 func step() {
     position = position + speed
-    worker = pool.worker_index()
 }

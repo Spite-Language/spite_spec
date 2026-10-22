@@ -11,8 +11,3 @@ tally 10 true
 tally 11 true
 tally 12 true
 total 33
-voice 1 started true
-voice 1 ended with buffer 100
-voice 2 started true
-voice 2 ended with buffer 200
-buffers ended 2

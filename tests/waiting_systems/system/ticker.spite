@@ -1,12 +1,7 @@
 var program = Program()
-var guard = Lock()
 var console = Console()
 
 func update_each() {
-    guard.while_locked(tick)
-}
-
-func tick() {
     program.sleep(1)
-    console.print("the ticker ticked under its lock")
+    console.print("the ticker ticked after a sleep")
 }

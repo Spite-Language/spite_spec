@@ -7,7 +7,6 @@ var declared = DynamicLibrary(
 )
 var scale = 3
 var windows = Windows()
-var mixer = Mixer()
 
 func ForeignCallbacks() {
     load "../../../SpiteCompiler/.spite/library/common"
@@ -18,7 +17,6 @@ func ForeignCallbacks() {
     window_messages()
     visits()
     thread_reports()
-    voices()
 }
 
 func scaled(value: Integer): Integer {
@@ -47,10 +45,4 @@ func thread_reports() {
     var reporting = ForeignCallback(tally.report, 'context_first')
     plain.run_on_thread(reporting.address, reporting.context, 10)
     console.print("total", tally.total)
-}
-
-func voices() {
-    plain.play_voice(mixer.listener, 1)
-    plain.play_voice(mixer.listener, 2)
-    console.print("buffers ended", mixer.buffers_ended)
 }

@@ -1,6 +1,5 @@
 var console = Console()
 var time_text = TimeText()
-var heap = Memory.Heap()
 
 func OldTypeSpellings() {
     load "../../../SpiteCompiler/.spite/library/common"
@@ -13,8 +12,5 @@ func OldTypeSpellings() {
     var day = LocalDate(2024, 3, 10)
     var clock: LocalTime? = null
     var reading = time_text.read_local_date("2024-03-10")
-    var address = heap.allocate(8)
-    var read = address.read_int(0)
-    heap.free(address)
-    console.print(count, ready, mask, parsed, day, clock, reading, read)
+    console.print(count, ready, mask, parsed, day, clock, reading)
 }

@@ -61,6 +61,6 @@ func describe_others() {
     var shade = Kind<Shade>()
     var list = Kind<List<Integer>>()
     var maybe = Kind<Integer?>()
-    var address = Kind<Memory.Address>()
+    var address = Kind<Dictionary<String, Integer>>()
     console.print("{flag.name()}, {text.name()}, {shade.name()}, {list.name()}, {maybe.name()}, {address.name()}")
 }

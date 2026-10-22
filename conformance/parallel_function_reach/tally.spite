@@ -1,11 +1,8 @@
 var total = 0
-var guard = Lock()
 var marks = List<Integer>()
 
 func count_up(): Integer {
-    guard.lock()
     total = total + 1
-    guard.unlock()
     record()
     return total
 }

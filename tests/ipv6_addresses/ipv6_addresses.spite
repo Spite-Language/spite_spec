@@ -1,5 +1,4 @@
 var console = Console()
-var heap = Memory.Heap()
 var ipv4 = Socket()
 var ipv6 = Socket()
 
@@ -32,8 +31,6 @@ func everywhere() {
     var first_port = addresses.read_port(first)
     var fallback_text = addresses.address_text(fallback)
     console.print("everywhere binds {first_text} port {first_port}, or {fallback_text} without IPv6")
-    heap.free(first)
-    heap.free(fallback)
 }
 
 func reach(server: Socket, host: String, port: Integer) {
