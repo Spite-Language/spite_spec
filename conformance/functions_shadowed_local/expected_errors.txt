@@ -1,0 +1,1 @@
+conformance/functions_shadowed_local/functions_shadowed_local.spite:6: error: the variable 'file_stem' has the name of a function of this class, and a function is a value passed by its name: give the variable a name of its own (in FunctionsShadowedLocal.FunctionsShadowedLocal)

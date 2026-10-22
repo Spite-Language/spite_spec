@@ -1,0 +1,10 @@
+var console = Console()
+
+func JsonPrivateSkipped() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var account = Account()
+    var writer = JsonWriter<Account>()
+    var text = writer.write(account)
+    var secret = account.secret()
+    console.print(text, secret)
+}

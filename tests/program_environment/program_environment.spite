@@ -1,0 +1,15 @@
+var console = Console()
+var program = Program()
+
+func ProgramEnvironment() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var missing = program.environment("SPITE_NO_SUCH_VARIABLE_ANYWHERE")
+    var path = program.environment("PATH")
+    var has_path = false
+    if path {
+        has_path = not path.is_empty()
+    }
+    var executable = program.executable_path()
+    var named = executable.ends_with("program_environment.exe")
+    console.print(missing, has_path, named)
+}

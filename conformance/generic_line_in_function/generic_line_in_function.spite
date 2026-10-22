@@ -1,0 +1,7 @@
+var console = Console()
+
+func GenericLineInFunction() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    generic $count_type
+    console.print("never")
+}

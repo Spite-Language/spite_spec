@@ -1,0 +1,11 @@
+var console = Console()
+
+func TemplateCallerFunction() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["Ada", "Grace"]
+    names.each_say_hello()
+}
+
+func say_hello(name: String) {
+    console.print("hello, {name}")
+}

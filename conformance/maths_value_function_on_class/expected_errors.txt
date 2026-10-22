@@ -1,0 +1,1 @@
+conformance/maths_value_function_on_class/maths_value_function_on_class.spite:5: error: 'Float.square_root()' calls a function of a value on the class: the class Float answers only its constants, ... (in MathsValueFunctionOnClass.MathsValueFunctionOnClass)

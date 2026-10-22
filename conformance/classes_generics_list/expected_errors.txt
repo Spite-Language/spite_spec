@@ -1,0 +1,1 @@
+conformance/classes_generics_list/classes_generics_list.spite:1: error: there is no 'generics' list: a class declares each codegen value on its own line at the top of the file, like 'generic $damage_type'

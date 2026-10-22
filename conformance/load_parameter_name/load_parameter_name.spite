@@ -1,0 +1,10 @@
+var console = Console()
+
+func LoadParameterName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    show(3)
+}
+
+func show(load: Integer) {
+    console.print(load)
+}

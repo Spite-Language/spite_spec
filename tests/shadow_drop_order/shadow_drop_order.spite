@@ -1,0 +1,9 @@
+var console = Console()
+
+func ShadowDropOrder() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var resource = Resource("first")
+    console.print("holding {resource.label}")
+    var resource = Resource("second")
+    console.print("holding {resource.label}")
+}

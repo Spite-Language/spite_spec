@@ -1,0 +1,5 @@
+var stage: Stage = 'draft'
+
+func summary(): String {
+    return "stage {stage}"
+}

@@ -1,0 +1,5 @@
+var console = Console()
+
+func Other() {
+    console.print("never")
+}

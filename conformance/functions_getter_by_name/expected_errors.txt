@@ -1,0 +1,1 @@
+conformance/functions_getter_by_name/functions_getter_by_name.spite:6: error: ...write 'person.full_name'... (in FunctionsGetterByName.FunctionsGetterByName)

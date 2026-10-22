@@ -1,0 +1,1 @@
+conformance/json_reader_union/json_reader_union.spite:5: error: JsonReader cannot read 'Owner': 'Owner.pet' is the union Pet, and JSON does not say which member a value is... (in JsonReaderUnion.JsonReaderUnion)

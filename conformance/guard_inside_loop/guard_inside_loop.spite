@@ -1,0 +1,23 @@
+var console = Console()
+var names = ["ada", "bo"]
+
+func GuardInsideLoop() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var found = longer_than(2)
+    console.print(found == "ada")
+}
+
+func longer_than(length: Integer): String? {
+    var index = 0
+    while index < names.count() {
+        if length < 0 {
+            return null
+        }
+        var name = names[index]
+        if name.length() > length {
+            return name
+        }
+        index = index + 1
+    }
+    return null
+}

@@ -1,0 +1,19 @@
+var console = Console()
+
+func ListEmptyEnds() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = List<String>()
+    var first = names.first()
+    var last = names.last()
+    var taken_first = names.remove_first()
+    var taken_last = names.remove_last()
+    var read = names[0]
+    console.print(first, last, taken_first, taken_last, read)
+    names.append("ada")
+    var past_end = names[1]
+    var before_start = names[-1]
+    console.print(past_end, before_start)
+    var only = names.first()
+    crash only
+    console.print(only)
+}

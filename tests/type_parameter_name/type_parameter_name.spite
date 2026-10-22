@@ -1,0 +1,11 @@
+var console = Console()
+
+func TypeParameterName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var described = describe("knight")
+    console.print(described)
+}
+
+func describe(type: String): String {
+    return "a {type}"
+}

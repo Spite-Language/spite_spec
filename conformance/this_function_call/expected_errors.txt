@@ -1,0 +1,1 @@
+conformance/this_function_call/this_function_call.spite:10: error: a class calls its own functions by name: write 'to_string()', not 'this.to_string()' (in ThisFunctionCall.label)

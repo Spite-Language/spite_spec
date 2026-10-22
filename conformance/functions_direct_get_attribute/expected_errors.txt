@@ -1,0 +1,1 @@
+conformance/functions_direct_get_attribute/functions_direct_get_attribute.spite:6: error: ...write 'person.age'... (in FunctionsDirectGetAttribute.FunctionsDirectGetAttribute)

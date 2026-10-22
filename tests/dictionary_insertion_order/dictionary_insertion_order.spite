@@ -1,0 +1,18 @@
+var console = Console()
+
+func DictionaryInsertionOrder() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var stock = Dictionary<String, Integer>()
+    stock["pear"] = 1
+    stock["apple"] = 2
+    stock["fig"] = 3
+    stock["pear"] = 9
+    var keys = stock.keys().join(",")
+    var values = stock.values().join(",")
+    console.print(keys, values)
+    stock.remove_at("pear")
+    stock["pear"] = 4
+    keys = stock.keys().join(",")
+    values = stock.values().join(",")
+    console.print(keys, values)
+}

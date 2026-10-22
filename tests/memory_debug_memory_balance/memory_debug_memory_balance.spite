@@ -1,0 +1,16 @@
+var console = Console()
+
+func MemoryDebugMemoryBalance() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var parts = List<Part>()
+    var index = 0
+    while index < 3 {
+        var part = Part("part {index}")
+        parts.append(part)
+        index = index + 1
+    }
+    var count = parts.count()
+    var last = parts.last()
+    crash last
+    console.print("made", count, last.label)
+}

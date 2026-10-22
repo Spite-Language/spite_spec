@@ -1,0 +1,9 @@
+var console = Console()
+
+func ListByteFunctions() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = List<Byte>()
+    bytes.append(1)
+    var number = bytes.read_integer_little_endian()
+    console.print(number)
+}

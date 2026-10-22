@@ -1,0 +1,13 @@
+var console = Console()
+
+func ReflectionEntryFunctionsEmpty() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var said = greeting()
+    var functions = ReflectionEntryFunctionsEmpty.functions
+    var count = functions.count()
+    console.print(said, count)
+}
+
+func greeting(): String {
+    return "hello"
+}

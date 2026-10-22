@@ -1,0 +1,1 @@
+conformance/passed_returns_nothing/passed_returns_nothing.spite:6: error: 'filter(say_hello)': 'say_hello' returns nothing, but 'filter' needs it to return Boolean (in PassedReturnsNothing.PassedReturnsNothing)

@@ -1,0 +1,3 @@
+true
+true
+tests/crashes_map/crashes_map.spite	18	5	CrashesMap	positive	assert-predicate	value > 0	value:Integer

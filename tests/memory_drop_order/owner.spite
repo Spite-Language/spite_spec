@@ -1,0 +1,6 @@
+var console = Console()
+var part = Part("wheel")
+
+func drop() {
+    console.print("dropping owner holding", part.label)
+}

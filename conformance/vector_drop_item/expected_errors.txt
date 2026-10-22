@@ -1,0 +1,1 @@
+conformance/vector_drop_item/vector_drop_item.spite:5: error: 'Handle' cannot be an item of a Vector: it has a 'drop()', and an item inline in a Vector is never an object of its own to drop (keep 'Handle' in a 'List<Handle>') (in VectorDropItem.VectorDropItem)

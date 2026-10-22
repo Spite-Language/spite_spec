@@ -1,0 +1,5 @@
+var health = 1
+
+func is_alive(): Boolean {
+    return health > 0
+}

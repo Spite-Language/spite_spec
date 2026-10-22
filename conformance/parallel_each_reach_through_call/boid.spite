@@ -1,0 +1,11 @@
+var speed = 1
+var trail = List<Integer>()
+
+func flock() {
+    speed = speed + 1
+    remember()
+}
+
+func remember() {
+    trail.append(speed)
+}

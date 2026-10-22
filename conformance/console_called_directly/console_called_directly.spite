@@ -1,0 +1,4 @@
+func ConsoleCalledDirectly() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    Console().print("hello")
+}

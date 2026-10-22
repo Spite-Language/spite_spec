@@ -1,0 +1,1 @@
+conformance/time_duration_days/time_duration_days.spite:5: error: 'days' is not a value of ... (in TimeDurationDays.TimeDurationDays)

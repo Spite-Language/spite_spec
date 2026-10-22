@@ -1,0 +1,5 @@
+func AssertInConstructor(): Integer {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var gate = Gate(1)
+    return gate.size
+}

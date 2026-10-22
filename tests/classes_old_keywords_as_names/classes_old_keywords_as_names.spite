@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassesOldKeywordsAsNames() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var let = 2
+    var const = 3
+    var generics = 4
+    console.print(let, const, generics)
+}

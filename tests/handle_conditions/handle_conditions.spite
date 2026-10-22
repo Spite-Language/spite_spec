@@ -1,0 +1,27 @@
+var console = Console()
+
+func HandleConditions() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var limit = Parallel(three)
+    var index = 0
+    while index < limit {
+        index = index + 1
+    }
+    console.print("the while ran", index, "times")
+    var ready = Concurrent(is_ready)
+    assert ready
+    console.print("assert read the handle's value")
+    var going = Parallel(is_ready)
+    while not going {
+        console.print("never printed")
+    }
+    console.print("a while on a Boolean handle")
+}
+
+func three(): Integer {
+    return 3
+}
+
+func is_ready(): Boolean {
+    return true
+}

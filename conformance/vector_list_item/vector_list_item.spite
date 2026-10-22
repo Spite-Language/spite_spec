@@ -1,0 +1,8 @@
+var console = Console()
+
+func VectorListItem() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var lists = Vector<List<Integer>>()
+    var count = lists.count()
+    console.print(count)
+}

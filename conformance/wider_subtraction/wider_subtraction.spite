@@ -1,0 +1,9 @@
+var console = Console()
+
+func WiderSubtraction() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = 3
+    var total: Long = 5000000000
+    var difference = count - total
+    console.print(difference)
+}

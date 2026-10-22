@@ -1,0 +1,9 @@
+var console = Console()
+
+func JsonIntegerIntoDecimal() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var reader = JsonReader<Order>()
+    var order = reader.read("\{\"weight\": 2}")
+    crash order
+    console.print(order.weight)
+}

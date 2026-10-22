@@ -1,0 +1,16 @@
+var console = Console()
+
+func CallInHoleArgument() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var text = "one two"
+    console.print("{shout(count_words(text))} words")
+}
+
+func shout(count: Integer): String {
+    return "{count}!"
+}
+
+func count_words(text: String): Integer {
+    var words = text.split(" ")
+    return words.count()
+}

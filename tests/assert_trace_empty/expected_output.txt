@@ -1,0 +1,2 @@
+spite: the program stopped at tests/assert_trace_empty/assert_trace_empty.spite:4 in AssertTraceEmpty.AssertTraceEmpty (words.count()=0)
+spite.assert	...	tests/assert_trace_empty/assert_trace_empty.spite:8	AssertTraceEmpty	split_words	answered=empty

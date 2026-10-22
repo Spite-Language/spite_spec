@@ -1,0 +1,22 @@
+var console = Console()
+var program = Program()
+
+func FinishedValueRunning() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var napping = Concurrent(nap)
+    var early = napping.finished_value()
+    if early {
+        console.print("finished at once with", early)
+    } else {
+        console.print("no value while it runs")
+    }
+    var napped: Integer = napping
+    var late = napping.finished_value()
+    crash late
+    console.print("joined", napped, "and then finished_value answers", late)
+}
+
+func nap(): Integer {
+    program.sleep(20)
+    return 20
+}

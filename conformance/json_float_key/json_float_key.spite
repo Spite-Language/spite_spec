@@ -1,0 +1,10 @@
+var console = Console()
+
+func JsonFloatKey() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var weights = Dictionary<Float, String>()
+    weights[0.5] = "half"
+    var writer = JsonWriter<Dictionary<Float, String>>()
+    var text = writer.write(weights)
+    console.print(text)
+}

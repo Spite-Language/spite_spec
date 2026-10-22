@@ -1,0 +1,21 @@
+var console = Console()
+
+func AssertAnswersEmpty() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var some = split_words("a b")
+    var nothing = split_words("")
+    var table = counted("")
+    console.print(some.count(), nothing.count(), table.count())
+}
+
+func split_words(text: String): List<String> {
+    assert not text.is_empty()
+    return text.split(" ")
+}
+
+func counted(text: String): Dictionary<String, Integer> {
+    assert not text.is_empty()
+    var table = Dictionary<String, Integer>()
+    table[text] = 1
+    return table
+}

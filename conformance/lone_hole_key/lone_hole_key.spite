@@ -1,0 +1,10 @@
+var console = Console()
+
+func LoneHoleKey() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var clicks = 3
+    var keyed = Dictionary<String, Integer>()
+    keyed["{clicks}"] = 1
+    var count = keyed.count()
+    console.print(count)
+}

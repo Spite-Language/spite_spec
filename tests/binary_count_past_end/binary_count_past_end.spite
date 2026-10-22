@@ -1,0 +1,22 @@
+var console = Console()
+
+func BinaryCountPastEnd() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var reader = BinaryReader<Bag>()
+    var good = Buffer(0)
+    good.append(1)
+    good.append_integer_little_endian(9)
+    var read_good = reader.read(good)
+    crash read_good
+    var items = read_good.items.join(",")
+    var too_many = Buffer(0)
+    too_many.append(5)
+    too_many.append_integer_little_endian(9)
+    var read_too_many = reader.read(too_many)
+    var text_reader = BinaryReader<Label>()
+    var cut_text = Buffer(0)
+    cut_text.append(4)
+    cut_text.append(65)
+    var read_cut = text_reader.read(cut_text)
+    console.print(items, not read_too_many, not read_cut)
+}

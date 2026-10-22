@@ -1,0 +1,22 @@
+var console = Console()
+
+func StringSmallNumbers() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tiny_top = "127".to_tiny()
+    var tiny_over = "128".to_tiny()
+    var tiny_bottom = "-128".to_tiny()
+    var short_over = "32768".to_short()
+    var short_top = " 32767 ".to_short()
+    console.print(tiny_top, tiny_over, tiny_bottom, short_over, short_top)
+    var unsigned_short_top = "65535".to_unsigned_short()
+    var unsigned_short_negative = "-1".to_unsigned_short()
+    var byte_top = "255".to_byte()
+    var unsigned_long_top = "18446744073709551615".to_unsigned_long()
+    var unsigned_long_over = "18446744073709551616".to_unsigned_long()
+    console.print(unsigned_short_top, unsigned_short_negative, byte_top, unsigned_long_top, unsigned_long_over)
+    var half = ".5".to_float()
+    var spaced = " 2 ".to_float()
+    var signed = "+1.5e1".to_double()
+    var no_digits = ".".to_double()
+    console.print(half, spaced, signed, no_digits)
+}

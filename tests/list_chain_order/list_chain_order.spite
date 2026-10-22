@@ -1,0 +1,12 @@
+var console = Console()
+
+func ListChainOrder() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var lamps = List<Lamp>()
+    var first = Lamp("first")
+    lamps.append(first)
+    var second = Lamp("second")
+    lamps.append(second)
+    var total = lamps.filter_is_lit().sum_brightness()
+    console.print(total)
+}

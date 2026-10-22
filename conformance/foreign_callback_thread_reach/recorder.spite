@@ -1,0 +1,5 @@
+var marks = List<Integer>()
+
+func marked(value: Integer) {
+    marks.append(value)
+}

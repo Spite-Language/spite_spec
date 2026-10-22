@@ -1,0 +1,15 @@
+var console = Console()
+var velocities = Vector<Velocity>()
+
+func VectorBorrowReturned() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Velocity(1, "first")
+    velocities.append(first)
+    var leaked = first_velocity()
+    console.print(leaked.across, leaked.name)
+}
+
+func first_velocity(): Velocity {
+    crash velocities[0]
+    return velocities[0]
+}

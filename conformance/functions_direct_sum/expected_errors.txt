@@ -1,0 +1,1 @@
+conformance/functions_direct_sum/functions_direct_sum.spite:6: error: ...write 'first + 4'... (in FunctionsDirectSum.FunctionsDirectSum)

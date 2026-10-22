@@ -1,0 +1,11 @@
+var console = Console()
+
+func ConsoleReadCarriageReturn() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var line = console.read_line()
+    crash line
+    var length = line.length()
+    var last = console.read_line()
+    crash last
+    console.print("[{line}]", length, "[{last}]")
+}

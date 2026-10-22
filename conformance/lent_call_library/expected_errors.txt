@@ -1,0 +1,1 @@
+conformance/lent_call_library/lent_call_library.spite:12: error: 'first' is borrowed from 'mice', and 'contains' is a library function, which is never lent an item: pass the attributes it needs, or 'first.copy()' where a snapshot is what it wants (in LentCallLibrary.LentCallLibrary)

@@ -1,0 +1,1 @@
+conformance/foreign_naming_rule/foreign_naming_rule.spite:2: error: 'shouting' is not a naming rule: a library's functions are named 'identity', 'windows' or 'camel_case' (in ForeignNamingRule.)

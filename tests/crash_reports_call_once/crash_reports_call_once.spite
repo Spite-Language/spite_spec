@@ -1,0 +1,15 @@
+var console = Console()
+
+func CrashReportsCallOnce() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    check(4)
+}
+
+func next_value(start: Integer): Integer {
+    console.print("called")
+    return start + 1
+}
+
+func check(start: Integer) {
+    crash next_value(start) > 9
+}

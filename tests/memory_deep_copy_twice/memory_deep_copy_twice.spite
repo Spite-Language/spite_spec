@@ -1,0 +1,12 @@
+var console = Console()
+
+func MemoryDeepCopyTwice() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pair = Pair()
+    var leaf = Leaf(3)
+    pair.left = leaf
+    pair.right = leaf
+    var copied = pair.deep_copy()
+    copied.left.weight = 9
+    console.print(pair.left == pair.right, copied.left == copied.right, copied.right.weight, pair.left.weight)
+}

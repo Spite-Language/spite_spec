@@ -1,0 +1,10 @@
+func described(): String {
+    crash namespace
+    return "{class.name} in {namespace}"
+}
+
+func shadowed(): String {
+    crash namespace
+    var class = "a local named class"
+    return "{class}, not {namespace}"
+}

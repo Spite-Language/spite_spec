@@ -1,0 +1,5 @@
+singleton
+
+func counted(value: Integer): Integer {
+    return value
+}

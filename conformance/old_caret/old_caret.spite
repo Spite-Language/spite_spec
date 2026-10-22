@@ -1,0 +1,9 @@
+var console = Console()
+
+func OldCaret() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var flags = 3
+    var mask = 4
+    var mixed = flags ^ mask
+    console.print(mixed)
+}

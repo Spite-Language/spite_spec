@@ -1,0 +1,9 @@
+func ReflectionCallUnfilled() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var troll = Monster()
+    var hurt = Monster.functions['hurt']
+    crash hurt
+    var call = Spite.Call(hurt, troll)
+    call.arguments['amount'] = 3
+    call.call()
+}

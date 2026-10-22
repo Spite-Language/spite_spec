@@ -1,0 +1,8 @@
+var console = Console()
+
+func ListPopName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["ada", "grace"]
+    var last_name = names.pop()
+    console.print(last_name)
+}

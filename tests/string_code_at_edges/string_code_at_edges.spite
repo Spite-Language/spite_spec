@@ -1,0 +1,11 @@
+var console = Console()
+
+func StringCodeAtEdges() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var word = "ab"
+    var inside = word.code_at(1)
+    var past = word.code_at(2)
+    var before = word.code_at(-1)
+    var character_before = word.character_at(-1)
+    console.print(inside, past, before, "[{character_before}]")
+}

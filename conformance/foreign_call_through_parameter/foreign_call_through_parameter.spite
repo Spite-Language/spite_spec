@@ -1,0 +1,12 @@
+var console = Console()
+var library = DynamicLibrary("fixture.dll", 'identity', "")
+
+func ForeignCallThroughParameter() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    call_through(library)
+}
+
+func call_through(passed: DynamicLibrary) {
+    var sum = passed.add_numbers(1, 2)
+    console.print(sum)
+}

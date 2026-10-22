@@ -1,0 +1,6 @@
+var item = ""
+var sizes = List<Integer>()
+var prices = Dictionary<String, Double>()
+var note: String? = null
+var kind: Kind = 'normal'
+var paid = false

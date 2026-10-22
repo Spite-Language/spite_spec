@@ -1,0 +1,9 @@
+func RemoveWhereReturnsNumber() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["Ada", "Grace"]
+    names.remove_where(measure)
+}
+
+func measure(name: String): Integer {
+    return name.length()
+}

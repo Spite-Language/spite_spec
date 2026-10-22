@@ -1,0 +1,14 @@
+var console = Console()
+var environment = Environment()
+
+func ProgramsArgumentsBesideSettings() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var arguments = Arguments()
+    var given = arguments.count()
+    console.print(environment.workers, given)
+    if arguments.player_name {
+        console.print("given", arguments.player_name)
+    } else {
+        console.print("not given")
+    }
+}

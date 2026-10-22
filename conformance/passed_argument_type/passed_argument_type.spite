@@ -1,0 +1,11 @@
+var console = Console()
+
+func PassedArgumentType() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["Ada", "Grace"]
+    names.each(count_to)
+}
+
+func count_to(value: Integer) {
+    console.print(value)
+}

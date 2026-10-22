@@ -1,0 +1,1 @@
+conformance/shape_operator_without_function/shape_operator_without_function.spite:16: error: '+' on a value read as 'Sized' needs the class that fits the type, which is not known while compiling: take the value through a codegen value the type constrains, 'generic $value_type: Sized' (in ShapeOperatorWithoutFunction.joined)

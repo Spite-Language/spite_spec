@@ -1,0 +1,3 @@
+func get_part(): Part {
+    return Part("temporary")
+}

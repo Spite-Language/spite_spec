@@ -1,0 +1,20 @@
+enum Color {
+    'red'
+    'green'
+}
+
+enum Size {
+    'small'
+    'medium'
+    'large'
+}
+
+var console = Console()
+
+func EnumValuesGeneric() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var colors = Lister<Color>()
+    colors.list()
+    var sizes = Lister<Size>()
+    sizes.list()
+}

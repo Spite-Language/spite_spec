@@ -1,0 +1,21 @@
+var console = Console()
+
+func LeavingIfProvesNothing() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var size = size_of("abc")
+    console.print(size)
+}
+
+func find_text(text: String): String? {
+    assert not text.is_empty()
+    return text
+}
+
+func size_of(text: String): Integer {
+    var found = find_text(text)
+    if not found {
+        return -1
+    }
+    crash found
+    return found.length()
+}

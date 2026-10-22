@@ -1,0 +1,22 @@
+union Creature {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func ControlCaseTwoStatements() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var cat = Cat()
+    greet(cat)
+}
+
+func greet(creature: Creature) {
+    switch creature {
+        Cat: {
+            console.print("a cat")
+            console.print("purrs")
+        }
+        Dog: console.print("a dog")
+    }
+}

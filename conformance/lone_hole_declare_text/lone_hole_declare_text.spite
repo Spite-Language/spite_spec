@@ -1,0 +1,8 @@
+var console = Console()
+
+func LoneHoleDeclareText() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = "ada"
+    var shown = "{name}"
+    console.print(shown)
+}

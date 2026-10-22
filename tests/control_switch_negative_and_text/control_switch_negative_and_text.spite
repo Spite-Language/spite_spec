@@ -1,0 +1,29 @@
+var console = Console()
+
+func ControlSwitchNegativeAndText() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var minus = sign_name(-1)
+    var zero = sign_name(0)
+    var four = sign_name(4)
+    console.print(minus, zero, four)
+    var spanish = greeting_in("es")
+    var french = greeting_in("fr")
+    var german = greeting_in("de")
+    console.print(spanish, french, german)
+}
+
+func sign_name(number: Integer): String {
+    switch number {
+        -1: return "minus one"
+        0: return "zero"
+        _: return "other"
+    }
+}
+
+func greeting_in(language: String): String {
+    switch language {
+        "es": return "hola"
+        "fr": return "salut"
+        _: return "hello"
+    }
+}

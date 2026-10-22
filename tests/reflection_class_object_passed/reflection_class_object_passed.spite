@@ -1,0 +1,24 @@
+var console = Console()
+
+func ReflectionClassObjectPassed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var health = Health()
+    var armor = Armor()
+    console.print(health.points, armor.plates)
+    var kind: Spite.Class = Health
+    console.print(kind)
+    kind = Armor
+    console.print(kind.name)
+    var named = name_of(Health)
+    console.print(named)
+    var chosen = chosen_class()
+    console.print(chosen)
+}
+
+func name_of(described: Spite.Class): String {
+    return described.name
+}
+
+func chosen_class(): Spite.Class {
+    return Armor
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func ParallelEachAfterMap() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var cells = List<Cell>()
+    var cell = Cell()
+    cells.append(cell)
+    cells.map_partners().parallel_each_grow()
+    var count = cells.count()
+    console.print(count)
+}

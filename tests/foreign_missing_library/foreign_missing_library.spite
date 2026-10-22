@@ -1,0 +1,9 @@
+var console = Console()
+var absent = DynamicLibrary("tests/foreign_missing_library/absent.dll", 'identity', "")
+
+func ForeignMissingLibrary() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("before the library is used")
+    absent.click(1)
+    console.print("never printed")
+}

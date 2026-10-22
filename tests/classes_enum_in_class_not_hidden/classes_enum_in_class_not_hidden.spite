@@ -1,0 +1,8 @@
+var console = Console()
+
+func ClassesEnumInClassNotHidden() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var player = Player()
+    var plain = Kind()
+    console.print(player.job, player.kind, plain.size)
+}

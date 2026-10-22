@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReopenedVarType() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "first"
+    load "second"
+    var hero = Game.Hero()
+    console.print(hero.level)
+}

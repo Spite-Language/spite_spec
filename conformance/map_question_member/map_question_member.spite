@@ -1,0 +1,11 @@
+var console = Console()
+
+func MapQuestionMember() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var monsters = List<Monster>()
+    var rat = Monster(3)
+    monsters.append(rat)
+    var alive = monsters.map_is_alive()
+    var counted = alive.count()
+    console.print(counted)
+}

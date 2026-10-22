@@ -1,0 +1,13 @@
+var console = Console()
+
+func NegateOverflow() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var small = 5
+    var negated = -small
+    var nothing: UnsignedInteger = 0
+    var still = -nothing
+    console.print(negated, still)
+    var lowest = Integer.smallest
+    var flipped = -lowest
+    console.print("never printed", flipped)
+}

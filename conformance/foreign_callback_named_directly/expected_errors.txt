@@ -1,0 +1,1 @@
+conformance/foreign_callback_named_directly/foreign_callback_named_directly.spite:7: error: ForeignCallback(...) takes a function named directly, like 'mixer.voice_ended', and where C passes it back its context: 'no_context', 'context_first' or 'context_last' (in ForeignCallbackNamedDirectly.ForeignCallbackNamedDirectly)

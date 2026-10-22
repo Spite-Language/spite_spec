@@ -1,0 +1,2 @@
+the call that handed it over has returned
+spite: C called 'clicked' (tests/foreign_callback_after_call/foreign_callback_after_call.spite:6) after the foreign call that handed it over had returned, or on another thread: a function C keeps, or calls from a thread of its own, is handed over as a ForeignCallback the program keeps for as long as C may call it

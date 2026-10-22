@@ -1,0 +1,22 @@
+var console = Console()
+
+func BinaryRoundTrip() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var order = Order()
+    order.item = "tea"
+    order.sizes.append(2)
+    order.sizes.append(5)
+    order.prices["cup"] = 1.5
+    order.note = "hot"
+    order.kind = 'urgent'
+    order.paid = true
+    var writer = BinaryWriter<Order>()
+    var bytes = writer.write(order)
+    var reader = BinaryReader<Order>()
+    var back = reader.read(bytes)
+    crash back
+    crash back.note
+    crash back.prices["cup"]
+    var sizes = back.sizes.join(",")
+    console.print(back.item, sizes, back.prices["cup"], back.note, back.kind, back.paid)
+}

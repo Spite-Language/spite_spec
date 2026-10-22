@@ -1,0 +1,12 @@
+var console = Console()
+
+func MemoryDropOrder() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    made_and_let_go()
+    console.print("after")
+}
+
+func made_and_let_go() {
+    var owner = Owner()
+    console.print("owning", owner.part.label)
+}

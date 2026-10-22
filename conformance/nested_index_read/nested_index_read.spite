@@ -1,0 +1,13 @@
+var console = Console()
+var values = [10, 20]
+var rows = [1, 0]
+
+func NestedIndexRead() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    show(0)
+}
+
+func show(index: Integer) {
+    crash values[rows[index]]
+    console.print(values[rows[index]])
+}

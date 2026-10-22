@@ -1,0 +1,1 @@
+conformance/nullable_ordering/nullable_ordering.spite:6: error: this value may be null (it is an Integer?)... (in NullableOrdering.NullableOrdering)

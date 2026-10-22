@@ -1,0 +1,13 @@
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_callback_second_alive/fixture.dll", 'identity', "")
+var clicks = Clicks()
+
+func ForeignCallbackSecondAlive() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = ForeignCallback(clicks.clicked, 'no_context')
+    plain.keep_click(first.address)
+    plain.click(1)
+    var second = ForeignCallback(clicks.clicked, 'no_context')
+    plain.keep_click(second.address)
+    plain.click(2)
+}

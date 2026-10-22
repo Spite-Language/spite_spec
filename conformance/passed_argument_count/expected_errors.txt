@@ -1,0 +1,1 @@
+conformance/passed_argument_count/passed_argument_count.spite:6: error: 'each' calls 'greet_twice' with each 'String' as its only argument, but 'greet_twice' takes 2 (in PassedArgumentCount.PassedArgumentCount)

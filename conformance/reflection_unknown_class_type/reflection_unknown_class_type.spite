@@ -1,0 +1,13 @@
+var console = Console()
+var kind: Spite.Class = Health
+
+func ReflectionUnknownClassType() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var health = Health()
+    var armor = Armor()
+    console.print(health.points, armor.plates)
+    kind = Armor
+    var values = List<kind>()
+    var count = values.count()
+    console.print(count)
+}

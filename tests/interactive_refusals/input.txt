@@ -1,0 +1,16 @@
+reload
+where
+locals
+continue
+scores.keys()
+ages.keys()
+ages.has("ann")
+ages.has("bob")
+values._swap()
+title = "the {hour} show"
+title = "a \"quoted\" show"
+title
+enums
+grow().size
+values.size
+exit

@@ -1,0 +1,13 @@
+var console = Console()
+var handle = -1
+
+func DefaultAnswerBoolean() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var open = is_open()
+    console.print(open)
+}
+
+func is_open(): Boolean {
+    assert handle >= 0
+    return true
+}

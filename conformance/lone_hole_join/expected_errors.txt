@@ -1,0 +1,1 @@
+conformance/lone_hole_join/lone_hole_join.spite:7: error: '"{clicks}"' is a text of one value and nothing else: join the value directly, 'line + clicks' (in LoneHoleJoin.LoneHoleJoin)

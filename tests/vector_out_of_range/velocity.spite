@@ -1,0 +1,9 @@
+var across = 0.0
+
+func Velocity(new_across: Float) {
+    across = new_across
+}
+
+func to_string(): String {
+    return "velocity {across}"
+}

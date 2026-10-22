@@ -1,0 +1,12 @@
+var console = Console()
+
+func MapSharedPlural() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var crowds = List<Crowd>()
+    var crowd = Crowd("ann", "ann and bob")
+    crowds.append(crowd)
+    console.print(crowd.person, crowd.people)
+    var people = crowds.map_people()
+    var counted = people.count()
+    console.print(counted)
+}

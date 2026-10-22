@@ -1,0 +1,20 @@
+var console = Console()
+var program = Program()
+
+func PollWithoutStepHalts() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var napping = Concurrent(nap)
+    var polls = 0
+    while not napping.finished {
+        polls = counted(polls)
+    }
+    console.print("never printed", polls)
+}
+
+func counted(polls: Integer): Integer {
+    return polls + 1
+}
+
+func nap() {
+    program.sleep(5)
+}

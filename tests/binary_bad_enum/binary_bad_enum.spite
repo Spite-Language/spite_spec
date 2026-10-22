@@ -1,0 +1,14 @@
+var console = Console()
+
+func BinaryBadEnum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var reader = BinaryReader<Ticket>()
+    var good = Buffer(0)
+    good.append(1)
+    var read_good = reader.read(good)
+    crash read_good
+    var past_last = Buffer(0)
+    past_last.append(2)
+    var read_past = reader.read(past_last)
+    console.print(read_good.kind, not read_past)
+}

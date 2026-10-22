@@ -1,0 +1,1 @@
+conformance/reflection_call_other_class/reflection_call_other_class.spite:8: error: 'rock' is a 'Rock', and 'hurt' is declared by 'Monster': a call runs a declaration on an instance of its own class (in ReflectionCallOtherClass.ReflectionCallOtherClass)

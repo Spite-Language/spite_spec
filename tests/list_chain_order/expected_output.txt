@@ -1,0 +1,5 @@
+is_lit first
+brightness first
+is_lit second
+brightness second
+4

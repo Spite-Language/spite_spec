@@ -1,0 +1,8 @@
+var console = Console()
+
+func DictionaryUnionKey() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = Dictionary<Pet, String>()
+    var count = names.count()
+    console.print(count)
+}

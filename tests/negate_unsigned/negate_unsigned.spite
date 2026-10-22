@@ -1,0 +1,8 @@
+var console = Console()
+
+func NegateUnsigned() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var three: UnsignedInteger = 3
+    var flipped = -three
+    console.print("never printed", flipped)
+}

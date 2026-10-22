@@ -1,0 +1,14 @@
+var console = Console()
+var first = Channel(1)
+var second = Channel(2)
+var again = Channel(1)
+
+func ClassesSingletonPerArguments() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    first.send("a")
+    second.send("b")
+    again.send("c")
+    var first_count = first.sent.count()
+    var second_count = second.sent.count()
+    console.print(first_count, second_count, first.number, second.number)
+}

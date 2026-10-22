@@ -1,0 +1,7 @@
+var console = Console()
+var _secret = 1
+
+func PrivateAttributeUnread() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("kept")
+}

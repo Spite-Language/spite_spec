@@ -1,0 +1,23 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var console = Console()
+
+func ListJoinValues() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = [1, -2, 3]
+    var decimals = [1.5, 0.25]
+    var answers = [true, false]
+    var moods = List<Mood>()
+    moods.append('calm')
+    moods.append('angry')
+    var empty = List<String>()
+    var joined_numbers = numbers.join(" ")
+    var joined_decimals = decimals.join(" ")
+    var joined_answers = answers.join(" ")
+    var joined_moods = moods.join(" ")
+    var joined_empty = empty.join(",")
+    console.print(joined_numbers, "|", joined_decimals, "|", joined_answers, "|", joined_moods, "|", "[{joined_empty}]")
+}

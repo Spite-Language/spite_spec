@@ -1,0 +1,13 @@
+union Shape {
+    Circle
+    Square
+}
+
+var console = Console()
+
+func ClassTestNotMember() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var shape: Shape = Circle()
+    var round = shape == Triangle
+    console.print(round)
+}

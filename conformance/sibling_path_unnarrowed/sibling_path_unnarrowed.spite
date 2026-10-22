@@ -1,0 +1,15 @@
+var console = Console()
+
+func SiblingPathUnnarrowed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Box()
+    var second = Box()
+    first.inner = Box()
+    second.inner = Box()
+    show(first, second)
+}
+
+func show(first: Box, second: Box) {
+    assert first.inner
+    console.print(first.inner.label, second.inner.label)
+}

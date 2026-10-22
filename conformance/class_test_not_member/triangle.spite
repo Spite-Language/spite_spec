@@ -1,0 +1,5 @@
+var base = 1
+
+func size(): Integer {
+    return base
+}

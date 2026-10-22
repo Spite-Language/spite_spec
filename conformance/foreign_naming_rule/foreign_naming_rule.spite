@@ -1,0 +1,8 @@
+var console = Console()
+var library = DynamicLibrary("fixture.dll", 'shouting', "")
+
+func ForeignNamingRule() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var sum = library.add_numbers(1, 2)
+    console.print(sum)
+}

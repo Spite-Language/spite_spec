@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassesPrefixTwoAllowed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var block = Backend.HighBlock()
+    var value = Backend.HighValue()
+    var road = Backend.Highway()
+    console.print(block.size, value.size, road.size)
+}

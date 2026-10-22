@@ -1,0 +1,14 @@
+singleton
+
+var console = Console()
+var number = 0
+var sent = List<String>()
+
+func Channel(channel_number: Integer) {
+    number = channel_number
+    console.print("made", channel_number)
+}
+
+func send(text: String) {
+    sent.append(text)
+}

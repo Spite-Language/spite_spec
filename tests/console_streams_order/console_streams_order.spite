@@ -1,0 +1,10 @@
+var console = Console()
+
+func ConsoleStreamsOrder() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("first")
+    console.error("second")
+    console.write("third")
+    console.error("fourth")
+    console.print(" fifth")
+}

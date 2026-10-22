@@ -1,0 +1,5 @@
+var tricks = 2
+
+func is_clever(): Boolean {
+    return tricks > 1
+}

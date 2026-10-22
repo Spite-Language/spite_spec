@@ -1,0 +1,1 @@
+conformance/reflection_declaration_value/reflection_declaration_value.spite:11: error: 'attribute.value' reads an attribute of an instance, and 'attribute' describes a declaration: walk the instance's own attributes, 'monster.attributes', or read 'monster.attributes[attribute]' (in ReflectionDeclarationValue.show)

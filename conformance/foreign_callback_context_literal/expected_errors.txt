@@ -1,0 +1,1 @@
+conformance/foreign_callback_context_literal/foreign_callback_context_literal.spite:6: error: 'somewhere' is not where C passes a callback its context: write 'no_context', 'context_first' or 'context_last' (in ForeignCallbackContextLiteral.ForeignCallbackContextLiteral)

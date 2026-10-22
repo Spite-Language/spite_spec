@@ -1,0 +1,8 @@
+var console = Console()
+
+func ClassesTextBindsSingletonLocally() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var word = "ada"
+    var shouted = word.shouted()
+    console.print(shouted)
+}

@@ -1,0 +1,19 @@
+var console = Console()
+
+func ListFindNone() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["ada", "bob"]
+    var found = names.find(is_long)
+    var counted = names.count(is_long)
+    var size = names.count()
+    var any_long = names.any(is_long)
+    var all_long = names.all(is_long)
+    var empty = List<String>()
+    var all_of_none = empty.all(is_long)
+    var any_of_none = empty.any(is_long)
+    console.print(found, counted, size, any_long, all_long, all_of_none, any_of_none)
+}
+
+func is_long(name: String): Boolean {
+    return name.length() > 5
+}

@@ -1,0 +1,6 @@
+var first = "ada"
+var last = "lovelace"
+
+func get_full_name(): String {
+    return "{first} {last}"
+}

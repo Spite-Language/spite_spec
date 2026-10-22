@@ -1,0 +1,4 @@
+read
+wrote 4
+read
+4

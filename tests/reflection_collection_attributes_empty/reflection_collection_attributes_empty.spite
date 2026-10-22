@@ -1,0 +1,11 @@
+var console = Console()
+
+func ReflectionCollectionAttributesEmpty() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = [1, 2, 3]
+    var ages = Dictionary<String, Integer>()
+    ages["ada"] = 36
+    var list_attributes = numbers.class.attributes.count()
+    var dictionary_attributes = ages.class.attributes.count()
+    console.print(list_attributes, dictionary_attributes)
+}

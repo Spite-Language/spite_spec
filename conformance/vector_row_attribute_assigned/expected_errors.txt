@@ -1,0 +1,1 @@
+conformance/vector_row_attribute_assigned/keeper.spite:9: error: 'moving' holds items borrowed from 'positions' and 'velocities' for this call, so 'moving.position' is not assigned: write the item's attributes, such as 'moving.position....' (in Keeper.replace)

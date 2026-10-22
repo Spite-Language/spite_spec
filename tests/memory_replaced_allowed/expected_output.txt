@@ -1,0 +1,5 @@
+read after 10 3
+walked 0
+walked 1
+copied 1
+first 0

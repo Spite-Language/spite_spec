@@ -1,0 +1,5 @@
+var console = Console()
+
+func Server() {
+    console.print("server started")
+}

@@ -1,0 +1,15 @@
+var console = Console()
+
+func BufferFloatBits() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = Buffer(0)
+    bytes.append_double_little_endian(Double.not_a_number)
+    bytes.append_float_big_endian(1.5)
+    var nothing = bytes.read_double_little_endian_at(0)
+    crash nothing
+    var kept = nothing.is_not_a_number()
+    var half = bytes.read_float_big_endian_at(8)
+    crash half
+    var top = bytes[8]
+    console.print(kept, half, top)
+}

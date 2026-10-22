@@ -1,0 +1,1 @@
+conformance/shadowed_unread/shadowed_unread.spite:5: error: 'count' is never read: remove it (in ShadowedUnread.ShadowedUnread)

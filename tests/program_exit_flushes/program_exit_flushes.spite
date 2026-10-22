@@ -1,0 +1,9 @@
+var console = Console()
+var program = Program()
+
+func ProgramExitFlushes() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.write("written without a line end")
+    program.exit(3)
+    console.print("never printed")
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func FunctionsVariadicUntyped() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    log("a", "b")
+}
+
+func log(...words) {
+    console.print(words)
+}

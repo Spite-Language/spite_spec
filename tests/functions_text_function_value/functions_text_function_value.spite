@@ -1,0 +1,17 @@
+var console = Console()
+
+func FunctionsTextFunctionValue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var greeting = "hello world"
+    var check = greeting.contains
+    greeting = "changed"
+    var has_world = check("world")
+    var has_changed = check("changed")
+    console.print(has_world, has_changed)
+    var limit = 5
+    var below = limit.minimum
+    limit = 100
+    var smaller = below(3)
+    var larger = below(9)
+    console.print(smaller, larger)
+}

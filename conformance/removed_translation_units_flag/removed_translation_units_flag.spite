@@ -1,0 +1,6 @@
+var console = Console()
+
+func RemovedTranslationUnitsFlag() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("ran")
+}

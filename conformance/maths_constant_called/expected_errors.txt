@@ -1,0 +1,1 @@
+conformance/maths_constant_called/maths_constant_called.spite:5: error: 'Float.pi' is a constant, read as an attribute and never called: write 'Float.pi' (in MathsConstantCalled.MathsConstantCalled)

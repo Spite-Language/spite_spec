@@ -1,0 +1,2 @@
+var blob = Blob(4)
+var name = "holder"

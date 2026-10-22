@@ -1,0 +1,10 @@
+var console = Console()
+
+func ProgramsBareDoubleDash() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var arguments = Arguments()
+    var given = arguments.count()
+    var first = arguments.get(0)
+    var second = arguments.get(1)
+    console.print(given, first, second)
+}

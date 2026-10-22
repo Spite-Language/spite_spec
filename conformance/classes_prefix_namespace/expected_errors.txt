@@ -1,0 +1,1 @@
+conformance/classes_prefix_namespace/backend/high_block.spite: error: 'HighBlock', 'HighFunction' and 'HighValue' in 'backend/' all start with 'High': a word every name repeats is a namespace, so move them into the folder 'backend/high/' and name them 'Block', 'Function', 'Value'

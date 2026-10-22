@@ -1,0 +1,1 @@
+conformance/classes_unread_singleton/classes_unread_singleton.spite:2: error: the attribute 'clock' is never read: remove it (in ClassesUnreadSingleton.)

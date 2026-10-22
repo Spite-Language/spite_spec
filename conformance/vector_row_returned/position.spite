@@ -1,0 +1,5 @@
+var left = 0
+
+func Position(new_left: Integer) {
+    left = new_left
+}

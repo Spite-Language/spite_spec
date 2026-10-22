@@ -1,0 +1,1 @@
+conformance/enum_template_no_member/enum_template_no_member.spite:6: error: 'Post' has no attribute or zero argument function 'deleted' for 'any_deleted', and no enum of its members lists 'deleted' (in EnumTemplateNoMember.EnumTemplateNoMember)

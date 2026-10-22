@@ -1,0 +1,21 @@
+var console = Console()
+
+func DictionaryLiterals() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var prices = {"tea": 3, "cake": 5,}
+    var names = {
+        7: "seven"
+        2: "two"
+    }
+    var weights: Dictionary<String, Double> = {"flour": 1, "salt": 2}
+    var price_keys = prices.keys().join(",")
+    var tea = prices["tea"]
+    crash tea
+    var seven = names[7]
+    crash seven
+    var name_keys = names.keys().join(",")
+    var salt = weights["salt"]
+    crash salt
+    var half = salt / 4
+    console.print(price_keys, tea, name_keys, seven, half)
+}

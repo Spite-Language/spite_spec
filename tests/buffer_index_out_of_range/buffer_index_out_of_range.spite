@@ -1,0 +1,17 @@
+var console = Console()
+
+func BufferIndexOutOfRange() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = Buffer(4)
+    bytes.append(7)
+    var inside = bytes[0]
+    var past = bytes[1]
+    var before = bytes[-1]
+    var room = bytes.count()
+    console.print(inside, past, before, room)
+    bytes[0] = 9
+    var replaced = bytes[0]
+    console.print(replaced)
+    bytes[1] = 3
+    console.print("never printed")
+}

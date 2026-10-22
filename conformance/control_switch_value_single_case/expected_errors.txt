@@ -1,0 +1,1 @@
+conformance/control_switch_value_single_case/control_switch_value_single_case.spite:16: error: this switch only asks ...: write 'return light == 'red''... (in ControlSwitchValueSingleCase.is_stop)

@@ -1,0 +1,1 @@
+error: '--executable-path' says where the executable goes, and '--check' builds none: leave out --check to build it

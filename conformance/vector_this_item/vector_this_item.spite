@@ -1,0 +1,8 @@
+var console = Console()
+
+func VectorThisItem() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var selves = Vector<Selfish>()
+    var count = selves.count()
+    console.print(count)
+}

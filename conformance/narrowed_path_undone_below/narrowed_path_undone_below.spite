@@ -1,0 +1,14 @@
+var console = Console()
+
+func NarrowedPathUndoneBelow() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var outer = Box()
+    outer.inner = Box()
+    show(outer)
+}
+
+func show(outer: Box) {
+    assert outer.inner.inner
+    outer.inner = Box()
+    console.print(outer.inner.inner.label)
+}

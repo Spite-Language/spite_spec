@@ -1,0 +1,7 @@
+var console = Console()
+
+func ListHeapBox() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var boxed = Heap<Integer>(3)
+    console.print(boxed)
+}

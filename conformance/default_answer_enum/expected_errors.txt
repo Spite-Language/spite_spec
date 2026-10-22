@@ -1,0 +1,1 @@
+conformance/default_answer_enum/default_answer_enum.spite:15: error: this 'assert' would answer a default Weekday... that a caller cannot tell from a real one: return a value ('if index != 1 { return 'monday' }'), make the result 'Weekday?', or 'crash index == 1' if this is a developer mistake (in DefaultAnswerEnum.day_of)

@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassesNamespacedLibraryName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var function = Function()
+    var arena = Arena()
+    var inflection = Inflection()
+    console.print(function.name, arena.size, inflection.word)
+}

@@ -1,0 +1,16 @@
+type Named {
+    name: String
+}
+
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func UnionAfterType() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var cat = Cat()
+    console.print(cat.name)
+}

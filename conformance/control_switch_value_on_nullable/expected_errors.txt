@@ -1,0 +1,1 @@
+conformance/control_switch_value_on_nullable/control_switch_value_on_nullable.spite:10: error: ...narrow it first... (in ControlSwitchValueOnNullable.name_of)

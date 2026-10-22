@@ -1,0 +1,8 @@
+var console = Console()
+
+func ClassesSideBySideNames() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var physics = Physics.Plugin()
+    var audio = Audio.Plugin()
+    console.print(physics.name, audio.name)
+}

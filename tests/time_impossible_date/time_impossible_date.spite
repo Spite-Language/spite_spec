@@ -1,0 +1,7 @@
+var console = Console()
+
+func TimeImpossibleDate() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var day = Date(2023, 2, 29)
+    console.print(day)
+}

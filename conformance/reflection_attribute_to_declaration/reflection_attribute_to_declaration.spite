@@ -1,0 +1,12 @@
+var console = Console()
+
+func ReflectionAttributeToDeclaration() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var monster = Monster()
+    console.print(monster.health)
+    monster.attributes.each(declared)
+}
+
+func declared(attribute: Spite.AttributeDeclaration) {
+    console.print(attribute.name)
+}

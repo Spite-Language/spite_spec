@@ -1,0 +1,1 @@
+spite: '0 - three' does not fit in an UnsignedInteger (0 - 3), at tests/negate_unsigned/negate_unsigned.spite:6 in NegateUnsigned.NegateUnsigned

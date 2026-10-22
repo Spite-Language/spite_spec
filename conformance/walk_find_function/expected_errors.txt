@@ -1,0 +1,1 @@
+conformance/walk_find_function/walk_find_function.spite:30: error: this 'while' walks every element of 'items' only to ...: write 'return items.find(is_cheap)' (in WalkFindFunction.first_cheap)

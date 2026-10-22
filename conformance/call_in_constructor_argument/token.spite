@@ -1,0 +1,7 @@
+var kind = ""
+var text = ""
+
+func Token(starting_kind: String, starting_text: String) {
+    kind = starting_kind
+    text = starting_text
+}

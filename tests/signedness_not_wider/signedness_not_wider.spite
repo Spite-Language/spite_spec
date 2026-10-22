@@ -1,0 +1,12 @@
+var console = Console()
+
+func SignednessNotWider() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var signed = 5
+    var unsigned: UnsignedInteger = 7
+    var total = signed + unsigned
+    var small: Byte = 200
+    var next = small + 1
+    var above = small > 1
+    console.print(total, next, above)
+}

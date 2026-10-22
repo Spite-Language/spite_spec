@@ -1,0 +1,12 @@
+var console = Console()
+
+func ListReserve() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = List<Integer>()
+    numbers.reserve(100)
+    var empty_count = numbers.count()
+    var empty = numbers.is_empty()
+    numbers.append(4)
+    var after = numbers.count()
+    console.print(empty_count, empty, after)
+}

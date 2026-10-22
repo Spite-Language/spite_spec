@@ -1,0 +1,19 @@
+var console = Console()
+
+func FunctionsArgumentCast() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var whole = 7
+    var halved = half(whole)
+    console.print(halved)
+    var precise = 2.75
+    var rounded = whole_part(precise)
+    console.print(rounded)
+}
+
+func half(value: Double): Double {
+    return value / 2
+}
+
+func whole_part(value: Integer): Integer {
+    return value
+}

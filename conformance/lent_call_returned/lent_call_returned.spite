@@ -1,0 +1,13 @@
+var console = Console()
+var mice = Vector<Mouse>()
+var input = Input()
+
+func LentCallReturned() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var made = Mouse()
+    mice.append(made)
+    crash mice[0]
+    var mouse = mice[0]
+    var back = input.hand_back(mouse)
+    console.print(mouse.left, back.left)
+}

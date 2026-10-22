@@ -1,0 +1,32 @@
+var console = Console()
+var reader = BinaryReader<Flag>()
+
+func BinaryBadInput() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var good = Buffer(0)
+    good.append(1)
+    good.append_integer_little_endian(7)
+    show("good", good)
+    var left_over = good.copy()
+    left_over.append(0)
+    show("left over", left_over)
+    var cut = Buffer(0)
+    cut.append(1)
+    cut.append(7)
+    show("cut", cut)
+    var bad_boolean = Buffer(0)
+    bad_boolean.append(2)
+    bad_boolean.append_integer_little_endian(7)
+    show("bad boolean", bad_boolean)
+    var empty = Buffer(0)
+    show("empty", empty)
+}
+
+func show(label: String, bytes: Buffer) {
+    var flag = reader.read(bytes)
+    if flag {
+        console.print(label, flag.raised, flag.height)
+    } else {
+        console.print(label, "null")
+    }
+}

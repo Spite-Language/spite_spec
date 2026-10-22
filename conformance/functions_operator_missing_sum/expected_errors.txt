@@ -1,0 +1,1 @@
+conformance/functions_operator_missing_sum/functions_operator_missing_sum.spite:7: error: this operator on a 'Money' needs it to define 'sum(other)' (in FunctionsOperatorMissingSum.FunctionsOperatorMissingSum)

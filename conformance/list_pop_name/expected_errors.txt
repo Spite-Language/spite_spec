@@ -1,0 +1,1 @@
+conformance/list_pop_name/list_pop_name.spite:6: error: List has no method 'pop': write 'remove_last()', or 'remove_first()' to take from the start (in ListPopName.ListPopName)

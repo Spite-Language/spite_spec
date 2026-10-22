@@ -1,0 +1,5 @@
+var tricks = 2
+
+func bark(): Integer {
+    return tricks
+}

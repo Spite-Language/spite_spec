@@ -1,0 +1,8 @@
+func Baker() {
+    load "../../load_shared_package/spices"
+}
+
+func salted(): Integer {
+    var salt = Salt()
+    return salt.grains + 1
+}

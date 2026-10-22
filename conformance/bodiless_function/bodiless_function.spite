@@ -1,0 +1,9 @@
+var console = Console()
+
+func BodilessFunction() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var given = answer()
+    console.print(given)
+}
+
+func answer(): Integer

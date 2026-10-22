@@ -1,0 +1,4 @@
+func touch(mouse: Mouse) {
+    var alias = mouse
+    alias.left = 4
+}

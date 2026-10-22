@@ -1,0 +1,10 @@
+var console = Console()
+
+func ListContainsClass() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tools = List<Tool>()
+    var hammer = Tool()
+    tools.append(hammer)
+    var has_hammer = tools.contains(hammer)
+    console.print(has_hammer)
+}

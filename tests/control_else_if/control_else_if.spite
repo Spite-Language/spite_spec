@@ -1,0 +1,19 @@
+var console = Console()
+
+func ControlElseIf() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var small = size_of(1)
+    var medium = size_of(50)
+    var large = size_of(500)
+    console.print(small, medium, large)
+}
+
+func size_of(amount: Integer): String {
+    if amount < 10 {
+        return "small"
+    } else if amount < 100 {
+        return "medium"
+    } else {
+        return "large"
+    }
+}

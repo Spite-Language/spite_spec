@@ -1,0 +1,8 @@
+var console = Console()
+
+func ShadowedUnread() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = 1
+    var count = 2
+    console.print(count)
+}

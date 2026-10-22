@@ -1,0 +1,1 @@
+conformance/time_period_comparison/time_period_comparison.spite:7: error: this operator on a 'Period' needs it to define 'less_than(other)' (in TimePeriodComparison.TimePeriodComparison)

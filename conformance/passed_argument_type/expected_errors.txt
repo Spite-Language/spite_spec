@@ -1,0 +1,1 @@
+conformance/passed_argument_type/passed_argument_type.spite:6: error: 'each' calls 'count_to' with each 'String', but 'count_to' takes 'Integer' (in PassedArgumentType.PassedArgumentType)

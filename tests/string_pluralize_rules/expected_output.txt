@@ -1,0 +1,4 @@
+boxes enemies wolves knives analyses media indices matrices vertices mice oxen octopi quizzes statuses people children sheep quests
+active_quests ActiveQuests ACTIVE_QUESTS People old men
+quests people []
+map_name person enemy quest

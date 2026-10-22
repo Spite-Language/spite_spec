@@ -1,0 +1,11 @@
+generic $held_type
+
+var held: $held_type? = null
+var count = 0
+
+func Box(new_held: $held_type?) {
+    held = new_held
+    if held {
+        count = 1
+    }
+}

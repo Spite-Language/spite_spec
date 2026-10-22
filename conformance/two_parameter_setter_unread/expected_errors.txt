@@ -1,0 +1,1 @@
+conformance/two_parameter_setter_unread/person.spite:3: error: the parameter 'reason' is never read: remove it, or name it '_reason' if the signature needs it (in Person.set_age)

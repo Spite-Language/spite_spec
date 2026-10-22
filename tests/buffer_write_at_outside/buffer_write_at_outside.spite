@@ -1,0 +1,12 @@
+var console = Console()
+
+func BufferWriteAtOutside() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = Buffer(0)
+    bytes.append_integer_little_endian(0)
+    bytes.write_integer_little_endian_at(0, 77)
+    var read = bytes.read_integer_little_endian_at(0)
+    console.print(read)
+    bytes.write_integer_little_endian_at(1, 77)
+    console.print("never printed")
+}

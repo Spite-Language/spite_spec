@@ -1,0 +1,17 @@
+generic $item_type
+
+var items = List<$item_type>()
+
+func Bag(new_items: List<$item_type>) {
+    items = new_items
+}
+
+func total(): $item_type {
+    var sum: $item_type = 0
+    var index = 0
+    while index < items.count() {
+        sum = sum + items[index]
+        index = index + 1
+    }
+    return sum
+}

@@ -1,0 +1,6 @@
+var name = ""
+var scores = List<Integer>()
+
+func Holder(new_name: String) {
+    name = new_name
+}

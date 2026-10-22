@@ -1,0 +1,11 @@
+var console = Console()
+
+func LoneHoleReturn() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var text = clicks_text(3)
+    console.print(text)
+}
+
+func clicks_text(clicks: Integer): String {
+    return "{clicks}"
+}

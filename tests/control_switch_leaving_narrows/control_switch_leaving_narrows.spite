@@ -1,0 +1,23 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func ControlSwitchLeavingNarrows() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = describe(null, 'red')
+    var second = describe("found", 'green')
+    console.print(first, second)
+}
+
+func describe(found: String?, light: Light): String {
+    if not found {
+        switch light {
+            'red': return "stop"
+            'green': return "go"
+        }
+    }
+    return found
+}

@@ -1,0 +1,13 @@
+var console = Console()
+
+func MathsWholeMinimumCast() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var little: Byte = 50
+    var wide = 30
+    var smaller = little.minimum(wide)
+    var count = 5
+    var held = count.clamp(10, 3)
+    var unsigned: UnsignedInteger = 7
+    var unsigned_absolute = unsigned.absolute()
+    console.print(smaller, held, unsigned_absolute)
+}

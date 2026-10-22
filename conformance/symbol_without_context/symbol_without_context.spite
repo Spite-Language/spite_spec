@@ -1,0 +1,7 @@
+var console = Console()
+
+func SymbolWithoutContext() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var choice = 'orange'
+    console.print(choice)
+}

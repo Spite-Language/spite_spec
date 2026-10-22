@@ -1,0 +1,11 @@
+var console = Console()
+
+func DebugPrivateHidden() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var account = Account()
+    console.debug(account)
+    var empty = Empty()
+    console.debug(empty)
+    var secret = account.secret()
+    console.print(secret)
+}

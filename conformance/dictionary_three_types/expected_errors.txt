@@ -1,0 +1,1 @@
+conformance/dictionary_three_types/dictionary_three_types.spite:5: error: a Dictionary names two types, its keys' and then its values', as in 'Dictionary<String, Integer>', and this one names 3 (in DictionaryThreeTypes.DictionaryThreeTypes)

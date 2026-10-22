@@ -1,0 +1,22 @@
+var console = Console()
+
+func ItemsByReferenceKept() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var trails = Items<Trail>()
+    var short = Trail()
+    short.points.append(1)
+    trails.append(short)
+    var kept = trails[0]
+    crash kept
+    var index = 0
+    while index < 20 {
+        var more = Trail()
+        trails.append(more)
+        index = index + 1
+    }
+    trails.remove_at(0)
+    var length = kept.points.count()
+    var same = kept == short
+    var count = trails.count()
+    console.print(length, same, count)
+}

@@ -1,0 +1,1 @@
+conformance/list_byte_functions/list_byte_functions.spite:7: error: List has no method 'read_integer_little_endian': bytes are a Buffer, which has it: make them with 'Buffer()' (in ListByteFunctions.ListByteFunctions)

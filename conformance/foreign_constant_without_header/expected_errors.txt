@@ -1,0 +1,1 @@
+conformance/foreign_constant_without_header/foreign_constant_without_header.spite:6: error: 'fixture_answer' is a constant, and a constant comes from the library's header: name it as DynamicLibrary's third argument (in ForeignConstantWithoutHeader.ForeignConstantWithoutHeader)

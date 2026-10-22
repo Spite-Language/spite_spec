@@ -1,0 +1,1 @@
+conformance/enum_template_member_and_value/enum_template_member_and_value.spite:6: error: 'count_published' could read the member 'published' of 'Post' or compare 'stage' with 'published', a value of its enum: rename the member 'published' (in EnumTemplateMemberAndValue.EnumTemplateMemberAndValue)

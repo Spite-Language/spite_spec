@@ -1,0 +1,16 @@
+var console = Console()
+var name = ""
+
+func Lamp(new_name: String) {
+    name = new_name
+}
+
+func is_lit(): Boolean {
+    console.print("is_lit", name)
+    return true
+}
+
+func brightness(): Integer {
+    console.print("brightness", name)
+    return 2
+}

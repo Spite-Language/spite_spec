@@ -1,0 +1,15 @@
+var console = Console()
+var scores = Dictionary<String, Integer>()
+var ages = Dictionary<String, Integer>()
+var title = "show"
+var values = Values()
+
+func InteractiveRefusals() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    ages["ann"] = 30
+    console.print("ready")
+}
+
+func grow() {
+    values.size = values.size + 1
+}

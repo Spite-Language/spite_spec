@@ -1,0 +1,17 @@
+var console = Console()
+var seen = 0
+
+func ControlWhileTrueReturns() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    while true {
+        step()
+        if seen == 3 {
+            console.print("done", seen)
+            return
+        }
+    }
+}
+
+func step() {
+    seen = seen + 1
+}

@@ -1,0 +1,8 @@
+var console = Console()
+
+func ControlBreakAsName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var break = 2
+    var continue = break + 3
+    console.print(break, continue)
+}

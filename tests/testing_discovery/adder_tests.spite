@@ -1,0 +1,14 @@
+var console = Console()
+var base = 2
+
+func AdderTests() {
+    console.print("made")
+}
+
+func test_adds() {
+    crash base + 1 == 3
+}
+
+func test_doubles() {
+    crash base * 2 == 4
+}

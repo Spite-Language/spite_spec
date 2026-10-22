@@ -1,0 +1,5 @@
+var weight = 4
+
+func is_heavy(): Boolean {
+    return weight > 3
+}

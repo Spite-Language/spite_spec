@@ -1,0 +1,11 @@
+var console = Console()
+
+func PassedArgumentCount() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["Ada", "Grace"]
+    names.each(greet_twice)
+}
+
+func greet_twice(name: String, times: Integer) {
+    console.print(name, times)
+}

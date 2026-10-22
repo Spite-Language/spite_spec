@@ -1,0 +1,1 @@
+conformance/classes_function_named_functions/table.spite:1: error: ...'functions' has a name reflection gives every object... (in Table)

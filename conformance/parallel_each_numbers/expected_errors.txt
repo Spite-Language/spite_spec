@@ -1,0 +1,1 @@
+conformance/parallel_each_numbers/parallel_each_numbers.spite:6: error: 'parallel_each_to_string' runs a member of each element on many threads, and 'Integer' is not a class: only a list of a class has members to run there (write 'each_to_string' to run it on one thread) (in ParallelEachNumbers.ParallelEachNumbers)

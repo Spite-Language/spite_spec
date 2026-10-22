@@ -1,0 +1,20 @@
+var console = Console()
+
+func ListSortStable() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var cards = List<Card>()
+    var names = ["d", "a", "e", "b", "f", "c"]
+    var ranks = [2, 1, 2, 1, 0, 1]
+    var index = 0
+    while index < names.count() {
+        var name = names[index]
+        crash ranks[index]
+        var rank = ranks[index]
+        var card = Card(name, rank)
+        cards.append(card)
+        index = index + 1
+    }
+    var by_rank = cards.sort_by_rank().map_names().join("")
+    var unchanged = cards.map_names().join("")
+    console.print(by_rank, unchanged)
+}

@@ -1,0 +1,12 @@
+var console = Console()
+
+func MemoryStringContentEquality() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var word = "long"
+    var left = "a {word} text of more than fifteen bytes"
+    var right = "a {word} text of more than fifteen bytes"
+    var short_left = "{word}er"
+    var short_right = "longer"
+    var different = "a {word} text of more than fifteen byte!"
+    console.print(left == right, short_left == short_right, left == different, left != different)
+}

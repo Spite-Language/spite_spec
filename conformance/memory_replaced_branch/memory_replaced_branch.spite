@@ -1,0 +1,19 @@
+var console = Console()
+var layouts = [Layout()]
+
+func MemoryReplacedBranch() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    replace_when(true)
+    var count = layouts.count()
+    console.print(count)
+}
+
+func replace_when(wide: Boolean) {
+    crash layouts[0]
+    var layout = layouts[0]
+    console.print(layout.width)
+    if wide {
+        var made = Layout()
+        layout = made
+    }
+}

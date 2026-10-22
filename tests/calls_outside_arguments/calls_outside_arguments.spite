@@ -1,0 +1,25 @@
+var console = Console()
+
+func CallsOutsideArguments() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var source = "spite"
+    var shouted = source.slice(0, 1).upper_case()
+    var names = ["ada", "bea"]
+    var picked = names[last_index(names)]
+    crash picked
+    if source.starts_with("sp") {
+        console.print(shouted, picked)
+    }
+    var words = 0
+    words = count_words("one two")
+    console.print("{count_words(source)} word, then {words}")
+}
+
+func last_index(names: List<String>): Integer {
+    return names.count() - 1
+}
+
+func count_words(text: String): Integer {
+    var words = text.split(" ")
+    return words.count()
+}

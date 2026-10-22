@@ -1,0 +1,9 @@
+var console = Console()
+
+func NullDefaultAssignedInConstructor() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pet = Pet()
+    var pair = Pair<Pet>(pet)
+    var hunt = Hunt(pet)
+    console.print(pair.left.name, hunt.target.name)
+}

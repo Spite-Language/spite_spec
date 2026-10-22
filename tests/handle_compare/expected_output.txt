@@ -1,0 +1,2 @@
+two handles of 3 are equal: true
+a handle of 3 and one of 4 differ: true

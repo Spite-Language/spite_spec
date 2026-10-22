@@ -1,0 +1,7 @@
+var console = Console()
+
+func ConstantOverflow() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var area = (65536 - 120) * 65536
+    console.print(area)
+}

@@ -1,0 +1,17 @@
+var console = Console()
+var positions = Vector<Position>()
+var velocities = Vector<Velocity>()
+var keeper = Keeper()
+
+func VectorRowKept() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var position = Position(1)
+    positions.append(position)
+    var velocity = Velocity(2)
+    velocities.append(velocity)
+    crash positions[0] and velocities[0]
+    var row: Moving = {position: positions[0], velocity: velocities[0]}
+    keeper.store(row)
+    crash keeper.kept
+    console.print(keeper.kept.position.left)
+}

@@ -1,0 +1,18 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func DictionaryRemoveByClass() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pets = Dictionary<String, Pet>()
+    var tom = Cat()
+    pets["tom"] = tom
+    var rex = Dog()
+    pets["rex"] = rex
+    pets.remove_where_dogs()
+    var counted = pets.count()
+    console.print(counted)
+}

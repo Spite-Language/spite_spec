@@ -1,0 +1,3 @@
+func hand_back(mouse: Mouse): Mouse {
+    return mouse
+}

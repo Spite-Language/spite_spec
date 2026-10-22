@@ -1,0 +1,13 @@
+var console = Console()
+
+func TimeDurationUnits() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var span = Duration(90, 'minutes')
+    var hours = span.total('hours')
+    var minutes = span.part('minutes')
+    var seconds = span.total('seconds')
+    console.print(hours, minutes, seconds)
+    var tiny = Duration(1999, 'nanoseconds')
+    var micro = tiny.total('microseconds')
+    console.print(micro)
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func LoneHoleUnaffected() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var clicks = 3
+    var label = "taps"
+    var written = "clicks {clicks}"
+    var spaced = "{clicks} "
+    var joined = "{clicks}{label}"
+    console.print("[{written}]", "[{spaced}]", "[{joined}]")
+}

@@ -1,0 +1,24 @@
+var console = Console()
+
+func BinaryManyValues() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var writer = BinaryWriter<Point>()
+    var frame = Buffer(0)
+    var first = Point()
+    first.across = 3
+    writer.append_to(first, frame)
+    var second = Point()
+    second.across = 8
+    writer.append_to(second, frame)
+    var reader = BinaryReader<Point>()
+    var read_first = reader.read_from(frame, 0)
+    crash read_first
+    var after_first = reader.position
+    var read_second = reader.read_from(frame, reader.position)
+    crash read_second
+    var after_second = reader.position
+    var past = reader.read_from(frame, reader.position)
+    var unmoved = reader.position
+    var whole = reader.read(frame)
+    console.print(read_first.across, after_first, read_second.across, after_second, not past, unmoved, not whole, frame.position)
+}

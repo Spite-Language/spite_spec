@@ -1,0 +1,1 @@
+error: '--program' cannot be given: the program is the folder named on the command line, 'spite folder', and Build.program is set from it

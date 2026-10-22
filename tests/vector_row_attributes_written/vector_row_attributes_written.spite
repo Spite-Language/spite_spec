@@ -1,0 +1,18 @@
+var console = Console()
+var positions = Vector<Position>()
+var velocities = Vector<Velocity>()
+var mover = Mover()
+
+func VectorRowAttributesWritten() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var position = Position(1)
+    positions.append(position)
+    var velocity = Velocity(8)
+    velocities.append(velocity)
+    crash positions[0] and velocities[0]
+    var row: Moving = {position: positions[0], velocity: velocities[0]}
+    mover.update_each(row)
+    mover.update_each(row)
+    crash positions[0] and velocities[0]
+    console.print(positions[0].left, velocities[0].across, position.left, velocity.across)
+}

@@ -1,0 +1,12 @@
+var console = Console()
+
+func BinaryObjectKey() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var scores = Dictionary<Player, Integer>()
+    var ada = Player()
+    scores[ada] = 3
+    var writer = BinaryWriter<Dictionary<Player, Integer>>()
+    var bytes = writer.write(scores)
+    var count = bytes.count()
+    console.print(count)
+}

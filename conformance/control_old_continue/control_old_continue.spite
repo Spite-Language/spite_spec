@@ -1,0 +1,13 @@
+var console = Console()
+
+func ControlOldContinue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var index = 0
+    while index < 10 {
+        index = index + 1
+        if index == 3 {
+            continue
+        }
+        console.print(index)
+    }
+}

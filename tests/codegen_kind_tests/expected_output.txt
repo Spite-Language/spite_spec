@@ -1,0 +1,9 @@
+a dictionary
+a list
+an enum, and a symbol too: true
+a plain symbol
+a shape: false
+a shape: true
+a number
+may be null
+1 square

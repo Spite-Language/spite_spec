@@ -1,0 +1,1 @@
+conformance/call_in_index/call_in_index.spite:15: error: 'names[next_index()]' may be missing, since every '[ ]' answers a 'T?' (this one is a String?), so 'upper_case' cannot be called on it yet: ... (in CallInIndex.show)

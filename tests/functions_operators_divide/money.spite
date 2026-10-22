@@ -1,0 +1,15 @@
+var cents = 0
+
+func Money(amount: Integer) {
+    cents = amount
+}
+
+func divide(parts: Integer): Money {
+    var share = cents / parts
+    return Money(share)
+}
+
+func remainder(parts: Integer): Money {
+    var left = cents % parts
+    return Money(left)
+}

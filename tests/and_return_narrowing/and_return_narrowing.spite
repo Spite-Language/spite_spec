@@ -1,0 +1,23 @@
+var console = Console()
+
+func AndReturnNarrowing() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var made = make("make")
+    var other = make("sell")
+    var nothing_made = make("")
+    var first = is_make(made)
+    var second = is_make(other)
+    var third = is_make(nothing_made)
+    console.print(first, second, third)
+}
+
+func make(kind: String): Order? {
+    assert not kind.is_empty()
+    var order = Order()
+    order.kind = kind
+    return order
+}
+
+func is_make(made: Order?): Boolean {
+    return made and made.kind == "make"
+}

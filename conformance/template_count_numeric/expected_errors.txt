@@ -1,0 +1,1 @@
+conformance/template_count_numeric/template_count_numeric.spite:6: error: 'count_stars': the member 'stars' of 'Repository' is an Integer, but 'count_' needs it to return Boolean (to add up a numeric member use 'sum_stars') (in TemplateCountNumeric.TemplateCountNumeric)

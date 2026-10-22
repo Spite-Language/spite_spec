@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReflectionClassFunctionNotReplaced() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var gadget = Gadget()
+    console.print(gadget)
+    var described = Gadget.to_string()
+    console.print(described)
+}

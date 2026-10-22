@@ -1,0 +1,8 @@
+var console = Console()
+
+func FunctionsDirectSum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = 3
+    var total = first.sum(4)
+    console.print(total)
+}

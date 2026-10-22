@@ -1,0 +1,9 @@
+var size = 1
+
+func _swap() {
+    size = 0 - size
+}
+
+func flip() {
+    _swap()
+}

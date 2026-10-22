@@ -1,0 +1,10 @@
+var console = Console()
+
+func ReflectionClassInside() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var gadget = Tools.Gadget()
+    var described = gadget.described()
+    var shadowed = gadget.shadowed()
+    console.print(described)
+    console.print(shadowed)
+}

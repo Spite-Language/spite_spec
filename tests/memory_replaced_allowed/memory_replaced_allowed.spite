@@ -1,0 +1,52 @@
+var console = Console()
+var layouts = List<Layout>()
+
+func MemoryReplacedAllowed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var index = 0
+    while index < 3 {
+        var made = Layout(index)
+        layouts.append(made)
+        index = index + 1
+    }
+    read_after()
+    walked()
+    copied()
+    first_found()
+}
+
+func read_after() {
+    crash layouts[0]
+    var layout = layouts[0]
+    var made = Layout(10)
+    layout = made
+    var count = layouts.count()
+    console.print("read after", layout.width, count)
+}
+
+func walked() {
+    var index = 1
+    var current = layouts[0]
+    while index < 3 {
+        crash current
+        console.print("walked", current.width)
+        current = layouts[index]
+        index = index + 1
+    }
+}
+
+func copied() {
+    crash layouts[1]
+    var layout = layouts[1].copy()
+    console.print("copied", layout.width)
+    var made = Layout(20)
+    layout = made
+}
+
+func first_found() {
+    var layout = layouts.first()
+    crash layout
+    console.print("first", layout.width)
+    var made = Layout(30)
+    layout = made
+}

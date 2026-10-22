@@ -1,0 +1,1 @@
+conformance/walk_count_function/walk_count_function.spite:25: error: this 'while' walks every element of 'items' only to ...: write 'var total = items.count(is_cheap)' (in WalkCountFunction.walk)

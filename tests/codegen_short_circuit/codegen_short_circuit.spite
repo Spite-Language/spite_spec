@@ -1,0 +1,14 @@
+var console = Console()
+
+func CodegenShortCircuit() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = Probe<List<Integer>>()
+    var nested = Probe<List<List<Float>>>()
+    var number = Probe<Integer>()
+    var numbers_text = numbers.describe()
+    var nested_text = nested.describe()
+    var number_text = number.describe()
+    console.print(numbers_text)
+    console.print(nested_text)
+    console.print(number_text)
+}

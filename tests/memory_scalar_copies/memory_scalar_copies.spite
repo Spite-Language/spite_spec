@@ -1,0 +1,20 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func MemoryScalarCopies() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = 3
+    var kept_count = count
+    count = 4
+    var ready = true
+    var kept_ready = ready
+    ready = false
+    var light: Light = 'red'
+    var kept_light = light
+    light = 'green'
+    console.print(count, kept_count, ready, kept_ready, light, kept_light)
+}

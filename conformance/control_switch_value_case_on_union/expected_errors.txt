@@ -1,0 +1,1 @@
+conformance/control_switch_value_case_on_union/control_switch_value_case_on_union.spite:17: error: ...union... (in ControlSwitchValueCaseOnUnion.name_of)

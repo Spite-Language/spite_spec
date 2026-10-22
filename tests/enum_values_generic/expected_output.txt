@@ -1,0 +1,7 @@
+2
+red
+green
+3
+small
+medium
+large

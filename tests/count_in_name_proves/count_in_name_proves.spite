@@ -1,0 +1,27 @@
+var console = Console()
+var names = ["ada", "bo", "cy"]
+
+func CountInNameProves() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    show_all()
+    show_all_but_last()
+}
+
+func show_all() {
+    var count = names.count()
+    var index = 0
+    while index < count {
+        var shouted = names[index].upper_case()
+        console.print(shouted)
+        index = index + 1
+    }
+}
+
+func show_all_but_last() {
+    var count = names.count() - 1
+    var index = 0
+    while index < count {
+        console.print(names[index])
+        index = index + 1
+    }
+}

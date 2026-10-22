@@ -1,0 +1,11 @@
+var console = Console()
+
+func TextWithoutToString() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pet = Pet()
+    show(pet)
+}
+
+func show(text: String) {
+    console.print(text)
+}

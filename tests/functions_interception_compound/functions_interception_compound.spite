@@ -1,0 +1,8 @@
+var console = Console()
+
+func FunctionsInterceptionCompound() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var person = Person()
+    person.age = person.age + 1
+    console.print(person.age)
+}

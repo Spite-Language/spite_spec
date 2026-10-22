@@ -1,0 +1,17 @@
+var console = Console()
+
+func FunctionsReflectedToTyped() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var reflected = FunctionsReflectedToTyped.functions[0]
+    crash reflected
+    var answer = apply(reflected)
+    console.print(answer)
+}
+
+func shouted(text: String): String {
+    return text.upper_case()
+}
+
+func apply(change: Spite.Function<String, String>): String {
+    return change("hi")
+}

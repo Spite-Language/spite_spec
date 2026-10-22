@@ -1,0 +1,5 @@
+var column = Column()
+
+func of(row: Integer): Layout {
+    return column.value_at(row)
+}

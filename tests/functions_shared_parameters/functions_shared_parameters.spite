@@ -1,0 +1,18 @@
+var console = Console()
+
+func FunctionsSharedParameters() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["ada"]
+    var number = 1
+    var box = Box()
+    change(names, number, box)
+    var joined = names.join(",")
+    console.print(joined, number, box.size)
+}
+
+func change(names: List<String>, number: Integer, box: Box) {
+    names.append("bo")
+    number = number + 10
+    box.size = 9
+    console.print(number)
+}

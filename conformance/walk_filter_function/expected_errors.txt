@@ -1,0 +1,1 @@
+conformance/walk_filter_function/walk_filter_function.spite:25: error: this 'while' walks every element of 'items' only to ...: write 'var result = items.filter(is_cheap)' (in WalkFilterFunction.walk)

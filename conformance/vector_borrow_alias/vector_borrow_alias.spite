@@ -1,0 +1,12 @@
+var console = Console()
+var velocities = Vector<Velocity>()
+
+func VectorBorrowAlias() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Velocity(1, "first")
+    velocities.append(first)
+    crash velocities[0]
+    var stored = velocities[0]
+    var alias = stored
+    console.print(alias.across, alias.name)
+}

@@ -1,0 +1,5 @@
+var moved = 0
+
+func render_each() {
+    moved = moved + 1
+}

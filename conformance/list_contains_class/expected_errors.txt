@@ -1,0 +1,1 @@
+conformance/list_contains_class/list_contains_class.spite:8: error: List has no method 'contains'... (in ListContainsClass.ListContainsClass)

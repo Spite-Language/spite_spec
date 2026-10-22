@@ -1,0 +1,5 @@
+func shouted(): String {
+    var console = Console()
+    console.print("printing")
+    return upper_case()
+}

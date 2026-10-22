@@ -1,0 +1,6 @@
+var console = Console()
+var age = 0
+
+func set_age(value: Integer) {
+    console.print("the age stays")
+}

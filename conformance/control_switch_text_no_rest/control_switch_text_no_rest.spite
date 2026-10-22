@@ -1,0 +1,14 @@
+var console = Console()
+
+func ControlSwitchTextNoRest() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var greeting = greeting_in("es")
+    console.print(greeting)
+}
+
+func greeting_in(language: String): String {
+    switch language {
+        "es": return "hola"
+        "fr": return "salut"
+    }
+}

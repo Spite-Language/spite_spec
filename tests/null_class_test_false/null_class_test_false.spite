@@ -1,0 +1,14 @@
+union Shape {
+    Circle
+    Square
+}
+
+var console = Console()
+var favorite: Shape? = null
+
+func NullClassTestFalse() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var round = favorite == Circle
+    var square = favorite != Square
+    console.print(round, square)
+}

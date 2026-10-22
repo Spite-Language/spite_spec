@@ -1,0 +1,17 @@
+var console = Console()
+
+func DictionaryFreshLists() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var stock = Dictionary<String, Integer>()
+    stock["pear"] = 1
+    var keys = stock.keys()
+    keys.append("plum")
+    var values = stock.values()
+    values.append(7)
+    stock["fig"] = 2
+    var key_count = keys.count()
+    var value_count = values.count()
+    var count = stock.count()
+    var has_plum = stock.contains("plum")
+    console.print(key_count, value_count, count, has_plum)
+}

@@ -1,0 +1,9 @@
+var health = 0
+
+func Monster(new_health: Integer) {
+    health = new_health
+}
+
+func is_alive(): Boolean {
+    return health > 0
+}

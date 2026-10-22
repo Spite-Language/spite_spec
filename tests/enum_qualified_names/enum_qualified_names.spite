@@ -1,0 +1,14 @@
+var console = Console()
+
+func EnumQualifiedNames() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var hero = Player()
+    var named: Player.Job = 'archer'
+    var plain: Job = 'magician'
+    hero.assign_job(named)
+    console.print(hero.current_job)
+    hero.assign_job(plain)
+    console.print(hero.current_job)
+    hero.assign_job('knight')
+    console.print(hero.current_job)
+}

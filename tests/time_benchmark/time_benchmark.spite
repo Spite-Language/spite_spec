@@ -1,0 +1,25 @@
+var console = Console()
+
+func TimeBenchmark() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var timed = Benchmark(sum_to_a_thousand)
+    var negative = timed.duration.is_negative
+    console.print(timed.answer, negative)
+    var quiet = Benchmark(do_nothing)
+    var quiet_negative = quiet.duration.is_negative
+    console.print(quiet_negative)
+}
+
+func sum_to_a_thousand(): Long {
+    var total: Long = 0
+    var index = 0
+    while index < 1000 {
+        index = index + 1
+        total = total + index
+    }
+    return total
+}
+
+func do_nothing() {
+    console.print("working")
+}

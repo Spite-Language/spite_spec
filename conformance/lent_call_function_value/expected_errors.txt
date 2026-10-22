@@ -1,0 +1,1 @@
+conformance/lent_call_function_value/input.spite:2: error: 'mouse.move' would keep 'mouse' in a function value, and 'mouse' is lent to 'capture' for one call, so 'capture' does not keep it: call 'mouse.move()' directly, or keep the values it needs (in Input.capture)

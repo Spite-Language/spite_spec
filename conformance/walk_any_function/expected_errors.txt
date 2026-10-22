@@ -1,0 +1,1 @@
+conformance/walk_any_function/walk_any_function.spite:24: error: this 'while' walks every element of 'items' only to ...: write 'return items.any(is_cheap)' (in WalkAnyFunction.walk)

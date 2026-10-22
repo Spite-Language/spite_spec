@@ -1,0 +1,12 @@
+var console = Console()
+
+func FunctionsShadowedLocal() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var stem = file_stem("notes/today.txt")
+    var file_stem = stem.upper_case()
+    console.print(file_stem)
+}
+
+func file_stem(path: String): String {
+    return path.replace(".txt", "")
+}

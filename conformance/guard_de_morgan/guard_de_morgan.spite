@@ -1,0 +1,14 @@
+var console = Console()
+var limit = 10
+
+func GuardDeMorgan() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    announce(3)
+}
+
+func announce(count: Integer) {
+    if count < 0 or count > limit {
+        return
+    }
+    console.print(count)
+}

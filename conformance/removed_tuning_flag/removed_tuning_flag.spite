@@ -1,0 +1,6 @@
+var console = Console()
+
+func RemovedTuningFlag() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("ran")
+}

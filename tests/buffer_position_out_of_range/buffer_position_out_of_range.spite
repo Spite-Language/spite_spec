@@ -1,0 +1,12 @@
+var console = Console()
+
+func BufferPositionOutOfRange() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = Buffer(0)
+    bytes.append(1)
+    bytes.append(2)
+    bytes.position = 2
+    console.print(bytes.position)
+    bytes.position = 3
+    console.print("never printed")
+}

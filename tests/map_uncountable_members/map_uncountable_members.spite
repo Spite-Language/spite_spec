@@ -1,0 +1,16 @@
+var console = Console()
+
+func MapUncountableMembers() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var teams = List<Team>()
+    var red = Team("red", 3, "ann")
+    teams.append(red)
+    var blue = Team("blue", 5, "bob")
+    teams.append(blue)
+    var healths = teams.map_health().join(",")
+    var names = teams.map_name_with_namespaces().join(",")
+    var people = teams.map_people().join(",")
+    console.print(healths)
+    console.print(names)
+    console.print(people)
+}

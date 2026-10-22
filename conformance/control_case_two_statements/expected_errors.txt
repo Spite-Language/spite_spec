@@ -1,0 +1,1 @@
+conformance/control_case_two_statements/control_case_two_statements.spite:16: error: this case runs 2 statements: a case is one statement, so move them into a function named for what they do and call it here (in ControlCaseTwoStatements.greet)

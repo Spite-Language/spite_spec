@@ -1,0 +1,14 @@
+var console = Console()
+
+func GenericInferred() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pair = Pair("Hero", 7)
+    console.print(pair.left, pair.right + 1)
+    var maybe_name: String? = "ann"
+    var box = Box(maybe_name)
+    console.print(box.held)
+    var numbers = [3, 4, 5]
+    var bag = Bag(numbers)
+    var total = bag.total()
+    console.print(total)
+}

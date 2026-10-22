@@ -1,0 +1,11 @@
+var console = Console()
+var layouts = Column<Layout>()
+var lookup = Lookup<Layout>()
+
+func LentFunctionValue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Layout()
+    layouts.insert(first)
+    var find = lookup.of
+    console.print(find.name)
+}

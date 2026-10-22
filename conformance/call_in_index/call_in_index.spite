@@ -1,0 +1,17 @@
+var console = Console()
+var names = ["ada", "bo"]
+
+func CallInIndex() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    show()
+}
+
+func next_index(): Integer {
+    return 1
+}
+
+func show() {
+    crash names[next_index()]
+    var shouted = names[next_index()].upper_case()
+    console.print(shouted)
+}

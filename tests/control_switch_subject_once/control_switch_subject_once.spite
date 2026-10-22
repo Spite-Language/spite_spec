@@ -1,0 +1,22 @@
+var console = Console()
+var calls = 0
+
+func ControlSwitchSubjectOnce() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = name_of(2)
+    console.print(name, calls)
+}
+
+func next_number(number: Integer): Integer {
+    calls = calls + 1
+    return number + 1
+}
+
+func name_of(number: Integer): String {
+    switch next_number(number) {
+        1: return "one"
+        2: return "two"
+        3: return "three"
+        _: return "many"
+    }
+}

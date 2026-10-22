@@ -1,0 +1,23 @@
+var console = Console()
+
+func ChainComparison() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var made = make("make")
+    var nothing_made = make("")
+    console.print(is_make(made), is_make(nothing_made), not_make(nothing_made))
+}
+
+func make(kind: String): Order? {
+    assert not kind.is_empty()
+    var order = Order()
+    order.kind = kind
+    return order
+}
+
+func is_make(made: Order?): Boolean {
+    return made.kind == "make"
+}
+
+func not_make(made: Order?): Boolean {
+    return made.kind != "make"
+}

@@ -1,0 +1,12 @@
+var console = Console()
+var clock = Clock()
+
+func TimeInstantAgainstLocal() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var now = clock.now()
+    var day = Date(2024, 1, 1)
+    var noon = Time(12, 0, 0, 0)
+    var reading = DateTime(day, noon)
+    var same = now == reading
+    console.print(same)
+}

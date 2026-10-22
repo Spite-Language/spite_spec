@@ -1,0 +1,18 @@
+var console = Console()
+
+func FloatRemainder() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var negative = -7.5
+    var two = 2.0
+    var angle = 730.5
+    var turn = 360.0
+    var zero = 0.0
+    var one = 1.0
+    var left = negative % two
+    var wrapped = angle % turn
+    var remainder_by_zero = one % zero
+    var infinite = one / zero
+    var below = negative / zero
+    var nothing = zero / zero
+    console.print(left, wrapped, remainder_by_zero, infinite, below, nothing)
+}

@@ -1,0 +1,8 @@
+var library = DynamicLibrary("fixture.dll", 'identity', "")
+
+func ForeignCallbackThreadReach() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var recorder = Recorder()
+    var calling = ForeignCallback(recorder.marked, 'context_first')
+    library.keep(calling.address, calling.context)
+}

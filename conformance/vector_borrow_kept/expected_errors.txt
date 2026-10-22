@@ -1,0 +1,1 @@
+conformance/vector_borrow_kept/vector_borrow_kept.spite:11: error: 'stored' is borrowed from 'velocities' and cannot be kept in the attribute 'kept': keep 'stored.copy()', an independent object (in VectorBorrowKept.VectorBorrowKept)

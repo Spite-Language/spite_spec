@@ -1,0 +1,1 @@
+conformance/control_switch_class_case_on_enum/control_switch_class_case_on_enum.spite:18: error: ...'Light'... (in ControlSwitchClassCaseOnEnum.kind_of)

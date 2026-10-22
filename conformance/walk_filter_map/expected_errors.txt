@@ -1,0 +1,1 @@
+conformance/walk_filter_map/walk_filter_map.spite:25: error: this 'while' walks every element of 'items' only to ...: write 'var result = items.filter_in_stock().map_names()' (in WalkFilterMap.walk)

@@ -1,0 +1,20 @@
+var console = Console()
+
+func HandleCompare() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Parallel(three)
+    var second = Concurrent(three)
+    var other = Parallel(four)
+    var same = first == second
+    var different = first != other
+    console.print("two handles of 3 are equal:", same)
+    console.print("a handle of 3 and one of 4 differ:", different)
+}
+
+func three(): Integer {
+    return 3
+}
+
+func four(): Integer {
+    return 4
+}

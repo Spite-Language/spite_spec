@@ -1,0 +1,5 @@
+var name = "token"
+
+func equals(other: Token): Boolean {
+    return true
+}

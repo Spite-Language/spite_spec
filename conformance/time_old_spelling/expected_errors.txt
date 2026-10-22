@@ -1,0 +1,1 @@
+conformance/time_old_spelling/time_old_spelling.spite:5: error: 'LocalDate' is spelled 'Date'... (in TimeOldSpelling.TimeOldSpelling)

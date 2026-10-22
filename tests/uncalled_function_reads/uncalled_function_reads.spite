@@ -1,0 +1,11 @@
+var console = Console()
+var hidden = 3
+
+func UncalledFunctionReads() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("compiled")
+}
+
+func never_called(): Integer {
+    return hidden
+}

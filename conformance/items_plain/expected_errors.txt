@@ -1,0 +1,1 @@
+conformance/items_plain/items_plain.spite:5: error: 'Items<Integer>' holds plain values, and a List keeps numbers, Boolean, enums and Memory.Address flat just as it did, so a list of them has one spelling: write 'List<Integer>' (in ItemsPlain.ItemsPlain)

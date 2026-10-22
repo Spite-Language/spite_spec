@@ -1,0 +1,10 @@
+type Moving {
+    position: Position
+    velocity: Velocity
+}
+
+var kept: Moving? = null
+
+func store(moving: Moving) {
+    kept = moving
+}

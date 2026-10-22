@@ -1,0 +1,12 @@
+var console = Console()
+
+func DefaultAnswerDecimal() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ratio = ratio_of(2.0)
+    console.print(ratio)
+}
+
+func ratio_of(divisor: Float): Float {
+    assert divisor > 0.0
+    return 1.0 / divisor
+}

@@ -1,0 +1,1 @@
+conformance/classes_inline_singleton_returned/classes_inline_singleton_returned.spite:10: error: 'Console' is a singleton: bind it once beside the attributes... (in ClassesInlineSingletonReturned.make)

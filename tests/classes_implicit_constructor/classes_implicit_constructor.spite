@@ -1,0 +1,7 @@
+var console = Console()
+
+func ClassesImplicitConstructor() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var member = Member()
+    console.print(member.name, member.level, member.active)
+}

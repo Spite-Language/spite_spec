@@ -1,0 +1,19 @@
+union Amount {
+    Money
+    Points
+}
+
+var console = Console()
+
+func FunctionsUnionOperator() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var money = Money(3)
+    var points = Points(4)
+    var first = doubled(money)
+    var second = doubled(points)
+    console.print(first, second)
+}
+
+func doubled(amount: Amount): Integer {
+    return amount + amount
+}

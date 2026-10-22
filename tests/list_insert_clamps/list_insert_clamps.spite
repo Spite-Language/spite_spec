@@ -1,0 +1,11 @@
+var console = Console()
+
+func ListInsertClamps() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var letters = ["b", "c"]
+    letters.insert(-5, "a")
+    letters.insert(99, "d")
+    letters.insert(2, "x")
+    var joined = letters.join("")
+    console.print(joined)
+}

@@ -1,0 +1,1 @@
+conformance/lone_hole_return/lone_hole_return.spite:10: error: '"{clicks}"' is a text of one value and nothing else: return the value directly, 'return clicks' (in LoneHoleReturn.clicks_text)

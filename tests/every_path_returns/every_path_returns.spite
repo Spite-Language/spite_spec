@@ -1,0 +1,49 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func EveryPathReturns() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var negative = sign_of(-3)
+    var positive = sign_of(4)
+    var stop = action_of('red')
+    var go = action_of('green')
+    var above = first_above(5)
+    var kept = checked(2)
+    console.print(negative, positive, stop, go, above, kept)
+}
+
+func sign_of(value: Integer): String {
+    if value < 0 {
+        return "negative"
+    } else {
+        return "positive"
+    }
+}
+
+func action_of(light: Light): String {
+    switch light {
+        'red': return "stop"
+        'green': return "go"
+    }
+}
+
+func first_above(limit: Integer): Integer {
+    var value = 0
+    while true {
+        value = value + 3
+        if value > limit {
+            return value
+        }
+    }
+}
+
+func checked(value: Integer): Integer {
+    if value > 0 {
+        return value
+    }
+    crash
+}

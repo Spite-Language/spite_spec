@@ -1,0 +1,11 @@
+var console = Console()
+var _id = 0
+
+func get_id(): Integer {
+    return _id
+}
+
+func set_id(value: Integer) {
+    console.print("set", value)
+    _id = value
+}

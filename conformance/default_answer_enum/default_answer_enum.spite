@@ -1,0 +1,17 @@
+enum Weekday {
+    'monday'
+    'tuesday'
+}
+
+var console = Console()
+
+func DefaultAnswerEnum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var day = day_of(1)
+    console.print(day)
+}
+
+func day_of(index: Integer): Weekday {
+    assert index == 1
+    return 'tuesday'
+}

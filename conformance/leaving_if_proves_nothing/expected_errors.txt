@@ -1,0 +1,1 @@
+conformance/leaving_if_proves_nothing/leaving_if_proves_nothing.spite:19: error: 'found' is already narrowed by ...: remove this check (in LeavingIfProvesNothing.size_of)

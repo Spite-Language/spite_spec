@@ -1,0 +1,6 @@
+var last: Mouse? = null
+
+func keep(mouse: Mouse) {
+    mouse.left = 2
+    last = mouse
+}

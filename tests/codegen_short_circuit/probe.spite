@@ -1,0 +1,11 @@
+generic $value_type
+
+func describe(): String {
+    if $value_type == List and $value_type.element_type == List and $value_type.element_type.element_type == Float {
+        return "floats in lists"
+    }
+    if $value_type != List or $value_type.element_type == String {
+        return "not a list, or a list of text"
+    }
+    return "another list"
+}

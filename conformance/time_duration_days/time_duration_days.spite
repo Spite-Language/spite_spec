@@ -1,0 +1,7 @@
+var console = Console()
+
+func TimeDurationDays() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var day = Duration(1, 'days')
+    console.print(day)
+}
