@@ -1,2 +1,2 @@
-spite.assert	2081995d	conformance/stage6/assert_ring_threads/assert_ring_threads.spite:32	AssertRingThreads	refuse	answered=nothing	repeated=64000
+spite.assert	2081995d	tests/assert_ring_threads/assert_ring_threads.spite:32	AssertRingThreads	refuse	answered=nothing	repeated=64000
 asked 64000

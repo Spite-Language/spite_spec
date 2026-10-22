@@ -1,10 +1,10 @@
-conformance/stage4/directory_entries/tree
-folder conformance/stage4/directory_entries/tree/animals
-  folder conformance/stage4/directory_entries/tree/animals/birds
-    file conformance/stage4/directory_entries/tree/animals/birds/robin.txt: tweet
-  file conformance/stage4/directory_entries/tree/animals/cat.txt: meow
-  file conformance/stage4/directory_entries/tree/animals/dog.txt: woof
-folder conformance/stage4/directory_entries/tree/plants
-  file conformance/stage4/directory_entries/tree/plants/fern.txt: green
-file conformance/stage4/directory_entries/tree/readme.txt: top
+tests/directory_entries/tree
+folder tests/directory_entries/tree/animals
+  folder tests/directory_entries/tree/animals/birds
+    file tests/directory_entries/tree/animals/birds/robin.txt: tweet
+  file tests/directory_entries/tree/animals/cat.txt: meow
+  file tests/directory_entries/tree/animals/dog.txt: woof
+folder tests/directory_entries/tree/plants
+  file tests/directory_entries/tree/plants/fern.txt: green
+file tests/directory_entries/tree/readme.txt: top
 files 5

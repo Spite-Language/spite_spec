@@ -1,5 +1,5 @@
-spite.assert	21180681	conformance/stage6/trace_asserts/trace_asserts.spite:13	TraceAsserts	greet	answered=nothing
-spite.assert	75edcb22	conformance/stage6/trace_asserts/trace_asserts.spite:13	TraceAsserts	greet	answered=nothing
+spite.assert	21180681	tests/trace_asserts/trace_asserts.spite:13	TraceAsserts	greet	answered=nothing
+spite.assert	75edcb22	tests/trace_asserts/trace_asserts.spite:13	TraceAsserts	greet	answered=nothing
 hello ada
 hello bo
 done

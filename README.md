@@ -12,6 +12,9 @@ change is checked by the tests it touches and not by one long run of everything.
 
     tests/<name>/<name>.spite                 a program that must compile and run
     tests/<name>/expected_exit_code.txt       the exit code it must leave
+    tests/<name>/expected_output.txt          what it must print, both streams together (optional)
+    tests/<name>/input.txt                    what it reads from the console (optional)
+    tests/<name>/flags.txt                    the compiler's flags after the folder (optional)
     conformance/<name>/<name>.spite           a program that must fail to compile
     conformance/<name>/expected_errors.txt    the errors it must fail with, word for word
 
@@ -29,9 +32,7 @@ compiler does not go looking for a library:
         ...
 
 The path is relative to the folder of the program that holds the load. The junction
-`.spite/library` points at the new standard library, so a program that loads it reads the new one. The
-old library is still there for the old compiler, and `whole_library` is the one program that still
-names it.
+`.spite/library` points at the new standard library, so a program that loads it reads the new one.
 
 ## Running them
 
@@ -40,7 +41,9 @@ The runner is a Spite program, `runner/runner.spite`. Run from this folder:
     ../SpiteCompiler/.spite/spite-0.0.6-windows/spite.exe runner
     ../SpiteCompiler/.spite/spite-0.0.6-windows/spite.exe runner tests/sum conformance/duplicate_function
 
-With no names it runs every test; with names it runs only those. It compiles each one with the new compiler,
+With no names it runs every test; with names it runs only those. A name ending in `*` runs every folder that
+starts with it (`tests/float*`), and `--failed` runs again only the tests that failed in the last run, so the
+loop while fixing something is the tests it touches, not the whole corpus. It compiles each one with the new compiler,
 `../SpiteCompiler/.spite/spite.exe`, prints `FAILED <folder>: <why>` for each that fails, then how many passed
 and failed, and leaves 1 when any failed. The old compiler builds the runner until the new one can.
 

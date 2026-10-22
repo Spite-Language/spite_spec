@@ -1,2 +1,2 @@
-spite.fault	heap-corruption	-	-	-	status=...	at=...	foreign=free_inside	library=conformance/stage6/native_fault_heap/fixture.dll	from=conformance/stage6/native_fault_heap/native_fault_heap.spite:10
+spite.fault	heap-corruption	-	-	-	status=...	at=...	foreign=free_inside	library=tests/native_fault_heap/fixture.dll	from=tests/native_fault_heap/native_fault_heap.spite:10
 before the fault

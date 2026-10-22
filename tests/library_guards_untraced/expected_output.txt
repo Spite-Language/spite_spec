@@ -1,4 +1,4 @@
-spite.assert	3391a913	conformance/stage5/library_guards_untraced/library_guards_untraced.spite:15	LibraryGuardsUntraced	announce	answered=nothing
+spite.assert	3391a913	tests/library_guards_untraced/library_guards_untraced.spite:15	LibraryGuardsUntraced	announce	answered=nothing
 past the end: ''
 starts with help: false
 ends with low: false

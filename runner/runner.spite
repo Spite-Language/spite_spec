@@ -4,6 +4,8 @@ var compiler = "..\\SpiteCompiler\\.spite\\spite.exe"
 var passed = 0
 var failed = 0
 var found_folders = List<String>()
+var failed_folders = List<String>()
+var failures_file = "runner/.spite/failed.txt"
 var parent_folder = ""
 
 func Runner() {
@@ -12,6 +14,7 @@ func Runner() {
         named = every_folder()
     }
     named.each(run_one)
+    keep_the_failures()
     console.print("{passed} passed, {failed} failed")
     if failed > 0 {
         program.exit(1)
@@ -24,11 +27,69 @@ func named_folders(): List<String> {
     var index = 0
     while index < arguments.count() {
         var argument = arguments.get(index)
-        var without_slash = trimmed_slash(argument)
-        named.append(without_slash)
+        add_named(named, argument)
         index = index + 1
     }
     return named
+}
+
+func add_named(named: List<String>, argument: String) {
+    if argument == "--failed" {
+        var last = last_failures()
+        var failure_index = 0
+        while failure_index < last.count() {
+            var failure = last[failure_index]
+            named.append(failure)
+            failure_index = failure_index + 1
+        }
+        return
+    }
+    var without_slash = trimmed_slash(argument)
+    if not without_slash.ends_with("*") {
+        named.append(without_slash)
+        return
+    }
+    var prefix_length = without_slash.length() - 1
+    var prefix = without_slash.slice(0, prefix_length)
+    var every = every_folder()
+    var index = 0
+    while index < every.count() {
+        var folder = every[index]
+        if folder.starts_with(prefix) {
+            named.append(folder)
+        }
+        index = index + 1
+    }
+}
+
+func last_failures(): List<String> {
+    var file = File(failures_file)
+    var text = file.read()
+    var found = List<String>()
+    if not text {
+        return found
+    }
+    var lines = text.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var trimmed = line.trim()
+        if not trimmed.is_empty() {
+            found.append(trimmed)
+        }
+        index = index + 1
+    }
+    return found
+}
+
+func keep_the_failures() {
+    var folder = Directory("runner/.spite")
+    if not folder.exists() {
+        folder.create()
+    }
+    var joined = failed_folders.join("\n")
+    var file = File(failures_file)
+    file.write(joined)
 }
 
 func every_folder(): List<String> {
@@ -162,6 +223,7 @@ func cleaned(text: String): String {
 }
 
 func fail(folder: String, why: String) {
+    failed_folders.append(folder)
     console.print("FAILED {folder}: {why}")
     failed = failed + 1
 }
