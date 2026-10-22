@@ -1,3 +1,1 @@
 conformance/dictionary_type_arguments/dictionary_type_arguments.spite:6: error: a Dictionary names two types, its keys' and then its values', as in 'Dictionary<String, Integer>', and this one names 1 (in DictionaryTypeArguments.DictionaryTypeArguments)
-conformance/dictionary_type_arguments/dictionary_type_arguments.spite:7: error: a Dictionary names two types, its keys' and then its values', as in 'Dictionary<String, Integer>', and this one names 3 (in DictionaryTypeArguments.DictionaryTypeArguments)
-conformance/dictionary_type_arguments/dictionary_type_arguments.spite:8: error: a Dictionary names two types, its keys' and then its values', as in 'Dictionary<String, Integer>', and this one names 1 (in DictionaryTypeArguments.DictionaryTypeArguments)

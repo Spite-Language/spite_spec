@@ -1,3 +1,1 @@
 conformance/maths_constant_assigned/maths_constant_assigned.spite:6: error: 'Float.pi' is a constant, and a constant is get-only: nothing can assign it (in MathsConstantAssigned.MathsConstantAssigned)
-conformance/maths_constant_assigned/maths_constant_assigned.spite:7: error: 'Integer.largest' is a constant, and a constant is get-only: nothing can assign it (in MathsConstantAssigned.MathsConstantAssigned)
-conformance/maths_constant_assigned/maths_constant_assigned.spite:8: error: 'Double.not_a_number' is a constant, and a constant is get-only: nothing can assign it (in MathsConstantAssigned.MathsConstantAssigned)

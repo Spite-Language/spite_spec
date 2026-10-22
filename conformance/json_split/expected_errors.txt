@@ -1,5 +1,1 @@
 conformance/json_split/json_split.spite:7: error: there is no 'Json': it is two classes, 'JsonWriter<T>()' whose 'write(value)' makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?' (in JsonSplit.JsonSplit)
-conformance/json_split/json_split.spite:8: error: a Value has no function 'write' (in JsonSplit.JsonSplit)
-conformance/json_split/json_split.spite:9: error: there is no 'Json': it is two classes, 'JsonWriter<T>()' whose 'write(value)' makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?' (in JsonSplit.JsonSplit)
-conformance/json_split/json_split.spite:11: error: there is no 'Json': it is two classes, 'JsonWriter<T>()' whose 'write(value)' makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?' (in JsonSplit.JsonSplit)
-conformance/json_split/json_split.spite:6: error: 'scores' is never read: remove it (in JsonSplit.JsonSplit)

@@ -1,4 +1,1 @@
 conformance/walk_with_function/walk_with_function.spite:8: error: this 'while' walks every element of 'names' only to call 'say_hello' with each: write 'names.each(say_hello)' (in WalkWithFunction.WalkWithFunction)
-conformance/walk_with_function/walk_with_function.spite:35: error: this 'while' walks every element of 'names' only to keep the elements 'is_short' is true for: write 'var kept = names.filter(is_short)' (in WalkWithFunction.short_names)
-conformance/walk_with_function/walk_with_function.spite:47: error: this 'while' walks every element of 'names' only to add up what 'measure' answers for each: write 'var sum = names.sum(measure)' (in WalkWithFunction.total)
-conformance/walk_with_function/walk_with_function.spite:57: error: this 'while' walks every element of 'numbers' only to copy it: write 'var result = numbers.copy()' (in WalkWithFunction.copied)

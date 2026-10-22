@@ -22,7 +22,7 @@ func Dictionaries() {
     } else {
         console.print("nobody is missing")
     }
-    ages.remove("grace")
+    ages.remove_at("grace")
     var joined_keys = ages.keys().join(",")
     ages_count = ages.count()
     console.print(joined_keys, ages_count)
@@ -50,7 +50,7 @@ func Dictionaries() {
     crash pets["tom"]
     var pet_values_count = pets.values().count()
     console.print(pets["tom"].kind, pet_values_count)
-    pets.remove("rex")
+    pets.remove_at("rex")
     var pets_count = pets.count()
     var has_rex = pets.contains("rex")
     console.print(pets_count, has_rex)

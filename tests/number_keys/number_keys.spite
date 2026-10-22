@@ -17,8 +17,8 @@ func NumberKeys() {
     if found {
         console.print("42 is", found)
     }
-    ages.remove(3)
-    ages.remove(1000)
+    ages.remove_at(3)
+    ages.remove_at(1000)
     var keys = ages.keys()
     var key_total = keys.sum(key_itself)
     var joined_keys = keys.join(",")
@@ -61,7 +61,7 @@ func NumberKeys() {
         many[number * 7] = number
         number = number + 1
     }
-    many.remove(0)
+    many.remove_at(0)
     crash many[6993]
     var many_count = many.count()
     var has_zero = many.contains(0)

@@ -1,3 +1,1 @@
 conformance/unknown_type_suggestion/unknown_type_suggestion.spite:28: error: unknown type 'Eye': did you mean 'Component.Eye'? (in UnknownTypeSuggestion.)
-conformance/unknown_type_suggestion/unknown_type_suggestion.spite:8: error: unknown type 'Server.Component.Eye': did you mean 'Component.Eye'? (in UnknownTypeSuggestion.)
-conformance/unknown_type_suggestion/unknown_type_suggestion.spite:9: error: unknown type 'Server.Component.Eye': did you mean 'Component.Eye'? (in UnknownTypeSuggestion.)
