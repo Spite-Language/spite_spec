@@ -4,13 +4,13 @@ type PointPair {
 }
 
 var console = Console()
-var plain = DynamicLibrary("conformance/stage6/foreign_library/fixture.dll", 'identity', "")
-var camel = DynamicLibrary("conformance/stage6/foreign_library/fixture.dll", 'camel_case', "")
-var headerless = DynamicLibrary("conformance/stage6/foreign_library/fixture.dll", 'windows', "")
+var plain = DynamicLibrary("tests/foreign_library/fixture.dll", 'identity', "")
+var camel = DynamicLibrary("tests/foreign_library/fixture.dll", 'camel_case', "")
+var headerless = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', "")
 var windows = DynamicLibrary(
-    "conformance/stage6/foreign_library/fixture.dll",
+    "tests/foreign_library/fixture.dll",
     'windows',
-    "conformance/stage6/foreign_library/fixture.h",
+    "tests/foreign_library/fixture.h",
 )
 
 func ForeignLibrary() {

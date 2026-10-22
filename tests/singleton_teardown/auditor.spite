@@ -2,7 +2,7 @@ singleton
 
 var console = Console()
 var clerk = Clerk()
-var plain = DynamicLibrary("conformance/stage6/foreign_library/fixture.dll", 'identity', "")
+var plain = DynamicLibrary("tests/foreign_library/fixture.dll", 'identity', "")
 var ledger = Ledger()
 
 func check(): Integer {

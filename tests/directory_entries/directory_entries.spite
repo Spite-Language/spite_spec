@@ -3,7 +3,7 @@ var console = Console()
 func DirectoryEntries() {
     load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
-    var tree = Directory("conformance/stage4/directory_entries/tree")
+    var tree = Directory("tests/directory_entries/tree")
     console.print(tree.path)
     walk(tree, "")
     var files_seen = count_files(tree)

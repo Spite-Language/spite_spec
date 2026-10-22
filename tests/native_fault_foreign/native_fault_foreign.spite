@@ -1,5 +1,5 @@
 var console = Console()
-var fixture = DynamicLibrary("conformance/stage6/native_fault_foreign/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary("tests/native_fault_foreign/fixture.dll", 'identity', "")
 
 func NativeFaultForeign() {
     load "../../../SpiteCompiler/.spite/library/common"
@@ -12,6 +12,6 @@ func NativeFaultForeign() {
 
 func read_nothing() {
     var nowhere: Long = 0
-    var value = fixture.read_integer_at(nowhere)
+    var value = fixture.read_integer_little_endian_at(nowhere)
     console.print(value)
 }

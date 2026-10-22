@@ -1,1 +1,0 @@
---name=server --workers=4 --verbose

@@ -15,6 +15,7 @@ change is checked by the tests it touches and not by one long run of everything.
     tests/<name>/expected_output.txt          what it must print, both streams together (optional)
     tests/<name>/input.txt                    what it reads from the console (optional)
     tests/<name>/flags.txt                    the compiler's flags after the folder (optional)
+    tests/<name>/arguments.txt                what the program is run with (optional)
     conformance/<name>/<name>.spite           a program that must fail to compile
     conformance/<name>/expected_errors.txt    the errors it must fail with, word for word
 

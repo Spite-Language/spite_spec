@@ -1,5 +1,5 @@
 var console = Console()
-var fixture = DynamicLibrary("conformance/stage6/native_fault_illegal/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary("tests/native_fault_illegal/fixture.dll", 'identity', "")
 
 func NativeFaultIllegal() {
     load "../../../SpiteCompiler/.spite/library/common"

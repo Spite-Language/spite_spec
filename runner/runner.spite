@@ -152,7 +152,8 @@ func run_test(folder: String) {
     if input_file.exists() {
         input = "<{folder}/input.txt"
     }
-    var running = Process("{executable} {input} 2>&1", no_arguments)
+    var program_arguments = optional_text(folder, "arguments.txt")
+    var running = Process("{executable} {program_arguments} {input} 2>&1", no_arguments)
     var answered = running.run()
     var answer = answered.to_string()
     if answer != wanted {

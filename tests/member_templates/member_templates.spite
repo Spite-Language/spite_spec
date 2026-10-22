@@ -31,7 +31,7 @@ func MemberTemplates() {
     console.print(first_by_label, popular_names)
     repositories.each_bump_stars()
     all_stars = repositories.sum_stars()
-    var stars_count = repositories.map_get_stars().count()
+    var stars_count = repositories.map_stars().count()
     console.print(all_stars, stars_count)
     var found = repositories.find_by_name("compiler")
     if found {

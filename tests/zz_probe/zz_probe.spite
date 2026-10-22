@@ -1,0 +1,17 @@
+var console = Console()
+var color_text = ColorText()
+
+func ZzProbe() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = color_text.read("#ff8000")
+    if first {
+        console.print("first")
+    }
+    var second = color_text.read("#12")
+    console.print("second")
+    if second {
+        console.print("some")
+    }
+    console.print("end")
+}

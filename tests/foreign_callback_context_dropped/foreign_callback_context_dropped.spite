@@ -1,5 +1,5 @@
 var console = Console()
-var plain = DynamicLibrary("conformance/stage6/foreign_callback_context_dropped/fixture.dll", 'identity', "")
+var plain = DynamicLibrary("tests/foreign_callback_context_dropped/fixture.dll", 'identity', "")
 
 func ForeignCallbackContextDropped() {
     load "../../../SpiteCompiler/.spite/library/common"

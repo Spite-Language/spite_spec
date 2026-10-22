@@ -24,7 +24,7 @@ func ConcurrentWaits() {
 }
 
 func read_itself(): String? {
-    return File("conformance/stage6/concurrent_waits/concurrent_waits.spite").read()
+    return File("tests/concurrent_waits/concurrent_waits.spite").read()
 }
 
 func outer(): Integer {

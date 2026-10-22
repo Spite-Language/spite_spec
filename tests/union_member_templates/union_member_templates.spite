@@ -3,7 +3,7 @@ var console = Console()
 func UnionMemberTemplates() {
     load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
-    var folder = Directory("conformance/stage6/union_member_templates/tree")
+    var folder = Directory("tests/union_member_templates/tree")
     var entries = folder.entries()
     var names = entries.map_names()
     var joined_names = names.join(",")
