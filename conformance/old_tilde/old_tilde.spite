@@ -1,0 +1,8 @@
+var console = Console()
+
+func OldTilde() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var flags = 3
+    var flipped = ~flags
+    console.print(flipped)
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func ThisFunctionCall() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var text = label()
+    console.print(text)
+}
+
+func label(): String {
+    return this.to_string()
+}

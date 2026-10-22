@@ -1,0 +1,16 @@
+var console = Console()
+
+func SymbolFromText() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tag: Symbol = 'wing'
+    var length = tag.length()
+    var upper = tag.upper_case()
+    console.print(tag, length, upper, tag.class)
+    var text = "wing"
+    var found = Symbol(text)
+    var missing_text = "never_a_symbol_here"
+    var missing = Symbol(missing_text)
+    crash found
+    var same = found == tag
+    console.print(same, not missing)
+}

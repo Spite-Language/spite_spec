@@ -1,0 +1,8 @@
+var console = Console()
+
+func LoneHoleDeclare() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var clicks = 3
+    var shown = "{clicks}"
+    console.print(shown)
+}

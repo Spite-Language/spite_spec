@@ -1,0 +1,7 @@
+var console = Console()
+
+func AbbreviationMin() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var min = 1
+    console.print(min)
+}

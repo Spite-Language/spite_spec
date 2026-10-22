@@ -1,0 +1,14 @@
+var console = Console()
+
+func MagicNumberExempt() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var days_per_cycle = 146097
+    var count = 3
+    var next = count + 1
+    var previous = count - 1
+    var flipped = count * -1
+    var ratio = 2.5
+    var scaled = ratio * 1.0 + 0.0
+    var cycles = days_per_cycle * count
+    console.print(next, previous, flipped, scaled, cycles)
+}

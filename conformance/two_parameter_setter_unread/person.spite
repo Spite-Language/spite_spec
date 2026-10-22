@@ -1,0 +1,5 @@
+var age = 0
+
+func set_age(value: Integer, reason: String) {
+    age = value
+}

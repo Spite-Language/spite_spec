@@ -1,0 +1,21 @@
+var console = Console()
+
+func RepeatedBranchPartial() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var end = 2
+    var first = describe("spite", end)
+    var second = describe("ada", end)
+    console.print(first, second)
+}
+
+func describe(source: String, end: Integer): String {
+    if source.starts_with("s") {
+        var part = source.slice(0, end)
+        return "s {part}"
+    } else if source.starts_with("x") {
+        var part = source.slice(0, end)
+        return "x {part}"
+    } else {
+        return "other"
+    }
+}

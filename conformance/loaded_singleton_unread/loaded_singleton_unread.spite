@@ -1,0 +1,8 @@
+var console = Console()
+
+func LoadedSingletonUnread() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "paint"
+    var tint = Tint()
+    console.print(tint.name)
+}

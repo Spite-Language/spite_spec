@@ -1,0 +1,23 @@
+var console = Console()
+
+func NullableSwitchNullCase() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var found = find(true)
+    describe(found)
+    var lost = find(false)
+    describe(lost)
+}
+
+func find(present: Boolean): Monster? {
+    if present {
+        return Monster()
+    }
+    return null
+}
+
+func describe(target: Monster?) {
+    switch target {
+        Monster: console.print("a monster named {target.name}")
+        Null: console.print("nothing")
+    }
+}

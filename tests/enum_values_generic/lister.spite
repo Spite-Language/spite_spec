@@ -1,0 +1,14 @@
+generic $value_type
+
+var console = Console()
+
+func list() {
+    var values = $value_type.values
+    var count = values.count()
+    console.print(count)
+    values.each(show)
+}
+
+func show(value: $value_type) {
+    console.print(value)
+}

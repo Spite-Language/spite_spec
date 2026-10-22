@@ -1,0 +1,17 @@
+var console = Console()
+
+func ThisPassed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var registry = Registry()
+    var first = Member("ada")
+    first.join(registry)
+    var second = Member("bea")
+    second.join(registry)
+    var count = registry.members.count()
+    console.print(count)
+    registry.members.each(show)
+}
+
+func show(member: Member) {
+    console.print(member.name)
+}

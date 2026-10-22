@@ -1,0 +1,17 @@
+type Sized {
+    size: Integer
+}
+
+var console = Console()
+
+func ShapeOperatorWithoutFunction() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Crate()
+    var second = Crate()
+    var both = joined(first, second)
+    console.print(both.size)
+}
+
+func joined(first: Sized, second: Sized): Sized {
+    return first + second
+}

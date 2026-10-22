@@ -1,0 +1,8 @@
+var console = Console()
+
+func TextNestedHoles() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = "xyx"
+    var shown = "[{name.replace("x", "a{name.replace("x", "\\\{")}b")}]"
+    console.print(shown)
+}

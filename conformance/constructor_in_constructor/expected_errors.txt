@@ -1,0 +1,1 @@
+conformance/constructor_in_constructor/constructor_in_constructor.spite:5: error: 'Font()' is constructed inside an argument of 'Label': a constructor call is never an argument, so make it first on a line of its own, 'var font = Font()', and pass 'font' (in ConstructorInConstructor.ConstructorInConstructor)

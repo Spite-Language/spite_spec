@@ -1,0 +1,1 @@
+conformance/trailing_underscore/trailing_underscore.spite:2: error: the attribute 'strike_' must be written in snake_case: lowercase words joined by one underscore each, with at most one '_' in front to make it private (in TrailingUnderscore)

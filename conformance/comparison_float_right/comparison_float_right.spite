@@ -1,0 +1,9 @@
+var console = Console()
+
+func ComparisonFloatRight() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var progress = 3
+    var limit = -0.5
+    var ahead = progress > limit
+    console.print(ahead)
+}

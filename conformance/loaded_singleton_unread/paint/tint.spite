@@ -1,0 +1,2 @@
+var name = "red"
+var console = Console()

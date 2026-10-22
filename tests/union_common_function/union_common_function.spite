@@ -1,0 +1,21 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func UnionCommonFunction() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pets = List<Pet>()
+    var cat = Cat()
+    pets.append(cat)
+    var dog = Dog()
+    pets.append(dog)
+    pets.each(show)
+}
+
+func show(pet: Pet) {
+    var sound = pet.sound()
+    console.print(pet.name, sound)
+}

@@ -1,0 +1,12 @@
+enum Job = {
+    'knight'
+    'archer'
+}
+
+var console = Console()
+
+func EnumWithEquals() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var job: Job = 'knight'
+    console.print(job)
+}

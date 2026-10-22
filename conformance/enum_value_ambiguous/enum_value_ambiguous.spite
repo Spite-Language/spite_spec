@@ -1,0 +1,16 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+enum Sea {
+    'calm'
+    'rough'
+}
+
+var console = Console()
+
+func EnumValueAmbiguous() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print('calm')
+}

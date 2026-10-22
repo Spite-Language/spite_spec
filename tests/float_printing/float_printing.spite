@@ -1,0 +1,13 @@
+var console = Console()
+
+func FloatPrinting() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tenth: Float = 0.1
+    var wide_tenth: Double = 0.1
+    var fifth: Double = 0.2
+    var sum = wide_tenth + fifth
+    var huge: Double = 1000000000000000000000.0
+    var small: Double = 0.00001
+    var little: Float = 0.00001
+    console.print(tenth, sum, huge, small, little)
+}

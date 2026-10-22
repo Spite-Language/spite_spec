@@ -1,0 +1,9 @@
+var name = ""
+
+func Member(starting_name: String) {
+    name = starting_name
+}
+
+func join(registry: Registry) {
+    registry.members.append(this)
+}

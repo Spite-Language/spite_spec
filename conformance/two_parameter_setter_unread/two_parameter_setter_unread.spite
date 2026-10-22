@@ -1,0 +1,8 @@
+var console = Console()
+
+func TwoParameterSetterUnread() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var person = Person()
+    person.set_age(5, "birthday")
+    console.print(person.age)
+}

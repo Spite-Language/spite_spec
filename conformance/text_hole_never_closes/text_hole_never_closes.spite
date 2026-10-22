@@ -1,0 +1,6 @@
+var console = Console()
+
+func TextHoleNeverCloses() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = "ada"
+    var shown = "{name

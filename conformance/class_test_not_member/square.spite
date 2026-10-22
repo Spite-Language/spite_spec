@@ -1,0 +1,5 @@
+var side = 1
+
+func size(): Integer {
+    return side
+}

@@ -1,0 +1,20 @@
+union Creature {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func SwitchRestAfterAll() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var cat = Cat()
+    describe(cat)
+}
+
+func describe(creature: Creature) {
+    switch creature {
+        Cat: console.print("a cat")
+        Dog: console.print("a dog")
+        _: console.print("something")
+    }
+}

@@ -1,0 +1,1 @@
+conformance/call_in_hole_argument/call_in_hole_argument.spite:6: error: 'count_words(text)' is called inside an argument of 'shout': compute it first into a named 'var' and pass the name (in CallInHoleArgument.CallInHoleArgument)

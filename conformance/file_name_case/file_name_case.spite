@@ -1,0 +1,7 @@
+var console = Console()
+
+func FileNameCase() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var helper = ToolHelper()
+    console.print(helper.name)
+}

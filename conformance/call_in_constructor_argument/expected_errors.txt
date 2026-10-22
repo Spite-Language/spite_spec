@@ -1,0 +1,1 @@
+conformance/call_in_constructor_argument/call_in_constructor_argument.spite:6: error: 'source.slice(0, 1)' is called inside an argument of 'Token': compute it first into a named 'var' and pass the name (in CallInConstructorArgument.CallInConstructorArgument)

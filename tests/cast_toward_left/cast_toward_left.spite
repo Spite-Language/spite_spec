@@ -1,0 +1,22 @@
+var console = Console()
+
+func CastTowardLeft() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var measured: Float = 7.75
+    var whole = whole_part(measured)
+    var halved = halve(whole)
+    var ratio: Double = 2.5
+    var stored: Integer = 0
+    stored = ratio
+    var widened = measured + whole
+    console.print(whole, halved, stored, widened)
+}
+
+func whole_part(value: Float): Integer {
+    return value
+}
+
+func halve(value: Float): Float {
+    var half = 0.5
+    return value * half
+}

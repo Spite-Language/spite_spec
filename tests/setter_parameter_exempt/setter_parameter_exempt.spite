@@ -1,0 +1,8 @@
+var console = Console()
+
+func SetterParameterExempt() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var person = Person()
+    person.age = 5
+    console.print(person.age)
+}

@@ -1,0 +1,9 @@
+var console = Console()
+
+func DecimalLiteralDivision() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var third = 1.0 / 3.0
+    var half = 1.0 / 2.0
+    var wide_third: Double = 1.0 / 3.0
+    console.print(third, half, wide_third)
+}

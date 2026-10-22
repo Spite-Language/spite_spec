@@ -1,0 +1,8 @@
+var console = Console()
+
+func RemainderByFoldedZero() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var total = 9
+    var share = total % (1 - 1)
+    console.print(share)
+}

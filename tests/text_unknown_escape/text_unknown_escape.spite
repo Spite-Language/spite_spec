@@ -1,0 +1,9 @@
+var console = Console()
+
+func TextUnknownEscape() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var letters = "\q\z\a"
+    console.print(letters)
+    var length = letters.length()
+    console.print(length)
+}

@@ -1,0 +1,5 @@
+var font = Font()
+
+func Label(starting_font: Font) {
+    font = starting_font
+}

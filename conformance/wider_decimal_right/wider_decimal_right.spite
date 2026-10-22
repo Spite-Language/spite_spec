@@ -1,0 +1,9 @@
+var console = Console()
+
+func WiderDecimalRight() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = 3
+    var ratio = 0.5
+    var scaled = count * ratio
+    console.print(scaled)
+}

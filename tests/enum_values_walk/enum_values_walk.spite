@@ -1,0 +1,23 @@
+enum Course {
+    'starter'
+    'soup'
+    'dessert'
+}
+
+var console = Console()
+
+func EnumValuesWalk() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    Course.values.each(show)
+    var count = Course.values.count()
+    var second = Course.values[1]
+    crash second
+    console.print(count, second)
+    var found = Course.values.find_by_name("dessert")
+    crash found
+    console.print(found)
+}
+
+func show(course: Course) {
+    console.print(course)
+}

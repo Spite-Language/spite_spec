@@ -1,0 +1,11 @@
+enum Job {
+    'knight'
+    'magician'
+    'archer'
+}
+
+var current_job: Job = 'knight'
+
+func assign_job(player_job: Job) {
+    current_job = player_job
+}

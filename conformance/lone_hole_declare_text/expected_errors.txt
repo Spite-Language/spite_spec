@@ -1,0 +1,1 @@
+conformance/lone_hole_declare_text/lone_hole_declare_text.spite:6: error: '"{name}"' is a text of one value and nothing else: declare the value directly, 'var shown = name' (in LoneHoleDeclareText.LoneHoleDeclareText)

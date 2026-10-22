@@ -1,0 +1,5 @@
+var radius = 1
+
+func size(): Integer {
+    return radius
+}

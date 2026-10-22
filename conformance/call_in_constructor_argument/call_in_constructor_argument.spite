@@ -1,0 +1,8 @@
+var console = Console()
+
+func CallInConstructorArgument() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var source = "spite"
+    var token = Token("word", source.slice(0, 1))
+    console.print(token.text, token.kind)
+}

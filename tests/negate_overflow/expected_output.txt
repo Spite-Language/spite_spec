@@ -1,0 +1,2 @@
+-5 0
+spite: '0 - lowest' does not fit in an Integer (0 - -2147483648), at tests/negate_overflow/negate_overflow.spite:11 in NegateOverflow.NegateOverflow

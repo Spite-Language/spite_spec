@@ -1,0 +1,13 @@
+var console = Console()
+
+func GenericDefaults() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = Box<Integer>()
+    var decimals = Box<Float>()
+    var flags = Box<Boolean>()
+    var texts = Box<String>()
+    var pets = Box<Pet>()
+    var lists = Box<List<Integer>>()
+    var held_count = lists.held.count()
+    console.print(numbers.held, decimals.held, flags.held, "[{texts.held}]", pets.held.name, held_count)
+}

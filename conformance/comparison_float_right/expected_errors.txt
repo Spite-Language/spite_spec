@@ -1,0 +1,1 @@
+conformance/comparison_float_right/comparison_float_right.spite:7: error: 'progress > limit' compares in Integer, since a comparison takes the left side's type, and the right side is a Float, which would be cut to fit: write the Float first ('limit < progress'), or store the right side in an Integer first if it fits one (in ComparisonFloatRight.ComparisonFloatRight)

@@ -1,0 +1,10 @@
+var console = Console()
+
+func ByteLiteralAddition() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var top: Byte = 254
+    var next = top + 1
+    console.print(next)
+    var past = next + 1
+    console.print("never printed", past)
+}

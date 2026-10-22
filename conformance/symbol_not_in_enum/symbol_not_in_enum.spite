@@ -1,0 +1,15 @@
+enum Weapon {
+    'sword'
+    'bow'
+}
+
+var console = Console()
+
+func SymbolNotInEnum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    set_weapon('orange')
+}
+
+func set_weapon(weapon: Weapon) {
+    console.print(weapon)
+}

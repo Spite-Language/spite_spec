@@ -1,0 +1,9 @@
+var console = Console()
+
+func OperatorParameterExempt() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Token()
+    var second = Token()
+    var same = first == second
+    console.print(same, first.name)
+}
