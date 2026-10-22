@@ -21,11 +21,15 @@ func ClassWalk() {
     check_kinds()
 }
 
-func check_kind(kind: Symbol<Spite.Class>) {
-    var name: String = kind.name
-    if name.starts_with("Walk") or name.starts_with("Parts.") or name == "Console" or name == "Spite.Class" {
-        var stateful = kind.class.has_state()
-        var files = kind.class.source_files
+func check_kinds() {
+    Spite.Class.instances.each(check_kind)
+}
+
+func check_kind(kind: Spite.Class) {
+    var name: String = kind.name_with_namespaces
+    if name.starts_with("Walk") or name.starts_with("Parts.") {
+        var stateful = kind.is_stateful
+        var files = kind.source_files
         var shown = file_name(files)
         console.print(name, stateful, "'{shown}'")
     }

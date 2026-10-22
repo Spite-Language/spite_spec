@@ -1,1 +1,0 @@
-conformance/returned_text/key_asker.spite:4: error: '$value_type.returned_text("json_key_level")' reads the text a function of 'Label' returns, and it has no function 'json_key_level': ask '$value_type.has_function("json_key_level")' first, and read the text only in the branch where it is true (in KeyAsker.key_of_level)

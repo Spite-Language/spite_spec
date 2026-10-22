@@ -38,5 +38,5 @@ func UnionMemberTemplates() {
     var done_count = tasks.count_done()
     var finished = tasks.filter_is_done()
     var finished_count = finished.count()
-    console.print("done:", done_count, finished_count)
+    console.print("done:", done_count, finished_count, sweep.title)
 }
