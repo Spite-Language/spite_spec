@@ -30,7 +30,7 @@ func show_directory(directory: Directory) {
 func inside_program(path: String): String {
     var marker = "reflection_sources/"
     var start = path.index_of(marker)
-    crash start >= 0
+    crash start
     var path_length = path.length()
     var marker_length = marker.length()
     return path.slice(start + marker_length, path_length)

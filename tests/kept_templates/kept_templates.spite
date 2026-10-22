@@ -1,4 +1,3 @@
-# ../../../docs/collections.md#how-the-member-templates-are-written
 var console = Console()
 var headers = Headers()
 var fingerprints = Fingerprints()
