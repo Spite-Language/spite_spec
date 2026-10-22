@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReflectionReadOnly() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var described = console.class
+    described.name = "Terminal"
+    console.print(described._name)
+}

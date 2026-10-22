@@ -1,0 +1,24 @@
+var console = Console()
+
+func VariadicMistakes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["Aria", "Bram"]
+    greet(names)
+    var joined = labeled()
+    var first = "Aria"
+    greet(first.upper_case())
+    var trimmed = first.trim()
+    var badge = Badge(trimmed)
+    greet(badge)
+    console.print(joined)
+}
+
+func greet(...people: List<String>) {
+    var people_count = people.count()
+    console.print(people_count)
+}
+
+func labeled(label: String, ...values: List<Integer>): String {
+    return "{label} {values.join(", ")}"
+}

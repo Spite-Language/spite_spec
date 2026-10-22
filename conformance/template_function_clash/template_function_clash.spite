@@ -1,0 +1,12 @@
+var console = Console()
+
+func TemplateFunctionClash() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var rows = Row<RowView>()
+    var view = RowView()
+    rows.store(view)
+    rows.store_row(4)
+    var joined = rows.stored.join(" ")
+    console.print(joined)
+}

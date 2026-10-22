@@ -1,0 +1,24 @@
+var console = Console()
+var pet: Pet? = null
+
+func TypeMistakes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(pet.name)
+    var other = Pet()
+    other = "a string"
+    feed("not a pet")
+    var count: Integer = other
+    var given = give_back()
+    console.print(count, given)
+    var names = List<String>()
+    names.append(other)
+}
+
+func feed(animal: Pet) {
+    console.print(animal.name)
+}
+
+func give_back(): Pet {
+    return "nope"
+}

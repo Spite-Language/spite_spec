@@ -1,0 +1,14 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var console = Console()
+
+func EnumFromText() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = "calm"
+    var mood: Mood = name
+    console.print(mood)
+}

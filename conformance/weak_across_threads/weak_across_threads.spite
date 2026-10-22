@@ -1,0 +1,9 @@
+var console = Console()
+
+func WeakAcrossThreads() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tree = Tree()
+    var counted = Parallel(tree.grow)
+    console.print(counted)
+}

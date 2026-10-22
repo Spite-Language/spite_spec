@@ -1,0 +1,1 @@
+conformance/function_owner/function_owner.spite:7: error: 'Spite.Function<String, String>' has no attribute 'owner' (in FunctionOwner.FunctionOwner)

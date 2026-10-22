@@ -1,0 +1,15 @@
+var console = Console()
+
+func PathNarrowElse() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    probe()
+}
+
+func probe() {
+    if PathNarrowElse.namespace {
+        console.print(PathNarrowElse.namespace.name)
+    } else {
+        console.print(PathNarrowElse.namespace.name)
+    }
+}

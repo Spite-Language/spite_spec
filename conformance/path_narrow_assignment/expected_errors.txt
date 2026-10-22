@@ -1,0 +1,1 @@
+conformance/path_narrow_assignment/path_narrow_assignment.spite:14: error: this value may be null (it is a Box?): narrow it first with 'if value { }', 'assert value' or 'crash value' (in PathNarrowAssignment.probe)

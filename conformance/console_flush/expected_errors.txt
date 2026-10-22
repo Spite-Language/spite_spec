@@ -1,0 +1,1 @@
+conformance/console_flush/console_flush.spite:7: error: a Console has no attribute or function 'flush' (in ConsoleFlush.ConsoleFlush)

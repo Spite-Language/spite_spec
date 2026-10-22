@@ -1,0 +1,13 @@
+var console = Console()
+
+func ClassAsValue() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var kind = Health
+    console.print(kind)
+    keep(Health)
+}
+
+func keep(component: Anything) {
+    console.print(component.class)
+}

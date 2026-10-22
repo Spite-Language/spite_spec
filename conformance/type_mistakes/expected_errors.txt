@@ -1,0 +1,1 @@
+conformance/type_mistakes/type_mistakes.spite:7: error: this value may be null (it is a Pet?): narrow it first with 'if value { }', 'assert value' or 'crash value' (in TypeMistakes.TypeMistakes)

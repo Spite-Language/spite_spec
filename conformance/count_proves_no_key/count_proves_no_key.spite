@@ -1,0 +1,11 @@
+var console = Console()
+
+func CountProvesNoKey() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = Dictionary<Integer, String>()
+    names[7] = "seven"
+    crash names.count() == 1
+    var first = names[0].upper_case()
+    console.print(first)
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func CastByName() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = 3
+    var half = Float.from_integer(count)
+    var wide = Long.from_short(count)
+    console.print(count, half, wide)
+}

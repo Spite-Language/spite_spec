@@ -1,0 +1,14 @@
+var runner = Runner<Moving>()
+var positions = Column<Position>()
+
+func SparseRows() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var placed = Position()
+    positions.insert(placed)
+    runner.found.append(0)
+    runner.found.append(0)
+    runner.found.append(0)
+    runner.run(0)
+    runner.shift(0)
+}

@@ -1,0 +1,16 @@
+var console = Console()
+
+func StoreThroughNullable() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    var boxes = List<Box>()
+    boxes[3].label = "x"
+    var outer = Box()
+    outer.inner.label = "y"
+    var box_count = boxes.count()
+    console.print(box_count)
+}

@@ -1,0 +1,26 @@
+var console = Console()
+var held: Box? = null
+
+func NarrowedNameReassigned() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    after_null()
+    in_a_loop()
+}
+
+func after_null() {
+    var maybe: Box? = Box()
+    assert maybe
+    maybe = null
+    console.print(maybe.label)
+}
+
+func in_a_loop() {
+    assert held
+    var passes = 0
+    while passes < 2 {
+        console.print(held.label)
+        held = held.inner
+        passes = passes + 1
+    }
+}

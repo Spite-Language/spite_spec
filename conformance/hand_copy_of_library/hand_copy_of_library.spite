@@ -1,0 +1,11 @@
+var console = Console()
+
+func HandCopyOfLibrary() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var left = Matrix4()
+    var right = Matrix4()
+    var target = Matrix4()
+    target.set_product(left, right)
+    console.print(target.column_0_row_0)
+}

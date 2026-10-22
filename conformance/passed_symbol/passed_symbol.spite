@@ -1,0 +1,6 @@
+func PassedSymbol() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var runner = Runner<Move>()
+    runner.run()
+}

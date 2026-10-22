@@ -1,0 +1,1 @@
+conformance/structural_index_undone/structural_index_undone.spite:10: error: this value may be null (it is a String?): narrow it first with 'if value { }', 'assert value' or 'crash value' (in StructuralIndexUndone.StructuralIndexUndone)

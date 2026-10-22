@@ -1,0 +1,10 @@
+var console = Console()
+
+func EnumReopeningReplaces() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "package"
+    var weather = Weather()
+    weather.sky = 'fog'
+    console.print(weather.sky)
+}

@@ -1,0 +1,8 @@
+var console = Console()
+
+func GenericConstraintNotAType() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tally = Tally<Integer>()
+    console.print(tally.count)
+}

@@ -1,0 +1,8 @@
+var console = Console()
+var environment = Environment()
+
+func SettingNamedLikeFlag() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(environment.player_name, environment.optimized)
+}

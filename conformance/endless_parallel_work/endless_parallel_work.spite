@@ -1,0 +1,10 @@
+var console = Console()
+var counter = Counter()
+
+func EndlessParallelWork() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var counting = Parallel(counter.count_forever)
+    var finishing = Parallel(counter.count_to_ten)
+    console.print(counting, finishing)
+}

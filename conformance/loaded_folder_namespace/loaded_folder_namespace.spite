@@ -1,0 +1,10 @@
+var console = Console()
+
+func LoadedFolderNamespace() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "kitchen"
+    var chef = Chef()
+    var served = chef.serve()
+    console.print(served)
+}

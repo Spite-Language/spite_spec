@@ -1,0 +1,12 @@
+var console = Console()
+
+func WrittenHandleType() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var total: Parallel<Integer> = Parallel(count)
+    console.print(total)
+}
+
+func count(): Integer {
+    return 3
+}

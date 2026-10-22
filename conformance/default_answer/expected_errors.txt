@@ -1,0 +1,1 @@
+conformance/default_answer/default_answer.spite:28: error: this 'assert' would answer a default Integer that a caller cannot tell from a real one: make the result 'Integer?', or 'crash' if this is a developer mistake (in DefaultAnswer.row_of)

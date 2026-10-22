@@ -1,0 +1,27 @@
+var console = Console()
+
+func FunctionValueMistakes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var rung = apply(ring, "x")
+    console.print(rung)
+    var change = shout
+    var changed = change("a", "b")
+    console.print(changed)
+    var described = FunctionValueMistakes.functions
+    crash described[0]
+    var applied = apply(described[0], "y")
+    console.print(applied)
+}
+
+func apply(change: Spite.Function<String, String>, text: String): String {
+    return change(text)
+}
+
+func shout(text: String): String {
+    return text.upper_case()
+}
+
+func ring() {
+    console.print("ring")
+}

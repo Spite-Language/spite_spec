@@ -1,0 +1,13 @@
+var tracker: Tracker? = null
+
+func CheckProvesNothing() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    drop()
+}
+
+func drop() {
+    assert tracker
+    assert tracker
+    tracker.note_a_drop()
+}

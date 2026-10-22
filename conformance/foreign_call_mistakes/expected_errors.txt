@@ -1,0 +1,3 @@
+conformance/foreign_call_mistakes/foreign_call_mistakes.spite:8: error: a Console cannot cross into C: a foreign function takes numbers, Boolean, enum values, text and a type whose attributes are all numbers (in ForeignCallMistakes.ForeignCallMistakes)
+conformance/foreign_call_mistakes/foreign_call_mistakes.spite:9: error: 'fixture_answer' is a constant, and a constant comes from the library's header: name it as DynamicLibrary's third argument (in ForeignCallMistakes.ForeignCallMistakes)
+conformance/foreign_call_mistakes/foreign_call_mistakes.spite:13: error: a foreign function is called through the attribute or variable that holds its DynamicLibrary(...), so the compiler knows which library to bind it in (in ForeignCallMistakes.call_through)

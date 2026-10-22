@@ -1,0 +1,9 @@
+var console = Console()
+
+func EqualsKeys() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var badges = Dictionary<Badge, String>()
+    var by_day = Dictionary<Date, Integer>()
+    console.print("never compiled")
+}

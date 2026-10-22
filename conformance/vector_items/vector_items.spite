@@ -1,0 +1,12 @@
+var console = Console()
+
+func VectorItems() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var holders = Vector<Holder>()
+    var handles = Vector<Handle>()
+    var selves = Vector<Selfish>()
+    var lists = Vector<List<Integer>>()
+    var total = holders.count() + handles.count() + selves.count() + lists.count()
+    console.print(total)
+}

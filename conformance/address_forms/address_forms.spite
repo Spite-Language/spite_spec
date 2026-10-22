@@ -1,0 +1,30 @@
+var console = Console()
+var heap = Memory.Heap()
+
+func AddressForms() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var buffer = heap.allocate(16)
+    var store = File(".spite/address_forms.bin")
+    store.read_bytes(0, 16, buffer)
+    store.write_bytes(buffer, 16)
+    store.append_bytes(buffer, 16)
+    var connection = Socket()
+    connection.read_bytes(buffer, 16)
+    connection.read_bytes_now(buffer, 16)
+    connection.write_bytes(buffer, 16)
+    connection.write_bytes_now(buffer, 16)
+    connection.read_bytes_into(buffer, 16)
+    var reader = BinaryReader<Integer>()
+    reader.read_memory(buffer, 16)
+    heap.free(buffer)
+    var numbers = [1, 2, 3]
+    var number = numbers.read_integer(0)
+    console.print(number)
+    var wrong_order = Buffer().read_integer_big_endian(0)
+    console.print(wrong_order)
+    var position_first = Buffer().read_integer(0)
+    console.print(position_first)
+    var missing_position = Buffer().write_integer(0, 1)
+    console.print(missing_position)
+}

@@ -1,0 +1,15 @@
+var console = Console()
+
+func JoinedMaybeBoolean() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ready = Concurrent(answer)
+    if ready {
+        console.print("ready")
+    }
+    console.print("after")
+}
+
+func answer(): Boolean? {
+    return false
+}

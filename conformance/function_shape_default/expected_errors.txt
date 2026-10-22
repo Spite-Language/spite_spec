@@ -1,0 +1,1 @@
+conformance/function_shape_default/holder.spite:3: error: the attribute 'held' is declared '$held_type', not '$held_type?', so '= null' would make a default $held_type rather than nothing: write 'var held: $held_type? = null' for none yet, narrowed before use, or 'var held = $held_type()' for a default, or keep '= null' and assign it at the top of the constructor (in Holder)

@@ -1,0 +1,13 @@
+var console = Console()
+
+func NamespaceNullable() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    probe()
+}
+
+func probe() {
+    var ns = NamespaceNullable.namespace
+    assert ns
+    console.print(NamespaceNullable.namespace.name)
+}

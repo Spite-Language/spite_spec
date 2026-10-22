@@ -1,0 +1,3 @@
+conformance/copy_to_narrow_conditions/copy_to_narrow_conditions.spite:14: error: 'watcher' only copies 'tracker' so it can be narrowed: narrow 'tracker' itself ('assert tracker') and use it directly (in CopyToNarrowConditions.leave_when_missing)
+conformance/copy_to_narrow_conditions/copy_to_narrow_conditions.spite:23: error: 'watcher' only copies 'tracker' so it can be narrowed: narrow 'tracker' itself ('assert tracker') and use it directly (in CopyToNarrowConditions.loop_while_there)
+conformance/copy_to_narrow_conditions/copy_to_narrow_conditions.spite:31: error: 'watcher' only copies 'tracker' so it can be narrowed: narrow 'tracker' itself ('assert tracker') and use it directly (in CopyToNarrowConditions.assert_with_more)

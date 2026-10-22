@@ -1,0 +1,8 @@
+var console = Console()
+var build = Build()
+
+func BuildSettingType() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(build.name, build.workers)
+}

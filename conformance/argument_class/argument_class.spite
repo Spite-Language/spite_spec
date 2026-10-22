@@ -1,0 +1,7 @@
+var holder = Holder<Mender>()
+
+func ArgumentClass() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    holder.show()
+}

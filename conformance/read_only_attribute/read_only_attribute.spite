@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReadOnlyAttribute() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var badge = Badge()
+    badge.number = 9
+    console.print(badge.number)
+}

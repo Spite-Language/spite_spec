@@ -1,0 +1,7 @@
+var console = Console()
+
+func FormatFlag() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("never compiled")
+}

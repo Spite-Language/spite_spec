@@ -1,0 +1,13 @@
+var tracker: Tracker? = null
+
+func CopyToNarrow() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    drop()
+}
+
+func drop() {
+    var watcher = tracker
+    assert watcher
+    watcher.note_a_drop()
+}

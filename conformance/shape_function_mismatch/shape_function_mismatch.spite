@@ -1,0 +1,19 @@
+type Renderable {
+    render(): String
+}
+
+var console = Console()
+
+func ShapeFunctionMismatch() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var silent = Silent()
+    show(silent)
+    var numbered = Numbered()
+    show(numbered)
+}
+
+func show(part: Renderable) {
+    var rendered = part.render()
+    console.print(rendered)
+}

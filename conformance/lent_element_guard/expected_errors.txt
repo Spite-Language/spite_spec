@@ -1,0 +1,1 @@
+conformance/lent_element_guard/lent_element_guard.spite:15: error: this 'assert' would answer a default Layout that a caller cannot tell from a real one: make the result 'Layout?', or 'crash' if this is a developer mistake (in LentElementGuard.layout_at)

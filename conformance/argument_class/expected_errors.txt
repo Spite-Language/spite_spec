@@ -1,0 +1,1 @@
+conformance/argument_class/holder.spite:4: error: 'Mender.mend' takes 1 arguments, so it has no parameter 1 for 'argument_class' to name: parameters are counted from 0 (in Holder.)

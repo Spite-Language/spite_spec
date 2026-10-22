@@ -1,0 +1,8 @@
+var console = Console()
+
+func UpperIsUpperCase() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var shouted = "spite".upper()
+    console.print(shouted)
+}

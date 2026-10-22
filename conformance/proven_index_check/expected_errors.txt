@@ -1,0 +1,2 @@
+conformance/proven_index_check/proven_index_check.spite:18: error: 'skipped[index]' is already proven by the loop condition 'index < skipped.count()', so this 'crash' proves nothing: remove it (in ProvenIndexCheck.attribute_prefix)
+conformance/proven_index_check/proven_index_check.spite:29: error: 'paths[index]' is already proven by the loop condition 'index < paths.count()', so this 'crash' proves nothing: remove it (in ProvenIndexCheck.parameter_prefix)

@@ -1,0 +1,19 @@
+var console = Console()
+
+func SeveralMistakes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("fine")
+    var total = 1
+    total = total + missing_function(2)
+}
+
+func helper(): Integer? {
+    assert 1 > 0
+    return 1
+}
+
+func other(): String {
+    var value: Strng = "x"
+    return nothing.name
+}

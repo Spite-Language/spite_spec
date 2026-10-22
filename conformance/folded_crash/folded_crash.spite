@@ -1,0 +1,12 @@
+var console = Console()
+
+func FoldedCrash() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = Slot<List<String>>()
+    var counts = Slot<Integer>()
+    console.print("before the crash")
+    counts.fits()
+    names.fits()
+    console.print("never printed")
+}

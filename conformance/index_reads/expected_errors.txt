@@ -1,0 +1,1 @@
+conformance/index_reads/index_reads.spite:16: error: this value may be null (it is a String?): narrow it first with 'if value { }', 'assert value' or 'crash value' (in IndexReads.unproven)

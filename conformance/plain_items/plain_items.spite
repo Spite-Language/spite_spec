@@ -1,0 +1,11 @@
+var console = Console()
+var numbers = Vector<Integer>()
+var flags = Items<Boolean>()
+
+func PlainItems() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    numbers.append(3)
+    flags.append(true)
+    console.print(numbers.count(), flags.count())
+}

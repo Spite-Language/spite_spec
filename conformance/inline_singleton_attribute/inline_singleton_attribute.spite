@@ -1,0 +1,8 @@
+var console = Console()
+var target = Build().target_operating_system
+
+func InlineSingletonAttribute() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(target)
+}

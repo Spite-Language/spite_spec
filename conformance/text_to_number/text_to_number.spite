@@ -1,0 +1,9 @@
+var console = Console()
+
+func TextToNumber() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var age: Integer = "42"
+    var ratio: Float = "0.5"
+    console.print(age, ratio)
+}

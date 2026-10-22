@@ -1,0 +1,16 @@
+var console = Console()
+
+func FailedConstructor() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var textures = Asset.Pak<Asset.Texture>()
+    var grass = Asset.Texture()
+    var count = textures.keep(grass)
+    var doubled = count * 2
+    console.print(doubled)
+    var sounds = Asset.Pack<Asset.Texture, Integer>()
+    console.print(sounds.items)
+    var notes = Asset.Texture<Integer>()
+    console.print(notes.path)
+    var forgotten = 3
+}

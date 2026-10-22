@@ -1,0 +1,9 @@
+var console = Console()
+
+func BitwiseOnFloat() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ratio = 1.5
+    var halved = ratio.shifted_right(1)
+    console.print(halved)
+}

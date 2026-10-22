@@ -1,0 +1,1 @@
+conformance/shape_function_mismatch/shape_function_mismatch.spite:11: error: 'Silent' does not fit type 'Renderable': it has no function 'render' (in ShapeFunctionMismatch.ShapeFunctionMismatch)

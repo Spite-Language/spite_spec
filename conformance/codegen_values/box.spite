@@ -1,0 +1,11 @@
+generic $held_type
+
+var held: $held_type = null
+
+func Box(starting: $held_type) {
+    held = starting
+}
+
+func broken(): $other_type {
+    return held
+}

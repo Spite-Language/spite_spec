@@ -1,0 +1,6 @@
+func ArgumentCount() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var painting = Runner<Painter>()
+    painting.run()
+}

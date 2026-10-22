@@ -1,0 +1,10 @@
+var console = Console()
+
+func CodegenValues() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Box<Integer>(1)
+    var second = Box<Integer, String>(2)
+    var third = Box()
+    console.print($environment, first.held)
+}

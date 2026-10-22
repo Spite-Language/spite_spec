@@ -1,0 +1,12 @@
+var console = Console()
+
+func TemplateAttributeSpelling() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var monster = Monster()
+    show_health(monster)
+}
+
+func show_attribute(attribute: Spite.Attribute<Monster>, monster: Monster) {
+    console.print(attribute.name, monster.attributes[attribute])
+}

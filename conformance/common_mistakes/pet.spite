@@ -1,0 +1,5 @@
+var name = "rex"
+
+func bark(times: Integer): String {
+    return name + times
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func IoSystemWritesRow() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var runner = Runner<Quitter>()
+    var checked = Checked()
+    var quitting = Quitting()
+    runner.run(checked, quitting)
+    console.print("quit requested:", quitting.quit.requested)
+}

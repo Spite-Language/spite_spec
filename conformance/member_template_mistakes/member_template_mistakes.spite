@@ -1,0 +1,16 @@
+var console = Console()
+var repositories = List<Repository>()
+
+func MemberTemplateMistakes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var engine = Repository("engine", 10, true)
+    repositories.append(engine)
+    var names = repositories.sum_name()
+    var counted = repositories.count_stars()
+    repositories.each_name()
+    var missing = repositories.filter_nothing()
+    var bumped = repositories.map_bump_stars()
+    var sorted = repositories.sort_by_active()
+    console.print(names, counted, missing, bumped, sorted)
+}

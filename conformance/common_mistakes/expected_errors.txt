@@ -1,0 +1,1 @@
+conformance/common_mistakes/common_mistakes.spite:8: error: a Pet has no attribute or function 'missing' (in CommonMistakes.CommonMistakes)

@@ -1,0 +1,15 @@
+var console = Console()
+
+func GenericConstraints() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pets = Shelf<Pet>()
+    var shelved_pet = Pet()
+    pets.add(shelved_pet)
+    var maybe_numbers = Shelf<Integer?>()
+    var labelled_pet = Pet()
+    var label = Label(labelled_pet)
+    var pet_count = pets.items.count()
+    var number_count = maybe_numbers.items.count()
+    console.print(pet_count, number_count, label.item)
+}

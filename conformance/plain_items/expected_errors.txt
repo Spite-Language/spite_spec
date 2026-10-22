@@ -1,0 +1,2 @@
+conformance/plain_items/plain_items.spite:2: error: 'Vector<Integer>' holds plain values, and a List keeps numbers, Boolean, enums and Memory.Address flat just as it did, so a list of them has one spelling: write 'List<Integer>' (in PlainItems.)
+conformance/plain_items/plain_items.spite:3: error: 'Items<Boolean>' holds plain values, and a List keeps numbers, Boolean, enums and Memory.Address flat just as it did, so a list of them has one spelling: write 'List<Boolean>' (in PlainItems.)

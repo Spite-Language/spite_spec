@@ -1,0 +1,9 @@
+var console = Console()
+
+func NumberMemorySpelling() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = 21
+    var doubled = count.doubled()
+    console.print(doubled)
+}

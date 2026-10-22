@@ -1,0 +1,15 @@
+union Held {
+    File
+    Directory
+}
+
+var console = Console()
+
+func MissingSwitchCase() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var thing: Held = Directory(".")
+    switch thing {
+        Directory: console.print("a folder")
+    }
+}

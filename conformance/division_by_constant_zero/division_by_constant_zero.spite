@@ -1,0 +1,10 @@
+var console = Console()
+
+func DivisionByConstantZero() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var total = 10
+    var halved = total / 0
+    var left = total % (2 - 2)
+    console.print(halved, left)
+}

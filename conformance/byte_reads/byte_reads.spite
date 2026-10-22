@@ -1,0 +1,25 @@
+var console = Console()
+
+func ByteReads() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var header = Buffer()
+    header.append_integer(12)
+    unproven(header)
+    undone(header)
+}
+
+func unproven(header: Buffer) {
+    var length = header.read_integer_at(0)
+    var doubled = length * 2
+    console.print(doubled)
+}
+
+func undone(header: Buffer) {
+    var start = 0
+    crash start + 4 <= header.count()
+    header.clear()
+    var length = header.read_integer_at(start)
+    var doubled = length * 2
+    console.print(doubled)
+}

@@ -1,0 +1,1 @@
+error: '--format' is not a compiler option: every compile formats the program's own files first, and nothing turns that off: '--check' formats and checks a program without building it

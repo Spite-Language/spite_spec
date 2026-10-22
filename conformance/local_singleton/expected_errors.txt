@@ -1,0 +1,2 @@
+conformance/local_singleton/local_singleton.spite:6: error: 'Build' is a singleton, bound here as a local: bind it once beside the attributes, 'var build = Build()', so every singleton the class uses is at the top of its file (in LocalSingleton.LocalSingleton)
+conformance/local_singleton/local_singleton.spite:12: error: 'Program' is a singleton, bound here as a local: bind it once beside the attributes, 'var program = Program()', so every singleton the class uses is at the top of its file (in LocalSingleton.report)

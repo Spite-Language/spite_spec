@@ -1,0 +1,7 @@
+var console = Console()
+
+func RemovedExecutableFlag() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("never compiled")
+}

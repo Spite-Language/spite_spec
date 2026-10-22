@@ -1,0 +1,18 @@
+type Named {
+    name: String
+    size: Integer
+}
+
+var console = Console()
+
+func ShapeMismatch() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    show({ name: "fine", size: 1 })
+    show({ name: "no size" })
+    show({ name: "wrong", size: "big" })
+}
+
+func show(thing: Named) {
+    console.print(thing.name)
+}

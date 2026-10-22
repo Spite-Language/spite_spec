@@ -1,0 +1,12 @@
+var console = Console()
+
+func UnkeyableTypes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var maybe = Dictionary<Integer?, String>()
+    var pairs = Dictionary<List<Integer>?, String>()
+    var weights = Dictionary<Float, String>()
+    weights[0.5] = "half"
+    var writer = JsonWriter<Dictionary<Float, String>>()
+    console.print("never compiled")
+}

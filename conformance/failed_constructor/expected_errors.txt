@@ -1,0 +1,4 @@
+conformance/failed_constructor/failed_constructor.spite:6: error: there is no generic class 'Asset.Pak' here: a name is looked up in this class's own namespace, its folder, each parent folder, then the whole program (in FailedConstructor.FailedConstructor)
+conformance/failed_constructor/failed_constructor.spite:11: error: 'Pack' takes 1 codegen value(s), in this order: $item_type, but 2 were given (in FailedConstructor.FailedConstructor)
+conformance/failed_constructor/failed_constructor.spite:13: error: 'Texture' takes no codegen values: write 'Texture(...)' without '<...>' (in FailedConstructor.FailedConstructor)
+conformance/failed_constructor/failed_constructor.spite:15: error: 'forgotten' is never read: remove it (in FailedConstructor.FailedConstructor)

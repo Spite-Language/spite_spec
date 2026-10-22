@@ -1,0 +1,1 @@
+conformance/wider_comparison/wider_comparison.spite:10: error: 'count < total' is a comparison in Integer, since arithmetic takes the left side's type, and the right side is a Long, which would be cut to fit: store the left side in a Long first ('var wide: Long = ...'), or store the right side in a Integer first if it fits one (in WiderComparison.WiderComparison)

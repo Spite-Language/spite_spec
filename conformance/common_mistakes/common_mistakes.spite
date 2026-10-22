@@ -1,0 +1,24 @@
+var console = Console()
+var score = 0
+
+func CommonMistakes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pet = Pet()
+    pet.missing = 3
+    undefined_name = 4
+    score = pet.nothing_here
+    var barked = pet.bark(1, 2)
+    console.print(barked)
+    var number = 5
+    number.explode()
+    var text = "abc"
+    var missing = text.no_such_method()
+    console.print(missing)
+    var list = [1, 2]
+    list.push(3)
+    var unknown = unknown_function()
+    var stranger = Unknown()
+    console.print(unknown, stranger)
+    console.print(score, number)
+}

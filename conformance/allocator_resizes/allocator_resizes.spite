@@ -1,0 +1,16 @@
+var console = Console()
+var store = Store()
+
+func AllocatorResizes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Position()
+    store.positions.append(first)
+    var place = store.positions[0]
+    crash place
+    var growing = Growing()
+    var names = List<String>()
+    names.memory.allocator = growing
+    names.append("one")
+    console.print(place.left)
+}

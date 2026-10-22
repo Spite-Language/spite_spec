@@ -1,0 +1,15 @@
+var console = Console()
+
+func PathNarrowAssignment() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    probe()
+}
+
+func probe() {
+    var outer = Box()
+    outer.inner = Box()
+    assert outer.inner
+    outer = Box()
+    console.print(outer.inner.label)
+}

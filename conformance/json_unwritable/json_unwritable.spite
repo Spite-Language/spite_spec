@@ -1,0 +1,28 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func JsonUnwritable() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var owner = Owner()
+    var owner_json = JsonWriter<Owner>()
+    var owner_text = owner_json.write(owner)
+    var widget = Widget()
+    var widget_json = JsonWriter<Widget>()
+    var widget_text = widget_json.write(widget)
+    var button_reader = JsonReader<Button>()
+    var button = button_reader.read("\{}")
+    crash button
+    var owner_bytes = BinaryReader<Owner>()
+    var no_bytes = Buffer()
+    var read_owner = owner_bytes.read(no_bytes)
+    crash read_owner
+    var button_writer = BinaryWriter<Button>()
+    var button_bytes = button_writer.write(button)
+    var byte_count = button_bytes.count()
+    console.print(owner_text, widget_text, button.label, read_owner.name, byte_count)
+}

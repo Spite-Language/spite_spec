@@ -1,0 +1,12 @@
+var console = Console()
+var names = ["ada", "grace"]
+
+func ReceiverCallUndoesProof() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var shelf = Shelf(names)
+    var shelves = [shelf]
+    crash names[0]
+    var counted = shelves[0].count()
+    console.print(names[0], counted)
+}

@@ -1,0 +1,9 @@
+var console = Console()
+
+func BlankLine() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = "ada"
+
+    console.print(name)
+}

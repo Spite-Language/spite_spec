@@ -1,0 +1,10 @@
+var console = Console()
+
+func LibraryFunctionMistakes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var counts = Dictionary<String, Integer>()
+    counts["pear"] = 3
+    var keys = counts.keys()
+    var ordered = keys.sort_by(counts.get_at)
+}

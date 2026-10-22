@@ -1,0 +1,11 @@
+var console = Console()
+
+func JsonKey() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var reader = JsonReader<MeshRecord>()
+    var mesh = reader.read_or_crash("\{}")
+    var writer = JsonWriter<MeshRecord>()
+    var text = writer.write(mesh)
+    console.print(text)
+}
