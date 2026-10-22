@@ -1,0 +1,21 @@
+var console = Console()
+
+func BenchmarkAnswer() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var measured = Benchmark(work)
+    var answer = measured.answer
+    var took = measured.duration
+    var zero = Duration(0, 'seconds')
+    var not_negative = took >= zero
+    console.print(answer, not_negative)
+}
+
+func work(): Integer {
+    var total = 0
+    var index = 0
+    while index < 10 {
+        total = total + index
+        index = index + 1
+    }
+    return total
+}

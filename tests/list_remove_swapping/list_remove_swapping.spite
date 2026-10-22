@@ -1,0 +1,14 @@
+var console = Console()
+
+func ListRemoveSwapping() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var letters = ["a", "b", "c", "d"]
+    letters.remove_swapping(0)
+    var joined = letters.join("")
+    console.print(joined)
+    letters.remove_swapping(2)
+    joined = letters.join("")
+    console.print(joined)
+    letters.remove_swapping(5)
+    console.print("never printed")
+}

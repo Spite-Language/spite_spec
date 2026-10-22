@@ -1,0 +1,8 @@
+var console = Console()
+
+func VectorDropItem() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var handles = Vector<Handle>()
+    var count = handles.count()
+    console.print(count)
+}

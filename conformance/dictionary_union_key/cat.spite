@@ -1,0 +1,5 @@
+var lives = 9
+
+func is_lucky(): Boolean {
+    return lives > 8
+}

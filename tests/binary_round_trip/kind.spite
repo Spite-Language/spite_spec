@@ -1,0 +1,4 @@
+enum Kind {
+    'normal'
+    'urgent'
+}

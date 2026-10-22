@@ -1,0 +1,1 @@
+conformance/binary_object_key/binary_object_key.spite:8: error: ...its dictionary is keyed by 'Player' objects, each key one object's identity, which has no binary form... (in BinaryObjectKey.BinaryObjectKey)

@@ -1,0 +1,11 @@
+var console = Console()
+
+func JsonWritesNull() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var writer = JsonWriter<Order>()
+    var nothing: Order? = null
+    var empty = writer.write(nothing)
+    var order = Order()
+    var text = writer.write(order)
+    console.print(empty, text)
+}

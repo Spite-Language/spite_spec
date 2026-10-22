@@ -1,0 +1,25 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var console = Console()
+
+func StringPlusCasts() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var mood: Mood = 'angry'
+    var count = 3
+    var ratio = 2.5
+    var wide: Long = 9000000000
+    var label = "value "
+    var with_count = label + count
+    var with_ratio = label + ratio
+    var with_answer = label + true
+    var with_mood = label + mood
+    var with_wide = label + wide
+    console.print(with_count)
+    console.print(with_ratio)
+    console.print(with_answer)
+    console.print(with_mood)
+    console.print(with_wide)
+}

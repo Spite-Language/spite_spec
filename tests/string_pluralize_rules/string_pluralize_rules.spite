@@ -1,0 +1,31 @@
+var console = Console()
+var words = ["box", "enemy", "wolf", "knife", "analysis", "medium", "index", "matrix", "vertex", "mouse", "ox", "octopus", "quiz", "status", "person", "child", "sheep", "quest"]
+
+func StringPluralizeRules() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var index = 0
+    var plurals = List<String>()
+    while index < words.count() {
+        var word = words[index]
+        var plural = word.pluralize()
+        plurals.append(plural)
+        index = index + 1
+    }
+    var joined = plurals.join(" ")
+    console.print(joined)
+    var underscored = "active_quest".pluralize()
+    var capitalised = "ActiveQuest".pluralize()
+    var shouted = "ACTIVE_QUEST".pluralize()
+    var named = "Person".pluralize()
+    var spaced = "old man".pluralize()
+    console.print(underscored, capitalised, shouted, named, spaced)
+    var already = "quests".pluralize()
+    var people = "people".pluralize()
+    var empty = "".pluralize()
+    console.print(already, people, "[{empty}]")
+    var singular = "map_names".singularize()
+    var person = "people".singularize()
+    var enemy = "enemies".singularize()
+    var quest = "quest".singularize()
+    console.print(singular, person, enemy, quest)
+}

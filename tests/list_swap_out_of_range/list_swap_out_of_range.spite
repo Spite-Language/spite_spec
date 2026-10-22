@@ -1,0 +1,12 @@
+var console = Console()
+
+func ListSwapOutOfRange() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var pair = [1, 2]
+    pair.swap(-1, 0)
+    pair.swap(1, 2)
+    var unswapped = pair.join(",")
+    pair.swap(1, 0)
+    var swapped = pair.join(",")
+    console.print(unswapped, swapped)
+}

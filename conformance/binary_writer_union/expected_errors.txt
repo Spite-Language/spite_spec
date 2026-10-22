@@ -1,0 +1,1 @@
+conformance/binary_writer_union/binary_writer_union.spite:6: error: BinaryWriter cannot write 'Owner': 'Owner.pet' is the union Pet, and the bytes do not say which member a value is... (in BinaryWriterUnion.BinaryWriterUnion)

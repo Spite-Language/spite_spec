@@ -1,0 +1,6 @@
+var stage: Stage = 'draft'
+var published = false
+
+func summary(): String {
+    return "{stage} {published}"
+}

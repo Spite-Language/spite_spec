@@ -1,0 +1,12 @@
+var console = Console()
+
+func StringSliceEdges() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var word = "hello"
+    var clamped_start = word.slice(-3, 2)
+    var clamped_end = word.slice(2, 99)
+    var backwards = word.slice(3, 1)
+    var nothing = word.slice(5, 5)
+    var whole = word.slice(0, 5)
+    console.print("[{clamped_start}] [{clamped_end}] [{backwards}] [{nothing}] [{whole}]")
+}

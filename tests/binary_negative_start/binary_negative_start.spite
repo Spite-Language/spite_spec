@@ -1,0 +1,12 @@
+var console = Console()
+
+func BinaryNegativeStart() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var frame = Buffer(0)
+    frame.append_integer_little_endian(1)
+    var reader = BinaryReader<Point>()
+    var start = -1
+    var point = reader.read_from(frame, start)
+    crash point
+    console.print("never printed", point.across)
+}

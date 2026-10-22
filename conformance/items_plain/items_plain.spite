@@ -1,0 +1,8 @@
+var console = Console()
+
+func ItemsPlain() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = Items<Integer>()
+    var count = numbers.count()
+    console.print(count)
+}

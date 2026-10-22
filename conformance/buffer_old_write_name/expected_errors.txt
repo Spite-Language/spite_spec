@@ -1,0 +1,1 @@
+conformance/buffer_old_write_name/buffer_old_write_name.spite:4: error: Buffer has no method 'write_integer': write 'write_integer_at(position, value)', or 'append_integer(value)' to add at the end (in BufferOldWriteName.BufferOldWriteName)

@@ -1,0 +1,1 @@
+conformance/template_caller_function/template_caller_function.spite:6: error: 'String' has no attribute or zero argument function 'say_hello' for 'each_say_hello': a template reads a member of each element, never a function of this class, so pass this class's 'say_hello' instead: 'each(say_hello)' (in TemplateCallerFunction.TemplateCallerFunction)

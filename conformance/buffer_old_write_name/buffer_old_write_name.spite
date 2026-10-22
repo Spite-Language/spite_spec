@@ -1,0 +1,5 @@
+func BufferOldWriteName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = Buffer(8)
+    bytes.write_integer(0, 5)
+}

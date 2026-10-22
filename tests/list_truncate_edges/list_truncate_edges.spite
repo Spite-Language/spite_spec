@@ -1,0 +1,13 @@
+var console = Console()
+
+func ListTruncateEdges() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = [1, 2, 3, 4]
+    numbers.truncate(-1)
+    var after_negative = numbers.join(",")
+    numbers.truncate(4)
+    var after_size = numbers.join(",")
+    numbers.truncate(0)
+    var after_zero = numbers.count()
+    console.print(after_negative, after_size, after_zero)
+}

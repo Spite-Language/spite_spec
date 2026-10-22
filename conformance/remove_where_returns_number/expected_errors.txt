@@ -1,0 +1,1 @@
+conformance/remove_where_returns_number/remove_where_returns_number.spite:4: error: 'remove_where(measure)': 'measure' is an Integer, but 'remove_where' needs it to return Boolean (in RemoveWhereReturnsNumber.RemoveWhereReturnsNumber)

@@ -1,0 +1,1 @@
+conformance/buffer_old_position_form/buffer_old_position_form.spite:6: error: 'read_integer_little_endian' reads at the buffer's position and takes nothing: write 'read_integer_little_endian_at(position)' to read anywhere else (in BufferOldPositionForm.BufferOldPositionForm)

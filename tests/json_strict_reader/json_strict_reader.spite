@@ -1,0 +1,21 @@
+var console = Console()
+var reader = JsonReader<Order>()
+
+func JsonStrictReader() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    show("\{\"count\": 3}")
+    show("\{\"count\": 3")
+    show("\{\"count\": 3} x")
+    show("\{\"count\": \"three\"}")
+    show("[1]")
+    show("")
+}
+
+func show(text: String) {
+    var order = reader.read(text)
+    if order {
+        console.print("read", order.count)
+    } else {
+        console.print("null")
+    }
+}

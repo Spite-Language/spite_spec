@@ -1,0 +1,16 @@
+var console = Console()
+var seen = List<Integer>()
+
+func ListRemoveWhereOrder() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = [5, 1, 4, 2, 3]
+    numbers.remove_where(is_small)
+    var visited = seen.join(",")
+    var kept = numbers.join(",")
+    console.print(visited, kept)
+}
+
+func is_small(number: Integer): Boolean {
+    seen.append(number)
+    return number < 3
+}

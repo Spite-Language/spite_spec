@@ -1,0 +1,1 @@
+conformance/list_heap_box/list_heap_box.spite:5: error: there is no 'Heap<T>': a class, a list and a text are references already, so a class that holds one of its own kind declares an ordinary attribute, like 'var left: Expression? = null'... (in ListHeapBox.ListHeapBox)

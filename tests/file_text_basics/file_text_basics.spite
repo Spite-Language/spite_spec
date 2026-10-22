@@ -1,0 +1,20 @@
+var console = Console()
+
+func FileTextBasics() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var note = File(".spite/file_text_basics.txt")
+    var written = note.write("one\n")
+    var appended = note.append("two\n")
+    var exists = note.exists()
+    var content = note.read()
+    crash content
+    var lines = content.lines()
+    var first = lines[0]
+    crash first
+    console.print(written, appended, exists, first, note.name)
+    var removed = note.remove()
+    var gone = note.exists()
+    var nothing = note.read()
+    var removed_again = note.remove()
+    console.print(removed, gone, nothing, removed_again)
+}

@@ -1,0 +1,1 @@
+conformance/json_float_key/json_float_key.spite:7: error: ...its dictionary is keyed by 'Float', and a JSON key is text: key it by a String, a whole number or an enum value... (in JsonFloatKey.JsonFloatKey)

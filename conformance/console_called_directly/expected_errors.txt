@@ -1,0 +1,1 @@
+conformance/console_called_directly/console_called_directly.spite:3: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console.print' (in ConsoleCalledDirectly.ConsoleCalledDirectly)

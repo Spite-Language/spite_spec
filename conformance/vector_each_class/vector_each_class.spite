@@ -1,0 +1,13 @@
+var console = Console()
+
+func VectorEachClass() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var velocities = Vector<Velocity>()
+    var slow = Velocity()
+    velocities.append(slow)
+    velocities.each(show)
+}
+
+func show(velocity: Velocity) {
+    console.print(velocity.across)
+}

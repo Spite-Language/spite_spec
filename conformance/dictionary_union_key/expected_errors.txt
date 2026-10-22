@@ -1,0 +1,1 @@
+conformance/dictionary_union_key/dictionary_union_key.spite:5: error: a Dictionary cannot be keyed by 'Pet': a key is a number, a Boolean, a String, an enum value or an object of a class (in DictionaryUnionKey.DictionaryUnionKey)

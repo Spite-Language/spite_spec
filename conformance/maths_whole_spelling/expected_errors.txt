@@ -1,0 +1,1 @@
+conformance/maths_whole_spelling/maths_whole_spelling.spite:6: error: Integer has no function 'abs': Spite spells it 'absolute', since no name is abbreviated (in MathsWholeSpelling.MathsWholeSpelling)

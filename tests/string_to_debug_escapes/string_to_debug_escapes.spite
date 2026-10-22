@@ -1,0 +1,10 @@
+var console = Console()
+
+func StringToDebugEscapes() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var text = "say \"hi\"\\\nnext"
+    var shown = text.to_debug()
+    console.print(shown)
+    var empty = "".to_debug()
+    console.print(empty)
+}

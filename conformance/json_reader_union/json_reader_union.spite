@@ -1,0 +1,9 @@
+var console = Console()
+
+func JsonReaderUnion() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var reader = JsonReader<Owner>()
+    var owner = reader.read("\{}")
+    crash owner
+    console.print(owner.name)
+}

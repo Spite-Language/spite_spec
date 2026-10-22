@@ -1,0 +1,14 @@
+var console = Console()
+
+func DictionaryRemoveAbsent() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var stock = Dictionary<String, Integer>()
+    stock["pear"] = 1
+    stock.remove_at("plum")
+    var count = stock.count()
+    var has_pear = stock.contains("pear")
+    var empty = Dictionary<Integer, Integer>()
+    empty.remove_at(3)
+    var empty_count = empty.count()
+    console.print(count, has_pear, empty_count)
+}

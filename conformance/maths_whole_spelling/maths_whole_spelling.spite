@@ -1,0 +1,8 @@
+var console = Console()
+
+func MathsWholeSpelling() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = -3
+    var positive = count.abs()
+    console.print(positive)
+}

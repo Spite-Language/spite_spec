@@ -1,0 +1,1 @@
+conformance/dictionary_literal_duplicate_key/dictionary_literal_duplicate_key.spite:5: error: "tea" is written twice in this dictionary: keep one entry for each key (in DictionaryLiteralDuplicateKey.DictionaryLiteralDuplicateKey)

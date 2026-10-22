@@ -1,0 +1,8 @@
+var console = Console()
+
+func EnumTemplateNoMember() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var posts = List<Post>()
+    var missing = posts.any_deleted()
+    console.print(missing)
+}

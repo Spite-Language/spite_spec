@@ -1,0 +1,7 @@
+var name = "ada"
+var _password = "hidden"
+var level: Integer? = null
+
+func secret(): String {
+    return _password
+}

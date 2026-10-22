@@ -1,0 +1,10 @@
+var console = Console()
+
+func DirectoryMissing() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var folder = Directory(".spite/directory_missing_never_made")
+    var exists = folder.exists()
+    var entries = folder.entries()
+    var count = entries.count()
+    console.print(exists, count, folder.name)
+}

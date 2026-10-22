@@ -1,0 +1,18 @@
+var console = Console()
+
+func DictionaryDeepCopyKeys() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ada = Player("ada")
+    var teams = Dictionary<Player, Team>()
+    var red = Team("red")
+    teams[ada] = red
+    var copied = teams.deep_copy()
+    red.name = "blue"
+    var still_keyed = copied.contains(ada)
+    var copied_team = copied[ada]
+    crash copied_team
+    var shallow = teams.copy()
+    var shallow_team = shallow[ada]
+    crash shallow_team
+    console.print(still_keyed, copied_team.name, shallow_team.name)
+}

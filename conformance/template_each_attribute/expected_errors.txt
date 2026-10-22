@@ -1,0 +1,1 @@
+conformance/template_each_attribute/template_each_attribute.spite:4: error: 'each_size': the member 'size' of 'Thing' is an Integer, but 'each_' needs it to be a function: reading an attribute and discarding it does nothing (in TemplateEachAttribute.TemplateEachAttribute)

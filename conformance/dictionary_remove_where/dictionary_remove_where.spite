@@ -1,0 +1,10 @@
+func DictionaryRemoveWhere() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var scores = Dictionary<String, Integer>()
+    scores["ada"] = 3
+    scores.remove_where(is_low)
+}
+
+func is_low(score: Integer): Boolean {
+    return score < 5
+}

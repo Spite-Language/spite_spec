@@ -1,0 +1,1 @@
+conformance/vector_this_item/vector_this_item.spite:5: error: 'Selfish.itself' uses 'this' as a value, and an item of a Vector is borrowed from the Vector, never an object to keep or to pass on: read and write its attributes instead (in VectorThisItem.VectorThisItem)

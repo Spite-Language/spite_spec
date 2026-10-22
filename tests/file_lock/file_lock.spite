@@ -1,0 +1,16 @@
+var console = Console()
+
+func FileLock() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var guard = File(".spite/file_lock.lock")
+    guard.remove()
+    var held = guard.lock()
+    crash held
+    var made = guard.exists()
+    held.unlock()
+    var again = guard.lock()
+    crash again
+    again.unlock()
+    guard.remove()
+    console.print(made, "locked twice")
+}

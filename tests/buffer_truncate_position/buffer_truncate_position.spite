@@ -1,0 +1,16 @@
+var console = Console()
+
+func BufferTruncatePosition() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = Buffer(0)
+    bytes.append(1)
+    bytes.append(2)
+    bytes.append(3)
+    bytes.position = 3
+    bytes.truncate(1)
+    var after_truncate = bytes.position
+    bytes.clear()
+    var after_clear = bytes.position
+    var empty = bytes.is_empty()
+    console.print(after_truncate, after_clear, empty)
+}

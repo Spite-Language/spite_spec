@@ -1,0 +1,10 @@
+var console = Console()
+
+func BufferAppendBytesOutside() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = Buffer(0)
+    bytes.append(10)
+    var copied = Buffer(0)
+    copied.append_bytes(bytes, 0, 2)
+    console.print("never printed")
+}

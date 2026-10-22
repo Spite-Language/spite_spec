@@ -1,0 +1,13 @@
+var console = Console()
+
+func PassedReturnsNothing() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["Ada", "Grace"]
+    var kept = names.filter(say_hello)
+    var kept_count = kept.count()
+    console.print(kept_count)
+}
+
+func say_hello(name: String) {
+    console.print("hello, {name}")
+}

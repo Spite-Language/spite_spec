@@ -1,0 +1,11 @@
+var console = Console()
+
+func ListSetOutOfRange() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var scores = [1, 2]
+    scores[1] = 5
+    var joined = scores.join(",")
+    console.print(joined)
+    scores[2] = 7
+    console.print("never printed")
+}

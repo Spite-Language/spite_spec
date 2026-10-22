@@ -1,0 +1,14 @@
+var console = Console()
+
+func JsonEscapesWritten() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var note = Note()
+    note.text = "a\"b\\c\nd\re\tf"
+    var writer = JsonWriter<Note>()
+    var text = writer.write(note)
+    console.print(text)
+    var reader = JsonReader<Note>()
+    var back = reader.read(text)
+    crash back
+    console.print(back.text == note.text)
+}

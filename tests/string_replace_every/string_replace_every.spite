@@ -1,0 +1,11 @@
+var console = Console()
+
+func StringReplaceEvery() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var path = "a-b--c"
+    var plus = path.replace("-", "+")
+    var absent = path.replace("x", "y")
+    var longer = path.replace("-", "<->")
+    var removed = path.replace("-", "")
+    console.print(plus, absent, longer, removed)
+}
