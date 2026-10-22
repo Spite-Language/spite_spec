@@ -1,0 +1,8 @@
+var console = Console()
+
+func ParallelLoopThatLeaves() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var searcher = Searcher()
+    var found = Parallel(searcher.first_square_above)
+    console.print("the first square above 50 is", found)
+}

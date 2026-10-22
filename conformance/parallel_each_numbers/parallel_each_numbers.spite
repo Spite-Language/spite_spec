@@ -1,0 +1,9 @@
+var console = Console()
+
+func ParallelEachNumbers() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var speeds = [1, 2, 3]
+    speeds.parallel_each_to_string()
+    var count = speeds.count()
+    console.print(count)
+}

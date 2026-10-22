@@ -1,0 +1,1 @@
+conformance/foreign_call_through_parameter/foreign_call_through_parameter.spite:10: error: a foreign function is called through the attribute or variable that holds its DynamicLibrary(...), so the compiler knows which library to bind it in (in ForeignCallThroughParameter.call_through)

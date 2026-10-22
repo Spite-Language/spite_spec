@@ -1,0 +1,3 @@
+the while ran 3 times
+assert read the handle's value
+a while on a Boolean handle

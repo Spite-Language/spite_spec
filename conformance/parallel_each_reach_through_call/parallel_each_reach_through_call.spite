@@ -1,0 +1,11 @@
+var console = Console()
+
+func ParallelEachReachThroughCall() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var boids = List<Boid>()
+    var boid = Boid()
+    boids.append(boid)
+    boids.parallel_each_flock()
+    var count = boids.count()
+    console.print(count)
+}

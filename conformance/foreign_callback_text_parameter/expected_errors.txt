@@ -1,0 +1,1 @@
+conformance/foreign_callback_text_parameter/foreign_callback_text_parameter.spite:6: error: 'ForeignCallback(namer.named, 'context_last')' is called by C, which passes numbers and addresses: 'name' is a String, so take it as a number, a Boolean or a Memory.Address (text C passes is read with 'terminated_text()') (in ForeignCallbackTextParameter.ForeignCallbackTextParameter)

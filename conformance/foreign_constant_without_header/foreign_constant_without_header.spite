@@ -1,0 +1,8 @@
+var console = Console()
+var library = DynamicLibrary("fixture.dll", 'identity', "")
+
+func ForeignConstantWithoutHeader() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var answer = library.fixture_answer
+    console.print(answer)
+}

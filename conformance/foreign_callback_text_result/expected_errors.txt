@@ -1,0 +1,1 @@
+conformance/foreign_callback_text_result/foreign_callback_text_result.spite:6: error: 'ForeignCallback(namer.label, 'context_last')' is called by C, which takes back a number, a Boolean or nothing: it returns a String (in ForeignCallbackTextResult.ForeignCallbackTextResult)

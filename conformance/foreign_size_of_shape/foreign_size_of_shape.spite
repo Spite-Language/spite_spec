@@ -1,0 +1,11 @@
+type Speaker {
+    speak(): String
+}
+
+var console = Console()
+
+func ForeignSizeOfShape() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var speaker_size = Speaker.size
+    console.print(speaker_size)
+}

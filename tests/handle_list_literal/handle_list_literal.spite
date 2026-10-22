@@ -1,0 +1,18 @@
+var console = Console()
+
+func HandleListLiteral() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var counting = Parallel(three)
+    var waiting = Concurrent(four)
+    var values: List<Integer> = [counting, waiting, 5]
+    var joined = values.join(",")
+    console.print(joined)
+}
+
+func three(): Integer {
+    return 3
+}
+
+func four(): Integer {
+    return 4
+}

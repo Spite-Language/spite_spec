@@ -1,0 +1,16 @@
+var console = Console()
+var program = Program()
+
+func HandleDebugRunning() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var napping = Concurrent(nap)
+    console.debug(napping)
+    var napped: Integer = napping
+    console.debug(napping)
+    console.print(napped)
+}
+
+func nap(): Integer {
+    program.sleep(20)
+    return 20
+}

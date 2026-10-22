@@ -1,0 +1,9 @@
+var console = Console()
+var chosen = "fixture.dll"
+var library = DynamicLibrary(chosen, 'identity', "")
+
+func ForeignLiteralArguments() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var sum = library.add_numbers(1, 2)
+    console.print(sum, chosen)
+}

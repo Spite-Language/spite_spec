@@ -1,0 +1,9 @@
+var library = DynamicLibrary("fixture.dll", 'identity', "")
+var counter = Counter()
+
+func ForeignCallbackNamedDirectly() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var chosen = counter.counted
+    var calling = ForeignCallback(chosen, 'no_context')
+    library.keep(calling.address)
+}

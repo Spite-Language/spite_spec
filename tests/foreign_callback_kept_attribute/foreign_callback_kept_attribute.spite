@@ -1,0 +1,16 @@
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_callback_kept_attribute/fixture.dll", 'identity', "")
+var clicks = Clicks()
+var clicking: ForeignCallback? = null
+
+func ForeignCallbackKeptAttribute() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    hand_over()
+    plain.click(4)
+}
+
+func hand_over() {
+    var made = ForeignCallback(clicks.clicked, 'no_context')
+    plain.keep_click(made.address)
+    clicking = made
+}

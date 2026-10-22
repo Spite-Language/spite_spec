@@ -1,0 +1,5 @@
+var console = Console()
+
+func named(name: String) {
+    console.print(name)
+}

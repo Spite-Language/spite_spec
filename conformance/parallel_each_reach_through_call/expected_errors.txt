@@ -1,0 +1,1 @@
+conformance/parallel_each_reach_through_call/parallel_each_reach_through_call.spite:8: error: 'parallel_each_flock' runs 'flock' on many elements at once, so it may reach only its own 'Boid' attributes that hold values, and its locals: 'trail' holds a 'List<Integer>', which another element may share. ... (in ParallelEachReachThroughCall.ParallelEachReachThroughCall)

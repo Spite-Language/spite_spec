@@ -1,0 +1,1 @@
+the first square above 50 is 64

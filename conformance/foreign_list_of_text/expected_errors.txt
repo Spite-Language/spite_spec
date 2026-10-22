@@ -1,0 +1,1 @@
+conformance/foreign_list_of_text/foreign_list_of_text.spite:8: error: a List<String> cannot cross into C: a foreign function takes numbers, Boolean, enum values, text and a type whose attributes are all numbers (in ForeignListOfText.ForeignListOfText)

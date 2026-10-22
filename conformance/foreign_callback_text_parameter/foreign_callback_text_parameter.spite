@@ -1,0 +1,8 @@
+var library = DynamicLibrary("fixture.dll", 'identity', "")
+
+func ForeignCallbackTextParameter() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var namer = Namer()
+    var calling = ForeignCallback(namer.named, 'context_last')
+    library.keep(calling.address, calling.context)
+}
