@@ -1,0 +1,18 @@
+var console = Console()
+var healths = Column<Health>()
+var again = Column<Health>()
+var labels = Column<Label>()
+
+func GenericSingletons() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var health = Health()
+    healths.values.append(health)
+    var second_health = Health()
+    again.values.append(second_health)
+    var label = Label()
+    labels.values.append(label)
+    var health_count = again.values.count()
+    var label_count = labels.values.count()
+    console.print(healths == again, health_count, label_count)
+}

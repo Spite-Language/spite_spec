@@ -1,0 +1,11 @@
+func collect(handle: Concurrent<String>): String {
+    var found = handle.finished_value()
+    if found {
+        return found
+    }
+    return ""
+}
+
+func join(handle: Concurrent<String>): String {
+    return handle
+}

@@ -1,0 +1,39 @@
+var console = Console()
+
+func Functions() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var fibonacci_value = fibonacci(10)
+    console.print(fibonacci_value)
+    var factorial_value = factorial(5)
+    console.print(factorial_value)
+    print_range(3)
+}
+
+func fibonacci(count: Integer): Integer {
+    var previous = 0
+    var current = 1
+    var index = 0
+    while index < count {
+        var next = previous + current
+        previous = current
+        current = next
+        index = index + 1
+    }
+    return previous
+}
+
+func factorial(value: Integer): Integer {
+    if value <= 1 {
+        return 1
+    }
+    return value * factorial(value - 1)
+}
+
+func print_range(count: Integer) {
+    var index = 0
+    while index < count {
+        console.print("range {index}")
+        index = index + 1
+    }
+}

@@ -1,0 +1,28 @@
+var console = Console()
+
+func ClassAttributes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var declarations = Sticker.attributes
+    var index = 0
+    while index < declarations.count() {
+        var described = declarations[index]
+        console.print(described.index, described.name, described.class)
+        index = index + 1
+    }
+    var sticker = Sticker("pinned")
+    var values = sticker.attributes
+    index = 0
+    while index < values.count() {
+        var value_text = text_of(values[index])
+        console.print(value_text)
+        index = index + 1
+    }
+}
+
+func text_of(attribute: Spite.Attribute): String {
+    if not attribute.value {
+        return ""
+    }
+    return attribute.value.to_string()
+}

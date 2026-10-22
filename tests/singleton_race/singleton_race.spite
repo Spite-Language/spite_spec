@@ -1,0 +1,12 @@
+var console = Console()
+var census = Census()
+
+func SingletonRace() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first_toucher = Toucher()
+    var second_toucher = Toucher()
+    var first = Parallel(first_toucher.touch_many)
+    var second = Parallel(second_toucher.touch_many)
+    console.print("touched", first + second, "made", census.made)
+}

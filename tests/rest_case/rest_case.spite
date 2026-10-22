@@ -1,0 +1,25 @@
+union Creature {
+    Cat
+    Dog
+    Fish
+}
+
+var console = Console()
+
+func RestCase() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var cat = Cat()
+    describe(cat)
+    var dog = Dog()
+    describe(dog)
+    var fish = Fish()
+    describe(fish)
+}
+
+func describe(creature: Creature) {
+    switch creature {
+        Fish: console.print("a fish says nothing")
+        _: console.print("a {creature.class.name} says {creature.sound()}")
+    }
+}

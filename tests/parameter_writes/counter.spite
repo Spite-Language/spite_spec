@@ -1,0 +1,14 @@
+var count = 0
+var ledger = Ledger()
+
+func bump() {
+    count = count + 1
+}
+
+func report_count() {
+    ledger.entries.append(count)
+}
+
+func total(): Integer {
+    return count
+}

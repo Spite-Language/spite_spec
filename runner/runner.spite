@@ -76,8 +76,9 @@ func run_one(folder: String) {
 func run_test(folder: String) {
     var wanted = expected_text(folder, "expected_exit_code.txt")
     assert wanted
+    var flags = optional_text(folder, "flags.txt")
     var no_arguments = List<String>()
-    var compile = Process("{compiler} {folder} 2>&1 1>nul", no_arguments)
+    var compile = Process("{compiler} {folder} {flags} 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     if compiled != 0 {
         var errors = compile.output()
@@ -85,14 +86,38 @@ func run_test(folder: String) {
         return
     }
     var executable = executable_of(folder)
-    var running = Process("{executable} >nul 2>&1", no_arguments)
+    var input = "<nul"
+    var input_file = File("{folder}/input.txt")
+    if input_file.exists() {
+        input = "<{folder}/input.txt"
+    }
+    var running = Process("{executable} {input} 2>&1", no_arguments)
     var answered = running.run()
     var answer = answered.to_string()
     if answer != wanted {
         fail(folder, "it answered {answer}, and {wanted} was expected")
         return
     }
+    var output_file = File("{folder}/expected_output.txt")
+    if output_file.exists() {
+        var expected_output = optional_text(folder, "expected_output.txt")
+        var printed = running.output()
+        var output = cleaned(printed)
+        if output != expected_output {
+            fail(folder, "the output differs\n  expected: {expected_output}\n  got:      {output}")
+            return
+        }
+    }
     passed = passed + 1
+}
+
+func optional_text(folder: String, name: String): String {
+    var file = File("{folder}/{name}")
+    var text = file.read()
+    if not text {
+        return ""
+    }
+    return cleaned(text)
 }
 
 func run_conformance(folder: String) {

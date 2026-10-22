@@ -1,0 +1,40 @@
+var console = Console()
+
+func DeepCopies() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var team = Team("red")
+    var ada = Member("ada", 3)
+    team.members.append(ada)
+    var grace = Member("grace", 5)
+    team.members.append(grace)
+    team.scores["first"] = 10
+    team.captain = team.members[0]
+    var shallow = team.copy()
+    var deep = team.deep_copy()
+    crash team.members[0]
+    team.members[0].level = 99
+    var alan = Member("alan", 1)
+    team.members.append(alan)
+    team.scores["first"] = 11
+    crash shallow.members[0]
+    crash shallow.scores["first"]
+    crash deep.members[0]
+    crash deep.scores["first"]
+    var shallow_count = shallow.members.count()
+    console.print(shallow_count, shallow.members[0].level, shallow.scores["first"])
+    var deep_count = deep.members.count()
+    console.print(deep_count, deep.members[0].level, deep.scores["first"], deep.name)
+    report(deep.captain)
+    var numbers = [1, 2, 3]
+    var copied_numbers = numbers.deep_copy()
+    numbers.append(4)
+    var numbers_count = numbers.count()
+    var copied_numbers_count = copied_numbers.count()
+    console.print(numbers_count, copied_numbers_count)
+}
+
+func report(captain: Member?) {
+    assert captain
+    console.print("captain", captain.name, captain.level)
+}

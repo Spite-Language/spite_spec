@@ -1,0 +1,95 @@
+var console = Console()
+var teams = List<Team>()
+
+func FusedChains() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ann = Person("ann", 34, false)
+    var red = Team("red", 4, true, ann)
+    teams.append(red)
+    var bob = Person("bob", 67, true)
+    var blue = Team("blue", 7, false, bob)
+    teams.append(blue)
+    var cid = Person("cid", 15, false)
+    var green = Team("green", 2, true, cid)
+    teams.append(green)
+    var dee = Person("dee", 71, true)
+    var gold = Team("gold", 5, true, dee)
+    teams.append(gold)
+    compare_two_step_chains()
+    compare_three_step_chains()
+    compare_four_step_chains()
+    compare_collecting_chains()
+    compare_dictionary_chain()
+    teams.map_leads().each_birthday()
+    var ages = teams.map_leads().sum_age()
+    console.print("after birthdays", ages)
+}
+
+func compare_two_step_chains() {
+    var fused_size = teams.filter_active().sum_size()
+    var active = teams.filter_active()
+    var stepped_size = active.sum_size()
+    console.print("filter then sum", fused_size, stepped_size)
+    var fused_age = teams.map_leads().sum_age()
+    var leads = teams.map_leads()
+    var stepped_age = leads.sum_age()
+    console.print("map then sum", fused_age, stepped_age)
+    var fused_all = teams.map_leads().all_is_adult()
+    var stepped_all = leads.all_is_adult()
+    console.print("map then all", fused_all, stepped_all)
+}
+
+func compare_three_step_chains() {
+    var fused_count = teams.filter_active().map_leads().count_retired()
+    var active = teams.filter_active()
+    var active_leads = active.map_leads()
+    var stepped_count = active_leads.count_retired()
+    console.print("filter, map, count", fused_count, stepped_count)
+    var found = teams.map_leads().filter_is_adult().find_by_name("dee")
+    if found {
+        console.print("map, filter, find", found.name, found.age)
+    }
+    var missing = teams.map_leads().filter_is_adult().find_by_name("cid")
+    if missing {
+        console.print("unexpected", missing.name)
+    } else {
+        console.print("map, filter, find: cid is not an adult")
+    }
+}
+
+func compare_four_step_chains() {
+    var fused_any = teams.filter_active().map_leads().filter_is_adult().any_retired()
+    var active = teams.filter_active()
+    var active_leads = active.map_leads()
+    var adults = active_leads.filter_is_adult()
+    var stepped_any = adults.any_retired()
+    console.print("filter, map, filter, any", fused_any, stepped_any)
+    var fused_level = teams.filter_active().map_leads().map_badges().sum_level()
+    var badges = active_leads.map_badges()
+    var stepped_level = badges.sum_level()
+    console.print("filter, map, map, sum", fused_level, stepped_level)
+}
+
+func compare_collecting_chains() {
+    var names = teams.filter_active().map_names().join(",")
+    console.print("filter, map names", names)
+    var adults = teams.map_leads().filter_is_adult()
+    var adult_names = adults.map_names().join(",")
+    console.print("map, filter", adult_names)
+    var by_age = teams.map_leads().sort_by_age()
+    var names_by_age = by_age.map_names().join(",")
+    console.print("map, sort", names_by_age)
+}
+
+func compare_dictionary_chain() {
+    var by_name = Dictionary<String, Team>()
+    var eve = Person("eve", 40, false)
+    var red = Team("red", 4, true, eve)
+    by_name["red"] = red
+    var fay = Person("fay", 20, false)
+    var blue = Team("blue", 3, false, fay)
+    by_name["blue"] = blue
+    var fused_age = by_name.filter_active().map_leads().sum_age()
+    console.print("dictionary filter, map, sum", fused_age)
+}

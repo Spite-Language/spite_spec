@@ -1,0 +1,47 @@
+var console = Console()
+var program = Program()
+var scheduler = Scheduler()
+var watch = StageWatch()
+var server = Socket()
+
+func FramesBetweenWaits() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    scheduler.resume_only_when_asked()
+    crash server.listen_locally(47319)
+    var reading = SystemSlot<System.NetworkReader>()
+    var moving = SystemSlot<System.Mover>()
+    crash reading.system.connection.connect_locally(47319)
+    var peer = server.accept_client()
+    crash peer
+    var summer = Summer(1000)
+    var frames = 0
+    var sent = 0
+    var running = true
+    while running {
+        frames = frames + 1
+        watch.in_stage = true
+        reading.frame()
+        moving.frame()
+        var sum = Parallel(summer.total)
+        var total: Long = sum
+        crash total == 499500
+        if sent < 3 {
+            sent = sent + 1
+            var message = Buffer()
+            message.append(sent)
+            var written = peer.write_bytes_now(message)
+            crash written == 1
+        }
+        program.sleep(5)
+        watch.in_stage = false
+        scheduler.run_ready()
+        running = not reading.finished()
+        program.sleep(1)
+    }
+    console.print("the mover ran once a frame:", moving.system.position == frames)
+    console.print("the reader resumed inside a stage:", watch.resumed_in_stage)
+    peer.close()
+    reading.system.connection.close()
+    server.close()
+}

@@ -1,0 +1,52 @@
+var console = Console()
+
+func Utf8Text() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var greeting = "olá, 世界 😀"
+    var bytes = greeting.to_bytes()
+    var back = bytes.to_utf8_text()
+    crash back
+    console.print(back, back == greeting)
+    var nothing = Buffer()
+    show("empty", nothing)
+    var lone = of(128)
+    show("a lone continuation byte", lone)
+    var cut = of(195)
+    show("a cut sequence", cut)
+    var overlong_slash = of(192, 175)
+    show("an overlong slash", overlong_slash)
+    var overlong_three = of(224, 128, 175)
+    show("an overlong three-byte form", overlong_three)
+    var surrogate = of(237, 160, 128)
+    show("a surrogate", surrogate)
+    var past = of(244, 144, 128, 128)
+    show("past U+10FFFF", past)
+    var highest = of(244, 143, 191, 191)
+    show("U+10FFFF", highest)
+    var zero_byte = of(104, 0, 105)
+    show("a zero byte", zero_byte)
+    var plain = of(104, 105)
+    show("plain", plain)
+}
+
+func of(...values: List<Integer>): Buffer {
+    var bytes = Buffer()
+    var index = 0
+    while index < values.count() {
+        var value: Byte = values[index]
+        bytes.append(value)
+        index = index + 1
+    }
+    return bytes
+}
+
+func show(label: String, bytes: Buffer) {
+    var text = bytes.to_utf8_text()
+    if text {
+        var length = text.length()
+        console.print(label, "is text of", length, "bytes")
+    } else {
+        console.print(label, "is not UTF-8")
+    }
+}

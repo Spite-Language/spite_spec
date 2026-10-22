@@ -1,0 +1,4 @@
+snow false
+clear false
+rain true
+now snow

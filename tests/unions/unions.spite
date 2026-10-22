@@ -1,0 +1,69 @@
+union Shape {
+    Circle
+    Square
+}
+
+var console = Console()
+var shapes = List<Shape>()
+var favorite: Shape? = null
+
+func Unions() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var circle = Circle(2)
+    shapes.append(circle)
+    var square = Square(3)
+    shapes.append(square)
+    var index = 0
+    while index < shapes.count() {
+        var description = describe(shapes[index])
+        var area = shapes[index].area()
+        console.print(description, area, shapes[index].name)
+        index = index + 1
+    }
+    var shape: Shape = Square(4)
+    grow(shape)
+    var description = describe(shape)
+    console.print(description)
+    favorite = shape
+    var current = favorite
+    if current {
+        var area = current.area()
+        console.print("favorite", area)
+    }
+    var name = pick(true).name
+    var pick_name = pick(false).name
+    console.print(name, pick_name)
+    var lookup = Dictionary<String, Shape>()
+    var round = Circle(1)
+    lookup["round"] = round
+    if lookup["round"] {
+        var found_description = describe(lookup["round"])
+        console.print(found_description)
+    }
+    console.print("done")
+}
+
+func describe(shape: Shape): String {
+    switch shape {
+        Circle: return "circle of radius {shape.radius}"
+        Square: {
+            var side = shape.side
+            return "square of side {side}"
+        }
+    }
+}
+
+func grow(shape: Shape) {
+    switch shape {
+        Circle: shape.radius = shape.radius * 2
+        Square: shape.side = shape.side * 2
+    }
+}
+
+func pick(round: Boolean): Shape {
+    if round {
+        return Circle(9)
+    }
+    return Square(9)
+}

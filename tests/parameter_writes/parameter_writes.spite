@@ -1,0 +1,6 @@
+func ParameterWrites() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var asker = Asker<Systems>()
+    asker.report()
+}

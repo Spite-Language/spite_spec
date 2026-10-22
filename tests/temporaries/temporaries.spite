@@ -1,0 +1,21 @@
+var console = Console()
+
+func Temporaries() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("abcd")
+    var made_greeting = make_greeting("world")
+    console.print(made_greeting)
+    var deep_inner = Inner("deep")
+    var unwrap_label = Wrapper(deep_inner).unwrap_label()
+    console.print(unwrap_label)
+    var first_inner = Inner("first")
+    var first = Wrapper(first_inner).label()
+    var second_inner = Inner("second")
+    var second = Wrapper(second_inner).label()
+    console.print("{first} and {second}")
+}
+
+func make_greeting(name: String): String {
+    return "hello, {name}"
+}

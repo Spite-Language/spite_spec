@@ -1,0 +1,26 @@
+singleton
+
+var sizes = Dictionary<String, Integer>()
+var added = 0
+var last = ""
+
+func add(name: String, size: Integer) {
+    sizes[name] = size
+    count_one()
+}
+
+func count_one() {
+    added = added + 1
+}
+
+func total(): Integer {
+    return added
+}
+
+func known(): Integer {
+    return sizes.count()
+}
+
+func last_name(): String {
+    return last
+}

@@ -1,0 +1,12 @@
+func AttributeObject() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var world = World()
+    var player_bundle = PlayerBundle()
+    var player = world.create_entity_from_bundle(player_bundle)
+    player.show()
+    var bare = world.create_entity()
+    var position = Position()
+    bare.add_component(position)
+    bare.show()
+}

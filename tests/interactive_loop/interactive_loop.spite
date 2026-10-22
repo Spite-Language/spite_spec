@@ -1,0 +1,17 @@
+var console = Console()
+var count = 1
+var label = "counter"
+
+func InteractiveLoop() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("started")
+}
+
+func increment() {
+    count = count + 1
+}
+
+func doubled(): Integer {
+    return count * 2
+}

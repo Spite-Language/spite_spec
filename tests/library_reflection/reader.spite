@@ -1,0 +1,5 @@
+generic $read_type
+
+func name_of(current: $read_type): String {
+    return current.class.name
+}

@@ -1,0 +1,70 @@
+var console = Console()
+var count = 0
+
+func allocate(amount: Integer) {
+    count = count + amount
+}
+
+func initialize() {
+    count = count * 2
+}
+
+func make(amount: Integer) {
+    count = count + amount
+}
+
+func retain(amount: Integer) {
+    count = count + amount
+}
+
+func release(amount: Integer) {
+    count = count - amount
+}
+
+func copy(): Pool {
+    var copied = Pool()
+    copied.count = count + 100
+    return copied
+}
+
+func total(): Integer {
+    return count
+}
+
+func name(): String {
+    return "pool"
+}
+
+func class_of(): String {
+    return "a class of its own"
+}
+
+func deep_copy(): Pool {
+    var copied = Pool()
+    copied.count = count + 1000
+    return copied
+}
+
+func run(amount: Integer) {
+    count = count + amount
+}
+
+func run_waiting() {
+    console.print("waiting", count)
+}
+
+func read_count() {
+    console.print("read", count)
+}
+
+func call_run() {
+    console.print("called", count)
+}
+
+func run_hot() {
+    console.print("hot", count)
+}
+
+func run_slot() {
+    console.print("slot", count)
+}

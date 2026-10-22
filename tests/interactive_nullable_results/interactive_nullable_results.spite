@@ -1,0 +1,19 @@
+var console = Console()
+
+func InteractiveNullableResults() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("ready")
+}
+
+func title(): String? {
+    return "hero"
+}
+
+func found(): Monster? {
+    return Monster("bat", 5)
+}
+
+func missing(): Monster? {
+    return null
+}

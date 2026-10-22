@@ -1,0 +1,14 @@
+var console = Console()
+var sound = "woof"
+
+func Dog() {
+    sound = "WOOF, from a constructor reflection never runs"
+}
+
+func speak() {
+    console.print("the dog says", sound)
+}
+
+func fetch(item: String): String {
+    return "fetched {item}"
+}

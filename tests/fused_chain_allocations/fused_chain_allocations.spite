@@ -1,0 +1,29 @@
+var console = Console()
+var teams = List<Team>()
+
+func FusedChainAllocations() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ann = Person("ann", 34, false)
+    var ann_team = Team(4, true, ann)
+    teams.append(ann_team)
+    var dee = Person("dee", 71, true)
+    var dee_team = Team(5, true, dee)
+    teams.append(dee_team)
+    var total = 0
+    var round = 0
+    while round < 1000 {
+        var size = teams.filter_active().sum_size()
+        var counted = teams.filter_active().map_leads().count_retired()
+        var adult = teams.map_leads().filter_is_adult().any_retired()
+        var found = teams.filter_active().map_leads().filter_is_adult().find_by_name("dee")
+        if found {
+            total = total + size + counted + found.age
+        }
+        if adult {
+            total = total + 1
+        }
+        round = round + 1
+    }
+    console.print(total)
+}

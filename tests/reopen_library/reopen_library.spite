@@ -1,0 +1,18 @@
+var console = Console()
+
+func ReopenLibrary() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var monster = Monster()
+    var rat = Creatures.Rat()
+    var monster_class_name = monster.class.name_with_namespaces()
+    var rat_class_name = rat.class.name_with_namespaces()
+    console.print(monster_class_name, rat_class_name)
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var class_name = classes[index].name_with_namespaces()
+        console.print(class_name)
+        index = index + 1
+    }
+}

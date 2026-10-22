@@ -1,0 +1,11 @@
+var build = Build()
+var console = Console()
+
+func BuildPrecedence() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "engine"
+    console.print("plugins from", build.plugins_folder)
+    console.print("engine", build.engine_name)
+    console.print("frames per second", build.frames_per_second)
+}

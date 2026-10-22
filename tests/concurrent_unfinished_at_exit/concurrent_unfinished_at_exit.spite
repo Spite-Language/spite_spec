@@ -1,0 +1,10 @@
+var console = Console()
+var shelf = Shelf()
+
+func ConcurrentUnfinishedAtExit() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var job = Concurrent(shelf.ring)
+    shelf.jobs.append(job)
+    console.print("the entry function returns while the job runs:", not job.finished)
+}

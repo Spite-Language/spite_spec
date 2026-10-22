@@ -1,0 +1,18 @@
+var console = Console()
+var first = Journal()
+var again = Journal()
+
+func Singletons() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    first.record("from the entry")
+    var worker = Worker()
+    worker.work()
+    var joined_entries = again.entries.join(", ")
+    console.print(joined_entries, first == again, again.opened)
+    var plain_one = Worker()
+    console.print(plain_one == worker)
+    var reader = JournalReader()
+    reader.report(first.class)
+    reader.report(worker.class)
+}

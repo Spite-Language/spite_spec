@@ -1,0 +1,48 @@
+var console = Console()
+var names = List<String>()
+
+func ParallelWork() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var small = Summer(1000000)
+    var large = Summer(3000000)
+    var small_sum = Parallel(small.total)
+    var large_sum = Parallel(large.total)
+    console.print(small_sum, large_sum)
+    var greeting = Parallel(greet)
+    var nobody = Parallel(nobody_found)
+    if nobody {
+        console.print(nobody)
+    } else {
+        console.print(greeting, "and nobody")
+    }
+    var index = 0
+    while index < 20 {
+        var namer = Namer(index)
+        var naming = Parallel(namer.name)
+        names.append(naming)
+        index = index + 1
+    }
+    var last_name = names.last()
+    crash last_name
+    console.print(last_name)
+    count_and_forget()
+}
+
+func greet(): String {
+    return "hello"
+}
+
+func nobody_found(): String? {
+    return null
+}
+
+func count_and_forget() {
+    var running = List<Parallel<Nothing>>()
+    var farewell = Parallel(say_done)
+    running.append(farewell)
+}
+
+func say_done() {
+    console.print("joined when dropped")
+}

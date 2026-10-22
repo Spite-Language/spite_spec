@@ -1,0 +1,19 @@
+var console = Console()
+
+func ClassText() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var label = Label()
+    var lines = List<String>()
+    show_attributes(label, lines)
+    var joined = lines.join(", ")
+    console.print(joined)
+    var named = label.class
+    var named_text: String = named
+    console.print(named_text)
+    console.print(named)
+}
+
+func show_attribute(attribute: Symbol<Label>, label: Label, lines: List<String>) {
+    lines.append("{attribute.name} is {attribute.class}")
+}

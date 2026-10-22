@@ -1,0 +1,8 @@
+var console = Console()
+var environment = Environment()
+
+func KebabSetting() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("player", environment.player_name, "hard mode", environment.hard_mode)
+}

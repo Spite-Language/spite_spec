@@ -1,0 +1,20 @@
+var console = Console()
+
+func ReflectionStandIn() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var gadget = Gadget("wrench")
+    var fields = gadget.class.attributes
+    var field_count = fields.count()
+    var functions = Gadget.functions
+    var function_count = functions.count()
+    console.print(gadget.name, field_count, function_count)
+    var console_functions = console.class.functions
+    var console_function_count = console_functions.count()
+    var console_fields = console.class.attributes
+    var console_field_count = console_fields.count()
+    console.print(console_function_count > 3, console_field_count > 0)
+    var loud_functions = Loud.functions
+    var loud_function_count = loud_functions.count()
+    console.print("described Loud without making one:", loud_function_count)
+}

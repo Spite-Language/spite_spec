@@ -1,0 +1,31 @@
+type Renderable {
+    label: String
+    render(): String
+    resize(Integer)
+}
+
+var console = Console()
+
+func ShapeFunctions() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var parts = List<Renderable>()
+    var ok_button = Button("ok")
+    parts.append(ok_button)
+    var panel = Panel("side", 3)
+    parts.append(panel)
+    var index = 0
+    while index < parts.count() {
+        parts[index].resize(2)
+        var render = parts[index].render()
+        console.print(parts[index].label, render)
+        index = index + 1
+    }
+    var direct_button = Button("direct")
+    show(direct_button)
+}
+
+func show(part: Renderable) {
+    var upper_case_render = part.render().upper_case()
+    console.print(upper_case_render)
+}

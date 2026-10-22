@@ -1,0 +1,52 @@
+var console = Console()
+var greeted = List<String>()
+
+func TypedFunctions() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var shouter = Shouter("!")
+    var loud = shouter.shout
+    var arguments_count = loud.arguments.count()
+    console.print(loud.name, arguments_count, loud.returns.name)
+    var applied = apply(loud, "hi")
+    var whispered = apply(shouter.whisper, "HI")
+    console.print(applied, whispered)
+    var remember = remember_greeting
+    remember("ada")
+    remember.call_function("grace")
+    var joined_greeted = greeted.join(",")
+    console.print(joined_greeted)
+    var button = Button()
+    button.on_press = ring
+    button.press()
+    button.press()
+    var every = List<Spite.Function<String, String>>()
+    every.append(shouter.shout)
+    every.append(shouter.whisper)
+    var every_count = every.count()
+    var run_every = run_all(every, "Yo")
+    console.print(every_count, run_every)
+}
+
+func apply(change: Spite.Function<String, String>, text: String): String {
+    return change(text)
+}
+
+func remember_greeting(name: String) {
+    greeted.append("hello {name}")
+}
+
+func ring() {
+    console.print("ring")
+}
+
+func run_all(changes: List<Spite.Function<String, String>>, text: String): String {
+    var results = List<String>()
+    var index = 0
+    while index < changes.count() {
+        var call_function = changes[index].call_function(text)
+        results.append(call_function)
+        index = index + 1
+    }
+    return results.join(" ")
+}

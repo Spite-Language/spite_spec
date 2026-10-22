@@ -1,0 +1,11 @@
+var console = Console()
+var registry = Registry()
+
+func TemplateLendDrop() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    registry.fill()
+    registry.tokens.each_touch()
+    var left = registry.tokens.count()
+    console.print("left", left)
+}

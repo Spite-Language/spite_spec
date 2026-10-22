@@ -1,0 +1,15 @@
+var console = Console()
+
+func FoldedHelpers() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var health = Field<Integer>("health")
+    var scores = Field<List<Integer>>("scores")
+    var title = Field<String>("title")
+    var health_text = health.write(7)
+    var score_text = scores.write([1, 2, 3])
+    var title_text = title.write("spite")
+    console.print(health_text)
+    console.print(score_text)
+    console.print(title_text)
+}

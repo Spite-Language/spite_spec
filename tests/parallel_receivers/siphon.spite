@@ -1,0 +1,12 @@
+var meter = Meter()
+
+func run() {
+    var names = List<String>()
+    while not meter.is_stopping() {
+        names.append("siphoned")
+        if names.count() > 50 {
+            names.clear()
+        }
+        meter.add_one()
+    }
+}

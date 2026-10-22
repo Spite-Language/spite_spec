@@ -1,0 +1,17 @@
+singleton
+
+var sizes = Dictionary<String, Integer>()
+var loads = 0
+
+func remember(name: String, size: Integer) {
+    sizes[name] = size
+    loads = loads + 1
+}
+
+func known(): Integer {
+    return sizes.count()
+}
+
+func total_loads(): Integer {
+    return loads
+}

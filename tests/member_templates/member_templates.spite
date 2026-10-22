@@ -1,0 +1,62 @@
+var console = Console()
+var repositories = List<Repository>()
+
+func MemberTemplates() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var engine = Repository("engine", 10, true)
+    repositories.append(engine)
+    var cookie_clicker = Repository("cookie_clicker", 3, false)
+    repositories.append(cookie_clicker)
+    var compiler = Repository("compiler", 20, true)
+    repositories.append(compiler)
+    var active_stars = repositories.filter_active().sum_stars()
+    var active_count = repositories.count_active()
+    var all_stars = repositories.sum_stars()
+    console.print(active_stars, active_count, all_stars)
+    var any_active = repositories.any_active()
+    var all_active = repositories.all_active()
+    var active_all_active = repositories.filter_active().all_active()
+    console.print(any_active, all_active, active_all_active)
+    var names = repositories.map_names().join(",")
+    var labels = repositories.map_labels().join(",")
+    console.print(names, labels)
+    var names_by_stars = repositories.sort_by_stars().map_names().join(",")
+    var names_by_name = repositories.sort_by_name().map_names().join(",")
+    console.print(names_by_stars, names_by_name)
+    var first_labelled = repositories.sort_by_label().first()
+    crash first_labelled
+    var first_by_label = first_labelled.name
+    var popular_names = repositories.filter_is_popular().map_names().join(",")
+    console.print(first_by_label, popular_names)
+    repositories.each_bump_stars()
+    all_stars = repositories.sum_stars()
+    var stars_count = repositories.map_get_stars().count()
+    console.print(all_stars, stars_count)
+    var found = repositories.find_by_name("compiler")
+    if found {
+        console.print("found", found.name, found.stars)
+    }
+    var by_label = repositories.find_by_label("engine!")
+    if by_label {
+        console.print("by label", by_label.stars)
+    }
+    var by_name = Dictionary<String, Repository>()
+    var named_engine = Repository("engine", 10, true)
+    by_name["engine"] = named_engine
+    var idle = Repository("idle", 4, false)
+    by_name["idle"] = idle
+    var stars_by_name = by_name.sum_stars()
+    var active_names = by_name.filter_active().map_names().join(",")
+    var any_active_by_name = by_name.any_active()
+    var least_starred = by_name.sort_by_stars().first()
+    crash least_starred
+    var first_by_stars = least_starred.name
+    console.print(stars_by_name, active_names, any_active_by_name, first_by_stars)
+    var missing = repositories.find_by_stars(999)
+    if missing {
+        console.print("unexpected")
+    } else {
+        console.print("no repository with 999 stars")
+    }
+}

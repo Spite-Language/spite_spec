@@ -1,0 +1,24 @@
+var console = Console()
+var environment = Environment()
+var build = Build()
+
+func LiveSettings() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var said = greeting()
+    console.print(said)
+    var counted = twice()
+    console.print(counted)
+}
+
+func greeting(): String {
+    if build.loud {
+        return "{environment.greeting_word}!"
+    }
+    return environment.greeting_word
+}
+
+func twice(): Integer {
+    var seven = 7
+    return seven.doubled()
+}

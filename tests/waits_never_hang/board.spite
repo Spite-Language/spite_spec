@@ -1,0 +1,21 @@
+singleton
+
+var handles = List<Concurrent<Integer>>()
+var ready = false
+var starters = List<Concurrent<Integer>>()
+var readers = List<Concurrent<Integer>>()
+
+func value_of(index: Integer): Integer {
+    crash handles[index]
+    return handles[index]
+}
+
+func starter_value(): Integer {
+    crash starters[0]
+    return starters[0]
+}
+
+func reader_value(): Integer {
+    crash readers[0]
+    return readers[0]
+}

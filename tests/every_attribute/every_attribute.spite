@@ -1,0 +1,31 @@
+var console = Console()
+
+func EveryAttribute() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var recipe = Recipe()
+    var describer = Describer<Recipe>()
+    var description = describer.describe(recipe)
+    console.print(description)
+    recipe.title = "stew"
+    recipe.servings = 9
+    recipe.course = 'feast'
+    var fresh_recipe = Recipe()
+    describer.reset_title(recipe, fresh_recipe)
+    console.print(recipe.title, recipe.servings, recipe.course)
+    var defaults = Recipe()
+    describer.reset_attributes(recipe, defaults)
+    console.print(recipe.title, recipe.servings, recipe.course)
+    var named: Recipe.Course? = "dessert"
+    crash named
+    var unknown = "brunch".to_course()
+    if not unknown {
+        console.print(named, "and no course named brunch")
+    }
+    var portion_lines = List<String>()
+    describer.describe_portions(recipe, portion_lines)
+    var portion_line = portion_lines.first()
+    crash portion_line
+    var shown = describer.show_portions(recipe)
+    console.print(portion_line, shown)
+}

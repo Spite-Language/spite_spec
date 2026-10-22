@@ -1,0 +1,29 @@
+var program = Program()
+var guard = Lock()
+var opened = false
+
+func open() {
+    guard.lock()
+    opened = true
+    guard.unlock()
+}
+
+func is_open(): Boolean {
+    guard.lock()
+    var seen = opened
+    guard.unlock()
+    return seen
+}
+
+func wait_until_open(): Integer {
+    var spins = 0
+    while not is_open() {
+        spins = spins + 1
+    }
+    return 42
+}
+
+func nap(): Integer {
+    program.sleep(20)
+    return 20
+}

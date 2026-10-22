@@ -1,0 +1,19 @@
+var console = Console()
+var another = Console()
+var local_console = Console()
+
+func ConsoleClass() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var namespace_text = ""
+    if console.class.namespace {
+        namespace_text = console.class.namespace.name_with_namespaces
+    }
+    console.print(console == another, console.class.name, "{namespace_text}|")
+    another.write("written")
+    another.write(" and written again")
+    console.print("")
+    var greeter = Greeter()
+    greeter.greet()
+    local_console.print("a Console bound in a function prints too")
+}

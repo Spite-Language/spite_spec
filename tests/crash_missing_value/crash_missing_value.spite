@@ -1,0 +1,14 @@
+var console = Console()
+
+func CrashMissingValue() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var missing: Integer? = null
+    show(0)
+    show(missing)
+}
+
+func show(width: Integer?) {
+    crash width
+    console.print("width", width)
+}

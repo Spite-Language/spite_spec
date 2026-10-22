@@ -1,0 +1,14 @@
+var console = Console()
+
+func Reopening() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "package"
+    load "mod"
+    var monster = Creatures.Monster("rat")
+    var description = monster.describe()
+    console.print(description)
+    var roar = monster.roar()
+    var taunt = monster.taunt()
+    console.print(roar, taunt, monster.health, monster.armor)
+}

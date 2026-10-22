@@ -1,0 +1,21 @@
+var console = Console()
+var program = Program()
+var board = Board()
+
+func ConcurrentWaitCycleInPlace() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    start_both()
+    board.both_held = true
+    while board.both_held {
+        program.sleep(1)
+    }
+    console.print("never printed")
+}
+
+func start_both() {
+    var first = Concurrent(board.release_second)
+    board.first_holder.handles.append(first)
+    var second = Concurrent(board.release_first)
+    board.second_holder.handles.append(second)
+}

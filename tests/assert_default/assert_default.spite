@@ -1,0 +1,27 @@
+var console = Console()
+
+func AssertDefault() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ten_by_two = safe_divide(10, 2)
+    report(ten_by_two)
+    var ten_by_zero = safe_divide(10, 0)
+    report(ten_by_zero)
+    announce(0 - 5)
+    announce(5)
+}
+
+func safe_divide(numerator: Integer, denominator: Integer): Integer? {
+    assert denominator != 0
+    return numerator / denominator
+}
+
+func report(result: Integer?) {
+    assert result
+    console.print(result)
+}
+
+func announce(value: Integer) {
+    assert value > 0
+    console.print("positive", value)
+}

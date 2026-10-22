@@ -1,0 +1,8 @@
+var console = Console()
+
+func ConsoleError() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.error("a failure nobody can act on goes to the error stream")
+    console.error(1, "and it prints every kind of value", true)
+}

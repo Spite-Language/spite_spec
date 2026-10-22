@@ -1,0 +1,32 @@
+union Shape {
+    Circle
+    Square
+}
+
+var console = Console()
+var favorite: Shape? = null
+
+func ClassTest() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var shape: Shape = Circle()
+    console.print(shape == Circle)
+    console.print(shape == Square)
+    console.print(shape != Square)
+    console.print(favorite == Circle)
+    favorite = Square()
+    console.print(favorite == Square)
+    var described_circle = Circle()
+    var circle_description = describe(described_circle)
+    console.print(circle_description)
+    var square = Square()
+    var square_description = describe(square)
+    console.print(square_description)
+}
+
+func describe(shape: Shape): String {
+    if shape == Circle {
+        return "a circle of radius {shape.radius}"
+    }
+    return "not a circle"
+}

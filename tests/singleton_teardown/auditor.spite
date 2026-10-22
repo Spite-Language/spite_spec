@@ -1,0 +1,17 @@
+singleton
+
+var console = Console()
+var clerk = Clerk()
+var plain = DynamicLibrary("conformance/stage6/foreign_library/fixture.dll", 'identity', "")
+var ledger = Ledger()
+
+func check(): Integer {
+    return plain.add_numbers(2, 3)
+}
+
+func drop() {
+    ledger.note("audited")
+    clerk.file("audited")
+    var sum = plain.add_numbers(4, 5)
+    console.print("auditor dropped, the library still answers", sum)
+}

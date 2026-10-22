@@ -1,0 +1,28 @@
+var console = Console()
+var lamp = Lamp()
+var shelf = Shelf()
+
+func AttributeUses() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var lines = List<String>()
+    show_attributes(lamp, lines)
+    var joined = lines.join(", ")
+    console.print(joined)
+    var reflected = shelf.attributes
+    var first = reflected.first()
+    crash first
+    var first_text = text_of(first)
+    console.print(first.name, first_text)
+}
+
+func show_attribute(attribute: Symbol<Lamp>, shown: Lamp, lines: List<String>) {
+    lines.append("{attribute.name} = {shown.attributes[attribute]}")
+}
+
+func text_of(attribute: Spite.Attribute): String {
+    if not attribute.value {
+        return ""
+    }
+    return attribute.value.to_string()
+}

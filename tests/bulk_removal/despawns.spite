@@ -1,0 +1,15 @@
+var marks = List<Boolean>()
+
+func mark(entity: Integer) {
+    while marks.count() <= entity {
+        marks.append(false)
+    }
+    marks[entity] = true
+}
+
+func marked(entity: Integer): Boolean {
+    if entity < marks.count() {
+        return marks[entity]
+    }
+    return false
+}

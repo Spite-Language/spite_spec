@@ -1,0 +1,18 @@
+var limit = 0
+
+func Pump(starting_limit: Integer) {
+    limit = starting_limit
+}
+
+func run(): Integer {
+    var names = List<String>()
+    var index = 0
+    while index < limit {
+        names.append("pumped")
+        if names.count() > 100 {
+            names.clear()
+        }
+        index = index + 1
+    }
+    return limit
+}

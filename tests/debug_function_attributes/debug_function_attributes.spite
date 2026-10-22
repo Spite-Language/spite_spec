@@ -1,0 +1,22 @@
+var console = Console()
+
+func DebugFunctionAttributes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var chore = Chore()
+    console.debug(chore)
+    var job = Job()
+    console.debug(job)
+    job.work = step
+    console.debug(job)
+    var names = ["Ada", "Grace"]
+    names.each(say_hello)
+}
+
+func step(first: Integer, end: Integer) {
+    console.print(first, end)
+}
+
+func say_hello(name: String) {
+    console.print("hello, {name}")
+}

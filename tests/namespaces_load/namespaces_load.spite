@@ -1,0 +1,10 @@
+var console = Console()
+
+func NamespacesLoad() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "package"
+    var widget = Widgets.Widget("gadget", 3)
+    var description = widget.describe()
+    console.print(description)
+}

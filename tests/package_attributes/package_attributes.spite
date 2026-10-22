@@ -1,0 +1,10 @@
+var console = Console()
+
+func PackageAttributes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "paint"
+    var tint = Tint()
+    var shown = tint.describe()
+    console.print(shown)
+}

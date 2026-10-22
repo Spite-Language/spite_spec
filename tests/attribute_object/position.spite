@@ -1,0 +1,3 @@
+func distance(): Integer {
+    return 0
+}

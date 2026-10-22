@@ -1,0 +1,14 @@
+var console = Console()
+
+func SmallestAbsolute() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var lowest = Integer.smallest
+    var near = lowest + 1
+    var near_distance = near.absolute()
+    var seven = -7
+    var seven_distance = seven.absolute()
+    console.print(near_distance, seven_distance)
+    var flipped = lowest.absolute()
+    console.print("never printed", flipped)
+}

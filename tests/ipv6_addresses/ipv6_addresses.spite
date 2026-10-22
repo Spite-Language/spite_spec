@@ -1,0 +1,84 @@
+var console = Console()
+var heap = Memory.Heap()
+var ipv4 = Socket()
+var ipv6 = Socket()
+
+# notes.md#why-nothing-listens-on-every-interface
+func Ipv6Addresses() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    if not ipv6.listen_at("::1", 47322) {
+        console.print("skipped: this machine has no IPv6, so nothing can listen on ::1")
+        return
+    }
+    everywhere()
+    crash ipv4.listen_at("127.0.0.1", 47321)
+    reach(ipv4, "127.0.0.1", 47321)
+    reach(ipv6, "::1", 47322)
+    reach(ipv6, "localhost", 47322)
+    var unknown = Socket()
+    var refused = unknown.connect("::1", 47323)
+    console.print("nobody on ::1 port 47323:", refused)
+    ipv4.close()
+    ipv6.close()
+    datagrams()
+}
+
+func everywhere() {
+    var addresses = Socket()
+    var first = addresses.any_ipv6_address(47321)
+    var fallback = addresses.any_address(47321)
+    var first_text = addresses.address_text(first)
+    var first_port = addresses.read_port(first)
+    var fallback_text = addresses.address_text(fallback)
+    console.print("everywhere binds {first_text} port {first_port}, or {fallback_text} without IPv6")
+    heap.free(first)
+    heap.free(fallback)
+}
+
+func reach(server: Socket, host: String, port: Integer) {
+    var client = Socket()
+    var connected = client.connect(host, port)
+    crash connected
+    var peer = server.accept_client()
+    crash peer
+    crash client.write_line("over {host}")
+    var line = peer.read_line()
+    crash line
+    console.print("connected to {host}: {connected}, the server read '{line}'")
+    client.close()
+    peer.close()
+}
+
+func datagrams() {
+    var server6 = UdpSocket()
+    var client6 = UdpSocket()
+    crash server6.open_at("::1", 47324)
+    crash client6.open_at("::1", 0)
+    send(client6, "::1", 47324)
+    receive(server6)
+    var server4 = UdpSocket()
+    var client4 = UdpSocket()
+    crash server4.open_at("127.0.0.1", 47325)
+    crash client4.open_locally(0)
+    send(client4, "127.0.0.1", 47325)
+    receive(server4)
+    var text = "ping"
+    var bytes = text.to_bytes()
+    var unreachable = client4.send_to("::1", 47324, bytes)
+    console.print("an IPv4 socket sends to ::1:", unreachable)
+}
+
+func send(client: UdpSocket, host: String, port: Integer) {
+    var text = "to {host}"
+    var bytes = text.to_bytes()
+    crash client.send_to(host, port, bytes)
+}
+
+func receive(server: UdpSocket) {
+    var arrived = server.receive()
+    crash arrived
+    var count = arrived.count()
+    var sender = server.sender_host()
+    console.print("{count} bytes from {sender}")
+}

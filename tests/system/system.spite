@@ -1,0 +1,60 @@
+var console = Console()
+var program = Program()
+
+func System() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var arguments = Arguments()
+    var arguments_count = arguments.count()
+    console.print(arguments_count, "{arguments.get(3)}|")
+    if arguments.nothing_here {
+        console.print("unexpected", arguments.nothing_here)
+    } else {
+        console.print("no such argument")
+    }
+    var folder = Directory(".spite/conformance_system")
+    var create = folder.create()
+    var exists = folder.exists()
+    console.print(create, exists)
+    var file = File(".spite/conformance_system/note.txt")
+    var write = file.write("first line\n")
+    var append = file.append("second line")
+    var file_exists = file.exists()
+    console.print(write, append, file_exists)
+    report(file)
+    var joined_files = folder.entries().filter_files().map_names().join(",")
+    var folders_count = folder.entries().filter_directories().count()
+    console.print(joined_files, folders_count)
+    var remove = file.remove()
+    file_exists = file.exists()
+    console.print(remove, file_exists)
+    report(file)
+    var c_compiler = program.environment("CC")
+    if c_compiler {
+        console.print("CC is set")
+    } else {
+        console.print("CC is not set")
+    }
+    var never_set = program.environment("SPITE_CONFORMANCE_NEVER_SET")
+    if never_set {
+        console.print("unexpected")
+    }
+    var process = Process("git", ["--version"])
+    var exit_code = process.run()
+    var trim_is_empty = process.output().trim().is_empty()
+    console.print(exit_code, trim_is_empty)
+    program.sleep(1)
+    console.print("done")
+}
+
+func report(file: File) {
+    var content = file.read()
+    if content {
+        var lines_count = content.lines().count()
+        var last_line = content.lines().last()
+        crash last_line
+        console.print(lines_count, last_line)
+    } else {
+        console.print("cannot read")
+    }
+}

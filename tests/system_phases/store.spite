@@ -1,0 +1,18 @@
+singleton
+
+generic $component_type
+
+var components = Dictionary<Integer, $component_type>()
+
+func insert(entity: Integer, component: $component_type) {
+    components[entity] = component
+}
+
+func has(entity: Integer): Boolean {
+    return components.has(entity)
+}
+
+func of(entity: Integer): $component_type {
+    crash components[entity]
+    return components[entity]
+}

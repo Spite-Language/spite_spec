@@ -1,0 +1,11 @@
+var console = Console()
+var workshop = Workshop()
+
+func SingletonStatelessCalls() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var built = workshop.build()
+    var kept = workshop.count()
+    console.print("the Parallel made pieces worth", built, "while build polled it")
+    console.print("pieces kept:", kept)
+}

@@ -1,0 +1,9 @@
+var items = List<Item>()
+
+func keep(new_items: List<Item>) {
+    items = new_items
+}
+
+func keep_one(item: Item) {
+    items.append(item)
+}

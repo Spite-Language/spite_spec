@@ -1,0 +1,12 @@
+singleton
+
+var entries = List<String>()
+var opened = 0
+
+func Journal() {
+    opened = opened + 1
+}
+
+func record(entry: String) {
+    entries.append(entry)
+}

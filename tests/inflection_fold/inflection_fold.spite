@@ -1,0 +1,10 @@
+var console = Console()
+
+func InflectionFold() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var plural = "cactus".pluralize()
+    var singular = "active_quests".singularize()
+    var heroes = "hero".pluralize()
+    console.print(plural, singular, heroes)
+}

@@ -1,0 +1,31 @@
+var console = Console()
+
+func LibraryFunctionsPassed() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var counts = Dictionary<String, Integer>()
+    counts["pear"] = 3
+    counts["apple"] = 7
+    counts["fig"] = 1
+    var keys = counts.keys()
+    var known = keys.filter(counts.has)
+    var known_text = known.join(", ")
+    console.print(known_text)
+    var amount_count = keys.count(counts.has)
+    console.print("amounts", amount_count)
+    var words = ["hell", "a", "lo", "x"]
+    var greeting = "hello"
+    var found = words.filter(greeting.contains)
+    var found_text = found.join(", ")
+    console.print(found_text)
+    var lookup = counts.get_at
+    var apples = lookup("apple")
+    crash apples
+    console.print("apples", apples)
+    var seen = List<String>()
+    words.each(seen.append)
+    var remember = seen.append
+    remember("y")
+    var seen_text = seen.join(" ")
+    console.print(seen_text)
+}

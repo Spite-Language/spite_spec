@@ -1,0 +1,12 @@
+var console = Console()
+
+func FoldedUses() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var markers = Slot<Marker>()
+    var fallback = Marker()
+    var marker = markers.fetch(4, fallback)
+    var numbers = Slot<Integer>()
+    var number = numbers.fetch(4, 9)
+    console.print(marker.id, number)
+}

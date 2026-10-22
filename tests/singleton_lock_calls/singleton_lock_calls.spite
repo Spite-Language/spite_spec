@@ -1,0 +1,30 @@
+var console = Console()
+var registry = Registry()
+
+func SingletonLockCalls() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var loading = List<Parallel<Integer>>()
+    var start = 0
+    while start < 4000 {
+        var loader = Loader(start)
+        var loading_run = Parallel(loader.load_many)
+        loading.append(loading_run)
+        start = start + 1000
+    }
+    var loaded = 0
+    var index = 0
+    while index < loading.count() {
+        var count: Integer = loading[index]
+        loaded = loaded + count
+        index = index + 1
+    }
+    registry.last = "texture 2999"
+    var known = registry.known()
+    var total = registry.total()
+    var last = registry.last_name()
+    console.print("loaded", loaded, "known", known, "counted", total)
+    console.print("last written from outside:", last)
+    var read_outside = registry.last
+    console.print("last read from outside:", read_outside)
+}

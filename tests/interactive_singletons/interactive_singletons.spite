@@ -1,0 +1,11 @@
+var console = Console()
+var world = World()
+
+func InteractiveSingletons() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    world.spawn(3, 4)
+    world.spawn(7, 1)
+    var count = world.entity_count()
+    console.print("entities", count)
+}

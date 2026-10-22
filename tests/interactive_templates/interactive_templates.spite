@@ -1,0 +1,14 @@
+var console = Console()
+var monsters = List<Monster>()
+
+func InteractiveTemplates() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var rat = Monster("rat", 3)
+    monsters.append(rat)
+    var bat = Monster("bat", 5)
+    monsters.append(bat)
+    var ant = Monster("ant", 1)
+    monsters.append(ant)
+    console.print("ready")
+}

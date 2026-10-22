@@ -1,0 +1,12 @@
+var console = Console()
+
+func EmptyFolderRange() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var schedule = Schedule()
+    schedule.add_systems()
+    schedule.add_plugins()
+    var found_count = schedule.names.count()
+    var joined = schedule.names.join(", ")
+    console.print(found_count, "found:", joined)
+}

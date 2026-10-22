@@ -1,0 +1,22 @@
+singleton
+
+var meter = Meter()
+var thread: Parallel<Nothing>? = null
+var pump: Siphon? = null
+
+func start() {
+    var created = Siphon()
+    pump = created
+    var started = Parallel(created.run)
+    thread = started
+}
+
+func pumped(): Long {
+    return meter.counted()
+}
+
+func stop() {
+    assert thread and pump
+    meter.stop()
+    thread = null
+}

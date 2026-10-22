@@ -1,0 +1,16 @@
+singleton
+
+var console = Console()
+var titles = Dictionary<Long, String>()
+
+func open(handle: Long, title: String) {
+    titles[handle] = title
+}
+
+func handle_message(window: Long, message: UnsignedInteger, parameter: Long): Long {
+    if titles[window] {
+        console.print("{titles[window]} got message {message} with {parameter}")
+        return parameter * 2
+    }
+    return 0
+}

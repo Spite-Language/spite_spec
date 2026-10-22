@@ -1,0 +1,12 @@
+var console = Console()
+
+func NamespacedGenerics() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var textures = Asset.Pack<Asset.Texture>("textures")
+    var grass = Asset.Texture("grass")
+    var texture_line = textures.keep(grass)
+    console.print(texture_line)
+    var level = Game.Level()
+    level.run()
+}

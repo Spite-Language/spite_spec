@@ -1,0 +1,17 @@
+var console = Console()
+var stock = Stock.Shelf()
+var ticks = Vector<Tick>()
+var timers = Timers()
+
+func SameNameCallEffects() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tick = Tick()
+    ticks.append(tick)
+    var index = 0
+    while index < ticks.count() {
+        timers.advance(ticks[index])
+        index = index + 1
+    }
+    console.print(timers.total, stock.count, timers.last)
+}

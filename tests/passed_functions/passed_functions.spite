@@ -1,0 +1,79 @@
+var console = Console()
+var greeted = 0
+
+func PassedFunctions() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["Ada", "Grace", "Barbara", "Edsger"]
+    names.each(say_hello)
+    var short_names = names.filter(is_short)
+    var joined_short = short_names.join(", ")
+    console.print(joined_short)
+    var short_count = names.count(is_short)
+    var any_short = names.any(is_short)
+    var all_short = names.all(is_short)
+    var total = names.sum(measure)
+    console.print(short_count, any_short, all_short, total)
+    var found = names.find(is_long)
+    crash found
+    console.print(found)
+    names.filter(is_short).each(say_hello)
+    var doubled = names.filter(is_short).sum(doubled_length)
+    console.print(doubled)
+    var people = List<Person>()
+    var ada = Person("Ada", 36)
+    people.append(ada)
+    var alan = Person("Alan", 41)
+    people.append(alan)
+    people.each(introduce)
+    var short_adults = people.filter_is_adult().map_names().count(is_short)
+    console.print(short_adults)
+    var greeter = Greeter("welcome")
+    people.each(greeter.greet)
+    var labels = people.map_shouted_names().filter(is_short)
+    var joined_labels = labels.join(", ")
+    console.print(joined_labels)
+    var team = Dictionary<String, Person>()
+    var grace = Person("Grace", 85)
+    team["lead"] = grace
+    team.each(introduce)
+    var team_ages = team.sum(age_of)
+    console.print(team_ages)
+    var sorted = names.sort_by(measure)
+    var joined_sorted = sorted.join(", ")
+    console.print(joined_sorted)
+    var quiet = greeter.is_quiet
+    var quiet_names = names.filter(quiet)
+    var joined_quiet = quiet_names.join(", ")
+    console.print(joined_quiet)
+    console.print(greeted)
+}
+
+func age_of(person: Person): Integer {
+    return person.age
+}
+
+func say_hello(name: String) {
+    greeted = greeted + 1
+    console.print("hello, {name}")
+}
+
+func measure(name: String): Integer {
+    return name.length()
+}
+
+func is_short(name: String): Boolean {
+    return name.length() < 6
+}
+
+func is_long(name: String): Boolean {
+    return name.length() > 6
+}
+
+func doubled_length(name: String): Integer {
+    return name.length() * 2
+}
+
+func introduce(person: Person) {
+    console.print("{person.name} is {person.age}")
+}

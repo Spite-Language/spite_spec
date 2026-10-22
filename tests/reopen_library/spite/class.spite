@@ -1,0 +1,6 @@
+func name_with_namespaces(): String {
+    if _namespace {
+        return "{_namespace.name_with_namespaces}.{_name}"
+    }
+    return _name
+}

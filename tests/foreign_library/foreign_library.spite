@@ -1,0 +1,53 @@
+type PointPair {
+    across: Integer
+    down: Integer
+}
+
+var console = Console()
+var plain = DynamicLibrary("conformance/stage6/foreign_library/fixture.dll", 'identity', "")
+var camel = DynamicLibrary("conformance/stage6/foreign_library/fixture.dll", 'camel_case', "")
+var headerless = DynamicLibrary("conformance/stage6/foreign_library/fixture.dll", 'windows', "")
+var windows = DynamicLibrary(
+    "conformance/stage6/foreign_library/fixture.dll",
+    'windows',
+    "conformance/stage6/foreign_library/fixture.h",
+)
+
+func ForeignLibrary() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var add_numbers = plain.add_numbers(2, 3)
+    var multiply_numbers = camel.multiply_numbers(4, 5)
+    var windows_answer_position = headerless.get_answer_position()
+    console.print(add_numbers, multiply_numbers, windows_answer_position)
+    var half_of_as_double = plain.half_of_as_double(7)
+    var big_number_as_long = plain.big_number_as_long()
+    var greeting_as_text = plain.greeting_as_text()
+    console.print(half_of_as_double, big_number_as_long, greeting_as_text)
+    var text_length = plain.text_length("spite")
+    console.print(text_length, windows.fixture_answer, windows.fixture_limit)
+    var spot: PointPair = Spot()
+    var sum_point = plain.sum_point(spot)
+    console.print(sum_point)
+    windows.move_point(spot)
+    console.print(spot.across, spot.down)
+    var values = [1, 2, 3]
+    var values_count = values.count()
+    var sum_values = plain.sum_values(values, values_count)
+    console.print(sum_values)
+    values_count = values.count()
+    plain.double_values(values, values_count)
+    var joined_values = values.join(",")
+    console.print(joined_values)
+    wide_arguments()
+}
+
+func wide_arguments() {
+    var guessed_sum = plain.wide_sum_as_long(-1, 0)
+    var declared_sum = windows.wide_sum_as_long(-1, 3)
+    var scaled = windows.scaled(1.5, 4)
+    var handle: Long = 21
+    var handle_twice = windows.handle_twice_as_long(handle)
+    windows.forget(1)
+    console.print(guessed_sum, declared_sum, scaled, handle_twice)
+}

@@ -1,0 +1,21 @@
+var console = Console()
+var build = Build()
+var environment = Environment()
+
+func BuildSettings() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    if build.serve {
+        console.print("serving: given to the compiler, so the other branch was never generated")
+    } else {
+        console.print("rendering")
+    }
+    console.print("workers", build.workers, "name", environment.name, "check", build.check)
+    if environment.name == "server" and build.workers == 3 {
+        console.print("the name was read when the program ran")
+    }
+    console.print("--worker-stack-size set worker_stack_size to", build.worker_stack_size)
+    if build.target_operating_system == build.operating_system {
+        console.print("built for the system that compiled it")
+    }
+}

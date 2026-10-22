@@ -1,0 +1,40 @@
+var console = Console()
+
+func BinarySchema() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var point = Point()
+    var place = Place()
+    var route = Route()
+    var point_writer = BinaryWriter<Point>()
+    var point_writer_again = BinaryWriter<Point>()
+    var place_writer = BinaryWriter<Place>()
+    var route_writer = BinaryWriter<Route>()
+    var point_reader = BinaryReader<Point>()
+    var place_reader = BinaryReader<Place>()
+    var route_reader = BinaryReader<Route>()
+    var point_schema = point_writer.schema()
+    var place_schema = place_writer.schema()
+    var again_schema = point_writer_again.schema()
+    var reader_schema = point_reader.schema()
+    var route_schema = route_writer.schema()
+    var route_reader_schema = route_reader.schema()
+    console.print("Point {point_schema}")
+    console.print("Place {place_schema}")
+    console.print("same class, same schema: {point_schema == again_schema}")
+    console.print("writer and reader agree: {point_schema == reader_schema}")
+    console.print("same layout, other name, other schema: {point_schema != place_schema}")
+    console.print("Route {route_schema}, reader {route_reader_schema}")
+    var point_bytes = point_writer.write(point)
+    var place_bytes = place_writer.write(place)
+    var route_bytes = route_writer.write(route)
+    var read_point = point_reader.read(point_bytes)
+    var read_place = place_reader.read(place_bytes)
+    var read_route = route_reader.read(route_bytes)
+    crash read_point
+    crash read_place
+    crash read_route
+    var stop_count = read_route.stops.count()
+    var total = read_point.across + read_point.down + read_place.across + read_place.down
+    console.print("read back", total, read_route.name, stop_count)
+}

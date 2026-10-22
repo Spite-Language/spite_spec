@@ -1,0 +1,47 @@
+type Named {
+    name: String
+    size: Integer
+}
+
+var console = Console()
+
+func Shapes() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var planet = Planet("mars", 3389)
+    var pet = Pet("rex", 12, "dog")
+    announce(planet)
+    announce(pet)
+    announce({name: "literal", size: 1})
+    grow(planet)
+    grow(pet)
+    console.print(planet.size, pet.size, pet.kind)
+    var things = List<Named>()
+    things.append(planet)
+    var tom = Pet("tom", 4, "cat")
+    things.append(tom)
+    things.append({name: "box", size: 9})
+    var index = 0
+    var total = 0
+    while index < things.count() {
+        total = total + things[index].size
+        index = index + 1
+    }
+    crash things[2]
+    var last_thing = things.last()
+    crash last_thing
+    var upper_case_name = last_thing.name.upper_case()
+    console.print(total, things[2].name, upper_case_name)
+    var point = {x: 3, y: 4, label: "corner"}
+    point.x = point.x + 10
+    console.print(point.x, point.y, point.label)
+}
+
+func announce(thing: Named) {
+    console.print("{thing.name} has size {thing.size}")
+}
+
+func grow(thing: Named) {
+    thing.size = thing.size + 1
+    thing.name = "{thing.name}+"
+}

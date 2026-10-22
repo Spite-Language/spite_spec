@@ -1,0 +1,15 @@
+var console = Console()
+
+func CrashMissingKey() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var scores = Dictionary<String, Integer>()
+    scores["ann"] = 0
+    show(scores, "ann")
+    show(scores, "bea")
+}
+
+func show(scores: Dictionary<String, Integer>, player: String) {
+    crash scores[player]
+    console.print(player, scores[player])
+}

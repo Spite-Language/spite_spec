@@ -1,0 +1,13 @@
+var console = Console()
+var tally = Tally<Integer>()
+
+func SingletonCounts() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    tally.counted.append(1)
+    var first_fetcher = Fetcher()
+    var second_fetcher = Fetcher()
+    var first = Parallel(first_fetcher.fetch_many)
+    var second = Parallel(second_fetcher.fetch_many)
+    console.print("fetched", first + second)
+}

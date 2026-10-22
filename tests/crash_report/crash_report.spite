@@ -1,0 +1,22 @@
+var console = Console()
+
+func CrashReport() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("before the crash")
+    announce(0 - 1)
+    announce(5)
+    announce(0)
+    check(0 - 9)
+    console.print("never printed")
+}
+
+func check(value: Integer) {
+    var limit = 0
+    crash value > limit
+}
+
+func announce(amount: Integer) {
+    assert amount > 0
+    console.print("announced", amount)
+}

@@ -1,0 +1,10 @@
+func ConstructorParams() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Person("Ada", 30)
+    var second = Person("Grace", 40)
+    first.introduce()
+    second.introduce()
+    first.have_birthday()
+    first.introduce()
+}

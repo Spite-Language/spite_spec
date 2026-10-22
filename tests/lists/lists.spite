@@ -1,0 +1,99 @@
+var console = Console()
+var names = List<String>()
+var scores = [3, 1, 2]
+
+func Lists() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    names.append("ada")
+    names.append("grace")
+    names.prepend("alan")
+    var names_count = names.count()
+    var first_name = names.first()
+    crash first_name
+    var last_name = names.last()
+    crash last_name
+    console.print(names_count, first_name, last_name)
+    var joined_names = names.join(", ")
+    console.print(joined_names)
+    var has_ada = names.contains("ada")
+    var has_bob = names.contains("bob")
+    console.print(has_ada, has_bob)
+    names.insert(1, "edsger")
+    names.remove_at(0)
+    var spaced_names = names.join(" ")
+    console.print(spaced_names)
+    var removed_last = names.remove_last()
+    var removed_first = names.remove_first()
+    crash removed_last
+    crash removed_first
+    names_count = names.count()
+    console.print(removed_last, removed_first, names_count)
+    names[0] = "barbara"
+    crash names.count() == 1
+    console.print(names[0], names[7] == "")
+    names.clear()
+    var names_is_empty = names.is_empty()
+    console.print(names_is_empty)
+    var from_empty = names.remove_last()
+    if from_empty {
+        console.print("removed from an empty list:", from_empty)
+    } else {
+        console.print("nothing to remove from an empty list")
+    }
+    scores.append(10)
+    scores.reverse()
+    crash scores.count() == 4
+    var sum_of_values = total(scores)
+    console.print(sum_of_values, scores[0], scores[99] == 0)
+    var has_ten = scores.contains(10)
+    var has_eleven = scores.contains(11)
+    console.print(has_ten, has_eleven)
+    var items = build_items(3)
+    crash items.count() == 3
+    var index = 0
+    while index < items.count() {
+        var description = items[index].describe()
+        console.print(description)
+        index = index + 1
+    }
+    items[1].quantity = 50
+    var second_description = items[1].describe()
+    var last_item = items.last()
+    crash last_item
+    var last_description = last_item.describe()
+    console.print(second_description, last_description)
+    var holder = Holder()
+    holder.keep(items)
+    var extra_item = Item("extra", 9)
+    holder.keep_one(extra_item)
+    var items_count = holder.items.count()
+    var extra = holder.items.last()
+    crash extra
+    var extra_name = extra.name
+    console.print(items_count, extra_name)
+    var words = ["one", "two"]
+    var joined_words = words.join("+")
+    console.print(joined_words)
+}
+
+func total(values: List<Integer>): Integer {
+    var sum = 0
+    var index = 0
+    while index < values.count() {
+        sum = sum + values[index]
+        index = index + 1
+    }
+    return sum
+}
+
+func build_items(count: Integer): List<Item> {
+    var result = List<Item>()
+    var index = 0
+    while index < count {
+        var item = Item("item{index}", index * 2)
+        result.append(item)
+        index = index + 1
+    }
+    return result
+}

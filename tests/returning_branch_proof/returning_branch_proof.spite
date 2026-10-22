@@ -1,0 +1,24 @@
+var console = Console()
+var document: Document? = null
+var kind = 3
+
+func ReturningBranchProof() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    document = Document()
+    var plain = describe()
+    console.print(plain)
+    kind = 4
+    var array = describe()
+    console.print(array)
+}
+
+func describe(): String {
+    if not document {
+        return ""
+    }
+    if kind == 4 {
+        return document.array_text()
+    }
+    return document.to_string()
+}

@@ -1,0 +1,14 @@
+var console = Console()
+
+func NearestType() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var health = Component.Health()
+    health.amount = 3
+    var regenerate = System.Regenerate()
+    regenerate.heal(health)
+    var pack = Pack()
+    var bag = Tools.Bag()
+    bag.fill(health)
+    console.print("health", health.amount, "and the root pack holds", pack.label)
+}

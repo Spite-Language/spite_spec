@@ -1,0 +1,11 @@
+var thread: Parallel<Integer>? = null
+
+func start() {
+    var pump = Pump(300000)
+    thread = Parallel(pump.run)
+}
+
+func finish(): Integer {
+    crash thread
+    return thread
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func ShapeDefaults() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var system = ConsumePotion()
+    var each = Each(system.run_each)
+    each.run()
+    each.run()
+    console.print("kept", each.second.health.amount, each.second.class.name)
+}

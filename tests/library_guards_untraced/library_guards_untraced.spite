@@ -1,0 +1,23 @@
+var console = Console()
+
+func LibraryGuardsUntraced() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var word = "hello"
+    console.print("past the end: '{word.slice(7, 9)}'")
+    console.print("starts with help: {word.starts_with("help")}")
+    announce(0)
+    console.print("ends with low: {word.ends_with("low")}")
+    var length = word.length()
+    check(length)
+    console.print("never printed")
+}
+
+func announce(amount: Integer) {
+    assert amount > 0
+    console.print("announced", amount)
+}
+
+func check(length: Integer) {
+    crash length > 9
+}

@@ -1,0 +1,13 @@
+var console = Console()
+var first = Tally<Integer>()
+var second = Tally<String>()
+var registry = Registry()
+
+func SingletonHeldAtExit() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    first.add(3)
+    second.add(4)
+    var count = registry.count()
+    console.print("tallies", count)
+}

@@ -1,0 +1,14 @@
+var console = Console()
+var name = "first"
+
+func ReferencesBasic() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(name)
+    name = "second"
+    console.print(name)
+    var alias = name
+    name = "third"
+    console.print(alias)
+    console.print(name)
+}

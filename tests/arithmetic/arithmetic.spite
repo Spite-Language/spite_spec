@@ -1,0 +1,42 @@
+var console = Console()
+
+func Arithmetic() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var sum = add(3, 4)
+    console.print(sum)
+    var difference = 10 - 3
+    console.print(difference)
+    var product = 6 * 7
+    console.print(product)
+    var quotient = 20 / 4
+    console.print(quotient)
+    var remainder = 17 % 5
+    console.print(remainder)
+    var value: Double = 3.75
+    var truncated: Integer = value
+    console.print(truncated)
+    var count = 0
+    console.print(count)
+    var widened: Long = 2000000000
+    widened = widened + 2000000000
+    console.print(widened)
+    var negated = negate(5)
+    console.print(negated)
+    var four_is_positive = is_positive(4)
+    console.print(four_is_positive)
+    var minus_four_is_positive = is_positive(-4)
+    console.print(minus_four_is_positive)
+}
+
+func add(left: Integer, right: Integer): Integer {
+    return left + right
+}
+
+func negate(value: Integer): Integer {
+    return -value
+}
+
+func is_positive(value: Integer): Boolean {
+    return value > 0
+}

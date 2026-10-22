@@ -1,0 +1,11 @@
+var console = Console()
+
+func UnsignedOverflow() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count: UnsignedInteger = 2
+    var left = count - 2
+    console.print(left)
+    var below = left - 1
+    console.print("never printed", below)
+}

@@ -1,0 +1,41 @@
+enum Mood {
+    'calm'
+    'angry'
+    'asleep'
+}
+
+var console = Console()
+var mood: Mood = 'calm'
+
+func Enums() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(mood)
+    mood = 'angry'
+    var mood_description = describe(mood)
+    console.print(mood_description)
+    var asleep_description = describe('asleep')
+    console.print(asleep_description)
+    if mood == 'angry' {
+        console.print("still angry")
+    }
+    if mood != 'calm' {
+        console.print("not calm: {mood}")
+    }
+    var pet = Pet('hungry')
+    var report = pet.report()
+    console.print(report)
+    pet.state = 'full'
+    report = pet.report()
+    console.print(report)
+}
+
+func describe(value: Mood): String {
+    if value == 'calm' {
+        return "all quiet"
+    }
+    if value == 'angry' {
+        return "watch out"
+    }
+    return "zzz"
+}

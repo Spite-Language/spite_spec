@@ -1,0 +1,8 @@
+func FolderClassNamespace() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var composition = ClickTest.Composition()
+    var click_test = composition.click_test
+    click_test.drive_clicks.run()
+    click_test.verify.run()
+}

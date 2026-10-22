@@ -1,0 +1,27 @@
+singleton
+
+var program = Program()
+var first_holder = Holder()
+var second_holder = Holder()
+var both_held = false
+var second_may_go = false
+
+func release_second() {
+    wait_until_both_held()
+    second_may_go = true
+    second_holder.handles.remove_at(0)
+}
+
+func release_first() {
+    wait_until_both_held()
+    while not second_may_go {
+        program.sleep(1)
+    }
+    first_holder = Holder()
+}
+
+func wait_until_both_held() {
+    while not both_held {
+        program.sleep(1)
+    }
+}

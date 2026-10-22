@@ -1,0 +1,27 @@
+union Readout {
+    Widget
+    Gauge
+}
+
+type Labeled {
+    label: String
+}
+
+var console = Console()
+
+func ClassThroughShape() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var widget = Widget("thing")
+    describe(widget)
+    var gauge = Gauge("dial")
+    describe(gauge)
+    var readout: Readout = Gauge("second dial")
+    console.print(readout.class)
+    var shaped: Labeled = {label: "a literal"}
+    console.print(shaped.label, shaped.class)
+}
+
+func describe(labeled: Labeled) {
+    console.print(labeled.label, labeled.class, labeled.class.name)
+}

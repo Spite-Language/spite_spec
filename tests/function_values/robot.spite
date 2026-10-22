@@ -1,0 +1,26 @@
+var name = ""
+var log = List<String>()
+
+func Robot(starting_name: String) {
+    name = starting_name
+}
+
+func step_forward() {
+    log.append("{name} forward")
+}
+
+func step_back() {
+    log.append("{name} back")
+}
+
+func battery(): Integer {
+    return 80
+}
+
+func describe(prefix: String, times: Integer): String {
+    return prefix + name + times
+}
+
+func set_attribute(attribute: Symbol, value: attribute.class) {
+    attributes[attribute] = value
+}

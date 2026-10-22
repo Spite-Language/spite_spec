@@ -1,0 +1,37 @@
+var world = World()
+var healings = Store<Component.Healing>()
+var healths = Store<Component.Health>()
+var labels = Store<Component.Label>()
+
+func SystemPhases() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    spawn_potion("tonic", 5)
+    spawn_patient("ann", 10)
+    spawn_patient("bob", 20)
+    var schedule = Schedule()
+    schedule.tick()
+    schedule.tick()
+}
+
+func spawn_potion(text: String, amount: Integer) {
+    var entity = world.spawn()
+    var healing = Component.Healing()
+    healing.amount = amount
+    healings.insert(entity, healing)
+    label(entity, text)
+}
+
+func spawn_patient(text: String, amount: Integer) {
+    var entity = world.spawn()
+    var health = Component.Health()
+    health.amount = amount
+    healths.insert(entity, health)
+    label(entity, text)
+}
+
+func label(entity: Integer, text: String) {
+    var label_component = Component.Label()
+    label_component.text = text
+    labels.insert(entity, label_component)
+}

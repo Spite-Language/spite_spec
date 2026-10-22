@@ -1,0 +1,24 @@
+var console = Console()
+
+func Generics() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var sword = Weapon<Integer, true>(10)
+    var club = Weapon<String, false>("heavy")
+    var sword_hit = sword.hit()
+    var sword_description = sword.describe()
+    console.print(sword_hit, sword.damage + 1, sword_description)
+    var hit = club.hit()
+    var club_description = club.describe()
+    console.print(hit, "{club.damage}!", club_description)
+    var another: Weapon<Integer, true> = Weapon<Integer, true>(3)
+    console.print(another.damage, sword.class, club.class)
+    var pair = Pair<String, Integer>("answer", 42)
+    var swapped_left = pair.swapped().left
+    console.print(pair.left, pair.right, swapped_left)
+    var boxes = List<Weapon<Integer, true>>()
+    boxes.append(sword)
+    boxes.append(another)
+    var sum_damage = boxes.sum_damage()
+    console.print(sum_damage)
+}

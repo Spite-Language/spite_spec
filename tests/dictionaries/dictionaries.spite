@@ -1,0 +1,64 @@
+var console = Console()
+var ages = Dictionary<String, Integer>()
+var labels = Dictionary<String, String>()
+
+func Dictionaries() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    ages["ada"] = 36
+    ages["grace"] = 85
+    ages["alan"] = 41
+    ages["ada"] = 37
+    crash ages["ada"]
+    var ages_count = ages.count()
+    var has_ada = ages.has("ada")
+    var has_bob = ages.has("bob")
+    console.print(ages_count, has_ada, has_bob, ages["ada"], ages["bob"] == 0)
+    if ages["grace"] {
+        console.print("grace is", ages["grace"])
+    }
+    if ages["nobody"] {
+        console.print("unexpected")
+    } else {
+        console.print("nobody is missing")
+    }
+    ages.remove("grace")
+    var joined_keys = ages.keys().join(",")
+    ages_count = ages.count()
+    console.print(joined_keys, ages_count)
+    var values = ages.values()
+    crash values.count() == 2
+    var values_count = values.count()
+    console.print(values_count, values[0] + values[1])
+    labels["x{1}"] = "first{1}"
+    labels["y"] = "second"
+    crash labels["x1"]
+    crash labels["y"]
+    var keys_count = labels.keys().count()
+    console.print(labels["x1"], labels["y"], labels["z"] == "", keys_count)
+    var y_label = lookup("y")
+    var q_label = lookup("q")
+    console.print(y_label, q_label)
+    var pets = Dictionary<String, Animal>()
+    var dog = Animal("dog")
+    pets["rex"] = dog
+    var cat = Animal("cat")
+    pets["tom"] = cat
+    if pets["rex"] {
+        console.print(pets["rex"].kind)
+    }
+    crash pets["tom"]
+    var pet_values_count = pets.values().count()
+    console.print(pets["tom"].kind, pet_values_count)
+    pets.remove("rex")
+    var pets_count = pets.count()
+    var has_rex = pets.has("rex")
+    console.print(pets_count, has_rex)
+}
+
+func lookup(key: String): String {
+    if labels[key] {
+        return "found {labels[key]}"
+    }
+    return "no {key}"
+}

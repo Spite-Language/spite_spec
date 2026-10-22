@@ -1,0 +1,20 @@
+var console = Console()
+var watch = StageWatch()
+var connection = Socket()
+
+func update_each() {
+    var reads = 0
+    while reads < 3 {
+        var received = connection.read_bytes()
+        crash received
+        watch.note_resumed()
+        var index = 0
+        while index < received.count() {
+            var held = received[index]
+            crash held
+            console.print("the reader received", held)
+            reads = reads + 1
+            index = index + 1
+        }
+    }
+}

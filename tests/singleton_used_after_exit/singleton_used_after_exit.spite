@@ -1,0 +1,9 @@
+var console = Console()
+var reporter = Reporter()
+
+func SingletonUsedAfterExit() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    reporter.start()
+    console.print("started")
+}

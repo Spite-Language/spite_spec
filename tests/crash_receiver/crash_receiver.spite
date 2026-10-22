@@ -1,0 +1,10 @@
+var console = Console()
+
+func CrashReceiver() {
+    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var settings = File(".spite/crash_receiver/missing_settings.txt")
+    console.print("looking for the settings")
+    crash settings.exists()
+    console.print("never printed")
+}

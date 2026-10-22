@@ -1,0 +1,16 @@
+3 alan grace
+alan, ada, grace
+true false
+edsger ada grace
+grace edsger 1
+barbara false
+true
+nothing to remove from an empty list
+16 10 false
+true false
+item0 x0
+item1 x2
+item2 x4
+item1 x50 item2 x4
+4 extra
+one+two

@@ -1,0 +1,3 @@
+plugins from plugins
+engine ember
+frames per second 60

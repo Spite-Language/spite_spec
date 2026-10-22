@@ -1,0 +1,56 @@
+generic $row_type
+
+var world = World()
+var found = List<Integer>()
+var missing = false
+
+func run(mover: Mover) {
+    var entity = 0
+    while entity < world.entity_count {
+        found.clear()
+        missing = false
+        find_attributes(entity)
+        if not missing {
+            var row: $row_type = null
+            fill_attributes(row, found, entity)
+            mover.update_each(row)
+        }
+        entity = entity + 1
+    }
+}
+
+func find_attribute(attribute: Symbol<$row_type>, entity: Integer) {
+    if attribute.class == Entity {
+        note(entity)
+    } else if attribute.class.fits_vector() {
+        var column = Column<attribute.class>()
+        var dense = column.set.dense_index(entity)
+        note(dense)
+    } else {
+        var column = ReferenceColumn<attribute.class>()
+        var dense = column.set.dense_index(entity)
+        note(dense)
+    }
+}
+
+func note(dense: Integer) {
+    if dense < 0 {
+        missing = true
+    }
+    found.append(dense)
+}
+
+func fill_attribute(attribute: Symbol<$row_type>, row: $row_type, rows: List<Integer>, entity: Integer) {
+    if attribute.class == Entity {
+        row.attributes[attribute] = Entity(entity)
+    } else if attribute.class.fits_vector() and attribute.class != Entity {
+        crash rows[attribute.index]
+        var stored_row = rows[attribute.index]
+        crash Column<attribute.class>().values[stored_row]
+        row.attributes[attribute] = Column<attribute.class>().values[stored_row]
+    } else {
+        crash rows[attribute.index]
+        var stored_row = rows[attribute.index]
+        row.attributes[attribute] = ReferenceColumn<attribute.class>().at(stored_row)
+    }
+}
