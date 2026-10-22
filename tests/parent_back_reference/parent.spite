@@ -1,5 +1,6 @@
 var name = ""
 var children = List<Child>()
+var console = Console()
 
 func Parent(new_name: String) {
     name = new_name
@@ -8,4 +9,8 @@ func Parent(new_name: String) {
 func adopt(child_name: String) {
     var child = Child(child_name, this)
     children.append(child)
+}
+
+func drop() {
+    console.print(name, "is freed")
 }

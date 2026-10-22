@@ -1,3 +1,5 @@
 grace belongs to ada
+ada is freed
 the parent is gone, and grace knows it
 edsger belongs to barbara while both live
+barbara is freed

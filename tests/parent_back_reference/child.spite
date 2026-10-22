@@ -1,7 +1,7 @@
 var name = ""
-var parent = Weak<Parent>(null)
+var parent: Parent? = null
 
 func Child(new_name: String, new_parent: Parent) {
     name = new_name
-    parent = Weak(new_parent)
+    parent = new_parent
 }

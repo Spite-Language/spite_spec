@@ -1,2 +1,2 @@
-var favorite = Weak<Item>(null)
+var favorite: Item? = null
 var items = List<Item>()

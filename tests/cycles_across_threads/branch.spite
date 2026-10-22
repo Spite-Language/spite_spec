@@ -1,0 +1,16 @@
+var name = ""
+var parent: Branch? = null
+var branches = List<Branch>()
+var console = Console()
+
+func Branch(starting_name: String) {
+    name = starting_name
+}
+
+func drop() {
+    if parent {
+        console.print(name, "is freed before", parent.name)
+    } else {
+        console.print(name, "is freed")
+    }
+}
