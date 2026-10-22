@@ -1,7 +1,0 @@
-var console = Console()
-
-func RemovedTranslationUnitsFlag() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
-    console.print("never compiled")
-}
