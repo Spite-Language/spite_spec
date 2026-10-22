@@ -1,1 +1,1 @@
-spite: the program stopped at tests/concurrent_wait_cycle_in_place/../../../SpiteCompiler/.spite/library/common/spite/internal/scheduler.spite:118 in Spite.Internal.Scheduler.every_concurrent_waits_for_another
+spite: the program stopped at .../internal/scheduler.spite:118 in Spite.Internal.Scheduler.every_concurrent_waits_for_another
