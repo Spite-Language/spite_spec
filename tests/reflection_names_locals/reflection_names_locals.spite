@@ -1,0 +1,15 @@
+var console = Console()
+
+func ReflectionNamesLocals() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var attributes = 3
+    var functions = "four"
+    var instances = 5
+    var memory = 6
+    var total = sum_of(attributes, instances)
+    console.print(attributes, functions, instances, memory, total)
+}
+
+func sum_of(attributes: Integer, functions: Integer): Integer {
+    return attributes + functions
+}

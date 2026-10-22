@@ -1,0 +1,1 @@
+conformance/vector_borrow_function_value/vector_borrow_function_value.spite:10: error: 'stored.integrate' would keep 'stored', which is borrowed from 'velocities', in a function value: make it from a copy, 'var kept = stored.copy()' and then 'kept.integrate' (in VectorBorrowFunctionValue.VectorBorrowFunctionValue)

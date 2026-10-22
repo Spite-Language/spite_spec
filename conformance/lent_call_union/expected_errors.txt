@@ -1,0 +1,1 @@
+conformance/lent_call_union/lent_call_union.spite:15: error: 'first' is borrowed from 'mice', and 'describe' takes it as a union, which holds its own values and is never lent an item: pass the attributes it needs, or give 'describe' a parameter of the item's own class (in LentCallUnion.LentCallUnion)

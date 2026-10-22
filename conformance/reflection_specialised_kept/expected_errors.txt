@@ -1,0 +1,1 @@
+conformance/reflection_specialised_kept/reflection_specialised_kept.spite:15: error: 'attribute' is a reflection object known while compiling, so this function is compiled once for it, and it has no run-time value to pass on here (in ReflectionSpecialisedKept.remember)

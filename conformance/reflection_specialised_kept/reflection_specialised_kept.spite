@@ -1,0 +1,15 @@
+var console = Console()
+var kept = List<Spite.AttributeDeclaration>()
+
+func ReflectionSpecialisedKept() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var monster = Monster()
+    console.print(monster.health, monster.name)
+    Monster.attributes.each(remember)
+    var count = kept.count()
+    console.print(count)
+}
+
+func remember(attribute: Spite.AttributeDeclaration) {
+    kept.append(attribute)
+}

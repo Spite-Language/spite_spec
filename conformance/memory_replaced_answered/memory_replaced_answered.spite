@@ -1,0 +1,12 @@
+var console = Console()
+var lookup = Lookup()
+
+func MemoryReplacedAnswered() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Layout()
+    lookup.column.values.append(first)
+    var found = lookup.of(0)
+    console.print(found.width)
+    var wider = Layout()
+    found = wider
+}

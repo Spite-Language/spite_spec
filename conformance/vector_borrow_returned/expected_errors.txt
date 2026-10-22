@@ -1,0 +1,1 @@
+conformance/vector_borrow_returned/vector_borrow_returned.spite:14: error: 'velocities[0]' is borrowed from 'velocities' and cannot be returned: return 'velocities[0].copy()', an independent object (in VectorBorrowReturned.first_velocity)

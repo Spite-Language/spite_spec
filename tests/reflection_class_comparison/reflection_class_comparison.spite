@@ -1,0 +1,10 @@
+var console = Console()
+
+func ReflectionClassComparison() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var health = Health()
+    var armor = Armor()
+    var kind: Spite.Class = Health
+    var health_class = health.class
+    console.print(kind == Health, kind == Armor, health_class == kind, armor.class == kind, health.points, armor.plates)
+}

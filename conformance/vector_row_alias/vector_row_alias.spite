@@ -1,0 +1,15 @@
+var console = Console()
+var positions = Vector<Position>()
+var velocities = Vector<Velocity>()
+
+func VectorRowAlias() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var position = Position(1)
+    positions.append(position)
+    var velocity = Velocity(2)
+    velocities.append(velocity)
+    crash positions[0] and velocities[0]
+    var row = {position: positions[0], velocity: velocities[0]}
+    var alias = row
+    console.print(alias.position.left)
+}

@@ -1,0 +1,10 @@
+var console = Console()
+var scores = Scores()
+
+func LentResultOtherValue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Layout()
+    scores.add(first)
+    var found = scores.at_or_made(1)
+    console.print(found.order)
+}

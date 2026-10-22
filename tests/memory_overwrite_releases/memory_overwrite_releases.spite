@@ -1,0 +1,14 @@
+var console = Console()
+
+func MemoryOverwriteReleases() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    replaced()
+    console.print("after")
+}
+
+func replaced() {
+    var resource = Resource("first")
+    console.print("holding", resource.label)
+    resource = Resource("second")
+    console.print("holding", resource.label)
+}

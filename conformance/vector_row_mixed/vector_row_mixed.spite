@@ -1,0 +1,11 @@
+var console = Console()
+var positions = Vector<Position>()
+
+func VectorRowMixed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var made = Position(1)
+    positions.append(made)
+    crash positions[0]
+    var mixed = {position: positions[0], name: "mixed"}
+    console.print(mixed.position.left, mixed.name)
+}

@@ -1,0 +1,12 @@
+var console = Console()
+
+func ReflectionValueAttributesEmpty() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = 3
+    var text = "words"
+    var ready = true
+    var number_attributes = count.attributes.count()
+    var text_attributes = text.attributes.count()
+    var boolean_attributes = ready.attributes.count()
+    console.print(number_attributes, text_attributes, boolean_attributes)
+}

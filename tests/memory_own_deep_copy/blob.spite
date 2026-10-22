@@ -1,0 +1,11 @@
+var console = Console()
+var size = 0
+
+func Blob(new_size: Integer) {
+    size = new_size
+}
+
+func deep_copy(): Blob {
+    console.print("copying the blob of", size)
+    return Blob(size + 1)
+}

@@ -1,0 +1,14 @@
+var console = Console()
+var layouts = Column<Layout>()
+var lookup = Lookup<Layout>()
+
+func LentResultNameReused() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Layout()
+    layouts.insert(first)
+    var layout = Layout()
+    console.print(layout.order)
+    var layout = lookup.of(0)
+    crash layout
+    console.print(layout.order)
+}

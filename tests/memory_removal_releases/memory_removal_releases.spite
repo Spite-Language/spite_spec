@@ -1,0 +1,22 @@
+var console = Console()
+
+func MemoryRemovalReleases() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    removed()
+    console.print("after")
+}
+
+func removed() {
+    var resources = filled()
+    resources.remove_at(0)
+    console.print("removed")
+}
+
+func filled(): List<Resource> {
+    var resources = List<Resource>()
+    var first = Resource("first")
+    resources.append(first)
+    var second = Resource("second")
+    resources.append(second)
+    return resources
+}

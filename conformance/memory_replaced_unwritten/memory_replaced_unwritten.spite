@@ -1,0 +1,12 @@
+var console = Console()
+var column = Column()
+
+func MemoryReplacedUnwritten() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Layout()
+    column.values.append(first)
+    var found = column.value_at(0)
+    console.print(found.width)
+    var wider = Layout()
+    found = wider
+}

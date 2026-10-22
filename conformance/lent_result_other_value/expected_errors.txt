@@ -1,0 +1,1 @@
+conformance/lent_result_other_value/scores.spite:14: error: 'at_or_made' lends its caller an item of 'Scores().values', which the caller writes in place and never lets go, so each of its returns is an item of 'Scores().values' or null: 'made' is neither, so return null for 'none', with a '?' result, or make it a function of its own (in Scores.at_or_made)

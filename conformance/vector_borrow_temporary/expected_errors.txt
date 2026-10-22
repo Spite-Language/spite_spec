@@ -1,0 +1,1 @@
+conformance/vector_borrow_temporary/vector_borrow_temporary.spite:8: error: 'found' would be borrowed from 'velocities.copy()', which nothing keeps, so it is let go at the end of this line and the item with it: keep it in a 'var' first and borrow from that (in VectorBorrowTemporary.VectorBorrowTemporary)

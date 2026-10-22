@@ -1,0 +1,14 @@
+var console = Console()
+
+func MemoryOwnDeepCopy() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var holder = Holder()
+    var copied = holder.deep_copy()
+    console.print(copied.name, copied.blob.size, holder.blob.size)
+    var blobs = List<Blob>()
+    var blob = Blob(7)
+    blobs.append(blob)
+    var copied_blobs = blobs.deep_copy()
+    crash copied_blobs[0]
+    console.print(copied_blobs[0].size)
+}

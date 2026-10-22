@@ -1,0 +1,1 @@
+conformance/vector_row_alias/vector_row_alias.spite:13: error: 'row' holds items borrowed from 'positions' and 'velocities'..., and a row has one name: use 'row' itself instead of 'alias' (in VectorRowAlias.VectorRowAlias)

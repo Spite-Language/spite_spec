@@ -1,0 +1,1 @@
+conformance/lent_function_value/lent_function_value.spite:9: error: 'of' lends its caller an item of 'Column<Layout>().values', which only a call written by name can borrow: a function value's caller would let go of an item it does not own, so 'of' is not made a function value; call 'of(...)' by name where the item is wanted (in LentFunctionValue.LentFunctionValue)

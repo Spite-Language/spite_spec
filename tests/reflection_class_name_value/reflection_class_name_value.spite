@@ -1,0 +1,10 @@
+var console = Console()
+
+func ReflectionClassNameValue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var weapon = Armory.Weapon()
+    crash Armory.Weapon.namespace
+    crash weapon.class.namespace
+    var same = Armory.Weapon.namespace == weapon.class.namespace
+    console.print(Armory.Weapon.name, Armory.Weapon.namespace, same, weapon.damage)
+}

@@ -1,0 +1,1 @@
+conformance/reflection_unknown_class_type/reflection_unknown_class_type.spite:10: error: 'kind' is not a class known while compiling, so it cannot be a type here (in ReflectionUnknownClassType.ReflectionUnknownClassType)

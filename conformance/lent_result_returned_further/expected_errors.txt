@@ -1,0 +1,1 @@
+conformance/lent_result_returned_further/lent_result_returned_further.spite:15: error: ...cannot be returned...a function lends its caller an item only by reading it from a singleton's Items or Vector itself, never one that was lent to it (in LentResultReturnedFurther.handed_on)

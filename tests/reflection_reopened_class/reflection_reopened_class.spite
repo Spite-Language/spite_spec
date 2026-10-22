@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReflectionReopenedClass() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var gadget = Gadget()
+    var shouted = Gadget.shout()
+    var again = gadget.class.shout()
+    console.print(shouted, again, gadget.size)
+}

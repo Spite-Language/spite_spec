@@ -1,0 +1,7 @@
+var console = Console()
+
+func ReflectionNamesAccessor() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var table = Table()
+    console.print(table.class)
+}

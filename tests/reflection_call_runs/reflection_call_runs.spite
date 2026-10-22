@@ -1,0 +1,14 @@
+var console = Console()
+
+func ReflectionCallRuns() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var troll = Monster()
+    var hurt = Monster.functions['hurt']
+    crash hurt
+    var call = Spite.Call(hurt, troll)
+    call.arguments['amount'] = 3
+    call.arguments['reason'] = "a fall"
+    console.print("built", troll.health)
+    call.call()
+    console.print("ran", troll.health)
+}

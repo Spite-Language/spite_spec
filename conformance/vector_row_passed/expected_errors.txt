@@ -1,0 +1,1 @@
+conformance/vector_row_passed/vector_row_passed.spite:15: error: 'row' holds items borrowed from 'positions' and 'velocities' for this call and is passed only to a function called by name whose parameter is a 'type', which borrows it for that call: pass the attributes the function needs (in VectorRowPassed.VectorRowPassed)

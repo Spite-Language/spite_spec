@@ -1,0 +1,8 @@
+var console = Console()
+
+func MemoryTemporaryReleased() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var holder = Holder()
+    console.print(holder.part.label)
+    console.print("next")
+}

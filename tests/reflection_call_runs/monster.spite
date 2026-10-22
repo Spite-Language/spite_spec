@@ -1,0 +1,7 @@
+var console = Console()
+var health = 10
+
+func hurt(amount: Integer, reason: String) {
+    health = health - amount
+    console.print(reason, health)
+}

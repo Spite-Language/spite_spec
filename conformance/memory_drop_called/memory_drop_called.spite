@@ -1,0 +1,5 @@
+func MemoryDropCalled() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var resource = Resource()
+    resource.drop()
+}

@@ -1,0 +1,2 @@
+var left = Leaf(0)
+var right = Leaf(0)

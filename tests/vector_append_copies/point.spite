@@ -1,0 +1,7 @@
+var across = 0
+var name = ""
+
+func Point(new_across: Integer, new_name: String) {
+    across = new_across
+    name = new_name
+}
