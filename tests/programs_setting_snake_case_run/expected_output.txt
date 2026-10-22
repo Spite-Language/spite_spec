@@ -1,0 +1,1 @@
+error: '--worker_count' is written '--worker-count': a program's setting is kebab-case on the command line, like the compiler's flags, and it sets Environment.worker_count

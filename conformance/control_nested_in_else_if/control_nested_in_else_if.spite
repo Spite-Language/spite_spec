@@ -1,0 +1,20 @@
+var console = Console()
+
+func ControlNestedInElseIf() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(rank(3, true))
+}
+
+func rank(score: Integer, bonus: Boolean): String {
+    if score > 10 {
+        return "high"
+    } else if score > 0 {
+        if bonus {
+            return "bonus"
+        } else {
+            return "low"
+        }
+    } else {
+        return "none"
+    }
+}

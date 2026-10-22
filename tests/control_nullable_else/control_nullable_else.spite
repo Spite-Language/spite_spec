@@ -1,0 +1,25 @@
+var console = Console()
+
+func ControlNullableElse() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var found = find(2)
+    describe(found)
+    var missing = find(7)
+    describe(missing)
+}
+
+func find(wanted: Integer): Integer? {
+    if wanted < 5 {
+        return wanted * 10
+    }
+    return null
+}
+
+func describe(found: Integer?) {
+    if found {
+        var doubled = found * 2
+        console.print("found", doubled)
+    } else {
+        console.print("nothing")
+    }
+}

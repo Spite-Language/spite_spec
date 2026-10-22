@@ -1,0 +1,15 @@
+var console = Console()
+
+func ControlSwitchValueOnNullable() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var name = name_of(2)
+    console.print(name)
+}
+
+func name_of(number: Integer?): String {
+    switch number {
+        1: return "one"
+        2: return "two"
+        _: return "other"
+    }
+}

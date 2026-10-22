@@ -1,0 +1,8 @@
+var console = Console()
+
+func FunctionsSetterWithoutAttribute() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ticket = Ticket()
+    ticket.id = 4
+    console.print(ticket.id)
+}

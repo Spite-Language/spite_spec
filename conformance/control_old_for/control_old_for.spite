@@ -1,0 +1,9 @@
+var console = Console()
+var names = ["ada", "bo"]
+
+func ControlOldFor() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    for name in names {
+        console.print(name)
+    }
+}

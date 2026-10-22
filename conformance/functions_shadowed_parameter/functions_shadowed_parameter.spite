@@ -1,0 +1,15 @@
+var console = Console()
+
+func FunctionsShadowedParameter() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var stem = file_stem("notes/today.txt")
+    shout(stem)
+}
+
+func file_stem(path: String): String {
+    return path.replace(".txt", "")
+}
+
+func shout(file_stem: String) {
+    console.print(file_stem)
+}

@@ -1,0 +1,1 @@
+conformance/functions_operator_missing_set_at/functions_operator_missing_set_at.spite:6: error: assigning through an index on a 'Money' needs it to define 'set_at(index, value)' (in FunctionsOperatorMissingSetAt.FunctionsOperatorMissingSetAt)

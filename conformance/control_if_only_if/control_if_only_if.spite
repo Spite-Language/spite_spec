@@ -1,0 +1,16 @@
+var console = Console()
+
+func ControlIfOnlyIf() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var label = joined("a", 3)
+    console.print(label)
+}
+
+func joined(modified: String?, size: Integer?): String {
+    if modified {
+        if size {
+            return "{modified}-{size}"
+        }
+    }
+    return "none"
+}

@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassesPrefixNamespace() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var block = Backend.HighBlock()
+    var function = Backend.HighFunction()
+    var value = Backend.HighValue()
+    console.print(block.size, function.size, value.size)
+}

@@ -1,0 +1,9 @@
+var count = 0
+
+func Points(amount: Integer) {
+    count = amount
+}
+
+func sum(_other: Amount): Integer {
+    return count * 2
+}

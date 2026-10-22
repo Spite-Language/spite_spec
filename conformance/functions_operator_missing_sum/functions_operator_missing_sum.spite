@@ -1,0 +1,9 @@
+var console = Console()
+
+func FunctionsOperatorMissingSum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Money(1)
+    var second = Money(2)
+    var total = first + second
+    console.print(total.cents)
+}

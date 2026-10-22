@@ -1,0 +1,8 @@
+var console = Console()
+
+func ClassesFunctionNamedFunctions() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var table = Table()
+    var listed = table.functions()
+    console.print(listed)
+}

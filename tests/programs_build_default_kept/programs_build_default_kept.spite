@@ -1,0 +1,7 @@
+var console = Console()
+var build = Build()
+
+func ProgramsBuildDefaultKept() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(build.level, build.label)
+}

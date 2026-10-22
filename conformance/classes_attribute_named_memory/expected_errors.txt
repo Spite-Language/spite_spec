@@ -1,0 +1,1 @@
+conformance/classes_attribute_named_memory/table.spite:1: error: the attribute 'memory' has a name reflection gives every object... (in Table)

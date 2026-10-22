@@ -1,0 +1,16 @@
+var console = Console()
+
+func FunctionsReflectedAcceptsTyped() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var shout = shouted
+    describe(shout)
+}
+
+func shouted(text: String): String {
+    return text.upper_case()
+}
+
+func describe(function: Spite.Function) {
+    var taken = function.arguments.count()
+    console.print(function.name, taken)
+}

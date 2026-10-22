@@ -1,0 +1,5 @@
+var cents = 0
+
+func Money(amount: Integer) {
+    cents = amount
+}

@@ -1,0 +1,21 @@
+var console = Console()
+
+func FunctionsAnything() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var things = List<Anything>()
+    var health = Health()
+    things.append(health)
+    var name = Name()
+    things.append(name)
+    var count = 0
+    var index = 0
+    while index < things.count() {
+        var thing = things[index]
+        if thing == Health {
+            console.print("health", thing.points)
+            count = count + 1
+        }
+        index = index + 1
+    }
+    console.print(count, name.text)
+}

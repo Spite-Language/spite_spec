@@ -1,0 +1,1 @@
+conformance/functions_shadowed_parameter/functions_shadowed_parameter.spite:13: error: the parameter 'file_stem' has the name of a function of this class, and a function is a value passed by its name: give the parameter a name of its own (in FunctionsShadowedParameter.shout)

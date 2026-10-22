@@ -1,0 +1,1 @@
+conformance/classes_private_function/classes_private_function.spite:6: error: '_compute' is private to 'Secret': a name starting with '_' is used only inside its own class... (in ClassesPrivateFunction.ClassesPrivateFunction)

@@ -1,0 +1,9 @@
+var console = Console()
+
+func FunctionsOperatorsDivide() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var money = Money(17)
+    var parts = money / 5
+    var rest = money % 5
+    console.print(parts.cents, rest.cents)
+}

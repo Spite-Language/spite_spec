@@ -1,0 +1,12 @@
+var console = Console()
+
+func FunctionsAnythingParameter() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    describe(3)
+    describe(true)
+    describe("text")
+}
+
+func describe(component: Anything) {
+    console.print(component.class.name)
+}

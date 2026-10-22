@@ -1,0 +1,12 @@
+var console = Console()
+var age = 3
+
+func get_age(): Integer {
+    console.print("read")
+    return age
+}
+
+func set_age(value: Integer) {
+    console.print("wrote", value)
+    age = value
+}

@@ -1,0 +1,12 @@
+enum Job {
+    'knight'
+    'mage'
+}
+
+enum Kind {
+    'tall'
+    'short'
+}
+
+var job: Job = 'knight'
+var kind: Kind = 'tall'

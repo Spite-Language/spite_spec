@@ -1,0 +1,13 @@
+enum Weather {
+    'sunny'
+    'rainy'
+}
+
+var console = Console()
+
+func FunctionsEnumToString() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var weather: Weather = 'rainy'
+    var name = weather.to_string()
+    console.print(name, weather)
+}

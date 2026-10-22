@@ -1,0 +1,1 @@
+error: '--operating-system' cannot be given: Build.operating_system is the system doing the compiling (windows). To write the program for another system, give --target-operating-system=linux (or windows, or mac)

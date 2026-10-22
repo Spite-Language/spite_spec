@@ -1,0 +1,30 @@
+var console = Console()
+
+func TestingDiscovery() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var tested = classes[index]
+        if tested.name.ends_with("Tests") {
+            run_class(tested)
+        }
+        index = index + 1
+    }
+    console.print("done")
+}
+
+func run_class(tested: Spite.Class) {
+    var instance = tested()
+    var functions = tested.functions
+    var index = 0
+    while index < functions.count() {
+        var declaration = functions[index]
+        if declaration.name.starts_with("test_") {
+            console.print("running", declaration.name)
+            var call = Spite.Call(declaration, instance)
+            call.call()
+        }
+        index = index + 1
+    }
+}

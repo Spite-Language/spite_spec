@@ -1,0 +1,1 @@
+conformance/control_switch_number_no_rest/control_switch_number_no_rest.spite:10: error: this switch over 'number' has no '_:': an Integer has more values than a switch can list... (in ControlSwitchNumberNoRest.name_of)

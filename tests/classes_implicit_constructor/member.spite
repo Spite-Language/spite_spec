@@ -1,0 +1,3 @@
+var name = "guest"
+var level = 1
+var active = true

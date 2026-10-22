@@ -1,0 +1,8 @@
+var console = Console()
+
+func FunctionsGetterByName() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var person = Person()
+    var full = person.get_full_name()
+    console.print(full)
+}

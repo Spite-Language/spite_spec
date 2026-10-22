@@ -1,0 +1,11 @@
+var console = Console()
+
+func ClassesInlineSingletonReturned() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var output = make()
+    output.print("hi")
+}
+
+func make(): Console {
+    return Console()
+}

@@ -1,0 +1,1 @@
+conformance/functions_operator_missing_negate/functions_operator_missing_negate.spite:6: error: '-' on a 'Money' needs it to define 'negate()' (in FunctionsOperatorMissingNegate.FunctionsOperatorMissingNegate)

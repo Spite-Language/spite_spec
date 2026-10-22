@@ -1,0 +1,8 @@
+var console = Console()
+
+func ClassesPrivateFunction() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var secret = Secret()
+    var value = secret._compute()
+    console.print(value)
+}

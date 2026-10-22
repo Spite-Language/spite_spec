@@ -1,0 +1,1 @@
+conformance/classes_private_name/classes_private_name.spite:6: error: '_hidden' is private to 'Secret': a name starting with '_' is used only inside its own class, and 'hidden' reads it from outside (in ClassesPrivateName.ClassesPrivateName)

@@ -1,0 +1,1 @@
+conformance/functions_operator_missing_get_at/functions_operator_missing_get_at.spite:6: error: indexing a 'Money' needs it to define 'get_at(index)' (in FunctionsOperatorMissingGetAt.FunctionsOperatorMissingGetAt)

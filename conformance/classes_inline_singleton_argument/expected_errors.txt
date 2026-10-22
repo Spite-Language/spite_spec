@@ -1,0 +1,1 @@
+conformance/classes_inline_singleton_argument/classes_inline_singleton_argument.spite:5: error: 'Console' is a singleton: bind it once beside the attributes... (in ClassesInlineSingletonArgument.ClassesInlineSingletonArgument)

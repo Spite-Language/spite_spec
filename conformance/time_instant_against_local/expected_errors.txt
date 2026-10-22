@@ -1,0 +1,1 @@
+conformance/time_instant_against_local/time_instant_against_local.spite:10: error: ...an Instant cannot be used where a DateTime is needed... (in TimeInstantAgainstLocal.TimeInstantAgainstLocal)

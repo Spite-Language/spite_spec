@@ -1,0 +1,8 @@
+var console = Console()
+
+func FunctionsDirectGetAttribute() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var person = Person()
+    var age = person.get_attribute('age')
+    console.print(age)
+}

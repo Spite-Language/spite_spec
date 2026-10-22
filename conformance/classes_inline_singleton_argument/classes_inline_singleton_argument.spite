@@ -1,0 +1,10 @@
+var console = Console()
+
+func ClassesInlineSingletonArgument() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    greet(Console())
+}
+
+func greet(output: Console) {
+    output.print("hi")
+}

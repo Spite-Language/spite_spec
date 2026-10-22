@@ -1,0 +1,20 @@
+enum Light {
+    'red'
+    'amber'
+    'green'
+}
+
+var console = Console()
+
+func ControlSwitchValueSingleCase() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var stop = is_stop('red')
+    console.print(stop)
+}
+
+func is_stop(light: Light): Boolean {
+    switch light {
+        'red': return true
+        _: return false
+    }
+}

@@ -1,0 +1,20 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func ControlSwitchValueOutsideEnum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var wait = seconds_for('red')
+    console.print(wait)
+}
+
+func seconds_for(light: Light): Integer {
+    switch light {
+        'red': return 30
+        'blue': return 10
+        _: return 20
+    }
+}

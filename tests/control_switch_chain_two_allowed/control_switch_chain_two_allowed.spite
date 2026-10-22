@@ -1,0 +1,19 @@
+var console = Console()
+
+func ControlSwitchChainTwoAllowed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var one = word_for(1)
+    var two = word_for(2)
+    var three = word_for(3)
+    console.print(one, two, three)
+}
+
+func word_for(index: Integer): String {
+    if index == 1 {
+        return "one"
+    }
+    if index == 2 {
+        return "two"
+    }
+    return "many"
+}

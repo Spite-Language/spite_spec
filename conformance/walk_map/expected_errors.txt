@@ -1,0 +1,1 @@
+conformance/walk_map/walk_map.spite:25: error: this 'while' walks every element of 'items' only to ...: write 'var result = items.map_names()' (in WalkMap.walk)

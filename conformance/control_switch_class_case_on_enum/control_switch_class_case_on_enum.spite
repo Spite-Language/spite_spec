@@ -1,0 +1,20 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func ControlSwitchClassCaseOnEnum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var kind = kind_of('red')
+    console.print(kind)
+}
+
+func kind_of(light: Light): String {
+    switch light {
+        'red': return "red"
+        'green': return "green"
+        Light: return "a light"
+    }
+}

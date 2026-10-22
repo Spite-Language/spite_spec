@@ -1,0 +1,8 @@
+generics $value_type
+
+var console = Console()
+
+func ClassesGenericsList() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("never")
+}

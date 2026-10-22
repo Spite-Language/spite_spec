@@ -1,0 +1,30 @@
+var console = Console()
+
+func ControlNestedAllowed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var counted = count_even(4, true)
+    var skipped = count_even(4, false)
+    console.print(counted, skipped)
+}
+
+func count_even(limit: Integer, counting: Boolean): Integer {
+    var total = 0
+    var odd = 0
+    if counting {
+        var index = 0
+        if limit > 100 {
+            return 0
+        }
+        while index < limit {
+            if index % 2 == 0 {
+                total = total + 1
+            } else {
+                odd = odd + 1
+            }
+            index = index + 1
+        }
+    } else {
+        total = 0 - 1
+    }
+    return total * 10 + odd
+}
