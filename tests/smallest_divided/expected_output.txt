@@ -1,2 +1,2 @@
-spite: 'lowest / divisor' does not fit in an Integer (-2147483648 / -1), at tests/smallest_divided/smallest_divided.spite:9 in SmallestDivided.SmallestDivided
 0 -7
+spite: 'lowest / divisor' does not fit in an Integer (-2147483648 / -1), at tests/smallest_divided/smallest_divided.spite:9 in SmallestDivided.SmallestDivided

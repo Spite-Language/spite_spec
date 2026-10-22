@@ -1,1 +1,2 @@
 a Boolean? that is there and true passes: true
+spite: the program stopped at tests/crash_maybe_boolean/crash_maybe_boolean.spite:10 in CrashMaybeBoolean.CrashMaybeBoolean
