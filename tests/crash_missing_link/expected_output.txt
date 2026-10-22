@@ -1,1 +1,2 @@
 height 0
+spite: the program stopped at tests/crash_missing_link/crash_missing_link.spite:16 in CrashMissingLink.show

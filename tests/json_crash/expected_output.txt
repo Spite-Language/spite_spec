@@ -1,1 +1,2 @@
 count 3
+spite: the program stopped at tests/json_crash/../../../SpiteCompiler/.spite/library/common/json_cursor.spite:16 in JsonCursor.fail

@@ -1,2 +1,2 @@
-spite: 'lowest.absolute()' does not fit in an Integer (0 - -2147483648), at tests/smallest_absolute/smallest_absolute.spite:12 in SmallestAbsolute.SmallestAbsolute
 2147483647 7
+spite: 'zero - value' does not fit in an Integer (0 - -2147483648), at tests/smallest_absolute/../../../SpiteCompiler/.spite/library/common/integer.spite:63 in Integer.absolute

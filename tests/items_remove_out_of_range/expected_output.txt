@@ -1,1 +1,2 @@
 removed 0 1
+spite: the program stopped at tests/items_remove_out_of_range/../../../SpiteCompiler/.spite/library/common/items.spite:51 in Items_of_Velocity.remove_at (index=-1)

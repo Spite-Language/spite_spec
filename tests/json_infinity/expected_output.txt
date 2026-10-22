@@ -1,1 +1,2 @@
 {"item":"tea","price":2.5}
+spite: the program stopped at tests/json_infinity/../../../SpiteCompiler/.spite/library/common/json_writer.spite:115 in JsonWriter_of_Double.written_decimal

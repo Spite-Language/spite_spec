@@ -1,2 +1,2 @@
-spite: UnsignedShort.shifted_right was given the count -2, and a shift count is 0 or more
 shifted 5
+spite: the program stopped at tests/negative_shift/../../../SpiteCompiler/.spite/library/common/unsigned_short.spite:134 in UnsignedShort.shifted_right (count=-2)
