@@ -1,12 +1,11 @@
 var console = Console()
 
-func WeakParent() {
+func ParentBackReference() {
     load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var kept = grow_family()
-    var parent = kept.parent.get()
-    if parent {
-        console.print("still reachable", parent.name)
+    if kept.parent {
+        console.print("still reachable", kept.parent.name)
     } else {
         console.print("the parent is gone, and", kept.name, "knows it")
     }
@@ -19,9 +18,8 @@ func grow_family(): Child {
     parent.adopt("linus")
     var first = parent.children.first()
     crash first
-    var first_parent = first.parent.get()
-    crash first_parent
-    console.print(first.name, "belongs to", first_parent.name)
+    crash first.parent
+    console.print(first.name, "belongs to", first.parent.name)
     return first
 }
 
@@ -30,7 +28,6 @@ func show_living_family() {
     parent.adopt("edsger")
     var child = parent.children.first()
     crash child
-    var found = child.parent.get()
-    crash found
-    console.print(child.name, "belongs to", found.name, "while both live")
+    crash child.parent
+    console.print(child.name, "belongs to", child.parent.name, "while both live")
 }

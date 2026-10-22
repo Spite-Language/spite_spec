@@ -1,6 +1,6 @@
 var console = Console()
 
-func WeakAcrossThreads() {
+func CyclesAcrossThreads() {
     load "../../../SpiteCompiler/.spite/library/common"
     load "../../../SpiteCompiler/.spite/library/windows"
     var tree = Tree()

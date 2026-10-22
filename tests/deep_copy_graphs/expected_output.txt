@@ -1,2 +1,2 @@
 root true false
-lamp true false
+lamp true false true

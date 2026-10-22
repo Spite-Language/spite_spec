@@ -1,4 +1,5 @@
 var name = ""
+var holder: Holder? = null
 
 func Item(starting_name: String) {
     name = starting_name

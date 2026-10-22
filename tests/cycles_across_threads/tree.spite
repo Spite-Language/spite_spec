@@ -1,0 +1,10 @@
+var size = 0
+
+func grow(): Integer {
+    var root = Branch("root")
+    var leaf = Branch("leaf")
+    root.branches.append(leaf)
+    leaf.parent = root
+    size = size + 1
+    return size
+}
