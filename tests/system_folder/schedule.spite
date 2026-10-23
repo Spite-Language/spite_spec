@@ -6,11 +6,11 @@ var runners = List<Runnable>()
 var console = Console()
 
 func Schedule() {
-    add_systems()
+    System.classes.each(add_system)
 }
 
-func add_system(system: Symbol<System>) {
-    var runner = Runner<system.class>()
+func add_system(system: Spite.Class) {
+    var runner = Runner<system>()
     runners.append(runner)
     console.print("found", system.name)
 }

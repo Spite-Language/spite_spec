@@ -11,7 +11,6 @@ A status is one of:
 - **added**: a program written for this audit covers it;
 - **(compiler fails: ...)**: the program follows the spec and the master compiler gets it wrong, for the cause given;
 - **missing**: no program yet;
-- **waiting on D798**: template syntax with `Symbol<...>`, being redesigned;
 - **superseded by Dnnn**: a later decision in `MortarosSpite/DECISIONS.md` replaces the rule, so no program tests it;
 - **not a program rule**: nothing a program can observe.
 
@@ -319,7 +318,7 @@ Rules: 56. Covered before: 29. Covered now: 53.
 | Compound assignment reads through getter and writes through setter | tests/functions_interception_compound | added |
 | A setter answers a write with no attribute of its name | tests/functions_setter_without_attribute | added |
 | A getter with no setter is read-only | conformance/read_only_attribute | covered |
-| An exact function wins over Symbol codegen for `set_<name>` | | waiting on D798 |
+| An exact function wins over a template for `set_<name>` | tests/accessors, tests/symbol_codegen | covered |
 
 ## classes_and_files.md
 
@@ -395,8 +394,8 @@ Rules: 108. Covered before: 51. Covered now: 100.
 | sort_by_ is n log n, many elements | tests/sorting_many | covered |
 | A String element's members are String's own zero-argument functions | tests/text_member_templates | covered |
 | A program's own list.spite or dictionary.spite adds a template | tests/own_collection_templates | covered |
-| A plain Symbol template on List is an error | conformance/plain_symbol_on_list | waiting on D798 |
-| A template's parameter written Symbol<$element_type> / AttributeDeclaration | (library) | waiting on D798 |
+| A template parameter written `Symbol<...>` is an error naming the form to write (D798) | conformance/plain_symbol_on_list, conformance/template_symbol_function, conformance/template_symbol_argument, conformance/template_symbol_namespace, conformance/template_symbol_enum | added |
+| A template's parameter is `member: Spite.AttributeDeclaration`, its class inferred from `item[member]` (D798) | (library), tests/plural_templates, tests/own_collection_templates | covered |
 | A --repl build lists the templates that fit | tests/interactive_templates | covered |
 | A chain is one loop, no list in between (allocations) | tests/fused_chains, tests/fused_chain_allocations | covered |
 | A member function in a fused chain runs element by element | tests/list_chain_order | added (compiler fails: chain runs step by step) |
@@ -678,7 +677,7 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 
 ## memory.md
 
-Rules: 107. Covered before: 34. Covered now: 81 (24 of them fail on the master compiler). Superseded: 15 (D661, D662, D755, D759). Waiting on D798: 3. Missing: 7.
+Rules: 107. Covered before: 34. Covered now: 81 (24 of them fail on the master compiler). Superseded: 15 (D661, D662, D755, D759). Missing: 7.
 
 | Rule | Program(s) | Status |
 | --- | --- | --- |
@@ -763,9 +762,9 @@ Rules: 107. Covered before: 34. Covered now: 81 (24 of them fail on the master c
 | A row's own attribute assigned is refused | conformance/vector_row_attribute_assigned | added (compiler fails: compiles) |
 | A row assigned again, a row's required function as a value | none | missing |
 | A call handed a row may not resize what it borrows from | conformance/vector_rows | covered |
-| Walked rows (`fill_attributes`, `Symbol<$row_type>`), sparse columns, `attribute.index`, walked locals, lent list elements | tests/walked_rows, tests/sparse_rows, tests/walked_row_locals, tests/lent_list_elements, tests/lent_list_elements_parallel, conformance/walked_rows, conformance/sparse_rows | waiting on D798 |
-| Arguments a plural fills (`phase_each(made_arguments(...))`) and their errors | tests/lent_arguments, tests/streamed_rows, tests/ignored_lent_argument, conformance/lent_arguments | waiting on D798 (conformance/lent_arguments: compiler fails) |
-| A walked line names the attribute's class by its full name | none | waiting on D798 |
+| Walked rows (`fill_attributes`, `attribute: Spite.AttributeDeclaration`), sparse columns, `attribute.index`, walked locals, lent list elements | tests/walked_rows, tests/sparse_rows, tests/walked_row_locals, tests/lent_list_elements, tests/lent_list_elements_parallel, conformance/walked_rows, conformance/sparse_rows | covered |
+| Arguments a plural fills (`phase_each(made_arguments(...))`, `argument: Spite.Argument`) and their errors | tests/lent_arguments, tests/streamed_rows, tests/ignored_lent_argument, conformance/argument_walk_without_function | added |
+| A walked line names the attribute's class by its full name | none | missing |
 | `Items<T>` whose `T` fits lends as a Vector; errors begin with the choice | conformance/items_borrows, tests/items_columns | covered |
 | `remove_swapping` on `Items` counts as a removal | conformance/items_borrow_remove_swapping | added |
 | `Items<T>` whose `T` does not fit lends nothing: its items are counted | tests/items_unfit_counted | added |
@@ -1034,7 +1033,7 @@ Rules: 41. Covered before: 14. Covered now: 35.
 
 ## reflection.md
 
-Rules: 64. Covered before: 32. Covered now: 52 (14 of them fail on the master compiler). Superseded: 4 (D662). Waiting on D798: 1. Missing: 6.
+Rules: 64. Covered before: 32. Covered now: 52 (14 of them fail on the master compiler). Superseded: 4 (D662). Missing: 6.
 
 | Rule | Program(s) | Status |
 | --- | --- | --- |
@@ -1059,7 +1058,7 @@ Rules: 64. Covered before: 32. Covered now: 52 (14 of them fail on the master co
 | A bound attribute given to a `Spite.AttributeDeclaration` parameter is refused | conformance/reflection_attribute_to_declaration | added |
 | A bound attribute's `.value` reads and writes the field | tests/private_walk | covered |
 | `.value` of a declaration is refused | conformance/reflection_declaration_value | added (compiler fails: walks it as the field's String and says it has no 'value') |
-| `value.attributes[attribute]` reads and writes the field | tests/private_walk, tests/attribute_uses | waiting on D798 (written with `Symbol<...>`) |
+| `value.attributes[attribute]` (or `value[attribute]`) reads and writes the field | tests/private_walk, tests/attribute_uses, tests/template_inference | covered |
 | A bound function is the function value of that instance | tests/function_values | covered |
 | `Spite.Call(declaration, instance)` fills arguments and `call()` runs it | tests/reflection_call_runs | added (compiler fails: unknown type 'Spite.Call') |
 | A call with an argument left unfilled is refused | conformance/reflection_call_unfilled | added (compiler fails: unknown type 'Spite.Call') |
@@ -1108,25 +1107,25 @@ Rules: 67. Covered before: 31. Covered now: 49.
 
 | Rule | Program(s) | Status |
 |---|---|---|
-| A parameter `Spite.AttributeDeclaration<Owner>` named by a word of its function makes a template over the members | tests/plural_templates, tests/member_templates | waiting on D798 |
-| A template is instantiated only for the names called; the template emits nothing | tests/kept_templates | waiting on D798 |
-| `attribute: Spite.Attribute<Owner>` as a template parameter is the declaration error | conformance/template_attribute_spelling | waiting on D798 |
-| Inside an instance the parameter is the member's declaration; `attribute.class` as a type and as a value | tests/every_attribute | waiting on D798 |
-| `attribute.name`, `camel_case_name`, `pascal_case_name`, `index` are constants | tests/reflection_walks | waiting on D798 |
-| `owner.attributes[attribute]` reads or writes the member; a class's own `attributes[attribute]` skips its getter and setter | tests/accessors, tests/private_walk | waiting on D798 |
-| `Owner` may be a codegen value; a non-class value answers nothing | tests/plural_templates | waiting on D798 |
-| `Owner` may be a `type`: the walk ranges over the shape's members | tests/shape_members | waiting on D798 |
-| An exact function wins over a template for one name and direction; a generated getter of an owning attribute is retained | tests/accessors | waiting on D798 |
-| A template that makes a function the class already has is an error | conformance/template_function_clash | waiting on D798 |
-| Reading through `x.attributes[attribute]` counts as a read; `attribute.name` alone does not | conformance/unused_attributes | waiting on D798 |
-| A walk sees private attributes; naming `_x` outside stays the private error | tests/private_walk | waiting on D798 |
-| A template answering `List<member.class>` names its member in the plural | tests/plural_templates | waiting on D798 |
+| A parameter `Spite.AttributeDeclaration` named by a word of its function makes a template over the members of the class its body reads it on (D798) | tests/plural_templates, tests/member_templates, tests/template_inference, conformance/template_unused_attribute, conformance/template_unknown_value, conformance/template_no_common_attribute | added |
+| A template is instantiated only for the names called; the template emits nothing | tests/kept_templates | covered |
+| `attribute: Spite.Attribute<Owner>` (any range type with `<Owner>`) is an error: the class comes from the body (D798) | conformance/template_attribute_spelling | added |
+| Inside an instance the parameter is the member's declaration; `attribute.class` as a type and as a value | tests/every_attribute | covered |
+| `attribute.name`, `camel_case_name`, `pascal_case_name`, `index` are constants | tests/reflection_walks | covered |
+| `owner.attributes[attribute]` reads or writes the member; a class's own `attributes[attribute]` skips its getter and setter | tests/accessors, tests/private_walk | covered |
+| The class may be a codegen value; a non-class value answers nothing | tests/plural_templates | covered |
+| The class may be a `type`: the walk ranges over the shape's members | tests/shape_members | covered |
+| An exact function wins over a template for one name and direction; a generated getter of an owning attribute is retained | tests/accessors | covered |
+| A template that makes a function the class already has is an error | conformance/template_function_clash | covered |
+| Reading through `x.attributes[attribute]` counts as a read; `attribute.name` alone does not | conformance/unused_attributes | covered |
+| A walk sees private attributes; naming `_x` outside stays the private error | tests/private_walk | covered |
+| A template answering `List<member.class>` names its member in the plural | tests/plural_templates | covered |
 | `map_names` finds `name`, `map_people` finds `person`, `map_health` stays `health` | tests/member_templates, tests/map_uncountable_members | added |
 | The singular where the plural differs is an error: "'map_name' answers every 'name' ..." | conformance/map_singular_name, conformance/plural_templates | added |
 | Two members with one plural is an error naming both | conformance/map_shared_plural | added (compiler fails: two members sharing a plural compile, one is picked silently) |
 | A name `pluralize()` cannot round-trip is an error naming the irregulars fix | none | missing |
 | A name `pluralize()` leaves alone is its own plural (`map_name_with_namespaces`) | tests/map_uncountable_members | added |
-| A singular-named template answering `List<member.class>` is an error naming the plural | conformance/plural_templates | waiting on D798 |
+| A singular-named template answering `List<member.class>` is an error naming the plural | conformance/plural_templates | covered |
 | A question member is never collected: `map_is_alive()` names filter_, count_, any_, all_ | conformance/map_question_member | added (compiler fails: answers the plural error 'map_is_alives') |
 | `filter_<member>_<function>(arguments)` chains through a member's function | tests/union_member_templates, tests/reflection_walks, tests/pinned_components | covered (compiler fails: union_member_templates and reflection_walks do not compile) |
 | A list of a union: `filter_files()`, `count_files()`, `any_directories()`, `all_files()`, `remove_where_directories()` | tests/union_member_templates, tests/directory_entries | covered (compiler fails: union_member_templates does not compile) |
@@ -1286,7 +1285,7 @@ Rules: 85. Covered before: 53. Covered now: 64.
 | Waits in `and`/`or`, later `if` conditions, nullable `==`, function values, constructors | tests/waits_never_hang | covered |
 | A local, list or object holding a `Concurrent` waits at scope end; reassignment stores, then waits | tests/dropped_handle_waits | covered |
 | A `type`'s function held as a value waits by class | tests/type_function_values | covered |
-| A call inside a template waits in argument order | | waiting on D798 |
+| A call inside a template waits in argument order | | missing |
 | A join waiting in place for a `Concurrent` below it, or a wait cycle, halts | tests/concurrent_wait_cycle, tests/concurrent_wait_cycle_in_place | covered |
 | A wait inside an expression keeps the written order | tests/wait_order, tests/wait_index_order | covered |
 | The waits at the bottom: sleep, console, file and socket calls | tests/concurrent_waits, tests/socket_waits, tests/concurrent_sockets | covered |
@@ -1361,7 +1360,7 @@ Rules: 58. Covered before: 27. Covered now: 46.
 | `.class`, `.attributes`, `.functions` and `DynamicLibrary`'s own members are never foreign symbols | tests/settings_and_libraries_reflected, tests/library_reflection | covered |
 | `'windows'` shortens with the abbreviation table, then PascalCase | tests/foreign_library | covered (compiler fails: the program exits 1) |
 | Constant reads are the C spelling lowercased | tests/foreign_library | covered (compiler fails: the program exits 1) |
-| `missing_function` and `missing_attribute` with `Symbol` parameters | | waiting on D798 |
+| `missing_function` and `missing_attribute` with `Spite.FunctionDeclaration` and `Spite.AttributeDeclaration` parameters | | missing |
 | A number-only `type` crosses as a C struct by address | tests/foreign_library | covered (compiler fails: the program exits 1) |
 | `Type.size` is the C struct's `sizeof`, padding included | tests/type_size | covered |
 | `.size` of a type holding text is an error | conformance/type_size_mistakes | covered |
@@ -1439,7 +1438,7 @@ Rules: 79. Covered before: 38. Covered now: 67.
 | An unread local is an error whatever its name | conformance/unused_names | covered |
 | A function nobody calls is not reported, and its reads count | tests/uncalled_function_reads | added |
 | Operator function parameters are exempt | tests/operator_parameter_exempt | added |
-| Symbol codegen template parameters are exempt | none | waiting on D798 |
+| A template's parameters are exempt from the unused-parameter rule | none | missing |
 | A one-parameter setter answering attribute access is exempt | tests/setter_parameter_exempt | added |
 | A two-parameter setter follows the ordinary rule | conformance/two_parameter_setter_unread | added |
 | A function replacing another through reopening is exempt | tests/reopening | covered |
@@ -1472,7 +1471,7 @@ Rules: 79. Covered before: 38. Covered now: 67.
 | A call repeated in every branch of an `else if` chain: "computed in every branch" | conformance/repeated_branch_call_chain | added |
 | A chain where only some branches share the call is not reported | tests/repeated_branch_partial | added |
 | Four spaces, no tabs, no trailing whitespace, one newline at the end | none | missing (a formatting program rewrites itself; the runner needs to format a copy) |
-| A single named codegen value in `<...>` becomes positional | none | waiting on D798 |
+| A single named codegen value in `<...>` becomes positional | none | missing |
 | Every compile formats and prints `formatted <path>` | conformance/blank_line | covered (compiler fails: compiles; the file is rewritten by the run) |
 | One space around binary operators, the minimum parentheses, `else if` on one line | none | missing (as above) |
 | A call or literal over 120 columns is broken one entry per line | none | missing (as above) |

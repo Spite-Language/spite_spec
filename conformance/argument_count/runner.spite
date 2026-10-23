@@ -16,7 +16,7 @@ func run() {
     count_arguments()
 }
 
-func count_argument(argument: Symbol<$system_type.update_each>) {
+func count_argument(argument: Spite.Argument) {
     var taken = argument.argument_count()
     console.print(argument.name, taken)
 }

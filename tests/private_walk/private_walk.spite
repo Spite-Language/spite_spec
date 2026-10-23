@@ -39,13 +39,13 @@ func double(attribute: Spite.Attribute) {
     }
 }
 
-func reset_attribute(attribute: Symbol<Gadget>, gadget: Gadget) {
+func reset_attribute(attribute: Spite.AttributeDeclaration, gadget: Gadget) {
     if attribute.class == Integer {
         gadget.attributes[attribute] = 1
     }
 }
 
-func show_attribute(attribute: Symbol<Gadget>, gadget: Gadget) {
+func show_attribute(attribute: Spite.AttributeDeclaration, gadget: Gadget) {
     if attribute.class == Integer {
         console.print("walked", attribute.name, gadget.attributes[attribute])
     }

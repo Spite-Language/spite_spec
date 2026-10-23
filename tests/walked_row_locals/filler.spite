@@ -8,7 +8,7 @@ func fill(index: Integer) {
     console.print("tag", row.tag.id, "across", row.point.across)
 }
 
-func fill_attribute(attribute: Symbol<$row_type>, row: $row_type, index: Integer) {
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, index: Integer) {
     if attribute.class == Tag {
         var own = Tag()
         own.id = index

@@ -15,7 +15,7 @@ func AttributeUses() {
     console.print(first.name, first_text)
 }
 
-func show_attribute(attribute: Symbol<Lamp>, shown: Lamp, lines: List<String>) {
+func show_attribute(attribute: Spite.AttributeDeclaration, shown: Lamp, lines: List<String>) {
     lines.append("{attribute.name} = {shown.attributes[attribute]}")
 }
 

@@ -1,0 +1,32 @@
+var console = Console()
+var robot = Robot()
+
+func TemplateInference() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var lamp = Lamp()
+    var door = Door()
+    door.name = "front"
+    door.color = "red"
+    copy_attributes(lamp, door)
+    console.print(lamp.name, lamp.color, lamp.brightness, door.open)
+    var watts = sum_watts(lamp)
+    console.print(watts)
+    do_moves_now()
+    do_jump_now()
+}
+
+func copy_attribute(attribute: Spite.AttributeDeclaration, lamp: Lamp, door: Door) {
+    lamp[attribute] = door[attribute]
+}
+
+func sum_attribute(attribute: Spite.AttributeDeclaration, lamp: Lamp): Integer {
+    if attribute.class == Integer {
+        return lamp[attribute]
+    }
+    return 0
+}
+
+func do_move_now(move: Spite.FunctionDeclaration) {
+    console.print(move.name, move.hole)
+    robot.move_now()
+}

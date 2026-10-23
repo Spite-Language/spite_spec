@@ -12,16 +12,16 @@ func run() {
     run_phases_each()
 }
 
-func run_phase_each(phase: Symbol<$system_type.phase_each>) {
-    var count = phase.argument_count()
-    if phase.argument_count() == 1 {
+func run_phase_each(phase: Spite.FunctionDeclaration) {
+    var count = $system_type.argument_count("<phase>_each")
+    if $system_type.argument_count("<phase>_each") == 1 {
         stream_arguments()
     } else {
-        console.print(phase.name, "takes", count, "rows, so it is not streamed")
+        console.print(phase.hole, "takes", count, "rows, so it is not streamed")
     }
 }
 
-func stream_argument(argument: Symbol<$system_type.phase_each>) {
+func stream_argument(argument: Spite.Argument) {
     var stream = Stream<$system_type, argument.class>()
     stream.run(system)
 }

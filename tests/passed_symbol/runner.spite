@@ -12,20 +12,20 @@ func run() {
     run_phases_all()
 }
 
-func run_phase_all(phase: Symbol<$system_type.phase_all>) {
+func run_phase_all(phase: Spite.FunctionDeclaration) {
     announce(phase, "starting")
     call_system(phase)
 }
 
-func announce(phase: Symbol<$system_type.phase_all>, word: String) {
-    console.print(word, phase.name)
+func announce(phase: Spite.FunctionDeclaration, word: String) {
+    console.print(word, phase.hole)
 }
 
-func call_system(phase: Symbol<$system_type.phase_all>) {
+func call_system(phase: Spite.FunctionDeclaration) {
     system.phase_all(made_arguments())
     announce(phase, "finished")
 }
 
-func made_argument(argument: Symbol<$system_type.phase_all>): argument.class {
+func made_argument(argument: Spite.Argument): argument.class {
     return argument.class()
 }

@@ -1,0 +1,1 @@
+conformance/template_no_common_attribute/template_no_common_attribute.spite:11: error: 'copy_attribute' reads 'attribute' on a 'Lamp' and on a 'Door', which have no attribute in common, so it would walk nothing: read it only on values whose classes share the attributes it walks (in TemplateNoCommonAttribute.copy_attribute)

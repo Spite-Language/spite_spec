@@ -46,7 +46,7 @@ func add_line(attribute: Spite.Attribute) {
     lines.append("{attribute.pascal_case_name}: {attribute.value}")
 }
 
-func show_attribute(attribute: Spite.AttributeDeclaration<Monster>, monster: Monster) {
+func show_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
     console.print("template", attribute.name, monster.attributes[attribute])
 }
 
@@ -57,10 +57,10 @@ func walks_each(function: Spite.Function): Boolean {
 func run(function: Spite.Function) {
     var arguments_count = function.arguments.count()
     console.print(function.name, "takes", arguments_count)
-    function.arguments.each(describe_argument)
+    function.arguments.each(describe_taken)
 }
 
-func describe_argument(argument: Spite.Argument) {
+func describe_taken(argument: Spite.Argument) {
     var fresh = made(argument)
     console.print(" ", argument.index, argument.name, argument.class, fresh)
 }

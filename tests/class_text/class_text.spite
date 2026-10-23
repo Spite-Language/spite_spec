@@ -13,6 +13,6 @@ func ClassText() {
     console.print(named)
 }
 
-func show_attribute(attribute: Symbol<Label>, label: Label, lines: List<String>) {
+func show_attribute(attribute: Spite.AttributeDeclaration, label: Label, lines: List<String>) {
     lines.append("{attribute.name} is {attribute.class}")
 }

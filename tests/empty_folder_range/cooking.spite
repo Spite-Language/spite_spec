@@ -1,3 +1,0 @@
-generic $recipe_type
-
-var dish: $recipe_type = null

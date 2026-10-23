@@ -1,0 +1,13 @@
+var console = Console()
+
+func walk_now() {
+    console.print("walking")
+}
+
+func jump_now() {
+    console.print("jumping")
+}
+
+func rest_later() {
+    console.print("resting")
+}

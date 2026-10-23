@@ -7,15 +7,15 @@ func Person(starting_name: String, starting_age: Integer) {
     age = starting_age
 }
 
-func set_attribute(attribute: Symbol, value: attribute.class) {
+func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {
     attributes[attribute] = value
 }
 
-func get_attribute(attribute: Symbol): attribute.class {
+func get_attribute(attribute: Spite.AttributeDeclaration): attribute.class {
     return attributes[attribute]
 }
 
-func describe_attribute(attribute: Symbol): String {
+func describe_attribute(attribute: Spite.AttributeDeclaration): String {
     return "{attribute.name} is {attributes[attribute]}"
 }
 

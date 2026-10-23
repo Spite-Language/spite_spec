@@ -1,0 +1,11 @@
+generic $system_type
+
+var console = Console()
+
+func run() {
+    run_phases_each()
+}
+
+func run_phase_each(phase: Spite.FunctionDeclaration) {
+    console.print(phase.hole)
+}

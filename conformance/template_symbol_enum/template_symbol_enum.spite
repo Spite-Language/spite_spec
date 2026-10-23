@@ -1,0 +1,15 @@
+enum Phase {
+    'update'
+    'render'
+}
+
+var console = Console()
+
+func TemplateSymbolEnum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run_phases()
+}
+
+func run_phase(phase: Symbol<Phase>) {
+    console.print(phase.value)
+}

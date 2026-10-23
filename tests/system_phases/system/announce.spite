@@ -6,12 +6,12 @@ type Patient {
 var console = Console()
 
 func render_all(patients: List<Patient>) {
-    var total = sum_all(patients)
+    var total = total_of(patients)
     var patients_count = patients.count()
     console.print(patients_count, "patients with", total, "health")
 }
 
-func sum_all(patients: List<Patient>): Integer {
+func total_of(patients: List<Patient>): Integer {
     var total = 0
     var index = 0
     while index < patients.count() {

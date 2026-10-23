@@ -1,0 +1,8 @@
+front red 3 false
+40
+walk_now walk
+walking
+jump_now jump
+jumping
+jump_now jump
+jumping

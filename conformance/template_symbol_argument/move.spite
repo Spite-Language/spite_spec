@@ -1,0 +1,5 @@
+var console = Console()
+
+func update_each(speed: Integer) {
+    console.print("move", speed)
+}

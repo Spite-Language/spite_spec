@@ -93,7 +93,7 @@ func overwrite(list: List<Point>, index: Integer) {
     list[index] = fresh
 }
 
-func fill_attribute(attribute: Symbol<Pair>, row: Pair, entity: Integer) {
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: Pair, entity: Integer) {
     var position = cursor
     cursor = cursor + 1
     crash points[position]

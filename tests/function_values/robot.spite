@@ -21,6 +21,6 @@ func describe(prefix: String, times: Integer): String {
     return prefix + name + times
 }
 
-func set_attribute(attribute: Symbol, value: attribute.class) {
+func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {
     attributes[attribute] = value
 }

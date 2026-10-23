@@ -1,4 +1,4 @@
-func total_member(member: Symbol): Integer {
+func total_member(member: Symbol<$element_type>): Integer {
     var total = 0
     var index = 0
     while index < item_count {

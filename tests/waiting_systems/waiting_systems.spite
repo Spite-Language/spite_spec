@@ -4,19 +4,19 @@ func WaitingSystems() {
     load "../../../SpiteCompiler/.spite/library/windows"
     var level = File(".spite/waiting_systems_level.txt")
     level.write("forest")
-    run_systems()
+    System.classes.each(run_system)
     var loader_waits = System.FileLoader.function_waits("update_each")
     var mover_waits = System.Mover.function_waits("update_each")
     var ticker_waits = System.Ticker.function_waits("update_each")
     console.print("asked at run time:", loader_waits, mover_waits, ticker_waits)
 }
 
-func run_system(system: Symbol<System>) {
-    if system.class.function_waits("update_each") {
+func run_system(system: Spite.Class) {
+    if system.function_waits("update_each") {
         console.print(system.name, "can wait, so an engine runs it between frames")
     } else {
         console.print(system.name, "never waits, so an engine calls it inside a frame")
     }
-    var runner = Runner<system.class>()
+    var runner = Runner<system>()
     runner.run()
 }

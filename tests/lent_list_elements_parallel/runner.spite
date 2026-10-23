@@ -25,7 +25,7 @@ func run(): Integer {
     return system.steps
 }
 
-func fill_attribute(attribute: Symbol<$row_type>, row: $row_type, rows: List<Integer>) {
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows: List<Integer>) {
     if attribute.class.fits_vector() {
         crash rows[attribute.index]
         var stored_row = rows[attribute.index]

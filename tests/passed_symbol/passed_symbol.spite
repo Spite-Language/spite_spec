@@ -7,16 +7,12 @@ var console = Console()
 
 func PassedSymbol() {
     load "../../../SpiteCompiler/.spite/library/windows"
-    add_systems()
+    System.classes.each(add_system)
     runners.each_run()
 }
 
-func add_system(system: Symbol<System>) {
-    var runner = Runner<system.class>()
+func add_system(system: Spite.Class) {
+    var runner = Runner<system>()
     runners.append(runner)
-    describe(system)
-}
-
-func describe(system: Symbol<System>) {
     console.print("found", system.name)
 }

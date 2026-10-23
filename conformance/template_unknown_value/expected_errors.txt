@@ -1,0 +1,1 @@
+conformance/template_unknown_value/template_unknown_value.spite:11: error: 'show_attribute' uses 'attribute' on 'shown', whose class is not known from its declaration, so nothing says which class it walks: use it on a parameter, an attribute or a local declared with its type, as in 'var shown: Monster = ...' (in TemplateUnknownValue.show_attribute)

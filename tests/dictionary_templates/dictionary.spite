@@ -1,4 +1,4 @@
-func highest_member(member: Spite.AttributeDeclaration<$value_type>): member.class {
+func highest_member(member: Spite.AttributeDeclaration): member.class {
     var listed = values()
     var highest: member.class = 0
     var index = 0

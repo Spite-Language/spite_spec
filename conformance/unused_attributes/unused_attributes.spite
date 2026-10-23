@@ -14,6 +14,6 @@ func UnusedAttributes() {
     console.print("{visits}: {lines.join(", ")}")
 }
 
-func classify_attribute(attribute: Symbol<Mover>, classified: Mover, lines: List<String>) {
+func classify_attribute(attribute: Spite.AttributeDeclaration, classified: Mover, lines: List<String>) {
     lines.append("{attribute.name} is a {attribute.class}")
 }

@@ -1,7 +1,0 @@
-func LentArguments() {
-    load "../../../SpiteCompiler/.spite/library/windows"
-    var keeping = Runner<System.Keep>()
-    keeping.run(1)
-    var growing = Runner<System.Grow>()
-    growing.run(1)
-}

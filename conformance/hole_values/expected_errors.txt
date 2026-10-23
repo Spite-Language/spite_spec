@@ -1,1 +1,1 @@
-conformance/hole_values/runner.spite:19: error: the hole '<stage>' of '<stage>_all' matches only the values of an enum named for it, and there is no enum 'Stage': declare 'enum Stage' listing the names it may match, one per line (in Runner.run_stage_all)
+conformance/hole_values/runner.spite:6: error: 'run_updat_all' is 'run_phase_all' with 'updat' for 'phase', but 'Move' has no function 'updat_all': the functions there that fit 'phase_all' are 'update_all', 'step_all' (in Runner.run)

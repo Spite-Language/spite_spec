@@ -11,12 +11,14 @@ func report() {
     report_phases_each()
 }
 
-func report_phase_each(phase: Symbol<$system_type.phase_each>) {
-    console.print($system_type.name, phase.name)
-    check_arguments()
+func report_phase_each(phase: Spite.FunctionDeclaration) {
+    console.print($system_type.name, phase.hole)
+    if $system_type.argument_count("<phase>_each") > 0 {
+        check_arguments()
+    }
 }
 
-func check_argument(argument: Symbol<$system_type.phase_each>) {
+func check_argument(argument: Spite.Argument) {
     var writes = $system_type.function_writes_parameter("<phase>_each", argument.index)
     var inline = argument.class.any_attribute_fits_vector(Entity)
     console.print(argument.name, "writes:", writes, "holds an inline component:", inline)

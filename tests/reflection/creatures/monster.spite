@@ -14,6 +14,6 @@ func Monster(starting_name: String, starting_health: Integer) {
     health = starting_health
 }
 
-func kind_of_attribute(attribute: Symbol): String {
-    return "{attribute.name}:{attribute.class.name}"
+func kind_of_attribute(attribute: Spite.AttributeDeclaration): String {
+    return "{attribute.name}:{attributes[attribute].class.name}"
 }

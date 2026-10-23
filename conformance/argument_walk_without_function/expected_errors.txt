@@ -1,0 +1,1 @@
+conformance/argument_walk_without_function/runner.spite:6: error: 'show_arguments' walks the arguments of a function, but nothing here says which: spread it into a call, as in 'value.update_each(show_arguments())', or call it inside a template over 'Spite.FunctionDeclaration', where it walks the arguments of that function (in Runner.run)

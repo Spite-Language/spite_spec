@@ -1,0 +1,11 @@
+generic $system_type
+
+var system = $system_type()
+
+func run() {
+    run_phases_each()
+}
+
+func run_phase_each(phase: Symbol<$system_type.phase_each>) {
+    system.phase_each()
+}

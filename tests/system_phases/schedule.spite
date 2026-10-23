@@ -12,23 +12,23 @@ var runners = List<Runnable>()
 var console = Console()
 
 func Schedule() {
-    add_systems()
+    System.classes.each(add_system)
 }
 
-func add_system(system: Symbol<System>) {
-    var runner = Runner<system.class>()
+func add_system(system: Spite.Class) {
+    var runner = Runner<system>()
     runners.append(runner)
     console.print("placed", system.name, "in", runner.placed_in)
 }
 
 func tick() {
-    run_phases()
+    Phase.values.each(run_phase)
 }
 
-func run_phase(phase: Symbol<Phase>) {
+func run_phase(phase: Phase) {
     var index = 0
     while index < runners.count() {
-        run_placed(runners[index], phase.value)
+        run_placed(runners[index], phase)
         index = index + 1
     }
 }

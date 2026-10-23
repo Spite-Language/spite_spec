@@ -7,7 +7,7 @@ func translate(value: $component_type) {
     translate_attributes(value)
 }
 
-func translate_attribute(attribute: Symbol<$component_type>, value: $component_type) {
+func translate_attribute(attribute: Spite.AttributeDeclaration, value: $component_type) {
     if attribute.class == Entity {
         var held = value.attributes[attribute]
         held.id = held.id + offset

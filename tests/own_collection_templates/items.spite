@@ -1,4 +1,4 @@
-func largest_member(member: Spite.AttributeDeclaration<$element_type>): member.class {
+func largest_member(member: Spite.AttributeDeclaration): member.class {
     var largest: member.class = 0
     var index = 0
     while index < count() {

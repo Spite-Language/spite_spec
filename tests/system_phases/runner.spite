@@ -11,12 +11,18 @@ func Runner() {
     place_phases_all()
 }
 
-func place_phase_each(phase: Symbol<$system_type.phase_each>) {
-    placed_in = phase.value
+func place_phase_each(phase: Spite.FunctionDeclaration) {
+    crash $system_type.argument_count("<phase>_each") > 0
+    var placed: Schedule.Phase? = phase.hole
+    crash placed
+    placed_in = placed
 }
 
-func place_phase_all(phase: Symbol<$system_type.phase_all>) {
-    placed_in = phase.value
+func place_phase_all(phase: Spite.FunctionDeclaration) {
+    crash $system_type.argument_count("<phase>_all") > 0
+    var placed: Schedule.Phase? = phase.hole
+    crash placed
+    placed_in = placed
 }
 
 func run() {
@@ -24,7 +30,7 @@ func run() {
     run_phases_all()
 }
 
-func run_phase_each(phase: Symbol<$system_type.phase_each>) {
+func run_phase_each(phase: Spite.FunctionDeclaration) {
     counts.clear()
     count_arguments()
     var total = combinations()
@@ -37,18 +43,18 @@ func run_phase_each(phase: Symbol<$system_type.phase_each>) {
     }
 }
 
-func run_phase_all(phase: Symbol<$system_type.phase_all>) {
+func run_phase_all(phase: Spite.FunctionDeclaration) {
     system.phase_all(every_arguments())
 }
 
-func count_argument(argument: Symbol<$system_type.phase_each>) {
+func count_argument(argument: Spite.Argument) {
     var query = Query<argument.class>()
     query.refresh()
     var rows_count = query.rows.count()
     counts.append(rows_count)
 }
 
-func row_argument(argument: Symbol<$system_type.phase_each>): argument.class {
+func row_argument(argument: Spite.Argument): argument.class {
     var query = Query<argument.class>()
     crash picked[position]
     var chosen = picked[position]
@@ -57,7 +63,7 @@ func row_argument(argument: Symbol<$system_type.phase_each>): argument.class {
     return query.rows[chosen]
 }
 
-func every_argument(argument: Symbol<$system_type.phase_all>): argument.class {
+func every_argument(argument: Spite.Argument): argument.class {
     var query = Query<argument.class.element_type>()
     query.refresh()
     return query.rows

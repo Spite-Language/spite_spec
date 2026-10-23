@@ -5,13 +5,13 @@ func EnumReopening() {
     load "../../../SpiteCompiler/.spite/library/windows"
     load "package"
     load "mod"
-    show_skys()
+    Weather.Sky.values.each(show_sky)
     var weather = Weather()
     weather.sky = 'snow'
     console.print("now", weather.sky)
 }
 
-func show_sky(sky: Symbol<Weather.Sky>) {
-    var is_today = sky.value == today
-    console.print(sky.name, is_today)
+func show_sky(sky: Weather.Sky) {
+    var is_today = sky == today
+    console.print(sky, is_today)
 }

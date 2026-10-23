@@ -1,4 +1,6 @@
 var console = Console()
+var walked_given: Anything? = null
+var found = List<String>()
 
 func WalkedClassFold() {
     load "../../../SpiteCompiler/.spite/library/windows"
@@ -28,14 +30,16 @@ func same_kind(given: Anything, known: Targeting): Boolean {
 }
 
 func describe(given: Anything) {
-    var found = List<String>()
-    queue_bundles(given, found)
+    walked_given = given
+    found.clear()
+    Bundle.classes.each(queue_bundle)
     var joined = found.join(" ")
     console.print("[{joined}]")
 }
 
-func queue_bundle(bundle: Symbol<Bundle>, given: Anything, found: List<String>) {
-    var by_class = given == bundle.class
-    var by_kind = BundleKind<bundle.class>().is_kind(given)
+func queue_bundle(bundle: Spite.Class) {
+    crash walked_given
+    var by_class = walked_given == bundle
+    var by_kind = BundleKind<bundle>().is_kind(walked_given)
     found.append("{bundle.name}:{by_class}:{by_kind}")
 }

@@ -12,7 +12,7 @@ func run(mover: Mover) {
     }
 }
 
-func fill_attribute(attribute: Symbol<$row_type>, row: $row_type, index: Integer) {
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, index: Integer) {
     crash world.attributes[attribute][index]
     row.attributes[attribute] = world.attributes[attribute][index]
 }

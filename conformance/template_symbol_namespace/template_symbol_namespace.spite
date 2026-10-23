@@ -1,0 +1,10 @@
+var console = Console()
+
+func TemplateSymbolNamespace() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    add_systems()
+}
+
+func add_system(system: Symbol<System>) {
+    console.print("found", system.name)
+}

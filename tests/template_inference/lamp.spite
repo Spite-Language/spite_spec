@@ -1,0 +1,4 @@
+var name = "lamp"
+var brightness = 3
+var color = "white"
+var watts = 40

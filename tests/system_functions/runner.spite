@@ -7,29 +7,33 @@ var position = 0
 
 func run() {
     if $system_type.has_function("run_each") {
-        counts.clear()
-        count_arguments()
-        var total = combinations()
-        var combination = 0
-        while combination < total {
-            choose(combination)
-            position = 0
-            system.run_each(row_arguments())
-            combination = combination + 1
-        }
+        run_kinds_each()
     } else {
         system.run_all(every_arguments())
     }
 }
 
-func count_argument(argument: Symbol<$system_type.run_each>) {
+func run_kind_each(kind: Spite.FunctionDeclaration) {
+    counts.clear()
+    count_arguments()
+    var total = combinations()
+    var combination = 0
+    while combination < total {
+        choose(combination)
+        position = 0
+        system.kind_each(row_arguments())
+        combination = combination + 1
+    }
+}
+
+func count_argument(argument: Spite.Argument) {
     var query = Query<argument.class>()
     query.refresh()
     var rows_count = query.rows.count()
     counts.append(rows_count)
 }
 
-func row_argument(argument: Symbol<$system_type.run_each>): argument.class {
+func row_argument(argument: Spite.Argument): argument.class {
     var query = Query<argument.class>()
     crash picked[position]
     var chosen = picked[position]
@@ -38,7 +42,7 @@ func row_argument(argument: Symbol<$system_type.run_each>): argument.class {
     return query.rows[chosen]
 }
 
-func every_argument(argument: Symbol<$system_type.run_all>): argument.class {
+func every_argument(argument: Spite.Argument): argument.class {
     var query = Query<argument.class.element_type>()
     query.refresh()
     return query.rows

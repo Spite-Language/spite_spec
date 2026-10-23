@@ -1,0 +1,11 @@
+var console = Console()
+var lamp = Lamp()
+
+func TemplateUnusedAttribute() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    show_attributes(3)
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, times: Integer) {
+    console.print(attribute.name, times)
+}

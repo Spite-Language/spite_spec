@@ -14,12 +14,12 @@ func describe(thing: Anything) {
     var described = thing.class
     console.print(described.name, "stateful", described.is_stateful, "list", described.is_list)
     var attributes = thing.attributes
-    attributes.each(show_attribute)
+    attributes.each(show_held)
     var functions = described.functions
-    functions.each(show_function)
+    functions.each(show_callable)
 }
 
-func show_attribute(attribute: Spite.Attribute) {
+func show_held(attribute: Spite.Attribute) {
     var held = attribute.class
     console.print(
         " ",
@@ -32,14 +32,14 @@ func show_attribute(attribute: Spite.Attribute) {
     )
 }
 
-func show_function(function: Spite.Function) {
+func show_callable(function: Spite.Function) {
     console.print(" ", function.name)
-    function.arguments.each(show_argument)
+    function.arguments.each(show_taken)
     if function.name == "greeting" {
         console.print("  says", function.returned_literal)
     }
 }
 
-func show_argument(argument: Spite.Argument) {
+func show_taken(argument: Spite.Argument) {
     console.print("  ", argument.index, argument.name, "mutated", argument.is_mutated)
 }

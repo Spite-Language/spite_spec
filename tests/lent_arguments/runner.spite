@@ -12,7 +12,7 @@ func run(entity_count: Integer) {
     run_phases_each(entity_count)
 }
 
-func run_phase_each(phase: Symbol<$system_type.phase_each>, entity_count: Integer) {
+func run_phase_each(phase: Spite.FunctionDeclaration, entity_count: Integer) {
     var entity = 0
     while entity < entity_count {
         found.clear()
@@ -25,7 +25,7 @@ func run_phase_each(phase: Symbol<$system_type.phase_each>, entity_count: Intege
     }
 }
 
-func find_argument(argument: Symbol<$system_type.phase_each>, entity: Integer) {
+func find_argument(argument: Spite.Argument, entity: Integer) {
     if argument.class == Entity {
         found.append(entity)
     } else {
@@ -42,7 +42,7 @@ func note(dense: Integer) {
     found.append(dense)
 }
 
-func made_argument(argument: Symbol<$system_type.phase_each>, rows: List<Integer>, entity: Integer): argument.class {
+func made_argument(argument: Spite.Argument, rows: List<Integer>, entity: Integer): argument.class {
     if argument.class == Entity {
         return Entity(entity)
     }

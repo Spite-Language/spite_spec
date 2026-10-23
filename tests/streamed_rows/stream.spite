@@ -11,23 +11,24 @@ func run(system: $system_type, entity_count: Integer) {
     run_phases_each(system, entity_count)
 }
 
-func run_phase_each(phase: Symbol<$system_type.phase_each>, system: $system_type, entity_count: Integer) {
+func run_phase_each(phase: Spite.FunctionDeclaration, system: $system_type, entity_count: Integer) {
     var entity = 0
     while entity < entity_count {
         found.clear()
-        find_attributes(entity)
+        var row: $row_type = null
+        find_attributes(row, entity)
         system.phase_each(streamed_arguments(found))
         entity = entity + 1
     }
 }
 
-func find_attribute(attribute: Symbol<$row_type>, entity: Integer) {
+func find_attribute(attribute: Spite.AttributeDeclaration, _row: $row_type, entity: Integer) {
     var column = Column<attribute.class>()
     var dense = column.dense_index(entity)
     found.append(dense)
 }
 
-func streamed_argument(argument: Symbol<$system_type.phase_each>, rows: List<Integer>): argument.class {
+func streamed_argument(argument: Spite.Argument, rows: List<Integer>): argument.class {
     if argument.class == $row_type {
         var row: $row_type = null
         fill_attributes(row, rows)
@@ -37,7 +38,7 @@ func streamed_argument(argument: Symbol<$system_type.phase_each>, rows: List<Int
     return other
 }
 
-func fill_attribute(attribute: Symbol<$row_type>, row: $row_type, rows: List<Integer>) {
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows: List<Integer>) {
     crash rows[attribute.index]
     var stored_row = rows[attribute.index]
     crash Column<attribute.class>().values[stored_row]

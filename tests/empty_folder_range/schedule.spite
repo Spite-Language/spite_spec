@@ -1,9 +1,9 @@
 var names = List<String>()
 
-func add_system(system: Symbol<System>) {
-    names.append(system.name)
+func add_every_system() {
+    System.classes.each(add_system)
 }
 
-func add_plugin(plugin: Symbol<Plugin>) {
-    names.append(plugin.name)
+func add_system(system: Spite.Class) {
+    names.append(system.name)
 }

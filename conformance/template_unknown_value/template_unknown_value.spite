@@ -1,0 +1,15 @@
+var console = Console()
+var lamps = List<Lamp>()
+
+func TemplateUnknownValue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var lamp = Lamp()
+    lamps.append(lamp)
+    show_attributes()
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration) {
+    var shown = lamps.first()
+    crash shown
+    console.print(attribute.name, shown[attribute])
+}

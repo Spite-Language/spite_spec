@@ -1,4 +1,4 @@
-func largest_by_member(member: Spite.AttributeDeclaration<$element_type>): $element_type? {
+func largest_by_member(member: Spite.AttributeDeclaration): $element_type? {
     assert count() != 0
     var best = 0
     var index = 1
@@ -17,7 +17,7 @@ func largest_by_member(member: Spite.AttributeDeclaration<$element_type>): $elem
     return largest
 }
 
-func kept_member(member: Spite.AttributeDeclaration<$element_type>): List<$element_type> {
+func kept_member(member: Spite.AttributeDeclaration): List<$element_type> {
     var kept = List<$element_type>()
     var index = 0
     while index < count() {

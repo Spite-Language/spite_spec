@@ -16,7 +16,7 @@ func shift(entity: Integer) {
     shift_attributes(row, found, entity)
 }
 
-func fill_attribute(attribute: Symbol<$row_type>, row: $row_type, rows: List<Integer>, entity: Integer) {
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows: List<Integer>, entity: Integer) {
     if attribute.class == Entity {
         row.attributes[attribute] = Entity(entity)
     } else {
@@ -27,7 +27,7 @@ func fill_attribute(attribute: Symbol<$row_type>, row: $row_type, rows: List<Int
     }
 }
 
-func shift_attribute(attribute: Symbol<$row_type>, row: $row_type, rows: List<Integer>, entity: Integer) {
+func shift_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows: List<Integer>, entity: Integer) {
     if attribute.class == Entity {
         row.attributes[attribute] = Entity(entity)
     } else {

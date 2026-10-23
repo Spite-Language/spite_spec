@@ -1,0 +1,11 @@
+generic $system_type
+
+var system = $system_type()
+
+func run() {
+    system.update_each(made_arguments())
+}
+
+func made_argument(argument: Symbol<$system_type.update_each>): argument.class {
+    return argument.class()
+}

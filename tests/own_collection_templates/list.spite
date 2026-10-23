@@ -1,4 +1,4 @@
-func best_member(member: Spite.AttributeDeclaration<$element_type>): List<$element_type> {
+func best_member(member: Spite.AttributeDeclaration): List<$element_type> {
     var best = List<$element_type>()
     var index = 0
     while index < count() {

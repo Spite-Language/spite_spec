@@ -1,0 +1,1 @@
+conformance/template_unused_function/runner.spite:9: error: 'run_phase_each' is a template over functions, because 'phase' is a word of its name, but its body calls no function with 'phase' in its name, so nothing says which: call one as 'value.phase_each(...)', where 'phase' stands for the part of the name that varies (in Runner.run_phase_each)

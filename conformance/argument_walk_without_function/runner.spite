@@ -1,0 +1,11 @@
+generic $system_type
+
+var console = Console()
+
+func run() {
+    show_arguments()
+}
+
+func show_argument(argument: Spite.Argument) {
+    console.print(argument.name)
+}

@@ -9,7 +9,7 @@ func run() {
     keeper.remove_while_moving(row)
 }
 
-func fill_attribute(attribute: Symbol<$row_type>, row: $row_type, rows: List<Integer>) {
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows: List<Integer>) {
     crash rows[attribute.index]
     var stored_row = rows[attribute.index]
     crash Column<attribute.class>().values[stored_row]

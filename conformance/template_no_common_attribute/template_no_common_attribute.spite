@@ -1,0 +1,13 @@
+var console = Console()
+
+func TemplateNoCommonAttribute() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var lamp = Lamp()
+    var door = Door()
+    copy_attributes(lamp, door)
+    console.print(lamp.brightness, door.open)
+}
+
+func copy_attribute(attribute: Spite.AttributeDeclaration, lamp: Lamp, door: Door) {
+    lamp[attribute] = door[attribute]
+}

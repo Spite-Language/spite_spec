@@ -1,0 +1,3 @@
+var color = "brown"
+var open = false
+var name = "door"

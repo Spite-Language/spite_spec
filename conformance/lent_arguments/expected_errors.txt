@@ -1,1 +1,0 @@
-conformance/lent_arguments/runner.spite:23: error: 'streamed_rows' is the plural of 'streamed_row', but 'streamed_row' walks nothing: its 'argument' is not a word of its name, so it is a helper compiled for the one symbol passed to it, not a template with a plural. Name it 'streamed_argument' and call 'streamed_arguments(...)' (in Runner.run_update_each)

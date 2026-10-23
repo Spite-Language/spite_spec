@@ -1,0 +1,5 @@
+func TemplateSymbolArgument() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var runner = Runner<Move>()
+    runner.run()
+}

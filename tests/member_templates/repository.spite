@@ -8,7 +8,7 @@ func Repository(starting_name: String, starting_stars: Integer, starting_active:
     active = starting_active
 }
 
-func get_attribute(attribute: Symbol): attribute.class {
+func get_attribute(attribute: Spite.AttributeDeclaration): attribute.class {
     return attributes[attribute]
 }
 
