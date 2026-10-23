@@ -1,0 +1,25 @@
+var console = Console()
+
+func WhileNarrows() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var third = Node()
+    third.value = 3
+    var second = Node()
+    second.value = 2
+    second.next = third
+    var head = Node()
+    head.value = 1
+    head.next = second
+    var total = chain_sum(head)
+    console.print(total)
+}
+
+func chain_sum(head: Node): Integer {
+    var total = 0
+    var current: Node? = head
+    while current {
+        total = total + current.value
+        current = current.next
+    }
+    return total
+}
