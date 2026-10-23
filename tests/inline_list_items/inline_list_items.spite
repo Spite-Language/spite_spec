@@ -1,0 +1,47 @@
+var console = Console()
+var points = List<Point>()
+
+func InlineListItems() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var index = 0
+    while index < 1000 {
+        var point = Point(index, index % 7)
+        points.append(point)
+        index = index + 1
+    }
+    move_all()
+    var total = sum_all()
+    var across = points.sum_across()
+    var far = points.count_far()
+    console.print("total", total, "across", across, "far", far)
+    crash points[3]
+    var third = points[3]
+    console.print("third", third.across, third.down)
+    var shared = Shared(1)
+    var kept = List<Shared>()
+    kept.append(shared)
+    shared.size = 9
+    crash kept[0]
+    var first = kept[0]
+    console.print("shared", first.size)
+}
+
+func move_all() {
+    var position = 0
+    while position < points.count() {
+        var point = points[position]
+        point.across = point.across + 1
+        position = position + 1
+    }
+}
+
+func sum_all(): Long {
+    var total: Long = 0
+    var position = 0
+    while position < points.count() {
+        var point = points[position]
+        total = total + point.across + point.down
+        position = position + 1
+    }
+    return total
+}
