@@ -1,1 +1,1 @@
-conformance/enum_reopening_replaces/enum_reopening_replaces.spite:7: error: 'fog' is not a value of the enum 'Sky' (in EnumReopeningReplaces.EnumReopeningReplaces)
+conformance/enum_reopening_replaces/enum_reopening_replaces.spite:7: error: 'fog' is not a value of the enum 'Sky', whose values are 'clear', 'rain' (in EnumReopeningReplaces.EnumReopeningReplaces)
