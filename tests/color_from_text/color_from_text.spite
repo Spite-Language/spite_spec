@@ -1,0 +1,18 @@
+var console = Console()
+
+func ColorFromText() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var white = Color("#ffffff")
+    console.print(white, white.hexadecimal)
+    var color = Color("black")
+    color.hexadecimal = "#ff8000"
+    var shown = color.to_rgb_text()
+    console.print(color.red, color.green, color.blue, shown)
+    color.hexadecimal = "rgb(0, 0, 255)"
+    console.print(color)
+    var maybe = "not a colour".to_color()
+    var missing = not maybe
+    console.print(missing)
+    var wrong = Color("chartreuse-ish")
+    console.print("never printed", wrong)
+}

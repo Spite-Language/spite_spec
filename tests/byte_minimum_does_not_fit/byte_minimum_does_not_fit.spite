@@ -1,0 +1,12 @@
+var console = Console()
+
+func ByteMinimumDoesNotFit() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var small: Byte = 7
+    var lower = small.minimum(5)
+    var held = small.clamp(2, 6)
+    console.print(lower, held)
+    var wide = 300
+    var never = small.maximum(wide)
+    console.print("never printed", never)
+}
