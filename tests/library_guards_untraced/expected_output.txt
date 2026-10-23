@@ -3,3 +3,5 @@ starts with help: false
 ends with low: false
 spite: the program stopped at tests/library_guards_untraced/library_guards_untraced.spite:21 in LibraryGuardsUntraced.check (length=5)
 spite.assert	36762b5a	tests/library_guards_untraced/library_guards_untraced.spite:16	LibraryGuardsUntraced	announce	answered=nothing
+spite.frame	tests/library_guards_untraced/library_guards_untraced.spite:21	LibraryGuardsUntraced	check
+spite.frame	tests/library_guards_untraced/library_guards_untraced.spite:11	LibraryGuardsUntraced	LibraryGuardsUntraced

@@ -1,2 +1,3 @@
 count 3
-spite: the program stopped at tests/json_crash/../../../SpiteCompiler/.spite/library/common/json_cursor.spite:16 in JsonCursor.fail
+spite: the program stopped at tests/json_crash/../../../SpiteCompiler/.spite/library/common/json_cursor.spite:16 in JsonCursor.fail (crashes=true, wanted=a number, text={"count": three}, position=10, expected=, matched=false)
+spite.frame	tests/json_crash/json_crash.spite:9	JsonCrash	JsonCrash

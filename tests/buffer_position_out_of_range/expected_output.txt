@@ -1,2 +1,3 @@
 2
 spite: the program stopped at ...
+spite.frame	tests/buffer_position_out_of_range/buffer_position_out_of_range.spite:10	BufferPositionOutOfRange	BufferPositionOutOfRange

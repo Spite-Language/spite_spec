@@ -1,3 +1,4 @@
 7 null null 1
 9
 spite: the program stopped at ... in ...set_at...
+spite.frame	tests/buffer_index_out_of_range/buffer_index_out_of_range.spite:15	BufferIndexOutOfRange	BufferIndexOutOfRange

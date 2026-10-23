@@ -1,2 +1,4 @@
 called
 spite: the program stopped at tests/crash_reports_call_once/crash_reports_call_once.spite:14 in CrashReportsCallOnce.check (next_value(start)=5, start=4)
+spite.frame	tests/crash_reports_call_once/crash_reports_call_once.spite:14	CrashReportsCallOnce	check
+spite.frame	tests/crash_reports_call_once/crash_reports_call_once.spite:5	CrashReportsCallOnce	CrashReportsCallOnce

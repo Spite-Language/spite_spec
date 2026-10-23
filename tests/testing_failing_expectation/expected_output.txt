@@ -1,2 +1,3 @@
 before
 spite: ...
+spite.frame	tests/testing_failing_expectation/testing_failing_expectation.spite:7	TestingFailingExpectation	TestingFailingExpectation

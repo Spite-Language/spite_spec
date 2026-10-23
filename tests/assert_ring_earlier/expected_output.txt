@@ -32,3 +32,4 @@ spite.assert	...	tests/assert_ring_earlier/assert_ring_earlier.spite:13	AssertRi
 spite.assert	...	tests/assert_ring_earlier/assert_ring_earlier.spite:17	AssertRingEarlier	second_check	answered=nothing
 spite.assert	...	tests/assert_ring_earlier/assert_ring_earlier.spite:13	AssertRingEarlier	first_check	answered=nothing
 spite.assert	...	tests/assert_ring_earlier/assert_ring_earlier.spite:17	AssertRingEarlier	second_check	answered=nothing
+spite.frame	tests/assert_ring_earlier/assert_ring_earlier.spite:9	AssertRingEarlier	AssertRingEarlier

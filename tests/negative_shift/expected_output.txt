@@ -1,2 +1,3 @@
 shifted 5
 spite: the program stopped at tests/negative_shift/../../../SpiteCompiler/.spite/library/common/unsigned_short.spite:134 in UnsignedShort.shifted_right (count=-2)
+spite.frame	tests/negative_shift/negative_shift.spite:9	NegativeShift	NegativeShift

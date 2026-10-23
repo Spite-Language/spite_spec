@@ -1,2 +1,3 @@
 6 héllo null llo
 spite: the program stopped at ...
+spite.frame	tests/buffer_text_runs/buffer_text_runs.spite:12	BufferTextRuns	BufferTextRuns

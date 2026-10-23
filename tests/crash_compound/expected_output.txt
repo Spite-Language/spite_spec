@@ -1,2 +1,4 @@
 checked true
-spite: the program stopped at tests/crash_compound/crash_compound.spite:22 in CrashCompound.finish
+spite: the program stopped at tests/crash_compound/crash_compound.spite:22 in CrashCompound.finish (record is null, cooked.count()=1, never_cooked_id=cake, name=cake)
+spite.frame	tests/crash_compound/crash_compound.spite:22	CrashCompound	finish
+spite.frame	tests/crash_compound/crash_compound.spite:11	CrashCompound	CrashCompound

@@ -1,1 +1,2 @@
-spite: the program stopped at ...scheduler.spite:... in ...polled_unfinished
+spite: the program stopped at ...scheduler.spite:... in ...polled_unfinished (_unfinished_polls=1000000)
+spite.frame	tests/poll_without_step_halts/poll_without_step_halts.spite:8	PollWithoutStepHalts	PollWithoutStepHalts
