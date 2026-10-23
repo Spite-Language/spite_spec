@@ -1,0 +1,5 @@
+#ffffff #ffffff
+1 0.5019608 0 rgb(255, 128, 0)
+#0000ff
+true
+spite: 'chartreuse-ish' names no colour: Color reads '#' and 3, 4, 6 or 8 hexadecimal digits, rgb(...), rgba(...), hsl(...), hsla(...) or a CSS colour name

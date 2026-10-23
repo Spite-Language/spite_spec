@@ -1,0 +1,17 @@
+var console = Console()
+var windows = DynamicLibrary(
+    "tests/foreign_float_argument/fixture.dll",
+    'windows',
+    "tests/foreign_float_argument/fixture.h",
+)
+
+func ForeignFloatArgument() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var factor: Float = 1.5
+    var from_a_float = windows.scaled(factor, 4)
+    var from_a_literal = windows.scaled(2.5, 4)
+    var wide: Double = 0.25
+    var from_a_double = windows.scaled(wide, 8)
+    var declared_sum = windows.wide_sum_as_long(-1, 3)
+    console.print(from_a_float, from_a_literal, from_a_double, declared_sum)
+}

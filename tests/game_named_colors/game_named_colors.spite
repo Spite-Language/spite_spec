@@ -1,10 +1,10 @@
 var console = Console()
-var color_text = ColorText()
+var palette = Color("black")
 
 func GameNamedColors() {
     load "../../../SpiteCompiler/.spite/library/windows"
-    var tomato = color_text.named_hex("tomato")
-    var unknown = color_text.named_hex("not a colour")
+    var tomato = palette.named_hex("tomato")
+    var unknown = palette.named_hex("not a colour")
     var unknown_is_empty = unknown == ""
     console.print(tomato, unknown_is_empty)
     show(" TOMATO ")
@@ -12,8 +12,7 @@ func GameNamedColors() {
 }
 
 func show(text: String) {
-    var color = color_text.read(text)
-    crash color
+    var color = Color(text)
     var hex = color.to_hex()
     console.print(hex)
 }

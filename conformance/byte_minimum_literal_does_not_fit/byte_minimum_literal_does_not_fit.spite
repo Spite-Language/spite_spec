@@ -1,0 +1,8 @@
+var console = Console()
+
+func ByteMinimumLiteralDoesNotFit() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var small: Byte = 7
+    var never = small.minimum(300)
+    console.print(never)
+}
