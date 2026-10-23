@@ -1,3 +1,4 @@
 .spite/
 *.exe
 .probe/
+.copies/

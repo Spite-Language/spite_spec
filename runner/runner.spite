@@ -7,6 +7,7 @@ var found_folders = List<String>()
 var failed_folders = List<String>()
 var failures_file = "runner/.spite/failed.txt"
 var parent_folder = ""
+var copies_folder = ".copies"
 
 func Runner() {
     var named = named_folders()
@@ -137,15 +138,20 @@ func run_one(folder: String) {
 func run_test(folder: String) {
     var wanted = expected_text(folder, "expected_exit_code.txt")
     assert wanted
+    var copy = copy_of(folder)
+    assert copy
     var flags = optional_text(folder, "flags.txt")
     var no_arguments = List<String>()
-    var compile = Process("{compiler} {folder} {flags} 2>&1 1>nul", no_arguments)
+    var compile = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     if compiled != 0 {
-        var errors = compile.output()
+        var output = compile.output()
+        var errors = in_the_folder(output, copy, folder)
         fail(folder, "it did not compile: {errors}")
         return
     }
+    var built = build_moved_back(copy, folder)
+    assert built
     var executable = executable_of(folder)
     var input = "<nul"
     var input_file = File("{folder}/input.txt")
@@ -164,7 +170,8 @@ func run_test(folder: String) {
     if output_file.exists() {
         var expected_output = optional_text(folder, "expected_output.txt")
         var printed = running.output()
-        var output = cleaned(printed)
+        var moved = in_the_folder(printed, copy, folder)
+        var output = cleaned(moved)
         if not matches(output, expected_output) {
             fail(folder, "the output differs\n  expected: {expected_output}\n  got:      {output}")
             return
@@ -185,21 +192,120 @@ func optional_text(folder: String, name: String): String {
 func run_conformance(folder: String) {
     var wanted = expected_text(folder, "expected_errors.txt")
     assert wanted
+    var copy = copy_of(folder)
+    assert copy
     var flags = optional_text(folder, "flags.txt")
     var no_arguments = List<String>()
-    var compile = Process("{compiler} {folder} {flags} 2>&1 1>nul", no_arguments)
+    var compile = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
-    if compiled == 0 {
+    var only_formats = only_formatting(wanted)
+    if compiled == 0 and not only_formats {
         fail(folder, "it compiled, and it must fail")
         return
     }
     var output = compile.output()
-    var errors = cleaned(output)
+    var moved = in_the_folder(output, copy, folder)
+    var errors = cleaned(moved)
+    if not wanted.starts_with("formatted ") {
+        errors = without_formatting(errors)
+    }
     if not matches(errors, wanted) {
         fail(folder, "the errors differ\n  expected: {wanted}\n  got:      {errors}")
         return
     }
+    if only_formats {
+        check_formatted_once(folder, copy, flags)
+        return
+    }
     passed = passed + 1
+}
+
+func check_formatted_once(folder: String, copy: String, flags: String) {
+    var no_arguments = List<String>()
+    var again = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
+    var compiled = again.run()
+    var output = again.output()
+    var moved = in_the_folder(output, copy, folder)
+    var printed = cleaned(moved)
+    if compiled != 0 or not printed.is_empty() {
+        fail(folder, "compiling the formatted program again did not pass silently: {printed}")
+        return
+    }
+    passed = passed + 1
+}
+
+func only_formatting(wanted: String): Boolean {
+    var lines = wanted.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if not line.starts_with("formatted ") {
+            return false
+        }
+        index = index + 1
+    }
+    return true
+}
+
+func without_formatting(errors: String): String {
+    var lines = errors.split("\n")
+    var kept = List<String>()
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if not line.starts_with("formatted ") {
+            kept.append(line)
+        }
+        index = index + 1
+    }
+    return kept.join("\n")
+}
+
+func copy_of(folder: String): String? {
+    var directory = Directory(folder)
+    var name = directory.name
+    var copy = "{copies_folder}/{name}"
+    var windows_folder = folder.replace("/", "\\")
+    var windows_copy = copy.replace("/", "\\")
+    var no_arguments = List<String>()
+    var copying = Process(
+        "robocopy {windows_folder} {windows_copy} /MIR /XD .spite /NFL /NDL /NJH /NJS /NP 2>&1",
+        no_arguments,
+    )
+    var copied = copying.run()
+    if copied >= 8 {
+        var output = copying.output()
+        fail(
+            folder,
+            "it could not be copied into {copy}, which the compiler formats instead of the checked-in files: {output}",
+        )
+        return null
+    }
+    return copy
+}
+
+func build_moved_back(copy: String, folder: String): Boolean {
+    var windows_copy = copy.replace("/", "\\")
+    var windows_folder = folder.replace("/", "\\")
+    var no_arguments = List<String>()
+    var moving = Process(
+        "robocopy {windows_copy}\\.spite\\build {windows_folder}\\.spite\\build /MIR /NFL /NDL /NJH /NJS /NP 2>&1",
+        no_arguments,
+    )
+    var moved = moving.run()
+    if moved >= 8 {
+        var output = moving.output()
+        fail(folder, "its build could not be copied back from {copy}: {output}")
+        return false
+    }
+    return true
+}
+
+func in_the_folder(output: String, copy: String, folder: String): String {
+    var windows_copy = copy.replace("/", "\\")
+    var windows_folder = folder.replace("/", "\\")
+    var forward = output.replace(copy, folder)
+    return forward.replace(windows_copy, windows_folder)
 }
 
 func expected_text(folder: String, name: String): String? {
