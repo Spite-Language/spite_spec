@@ -1,0 +1,6 @@
+largest 24
+3 200 5000000003
+passed 6
+grown 3
+counted 4
+missing 3

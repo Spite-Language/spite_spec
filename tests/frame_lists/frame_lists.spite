@@ -1,0 +1,63 @@
+var console = Console()
+
+func FrameLists() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var total: Long = 0
+    var round = 0
+    while round < 5 {
+        var weighted = largest(round)
+        total = total + weighted
+        round = round + 1
+    }
+    console.print("largest", total)
+    var bytes: List<Byte> = [7, 200, 13]
+    var big: List<Long> = [5000000000, 2, 3]
+    var byte_count = bytes.count()
+    crash bytes[1]
+    crash big[0]
+    crash big[2]
+    var sum = big[0] + big[2]
+    console.print(byte_count, bytes[1], sum)
+    var passed = [1, 2, 3]
+    var summed = sum_of(passed)
+    console.print("passed", summed)
+    var grown = [4, 5]
+    grown.append(6)
+    var grown_count = grown.count()
+    console.print("grown", grown_count)
+    var counted = [9, 8, 7, 6].count()
+    console.print("counted", counted)
+    var outside = 3
+    var guarded = [1, 2, 3]
+    if guarded[outside] {
+        console.print("present")
+    } else {
+        console.print("missing", outside)
+    }
+}
+
+func largest(round: Integer): Integer {
+    var remainders = [round % 4, round % 3, round + 1]
+    var weights = [3, 2, 1]
+    var biggest = 0
+    var index = 0
+    while index < remainders.count() {
+        crash weights[index]
+        var weighted = remainders[index] * weights[index]
+        if weighted > biggest {
+            biggest = weighted
+        }
+        index = index + 1
+    }
+    return biggest
+}
+
+func sum_of(values: List<Integer>): Integer {
+    var total = 0
+    var index = 0
+    while index < values.count() {
+        total = total + values[index]
+        index = index + 1
+    }
+    return total
+}

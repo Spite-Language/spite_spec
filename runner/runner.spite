@@ -10,6 +10,7 @@ var parent_folder = ""
 var copies_folder = ".copies"
 
 func Runner() {
+    make_the_working_folder()
     var named = named_folders()
     if named.is_empty() {
         named = every_folder()
@@ -19,6 +20,13 @@ func Runner() {
     console.print("{passed} passed, {failed} failed")
     if failed > 0 {
         program.exit(1)
+    }
+}
+
+func make_the_working_folder() {
+    var folder = Directory(".spite")
+    if not folder.exists() {
+        folder.create()
     }
 }
 
