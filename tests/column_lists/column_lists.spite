@@ -1,0 +1,29 @@
+var console = Console()
+var cells = List<Cell>()
+
+func ColumnLists() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var index = 0
+    while index < 3000 {
+        var cell = Cell(index, index % 7)
+        cells.append(cell)
+        index = index + 1
+    }
+    var position = 0
+    while position < cells.count() {
+        var cell = cells[position]
+        cell.weight = cell.weight + cell.small
+        position = position + 1
+    }
+    var total: Long = 0
+    var checked = 0
+    while checked < cells.count() {
+        var cell = cells[checked]
+        total = total + cell.weight * 3 + cell.small + cell.big
+        checked = checked + 1
+    }
+    var weights = cells.sum_weight()
+    crash cells[2999]
+    var last = cells[2999]
+    console.print("total", total, "weights", weights, "last", last.weight, last.small, last.big)
+}

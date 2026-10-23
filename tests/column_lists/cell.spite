@@ -1,0 +1,10 @@
+var weight = 0
+var small: Byte = 0
+var big: Long = 0
+
+func Cell(starting_weight: Integer, starting_small: Integer) {
+    weight = starting_weight
+    small = starting_small
+    var wide: Long = starting_weight
+    big = wide * 1000000000
+}
