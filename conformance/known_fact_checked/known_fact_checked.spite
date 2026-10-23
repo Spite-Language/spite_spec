@@ -12,6 +12,7 @@ func KnownFactChecked() {
     counts.append(3)
     var number = counts.first()
     if number {
+        console.print("a number")
         if number {
             console.print(number)
         }
@@ -29,6 +30,7 @@ func KnownFactChecked() {
     }
     var creature: Creature = Monster()
     if creature == Monster {
+        console.print("a monster")
         if creature == Monster {
             console.print(creature.health)
         }

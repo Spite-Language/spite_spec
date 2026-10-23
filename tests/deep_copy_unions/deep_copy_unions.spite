@@ -77,21 +77,25 @@ func DeepCopyUnions() {
 
 func show(cargo: Cargo, which: String) {
     switch cargo {
-        Crate: {
-            cargo.label = "{cargo.label} seen"
-            console.print(which, cargo.label)
-        }
+        Crate: mark_seen(cargo, which)
         Badge: console.print(which, "badge", cargo.points)
     }
+}
+
+func mark_seen(crate: Crate, which: String) {
+    crate.label = "{crate.label} seen"
+    console.print(which, crate.label)
+}
+
+func report_crate(crate: Crate) {
+    var weight_count = crate.weights.count()
+    console.print("cargo", crate.label, weight_count)
 }
 
 func report(shelf: Shelf) {
     var cargo = shelf.cargo
     switch cargo {
-        Crate: {
-            var weight_count = cargo.weights.count()
-            console.print("cargo", cargo.label, weight_count)
-        }
+        Crate: report_crate(cargo)
         Badge: console.print("cargo badge", cargo.label)
     }
     if shelf.spare {
