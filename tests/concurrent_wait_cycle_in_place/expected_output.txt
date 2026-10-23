@@ -1,1 +1,1 @@
-spite: the program stopped at .../internal/scheduler.spite:118 in Spite.Internal.Scheduler.every_concurrent_waits_for_another
+spite: the program stopped at .../internal/scheduler.spite:... in Spite.Internal.Scheduler.every_concurrent_waits_for_another

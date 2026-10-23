@@ -78,7 +78,7 @@ func print_report() {
             var heading = line.split(" (").first()
             crash heading
             console.print(heading)
-        } else if line.starts_with("- [") and line.contains("tests/optimization_report/") {
+        } else if line.starts_with("- [") and line.contains("optimization_report/optimization_report.spite") {
             console.print(line)
         }
         index = index + 1
