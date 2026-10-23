@@ -1,1 +1,0 @@
-conformance/magic_number/magic_number.spite:12: error: 146097 is a magic number: give it a name first, 'var <what it is> = 146097', and write the name here (in MagicNumber.total_days)

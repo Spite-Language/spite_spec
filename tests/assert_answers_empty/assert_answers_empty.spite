@@ -5,7 +5,10 @@ func AssertAnswersEmpty() {
     var some = split_words("a b")
     var nothing = split_words("")
     var table = counted("")
-    console.print(some.count(), nothing.count(), table.count())
+    var some_count = some.count()
+    var nothing_count = nothing.count()
+    var table_count = table.count()
+    console.print(some_count, nothing_count, table_count)
 }
 
 func split_words(text: String): List<String> {

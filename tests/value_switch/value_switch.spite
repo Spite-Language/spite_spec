@@ -57,11 +57,13 @@ func sign_of(number: Integer): String {
     switch number {
         -4: return "minus four"
         0: return "zero"
-        _: {
-            var doubled = number * 2
-            return "other {doubled}"
-        }
+        _: return other_of(number)
     }
+}
+
+func other_of(number: Integer): String {
+    var doubled = number * 2
+    return "other {doubled}"
 }
 
 func greeting(index: Integer): String {

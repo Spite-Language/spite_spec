@@ -4,7 +4,10 @@ func ChainComparison() {
     load "../../../SpiteCompiler/.spite/library/windows"
     var made = make("make")
     var nothing_made = make("")
-    console.print(is_make(made), is_make(nothing_made), not_make(nothing_made))
+    var first = is_make(made)
+    var second = is_make(nothing_made)
+    var third = not_make(nothing_made)
+    console.print(first, second, third)
 }
 
 func make(kind: String): Order? {

@@ -39,10 +39,8 @@ func heaviest() {
     var index = 1
     while index < 2 {
         var next = weight_at(index)
-        if next {
-            if next > best {
-                best = next
-            }
+        if next and next > best {
+            best = next
         }
         index = index + 1
     }
