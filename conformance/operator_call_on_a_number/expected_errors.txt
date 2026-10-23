@@ -1,0 +1,1 @@
+conformance/operator_call_on_a_number/operator_call_on_a_number.spite:7: error: 'less_than' is what '<' calls: write 'small < large' (in OperatorCallOnANumber.OperatorCallOnANumber)

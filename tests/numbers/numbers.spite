@@ -8,25 +8,25 @@ func Numbers(): Integer {
     holder.whole = 1000
     holder.bigger = 2000
     var total = 0
-    if holder.small.less_than(holder.large) {
+    if holder.small < holder.large {
         total = total + 1
     }
-    if holder.large.greater_than(holder.small) {
+    if holder.large > holder.small {
         total = total + 2
     }
-    if holder.small.equals(holder.small) {
+    if holder.small == holder.small {
         total = total + 4
     }
-    if holder.small.equals(holder.large) {
+    if holder.small == holder.large {
         total = total + 8
     }
-    if holder.negative.less_than(holder.positive) {
+    if holder.negative < holder.positive {
         total = total + 16
     }
-    if holder.whole.less_than(holder.bigger) {
+    if holder.whole < holder.bigger {
         total = total + 32
     }
-    if holder.whole.equals(holder.whole) {
+    if holder.whole == holder.whole {
         total = total + 64
     }
     if holder.small.to_integer() == 5 {
@@ -35,7 +35,7 @@ func Numbers(): Integer {
     if holder.small.to_byte() == 5 {
         total = total + 256
     }
-    if holder.whole.sum(holder.bigger) == 3000 {
+    if holder.whole + holder.bigger == 3000 {
         total = total + 512
     }
     if holder.small.minimum(holder.large) == 5 {
@@ -47,16 +47,16 @@ func Numbers(): Integer {
     if holder.negative.absolute() == 1 {
         total = total + 4096
     }
-    if holder.whole.subtract(holder.bigger) == -1000 {
+    if holder.whole - holder.bigger == -1000 {
         total = total + 8192
     }
-    if holder.small.multiply(holder.large) == 45 {
+    if holder.small * holder.large == 45 {
         total = total + 16384
     }
-    if holder.whole.divide(holder.bigger) == 0 {
+    if holder.whole / holder.bigger == 0 {
         total = total + 32768
     }
-    if holder.whole.remainder(holder.bigger) == 1000 {
+    if holder.whole % holder.bigger == 1000 {
         total = total + 65536
     }
     return total

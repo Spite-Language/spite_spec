@@ -1,0 +1,9 @@
+var console = Console()
+
+func OperatorCallOnANumber() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var small = 2
+    var large = 5
+    var smaller = small.less_than(large)
+    console.print(smaller)
+}

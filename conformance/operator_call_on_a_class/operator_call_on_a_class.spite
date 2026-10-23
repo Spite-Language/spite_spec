@@ -1,0 +1,9 @@
+var console = Console()
+
+func OperatorCallOnAClass() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var price = Money(3)
+    var tip = Money(2)
+    var total = price.sum(tip)
+    console.print(total.cents)
+}

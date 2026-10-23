@@ -1,0 +1,10 @@
+var console = Console()
+
+func OperatorCallOnAVector() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var stops = Vector<Stop>()
+    stops.append(Stop(4))
+    var first = stops.get_at(0)
+    crash first
+    console.print(first.minutes)
+}

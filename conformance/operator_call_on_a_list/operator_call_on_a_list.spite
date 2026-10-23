@@ -1,0 +1,8 @@
+var console = Console()
+
+func OperatorCallOnAList() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var shelf = [1, 2]
+    shelf.set_at(0, 3)
+    console.print(shelf)
+}

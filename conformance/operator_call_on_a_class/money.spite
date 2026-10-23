@@ -1,0 +1,9 @@
+var cents = 0
+
+func Money(amount: Integer) {
+    cents = amount
+}
+
+func sum(other: Money): Money {
+    return Money(cents + other.cents)
+}

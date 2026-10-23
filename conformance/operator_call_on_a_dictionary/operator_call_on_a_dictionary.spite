@@ -1,0 +1,10 @@
+var console = Console()
+
+func OperatorCallOnADictionary() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var ages = Dictionary<String, Integer>()
+    ages["ann"] = 3
+    var found = ages.get_at("ann")
+    crash found
+    console.print(found)
+}

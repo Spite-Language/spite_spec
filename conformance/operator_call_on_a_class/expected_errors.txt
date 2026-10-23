@@ -1,0 +1,1 @@
+conformance/operator_call_on_a_class/operator_call_on_a_class.spite:7: error: 'sum' is what '+' calls: write 'price + tip' (in OperatorCallOnAClass.OperatorCallOnAClass)

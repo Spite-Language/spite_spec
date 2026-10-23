@@ -1,0 +1,1 @@
+conformance/operator_call_on_a_list/operator_call_on_a_list.spite:6: error: 'set_at' is what '[] =' calls: write 'shelf[0] = 3' (in OperatorCallOnAList.OperatorCallOnAList)

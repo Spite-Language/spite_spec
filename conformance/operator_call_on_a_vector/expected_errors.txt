@@ -1,0 +1,1 @@
+conformance/operator_call_on_a_vector/operator_call_on_a_vector.spite:7: error: 'get_at' is what '[]' calls: write 'stops[0]' (in OperatorCallOnAVector.OperatorCallOnAVector)

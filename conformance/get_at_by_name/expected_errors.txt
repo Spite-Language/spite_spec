@@ -1,1 +1,1 @@
-conformance/get_at_by_name/get_at_by_name.spite:11: error: this value may be null (it is a String?)... (in GetAtByName.show)
+conformance/get_at_by_name/get_at_by_name.spite:10: error: 'get_at' is what '[]' calls: write 'names[0]' (in GetAtByName.show)

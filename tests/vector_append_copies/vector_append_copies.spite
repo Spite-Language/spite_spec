@@ -9,7 +9,7 @@ func VectorAppendCopies() {
     point.name = "changed"
     crash points[0]
     console.print(points[0].across, points[0].name, point.across, point.name)
-    points.set_at(0, point)
+    points[0] = point
     point.across = 9
     crash points[0]
     console.print(points[0].across, points[0].name, point.across)

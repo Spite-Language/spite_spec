@@ -1,0 +1,5 @@
+var minutes = 0
+
+func Stop(waited: Integer) {
+    minutes = waited
+}
