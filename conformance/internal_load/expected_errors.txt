@@ -1,1 +1,0 @@
-conformance/internal_load/internal_load.spite:5: error: the folder 'conformance/internal_load/../../../SpiteCompiler/internal' holds the compiler's own classes, which no program loads: the compiler reads them on its own when a program needs one

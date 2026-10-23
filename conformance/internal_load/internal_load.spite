@@ -1,7 +1,0 @@
-var console = Console()
-
-func InternalLoad() {
-    load "../../../SpiteCompiler/.spite/library/windows"
-    load "../../../SpiteCompiler/internal"
-    console.print("no")
-}
