@@ -1,0 +1,56 @@
+var console = Console()
+
+func BranchlessIfs() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var values = List<Integer>()
+    var index = 0
+    while index < 50 {
+        var value = index * 37 % 101
+        values.append(value)
+        index = index + 1
+    }
+    var near_the_top: Long = 9223372036854775000
+    var kept = add_the_large(values, near_the_top)
+    var biggest = largest(values)
+    var count = count_small(values)
+    console.print("kept", kept, "biggest", biggest, "small", count)
+}
+
+func add_the_large(values: List<Integer>, start: Long): Long {
+    var total = start
+    var position = 0
+    while position < values.count() {
+        var value = values[position]
+        if value > 1000 {
+            total = total + value
+        }
+        position = position + 1
+    }
+    return total
+}
+
+func largest(values: List<Integer>): Integer {
+    var biggest = 0
+    var position = 0
+    while position < values.count() {
+        var value = values[position]
+        if value > biggest {
+            biggest = value
+        }
+        position = position + 1
+    }
+    return biggest
+}
+
+func count_small(values: List<Integer>): Integer {
+    var count = 0
+    var position = 0
+    while position < values.count() {
+        var value = values[position]
+        if value < 20 {
+            count = count + 1
+        }
+        position = position + 1
+    }
+    return count
+}
