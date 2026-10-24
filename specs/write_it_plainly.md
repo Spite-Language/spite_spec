@@ -1,0 +1,35 @@
+# Write it plainly: the compiler decides how it runs
+
+The specification of [Write it plainly: the compiler decides how it runs](https://github.com/Spite-Language/spite_documentation/blob/master/write_it_plainly.md): every rule of this part of the language, with
+its edge cases and its exact error texts. The page teaches; this one decides, and where they disagree, the page
+is the bug.
+
+- A program states what it computes; how it runs (threads, waiting, layout, alignment, placement, checks) is the
+  compiler's choice, made while compiling from what it proves.
+- An optimisation never changes what a program prints, computes or crashes on. When its proof does not hold, the
+  compiler generates the plain form and `--optimization-report` names the place and what stopped the proof.
+- Every optimisation is documented in [Optimisations](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md) together with the proof that enables it,
+  and every proof in [Proofs](https://github.com/Spite-Language/spite_documentation/blob/master/proofs.md).
+- Nothing runs beside a program to optimise it: no scheduler, collector, interpreter or registry ships with it. A
+  feature a program does not use is not in it. The only run-time choice an optimisation may leave is a branch
+  between forms compiled in advance, on a fact only the run can know, and its page says so.
+- A class is a unit of meaning, not of storage. The compiler chooses a representation for each use of a value
+  (each list, each loop, each point of the program), not one per class: it may split a class into several, merge
+  an object into its owner, keep one list in different shapes in different places with a conversion between
+  them, or restructure a procedural program into passes over columns, whenever the result is the same.
+- A collection's generic types state what it holds and how it is looked up, not how it is stored: keys may be
+  hashed, numbered, sorted or folded away, whatever is fastest, as long as every operation answers the same.
+- A profiling build records how a program is used (counts, branch frequencies, sizes, keys seen) and writes it to
+  the program's profile file. A later build may read that file to choose among forms the compiler has proven
+  equivalent. A build's result never depends on the profile: only its speed does, so a stale or missing profile is
+  never wrong. The profiling build is the only one that records anything; no other build carries the recording.
+- A program does not write by hand what the standard library already does. Code that reimplements a library
+  function the compiler recognises (timing a loop with the clock where `Benchmark` exists, adding to a library
+  class what it already has) is a compile error that names the library form to write. The recognised patterns
+  are few and each one is added as it is seen; a similar piece of code that is not one of them is never refused.
+- A plain program written with lists, loops and classes must be able to reach the speed of the same program
+  written with `Concurrent`, `Parallel` and `Memory` by hand. Where it does not, the compiler is wrong.
+
+---
+
+Next: [Classes and files](classes_and_files.md).

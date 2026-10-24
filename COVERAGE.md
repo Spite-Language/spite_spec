@@ -1,7 +1,7 @@
 # Coverage
 
 Under D799 SpiteSpec is the specification: a program tests every rule and corner of the language, a compiler that
-passes them all is complete, and a Markdown page of `SpiteLanguage/specs` is retired once every rule it states has
+passes them all is complete, and a Markdown page of `specs/` is retired once every rule it states has
 its program. This page is the audit: for each spec page, every rule, edge case and exact error text it states, the
 program that covers it, and whether it is covered.
 
@@ -11,10 +11,10 @@ A status is one of:
 - **added**: a program written for this audit covers it;
 - **(compiler fails: ...)**: the program follows the spec and the master compiler gets it wrong, for the cause given;
 - **missing**: no program yet;
-- **superseded by Dnnn**: a later decision in `MortarosSpite/DECISIONS.md` replaces the rule, so no program tests it;
+- **superseded by Dnnn**: a later decision in `DECISIONS.md` in the [mortaros_spite](https://github.com/Spite-Language/mortaros_spite/blob/master/DECISIONS.md) repository replaces the rule, so no program tests it;
 - **not a program rule**: nothing a program can observe.
 
-Decision numbers are those of `MortarosSpite/DECISIONS.md`.
+Decision numbers are those of `DECISIONS.md` in the [mortaros_spite](https://github.com/Spite-Language/mortaros_spite/blob/master/DECISIONS.md) repository.
 
 ## Summary
 

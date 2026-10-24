@@ -3,7 +3,7 @@
 The tests of the new Spite compiler, kept out of the compiler's own repository so that they ship as a
 repository of their own, with the tests up to date, instead of mixed in with the compiler.
 
-The compiler is in `.`. This folder holds the programs it is run on.
+The compiler is [spite_compiler](https://github.com/Spite-Language/spite_compiler). This repository holds the programs it is run on, and [`specs/`](specs/README.md), the rules those programs check, written out as Markdown.
 
 ## The shape
 
