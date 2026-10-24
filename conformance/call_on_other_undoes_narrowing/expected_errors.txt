@@ -1,0 +1,1 @@
+conformance/call_on_other_undoes_narrowing/call_on_other_undoes_narrowing.spite:13: error: 'keeper.target' was proven before line 12, where 'forget(...)' may assign 'target' again, so this read would use what the call left there, unproven: prove 'keeper.target' again after that line (in CallOnOtherUndoesNarrowing.run)

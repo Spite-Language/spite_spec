@@ -1,0 +1,14 @@
+var console = Console()
+var keeper = Keeper()
+
+func CallOnOtherUndoesNarrowing() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    keeper.target = Monster()
+    assert keeper.target
+    keeper.forget()
+    console.print(keeper.target.name)
+}

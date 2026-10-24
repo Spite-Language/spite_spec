@@ -1,0 +1,19 @@
+var console = Console()
+
+func LeavingOrNarrows() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var armed = Holder()
+    armed.weapon = Weapon()
+    var unarmed = Holder()
+    var first = name_of(armed)
+    var second = name_of(unarmed)
+    var third = name_of(null)
+    console.print(first, second, third)
+}
+
+func name_of(holder: Holder?): String {
+    if not holder or not holder.weapon {
+        return "none"
+    }
+    return holder.weapon.name
+}

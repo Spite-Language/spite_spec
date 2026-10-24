@@ -1,0 +1,1 @@
+conformance/call_in_loop_undoes_narrowing/call_in_loop_undoes_narrowing.spite:15: error: 'forget(...)' inside this loop may change 'target', which undoes what was proven about 'keeper.target' before the loop, and the next pass would read it unproven: prove it inside the loop instead (in CallInLoopUndoesNarrowing.run)

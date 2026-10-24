@@ -1,0 +1,14 @@
+var console = Console()
+var target = Monster()
+
+func AssignedStartUndoesNarrowing() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    target.weapon = Weapon()
+    assert target.weapon
+    target = Monster()
+    console.print(target.weapon.name)
+}

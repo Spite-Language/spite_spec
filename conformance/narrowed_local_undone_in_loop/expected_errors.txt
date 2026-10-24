@@ -1,0 +1,1 @@
+conformance/narrowed_local_undone_in_loop/narrowed_local_undone_in_loop.spite:14: error: assigning to 'held' inside this loop undoes a narrowing made before the loop, and the next pass would read it unproven: narrow it inside the loop instead (in NarrowedLocalUndoneInLoop.run)

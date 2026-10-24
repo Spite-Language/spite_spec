@@ -1,0 +1,19 @@
+var console = Console()
+var keeper = Keeper()
+
+func NarrowingKeptAcrossHarmlessCall() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    keeper.target = Monster()
+    assert keeper.target
+    keeper.count_up()
+    var passes = 0
+    while passes < 2 {
+        keeper.count_up()
+        console.print(keeper.target.name, keeper.seen)
+        passes = passes + 1
+    }
+}

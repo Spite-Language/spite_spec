@@ -1,0 +1,5 @@
+generic $system_type
+
+func counted(): Integer {
+    return $system_type.argument_count("<phase>_each")
+}
