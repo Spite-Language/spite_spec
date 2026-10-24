@@ -1,0 +1,15 @@
+var console = Console()
+
+func IndexStoreUndoesNarrowing() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    var labels = List<String?>()
+    labels.append("first")
+    var at = 0
+    assert labels[at]
+    labels[0] = null
+    console.print(labels[at].upper_case())
+}

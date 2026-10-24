@@ -1,0 +1,20 @@
+var console = Console()
+
+func LoopNarrowsItsLocalAgain() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var codes = List<Integer>()
+    codes.append(104)
+    codes.append(105)
+    codes.append(0)
+    var index = 0
+    var code = codes[index]
+    crash code
+    var text = String()
+    while code != 0 {
+        text.append_code(code)
+        index = index + 1
+        code = codes[index]
+        crash code
+    }
+    console.print(text)
+}

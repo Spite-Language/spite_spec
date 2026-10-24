@@ -1,0 +1,1 @@
+conformance/index_store_undoes_narrowing/index_store_undoes_narrowing.spite:14: error: 'labels[at]' may be missing, since every '[ ]' answers a 'T?' (this one is a String?), so 'upper_case' cannot be called on it yet: ...(in IndexStoreUndoesNarrowing.run)

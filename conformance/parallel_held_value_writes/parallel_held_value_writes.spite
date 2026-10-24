@@ -1,0 +1,13 @@
+var console = Console()
+var kept = Counter()
+
+func ParallelHeldValueWrites() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    var from_attribute = Parallel(kept.bump)
+    var done: Boolean = from_attribute
+    console.print(done, kept.count)
+}

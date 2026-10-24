@@ -1,0 +1,5 @@
+var target: Monster? = null
+
+func forget() {
+    target = null
+}

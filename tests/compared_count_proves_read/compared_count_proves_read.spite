@@ -1,0 +1,16 @@
+var console = Console()
+
+func ComparedCountProvesRead() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["ant", "bee", "cat"]
+    var at = 2
+    if names.count() > at {
+        var picked: String = names[at]
+        console.print(picked)
+    }
+    var code = 33
+    if code - 32 < names.count() {
+        var glyph: String = names[code - 32]
+        console.print(glyph)
+    }
+}

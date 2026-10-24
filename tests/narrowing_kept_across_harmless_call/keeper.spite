@@ -1,0 +1,6 @@
+var target: Monster? = null
+var seen = 0
+
+func count_up() {
+    seen = seen + 1
+}

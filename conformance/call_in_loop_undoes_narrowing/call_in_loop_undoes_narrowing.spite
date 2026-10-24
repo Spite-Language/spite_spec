@@ -1,0 +1,18 @@
+var console = Console()
+var keeper = Keeper()
+
+func CallInLoopUndoesNarrowing() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    keeper.target = Monster()
+    assert keeper.target
+    var passes = 0
+    while passes < 2 {
+        console.print(keeper.target.name)
+        keeper.forget()
+        passes = passes + 1
+    }
+}

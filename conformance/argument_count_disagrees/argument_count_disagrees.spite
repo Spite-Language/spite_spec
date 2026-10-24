@@ -1,0 +1,8 @@
+var console = Console()
+
+func ArgumentCountDisagrees() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var runner = Runner<Painter>()
+    var counted = runner.counted()
+    console.print(counted)
+}

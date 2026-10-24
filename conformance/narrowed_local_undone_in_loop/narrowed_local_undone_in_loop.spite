@@ -1,0 +1,17 @@
+var console = Console()
+
+func NarrowedLocalUndoneInLoop() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    var held: Box? = Box()
+    assert held
+    var passes = 0
+    while passes < 2 {
+        console.print(held.label)
+        held = held.inner
+        passes = passes + 1
+    }
+}
