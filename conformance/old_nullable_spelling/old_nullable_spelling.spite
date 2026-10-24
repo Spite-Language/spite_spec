@@ -1,0 +1,5 @@
+var target: Nullable<Integer> = null
+
+func OldNullableSpelling() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+}

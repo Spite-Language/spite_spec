@@ -1,0 +1,16 @@
+var console = Console()
+
+func TerminalIfFixed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    announce()
+}
+
+func try_get_name(): String? {
+    return "Aria"
+}
+
+func announce() {
+    var name = try_get_name()
+    assert name
+    console.print(name)
+}

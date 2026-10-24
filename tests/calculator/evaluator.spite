@@ -1,0 +1,68 @@
+var console = Console()
+var variables = Dictionary<String, Float>()
+var current_tree: Expression? = null
+
+func assign(name: String, value: Float) {
+    variables[name] = value
+}
+
+func evaluate_tree(tree: Expression): Float {
+    current_tree = tree
+    var stored_tree = current_tree
+    crash stored_tree
+    return evaluate(stored_tree)
+}
+
+func evaluate(expression: Expression): Float {
+    switch expression {
+        NumberExpression: return expression.value
+        VariableExpression: return variable_value(expression.name)
+        BinaryExpression: return binary_value(expression)
+    }
+}
+
+func variable_value(name: String): Float {
+    var value = variables[name]
+    if value {
+        return value
+    }
+    return 0.0
+}
+
+func binary_value(expression: BinaryExpression): Float {
+    var left_value = 0.0
+    if expression.left {
+        left_value = evaluate(expression.left)
+    }
+    var right_value = 0.0
+    if expression.right {
+        right_value = evaluate(expression.right)
+    }
+    switch expression.operator {
+        'plus': return left_value + right_value
+        'minus': return left_value - right_value
+        'star': return left_value * right_value
+        _: return left_value / right_value
+    }
+}
+
+func process_line(line: String) {
+    assert not line.is_empty()
+    if line.contains("=") {
+        var parts = line.split("=")
+        crash parts.count() > 1
+        var tokens = Lexer(parts[1]).tokens
+        var parser = Parser(tokens)
+        var tree = parser.parse()
+        var value = evaluate_tree(tree)
+        var trimmed_part = parts[0].trim()
+        console.print(trimmed_part, "=", value)
+        assign(trimmed_part, value)
+        return
+    }
+    var tokens = Lexer(line).tokens
+    var parser = Parser(tokens)
+    var tree = parser.parse()
+    var value = evaluate_tree(tree)
+    console.print("=>", value)
+}

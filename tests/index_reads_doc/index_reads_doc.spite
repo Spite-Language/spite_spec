@@ -1,0 +1,19 @@
+var console = Console()
+
+func IndexReadsDoc() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var names = ["ada", "bo", "cy"]
+    crash names.count() == 3
+    var first = names[0].upper_case()
+    console.print(first, names[2])
+    var index = 0
+    while index < names.count() {
+        var name_length = names[index].length()
+        console.print(names[index], name_length)
+        index = index + 1
+    }
+    var ages = Dictionary<String, Integer>()
+    ages["ada"] = 36
+    crash ages["ada"]
+    console.print("ada is", ages["ada"])
+}

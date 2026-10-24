@@ -1,0 +1,14 @@
+var console = Console()
+
+func TeamRoster() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var members = List<Member>()
+    var first_member = Member()
+    members.append(first_member)
+    var second_member = Member()
+    members.append(second_member)
+    var members_count = members.count()
+    console.print("count", members_count)
+    crash members.count() == 2
+    console.print("first name", members[0].name, "level", members[0].level)
+}

@@ -1,0 +1,28 @@
+var console = Console()
+var rows = [10, 20, 30]
+
+func DefaultAnswerFixed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var found = row_of(2)
+    crash found
+    var missing = row_or_minus_one(7)
+    var second = row_or_halt(1)
+    console.print(found, missing, second)
+}
+
+func row_of(entity: Integer): Integer? {
+    assert entity < rows.count()
+    return rows[entity]
+}
+
+func row_or_minus_one(entity: Integer): Integer {
+    if entity >= rows.count() {
+        return -1
+    }
+    return rows[entity]
+}
+
+func row_or_halt(entity: Integer): Integer {
+    crash entity < rows.count()
+    return rows[entity]
+}

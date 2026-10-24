@@ -1,0 +1,26 @@
+var console = Console()
+
+func NumbersAreClasses() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var count = 21
+    var doubled = count.doubled()
+    var count_text = count.to_string()
+    console.print(doubled, count_text)
+    var third: Double = 1.0 / 3.0
+    var third_text = third.to_string()
+    console.print(third_text, third)
+    var small: Byte = 255
+    var wide = UnsignedLong.largest
+    console.print("{small} {wide} {true}")
+    var parsed = "42".to_unsigned_integer()
+    var tiny = "-7".to_tiny()
+    crash parsed and tiny
+    console.print(parsed, tiny)
+    var registry = List<Node>()
+    var first = Node("first")
+    first.append_to(registry)
+    var second = Node("second")
+    second.append_to(registry)
+    var labels = registry.map_labels().join(", ")
+    console.print(labels)
+}

@@ -1,0 +1,9 @@
+var _celsius = 0.0
+
+func Temperature(starting_celsius: Float) {
+    _celsius = starting_celsius
+}
+
+func get_fahrenheit(): Float {
+    return _celsius * 9.0 / 5.0 + 32.0
+}

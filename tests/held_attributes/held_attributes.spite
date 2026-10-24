@@ -1,0 +1,10 @@
+var console = Console()
+
+func HeldAttributes() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var invoice = Invoice()
+    invoice.add(120)
+    invoice.add(80)
+    var due = invoice.due()
+    console.print("due", due)
+}

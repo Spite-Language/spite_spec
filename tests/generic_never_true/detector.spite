@@ -1,0 +1,8 @@
+generic $item_type
+
+func is_health(item: $item_type): Boolean {
+    if item == Health {
+        return true
+    }
+    return false
+}

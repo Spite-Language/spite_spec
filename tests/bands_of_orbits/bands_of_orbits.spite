@@ -1,0 +1,15 @@
+var console = Console()
+
+func BandsOfOrbits() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var orbits = List<Orbit>()
+    var index = 0
+    while index < 3000 {
+        var orbit = Orbit(index)
+        orbits.append(orbit)
+        index = index + 1
+    }
+    orbits.each_advance()
+    var turns = orbits.sum_turns()
+    console.print("the orbits turned", turns, "times")
+}

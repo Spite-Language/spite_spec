@@ -1,0 +1,18 @@
+var left: TreeNode? = null
+var right: TreeNode? = null
+
+func Branch(left_node: TreeNode, right_node: TreeNode) {
+    left = left_node
+    right = right_node
+}
+
+func total(): Integer {
+    var result = 0
+    if left {
+        result = result + left.total()
+    }
+    if right {
+        result = result + right.total()
+    }
+    return result
+}

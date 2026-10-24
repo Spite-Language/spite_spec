@@ -1,0 +1,47 @@
+var console = Console()
+
+func Party() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var hero = Person(1, 'knight')
+    bump_age(hero)
+    console.print("hero age", hero.age)
+    console.print("hero job", hero.job)
+    var members = List<Person>()
+    members.append(hero)
+    var mage = Person(2, 'mage')
+    members.append(mage)
+    var archer = Person(3, 'archer')
+    members.append(archer)
+    var members_count = members.count()
+    console.print("member count", members_count)
+    var index = 0
+    while index < members.count() {
+        var member = members[index]
+        console.print("member age", member.age, "job", member.job)
+        index = index + 1
+    }
+    console.print("an eleventh member", members_count > 10)
+    var scores = [10, 20, 30]
+    crash scores.count() == 3
+    var scores_count = scores.count()
+    console.print("score count", scores_count)
+    console.print("second score", scores[1])
+    var nearby = find_monster(false)
+    if nearby {
+        console.print("found monster", nearby.health)
+    }
+    var far_away = find_monster(true)
+    if far_away {
+        console.print("should not print", far_away.health)
+    }
+    console.print("done")
+}
+
+func bump_age(person: Person) {
+    person.age = person.age + 1
+}
+
+func find_monster(missing: Boolean): Monster? {
+    assert not missing
+    return Monster(42)
+}

@@ -1,0 +1,5 @@
+ADA cy
+ada 3
+bo 2
+cy 2
+ada is 36

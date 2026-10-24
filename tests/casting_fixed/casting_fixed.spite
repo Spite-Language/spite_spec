@@ -1,0 +1,10 @@
+var console = Console()
+
+func CastingFixed() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var progress: Integer = 0
+    console.print("mathematically true", -0.5 < progress)
+    var price: Float = 3.0
+    var quantity: Integer = 2
+    console.print("total", price * quantity)
+}

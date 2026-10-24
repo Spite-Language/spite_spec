@@ -1,0 +1,45 @@
+var x_component = 0.0
+var y_component = 0.0
+
+func Displacement(new_x: Float, new_y: Float) {
+    x_component = new_x
+    y_component = new_y
+}
+
+func sum(other: Displacement): Displacement {
+    return Displacement(x_component + other.x_component, y_component + other.y_component)
+}
+
+func subtract(other: Displacement): Displacement {
+    return Displacement(x_component - other.x_component, y_component - other.y_component)
+}
+
+func multiply(factor: Float): Displacement {
+    return Displacement(x_component * factor, y_component * factor)
+}
+
+func equals(other: Displacement): Boolean {
+    return x_component == other.x_component and y_component == other.y_component
+}
+
+func get_at(index: Integer): Float? {
+    if index == 0 {
+        return x_component
+    }
+    if index == 1 {
+        return y_component
+    }
+    return null
+}
+
+func set_at(index: Integer, value: Float) {
+    if index == 0 {
+        x_component = value
+    } else {
+        y_component = value
+    }
+}
+
+func length_squared(): Float {
+    return x_component * x_component + y_component * y_component
+}

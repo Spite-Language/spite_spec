@@ -1,0 +1,15 @@
+var console = Console()
+
+func GameGridVectors() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var step = Vector2(5, 1)
+    var diagonal = Vector2(1, 1)
+    var direction = step.normalized()
+    var step_length = step.length()
+    var diagonal_length = diagonal.length()
+    var diagonal_squared = diagonal.length_squared()
+    console.print(direction, step_length, diagonal_length, diagonal_squared)
+    var precise = Vector3<Double>(1.0, 2.0, 2.0)
+    var unit = precise.normalized()
+    console.print(unit)
+}

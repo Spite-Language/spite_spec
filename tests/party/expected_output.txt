@@ -1,0 +1,11 @@
+hero age 2
+hero job knight
+member count 3
+member age 2 job knight
+member age 2 job mage
+member age 3 job archer
+an eleventh member false
+score count 3
+second score 20
+found monster 42
+done

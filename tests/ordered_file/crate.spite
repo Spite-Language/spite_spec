@@ -1,0 +1,5 @@
+var count = 0
+
+func Crate(new_count: Integer) {
+    count = new_count
+}

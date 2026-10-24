@@ -1,0 +1,19 @@
+generic $kind_type
+
+func name(): String {
+    if $kind_type == String {
+        return "text"
+    } else if $kind_type == Integer {
+        return "a whole number"
+    } else if $kind_type == Null {
+        var inner = Kind<$kind_type.value_type>()
+        var inner_name = inner.name()
+        return "{inner_name}, or nothing"
+    } else if $kind_type == List {
+        var element = Kind<$kind_type.element_type>()
+        var element_name = element.name()
+        return "a list of {element_name}"
+    } else {
+        return "something else"
+    }
+}

@@ -1,0 +1,10 @@
+var greeter = Greeter()
+var name = ""
+
+func Room(new_name: String) {
+    name = new_name
+}
+
+func enter() {
+    greeter.greet(name)
+}

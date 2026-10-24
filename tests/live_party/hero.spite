@@ -1,0 +1,10 @@
+var name = ""
+var level = 1
+
+func Hero(starting_name: String) {
+    name = starting_name
+}
+
+func describe(): String {
+    return "{name} at level {level}"
+}

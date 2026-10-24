@@ -1,0 +1,16 @@
+var console = Console()
+
+func JsonValues() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var scores = Dictionary<String, Integer>()
+    scores["ada"] = 3
+    scores["bo"] = 5
+    var writer = JsonWriter<Dictionary<String, Integer>>()
+    var text = writer.write(scores)
+    console.print(text)
+    var numbers = JsonReader<List<Double>>()
+    var read = numbers.read("[1.5, -2, 3e2]")
+    crash read
+    var joined = read.join(" ")
+    console.print(joined)
+}

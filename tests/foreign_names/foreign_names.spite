@@ -1,0 +1,9 @@
+var console = Console()
+var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
+
+func ForeignNames() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var tick = kernel.GetTickCount64()
+    var running = kernel.GetCurrentProcessId()
+    console.print("asked", tick > 0, running > 0)
+}

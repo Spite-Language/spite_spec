@@ -1,0 +1,5 @@
+var points = 3
+
+func total(): Integer {
+    return points
+}

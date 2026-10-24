@@ -1,0 +1,25 @@
+var console = Console()
+
+func ProvenSum() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var prices = List<Integer>()
+    var index = 0
+    while index < 1000 {
+        prices.append(index % 250 * 4)
+        index = index + 1
+    }
+    var total: Long = 0
+    var at = 0
+    while at < prices.count() {
+        total = total + prices[at]
+        at = at + 1
+    }
+    var hours = 0
+    var week = 0
+    while week < 52 {
+        var shift = week.clamp(0, 6) + 8
+        hours = hours + shift * 5
+        week = week + 1
+    }
+    console.print(total, hours)
+}

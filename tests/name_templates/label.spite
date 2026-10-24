@@ -1,0 +1,6 @@
+var text = "fragile"
+var copies = 2
+
+func urgent(): Boolean {
+    return copies > 1
+}

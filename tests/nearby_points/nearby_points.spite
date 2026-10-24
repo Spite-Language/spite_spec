@@ -1,0 +1,24 @@
+var console = Console()
+var points = List<Point>()
+var notes = List<Note>()
+
+func NearbyPoints() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var index = 0
+    while index < 1000 {
+        var point = Point(index, index * 2)
+        points.append(point)
+        var note = Note("made")
+        notes.append(note)
+        index = index + 1
+    }
+    var total = 0
+    var position = 0
+    while position < points.count() {
+        var point = points[position]
+        total = total + point.across + point.down
+        position = position + 1
+    }
+    var noted = notes.count()
+    console.print("total", total, "notes", noted)
+}

@@ -1,0 +1,7 @@
+var value = 0
+var next: Link? = null
+
+func Link(new_value: Integer, new_next: Link?) {
+    value = new_value
+    next = new_next
+}

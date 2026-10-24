@@ -1,0 +1,12 @@
+var console = Console()
+
+func GenericNeverTrue() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var labels = Detector<Label>()
+    var healths = Detector<Health>()
+    var label = Label()
+    var label_answer = labels.is_health(label)
+    var health = Health()
+    var health_answer = healths.is_health(health)
+    console.print(label_answer, health_answer)
+}

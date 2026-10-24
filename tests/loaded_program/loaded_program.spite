@@ -1,0 +1,9 @@
+var console = Console()
+var build = Build()
+
+func LoadedProgram() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var named_folder = build.program.ends_with("loaded_program")
+    console.print("loaded from", named_folder)
+    console.print("for this machine", build.target_operating_system == build.operating_system)
+}

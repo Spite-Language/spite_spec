@@ -1,0 +1,11 @@
+var console = Console()
+var build = Build()
+
+func BuildFolding() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    if build.optimized {
+        console.print("an optimized build")
+    } else {
+        console.print("an ordinary build")
+    }
+}

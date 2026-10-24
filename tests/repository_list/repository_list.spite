@@ -1,0 +1,46 @@
+var console = Console()
+
+func RepositoryList() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var repositories = List<Repository>()
+    var engine = Repository("engine", 10, true)
+    repositories.append(engine)
+    var cookie_clicker = Repository("cookie_clicker", 3, false)
+    repositories.append(cookie_clicker)
+    var compiler = Repository("compiler", 20, true)
+    repositories.append(compiler)
+    crash repositories[0]
+    var first = repositories[0]
+    first.stars = 15
+    var first_stars = first.stars
+    console.print("first stars", first_stars)
+    var sum_stars = repositories.filter_active().sum_stars()
+    console.print("active stars", sum_stars)
+    var found = repositories.find_by_name("compiler")
+    if found {
+        console.print("found", found.name, found.stars)
+    }
+    var sorted = repositories.sort_by_stars()
+    var index = 0
+    while index < sorted.count() {
+        var repository = sorted[index]
+        console.print(repository.name, repository.stars)
+        index = index + 1
+    }
+    var attributes = first.attributes
+    var attribute_index = 0
+    while attribute_index < attributes.count() {
+        var attribute = attributes[attribute_index]
+        var value_text = text_of(attribute)
+        console.print(attribute.name, attribute.class, value_text)
+        attribute_index = attribute_index + 1
+    }
+    console.print("done")
+}
+
+func text_of(attribute: Spite.Attribute): String {
+    if not attribute.value {
+        return ""
+    }
+    return attribute.value.to_string()
+}

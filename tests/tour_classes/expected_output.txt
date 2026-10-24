@@ -1,0 +1,3 @@
+member 22 knight
+member 19 mage
+total age 41

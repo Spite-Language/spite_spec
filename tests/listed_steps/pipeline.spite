@@ -1,0 +1,29 @@
+enum Step {
+    'discount'
+    'tax'
+    'rounding'
+}
+
+var steps = List<Step>()
+
+func add(step: Step) {
+    steps.append(step)
+}
+
+func price(amount: Integer): Integer {
+    var total = amount
+    var index = 0
+    while index < steps.count() {
+        if steps[index] == 'discount' {
+            total = total - total / 10
+        }
+        if steps[index] == 'tax' {
+            total = total + total / 5
+        }
+        if steps[index] == 'rounding' {
+            total = total / 100 * 100
+        }
+        index = index + 1
+    }
+    return total
+}

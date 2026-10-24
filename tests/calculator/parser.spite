@@ -1,0 +1,87 @@
+var tokens = List<Token>()
+var position = 0
+
+func Parser(starting_tokens: List<Token>) {
+    tokens = starting_tokens
+    position = 0
+}
+
+func current(): Token {
+    if position < tokens.count() {
+        return tokens[position]
+    }
+    return Token('end', "")
+}
+
+func is_kind(expected_kind: TokenKind): Boolean {
+    return current().kind == expected_kind
+}
+
+func advance() {
+    position = position + 1
+}
+
+func parse(): Expression {
+    return parse_expression()
+}
+
+func parse_expression(): Expression {
+    var parsed_term = parse_term()
+    return parse_expression_rest(parsed_term)
+}
+
+func parse_expression_rest(left: Expression): Expression {
+    if is_kind('plus') or is_kind('minus') {
+        var operator_kind = current().kind
+        advance()
+        var parsed_term = parse_term()
+        var binary = BinaryExpression(operator_kind, left, parsed_term)
+        return parse_expression_rest(binary)
+    }
+    return left
+}
+
+func parse_term(): Expression {
+    var parsed_factor = parse_factor()
+    return parse_term_rest(parsed_factor)
+}
+
+func parse_term_rest(left: Expression): Expression {
+    if is_kind('star') or is_kind('slash') {
+        var operator_kind = current().kind
+        advance()
+        var parsed_factor = parse_factor()
+        var binary = BinaryExpression(operator_kind, left, parsed_factor)
+        return parse_term_rest(binary)
+    }
+    return left
+}
+
+func parse_factor(): Expression {
+    if is_kind('minus') {
+        advance()
+        var parsed_factor = parse_factor()
+        var zero = NumberExpression(0.0)
+        return BinaryExpression('minus', zero, parsed_factor)
+    }
+    if is_kind('left_paren') {
+        advance()
+        var inner = parse_expression()
+        advance()
+        return inner
+    }
+    if is_kind('number') {
+        var value = current().text.to_float()
+        crash value
+        advance()
+        return NumberExpression(value)
+    }
+    var consumed_name = consume_name()
+    return VariableExpression(consumed_name)
+}
+
+func consume_name(): String {
+    var text = current().text.trim()
+    advance()
+    return text
+}

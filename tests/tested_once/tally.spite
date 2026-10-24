@@ -1,0 +1,14 @@
+singleton
+
+var total = 0
+var calls = 0
+
+func add(amount: Integer): Integer {
+    total = total + amount
+    calls = calls + 1
+    return amount + 1
+}
+
+func sum(): Integer {
+    return total
+}

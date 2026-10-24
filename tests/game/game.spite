@@ -1,0 +1,20 @@
+var console = Console()
+
+func Game() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    load "package"
+    load "mod"
+    var renderer = Engine.Renderer.Renderer()
+    var render = renderer.render()
+    console.print(render)
+    var render_log = Engine.Renderer.RenderLog()
+    var rendered_and_log = render_log.render_and_log()
+    console.print(rendered_and_log)
+    var monster = Monster()
+    var description = monster.describe()
+    console.print(description)
+    var roar = monster.roar()
+    console.print(roar)
+    var taunt = monster.taunt()
+    console.print(taunt)
+}

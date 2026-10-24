@@ -1,0 +1,35 @@
+union Creature {
+    Cat
+    Dog
+    Fish
+}
+
+var console = Console()
+
+func SwitchCases() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var dog = Dog()
+    describe(dog)
+    var fish = Fish()
+    describe(fish)
+    var cat = Cat()
+    describe(cat)
+}
+
+func describe(creature: Creature) {
+    switch creature {
+        Dog: show_trick(creature)
+        Fish: console.print("a fish with", creature.fins, "fins")
+        _: show_sound(creature)
+    }
+}
+
+func show_trick(dog: Dog) {
+    var trick = dog.fetch()
+    console.print("a dog that", trick)
+}
+
+func show_sound(cat: Cat) {
+    var sound = cat.sound()
+    console.print("something that says", sound)
+}

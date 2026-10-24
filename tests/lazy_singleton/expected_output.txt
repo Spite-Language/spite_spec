@@ -1,0 +1,6 @@
+starting
+greeter made
+hello hall
+hello kitchen
+done
+greeter dropped after 2 greetings

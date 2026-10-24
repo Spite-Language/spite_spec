@@ -1,0 +1,10 @@
+var console = Console()
+var evens = Evens()
+var odds = Odds()
+
+func CallsInARow() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    evens.count()
+    odds.count()
+    console.print(evens.total, odds.total)
+}

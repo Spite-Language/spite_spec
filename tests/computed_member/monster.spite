@@ -1,0 +1,9 @@
+var health = 0
+
+func Monster(starting_health: Integer) {
+    health = starting_health
+}
+
+func get_doubled_health(): Integer {
+    return health * 2
+}

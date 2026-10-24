@@ -1,0 +1,18 @@
+type Track {
+    render()
+}
+
+var console = Console()
+var drum = Drum()
+var bass = Bass()
+var tracks = List<Track>()
+
+func OwnerMeters() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    tracks.append(drum)
+    tracks.append(bass)
+    tracks.each_render()
+    var drum_loud = drum.meter.loud.count()
+    var bass_loud = bass.meter.loud.count()
+    console.print(drum.meter.total, drum_loud, bass.meter.total, bass_loud)
+}

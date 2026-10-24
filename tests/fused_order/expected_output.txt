@@ -1,0 +1,12 @@
+checking red
+counting red
+checking blue
+checking green
+counting green
+one loop: 7
+checking red
+checking blue
+checking green
+counting red
+counting green
+step by step: 7

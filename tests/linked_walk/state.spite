@@ -1,0 +1,5 @@
+union State {
+    Idle
+    Busy
+    Broken
+}

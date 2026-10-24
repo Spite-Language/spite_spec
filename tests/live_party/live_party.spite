@@ -1,0 +1,27 @@
+var console = Console()
+var hero = Hero("Ann")
+var steps = Items<Step>()
+
+func LiveParty() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Step(1.5)
+    steps.append(first)
+    var second = Step(2.5)
+    steps.append(second)
+    var described = describe()
+    console.print(described)
+}
+
+func describe(): String {
+    return "{hero.describe()}, walked {walked()}"
+}
+
+func walked(): Float {
+    var total = 0.0
+    var index = 0
+    while index < steps.count() {
+        total = total + steps[index].distance
+        index = index + 1
+    }
+    return total
+}

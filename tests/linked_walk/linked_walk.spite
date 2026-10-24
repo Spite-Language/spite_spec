@@ -1,0 +1,46 @@
+var console = Console()
+var current: Node? = null
+var steps = List<String>()
+
+func LinkedWalk() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    run()
+}
+
+func run() {
+    current = build_chain(4)
+    var walked = 0
+    while current {
+        steps.append("node {current.label}")
+        current = current.next
+        walked = walked + 1
+    }
+    var joined_steps = steps.join(" -> ")
+    console.print(walked, joined_steps)
+    var idle = Idle()
+    var idle_description = describe(idle)
+    var busy = Busy(3)
+    var busy_description = describe(busy)
+    var broken = Broken()
+    var broken_description = describe(broken)
+    console.print(idle_description, busy_description, broken_description)
+}
+
+func build_chain(length: Integer): Node? {
+    var head: Node? = null
+    var position = length
+    while position > 0 {
+        var node = Node("n{position}")
+        node.next = head
+        head = node
+        position = position - 1
+    }
+    return head
+}
+
+func describe(state: State): String {
+    if state == Busy {
+        return "busy with {state.jobs} jobs"
+    }
+    return "not working: {state.class.name}"
+}

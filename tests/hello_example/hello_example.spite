@@ -1,0 +1,22 @@
+var console = Console()
+var greeting = "Hello, Spite!"
+var count = 0
+
+func HelloExample() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print(greeting)
+    count = add_stuff(3, 2.5)
+    console.print("sum", count)
+    report_if_large(count)
+    report_if_large(count * 100)
+}
+
+func add_stuff(first_value: Integer, second_value: Float): Integer {
+    var whole_second_value: Integer = second_value
+    return first_value + whole_second_value
+}
+
+func report_if_large(value: Integer) {
+    assert value > 100
+    console.print("large", value)
+}

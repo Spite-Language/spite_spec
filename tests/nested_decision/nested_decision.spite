@@ -1,0 +1,23 @@
+var console = Console()
+
+func NestedDecision() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var label = label_for(3, true)
+    console.print(label)
+}
+
+func label_for(count: Integer, loud: Boolean): String {
+    if count == 0 {
+        return "none"
+    } else {
+        var noun = "{count} apples"
+        return said(noun, loud)
+    }
+}
+
+func said(text: String, loud: Boolean): String {
+    if loud {
+        return "{text}!"
+    }
+    return text
+}

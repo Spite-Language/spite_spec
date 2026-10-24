@@ -1,0 +1,24 @@
+var amounts = List<Integer>()
+var customer = Customer()
+
+func add(amount: Integer) {
+    amounts.append(amount)
+}
+
+func due(): Integer {
+    return total_of(amounts) - discount_of(customer.terms)
+}
+
+func total_of(values: List<Integer>): Integer {
+    var total = 0
+    var index = 0
+    while index < values.count() {
+        total = total + values[index]
+        index = index + 1
+    }
+    return total
+}
+
+func discount_of(terms: Terms): Integer {
+    return terms.discount
+}

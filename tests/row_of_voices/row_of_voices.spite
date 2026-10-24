@@ -1,0 +1,16 @@
+type Voice {
+    render()
+}
+
+var console = Console()
+var sine = Sine()
+var saw = Saw()
+var voices = List<Voice>()
+
+func RowOfVoices() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    voices.append(sine)
+    voices.append(saw)
+    voices.each_render()
+    console.print(sine.level, saw.level)
+}

@@ -1,0 +1,10 @@
+var room = ""
+var lit = false
+
+func Lamp(starting_room: String) {
+    room = starting_room
+}
+
+func to_string(): String {
+    return "the {room} lamp"
+}

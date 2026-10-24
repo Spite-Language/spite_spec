@@ -1,0 +1,110 @@
+var source = ""
+var tokens = List<Token>()
+var token_start = -1
+var buffer_is_number = false
+
+func Lexer(starting_source: String) {
+    source = starting_source
+    scan()
+}
+
+func scan() {
+    var characters = source.split("")
+    var index = 0
+    while index < characters.count() {
+        consume(characters[index], index)
+        index = index + 1
+    }
+    var characters_count = characters.count()
+    flush(characters_count)
+}
+
+func consume(character: String, index: Integer) {
+    if character == " " {
+        flush(index)
+        return
+    }
+    if is_digit_or_dot(character) {
+        if token_start >= 0 and not buffer_is_number {
+            flush(index)
+        }
+        if token_start < 0 {
+            token_start = index
+        }
+        buffer_is_number = true
+        return
+    }
+    if is_letter(character) {
+        if token_start >= 0 and buffer_is_number {
+            flush(index)
+        }
+        if token_start < 0 {
+            token_start = index
+        }
+        buffer_is_number = false
+        return
+    }
+    flush(index)
+    add_operator(character)
+}
+
+func flush(end_index: Integer) {
+    assert not (token_start < 0)
+    var token_slice = source.slice(token_start, end_index)
+    if buffer_is_number {
+        var token = Token('number', token_slice)
+        tokens.append(token)
+    } else {
+        var token = Token('identifier', token_slice)
+        tokens.append(token)
+    }
+    token_start = -1
+}
+
+func add_operator(character: String) {
+    if character == "+" {
+        var token = Token('plus', "+")
+        tokens.append(token)
+        return
+    }
+    if character == "-" {
+        var token = Token('minus', "-")
+        tokens.append(token)
+        return
+    }
+    if character == "*" {
+        var token = Token('star', "*")
+        tokens.append(token)
+        return
+    }
+    if character == "/" {
+        var token = Token('slash', "/")
+        tokens.append(token)
+        return
+    }
+    if character == "(" {
+        var token = Token('left_paren', "(")
+        tokens.append(token)
+        return
+    }
+    if character == ")" {
+        var token = Token('right_paren', ")")
+        tokens.append(token)
+        return
+    }
+    if character == "=" {
+        var token = Token('equals', "=")
+        tokens.append(token)
+        return
+    }
+}
+
+func is_digit_or_dot(character: String): Boolean {
+    var code = character.code_at(0)
+    return code >= 48 and code <= 57 or character == "."
+}
+
+func is_letter(character: String): Boolean {
+    var code = character.code_at(0)
+    return code >= 97 and code <= 122 or code >= 65 and code <= 90
+}

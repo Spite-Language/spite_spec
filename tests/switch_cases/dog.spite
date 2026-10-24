@@ -1,0 +1,7 @@
+func sound(): String {
+    return "woof"
+}
+
+func fetch(): String {
+    return "fetches the stick"
+}

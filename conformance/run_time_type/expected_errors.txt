@@ -1,0 +1,1 @@
+conformance/run_time_type/run_time_type.spite:10: error: 'fresh' answers a type read from a reflection object, so it is compiled once for each object the compiler can identify, and this call hands it one known only at run time: pass a class, attribute, function or argument named in the code, or walked from one (in RunTimeType.RunTimeType)

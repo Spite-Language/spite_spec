@@ -1,0 +1,12 @@
+var console = Console()
+
+func EarlyExit() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var words = ["alpha", "beta", "stop", "gamma"]
+    var index = 0
+    while index < words.count() and words[index] != "stop" {
+        console.print(words[index])
+        index = index + 1
+    }
+    console.print("stopped at", index)
+}

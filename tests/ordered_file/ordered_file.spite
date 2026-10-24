@@ -1,0 +1,12 @@
+var console = Console()
+
+func OrderedFile() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var inventory = Inventory<Crate>()
+    var small_crate = Crate(3)
+    inventory.add(small_crate)
+    var large_crate = Crate(4)
+    inventory.add(large_crate)
+    var total = inventory.total()
+    console.print(total, inventory.sorting)
+}

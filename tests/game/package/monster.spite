@@ -1,0 +1,7 @@
+func describe(): String {
+    return "a wild monster"
+}
+
+func roar(): String {
+    return "Monster roars"
+}

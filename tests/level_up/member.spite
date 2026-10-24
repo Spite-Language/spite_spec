@@ -1,0 +1,6 @@
+var name = "unnamed"
+var level = 1
+
+func Member(new_name: String) {
+    name = new_name
+}

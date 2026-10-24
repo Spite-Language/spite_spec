@@ -1,0 +1,12 @@
+var console = Console()
+
+func LevelUp() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var hero = Member("Aria")
+    bump_level(hero)
+    console.print("name", hero.name, "level", hero.level)
+}
+
+func bump_level(member: Member) {
+    member.level = member.level + 1
+}

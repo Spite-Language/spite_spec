@@ -1,0 +1,20 @@
+var console = Console()
+var name = ""
+var active = false
+var size = 0
+
+func Team(new_name: String, new_active: Boolean, new_size: Integer) {
+    name = new_name
+    active = new_active
+    size = new_size
+}
+
+func is_active(): Boolean {
+    console.print("checking", name)
+    return active
+}
+
+func counted_size(): Integer {
+    console.print("counting", name)
+    return size
+}

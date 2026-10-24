@@ -1,0 +1,5 @@
+var text = "fragile"
+
+func shown(): String {
+    return text
+}

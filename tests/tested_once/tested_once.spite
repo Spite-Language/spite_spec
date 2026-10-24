@@ -1,0 +1,15 @@
+var console = Console()
+var tally = Tally()
+
+func TestedOnce() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var worker = Worker()
+    var started = Parallel(worker.run)
+    var first: Integer = started
+    var index = 0
+    while index < 1000 {
+        index = tally.add(index)
+    }
+    var total = tally.sum()
+    console.print("first", first, "reached", index, "total", total)
+}

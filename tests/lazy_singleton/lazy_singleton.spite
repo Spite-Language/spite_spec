@@ -1,0 +1,11 @@
+var console = Console()
+
+func LazySingleton() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    console.print("starting")
+    var hall = Room("hall")
+    hall.enter()
+    var kitchen = Room("kitchen")
+    kitchen.enter()
+    console.print("done")
+}

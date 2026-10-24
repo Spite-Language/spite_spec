@@ -1,0 +1,29 @@
+var console = Console()
+
+func ClassAndInstance() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    Monster.attributes.each(describe)
+    var troll = Monster()
+    troll.hurt(3)
+    troll.attributes.each(show)
+    troll.attributes.each(heal)
+    console.print("health is now", troll.health)
+    console.print("troll is a Monster:", troll.class == Monster)
+    var bound = troll.functions['alive']
+    crash bound
+    console.print("bound to troll:", bound.name)
+}
+
+func describe(attribute: Spite.AttributeDeclaration) {
+    console.print("declared", attribute.index, attribute.name, attribute.class)
+}
+
+func show(attribute: Spite.Attribute) {
+    console.print("troll's", attribute.name, "=", attribute.value)
+}
+
+func heal(attribute: Spite.Attribute) {
+    if attribute.class == Integer {
+        attribute.value = attribute.value + 5
+    }
+}

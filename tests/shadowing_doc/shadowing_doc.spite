@@ -1,0 +1,15 @@
+var console = Console()
+
+func ShadowingDoc() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first_line = read_first_line("  spite\nsecond  ")
+    crash first_line
+    console.print("[{first_line}]")
+}
+
+func read_first_line(text: String?): String? {
+    assert text
+    var text = text.trim()
+    var lines = text.lines()
+    return lines.first()
+}

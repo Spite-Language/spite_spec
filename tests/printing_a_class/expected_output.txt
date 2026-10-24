@@ -1,0 +1,2 @@
+the hall lamp
+Lamp { room: "hall", lit: false }

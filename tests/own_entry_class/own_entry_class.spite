@@ -1,0 +1,7 @@
+var console = Console()
+
+func OwnEntryClass() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var entry = Entry()
+    console.print(entry.name)
+}

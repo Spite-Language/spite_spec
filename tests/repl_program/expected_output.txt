@@ -1,0 +1,2 @@
+player Hero age 20
+monster count 2

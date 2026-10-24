@@ -1,0 +1,32 @@
+var console = Console()
+var columns = List<Column>()
+var weights = List<Integer>()
+
+func HeldNames() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var first = Column("position")
+    var second = Column("velocity")
+    columns.append(first)
+    columns.append(second)
+    weights.append(0)
+    weights.append(0)
+    var round = 0
+    while round < 3 {
+        visit(0)
+        visit(1)
+        round = round + 1
+    }
+    crash weights[1]
+    console.print(first.hits, second.hits, weights[1])
+}
+
+func visit(index: Integer) {
+    crash columns[index]
+    var column = columns[index]
+    column.hit()
+    weights[index] = weight(column)
+}
+
+func weight(column: Column): Integer {
+    return column.hits * 10
+}

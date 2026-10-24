@@ -1,0 +1,5 @@
+load_each can wait: true
+it changes 'into': true
+it changes 'path': false
+tick_each can wait: false
+a Loader has state: true

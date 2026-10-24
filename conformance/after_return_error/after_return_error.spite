@@ -1,0 +1,12 @@
+var console = Console()
+
+func AfterReturnError() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var doubled = double(4)
+    console.print(doubled)
+}
+
+func double(value: Integer): Integer {
+    return value * 2
+    console.print("doubled")
+}

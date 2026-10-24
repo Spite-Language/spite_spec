@@ -1,0 +1,21 @@
+generic $item_type
+
+enum Sorting {
+    'by_name'
+    'by_count'
+}
+
+type Counted {
+    count: Integer
+}
+
+var items = List<$item_type>()
+var sorting: Sorting = 'by_name'
+
+func add(item: $item_type) {
+    items.append(item)
+}
+
+func total(): Integer {
+    return items.sum_count()
+}

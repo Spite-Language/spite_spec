@@ -1,0 +1,9 @@
+var held_value = 0
+
+func Leaf(starting_value: Integer) {
+    held_value = starting_value
+}
+
+func total(): Integer {
+    return held_value
+}

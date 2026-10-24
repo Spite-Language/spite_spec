@@ -1,0 +1,10 @@
+var name = "troll"
+var health = 10
+
+func alive(): Boolean {
+    return health > 0
+}
+
+func hurt(amount: Integer) {
+    health = health - amount
+}

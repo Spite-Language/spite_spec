@@ -1,0 +1,9 @@
+var name = ""
+
+func Monster(starting_name: String) {
+    name = starting_name
+}
+
+func roar(): String {
+    return "{name} roars"
+}

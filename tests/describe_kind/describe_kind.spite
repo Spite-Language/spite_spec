@@ -1,0 +1,14 @@
+var console = Console()
+
+func DescribeKind() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var nested = Kind<List<List<Integer>>>()
+    var nested_name = nested.name()
+    console.print(nested_name)
+    var maybe = Kind<String?>()
+    var maybe_name = maybe.name()
+    console.print(maybe_name)
+    var flag = Kind<Boolean>()
+    var flag_name = flag.name()
+    console.print(flag_name)
+}

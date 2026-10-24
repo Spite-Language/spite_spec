@@ -1,0 +1,9 @@
+generic $value_type
+
+func describe(value: $value_type): String {
+    if $value_type == List {
+        var count = value.count()
+        return "a list of {count}"
+    }
+    return "one value, {value}"
+}

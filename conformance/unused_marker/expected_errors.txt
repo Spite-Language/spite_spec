@@ -1,0 +1,1 @@
+conformance/unused_marker/mover.spite:1: error: the attribute 'world' is never read: remove it (in Mover.)

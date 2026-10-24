@@ -1,0 +1,17 @@
+var console = Console()
+var reload = Reload()
+var cooked = 0
+
+func Recooking() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    cook_again_if_changed()
+    console.print("cooked with generation {cooked}")
+}
+
+func cook_again_if_changed() {
+    var rebuilt = reload.rebuilt_since(cooked)
+    if rebuilt.contains("Recooking") {
+        console.print("the recipe changed: cooking again")
+    }
+    cooked = reload.generation()
+}

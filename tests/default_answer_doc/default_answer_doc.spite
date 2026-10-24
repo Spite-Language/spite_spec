@@ -1,0 +1,15 @@
+var console = Console()
+var text = ""
+
+func DefaultAnswerDoc() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var bytes = size()
+    console.print(bytes)
+}
+
+func size(): Integer {
+    if text.is_empty() {
+        return 0
+    }
+    return text.length() + 1
+}

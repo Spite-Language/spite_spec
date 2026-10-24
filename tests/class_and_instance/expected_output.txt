@@ -1,0 +1,7 @@
+declared 0 name String
+declared 1 health Integer
+troll's name = troll
+troll's health = 7
+health is now 12
+troll is a Monster: true
+bound to troll: alive

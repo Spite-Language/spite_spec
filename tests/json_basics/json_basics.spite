@@ -1,0 +1,21 @@
+var console = Console()
+
+func JsonBasics() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var order = Order()
+    order.id = 7
+    order.customer = "Ada \"the\" first"
+    order.total = 12.5
+    order.status = 'shipped'
+    var tea = Item("tea", 2)
+    order.items.append(tea)
+    var writer = JsonWriter<Order>()
+    var text = writer.write(order)
+    console.print(text)
+    var reader = JsonReader<Order>()
+    var read = reader.read(text)
+    crash read
+    var first_item = read.items.first()
+    crash first_item
+    console.print(read.customer, read.status, first_item.name, first_item.count)
+}

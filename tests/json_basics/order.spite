@@ -1,0 +1,11 @@
+enum Status {
+    'open'
+    'shipped'
+}
+
+var id = 0
+var customer = ""
+var total = 0.0
+var status: Status = 'open'
+var items = List<Item>()
+var note: String? = null

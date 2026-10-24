@@ -1,0 +1,13 @@
+var across = 0.0
+var down = 0.0
+var moving = false
+
+func Velocity(new_across: Float, new_down: Float) {
+    across = new_across
+    down = new_down
+}
+
+func integrate() {
+    across = across + down
+    moving = true
+}

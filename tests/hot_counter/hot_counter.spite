@@ -1,0 +1,18 @@
+var console = Console()
+var visits = 0
+var monster = Monster("Goblin")
+
+func HotCounter() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    visits = 1
+    var welcome = greeting()
+    console.print(welcome)
+}
+
+func greeting(): String {
+    return "hello, visit {visits}"
+}
+
+func monster_roar(): String {
+    return monster.roar()
+}

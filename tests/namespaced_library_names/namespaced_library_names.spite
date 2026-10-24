@@ -1,0 +1,8 @@
+var console = Console()
+
+func NamespacedLibraryNames() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var spell = Function("fireball")
+    var pit = Arena(40)
+    console.print(spell.name, pit.size)
+}

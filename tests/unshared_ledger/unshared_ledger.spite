@@ -1,0 +1,17 @@
+var console = Console()
+var ledger = Ledger()
+
+func UnsharedLedger() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var counter = Counter()
+    var counted = Parallel(counter.run)
+    var amounts = [4, 12, 30, 7]
+    var large = amounts.filter(ledger.is_large)
+    var index = 0
+    while index < 1000 {
+        index = ledger.note(index)
+    }
+    var marked = ledger.marks.count()
+    var large_count = large.count()
+    console.print("counted", counted, "large", large_count, "total", ledger.total, "marked", marked)
+}

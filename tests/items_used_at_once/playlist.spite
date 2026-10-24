@@ -1,0 +1,29 @@
+var tracks = List<Track>()
+var plays = List<List<Integer>>()
+
+func add(seconds: Integer) {
+    var track = Track()
+    track.seconds = seconds
+    tracks.append(track)
+    var heard = List<Integer>()
+    heard.append(seconds / 2)
+    plays.append(heard)
+}
+
+func longer_of(first: Integer, second: Integer): Integer {
+    crash tracks[first]
+    crash tracks[second]
+    if tracks[first].seconds > tracks[second].seconds {
+        return length_of(tracks[first])
+    }
+    return length_of(tracks[second])
+}
+
+func length_of(track: Track): Integer {
+    return track.seconds
+}
+
+func times_heard(at: Integer): Integer {
+    crash plays[at]
+    return plays[at].count()
+}

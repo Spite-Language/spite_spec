@@ -1,0 +1,35 @@
+var console = Console()
+var monday = ["ant", "bee", "asp", "cat"]
+var tuesday = ["bat", "cow", "cod", "ape"]
+var groups = List<List<String>>()
+
+func LettersTwice() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    group(monday)
+    group(tuesday)
+}
+
+func group(words: List<String>) {
+    groups.clear()
+    var made = 0
+    while made < 3 {
+        var letters = List<String>()
+        groups.append(letters)
+        made = made + 1
+    }
+    var index = 0
+    while index < words.count() {
+        var word = words[index]
+        var letter = word.code_at(0) - 97
+        crash groups[letter]
+        groups[letter].append(word)
+        index = index + 1
+    }
+    crash groups[0]
+    crash groups[1]
+    crash groups[2]
+    var a_words = groups[0].count()
+    var b_words = groups[1].count()
+    var c_words = groups[2].count()
+    console.print("a", a_words, "b", b_words, "c", c_words)
+}

@@ -1,0 +1,16 @@
+var console = Console()
+var program = Program()
+var backup = Backup()
+var redraws = 0
+
+func AWaitInAFrameDoc() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    while backup.copied < 3 {
+        redraws = redraws + 1
+        if redraws <= 3 {
+            backup.copy_next()
+        }
+        program.sleep(1)
+    }
+    console.print("copied", backup.copied, "parts, redrawing the progress bar meanwhile:", redraws > 3)
+}

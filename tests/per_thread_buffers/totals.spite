@@ -1,0 +1,14 @@
+singleton
+
+var commands = 0
+var seen = List<String>()
+
+func count_two(first: String, second: String) {
+    commands = commands + 2
+    seen.append(first)
+    seen.append(second)
+}
+
+func total(): Integer {
+    return commands
+}

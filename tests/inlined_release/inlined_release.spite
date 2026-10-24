@@ -1,0 +1,24 @@
+var console = Console()
+
+func InlinedRelease() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var movers = List<Mover>()
+    var index = 0
+    while index < 1000 {
+        var mover = Mover(index)
+        movers.append(mover)
+        index = index + 1
+    }
+    var every_other = List<Mover>()
+    var total = 0
+    var position = 0
+    while position < movers.count() {
+        var mover = movers[position]
+        total = total + mover.speed
+        every_other.append(mover)
+        position = position + 2
+    }
+    movers.clear()
+    var kept = every_other.count()
+    console.print(kept, total)
+}

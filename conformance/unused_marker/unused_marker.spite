@@ -1,0 +1,12 @@
+var console = Console()
+var mover = Mover()
+
+func UnusedMarker() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    Mover.attributes.each(classify)
+    console.print(mover.class)
+}
+
+func classify(attribute: Spite.AttributeDeclaration) {
+    console.print(attribute.name, "is a", attribute.class)
+}

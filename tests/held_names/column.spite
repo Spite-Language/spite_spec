@@ -1,0 +1,10 @@
+var name = ""
+var hits = 0
+
+func Column(column_name: String) {
+    name = column_name
+}
+
+func hit() {
+    hits = hits + 1
+}

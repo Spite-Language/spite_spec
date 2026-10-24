@@ -1,0 +1,13 @@
+var console = Console()
+var program = Program()
+var frame = 0
+var running = true
+
+func FrameLoop() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    while running and frame < 200 {
+        frame = frame + 1
+        program.sleep(10)
+    }
+    console.print("stopped")
+}

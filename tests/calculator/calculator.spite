@@ -1,0 +1,10 @@
+var evaluator = Evaluator()
+
+func Calculator() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var program_file = File("tests/calculator/program.txt")
+    var content = program_file.read()
+    crash content
+    var lines = content.lines()
+    lines.each(evaluator.process_line)
+}

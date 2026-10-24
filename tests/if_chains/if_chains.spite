@@ -1,0 +1,21 @@
+var console = Console()
+
+func IfChains() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var grades = [95, 72, 40]
+    grades.each(show_grade)
+}
+
+func show_grade(grade: Integer) {
+    var letter = letter_for(grade)
+    console.print(grade, letter)
+}
+
+func letter_for(grade: Integer): String {
+    if grade >= 90 {
+        return "A"
+    } else if grade >= 70 {
+        return "B"
+    }
+    return "C"
+}

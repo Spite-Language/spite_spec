@@ -1,0 +1,8 @@
+var console = Console()
+
+func PrintingAClass() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var lamp = Lamp("hall")
+    console.print(lamp)
+    console.debug(lamp)
+}

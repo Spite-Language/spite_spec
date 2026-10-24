@@ -1,0 +1,18 @@
+var console = Console()
+
+func NameTemplates() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var label = Label()
+    show_text(label)
+    show_urgent(label)
+    double_copies(label)
+    show_copies(label)
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, label: Label) {
+    console.print(attribute.name, "is", label.attributes[attribute])
+}
+
+func double_attribute(attribute: Spite.AttributeDeclaration, label: Label) {
+    label.attributes[attribute] = label.attributes[attribute] * 2
+}

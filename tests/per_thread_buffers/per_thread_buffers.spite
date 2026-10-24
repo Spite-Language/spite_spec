@@ -1,0 +1,34 @@
+var console = Console()
+var totals = Totals()
+
+func PerThreadBuffers() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var runs = List<Parallel<Integer>>()
+    var index = 0
+    while index < 8 {
+        var run = Parallel(record_commands)
+        runs.append(run)
+        index = index + 1
+    }
+    var recorded = 0
+    index = 0
+    while index < runs.count() {
+        var count: Integer = runs[index]
+        recorded = recorded + count
+        index = index + 1
+    }
+    var counted = totals.total()
+    console.print(recorded, "commands recorded,", counted, "counted by the singleton")
+}
+
+func record_commands(): Integer {
+    var own = List<String>()
+    own.append("spawn")
+    own.append("move")
+    var first = own.first()
+    var last = own.last()
+    crash first
+    crash last
+    totals.count_two(first, last)
+    return own.count()
+}

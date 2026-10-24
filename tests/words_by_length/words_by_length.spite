@@ -1,0 +1,30 @@
+var console = Console()
+var words = ["sea", "a", "tide", "of", "harbour", "is", "salt"]
+var groups = List<List<String>>()
+
+func WordsByLength() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var size = 0
+    while size < 8 {
+        var made = List<String>()
+        groups.append(made)
+        size = size + 1
+    }
+    var index = 0
+    while index < words.count() {
+        var word = words[index]
+        var length = word.length()
+        crash groups[length]
+        groups[length].append(word)
+        index = index + 1
+    }
+    var shown = 0
+    while shown < groups.count() {
+        var group = groups[shown]
+        var count = group.count()
+        if count > 0 {
+            console.print(shown, "letters:", count)
+        }
+        shown = shown + 1
+    }
+}

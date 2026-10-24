@@ -1,0 +1,16 @@
+var console = Console()
+
+func AskingFunctions() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var loading = Loader.functions['load_each']
+    if loading {
+        console.print("load_each can wait:", loading.is_resumable)
+        console.print("it changes 'into':", loading.arguments[1].is_mutated)
+        console.print("it changes 'path':", loading.arguments[0].is_mutated)
+    }
+    var ticking = Loader.functions['tick_each']
+    if ticking {
+        console.print("tick_each can wait:", ticking.is_resumable)
+    }
+    console.print("a Loader has state:", Loader.is_stateful)
+}

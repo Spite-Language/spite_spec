@@ -1,0 +1,3 @@
+text is fragile
+urgent is true
+copies is 4

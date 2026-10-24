@@ -1,0 +1,24 @@
+var console = Console()
+
+func JsonInput() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var partial_reader = JsonReader<Reading>()
+    var partial = partial_reader.read("\{ \"name\": \"probe\", \"vendor\": \{ \"id\": [1, 2] } }")
+    crash partial
+    var tag_count = partial.tags.count()
+    console.print(partial.name, partial.level, tag_count)
+    var mistyped_reader = JsonReader<Reading>()
+    var mistyped = mistyped_reader.read("\{\"level\": \"high\"}")
+    if mistyped {
+        console.print("unexpected")
+    } else {
+        console.print("level must be a number")
+    }
+    var broken_reader = JsonReader<Reading>()
+    var broken = broken_reader.read("\{\"name\": \"probe\"")
+    if broken {
+        console.print("unexpected")
+    } else {
+        console.print("unclosed object")
+    }
+}

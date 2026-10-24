@@ -1,0 +1,4 @@
+union TreeNode {
+    Leaf
+    Branch
+}

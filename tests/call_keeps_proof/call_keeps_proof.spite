@@ -1,0 +1,19 @@
+var console = Console()
+var target: Monster? = null
+var shown = 0
+
+func CallKeepsProof() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    target = Monster()
+    show()
+}
+
+func show() {
+    assert target
+    count_shown()
+    console.print(target.name, shown)
+}
+
+func count_shown() {
+    shown = shown + 1
+}

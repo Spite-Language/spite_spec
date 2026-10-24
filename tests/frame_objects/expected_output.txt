@@ -1,0 +1,6 @@
+stepped to (500, 250)
+length squared 107.25
+shared: (5, 1) (5, 1)
+turned (-1, 2) twice (-2, -1) start (2, 1)
+kept point moved to (6, 8)
+copies total 349 original 3 4

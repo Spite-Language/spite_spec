@@ -1,0 +1,16 @@
+var console = Console()
+var shelf = Shelf()
+
+func WrittenBackAcrossCalls() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    shelf.stock(4)
+    var round = 0
+    while round < 3 {
+        shelf.take(1)
+        shelf.open.words = shelf.open.words + 3
+        shelf.put_back()
+        round = round + 1
+    }
+    var total = shelf.total()
+    console.print(total)
+}

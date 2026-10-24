@@ -1,0 +1,14 @@
+var console = Console()
+
+func FoldedBranch() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var numbers = List<Integer>()
+    numbers.append(4)
+    numbers.append(9)
+    var lists = Describer<List<Integer>>()
+    var first = lists.describe(numbers)
+    var singles = Describer<Integer>()
+    var second = singles.describe(7)
+    console.print(first)
+    console.print(second)
+}

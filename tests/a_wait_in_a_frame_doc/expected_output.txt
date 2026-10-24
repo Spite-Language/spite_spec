@@ -1,0 +1,1 @@
+copied 3 parts, redrawing the progress bar meanwhile: true

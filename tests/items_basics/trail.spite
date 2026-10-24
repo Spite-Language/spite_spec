@@ -1,0 +1,7 @@
+var lefts = List<Float>()
+var last = 0.0
+
+func mark(left: Float) {
+    lefts.append(left)
+    last = left
+}

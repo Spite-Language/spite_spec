@@ -1,0 +1,5 @@
+1 letters: 1
+2 letters: 2
+3 letters: 1
+4 letters: 2
+7 letters: 1

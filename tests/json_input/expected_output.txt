@@ -1,0 +1,3 @@
+probe 1 0
+level must be a number
+unclosed object

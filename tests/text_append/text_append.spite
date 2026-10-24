@@ -1,0 +1,11 @@
+var console = Console()
+
+func TextAppend() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var line = "a"
+    var kept = line
+    line = "{line}b"
+    var piece = "c"
+    line = line + piece
+    console.print(line, kept)
+}

@@ -1,0 +1,55 @@
+var console = Console()
+var books = List<Book>()
+
+func LibraryCard() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    stock()
+    console.print("{books.count()} books, {books.count_is_available()} available")
+    var joined_map_label = books.map_labels().join("; ")
+    console.print(joined_map_label)
+    lend("Dune", "ada")
+    console.print("after lending: {books.count_is_available()} available")
+    report_by_shelf()
+    var found = books.find_by_title("Dune")
+    crash found
+    console.print("{found.label()} is held by {held_by(found)}")
+}
+
+func stock() {
+    var dune = Book("Dune", 'fiction')
+    books.append(dune)
+    var atlas = Book("Atlas", 'reference')
+    books.append(atlas)
+    var moon = Book("Moon", 'childrens')
+    books.append(moon)
+}
+
+func lend(title: String, reader: String) {
+    var book = books.find_by_title(title)
+    assert book
+    book.borrowed_by = reader
+}
+
+func held_by(book: Book): String {
+    if book.borrowed_by {
+        return book.borrowed_by
+    }
+    return "nobody"
+}
+
+func report_by_shelf() {
+    var counts = Dictionary<String, Integer>()
+    var index = 0
+    while index < books.count() {
+        var shelf: String = books[index].shelf
+        if counts[shelf] {
+            counts[shelf] = counts[shelf] + 1
+        } else {
+            counts[shelf] = 1
+        }
+        index = index + 1
+    }
+    var joined_keys = counts.keys().join(",")
+    var joined_values = counts.values().join(",")
+    console.print(joined_keys, joined_values)
+}

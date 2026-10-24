@@ -1,0 +1,5 @@
+var distance = 0.0
+
+func Step(new_distance: Float) {
+    distance = new_distance
+}

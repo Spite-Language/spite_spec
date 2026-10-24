@@ -1,0 +1,16 @@
+type Collection {
+    sort()
+}
+
+var console = Console()
+var archive = Archive()
+var gallery = Gallery()
+var collections = List<Collection>()
+
+func OwnShelves() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    collections.append(archive)
+    collections.append(gallery)
+    collections.each_sort()
+    console.print(archive.kept_total, gallery.hung_total)
+}
