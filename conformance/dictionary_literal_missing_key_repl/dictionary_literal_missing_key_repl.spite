@@ -1,0 +1,9 @@
+var console = Console()
+
+func DictionaryLiteralMissingKeyRepl() {
+    load "../../../spite_standard_library/windows"
+    var points = {"gold": 50, "silver": 20}
+    crash points["gold"]
+    crash points["platinum"]
+    console.print(points["gold"], points["platinum"])
+}
