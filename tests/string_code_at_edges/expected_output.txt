@@ -1,1 +1,2 @@
-98 0 0 []
+spite: the program stopped at .../spite_standard_library/common/string.spite:... in String.code_at (index=2, _length=2)
+spite.frame	tests/string_code_at_edges/string_code_at_edges.spite:7	StringCodeAtEdges	StringCodeAtEdges
