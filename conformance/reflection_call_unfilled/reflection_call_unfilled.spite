@@ -1,5 +1,5 @@
 func ReflectionCallUnfilled() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var troll = Monster()
     var hurt = Monster.functions['hurt']
     crash hurt

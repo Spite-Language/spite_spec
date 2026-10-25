@@ -3,7 +3,7 @@ var chosen = "fixture.dll"
 var library = DynamicLibrary(chosen, 'identity', "")
 
 func ForeignLiteralArguments() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var sum = library.add_numbers(1, 2)
     console.print(sum, chosen)
 }

@@ -1,7 +1,7 @@
 var console = Console()
 
 func SerializerSingletons() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var player = Player()
     player.score = 9
     var writer = JsonWriter<Player>()

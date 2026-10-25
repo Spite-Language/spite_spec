@@ -2,7 +2,7 @@ var console = Console()
 var seen = List<String>()
 
 func ParallelFunctionReach() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var tally = Tally()
     var marks = tally.marks
     var counted = Parallel(tally.count_up)

@@ -6,7 +6,7 @@ union Creature {
 var console = Console()
 
 func SwitchRestAfterAll() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var cat = Cat()
     describe(cat)
 }

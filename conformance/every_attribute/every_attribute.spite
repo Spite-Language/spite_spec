@@ -1,5 +1,5 @@
 func EveryAttribute() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var holder = Holder<List<Integer>>()
     holder.describe()
 }

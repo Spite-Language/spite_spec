@@ -3,7 +3,7 @@ var mice = Vector<Mouse>()
 var input = Input()
 
 func LentToCalls() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var made = Mouse()
     mice.append(made)
     crash mice[0]

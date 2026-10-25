@@ -1,7 +1,7 @@
 var console = Console()
 
 func DeclarationOrder() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     console.print(label)
 }
 

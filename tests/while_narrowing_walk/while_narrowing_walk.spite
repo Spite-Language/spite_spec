@@ -1,7 +1,7 @@
 var console = Console()
 
 func WhileNarrowingWalk() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Box()
     first.label = "first"
     var second = Box()

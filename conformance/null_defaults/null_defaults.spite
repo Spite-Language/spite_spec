@@ -4,7 +4,7 @@ var holder = Holder<Monster>()
 var names: List<String> = null
 
 func NullDefaults() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var count: Integer = null
     var held = holder.value()
     var name_count = names.count()

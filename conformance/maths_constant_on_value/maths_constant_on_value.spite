@@ -1,7 +1,7 @@
 var console = Console()
 
 func MathsConstantOnValue() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var angle = 1.5
     var circle = angle.pi
     var root = Float.square_root()

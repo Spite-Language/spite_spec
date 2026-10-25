@@ -1,5 +1,5 @@
 func MultipleClasses() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var engine = Engine(200)
     var car = Car("Roadster", engine)
     car.describe()

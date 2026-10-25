@@ -2,7 +2,7 @@ var console = Console()
 var time_text = TimeText()
 
 func TimeTextErrors() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     refuse_instant("2024-03-10T07:00:00")
     refuse_instant("2024-03-10")
     refuse_instant("2024-02-30T00:00:00Z")

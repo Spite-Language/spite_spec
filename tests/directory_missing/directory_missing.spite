@@ -1,7 +1,7 @@
 var console = Console()
 
 func DirectoryMissing() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/directory_missing_never_made")
     var exists = folder.exists()
     var entries = folder.entries()

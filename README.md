@@ -29,26 +29,30 @@ A program names the standard library in its first line, because there is no laun
 compiler does not go looking for a library:
 
     func ExitCode(): Integer {
-        load "../../../SpiteCompiler/.spite/library/common"
+        load "../../../spite_standard_library/common"
         ...
 
-The path is relative to the folder of the program that holds the load. The junction
-`.spite/library` points at the new standard library, so a program that loads it reads the new one.
+The path is relative to the folder of the program that holds the load. The repositories sit side by side
+under one folder, as `gh repo clone` names them (`spite_compiler`, `spite_standard_library`, `spite_spec`), so
+`../../../spite_standard_library` is the library from any `tests/<name>` or `conformance/<name>`, with no link to
+make.
 
 ## Running them
 
-The runner is a Spite program, `runner/runner.spite`. Run from this folder:
+The runner is a Spite program, `runner/runner.spite`, built by the compiler it runs the tests with (build
+the compiler first with `bash scripts/bootstrap.sh --install` in `../spite_compiler`). Run from this folder:
 
-    ../SpiteCompiler/.spite/spite-0.0.6-windows/spite.exe runner
-    ../SpiteCompiler/.spite/spite-0.0.6-windows/spite.exe runner tests/sum conformance/duplicate_function
+    ../spite_compiler/.spite/spite.exe runner --build
+    runner/.spite/build/runner.exe
+    runner/.spite/build/runner.exe tests/sum conformance/duplicate_function
 
 With no names it runs every test; with names it runs only those. A name ending in `*` runs every folder that
 starts with it (`tests/float*`), and `--failed` runs again only the tests that failed in the last run, so the
 loop while fixing something is the tests it touches, not the whole corpus. It compiles each one with the new compiler,
-`../SpiteCompiler/.spite/spite.exe`, prints `FAILED <folder>: <why>` for each that fails, then how many passed
-and failed, and leaves 1 when any failed. The old compiler builds the runner until the new one can.
+`../spite_compiler/.spite/spite.exe`, prints `FAILED <folder>: <why>` for each that fails, then how many passed
+and failed, and leaves 1 when any failed.
 
 One program by hand:
 
-    ../SpiteCompiler/.spite/spite.exe tests/exit_code
+    ../spite_compiler/.spite/spite.exe tests/exit_code
     tests/exit_code/.spite/build/exit_code.exe

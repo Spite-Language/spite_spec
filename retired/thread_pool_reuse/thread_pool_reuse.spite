@@ -2,8 +2,8 @@ var console = Console()
 var pool = ThreadPool()
 
 func ThreadPoolReuse() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var workers = pool.size()
     var seen = List<Integer>()
     var total = 0

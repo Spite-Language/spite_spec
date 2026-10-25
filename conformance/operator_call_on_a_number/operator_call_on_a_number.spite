@@ -1,7 +1,7 @@
 var console = Console()
 
 func OperatorCallOnANumber() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var small = 2
     var large = 5
     var smaller = small.less_than(large)

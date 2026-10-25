@@ -1,7 +1,7 @@
 var console = Console()
 
 func SignednessChange() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var count = 0 - 3
     var minus_one: Long = -1
     var top = UnsignedLong.largest

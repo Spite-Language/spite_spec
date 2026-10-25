@@ -3,7 +3,7 @@ var greeting = "Hello, Spite!"
 var count = 0
 
 func HelloExample() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     console.print(greeting)
     count = add_stuff(3, 2.5)
     console.print("sum", count)

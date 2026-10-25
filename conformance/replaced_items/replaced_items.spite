@@ -4,7 +4,7 @@ var counts = Dictionary<String, Integer>()
 var lookup = Lookup()
 
 func ReplacedItems() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     crash layouts[0]
     var layout = layouts[0]
     console.print(layout.width)

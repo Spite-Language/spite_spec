@@ -2,7 +2,7 @@ var console = Console()
 var program = Program()
 
 func UnsteppedPoll() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var napping = Concurrent(nap)
     var polls = 0
     while not napping.finished {

@@ -1,7 +1,7 @@
 var console = Console()
 
 func CastTowardLeft() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var measured: Float = 7.75
     var whole = whole_part(measured)
     var halved = halve(whole)

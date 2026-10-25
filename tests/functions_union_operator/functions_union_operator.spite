@@ -6,7 +6,7 @@ union Amount {
 var console = Console()
 
 func FunctionsUnionOperator() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var money = Money(3)
     var points = Points(4)
     var first = doubled(money)

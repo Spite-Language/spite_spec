@@ -7,7 +7,7 @@ var positions = Column<Position>()
 var journals = ReferenceColumn<Journal>()
 
 func SparseRows() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = world.spawn()
     var second = world.spawn()
     var third = world.spawn()

@@ -1,7 +1,7 @@
 var console = Console()
 
 func NestedIfElse() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var description = describe(3, true)
     var letter = grade(70)
     var flat = allowed(2, false)

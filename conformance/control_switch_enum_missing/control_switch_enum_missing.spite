@@ -7,7 +7,7 @@ enum Light {
 var console = Console()
 
 func ControlSwitchEnumMissing() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var wait = seconds_for('red')
     console.print(wait)
 }

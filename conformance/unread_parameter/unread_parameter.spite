@@ -1,5 +1,5 @@
 func UnreadParameter(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     return twice(3)
 }
 

@@ -1,7 +1,7 @@
 var console = Console()
 
 func NameTemplates() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var label = Label()
     show_text(label)
     show_urgent(label)

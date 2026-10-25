@@ -1,7 +1,7 @@
 var console = Console()
 
 func AskingFunctions() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var loading = Loader.functions['load_each']
     if loading {
         console.print("load_each can wait:", loading.is_resumable)

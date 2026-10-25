@@ -3,7 +3,7 @@ var server = HttpServer()
 var client = HttpClient()
 
 func HttpExchange() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     crash server.listen_locally(47911)
     var serving = Concurrent(serve_three)
     var hello = Concurrent(ask_hello)

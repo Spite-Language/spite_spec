@@ -3,7 +3,7 @@ var program = Program()
 var log = List<String>()
 
 func DroppedHandleWaits() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var through_reassign = Concurrent(reassigned_local)
     started("a local assigned again", through_reassign.finished)
     var through_object = Concurrent(dropped_keeper)

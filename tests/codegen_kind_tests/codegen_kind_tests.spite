@@ -15,7 +15,7 @@ type Named {
 var console = Console()
 
 func CodegenKindTests() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var dictionary_kind = Kind<Dictionary<String, Integer>>()
     var list_kind = Kind<List<Integer>>()
     var enum_kind = Kind<Mood>()

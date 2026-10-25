@@ -2,7 +2,7 @@ var console = Console()
 var names = ["ada", "bo"]
 
 func DefaultAnswerText() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var name = name_of(1)
     console.print(name)
 }

@@ -1,7 +1,7 @@
 var console = Console()
 
 func FunctionsOperatorMissingNegate() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Money(1)
     var flipped = -first
     console.print(flipped.cents)

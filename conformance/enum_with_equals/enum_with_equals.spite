@@ -6,7 +6,7 @@ enum Job = {
 var console = Console()
 
 func EnumWithEquals() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var job: Job = 'knight'
     console.print(job)
 }

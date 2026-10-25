@@ -2,7 +2,7 @@ var console = Console()
 var nickname: String? = null
 
 func AndNarrowing() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var names = ["ann", "bea"]
     var ages = [30, 40]
     show(names, ages, 1)

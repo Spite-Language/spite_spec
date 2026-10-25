@@ -1,8 +1,8 @@
 var console = Console()
 
 func AllocatorAfterUse() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var arena = Memory.Arena(1024)
     var spark = Particle("spark")
     console.print(spark.name)

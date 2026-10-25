@@ -5,7 +5,7 @@ var moving = Runner<Mover, Mover.Moving>()
 var removing = Runner<Remover, Remover.Moving>()
 
 func LentListElements() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var entity = 0
     while entity < 3 {
         var position = Position()

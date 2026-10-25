@@ -3,8 +3,8 @@ var plain = DynamicLibrary("tests/foreign_callbacks_voices/fixture.dll", 'identi
 var mixer = Mixer()
 
 func ForeignCallbacksVoices() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     plain.play_voice(mixer.listener, 1)
     plain.play_voice(mixer.listener, 2)
     console.print("buffers ended", mixer.buffers_ended)

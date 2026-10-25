@@ -2,7 +2,7 @@ var console = Console()
 var environment = Environment()
 
 func Arsenal() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var arguments = Arguments()
     var sword = Weapon<Integer, true>(10)
     sword.hit()

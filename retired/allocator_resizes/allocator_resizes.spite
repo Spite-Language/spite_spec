@@ -2,8 +2,8 @@ var console = Console()
 var store = Store()
 
 func AllocatorResizes() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var first = Position()
     store.positions.append(first)
     var place = store.positions[0]

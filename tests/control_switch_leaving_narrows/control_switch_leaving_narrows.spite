@@ -6,7 +6,7 @@ enum Light {
 var console = Console()
 
 func ControlSwitchLeavingNarrows() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = describe(null, 'red')
     var second = describe("found", 'green')
     console.print(first, second)

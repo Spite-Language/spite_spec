@@ -7,7 +7,7 @@ enum Course {
 var console = Console()
 
 func EnumValuesWalk() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     Course.values.each(show)
     var count = Course.values.count()
     var second = Course.values[1]

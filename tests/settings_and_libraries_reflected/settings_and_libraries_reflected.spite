@@ -2,7 +2,7 @@ var console = Console()
 var build = Build()
 
 func SettingsAndLibrariesReflected() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var attributes = build.attributes
     var index = 0
     while index < attributes.count() {

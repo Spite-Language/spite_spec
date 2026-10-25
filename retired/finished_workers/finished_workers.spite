@@ -3,8 +3,8 @@ var program = Program()
 var scheduler = Scheduler()
 
 func FinishedWorkers() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     scheduler.resume_only_when_asked()
     var note = File(".spite/finished_workers.txt")
     note.write("frame")

@@ -1,7 +1,7 @@
 var console = Console()
 
 func InflectionFold() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var plural = "cactus".pluralize()
     var singular = "active_quests".singularize()
     var heroes = "hero".pluralize()

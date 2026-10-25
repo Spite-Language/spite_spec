@@ -7,7 +7,7 @@ enum Light {
 var console = Console()
 
 func ControlSwitchValueSingleCase() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var stop = is_stop('red')
     console.print(stop)
 }

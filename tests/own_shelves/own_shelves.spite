@@ -8,7 +8,7 @@ var gallery = Gallery()
 var collections = List<Collection>()
 
 func OwnShelves() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     collections.append(archive)
     collections.append(gallery)
     collections.each_sort()

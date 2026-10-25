@@ -1,7 +1,7 @@
 var console = Console()
 
 func AllowedShortNames() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var id = 7
     var user_id = 8
     var x = 1

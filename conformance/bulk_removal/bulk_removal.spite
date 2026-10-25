@@ -1,7 +1,7 @@
 var console = Console()
 
 func BulkRemoval() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var names = ["ada", "grace", "barbara"]
     names.filter(is_short).remove_where(is_long)
     names.remove_where(measure)

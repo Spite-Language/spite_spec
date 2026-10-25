@@ -4,7 +4,7 @@ var ipv6 = Socket()
 
 # notes.md#why-nothing-listens-on-every-interface
 func Ipv6Addresses() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     if not ipv6.listen_at("::1", 47322) {
         console.print("skipped: this machine has no IPv6, so nothing can listen on ::1")
         return

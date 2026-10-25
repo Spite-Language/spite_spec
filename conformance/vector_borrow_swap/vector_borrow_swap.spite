@@ -2,7 +2,7 @@ var console = Console()
 var velocities = Vector<Velocity>()
 
 func VectorBorrowSwap() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Velocity(1, "first")
     velocities.append(first)
     var second = Velocity(2, "second")

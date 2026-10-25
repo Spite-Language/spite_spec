@@ -1,7 +1,7 @@
 var console = Console()
 
 func VectorItems() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var holders = Vector<Holder>()
     var handles = Vector<Handle>()
     var selves = Vector<Selfish>()

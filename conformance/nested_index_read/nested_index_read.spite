@@ -3,7 +3,7 @@ var values = [10, 20]
 var rows = [1, 0]
 
 func NestedIndexRead() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     show(0)
 }
 

@@ -8,7 +8,7 @@ type Runnable {
 var console = Console()
 
 func ShapeMembers() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var stages = List<Runnable>()
     var physics = Stage("physics")
     stages.append(physics)

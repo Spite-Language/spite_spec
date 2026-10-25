@@ -1,7 +1,7 @@
 var console = Console()
 
 func EmptyCollectionGuard() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var names = split_names("a,b")
     var counts = count_names(names)
     var shown = shown_names(names)

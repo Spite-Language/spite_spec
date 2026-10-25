@@ -2,7 +2,7 @@ var console = Console()
 var score = 0
 
 func AttributeOnlyWritten() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     score = 5
     console.print("scored")
 }

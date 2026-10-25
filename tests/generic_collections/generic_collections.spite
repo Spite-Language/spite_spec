@@ -1,5 +1,5 @@
 func GenericCollections(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var texts = List<String>()
     var numbers = List<Integer>()
     var named: List<String> = List<String>()

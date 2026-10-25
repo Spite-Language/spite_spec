@@ -1,7 +1,7 @@
 var console = Console()
 
 func CrashMaybeBoolean() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var present: Boolean? = true
     crash present
     console.print("a Boolean? that is there and true passes:", present)

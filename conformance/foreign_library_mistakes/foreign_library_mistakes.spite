@@ -4,6 +4,6 @@ var wrong_naming = DynamicLibrary("fixture", 'shouting', "")
 var not_literal = DynamicLibrary(chosen, 'identity', "")
 
 func ForeignLibraryMistakes() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     console.print(chosen)
 }

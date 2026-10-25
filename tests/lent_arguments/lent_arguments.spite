@@ -7,7 +7,7 @@ var moving = Runner<System.Move>()
 var marking = Runner<System.Mark>()
 
 func LentArguments() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var entity = 0
     while entity < 4 {
         spawn(entity)

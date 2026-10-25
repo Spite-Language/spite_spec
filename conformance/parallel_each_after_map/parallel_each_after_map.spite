@@ -1,7 +1,7 @@
 var console = Console()
 
 func ParallelEachAfterMap() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var cells = List<Cell>()
     var cell = Cell()
     cells.append(cell)

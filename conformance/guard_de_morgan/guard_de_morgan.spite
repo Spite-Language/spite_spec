@@ -2,7 +2,7 @@ var console = Console()
 var limit = 10
 
 func GuardDeMorgan() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     announce(3)
 }
 

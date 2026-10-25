@@ -1,7 +1,7 @@
 var console = Console()
 
 func DictionaryInsertionOrder() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var stock = Dictionary<String, Integer>()
     stock["pear"] = 1
     stock["apple"] = 2

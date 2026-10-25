@@ -1,7 +1,7 @@
 var console = Console()
 
 func KnownFactChecked() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var names = List<String>()
     names.append("a")
     var first = names.first()

@@ -1,5 +1,5 @@
 func SwitchChainOr(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     return width_of("byte")
 }
 

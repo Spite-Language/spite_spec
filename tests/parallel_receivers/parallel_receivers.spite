@@ -3,7 +3,7 @@ var owner = Owner()
 var station = Station()
 
 func ParallelReceivers() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     owner.start()
     churn()
     var pumped = owner.finish()

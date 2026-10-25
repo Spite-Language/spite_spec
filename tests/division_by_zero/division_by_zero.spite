@@ -1,7 +1,7 @@
 var console = Console()
 
 func DivisionByZero() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var halved = halves(10, 2)
     var wrapped = remainder_of(-7, -1)
     console.print(halved, wrapped)

@@ -1,7 +1,7 @@
 var console = Console()
 
 func ListedValues() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var pipeline = Pipeline()
     pipeline.add(1)
     pipeline.add(2)

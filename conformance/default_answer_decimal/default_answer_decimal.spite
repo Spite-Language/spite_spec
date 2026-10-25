@@ -1,7 +1,7 @@
 var console = Console()
 
 func DefaultAnswerDecimal() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var ratio = ratio_of(2.0)
     console.print(ratio)
 }

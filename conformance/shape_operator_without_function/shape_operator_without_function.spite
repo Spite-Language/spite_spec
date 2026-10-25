@@ -5,7 +5,7 @@ type Sized {
 var console = Console()
 
 func ShapeOperatorWithoutFunction() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Crate()
     var second = Crate()
     var both = joined(first, second)

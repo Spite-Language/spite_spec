@@ -1,7 +1,7 @@
 var console = Console()
 
 func StringSliceEdges() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var word = "hello"
     var clamped_start = word.slice(-3, 2)
     var clamped_end = word.slice(2, 99)

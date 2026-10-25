@@ -1,7 +1,7 @@
 var console = Console()
 
 func BandsOfOrbits() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var orbits = List<Orbit>()
     var index = 0
     while index < 3000 {

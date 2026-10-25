@@ -1,7 +1,7 @@
 var console = Console()
 
 func TemplateCountNumeric() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var repositories = List<Repository>()
     var counted = repositories.count_stars()
     console.print(counted)

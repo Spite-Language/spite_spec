@@ -1,7 +1,7 @@
 var console = Console()
 
 func SignednessNotWider() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var signed = 5
     var unsigned: UnsignedInteger = 7
     var total = signed + unsigned

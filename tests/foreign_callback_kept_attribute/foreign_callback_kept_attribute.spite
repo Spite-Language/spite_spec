@@ -4,7 +4,7 @@ var clicks = Clicks()
 var clicking: ForeignCallback? = null
 
 func ForeignCallbackKeptAttribute() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     hand_over()
     plain.click(4)
 }

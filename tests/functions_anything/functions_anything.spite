@@ -1,7 +1,7 @@
 var console = Console()
 
 func FunctionsAnything() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var things = List<Anything>()
     var health = Health()
     things.append(health)

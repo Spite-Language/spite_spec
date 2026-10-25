@@ -12,7 +12,7 @@ enum Size {
 var console = Console()
 
 func EnumNumbers() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var role: Role = 'guest'
     var size: Size = 'small'
     console.print(role, size)

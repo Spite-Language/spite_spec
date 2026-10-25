@@ -5,7 +5,7 @@ type Labelled {
 var console = Console()
 
 func GenericConstraintNullable() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var shelf = Shelf<Tag?>()
     console.print(shelf.count)
 }

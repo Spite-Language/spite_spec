@@ -12,7 +12,7 @@ enum Phase {
 var console = Console()
 
 func EnumToInteger() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var role: Role = 'admin'
     var owner: Role = 'owner'
     var guest: Role = 'guest'

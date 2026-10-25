@@ -1,7 +1,7 @@
 var console = Console()
 
 func VectorRemoveMovesDown() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var velocities = Vector<Velocity>()
     var first = Velocity("a")
     velocities.append(first)

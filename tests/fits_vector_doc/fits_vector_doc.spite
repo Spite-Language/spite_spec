@@ -1,7 +1,7 @@
 var console = Console()
 
 func FitsVectorDoc() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var points = Store<Vector3<Float>>()
     var point_answer = points.describe()
     var lists = Store<List<Integer>>()

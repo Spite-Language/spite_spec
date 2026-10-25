@@ -1,7 +1,7 @@
 var console = Console()
 
 func NumberMemoryRead() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var count = 21
     var doubled = count.doubled()
     console.print(doubled)

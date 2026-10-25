@@ -1,5 +1,5 @@
 func BufferNegativeSize(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var size = 0 - 1
     var bytes = Buffer(size)
     return bytes.count()

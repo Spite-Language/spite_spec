@@ -14,7 +14,7 @@ var windows = DynamicLibrary(
 )
 
 func ForeignLibrary() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var add_numbers = plain.add_numbers(2, 3)
     var multiply_numbers = camel.multiply_numbers(4, 5)
     var windows_answer_position = headerless.get_answer_position()

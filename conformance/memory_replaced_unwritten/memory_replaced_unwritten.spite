@@ -2,7 +2,7 @@ var console = Console()
 var column = Column()
 
 func MemoryReplacedUnwritten() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Layout()
     column.values.append(first)
     var found = column.value_at(0)

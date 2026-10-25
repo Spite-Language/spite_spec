@@ -2,7 +2,7 @@ var console = Console()
 var plain = DynamicLibrary("tests/foreign_missing_symbol/fixture.dll", 'identity', "")
 
 func ForeignMissingSymbol() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     console.print("before the library is used")
     plain.ring_bell(1)
     console.print("never printed")

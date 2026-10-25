@@ -1,7 +1,7 @@
 var console = Console()
 
 func ListInsertClamps() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var letters = ["b", "c"]
     letters.insert(-5, "a")
     letters.insert(99, "d")

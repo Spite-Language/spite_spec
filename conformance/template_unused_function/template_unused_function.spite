@@ -1,5 +1,5 @@
 func TemplateUnusedFunction() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var runner = Runner<Move>()
     runner.run()
 }

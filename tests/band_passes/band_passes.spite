@@ -1,7 +1,7 @@
 var console = Console()
 
 func BandPasses() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var counters = List<Counter>()
     var index = 0
     while index < 20000 {

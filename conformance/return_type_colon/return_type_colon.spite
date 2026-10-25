@@ -1,5 +1,5 @@
 func ReturnTypeColon() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     add_one(1)
 }
 

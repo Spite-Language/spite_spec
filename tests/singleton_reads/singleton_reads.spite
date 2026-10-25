@@ -2,7 +2,7 @@ var console = Console()
 var transforms = Column<Transform>()
 
 func SingletonReads() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     add_rows(0, 2000)
     var first = Reader(2000)
     var first_run = Parallel(first.run)

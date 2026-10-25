@@ -8,7 +8,7 @@ var bass = Bass()
 var tracks = List<Track>()
 
 func OwnerMeters() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     tracks.append(drum)
     tracks.append(bass)
     tracks.each_render()

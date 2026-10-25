@@ -1,4 +1,4 @@
 func LoadGitBranchPin() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     load "github.com/example/engine@main"
 }

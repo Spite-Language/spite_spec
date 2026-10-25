@@ -2,7 +2,7 @@ var console = Console()
 var grid = Grid()
 
 func DiscardedResults() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     grid[1] = 5
     shared()[3] = 4
     shared().label = "kept"

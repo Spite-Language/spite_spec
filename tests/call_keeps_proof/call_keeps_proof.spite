@@ -3,7 +3,7 @@ var target: Monster? = null
 var shown = 0
 
 func CallKeepsProof() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     target = Monster()
     show()
 }

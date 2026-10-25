@@ -12,7 +12,7 @@ enum Size {
 var console = Console()
 
 func EnumValuesGeneric() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var colors = Lister<Color>()
     colors.list()
     var sizes = Lister<Size>()

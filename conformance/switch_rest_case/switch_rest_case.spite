@@ -7,7 +7,7 @@ union Creature {
 var console = Console()
 
 func SwitchRestCase() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var cat = Cat()
     repeated(cat)
     same_as_rest(cat)

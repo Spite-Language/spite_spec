@@ -60,9 +60,13 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   not named in snake_case: every folder of a program, a package's own folder included, is lowercase words joined
   by '_', so rename it 'bad_folder'" (`diagnostics/folder_name`, and `diagnostics/load_folder_name` for `load
   "Window-Plugin"`). What is checked: the program's own folder, every folder
-  inside it and inside a loaded root, and a loaded root's own folder, not the folders above them that a path
-  such as `../../plugins/render_vulkan` passes through, which are not part of the program. snake_case is a
-  lowercase letter, then lowercase letters, digits and single `_`, not ending in `_`.
+  inside it and inside a loaded root, a loaded root's own folder, and every folder a `load` names on its way
+  there: `load "../../Plugins/render_vulkan"` is refused at its line for 'Plugins' like any other folder,
+  "game/game.spite:4: error: the folder 'Plugins' is not named in snake_case: every folder is lowercase words
+  joined by '_', so rename it 'plugins'" (`conformance/load_path_folder_name`). Only `.` and `..` (and a drive
+  such as `D:` at the start of an absolute path) are not folder names, so a path through a hidden folder such as
+  `.spite` is refused too: a program loads a folder by where it is, never through a link in a build folder.
+  snake_case is a lowercase letter, then lowercase letters, digits and single `_`, not ending in `_`.
 - Resolving an unqualified `Name` from inside a class tries, in order: that class's own namespace (so a nested enum/type/union
   resolves by its plain name from inside its own class), the same folder's namespace, each parent folder's namespace, then the
   whole program globally. Ambiguity *between roots* at the same level is never an error, because of the next rule.
@@ -105,10 +109,18 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   supplies a default behind `Build.functions['base_folder']`. **`Build` is the one exception**: a field the program's
   own `build.spite` declares is not replaced by a loaded package's declaration of it, so the program decides its
   build and a package's field is only a default ([programs.md](programs.md#build-settings-build),
-  `conformance/stage6/build_precedence`). The standard library (`library/`) is discovered
-  before the program, so a program's own file reopens `Console`, `String`, `File` and the rest the same way.
+  `conformance/stage6/build_precedence`). The standard library is loaded
+  before the rest of the program, so a program's own file reopens `Console`, `String`, `File` and the rest the same way.
   `Environment` is made to be reopened: a program's own `environment.spite` adds its settings to it ([Program settings: `Environment`](programs.md#program-settings-environment)).
   Your foot to shoot. That includes `Spite.Class` ([Functions of `Spite.Class`](reflection.md#functions-of-spiteclass-and-why-there-are-no-static-functions)): reopening it changes what every class object answers, for the whole program.
+- **The standard library is a folder loaded by its path.** It is the repository `spite_standard_library`, which
+  sits beside the program's repository under one folder, as `gh repo clone` names them, and the program's entry
+  function loads it in its first lines like any package: the folder for the system it runs on,
+  `load "../spite_standard_library/windows"` (which loads `common` itself), or `common` alone. The path is
+  relative to the entry file, so a program two folders down writes `../../../spite_standard_library/windows`.
+  The compiler looks nowhere for it and needs no link: the leading loads of the entry function are the library,
+  and a file is the library's when it lies in the folder `spite_standard_library/common`, `/windows`, `/linux`
+  or `/mac`, whatever the folders above it are named.
 - **The program's entry class is the one class nothing reopens**: a loaded `bundle/potion.spite` in the program
   `potion/` is "'Potion' is the program's entry class (potion/potion.spite), so no other file may be a class of
   that name: rename this file, or the program's folder and its entry file" (`diagnostics/entry_class_reopened`).

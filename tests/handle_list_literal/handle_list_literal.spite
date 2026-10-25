@@ -1,7 +1,7 @@
 var console = Console()
 
 func HandleListLiteral() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var counting = Parallel(three)
     var waiting = Concurrent(four)
     var values: List<Integer> = [counting, waiting, 5]

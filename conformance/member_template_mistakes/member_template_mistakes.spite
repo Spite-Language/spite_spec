@@ -2,7 +2,7 @@ var console = Console()
 var repositories = List<Repository>()
 
 func MemberTemplateMistakes() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var engine = Repository("engine", 10, true)
     repositories.append(engine)
     var names = repositories.sum_name()

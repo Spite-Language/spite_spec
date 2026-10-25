@@ -3,7 +3,7 @@ var source = "12 apples"
 var words = List<String>()
 
 func RepeatedBranchCall() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     flush(true, 2)
     describe(3)
     allowed(true, 2)

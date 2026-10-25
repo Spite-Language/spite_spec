@@ -1,5 +1,5 @@
 func OrIf(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var first = 1
     var second = 0
     if first == 1 or second == 1 {

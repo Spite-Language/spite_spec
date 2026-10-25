@@ -2,7 +2,7 @@ var console = Console()
 var layouts = [Layout()]
 
 func LostWrites() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var resized = row_layout(0)
     resized.width = 40
     var made = Layout()

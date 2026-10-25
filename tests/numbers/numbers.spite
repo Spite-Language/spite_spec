@@ -1,5 +1,5 @@
 func Numbers(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var holder = Holder()
     holder.small = 5
     holder.large = 9

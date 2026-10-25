@@ -7,7 +7,7 @@ var console = Console()
 var mice = Vector<Mouse>()
 
 func LentCallUnion() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var made = Mouse()
     mice.append(made)
     crash mice[0]

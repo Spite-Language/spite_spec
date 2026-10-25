@@ -4,7 +4,7 @@ var weights = List<Float>()
 var counts = List<Integer>()
 
 func NarrowedValueAssignment() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     readings.append(3)
     readings.append(7)
     readings.append(11)

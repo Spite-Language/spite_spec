@@ -2,8 +2,8 @@ var console = Console()
 var heap = Memory.Heap()
 
 func AddressForms() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var buffer = heap.allocate(16)
     var store = File(".spite/address_forms.bin")
     store.read_bytes(0, 16, buffer)

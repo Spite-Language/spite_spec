@@ -3,5 +3,5 @@ enum Job {
 }
 
 func DeclarationOnePerLine() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
 }

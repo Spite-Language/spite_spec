@@ -1,5 +1,5 @@
 func AssertTraceEmpty() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var words = split_words("")
     crash words.count() > 0
 }

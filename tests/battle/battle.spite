@@ -11,7 +11,7 @@ type Loadout {
 var console = Console()
 
 func Battle() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var enemies = List<Enemy>()
     var player = Player(10)
     enemies.append(player)

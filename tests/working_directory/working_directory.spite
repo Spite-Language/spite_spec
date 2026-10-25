@@ -1,7 +1,7 @@
 var console = Console()
 
 func WorkingDirectory() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var greeting = File("greeting.txt").read()
     if greeting {
         console.print("read {greeting.trim()} from the folder spite was run in")

@@ -1,7 +1,7 @@
 var console = Console()
 
 func FilledTariff() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var tariff = Tariff()
     var total = tariff.price(1250)
     console.print("total", total)

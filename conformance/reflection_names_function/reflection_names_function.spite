@@ -1,7 +1,7 @@
 var console = Console()
 
 func ReflectionNamesFunction() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var table = Table()
     var count = table.functions()
     console.print(count)

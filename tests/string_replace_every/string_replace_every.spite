@@ -1,7 +1,7 @@
 var console = Console()
 
 func StringReplaceEvery() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var path = "a-b--c"
     var plus = path.replace("-", "+")
     var absent = path.replace("x", "y")

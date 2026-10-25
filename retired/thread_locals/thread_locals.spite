@@ -5,8 +5,8 @@ var counter_lock = Lock()
 var counted = 0
 
 func ThreadLocals() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var main_name = own_name()
     names.set(main_name)
     var runs = List<Parallel<Boolean>>()

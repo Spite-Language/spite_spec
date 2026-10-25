@@ -6,7 +6,7 @@ var kept_trail = Trail()
 var runner = Runner<Moving>()
 
 func ItemsBorrows() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Velocity(1.0)
     velocities.append(first)
     crash velocities[0]

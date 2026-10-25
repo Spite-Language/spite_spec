@@ -1,7 +1,7 @@
 var console = Console()
 
 func BodilessFunction() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var given = answer()
     console.print(given)
 }

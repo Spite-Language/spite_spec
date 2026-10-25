@@ -1,7 +1,7 @@
 var library = DynamicLibrary("fixture.dll", 'identity', "")
 
 func ForeignCallbackNeedsSingleton() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var counter = Counter()
     var calling = ForeignCallback(counter.counted, 'no_context')
     library.keep(calling.address)

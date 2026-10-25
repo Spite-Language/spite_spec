@@ -1,7 +1,7 @@
 var console = Console()
 
 func NearestType() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var health = Component.Health()
     health.amount = 3
     var regenerate = System.Regenerate()

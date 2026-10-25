@@ -8,7 +8,7 @@ var fighters = List<Combatant>()
 var monsters = List<Monster>()
 
 func EntitySystems() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 200000 {
         var monster = Monster(index)

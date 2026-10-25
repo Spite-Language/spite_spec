@@ -1,7 +1,7 @@
 var console = Console()
 
 func ReflectionNarrowing() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var walker = Walker()
     var walkers = Caller<Walker>()
     var walked = walkers.call(walker)

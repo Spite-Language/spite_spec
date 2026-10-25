@@ -1,7 +1,7 @@
 var console = Console()
 
 func BufferWriteAtOutside() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var bytes = Buffer(0)
     bytes.append_integer_little_endian(0)
     bytes.write_integer_little_endian_at(0, 77)

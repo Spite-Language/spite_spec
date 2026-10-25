@@ -3,7 +3,7 @@ var ledger = Ledger()
 var auditor = Auditor()
 
 func SingletonTeardown() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     ledger.note("opened")
     var sum = auditor.check()
     console.print("checked", sum)

@@ -1,7 +1,7 @@
 var console = Console()
 
 func TextToEachNumber() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var tiny = "-128".to_tiny()
     crash tiny
     var short = "32767".to_short()

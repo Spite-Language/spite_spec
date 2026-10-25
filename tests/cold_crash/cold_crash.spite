@@ -1,7 +1,7 @@
 var console = Console()
 
 func ColdCrash() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var values = [3, 1, 4, 1, 5]
     var picks = [4, 0, 2]
     var total = 0

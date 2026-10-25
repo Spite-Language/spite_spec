@@ -1,7 +1,7 @@
 var console = Console()
 
 func MaybeInArithmetic() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var scores = [3, 5]
     var position = 1
     console.print(scores[position] + 1)

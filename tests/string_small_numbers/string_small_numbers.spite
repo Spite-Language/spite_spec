@@ -1,7 +1,7 @@
 var console = Console()
 
 func StringSmallNumbers() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var tiny_top = "127".to_tiny()
     var tiny_over = "128".to_tiny()
     var tiny_bottom = "-128".to_tiny()

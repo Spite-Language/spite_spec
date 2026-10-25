@@ -3,7 +3,7 @@ var glyphs = ["space", "bang", "quote", "hash"]
 var cursor = 1
 
 func StructuralIndex() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var code = 33
     crash glyphs[code - 32]
     var glyph = glyphs[code - 32].upper_case()

@@ -3,7 +3,7 @@ var steps = 0
 var seen = List<Integer>()
 
 func LoopReadsChangedAttribute() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     while steps < 3 {
         steps = steps + 1
         seen.append(steps)

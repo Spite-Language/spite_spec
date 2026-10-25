@@ -6,7 +6,7 @@ union Shape {
 var console = Console()
 
 func ClassTestNotMember() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var shape: Shape = Circle()
     var round = shape == Triangle
     console.print(round)

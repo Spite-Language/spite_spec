@@ -1,7 +1,7 @@
 var console = Console()
 
 func MathsOtherSpellings() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var side = 2.0
     var root = side.sqrt()
     var angle = side.atan2(side)

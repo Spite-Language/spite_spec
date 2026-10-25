@@ -2,7 +2,7 @@ var console = Console()
 var books = List<Book>()
 
 func LibraryCard() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     stock()
     console.print("{books.count()} books, {books.count_is_available()} available")
     var joined_map_label = books.map_labels().join("; ")

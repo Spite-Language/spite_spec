@@ -6,7 +6,7 @@ var windows = DynamicLibrary(
 )
 
 func ForeignFloatArgument() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var factor: Float = 1.5
     var from_a_float = windows.scaled(factor, 4)
     var from_a_literal = windows.scaled(2.5, 4)

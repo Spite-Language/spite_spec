@@ -1,7 +1,7 @@
 var console = Console()
 
 func AssertInEntryConstructor() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var name = find("ada")
     assert name
     console.print(name)

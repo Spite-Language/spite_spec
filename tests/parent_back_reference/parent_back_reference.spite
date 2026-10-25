@@ -1,7 +1,7 @@
 var console = Console()
 
 func ParentBackReference() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var kept = grow_family()
     if kept.parent {
         console.print("still reachable", kept.parent.name)

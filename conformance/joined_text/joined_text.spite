@@ -2,6 +2,6 @@ var console = Console()
 var name = "ada"
 
 func JoinedText() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     console.print("hello " + name)
 }

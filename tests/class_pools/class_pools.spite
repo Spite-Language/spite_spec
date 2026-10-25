@@ -2,7 +2,7 @@ var console = Console()
 var points = List<Point>()
 
 func ClassPools() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var maker = Maker(1000)
     var marked = Parallel(maker.total)
     var total = 0

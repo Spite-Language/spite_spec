@@ -2,7 +2,7 @@ var console = Console()
 var words = ["box", "enemy", "wolf", "knife", "analysis", "medium", "index", "matrix", "vertex", "mouse", "ox", "octopus", "quiz", "status", "person", "child", "sheep", "quest"]
 
 func StringPluralizeRules() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var index = 0
     var plurals = List<String>()
     while index < words.count() {

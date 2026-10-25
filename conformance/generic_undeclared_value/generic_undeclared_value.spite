@@ -1,7 +1,7 @@
 var console = Console()
 
 func GenericUndeclaredValue() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var game = Game()
     console.print(game.score)
 }

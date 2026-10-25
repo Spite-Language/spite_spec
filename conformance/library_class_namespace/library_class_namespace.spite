@@ -1,7 +1,7 @@
 var console = Console()
 
 func LibraryClassNamespace() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var palette = Color.Palette()
     console.print(palette.name)
 }

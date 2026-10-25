@@ -1,0 +1,1 @@
+conformance/load_path_folder_name/load_path_folder_name.spite:5: error: the folder 'OldTools' is not named in snake_case: every folder is lowercase words joined by '_', so rename it 'old_tools'

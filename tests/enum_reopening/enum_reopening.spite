@@ -2,7 +2,7 @@ var today: Weather.Sky = 'rain'
 var console = Console()
 
 func EnumReopening() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     load "package"
     load "mod"
     Weather.Sky.values.each(show_sky)

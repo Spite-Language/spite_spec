@@ -1,7 +1,7 @@
 var console = Console()
 
 func ShapeOperatorCut() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var small: Byte = 3
     var count = 1
     var fitted = grown(count, small)

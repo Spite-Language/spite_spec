@@ -6,7 +6,7 @@ enum Weapon {
 var console = Console()
 
 func SymbolNotInEnum() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     set_weapon('orange')
 }
 

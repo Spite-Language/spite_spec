@@ -1,7 +1,7 @@
 var console = Console()
 
 func EnumValueTemplates() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var posts = List<Post>()
     var first = Post("hello", 'published')
     posts.append(first)

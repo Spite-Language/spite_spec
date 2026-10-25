@@ -1,7 +1,7 @@
 var console = Console()
 
 func AbbreviationTwoWords() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var max_len = 3
     console.print(max_len)
 }

@@ -1,7 +1,7 @@
 var console = Console()
 
 func NumberTypeMistakes() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var flags = Summer<Boolean>()
     var flag = flags.twice(true)
     var half = halved(4)

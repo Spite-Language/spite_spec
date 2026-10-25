@@ -1,5 +1,5 @@
 func SingleLetterName() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var n = 1
     var total = n + 1
 }

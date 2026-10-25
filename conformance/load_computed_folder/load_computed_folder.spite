@@ -1,6 +1,6 @@
 var folder = "extras"
 
 func LoadComputedFolder() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     load folder
 }

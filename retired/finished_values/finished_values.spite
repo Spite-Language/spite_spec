@@ -3,8 +3,8 @@ var program = Program()
 var scheduler = Scheduler()
 
 func FinishedValues() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     scheduler.resume_only_when_asked()
     var loading = Concurrent(load_level)
     var early = loading.finished_value()

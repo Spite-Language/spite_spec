@@ -3,7 +3,7 @@ var points = List<Point>()
 var numbers = List<Integer>()
 
 func SlotWriteBacks() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     moved()
     replaced()
     reversed()

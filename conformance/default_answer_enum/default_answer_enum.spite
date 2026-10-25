@@ -6,7 +6,7 @@ enum Weekday {
 var console = Console()
 
 func DefaultAnswerEnum() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var day = day_of(1)
     console.print(day)
 }

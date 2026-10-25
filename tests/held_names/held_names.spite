@@ -3,7 +3,7 @@ var columns = List<Column>()
 var weights = List<Integer>()
 
 func HeldNames() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Column("position")
     var second = Column("velocity")
     columns.append(first)

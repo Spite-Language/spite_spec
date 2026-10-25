@@ -4,7 +4,7 @@ var velocities = Column<Velocity>()
 var labels = Column<Label>()
 
 func FoldedFunctions() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var position = Position()
     position.across = 1.5
     position.name = "start"

@@ -1,5 +1,5 @@
 func Chains(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var maker = Maker()
     var other = Other()
     return maker.answer() + other.count()

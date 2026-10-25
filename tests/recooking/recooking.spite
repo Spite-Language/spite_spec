@@ -3,7 +3,7 @@ var reload = Reload()
 var cooked = 0
 
 func Recooking() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     cook_again_if_changed()
     console.print("cooked with generation {cooked}")
 }

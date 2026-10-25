@@ -1,7 +1,7 @@
 var console = Console()
 
 func ListTruncateEdges() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var numbers = [1, 2, 3, 4]
     numbers.truncate(-1)
     var after_negative = numbers.join(",")

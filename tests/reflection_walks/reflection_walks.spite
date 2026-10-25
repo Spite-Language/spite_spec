@@ -2,7 +2,7 @@ var console = Console()
 var lines = List<String>()
 
 func ReflectionWalks() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     Monster.attributes.each(describe)
     var troll = Monster()
     troll.attributes.each(show)

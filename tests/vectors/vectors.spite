@@ -1,7 +1,7 @@
 var console = Console()
 
 func Vectors() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first_vector = Displacement(1.0, 2.0)
     var second_vector = Displacement(3.0, 4.0)
     var total = first_vector + second_vector

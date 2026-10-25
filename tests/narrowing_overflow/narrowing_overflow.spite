@@ -1,7 +1,7 @@
 var console = Console()
 
 func NarrowingOverflow() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var wide = 200
     var fits: Byte = wide
     console.print(fits)

@@ -2,7 +2,7 @@ var console = Console()
 var library = DynamicLibrary("fixture.dll", 'identity', "")
 
 func ForeignListOfText() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var names = ["ada", "grace"]
     var count = names.count()
     var stored = library.store_names(names, count)

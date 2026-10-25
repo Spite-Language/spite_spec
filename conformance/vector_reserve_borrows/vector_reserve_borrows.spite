@@ -3,7 +3,7 @@ var velocities = Vector<Velocity>()
 var grower = Grower()
 
 func VectorReserveBorrows() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Velocity(1.0)
     console.print(first.across)
     velocities.append(first)

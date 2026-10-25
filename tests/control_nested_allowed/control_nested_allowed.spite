@@ -1,7 +1,7 @@
 var console = Console()
 
 func ControlNestedAllowed() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var counted = count_even(4, true)
     var skipped = count_even(4, false)
     console.print(counted, skipped)

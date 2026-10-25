@@ -1,5 +1,5 @@
 func BooleanLayout(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var holder = Holder()
     holder.flag = true
     holder.count = 6

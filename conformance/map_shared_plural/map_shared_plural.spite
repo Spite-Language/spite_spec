@@ -1,7 +1,7 @@
 var console = Console()
 
 func MapSharedPlural() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var crowds = List<Crowd>()
     var crowd = Crowd("ann", "ann and bob")
     crowds.append(crowd)

@@ -6,7 +6,7 @@ enum Mood {
 var console = Console()
 
 func StringPlusCasts() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var mood: Mood = 'angry'
     var count = 3
     var ratio = 2.5

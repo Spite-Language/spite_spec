@@ -6,7 +6,7 @@ var _kept_for_later = 0
 var mover = Mover()
 
 func UnusedAttributes() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     visits = visits + 1
     written = "assigned, and never read"
     var lines = List<String>()

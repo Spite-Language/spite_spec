@@ -3,7 +3,7 @@ var ages = Dictionary<String, Integer>()
 var labels = Dictionary<String, String>()
 
 func Dictionaries() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     ages["ada"] = 36
     ages["grace"] = 85
     ages["alan"] = 41

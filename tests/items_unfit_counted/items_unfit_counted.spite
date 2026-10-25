@@ -4,7 +4,7 @@ var kept = Holder("kept")
 var listed = List<Holder>()
 
 func ItemsUnfitCounted() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Holder("first")
     holders.append(first)
     crash holders[0]

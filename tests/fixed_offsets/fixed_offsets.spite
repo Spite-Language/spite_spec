@@ -2,7 +2,7 @@ var console = Console()
 var zones = TimeZones()
 
 func FixedOffsets() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var since_1970 = Duration(1710054000, 'seconds')
     var moment = Instant(since_1970)
     var universal = zones.utc()

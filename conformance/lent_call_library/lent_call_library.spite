@@ -3,7 +3,7 @@ var mice = Vector<Mouse>()
 var others = List<Mouse>()
 
 func LentCallLibrary() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var made = Mouse()
     mice.append(made)
     others.append(made)

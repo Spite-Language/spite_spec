@@ -1,7 +1,7 @@
 var console = Console()
 
 func InstantArithmetic() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     instants()
     durations()
     far_instants()

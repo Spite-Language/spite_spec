@@ -1,7 +1,7 @@
 var console = Console()
 
 func JsonBasics() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var order = Order()
     order.id = 7
     order.customer = "Ada \"the\" first"

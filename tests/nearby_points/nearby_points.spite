@@ -3,7 +3,7 @@ var points = List<Point>()
 var notes = List<Note>()
 
 func NearbyPoints() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 1000 {
         var point = Point(index, index * 2)

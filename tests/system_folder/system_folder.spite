@@ -4,7 +4,7 @@ var healths = Store<Component.Health>()
 var labels = Store<Component.Label>()
 
 func SystemFolder() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     spawn_potion("tonic", 5)
     spawn_patient("ann", 10)
     spawn_patient("bob", 20)

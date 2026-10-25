@@ -2,7 +2,7 @@ var console = Console()
 var names = ["ada", "grace"]
 
 func ReceiverCallEffects() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     reading()
     counting()
     indexing()

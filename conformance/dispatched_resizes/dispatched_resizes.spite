@@ -3,7 +3,7 @@ var positions = Column<Position>()
 var shelf = Shelf()
 
 func DispatchedResizes() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Position()
     positions.insert(1, first)
     var lookup = Lookup<Position>()

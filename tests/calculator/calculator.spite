@@ -1,7 +1,7 @@
 var evaluator = Evaluator()
 
 func Calculator() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var program_file = File("tests/calculator/program.txt")
     var content = program_file.read()
     crash content

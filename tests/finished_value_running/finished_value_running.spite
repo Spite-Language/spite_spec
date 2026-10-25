@@ -2,7 +2,7 @@ var console = Console()
 var program = Program()
 
 func FinishedValueRunning() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var napping = Concurrent(nap)
     var early = napping.finished_value()
     if early {

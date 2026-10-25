@@ -1,7 +1,7 @@
 var console = Console()
 
 func JsonCamelCase() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var camel_reader = JsonReader<ItemRecord>()
     var camel = camel_reader.read(
         "\{\"Name\": \"potion\", \"buyPrice\": 30, \"SellPriceEach\": 7.5, \"isStackable\": true, \"noSuchKey\": [1]}",

@@ -3,7 +3,7 @@ var current: Node? = null
 var steps = List<String>()
 
 func LinkedWalk() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     run()
 }
 

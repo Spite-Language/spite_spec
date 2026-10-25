@@ -1,7 +1,7 @@
 var console = Console()
 
 func JsonLenientReader() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var reader = JsonReader<Order>()
     var order = reader.read("\{\"extra\": \{\"deep\": [1, \"two\", null, true]}, \"count\": 4}")
     crash order

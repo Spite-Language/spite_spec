@@ -2,7 +2,7 @@ var console = Console()
 var column = Column()
 
 func LentElementGuard() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var made = Layout()
     column.values.append(made)
     var layout = layout_at(0)

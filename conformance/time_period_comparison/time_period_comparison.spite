@@ -1,7 +1,7 @@
 var console = Console()
 
 func TimePeriodComparison() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var month = Period(1, 'months')
     var days = Period(30, 'days')
     var shorter = days < month

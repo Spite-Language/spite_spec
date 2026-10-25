@@ -4,7 +4,7 @@ var ticks = Vector<Tick>()
 var timers = Timers()
 
 func SameNameCallEffects() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var tick = Tick()
     ticks.append(tick)
     var index = 0

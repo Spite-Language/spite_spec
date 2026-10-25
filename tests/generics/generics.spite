@@ -1,7 +1,7 @@
 var console = Console()
 
 func Generics() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var sword = Weapon<Integer, true>(10)
     var club = Weapon<String, false>("heavy")
     var sword_hit = sword.hit()

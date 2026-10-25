@@ -6,7 +6,7 @@ enum Light {
 var console = Console()
 
 func ControlSwitchClassCaseOnEnum() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var kind = kind_of('red')
     console.print(kind)
 }

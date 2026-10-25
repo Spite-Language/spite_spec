@@ -2,7 +2,7 @@ var console = Console()
 var greeted = List<String>()
 
 func TypedFunctions() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var shouter = Shouter("!")
     var loud = shouter.shout
     var arguments_count = loud.arguments.count()

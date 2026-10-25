@@ -1,7 +1,7 @@
 var console = Console()
 
 func FusedOrder() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var teams = List<Team>()
     var red = Team("red", true, 3)
     teams.append(red)

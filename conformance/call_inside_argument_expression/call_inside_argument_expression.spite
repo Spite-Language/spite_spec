@@ -1,7 +1,7 @@
 var console = Console()
 
 func CallInsideArgumentExpression() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var counts = List<Integer>()
     var text = "one two"
     counts.append(count_words(text) + 1)

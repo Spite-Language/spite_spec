@@ -1,7 +1,7 @@
 var console = Console()
 
 func VectorItemsRun() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var velocities = Vector<Velocity>()
     var first = Velocity(1.0, 2.0, "first")
     velocities.append(first)

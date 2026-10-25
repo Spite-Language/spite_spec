@@ -2,7 +2,7 @@ var console = Console()
 var kept = Counter()
 
 func ParallelHeldValueWrites() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     run()
 }
 

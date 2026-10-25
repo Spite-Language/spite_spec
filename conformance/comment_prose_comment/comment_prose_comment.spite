@@ -1,4 +1,4 @@
 # this adds two numbers
 func CommentProseComment() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
 }

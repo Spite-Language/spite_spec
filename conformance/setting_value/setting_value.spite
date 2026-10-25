@@ -2,6 +2,6 @@ var console = Console()
 var environment = Environment()
 
 func SettingValue() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     console.print(environment.volume)
 }

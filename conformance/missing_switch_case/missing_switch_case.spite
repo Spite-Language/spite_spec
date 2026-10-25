@@ -6,7 +6,7 @@ union Held {
 var console = Console()
 
 func MissingSwitchCase() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var thing: Held = Directory(".")
     switch thing {
         Directory: console.print("a folder")

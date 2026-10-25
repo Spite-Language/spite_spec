@@ -1,5 +1,5 @@
 func LoadUnknownCondition() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var arguments = Arguments()
     if arguments.count() > 1 {
         load "extras"

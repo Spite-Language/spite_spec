@@ -1,7 +1,7 @@
 var console = Console()
 
 func GenericDefaults() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var numbers = Box<Integer>()
     var decimals = Box<Float>()
     var flags = Box<Boolean>()

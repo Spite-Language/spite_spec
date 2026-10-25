@@ -2,7 +2,7 @@ var console = Console()
 var label = "the program"
 
 func FunctionOwner() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var change = shouted
     var owner = change.owner
     var quiet = change("quiet")

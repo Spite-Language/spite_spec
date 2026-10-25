@@ -3,7 +3,7 @@ var words = ["sea", "a", "tide", "of", "harbour", "is", "salt"]
 var groups = List<List<String>>()
 
 func WordsByLength() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var size = 0
     while size < 8 {
         var made = List<String>()

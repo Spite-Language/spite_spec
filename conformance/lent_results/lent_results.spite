@@ -6,7 +6,7 @@ var listed = List<Layout>()
 var scores = Scores()
 
 func LentResults() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Layout()
     layouts.insert(first)
     var layout = lookup.of(0)

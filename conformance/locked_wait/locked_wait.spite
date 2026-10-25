@@ -2,7 +2,7 @@ var console = Console()
 var columns = Columns()
 
 func LockedWait() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var removed = columns.despawn_all(0, 10)
     var later = columns.despawn_later(10, 20)
     var counted = columns.count()

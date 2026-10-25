@@ -5,7 +5,7 @@ union Creature {
 }
 
 func SwitchOneCaseIf(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var cat = Cat()
     return fins_of(cat)
 }

@@ -4,7 +4,7 @@ var kept = Velocity(0.0, 0.0, "kept")
 var history = List<Velocity>()
 
 func VectorBorrows() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Velocity(1.0, 2.0, "first")
     velocities.append(first)
     crash velocities[0]

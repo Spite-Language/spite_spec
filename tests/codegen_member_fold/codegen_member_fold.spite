@@ -1,7 +1,7 @@
 var console = Console()
 
 func CodegenMemberFold() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     describe_columns()
     describe_ledgers()
     describe_shelves()

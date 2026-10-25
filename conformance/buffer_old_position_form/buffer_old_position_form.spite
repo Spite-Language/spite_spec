@@ -1,7 +1,7 @@
 var console = Console()
 
 func BufferOldPositionForm() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var bytes = Buffer(8)
     var number = bytes.read_integer_little_endian(0)
     console.print(number)

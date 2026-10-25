@@ -5,7 +5,7 @@ var title = "show"
 var values = Values()
 
 func InteractiveRefusals() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     ages["ann"] = 30
     console.print("ready")
 }

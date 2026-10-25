@@ -1,5 +1,5 @@
 func BufferBytes(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var bytes = Buffer(16)
     bytes.append(65)
     bytes.append_integer_little_endian(1200)

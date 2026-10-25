@@ -1,7 +1,7 @@
 var console = Console()
 
 func EnumTemplateMemberAndValue() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var posts = List<Post>()
     var published = posts.count_published()
     console.print(published)

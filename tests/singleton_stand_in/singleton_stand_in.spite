@@ -3,7 +3,7 @@ var shelf = Shelf()
 var ledger = Ledger()
 
 func SingletonStandIn() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     shelf.label("jar")
     ledger.record(4)
     var ledger_class = ledger.class

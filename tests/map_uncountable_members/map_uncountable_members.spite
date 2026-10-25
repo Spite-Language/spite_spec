@@ -1,7 +1,7 @@
 var console = Console()
 
 func MapUncountableMembers() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var teams = List<Team>()
     var red = Team("red", 3, "ann")
     teams.append(red)

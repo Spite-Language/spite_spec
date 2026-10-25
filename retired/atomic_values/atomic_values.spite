@@ -2,8 +2,8 @@ var console = Console()
 var hits = Atomic<Integer>(0)
 
 func AtomicValues() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var first = Parallel(record_many)
     var second = Parallel(record_many)
     var own = record_many()

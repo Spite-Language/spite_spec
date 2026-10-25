@@ -5,7 +5,7 @@ var client = HttpClient()
 var connections = List<Socket>()
 
 func HttpKeepAlive() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     server.idle_limit = 100
     crash server.listen_locally(47912)
     var serving = Concurrent(serve_four)

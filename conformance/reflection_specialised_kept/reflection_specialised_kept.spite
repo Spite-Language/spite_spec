@@ -2,7 +2,7 @@ var console = Console()
 var kept = List<Spite.AttributeDeclaration>()
 
 func ReflectionSpecialisedKept() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var monster = Monster()
     console.print(monster.health, monster.name)
     Monster.attributes.each(remember)

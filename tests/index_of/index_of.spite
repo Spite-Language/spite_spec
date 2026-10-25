@@ -1,7 +1,7 @@
 var console = Console()
 
 func IndexOf() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var words = ["red", "green", "blue"]
     var green = words.index_of("green")
     crash green

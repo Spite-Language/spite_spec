@@ -4,7 +4,7 @@ var backup = Backup()
 var redraws = 0
 
 func AWaitInAFrameDoc() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     while backup.copied < 3 {
         redraws = redraws + 1
         if redraws <= 3 {

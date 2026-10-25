@@ -3,7 +3,7 @@ var console = Console()
 var program = Program()
 
 func EntryFunctionWaits() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var load_waits = EntryFunctionWaits.function_waits("load_level")
     var count_waits = EntryFunctionWaits.function_waits("count_up")
     var pattern_waits = EntryFunctionWaits.function_waits("load_<name>")

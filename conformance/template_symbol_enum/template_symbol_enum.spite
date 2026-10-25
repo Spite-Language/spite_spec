@@ -6,7 +6,7 @@ enum Phase {
 var console = Console()
 
 func TemplateSymbolEnum() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     run_phases()
 }
 

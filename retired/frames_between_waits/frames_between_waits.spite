@@ -5,8 +5,8 @@ var watch = StageWatch()
 var server = Socket()
 
 func FramesBetweenWaits() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     scheduler.resume_only_when_asked()
     crash server.listen_locally(47319)
     var reading = SystemSlot<System.NetworkReader>()

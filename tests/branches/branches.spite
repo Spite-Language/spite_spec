@@ -1,5 +1,5 @@
 func Branches(): Integer {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var total = 0
     var index = 1
     while index <= 10 {

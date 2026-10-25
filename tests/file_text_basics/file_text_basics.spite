@@ -1,7 +1,7 @@
 var console = Console()
 
 func FileTextBasics() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var note = File(".spite/file_text_basics.txt")
     var written = note.write("one\n")
     var appended = note.append("two\n")

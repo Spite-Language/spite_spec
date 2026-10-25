@@ -5,7 +5,7 @@ type Describable {
 var console = Console()
 
 func VariadicArguments() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     log("a", "b", "c")
     log()
     var total = sum_all(1, 2, 3, 4)

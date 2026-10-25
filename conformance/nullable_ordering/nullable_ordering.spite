@@ -1,7 +1,7 @@
 var console = Console()
 
 func NullableOrdering() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var count = counted("abc")
     var bigger = count > 2
     console.print(bigger)

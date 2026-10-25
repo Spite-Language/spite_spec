@@ -2,8 +2,8 @@ var console = Console()
 var ledger = Ledger()
 
 func ParallelStages() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var runners = List<Runner>()
     var index = 0
     while index < 4 {

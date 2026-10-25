@@ -6,7 +6,7 @@ enum Mood {
 var console = Console()
 
 func EnumFromText() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var name = "calm"
     var mood: Mood = name
     console.print(mood)

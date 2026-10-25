@@ -3,7 +3,7 @@ var total = 0
 var kept = Counter()
 
 func ParallelSharedValueWrites() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var own = Parallel(add_one)
     var from_attribute = Parallel(kept.bump)
     var given = Counter()

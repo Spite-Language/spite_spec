@@ -1,7 +1,7 @@
 var console = Console()
 
 func BinaryWriterUnion() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var owner = Owner()
     var writer = BinaryWriter<Owner>()
     var bytes = writer.write(owner)

@@ -1,7 +1,7 @@
 var console = Console()
 
 func NullableSwitchWithoutNull() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var found = find(true)
     describe(found)
 }

@@ -6,7 +6,7 @@ union Pet {
 var console = Console()
 
 func UnionCommonFunction() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var pets = List<Pet>()
     var cat = Cat()
     pets.append(cat)

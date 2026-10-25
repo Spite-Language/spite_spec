@@ -6,7 +6,7 @@ enum Shade {
 var console = Console()
 
 func NumberType() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var counts = Tally<Integer>()
     var whole: List<Integer> = [3, 9, 4]
     var whole_best = counts.largest(whole)

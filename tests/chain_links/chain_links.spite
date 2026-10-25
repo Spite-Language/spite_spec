@@ -1,7 +1,7 @@
 var console = Console()
 
 func ChainLinks() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var total = 0
     var round = 0
     while round < 100 {

@@ -2,7 +2,7 @@ var console = Console()
 var lamp = Lamp()
 
 func TemplateUnusedAttribute() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     show_attributes(3)
 }
 

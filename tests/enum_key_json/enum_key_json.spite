@@ -6,7 +6,7 @@ enum Color {
 var console = Console()
 
 func EnumKeyJson() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var by_color = Dictionary<Color, Integer>()
     by_color['green'] = 2
     by_color['red'] = 1

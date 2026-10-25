@@ -1,7 +1,7 @@
 var console = Console()
 
 func TestingFailingExpectation() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var base = 2
     console.print("before")
     crash base + 1 == 4

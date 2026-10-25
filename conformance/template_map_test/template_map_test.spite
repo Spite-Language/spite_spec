@@ -1,7 +1,7 @@
 var console = Console()
 
 func TemplateMapTest() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var monsters = List<Monster>()
     var alive = monsters.map_is_alive()
     var alive_count = alive.count()

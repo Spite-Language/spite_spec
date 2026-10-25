@@ -1,7 +1,7 @@
 var console = Console()
 
 func UnsignedOverflow() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var count: UnsignedInteger = 2
     var left = count - 2
     console.print(left)

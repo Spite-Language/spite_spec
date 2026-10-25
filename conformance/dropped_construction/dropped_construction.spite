@@ -1,7 +1,7 @@
 var console = Console()
 
 func DroppedConstruction() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     Report("the door opens")
     Box<Integer>(3)
     var kept = Report("kept")

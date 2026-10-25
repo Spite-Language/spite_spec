@@ -1,7 +1,7 @@
 var console = Console()
 
 func Functions() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var fibonacci_value = fibonacci(10)
     console.print(fibonacci_value)
     var factorial_value = factorial(5)

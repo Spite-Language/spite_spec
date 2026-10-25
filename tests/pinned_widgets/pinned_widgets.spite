@@ -1,7 +1,7 @@
 var console = Console()
 
 func PinnedWidgets() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     load "../..@26e6476/tests/namespaces_load/package"
     var widget = Widgets.Widget("gadget", 3)
     var description = widget.describe()

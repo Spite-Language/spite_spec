@@ -3,7 +3,7 @@ var positions = Column<Position>()
 var trails = Column<Trail>()
 
 func LentListElementsParallel() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var entity = 0
     while entity < 400 {
         var position = Position()

@@ -3,6 +3,6 @@ generics $value_type
 var console = Console()
 
 func ClassesGenericsList() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     console.print("never")
 }

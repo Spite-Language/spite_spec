@@ -1,4 +1,4 @@
 // the entry point
 func CommentSlashComment() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
 }

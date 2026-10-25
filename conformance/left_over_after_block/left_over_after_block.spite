@@ -2,7 +2,7 @@ var console = Console()
 var total = 0
 
 func LeftOverAfterBlock() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     add(2)
     console.print(total)
 }

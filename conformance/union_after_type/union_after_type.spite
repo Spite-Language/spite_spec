@@ -10,7 +10,7 @@ union Pet {
 var console = Console()
 
 func UnionAfterType() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var cat = Cat()
     console.print(cat.name)
 }

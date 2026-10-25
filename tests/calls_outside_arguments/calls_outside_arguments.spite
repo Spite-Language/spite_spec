@@ -1,7 +1,7 @@
 var console = Console()
 
 func CallsOutsideArguments() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var source = "spite"
     var shouted = source.slice(0, 1).upper_case()
     var names = ["ada", "bea"]

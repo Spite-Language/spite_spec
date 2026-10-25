@@ -3,7 +3,7 @@ var hero = Hero("Ann")
 var steps = Items<Step>()
 
 func LiveParty() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Step(1.5)
     steps.append(first)
     var second = Step(2.5)

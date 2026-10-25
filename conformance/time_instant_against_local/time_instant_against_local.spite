@@ -2,7 +2,7 @@ var console = Console()
 var clock = Clock()
 
 func TimeInstantAgainstLocal() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var now = clock.now()
     var day = Date(2024, 1, 1)
     var noon = Time(12, 0, 0, 0)

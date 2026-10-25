@@ -1,7 +1,7 @@
 var console = Console()
 
 func FunctionsOperatorMissingSetAt() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Money(1)
     first[0] = 4
     console.print(first.cents)

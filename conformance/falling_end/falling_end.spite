@@ -7,7 +7,7 @@ enum Light {
 var console = Console()
 
 func FallingEnd() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var sign = sign_of(3)
     var word = word_for(2)
     var wait = wait_for('red')

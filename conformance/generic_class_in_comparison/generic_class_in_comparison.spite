@@ -1,7 +1,7 @@
 var found = 0
 
 func GenericClassInComparison() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     if found < List<Integer> {
         found = 1
     }

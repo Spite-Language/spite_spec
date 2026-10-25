@@ -4,7 +4,7 @@ var player_age = 20
 var monsters = List<Monster>()
 
 func ReplProgram() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var goblin = Monster("Goblin", 30)
     monsters.append(goblin)
     var orc = Monster("Orc", 50)

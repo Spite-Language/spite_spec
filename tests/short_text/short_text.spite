@@ -3,7 +3,7 @@ var names = List<String>()
 var label = ""
 
 func ShortText() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var letters = "abcdefghijklmn"
     var fifteen = "{letters}o"
     var sixteen = "{fifteen}p"

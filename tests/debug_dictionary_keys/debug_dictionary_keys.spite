@@ -3,7 +3,7 @@ var headers = Headers()
 var fingerprints = Fingerprints()
 
 func DebugDictionaryKeys() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     headers.name(4096, "position")
     fingerprints.read("\{\"hero\": \"a1\"}")
     var found = fingerprints.of("hero")

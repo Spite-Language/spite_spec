@@ -3,7 +3,7 @@ var names = List<String>()
 var emitted = 0
 
 func LoopAfterAssert() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     names.append("a")
     names.append("b")
     names.append("c")

@@ -1,7 +1,7 @@
 var console = Console()
 
 func ChainComparison() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var made = make("make")
     var nothing_made = make("")
     var first = is_make(made)

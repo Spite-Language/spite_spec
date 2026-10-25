@@ -1,4 +1,4 @@
 func LoadGitNoRepository() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     load "engine@a3f2c91"
 }

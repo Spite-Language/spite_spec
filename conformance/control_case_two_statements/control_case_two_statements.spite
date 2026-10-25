@@ -6,7 +6,7 @@ union Creature {
 var console = Console()
 
 func ControlCaseTwoStatements() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var cat = Cat()
     greet(cat)
 }

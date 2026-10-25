@@ -3,8 +3,8 @@ var pool = ThreadPool()
 var markers = ThreadLocal<String>()
 
 func ThreadLocalGrowth() {
-    load "../../../SpiteCompiler/.spite/library/common"
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var every_round = true
     var round = 0
     while round < 20 {

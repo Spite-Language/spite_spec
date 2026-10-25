@@ -2,7 +2,7 @@ var console = Console()
 var rows = [10, 20, 30]
 
 func DefaultAnswerFixed() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var found = row_of(2)
     crash found
     var missing = row_or_minus_one(7)

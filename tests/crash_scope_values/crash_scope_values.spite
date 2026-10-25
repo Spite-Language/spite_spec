@@ -10,7 +10,7 @@ var retries = 3
 var names = List<String>()
 
 func CrashScopeValues() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     console.print("before the crash")
     load_level("forest", 2)
 }

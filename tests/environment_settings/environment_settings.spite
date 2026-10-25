@@ -3,7 +3,7 @@ var environment = Environment()
 var same_environment = Environment()
 
 func EnvironmentSettings() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     console.print(
         environment.name,
         environment.workers + 1,

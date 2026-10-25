@@ -1,5 +1,5 @@
 func AssertRingEarlier() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 20 {
         first_check(index)

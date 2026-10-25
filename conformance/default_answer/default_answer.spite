@@ -8,7 +8,7 @@ var rows = [10, 20, 30]
 var handle = -1
 
 func DefaultAnswer() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var row = row_of(1)
     var open = is_open()
     var name = name_of(2)

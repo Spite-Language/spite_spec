@@ -9,7 +9,7 @@ var scale = 3
 var windows = Windows()
 
 func ForeignCallbacks() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var mapped = plain.sum_mapped(4, scaled)
     var declared_mapped = declared.sum_mapped(2, scaled)
     console.print(mapped, declared_mapped)

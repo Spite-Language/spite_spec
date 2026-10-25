@@ -1,7 +1,7 @@
 var console = Console()
 
 func WiderBitwiseOperand() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var flags: Byte = 200
     var mask: Long = 4294967311
     var kept = flags.bits_and(mask)

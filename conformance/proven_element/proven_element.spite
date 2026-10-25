@@ -1,7 +1,7 @@
 var console = Console()
 
 func ProvenElement() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var codes = [3, 1, 4]
     var index = 0
     while index < codes.count() {

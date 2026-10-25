@@ -3,6 +3,6 @@ var greeting = "one
 two"
 
 func UnclosedText() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     console.print(greeting)
 }

@@ -1,7 +1,7 @@
 var console = Console()
 
 func JsonEscapesWritten() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var note = Note()
     note.text = "a\"b\\c\nd\re\tf"
     var writer = JsonWriter<Note>()

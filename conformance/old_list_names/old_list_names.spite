@@ -1,7 +1,7 @@
 var console = Console()
 
 func OldListNames() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var names = ["ada"]
     names.add("grace")
     var last_name = names.pop()

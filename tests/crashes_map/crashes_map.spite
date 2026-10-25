@@ -1,7 +1,7 @@
 var console = Console()
 
 func CrashesMap() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var checked = positive(4)
     var is_four = checked == 4
     console.print(is_four)

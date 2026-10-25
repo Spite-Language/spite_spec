@@ -6,7 +6,7 @@ enum Weather {
 var console = Console()
 
 func PrintWithoutToString() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var crate = Crate()
     console.print("crate", crate)
     var sizes = [1, 2, 3]

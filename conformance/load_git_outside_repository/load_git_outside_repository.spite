@@ -1,4 +1,4 @@
 func LoadGitOutsideRepository() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     load "github.com/example/engine@a3f2c91/../tools"
 }

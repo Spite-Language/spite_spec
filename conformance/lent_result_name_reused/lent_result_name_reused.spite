@@ -3,7 +3,7 @@ var layouts = Column<Layout>()
 var lookup = Lookup<Layout>()
 
 func LentResultNameReused() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Layout()
     layouts.insert(first)
     var layout = Layout()

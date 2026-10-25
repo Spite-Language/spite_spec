@@ -1,7 +1,7 @@
 var console = Console()
 
 func JsonNumberIntoInteger() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var reader = JsonReader<Order>()
     var order = reader.read("\{\"count\": 3.7}")
     crash order

@@ -1,7 +1,7 @@
 var console = Console()
 
 func JsonUnicodeRead() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var reader = JsonReader<Note>()
     var note = reader.read("\{\"text\": \"caf\\u00e9 \\ud83d\\ude00\"}")
     crash note

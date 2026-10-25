@@ -2,7 +2,7 @@ var console = Console()
 var ruler = Ruler()
 
 func IndexableUnproven() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var total = 0
     var index = 0
     while index < ruler.count() {

@@ -1,7 +1,7 @@
 var console = Console()
 
 func ControlElseIf() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var small = size_of(1)
     var medium = size_of(50)
     var large = size_of(500)

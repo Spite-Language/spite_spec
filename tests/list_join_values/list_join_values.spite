@@ -6,7 +6,7 @@ enum Mood {
 var console = Console()
 
 func ListJoinValues() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var numbers = [1, -2, 3]
     var decimals = [1.5, 0.25]
     var answers = [true, false]

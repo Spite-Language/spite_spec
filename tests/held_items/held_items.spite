@@ -6,7 +6,7 @@ var last_seen: Point? = null
 var cursor = 0
 
 func HeldItems() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 3 {
         var made = Point(index)

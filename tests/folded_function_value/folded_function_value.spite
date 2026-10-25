@@ -1,7 +1,7 @@
 var console = Console()
 
 func FoldedFunctionValue() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var loud = Probe<Loud>()
     var quiet = Probe<Quiet>()
     var loud_speaks = loud.speaks()

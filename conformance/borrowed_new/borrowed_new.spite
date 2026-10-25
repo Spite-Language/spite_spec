@@ -1,7 +1,7 @@
 var console = Console()
 
 func BorrowedNew() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var holder = new Console()
     holder.print("hello")
 }

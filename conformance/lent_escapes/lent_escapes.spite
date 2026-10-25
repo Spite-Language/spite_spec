@@ -7,7 +7,7 @@ var kept: Justify? = null
 var held = List<Justify>()
 
 func LentEscapes() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var made = Justify()
     justifications.insert(2, made)
     var lookup = Lookup<Justify>()

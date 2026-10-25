@@ -3,7 +3,7 @@ var names = ["ada", "bo"]
 var greeted = 0
 
 func QuietAssertsOptimized() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 1000 {
         greet(index % 4)

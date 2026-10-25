@@ -2,7 +2,7 @@ var console = Console()
 var packer = Packer()
 
 func HeldArguments() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var bag = Bag("first")
     var packed = packer.pack_all(bag, 4)
     var items = bag.items.count()

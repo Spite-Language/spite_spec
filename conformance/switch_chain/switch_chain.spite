@@ -7,7 +7,7 @@ enum Light {
 var console = Console()
 
 func SwitchChain() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var day = day_name(2)
     var wait = seconds_for('amber')
     var sign = sign_for("fr")

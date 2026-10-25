@@ -1,7 +1,7 @@
 var console = Console()
 
 func MathsPrecision() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var narrow: Float = 2.0
     var wide: Double = 2.0
     console.print("square_root of 2: Float {narrow.square_root()}, Double {wide.square_root()}")

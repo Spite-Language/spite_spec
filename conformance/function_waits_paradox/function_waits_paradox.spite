@@ -1,5 +1,5 @@
 func FunctionWaitsParadox() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var looper = Looper()
     looper.update_each()
 }

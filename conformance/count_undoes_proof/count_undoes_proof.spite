@@ -2,7 +2,7 @@ var console = Console()
 var items = List<String>()
 
 func CountUndoesProof() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     items.append("apple")
     counting()
     trusting()

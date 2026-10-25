@@ -1,7 +1,7 @@
 var console = Console()
 
 func DictionaryLiterals() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var prices = {"tea": 3, "cake": 5,}
     var names = {
         7: "seven"

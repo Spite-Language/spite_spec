@@ -1,7 +1,7 @@
 var console = Console()
 
 func OrderedFile() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var inventory = Inventory<Crate>()
     var small_crate = Crate(3)
     inventory.add(small_crate)

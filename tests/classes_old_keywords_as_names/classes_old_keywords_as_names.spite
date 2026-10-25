@@ -1,7 +1,7 @@
 var console = Console()
 
 func ClassesOldKeywordsAsNames() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var let = 2
     var const = 3
     var generics = 4

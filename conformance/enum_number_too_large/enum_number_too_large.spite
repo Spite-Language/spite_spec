@@ -4,6 +4,6 @@ enum Size {
 }
 
 func EnumNumberTooLarge() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var size: Size = 'small'
 }

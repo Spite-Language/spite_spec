@@ -9,7 +9,7 @@ var focused: Server.Component.Eye? = null
 var seen_eyes = List<Server.Component.Eye>()
 
 func UnknownTypeSuggestion() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var eye = Component.Eye()
     var seen = {entity: 1, eye: eye}
     watched.append(seen)

@@ -5,7 +5,7 @@ var kept = List<List<String>>()
 var replaced = List<List<Long>>()
 
 func NestedLists() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var round = 0
     var total = 0
     while round < 3 {

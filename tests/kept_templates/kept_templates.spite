@@ -7,7 +7,7 @@ var header_books = List<Headers>()
 var fingerprint_books = List<Fingerprints>()
 
 func KeptTemplates() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var worker = Worker(7)
     var first = Parallel(worker.work)
     runs.append(first)

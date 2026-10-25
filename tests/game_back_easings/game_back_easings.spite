@@ -2,7 +2,7 @@ var console = Console()
 var easing = Easing()
 
 func GameBackEasings() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var start = easing.in_back(0.0)
     var dips = easing.in_back(0.5)
     var finish = easing.in_back(1.0)

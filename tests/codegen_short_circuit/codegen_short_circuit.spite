@@ -1,7 +1,7 @@
 var console = Console()
 
 func CodegenShortCircuit() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var numbers = Probe<List<Integer>>()
     var nested = Probe<List<List<Float>>>()
     var number = Probe<Integer>()

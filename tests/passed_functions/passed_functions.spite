@@ -2,7 +2,7 @@ var console = Console()
 var greeted = 0
 
 func PassedFunctions() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var names = ["Ada", "Grace", "Barbara", "Edsger"]
     names.each(say_hello)
     var short_names = names.filter(is_short)

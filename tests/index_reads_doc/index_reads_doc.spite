@@ -1,7 +1,7 @@
 var console = Console()
 
 func IndexReadsDoc() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var names = ["ada", "bo", "cy"]
     crash names.count() == 3
     var first = names[0].upper_case()

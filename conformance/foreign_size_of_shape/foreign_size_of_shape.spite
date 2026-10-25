@@ -5,7 +5,7 @@ type Speaker {
 var console = Console()
 
 func ForeignSizeOfShape() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var speaker_size = Speaker.size
     console.print(speaker_size)
 }

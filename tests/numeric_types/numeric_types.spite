@@ -3,7 +3,7 @@ var level: Tiny = 100
 var port: UnsignedShort = 8080
 
 func NumericTypes() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var wrapped: Tiny = -100
     var small: Short = 30000
     var octet: Byte = 44

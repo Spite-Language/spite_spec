@@ -1,7 +1,7 @@
 var console = Console()
 
 func PluralTemplates() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var people = List<Person>()
     var ann = Person("ann", 3, "cid")
     people.append(ann)

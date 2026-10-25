@@ -7,7 +7,7 @@ enum Light {
 var console = Console()
 
 func ValueSwitch() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var wait = seconds_for('red')
     var name = name_for('green')
     var code = code_for(3)

@@ -2,7 +2,7 @@ var console = Console()
 var buffers = Dictionary<String, List<String>>()
 
 func ConstructorAsArgument() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var screen = Screen()
     var button = screen.add(CounterButton(screen.id))
     var label = Label(Font())

@@ -1,7 +1,7 @@
 var console = Console()
 
 func ReturnedLocal() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var whole = rounded(2.6)
     var greeting = named("ada")
     var wide = widened(3)

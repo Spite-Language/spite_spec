@@ -1,7 +1,7 @@
 var console = Console()
 
 func ListRemoveOutOfRange() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var scores = [1, 2, 3]
     scores.remove_at(1)
     var joined = scores.join(",")

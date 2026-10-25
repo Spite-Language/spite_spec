@@ -1,7 +1,7 @@
 var console = Console()
 
 func ListReserve() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var numbers = List<Integer>()
     numbers.reserve(100)
     var empty_count = numbers.count()

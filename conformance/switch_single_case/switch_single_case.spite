@@ -7,7 +7,7 @@ union Creature {
 var console = Console()
 
 func SwitchSingleCase() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var cat = Cat()
     var cat_is_fish = is_fish(cat)
     var cat_fins = fins_of(cat)

@@ -1,7 +1,7 @@
 var console = Console()
 
 func GenericInferred() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var pair = Pair("Hero", 7)
     console.print(pair.left, pair.right + 1)
     var maybe_name: String? = "ann"

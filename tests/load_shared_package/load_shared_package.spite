@@ -1,7 +1,7 @@
 var console = Console()
 
 func LoadSharedPackage() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     load "kitchen"
     load "bakery"
     var cook = Cook()

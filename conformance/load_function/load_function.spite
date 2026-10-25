@@ -1,7 +1,7 @@
 var loads = 0
 
 func LoadFunction() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     loads = 1
 }
 

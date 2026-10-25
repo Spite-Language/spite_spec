@@ -3,7 +3,7 @@ var passes: Long = 0
 var running = true
 
 func BusyLoop() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     while running and passes < 300000000 {
         passes = passes + 1
     }

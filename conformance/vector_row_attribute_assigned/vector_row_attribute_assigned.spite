@@ -4,7 +4,7 @@ var velocities = Vector<Velocity>()
 var keeper = Keeper()
 
 func VectorRowAttributeAssigned() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var position = Position(1)
     positions.append(position)
     var velocity = Velocity(2)

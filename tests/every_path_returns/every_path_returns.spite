@@ -6,7 +6,7 @@ enum Light {
 var console = Console()
 
 func EveryPathReturns() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var negative = sign_of(-3)
     var positive = sign_of(4)
     var stop = action_of('red')

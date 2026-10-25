@@ -3,7 +3,7 @@ var badges = List<Badge>()
 var spots = List<Spot>()
 
 func OptimizationReport() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     keep_badge()
     keep_copies()
     var names = List<String>()

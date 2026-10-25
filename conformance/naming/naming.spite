@@ -9,7 +9,7 @@ var msg = "hello"
 var item_cnt = 0
 
 func Naming() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var n = 1
     var btn_count = n + 1
     console.print(msg, playerName, btn_count, item_cnt, calcTotal(2))

@@ -10,7 +10,7 @@ type Labeled {
 var console = Console()
 
 func ClassThroughShape() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var widget = Widget("thing")
     describe(widget)
     var gauge = Gauge("dial")

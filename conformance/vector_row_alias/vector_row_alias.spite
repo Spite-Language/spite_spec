@@ -3,7 +3,7 @@ var positions = Vector<Position>()
 var velocities = Vector<Velocity>()
 
 func VectorRowAlias() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var position = Position(1)
     positions.append(position)
     var velocity = Velocity(2)

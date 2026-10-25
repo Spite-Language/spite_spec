@@ -8,7 +8,7 @@ var saw = Saw()
 var voices = List<Voice>()
 
 func RowOfVoices() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     voices.append(sine)
     voices.append(saw)
     voices.each_render()

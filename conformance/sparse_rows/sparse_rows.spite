@@ -2,7 +2,7 @@ var runner = Runner<Moving>()
 var positions = Column<Position>()
 
 func SparseRows() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var placed = Position()
     positions.insert(placed)
     runner.found.append(0)

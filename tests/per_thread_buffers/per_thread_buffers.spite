@@ -2,7 +2,7 @@ var console = Console()
 var totals = Totals()
 
 func PerThreadBuffers() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var runs = List<Parallel<Integer>>()
     var index = 0
     while index < 8 {

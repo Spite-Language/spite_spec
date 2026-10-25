@@ -1,7 +1,7 @@
 var console = Console()
 
 func OldBreak() {
-    load "../../../SpiteCompiler/.spite/library/common"
+    load "../../../spite_standard_library/common"
     var index = 0
     while index < 10 {
         if index == 3 {

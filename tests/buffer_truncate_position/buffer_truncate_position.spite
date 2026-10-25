@@ -1,7 +1,7 @@
 var console = Console()
 
 func BufferTruncatePosition() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var bytes = Buffer(0)
     bytes.append(1)
     bytes.append(2)

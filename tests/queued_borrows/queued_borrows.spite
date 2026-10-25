@@ -3,7 +3,7 @@ var world = World()
 var positions = Column<Position>()
 
 func QueuedBorrows() {
-    load "../../../SpiteCompiler/.spite/library/windows"
+    load "../../../spite_standard_library/windows"
     var first = Position()
     first.left = 3
     positions.insert(1, first)
