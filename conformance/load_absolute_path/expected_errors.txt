@@ -1,0 +1,1 @@
+conformance/load_absolute_path/load_absolute_path.spite:5: error: 'load "D:/projects/tools/kit"' names an absolute path, and a load is relative to the folder of the file it is written in: write 'load "...tools/kit"'

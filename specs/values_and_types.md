@@ -570,6 +570,9 @@ func find_target(): Monster? {
 }
 ```
 
+The old spelling `Nullable<T>` is an error that names the new one: "'Nullable<T>' was replaced by a '?' suffix:
+write 'Integer?' for a value that may be null" (`conformance/old_nullable_spelling`).
+
 `Monster?` *is* `union { Monster, Null }`. `Null` is an ordinary class whose only value is the literal `null`,
 the way `true` and `false` are the values of `Boolean`, so nullability is no special case: `switch target {
 Monster: ... Null: ... }` is a switch over a union, and `assert`, `crash` and `if` narrow it by union narrowing.

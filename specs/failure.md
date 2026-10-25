@@ -455,6 +455,9 @@ func is_open(): Boolean {
 }
 ```
 
+**Nothing follows a `return` in its block.** A statement after one never runs, so it is an error at its line:
+"this statement comes after a 'return', so it never runs: remove it" (`conformance/after_return_error`).
+
 **Every path of a function that declares a result ends in a `return`.** A path that reaches the end of the function's body is a
 compile error at the line of the function's closing `}`, and the message names the path, one step per branch it
 took: `'sign_of' answers a String, but when 'value < 0' is false (line 12, an 'if' with no 'else') it reaches its

@@ -55,7 +55,7 @@ allocation counts.
 | `is_empty()` | `Boolean` | |
 | `slice(start, end)` | `String` | clamped; `""` for an empty/invalid range |
 | `character_at(index)` | `String` | `""` out of range |
-| `code_at(index)` | `Integer` | `0` out of range |
+| `code_at(index)` | `Integer` | below 0 or past the end halts, naming the index and the length (`tests/code_past_the_end`) |
 | `contains(text)` / `starts_with(text)` / `ends_with(text)` | `Boolean` | |
 | `index_of(text)` | `Integer` | `-1` when absent |
 | `replace(from, to)` | `String` | replaces every occurrence |

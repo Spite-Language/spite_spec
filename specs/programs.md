@@ -177,8 +177,9 @@ with a literal default, and a program adds its own the same way it adds `Environ
   keeps one branch. Each system's folder reopens `Build` with `var target_operating_system = "linux"`, which is
   only the default a compiler that does not fold `Build` sees (the seed while bootstrapping). The compiler
   learns which system it runs on from its own `build.target_operating_system`, folded when it was built.
-- **`program`** is the folder named on the command line, which the launcher loads; the compiler supplies it and
-  giving it is an error.
+- **`program`** is the folder named on the command line, as it is written there (`tests/loaded_program` for
+  `spite tests/loaded_program`), which the launcher loads; the compiler supplies it and giving it is an error
+  (`tests/loaded_program`).
 - **`--final-classes` prints `Build` with its declared defaults**, not the values one build folded, so running the
   printed program takes its flags again instead of, say, printing its classes forever.
 - **Run-time cost**: none. `Build` holds nothing at run time, since every field is folded, so in a

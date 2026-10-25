@@ -128,7 +128,8 @@ The details:
   ([Reading input you did not write](https://github.com/Spite-Language/spite_documentation/blob/master/json.md#reading-input-you-did-not-write), and
   [Failure](failure.md#failure-three-outcomes-and-no-others)'s three outcomes). An unknown key is skipped,
   whatever it holds, because foreign systems send more than a program asks for; a missing attribute keeps the
-  default its class declares, the value [Variables and values](values_and_types.md#variables-and-values)
+  default its class declares (the reader makes the object from its attribute defaults and does not run its
+  constructor, so a class whose constructor takes arguments reads too, `tests/json_basics`), the value [Variables and values](values_and_types.md#variables-and-values)
   gives anything never set. Besides a value of the wrong kind, a missing brace and anything after the value
   (`{} x`) make `read` answer `null`: the object would be wrong, and a wrong object that looks right is a
   surprise. `read_or_crash` crashes on the same inputs, and its crash line carries
@@ -154,7 +155,12 @@ The details:
   serializer is compiled to: the keys are literal text, and reading matches them as it matches a name. A map made
   at run time fills a key table once per attribute when the serializer is made (an array by attribute, and a small
   hash for reading), so each record then costs what the constant case costs. Naming an attribute the class does
-  not have, a private one or one holding a singleton is an error. Nothing in a class names its own keys.
+  not have, a private one or one holding a singleton is an error. The map is set whole: changing one key through
+  an index, `set_at`, `remove_at` or `clear` is an error, "'JsonWriter.keys' is folded into the code while
+  compiling, so it is set whole with a written-out map and never changed one key at a time", and so is a local
+  holding it, which could change it unseen: "'JsonWriter.keys' is folded into the code while compiling, so it is
+  read where it is: a local holding it could change it one key at a time, and the code would keep the keys it
+  was compiled with". Nothing in a class names its own keys.
 - **A function `json_key_<attribute>()`**, where `<attribute>` is one of the class's attributes, is the old way
   to name a key and an error at the function, so a key it gave is never silently lost: "'MeshRecord.json_key_minimum_level_of_detail'
   would name the JSON key of 'minimum_level_of_detail', and JsonReader and JsonWriter do not read a function for

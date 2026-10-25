@@ -102,7 +102,9 @@ A walk is a call on a list of reflection objects, under [reflection.md's rules f
   nothing.
 - **A question on a constant folds**: `.is_resumable`, `.is_mutated`, `.is_stateful`, `.is_fixed_size`,
   `.is_singleton`, the kind questions, `.count()` of a constant list, `[]` with a literal name, and `==` between
-  constant classes. **`.is_resumable` cannot be asked of a function by itself**: its own answer would decide whether
+  constant classes. An attribute set from one of a codegen type's yes-or-no questions needs no written type: `var
+  inline = $component_type.is_fixed_size` is a `Boolean` (`.is_singleton`, `.is_optional`, `.is_enum`, `.is_stateful`,
+  `.is_fixed_size`, `.is_list`, `.is_dictionary`; `tests/fits_vector_doc`). **`.is_resumable` cannot be asked of a function by itself**: its own answer would decide whether
   it waits, and that is an error.
 - **`.is_mutated` follows every call**: an attribute set on what the argument was given, an item written or a list
   grown, a function called on it that changes its own object, or the argument handed to another function that does

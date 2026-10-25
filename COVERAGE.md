@@ -1195,6 +1195,7 @@ Rules: 52. Covered before: 36. Covered now: 47.
 | The same folder loaded by two packages is loaded once, however spelled | tests/load_shared_package | added |
 | A folder a package loads inside its own tree is a root and never a namespace, even under an `if` the build decides the other way | conformance/loaded_folder_namespace, tests/load_on_build | covered |
 | Folder names are snake_case; the error names the rename | conformance/folder_name, conformance/load_folder_name | covered |
+| Only the last folder a load names is held to snake_case; the folders it climbs through may have any name | conformance/load_path_folder_name | added |
 | Folders with no `.spite` file, and `.git`, `.spite`, `.spite-cache`, are never walked | tests/working_directory | covered |
 | Folders above a root that a path passes through are not checked | tests/namespaces_load | covered |
 | Name lookup: own namespace, folder, parent folders, then global | tests/relative_namespaces, tests/folder_class_namespace | covered |
@@ -1225,7 +1226,7 @@ Rules: 52. Covered before: 36. Covered now: 47.
 | `load` cannot name a variable | conformance/load_variable_name | added (compiler fails: a parse error 'expected the name of a variable') |
 | `load` cannot name a parameter | conformance/load_parameter_name | added (compiler fails: a parse error 'a parameter is declared name: Type') |
 | `load` takes literal text; a computed folder is the error | conformance/load_computed_folder | added (compiler fails: worded 'a load names its folder as plain text ...') |
-| An absolute load path is a root, never a namespace of its loader | none | missing |
+| An absolute load path is refused, naming the relative path to write | conformance/load_absolute_path | added |
 | A `load` under an `if` folds on Build fields; only the taken branch loads | tests/load_on_build | covered |
 | A condition it cannot fold is the error | conformance/load_unknown_condition | covered |
 | A `load` inside a `while` or a `switch` is an error | conformance/load_in_while | added |

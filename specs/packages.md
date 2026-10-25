@@ -60,12 +60,13 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   not named in snake_case: every folder of a program, a package's own folder included, is lowercase words joined
   by '_', so rename it 'bad_folder'" (`diagnostics/folder_name`, and `diagnostics/load_folder_name` for `load
   "Window-Plugin"`). What is checked: the program's own folder, every folder
-  inside it and inside a loaded root, a loaded root's own folder, and every folder a `load` names on its way
-  there: `load "../../Plugins/render_vulkan"` is refused at its line for 'Plugins' like any other folder,
-  "game/game.spite:4: error: the folder 'Plugins' is not named in snake_case: every folder is lowercase words
-  joined by '_', so rename it 'plugins'" (`conformance/load_path_folder_name`). Only `.` and `..` (and a drive
-  such as `D:` at the start of an absolute path) are not folder names, so a path through a hidden folder such as
-  `.spite` is refused too: a program loads a folder by where it is, never through a link in a build folder.
+  inside it and inside a loaded root, and a loaded root's own folder, the last folder a `load` names, which
+  becomes a namespace. The folders a path climbs or passes through to reach it are not namespaces and may have
+  any name: `load "../../Old Tools/render_vulkan"` checks only `render_vulkan`, and `load "../../plugins/RenderVulkan"`
+  is refused at its line, before the folder is looked for, "game/game.spite:4: error: the folder 'RenderVulkan' is
+  not named in snake_case: every folder is lowercase words joined by '_', so rename it 'render_vulkan'"
+  (`conformance/load_path_folder_name`). `.` and `..` are not folder names, so the last folder is the last one
+  that is neither.
   snake_case is a lowercase letter, then lowercase letters, digits and single `_`, not ending in `_`.
 - Resolving an unqualified `Name` from inside a class tries, in order: that class's own namespace (so a nested enum/type/union
   resolves by its plain name from inside its own class), the same folder's namespace, each parent folder's namespace, then the
@@ -178,9 +179,12 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
 - `load` takes a literal string, so the compiler always knows every bundle; anything else (a variable, an
   expression) is "a program's 'load' names its folder with text, like 'load "engine"': the compiler reads every
   loaded folder before it compiles, so the folder cannot be computed". The text is a path relative to the folder
-  of the file it is written in, or an absolute one: one starting with `/`,
-  or with a drive letter, `D:/` or `D:\`. An absolute root is never also a namespace of the folder that loads it,
-  and only its own folder's name is held to snake_case. The compiler finds every `load` reachable from the entry
+  of the file it is written in, never an absolute one: a path starting with `/` or `\`, or with a drive letter
+  (`D:/`, `D:\`), is refused at its line before anything is looked for, naming the relative path to write from
+  that file's folder: "'load "D:/projects/tools/kit"' names an absolute path, and a load is relative to the folder
+  of the file it is written in: write 'load "../../../tools/kit"'". A path on another drive than the file's folder
+  has no relative form: "... '<path>' is on another drive than '<folder>', so move it beside the program and load
+  it by a relative path" (`conformance/load_absolute_path`). The compiler finds every `load` reachable from the entry
   file's own constructor at compile time (a `load` inside
   already-loaded code counts too), and records each root as a bundle (its name and whether the `load` that introduced it sits
   inside an `if`) in the program model, for dynamic libraries and lazy loading to build on.
@@ -212,8 +216,9 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
     commit, then optionally `/` and a folder inside the repository, which is the root loaded (the repository's top
     folder when there is none). The folder may not start with `..` or be absolute: "'load "<text>"' names the
     folder '<folder>', which is not inside the repository".
-  - The repository is local when it starts with `./`, `../`, `/`, `\` or a drive letter, and is then resolved
-    like any `load` path, from the folder of the file the `load` is written in; it is a URL when it starts with
+  - The repository is local when it starts with `./` or `../` (one starting with `/`, `\` or a drive letter is
+    refused as absolute, like any `load` path), and is then resolved from the folder of the file the `load` is
+    written in; it is a URL when it starts with
     `https://`, `http://`, `ssh://`, `git://` or `file://`, or when its first segment holds a `.` (a host,
     `github.com/...`, which is fetched as `https://github.com/...`). Anything else is "'load "<text>"' names no
     repository: '<repository>' is neither a URL nor a path starting with ./, ../, / or a drive letter", followed

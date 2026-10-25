@@ -80,6 +80,9 @@ logger.log(pretty_print)         # passes this instance's pretty_print
   builds no value at all, because the element loop is instantiated for that function and calls it
   directly ([Passing a function for each element](https://github.com/Spite-Language/spite_documentation/blob/master/collections.md#passing-a-function-for-each-element)). A
   program that uses no function value carries none of this.
+- **A function value read from a list is called where it is read**: `listeners[index](event)` calls the item, and
+  the read must be proven, by a bound such as `while index < listeners.count()` or a `crash`, or it is the
+  may-be-missing error of any `[ ]` read where a value is needed (`tests/event_bus`).
 - **It makes foreign callbacks expressible.** `{instance, function}` is precisely what a C callback plus its
   `void*` user data wants: a `ForeignCallback` hands C the function and gets the owner back from the user data
   ([Calling back into Spite](https://github.com/Spite-Language/spite_documentation/blob/master/foreign_libraries.md#calling-back-into-spite)).

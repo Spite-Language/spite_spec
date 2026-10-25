@@ -1,0 +1,12 @@
+var console = Console()
+
+func DecimalRemainderExact() {
+    load "../../../spite_standard_library/windows"
+    var big: Double = 100000000000000000.0
+    var three: Double = 3.0
+    var left = big % three
+    var small: Double = 7.5
+    var two: Double = 2.0
+    var half = small % two
+    console.print(left, half)
+}
