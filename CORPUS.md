@@ -13,24 +13,14 @@ A ported program that the compiler gets wrong says why after "fails:"; each of t
 listed again under [Gaps](#gaps).
 
 Old programs: 975. Covered: 835. Ported: 99. Not applicable:
-41. Ported programs that fail: 12.
+41. Ported programs that fail: 2.
 
 ## Gaps
 
 Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line each.
 
-- `conformance/after_return_error`: a statement after a `return` is not refused; the compiler reports the missing `return` at the end instead.
-- `conformance/maybe_null_into_type`: the may-be-null error leaves out what is needed ("but an Anything is needed").
-- `conformance/old_nullable_spelling`: the old `Nullable<T>` spelling is not refused with the error that names the `?` suffix.
-- `tests/event_bus`: calling a function value read by index (`listeners[index](event)`) is not built.
-- `tests/fits_vector_doc`: an attribute of a generic class whose value is a codegen value (`var inline = $component_type.is_fixed_size`) needs its type written.
-- `tests/json_basics`: the library's `JsonReader.parse_object` calls `Item()` with no arguments, and `Item` takes 2.
-- `tests/list_base_counter`: no bound proof for `values[base + counter]` from `base >= 0`, `base + width <= count` and `counter < width`.
-- `tests/list_byte_numbers`: no range proof for `Buffer.read_*_at(offset)` from a `crash` that bounds the offset, so the reads stay `T?`.
-- `tests/loaded_program`: `Build().program` is empty: the compiler does not fill in the program's folder.
 - `tests/pinned_widgets`: a load pinned to a commit (`load "../..@<commit>/..."`) is refused: fetching repositories is not built.
 - `tests/recooking`: the library has no `Reload` singleton (`reload` of a `--hot-reload` build).
-- `tests/vector_items_run`: `Vector` has no `parallel_each_<member>` (List has it).
 
 ## Programs
 
@@ -248,8 +238,8 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/lent_to_calls | covered | tests/lent_to_calls |  |
 | conformance/stage6/library_functions_passed | covered | tests/library_functions_passed |  |
 | conformance/stage6/library_reflection | covered | tests/library_reflection |  |
-| conformance/stage6/list_base_counter | ported | tests/list_base_counter | fails: no bound proof for `values[base + counter]` from `base >= 0`, `base + width <= count` and `counter < width` |
-| conformance/stage6/list_byte_numbers | ported | tests/list_byte_numbers | D662/D665: the ForeignBytes over a heap block part dropped; fails: no range proof for `Buffer.read_*_at(offset)` from a `crash` that bounds the offset, so the reads stay `T?` |
+| conformance/stage6/list_base_counter | ported | tests/list_base_counter | |
+| conformance/stage6/list_byte_numbers | ported | tests/list_byte_numbers | D662/D665: the ForeignBytes over a heap block part dropped |
 | conformance/stage6/listed_values | covered | tests/listed_values |  |
 | conformance/stage6/live_enum | covered | tests/live_enum |  |
 | conformance/stage6/live_instances | not applicable (D662) | - | Monster.instances is gone |
@@ -426,7 +416,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/variadic_answers_in_frame | covered | tests/variadic_answers_in_frame |  |
 | conformance/stage6/variadic_arguments | covered | tests/variadic_arguments |  |
 | conformance/stage6/vector_find_sort | covered | tests/vector_find_sort |  |
-| conformance/stage6/vector_items | ported | tests/vector_items_run | D662: the arena placement became a plain second Vector ('kept elsewhere 1'); fails: `Vector` has no `parallel_each_<member>` (List has it) |
+| conformance/stage6/vector_items | ported | tests/vector_items_run | D662: the arena placement became a plain second Vector ('kept elsewhere 1') |
 | conformance/stage6/vector_remove_out_of_range | covered | tests/vector_remove_out_of_range |  |
 | conformance/stage6/vector_rows | covered | tests/vector_rows |  |
 | conformance/stage6/wait_index_order | covered | tests/wait_index_order |  |
@@ -578,7 +568,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/maths_other_spellings | covered | conformance/maths_other_spellings |  |
 | diagnostics/maybe_boolean_conditions | covered | conformance/maybe_boolean_conditions |  |
 | diagnostics/maybe_in_arithmetic | covered | conformance/maybe_in_arithmetic |  |
-| diagnostics/maybe_null_into_type | ported | conformance/maybe_null_into_type | first error only; fails: the may-be-null error leaves out what is needed ("but an Anything is needed") |
+| diagnostics/maybe_null_into_type | ported | conformance/maybe_null_into_type | first error only |
 | diagnostics/member_template_mistakes | covered | conformance/member_template_mistakes |  |
 | diagnostics/memory_access | not applicable (D662) | retired/memory_access | kept in retired/memory_access (D665) |
 | diagnostics/missing_switch_case | covered | conformance/missing_switch_case |  |
@@ -601,7 +591,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/old_do | covered | conformance/old_do |  |
 | diagnostics/old_let | covered | conformance/old_let |  |
 | diagnostics/old_list_names | covered | conformance/old_list_names |  |
-| diagnostics/old_nullable_spelling | ported | conformance/old_nullable_spelling | error line written in the SpiteSpec form (old one was the formatter's line:column form); fails: the old `Nullable<T>` spelling is not refused with the error that names the `?` suffix |
+| diagnostics/old_nullable_spelling | ported | conformance/old_nullable_spelling | error line written in the SpiteSpec form (old one was the formatter's line:column form) |
 | diagnostics/old_reference_type | covered | conformance/old_reference_type |  |
 | diagnostics/old_shift | covered | conformance/old_shift |  |
 | diagnostics/old_type_spellings | covered | conformance/old_type_spellings |  |
@@ -715,7 +705,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | examples/battle | ported | tests/battle |  |
 | examples/calculator | ported | tests/calculator | program.txt path is tests/calculator/program.txt |
 | examples/dungeon | ported | tests/dungeon | D798: Symbol parameters are Spite.AttributeDeclaration |
-| examples/event_bus | ported | tests/event_bus | fails: calling a function value read by index (`listeners[index](event)`) is not built |
+| examples/event_bus | ported | tests/event_bus | |
 | examples/game | ported | tests/game | game_no_mod.spite (a second entry) left out |
 | examples/hello | ported | tests/hello_example |  |
 | examples/library_card | ported | tests/library_card |  |
@@ -790,7 +780,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/control_flow.md#generic_class_test_doc | covered | tests/generic_class_test |  |
 | docs/control_flow.md#codegen_class_test_doc | covered | tests/codegen_class_test |  |
 | docs/control_flow.md#single_case_switch_error | covered | conformance/switch_single_case |  |
-| docs/control_flow.md#after_return_error | ported | conformance/after_return_error | fails: a statement after a `return` is not refused; the compiler reports the missing `return` at the end instead |
+| docs/control_flow.md#after_return_error | ported | conformance/after_return_error | |
 | docs/control_flow.md#returned_local_error | covered | conformance/returned_local |  |
 | docs/failure.md#null_comparison_error | covered | conformance/null_comparison |  |
 | docs/failure.md#nullable_narrowing | covered | tests/nullable_narrowing |  |
@@ -841,7 +831,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/game_maths.md#half_precision_basics | covered | tests/half_precision |  |
 | docs/getting_started.md#hello_world | covered | tests/hello |  |
 | docs/getting_started.md#tour_classes | ported | tests/tour_classes |  |
-| docs/json.md#json_basics | ported | tests/json_basics | fails: the library's `JsonReader.parse_object` calls `Item()` with no arguments, and `Item` takes 2 |
+| docs/json.md#json_basics | ported | tests/json_basics | |
 | docs/json.md#binary_basics | covered | tests/binary_round_trip |  |
 | docs/json.md#binary_stream | covered | tests/binary_many_values |  |
 | docs/json.md#schema_header | covered | tests/binary_schema |  |
@@ -877,7 +867,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/metaprogramming.md#describe_kind | ported | tests/describe_kind |  |
 | docs/metaprogramming.md#generic_never_true | ported | tests/generic_never_true |  |
 | docs/metaprogramming.md#codegen_class_name | covered | tests/codegen_class_name |  |
-| docs/metaprogramming.md#fits_vector_doc | ported | tests/fits_vector_doc | fails: an attribute of a generic class whose value is a codegen value (`var inline = $component_type.is_fixed_size`) needs its type written |
+| docs/metaprogramming.md#fits_vector_doc | ported | tests/fits_vector_doc | |
 | docs/optimizations.md#folded_branch | ported | tests/folded_branch |  |
 | docs/optimizations.md#build_folding | ported | tests/build_folding | build=optimized:true given as flags.txt --optimized |
 | docs/optimizations.md#fused_order | ported | tests/fused_order |  |
@@ -931,7 +921,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/programs.md#unknown_flag_error | covered | conformance/flag_value |  |
 | docs/programs.md#build_over_package | covered | tests/build_precedence |  |
 | docs/programs.md#target_system | covered | tests/build_settings |  |
-| docs/programs.md#loaded_program | ported | tests/loaded_program | fails: `Build().program` is empty: the compiler does not fill in the program's folder |
+| docs/programs.md#loaded_program | ported | tests/loaded_program | |
 | docs/reflection.md#every_class_an_object | covered | tests/reflection_objects | with tests/class_walk for source_files |
 | docs/reflection.md#class_and_instance | ported | tests/class_and_instance | instance-bound function lookup not covered elsewhere |
 | docs/reflection.md#declaration_value | covered | conformance/reflection_declaration_value |  |
