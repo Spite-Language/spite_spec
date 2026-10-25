@@ -1,0 +1,1 @@
+conformance/register_outside_setup/register_outside_setup.spite:7: error: 'Stage.register' is called outside the setup of 'Stage': its passes are registered only in 'Stage()' and the functions only it calls, so the compiler knows them and its 'run' is direct calls in order: move this call there (in RegisterOutsideSetup.RegisterOutsideSetup)

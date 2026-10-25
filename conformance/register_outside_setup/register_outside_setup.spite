@@ -1,0 +1,10 @@
+var console = Console()
+
+func RegisterOutsideSetup() {
+    load "../../../SpiteCompiler/.spite/library/windows"
+    var stage = Stage()
+    var late = Doubling()
+    stage.register(late)
+    var answer = stage.run(3)
+    console.print(answer)
+}

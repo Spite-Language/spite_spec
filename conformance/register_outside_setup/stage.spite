@@ -1,0 +1,25 @@
+type Step {
+    applied(Integer): Integer
+}
+
+var steps = List<Step>()
+
+func Stage() {
+    var doubling = Doubling()
+    register(doubling)
+}
+
+func register(step: Step) {
+    steps.append(step)
+}
+
+func run(number: Integer): Integer {
+    var current = number
+    var index = 0
+    while index < steps.count() {
+        var step = steps[index]
+        current = step.applied(current)
+        index = index + 1
+    }
+    return current
+}
