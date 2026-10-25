@@ -1,0 +1,83 @@
+var console = Console()
+
+func DivisionsInMachineCode() {
+    load "../../../spite_standard_library/windows"
+    var first_line = console.read_line()
+    crash first_line
+    var parsed = first_line.trim().to_long()
+    crash parsed
+    var base_line = console.read_line()
+    crash base_line
+    var base = base_line.trim().to_integer()
+    crash base
+    var decimal_line = console.read_line()
+    crash decimal_line
+    var decimal = decimal_line.trim().to_double()
+    crash decimal
+    var seed = parsed.to_unsigned_long()
+    var values = List<UnsignedLong>()
+    values.append(seed)
+    values.append(UnsignedLong.largest - seed)
+    values.append(seed / 13)
+    values.append(UnsignedLong.largest)
+    var inverted = seed.bits_inverted()
+    values.append(inverted / 5)
+    values.each(print_divided)
+    var in_base = digit_sum(parsed, base)
+    var in_tens = digit_sum(parsed, base + 3)
+    console.print("digits", in_base, in_tens)
+    var halves = halves_of(base * 1000 + 17, base)
+    console.print("halves", halves)
+    compare_decimals(decimal)
+}
+
+func print_divided(value: UnsignedLong) {
+    var big = UnsignedLong.largest - 9223372036854775806
+    var power: UnsignedLong = 1099511627776
+    console.print(value / 3, value % 3, value / 7, value % 7, value / 10, value % 10)
+    console.print(value / 1000000007, value % 1000000007, value / power, value % power)
+    console.print(value / 6148914691236517205, value % 6148914691236517205, value / big, value % big)
+}
+
+func digit_sum(value: Long, base: Integer): Long {
+    var wide_base = base.to_long()
+    var rest = value
+    var total: Long = 0
+    while rest > 0 {
+        var digit = rest % wide_base
+        rest = rest / wide_base
+        total = total + digit
+    }
+    return total
+}
+
+func halves_of(value: Integer, divisor: Integer): Integer {
+    var quotient = value / divisor
+    var remainder = value % divisor
+    var negative = 0 - value
+    var negative_remainder = negative % divisor
+    var negative_quotient = negative / divisor
+    return quotient * 100000 + remainder * 1000 + negative_quotient * 10 + negative_remainder
+}
+
+func compare_decimals(decimal: Double) {
+    var others = [decimal, decimal + 1.0, Double.not_a_number, 0.0 - decimal]
+    var index = 0
+    while index < others.count() {
+        var other = others[index]
+        var same = "differs"
+        if other == decimal {
+            same = "equals"
+        }
+        var apart = "not apart"
+        if other != decimal {
+            apart = "apart"
+        }
+        var itself = "is not itself"
+        if other == other {
+            itself = "is itself"
+        }
+        console.print(index, same, apart, itself)
+        index = index + 1
+    }
+}
