@@ -1,0 +1,1 @@
+conformance/member_template_map_nothing/member_template_map_nothing.spite:8: error: 'map_bump_stars': the member 'bump_stars' of 'Repository' returns nothing, but 'map_' needs it to return a value (to only call it for each element, write 'each_bump_stars()') (in MemberTemplateMapNothing.MemberTemplateMapNothing)

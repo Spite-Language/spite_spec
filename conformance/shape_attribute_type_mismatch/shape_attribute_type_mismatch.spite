@@ -1,0 +1,18 @@
+type Named {
+    name: String
+    size: Integer
+}
+
+var console = Console()
+
+func ShapeAttributeTypeMismatch() {
+    load "../../../spite_standard_library/windows"
+    var box = Box()
+    show(box)
+    var label = Label()
+    show(label)
+}
+
+func show(thing: Named) {
+    console.print(thing.name)
+}

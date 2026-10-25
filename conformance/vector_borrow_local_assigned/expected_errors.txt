@@ -1,0 +1,1 @@
+conformance/vector_borrow_local_assigned/vector_borrow_local_assigned.spite:10: error: 'velocity' is borrowed from 'velocities', and 'velocities' on line 10 may move the items of 'velocities', so 'velocity' is not read after it: read 'velocities[index]' again after that line, or keep 'velocity.copy()', an independent object (in VectorBorrowLocalAssigned.VectorBorrowLocalAssigned)

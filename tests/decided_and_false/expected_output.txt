@@ -1,0 +1,3 @@
+an 'and false' is decided while compiling
+an 'or true' is decided while compiling
+done

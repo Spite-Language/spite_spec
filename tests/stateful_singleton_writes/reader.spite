@@ -1,0 +1,3 @@
+func seen(tally: Tally): Integer {
+    return tally.total
+}

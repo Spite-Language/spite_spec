@@ -1,0 +1,9 @@
+letting go of a Concurrent waits: true
+a call through a function value that may sleep waits: true
+a function that does neither waits: false
+ticked
+let go of a task, finished: true
+ticked
+let go of the first task, the second finished: true
+napped
+added 2

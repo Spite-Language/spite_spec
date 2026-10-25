@@ -1,0 +1,10 @@
+var console = Console()
+var repositories = List<Repository>()
+
+func MemberTemplateAnyNumber() {
+    load "../../../spite_standard_library/windows"
+    var engine = Repository("engine", 10, true)
+    repositories.append(engine)
+    var starred = repositories.any_stars()
+    console.print(starred)
+}

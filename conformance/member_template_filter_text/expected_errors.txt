@@ -1,0 +1,1 @@
+conformance/member_template_filter_text/member_template_filter_text.spite:8: error: 'filter_label': the member 'label' of 'Repository' is a String, but 'filter_' needs it to return Boolean (in MemberTemplateFilterText.MemberTemplateFilterText)

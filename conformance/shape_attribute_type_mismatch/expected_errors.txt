@@ -1,0 +1,1 @@
+conformance/shape_attribute_type_mismatch/shape_attribute_type_mismatch.spite:13: error: 'Label' does not fit type 'Named': attribute 'size' is a String, but the type needs an Integer (in ShapeAttributeTypeMismatch.ShapeAttributeTypeMismatch)

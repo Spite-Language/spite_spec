@@ -1,0 +1,17 @@
+var console = Console()
+var tally = Tally()
+var bumper = Bumper()
+var reader = Reader()
+
+func StatefulSingletonWrites() {
+    load "../../../spite_standard_library/windows"
+    bumper.bump(tally)
+    var seen = reader.seen(tally)
+    console.print("bumped to", seen)
+    var bumper_class = bumper.class
+    var bumps = bumper_class.is_stateful
+    var reader_class = reader.class
+    var reads = reader_class.is_stateful
+    console.print("a class with no attributes that writes a singleton keeps state:", bumps)
+    console.print("a class with no attributes that only reads one does not:", reads)
+}

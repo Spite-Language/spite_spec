@@ -1,0 +1,3 @@
+func bump(tally: Tally) {
+    tally.total = tally.total + 1
+}

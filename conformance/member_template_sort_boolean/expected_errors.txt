@@ -1,0 +1,1 @@
+conformance/member_template_sort_boolean/member_template_sort_boolean.spite:8: error: 'sort_by_active': the member 'active' of 'Repository' is a Boolean, but 'sort_by_' needs it to return something ordered: a number or a String (in MemberTemplateSortBoolean.MemberTemplateSortBoolean)

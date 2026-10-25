@@ -1,0 +1,3 @@
+func scaled(factor: String): Integer {
+    return factor.length()
+}

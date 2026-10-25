@@ -1,0 +1,1 @@
+conformance/member_template_any_number/member_template_any_number.spite:8: error: 'any_stars': the member 'stars' of 'Repository' is an Integer, but 'any_' needs it to return Boolean (in MemberTemplateAnyNumber.MemberTemplateAnyNumber)

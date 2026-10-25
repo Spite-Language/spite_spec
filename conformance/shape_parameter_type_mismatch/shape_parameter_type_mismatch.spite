@@ -1,0 +1,18 @@
+type Scaled {
+    scaled(Integer): Integer
+}
+
+var console = Console()
+
+func ShapeParameterTypeMismatch() {
+    load "../../../spite_standard_library/windows"
+    var whole = Whole()
+    show(whole)
+    var worded = Worded()
+    show(worded)
+}
+
+func show(part: Scaled) {
+    var result = part.scaled(2)
+    console.print(result)
+}

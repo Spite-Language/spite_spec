@@ -1,0 +1,10 @@
+var console = Console()
+var repositories = List<Repository>()
+
+func MemberTemplateFilterText() {
+    load "../../../spite_standard_library/windows"
+    var engine = Repository("engine", 10, true)
+    repositories.append(engine)
+    var popular = repositories.filter_label()
+    console.print(popular)
+}

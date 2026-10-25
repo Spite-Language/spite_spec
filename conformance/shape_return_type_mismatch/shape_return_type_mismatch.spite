@@ -1,0 +1,18 @@
+type Renderable {
+    render(): String
+}
+
+var console = Console()
+
+func ShapeReturnTypeMismatch() {
+    load "../../../spite_standard_library/windows"
+    var worded = Worded()
+    show(worded)
+    var numbered = Numbered()
+    show(numbered)
+}
+
+func show(part: Renderable) {
+    var rendered = part.render()
+    console.print(rendered)
+}

@@ -1,0 +1,10 @@
+var tally = Tally()
+
+func count_many(): Integer {
+    var index = 0
+    while index < 200000 {
+        tally.total = tally.total + 1
+        index = index + 1
+    }
+    return index
+}

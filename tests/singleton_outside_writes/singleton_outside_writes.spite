@@ -1,0 +1,12 @@
+var console = Console()
+var tally = Tally()
+
+func SingletonOutsideWrites() {
+    load "../../../spite_standard_library/windows"
+    var first_counter = Counter()
+    var second_counter = Counter()
+    var first = Parallel(first_counter.count_many)
+    var second = Parallel(second_counter.count_many)
+    var counted = first + second
+    console.print("counted", counted, "tally", tally.total)
+}

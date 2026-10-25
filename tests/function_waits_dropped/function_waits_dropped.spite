@@ -1,0 +1,44 @@
+var console = Console()
+var program = Program()
+
+func FunctionWaitsDropped() {
+    load "../../../spite_standard_library/windows"
+    var drops = FunctionWaitsDropped.function_waits("let_go")
+    var calls = FunctionWaitsDropped.function_waits("call_back")
+    var plain = FunctionWaitsDropped.function_waits("add_one")
+    console.print("letting go of a Concurrent waits:", drops)
+    console.print("a call through a function value that may sleep waits:", calls)
+    console.print("a function that does neither waits:", plain)
+    run_them()
+}
+
+func run_them() {
+    let_go()
+    call_back(nap)
+    var added = add_one(1)
+    console.print("added", added)
+}
+
+func let_go() {
+    var task = Concurrent(tick)
+    console.print("let go of a task, finished:", task.finished)
+    task = Concurrent(tick)
+    console.print("let go of the first task, the second finished:", task.finished)
+}
+
+func tick() {
+    console.print("ticked")
+}
+
+func call_back(work: Spite.Function<Nothing>) {
+    work()
+}
+
+func nap() {
+    program.sleep(1)
+    console.print("napped")
+}
+
+func add_one(number: Integer): Integer {
+    return number + 1
+}

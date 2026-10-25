@@ -1,0 +1,1 @@
+conformance/shape_parameter_type_mismatch/shape_parameter_type_mismatch.spite:12: error: 'Worded' does not fit type 'Scaled': argument 1 of its 'scaled' is a String, but the type needs an Integer (in ShapeParameterTypeMismatch.ShapeParameterTypeMismatch)
