@@ -1,0 +1,5 @@
+singleton
+
+func doubled(value: Integer): Integer {
+    return value * 2
+}

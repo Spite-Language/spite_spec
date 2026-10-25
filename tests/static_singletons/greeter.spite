@@ -1,0 +1,11 @@
+singleton
+
+var console = Console()
+
+func Greeter() {
+    console.print("greeter made")
+}
+
+func greet(name: String) {
+    console.print("hello", name)
+}

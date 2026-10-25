@@ -1,0 +1,42 @@
+var console = Console()
+var tracks = List<Track>()
+var kept = List<Track>()
+
+func HeldItemArguments() {
+    load "../../../spite_standard_library/windows"
+    var index = 0
+    while index < 4 {
+        var track = Track(100 + index)
+        tracks.append(track)
+        index = index + 1
+    }
+    var total = 0
+    index = 0
+    while index < 8 {
+        var at = index % 4
+        crash tracks[at]
+        total = total + length_of(tracks[at], index)
+        index = index + 1
+    }
+    crash tracks[2]
+    keep(tracks[2])
+    crash tracks[1]
+    replace(tracks[1])
+    crash kept[0]
+    crash tracks[1]
+    console.print("total", total, kept[0].seconds, tracks[1].seconds)
+}
+
+func length_of(track: Track, round: Integer): Integer {
+    return track.seconds + round
+}
+
+func keep(track: Track) {
+    kept.append(track)
+}
+
+func replace(track: Track) {
+    var fresh = Track(track.seconds * 2)
+    tracks[1] = fresh
+    console.print("replaced", track.seconds)
+}

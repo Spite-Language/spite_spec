@@ -1,0 +1,5 @@
+var seconds = 0
+
+func Track(new_seconds: Integer) {
+    seconds = new_seconds
+}

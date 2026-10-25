@@ -1,0 +1,35 @@
+var console = Console()
+
+func FrameListsOfDecimals() {
+    load "../../../spite_standard_library/windows"
+    var total = 0.0
+    var round = 0
+    while round < 4 {
+        total = total + weighted(round)
+        round = round + 1
+    }
+    console.print("weighted", total)
+    var halves: List<Double> = [0.5, 1.5, 2.5]
+    crash halves[2]
+    var last = halves[2]
+    var counted = halves.count()
+    console.print(counted, last)
+    var outside = 3
+    var guarded = [1.25, 2.5]
+    if guarded[outside] {
+        console.print("present")
+    } else {
+        console.print("missing", outside)
+    }
+}
+
+func weighted(round: Integer): Float {
+    var weights = [0.5, 0.25, 0.125]
+    var sum = 0.0
+    var index = 0
+    while index < weights.count() {
+        sum = sum + weights[index] * (round + index)
+        index = index + 1
+    }
+    return sum
+}

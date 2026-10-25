@@ -1,0 +1,36 @@
+union Helper {
+    Doubler
+    Greeter
+}
+
+var console = Console()
+var doubler = Doubler()
+var greeter = Greeter()
+
+func StaticSingletons() {
+    load "../../../spite_standard_library/windows"
+    var total = 0
+    var index = 0
+    while index < 4 {
+        total = total + doubler.doubled(index)
+        index = index + 1
+    }
+    var answer = doubler.doubled(21)
+    console.print("total", total, answer)
+    var helpers = List<Helper>()
+    helpers.append(doubler)
+    helpers.append(greeter)
+    var tested = 0
+    while tested < helpers.count() {
+        var helper = helpers[tested]
+        if helper == Doubler {
+            var doubled = helper.doubled(5)
+            console.print("a doubler", doubled)
+        }
+        if helper == Greeter {
+            helper.greet("there")
+        }
+        tested = tested + 1
+    }
+    console.print(doubler.class.name)
+}

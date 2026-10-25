@@ -1,0 +1,5 @@
+greeter made
+total 12 42
+a doubler 10
+hello there
+Doubler
