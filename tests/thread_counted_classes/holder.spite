@@ -1,0 +1,5 @@
+var item = Item(0)
+
+func Holder(starting_item: Item) {
+    item = starting_item
+}

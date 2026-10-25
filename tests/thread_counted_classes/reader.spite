@@ -1,0 +1,25 @@
+var shelf = Shelf()
+var rounds = 0
+
+func Reader(starting_shelf: Shelf, starting_rounds: Integer) {
+    shelf = starting_shelf
+    rounds = starting_rounds
+}
+
+func run(): Long {
+    var total: Long = 0
+    var round = 0
+    while round < rounds {
+        var kept = List<Item>()
+        var position = 0
+        while position < shelf.items.count() {
+            var item = shelf.items[position]
+            crash item
+            kept.append(item)
+            position = position + 1
+        }
+        total = total + kept.sum_weight()
+        round = round + 1
+    }
+    return total
+}

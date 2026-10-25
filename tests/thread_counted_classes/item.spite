@@ -1,0 +1,5 @@
+var weight = 0
+
+func Item(starting_weight: Integer) {
+    weight = starting_weight
+}

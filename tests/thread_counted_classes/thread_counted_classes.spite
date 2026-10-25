@@ -1,0 +1,29 @@
+var console = Console()
+
+func ThreadCountedClasses() {
+    load "../../../spite_standard_library/windows"
+    var shelf = Shelf()
+    var index = 0
+    while index < 1000 {
+        var item = Item(index)
+        shelf.items.append(item)
+        index = index + 1
+    }
+    var reader = Reader(shelf, 200)
+    var read = Parallel(reader.run)
+    var mine: Long = 0
+    var round = 0
+    while round < 300 {
+        var position = 0
+        while position < shelf.items.count() {
+            var item = shelf.items[position]
+            crash item
+            var holder = Holder(item)
+            mine = mine + holder.item.weight
+            position = position + 1
+        }
+        round = round + 1
+    }
+    var theirs: Long = read
+    console.print("mine", mine, "theirs", theirs)
+}
