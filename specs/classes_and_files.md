@@ -88,7 +88,8 @@ class would be called by its own name instead. The error names the classes and t
 with 'High': a word every name repeats is a namespace, so move them into the folder 'backend/high/' and name them
 'Block', 'Function', 'Value'" (`diagnostics/prefix_for_a_namespace`). The word counts when it is a whole word of each
 name (`HighBlock`, `HighValue`; not `Higher` beside `Highway`), and a class whose name is the word alone (`High`)
-counts as one of them.
+counts as one of them. A class named for its own folder (the folder's entry class, `backend/backend.spite` beside
+`BackendBlock` and `BackendValue`) does not count: its name is the namespace itself, not a word repeated in it.
 
 **A reopening of a standard library class may not add a hand copy of what the library already answers.** A
 function that a program's file adds to a library class is an error when it takes a parameter of the reopened class,
