@@ -1,0 +1,31 @@
+var console = Console()
+
+func SharedAcrossCounterBlocks() {
+    load "../../../spite_standard_library/windows"
+    var line = console.read_line()
+    crash line
+    var count = line.trim().to_integer()
+    crash count
+    var values = List<Integer>()
+    var made = 0
+    while made < count {
+        values.append(made * 7 % 11)
+        made = made + 1
+    }
+    var evens = 0
+    var odds = 0
+    var index = 0
+    while index < values.count() {
+        var value = values[index]
+        if value % 2 == 0 {
+            evens = evens + values[index] + index
+        } else {
+            odds = odds + values[index] - index
+        }
+        if index > 0 {
+            evens = evens + values[index - 1]
+        }
+        index = index + 1
+    }
+    console.print("evens", evens, "odds", odds)
+}
