@@ -1,0 +1,23 @@
+var console = Console()
+var calls = 0
+
+# `x and false` and `x or true` are decided while compiling even when `x` calls
+# something: the call still runs, once, before the branch taken.
+func DecidedAndFalseAfterACall() {
+    load "../../../spite_standard_library/windows"
+    if counted() and false {
+        console.print("never")
+    } else {
+        console.print("an 'and false' after a call is decided, calls: {calls}")
+    }
+    if counted() or true {
+        console.print("an 'or true' after a call is decided, calls: {calls}")
+    }
+    var both = counted() and false
+    console.print(both, calls)
+}
+
+func counted(): Boolean {
+    calls = calls + 1
+    return calls > 1
+}

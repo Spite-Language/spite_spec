@@ -1,0 +1,7 @@
+var others = List<Mouse>()
+var seen = false
+
+func handle(mouse: Mouse) {
+    mouse.left = 2
+    seen = others.contains(mouse)
+}

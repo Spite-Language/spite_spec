@@ -1,0 +1,13 @@
+var console = Console()
+var mice = Vector<Mouse>()
+var input = Input()
+
+func LentCallPassedOnLibrary() {
+    load "../../../spite_standard_library/windows"
+    var made = Mouse()
+    mice.append(made)
+    crash mice[0]
+    var mouse = mice[0]
+    input.handle(mouse)
+    console.print(mouse.left)
+}
