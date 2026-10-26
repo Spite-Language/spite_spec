@@ -280,8 +280,9 @@ lies inside the operation's type.
   as `total = total + a - b ...` with terms that do not name `total`, holds before that assignment its range at
   the loop's start plus between none and one fewer than the passes of the terms' range. A `Long` total of `Integer`
   terms over a list's items cannot overflow, since the count is an `Integer`.
-- **Not in builds that can run code between two steps.** A `--repl`, `--repl-port` or `--hot-reload` build proves
-  no ranges and keeps every check but the counter's and the constants'.
+- **In every build.** A `--repl`, `--repl-port` or `--hot-reload` build proves ranges as every build does: a range
+  is about one function's own locals and parameters, which no REPL command writes (typed code reaches the program
+  only through `program`) and no reload changes (a call already running finishes on the code it started in).
 - **Every check kept is reported.** `--optimization-report` lists each operation whose check stays, with the
   operand whose range is unknown or the ranges that do not prove it:
   `` `product * 3` keeps its overflow check: 'product' runs from -2147483648 to 2147483647, so the answer may not

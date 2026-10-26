@@ -121,7 +121,7 @@ Rules: 148. Covered before: 90. Covered now: 144.
 | Ranges: narrower answers (`count()`, `%`, `/`, `minimum`, `clamp`) | tests/proven_ranges, tests/count_bound_proofs | covered |
 | Conditions narrow ranges; `or`, `!=`, `else` narrow nothing | tests/proven_ranges | covered |
 | Branches join; loops widen first; passes are counted; a total adds a term a pass | tests/proven_ranges, tests/strided_counted_loops | covered |
-| A REPL or hot-reload build proves no ranges | none | missing |
+| A REPL or hot-reload build proves ranges like every build | tests/hot_reload_proves_ranges | added |
 | `--optimization-report` lists every check kept | tests/optimization_report | covered (compiler fails: the output differs) |
 | A value put into a narrower name keeps its check whatever its range | tests/narrowing_overflow | covered |
 | Numbers are classes; `this` is the value inside a reopened number class | tests/live_settings | covered |

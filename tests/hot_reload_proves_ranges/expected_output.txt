@@ -1,0 +1,5 @@
+24
+14
+no parts
+2147441940
+`first * second` keeps its overflow check: 'first' can be any value an Integer holds, and nothing proves a smaller range for it
