@@ -1,0 +1,11 @@
+ready
+spite> 3
+spite> 42
+spite> spite> 5
+spite> 1
+spite> 2
+spite> 2
+spite> 42
+spite> tests/hot_reload_runs_typed_code/.spite/build/spite/prompt_code.spite:4: error: 'missing_name' is not a local, an attribute or a function of 'Spite.PromptCode' (in Spite.PromptCode.answer)
+spite> unchanged
+spite> 
