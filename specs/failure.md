@@ -202,8 +202,28 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   (`diagnostics/proven_element`). A `T?` of any type that is already narrowed names the check that narrowed it:
   "'tracker' is already narrowed by 'assert tracker' on line 8: remove this check"
   (`diagnostics/check_proves_nothing`, `diagnostics/known_fact_checked`); a value that was never a `T?` is "this
-  value cannot be null here (it is a Tracker), so 'assert' on it proves nothing: remove the check". The other facts
-  refused this way are listed in [proofs.md](https://github.com/Spite-Language/spite_documentation/blob/master/proofs.md#proving-what-is-proven-is-an-error).
+  value cannot be null here (it is a Tracker), so 'assert' on it proves nothing: remove the check", a local holding
+  a function's answer that cannot be null included (`conformance/check_of_a_returned_local`). A check inside the
+  `if`, `while` or `switch` that narrowed names it the same way: "'number' is already narrowed by 'if number' on
+  line 13: remove this check" (`conformance/known_fact_inside_its_if`). A `[]` read a count or an earlier check
+  proved is "'names[1]' is already proven by 'names.count() == 2', so this 'assert' proves nothing: remove it" and
+  "'names[position]' is already proven by an earlier check, ..." (`conformance/proven_element_by_count`,
+  `conformance/proven_element_by_earlier_check`). The other facts refused this way:
+  - a divisor proven again, `name != 0` after `name != 0` or `name > 0`, and `name > 0` after `name > 0`: "'parts !=
+    0' is already proven by 'parts > 0' on line 18: remove this check" (`conformance/known_fact_divisor`);
+  - the same `assert` or `crash` condition on the very next statement of the same block, when it calls nothing:
+    "'total > 2' was already checked on line 20, and nothing between could change it: remove this check"
+    (`conformance/known_fact_next_line`);
+  - a class test the value's type answers, outside a generic class and a walk: "'monster' is a Monster here, so it
+    is never Ghost and this test is decided while compiling: remove it", "'monster' is a Monster here, so this test is
+    decided while compiling: remove it", and "'creature' is already a Monster, narrowed by 'if creature == Monster'
+    on line 23: remove this test" (`conformance/known_fact_class_never`, `conformance/known_fact_class_again`);
+  - an `assert` or `crash` that is decided while compiling and holds, outside a generic class and a walk: "'crash
+    Point.has_function("length")' is decided while compiling and always holds here: remove it"
+    (`conformance/check_always_holds`). In a generic class it holds for some instances and not others, so it stays.
+
+  Inside a `while`, only a proof made inside that loop makes a check redundant: one made before the loop does not,
+  since an assignment in the loop would leave the next pass unproven.
 - `crash` (below) narrows a chain the same way, since it narrows exactly as `assert` does but never returns.
 - Reading through a link that may be null and has not been narrowed is still an error. This removes the verbosity of
   proving a path, not the requirement to prove it.
@@ -235,7 +255,8 @@ first read found. A walk's template writes the hoisted form (`var stored_row = r
 How a read is proven:
 
 - **A proven count proves the indices below it.** After `crash names.count() == 3` (or `>= 3`, or `> 2`),
-  `names[0]` to `names[2]` are plain values; so are they inside `if names.count() > 2 { }`. `names.count() != 0`
+  `names[0]` to `names[2]` are plain values; so are they inside `if names.count() > 2 { }` and `while
+  names.count() > 2 { }` (`tests/while_bound_facts`). `names.count() != 0`
   and `not names.is_empty()` prove `names[0]` the same way
   (`conformance/stage6/count_bound_proofs`). A count proves indices of a `List` only: a `Dictionary`'s keys need
   not be `0` to `count() - 1`, so after `crash names.count() == 1` a `Dictionary<Integer, Value>`'s `names[0]` is still a `Value?`
@@ -253,7 +274,14 @@ How a read is proven:
   `index < names.count()` would be (the forms above), and undone the same way. A bound on `base` alone proves
   only `names[base]`. Written with `<=`, `base + k <= names.count()` (or `names.count() >= base + k`), `k` a literal
   from 1 to 64, proves `names[base]` to `names[base + k - 1]`, which is how a header's size reads: after `crash
-  body + 13 <= bytes.count()`, `bytes[body + 12]` is proven.
+  body + 13 <= bytes.count()`, `bytes[body + 12]` is proven, and inside `while at + 3 <= values.count()` the reads
+  `values[at]` to `values[at + 2]` are (`tests/while_bound_facts`).
+- **An area's cells are proven by one guard.** After `crash rows * stride <= cells.count()` (or the `if` that
+  leaves when `rows * stride > cells.count()`), with `rows`, `stride`, `row` and `column` names, the read
+  `cells[row * stride + column]` inside `while column < stride`, itself inside `while row < rows`, is proven, since
+  `row * stride + column` is below `rows * stride`. Assigning `rows` or `stride`, or a call that shrinks the list,
+  forgets the guard, and assigning `row` or `column` forgets the read. A negative counter halts at the read, as
+  every proven read does (`tests/area_guard_proven`).
 - **A read of a width is proven by its last byte.** A `Buffer`'s `read_<number>_at(position)`
   ([Bytes are a Buffer](standard_library.md#bytes-are-a-buffer)) is proven when the read of its last byte,
   `bytes[position + width - 1]`, is: `read_integer_at(body + 4)` by whatever proves `bytes[body + 7]`, with `body + 4 + 3`

@@ -1,0 +1,10 @@
+var console = Console()
+var repositories = List<Repository>()
+
+func EachOfAValue() {
+    load "../../../spite_standard_library/windows"
+    var engine = Repository("engine", 10, true)
+    repositories.append(engine)
+    repositories.each(engine)
+    console.print(repositories.count())
+}

@@ -1,0 +1,13 @@
+var console = Console()
+
+func CheckOfAReturnedLocal() {
+    load "../../../spite_standard_library/windows"
+    var tracker = made_tracker()
+    crash tracker
+    var name = tracker.name()
+    console.print(name)
+}
+
+func made_tracker(): Tracker {
+    return Tracker()
+}

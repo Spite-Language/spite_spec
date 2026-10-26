@@ -1,0 +1,1 @@
+conformance/proven_element_by_count/proven_element_by_count.spite:11: error: 'names[1]' is already proven by 'names.count() == 2', so this 'assert' proves nothing: remove it (in ProvenElementByCount.show_names)

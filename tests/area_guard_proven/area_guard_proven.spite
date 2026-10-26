@@ -1,0 +1,29 @@
+var console = Console()
+var cells = List<Integer>()
+
+func AreaGuardProven() {
+    load "../../../spite_standard_library/windows"
+    var filled = 0
+    while filled < 6 {
+        cells.append(filled * 10)
+        filled = filled + 1
+    }
+    var total = sum(2, 3)
+    console.print(total)
+}
+
+func sum(rows: Integer, stride: Integer): Integer {
+    crash rows * stride <= cells.count()
+    var total = 0
+    var row = 0
+    while row < rows {
+        var column = 0
+        while column < stride {
+            var cell: Integer = cells[row * stride + column]
+            total = total + cell
+            column = column + 1
+        }
+        row = row + 1
+    }
+    return total
+}

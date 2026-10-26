@@ -1,0 +1,7 @@
+var name = ""
+var stars = 0
+
+func Repository(starting_name: String, starting_stars: Integer) {
+    name = starting_name
+    stars = starting_stars
+}

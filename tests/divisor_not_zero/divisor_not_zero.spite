@@ -1,0 +1,27 @@
+var console = Console()
+
+func DivisorNotZero() {
+    load "../../../spite_standard_library/windows"
+    share(100, 7)
+    share(100, -1)
+    share(100, 0)
+    halve_each(-9)
+}
+
+func share(total: Integer, parts: Integer) {
+    var amount = total
+    if parts == 0 {
+        console.print("no parts")
+        return
+    }
+    var each = amount / parts
+    var left = amount % parts
+    console.print(each, left)
+}
+
+func halve_each(parts: Integer) {
+    crash parts != 0
+    var whole = 1000
+    var each = whole / parts
+    console.print(each)
+}

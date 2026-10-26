@@ -1,0 +1,1 @@
+conformance/known_fact_inside_its_if/known_fact_inside_its_if.spite:15: error: 'number' is already narrowed by 'if number' on line 13: remove this check (in KnownFactInsideItsIf.KnownFactInsideItsIf)

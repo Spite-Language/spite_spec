@@ -1,0 +1,1 @@
+conformance/check_always_holds/check_always_holds.spite:6: error: 'crash Point.has_function("length")' is decided while compiling and always holds here: remove it (in CheckAlwaysHolds.CheckAlwaysHolds)

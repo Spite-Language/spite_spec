@@ -1,0 +1,10 @@
+var console = Console()
+
+func OwnMemberTemplateMistakes() {
+    load "../../../spite_standard_library/windows"
+    var repositories = Bag<Repository>()
+    var engine = Repository("engine", 10)
+    repositories.add(engine)
+    var names = repositories.sum_name()
+    console.print(names, engine.stars)
+}

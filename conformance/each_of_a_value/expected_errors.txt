@@ -1,0 +1,1 @@
+conformance/each_of_a_value/each_of_a_value.spite:8: error: 'each' takes a function to call with each element, such as 'each(say_hello)' or 'each(greeter.say_hello)', and 'engine' is not one (in EachOfAValue.EachOfAValue)

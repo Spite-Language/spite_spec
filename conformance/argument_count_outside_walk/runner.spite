@@ -1,0 +1,19 @@
+generic $system_type
+
+var system = $system_type()
+var console = Console()
+
+func run() {
+    run_phases_each()
+}
+
+func run_phase_each(phase: Spite.FunctionDeclaration) {
+    var brush = Brush()
+    system.phase_each(brush)
+    count_arguments()
+}
+
+func count_argument(argument: Spite.Argument) {
+    var taken = argument.argument_count()
+    console.print(argument.name, taken)
+}

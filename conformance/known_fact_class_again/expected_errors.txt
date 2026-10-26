@@ -1,0 +1,1 @@
+conformance/known_fact_class_again/known_fact_class_again.spite:25: error: 'creature' is already a Monster, narrowed by 'if creature == Monster' on line 23: remove this test (in KnownFactClassAgain.KnownFactClassAgain)

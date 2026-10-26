@@ -1,0 +1,1 @@
+conformance/known_fact_class_never/known_fact_class_never.spite:23: error: 'monster' is a Monster here, so it is never Ghost and this test is decided while compiling: remove it (in KnownFactClassNever.KnownFactClassNever)

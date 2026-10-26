@@ -1,0 +1,14 @@
+var console = Console()
+var tracker: Tracker? = null
+
+func CopyToNarrowNotLeaving() {
+    load "../../../spite_standard_library/windows"
+    report_when_missing()
+}
+
+func report_when_missing() {
+    var watcher = tracker
+    if not watcher {
+        console.print("nothing to track")
+    }
+}

@@ -1,0 +1,8 @@
+var console = Console()
+var metronome = Metronome()
+
+func SingletonCircleThroughAnObject() {
+    load "../../../spite_standard_library/windows"
+    var beat = metronome.first_beat()
+    console.print(beat)
+}

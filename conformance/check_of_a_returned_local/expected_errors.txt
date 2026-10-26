@@ -1,0 +1,1 @@
+conformance/check_of_a_returned_local/check_of_a_returned_local.spite:6: error: this value cannot be null here (it is a Tracker), so 'crash' on it proves nothing: remove the check (in CheckOfAReturnedLocal.CheckOfAReturnedLocal)

@@ -108,7 +108,10 @@ system's `update_all`, `render_all` and also a `sum_all`. The template is called
 `run_render_each(...)` for one. Inside an instance, `phase.name` is the function's name (`update_each`), `phase.hole` the
 text in place of `phase` (`update`, a symbol), `phase.index` its place, and `phase.argument_count()` the number of its
 arguments. `$t.argument_count("<pattern>")` refuses a pattern whose functions take different numbers of arguments:
-"... has no one answer: the functions of 'Painter' that fit it ...".
+"... has no one answer: the functions of 'Painter' that fit it ...". `argument_count()` asked with no name of
+anything but a walk over functions, such as the `argument` of a walk over arguments, is "'argument.argument_count()'
+is how many arguments the function a walk over functions stands for takes, so it is asked with no name in a template
+over functions, such as 'run_phase_each(phase: Spite.FunctionDeclaration)'" (`conformance/argument_count_outside_walk`).
 
 - **A name whose word fits no function** is an error listing the functions that fit: "'run_updat_all' is
   'run_phase_all' with 'updat' for 'phase', but 'Move' has no function 'updat_all': the functions there that fit

@@ -1,0 +1,21 @@
+var console = Console()
+
+func WhileBoundFacts() {
+    load "../../../spite_standard_library/windows"
+    var values = [1, 2, 3, 4, 5, 6, 7]
+    var at = 0
+    var total = 0
+    while at + 3 <= values.count() {
+        var first: Integer = values[at]
+        var last: Integer = values[at + 2]
+        total = total + first + last
+        at = at + 3
+    }
+    console.print(total)
+    var queue = [5, 6, 7]
+    while queue.count() > 1 {
+        var second: Integer = queue[1]
+        console.print(second)
+        queue.remove_at(0)
+    }
+}

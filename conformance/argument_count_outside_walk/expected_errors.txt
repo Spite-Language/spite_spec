@@ -1,0 +1,1 @@
+conformance/argument_count_outside_walk/runner.spite:17: error: 'argument.argument_count()' is how many arguments the function a walk over functions stands for takes, so it is asked with no name in a template over functions, such as 'run_phase_each(phase: Spite.FunctionDeclaration)' (in Runner.count_brush_in_update_each)

@@ -1,0 +1,5 @@
+var metronome = Metronome()
+
+func beats(): Integer {
+    return metronome.tempo
+}

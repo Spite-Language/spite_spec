@@ -113,7 +113,12 @@ The caller's function is passed as a bound function value, owned by whoever it i
 - **Mistakes** name the form: `'filter(say_hello)': 'say_hello' returns nothing, but 'filter' needs it to return
   Boolean`, `'each' calls 'greet_twice' with each 'String' as
   its only argument, but 'greet_twice' takes 2`, `'each' calls 'count_to' with each 'String', but 'count_to' takes
-  'Integer'`, and an argument that is no function at all.
+  'Integer'`, and an argument that is no function at all: `'each' takes a function to call with each element, such
+  as 'each(say_hello)' or 'each(greeter.say_hello)', and 'engine' is not one` (`conformance/each_of_a_value`).
+- **The same checks hold for a member template of a program's own collection**: a generic class of the program
+  with an `$element_type` whose `sum_member` is called as `bag.sum_name()` on a `String` member is "'sum_name': the
+  member 'name' of 'Repository' is a String, but 'sum_' needs it to return a numeric type", as on a `List`
+  (`conformance/own_member_template_mistakes`).
 - **The loop rule.** A `while` that only does what `each(f)` does is under the same rule as the member templates
   ([control_flow.md](control_flow.md#a-while-that-a-member-template-already-says)). A function that needs more than the element (`print_statement(statement, depth)`) keeps its `while`, and so
   does a `while` that collects what a passed function answers for each element, since no form collects one.
