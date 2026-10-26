@@ -1,0 +1,4 @@
+spite> spite: error: the reload was refused, and the program keeps all of its code: the reload changes the attributes of Counter (total is new), and the objects the program holds keep the attributes they were made with: start the program again to take the new attributes
+error: the reload was refused, and the program keeps all of its code: the reload changes the attributes of Counter (total is new), and the objects the program holds keep the attributes they were made with: start the program again to take the new attributes
+spite> 2
+spite> 

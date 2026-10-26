@@ -1,0 +1,23 @@
+var console = Console()
+var build = Build()
+var greeter = Greeter()
+
+func HotReloadSwapsAFunction() {
+    load "../../../spite_standard_library/windows"
+    var said = greeter.greeting()
+    console.print(said)
+    write_greeter("goodbye")
+}
+
+func restore() {
+    write_greeter("hello")
+}
+
+func write_greeter(word: String) {
+    var file = File("{build.program}/greeter.spite")
+    var text = "func greeting(): String \{\n    return \"{word}\"\n}\n"
+    var written = file.write(text)
+    if not written {
+        console.print("greeter.spite could not be written")
+    }
+}

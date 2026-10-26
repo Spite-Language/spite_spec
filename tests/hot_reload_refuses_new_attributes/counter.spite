@@ -1,0 +1,5 @@
+var count = 0
+
+func add(amount: Integer) {
+    count = count + amount
+}

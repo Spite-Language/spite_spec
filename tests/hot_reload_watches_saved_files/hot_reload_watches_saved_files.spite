@@ -1,0 +1,34 @@
+var console = Console()
+var build = Build()
+var program = Program()
+var reload = Reload()
+var greeter = Greeter()
+
+func HotReloadWatchesSavedFiles() {
+    load "../../../spite_standard_library/windows"
+    var first = greeter.greeting()
+    console.print(first)
+    write_greeter("goodbye")
+    var waited = 0
+    var now = greeter.greeting()
+    while now == first and waited < 600 {
+        program.sleep(50)
+        now = greeter.greeting()
+        waited = waited + 1
+    }
+    console.print(now)
+    var generation = reload.generation()
+    console.print("generation {generation}")
+    var rebuilt = reload.rebuilt_since(0)
+    var joined = rebuilt.join(", ")
+    console.print("rebuilt {joined}")
+}
+
+func write_greeter(word: String) {
+    var file = File("{build.program}/greeter.spite")
+    var text = "func greeting(): String \{\n    return \"{word}\"\n}\n"
+    var written = file.write(text)
+    if not written {
+        console.print("greeter.spite could not be written")
+    }
+}
