@@ -1,0 +1,35 @@
+var console = Console()
+
+func DivisionsApart() {
+    load "../../../spite_standard_library/windows"
+    var first_line = console.read_line()
+    crash first_line
+    var parsed = first_line.trim().to_long()
+    crash parsed
+    var base_line = console.read_line()
+    crash base_line
+    var base = base_line.trim().to_long()
+    crash base
+    console.print("digits", digit_sum(parsed, base), digit_sum(0 - parsed, base))
+    console.print("parts", parts_of(parsed, base))
+}
+
+func digit_sum(value: Long, base: Long): Long {
+    var rest = value
+    var total: Long = 0
+    var steps: Long = 0
+    while rest != 0 {
+        var digit = rest % base
+        total = total + digit
+        steps = steps + 1
+        rest = rest / base
+    }
+    return total * 100 + steps
+}
+
+func parts_of(value: Long, divisor: Long): Long {
+    var left = value / divisor
+    var doubled = left * 2
+    var kept = value % divisor
+    return doubled * 1000 + kept
+}
