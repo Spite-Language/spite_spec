@@ -1,0 +1,46 @@
+var console = Console()
+
+func DivisionsByPowers() {
+    load "../../../spite_standard_library/windows"
+    var total: Long = 0
+    var index = 0
+    while index < 2000 {
+        total = total + parts(index * 997)
+        index = index + 1
+    }
+    console.print("parts", total)
+    var below = rounded(-7)
+    var above = rounded(7)
+    var whole = rounded(-8)
+    console.print("signed", below, above, whole)
+    var large = guarded(70000)
+    var negative = guarded(-70000)
+    var inside = guarded(1234)
+    console.print("guarded", large, negative, inside)
+    var one: Float = 1.5
+    var pattern: Long = one.bits().to_long()
+    var sign = pattern / 2147483648
+    var exponent = pattern / 8388608 % 256
+    var mantissa = pattern % 8388608
+    console.print("bits", sign, exponent, mantissa)
+    var wide: Long = 1099511627776 * 3 + 5
+    var high = wide / 1099511627776
+    var low = wide % 1099511627776
+    console.print("wide", high, low)
+}
+
+func parts(value: Integer): Long {
+    var wide: Long = value % 65536
+    return wide / 256 + wide % 256 + wide / 2147483648 + wide % 1024 / 32
+}
+
+func rounded(value: Integer): Integer {
+    return value / 4 + value % 4
+}
+
+func guarded(value: Long): Long {
+    if value >= 0 and value < 65536 {
+        return value / 16 + value % 16
+    }
+    return value / 16 + value % 16
+}
