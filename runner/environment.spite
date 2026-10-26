@@ -1,0 +1,3 @@
+var jobs = 0
+var time_limit = 300
+var one_test = ""

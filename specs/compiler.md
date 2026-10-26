@@ -240,7 +240,7 @@ it. Tree shaking and every other whole-program step run before any output is wri
   --target-operating-system=linux (or windows, or mac)`, and `error: '--program' cannot be given: the program is
   the folder named on the command line, 'spite folder', and Build.program is set from it`.
 - **What the program receives**: every setting its `Environment` declares, and every argument after the folder
-  that is not a flag, in the order given, verbatim (`arguments.get(0)` is the first, `arguments.player` reads
+  that is not a flag (the first word that is not a flag is the folder, wherever it stands), in the order given, verbatim (`arguments.get(0)` is the first, `arguments.player` reads
   `--player=...`, and `Environment` reads the settings it declares); the compiler's own flags and the folder are
   not passed (`conformance/stage6/program_arguments`). **There is no `--` separator**: a bare `--` is an error,
   `error: '--' is not a separator: a program's settings are given beside the compiler's flags, kebab-case like
@@ -273,9 +273,9 @@ them and stops; when it succeeds, they are dropped, warnings included, so a prog
 A program runs in the folder `spite` was run from, so a relative path a program opens (`File`, `Directory`, a cache
 folder) is the caller's. A `load` path is relative to the file it is written in, never to the working directory. The
 outputs with no path go into that folder's `.spite/`, so running a program adds `.spite/` to the caller's folder and
-nothing else, and nothing beside the program's source. A program built with `--repl`, `--repl-port` or
-`--hot-reload` runs attached to the terminal; any other run's output is printed when it ends, and the compiler
-exits with the program's exit code.
+nothing else, and nothing beside the program's source. Every run is attached to the terminal: the program's
+output and errors appear as it writes them, its standard input is the compiler's, and the compiler exits with
+the program's exit code.
 
 ## How many errors are listed
 
