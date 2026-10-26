@@ -4,6 +4,7 @@ func name_of(number: Integer): String {
     asked = asked + 1
     switch number {
         0: return "zero"
+        1: return "one"
         _: return "other"
     }
 }
