@@ -1,0 +1,6 @@
+var name = ""
+var next: Link? = null
+
+func Ring(new_name: String) {
+    name = new_name
+}

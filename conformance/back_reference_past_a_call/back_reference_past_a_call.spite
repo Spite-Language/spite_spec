@@ -1,0 +1,20 @@
+var console = Console()
+var registry = Registry()
+
+func BackReferencePastACall() {
+    load "../../../spite_standard_library/windows"
+    var child = make_family()
+    crash registry.current
+    crash child.parent
+    child.parent.leave()
+    console.print(child.name, "still belongs to", child.parent.name)
+}
+
+func make_family(): Child {
+    var parent = Parent("ada")
+    parent.adopt("grace")
+    registry.current = parent
+    var first = parent.children.first()
+    crash first
+    return first
+}

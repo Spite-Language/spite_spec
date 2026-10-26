@@ -1,0 +1,3 @@
+the copy goes on to b
+the copy closes its ring at a true
+the original is changed

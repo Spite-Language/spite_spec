@@ -1,0 +1,5 @@
+var name = ""
+
+func Tail(new_name: String) {
+    name = new_name
+}

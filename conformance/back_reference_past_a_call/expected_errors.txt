@@ -1,0 +1,1 @@
+conformance/back_reference_past_a_call/back_reference_past_a_call.spite:10: error: 'child.parent' was proven before line 9, but 'parent' is a back reference, which holds no count, and 'leave(...)' may let its object go, so this read could find it gone: prove 'child.parent' again after that line (in BackReferencePastACall.BackReferencePastACall)
