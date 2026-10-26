@@ -8,15 +8,25 @@ var failed_folders = List<String>()
 var failures_file = "runner/.spite/failed.txt"
 var parent_folder = ""
 var copies_folder = ".copies"
+var outputs_folder = ".spite/runner"
+var environment = Environment()
+var running = List<Child>()
+var waiting = List<String>()
+var started_count = 0
 
 func Runner() {
     load "../../spite_standard_library/windows"
     make_the_working_folder()
+    if not environment.one_test.is_empty() {
+        run_alone(environment.one_test)
+        return
+    }
     var named = named_folders()
     if named.is_empty() {
         named = every_folder()
     }
-    named.each(run_one)
+    waiting = named
+    run_in_parallel()
     keep_the_failures()
     console.print("{passed} passed, {failed} failed")
     if failed > 0 {
@@ -24,8 +34,111 @@ func Runner() {
     }
 }
 
+func run_alone(folder: String) {
+    run_one(folder)
+    if failed > 0 {
+        program.exit(1)
+    }
+}
+
+func run_in_parallel() {
+    var at_once = jobs_at_once()
+    var next = 0
+    while next < waiting.count() or not running.is_empty() {
+        while next < waiting.count() and running.count() < at_once {
+            var folder = waiting[next]
+            start_one(folder)
+            next = next + 1
+        }
+        var finished_any = collect_the_finished()
+        if not finished_any {
+            program.sleep(20)
+        }
+    }
+}
+
+func jobs_at_once(): Integer {
+    if environment.jobs > 0 {
+        return environment.jobs
+    }
+    var processors = program.environment("NUMBER_OF_PROCESSORS")
+    if not processors {
+        return 4
+    }
+    var number = processors.to_integer()
+    if not number or number < 1 {
+        return 4
+    }
+    return number
+}
+
+func start_one(folder: String) {
+    var executable = program.executable_path()
+    started_count = started_count + 1
+    var output_path = "{outputs_folder}/{started_count}.txt"
+    var windows_output = output_path.replace("/", "\\")
+    var command = "cmd /d /s /c \"\"{executable}\" --one-test={folder} >\"{windows_output}\" 2>&1\""
+    var child = Child(folder, output_path)
+    if child.start(command) {
+        running.append(child)
+        return
+    }
+    child.close()
+    fail(folder, "the runner could not start a process to run it: {command}")
+}
+
+func collect_the_finished(): Boolean {
+    var still = List<Child>()
+    var finished_any = false
+    var index = 0
+    while index < running.count() {
+        var child = running[index]
+        if child.has_finished() {
+            finish_one(child)
+            finished_any = true
+        } else if child.seconds_running() >= environment.time_limit {
+            child.stop()
+            child.close()
+            fail(child.folder, "stopped after {environment.time_limit} seconds, the program did not finish")
+            finished_any = true
+        } else {
+            still.append(child)
+        }
+        index = index + 1
+    }
+    running = still
+    return finished_any
+}
+
+func finish_one(child: Child) {
+    var code = child.exit_code()
+    child.close()
+    var file = File(child.output_path)
+    var printed = file.read()
+    var text = ""
+    if printed {
+        text = cleaned(printed)
+    }
+    if code == 0 {
+        passed = passed + 1
+        return
+    }
+    failed_folders.append(child.folder)
+    failed = failed + 1
+    if text.is_empty() {
+        console.print("FAILED {child.folder}: its run ended with exit code {code} and printed nothing")
+    } else {
+        console.print(text)
+    }
+}
+
 func make_the_working_folder() {
-    var folder = Directory(".spite")
+    make_a_folder(".spite")
+    make_a_folder(outputs_folder)
+}
+
+func make_a_folder(path: String) {
+    var folder = Directory(path)
     if not folder.exists() {
         folder.create()
     }
@@ -44,6 +157,8 @@ func named_folders(): List<String> {
 }
 
 func add_named(named: List<String>, argument: String) {
+    var is_a_setting = argument.starts_with("--") and argument != "--failed"
+    assert not is_a_setting
     if argument == "--failed" {
         var last = last_failures()
         var failure_index = 0
@@ -151,7 +266,7 @@ func run_test(folder: String) {
     assert copy
     var flags = optional_text(folder, "flags.txt")
     var no_arguments = List<String>()
-    var compile = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
+    var compile = Process("{compiler} {copy} {flags} --build 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     if compiled != 0 {
         var output = compile.output()
@@ -203,7 +318,7 @@ func run_conformance(folder: String) {
     assert wanted
     var copy = copy_of(folder)
     assert copy
-    var flags = optional_text(folder, "flags.txt")
+    var flags = built_only(folder)
     var no_arguments = List<String>()
     var compile = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
@@ -227,6 +342,14 @@ func run_conformance(folder: String) {
         return
     }
     passed = passed + 1
+}
+
+func built_only(folder: String): String {
+    var flags = optional_text(folder, "flags.txt")
+    if flags.contains("--check") or flags.contains("--build") {
+        return flags
+    }
+    return "{flags} --build"
 }
 
 func check_formatted_once(folder: String, copy: String, flags: String) {
@@ -273,7 +396,11 @@ func without_formatting(errors: String): String {
 func copy_of(folder: String): String? {
     var directory = Directory(folder)
     var name = directory.name
-    var copy = "{copies_folder}/{name}"
+    var copies = copies_folder
+    if folder.starts_with("conformance/") {
+        copies = "{copies_folder}_conformance"
+    }
+    var copy = "{copies}/{name}"
     var windows_folder = folder.replace("/", "\\")
     var windows_copy = copy.replace("/", "\\")
     var no_arguments = List<String>()

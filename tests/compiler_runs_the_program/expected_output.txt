@@ -1,0 +1,4 @@
+3 ada two words 7
+typed in
+exit code 3
+built true

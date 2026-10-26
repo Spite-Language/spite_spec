@@ -52,7 +52,14 @@ loop while fixing something is the tests it touches, not the whole corpus. It co
 `../spite_compiler/.spite/spite.exe`, prints `FAILED <folder>: <why>` for each that fails, then how many passed
 and failed, and leaves 1 when any failed.
 
-One program by hand:
+The tests run in parallel, as many at once as the machine has processors; `--jobs=4` sets how many. Each has
+300 seconds to compile and run, and `--time-limit=60` sets them: a test still running then is stopped, with
+every process it started, and fails with `stopped after 300 seconds, the program did not finish`, so a hang
+fails one test and never stops the run. Each test runs in a process of its own, the runner itself started with
+`--one-test=<folder>`, which is also how to run one test with nothing else around it.
+
+One program by hand (the compiler builds it and runs it, or only builds it with `--build`):
 
     ../spite_compiler/.spite/spite.exe tests/exit_code
+    ../spite_compiler/.spite/spite.exe tests/exit_code --build
     tests/exit_code/.spite/build/exit_code.exe
