@@ -1,0 +1,7 @@
+var across = 7
+var down = 9
+
+func Spot(starting_across: Integer, starting_down: Integer) {
+    across = starting_across
+    down = starting_down
+}

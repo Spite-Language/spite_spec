@@ -1,0 +1,18 @@
+var console = Console()
+
+func UnreadObjectsWithAttributes() {
+    load "../../../spite_standard_library/windows"
+    var line = console.read_line()
+    crash line
+    var seed = line.trim().to_integer()
+    crash seed
+    var total = 0
+    var step = 0
+    while step < seed {
+        var spot = Spot(seed + 1, seed + 2)
+        spot = Spot(step, seed)
+        total = total + spot.across + spot.down
+        step = step + 1
+    }
+    console.print("total", total)
+}
