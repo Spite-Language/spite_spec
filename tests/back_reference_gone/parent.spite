@@ -1,0 +1,23 @@
+var name = ""
+var children = List<Child>()
+var console = Console()
+var registry = Registry()
+
+func Parent(new_name: String) {
+    name = new_name
+}
+
+func adopt(child_name: String) {
+    var child = Child(child_name, this)
+    children.append(child)
+}
+
+func leave() {
+    registry.current = null
+    var count = children.count()
+    console.print(name, "leaves with", count, "child")
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

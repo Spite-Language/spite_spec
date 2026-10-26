@@ -55,8 +55,8 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   copied (a parent holding its children, each holding its parent) gets one copy of each object, and the copied
   references point at the copies, so the copy has the same cycles as the original. A back reference's copy holds the
   copy of its object when the same `deep_copy()` copies that object, before or after reaching the back reference, and
-  the original object otherwise. The compiler writes each class's deep copy: one whose attributes can reach itself, or
-  reach a back reference, remembers the objects copied during the call in a table made for that call; every
+  the original object otherwise. The compiler writes each class's deep copy: one whose attributes can reach itself (through an
+  object attribute, or any class of a union attribute), or reach a back reference, remembers the objects copied during the call in a table made for that call; every
   other class is copied plainly, with no table (`conformance/deep_copy_graphs`). An object reached twice
   through classes that cannot reach themselves (two attributes holding the same leaf) is copied twice.
 - **There is no `Weak<T>`: the compiler picks a cycle's back reference.** A program writes plain references, and the
@@ -75,7 +75,12 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   word: a count of the back references to it plus one for all its counted references together. When its counted
   references reach zero it runs `drop()` and lets its attributes go, and its memory is freed when that word reaches
   zero. Reading a back reference checks the object's count and answers `null` for a freed one; writing one counts the
-  new object's word up and the old one's down. The read takes no count, like any attribute read. A program with no back
+  new object's word up and the old one's down. The read holds its object while the value read is used, as a call's
+  result is held, so a call on it (`child.parent.leave()`) whose body lets the object's owner go still runs on a live
+  object, which is freed when the call returns; on two threads the test and the count are one step, so a read never
+  takes back an object whose last release has begun. A back reference proven present may lose its object at any later
+  call that lets the owner go, so a read that relies on the proof halts on a freed object, naming the attribute,
+  rather than use `null` as an object. A program with no back
   reference carries nothing: no slot, no helper, no check.
 - Parameters follow the same rule as everything else in [Functions](functions_and_operators.md#functions): a scalar is passed by value (copied); anything
   else is passed by reference (the same object, retained for the callee's own binding and released when the

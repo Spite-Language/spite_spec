@@ -619,7 +619,11 @@ type Renderable {
 
 Any class with a `render()` of that signature is accepted. **The type's own name inside a required signature
 stands for the class that fits**: `sum(Number): Number` in `type Number` is met by an `Integer`'s
-`sum(Integer): Integer`, so a type can ask for a function that takes and answers the class itself. This is what lets a collection hold "any class that
+`sum(Integer): Integer`, so a type can ask for a function that takes and answers the class itself. A member
+whose type is a union is met by the same union or by one of its classes; one whose type is another `type` by that
+`type`, or by a class or a union whose classes each have its members; one whose type is a function value by a
+function value with the same parameter types and answer. Anything else does not fit, and is refused naming the
+member, as an attribute of the wrong type is. This is what lets a collection hold "any class that
 responds to `render()`" (a list of components, [Markup](https://github.com/Spite-Language/spite_documentation/blob/master/targets.md#markup)) without a union naming every class in advance,
 and it makes the respond-to check expressible as an ordinary type rather than as reflection.
 

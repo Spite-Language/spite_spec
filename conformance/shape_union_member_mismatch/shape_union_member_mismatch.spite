@@ -1,0 +1,20 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Kept {
+    pet: Pet
+}
+
+var console = Console()
+
+func ShapeUnionMemberMismatch() {
+    load "../../../spite_standard_library/windows"
+    var cage = Cage()
+    show(cage)
+}
+
+func show(thing: Kept) {
+    console.print(thing.pet.name)
+}

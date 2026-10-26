@@ -1,0 +1,1 @@
+conformance/shape_union_member_mismatch/shape_union_member_mismatch.spite:15: error: 'Cage' does not fit type 'Kept': attribute 'pet' is a Fish, but the type needs a ... (in ShapeUnionMemberMismatch.ShapeUnionMemberMismatch)

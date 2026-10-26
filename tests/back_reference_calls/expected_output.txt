@@ -1,0 +1,3 @@
+ada leaves with 1 child
+ada is freed
+grace has no parent now

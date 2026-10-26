@@ -1,0 +1,41 @@
+union Link {
+    Ring
+    Tail
+}
+
+var console = Console()
+
+func DeepCopyUnionCycles() {
+    load "../../../spite_standard_library/windows"
+    var first = Ring("a")
+    var second = Ring("b")
+    first.next = second
+    second.next = first
+    var copied = first.deep_copy()
+    first.name = "changed"
+    crash copied.next
+    follow(copied.next, copied)
+    second.next = null
+    console.print("the original is", first.name)
+}
+
+func follow(link: Link, copied: Ring) {
+    switch link {
+        Ring: close_the_copy(link, copied)
+        Tail: console.print("a tail", link.name)
+    }
+}
+
+func close_the_copy(ring: Ring, copied: Ring) {
+    console.print("the copy goes on to", ring.name)
+    crash ring.next
+    show_the_end(ring.next, copied)
+    ring.next = null
+}
+
+func show_the_end(link: Link, copied: Ring) {
+    switch link {
+        Ring: console.print("the copy closes its ring at", link.name, link == copied)
+        Tail: console.print("a tail", link.name)
+    }
+}
