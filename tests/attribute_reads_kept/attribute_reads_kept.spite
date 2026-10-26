@@ -1,0 +1,34 @@
+var console = Console()
+
+func AttributeReadsKept() {
+    load "../../../spite_standard_library/windows"
+    var bodies = List<Body>()
+    var index = 0
+    while index < 50 {
+        var body = Body(index)
+        bodies.append(body)
+        index = index + 1
+    }
+    var tick = 0
+    while tick < 40 {
+        index = 0
+        while index < bodies.count() {
+            var body = bodies[index]
+            body.step()
+            index = index + 1
+        }
+        tick = tick + 1
+    }
+    var height = 0.0
+    var spread = 0.0
+    index = 0
+    while index < bodies.count() {
+        var body = bodies[index]
+        height = height + body.position_y
+        spread = spread + body.position_x - body.velocity_x
+        index = index + 1
+    }
+    var height_checksum: Long = height * 1000.0
+    var spread_checksum: Long = spread * 1000.0
+    console.print("height", height_checksum, "spread", spread_checksum)
+}

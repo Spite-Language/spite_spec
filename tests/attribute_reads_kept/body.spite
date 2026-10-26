@@ -1,0 +1,22 @@
+var position_x = 0.0
+var position_y = 0.0
+var velocity_x = 0.0
+var velocity_y = 0.0
+
+func Body(seed: Integer) {
+    position_x = seed % 10
+    position_y = seed % 7 + 1
+    velocity_x = seed % 3 - 1
+    velocity_y = seed % 5
+}
+
+func step() {
+    velocity_y = velocity_y - 9.8 * 0.016
+    position_x = position_x + velocity_x * 0.016
+    position_y = position_y + velocity_y * 0.016
+    velocity_x = velocity_x * 0.999
+    if position_y < 0.0 {
+        position_y = -position_y
+        velocity_y = -velocity_y * 0.8
+    }
+}
