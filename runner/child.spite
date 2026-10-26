@@ -1,0 +1,99 @@
+var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
+var folder = ""
+var output_path = ""
+var job: Long = 0
+var process: Long = 0
+var started: Long = 0
+var startup_size = 104
+var information_size = 24
+var limit_size = 144
+var kills_on_close = 8192
+var extended_limits = 9
+var starts_suspended = 4
+var finished_waiting = 0
+
+func Child(starting_folder: String, starting_output_path: String) {
+    folder = starting_folder
+    output_path = starting_output_path
+}
+
+func start(command: String): Boolean {
+    var no_value: Long = 0
+    job = kernel.CreateJobObjectA_as_long(no_value, no_value)
+    if job == 0 {
+        return false
+    }
+    var limits = zeroed(limit_size)
+    limits.write_integer_little_endian_at(16, kills_on_close)
+    kernel.SetInformationJobObject(job, extended_limits, limits, limit_size)
+    var line = command.to_bytes()
+    var ending: Byte = 0
+    line.append(ending)
+    var startup = zeroed(startup_size)
+    startup.write_integer_little_endian_at(0, startup_size)
+    var information = zeroed(information_size)
+    var made = kernel.CreateProcessA(
+        no_value,
+        line,
+        no_value,
+        no_value,
+        0,
+        starts_suspended,
+        no_value,
+        no_value,
+        startup,
+        information,
+    )
+    if made == 0 {
+        return false
+    }
+    var made_process = information.read_long_little_endian_at(0)
+    var made_thread = information.read_long_little_endian_at(8)
+    crash made_process and made_thread
+    process = made_process
+    kernel.AssignProcessToJobObject(job, process)
+    kernel.ResumeThread(made_thread)
+    kernel.CloseHandle(made_thread)
+    started = kernel.GetTickCount64_as_long()
+    return true
+}
+
+func zeroed(size: Integer): Buffer {
+    var room = Buffer(size)
+    var zero: Byte = 0
+    var index = 0
+    while index < size {
+        room.append(zero)
+        index = index + 1
+    }
+    return room
+}
+
+func has_finished(): Boolean {
+    var waited = kernel.WaitForSingleObject(process, 0)
+    return waited == finished_waiting
+}
+
+func seconds_running(): Long {
+    var now = kernel.GetTickCount64_as_long()
+    return (now - started) / 1000
+}
+
+func exit_code(): Integer {
+    var answer = zeroed(4)
+    var read = kernel.GetExitCodeProcess(process, answer)
+    crash read != 0
+    var code = answer.read_integer_little_endian_at(0)
+    crash code
+    return code
+}
+
+func stop() {
+    kernel.TerminateJobObject(job, 1)
+    kernel.WaitForSingleObject(process, -1)
+}
+
+func close() {
+    kernel.CloseHandle(process)
+    kernel.CloseHandle(job)
+}
