@@ -1,0 +1,83 @@
+var console = Console()
+var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
+func DecidedComparisons() {
+    load "../../../spite_standard_library/windows"
+    var letters = String()
+    var group = 0
+    while group < 70000 {
+        var digit = letter_of(group, 6)
+        if group % 9973 == 0 {
+            letters.append_code(digit)
+        }
+        group = group + 1
+    }
+    console.print(letters)
+    var negative_masked = masked_sign(-1)
+    var positive_masked = masked_sign(5)
+    console.print(negative_masked, positive_masked)
+    var small_kept = below_ten(3)
+    var negative_kept = below_ten(-4)
+    console.print(small_kept, negative_kept)
+    var high_byte = byte_tests(200)
+    var low_byte = byte_tests(7)
+    console.print(high_byte, low_byte)
+    var values = List<Integer>()
+    values.append(4)
+    values.append(9)
+    values.append(16)
+    var total = sum_of(values)
+    console.print(total)
+    var inside = short_alphabet(2)
+    console.print(inside)
+    var outside = short_alphabet(5)
+    console.print(outside)
+}
+
+func letter_of(group: Integer, shift: Integer): Integer {
+    var moved = group.shifted_right(shift)
+    var value = moved.bits_and(63)
+    return alphabet.code_at(value)
+}
+
+func masked_sign(value: Integer): Boolean {
+    var all = value.bits_and(2147483647)
+    return all >= 0
+}
+
+func below_ten(value: Integer): Boolean {
+    var kept = value % 10
+    return kept < 10 and kept > -10
+}
+
+func byte_tests(value: Integer): Integer {
+    var bytes = Buffer(1)
+    var held: Byte = value
+    bytes.append(held)
+    var read = bytes[0]
+    crash read
+    var widened: Integer = read
+    if widened > 255 {
+        return -1
+    }
+    if widened < 0 {
+        return -2
+    }
+    return widened
+}
+
+func sum_of(values: List<Integer>): Integer {
+    var total = 0
+    var at = 0
+    while at < values.count() {
+        total = total + values[at]
+        at = at + 1
+    }
+    return total
+}
+
+func short_alphabet(index: Integer): Integer {
+    var short = "abc"
+    var masked = index.bits_and(7)
+    return short.code_at(masked)
+}
