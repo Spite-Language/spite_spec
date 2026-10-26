@@ -1,0 +1,1 @@
+conformance/bare_accessor_call/bare_accessor_call.spite:6: error: 'set_turns' is what writing 'turns' calls: write 'this.turns = 3' (in BareAccessorCall.BareAccessorCall)
