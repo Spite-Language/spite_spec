@@ -330,9 +330,12 @@ The design:
   `WaitForSingleObject` from `kernel32.dll`; `pthread_create` and `pthread_join` elsewhere). No `Thread` class is
   added to the library: [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md) says how a program is concurrent, and this thread belongs
   to the REPL.
-- **Answered where the program waits.** The socket thread only reads a command, hands it to the program's
-  scheduler ([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-repl-answers-at-the-waits)) and waits for the answer. The
-  scheduler answers it on the program's thread the next time the program waits (`program.sleep`,
+- **Answered where the program waits.** The socket thread runs no Spite code: it waits on the socket the REPL
+  reads (the listening socket until a client connects, then the client's) and, the moment a command can be read,
+  raises the check points' flag and wakes the program's wait, then waits until the program's thread has taken it
+  before it watches the socket again; the program's thread reads the command, answers it and writes the answer, so
+  no command waits for a timer ([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-repl-answers-at-the-waits)). The
+  program's thread answers it the next time the program waits (`program.sleep`,
   `Console.read_line()`, a `File` read or write, a `Socket` accept or read, reading an unfinished `Concurrent`'s
   value, joining a `Parallel`), so a command sees the program between two steps, never in the middle of one, and
   the program's state is never read or written by two threads at once. After the constructor returns, the program
