@@ -1,0 +1,13 @@
+where
+break counter.spite:4
+break counter.spite:2
+break nowhere.spite:1
+breaks
+counter.step()
+where
+counter.steps
+continue
+clear counter.spite:4
+counter.step()
+breaks
+exit

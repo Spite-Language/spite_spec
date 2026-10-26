@@ -163,21 +163,36 @@ the entry class's own Spite name):
   have to reproduce. Any other build writes them as an empty list and empty text, and nothing calls them, so they
   are shaken out with the rest of the loop: a normal build carries none of it.
 - **Breakpoints.** `break <file>:<line>`, `breaks`, `clear` and `clear <file>:<line>` answer in a program built with
-  both `--hot-reload` and `--repl-port`, and everywhere else with `'break ...' answers in a program built with
-  --hot-reload and --repl-port: ...`. The file is a path of the program ending in what is written (`ticker.spite`,
-  `game/ticker.spite`); none or two such files are refused naming them, and a line no statement starts on is
-  `no statement starts on 'ticker.spite:3': a breakpoint stops before a statement, so name the line a statement
-  starts on`, the program keeping all of its code. How it is built: the running program writes the breakpoints
-  beside its executable (`<program>.reload_breaks`) and runs a reload; the compiler adds every file whose
-  breakpoints differ from the ones the running code has (kept in the reload state, `breakpoint <line> <path>`) to
-  the files it compiles, and before the statement starting on each line writes a call of `spite_breakpoint(site,
-  locals)` with `self` and every local in scope reflected as `Spite.Attribute`s; the executable's `spite_breakpoint`
-  hands them to `ReadEvaluatePrintLoop.pause_at`. So a build carries nothing for breakpoints until one is set, and
-  only the functions of the files holding one change. `pause_at` publishes the site and the locals and waits until
-  `continue`; on the main thread it answers the prompt itself while it waits, and on another thread the main
-  thread answers as usual (one thread stops at a time; another that reaches a breakpoint waits its turn).
-  `where`, `locals` and `continue` answer `the program is not stopped at a breakpoint: 'break hero.spite:12' sets
-  one` when it is not. Only the program's own classes can hold a breakpoint, since only their code is swapped.
+  `--hot-reload` and a REPL (`--repl` or `--repl-port`), and everywhere else with `'break ...' answers in a program
+  built with --hot-reload and --repl-port: ...`. The file is a path of the program ending in what is written
+  (`ticker.spite`, `game/ticker.spite`); none such file is refused (`no file of the program ends in 'nowhere.spite':
+  a breakpoint names one of the program's own files, as in 'break hero.spite:12'`), two are refused naming them
+  (`'ticker.spite' names more than one file of the program (...): write more of the path`), a site without a line is
+  `'ticker.spite' names no line of a file: a breakpoint is set as 'break hero.spite:12'`, and a line no statement of
+  a block starts on is `no statement starts on 'ticker.spite:3': a breakpoint stops before a statement, so name the
+  line a statement starts on`; each refusal is a reload's, `the reload was refused, and the program keeps all of its
+  code: ...`, and the breakpoints stay as they were. `break` answers `the program stops before the statement on
+  ticker.spite:16`, a site already set `'ticker.spite:16' already holds a breakpoint: 'breaks' lists them`; `breaks`
+  answers the sites a line each, or `no breakpoint is set: 'break hero.spite:12' sets one`; `clear` answers `every
+  breakpoint is cleared`, `clear <site>` answers `the breakpoint on <site> is cleared`, or `no breakpoint is set on
+  '<site>': 'breaks' lists them`. How it is built: the running program writes its breakpoints beside its executable
+  (`<program>.reload_breaks`, a site a line, removed when the program starts) and runs a reload, whose answer it
+  keeps to itself; the compiler reads the file in a reload compile and, before the statement starting on each line,
+  writes `var spite_breakpoint_on_line_<line> = Spite.Breakpoint()` and `spite_breakpoint_on_line_<line>.pause_at(
+  "<site>")`, both on that line, after the file's rules are checked. `Spite.Breakpoint` is a class the compiler
+  writes into a `--hot-reload` REPL build; its `pause_at` hands the site to `ReadEvaluatePrintLoop.pause_at`, so a
+  build carries nothing for breakpoints but that class until one is set, and only the functions of the files holding
+  one change. `pause_at` waits until `continue`, answering the prompt meanwhile: the console REPL prints `stopped at
+  <site>` and reads commands; over `--repl-port`, a stop inside a command the REPL is answering (a call that reaches
+  the breakpoint) answers that command `stopped at <site>` at once, and the command's own answer is the answer to
+  `continue`; a stop the program's own code reaches answers `continue` with `continued from <site>`, as the console
+  prints it. While stopped, every command answers as usual, `where` answers the site, and a breakpoint reached again
+  (another thread, or a call made at the stop) is passed with `spite: the program passed the breakpoint at '<site>'
+  while it is stopped at '<other>', so it did not stop there` on the error output; one reached before the REPL has
+  the program is passed the same way (`... before the REPL had started ...`). `where`, `locals` and `continue`
+  answer `the program is not stopped at a breakpoint: 'break hero.spite:12' sets one` when it is not. `locals` lists
+  `self` and every local in scope at the stop, each reflected as a `Spite.Attribute`. Only the program's own classes
+  can hold a breakpoint, since only their code is swapped.
 - **`bytes`: native memory.** `bytes <path>` answers one JSON object: for a value the path holds an object of (an
   instance, a list, a dictionary, a singleton), `class`, `address` (hexadecimal text), `bytes` (the object's size),
   `hex` (its bytes, at most 4096 shown) or `"unreadable":true`, then for an instance `fields`, each with `name`,
@@ -203,7 +218,7 @@ the entry class's own Spite name):
   expression the build never compiled, `Lookup<Position>().of(12)`, which makes a `Lookup`, needs code the program
   lacks, which `eval` supplies. In a `--hot-reload` build the reload machinery already compiles the whole program and
   writes a library of what changed; `eval` hands it the typed expression as the body of a function of a class of its
-  own, compiles that library, loads it and calls the function once, with the loop's usual reflection for the answer.
+  own, compiles that library, loads it and calls the function once, answering the value made text.
   The program must allow the construction it asks for, so that path is refused for a singleton's constructor exactly
   as above.
 - **assignment** of a number, `Boolean`, text or enum literal: `program.player.age = 5`,
@@ -234,12 +249,19 @@ the entry class's own Spite name):
   out of range: names holds 2`), a literal of the wrong kind is a type mismatch (`type mismatch: target.health is
   an Integer, and "x" is not one`), calling an attribute is `target.name is not callable`, and an unknown function
   is `no function 'nope' in program: 'functions' lists them`.
-- **`eval` and `run`** answer in a program built with both `--hot-reload` and `--repl-port`, and everywhere else with
-  `'eval ...' answers in a program built with --hot-reload and --repl-port: ...`. The running program writes the
-  function beside its executable (`<program>.reload_prompt`) and reloads; the compiler reads the entry file with that
-  text after it, so its lines keep their numbers, and never formats it into the file on disk. The entry file's hash
-  then differs from the file, so the next reload compiles it again without the function, which the answer names
-  as removed. The REPL calls the function through reflection like any function the prompt calls.
+- **`eval` and `run`** answer in a program built with `--hot-reload` and a REPL (`--repl` or `--repl-port`), and
+  everywhere else with `'eval ...' answers in a program built with --hot-reload and --repl-port: ...`. The running
+  program writes the code beside its executable (`<program>.reload_prompt`: `eval` or `run` on its first line, the
+  code on the next) and runs a reload, whose answer it keeps to itself. In a reload compile the compiler writes the
+  class `Spite.PromptCode` from that file: one function, `answer(program: <Entry>): String`, where `program` names
+  the entry instance (`_program` when the code does not mention it), whose body for `eval <expression>` is `var
+  value = <expression>` and `return "{value}"`, and for `run <statement>` is the statement and `return ""`. A build
+  writes it with the body `return ""`, so the REPL calls the same function before and after: a reload swaps the new
+  body in, and the REPL calls it once; `eval` answers its text and `run` answers nothing. Code that does not compile
+  answers the compiler's error, the program keeps its code, and the file goes back to the code compiled last, so a
+  later reload does not fail on it; the code stays loaded until the next `eval` or `run`. The class is written to
+  `.spite/build/spite/prompt_code.spite` and its digest kept in the manifest, so a reload whose code is unchanged
+  rebuilds nothing. A program that starts removes the file a run before it left.
 - **`describe <class>`** answers the class's qualified name (`, a singleton` after one), its attributes
   (`name: Class` a line; a private `_` one is left out) and its public functions with their signatures
   (`grow(by: Integer): Integer`), or `none`. The name is the qualified name, or the name without its namespace when
@@ -405,7 +427,10 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   reload compiles with the same `Build` values the running program has.
 - **Rebuilding: `spite <folder> <flags> --executable-path=<program> --reload-at=<address>`.** A reload runs that
   compiler with those flags, and it prints its answer and its errors to standard output, where the running program
-  reads them. It reads the manifest and compares the program's files with it before lowering anything: nothing
+  reads them. A compile given `--reload-at` that is not a `--hot-reload` build, by the command line or by a
+  `hot_reload = true` in the program's `build.spite`, is refused: `'--reload-at' is given by a running --hot-reload
+  program when it compiles a change, with the flags it was built with: build with --hot-reload, and the program
+  reloads itself`. It reads the manifest and compares the program's files with it before lowering anything: nothing
   changed answers `unchanged`. Otherwise it compiles the program and compares each function's digest with the
   manifest's: every function whose digest changed is rebuilt and swapped through its slot, every function the
   running program lacks is added with a slot of its own, and every other function keeps the code the program runs.

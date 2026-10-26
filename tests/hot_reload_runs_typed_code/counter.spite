@@ -1,0 +1,10 @@
+var steps = 0
+
+func step(): Integer {
+    steps = steps + 1
+    return steps
+}
+
+func doubled(value: Integer): Integer {
+    return value * 2
+}

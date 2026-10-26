@@ -1,0 +1,8 @@
+var console = Console()
+var count = 2
+var counter = Counter()
+
+func HotReloadRunsTypedCode() {
+    load "../../../spite_standard_library/windows"
+    console.print("ready")
+}

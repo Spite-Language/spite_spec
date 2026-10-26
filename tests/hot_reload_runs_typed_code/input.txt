@@ -1,0 +1,11 @@
+eval program.count + 1
+eval program.counter.doubled(21)
+run program.count = 5
+count
+eval program.counter.step()
+eval program.counter.step()
+counter.steps
+eval 6 * 7
+eval missing_name
+reload
+exit
