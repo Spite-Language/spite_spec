@@ -10,12 +10,20 @@ func DivisionsApart() {
     crash base_line
     var base = base_line.trim().to_long()
     crash base
-    console.print("digits", digit_sum(parsed, base), digit_sum(0 - parsed, base))
-    console.print("parts", parts_of(parsed, base))
+    var negative = 0 - parsed
+    var positive_digits = digit_sum(parsed, base)
+    var negative_digits = digit_sum(negative, base)
+    console.print("digits", positive_digits, negative_digits)
+    var parts = parts_of(parsed, base)
+    console.print("parts", parts)
     var small = parsed % 1000000000
     var seconds = small.to_integer()
     var few = base.to_integer()
-    console.print("clock", clock(seconds), clock(0 - seconds), clock(few))
+    var backwards = 0 - seconds
+    var forward_clock = clock(seconds)
+    var backward_clock = clock(backwards)
+    var few_clock = clock(few)
+    console.print("clock", forward_clock, backward_clock, few_clock)
 }
 
 func digit_sum(value: Long, base: Long): Long {

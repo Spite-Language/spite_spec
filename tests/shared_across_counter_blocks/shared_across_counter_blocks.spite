@@ -23,7 +23,9 @@ func SharedAcrossCounterBlocks() {
             odds = odds + values[index] - index
         }
         if index > 0 {
-            evens = evens + values[index - 1]
+            var before = values[index - 1]
+            crash before
+            evens = evens + before
         }
         index = index + 1
     }
