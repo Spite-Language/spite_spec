@@ -1,0 +1,10 @@
+locals
+break counter.spite:8
+counter.step(3)
+locals
+where
+continue
+counter.step(4)
+locals
+continue
+exit

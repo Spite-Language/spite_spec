@@ -191,7 +191,11 @@ the entry class's own Spite name):
   while it is stopped at '<other>', so it did not stop there` on the error output; one reached before the REPL has
   the program is passed the same way (`... before the REPL had started ...`). `where`, `locals` and `continue`
   answer `the program is not stopped at a breakpoint: 'break hero.spite:12' sets one` when it is not. `locals` lists
-  `self` and every local in scope at the stop, each reflected as a `Spite.Attribute`. Only the program's own classes
+  `self` and every local and parameter in scope at the stop, a line each, `<name>: <type> = <value>`, the value
+  written as the loop writes a nested value (a number, a `Boolean`, an enum value or a text in full, `null`, a
+  collection as `List<Integer>(3)`, an object as `Hero {...}`) and `self` as `self: Counter = Counter { steps: 0,
+  history: List<Integer>(1) }`; the compiler writes those lines before the breakpoint's call, from the types it
+  knows there, so a stop costs nothing more than its lines (`tests/hot_reload_lists_locals`). Only the program's own classes
   can hold a breakpoint, since only their code is swapped.
 - **`bytes`: native memory.** `bytes <path>` answers one JSON object: for a value the path holds an object of (an
   instance, a list, a dictionary, a singleton), `class`, `address` (hexadecimal text), `bytes` (the object's size),

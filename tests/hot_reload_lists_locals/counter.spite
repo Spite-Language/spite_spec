@@ -1,0 +1,13 @@
+var steps = 0
+var history = List<Integer>()
+
+func step(by: Integer): Integer {
+    var next = steps + by
+    var found = history.last()
+    history.append(next)
+    if found {
+        next = next + found
+    }
+    steps = next
+    return steps
+}

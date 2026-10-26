@@ -1,0 +1,19 @@
+ready
+spite> the program is not stopped at a breakpoint: 'break hero.spite:12' sets one
+spite> the program stops before the statement on counter.spite:8
+spite> stopped at counter.spite:8
+spite> self: Counter = Counter { steps: 0, history: List<Integer>(1) }
+by: Integer = 3
+next: Integer = 3
+found: Integer? = null
+spite> counter.spite:8
+spite> continued from counter.spite:8
+3
+spite> stopped at counter.spite:8
+spite> self: Counter = Counter { steps: 3, history: List<Integer>(2) }
+by: Integer = 4
+next: Integer = 7
+found: Integer? = 3
+spite> continued from counter.spite:8
+10
+spite> 
