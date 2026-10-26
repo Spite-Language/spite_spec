@@ -1,0 +1,37 @@
+ready
+spite> Build()
+World()
+Channel(1)
+Channel(2)
+Tick() not made yet
+InteractiveInstances
+spite> Tick has not been made yet: nothing in the program has asked for it, and the prompt never makes one
+spite> Tick has not been made yet: nothing in the program has asked for it, and the prompt never makes one
+spite> 11
+spite> 2
+spite> 2
+spite> the program holds no Channel(3): a singleton made with arguments has one instance for each argument list the program asks for, Channel(1), Channel(2)
+spite> the program holds no Channel(): a singleton made with arguments has one instance for each argument list the program asks for, Channel(1), Channel(2)
+spite> 'World' is a singleton made without arguments, so it takes none: World()
+spite> 2
+spite> ... live allocations
+spite> {"class":"Integer","address":"0x...","bytes":4,"hex":"02000000","value":"2"}
+spite> {"class":"String","address":"0x...","bytes":8,"hex":"...","value":"world"}
+spite> {"class":"String","address":"0x...","bytes":8,"hex":"...","value":"bob"}
+spite> {"class":"World","address":"0x...","bytes":40,"hex":"...","fields":[{"name":"step","class":"Integer","offset":16,"bytes":4,"value":"2"},{"name":"label","class":"String","offset":24,"bytes":8,"value":"world"},{"name":"spawned","class":"List<Integer>","offset":32,"bytes":8,"value":"List<Integer>(1)"}]}
+spite> {"class":"List<String>","address":"0x...","bytes":40,"hex":"...","buffer":{"address":"0x...","bytes":16,"shown":16,"hex":"..."}}
+spite> 'bytes World().spawned.count()' names a value a call answers, which has no slot of its own: ask 'bytes' of the attribute or the object that holds it
+spite> 'eval 1 + 2' answers in a program built with --hot-reload and --repl-port: the code is compiled into the running program, which the remote REPL then calls
+spite> 'run World().spawn()' answers in a program built with --hot-reload and --repl-port: the code is compiled into the running program, which the remote REPL then calls
+spite> 'break world.spite:3' answers in a program built with --hot-reload and --repl-port: a breakpoint is compiled into the code the program runs, and the program waits there for the remote REPL
+spite> 'breaks' answers in a program built with --hot-reload and --repl-port: a breakpoint is compiled into the code the program runs, and the program waits there for the remote REPL
+spite> 'clear' answers in a program built with --hot-reload and --repl-port: a breakpoint is compiled into the code the program runs, and the program waits there for the remote REPL
+spite> 'last_reload' answers in a program built with --hot-reload, which swaps its code while it runs, and this one was not
+spite> 'wait_reload' answers in a program built with --hot-reload, which swaps its code while it runs, and this one was not
+spite> Build()
+World()
+Channel(1)
+Channel(2)
+Tick() not made yet
+InteractiveInstances
+spite> 

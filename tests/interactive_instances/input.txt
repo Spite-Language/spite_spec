@@ -1,0 +1,26 @@
+classes
+Tick()
+Tick().step_milliseconds
+Channel(1).number
+Channel(2).number
+Channel( 2 ).number
+Channel(3)
+Channel()
+World(1)
+World().step
+memory
+bytes World().step
+bytes World().label
+bytes names[1]
+bytes World()
+bytes names
+bytes World().spawned.count()
+eval 1 + 2
+run World().spawn()
+break world.spite:3
+breaks
+clear
+last_reload
+wait_reload
+classes
+exit

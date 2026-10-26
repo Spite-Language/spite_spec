@@ -1,0 +1,12 @@
+var console = Console()
+var world = World()
+var first = Channel(1)
+var second = Channel(2)
+var names = ["ann", "bob"]
+
+func InteractiveInstances() {
+    load "../../../spite_standard_library/windows"
+    world.spawn()
+    first.number = first.number + 10
+    console.print("ready")
+}
