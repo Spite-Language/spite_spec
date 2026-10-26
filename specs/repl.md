@@ -364,13 +364,10 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   --hot-reload, which swaps its code while it runs, and this one was not`, from a branch folded on the `Build`
   constant. As with `--repl-port`, a `--hot-reload` build swaps where the program waits and at each loop's check
   point. `spite program --hot-reload` runs the program attached to the terminal, like a REPL build.
-- **A `--hot-reload` build compiles like the default build.** Its executable and every reload library are compiled
-  at `-O0`, so the first build and every reload are as quick as a default build's; given `--optimized` too, both
-  are compiled at `-O3`. It is one C file, so it has no link-time optimisation, and it keeps every
-  run-time check of an inspectable build. Every call of a function a reload can
-  replace still goes through its slot: the slot is read with an acquiring atomic load, which the C compiler may
-  neither fold to the function the build started with nor hoist out of a loop, and a reload writes it with a
-  sequentially consistent store.
+- **A `--hot-reload` build compiles like an inspectable build.** It keeps every run-time check of one, and it
+  inlines no call and evaluates no call while compiling, so every call of a function a reload can replace reaches the
+  function's slot, also from a loop that is running when the reload swaps (a loop that called an inlined copy would
+  keep the old code for as long as it runs). A reload compiles with exactly the flags the program was built with.
 - **`wait_reload` waits for the watcher.** It answers once the watcher is not compiling, and every file the
   running code was compiled from has the size and modification time it had when the last reload (the watcher's or
   `reload`'s) started compiling; then it swaps in what that compile made, if nothing has yet, and answers what
@@ -389,69 +386,49 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   `wait_reload` answer once it is swapped in, as for any reload. Each such function's first frame (its machine's
   entry, `<name>___begin`) goes through a slot like every function, and each frame counts itself in a table kept
   by name while it lives, only in a `--hot-reload` build.
-- **The swap mechanism: one slot per function.** In a `--hot-reload` build every function (the program's own,
-  the standard library's, and every helper the compiler writes that keeps no static state of its own) and each
-  program class's `_init` (its attribute defaults) is written as `<name>_hot`, with a function pointer
-  `<name>_slot` holding it, and `<name>` becomes a one-line forwarder through the slot. Every call site, function
-  value and REPL thunk still names `<name>`, so all of them follow a swap. The functions the scheduler turns into
-  waits keep their direct calls. Any other build is unchanged: direct calls and tree shaking. The cost is one
-  indirect call that the C compiler cannot inline, about a nanosecond: 200 million calls to a one-line function
-  took about 0.62 s instead of 0.44 s at `-O0` and 0.40 s instead of 0.18 s with `--optimized` (Windows, clang).
+- **The swap mechanism: one slot per function.** In a `--hot-reload` build every function (the program's own, the
+  standard library's, and every one the compiler writes) starts with a jump through its slot, eight bytes of the
+  executable's data that start holding the address of the function's body. Every call site, function value, thread
+  entry and REPL thunk still names the function's start, so all of them follow a swap, and a reload writes the new
+  body's address into the slot. Functions are aligned to 32 bytes in such a build, so a function's code does not
+  depend on where it lands. Any other build is unchanged: direct calls and tree shaking. The cost is one indirect
+  jump per call.
 - **What the build records.** Beside the executable, `<program>.reload_host` lists every function the executable
-  defines with its C prototype and a hash of its C, its slots and the class each belongs to, its class ids in
-  order with each class's identity (its C name), the C layout of every class and enum, every dictionary the build
-  keyed by whole numbers (`key Long Columns@engine/columns.spite:11:43`), and what a reload needs to compile
-  one class against the rest: the generic instances, object-literal classes and
-  lent variants it made, in order; the functions each program class declares; the classes that fit each shape; the
-  functions that can wait; a digest of each function's call effects and of the other whole-program studies; and
-  the facts compiling each class produced, each with the classes that produced it (`fact <classes>\t<fact>`: an
-  attribute read, a class admitted to a shape, a flag such as `threads`, a symbol, a setting on a class).
-  `<program>.reload_files` holds a generation number, a hash of each of the program's files (every file it
-  compiled from outside the standard library, not only those declaring its classes) and the build's output settings, so a
-  reload compiles with the same `Build` values the running program has. The executable
-  holds a table of its functions' addresses by name, the path of the compiler that built it and that compiler's
-  options, so it must run from the directory it was built from.
-- **Rebuilding: `spite reload <folder> <options> --executable-path=<program>`.** A reload runs that compiler with
-  those options, less the outputs, and prints its errors to standard output, where the running program reads them.
-  It reads the program's files and compares their hashes before compiling anything: nothing changed answers
-  `unchanged` (under a second for a large game). Otherwise it **compiles only the changed classes**: it resolves
-  every class, makes again the generic instances, object-literal classes, lent variants and made functions the
-  manifest lists, takes the facts of every unchanged class from the manifest, and compiles the functions of the
-  classes the changed files declare, and any function the running program lacks, skipping every other function the
-  running program has with the same prototype. The class ids are seeded from the manifest by identity, so every
-  class keeps the id its instances carry. **It compiles the whole program instead** when the changed code changes what other
-  classes were compiled against: a parameter list or return type; a function the running program made for a
-  changed class that is not made again; a fact whose set of classes changes, other than attribute reads and
-  parameter-write answers (which decide only errors and the changed code); the digest of any function's call
-  effects, the other whole-program studies, the functions that can wait, or the way a function takes its arguments;
-  or the classes that fit a shape the changed code's C names. A whole compile compares the
-  hash of every function's C with the manifest's, numbered names (`spite_temp_3`) and text constants compared by
-  what they hold: every changed function is rebuilt with the changed ones, and a changed helper that keeps static
-  state of its own, which has no slot, refuses the reload. A changed `static` function of the compiler's has no
-  slot either: every function that calls it is rebuilt instead, with a copy of it. It writes no C for the whole program, only the library's, whose types and
-  prototypes are shaken to what its functions use. With `SPITE_RELOAD_CHECK=<file>` set, `spite reload` treats that
-  file as changed, compiles the reload both ways, and prints whether the fast one writes what the whole one does.
-  **A changed file that declares none of the program's classes compiles the whole program**: a file reopening a
-  class of the standard library, as `environment.spite` reopens `Environment`, `build.spite`, or a deleted file.
-  The rebuilt set is the
-  classes the changed files declare, plus every class whose code calls a function of the set that the running
-  program has with another prototype or does not have at all (the running caller would still call the old one),
-  repeated until nothing is added. It writes C only for the rebuilt classes' functions and what they reach that the
-  running program lacks, reaching every other function through a pointer the library is handed when it is loaded,
-  and compiles `<program>_reload_<n>.dll` (`.so`, `.dylib`). It prints `rebuilt A, B`, `removed A.f` when a function
-  the running program has is gone, and the library's path.
-- **Swapping at a drain point.** The running program opens the library with `LoadLibraryA`/`dlopen`, the
-  calls `DynamicLibrary` opens a library with, and calls its `spite_reload_bind`, which looks up each running
-  function it uses by name (the compiler's memory included, so the library allocates and frees through the program) and then
-  re-points the slots of the rebuilt functions whose prototypes are unchanged, with an atomic store. **The compile
-  runs on a helper thread**: the watcher's thread compiles a change it sees,
-  and the REPL's thread compiles before it hands `reload` over, one compile at a time; the finished library waits
-  until the program's first wait or check point after it, where the program swaps it in, so the program never waits
-  for the compiler. `reload` answers what its own compile produced (swapped in by then), and a later result
-  replaces one not yet swapped in, except that `unchanged` never replaces a library. While the swap runs, the
-  scheduler is paused and a wait blocks where it is, so nothing else runs until it is done. After a swap the file
-  hashes are updated. A library is never unloaded: values it made, such as its text literals, may still be
-  referenced.
+  defines with its start, its slot, the class it belongs to and a digest of its machine code (each reference that
+  leaves the function counted as what it names: the function called, the state reached by name, the system function
+  imported, the text a constant holds); every piece of state the code reaches, by the name the compiler gives it
+  where it makes it (a singleton's record, a static object, the counts, the scheduler's state), with its address;
+  every system function the executable imports, with the address of its entry; a digest of the routines every
+  function shares; every class's id and layout; every enum's values; and a digest of each of the program's files.
+  The executable holds the path of the compiler that built it, the folder it was started in and its flags, so a
+  reload compiles with the same `Build` values the running program has.
+- **Rebuilding: `spite <folder> <flags> --executable-path=<program> --reload-at=<address>`.** A reload runs that
+  compiler with those flags, and it prints its answer and its errors to standard output, where the running program
+  reads them. It reads the manifest and compares the program's files with it before lowering anything: nothing
+  changed answers `unchanged`. Otherwise it compiles the program and compares each function's digest with the
+  manifest's: every function whose digest changed is rebuilt and swapped through its slot, every function the
+  running program lacks is added with a slot of its own, and every other function keeps the code the program runs.
+  The class ids are seeded from the manifest by the class's name, so every class keeps the id its instances carry,
+  and a new class takes the next one after the largest. It writes the rebuilt functions into `<program>.reload_<n>`,
+  machine code laid out at the address the program gave, with every reference resolved against the running program:
+  a call to a function the program has goes to its start, state the program holds is the program's, and the
+  constants and new state the new code needs are copied in. It prints `rebuilt A, B` (the classes of the rebuilt
+  functions), `removed A.f` when a function the running program has is gone, `library <path>` and `manifest
+  <path>`, the next manifest, written as `<program>.reload_pending`. A reload is refused, and the program keeps all
+  of its code, when a class the running program describes has another layout (the answer names the attributes that
+  are new or gone), when an enum's values change other than by new ones added last, when the routines every
+  function shares are compiled differently, when the new code calls a system function the program never imported,
+  and when it reaches state the compiler did not name. A reload whose compile changes no code the program runs
+  answers `no code the program runs changed, so nothing was rebuilt`.
+- **Swapping at a drain point.** The first reload reserves room for new code near the program (256 MB at the
+  image's base plus 1 GB on Windows, so every reference reaches it in 32 bits); each reload commits the next part of
+  it, copies the new code in, flushes the instruction cache, writes the slots of the rebuilt functions, and makes
+  the manifest it was given the running one. **The compile runs on a helper thread**: the watcher's thread compiles
+  a change it sees, and the REPL's thread compiles before it hands `reload` over, one compile at a time; the
+  finished code waits until the program's first wait or check point after it, where the program swaps it in, so
+  the program never waits for the compiler. `reload` answers what its own compile produced (swapped in by then).
+  While the swap runs, the scheduler is paused and a wait blocks where it is, so nothing else runs until it is done.
+  New code is never unloaded: values it made, such as its text literals, may still be referenced.
 - **What reloads.** A function body (the next call runs it; a call already running finishes the old one). A new
   function or a new class (the new code calls it). **Reflection follows the reload**: each program class's list of
   functions, `<Class>___functions`, has a slot like a function, and a rebuilt
@@ -476,8 +453,6 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   thread of its own, it calls `wait_for_changes()`, which returns once 100 ms pass without a change, then compiles
   the change and wakes the scheduler. The program's own folder is watched with every folder below it, and so is
   **every folder the program loads**: the compiler writes their list into the build, `HotReload.loaded_folders()`.
-- **Windows' C runtime.** When the C compiler targets MSVC (its `-dumpmachine`), the program and its libraries are
-  built against the C runtime DLL (`-fms-runtime-lib=dll`) so they share one heap and one standard output.
 - **Crashes and parallel code.** A crash inside reloaded code reports the library's own assert trace. A `Parallel`
   running a function whose slot is re-pointed finishes the old code.
 

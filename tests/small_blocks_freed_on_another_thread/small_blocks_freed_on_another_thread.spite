@@ -1,0 +1,15 @@
+var console = Console()
+
+func SmallBlocksFreedOnAnotherThread() {
+    load "../../../spite_standard_library/windows"
+    var first = Maker(3)
+    var first_run = Parallel(first.made)
+    var second = Maker(5)
+    var second_run = Parallel(second.made)
+    var total = first_run + second_run
+    console.print(total)
+    var again = Maker(7)
+    var again_run = Parallel(again.made)
+    var later: Long = again_run
+    console.print(later)
+}

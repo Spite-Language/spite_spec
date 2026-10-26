@@ -1,0 +1,11 @@
+var x = 0
+var y = 0
+
+func Point(new_x: Integer, new_y: Integer) {
+    x = new_x
+    y = new_y
+}
+
+func sum(): Long {
+    return x + y
+}

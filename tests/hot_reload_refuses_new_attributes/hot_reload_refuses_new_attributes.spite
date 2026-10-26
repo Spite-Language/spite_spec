@@ -1,0 +1,14 @@
+var console = Console()
+var build = Build()
+var counter = Counter()
+
+func HotReloadRefusesNewAttributes() {
+    load "../../../spite_standard_library/windows"
+    counter.add(2)
+    var file = File("{build.program}/counter.spite")
+    var text = "var count = 0\nvar total = 0\n\nfunc add(amount: Integer) \{\n    count = count + amount\n    total = total + amount\n}\n"
+    var written = file.write(text)
+    if not written {
+        console.print("counter.spite could not be written")
+    }
+}

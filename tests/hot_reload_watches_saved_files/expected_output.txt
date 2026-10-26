@@ -1,0 +1,5 @@
+hello
+spite: rebuilt Greeter
+goodbye
+generation 1
+rebuilt Greeter
