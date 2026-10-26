@@ -1,7 +1,7 @@
 var console = Console()
 var registry = Registry()
 
-func BackReferencePastACall() {
+func BackReferenceGone() {
     load "../../../spite_standard_library/windows"
     var child = make_family()
     crash registry.current

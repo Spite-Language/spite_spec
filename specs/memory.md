@@ -78,8 +78,9 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   new object's word up and the old one's down. The read holds its object while the value read is used, as a call's
   result is held, so a call on it (`child.parent.leave()`) whose body lets the object's owner go still runs on a live
   object, which is freed when the call returns; on two threads the test and the count are one step, so a read never
-  takes back an object whose last release has begun. A back reference proven present is proven only up to the next
-  call, since any call may let its object go: reading it past one without proving it again is an error. A program with no back
+  takes back an object whose last release has begun. A back reference proven present may lose its object at any later
+  call that lets the owner go, so a read that relies on the proof halts on a freed object, naming the attribute,
+  rather than use `null` as an object. A program with no back
   reference carries nothing: no slot, no helper, no check.
 - Parameters follow the same rule as everything else in [Functions](functions_and_operators.md#functions): a scalar is passed by value (copied); anything
   else is passed by reference (the same object, retained for the callee's own binding and released when the
