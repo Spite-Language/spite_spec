@@ -1,0 +1,33 @@
+var console = Console()
+
+func CheckedSumInItsRegister() {
+    load "../../../spite_standard_library/windows"
+    var arguments = Arguments()
+    var given = arguments.count()
+    var small = summed(1000, given)
+    console.print(small)
+    var product = scaled(given, 7)
+    console.print(product)
+    var large = summed(2147483000, given * 50)
+    console.print("never printed", large)
+}
+
+func summed(start: Integer, step: Integer): Integer {
+    var total = start
+    var index = 0
+    while index < 10 {
+        total = total + step
+        index = index + 1
+    }
+    return total
+}
+
+func scaled(start: Integer, factor: Integer): Integer {
+    var product = start
+    var index = 0
+    while index < 3 {
+        product = product * factor
+        index = index + 1
+    }
+    return product
+}

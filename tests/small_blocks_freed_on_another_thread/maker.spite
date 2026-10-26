@@ -1,0 +1,21 @@
+var step = 0
+var points = List<Point>()
+
+func Maker(new_step: Integer) {
+    step = new_step
+}
+
+func made(): Long {
+    var found: Long = 0
+    var index = 0
+    while index < 20000 {
+        var passing = Point(index, step)
+        found = found + passing.sum()
+        if index % 10 == 0 {
+            var kept = Point(index, index)
+            points.append(kept)
+        }
+        index = index + 1
+    }
+    return found
+}
