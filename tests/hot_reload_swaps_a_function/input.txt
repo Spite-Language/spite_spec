@@ -1,0 +1,9 @@
+greeter.greeting()
+reload
+greeter.greeting()
+reload
+restore()
+reload
+greeter.greeting()
+last_reload
+exit
