@@ -125,8 +125,9 @@ with a literal default, and a program adds its own the same way it adds `Environ
   else the standard library's `Build`.
   Either way the value is written into the program: `build.serve` compiles to `true`, a condition on it is decided
   while compiling, the branch not taken is never generated, and nothing is read when the program runs. A default
-  may be arithmetic on literals (`var seconds = 2 * 60`, `var offset = -3`), which is folded the same way; a
-  default that reads anything else is evaluated once, when `Build` is made (`tests/build_constant_defaults`). The field
+  may be arithmetic on literals (`var seconds = 2 * 60`, `var offset = -3`), which is folded the same way, or
+  another field of the same type (`var attempts = retries`), which is that field's constant, the command line's
+  value included (`tests/build_default_reads_a_field`); a default that reads anything else is evaluated once, when `Build` is made (`tests/build_constant_defaults`). The field
   still exists on the `Build` singleton with that value, for reflection.
   The fields that say what one compile writes (`check`, `build`, `executable_path`, `final_classes`,
   `optimization_report`, `high_ir`, `low_ir`) are the exception: a flag sets what the compile does, and the program

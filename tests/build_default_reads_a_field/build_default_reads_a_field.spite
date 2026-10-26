@@ -1,0 +1,10 @@
+var build = Build()
+var console = Console()
+
+func BuildDefaultReadsAField() {
+    load "../../../spite_standard_library/windows"
+    console.print("attempts", build.attempts)
+    if build.shown_label == "night" {
+        console.print("label", build.shown_label)
+    }
+}
