@@ -1,0 +1,3 @@
+func dive(depth: Integer): Integer {
+    return depth
+}

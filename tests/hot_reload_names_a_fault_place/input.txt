@@ -1,0 +1,3 @@
+plant()
+reload
+diver.dive(1)

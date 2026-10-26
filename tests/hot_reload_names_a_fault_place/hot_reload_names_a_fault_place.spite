@@ -1,0 +1,22 @@
+var console = Console()
+var build = Build()
+var diver = Diver()
+
+func HotReloadNamesAFaultPlace() {
+    load "../../../spite_standard_library/windows"
+    var reached = diver.dive(1)
+    console.print(reached)
+}
+
+func plant() {
+    write_diver("    if depth < 0 \{\n        return -1\n    }\n    return dive(depth + 1) + 1\n")
+}
+
+func write_diver(body: String) {
+    var file = File("{build.program}/diver.spite")
+    var text = "func dive(depth: Integer): Integer \{\n{body}}\n"
+    var written = file.write(text)
+    if not written {
+        console.print("diver.spite could not be written")
+    }
+}
