@@ -1,0 +1,38 @@
+var console = Console()
+
+func WindowReadsOneTest() {
+    load "../../../spite_standard_library/windows"
+    var values = List<Integer>()
+    var index = 0
+    while index < 1000 {
+        values.append(index * 37 % 101)
+        index = index + 1
+    }
+    var summed = windows(values, 3)
+    console.print("windows", summed)
+    var picks = [5, 0, 999, 17]
+    var chosen = picked(values, picks)
+    console.print("picked", chosen)
+}
+
+func windows(values: List<Integer>, weight: Integer): Integer {
+    var total = 0
+    var at = 0
+    while at + 2 < values.count() {
+        total = total + values[at] * weight + values[at + 1] + values[at + 2]
+        at = at + 1
+    }
+    return total
+}
+
+func picked(values: List<Integer>, picks: List<Integer>): Integer {
+    var total = 0
+    var index = 0
+    while index < picks.count() {
+        var pick = picks[index]
+        crash values[pick]
+        total = total + values[pick]
+        index = index + 1
+    }
+    return total
+}

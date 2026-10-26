@@ -1,0 +1,5 @@
+parts 539003
+signed -4 4 -2
+guarded 4375 -4375 79
+bits 0 127 4194304
+wide 3 5
