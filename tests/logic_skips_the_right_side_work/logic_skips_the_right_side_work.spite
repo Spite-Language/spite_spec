@@ -1,0 +1,23 @@
+var console = Console()
+
+func LogicSkipsTheRightSideWork() {
+    load "../../../spite_standard_library/windows"
+    var shown = false
+    if shown and maybe_true("and") {
+        console.print("both")
+    }
+    var hidden = true
+    if hidden or maybe_true("or") {
+        console.print("either")
+    }
+    var count = 0
+    while count < 3 and maybe_true("while") {
+        count = count + 1
+    }
+    console.print(count)
+}
+
+func maybe_true(asked: String): Boolean? {
+    console.print("asked {asked}")
+    return true
+}
