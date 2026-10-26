@@ -1,0 +1,51 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func RunTimeCallOpenParameters() {
+    load "../../../spite_standard_library/windows"
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var found = classes[index]
+        if found.name.ends_with("Greetings") {
+            run_greetings(found)
+        }
+        index = index + 1
+    }
+}
+
+func run_greetings(found: Spite.Class) {
+    var instance = found()
+    var functions = found.functions
+    var index = 0
+    while index < functions.count() {
+        var declaration = functions[index]
+        if declaration.name.starts_with("greet_") {
+            var call = Spite.Call(declaration, instance)
+            var cat = Cat()
+            cat.name = "Tom"
+            call.arguments["pet"] = cat
+            var dog = Dog()
+            dog.name = "Rex"
+            call.arguments["named"] = dog
+            call.arguments["times"] = 2
+            call.call()
+            var wrong = Spite.Call(declaration, instance)
+            var stranger = Stranger()
+            console.print("a stranger", stranger.name)
+            wrong.arguments["pet"] = stranger
+            wrong.arguments["named"] = cat
+            wrong.arguments["times"] = 1
+            wrong.call()
+        }
+        index = index + 1
+    }
+}

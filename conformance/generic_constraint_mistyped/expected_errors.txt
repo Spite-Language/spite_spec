@@ -1,0 +1,1 @@
+conformance/generic_constraint_mistyped/generic_constraint_mistyped.spite:9: error: 'Stone' does not fit type 'Weighed': its 'weight' returns a String, but the type needs an Integer (in GenericConstraintMistyped.GenericConstraintMistyped)

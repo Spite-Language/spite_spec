@@ -1,0 +1,7 @@
+generic $item_type: Weighed
+
+var items = List<$item_type>()
+
+func add(item: $item_type) {
+    items.append(item)
+}

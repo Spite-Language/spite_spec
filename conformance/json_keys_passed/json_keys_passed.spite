@@ -1,0 +1,15 @@
+var console = Console()
+
+func JsonKeysPassed() {
+    load "../../../spite_standard_library/windows"
+    var writer = JsonWriter<MeshRecord>()
+    writer.keys = {MeshRecord.attributes['minimum_level_of_detail']: "min_lod"}
+    forget_the_keys(writer.keys)
+    var record = MeshRecord()
+    var text = writer.write(record)
+    console.print(text)
+}
+
+func forget_the_keys(keys: Dictionary<Spite.AttributeDeclaration, String>) {
+    keys.clear()
+}

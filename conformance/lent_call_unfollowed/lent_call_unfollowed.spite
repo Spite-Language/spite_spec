@@ -1,0 +1,17 @@
+var console = Console()
+var mice = Vector<Mouse>()
+
+func LentCallUnfollowed() {
+    load "../../../spite_standard_library/windows"
+    var made = Mouse()
+    mice.append(made)
+    crash mice[0]
+    var first = mice[0]
+    var measure = left_of
+    var left = measure(first)
+    console.print(left)
+}
+
+func left_of(mouse: Mouse): Integer {
+    return mouse.left
+}
