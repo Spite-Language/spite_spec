@@ -1,0 +1,9 @@
+var console = Console()
+var counter = Counter()
+
+func EndlessParallelWorkCalls() {
+    load "../../../spite_standard_library/windows"
+    var waiting = Parallel(counter.count_and_wait)
+    var counting = Parallel(counter.count_forever)
+    console.print(waiting, counting)
+}
