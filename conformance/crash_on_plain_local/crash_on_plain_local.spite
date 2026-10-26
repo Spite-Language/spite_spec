@@ -1,0 +1,8 @@
+var console = Console()
+
+func CrashOnPlainLocal() {
+    load "../../../spite_standard_library/windows"
+    var tracker = Tracker()
+    crash tracker
+    console.print(tracker.name)
+}

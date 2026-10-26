@@ -1,0 +1,13 @@
+var size = 0
+
+func Span(starting_size: Integer) {
+    size = starting_size
+}
+
+func negate(): Span {
+    return Span(-size)
+}
+
+func reversed(): Span {
+    return negate()
+}

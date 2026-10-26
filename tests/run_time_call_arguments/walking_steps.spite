@@ -1,0 +1,13 @@
+var console = Console()
+
+func WalkingSteps() {
+    console.print("made")
+}
+
+func step_repeat(times: Integer, word: String) {
+    var index = 0
+    while index < times {
+        console.print(word)
+        index = index + 1
+    }
+}

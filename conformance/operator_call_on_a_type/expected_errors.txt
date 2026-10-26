@@ -1,0 +1,1 @@
+conformance/operator_call_on_a_type/operator_call_on_a_type.spite:11: error: 'less_than' is what '<' calls: write 'light < heavy' (in OperatorCallOnAType.OperatorCallOnAType)

@@ -1,0 +1,10 @@
+var console = Console()
+
+func DecimalExponents() {
+    load "../../../spite_standard_library/windows"
+    var light: Double = 2.5e3
+    var small: Double = 1e-5
+    var signed: Float = 4E+2
+    var tiny: Double = 6.02e-23
+    console.print(light, small, signed, tiny)
+}

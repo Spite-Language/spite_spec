@@ -1,0 +1,1 @@
+conformance/reflection_unknown_class_local/reflection_unknown_class_local.spite:11: error: 'kind' is not a class known while compiling, so it cannot be a type here (in ReflectionUnknownClassLocal.count_of)

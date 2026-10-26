@@ -1,0 +1,2 @@
+1000000
+spite: a Double beyond 3.4028235e+38, the largest Float, does not fit in a Float, at tests/double_too_large_for_float/double_too_large_for_float.spite:9 in DoubleTooLargeForFloat.DoubleTooLargeForFloat

@@ -1,0 +1,1 @@
+conformance/decimal_too_large_for_float/decimal_too_large_for_float.spite:5: error: 5e38 does not fit in a Float, whose largest number is 3.4028235e+38: declare it a Double, which holds up to 1.7976931348623157e+308, or write a smaller number (in DecimalTooLargeForFloat.DecimalTooLargeForFloat)

@@ -1,0 +1,13 @@
+var console = Console()
+
+func ReflectionUnknownClassLocal() {
+    load "../../../spite_standard_library/windows"
+    var armor = Armor()
+    console.print(armor.plates)
+    count_of(Armor)
+}
+
+func count_of(kind: Spite.Class) {
+    var values = List<kind>()
+    console.print(values.count())
+}

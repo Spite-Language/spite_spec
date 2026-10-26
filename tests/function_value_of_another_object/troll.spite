@@ -1,0 +1,5 @@
+var roars = 0
+
+func roar() {
+    roars = roars + 1
+}

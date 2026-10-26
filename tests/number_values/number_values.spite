@@ -1,0 +1,30 @@
+var console = Console()
+
+func NumberValues() {
+    load "../../../spite_standard_library/windows"
+    var numbers = List<Number>()
+    numbers.append(3)
+    numbers.append(2.5)
+    var index = 0
+    while index < numbers.count() {
+        var value = numbers[index]
+        crash value
+        var doubled = value + value
+        var is_six = doubled == 6
+        var is_five = doubled == 5.0
+        var is_small = value < 3
+        console.print(is_six, is_five, is_small)
+        index = index + 1
+    }
+    var whole = numbers[0]
+    var decimal = numbers[1]
+    crash whole
+    crash decimal
+    var mixed = decimal + whole
+    var is_mixed = mixed == 5.5
+    var wide = decimal.to_double()
+    var whole_long = whole.to_long()
+    console.print(is_mixed, wide, whole_long)
+    var cut = whole + decimal
+    console.print(cut == 0)
+}

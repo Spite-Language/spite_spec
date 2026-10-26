@@ -1,0 +1,9 @@
+var grams = 0
+
+func Weight(starting_grams: Integer) {
+    grams = starting_grams
+}
+
+func less_than(other: Weight): Boolean {
+    return grams < other.grams
+}

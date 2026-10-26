@@ -1,0 +1,15 @@
+var console = Console()
+
+func FunctionValueOfAnotherObject() {
+    load "../../../spite_standard_library/windows"
+    var troll = Troll()
+    var roar = troll.roar
+    run(roar)
+    console.print(troll.roars)
+}
+
+func run(function: Spite.Function) {
+    var taken = function.arguments.count()
+    console.print(function.name, taken)
+    function.call_function()
+}
