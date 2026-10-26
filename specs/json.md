@@ -81,7 +81,7 @@ makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?'` (`diagn
   [How it is written](https://github.com/Spite-Language/spite_documentation/blob/master/json.md#how-it-is-written) shows. The binary walk's helper, `BinaryFormat<T>`, is a `singleton`
   that holds nothing, bound where it is used (`BinaryFormat<attribute.class>()`), which is allowed since a
   singleton made from a `$` or `.class` type cannot be an attribute; in a production build it is a static object
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#singletons-that-hold-nothing-are-static-objects)).
+  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-singleton-that-holds-nothing-is-a-static-object)).
 - **An enum is written by walking its values**, which a generic may do for the enum it is given
   ([values_and_types.md](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#enums)): that is how `BinaryFormat` finds an enum value's
   index and how many values the enum has, with no table at run time: writing one costs one comparison per value

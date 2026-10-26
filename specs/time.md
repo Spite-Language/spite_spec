@@ -64,7 +64,7 @@ with Temporal's vocabulary and no stored zoned type.
   carries none of it. `duration.total('microseconds')` rounds toward zero, so it is the difference of the two
   readings divided by 1000. In a program that starts a `Parallel`, `work` counts as code that may run on another
   thread, since a function value is matched to the calls a thread makes by its count of arguments and a worker
-  calls values of none ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-reference-counts-where-no-thread-reaches-a-class)):
+  calls values of none ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class)):
   the classes `work` counts are counted atomically and the singletons it calls keep their locks, so work whose point
   is the cost of those is timed with two `elapsed_nanoseconds()` readings instead.
 

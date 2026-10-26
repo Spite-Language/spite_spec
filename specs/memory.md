@@ -23,13 +23,13 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   `Concurrent` or a `Parallel`, runs a `parallel_each_` pass, or is built with `--repl-port` or `--hot-reload`),
   and in a production build only for the classes whose objects code on another thread can retain or release;
   every other program, and every other class, counts with plain arithmetic
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#atomic-reference-counts-only-with-threads),
-  [plain counts](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-reference-counts-where-no-thread-reaches-a-class)). A loop over a
+  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class),
+  [plain counts](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class)). A loop over a
   list of different classes that may run them at once ([concurrency](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting))
   is followed class by class: a class that only one of the calls able to run together retains, releases, makes or
   frees, and no other code on another thread does, keeps plain counts and its pool; a class two of them count is
   counted atomically while the loop runs them at once and plainly otherwise, and its pool of objects is kept per
-  thread ([counts per group](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#counts-stay-plain-for-what-one-of-the-calls-run-at-once-counts)).
+  thread ([counts per group](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class)).
 - **`drop()`.** A class may define `func drop() { ... }` to run cleanup the moment its last reference goes (closing
   a file handle, logging, clearing a back-reference to help break a cycle by hand, see below). It takes no
   parameters and returns nothing; the compiler calls it automatically, never by name.
@@ -164,7 +164,7 @@ or for a place, and none to observe the choice ([Memory is not observable](#memo
   functions proven to keep nothing (the same proof for each parameter and for the object a function is called on),
   compared, given a new fresh object, and returned only from a function that answers its class (copied to the heap
   there). Not in a function that waits
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-the-frame)). A local made
+  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-registers-or-the-frame)). A local made
   by its constructor lives in the frame on the same terms when its class also holds text, lists, dictionaries or
   other objects: what it holds is let go where the local's scope ends, and returning it moves it to the heap,
   attributes and all.
@@ -306,7 +306,7 @@ compile time that it is never kept past its use. The rules:
     name: it is not read past a line that may change the size of one of its vectors.
   - **Cost.** The row is a struct in the frame of the function that makes it, with a header whose count is never
     touched, and a read through the parameter is the `type`'s uncounted read, one class test and a load
-    ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-row-of-borrowed-items-lives-in-the-frame)). A program that makes no
+    ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-registers-or-the-frame)). A program that makes no
     row carries none of it. `benchmarks/a_row_of_borrowed_items_lives_in_the_frame`: 20 000 000 rows over four
     `Vector` columns, none allocated, measured against C making a row per call.
 - **A row filled by a walk.** A local declared as a `type` with `= null` (`var row: $row_type = null`) and filled on the very next
@@ -397,7 +397,7 @@ compile time that it is never kept past its use. The rules:
     keeps the element, counts it as before. **Cost**: none; the lock or readers' side is taken once for the block
     where the call would have taken it once. `conformance/stage6/lent_list_elements`,
     `conformance/stage6/lent_list_elements_parallel`
-    ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-row-of-borrowed-items-lives-in-the-frame)).
+    ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-registers-or-the-frame)).
   - **Cost.** Nothing runs for any of it: the singleton is the one a program would reach anyway, `attribute.index`
     is a constant, the choice is made while compiling, and the frame-made object is a struct in the frame.
     `benchmarks/a_walked_crash_lines_read_is_the_rows_read` walks rows over sparse columns and measures them
@@ -447,7 +447,7 @@ compile time that it is never kept past its use. The rules:
   over the arguments of 'phase_each' may hand back a borrowed item only through its plural, as the whole argument
   list of the one call it fills: 'phase_each(made_arguments(...))'` (`diagnostics/lent_arguments`).
   **Cost.** The written-out arguments cost what the walked line costs; the template is not called, so it is not
-  compiled for that call ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-row-of-borrowed-items-lives-in-the-frame);
+  compiled for that call ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-registers-or-the-frame);
   `conformance/stage6/lent_arguments`).
 - **An item lent to the caller.** A function one of whose `return`s reads an item straight from a singleton's
   storage (`return column.values[row]` or `return values[index]`, `get_at` too, where the path is attributes

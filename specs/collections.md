@@ -391,7 +391,7 @@ members are [the table under `Items<T>`](https://github.com/Spite-Language/spite
 - **Cost.** Nothing runs to choose: the folds are decided while compiling and the untaken branch is absent from
   the C, so an `Items<Velocity>` compiles to a `Vector<Velocity>`'s code and an `Items<Trail>` to a
   `List<Trail>`'s, reading its elements uncounted in the templates as a list does
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-lists-templates-read-its-elements-without-counting-them)). The range
+  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-name-holding-an-item-or-an-attribute-is-not-counted)). The range
   check of `[]` is one comparison that answers `null`, small enough for the C compiler to inline, and a proven
   read uses the item without testing that answer again. A program that makes no `Items` carries none of it. Measured in
   `benchmarks/an_items_storage_is_chosen_while_compiling`.

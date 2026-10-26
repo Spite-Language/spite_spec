@@ -43,7 +43,7 @@ piece`, `text = "{text}{piece}"` and any longer join that starts with the variab
 to that text in place when nothing else holds it, and otherwise copy it once with room to grow, so a `String`
 shared by two names never changes under the other one. Short text grows inside its sixteen bytes and moves into a
 block once it passes 15 bytes. When it applies and what it saves is
-[optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#appending-to-text-in-place)'s; `conformance/stage6/text_building` pins the
+[optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#text-appended-to-itself-grows-in-place)'s; `conformance/stage6/text_building` pins the
 allocation counts.
 
 | Method | Result | Notes |
@@ -95,7 +95,7 @@ var irregulars = {"person": "people", "sheaf": "sheaves"}
 `pluralize()` reads the program's table at run time, and the compiler reads the same table where it inflects a
 member's name ([metaprogramming.md](https://github.com/Spite-Language/spite_documentation/blob/master/metaprogramming.md)), so `map_sheaves()` collects a `sheaf` attribute once
 `sheaf` is in it (`conformance/stage6/inflection_table`). Called on a literal (`"cactus".pluralize()`), the answer is worked out while compiling
-([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-word-inflected-while-compiling)). `pluralize()` and `singularize()` are functions, like `upper_case()`.
+([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#calls-on-constants-are-run-while-compiling)). `pluralize()` and `singularize()` are functions, like `upper_case()`.
 
 ### Maths
 
@@ -437,7 +437,7 @@ Everything that hands bytes over answers a `Buffer`, and everything that takes b
   under a bound that covers its last byte
   ([proofs.md](https://github.com/Spite-Language/spite_documentation/blob/master/proofs.md#a-proven-count-or-bound-proves-a-read-of-a-width)), or inside a counted loop whose
   window covers it, or at `row * stride + column` under one guard
-  ([proofs.md](https://github.com/Spite-Language/spite_documentation/blob/master/proofs.md#an-index-built-from-loop-counters-is-proven-by-one-guard)). Inside a counted loop it
+  ([proofs.md](https://github.com/Spite-Language/spite_documentation/blob/master/proofs.md#a-proven-count-or-bound-proves-a-read)). Inside a counted loop it
   is one load (and one byte swap for a big-endian order) with no test. Elsewhere the buffer could have changed size
   by another name since the bound was proven, so the read keeps one compare the C compiler is told is never taken
   (two when nothing proves the position is not negative), and when it fails the program halts with `spite:

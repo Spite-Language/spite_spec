@@ -189,7 +189,7 @@ var heap = Memory.Heap()
 - **Not counted.** A singleton's retain and release do nothing: the program records each singleton as it
   is made and destroys them at exit, so it is destroyed even when a leaked object still points at it, and
   `--debug-memory` still reports that leaked object. Fetching one is a load from its static slot, with no count
-  for threads to contend on ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#singletons-made-on-first-use-never-counted),
+  for threads to contend on ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-singleton-is-made-on-first-use-by-a-function-of-its-own),
   `conformance/stage6/singleton_counts`).
 - **Teardown order.** A singleton counts as made
   when its constructor *finishes*, so a singleton its attributes or constructor made is made before it and

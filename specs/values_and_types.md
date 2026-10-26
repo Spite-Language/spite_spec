@@ -208,7 +208,7 @@ check out of `counter + 1` while a `<` on the local `counter` is in force, out o
 out of arithmetic on constants ([proofs.md](https://github.com/Spite-Language/spite_documentation/blob/master/proofs.md#arithmetic-that-does-not-fit-halts),
 `conformance/stage6/counter_room`), and out of any operation whose operands' ranges prove the answer fits
 ([below](#a-range-proves-a-check-unneeded)); what the rest costs is measured in
-[optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#arithmetic-is-checked-in-every-build).
+[optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#arithmetic-a-range-proves-is-not-checked).
 
 **Division by zero follows Go.** A whole-number `/` or `%` whose divisor is zero halts
 the program, naming the operation and the line (`spite: 'total / parts' divided by zero, at
@@ -374,7 +374,7 @@ as the receiver. Inside it, **`this`** is that value: `func doubled(): Integer {
   `var tenth: Float = 0.1`, `tenth == 0.1` is `true`. Beside a `Double` the literal is a `Double`, and two literals
   together keep the precision of a `Double` until they are stored (`conformance/stage6/float_precision`).
 - **The last bits of a decimal result are never a guarantee.** In a loop whose count is read once
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-loop-over-plain-values-reads-its-count-once-and-its-items-unchecked)), the
+  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-bound-a-signed-test-already-proved-is-not-tested-again)), the
   compiler lets the C compiler fuse a multiply and an add and reorder a sum of decimals; not-a-number and the
   infinities still come out where they did. A loop that compares a decimal with
   `==` or `!=` (or a value whose type the compiler does not know there) keeps its operations as written, so an
@@ -452,8 +452,7 @@ That is all an enum is; the integer it compiles to is a representation detail.
   becomes a `Symbol` only through `Symbol(text)`, which answers `Symbol?`, `null` unless that symbol is already
   in the table. An enum is still the closed form: the list of symbols a place accepts.
   A symbol of 15 bytes or fewer is held inline, its bytes inside the value itself, like any short text, and a
-  longer one points at constant text ("TinyString"); that is an optimisation the language does not observe
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#short-symbols-are-inline-text)).
+  longer one points at constant text ("TinyString"); that is an optimisation the language does not observe.
 - **What a `Symbol` names is still checked by whatever consumes it**, at compile time, the way the Symbol
   codegen path checks `set_age(2)` against `Person`'s real attributes
   ([templates](metaprogramming.md#templates)).

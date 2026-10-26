@@ -250,7 +250,7 @@ or a pointer, `_as_double` for a `double`, `_as_text` for a `const char*` copied
 - Each call first stores, in a thread-local, a pointer to a fixed text naming the C function, the library file and
   the calling line, in every build; a native fault's report prints it as `foreign=`, `library=` and `from=`
   ([failure.md](failure.md#what-a-native-fault-reports)). One store per
-  call measured as nothing against the call itself ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#the-fault-handler-is-in-every-program)).
+  call measured as nothing against the call itself ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-fault-report-is-the-only-machinery-in-every-program)).
 - `drop()` closes the library at exit, when singletons are destroyed in reverse creation order (a singleton
   is not reference counted).
 

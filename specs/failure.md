@@ -666,7 +666,7 @@ printed.
   (`--development`, `--hot-reload`, `--repl`, `--repl-port`) is compiled with `-fno-omit-frame-pointer` there, so
   only an `--optimized` production build on Linux or macOS names the faulting function alone. Keeping them in
   production too was measured and not taken (the numbers are in
-  [optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#the-fault-handler-is-in-every-program)).
+  [optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-fault-report-is-the-only-machinery-in-every-program)).
 - In an `--optimized` build a function the C compiler inlined into its caller is reported as the caller. A
   function `--hot-reload` swapped in lives in the reload's library, so a fault in it names that library in `at=`
   and no Spite function.

@@ -111,7 +111,7 @@ The standard library fills every maths gap a game needs, as a game engine packag
   (thirty million round trips through a half) measures it against C.
 - **Cost.** These classes hold only numbers, so an answer that never leaves the function that asked for it lives
   in that function's frame and is written there by the function that makes it; one that is stored or printed is
-  one heap allocation ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-the-frame)).
+  one heap allocation ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-registers-or-the-frame)).
   The `set_` functions write in place.
   `benchmarks/game_maths` measures both against the same passes in C (`naive.c` and `expert.c`).
 - `conformance/stage6/game_vectors`, `game_matrices`, `game_geometry`, `game_colors`, `game_curves` and `half_precision` pin every function, rounding what goes through a sine to
