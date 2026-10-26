@@ -1,0 +1,9 @@
+singleton
+
+var step = 2
+var label = "world"
+var spawned = List<Integer>()
+
+func spawn() {
+    spawned.append(step)
+}

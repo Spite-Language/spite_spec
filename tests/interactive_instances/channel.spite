@@ -1,0 +1,7 @@
+singleton
+
+var number = 0
+
+func Channel(starting_number: Integer) {
+    number = starting_number
+}
