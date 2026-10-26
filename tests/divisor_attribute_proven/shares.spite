@@ -1,0 +1,10 @@
+var count = 0
+
+func Shares(starting_count: Integer) {
+    count = starting_count
+}
+
+func each_of(total: Integer): Integer {
+    crash count > 0
+    return total / count
+}

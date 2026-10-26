@@ -1,0 +1,42 @@
+var console = Console()
+
+func DownCounterRanges() {
+    load "../../../spite_standard_library/windows"
+    var total = 0
+    var index = 10
+    while index > 0 {
+        total = total + index
+        index = index - 1
+    }
+    console.print(total, index)
+    var offset = -7
+    var bounded = offset.clamp(-100, 100)
+    var size = bounded.absolute()
+    var doubled = size * 2
+    console.print(doubled)
+    var product = multiplied(1000, 1000)
+    console.print(product)
+    print_report()
+}
+
+func multiplied(first: Integer, second: Integer): Integer {
+    return first * second
+}
+
+func print_report() {
+    var report = File(".spite/reports/down_counter_ranges.md").read()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var is_kept = line.starts_with("- [") and line.contains("keeps its overflow check")
+        if is_kept and line.contains("down_counter_ranges.spite") {
+            var parts = line.split("): ")
+            var last = parts.last()
+            crash last
+            console.print(last)
+        }
+        index = index + 1
+    }
+}

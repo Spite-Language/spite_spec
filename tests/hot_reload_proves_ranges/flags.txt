@@ -1,0 +1,1 @@
+--hot-reload --optimization-report=.spite/reports/hot_reload_proves_ranges.md

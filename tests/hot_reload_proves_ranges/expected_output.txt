@@ -1,0 +1,6 @@
+24
+14
+no parts
+2147441940
+`total + digit` keeps its overflow check: 'total' runs from -2147483648 to 2147483647 and 'digit' runs from 0 to 6, so the answer may not fit in an Integer
+`first * second` keeps its overflow check: 'first' runs from -2147483648 to 2147483647 and 'second' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer

@@ -1,0 +1,33 @@
+var console = Console()
+var parts = 4
+
+func DivisorAttributeProven() {
+    load "../../../spite_standard_library/windows"
+    var shares = Shares(3)
+    var twelve = shares.each_of(12)
+    var seven = shares.each_of(-7)
+    console.print(twelve, seven)
+    var shared = share(100)
+    console.print(shared)
+    var split = split_after_a_call(100)
+    console.print(split)
+}
+
+func share(total: Integer): Integer {
+    if parts == 0 {
+        return 0
+    }
+    return total / parts
+}
+
+func split_after_a_call(total: Integer): Integer {
+    if parts != 0 {
+        empty()
+        return total / parts
+    }
+    return 0
+}
+
+func empty() {
+    parts = 0
+}

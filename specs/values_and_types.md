@@ -217,7 +217,10 @@ game/game.spite:22 in Game.share`), since dividing by zero is the moron's mistak
 `total % (2 - 2)`) or a codegen value folded to `0`, is a compile error instead: `'total / 0' divides by zero,
 which always halts the program` (`diagnostics/division_by_constant_zero`). Where a proof already shows the
 divisor is not zero (`assert parts != 0`, `crash parts != 0`, `if parts != 0 { }`, `parts > 0`, or a `while`
-condition saying so, kept or undone by a call as any proof is), no check is emitted
+condition saying so, kept or undone by a call as any proof is), no check is emitted. The divisor may be a local, a
+parameter or an attribute path through them (`self.parts`, `config.parts`): a path's proof lasts until an
+attribute is assigned, a local the path starts at is assigned, anything is called or made, or a loop starts its
+next pass (`tests/divisor_attribute_proven`)
 ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-proven-divisor-is-not-checked)). The smallest signed value divided by `-1`
 does not fit and halts as above, and its remainder is `0`, where C would trap. Float division stays IEEE 754: `x / 0.0` is infinity or not-a-number.
 `%` on a `Float` or `Double` is the remainder of the division truncated toward zero, so it keeps the sign of the
@@ -280,8 +283,9 @@ lies inside the operation's type.
   as `total = total + a - b ...` with terms that do not name `total`, holds before that assignment its range at
   the loop's start plus between none and one fewer than the passes of the terms' range. A `Long` total of `Integer`
   terms over a list's items cannot overflow, since the count is an `Integer`.
-- **Not in builds that can run code between two steps.** A `--repl`, `--repl-port` or `--hot-reload` build proves
-  no ranges and keeps every check but the counter's and the constants'.
+- **In every build.** A `--repl`, `--repl-port` or `--hot-reload` build proves ranges as every build does: a range
+  is about one function's own locals and parameters, which no REPL command writes (typed code reaches the program
+  only through `program`) and no reload changes (a call already running finishes on the code it started in).
 - **Every check kept is reported.** `--optimization-report` lists each operation whose check stays, with the
   operand whose range is unknown or the ranges that do not prove it:
   `` `product * 3` keeps its overflow check: 'product' runs from -2147483648 to 2147483647, so the answer may not

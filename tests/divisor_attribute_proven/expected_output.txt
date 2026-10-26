@@ -1,0 +1,3 @@
+4 -2
+25
+spite: 'total / parts' divided by zero, at tests/divisor_attribute_proven/divisor_attribute_proven.spite:26 in DivisorAttributeProven.split_after_a_call
