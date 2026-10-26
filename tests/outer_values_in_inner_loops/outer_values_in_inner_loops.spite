@@ -1,0 +1,45 @@
+var console = Console()
+
+func OuterValuesInInnerLoops() {
+    load "../../../spite_standard_library/windows"
+    var names = List<String>()
+    var first = 1
+    var second = 2
+    var third = 3
+    var fourth = 4
+    var fifth = 5
+    var sixth = 6
+    var seventh = 7
+    var eighth = 8
+    var ninth = 9
+    var tenth = 10
+    var eleventh = 11
+    var twelfth = 12
+    var total: Long = 0
+    var outer = 0
+    while outer < 30 {
+        names.append("n{outer}")
+        var inner = 0
+        while inner < 20 {
+            total = total + first * inner + second + third * outer + fourth
+            total = total + fifth * inner - sixth + seventh + eighth * outer
+            total = total + ninth + tenth * inner + eleventh - twelfth
+            inner = inner + 1
+        }
+        first = first + 1
+        second = second + 2
+        third = third + 1
+        fourth = fourth + outer
+        fifth = fifth + 1
+        sixth = sixth + 3
+        seventh = seventh + 1
+        eighth = eighth + 2
+        ninth = ninth + 1
+        tenth = tenth + 1
+        eleventh = eleventh + outer
+        twelfth = twelfth + 1
+        outer = outer + 1
+    }
+    var named = names.count()
+    console.print("total", total, "names", named, first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth)
+}

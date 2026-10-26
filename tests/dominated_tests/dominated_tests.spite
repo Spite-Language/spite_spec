@@ -1,0 +1,75 @@
+var console = Console()
+
+func DominatedTests() {
+    load "../../../spite_standard_library/windows"
+    var values = List<Integer>()
+    var index = 0
+    while index < 10 {
+        values.append(index * 3)
+        index = index + 1
+    }
+    var total = 0
+    index = 0
+    while index < 10 {
+        total = total + read_twice(values, index)
+        index = index + 1
+    }
+    var below = ordered(3, 5)
+    var above = ordered(5, 3)
+    var same = ordered(4, 4)
+    var counted = counted_below(values, 12)
+    var seen = stepped(values)
+    console.print("twice", total)
+    console.print("ordered", below, above, same)
+    console.print("counted", counted)
+    console.print("stepped", seen)
+}
+
+func read_twice(values: List<Integer>, at: Integer): Integer {
+    crash values[at]
+    return values[at] * 2
+}
+
+func ordered(first: Integer, second: Integer): Integer {
+    var answer = 0
+    if first < second {
+        answer = 1
+        if second > first {
+            answer = answer + 10
+        }
+    }
+    if first < second {
+        answer = answer + 100
+    } else {
+        answer = answer + 2
+    }
+    return answer
+}
+
+func counted_below(values: List<Integer>, limit: Integer): Integer {
+    var count = 0
+    var index = 0
+    while index < values.count() {
+        var value = values[index]
+        if value < limit {
+            count = count + 1
+        }
+        index = index + 1
+    }
+    return count
+}
+
+func stepped(values: List<Integer>): Integer {
+    var seen = 0
+    var index = 0
+    while index < values.count() {
+        if index < 5 {
+            seen = seen + 1
+        }
+        index = index + 1
+        if index < 5 {
+            seen = seen + 100
+        }
+    }
+    return seen
+}
