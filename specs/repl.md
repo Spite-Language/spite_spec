@@ -290,9 +290,11 @@ the entry class's own Spite name):
   its `T?`) then holds, through `set_<attribute>` when the class declares one, and only when the classes match:
   `follower is a Circle?, and spare is a Square: the loop assigns an instance of the attribute's own class`. A right
   side that is one construction of a class `classes` lists that is not a singleton (`follower = Circle(3)`,
-  `Ui.Panel(2)`, `Lookup<Position>()`) makes its object: in a program built with `--hot-reload` and `--repl-port`
-  it is compiled as `eval`'s code is, into `prompt_made_<n>(): <Class>` of the entry class, which the REPL calls
-  once and assigns as a path's instance; code that does not compile answers the compiler's error; elsewhere it is
+  `Ui.Panel(2)`, `Lookup<Position>()`) makes its object: in a program built with `--hot-reload` and a REPL (`--repl` or `--repl-port`)
+  it is compiled as `run`'s code is, the statement `<target> = <construction>` (the target with `program.` in front
+  when it starts at neither `program` nor a singleton), which the REPL runs once and then answers the target read
+  back, as an assignment does; code that does not compile (a class that does not match) answers the compiler's
+  error, and the program keeps its code; elsewhere it is
   refused (`'follower = Circle(3)' makes an object, which answers in a program built with --hot-reload and
   --repl-port: ...`). The
   compiler-supplied members are `Spite.Attribute`'s `assign_null()` and `assign_attribute(source)`, beside

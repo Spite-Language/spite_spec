@@ -1,0 +1,15 @@
+var console = Console()
+var follower: Circle? = null
+
+func HotReloadMakesAnAssignedObject() {
+    load "../../../spite_standard_library/windows"
+    console.print("ready")
+}
+
+func followed_radius(): Integer {
+    var held = follower
+    if held {
+        return held.radius
+    }
+    return 0
+}

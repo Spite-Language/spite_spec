@@ -1,0 +1,5 @@
+follower = Circle(3)
+follower.radius
+program.follower = Circle(4)
+followed_radius()
+exit
