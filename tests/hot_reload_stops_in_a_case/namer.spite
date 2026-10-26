@@ -1,0 +1,9 @@
+var asked = 0
+
+func name_of(number: Integer): String {
+    asked = asked + 1
+    switch number {
+        0: return "zero"
+        _: return "other"
+    }
+}

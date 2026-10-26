@@ -186,9 +186,13 @@ the entry class's own Spite name):
   <site>` and reads commands; over `--repl-port`, a stop inside a command the REPL is answering (a call that reaches
   the breakpoint) answers that command `stopped at <site>` at once, and the command's own answer is the answer to
   `continue`; a stop the program's own code reaches answers `continue` with `continued from <site>`, as the console
-  prints it. While stopped, every command answers as usual, `where` answers the site, and a breakpoint reached again
-  (another thread, or a call made at the stop) is passed with `spite: the program passed the breakpoint at '<site>'
-  while it is stopped at '<other>', so it did not stop there` on the error output; one reached before the REPL has
+  prints it. While stopped, every command answers as usual, `where` answers the site, a breakpoint another thread reaches
+  waits its turn (that thread stops there once `continue` lets the first one go, and the program's thread answers
+  no command at its check points or waits meanwhile, since the stop answers them), a breakpoint reached again by a
+  call made at the stop is passed with `spite: the program passed the breakpoint at '<site>'
+  while it is stopped at '<other>', so it did not stop there` on the error output, and a save the watcher finds is
+  reloaded before the next command the stop reads (on the program's thread; a stop on another thread reloads only
+  once it goes on). A line a `switch` case's statement starts on holds a breakpoint like any other; one reached before the REPL has
   the program is passed the same way (`... before the REPL had started ...`). `where`, `locals` and `continue`
   answer `the program is not stopped at a breakpoint: 'break hero.spite:12' sets one` when it is not. `locals` lists
   `self` and every local and parameter in scope at the stop, a line each, `<name>: <type> = <value>`, the value
