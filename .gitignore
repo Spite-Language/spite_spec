@@ -2,3 +2,4 @@
 *.exe
 .probe/
 .copies/
+.copies_conformance/

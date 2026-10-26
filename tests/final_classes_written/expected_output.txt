@@ -1,0 +1,11 @@
+gold
+marked true
+# ../../tests/final_classes_written/badge.spite
+var name = ""
+
+# ../../tests/final_classes_written/badge.spite
+func Badge(starting_name: String) {
+    name = starting_name
+}
+generic template printed false
+List<String> printed true
