@@ -1,0 +1,46 @@
+var console = Console()
+var compiler = "..\\spite_compiler\\.spite\\spite.exe"
+var folder = ".spite/relayed"
+
+func CompilerRunsTheProgram() {
+    load "../../../spite_standard_library/windows"
+    write_the_program()
+    var arguments = [folder, "ada", "--volume=7", "--optimized", "two words"]
+    var running = Process(compiler, arguments)
+    var code = running.run()
+    var printed = running.output().trim()
+    console.print(printed)
+    console.print("exit code", code)
+    var built = File(".spite/relayed/.spite/build/relayed.exe")
+    var is_built = built.exists()
+    console.print("built", is_built)
+}
+
+func write_the_program() {
+    var made = Directory(folder)
+    if not made.exists() {
+        made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("var environment = Environment()")
+    lines.append("")
+    lines.append("func Relayed(): Integer \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append("    var arguments = Arguments()")
+    lines.append("    var count = arguments.count()")
+    lines.append("    var first = arguments.get(0)")
+    lines.append("    var last = arguments.get(2)")
+    lines.append("    var volume = environment.volume")
+    lines.append("    console.print(count, first, last, volume)")
+    lines.append("    var line = console.read_line()")
+    lines.append("    console.print(line)")
+    lines.append("    return 3")
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/relayed.spite")
+    var joined = lines.join("\n")
+    entry.write(joined)
+    var settings = File("{folder}/environment.spite")
+    settings.write("var volume = 1\n")
+}

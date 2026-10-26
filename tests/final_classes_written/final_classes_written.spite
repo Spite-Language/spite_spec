@@ -1,0 +1,21 @@
+var console = Console()
+
+func FinalClassesWritten() {
+    load "../../../spite_standard_library/windows"
+    var badge = Badge("gold")
+    console.print(badge.name)
+    var marker = File(".spite/final_classes_written/.final-classes")
+    var is_marked = marker.exists()
+    console.print("marked", is_marked)
+    var printed = File(".spite/final_classes_written/badge.spite")
+    var text = printed.read()
+    crash text
+    var trimmed = text.trim()
+    console.print(trimmed)
+    var listed = File(".spite/final_classes_written/list.spite")
+    var is_listed = listed.exists()
+    console.print("generic template printed", is_listed)
+    var instantiated = File(".spite/final_classes_written/instantiated/list_string.spite")
+    var is_instantiated = instantiated.exists()
+    console.print("List<String> printed", is_instantiated)
+}
