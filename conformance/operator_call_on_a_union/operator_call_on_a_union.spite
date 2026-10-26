@@ -1,0 +1,13 @@
+union Amount {
+    Weight
+    Volume
+}
+
+var console = Console()
+
+func OperatorCallOnAUnion() {
+    load "../../../spite_standard_library/windows"
+    var amount: Amount = Weight(2)
+    var flipped = amount.negate()
+    console.print(flipped.size)
+}

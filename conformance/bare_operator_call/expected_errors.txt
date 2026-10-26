@@ -1,0 +1,1 @@
+conformance/bare_operator_call/span.spite:12: error: 'negate' is what '-' calls: write '-this' (in Span.reversed)

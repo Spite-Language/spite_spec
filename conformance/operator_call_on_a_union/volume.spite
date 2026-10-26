@@ -1,0 +1,9 @@
+var size = 0
+
+func Volume(starting_size: Integer) {
+    size = starting_size
+}
+
+func negate(): Weight {
+    return Weight(-size)
+}

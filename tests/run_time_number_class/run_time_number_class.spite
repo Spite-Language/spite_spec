@@ -1,0 +1,20 @@
+var console = Console()
+
+func RunTimeNumberClass() {
+    load "../../../spite_standard_library/windows"
+    var kinds = List<Spite.Class>()
+    kinds.append(Integer)
+    kinds.append(Boolean)
+    var index = 0
+    while index < kinds.count() {
+        var kind = kinds[index]
+        crash kind
+        make(kind)
+        index = index + 1
+    }
+}
+
+func make(kind: Spite.Class) {
+    var made = kind()
+    console.print(kind.name, made == 0, made == false)
+}

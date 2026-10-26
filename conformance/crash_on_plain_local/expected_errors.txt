@@ -1,0 +1,1 @@
+conformance/crash_on_plain_local/crash_on_plain_local.spite:6: error: this value cannot be null here (it is a Tracker), so 'crash' on it proves nothing: remove the check (in CrashOnPlainLocal.CrashOnPlainLocal)

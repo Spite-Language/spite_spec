@@ -1,0 +1,1 @@
+conformance/operator_call_on_a_union/operator_call_on_a_union.spite:11: error: 'negate' is what '-' calls: write '-amount' (in OperatorCallOnAUnion.OperatorCallOnAUnion)

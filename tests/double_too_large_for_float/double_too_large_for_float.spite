@@ -1,0 +1,11 @@
+var console = Console()
+
+func DoubleTooLargeForFloat() {
+    load "../../../spite_standard_library/windows"
+    var fits: Double = 1000000.0
+    var narrow: Float = fits
+    console.print(narrow)
+    var huge: Double = 1e39
+    var lost: Float = huge
+    console.print(lost)
+}

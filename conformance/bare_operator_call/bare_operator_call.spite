@@ -1,0 +1,8 @@
+var console = Console()
+
+func BareOperatorCall() {
+    load "../../../spite_standard_library/windows"
+    var span = Span(3)
+    var back = span.reversed()
+    console.print(back.size)
+}

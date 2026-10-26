@@ -1,0 +1,5 @@
+made
+go
+go
+go
+spite: call() leaves the argument 'word' of 'WalkingSteps.step_repeat' unfilled: set 'call.arguments['word']' before 'call()'
