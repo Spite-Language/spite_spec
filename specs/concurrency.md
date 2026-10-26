@@ -82,10 +82,13 @@ frame, and a `Parallel` allocates its state only when it starts the work
 
 (`conformance/stage6/default_handles`, which describes a function taking each of the four).
 
-**Threads.** The compiler starts a thread at each `Parallel(function)` and nowhere else: there is no pool made
-at the start and no worker waiting for work, and a program that makes no `Parallel` starts no thread. Any code
-hands work over by `Parallel(function)` and gets a handle whose `finished` never blocks and whose value joins on
-first use.
+**Threads.** A `Parallel(function)` runs on a thread of the program's thread pool, and nothing else starts one
+but a blocking call's helper (below). The pool is made empty at the first `Parallel` and grows: the work goes to a
+thread that finished earlier work and waits for more, and when none is waiting the pool starts a new thread for it,
+which then stays in the pool. So no work ever waits for a thread to come free (a `Parallel` that waits for another
+one, or never ends, cannot keep the others from running), and a program that makes no `Parallel` has no pool and
+starts no thread. Any code hands work over by `Parallel(function)` and gets a handle whose `finished` never blocks
+and whose value joins on first use.
 
 - **Work that never finishes.** For each `Parallel(function)` in the program's own code (not the standard
   library's), every function the work reaches through calls whose class is known is read for a `while true` with
@@ -100,8 +103,9 @@ first use.
   started from inside another one, or a `parallel_each_` inside one, joins the same way.
 - **Join on drop is kept.** Dropping the last handle runs its `drop()` straight away, and that waits.
 - **At exit** every `Parallel` still running is finished before the program ends: its handle's `drop()` waits for it.
-- **Cost.** A `Parallel` pays for starting its thread each time it is made, and makes a small, fixed number of
-  allocations.
+- **Cost.** A `Parallel` hands its work to a waiting thread of the pool (a lock, a queue and a wake), and pays for
+  starting a thread only when none is waiting; it makes a small, fixed number of allocations. The threads the pool
+  started wait for work until the program ends.
 
 **Locks and per-thread values are not the program's to write.** There is no lock, atomic or thread-local class for a
 program to name. Something of its own on each thread is an object the work makes itself; a short section only one
@@ -197,12 +201,12 @@ a resumable version:
   target. `conformance/stage6/wait_order`.
 - **The waits at the bottom** are small state machines the compiler writes: `Program.sleep` registers a deadline
   and is over when the clock passes it; `Console.read_line_into`, `File.read_into`, `File.write_text`,
-  `File.write_from`, `Socket.accept_handle`, `Socket.receive_into` and `Socket.first_readable` start their one system call on a helper thread
+  `File.write_from`, the wait for a file's lock (`File.lock()`), `Socket.accept_handle`, `Socket.receive_into` and `Socket.first_readable` start their one system call on a helper thread
   and are over when it flags that it returned; reading or dropping a `Concurrent` is over when that
   `Concurrent`'s frame has finished.
 
 Files cannot be waited on without blocking on any of the three systems, so a blocking call is handed to a
-short-lived helper thread (what libuv does for files). The alternative, each system's own readiness (IOCP, epoll,
+helper thread of the pool (what libuv does for files). The alternative, each system's own readiness (IOCP, epoll,
 kqueue), is not used: an ordinary file is always "ready" to epoll and kqueue, the Windows console cannot be read
 through IOCP, and one mechanism keeps each system's folder small.
 
@@ -264,8 +268,9 @@ the singleton's own lock only while its slot is empty (`conformance/stage6/singl
 for `parallel_each_` (below) and for a `Parallel(function)` (above): neither may reach a list or object
 another thread could hold, though two threads writing one number attribute of a shared instance is still the
 program's mistake. A
-program's own singletons are made safe (below); the standard library's are not guarded, so two threads printing at
-once may interleave the pieces of their lines. One smaller gap: a REPL client's `exit` while a helper
+program's own singletons are made safe (below); the standard library's are not guarded, but `Console` writes each
+`print`, `write`, `error` and `debug` in one piece, so two threads printing at once never interleave the pieces of
+their lines. One smaller gap: a REPL client's `exit` while a helper
 thread is blocked reading the console may wait for that read when the process exits.
 
 **`parallel_each_`.** `list.parallel_each_update()` calls `update()` on every element,
