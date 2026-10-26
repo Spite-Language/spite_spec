@@ -546,7 +546,7 @@ compile time that it is never kept past its use. The rules:
     is a library function, which is never lent an item: pass the attributes it needs, or 'first.copy()' where a
     snapshot is what it wants`; to a union parameter: `... and 'f' takes it as a union, which holds its own values
     and is never lent an item: pass the attributes it needs, or give 'f' a parameter of the item's own class`;
-    to a variadic list: `... and 'count_left' gathers it into the list of its variadic arguments, which holds its
+    to a variadic list of a program function (a library one, as `console.print`'s, only reads it for the call): `... and 'count_left' gathers it into the list of its variadic arguments, which holds its
     own values and is never lent an item: ...` (`conformance/lent_call_variadic`); to a function the compiler
     cannot follow, a function value or a function of a value typed by a `type`: `... and 'measure' is not a
     function the compiler follows while compiling (a function value, or a function of a value whose class is
