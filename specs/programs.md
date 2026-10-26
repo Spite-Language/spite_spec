@@ -126,6 +126,9 @@ with a literal default, and a program adds its own the same way it adds `Environ
   Either way the value is written into the program: `build.serve` compiles to `true`, a condition on it is decided
   while compiling, the branch not taken is never generated, and nothing is read when the program runs. The field
   still exists on the `Build` singleton with that value, for reflection.
+  The fields that say what one compile writes (`check`, `build`, `executable_path`, `final_classes`,
+  `optimization_report`, `high_ir`, `low_ir`) are the exception: a flag sets what the compile does, and the program
+  keeps the declared value, so a `--hot-reload` program's reload, which writes elsewhere, changes nothing of `Build`.
   **In a `--hot-reload` build**, a field the program or a package declares is read by the program's own code
   from the `Build` singleton while it runs instead, and both branches of a condition on it are compiled, so a
   reload that changes `build.spite` swaps the new value in; the standard library's reads of the compiler's own
