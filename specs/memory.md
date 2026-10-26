@@ -552,9 +552,9 @@ compile time that it is never kept past its use. The rules:
     function the compiler follows while compiling (a function value, or a function of a value whose class is
     known only while the program runs), so it is never lent an item: ...` (`conformance/lent_call_unfollowed`).
     A lent parameter the function passes on is held to the same rules, and each refusal starts with the lend
-    (`'mouse' is lent to 'handle' for one call, by the call on line 11 of 'LentCallPassedOnLibrary': it is the
-    caller's item, read and written in place, and 'contains' is a library function, which is never lent an item,
-    so 'handle' does not pass it on to it: pass the attributes it needs`; `conformance/lent_call_passed_on_library`,
+    (`'mouse' is lent to 'handle' for one call, by the call on line 11 of 'LentCallPassedOnUnfollowed': it is the
+    caller's item, read and written in place, and 'measure' is not a function the compiler follows while compiling
+    (...), so 'handle' does not pass it on to it: pass the attributes it needs`; `conformance/lent_call_passed_on_unfollowed`,
     `conformance/lent_call_passed_on_union`).
     A constructor called by its class's name is a function like any other, and is lent the item;
     any other expression (such as a call that lends its result, written inside the argument): `... only a named

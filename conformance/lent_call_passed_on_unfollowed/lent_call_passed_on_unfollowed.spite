@@ -2,7 +2,7 @@ var console = Console()
 var mice = Vector<Mouse>()
 var input = Input()
 
-func LentCallPassedOnLibrary() {
+func LentCallPassedOnUnfollowed() {
     load "../../../spite_standard_library/windows"
     var made = Mouse()
     mice.append(made)

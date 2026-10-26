@@ -1,8 +1,5 @@
 var console = Console()
 
-# A counter stepped down under a floor has a range, and so has `absolute()`:
-# the step `index - 1`, the sum of `index` and the scaled `absolute()` carry no
-# overflow check. Only the product of two values of any size keeps its check.
 func DownCounterRanges() {
     load "../../../spite_standard_library/windows"
     var total = 0
@@ -17,7 +14,8 @@ func DownCounterRanges() {
     var size = bounded.absolute()
     var doubled = size * 2
     console.print(doubled)
-    console.print(multiplied(1000, 1000))
+    var product = multiplied(1000, 1000)
+    console.print(product)
     print_report()
 }
 

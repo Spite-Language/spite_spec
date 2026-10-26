@@ -1,15 +1,16 @@
 var console = Console()
 var parts = 4
 
-# An attribute tested not zero is divided with no test until something could
-# change it: an assignment, a call or the next pass of a loop. After the call
-# to `empty()` the test stays, and the division by zero still halts.
 func DivisorAttributeProven() {
     load "../../../spite_standard_library/windows"
     var shares = Shares(3)
-    console.print(shares.each_of(12), shares.each_of(-7))
-    console.print(share(100))
-    console.print(split_after_a_call(100))
+    var twelve = shares.each_of(12)
+    var seven = shares.each_of(-7)
+    console.print(twelve, seven)
+    var shared = share(100)
+    console.print(shared)
+    var split = split_after_a_call(100)
+    console.print(split)
 }
 
 func share(total: Integer): Integer {

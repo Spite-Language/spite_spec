@@ -1,1 +1,0 @@
-conformance/lent_call_passed_on_library/input.spite:6: error: 'mouse' is lent to 'handle' for one call, by the call on line 11 of 'LentCallPassedOnLibrary': it is the caller's item, read and written in place, and 'contains' is a library function, which is never lent an item, so 'handle' does not pass it on to it: pass the attributes it needs (in Input.handle)

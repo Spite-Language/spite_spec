@@ -1,8 +1,5 @@
 var console = Console()
 
-# A --hot-reload build proves ranges as every build does: the counter's step, the
-# remainder and the division by a local tested not zero carry no check, and only
-# the product of two values of any size is reported as keeping its check.
 func HotReloadProvesRanges() {
     load "../../../spite_standard_library/windows"
     var total = 0
