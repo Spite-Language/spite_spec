@@ -77,7 +77,7 @@ name in namespaces side by side (`Physics.Plugin` and `Audio.Plugin`) hide nothi
 use: "the class 'Geometry.Vector3' is named like the standard library's class 'Vector3': use 'Vector3', reopening it
 to add what it lacks, or give this class a clearer name" (`diagnostics/named_like_library`). Only a library class
 written by its bare name counts (`Vector3`, `Color`, `List`): one inside a namespace (`Spite.Function`,
-`Memory.Arena`, `String.Inflection`) is always written with it outside its own folder, and inside that folder a
+`Spite.Namespace`, `Spite.Call`) is always written with it outside its own folder, and inside that folder a
 file with its name reopens it, so a program's `Function` or `Arena` is legal (`conformance/stage6/namespaced_library_names`). A file with the library class's whole dotted
 name is not a new class but a reopening of it ([Reopening a class](https://github.com/Spite-Language/spite_documentation/blob/master/classes_and_files.md#reopening-a-class)).
 
@@ -245,4 +245,4 @@ var heap = Memory.Heap()
 
 ---
 
-Next: [Programs: the entry, the launcher, and settings](programs.md).
+Next: [Programs: the entry and settings](programs.md).

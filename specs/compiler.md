@@ -101,10 +101,10 @@ With no folder named, the compiler prints its usage to the error output and exit
 ## Outputs
 
 **The whole program first, then the outputs.** The
-compiler reads the launcher, the library, the program's folder, its `build.spite` and every `load` before it reads
+compiler reads the entry file, the library it loads, the program's folder, its `build.spite` and every `load` before it reads
 any option, and then decides what to produce from the program's resolved `Build`, so a program's own `build.spite`
-can set every option. The one exception is `target_operating_system`, which the launcher needs to know which
-folder of `library/` belongs to the program, so it is read from the flag alone: a `var target_operating_system`
+can set every option. The one exception is `target_operating_system`, which names the system the program is compiled for before the rest is read, so it is read
+from the flag alone: a `var target_operating_system`
 in a program's `build.spite` is an error naming the flag ([programs.md](programs.md#build-settings-build)).
 A build makes the executable and runs it. Two `Boolean` fields stop it sooner: `check` (default `false`: compile the
 whole program, report its errors and write nothing, neither C nor an executable) and `build` (default `false`:
@@ -270,37 +270,21 @@ them and stops; when it succeeds, they are dropped, warnings included, so a prog
 
 ## Where a program runs
 
-A program runs in the folder `spite` was run from. The compiler finds `launcher/` and
-`library/` from its own executable (the first folder above it that holds `launcher/launcher.spite`) and never
-from the working directory, so a relative path a program opens (`File`, `Directory`, a cache folder) is the
-caller's. The launcher's `load` paths are relative to that folder. The outputs with no path go into that folder's
-`.spite/`, so running a program adds `.spite/` to the caller's folder and nothing else, and nothing beside
-the program's source. A program built with `--repl`, `--repl-port` or
+A program runs in the folder `spite` was run from, so a relative path a program opens (`File`, `Directory`, a cache
+folder) is the caller's. A `load` path is relative to the file it is written in, never to the working directory. The
+outputs with no path go into that folder's `.spite/`, so running a program adds `.spite/` to the caller's folder and
+nothing else, and nothing beside the program's source. A program built with `--repl`, `--repl-port` or
 `--hot-reload` runs attached to the terminal; any other run's output is printed when it ends, and the compiler
 exits with the program's exit code.
-
-## The launcher passes the program's arguments untouched
-
-`bin/spite` is a bash
-script, and `bin/spite.cmd` runs it with the bash on the `PATH`, which on Windows is Git for Windows' bash. That
-bash rewrites every argument that looks like a POSIX path when it starts a Windows program, so
-`spite tool --prefixes=/Game/Legacy/` would reach the program as `--prefixes=C:/Program Files/Git/Game/Legacy/`,
-from PowerShell as well, and `MSYS_NO_PATHCONV=1` would break the launcher's own paths instead. So the launcher writes
-its own paths as Windows paths itself (`cygpath -m`: the folder, which is the first argument that is not a flag,
-`--executable-path` and `--final-classes`) and turns the rewriting off for the compiler it starts
-(`MSYS2_ARG_CONV_EXCL="*"`), so every other argument, a program's settings and arguments included, and every
-argument of `spite connect`, arrives exactly as typed. A path given to a field a program's own `build.spite`
-declares is written as the system writes it (`--assets=C:/game/assets`). On Linux and macOS nothing is rewritten and nothing
-changes.
 
 ## How many errors are listed
 
 Every error is `<path>:<line>: error:
 <message> (in <Class>.<function>)`, each listed once. The errors in files under the program's own folder come first,
 at most 25, followed by `and N more in the program` when there were more. Then come the errors in the packages it
-loads (the standard library, the launcher and every loaded folder), at most 25 of them together, in the order they
+loads (the standard library and every loaded folder), at most 25 of them together, in the order they
 were found, followed by one `and N more in <package>` per package that had more, the package named by its folder, relative to the folder `spite` was run from when it is
-inside it (`library` and `launcher` for the language's own). A package whose errors fill the list therefore never
+inside it (`spite_standard_library` for the language's own). A package whose errors fill the list therefore never
 hides one in the program.
 
 ## Formatting before compiling

@@ -57,7 +57,7 @@ allocation counts.
 | `character_at(index)` | `String` | `""` out of range |
 | `code_at(index)` | `Integer` | below 0 or past the end halts, naming the index and the length (`tests/code_past_the_end`) |
 | `contains(text)` / `starts_with(text)` / `ends_with(text)` | `Boolean` | |
-| `index_of(text)` | `Integer` | `-1` when absent |
+| `index_of(text)` | `Integer?` | `null` when absent |
 | `replace(from, to)` | `String` | replaces every occurrence |
 | `trim()` / `upper_case()` / `lower_case()` | `String` | |
 | `split(separator)` | `List<String>` | an empty separator splits into single characters |
@@ -83,13 +83,12 @@ swaps with its pair; otherwise the first of ActiveSupport's ending rules that ma
 number is left alone (`"quests".pluralize()` is `"quests"`, `"people".pluralize()` is `"people"`), and `""` answers
 `""`. The rules are ActiveSupport's own; the words they would get wrong are in the table.
 
-The uncountable and irregular words are a table in the library, the singleton `String.Inflection`
-(`library/string/inflection.spite`): `irregulars`, a dictionary from each singular to its plural (`person` →
+The uncountable and irregular words are attributes of `String` itself, beside `pluralize()`: `irregulars`, a dictionary from each singular to its plural (`person` →
 `people`, `man` → `men`, `woman` → `women`, `child` → `children`, `foot` → `feet`, `tooth` → `teeth`, `goose` →
 `geese`, `cactus` → `cacti`, `fungus` → `fungi`, `radius` → `radii`, `criterion` → `criteria`, `phenomenon` →
 `phenomena`, `appendix` → `appendices`, `leaf` → `leaves`, `hero` → `heroes`, `potato` → `potatoes` and the rest),
 and `uncountables`, a list (`data`, `equipment`, `health`, `information`, `money`, `news`, `series`, `sheep`,
-`software` and the rest). A program adds a word by reopening it: a file `string/inflection.spite` in the program
+`software` and the rest). A program adds a word by reopening `String`: a file `string.spite` in the program
 that declares `irregulars` or `uncountables` replaces that list whole, so it restates the library's words it keeps:
 
 ```gdscript
@@ -99,7 +98,7 @@ var irregulars = {"person": "people", "sheaf": "sheaves"}
 `pluralize()` reads the program's table at run time, and the compiler reads the same table where it inflects a
 member's name ([metaprogramming.md](https://github.com/Spite-Language/spite_documentation/blob/master/metaprogramming.md)), so `map_sheaves()` collects a `sheaf` attribute once
 `sheaf` is in it (`conformance/stage6/inflection_table`). Called on a literal (`"cactus".pluralize()`), the answer is worked out while compiling
-([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-word-inflected-while-compiling)). They are functions, like `upper_case()`, because a `String` has no attributes for a getter to answer.
+([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-word-inflected-while-compiling)). `pluralize()` and `singularize()` are functions, like `upper_case()`.
 
 ### Maths
 

@@ -35,8 +35,8 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   `load`s is left to that line (a `load`-ed root's own folder is never itself a namespace segment). Every file of
   the program's folder has its `load`s followed, the entry file's first, like every file of a loaded root, so a
   sibling file's `load "tools"` loads `tools/` as a package root (a `load` works in any file, and the entry
-  file only names what runs first; `conformance/stage6/sibling_load`). The launcher class's own `load`s, printed
-  into a `--final-classes` folder, are the launcher's and are not followed from there.
+  file only names what runs first; `conformance/stage6/sibling_load`). The `load`s of the entry function, printed
+  into a `--final-classes` folder, are the program's and are not followed from there.
 - **No file is loaded twice.** Two `load`s whose folders overlap, one inside the other, would reach the same files
   twice, and that is a compile error at the later one: "game.spite:5: error: 'load \"kingdom/physics\"' and the
   load at game.spite:4 both reach the files of 'kingdom/physics', which lies inside 'kingdom', so those files would
@@ -132,13 +132,14 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   one, and a new class of your own belongs in a namespace of your own" (`diagnostics/new_spite_class`), and
   `load "spite"` is "'spite' is reserved for the built-in Spite namespace: name the folder something else"
   (`diagnostics/reserved_spite_namespace`).
-- **`Spite.Internal` is for the standard library alone.** The namespace holds what a program must not use directly.
-  Any file outside `library/` and the compiler's own sources that names it is refused: a type, a call, an
+- **`Spite.Internal` is the compiler's alone.** The scheduler, the assert ring, the fault and crash reports, the copy
+  table and the prompt are the compiler's own, added when a program needs one, and no program can name or reopen
+  them. Any file that names `Spite.Internal` is refused: a type, a call, an
   inheritance, a class written in a `spite/internal/` folder (new or reopening one), or the name inside a string
   interpolation. The message names the class written (or `Spite.Internal` alone when no class follows) and the plain
   form to use: "Spite.Internal.Memory is internal to Spite and cannot be used outside the standard library: read
   bytes with Buffer or BinaryReader, describe foreign data with a plain type, and leave threads to the compiler"
-  (`diagnostics/user_internal_use`, `diagnostics/user_internal_class`). Inside `library/` it is ordinary code. A program that
+  (`diagnostics/user_internal_use`, `diagnostics/user_internal_class`). A program that
   does not use the namespace carries none of it.
   - **A class that moved into the namespace is written in full, or by its name inside it.** `Atomic<T>` is
     `Spite.Internal.Atomic<T>`, a file of `library/spite/internal/`. Library code outside that folder writes the
@@ -149,20 +150,16 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
     compiler" (`diagnostics/user_atomic_bare`, `diagnostics/user_atomic_internal_name`). A class of your own named
     `Atomic` is fine: the bare name means yours. `Spite.Internal.Memory`, once it exists, is not `Spite.Memory`
     (the reflection class): the full names differ, and `Memory` bare is neither.
-  - **The repository's own test programs may name it.** A program whose folder lies under `conformance/`,
-    `diagnostics/` or `benchmarks/` of a folder that holds `launcher/launcher.spite` (a checkout of the language) is
-    not refused, because testing the internal classes is the point of some of them; a diagnostic case whose folder
-    is named `user_...` is the exception, and is refused like any program. A program anywhere else, including one
-    in your own folder named `conformance`, is refused.
 - **Each operating system reopens the classes it changes.** `library/` holds what every system shares, and
   `library/windows/`, `library/linux/` and `library/mac/` hold only what differs: `library/linux/file.spite` reopens
   `File` with the functions that call `libc.so.6`, `library/windows/file.spite` the same functions over
   `ucrtbase.dll`, and so on for `Directory`, `Process`, `Program`, `Console`, `String` (`to_double`) and
   `Build` (`target_operating_system`). There is no wrapper class in between: a platform file holds its own
   `DynamicLibrary("libc.so.6", 'identity', "")`, which is one shared instance per literal argument list, and
-  a one-line foreign call two classes both need is written in both. The launcher ([Constructors and the entrypoint](programs.md#constructors-and-the-entrypoint)) loads `library/`
-  first and then the one folder named by `build.target_operating_system`; that folder adds no namespace segment,
-  and its files are read after `library/`'s own, so they replace or add members by the reopening rule above. `--final-classes`
+  a one-line foreign call two classes both need is written in both. A program loads only the folder of its system
+  ([Constructors and the entrypoint](programs.md#constructors-and-the-entrypoint)), and that folder loads `common`
+  itself; it adds no namespace segment, and its files are read after `common`'s own, so they replace or add members by
+  the reopening rule above. `--final-classes`
   prints each class as it came out, platform functions included. Because exactly one folder is loaded,
   `library/file.spite` calls `open_file` without declaring it: every system's folder defines it, with the same
   signature.
@@ -173,9 +170,7 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   (`diagnostics/load_parentheses`, `diagnostics/load_as_value`). It stays reserved: a function, variable
   or parameter named `load` is "'load' is a keyword and cannot name a function: give it a name that says what it
   loads, like 'load_texture'" (`variable` or `parameter` in place of `function`; `diagnostics/load_function`).
-  The launcher's own lines use it the same way, with a `Build` field:
-  `load "library/{build.target_operating_system}"`, `load build.program`. Compile time only: the line compiles to
-  nothing.
+  Compile time only: the line compiles to nothing.
 - `load` takes a literal string, so the compiler always knows every bundle; anything else (a variable, an
   expression) is "a program's 'load' names its folder with text, like 'load "engine"': the compiler reads every
   loaded folder before it compiles, so the folder cannot be computed". The text is a path relative to the folder

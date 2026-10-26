@@ -304,8 +304,8 @@ functions for a program that wants `Concurrent`s to resume only between its own 
   any `Concurrent` (`run_ready()`, a join, or a wait that resumes them) sets the count back to zero. Between two
   steps a `Concurrent` cannot move, so a loop that polls `finished` without stepping one, under
   `resume_only_when_asked()` or with no wait in it at all, could only spin forever: at a million polls in a row
-  it halts with `spite.crash ... library/scheduler.spite:<line> Scheduler polled_unfinished
-  here.unfinished_polls_with_no_frame_stepped=1000000` (`check.sh`, "polling"). Where the compiler can see it, it is a
+  it halts, naming the program's frames and not the scheduler's: `spite: the program stopped polling a Concurrent that
+  nothing steps between two reads (unfinished_polls_with_no_frame_stepped=1000000)` (`tests/poll_without_step_halts`). Where the compiler can see it, it is a
   compile error first: a `while` whose condition reads `finished` of a `Concurrent` held in a local, and which calls
   nothing in its condition or its body, is `this loop reads 'napping.finished' and calls nothing, so nothing steps
   'napping' between two reads and it never finishes` (`diagnostics/unstepped_poll`). A loop that calls anything is
@@ -468,8 +468,9 @@ work inside a skipped call that writes the same singleton. A `while` that meets 
 once before it starts: when it is zero it pushes the lock on the same stack for the whole loop and calls the unlocked
 bodies, and when it is not every call takes the lock as before. Nothing the loop runs can start a task or wait, so
 the count stays zero until the loop ends
-([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-loop-of-calls-to-one-singleton-tests-for-tasks-once)). **A `Weak` a `Parallel` reaches is a
-compile error** too ([memory.md](memory.md), `diagnostics/weak_across_threads`).
+([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-loop-of-calls-to-one-singleton-tests-for-tasks-once)). A cycle's back reference
+(the compiler's choice, [memory.md](memory.md)) needs no care across threads: a parent and its child built on another
+thread are both freed there.
 
 A program without `Parallel` gets none of it: an atomic singleton compiles to plain reads and writes, and no
 singleton has a lock.
@@ -570,7 +571,7 @@ where `list` is a name or a path of attributes holding a `List` of a `type` and 
 requires, with no arguments, answering nothing, follows the rule above with the elements in the place of the row:
 for every two classes the `type`'s call can reach, the compiler decides while compiling whether their `function`s
 are independent (the same reckoning as calls in a row, and neither writes the list's items, memory through an
-address, or reaches a `Weak`), and which of them reach a loop. When the statement runs, it reads each element's
+address), and which of them reach a loop. When the statement runs, it reads each element's
 class: if the list holds from two up to as many elements as there are such classes, no two of one class, every
 two independent and at least two reaching a loop, every element that reaches a loop but the last of them runs on
 the thread pool and the rest run on the calling thread, in the list's order, and all are joined before the next
@@ -586,8 +587,7 @@ it reaches, the pass writes attributes only of the object it runs on (reached as
 name of its class), or the items of a list or dictionary attribute of it that holds one made for it and never
 handed anywhere else, and reads nothing a pass writes, read through any other name; and it counts no reference,
 prints, reads or writes a `File`, a `Directory` or a `Socket`, waits, calls anything outside the program but plain
-arithmetic, the clock and memory, writes memory through an address, calls through a function value or reaches a
-`Weak`. The compiler weighs the pass while compiling (each statement 1, a loop's body as many times as its bound
+arithmetic, the clock and memory, writes memory through an address, or calls through a function value. The compiler weighs the pass while compiling (each statement 1, a loop's body as many times as its bound
 when the bound is a number, 8 times otherwise, a call what its function weighs) and runs in bands only when the
 pass weighs at least 256 and the list's count, read when the statement runs, times that weight reaches a million (see
 [optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-loop-whose-passes-write-only-their-own-item-runs-in-bands)), and,

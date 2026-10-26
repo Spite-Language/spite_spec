@@ -21,7 +21,7 @@ In the documentation's reading order. Four pages of the documentation have none 
 
 1. [Write it plainly: the compiler decides how it runs](write_it_plainly.md), specifying [write_it_plainly.md](https://github.com/Spite-Language/spite_documentation/blob/master/write_it_plainly.md).
 2. [Classes and files](classes_and_files.md), specifying [classes_and_files.md](https://github.com/Spite-Language/spite_documentation/blob/master/classes_and_files.md).
-3. [Programs: the entry, the launcher, and settings](programs.md), specifying [programs.md](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md).
+3. [Programs: the entry and settings](programs.md), specifying [programs.md](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md).
 4. [Values and types](values_and_types.md), specifying [values_and_types.md](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md).
 5. [Nullable values and failure](failure.md), specifying [failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md).
 6. [Functions and operators](functions_and_operators.md), specifying [functions_and_operators.md](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md).

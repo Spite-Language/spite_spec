@@ -53,32 +53,30 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   expression whose operands are expressions) is copied node by node (`conformance/stage6/deep_copy_unions`).
   **`deep_copy()` copies a graph with its shape**: a structure whose references lead back to an object already being
   copied (a parent holding its children, each holding its parent) gets one copy of each object, and the copied
-  references point at the copies, so the copy has the same cycles as the original (and leaks as every cycle does,
-  unless one side is a `Weak`). A `Weak` attribute's copy holds the copy of its object when the same `deep_copy()`
-  copies that object, before or after reaching the `Weak`, and the original object otherwise, since a `Weak` does
-  not own what it holds. The compiler writes each class's deep copy: one whose attributes can reach itself, reach a
-  `Weak`, or are held by a `Weak` remembers the objects copied during the call in a table made for that call; every
-  other class is copied plainly, with no table (`conformance/stage6/deep_copy_graphs`). An object reached twice
+  references point at the copies, so the copy has the same cycles as the original. A back reference's copy holds the
+  copy of its object when the same `deep_copy()` copies that object, before or after reaching the back reference, and
+  the original object otherwise. The compiler writes each class's deep copy: one whose attributes can reach itself, or
+  reach a back reference, remembers the objects copied during the call in a table made for that call; every
+  other class is copied plainly, with no table (`conformance/deep_copy_graphs`). An object reached twice
   through classes that cannot reach themselves (two attributes holding the same leaf) is copied twice.
-- **Cycles leak.** Reference counting cannot free a cycle (two objects holding a reference to each other, directly
-  or through several hops): neither one's count ever reaches zero. This is a known, accepted tradeoff, not a bug.
-  Break a cycle by hand when you are done with it (set the back-reference to `null` inside `drop()`-time logic, or
-  clear a `T?` field that closes the loop) if it matters for a long-running program, or hold one side with
-  `Weak<T>`.
-- **`Weak<T>` holds an object without counting it** (a generic library class, not a
-  keyword; `library/weak.spite`). `Weak(object)` makes one, `Weak<T>(null)` an empty one, and `get(): T?` answers
-  the object while something else keeps it alive and `null` once it has been freed. The first `Weak` of an object
-  makes a small box holding its address, found through a table keyed
-  by address; a class some `Weak` holds tells the table when an instance is freed, so its box answers `null`; the
-  box goes when the last `Weak` of it does. A program that never makes a `Weak` carries none of this: the table,
-  the boxes and the one check in the freeing of each weakly held class are written only for the classes a `Weak`
-  holds, and `T` must be a class (`Weak<Integer>` is an error, since a number is kept by value)
-  (`conformance/stage6/weak_parent`). **A `Weak` stays on the program's own thread**: the table has no lock, so a `Parallel(work)` whose work reaches a class some `Weak` holds, or a class with a
-  `Weak` attribute, is a compile error at the `Parallel`: `'Parallel(tree.grow)' runs on another thread, and what it
-  runs reaches 'Branch', which is a Weak or is held by one: a Weak is kept in one table that is not shared between
-  threads, so a Weak and the objects it holds stay on the program's own thread. Hold the object itself in the
-  work, or keep the Weak out of what the Parallel reaches` (`diagnostics/weak_across_threads`). What the work
-  reaches is the same walk over calls that decides which singletons need a lock.
+- **There is no `Weak<T>`: the compiler picks a cycle's back reference.** A program writes plain references, and the
+  compiler decides which reference of a cycle (a child's `parent`, a node's `previous`) holds no count, so a cycle is
+  freed with its owner. It decides from how the program links its objects, never from the class graph alone. An
+  attribute `a: T?` of a class `C` holds no count when one function both sets `c.a = t` (directly, or through a
+  constructor that stores its argument in `a`, as `Child(name, this)`) and stores `c` into `t`'s attribute `f`
+  (`t.f = c`, `t.f.append(c)`, `t.f[k] = c`), `T` declares that `f`, and `f` holds a `C`: through a collection
+  (`children: List<Child>`), or directly when `c` was made in that function and `t` was not. Neither `C` nor `T` is a
+  singleton or generic. The class graph alone cannot tell a `parent` from an owning `answer: Type?` beside
+  `members: List<Type>`, and taking an owning reference for a back one would free an object a program still holds,
+  so a cycle the code does not link this way keeps its counts and leaks: break it by hand by clearing the `T?` field
+  that closes the loop.
+- **A back reference reads `null` once its object is freed**, and the freed object's memory stays until the last back
+  reference to it goes, so no read is ever dangling. An object some back reference can point at carries one more
+  word: a count of the back references to it plus one for all its counted references together. When its counted
+  references reach zero it runs `drop()` and lets its attributes go, and its memory is freed when that word reaches
+  zero. Reading a back reference checks the object's count and answers `null` for a freed one; writing one counts the
+  new object's word up and the old one's down. The read takes no count, like any attribute read. A program with no back
+  reference carries nothing: no slot, no helper, no check.
 - Parameters follow the same rule as everything else in [Functions](functions_and_operators.md#functions): a scalar is passed by value (copied); anything
   else is passed by reference (the same object, retained for the callee's own binding and released when the
   callee's scope ends); nothing is written at the call site. A name the caller already holds for the whole call
@@ -130,189 +128,54 @@ name**, naming which classes' instances are still live. The table keeps each liv
 forgets it on free, so the summary names exactly the objects still alive, the same ones on every run; memory that
 is not an object (a list's elements, a string's bytes) is counted but not named. An object a program leaked is
 named even when it points at a singleton, which is still destroyed at exit. The compiler's own bookkeeping
-(the list behind `.instances`, the list of singletons to destroy) is allocated outside the table and not counted.
+(the list of singletons to destroy) is allocated outside the table and not counted.
 
 **Fresh memory is filled with a fixed pattern.** Every byte an allocation or a growing `resize` hands out that the program has not written is `0xA5`, so a
 `Long` read from it is -6510615555426900571 and an address read from it points nowhere: reading bytes nobody wrote
-fails the same way on every run, instead of depending on what the heap held, which the launcher's environment
-decides. A `resize` keeps the bytes it moves and fills only the new ones; the table keeps each allocation's size
+fails the same way on every run, instead of depending on what the heap held, which the environment decides. A `resize` keeps the bytes it moves and fills only the new ones; the table keeps each allocation's size
 for that. Only a `--debug-memory` build does this.
 
-**Run-time cost.** The table and the summary exist only in a `--debug-memory` build: no other build's C
-has them. Every other build allocates with the C library's `malloc`, `realloc` and `free` and nothing else (a
-production build takes the objects a list holds from their class's pool, [below](#placement-the-compiler-decides-where-memory-lives),
-whose runs of blocks are themselves from `malloc`), unless the program reads `Memory.Heap().live_allocations()` or `live_bytes()`: then, and only then, each
-allocation adds one to a counter and each free subtracts one, which is what `live_allocations()` answers, and the
-bytes the C library holds for each block (its usable size, `_msize`, `malloc_usable_size` or `malloc_size`) are
-added and subtracted the same way, which is what `live_bytes()` answers; a `--debug-memory` build answers the
-bytes asked for, from its table
-([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#allocation-is-the-c-librarys-counted-only-where-read)).
+**Run-time cost.** The table and the summary exist only in a `--debug-memory` build: no other build carries them.
+Allocations are counted only there, under the counter of the compiler's own allocator.
 
-### Where a value lives: `.memory`
+### Memory is not observable
 
-Every named value has a read-only `.memory`, a `Spite.Memory` (`library/spite/memory.spite`): `address`, `bytes`,
-and `section`, one of `'heap'`, `'stack'` or `'constant'`. A class instance or a list answers with its object
-(`'stack'` for an object the compiler placed in the frame, [Placement](#placement-the-compiler-decides-where-memory-lives)), a
-`String` with its characters (`'constant'` for a literal, whose characters are part of the program; for text made
-while the program runs, `'heap'` when it is longer than 15 bytes and lives in a block, and otherwise wherever the
-value itself is, since the characters are in it: `'stack'` in a local, `'heap'` in an attribute),
-and a number held in a local with the local itself (`'stack'`). A class with an attribute of its own named `memory` answers that
-attribute instead. `.memory` is built only where a program reads it, so it costs nothing anywhere else. **Nothing
-assigns it or anything in it**: `scratch.memory.allocator = arena` is a compile error, "'.memory' only tells where
-a value lives: the compiler chooses where it is made, so there is nothing to assign". It answers which allocator
-made the value ([below](#allocators-memoryallocator)).
-
-### The floor: `Memory.Address`, `Memory.Heap` and `TypedMemory<T>`
-
-**Only `Buffer` touches `Memory`.** A buffer's bytes are `Memory(size)`: memory of `size` bytes, made with nothing
-else said about it, whose placement (a register, the frame, the heap, a pool) the compiler decides. Every other class,
-the numbers and `Boolean` included, keeps its bytes in a `Buffer`, and no class names how memory is allocated: a
-program does not choose a heap, so there is no `Memory.Bytes` to make and no `Memory.Heap()` to ask for. What follows
-is the floor `Buffer` stands on.
-
-
-- **`Memory.Address`** (`library/memory/address.spite`) is a number class of eight bytes, the place in memory. It
-  casts to and from `Long` like every number, so `address + 16` is the address sixteen bytes on, and a foreign
-  function's `Long` result is an address by assignment. `copy_to(target, bytes)`, `compare_bytes(other, bytes)`,
-  `text(length)` and `terminated_text()` are open to every program.
-- **Reading and writing**: `read_byte`, `read_short`, `read_unsigned_short`, `read_integer`,
-  `read_unsigned_integer`, `read_long`, `read_float` and `read_double`, each `(offset)`, the matching
-  `write_*(offset, value)`, and `exchange_long`, `read_long_atomically`, `write_long_atomically`,
-  `add_long_atomically` (answering the sum) and `compare_and_swap_long(offset, expected, desired)` (answering
-  whether it swapped) for memory threads share; the library uses them through `Spite.Internal.Atomic<T>`, which a program cannot name; a program shares a number
-  through a singleton ([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#a-number-every-thread-shares)). Each is a primitive of the language, like `+`: the compiler writes it where it is called as one
-  load, store or atomic instruction, with no call and no check, so reading a field costs what it costs in C
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#reading-an-address-is-one-machine-operation)). **Only `library/` may call
-  them**: a function of a class the standard library declares, including one a program reopens (so
-  `--final-classes` output, which reopens every class it prints, still compiles). Anywhere else:
-  `'read_long' reads or writes the memory at an address, which only library/ does: use a class of the standard library, or 'TypedMemory<T>' for values of any type`
-  (`diagnostics/memory_access`). On a `Long` that is not an address: `a Long has no function 'read_integer':
-  reading and writing memory is a function of the address, so the value needs to be a 'Memory.Address'`.
-- **`Memory.Heap()`** is the default allocator, a singleton with `allocate(bytes: Long): Memory.Address`,
-  `resize(address, bytes): Memory.Address`, `free(address)`, `live_allocations(): Integer` and `live_bytes(): Long`
-  (`Program().live_bytes()` answers the same). Nothing frees an
-  allocation for you: a class that allocates frees in its `drop()`. The bytes are not cleared: a new block, and
-  the part `resize` adds, hold whatever was there before, so a byte must be written before it is read. A read of
-  a byte nobody wrote can pass on one machine and crash on the next, since what the heap holds depends even on how
-  the program was launched. Where an allocation lives is the compiler's choice ([placement](#placement-the-compiler-decides-where-memory-lives)).
-  The heap holds nothing, so in a production build it is one static object and costs no allocation
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#singletons-that-hold-nothing-are-static-objects)).
-- **`TypedMemory<$value_type>`** stores a value of any type (a class, a `String`, a number or a nullable) at an
-  index of an address: `read_value(address, index)`, `write_value(address, index, value)`,
-  `release_value(address, index)` and `value_bytes()`, keeping reference counts right for that type. It is one
-  shared instance per type (a singleton that holds nothing), and it is what `library/list.spite` uses for its
-  elements. Its three value functions use the address the way a read does, so a frame-placed allocation may be
-  handed to them.
-- **A number's storage** is one line at the top of its file, `var _memory = Buffer(4)`: a number is a buffer of
-  its bytes, which the compiler keeps as the value itself. The bytes are written out, and any other spelling is `a
-  value states its size as 'var _memory = Buffer(bytes)', with the bytes written out: ...`
-  (`diagnostics/number_memory_spelling`). The size must be
-  the C type's: `'Integer' declares 8 bytes of memory, and the compiler lays it out as
-  int32_t, which is 4` (`diagnostics/number_memory`). Inside a number `this` is the value, and reading `_memory` is
-  `'_memory' is the memory Integer is kept in, and the compiler keeps the value itself there: write 'this'`
-  (`diagnostics/number_memory_read`). `count.memory.bytes` reads the size.
+**Memory and threads are constructs of the language that each generator implements, and a program cannot observe
+them.** No class stands for them: there is no memory address, allocator, allocation count, object placement or list
+of live instances a program can read. `Memory.Heap`, `Memory.Arena`, `Memory.Address`, `Memory.Inspector`,
+`value.memory`, `memory.allocator` and `Monster.instances` do not exist, so no optimisation is ever blocked by something
+a program might be watching. Only `--debug-memory` reports leaks, outside the program. Reading the declared shape of a
+class (its attributes and functions) stays, since it is fixed while compiling. A class that needs room for bytes
+holds a `Buffer`, and the compiler places and optimises it from the proofs it has.
 
 ### Placement: the compiler decides where memory lives
 
-Memory is an abstraction that lets a program allocate on the heap, the stack or in a register, while the
-compiler decides the best placement. A program has one way to ask for raw memory, `Memory.Heap`'s `allocate`,
-and one way to give it back, `free`; where the bytes live is the compiler's choice, and the program's text
-is the same whichever it makes:
+Memory is an abstraction: the compiler places a value in a register, in the frame of a function or on the heap, from
+what it proves, and the program's text is the same whichever it chooses. A program has no way to ask for raw memory
+or for a place, and none to observe the choice ([Memory is not observable](#memory-is-not-observable)):
 
-- **Register:** a number's own memory, whose size its file states as `var _memory = Buffer(4)` (for
-  `Integer`). The wrapper is flattened: a number is its C scalar, and `this` is the value.
-- **Frame:** `var name = heap.allocate(bytes)` in a function, when a later statement of the same block
-  is `heap.free(name)` and every other use of `name` reads or writes through it (`name.read_long(offset)`, also
-  through a local made by adding an offset, `var start = name + offset`, whose uses meet the same rule), copies or compares with it (`copy_to`, `compare_bytes`), turns it into `text`, or hands
-  it to a `TypedMemory`'s `read_value`, `write_value` or `release_value` (a `TypedMemory` the class binds; the same
-  names on any other class are an ordinary call, `conformance/stage6/kept_buffer_address`), or lends it to a function of the same
-  class, called by its bare name, whose `Memory.Address` parameter is proven to keep nothing (the same rules,
-  applied to the parameter in that function's body, and to the functions it lends it on to; a recursive lend and a
-  `--hot-reload` build, whose functions can be swapped, prove nothing), or, in a file of `library/` only, lends it
-  to a function of a `DynamicLibrary` attribute of the same class (`kernel.QueryPerformanceCounter(counter)`: the
-  standard library's own operating-system calls, which fill the memory and keep nothing; a program's foreign
-  library could keep the address, so its calls still move it to the heap), and it is never stored, returned,
-  assigned, resized or passed to anything else, and neither `name` nor `heap` is declared or assigned again
-  after it. The compiler gives it a slot of 256 bytes
-  in the function's frame (exactly the size, for a literal size up to 256), uses the heap when a run-time size
-  is larger, and makes the `free` a no-op for the slot. A loop body is a block like any other, so the slot is
-  reused on every pass. So `Long.to_string()` and `upper_case()` of a
-  short text allocate only the `String` they return, which is nothing when it is 15 bytes or fewer.
+- **Register:** a number's own room, whose size its file states as `var _memory = Buffer(4)` (for `Integer`). The
+  wrapper is flattened: a number is its machine scalar, and `this` is the value.
 - **In the value:** text of up to 15 bytes is kept in the sixteen bytes of the `String` itself
   ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#short-text-lives-inside-the-string)).
-- **Constant:** a `String` literal's characters are part of the program (its `.memory.section` is `'constant'`).
-- **Frame, for objects:** an instance of a class of only
-  numbers, `Boolean`s, enum values and singletons (no `drop()`, not a singleton, a constructor that keeps nothing,
-  no `.instances` read of its class) that never leaves the function that made it lives in that function's frame,
-  and so does the fresh answer a function writes into its caller's slot and a temporary inside an expression. Never
-  leaving means: read and written only through its attributes, handed only to functions proven to keep nothing
-  (the same proof as for a buffer's slot, run on each parameter and on the object a function is called on), compared, asked for
-  its `.memory`, given a new fresh object, and returned only from a function that answers its class (copied to
-  the heap there). Its `.memory.section` is `'stack'`. Not in the inspectable builds, nor in a function that waits
+- **Constant:** a `String` literal's characters are part of the program.
+- **Registers or the frame, for objects:** an object that never leaves the function that made it is placed after
+  inlining, in registers or in the frame, and so is the fresh answer a function writes into its caller's slot and a
+  temporary inside an expression. Never leaving means: read and written only through its attributes, handed only to
+  functions proven to keep nothing (the same proof for each parameter and for the object a function is called on),
+  compared, given a new fresh object, and returned only from a function that answers its class (copied to the heap
+  there). Not in a function that waits
   ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-the-frame)). A local made
   by its constructor lives in the frame on the same terms when its class also holds text, lists, dictionaries or
-  other objects (and is not a container): what it holds is let go where the local's scope ends, and returning it
-  moves it to the heap, attributes and all.
-- **Heap, in its class's pool:** an object on the heap whose class is not a singleton and frees its objects only
-  through its own release, when the class holds no `Memory.Address` attribute or the program keeps its objects in a
-  list (the item of a `List`, or of anything else built on `TypedMemory<T>`, such as a `Dictionary`'s values), and,
-  in a program with threads, no code that can run on another thread counts, makes, copies or frees
-  one of its objects. The class's objects come from blocks of their own size side by side, in runs of 16 objects
-  doubling until a run is at least 256 KiB, each run starting on a 64-byte boundary; an object let go is kept for
-  the class's next object and is never handed to another class or back to the system while the program runs. Its
-  `.memory.section` is `'heap'`. Not in a `--debug-memory` build, a program that reads `live_allocations()` or
-  `live_bytes()`, or the inspectable builds
+  other objects: what it holds is let go where the local's scope ends, and returning it moves it to the heap,
+  attributes and all.
+- **Heap:** everything else. The compiler may keep the objects of one class side by side
   ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-of-one-class-sit-together)).
-- **Heap:** everything else.
 
-There is no way to ask for the stack by name: it would be a second way to
-allocate, and one a program could get wrong by keeping an address past the return. What makes a data structure's
-layout efficient stays its author's: one allocation holding many values at offsets they choose,
-`TypedMemory<$value_type>` for values of any type, `resize` to grow. Placement runs entirely while compiling and
-costs nothing at run time; a frame slot is cheaper than the heap call it replaces.
-
-### Allocators: `.memory.allocator`
-
-**The compiler chooses where each object is made, and a program only reads the choice.** The frame, a pool and an
-arena are the compiler's to pick, from what it proves about how long the object lives
-([Placement](#placement-the-compiler-decides-where-memory-lives)), so there is no way to name one: a program that
-wants its objects together writes them in one list and the compiler lays them out. The rules:
-
-- **An allocator is a class that answers `allocate(bytes: Long): Memory.Address` and `free(address:
-  Memory.Address)`** (no `type` is declared for it). `Memory.Heap` is the default. `Memory.Arena(block_bytes)`
-  (`library/memory/arena.spite`, Spite over the heap) hands out 16-byte-aligned memory from blocks of that size,
-  chaining a new block when one is full, never frees one piece at a time, and frees every block when the arena
-  itself is dropped. An object made in an allocator holds a reference to it and to its `free`, and gives its
-  memory back through them when its count reaches zero; the allocator therefore outlives everything made in it.
-  **Tree-shaken**: only a class the compiler makes in an arena somewhere carries the two hidden pointers (16
-  bytes per object of that class), and there is no run-time registry and no current-allocator state.
-- **A `List`, a `Vector<T>`, an `Items<T>` and a `Dictionary`** made in an allocator take their buffer from it,
-  each time it grows; each element lives wherever it was made, since a list holds references. A `Dictionary`'s
-  table and its lists of keys and values stay on the heap.
-- **Reading it back:** `value.memory.allocator`, for a name or a path of names, answers the allocator the object
-  was made in, `Memory.Heap` unless a line said otherwise (an object the compiler placed in a frame answers
-  `Memory.Heap`, the allocator it is made in once it leaves). Inside a class, `memory.allocator` is the
-  allocator of the object the function runs on, unless the class has an attribute of its own named `memory`.
-  The answer is one of the program's allocators, a union of `Memory.Heap` and every class that is an allocator:
-  `allocator == Memory.Arena` asks which and narrows, and `allocate` and `free` can be called on it as on any
-  union whose members all answer them. A class that keeps memory for its object (a buffer, a block of items)
-  allocates and frees it through `memory.allocator`, so it follows its object into any allocator; growing it
-  is allocating the new size, copying, and freeing the old, except on the heap, where `heap.resize` grows it
-  in place (`library/list.spite`'s `_resized`). What such a call may do is what the `allocate` or `free` of each
-  of the program's allocators does: an item borrowed from a `Vector` stays readable past a `List`'s growth
-  unless one of them changes the size of the collection it is borrowed from (`diagnostics/allocator_resizes`).
-  The errors:
-  - on a number or a `String`: `only an object has an allocator of its own, and this is a value of type
-    Integer, which the compiler places itself`;
-  - on a value that is not a name or a path of names: `only a named object answers its allocator: give this
-    object a name with 'var' first`;
-  - `memory.allocator` inside a singleton or a number: `'memory.allocator' is the allocator of the object a
-    function runs on, and 'Counter' is not made as an object of its own: only an object has an allocator`.
-- **An allocator is not generic:** an instance of a generic class is never an allocator, since the program's
-  allocators are known before any generic class is made: `'Pool' is a generic class, and an
-  allocator is a class of its own that is not generic, like 'Memory.Arena'`. A class is an allocator only
-  when `allocate` takes one `Long` and answers a `Memory.Address`, and `free` takes one `Memory.Address` and
-  answers nothing; with other parameters it is not one (`'Console' is not an allocator`, above).
+There is no way to ask for the stack by name: it would be a second way to allocate, and one a program could get wrong
+by keeping an address past the return. What makes a data structure's layout efficient stays its author's: one
+`Buffer` holding many values at offsets they choose. Placement runs entirely while compiling and costs nothing at run
+time; a frame slot is cheaper than the heap call it replaces.
 
 ### Borrowed items of a `Vector<T>`
 
@@ -324,7 +187,7 @@ compile time that it is never kept past its use. The rules:
   (`InlineMemory<T>`, `library/inline_memory.spite`, whose functions the compiler writes per item type). A vector
   of numbers, `Boolean`s, enums or `String`s is a plain array of them, like a list's buffer.
 - **Only a class is borrowed.** A whole number
-  of any size, `Float`, `Double`, `Boolean`, an enum or `Memory.Address` is kept in a `List`, and
+  of any size, `Float`, `Double`, `Boolean` or an enum is kept in a `List`, and
   `Vector<Integer>` or `Items<Integer>` is an error naming `List<Integer>`, so every item of a `Vector` is a class
   or a `String`, read as a counted reference as a list's is. `conformance/stage6/plain_items`,
   `diagnostics/plain_items`.
@@ -449,7 +312,7 @@ compile time that it is never kept past its use. The rules:
     `Vector` columns, none allocated, measured against C making a row per call.
 - **A row filled by a walk.** A local declared as a `type` with `= null` (`var row: $row_type = null`) and filled on the very next
   line by a plural walk of its own class (`fill_attributes(row, index)`, whose template ranges over that `type`
-  with `attribute: Symbol<$row_type>`) is a row when the walk writes out to one: the template's body is the
+  with `attribute: Spite.AttributeDeclaration`) is a row when the walk writes out to one: the template's body is the
   statement `row.attributes[attribute] = <value>`, after any number of `crash` lines and `var` lines naming a
   value (`var stored_row = rows[attribute.index]`, each written out where its name is read, so a hoisted
   `values[stored_row]` walks exactly as `values[rows[attribute.index]]` does) or naming an object the template

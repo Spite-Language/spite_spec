@@ -1,6 +1,6 @@
-# Programs: the entry, the launcher, and settings
+# Programs: the entry and settings
 
-The specification of [Programs: the entry, the launcher, and settings](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md): every rule of this part of the language, with
+The specification of [Programs: the entry and settings](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md): every rule of this part of the language, with
 its edge cases and its exact error texts. The page teaches; this one decides, and where they disagree, the page
 is the bug.
 
@@ -38,29 +38,21 @@ line and snake_case in code, like a setting's (`conformance/stage6/program_argum
 ordinary argument to it. The compiler answers it in any function; its only cost is the slot
 `main` fills with the process's arguments.
 
-**Nothing starts a program behind its back.** Running
-one is itself Spite: `launcher/launcher.spite`, at the root of the repository (class `Launcher`), is the class
-the executable's `main` constructs, and its constructor, shown in [How a program is loaded](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md#how-a-program-is-loaded),
-is the whole of how a program is loaded:
+**Nothing starts a program behind its back.** The program is the entry point: there is no launcher. The compiler
+reads the entry file, and the leading `load` lines of its entry function name the standard library, very explicitly
+(the folder for the system the program is compiled for, which loads `common` itself), then follows every `load` in
+order. The compiler looks nowhere for a library and no environment variable names one; a name that resolves to
+nothing is an error. See [The standard library is a folder loaded by its path](packages.md#packages-namespaces-and-loading).
 
-- The compiler reads the launcher first and follows its `load` lines in order, instead of walking the standard
-  library by a rule of its own: `library/`, then the folder of the operating system the program is compiled for
-  (`library/windows/`, `library/linux/` and `library/mac/` are loaded only by name), then the program's folder,
-  `build.program`, the folder named on the command line. Its paths are relative to the repository, which the
-  compiler finds beside its own executable.
-- A `load` in the launcher may use text and the `Build` fields the compiler knows before reading anything
-  (`target_operating_system`, `operating_system`, `program`, and the ones given as flags), read through a `var`
-  of the launcher bound to `Build()`. Anywhere else a `load` names its folder with literal text: `a
-  program's 'load' names its folder with text, like 'load "engine"': the compiler reads every loaded folder before
-  it compiles, so the folder cannot be computed`; it may sit under an `if` on a `Build` field
-  ([`load` is a bundle boundary](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#load-is-a-bundle-boundary)).
-- Loading the program's folder is what runs it: that one `load` constructs the program's entry class, runs a
-  `--repl` loop on it when asked, and releases it; every other `load` compiles to nothing.
-- `main` keeps only the floor: it hands `argv` to `Arguments()`, puts standard output in binary mode on Windows,
-  constructs `Launcher`, and after `Launcher` returns releases the singletons and class objects and prints the
-  `--debug-memory` balance.
-- `Launcher` is library code for reflection (`Spite.Class.instances` does not list it), and `--final-classes`
-  prints it with the rest of the program.
+- A `load` names its folder with literal text: `a program's 'load' names its folder with text, like 'load "engine"':
+  the compiler reads every loaded folder before it compiles, so the folder cannot be computed`; it may sit under an
+  `if` on a `Build` field ([`load` is a bundle boundary](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#load-is-a-bundle-boundary)).
+  A `load` compiles to nothing at run time.
+- The program's own folder is the root its entry file sits in, and constructing the entry class is what runs it;
+  with `--repl` a loop runs on it when asked, and it is released afterwards.
+- The executable keeps only the floor: it hands the command line to `Arguments()`, constructs the entry class, and
+  afterwards releases the singletons and class objects and prints the `--debug-memory` balance.
+- The exit code is the value the entry constructor answers; a constructor that answers nothing leaves it at 0.
 
 **Configuration is a class.** There is no configuration file format: a configuration is an ordinary class whose
 constructor sets its state, or a field of `Environment` or `Build`.
@@ -105,7 +97,7 @@ What follows is how it is compiled:
 - **How the fields get filled.** The compiler prepends one assignment per declared field to `Environment`'s
   constructor, `serve = boolean_setting("serve", serve)`, where `boolean_setting`, `integer_setting` and
   `text_setting` are ordinary Spite functions in `library/environment.spite`. The reading itself is Spite; the
-  compiler only writes the calls, the way it writes a Symbol codegen function
+  compiler only writes the calls, the way it writes a template
   (`conformance/stage6/environment_settings`).
 - **The compiler passes a setting on.** `spite program --serve=true` with `serve` declared in `Environment`
   checks the value while compiling and gives `--serve=true` to the program when it runs it; nothing about the
@@ -155,8 +147,8 @@ with a literal default, and a program adds its own the same way it adds `Environ
 - **Formatting is not an option**: every compile formats first and nothing turns it off, so `--format`
   and a `format` field in a program's `build.spite` are compile errors (`diagnostics/format_flag`,
   `diagnostics/format_setting`).
-- **`target_operating_system` comes from the flag alone**: the launcher needs it to know which library folder is
-  part of the program before reading the rest. A `var target_operating_system = ...` (or `operating_system`) in
+- **`target_operating_system` comes from the flag alone**: it decides the system the program is compiled for before
+  the rest is read. A `var target_operating_system = ...` (or `operating_system`) in
   a program's `build.spite` naming another system than the one the compile decided is an error naming the flag
   (one naming the same system, as `--final-classes` prints every `Build` field, is accepted): `'Build.target_operating_system' cannot be declared by a
   program: the standard library for the target system is loaded before the program, so the target is given to
@@ -172,13 +164,13 @@ with a literal default, and a program adds its own the same way it adds `Environ
   declares no setting 'serve' (it declares run, executable, ...)` (`diagnostics/unknown_compiler_flag`).
 - **Two operating systems**: `operating_system` is the system doing the compiling (the compiler supplies
   it, and giving it is an error), and `target_operating_system` is the one the program is compiled for, which
-  defaults to it. `--target-operating-system=linux` loads `library/linux/` (the launcher,
-  [above](#constructors-and-the-entrypoint)) and folds, so `if build.target_operating_system == "windows" { }`
+  defaults to it. `--target-operating-system=linux` is the system the program is compiled for, which the program loads
+  by its path ([above](#constructors-and-the-entrypoint)), and it folds, so `if build.target_operating_system == "windows" { }`
   keeps one branch. Each system's folder reopens `Build` with `var target_operating_system = "linux"`, which is
   only the default a compiler that does not fold `Build` sees (the seed while bootstrapping). The compiler
   learns which system it runs on from its own `build.target_operating_system`, folded when it was built.
 - **`program`** is the folder named on the command line, as it is written there (`tests/loaded_program` for
-  `spite tests/loaded_program`), which the launcher loads; the compiler supplies it and giving it is an error
+  `spite tests/loaded_program`); the compiler supplies it and giving it is an error
   (`tests/loaded_program`).
 - **`--final-classes` prints `Build` with its declared defaults**, not the values one build folded, so running the
   printed program takes its flags again instead of, say, printing its classes forever.

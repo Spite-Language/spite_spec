@@ -23,7 +23,7 @@ never chose them:
 - operator functions (`sum`, `subtract`, `equals`, `get_at`, ...;
   [Operators](functions_and_operators.md#operators)): `a + b` calls
   `sum(b)`, so the parameter is the operator's, not the author's
-- Symbol codegen templates (`set_attribute`, `get_attribute`, ...): the whole signature is the template
+- Templates (`set_attribute`, `get_attribute`, ...): the whole signature is the template
   mechanism's, with one instantiation per attribute, never emitted as the author wrote it
 - setters that answer attribute access: a one-parameter `set_age` naming a real `age` attribute answers
   `person.age = 1` ([Setter/getter interception](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md#settergetter-interception)), so its
@@ -250,16 +250,6 @@ func Game() {
 - Why not zero comments: finding out that nothing is there costs a search on every edit, which is the common
   case, while a link costs a few tokens only where there is something to say. Absence becomes free and
   trustworthy.
-
-### A number is named before it is used
-
-**A number written in an expression is a compile error: give it a name first.** `return cycles * 146097 + days`
-is `var days_per_cycle = 146097` and then `return cycles * days_per_cycle + days`. The name says what the number
-means, and the compiler folds a constant name exactly as it folded the number. The message names the number and
-the form: "146097 is a magic number: give it a name first, 'var <what it is> = 146097', and write the name here".
-Exempt: 0, 1 and -1 (and `0.0`, `1.0`), and the initializer of the `var` or attribute that gives the number its
-name. The rule covers integer and float literals in every expression: arithmetic, comparisons, call arguments,
-indexes and returns.
 
 ### Naming and abbreviations: compile errors, not auto-fixed
 

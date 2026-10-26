@@ -509,143 +509,117 @@ Absence is fine -> `assert`. Absence is a bug -> `crash`. Absence is meaningful 
 
 **`crash` never takes a message, and neither does `assert`.** There is no syntax for one: a report points at the
 code and shows the memory, so the reader reads the source line and the data instead of prose about them. **The
-report:** the crash line names the site (id, `path:line`, class, function) and carries the values that matter
-there: the condition's operands, then the function's parameters
-and locals in scope and the attributes of the object it runs on, each once as one `name=value` field. Location and
-memory are enough, so neither the `spite.crash` line nor a `spite.assert` line carries the condition; the
-`.crashes` map, which costs the executable nothing, keeps it for `grep`. **What is shown:** a value in scope is shown
-when it is text, a number, an enum,
-or a `T?` of one (`name is null` when empty); an object, a list, a function or a row is left out, since showing
-one would call code (`to_string()`) or walk memory while the program is failing. A name the condition mentions is
-left out, since its part already reported it (and a narrowing crash has just proven it absent). At most 12 values
-are shown, locals and parameters first in the order they were declared, then the attributes in declaration order,
-and a text shows its first 80 bytes (cut back to a whole UTF-8 character) and then `...(<length> bytes)`. The
-values are read where they are, as the C locals and the object's fields, with no reflection tables, so they cost
-the code of the failure branch only. A condition written only to put text into the report (`crash
-bone_matrix_is_finite or bone_name == ""`) has no reason to exist. In `library/`, `JsonReader.read_or_crash` sets
-the cursor's `crashes`, and the cursor crashes where it finds the fault, so the
-report shows what it wanted, the position and the text there; `JsonWriter.written_decimal` crashes on
-`shown - shown == 0`, which is false for infinities and NaN, and the report shows the value and the attribute's
-`path`. `conformance/stage6/crash_scope_values`, `json_crash`, `json_infinity`.
+report is written so that a person or an AI can fix the problem from it**: every value the failed condition reads is
+shown with the position it was read at, and the frames that led there. A position identifies the expression, so the
+report never repeats source text; it need not carry the condition, which the `.crashes` map keeps for `grep`. A
+condition written only to put text into the report (`crash bone_matrix_is_finite or bone_name == ""`) has no
+reason to exist. What it costs to keep a value for the report is paid only in builds that can crash there, and the
+crash sites stay tree-shaken. `conformance/crash_scope_values`, `json_crash`, `json_infinity`.
 
 ### What a crash reports
 
-A crash always reports backend information **and the trace of every `assert` that failed before it**. Those
-asserts are the causal trail explaining how the program reached the state that crashed, which is usually several
-frames earlier than the crash itself. The cost is only on the failure path (a passing `assert` already
-branches), and the trace is a fixed-size ring buffer with a total count, so it never allocates and cannot grow
-without bound. A report is the crash's own line, the asserts' lines (each with what its function answered:
-`answered=nothing`, `answered=null` or `answered=empty`, and `repeated=<count>` when the same site failed several
-times in a row, which takes one line in the ring) and the call chain, one `spite.frame` line per Spite
-function on the crashing thread's stack, innermost first, written as a native fault writes its frames and walked
-the same way (frame pointers on Linux and macOS, so an `--optimized` build there has none; the unwind tables on
-64-bit Windows), leaving out the runtime's own functions above the first Spite one. Compile-time evaluation ([the functions of `Spite.Class`](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#functions-of-spiteclass-and-no-static-functions), [JSON is reflection, not a library](json.md#json-is-reflection-not-a-library)'s generated JSON) reports
-the same way.
+A crash flushes the program's output, writes its report to the error stream and exits with status 1. The report is
+the crash line, the failed asserts that came before it, and the call chain.
 
-**A failed `assert` is not printed when it fails; `--trace-asserts` streams them.** A failed `assert` writes nothing
-as it fails, in every build, `--debug-memory` and
-inspectable builds included: it stores its site's line in the ring and counts it, and the line reaches the error
-stream only in a crash's report, or a native fault's. `trace_asserts` (`--trace-asserts`, default `false`) opts
-in to streaming: `SPITE_TRACE_ASSERT` then also flushes the program's output and writes the site's `spite.assert`
-line to the error stream when it fails, in a program that cannot crash too. It is the same fixed line the ring
-holds, with no values, and it covers the asserts the ring covers (the program's and its loaded packages', never
-`library/`'s). Cost: none without the flag, since the ring's update is the same either way; with it, a
-flush and a write per failed `assert`. `conformance/stage6/quiet_asserts` (four calls, two failing: nothing but the
-program's lines), `conformance/stage6/trace_asserts` (the same with `--trace-asserts`),
-`conformance/stage6/quiet_asserts_optimized` (an `--optimized` build failing a guard 500 times: nothing but the
-program's line) and `conformance/stage6/trace_asserts_optimized` (`--optimized --trace-asserts`).
+**The crash line** is `spite: the program stopped at <path>:<line> in <Class>.<function> (name=value, ...)`, one field
+for each value, in this order:
 
-**A crash prints the ring as it stood when it began, and only the first crash reports.** The report reads the
-ring's count once, when it starts,
-and prints at most 32 lines and the `earlier=` count from it. Reading the count again on every line would let a
-crash on one thread, while pool threads kept failing guard asserts, chase the count forever: every failed `assert`
-of the program would reach the error stream, and the crash would never reach its `exit`. A native fault's report reads the
-count once the same way. A crash first claims the report with one atomic exchange; a thread that crashes while
-another's report is being written waits for the program to end instead of interleaving a second report. Cost:
-only on the crash path. A failed `assert` costs one call to the ring's update, kept out of line so the function
-around it stays small: a comparison with the newest line and a count, or a new line; in a program with threads, a
-compare-and-swap on a word that holds the site, the line's place and its count together, so a count can never land
-on another site's line. Measured with `--optimized`: a loop failing a guard two times in three, 200 million times,
-runs in the time it takes with no ring at all, within the machine's noise, so every build keeps the ring.
+1. every part of the condition, left to right and each once by its text: bare names, paths, `[ ]` reads whose index has
+   no call, the answer of each call, and inside a call its receiver and its arguments;
+2. then the function's parameters and locals in scope, in the order they were declared;
+3. then the attributes of the object the function runs on, leaving out a name the condition mentions.
 
-An `assert` in `library/` never enters the trace. The trace explains how *the program* reached a crash,
-and the standard library's asserts are routine answers (a missing key, text that does not match, a read past the
-end) that fire constantly and would push the program's own entries out of the ring. The compiler leaves the ring
-write out of every `assert` site whose file is in `library/`, so a library guard costs what an `if` costs; the
-program's own files and every `load`ed package keep recording, and a crash inside the library still reports its
-own site (`conformance/stage5/library_guards_untraced`).
-
-**A crash site is identified by a compile-time id, and the compiler emits an id-to-source map as a build
-artifact** rather than embedding the information in the program. The binary carries none of it, which matters
-most in a wasm module where size is startup time, and **the same logical site keeps the same id across every
-target**, so a crash from the server bundle and one from the browser bundle compare directly. The id is
-content-derived (a hash of namespace, class, function, the site's ordinal and the condition source), never a
-counter, because a counter renumbers everything below an inserted line and destroys both old reports and
-cross-target identity. No build carries a condition's text, and an `--optimized` build carries
-only each site's id: its crash line is `spite.crash<TAB>id` followed by the values, and its trace line
-`spite.assert<TAB>id<TAB>answered=...`, while other builds also write the place, class and function so a local run needs no lookup
-(`conformance/stage6/trace_asserts_optimized`).
-
-The map is a greppable tab-separated table named after the program, `<program>.crashes`, beside the
-executable, one line per site, sorted by id so archived maps diff cleanly: id, file, line, column (of the `assert` or `crash` keyword, counting from 1),
-class, function, kind (`crash`, `assert-predicate`, `assert-narrowing`), the condition source, and the
-operand names with their types (`value:Integer`). It opens with a `#` comment line carrying the format version
-and the build hash (`# spite crashes 1 2660c8aa`). At runtime a crash emits one tab-separated line prefixed
-`spite.crash`, and an assert `spite.assert`. **A crash renders its values as text; an assert keeps none**: a crash happens once and then the program is dead,
-so it should be informative rather than fast, while an assert may fire thousands of times an hour and must stay
-cheap until something dumps it. A ring line is a pointer to its site's fixed `spite.assert` line and how many times
-in a row it failed, so its report and its trace line name the site without values.
-
-A crash and its report work as follows. Crash and assert sites carry content-derived ids, every
-build writes `<program>.crashes`, and a crash prints the asserts that failed before it, oldest first, from a ring
-of 32 lines, a site failing several times in a row as one line with `repeated=<count>`, and a
-`spite.assert	earlier=<count>` line when the ring held more lines than it kept
-(`conformance/stage5/crash_report`). A firing `crash` flushes stdout, writes its line to stderr, and exits with
-status 1:
+At most 12 values are shown unless the condition alone has more. Whole numbers, decimals, `Boolean`s, enums and text
+are shown, and an object only as a part of the condition, through a `to_string()` with no arguments
+(`settings=saves/settings.txt`, since `File`'s `to_string()` is its path); a list, a function or a row is left out. A
+`T?` that is null is `name is null`. Text is cut to its first 80 bytes, back to a whole UTF-8 character, followed by
+`...(<length> bytes)`. In a file of `library/` the attributes whose name starts with `_` are left out, and in the
+compiler's internal classes only the condition's parts are shown.
 
 ```
-spite.crash<TAB>id<TAB>path:line<TAB>Class<TAB>function<TAB>name=value...
+spite: the program stopped at crash_report/crash_report.spite:17 in CrashReport.check (value=-9, limit=0, scale=2)
+spite.assert	6d183761	crash_report/crash_report.spite:11	CrashReport	announce	answered=nothing
+spite.frame	crash_report/crash_report.spite:17	CrashReport	check
+spite.frame	crash_report/crash_report.spite:7	CrashReport	CrashReport
 ```
 
-The line carries every part of the condition and its value (`value=-9<TAB>limit=0`), with calls never
-evaluated a second time, and then the values in scope. **Every name and call in a
-condition of any shape is reported.** The compiler walks
-the condition as written and reports, left to right and each once by its text: every name or path (a `[]` read
-whose index has no call included) with its value, every call with the answer it gave, and inside a call its
-receiver and its arguments. `and` and `or` are followed into, and so are `not`, comparisons and arithmetic; a
-literal adds nothing. A value is written as for one operand: text, a number or an enum as it is, an object through
-its `to_string()`, anything else left out; a `T?` that is null is `name is null`, and a `[]` read that is missing
-is `list[index] is missing: index 5, count 2` or `table[key] is missing: key "bea"`, as a failed
-narrowing words it. **Only what ran is reported:** when the crash fires, each side of a failed `or` ran, and so did each side
-of an `and` under a `not`; a side an `and` or `or` may have skipped is reported only if it ran, which a flag set as
-it runs records, and a path there is reported only when it is a bare name, so nothing is read that the condition
-did not prove readable. **A call is never evaluated twice:** a call whose answer is reported is kept, as the
-condition runs, in a local beside a flag saying it ran, and the report reads the local; a call answering an object
-it owns hands it to that local, which releases it after the check. A call that is the whole condition, or its
-`not`, is not reported, since its answer is what failed. A name that is a class or a namespace (`Math.pi`'s
-`Math`) is not a value and is left out. **Cost:** the report is written only when the crash fires; on the passing
-path, a condition with a reported call inside it stores the call's answer and a flag, and one with a skippable side
-stores a flag (stores into locals that only the failure branch reads, which the C compiler keeps in registers or
-drops); a condition of names and comparisons stores nothing. The `.crashes` map lists every part with its type
-(`record:String? cooked.count():Integer cooked:List<String> never_cooked_id:String name:String`, a receiver whose value the report leaves out included). `conformance/stage6/crash_compound`.
-**A condition that is a call on a value**, `crash file.exists()` or `crash not list.contains(x)`,
-has that value as its operand when it is a name or a path: text, a number or an enum is written as it is, and an
-object whose class declares `to_string()` with no arguments is written as what that answers, called once on the
-way out: `settings=saves/settings.txt`, since `File`'s `to_string()` is its path. A value
-with no `to_string()` (a `List`) adds nothing, and the call itself is not evaluated again. The `.crashes` map
-lists it with its type (`settings:File`; `conformance/stage5/crash_receiver`).
+**A condition of any shape is reported.** `and` and `or` are followed into, and so are `not`, comparisons and
+arithmetic; a literal adds nothing. A side an `and` or `or` skipped never ran and is left out, and a path there is
+reported only when it is a bare name, so nothing is read that the condition did not prove readable. **A call is never
+run twice**: a call at a place the condition always runs, with no attribute, path or unheld call read before it, is
+computed into a hidden local before the check, and the check and the report read that local (`next_value(start)=5`).
+`count()`, `length()` and `is_empty()` with no arguments on a plain path to a `List`, `Dictionary`, `Vector`, `Items` or
+`String` are reads and are read again for the report, as a path is. Any other call (one the condition may skip, or
+after a read it could change) is not reported. A call that is the whole condition, or its `not`, is not reported, since
+its answer is what failed, but its receiver and arguments are. A name that is a class or a namespace is not a value and is
+left out. **Cost:** only the failure branch reads the hidden locals, so the passing path costs a store at most.
 
 **A failed narrowing reports what is missing, never a value.** A `crash` that narrows a `T?` (a name, a path, a
-`[]` read, each side of an `and`) fails only when something is absent, and printing a value
-there would print a default (`clip.keys[start + 9]=0`), which reads as a present zero and sends the reader after
-a bug that does not exist. The report tests each nullable link of the path again, in order, and names the first
-one that is absent: `rig.skeleton is null` for a name or member, `list[expression] is missing: index 11990, count
-11500` for a list read (the index as evaluated, and the list's count), `table[key] is missing: key "bea"` for a
-dictionary or any other `get_at` (a `String` key quoted, so an empty one shows). The index is evaluated again, which
-is safe because an index with a call in it is not a path. The value report stays for every condition
-that is not a narrowing (`conformance/stage6/crash_missing_item`, `crash_missing_key`, `crash_missing_link`,
-`crash_missing_value`). Cost: only on the failure path, which already halts; a passing `crash` is the same
-presence test it always was.
+`[ ]` read, or an `and` of them) fails only when something is absent, and printing a value there would print a default,
+which reads as a present zero. It reports only the first link that is absent, testing each link again in order:
+`rig.skeleton is null` for a name or member, `clip.keys[start + 1] is missing: index 3, count 2` for a `List`,
+`Vector` or `Items` read (the index as evaluated and the count), `ages[name] is missing: key "bea"` for any other
+`[ ]` read (a text key quoted, so an empty one shows). When every link is there the value is shown (`flags[1]=false`),
+and no other value is added (`conformance/crash_missing_item`, `crash_missing_key`, `crash_missing_link`,
+`crash_missing_value`).
+
+**The call chain is always written, even when it is one line**: `spite.frame<TAB>path:line<TAB>Class<TAB>function`,
+innermost first, the crashing function at the crash's line and each caller at the line of its call. Only the functions
+of the program and of the packages it loads are listed; a frame inside `library/` or the compiler's own classes is left
+out, as the ring leaves out the library's asserts. Consecutive equal lines are one line with `repeated=<count>`, at most
+16 lines are written, then `spite.frame<TAB>more`. A function inlined into another keeps its own frame. The chain is
+walked through the saved frame pointers and a table of the program's calls that sits in the executable beside its
+code: every call records its return offset and its frame lines, and the walk follows the frame pointers while each
+return address is a recorded call and the next frame is above the last. No instruction runs for it on the passing
+path; the table costs the executable's size only (`tests/crash_reports_frames`).
+
+**A crash reports the trace of every `assert` that failed before it.** Those asserts are the causal trail explaining
+how the program reached the state that crashed, which is usually several frames earlier than the crash itself. The
+cost is only on the failure path (a passing `assert` already branches), and the trace is a fixed-size ring buffer with
+a total count, so it never allocates and cannot grow without bound. Each assert line is
+`spite.assert<TAB>id<TAB>path:line<TAB>Class<TAB>function<TAB>answered=...`: `answered=nothing` for a function that
+returns nothing, `null` for a `T?`, `empty` for a function answering a list, a dictionary, a `Vector` or an `Items`, and
+`repeated=<count>` when the same site failed several times in a row, which takes one line in the ring. The ring holds 32
+lines; a `spite.assert<TAB>earlier=<count>` line says how many were lost before them. An assert keeps no values: its place,
+the `.crashes` map and its condition are what it says.
+
+**A failed `assert` is not printed when it fails; `--trace-asserts` streams them.** A failed `assert` writes nothing
+as it fails, in every build, `--debug-memory` and inspectable builds included: it stores its site's line in the ring
+and counts it, and the line reaches the error stream only in a crash's report, or a native fault's. `trace_asserts`
+(`--trace-asserts`, default `false`) opts in to streaming: each failed `assert` then also flushes the program's output
+and writes its `spite.assert` line to the error stream when it fails, in a program that cannot crash too. It is the
+same fixed line the ring holds, with no values, and it covers the asserts the ring covers. Cost: none without the flag,
+since the ring's update is the same either way; with it, a flush and a write per failed `assert`
+(`conformance/quiet_asserts`, `trace_asserts`).
+
+**A crash prints the ring as it stood when it began, and only the first crash reports.** The report reads the ring's
+count once, when it starts, and prints at most 32 lines and the `earlier=` count from it, so a crash on one thread, while
+pool threads keep failing guard asserts, never chases the count forever. A crash first claims the report with one atomic
+exchange; a thread that crashes while another's report is being written waits for the program to end instead of
+interleaving a second report. A failed `assert` costs one call to the ring's update, kept out of line: a comparison with
+the newest line and a count, or a new line; in a program with threads, a compare-and-swap on a word that holds the site,
+the line's place and its count together (`conformance/assert_ring_threads`).
+
+An `assert` in `library/` never enters the trace. The trace explains how *the program* reached a crash, and the standard
+library's asserts are routine answers (a missing key, text that does not match, a read past the end) that fire
+constantly and would push the program's own entries out of the ring. The compiler leaves the ring write out of every
+`assert` site whose file is in `library/`, so a library guard costs what an `if` costs; the program's own files and
+every `load`ed package keep recording, and a crash inside the library still reports its own site.
+
+**A crash site is identified by a compile-time id, and the compiler emits an id-to-source map as a build artifact**
+rather than embedding the information in the program. The id is content-derived (a hash of namespace, class, function,
+the site's ordinal and the condition source), never a counter, because a counter renumbers everything below an
+inserted line and destroys both old reports and cross-target identity. The executable carries no condition text.
+
+The map is a greppable tab-separated table named after the program, `<program>.crashes`, beside the executable, written
+by every build that writes one: one line per `crash` site of every function compiled and per `assert` site outside
+`library/`, sorted by id so archived maps diff cleanly: id, file, line, column (of the `assert` or `crash` keyword,
+counting from 1), class, function, kind (`crash`, `assert-predicate`, `assert-narrowing`), the condition source, and
+every part of the condition with its type, in the order the report shows them, receivers whose value the report leaves
+out included (`record:String? cooked.count():Integer cooked:List<String> never_cooked_id:String name:String`); for a
+narrowing, each link of the path. It opens with a `#` comment line carrying the format version and the build hash
+(`# spite crashes 1 2660c8aa`). The crash line is written by the program's own writer to the error stream, so a program
+that never crashes makes no `Console` for it.
 
 ### What a native fault reports
 

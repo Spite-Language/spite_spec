@@ -6,30 +6,71 @@ is the bug.
 
 ## Templates
 
-**A parameter of type `Spite.AttributeDeclaration<Owner>` whose name is a word of its function's name makes the
-function a template** over `Owner`'s members: its attributes, and its functions that take no arguments.
-`show_attribute(attribute: Spite.AttributeDeclaration<Monster>, monster: Monster)` answers `show_name(troll)` and `show_health(troll)`. A template is
-instantiated only for the names a program calls, in every build; the template itself emits nothing, and each
-instance is an ordinary function that costs what its body costs. `--final-classes` prints each instance.
+**A parameter whose name is a word of its function's name makes the function a template**, and the parameter's type
+says what the template ranges over. There is no `Symbol<...>` parameter: the name is the signal, the type says the
+kind of member, and the body says which class.
 
-- **The parameter is a declaration**: `attribute: Spite.Attribute<Monster>` is "'attribute: Spite.Attribute<...>'
-  would be bound to one instance, and a template is made once for each member of the class, with the instance as
-  its own argument: write 'attribute: Spite.AttributeDeclaration<...>'".
+| Parameter type | Ranges over | Inside an instance, the parameter is |
+|---|---|---|
+| `Spite.AttributeDeclaration` | the attributes of a class, and its functions that take no arguments | the constant declaration of that member |
+| `Spite.FunctionDeclaration` | the functions of a class whose names fit a pattern with the parameter's word as its hole | the constant declaration of that function |
+| `Spite.Argument` | the arguments of a function | the constant argument |
+
+`Spite.Attribute` (an attribute bound to one object: `declaration`, `value`, `owner`) and `Spite.Function` do not make
+a template. A parameter of those types is an ordinary parameter, so a function that takes one is an ordinary
+function, called by a walk over an instance's members or handed a value. A template over the members of an object is
+written over the declaration with the object as a parameter of its own. A parameter typed `Spite.Namespace` or
+`Spite.Class` is an instance of one, never a template.
+
+`show_attribute(attribute: Spite.AttributeDeclaration, monster: Monster)` answers `show_name(troll)` and
+`show_health(troll)`. A template is instantiated only for the names a program calls, in every build; the template
+itself emits nothing, and each instance is an ordinary function that costs what its body costs. `--final-classes`
+prints each instance.
+
+### Templates over attributes
+
+- **The class is the class the body reads the declaration on.** Every `x[attribute]` and `x.attributes[attribute]` in the
+  body names it (`x[attribute]` is short for `x.attributes[attribute]`; `attributes[attribute]` alone is the template's
+  own class). `x` is known from its declaration: a parameter, an attribute, a local declared with its type or made by a
+  constructor, an own function's answer, or an element of a list so known. Reads on parameters count before the
+  others, so the declaration (and `attribute.class`) is that of the first parameter read. Reads on several classes
+  narrow the walk to the attributes they all have, in the first class's order. A body that reads the parameter on
+  nothing takes the class of the function it passes the parameter to, otherwise of its first parameter that is a class
+  or a `type`. A nullable class is walked as nothing.
+- **Errors.** A body that reads the declaration on no value: "'show_attribute' is a template over the attributes of a
+  class, because 'attribute' is a word of its name, but its body reads 'attribute' on no value, so nothing says
+  which class: read it as 'value[attribute]' on a value of the class it walks"
+  (`conformance/template_unused_attribute`). A value whose class its declaration does not say: "'show_attribute' uses
+  'attribute' on 'shown', whose class is not known from its declaration, so nothing says which class it walks: use it
+  on a parameter, an attribute or a local declared with its type, as in 'var shown: Monster = ...'"
+  (`conformance/template_unknown_value`). Two classes with no attribute in common: "'copy_attribute' reads
+  'attribute' on a 'Lamp' and on a 'Door', which have no attribute in common, so it would walk nothing: read it only on
+  values whose classes share the attributes it walks" (`conformance/template_no_common_attribute`). The class written
+  on the parameter, `attribute: Spite.AttributeDeclaration<Monster>` or `Spite.Attribute<Monster>`: "'attribute:
+  Spite.Attribute<Monster>' names its class, but a template's class comes from its body: write 'attribute:
+  Spite.AttributeDeclaration' and read it as 'value[attribute]' on a value of 'Monster'"
+  (`conformance/template_attribute_spelling`). A bound attribute handed to a `Spite.AttributeDeclaration` parameter:
+  "'declared' takes a 'Spite.AttributeDeclaration', the declaration of an attribute, and 'health' here is an attribute
+  bound to an instance of 'Monster': declare the parameter 'Spite.Attribute', or walk the class's attributes"
+  (`conformance/reflection_attribute_to_declaration`).
 - **Inside an instance, the parameter is the constant declaration of that member**, a
-  `Spite.AttributeDeclaration`; the bound attribute is `owner.attributes[attribute]`. Written as a type
-  (`value: attribute.class`, `): attribute.class`) it is the member's real type; written as an expression,
-  `attribute.class` is its `Spite.Class`, which prints as the type's name in `console.print` and in a text's `{}`.
-  `attribute.name`, `attribute.camel_case_name` and `attribute.pascal_case_name` are text constants, and
-  `attribute.index` is the member's place in declaration order.
-- **`owner.attributes[attribute]` is that member of the `owner` passed in**: the field, read or written, or a call to
+  `Spite.AttributeDeclaration`; the bound attribute is `owner[attribute]`, which is `owner.attributes[attribute]`.
+  Written as a type (`value: attribute.class`, `): attribute.class`) it is the member's real type; written as an
+  expression, `attribute.class` is its `Spite.Class`, which prints as the type's name in `console.print` and in a
+  text's `{}`. `attribute.name`, `attribute.camel_case_name` and `attribute.pascal_case_name` are text constants, and
+  `attribute.index` is the member's place in declaration order. `attribute.value` is an error, since a declaration has
+  no value: "'attribute.value' reads an attribute of an instance, and 'attribute' describes a declaration: walk the
+  instance's own attributes, 'monster.attributes', or read 'monster.attributes[attribute]'"
+  (`conformance/reflection_declaration_value`).
+- **`owner[attribute]` is that member of the `owner` passed in**: the field, read or written, or a call to
   the function. A class reads its own members by name, `attributes[attribute]`, never `this.attributes[attribute]`,
   and that is the field itself, read or written without its getter or setter, so a `get_` or `set_` template over
   its own class never calls itself.
-- **`Owner` may be a codegen value**: `member: Spite.AttributeDeclaration<$element_type>` is how `library/list.spite` writes
-  its member templates. When that value is not a class or a `type` (a number, a `T?`, a `List`), the template
-  answers nothing.
-- **`Owner` may be a `type`**: the template ranges over the attributes the type names and the functions it requires
-  with no arguments, and `row.attributes[attribute]` is the shape's own read, write or call, answered from the
+- **The class may be a codegen value**: `member: Spite.AttributeDeclaration` read as `item[member]` on a
+  `$element_type` is how `library/list.spite` writes its member templates. When that value is not a class or a `type`
+  (a number, a `T?`, a `List`), the template answers nothing.
+- **The class may be a `type`**: the template ranges over the attributes the type names and the functions it requires
+  with no arguments, and `row[attribute]` is the shape's own read, write or call, answered from the
   value's class at run time like any read through a `type`.
 - **An exact function always wins over a template, for that one name and direction**: an exact `set_name` answers a
   write of `name` while its read still goes through `get_attribute`. A generated `get_<attribute>()` of an owning
@@ -38,16 +79,123 @@ instance is an ordinary function that costs what its body costs. `--final-classe
 - **A template that makes a function the class already has is an error** at that function's line: "the template
   'store_attribute' makes 'store_row' for the attribute 'row' of 'RowView', which is already a function of 'Row':
   rename the function or the template". An error raised in code the compiler wrote for a template names the
-  template's line.
-- **Reading a member counts as using it**: `x.attributes[attribute]` counts as a read of the member it reaches,
+  template's line (`conformance/template_function_clash`).
+- **Reading a member counts as using it**: `x[attribute]` counts as a read of the member it reaches,
   while `attribute.name` and `attribute.class` describe it without reading it, so an attribute only they look at is
   the unread-attribute error ([Unused is an error](style.md#unused-is-an-error)).
 - **A walk sees private attributes**, and may read and write them through the walked attribute; naming `_x` outside
   its class stays the private error.
+- **A reflection object known while compiling has no run-time value.** A function a specialisation was compiled for
+  cannot pass its parameter on as a value: "'attribute' is a reflection object known while compiling, so this
+  function is compiled once for it, and it has no run-time value to pass on here", given at the statement that passes
+  it (`conformance/reflection_specialised_kept`). A class held in an attribute typed `Spite.Class` and named as a type
+  is "'kind' is not a class known while compiling, so it cannot be a type here"
+  (`conformance/reflection_unknown_class_type`).
+
+### Templates over functions
+
+A parameter `phase: Spite.FunctionDeclaration` named by a word of its function's name ranges over the functions of a
+class whose names fit a pattern with `phase` as its hole. The class and the pattern come from the first of:
+
+- a call `x.f(...)` in the body whose name has the parameter as a word (the class is `x`'s, the pattern is `f`):
+  `system.phase_each(amount)` ranges over the functions of the system's class named `<hole>_each`;
+- a pattern written as text on a class, `$t.argument_count("<phase>_each")`;
+- the parameter passed to an own function that does one of these.
+
+The hole is any part of the name between the pattern's fixed words, with no enum behind it, so `phase_all` walks a
+system's `update_all`, `render_all` and also a `sum_all`. The template is called as the plural of its name,
+`run_phases_each(...)` for every function that fits (in the order they were made), or with the hole written,
+`run_render_each(...)` for one. Inside an instance, `phase.name` is the function's name (`update_each`), `phase.hole` the
+text in place of `phase` (`update`, a symbol), `phase.index` its place, and `phase.argument_count()` the number of its
+arguments. `$t.argument_count("<pattern>")` refuses a pattern whose functions take different numbers of arguments:
+"... has no one answer: the functions of 'Painter' that fit it ...".
+
+- **A name whose word fits no function** is an error listing the functions that fit: "'run_updat_all' is
+  'run_phase_all' with 'updat' for 'phase', but 'Move' has no function 'updat_all': the functions there that fit
+  'phase_all' are 'update_all', 'step_all'" (`conformance/hole_values`).
+- **A body that calls no function with the hole in its name**: "'run_phase_each' is a template over functions, because
+  'phase' is a word of its name, but its body calls no function with 'phase' in its name, so nothing says which:
+  call one as 'value.phase_each(...)', where 'phase' stands for the part of the name that varies"
+  (`conformance/template_unused_function`).
+- **The enum spelling is gone.** `phase: Symbol<$system_type.phase_each>` is "... write 'phase:
+  Spite.FunctionDeclaration' and call the function as 'value.phase_each(...)' on a value of '$system_type'"
+  (`conformance/template_symbol_function`).
+
+### Templates over arguments
+
+A parameter `argument: Spite.Argument` named by a word of its function's name ranges over the arguments of a function.
+The function is the call its plural is spread into (`system.update_each(made_arguments(row))`), or, for a plural
+called alone inside a template over `Spite.FunctionDeclaration`, the function that template stands for. The plural of
+the name is the argument list of the call: one answer for each argument, in order, each typed by its argument when the
+function's result is typed `argument.class`. Inside an instance, `argument.name`, `argument.class` and
+`argument.index` are constants.
+
+- **A plural called anywhere else** is "'show_arguments' walks the arguments of a function, but nothing here says
+  which: spread it into a call, as in 'value.update_each(show_arguments())', or call it inside a template over
+  'Spite.FunctionDeclaration', where it walks the arguments of that function"
+  (`conformance/argument_walk_without_function`).
+- **A plain walker over arguments** (`function.arguments.each(describe_taken)`) takes a name without the word, since a
+  parameter named by a word of the name is a template.
+- **The enum spelling is gone.** `argument: Symbol<$system_type.update_each>` is "... write 'argument:
+  Spite.Argument' and spread its plural into the call, as in 'value.update_each(made_arguments())'"
+  (`conformance/template_symbol_argument`).
+- **A function whose result is typed through a reflection parameter** (`func made(argument: Spite.Argument):
+  argument.class`) has no result type of its own. A call that hands it the parameter of a specialisation is compiled
+  once for that member, and any other call is "'made' answers a type read from a reflection object, so it is compiled
+  once for each object the compiler can identify, and this call hands it one known only at run time: pass a class,
+  attribute, function or argument named in the code, or walked from one". The parameter may be a `Spite.Argument`,
+  `Spite.AttributeDeclaration`, `Spite.Class` or `Spite.FunctionDeclaration`.
+
+### Walks over folders and enums
+
+A walk over the classes of a namespace or the values of an enum is ordinary code on the reflection objects, with no
+parameter type of its own:
+
+- `Namespace.classes.each(walker)`, `walker(part: Spite.Class)`, makes one copy of `walker` for each class of the folder
+  (in the order of the dotted names), in which `part` is the class: a type (`Runner<part>()`), a constant for
+  `part.name`, `part.has_function(...)` and `part.function_waits(...)` folded, and the class object where a value is
+  wanted. `class.namespace.classes` and `Spite.Namespace.instances` are the other lists to walk.
+- `Enum.values.each(walker)` calls `walker` once for each value, in the enum's order; `$t.values`, with `$t` bound to an
+  enum, is the constant list of its values.
+- A walker takes one parameter, and the state it needs goes in attributes. A namespace that names no folder is an
+  unknown name.
+- `Symbol<System>`, `Symbol<Phase>` and the other enum spellings are errors that name the walk to write: "'system:
+  Symbol<System>' is not a type: ... walk the classes of 'System' as ordinary code, 'System.classes.each(add_system)',
+  with 'system: Spite.Class'" (`conformance/template_symbol_namespace`), and "... walk the values of 'Phase' as ordinary
+  code, 'Phase.values.each(run_phase)', with 'phase: Phase'" (`conformance/template_symbol_enum`). A `Symbol<$element_type>`
+  on a list's member template names the form to write (`conformance/plain_symbol_on_list`).
+
+### Calls built before they run
+
+`Spite.Call(declaration, instance)` is a call of a function on an instance of the class that declares it, built
+before it runs. `call.arguments['name'] = value` fills one argument, and `call.call()` runs it.
+
+- **A declaration named in the code** (`Monster.functions['hurt']`, or a `var` initialised with one and never
+  assigned) makes the call compile away: the instance and each argument become hidden locals and `call.call()` is the
+  direct call. An instance of another class is "'rock' is a 'Rock', and 'hurt' is declared by 'Monster': a call runs a
+  declaration on an instance of its own class" (`conformance/reflection_call_other_class`); a missing argument is
+  "'call' leaves the argument 'velocity' of 'hurt' unfilled: set 'call.arguments['velocity']' before 'call()'"
+  (`conformance/reflection_call_unfilled`); filling one twice is "'call.arguments['amount']' is already set: a call
+  fills each argument once, before 'call.call()' runs it"; a name the function lacks is "'hurt' has no argument
+  'speed', so 'call.arguments['speed']' fills nothing"; and the call used as a value is "'call' is a call known
+  while compiling, which becomes the plain call itself and has no object to pass on".
+- **A declaration known only at run time** is the library's `Spite.Call`, and `call()` tests that the instance's class
+  declares the function and halts "call() runs 'f', declared by 'C', on an instance of another class" when it does not.
+  The thunk that does so is made only when some code reaches `call()` at run time, so a program without one carries
+  none. A run-time call of a function that takes arguments halts: "call() cannot pass arguments to 'C.f' when the call
+  is known only at run time: build the call from a function named in the code".
+- **Calling a `Spite.Class` known only at run time with no arguments** (`part()`) makes an object of it, typed
+  `Anything`, through one function the compiler writes that compares the class object with each class of the
+  program's own folder and makes the one it is. The entry class, a class whose constructor takes arguments and a class
+  outside the program's folder halt, naming why.
+- **A singleton made with arguments has one object for each argument list** written (`Channel(1)` and `Channel(2)`
+  are two objects, `Channel(1)` twice one); see [classes_and_files.md](classes_and_files.md#singletons).
+- **A function of the calling object passed where a `Spite.Function` is wanted** is described in place, bound to the
+  object, with its arguments and answer.
 
 **Plural and singular.** A template whose result is a collection of the member's values (`List<member.class>`)
 takes the member in the plural, through `String.pluralize()`; every other template takes it singular. The template
-declares which by its own name: `func map_members(member: Spite.AttributeDeclaration<$element_type>): List<member.class>`. The
+declares which by its own name: `func map_members(member: Spite.AttributeDeclaration): List<member.class>`. The
 compiler finds the member by inflecting every member name of the element's class and picking the one whose plural
 is the word called, never by guessing from the call:
 
@@ -56,7 +204,7 @@ is the word called, never by guessing from the call:
   'map_names'";
 - two members with one plural is an error naming both and asking to rename one;
 - a name `pluralize()` cannot inflect so that `singularize()` gives it back is an error naming the member and the
-  fix: add the word to the irregulars table by reopening `String.Inflection`, or rename the member;
+  fix: add the word to the irregulars table by reopening `String` and declaring `irregulars` or `uncountables`, or rename the member;
 - a name `pluralize()` leaves as it is, already plural or uncountable, is its own plural: `map_name_with_namespaces`;
 - a template that answers `List<member.class>` but names its member in the singular is an error naming the plural:
   "'map_member' answers every 'member' of the element, a 'List<member.class>', so its name holds the member in
@@ -96,6 +244,15 @@ A walk is a call on a list of reflection objects, under [reflection.md's rules f
 
 - **Names are selected, never built.** `[]` takes a name written in the code and answers a `T?`; anything else is a
   filter over the names that exist. A text with holes is never a member name.
+- **`each` over a known list of functions or arguments is unrolled when its walker needs the item known.** The list is
+  `C.functions`, a local made from `C.functions` or from `C.functions.filter(test)` that nothing assigns again, or
+  `function.arguments` of a function known this way; the walker needs the item known when it hands it to a function whose
+  answer is typed by it (`made(argument): argument.class`) or walks its arguments with such a walker. One copy of the
+  walker is made for each function (in `C.functions`' order) or argument, and the one whose name matches the item the
+  list holds is called. The filter's test still runs when the program does; a list that holds an item the compiler did not
+  list stops the program: `spite: 'walked.each' holds an item the compiler did not list for it, at <file>:<line> in
+  <Class>.<function>`. Inside a copy, a call handing the known argument to a function typed by it (`made(argument):
+  argument.class`) is compiled once for that argument.
 - **A walk over a constant list is unrolled**, one call per element in the list's order (declaration order for
   attributes and arguments, the order made for functions, an enum's order for its values, dotted-name order for
   classes and namespaces), and the function it calls is compiled once per element. A walk over an empty list calls
@@ -204,9 +361,10 @@ resolved like any type name from the generic's file. In detail:
 
 - **Fitting is what [Types](values_and_types.md#types) already means by it**: the class a `type` would admit
   fits: a class with the listed functions and attributes, `String`, a number, an enum, a `List<T>` or
-  `Dictionary<Key, Value>` with what the `type` needs, and the `type` itself. A `T?` does not fit ("'Integer?' does not fit
-  type 'Printable', which 'Shelf' requires of $item_type: it may be null, and null has none of what the type
-  needs"), and neither does a function value.
+  `Dictionary<Key, Value>` with what the `type` needs, and the `type` itself. A `T?` fits only a `type` that `null` answers itself:
+  `null` answers `to_string()` and `to_debug()` as `null`, so a `T?` fits `Printable` and `Debuggable`. For any other
+  `type` it does not fit ("'Integer?' does not fit type 'Sized', which 'Shelf' requires of $item_type: it may be null,
+  and null has none of what the type needs"), and neither does a function value.
 - **A constraint names a `type`, not a class, a union or a number type**: anything else is an error on the
   `generic` line: "'$count_type' is constrained by 'Integer', which is not a 'type': a constraint names a
   'type' the class given must fit, like 'generic $count_type: Printable'".

@@ -56,6 +56,10 @@ together with the instance doing the passing, so it runs exactly as that instanc
 logger.log(pretty_print)         # passes this instance's pretty_print
 ```
 
+- **A function value read from a list is called where it is read**: `listeners[index](event)` calls the function in
+  slot `index`. The read is a `[ ]` read like any other, so an index the compiler has not proven is the may-be-missing
+  error of a `[ ]` read where a value is wanted (`tests/event_bus`).
+
 - **A variable never shadows a function name it can see**: functions are passed around by reference, so a
   name that meant both would be confusing. A local, parameter or attribute named like a function of its
   class (declared in its file or a reopening) is an error: "the variable 'file_stem' has the name of a
@@ -246,9 +250,11 @@ no operator exists only inside the compiler.
 and `set_<name>(value)` (write `.name` and `.name = value`), and for `get_at` and `set_at` on a `List` and a
 `Dictionary` alike (write `[key]` and `[key] = value`). It holds for every class (built-in, library or the program's own) wherever the operator could be
 written instead. The only exception is the function used as a value (`run_callback(point.get_x)`,
-[Functions are values](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md#functions-are-values)), since no operator can be passed. A call with no receiver inside the class's own functions (`get_x()`) is not covered, since a bare `x` there is
-the raw field and no shortcut reaches the getter; nor is `get_attribute(attribute)`/`set_attribute` called with an attribute from a walk, which
-Symbol codegen offers per attribute rather than as one operator. **Called with an attribute written out it is an
+[Functions are values](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md#functions-are-values)), since no operator can be passed. A bare call of an operator's function inside its own class is covered too (`negate()` in `Duration` is
+written `-this`, since that reaches the same function), as is a call through a value of a `type` or a union. A getter
+called with no receiver (`get_x()`) is not covered, since a bare `x` there is the raw field and no shortcut reaches the
+getter; nor is `get_attribute(attribute)`/`set_attribute` called with an attribute from a walk, which a template offers
+per attribute rather than as one operator. **Called with an attribute written out it is an
 error naming the shortcut**: `person.set_attribute('age', 2)` is "write 'person.age = 2'", and
 `person.get_attribute('age')` is "write 'person.age'", since a write and a read have one spelling. This also settles `get_x()` against `.x`: there
 is one spelling. A union receiver is covered when every member offers the operator. After a `.` a word is always
@@ -282,7 +288,7 @@ of its function, resolved while compiling; nothing is looked up when the program
 
 Attribute access from *outside* a class also goes through operator functions: `person.age = 1` calls
 `person.set_age(1)` when the class defines or Symbol-codegens `set_age` (an exact function always wins over
-Symbol codegen), otherwise it assigns the field directly. `person.age` (a read) calls `person.get_age()` the
+a template), otherwise it assigns the field directly. `person.age` (a read) calls `person.get_age()` the
 same way when defined. The read
 mirrors the write. Every function return is a properly retained, independent reference
 ([Memory](memory.md#the-memory-model)), so a getter that computes and hands back a fresh value is exactly as
@@ -296,7 +302,7 @@ call of the getter or setter, and every other one a plain field access.
 `get_name()` reads through it, and a write finds no `set_name()` and is an error. **A setter answers a write
 with no attribute of its name** `ticket.id = 4` calls
 the class's own `set_id(value)` beside a private `_id`, as `get_id()` answers the read; only a function the class
-declares, never one Symbol codegen would write for an attribute that does not exist (`tests/interception_tests`). The
+declares, never one a template would write for an attribute that does not exist (`tests/interception_tests`). The
 read-only error is "'number' is read-only: 'Badge'
 answers it through get_number() and has no set_number(value)" (`diagnostics/read_only_attribute`,
 `tests/interception_tests`). Reflection's own members are kept read-only

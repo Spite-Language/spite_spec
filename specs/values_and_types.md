@@ -306,8 +306,7 @@ as the receiver. Inside it, **`this`** is that value: `func doubled(): Integer {
   Interpolation (`"count {count}"`), `+` onto a `String` and `console.print` call it
   ([standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md)).
 - **A conversion belongs to the value converted**: there is no `from_` conversion anywhere: never `Class.from_x()`, never
-  `from_class`, not for the compiler's own number casts either. Each number class and `Memory.Address` has `func
-  to_type(type: Symbol): type.class`, a Symbol codegen function whose symbol ranges over the program's types, and
+  `from_class`, not for the compiler's own number casts either. Each number class and `Memory.Address` has a `to_<type>()` for each number type, a template over the program's types, and
   the compiler makes each right-to-left cast with the source's `to_<type>()` (`count.to_float()`,
   `wide.to_short()`, `number.to_memory_address()`). Its body is the compiler's (a C cast, emitted inline, so a cast
   costs only the conversion), and `--final-classes` prints the declaration in every number class. A cast is
@@ -457,7 +456,7 @@ That is all an enum is; the integer it compiles to is a representation detail.
   ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#short-symbols-are-inline-text)).
 - **What a `Symbol` names is still checked by whatever consumes it**, at compile time, the way the Symbol
   codegen path checks `set_age(2)` against `Person`'s real attributes
-  ([Symbol codegen](metaprogramming.md#templates)).
+  ([templates](metaprogramming.md#templates)).
 
 **An enum can be reopened, and walked.**
 
@@ -530,7 +529,9 @@ not on the whole union. A switch is still exhaustive: `_` is how it covers the r
 **A repeated case body is an error** whenever `_` could absorb it: two cases doing the same thing when there is
 no `_` yet, or a case doing what `_` already does. `_` after every member already has a case, or anywhere but
 last, is an error too (`diagnostics/switch_rest_case`, `conformance/stage6/rest_case`). A switch over a `T?`
-keeps its two cases, `<Type>:` and `Null:`.
+of a class or a union covers the class (or every member of the union) and `Null`, or ends with `_:`, so a null cannot
+be forgotten: "this switch over 'target' has no case for Null: 'target' is a Monster?, and a switch over a 'T?' covers
+its value and null, so a null cannot be forgotten; add the cases, or end with '_:' for the rest".
 
 **`value == Circle` asks what class a value is.** A class name on the right
 of `==` or `!=` is a class test, true when the value is an instance of that class: `expression ==

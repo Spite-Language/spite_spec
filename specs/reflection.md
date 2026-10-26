@@ -6,9 +6,10 @@ is the bug.
 
 ## Reflection objects
 
-**Every class is an instance of `Spite.Class`**, every namespace of `Spite.Namespace`, every function of
-`Spite.Function`, and every attribute, argument and access of `Spite.Attribute`, `Spite.Argument` and
-`Spite.Access`. They live in the `Spite` namespace (`Spite.Class`, not `SpiteClass`), so nothing in it can be
+**Every class is an instance of `Spite.Class`**, every namespace of `Spite.Namespace`, every function declared in a
+class of `Spite.FunctionDeclaration` (and bound to an instance, of `Spite.Function`), every attribute declared in a
+class of `Spite.AttributeDeclaration` (and bound to an instance, of `Spite.Attribute`, which holds its `declaration`, its
+`value` and its `owner`), and every argument and access of `Spite.Argument` and `Spite.Access`. They live in the `Spite` namespace (`Spite.Class`, not `SpiteClass`), so nothing in it can be
 mistaken for a class of a program. `Spite` is a reserved root namespace: a program's `spite/` folder may only
 reopen its classes, and `load "spite"` is an error ([packages.md](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#the-spite-namespace-is-reserved)).
 Their members are the tables of [The `Spite` classes](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#the-spite-classes).
@@ -33,8 +34,7 @@ because those are functions of the class in the program as built; reflection des
 not the source as written. **The list holds every function the class has once compiling ends**, in the order they
 were made, so it does not depend on the order classes were compiled in. **A constructor is not one of them**: it does
 not answer on an instance, it makes one. A class of the standard library describes its members too:
-`Memory.Heap.functions` lists `allocate`, `resize`, `free` and `live_allocations`, the functions whose bodies the
-compiler supplies.
+`Console.functions` lists its functions like any program class's.
 
 **`.class` is a real `Spite.Class`, not the class's name as text**, and so are `Spite.Attribute.class` and
 `Spite.Argument.class`: `function.arguments[0].class == ServerContext` is an identity comparison the compiler
@@ -55,11 +55,6 @@ load order. A question about a path is asked of those `File` and `Directory` val
 member. They are build-machine paths: a shipped program that needs the files beside a package copies them into its
 output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#files-beside-a-packages-source)).
 
-**`value.memory` is where a named value lives**: a class instance, a list or a dictionary answers with its object,
-a `String` with its characters (`'constant'` for a literal), and a number held in a local with the local itself
-(`'stack'`) or in an attribute with that attribute (`'heap'`). Only a named value has an address: a number computed
-on the spot is "only a named value has memory of its own: give this value a name with 'var' first".
-
 ## A class and an instance
 
 - **`Monster.attributes` and `Monster.functions` are declarations, `Spite.AttributeDeclaration` and
@@ -79,8 +74,12 @@ on the spot is "only a named value has memory of its own: give this value a name
   read 'monster.attributes[attribute]'".
 - **`value.attributes[attribute]`**, with a declaration, is that field of `value`, read or written: a plain typed
   field access when `attribute` is a constant, and a call to the getter where the class declares one.
+- **The bound forms are ordinary parameter types.** A parameter typed `Spite.Attribute` or `Spite.Function` makes no
+  template ([Templates](metaprogramming.md#templates)): a function that takes one is called by a walk over an instance's
+  members, and a template is written over the declaration with the object as a parameter of its own.
 - **A bound function** is a function value of that instance ([functions_and_operators.md](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md#functions-are-values)),
-  so a function named on an instance and its reflection are the same object. Calling it always calls.
+  so a function named on an instance and its reflection are the same object. Calling it always calls. Its `.owner` is
+  the instance it is bound to.
 - **`Spite.Call(declaration, instance)` builds a call without running it**, the only way to build one: the
   declaration is a `Spite.FunctionDeclaration`, and `instance` must be of the class that declares it.
   `.arguments['name'] = value`
@@ -88,7 +87,8 @@ on the spot is "only a named value has memory of its own: give this value a name
   the plain direct call, and no object exists. An argument left unfilled is "'call' leaves the argument 'velocity'
   of 'run_each' unfilled: set 'call.arguments['velocity']' before 'call()'" where the compiler sees it; otherwise
   `call()` halts naming it. An instance of another class is "'rock' is a 'Rock', and 'hurt' is declared by
-  'Monster': a call runs a declaration on an instance of its own class".
+  'Monster': a call runs a declaration on an instance of its own class". The rules and every error text are
+  [Calls built before they run](metaprogramming.md#calls-built-before-they-run).
 - **A walk over another class's attributes sees its private ones**, since a walk that skips some silently builds an
   incomplete copy, column or layout: `.attributes` lists them in declaration order with the rest, and
   `value.attributes[attribute]` and a bound attribute's `.value` read and write them. Naming `_x` outside its class
@@ -118,15 +118,11 @@ on the spot is "only a named value has memory of its own: give this value a name
   namespace.
 - **`.class` through a `type` or a union answers the real class**, from the object's own tag at run time; an
   object literal answers `Object`.
-- **`Person.instances`** lists every live instance of a class; only a class whose `.instances` some code reads is
-  tracked. A class object's `.attributes` are its declarations, made with no object; its `.functions` are read
-  from a stand-in at its defaults, made without
-  running any constructor, which is not one of `.instances`; a singleton's stand-in never runs its `drop()`. The
-  program's entry class has no stand-in: its `.functions` is empty. A stand-in of `Concurrent<T>` or `Parallel<T>`
-  is finished and joins nothing. A class object and a namespace object are each made once, whichever thread asks
-  first, behind one lock that a program without threads does not carry.
-- **`Spite.Class.instances` is every class in the program**: the classes of the program's own folder and of every
-  package it loads, not the standard library's (`Launcher` included, [programs.md](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md)), not the anonymous
+- **Describing a class makes no object of it.** A class object's `.attributes` are its declarations, and its
+  `.functions` are read from the class as the compiler built it. The program's entry class's `.functions` is empty.
+  A class object and a namespace object are each made once, whichever thread asks first.
+- **`Spite.Class.instances` is every class in the program**, in dotted-name order: the classes of the program's own
+  folder and of every package it loads, not the standard library's, not the anonymous
   classes behind object literals, and not a generic class before its codegen values are supplied.
 
 ## Known while compiling
@@ -144,7 +140,12 @@ on the spot is "only a named value has memory of its own: give this value a name
   not an error. `[]` with a literal name answers a constant `T?`: present, a narrowing `if`, `assert` or `crash` on it
   folds to nothing and still narrows that path for what follows; absent, its branch is never compiled.
 - **`each(function)` over a constant list is unrolled** when the function is one of the class's own, takes one
-  parameter, and every element fits it: one call per element, and no list.
+  parameter, and every element fits it: one call per element, and no list. This holds for the attributes of a class,
+  the classes of a namespace (`Shop.Tools.classes.each(make)` makes one copy of `make` for each class, in which the
+  parameter is the class), the values of an enum (`Phase.values.each(run)` calls `run` once for each value) and the
+  known functions and arguments of [Walks](metaprogramming.md#walks).
+- **`Enum.values[n]` answers `Enum?`** like every `[ ]`, also with a literal `n`, so a `crash` narrows it;
+  `Enum.values.find_by_name(text)` is the text read as the enum, an `Enum?`.
 - **A function called with a constant for a reflection parameter is compiled once for it**, whether it is the
   calling class's own or one called on another object (`helper.describe(attribute)`), a
   *specialisation* named `<function>_for_<member>` in `--final-classes` (a number is added when two would share a
@@ -174,7 +175,7 @@ on the spot is "only a named value has memory of its own: give this value a name
 
 ## The names reflection gives every object
 
-**`class`, `attributes`, `functions`, `instances` and `memory` cannot name an attribute or a function of a class.**
+**`class`, `attributes` and `functions` cannot name an attribute or a function of a class.**
 Neither can a `get_` or `set_` function whose member would be one of them (`get_attributes`). A class member of the
 same name would be read in place of reflection's, silently: a class with `var attributes = Table.Attributes()` would
 make every `JsonReader` of it read each key as one the class does not have. The error is

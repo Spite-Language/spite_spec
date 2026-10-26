@@ -28,10 +28,10 @@ makes the key list, two index lists and the result (`sort_by(f)` is the same tem
 `entries()` sorts the names through it; `conformance/stage6/sorting_many`).
 
 **How the templates are written.** They are templates in `library/list.spite`, each a `while` over the list's
-`Memory` buffer: `func filter_member(member: Spite.AttributeDeclaration<$element_type>): List<$element_type>` answers every
+`Memory` buffer: `func filter_member(member: Spite.AttributeDeclaration): List<$element_type>` answers every
 `filter_<member>` call. The parameter names a member of the *element*, not of the list (whose own attributes are
-its buffer), because it says so: `Spite.AttributeDeclaration<$element_type>` is a [template](metaprogramming.md#templates)'s
-`Spite.AttributeDeclaration<Label>`, one mechanism for both. `item.attributes[member]` reads it: the field, or a call to the
+its buffer), because its body says so: it reads the parameter on an item of the element class, `item[member]`, which is how every
+[template](metaprogramming.md#templates) finds its class, one mechanism for all. `item[member]` is the field, or the field, or a call to the
 zero-argument function, which is "the value held in that field" applied to members. A `String` element's
 members are `String`'s own zero-argument functions (`upper_case`, `length`, `is_empty`, ...). The generator binds the template to the
 element's member and checks [the table](https://github.com/Spite-Language/spite_documentation/blob/master/collections.md#member-templates-loops-you-do-not-write) before it compiles the body, so a member that does not fit is still
@@ -40,9 +40,13 @@ names a program calls are compiled. A `--repl`/`--repl-port` build compiles ever
 element class of a list the loop can reach, and lists them as that list's functions, so `monsters.sum_health()`
 works at the prompt. A `Dictionary` answers the same names through its values (`inventory.sum_price()` is
 `inventory.values().sum_price()`), and a program's own `list.spite` reopens `List` to add a template of its own,
-as its `dictionary.spite` reopens `Dictionary` (over `Spite.AttributeDeclaration<$value_type>`).
-A template there with a plain `member: Symbol` would range over `List`'s own attributes, its buffer, and answer
-nothing, so it is a compile error naming `Symbol<$element_type>` (`diagnostics/plain_symbol_on_list`).
+as its `dictionary.spite` reopens `Dictionary` (over `Spite.AttributeDeclaration`, read on a `$value_type`).
+A template there reads its member on an item (`item[member]`), which is what makes it a template over the element
+class; one that read it on `List`'s own attributes would range over its buffer and answer nothing. `member:
+Symbol<$element_type>` is an error naming the form to write: "'member: Symbol<$element_type>' is not a type: a parameter
+named by a word of its function's name makes the function a template, its type says what it ranges over, and the body
+says over which class: write 'member: Spite.AttributeDeclaration' and read the attribute as 'value[member]' on a value
+of '$element_type'" (`conformance/plain_symbol_on_list`).
 
 **Chains are one loop.** Each template takes what the previous one returns, and a chain means exactly its steps written out one by one.
 The compiler runs a chain as one loop over the first list with no list in between: when a template is called
@@ -96,8 +100,8 @@ The caller's function is passed as a bound function value, owned by whoever it i
   answers `Integer?`, and `keys.sort_by(counts.get_at)` is an error naming the fix: a function of your own
   that narrows it (`conformance/stage6/library_functions_passed`, `diagnostics/library_function_mistakes`).
 - **How it is written.** No template changes: the same `library/list.spite` template (`each_member(member:
-  Spite.AttributeDeclaration<$element_type>)`) is instantiated once per function and owner class, with a last hidden parameter holding
-  the owner (the function's instance, passed at the call site), and `item.attributes[member]` reads as
+  Spite.AttributeDeclaration)`) is instantiated once per function and owner class, with a last hidden parameter holding
+  the owner (the function's instance, passed at the call site), and `item[member]` reads as
   `owner.say_hello(item)`, or `owner(item)` when the owner is a held function value. A function written by name
   therefore costs no allocation and no indirect call; only a held value is called through `Spite.Function`. Only
   the forms a program calls are instantiated, and these instances are not listed among the list's `functions`
@@ -232,6 +236,13 @@ is text and `Integer` when it is a number, and its value type is the first value
 written twice in this dictionary: keep one entry for each key`. `{}` is an empty object literal, never a
 dictionary: an empty dictionary is `Dictionary<Key, Value>()`.
 
+**A key the literal lacks, asked for by a `crash`, is a compile error.** A local dictionary written out and read only
+by keys written out is known while compiling, so `crash points["platinum"]` on a key it does not hold would halt every
+time: "'crash points["platinum"]' always halts: its condition is decided while compiling and is false, so the program
+would stop here every time this function runs: call it only where the condition holds, or change what the condition
+asks; the dictionary written out as 'points' holds no key 'platinum'", in every build (`conformance/dictionary_literal_missing_key`).
+A read of a missing key with no `crash` answers `null`, as any `[ ]` read does.
+
 **Written out.** As JSON, a key is text: a `String` key is the text, a whole-number key is the number in quotes
 (`{"7":"SEVEN"}`), an enum key is its name, and reading JSON reads each key's text back as the key type. A JSON
 writer or reader of a dictionary keyed by anything else is an error at the `JsonWriter` or `JsonReader`: `its
@@ -247,7 +258,7 @@ proportion to the dictionary's size. An empty dictionary allocates no table.
 The member templates, declared in `library/dictionary.spite`, and the passed-function forms work on a
 `Dictionary` through a copy of its values, as they do on a `List<T>`, all but `remove_where`: removing from
 that copy would change nothing, so `remove_where_<member>()` and `remove_where(f)` on a dictionary are an error
-naming `remove(key)`. To walk keys and values together, use `while` over `dictionary.keys()` and read
+naming `remove_at(key)`. To walk keys and values together, use `while` over `dictionary.keys()` and read
 `dictionary[key]`.
 
 `deep_copy()` works for classes, lists, dictionaries, unions and `type` shapes, and follows them all the way
@@ -393,7 +404,7 @@ members are [the table under `Items<T>`](https://github.com/Spite-Language/spite
 `List`, `Vector` and `Items` remove many elements in one pass:
 
 - **`remove_where(test)` and `remove_where_<member>()`.** One template, `remove_where_member(member:
-  Spite.AttributeDeclaration<$element_type>)` in each of `library/list.spite`, `vector.spite` and `items.spite`, so it answers both a
+  Spite.AttributeDeclaration)` in each of `library/list.spite`, `vector.spite` and `items.spite`, so it answers both a
   member (`creatures.remove_where_dead()`: the member returns `Boolean`) and a passed function
   (`numbers.remove_where(is_odd)`: on a `List` of anything, never on a `Vector` or `Items`, whose items
   are borrowed or text, and a borrowed item is never passed on). It walks the collection once; an element that stays is
