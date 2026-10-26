@@ -11,14 +11,14 @@ the moment its last reference goes, not by a single-owner convention. See [Memor
 retain/release rules and the cycle caveat.
 
 **What no company owns is standard; what is built on a branded product is a package.** A protocol, a file format,
-an algorithm or maths that no company owns belongs in `library/`, and the library grows to cover it when a program
+an algorithm or maths that no company owns belongs in the standard library, and the library grows to cover it when a program
 needs it (HTTP, TLS, SHA-256/HMAC, Argon2, secure random bytes, base64, gzip, and the maths games need). A client
 for a branded product (a database such as MongoDB or Postgres, a vendor's API or service) is never added to
-`library/`: it is a package, maintained by whoever owns it, loaded pinned to a commit. An operating system's
-folder is how a standard class is written for that system, not a brand package. Nothing in `library/` breaks the
+the standard library: it is a package, maintained by whoever owns it, loaded pinned to a commit. An operating system's
+folder is how a standard class is written for that system, not a brand package. Nothing in the standard library breaks the
 rule.
 
-Every class here is Spite in `library/`, compiled with the program, and tree-shaken like the program's own code,
+Every class here is Spite, in the standard library's folder, which a program loads by its path, compiled with the program, and tree-shaken like the program's own code,
 so a program carries only what it reaches ([Pure Spite](#pure-spite-dissolving-the-runtime) says what is still the
 compiler's).
 
@@ -27,13 +27,10 @@ compiler's).
 An immutable value with a length (not a bare `char*`), sixteen bytes wherever it is kept. A literal is static and
 never allocates; other text of up to 15 bytes is kept in those sixteen bytes and never allocates either; longer
 text is one block on the heap, counted and freed with its last holder. **Its storage is Spite**:
-`library/string.spite` declares `_bytes: Memory.Address` (where the characters are, with a 0 after the last) and
-`_length: Long`, and nothing else (the compiler lays the sixteen bytes out and reads them through the form the
-text takes), and every member but three is a Spite function reading them
-([memory.md](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#where-string-and-integer-keep-their-memory)). The three the compiler supplies are the ones
-that depend on where the characters are: `code_at` (reading one), `sum` (`+`), and
-`Memory.Address.text(length)`, which is how every `String` is made from bytes (`slice`, `terminated_text()` and
-anything that fills a buffer itself end in it). The right side of `+` casts toward
+`String` declares a `Buffer` for the characters (with a 0 after the last) and a length, and every member but a few is a
+Spite function reading them ([memory.md](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#where-string-and-integer-keep-their-memory)). The ones the compiler supplies are the ones
+that depend on where the characters are: `code_at` (reading one), `sum` (`+`), and the making of a `String` from
+bytes, which is how `slice`, `terminated_text()` and anything that fills a buffer itself make text. The right side of `+` casts toward
 `String` (every numeric type, `Boolean`, and enum all format to text; see
 [Numeric types](values_and_types.md#numeric-types) for `Float`/`Double`'s
 shortest-round-trip printing); assigning a `String` to any numeric variable parses it, defaulting to `0`/`0.0` on
@@ -153,10 +150,10 @@ division checks are untouched: none of these divides.
 
 **Each is a primitive of the language, lowered by the backend** (named in Spite, lowered in one
 place, so no Spite changes with the backend). `--final-classes` prints them as bodiless declarations in each number
-class, and `compiler/source/generation/maths_primitives.spite` is the one place that says what C each becomes:
-a macro written where it is called, so `angle.sine()` is `sinf(angle)` in the C, with no function of Spite's own
+class, and the compiler is the one place that says what each becomes:
+a call of the C library's function written where it is called, so `angle.sine()` is `sinf(angle)`, with no function of Spite's own
 around it, and a whole number's `clamp` is two comparisons in one statement. None has hand-written C in a `.spite`
-file of `library/`. A call whose operands are all constants, `(0.5).sine()` or `Float.pi.cosine()`, is worked out
+file of the standard library. A call whose operands are all constants, `(0.5).sine()` or `Float.pi.cosine()`, is worked out
 while compiling with the same C library function, so its answer is bit for bit the one the program would have
 computed ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#maths-on-constants-is-worked-out-while-compiling);
 `conformance/stage6/maths_folding`).
@@ -178,8 +175,8 @@ against `Double`.
 
 ### System classes
 
-Ordinary classes in `library/`, each written once for every system, with the few functions that call the system
-in `library/windows/`, `library/linux/` and `library/mac/`, which reopen the class and reach the system's own
+Ordinary classes of the standard library, each written once for every system, with the few functions that call the system
+in the `windows`, `linux` and `mac` folders, which reopen the class and reach the system's own
 library through `DynamicLibrary`. What each member answers is in the section of [the page](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md) that teaches it.
 
 | Class | Members |
@@ -188,19 +185,15 @@ library through `DynamicLibrary`. What each member answers is in the section of 
 | `MappedFile` | made by `File.map()`: a read-only mapping of the whole file (`CreateFileMappingA`/`MapViewOfFile` on Windows, `mmap` with `PROT_READ` and `MAP_PRIVATE` on Linux and macOS, the file itself closed once mapped), undone by `drop()` (`UnmapViewOfFile`, `munmap`). `size(): Long`; `get_at(position): Byte?` (`mapped[position]`), `read_short_at`, `read_integer_at`, `read_long_at`, `read_float_at`, `read_double_at` (each `(position): T?`, named as a `Buffer`'s are), `read_bytes_at(position, count): Buffer?` and `text(position, count): String?` answer `null` unless every byte they would read is inside the file, so a bad offset read from the file cannot read outside it; a read inside is one load from the mapping. An empty file maps to a `MappedFile` of size 0, since the operating systems refuse to map nothing. `conformance/stage6/mapped_files`; see [A file larger than memory](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#a-file-larger-than-memory-map-it) |
 | `Directory(path)` | `path`, `name` (the last piece of the path), `entries(): List<Directory.Entry>` (below), `exists(): Boolean`, `create(): Boolean`, `move_to(path): Boolean`; see [List a directory](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#list-a-directory) |
 | `Process(command, arguments)` | `working_directory`, `environment_variables`, `run(): Integer`, `output(): String`, `run_attached(): Integer`; see [Run a process](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#run-a-process). Each argument reaches the child whole: single-quoted for the shell on Linux and macOS, and quoted by the `CommandLineToArgvW` rules on Windows, a `key=value` argument quoting only its value (`-script="a b"`). `run()` reads the child's standard output through `_popen`/`popen`; Windows opens the pipe in binary mode so `0x1A` is ordinary output data. `run_attached()` is the C library's `system` |
-| `Program()` | a singleton: `exit(code)`, `sleep(milliseconds)`, `environment(name): String?`, `executable_path(): String`, `live_allocations(): Integer`; see [Program](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#program). `exit` flushes `Console` first, since the C library's `exit` would drop what the program's own standard output still buffers |
+| `Program()` | a singleton: `exit(code)`, `sleep(milliseconds)`, `environment(name): String?`, `executable_path(): String`; see [Program](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#program). `exit` flushes `Console` first, since the C library's `exit` would drop what the program's own standard output still buffers |
 | `Clock()` | a singleton: `elapsed_nanoseconds(): Long`, `elapsed_milliseconds(): Long`, `now(): Instant`; `elapsed_nanoseconds()` is the monotonic clock, with a nanosecond unit and no allocation per reading; see [Clock](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#clock), [Time](time.md#time-one-stored-instant-zones-for-presentation) |
 | `Benchmark(work)` | `answer`, what one call of `work` answered, and `duration: Duration`, the monotonic time the call took; see [Time](time.md#time-one-stored-instant-zones-for-presentation) |
 | `Console()` | a singleton: `print(...values)`, `write(...values)`, `error(...values)`, `debug(...values)`, `read_line(): String?`; see [Console](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#console), and below |
 | `FileSystemWatcher()` | `watch_for_changes(target: FileSystemWatcher.Target): Boolean`, `changes(): List<String>`, `wait_for_changes()`; see [Watch files and folders](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#watch-files-and-folders), which is the rule. `HotReload` is built on it ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
 | `Socket()` | public library surface: `listen_locally(port): Boolean`, `listen_everywhere(port): Boolean`, `listen_at(host, port): Boolean`, `connect_locally(port): Boolean`, `connect(host, port): Boolean`, `accept_client(): Socket?`, `read_line(): String?`, `read_bytes(): Buffer?`, `write_line(text): Boolean`, `write_bytes(bytes: Buffer): Boolean`, the calls that never wait `accept_client_now(): Socket?`, `read_line_now(): String?`, `read_bytes_now(): Buffer` and `write_bytes_now(bytes): Integer`, `closed: Boolean`, `close()`: TCP over IPv4 and IPv6 on every system ([Socket](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#socket), and below); `--repl-port` and `spite connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
 | `Concurrent(function)`, `Parallel(function)` | the handle stands in for what the function returned, and reading it is the wait; `finished: Boolean` never waits; dropping the handle waits for it; there is no `wait()` and no `join()`; see [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md) |
-| `ThreadPool()` | the singleton every `Parallel` runs on: `size(): Integer` worker threads, `worker_index(): Integer` (`-1` off the pool); see [The thread pool](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-thread-pool) |
-| `Spite.Internal.ThreadLocal<T>()`, `Spite.Internal.Lock()`, `Spite.Internal.ThreadSlot()` | internal to the library, refused in a program: one value per thread, `get(): T?`, `set(value)`; a lock, `while_locked(function)`, `lock()`, `unlock()`; the raw per-thread `Long` both are built on, `read()`, `write(value)`; a program uses [a local object and a singleton](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#work-of-its-own-and-a-short-section) instead |
-| `DynamicLibrary(file_name, naming, header)` | every foreign function, constant and type of a native library; see [Foreign libraries](foreign_libraries.md#foreign-libraries). `library/dynamic_library.spite` holds its `file_name` and `handle`, its constructor and `drop()`; opening, closing and finding a symbol are the compiler's reopening |
+| `DynamicLibrary(file_name, naming, header)` | every foreign function, constant and type of a native library; see [Foreign libraries](foreign_libraries.md#foreign-libraries). It holds its `file_name` and `handle`, its constructor and `drop()`; opening, closing and finding a symbol are the compiler's reopening |
 | `ForeignBytes(address, count)` | memory a foreign library hands out (an address and a size it answers): `count(): Long`, `get_at(position): Byte?` (`foreign[position]`), `set_at(position, value)`, `read_<number>_at(position): <number>?` and `write_<number>_at(position, value)`, big-endian forms included, as a `Buffer` has them, `read_bytes_at(position, count): Buffer?` and `write_bytes_at(position, bytes)`; see [Bytes are a Buffer](#bytes-are-a-buffer) |
-| `Memory.Heap()`, `Memory.Arena(block_bytes)`, `Memory.Address` | the floor every other type is built on: allocators and the place they hand out; see [Memory](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#memory-is-the-floor-and-you-can-build-on-it), whose rules they are ([Memory](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#memory)) |
-| `TypedMemory<$value_type>()` | `read_value(address, index)`, `write_value(address, index, value)`, `release_value(address, index)`, `value_bytes()`: values of any type in raw memory, reference counts kept right; what `List<T>` keeps its elements with, and what a container of your own uses |
 
 **`Console` is a singleton:** `Console()` is the same instance everywhere, `Console` is an ordinary class
 name rather than a reserved word, and `console.class.name` is `"Console"` like any other class. Calling a member
@@ -209,7 +202,7 @@ Console()', and use 'console.print'`. `read_line()` answers `null` only at the e
 read, and drops a `\r` before the line feed. The entry constructor returning normally is exit code `0`.
 
 **Printing is `to_string()`.** `print`, `write` and `error` are Spite in
-`library/console.spite`, taking `...values: List<Printable>`, where
+`Console`, taking `...values: List<Printable>`, where
 
 ```gdscript
 type Printable {
@@ -225,8 +218,7 @@ the ordinary shape error, naming the function: `'Pet' does not fit type 'Printab
 'Printable'`), so it is printed with `debug`, or joined first (`diagnostics/print_without_to_string`,
 `conformance/stage6/printable_values`). A `type` writes a required function as `to_string(): String`. What stays
 the compiler's is only the floor: `_write_output(text)`, `_write_error(text)`, `_write_held()` and `_flush()` are
-private, declared nowhere in Spite, and the compiler supplies their C (`fwrite` and `fflush`), as it does
-`Memory.Heap`'s.
+private, declared nowhere in Spite, and the compiler supplies them.
 
 **A printed line is written out at once.**
 `print`, `error` and `debug` flush after their line break, so output redirected to a file or a pipe
@@ -277,8 +269,8 @@ In detail:
   back at `first` shows `Node { value: 1, next: Node { value: 2, next: Node {...} } }`. Each class keeps the
   objects it is in the middle of showing, compared with `==` (identity, unless the class defines `equals`), and
   a tree of distinct objects is shown whole however deep it goes.
-- **It is Spite, and it costs nothing unused.** `library/spite/debug.spite` (`Spite.Debug<$value_type>`) turns any
-  value into its text, and `library/spite/debug_instance.spite` (`Spite.DebugInstance<$value_type>`) walks a class
+- **It is Spite, and it costs nothing unused.** `Spite.Debug<$value_type>` turns any
+  value into its text, and `Spite.DebugInstance<$value_type>` walks a class
   instance. The generator's whole part is that asking a class for a `to_debug()` it does not declare answers one
   that calls them, created only when something asks, so a program that never debugs a class compiles nothing for
   it. A `type` or union that does not require `to_debug()` still answers it, dispatched to the class the value is.
@@ -292,7 +284,7 @@ In detail:
 `conformance/stage6/debug_values`.
 
 **A directory is navigated through its entries.** `Directory` has a `path` exactly as `File` does, and `entries()` answers a `List<Directory.Entry>`, where
-`Directory.Entry` is the union of `Directory` and `File` declared in `library/directory.spite`. Each entry's `path`
+`Directory.Entry` is the union of `Directory` and `File` declared in the standard library. Each entry's `path`
 is its parent's joined with its name, so a `switch` tells the two apart and a folder is walked by calling the same
 function on it again ([Walk a directory tree](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#walk-a-directory-tree); `conformance/stage4/directory_entries`).
 
@@ -309,8 +301,8 @@ In detail:
   again replaces the earlier one ([Packages, namespaces and loading](packages.md#packages-namespaces-and-loading)).
 
 **`Socket` does what a game server needs, on every system.**
-`library/socket.spite` holds everything but the calls into each system's library, which `library/windows/`,
-`linux/` and `mac/socket.spite` reopen the class with:
+The class holds everything but the calls into each system's library, which the `windows`, `linux` and `mac`
+folders reopen it with:
 
 - **Addresses.** `listen_locally` and `connect_locally` build `127.0.0.1` themselves, and `listen_everywhere`
   builds `::` on a socket that takes IPv4 connections too (`IPV6_V6ONLY` off), or `0.0.0.0` where the system has
@@ -350,7 +342,7 @@ In detail:
 ### Bytes are a Buffer
 
 Bytes a program reads or writes are a `Buffer`, a class of the standard library; no program-facing function takes
-or answers a `Memory.Address` or a `List<Byte>` for them ([Bytes are a Buffer](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#bytes-are-a-buffer)).
+or answers a `List<Byte>` for them ([Bytes are a Buffer](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#bytes-are-a-buffer)).
 Everything that hands bytes over answers a `Buffer`, and everything that takes bytes takes one: `File`, `Socket`,
 `UdpSocket`, `WebSocket` and its `WebSocketBinary`, `String.to_bytes()`, `Base64`, `Deflate`, `Zlib`, `Gzip`,
 `Sha256`, `SecureRandom`, `Argon2.derive`, `BinaryWriter`, `BinaryReader`, `ForeignBytes.read_bytes_at` and
@@ -477,14 +469,14 @@ Everything that hands bytes over answers a `Buffer`, and everything that takes b
     memory at an address: write 'read(bytes)', or 'read_from(bytes, start)' to read one value and leave what follows`
   - a `List<Byte>` anywhere: the error for a list of bytes, above.
 
-  The files of `library/` call `read_bytes_into`, `read_bytes_now_into`, `write_bytes_from` and `write_bytes_now_from`
+  The standard library calls `read_bytes_into`, `read_bytes_now_into`, `write_bytes_from` and `write_bytes_now_from`
   where HTTP and WebSocket read into a block of their own. `diagnostics/address_forms`, `diagnostics/byte_reads`,
   `conformance/stage6/list_byte_numbers`, `conformance/stage6/binary_files`, `socket_bytes` and `socket_waits`.
 - **What it costs.** Each function is an ordinary member of `Buffer`, `File`, `Socket` or `ForeignBytes`, so a
   program that reads no bytes carries none of them, and `Buffer` and `ForeignBytes` are not in a program that makes
   none. A `Buffer` costs a `List`'s fields and one more, its `position`.
 
-**`WebSocket` is RFC 6455 written in Spite over `Socket`.** `library/web_socket.spite` holds all of it, with
+**`WebSocket` is RFC 6455 written in Spite over `Socket`.** The standard library holds all of it, with
 `WebSocketText` and `WebSocketBinary` beside it:
 
 - **The handshake.** `accept` takes a `GET` over HTTP/1.1 whose `upgrade` is `websocket`, whose `connection` lists
@@ -522,55 +514,48 @@ Everything that hands bytes over answers a `Buffer`, and everything that takes b
 
 ### Pure Spite: dissolving the runtime
 
-**The standard library is Spite, not hand-written C, and what the compiler supplies below it is a short list of
-operations, not a file someone maintains.** `Spite.Class` is an ordinary standard library class with an ordinary
-declaration, which cannot be true of a library written in C. The target is **zero hidden code**: everything the
-compiler supplies ends up as explicit Spite, and nothing ties Spite to C; what cannot be Spite, the reads, writes
-and atomics at an address, are language primitives each backend lowers.
+**The standard library is Spite, and what the compiler supplies below it is a short list of operations, not a file
+someone maintains.** `Spite.Class` is an ordinary standard library class with an ordinary declaration. Nothing ties
+Spite to another language: everything the compiler supplies is either a primitive operation it writes where it is
+called, like `+`, or explicit Spite.
 
-- **Purity costs no performance**: the output is still C, so a Spite-written `trim()` goes through the same
-  optimiser a hand-written one would. It is the same machine code from a better source.
+- **Purity costs no performance**: a Spite-written `trim()` goes through the same optimiser a hand-written one
+  would, and is the same machine code from a better source.
 - **Library classes stop being special**: they are reopenable like any class, and an inspectable build shows
   every one of them to the REPL, while a production build carries only those the program reaches.
 
-**What is Spite**, in `library/`:
+**What is Spite**, in the standard library:
 
 | Part | How |
 |---|---|
-| `String`, `List<T>`, `Dictionary<Key, Value>`, number to text (`library/number_text.spite`) | over `Memory.Heap` and `TypedMemory<T>`. The syntax stays the compiler's (`[]`, list literals, `List<T>()`), mapped onto these classes' functions, and per element type the compiler still writes four one-line functions a generic class cannot, plus `deep_copy`; the member templates are Spite in `library/list.spite` ([collections.md](collections.md#standard-library-metaprogramming)) |
-| `File`, `Directory`, `Process`, `Program`, `Console.read_line`, `Clock`, `Socket`, `FileSystemWatcher`, `ThreadPool`, `Spite.Internal.Lock`, `Spite.Internal.ThreadSlot`, the time-zone database | written once in `library/`; each operating system's folder reopens the class with the few functions that call its own library (`ucrtbase.dll`/`kernel32.dll`, `libc.so.6`, `libSystem.dylib`) through `DynamicLibrary` |
-| `--debug-memory`'s live table | `AllocationTable` (`library/allocation_table.spite`), an open-addressing set of live addresses with each object's class id beside it, which prints the leak report; the compiler emits only the small functions `SPITE_MALLOC`, `SPITE_REALLOC` and `SPITE_FREE` call under `--debug-memory` |
-| the REPL, live reload, the event loop | `ReadEvaluatePrintLoop`, `HotReload` and `Scheduler`, over reflection tables the compiler generates |
+| `String`, `List<T>`, `Dictionary<Key, Value>`, number to text | over `Buffer`. The syntax stays the compiler's (`[]`, list literals, `List<T>()`), mapped onto these classes' functions; the member templates are Spite ([collections.md](collections.md#standard-library-metaprogramming)) |
+| `File`, `Directory`, `Process`, `Program`, `Console.read_line`, `Clock`, `Socket`, `FileSystemWatcher`, the time-zone database | written once; each operating system's folder reopens the class with the few functions that call its own library (`ucrtbase.dll`/`kernel32.dll`, `libc.so.6`, `libSystem.dylib`) through `DynamicLibrary` |
 | printing, `to_debug()`, JSON and bytes | `Console`, `Spite.Debug<T>`, `Spite.DebugInstance<T>`, `JsonWriter<T>`, `JsonReader<T>`, `BinaryWriter<T>` and `BinaryReader<T>` ([json.md](https://github.com/Spite-Language/spite_documentation/blob/master/json.md)) |
 
-**What is the compiler's**: the floor, and the functions it supplies below it:
+**What is the compiler's**:
 
-1. **`Memory.Address`'s reads, writes and atomics** are language primitives, each one machine operation the
-   backend writes where it is called, like `+` ([memory.md](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#memory-is-the-floor-and-you-can-build-on-it)).
-   This is the floor that stays.
-2. **Supplied bodies**: functions declared without a body whose C the compiler writes
-   (`compiler/source/generation/prelude.spite`): `Console`'s `_write_output`, `_write_error`, `_write_held` and
-   `_flush`, and `Program`'s and `Process`'s `_flush_output` (`fwrite`, `fflush`); `Memory.Heap`'s `allocate`, `resize`, `free` and `live_allocations` (the C library's
-   `malloc`, or the `--debug-memory` table) and `Memory.Address`'s `copy_to` and `compare_bytes` (`memmove`,
-   `memcmp`), `text(length)`, `String.sum` and `String.code_at` (which depend on whether text fits inside the
-   `String`);
-   `TypedMemory<T>`; the number classes' bit operations; `DynamicLibrary`'s opening, closing and
-   symbol lookup; the entry points and frames of `Concurrent`, `ThreadPool` and `Scheduler`; `HotReload`'s
-   compiler hand-off; and `Spite.Attribute`'s and `Spite.Function`'s dispatch.
+1. **Memory.** Where a value lives, how it is counted and freed, the table `--debug-memory` prints, and the threads,
+   scheduler, handles and locks under `Concurrent`, `Parallel` and singletons are written by the compiler for
+   the program that needs them; no class of the library stands for them and a program cannot name them
+   ([memory.md](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#memory-belongs-to-the-compiler)).
+2. **Supplied bodies**: functions declared without a body that the compiler writes: `Console`'s `_write_output`,
+   `_write_error`, `_write_held` and `_flush`, `Program`'s and `Process`'s `_flush_output`, a `Buffer`'s reads,
+   writes and copies, `String.sum`, `String.code_at` and the making of a `String` from bytes (which depend on
+   whether text fits inside the `String`), the number classes' bit operations, `DynamicLibrary`'s opening, closing
+   and symbol lookup, and `Spite.Attribute`'s and `Spite.Function`'s dispatch.
 3. **The object header**: retain, release and the class id are code the compiler emits, not functions anyone
    calls. For `String` that includes the two decisions only the header can make: a `'constant'` text is never
    counted, and `text = text + piece` grows the text in place only when its block's count is one, or inside the
    `String` itself while it is 15 bytes or fewer.
-4. **Entry and exit**: `main`, and text literals, which are static data in the `'constant'` section, as symbols
-   are.
+4. **Entry and exit**: the start of the program, and text literals, which are static data in the `'constant'`
+   section, as symbols are.
 
-**WebAssembly.** There, `Memory.Heap`'s `allocate` grows linear memory with `memory.grow`, and the
-C runtime library is the JavaScript host's. **The web shim is the one honest exception, and its target is zero
-hand-written lines.** A file that runs in the JavaScript virtual machine cannot be Spite by construction: it is
-on the far side of a boundary Spite does not own. What is achievable is that nobody writes it: the imports come
-from `external js` declarations and the command-buffer drain loop is a switch over an opcode table, both data the
-compiler can emit, so the source of truth stays Spite and nothing in the repository is written in a second
-language ([targets.md](https://github.com/Spite-Language/spite_documentation/blob/master/targets.md)).
+**WebAssembly.** There, memory grows linear memory and the system library is the JavaScript host's. **The web shim is
+the one honest exception, and its target is zero hand-written lines.** A file that runs in the JavaScript virtual
+machine cannot be Spite by construction: it is on the far side of a boundary Spite does not own. What is achievable
+is that nobody writes it: the imports come from `external js` declarations and the command-buffer drain loop is a
+switch over an opcode table, both data the compiler can emit, so the source of truth stays Spite and nothing is
+written in a second language ([targets.md](https://github.com/Spite-Language/spite_documentation/blob/master/targets.md)).
 
 ### examples/calculator
 

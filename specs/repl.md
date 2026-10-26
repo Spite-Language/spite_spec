@@ -99,7 +99,7 @@ is a gap to close, not a rule. The steps, in the order a game meets them:
 All of it lives only in a `--hot-reload` build: a normal build carries none of it.
 
 A REPL that inspects and drives the *running* program, local (`--repl`) and remote (`--repl-port`), and live
-reload (`--hot-reload`). The REPL is Spite, `library/read_evaluate_print_loop.spite`, walking the program through
+reload (`--hot-reload`). The REPL is Spite the compiler adds to a build that asks for it (the class `Spite.Prompt`), walking the program through
 reflection; nothing of it is in a build that did not ask for it. It answers paths, singletons by name, assignment of
 a literal, calls with literal arguments and paths through what they answer, `attributes`, `functions`, `classes`,
 `describe`, `enums`, `memory`, `help`, `exit`, `reload`, `last_reload` and `wait_reload`, assignment into elements,
@@ -157,7 +157,7 @@ the entry class's own Spite name):
   to the instance when it has been made (read from the singleton's static slot with an acquiring load, never through
   its constructor), without a value when it has not; and `class_names()`, the program's own classes that are not
   singletons. Of the standard library's singletons only `Environment` and `Build` are listed: the rest (`Console`,
-  `Scheduler`, `TypedMemory<T>`, ...) are the language's own machinery, and describing them would drag most of the
+  and the rest) are the language's own machinery, and describing them would drag most of the
   library's classes into the build's reflection, which a reload that compiles only the changed classes would then
   have to reproduce. Any other build writes them as an empty list and empty text, and nothing calls them, so they
   are shaken out with the rest of the loop: a normal build carries none of it.
@@ -185,7 +185,7 @@ the entry class's own Spite name):
   text held by an attribute or an element, `class`, `address`, `bytes`, `hex` and `value` of its own slot. A value
   reached only through what a call answers, with no slot of its own, is refused naming what to ask instead.
   `bytes 0x1f2a40 64` reads a range: an address in hexadecimal and 1 to 4096 bytes, anything else refused with the
-  form. **A read never crashes the inspected program**: the bytes are copied by `Memory.Inspector.hex_at`, which asks
+  form. **A read never crashes the inspected program**: the bytes are copied by a function the compiler writes, which asks
   the operating system (`ReadProcessMemory` on the program's own process on Windows, a write into a pipe on Linux
   and macOS, which fails with `EFAULT` rather than faulting) and a range it cannot copy whole answers
   `unreadable: 0x10 for 8 bytes`. Reads only.
@@ -194,9 +194,8 @@ the entry class's own Spite name):
   and `sizeof` its C struct); `stored_memory()`, the slot an attribute or element is stored in, from which an
   attribute's offset is its address less its owner's; and `buffer_memory()`, a list's item buffer. Each answers
   `null` where there is none, and they answer only for a `Spite.Attribute` linked to a live value, which is a REPL
-  build's (outside one every `Spite.Attribute` answers `null`). The copying is `Memory.Inspector`
-  (`library/memory/inspector.spite`, with each system's `copy_readable` in its folder), a singleton any program can
-  call on `value.memory`'s address. A program that never inspects carries none of it; the attribute's five hidden
+  build's (outside one every `Spite.Attribute` answers `null`). The copying is done by the compiler's own
+  code for the system. A program that never inspects carries none of it; the attribute's five hidden
   numbers are set only where a REPL build links it.
 - **Generic functions beyond the instances the program holds.** The prompt calls what the build compiled: a generic
   class's functions on an instance some path reaches, or on a generic singleton (`Column<Position>().values[0]`). An
@@ -292,10 +291,10 @@ the process stays alive serving the REPL until a client sends `exit`.
 
 The design:
 
-- **Spite, over `Socket`.** The server is `ReadEvaluatePrintLoop.serve` in `library/read_evaluate_print_loop.spite`,
+- **Spite, over `Socket`.** The server is `ReadEvaluatePrintLoop.serve`, written by the compiler
   over the `Socket` class ([System classes](standard_library.md#system-classes)), whose operating-system
-  members live in `library/windows/socket.spite` (`ws2_32.dll`), `library/linux/socket.spite` (`libc.so.6`) and
-  `library/mac/socket.spite` (`libSystem.dylib`), each reopening `Socket` for its system. The REPL listens with
+  members each system's folder of the standard library supplies (`ws2_32.dll` on Windows, `libc.so.6` on Linux,
+  `libSystem.dylib` on macOS). The REPL listens with
   `listen_locally`, which binds `127.0.0.1` and nothing else, so "loopback only" holds by construction.
   `ws2_32.dll` is opened when the first `Socket` is made, so a program without a REPL never loads it.
 - **The thread.** The one piece of C this adds is written by the compiler, only in a `--repl-port` build: a
@@ -315,9 +314,9 @@ The design:
   busy loop served between passes. The standard library's own loops have no check points, so a command waits for a
   library call to return.
 - **Every loop is a check point in a REPL build.** In a `--repl-port` or `--hot-reload` build, the generator ends
-  every pass of every `while` in the program's own code (not `library/` or `launcher/`) with a check point: one
-  relaxed load of a C flag that `Scheduler.signal()` raises, which the REPL's thread and the file watcher call when
-  they hand something over. Only when it is raised does the pass call `Scheduler.check_point()`, which lowers it
+  every pass of every `while` in the program's own code (not the standard library's) with a check point: one
+  relaxed load of a flag that the scheduler raises, which the REPL's thread and the file watcher call when
+  they hand something over. Only when it is raised does the pass call the scheduler's check point, which lowers it
   and, on the scheduler's thread, answers a pending command (the handover flag `answer_pending` already reads) and
   runs a pending reload. On any other thread (a `Parallel`, a helper) it does nothing. A loop that never waits is
   answered between two passes. A build without those flags has no check point: its C is byte for byte what it
@@ -406,9 +405,9 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   lent variants it made, in order; the functions each program class declares; the classes that fit each shape; the
   functions that can wait; a digest of each function's call effects and of the other whole-program studies; and
   the facts compiling each class produced, each with the classes that produced it (`fact <classes>\t<fact>`: an
-  attribute read, a class admitted to a shape, a flag such as `threads`, a symbol, an allocator set on a class).
+  attribute read, a class admitted to a shape, a flag such as `threads`, a symbol, a setting on a class).
   `<program>.reload_files` holds a generation number, a hash of each of the program's files (every file it
-  compiled from outside `library/`, not only those declaring its classes) and the build's output settings, so a
+  compiled from outside the standard library, not only those declaring its classes) and the build's output settings, so a
   reload compiles with the same `Build` values the running program has. The executable
   holds a table of its functions' addresses by name, the path of the compiler that built it and that compiler's
   options, so it must run from the directory it was built from.
@@ -443,7 +442,7 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   the running program has is gone, and the library's path.
 - **Swapping at a drain point.** The running program opens the library with `LoadLibraryA`/`dlopen`, the
   calls `DynamicLibrary` opens a library with, and calls its `spite_reload_bind`, which looks up each running
-  function it uses by name (the allocator included, so the library allocates and frees through the program) and then
+  function it uses by name (the compiler's memory included, so the library allocates and frees through the program) and then
   re-points the slots of the rebuilt functions whose prototypes are unchanged, with an atomic store. **The compile
   runs on a helper thread**: the watcher's thread compiles a change it sees,
   and the REPL's thread compiles before it hands `reload` over, one compile at a time; the finished library waits
@@ -470,7 +469,7 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   rebuilt`.
 - **What a reload refuses.** A file that does not compile is refused, with the compiler's error, and
   the program keeps all of its code, so a save caught half-written is harmless.
-- **Watching.** `HotReload` (`library/hot_reload.spite`) watches through the standard library's
+- **Watching.** `HotReload` watches through the standard library's
   `FileSystemWatcher` ([System classes](standard_library.md#system-classes)), the one watcher any program uses:
   `ReadDirectoryChangesW` with overlapped I/O from `kernel32.dll` on Windows, `inotify` and `poll` from `libc.so.6`
   on Linux, and `kqueue`/`kevent` on each folder and file from `libSystem.dylib` on macOS, with no polling. On a

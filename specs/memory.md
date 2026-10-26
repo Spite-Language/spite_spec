@@ -136,15 +136,14 @@ fails the same way on every run, instead of depending on what the heap held, whi
 for that. Only a `--debug-memory` build does this.
 
 **Run-time cost.** The table and the summary exist only in a `--debug-memory` build: no other build carries them.
-Allocations are counted only there, under the counter of the compiler's own allocator.
+Allocations are counted only there.
 
 ### Memory is not observable
 
-**Memory and threads are constructs of the language that each generator implements, and a program cannot observe
-them.** No class stands for them: there is no memory address, allocator, allocation count, object placement or list
-of live instances a program can read. `Memory.Heap`, `Memory.Arena`, `Memory.Address`, `Memory.Inspector`,
-`value.memory`, `memory.allocator` and `Monster.instances` do not exist, so no optimisation is ever blocked by something
-a program might be watching. Only `--debug-memory` reports leaks, outside the program. Reading the declared shape of a
+**Memory and threads belong to the compiler, and a program cannot observe them.** No class stands for them: there is
+no memory address, allocator, allocation count, object placement or list of live instances a program can read or
+name, so no optimisation is ever blocked by something a program might be watching. Only `--debug-memory` reports
+leaks, outside the program. Reading the declared shape of a
 class (its attributes and functions) stays, since it is fixed while compiling. A class that needs room for bytes
 holds a `Buffer`, and the compiler places and optimises it from the proofs it has.
 
@@ -184,7 +183,7 @@ compile time that it is never kept past its use. The rules:
 
 - **Layout.** A vector of a class keeps one block of memory: each item is the class's attributes laid out as its
   object would lay them out, with no header, no class and no reference count, one after another
-  (`InlineMemory<T>`, `library/inline_memory.spite`, whose functions the compiler writes per item type). A vector
+  (the compiler writes its functions per item type). A vector
   of numbers, `Boolean`s, enums or `String`s is a plain array of them, like a list's buffer.
 - **Only a class is borrowed.** A whole number
   of any size, `Float`, `Double`, `Boolean` or an enum is kept in a `List`, and
@@ -259,7 +258,7 @@ compile time that it is never kept past its use. The rules:
 - **Inside the item's class.** A function of the item's class runs on a borrowed item when a template or a call
   reaches it, so it may not use `this` as a value (the item-class error in
   [collections.md's rules](collections.md#vectort)).
-- **Only the library is trusted.** The functions of `Vector`, `Items` and `InlineMemory` in `library/` hand out
+- **Only the library is trusted.** The functions of `Vector` and `Items` in the standard library hand out
   and move borrowed items by design, so these rules are not checked inside them. A function a program adds to one
   of those classes by reopening it in its own file ([packages.md](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md)) is checked like any other code,
   a member template of its own included: an item it reads with `values.item_at(items, index)` is borrowed, so it
@@ -268,7 +267,7 @@ compile time that it is never kept past its use. The rules:
   each `String` attribute once more, and the value stays an ordinary object; `remove_at`, `clear` and dropping the
   vector release the `String`s of the items they remove.
 - **Run-time cost.** None beyond the block: every rule above is proven while compiling, a borrowed item is
-  one address, and a program that makes no `Vector` carries none of `library/vector.spite` or `InlineMemory`.
+  one address, and a program that makes no `Vector` carries none of its code.
   Measured in `benchmarks/particles`, a `Vector` of particles stepped in place against the same array of structs
   in C.
 - **A row of borrowed items.** An object literal written as `var row = {...}` or `var row: Moving = {...}`

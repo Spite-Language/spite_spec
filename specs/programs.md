@@ -59,7 +59,7 @@ constructor sets its state, or a field of `Environment` or `Build`.
 
 ## Program settings: `Environment`
 
-`Environment` is a standard library singleton (`library/environment.spite`), and a program
+`Environment` is a standard library singleton, and a program
 **reopens** it ([Packages, namespaces and loading](packages.md#packages-namespaces-and-loading)) with a
 file of its own named `environment.spite` to declare the settings it has, one `var` per setting. `Environment()`
 works anywhere. Only the declared fields are read: nothing the program does not name is loaded, which makes it a
@@ -96,7 +96,7 @@ What follows is how it is compiled:
   with).
 - **How the fields get filled.** The compiler prepends one assignment per declared field to `Environment`'s
   constructor, `serve = boolean_setting("serve", serve)`, where `boolean_setting`, `integer_setting` and
-  `text_setting` are ordinary Spite functions in `library/environment.spite`. The reading itself is Spite; the
+  `text_setting` are ordinary Spite functions of `Environment`. The reading itself is Spite; the
   compiler only writes the calls, the way it writes a template
   (`conformance/stage6/environment_settings`).
 - **The compiler passes a setting on.** `spite program --serve=true` with `serve` declared in `Environment`
@@ -115,14 +115,14 @@ What follows is how it is compiled:
 
 ## Build settings: `Build`
 
-`Environment` (above) is read when the program **runs**; `Build` (`library/build.spite`, a singleton) is decided
+`Environment` (above) is read when the program **runs**; `Build` (a singleton of the standard library) is decided
 when it is **compiled**. Every compiler option is a `Build` field
 with a literal default, and a program adds its own the same way it adds `Environment` settings, by reopening
 `Build` in a file named `build.spite`. What follows is how it is compiled:
 
 - **Every field is a constant.** A `--name=value` naming a `Build` field sets it; a field nobody
   sets keeps its declared default: the program's own `build.spite` if it reopens it, else a loaded package's,
-  else `library/build.spite`.
+  else the standard library's `Build`.
   Either way the value is written into the program: `build.serve` compiles to `true`, a condition on it is decided
   while compiling, the branch not taken is never generated, and nothing is read when the program runs. The field
   still exists on the `Build` singleton with that value, for reflection.
@@ -153,7 +153,7 @@ with a literal default, and a program adds its own the same way it adds `Environ
   (one naming the same system, as `--final-classes` prints every `Build` field, is accepted): `'Build.target_operating_system' cannot be declared by a
   program: the standard library for the target system is loaded before the program, so the target is given to
   the compiler, --target-operating-system=linux (or windows, or mac), and is the system doing the compiling
-  otherwise` (`diagnostics/target_in_build`). The system folders of `library/`
+  otherwise` (`diagnostics/target_in_build`). The system folders of the standard library
   still set it.
 - **A `Boolean` may be given bare**: `--optimized` is `--optimized=true`. Any other bare flag is an error
   naming the value it needs.
@@ -167,7 +167,7 @@ with a literal default, and a program adds its own the same way it adds `Environ
   defaults to it. `--target-operating-system=linux` is the system the program is compiled for, which the program loads
   by its path ([above](#constructors-and-the-entrypoint)), and it folds, so `if build.target_operating_system == "windows" { }`
   keeps one branch. Each system's folder reopens `Build` with `var target_operating_system = "linux"`, which is
-  only the default a compiler that does not fold `Build` sees (the seed while bootstrapping). The compiler
+  only the default for a program that is read without the flag. The compiler
   learns which system it runs on from its own `build.target_operating_system`, folded when it was built.
 - **`program`** is the folder named on the command line, as it is written there (`tests/loaded_program` for
   `spite tests/loaded_program`); the compiler supplies it and giving it is an error

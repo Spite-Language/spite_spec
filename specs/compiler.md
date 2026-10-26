@@ -254,7 +254,7 @@ it. Tree shaking and every other whole-program step run before any output is wri
 
 A build with `--development`,
 `--hot-reload`, `--repl` or `--repl-port` is *inspectable*: nothing is tree-shaken, and the singletons that hold
-nothing (`Build`, `TypedMemory<T>`, [Singletons](classes_and_files.md#singleton-rules)) are ordinary
+nothing (`Build`, [Singletons](classes_and_files.md#singleton-rules)) are ordinary
 objects (allocated at first use, listed by `.instances`, destroyed at exit), so the REPL and reflection see the
 internals as normal classes; since nothing is shaken, every `DynamicLibrary` looks up every symbol it declares.
 Every other build, the ordinary one included and not only `--optimized`, is a *production* build, where those
@@ -290,7 +290,7 @@ hides one in the program.
 ## Formatting before compiling
 
 - **Every compile formats first, and nothing turns it off.** After the whole program is read, every `.spite` file of the program's own (its folder
-  with every folder below it, and every `load`-ed root, never `library/`) whose formatted text differs from what
+  with every folder below it, and every `load`-ed root, never the standard library) whose formatted text differs from what
   is on disk is rewritten, printing `formatted <path>` to the error output, and the program is read again from
   disk before anything else is produced, so what is compiled, and every line an error names, is the formatted
   file. A file that does not lex or parse is reported by reading the program, before the formatter sees it. A file
