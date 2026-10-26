@@ -131,7 +131,8 @@ the entry class's own Spite name):
   `program.target`. A path may leave out the leading `program.`, so `player.health` and `program.player.health`
   name the same value. Walking through a non-null `T?` is transparent; a dictionary's entries are walked by key.
 - **calls**: `program.monsters.count()`, `program.monsters[0].roar()`, `program.player.set_age(3)` (any
-  callable function, including an instantiated Symbol-codegen one); `List<T>`'s and `Dictionary<Key, Value>`'s `count()`,
+  callable function, including an instantiated Symbol-codegen one, and the public functions of a standard library
+  class a path reaches, `label.upper_case()` or `program.console.read_line()`, `tests/interactive_library_calls`); `List<T>`'s and `Dictionary<Key, Value>`'s `count()`,
   and `Dictionary<Key, Value>`'s `keys()` (the keys, one a line, or `scores holds no keys`) and `has(key)`, each of which
   must end the expression. A call that answers a value is walked on like any path,
   `World().position_of(1).across`, and it runs once; a call that answers `Nothing` ends the expression, and a

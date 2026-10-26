@@ -1,0 +1,17 @@
+var console = Console()
+var program = Program()
+
+func DevelopmentKeepsFunctions() {
+    load "../../../spite_standard_library/windows"
+    var keeper = Keeper()
+    var used = keeper.used()
+    console.print(used)
+    var path = program.executable_path()
+    var length = path.length()
+    var stem = path.slice(0, length - 4)
+    var map = File("{stem}.functions")
+    var text = map.read()
+    crash text
+    var kept = text.contains("\tKeeper.unused")
+    console.print("unused kept", kept)
+}
