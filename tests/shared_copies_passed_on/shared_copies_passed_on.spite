@@ -1,0 +1,40 @@
+var console = Console()
+var orders = List<Order>()
+
+func SharedCopiesPassedOn() {
+    load "../../../spite_standard_library/windows"
+    var index = 0
+    while index < 4 {
+        var order = Order(index + 1)
+        orders.append(order)
+        index = index + 1
+    }
+    var sum = 0
+    var round = 0
+    while round < 3 {
+        var copies = orders.copy()
+        sum = sum + total_of(copies)
+        var deep = orders.deep_copy()
+        sum = sum + total_of(deep)
+        round = round + 1
+    }
+    console.print("sum", sum)
+    changed_elsewhere()
+    var first = orders[0]
+    crash first
+    console.print("first", first.total)
+}
+
+func total_of(listed: List<Order>): Integer {
+    return listed.sum_total()
+}
+
+func changed_elsewhere() {
+    var copies = orders.deep_copy()
+    var first = orders[0]
+    crash first
+    first.total = 50
+    var copied_sum = copies.sum_total()
+    var original_sum = orders.sum_total()
+    console.print("copy", copied_sum, "original", original_sum)
+}

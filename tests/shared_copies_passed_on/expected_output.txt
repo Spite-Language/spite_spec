@@ -1,0 +1,3 @@
+sum 60
+copy 10 original 59
+first 50

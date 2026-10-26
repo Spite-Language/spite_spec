@@ -1,0 +1,43 @@
+var console = Console()
+
+func BuffersInTheFrame() {
+    load "../../../spite_standard_library/windows"
+    var total: Long = 0
+    var round = 0
+    while round < 50 {
+        var squared = squares(round % 40, round)
+        var biggest = largest(round % 10, round % 7, round % 13)
+        total = total + squared + biggest
+        round = round + 1
+    }
+    console.print("total", total)
+}
+
+func squares(count: Integer, offset: Integer): Long {
+    var kept = List<Long>()
+    var index = 0
+    while index < count {
+        var value: Long = index + offset
+        kept.append(value * value)
+        index = index + 1
+    }
+    var sum: Long = 0
+    index = 0
+    while index < kept.count() {
+        sum = sum + kept[index]
+        index = index + 1
+    }
+    return sum
+}
+
+func largest(...values: List<Integer>): Integer {
+    var biggest = 0
+    var index = 0
+    while index < values.count() {
+        if values[index] > biggest {
+            biggest = values[index]
+        }
+        index = index + 1
+    }
+    return biggest
+}
