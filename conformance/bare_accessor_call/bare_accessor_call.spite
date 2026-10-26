@@ -1,0 +1,12 @@
+var console = Console()
+var _turns = 0
+
+func BareAccessorCall() {
+    load "../../../spite_standard_library/windows"
+    set_turns(3)
+    console.print(_turns)
+}
+
+func set_turns(value: Integer) {
+    _turns = value
+}

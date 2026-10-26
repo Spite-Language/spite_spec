@@ -1,0 +1,11 @@
+var console = Console()
+
+func LostWriteInABranch() {
+    load "../../../spite_standard_library/windows"
+    var resized = Layout()
+    var wide = resized.height == 0
+    console.print(wide)
+    if wide {
+        resized.width = 40
+    }
+}

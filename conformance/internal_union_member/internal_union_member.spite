@@ -1,0 +1,12 @@
+union Held {
+    Spite.Fault
+    String
+}
+
+var console = Console()
+
+func InternalUnionMember() {
+    load "../../../spite_standard_library/windows"
+    var held: Held = "text"
+    console.print(held)
+}

@@ -292,10 +292,11 @@ a template), otherwise it assigns the field directly. `person.age` (a read) call
 same way when defined. The read
 mirrors the write. Every function return is a properly retained, independent reference
 ([Memory](memory.md#the-memory-model)), so a getter that computes and hands back a fresh value is exactly as
-safe to intercept through as one that just returns the field itself. Calling a getter or setter by name (`person.get_full_name()`) is refused: write `person.full_name`. Compound assignment through interception works both ways: `person.age = person.age + 1`
+safe to intercept through as one that just returns the field itself. Calling a getter or setter by name (`person.get_full_name()`) is refused: write `person.full_name`. Inside its own class, a bare `set_turns(3)` or `get_largest()` is refused the same way ("'set_turns' is what writing 'turns' calls: write 'turns = 3'"), unless the class has an attribute of that name or a local of that name hides it, since the bare name then reads the attribute or the local and the call is the only way to the function. Compound assignment through interception works both ways: `person.age = person.age + 1`
 reads through `get_age()` and writes through `set_age(...)`. Inside a class's own functions, a bare `age = 1`
-(no receiver) and `attributes[attribute]` stay raw: interception only applies to `receiver.field` written
-from outside. Which reads and writes are intercepted is decided while compiling: an intercepted one is a direct
+(no receiver) and `attributes[attribute]` stay raw when the class has an attribute of that name: interception
+only applies to `receiver.field` written from outside. A bare name that no local and no attribute holds reads
+through the class's own `get_<name>()` and writes through its `set_<name>(value)`. Which reads and writes are intercepted is decided while compiling: an intercepted one is a direct
 call of the getter or setter, and every other one a plain field access.
 
 **A getter with no setter makes a read-only attribute**: a read of `.name` that finds no attribute but finds
