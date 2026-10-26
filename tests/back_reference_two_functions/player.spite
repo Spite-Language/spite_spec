@@ -6,7 +6,7 @@ func Player(new_name: String) {
     name = new_name
 }
 
-func join(new_team: Team) {
+func play_for(new_team: Team) {
     team = new_team
 }
 

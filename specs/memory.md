@@ -68,8 +68,8 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   (`t.f = c`, `t.f.append(c)`, `t.f[k] = c`), `T` declares that `f`, and `f` holds a `C`: through a collection
   (`children: List<Child>`), or directly when `c` was made in that function and `t` was not. A call of a program
   function whose name only one class declares counts as the stores that function makes, with `this` and its
-  parameters read as the call's receiver and arguments, so `team.sign(player)` (which appends its argument to
-  `players`) beside `player.join(team)` (which sets `team`) links them as the two stores written out would
+  parameters read as the call's receiver and arguments, so `team.recruit(player)` (which appends its argument to
+  `players`) beside `player.play_for(team)` (which sets `team`) links them as the two stores written out would
   (`tests/back_reference_two_functions`). Neither `C` nor `T` is a singleton or generic. The class graph alone cannot tell a `parent` from an owning `answer: Type?` beside
   `members: List<Type>`, and taking an owning reference for a back one would free an object a program still holds,
   so a cycle the code does not link this way keeps its counts and leaks: break it by hand by clearing the `T?` field

@@ -9,8 +9,8 @@ func BackReferenceTwoFunctions() {
 func make_a_team() {
     var team = Team("rovers")
     var player = Player("ada")
-    team.sign(player)
-    player.join(team)
+    team.recruit(player)
+    player.play_for(team)
     crash player.team
     console.print(player.name, "plays for", player.team.name)
 }

@@ -16,9 +16,12 @@ func DeepCopyTypeCycles() {
     first.name = "changed"
     second.name = "changed too"
     crash copied.next
-    console.print("the copy goes on to", copied.next.describe())
-    console.print("the copy closes its ring at", copied.next.follow())
-    console.print("the copy itself is", copied.follow())
+    var going = copied.next.describe()
+    console.print("the copy goes on to", going)
+    var closing = copied.next.follow()
+    console.print("the copy closes its ring at", closing)
+    var itself = copied.follow()
+    console.print("the copy itself is", itself)
     copied.next = null
     second.next = null
     console.print("the original is", first.name)

@@ -6,7 +6,7 @@ func Team(new_name: String) {
     name = new_name
 }
 
-func sign(player: Player) {
+func recruit(player: Player) {
     players.append(player)
 }
 
