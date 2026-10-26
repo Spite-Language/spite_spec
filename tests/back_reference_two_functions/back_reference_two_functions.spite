@@ -1,0 +1,16 @@
+var console = Console()
+
+func BackReferenceTwoFunctions() {
+    load "../../../spite_standard_library/windows"
+    make_a_team()
+    console.print("the team is gone")
+}
+
+func make_a_team() {
+    var team = Team("rovers")
+    var player = Player("ada")
+    team.recruit(player)
+    player.play_for(team)
+    crash player.team
+    console.print(player.name, "plays for", player.team.name)
+}

@@ -1,0 +1,1 @@
+conformance/json_keys_passed/json_keys_passed.spite:7: error: 'JsonWriter.keys' is folded into the code while compiling, so it is read where it is: '...' could change it one key at a time, and the code would keep the keys it was compiled with (in JsonKeysPassed.JsonKeysPassed)

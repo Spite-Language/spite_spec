@@ -1,0 +1,24 @@
+var console = Console()
+
+func RunTimeLibraryClass() {
+    load "../../../spite_standard_library/windows"
+    var kinds = List<Spite.Class>()
+    kinds.append(HttpResponse)
+    kinds.append(Integer)
+    var index = 0
+    while index < kinds.count() {
+        var kind = kinds[index]
+        crash kind
+        make(kind)
+        index = index + 1
+    }
+}
+
+func make(kind: Spite.Class) {
+    var made = kind()
+    if made == HttpResponse {
+        console.print(kind.name, "status", made.status)
+    } else {
+        console.print(kind.name, "made")
+    }
+}

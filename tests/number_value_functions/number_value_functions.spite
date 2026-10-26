@@ -1,0 +1,20 @@
+var console = Console()
+
+func NumberValueFunctions() {
+    load "../../../spite_standard_library/windows"
+    var numbers = List<Number>()
+    numbers.append(-3)
+    numbers.append(-2.5)
+    var index = 0
+    while index < numbers.count() {
+        var value = numbers[index]
+        crash value
+        var shown = value.to_string()
+        var positive = value.absolute()
+        var wide = positive.to_double()
+        var is_three = wide == 3.0
+        var is_half_five = wide == 2.5
+        console.print(shown, is_three, is_half_five)
+        index = index + 1
+    }
+}

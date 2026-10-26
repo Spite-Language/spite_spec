@@ -1,0 +1,5 @@
+made
+cat Tom 2
+named Rex
+a stranger nobody
+spite: call() gives 'FriendlyGreetings.greet_all' an argument 'pet' that is not a Pet, the type it takes

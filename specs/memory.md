@@ -56,7 +56,8 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   references point at the copies, so the copy has the same cycles as the original. A back reference's copy holds the
   copy of its object when the same `deep_copy()` copies that object, before or after reaching the back reference, and
   the original object otherwise. The compiler writes each class's deep copy: one whose attributes can reach itself (through an
-  object attribute, or any class of a union attribute), or reach a back reference, remembers the objects copied during the call in a table made for that call; every
+  object attribute, or any class of a union attribute), reach a `type` attribute (whatever fills it, since its
+  fillers are known only once the program is built: `tests/deep_copy_type_cycles`), or reach a back reference, remembers the objects copied during the call in a table made for that call; every
   other class is copied plainly, with no table (`conformance/deep_copy_graphs`). An object reached twice
   through classes that cannot reach themselves (two attributes holding the same leaf) is copied twice.
 - **There is no `Weak<T>`: the compiler picks a cycle's back reference.** A program writes plain references, and the
@@ -65,8 +66,11 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   attribute `a: T?` of a class `C` holds no count when one function both sets `c.a = t` (directly, or through a
   constructor that stores its argument in `a`, as `Child(name, this)`) and stores `c` into `t`'s attribute `f`
   (`t.f = c`, `t.f.append(c)`, `t.f[k] = c`), `T` declares that `f`, and `f` holds a `C`: through a collection
-  (`children: List<Child>`), or directly when `c` was made in that function and `t` was not. Neither `C` nor `T` is a
-  singleton or generic. The class graph alone cannot tell a `parent` from an owning `answer: Type?` beside
+  (`children: List<Child>`), or directly when `c` was made in that function and `t` was not. A call of a program
+  function whose name only one class declares counts as the stores that function makes, with `this` and its
+  parameters read as the call's receiver and arguments, so `team.recruit(player)` (which appends its argument to
+  `players`) beside `player.play_for(team)` (which sets `team`) links them as the two stores written out would
+  (`tests/back_reference_two_functions`). Neither `C` nor `T` is a singleton or generic. The class graph alone cannot tell a `parent` from an owning `answer: Type?` beside
   `members: List<Type>`, and taking an owning reference for a back one would free an object a program still holds,
   so a cycle the code does not link this way keeps its counts and leaks: break it by hand by clearing the `T?` field
   that closes the loop.
@@ -238,6 +242,11 @@ compile time that it is never kept past its use. The rules:
   line 13 may move the items of 'velocities', so 'again' is not read after it: read 'velocities[index]' again after
   that line, or keep 'again.copy()', an independent object`. A vector named by a local variable is taken to change
   only through the calls it is passed to and through calls that resize an attribute holding a `Vector`.
+  Assigning an object that holds the vector at any depth, through the program's classes and through the items of
+  the library's collections, frees it as surely: `world = World()` ends what was borrowed from
+  `world.holder.velocities` (`conformance/vector_borrow_owner_assigned`), and so does a library call that removes
+  items (`remove_at`, `remove_first`, `remove_last`, `remove_swapping`, `truncate`, `clear`, `remove`,
+  `remove_where...`) from a collection whose items hold such a vector.
 - **What a call can reach.** The call effects follow only what the call can run, so a call that cannot resize the
   item's vector is not refused:
   - **A collection read with `[ ]` from an attribute is that attribute's element.** `buffers[buffer].append(command)`
@@ -537,6 +546,12 @@ compile time that it is never kept past its use. The rules:
     is a library function, which is never lent an item: pass the attributes it needs, or 'first.copy()' where a
     snapshot is what it wants`; to a union parameter: `... and 'f' takes it as a union, which holds its own values
     and is never lent an item: pass the attributes it needs, or give 'f' a parameter of the item's own class`;
+    to a variadic list of a program function (a library one, as `console.print`'s, only reads it for the call): `... and 'count_left' gathers it into the list of its variadic arguments, which holds its
+    own values and is never lent an item: ...` (`conformance/lent_call_variadic`); to a function the compiler
+    cannot follow, a function value or a function of a value typed by a `type`: `... and 'measure' is not a
+    function the compiler follows while compiling (a function value, or a function of a value whose class is
+    known only while the program runs), so it is never lent an item: ...` (`conformance/lent_call_unfollowed`).
+    A constructor called by its class's name is a function like any other, and is lent the item;
     any other expression (such as a call that lends its result, written inside the argument): `... only a named
     item, an item read with '[ ]' or a row's attribute is lent to a call: name it first, 'var item =
     ...', and pass 'item'`.

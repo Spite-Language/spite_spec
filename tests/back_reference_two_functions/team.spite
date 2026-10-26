@@ -1,0 +1,15 @@
+var name = ""
+var players = List<Player>()
+var console = Console()
+
+func Team(new_name: String) {
+    name = new_name
+}
+
+func recruit(player: Player) {
+    players.append(player)
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

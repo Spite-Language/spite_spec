@@ -1,0 +1,6 @@
+branched true 0,0 1,10 2,0 3,0
+branched false 0,0 101,0 2,0 3,0
+looped 0,0 1,0 2,30 3,0
+replaced true 0,0 1,0 2,0 3,0
+replaced false 0,0 1,0 2,0 3,0
+shifted 3,0 1,0 2,0 3,0

@@ -1,0 +1,20 @@
+var program = Program()
+
+func count_forever(): Integer {
+    var counted = 0
+    while true {
+        counted = counted + step(counted)
+    }
+}
+
+func step(counted: Integer): Integer {
+    return counted.bits_and(1) + 1
+}
+
+func count_and_wait(): Integer {
+    var counted = 0
+    while true {
+        counted = counted + step(counted)
+        program.sleep(1)
+    }
+}

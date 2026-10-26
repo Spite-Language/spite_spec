@@ -1,0 +1,92 @@
+var console = Console()
+var points = List<Point>()
+
+func NestedWriteBacks() {
+    load "../../../spite_standard_library/windows"
+    branched(true)
+    branched(false)
+    looped()
+    replaced_in_a_branch(true)
+    replaced_in_a_branch(false)
+    shifted_after()
+}
+
+func reset() {
+    points.clear()
+    var index = 0
+    while index < 4 {
+        var made = Point(index)
+        points.append(made)
+        index = index + 1
+    }
+}
+
+func print_points(label: String) {
+    var text = label
+    var index = 0
+    while index < points.count() {
+        var point = points[index]
+        text = "{text} {point.x},{point.y}"
+        index = index + 1
+    }
+    console.print(text)
+}
+
+func branched(bumping: Boolean) {
+    reset()
+    crash points[1]
+    var point = points[1]
+    if bumping {
+        point.bump()
+        points[1] = point
+    } else {
+        point.x = point.x + 100
+    }
+    print_points("branched {bumping}")
+}
+
+func looped() {
+    reset()
+    crash points[2]
+    var point = points[2]
+    var pass = 0
+    while pass < 3 {
+        point.bump()
+        if pass == 1 {
+            points[2] = point
+        }
+        pass = pass + 1
+    }
+    print_points("looped")
+}
+
+func replace_first() {
+    var fresh = Point(99)
+    points[0] = fresh
+}
+
+func replaced_in_a_branch(replacing: Boolean) {
+    reset()
+    crash points[0]
+    var point = points[0]
+    if replacing {
+        replace_first()
+    }
+    if point.x == 0 {
+        points[0] = point
+    }
+    print_points("replaced {replacing}")
+}
+
+func shifted_after() {
+    reset()
+    var index = 3
+    crash points[index]
+    var point = points[index]
+    if index > 0 {
+        points[index] = point
+    }
+    index = 0
+    points[index] = point
+    print_points("shifted")
+}
