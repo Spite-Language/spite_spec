@@ -8,7 +8,7 @@ func UnsignedLongDecimals() {
     var low: Double = 12345.0
     var plain: UnsignedLong = low
     console.print(plain)
-    var top: UnsignedLong = whole + whole - 2000000000000000000
+    var top: UnsignedLong = whole + 8000000000000000000
     var back: Double = top
     console.print(back)
     var half: Float = top
