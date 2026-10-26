@@ -136,8 +136,8 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   table and the prompt are the compiler's own, added when a program needs one, and no program can name or reopen
   them. Any file that names `Spite.Internal` is refused: a type, a call, an
   inheritance, a class written in a `spite/internal/` folder (new or reopening one), the name inside a string
-  interpolation, a member of a union or the type of a `type`'s member, or a text given to a call that is the whole
-  name (`"Spite.Internal.Memory"`). The message names the class written (or `Spite.Internal` alone when no class follows) and the plain
+  interpolation, or a member of a union or the type of a `type`'s member. A text holding the name is only text
+  (the compiler, a Spite program, names these classes in its own texts). The message names the class written (or `Spite.Internal` alone when no class follows) and the plain
   form to use: "Spite.Internal.Memory is internal to Spite and cannot be used outside the standard library: read
   bytes with Buffer or BinaryReader, describe foreign data with a plain type, and leave threads to the compiler"
   (`diagnostics/user_internal_use`, `diagnostics/user_internal_class`). A program that
