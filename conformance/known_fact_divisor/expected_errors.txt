@@ -1,0 +1,1 @@
+conformance/known_fact_divisor/known_fact_divisor.spite:19: error: 'parts != 0' is already proven by 'parts > 0' on line 18: remove this check (in KnownFactDivisor.KnownFactDivisor)

@@ -1,0 +1,13 @@
+var console = Console()
+
+func ProvenElementByCount() {
+    load "../../../spite_standard_library/windows"
+    show_names(1)
+}
+
+func show_names(position: Integer) {
+    var names = ["ada", "bo"]
+    crash names.count() == 2
+    assert names[1]
+    console.print(names[position], names[1])
+}

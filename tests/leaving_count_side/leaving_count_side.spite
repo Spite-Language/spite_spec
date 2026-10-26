@@ -1,0 +1,21 @@
+var console = Console()
+var lists = Dictionary<String, List<Integer>>()
+
+func LeavingCountSide() {
+    load "../../../spite_standard_library/windows"
+    lists["full"] = [7, 8]
+    lists["empty"] = List<Integer>()
+    show_the_first("missing")
+    show_the_first("empty")
+    show_the_first("full")
+}
+
+func show_the_first(name: String) {
+    var found = lists[name]
+    if not found or found.count() == 0 {
+        console.print("nothing found")
+        return
+    }
+    var first: Integer = found[0]
+    console.print(first)
+}

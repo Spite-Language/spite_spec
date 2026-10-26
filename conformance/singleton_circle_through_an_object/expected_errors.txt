@@ -1,0 +1,1 @@
+conformance/singleton_circle_through_an_object/metronome.spite:4: error: singleton 'Metronome' makes 'Tick', which binds 'Metronome': singletons initialise each other in a circle, so one of them has to reach the other some other way, such as by binding it in the class that uses both (in Metronome.)

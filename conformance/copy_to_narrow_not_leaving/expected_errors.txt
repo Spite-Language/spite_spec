@@ -1,0 +1,1 @@
+conformance/copy_to_narrow_not_leaving/copy_to_narrow_not_leaving.spite:10: error: 'watcher' only copies 'tracker' so it can be narrowed: narrow 'tracker' itself ('assert tracker') and use it directly (in CopyToNarrowNotLeaving.report_when_missing)

@@ -219,8 +219,6 @@ func describe_frames(received: Buffer) {
     var at = 0
     var total = received.count()
     while at + 2 <= total {
-        crash received[at]
-        crash received[at + 1]
         var first: Integer = received[at]
         var length: Integer = received[at + 1]
         var payload = Buffer(0)

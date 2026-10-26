@@ -1,0 +1,13 @@
+var console = Console()
+
+func ProvenElementByEarlierCheck() {
+    load "../../../spite_standard_library/windows"
+    show_names(1)
+}
+
+func show_names(position: Integer) {
+    var names = ["ada", "bo"]
+    crash names[position]
+    crash names[position]
+    console.print(names[position])
+}

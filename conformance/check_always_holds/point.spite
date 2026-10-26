@@ -1,0 +1,5 @@
+var x = 3
+
+func length(): Integer {
+    return x
+}

@@ -1,0 +1,1 @@
+conformance/proven_element_by_earlier_check/proven_element_by_earlier_check.spite:11: error: 'names[position]' is already proven by an earlier check, so this 'crash' proves nothing: remove it (in ProvenElementByEarlierCheck.show_names)

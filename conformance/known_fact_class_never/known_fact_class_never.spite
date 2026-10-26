@@ -1,0 +1,33 @@
+var console = Console()
+
+func KnownFactClassNever() {
+    load "../../../spite_standard_library/windows"
+    var names = List<String>()
+    names.append("a")
+    var first = names.first()
+    crash first
+    console.print(first)
+    var counts = List<Integer>()
+    counts.append(3)
+    var number = counts.first()
+    if number {
+        console.print("a number")
+        console.print(number)
+    }
+    var parts = counts.count()
+    crash parts > 0
+    var total = 10 / parts
+    crash total > 2
+    console.print(total)
+    var monster = Monster()
+    if monster == Ghost {
+        console.print(monster.health)
+    }
+    var creature: Creature = Monster()
+    if creature == Monster {
+        console.print("a monster")
+        if creature == Monster {
+            console.print(creature.health)
+        }
+    }
+}

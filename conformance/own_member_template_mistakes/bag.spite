@@ -1,0 +1,18 @@
+generic $element_type
+
+var items = List<$element_type>()
+
+func add(item: $element_type) {
+    items.append(item)
+}
+
+func sum_member(member: Spite.AttributeDeclaration): member.class {
+    var total: member.class = 0
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        total = total + item[member]
+        index = index + 1
+    }
+    return total
+}

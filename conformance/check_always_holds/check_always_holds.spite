@@ -1,0 +1,9 @@
+var console = Console()
+
+func CheckAlwaysHolds() {
+    load "../../../spite_standard_library/windows"
+    var point = Point()
+    crash Point.has_function("length")
+    var length = point.length()
+    console.print(length)
+}
