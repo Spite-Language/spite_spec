@@ -143,7 +143,14 @@ with a literal default, and a program adds its own the same way it adds `Environ
   `final_classes` and `optimization_report`, the path `executable_path`, and `optimized`, `development`, `repl`, `repl_port`,
   `hot_reload` and `debug_memory` ([Command line](compiler.md#command-line)). The compiler reads them from the
   program's resolved `Build`, after the whole program is read, so a program whose `build.spite` says
-  `var optimized = true` is built optimized unless `--optimized=false` is given.
+  `var optimized = true` is built optimized unless `--optimized=false` is given (`tests/build_settings_read`).
+  `check` and `build` both on, from either place, is the error both flags on are
+  (`conformance/build_check_and_build`), and `hot_reload` set there is refused as the flag is. Since the compiler
+  reads them before anything runs, each of its options is declared with only a literal (`true` or `false`, a
+  whole number, or a text without holes); anything else is an error at the declaration:
+  `build.spite:1: error: 'Build.optimization_report' is one of the compiler's options, which the compiler reads
+  while compiling, before anything runs, so it is declared with only a literal: true or false, a whole number, or
+  a text without holes, like 'var optimization_report = ...' in build.spite` (`conformance/build_option_literal`).
 - **Formatting is not an option**: every compile formats first and nothing turns it off, so `--format`
   and a `format` field in a program's `build.spite` are compile errors (`diagnostics/format_flag`,
   `diagnostics/format_setting`).

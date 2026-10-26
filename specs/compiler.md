@@ -115,7 +115,9 @@ it. Tree shaking and every other whole-program step run before any output is wri
 - **No stale executable**: `--check` never writes, moves or removes an executable. Every other build removes
   the executable at its path before compiling, so a build that fails leaves none there, never the one an earlier
   build made; when the program cannot be read, its `Build` is unknown, and the path is the one the command line
-  gives or the default. An executable that cannot be removed (still running, on Windows) stops the build with
+  gives or the default. So the executable at that path is removed before the program is read, unless the command
+  line gives `--check`, and a `check = true` in the program's `build.spite` comes too late to keep it; an
+  `executable_path` the `build.spite` sets is removed too once the program is read. An executable that cannot be removed (still running, on Windows) stops the build with
   `error: '<path>' is left from an earlier build and could not be removed (is it still running?): a build removes
   it first, so a failed build never leaves the old one to run` and exit status 1.
 - **The flags `--check` and `--build` replaced** are errors that name them, when the program declares no setting of
@@ -229,6 +231,11 @@ it. Tree shaking and every other whole-program step run before any output is wri
   option, and this program declares no setting 'serve' (its Build declares check, build, ...). To decide it
   when compiling, reopen Build in the program's build.spite with 'var serve = ...'; to read it when the program
   runs, declare it in environment.spite with 'var serve = ...'`.
+- **A program that loads no standard library** has no `Build`, and takes only `--debug-memory` and `--optimized`
+  (each a `Boolean`, given bare or `=true`/`=false`, `tests/debug_memory_without_library`); any other option is
+  `error: '--repl' is not a compiler option this program can take: it loads no standard library, so it has no
+  Build, and only --debug-memory and --optimized are read without one. To decide 'repl' when compiling, load the
+  standard library and reopen Build in the program's build.spite with 'var repl = ...'`.
 - A value that does not fit the field is an error naming the flag and the forms it takes, and no file position,
   since the mistake is on the command line: `error: '--optimized=maybe' was given to the compiler, but
   'Build.optimized' is a Boolean: --optimized, --optimized=true or --optimized=false` (`diagnostics/flag_value`).
@@ -253,10 +260,17 @@ it. Tree shaking and every other whole-program step run before any output is wri
 ## Inspectable and production builds
 
 A build with `--development`,
-`--hot-reload`, `--repl` or `--repl-port` is *inspectable*: nothing is tree-shaken, and the singletons that hold
+`--hot-reload`, `--repl` or `--repl-port` is *inspectable* (`--development=false`, `--repl=false` and the others
+given `false` are not): nothing is tree-shaken, and the singletons that hold
 nothing (`Build`, [Singletons](classes_and_files.md#singleton-rules)) are ordinary
 objects (allocated at first use, listed by `.instances`, destroyed at exit), so the REPL and reflection see the
 internals as normal classes; since nothing is shaken, every `DynamicLibrary` looks up every symbol it declares.
+Nothing tree-shaken means that every function of every class of the program and its packages that the program
+makes is compiled, whether or not anything calls it (`tests/development_keeps_functions`): every one whose
+parameters and answer are values (numbers, texts, objects, enums, unions), the constructors aside, since a made
+class ran one; a function of a generic class or with a function or shape parameter is compiled for each use, as in
+any build, since it has no code of its own until it is used. The standard library's functions are compiled as the
+program and its prompt call them.
 Every other build, the ordinary one included and not only `--optimized`, is a *production* build, where those
 singletons are static objects and everything unused is tree-shaken, down to the classes nothing reachable uses.
 `--optimized` with a REPL flag is inspectable. The optimisations that change only speed (chains as one loop,
