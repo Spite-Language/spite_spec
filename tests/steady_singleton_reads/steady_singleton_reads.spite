@@ -1,0 +1,40 @@
+var console = Console()
+var limits = Limits()
+
+func SteadySingletonReads() {
+    load "../../../spite_standard_library/windows"
+    var runs = List<Parallel<Integer>>()
+    var index = 0
+    while index < 4 {
+        var run = Parallel(capped)
+        runs.append(run)
+        index = index + 1
+    }
+    var sum = 0
+    index = 0
+    while index < runs.count() {
+        var seen: Integer = runs[index]
+        sum = sum + seen
+        index = index + 1
+    }
+    var looped = 0
+    var pass = 0
+    while pass < 10 {
+        looped = looped + limits.limit + limits.step
+        limits.add(pass)
+        pass = pass + 1
+    }
+    console.print("capped", sum, "looped", looped, "total", limits.total, "twice", limits.twice)
+}
+
+func capped(): Integer {
+    var kept = 0
+    var value = 0
+    while value < 20 {
+        kept = kept + limits.allowed(value)
+        limits.add(1)
+        limits.add_twice(1)
+        value = value + 1
+    }
+    return kept
+}

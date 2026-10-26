@@ -1,0 +1,1 @@
+error: '--check' only checks that the program compiles and '--build' builds its executable: give one of them

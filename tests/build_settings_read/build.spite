@@ -1,0 +1,2 @@
+var optimization_report = ".spite/build_settings_read.md"
+var debug_memory = true
