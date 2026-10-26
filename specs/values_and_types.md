@@ -217,7 +217,10 @@ game/game.spite:22 in Game.share`), since dividing by zero is the moron's mistak
 `total % (2 - 2)`) or a codegen value folded to `0`, is a compile error instead: `'total / 0' divides by zero,
 which always halts the program` (`diagnostics/division_by_constant_zero`). Where a proof already shows the
 divisor is not zero (`assert parts != 0`, `crash parts != 0`, `if parts != 0 { }`, `parts > 0`, or a `while`
-condition saying so, kept or undone by a call as any proof is), no check is emitted
+condition saying so, kept or undone by a call as any proof is), no check is emitted. The divisor may be a local, a
+parameter or an attribute path through them (`self.parts`, `config.parts`): a path's proof lasts until an
+attribute is assigned, a local the path starts at is assigned, anything is called or made, or a loop starts its
+next pass (`tests/divisor_attribute_proven`)
 ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-proven-divisor-is-not-checked)). The smallest signed value divided by `-1`
 does not fit and halts as above, and its remainder is `0`, where C would trap. Float division stays IEEE 754: `x / 0.0` is infinity or not-a-number.
 `%` on a `Float` or `Double` is the remainder of the division truncated toward zero, so it keeps the sign of the
