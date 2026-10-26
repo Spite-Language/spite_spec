@@ -1,0 +1,12 @@
+var console = Console()
+var left = Left()
+var right = Right()
+
+func IdenticalFunctionsFold() {
+    load "../../../spite_standard_library/windows"
+    var doubled = left.doubled(21)
+    var also_doubled = right.doubled(4)
+    var counted = left.counted_down(5)
+    var also_counted = right.counted_down(7)
+    console.print(doubled, also_doubled, counted, also_counted)
+}

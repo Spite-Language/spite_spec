@@ -1,0 +1,11 @@
+func doubled(number: Integer): Integer {
+    return number * 2
+}
+
+func counted_down(number: Integer): Integer {
+    if number <= 0 {
+        return 0
+    }
+    var below = counted_down(number - 1)
+    return below + 1
+}
