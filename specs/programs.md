@@ -145,7 +145,7 @@ with a literal default, and a program adds its own the same way it adds `Environ
   program's resolved `Build`, after the whole program is read, so a program whose `build.spite` says
   `var optimized = true` is built optimized unless `--optimized=false` is given (`tests/build_settings_read`).
   `check` and `build` both on, from either place, is the error both flags on are
-  (`conformance/build_check_and_build`), and `hot_reload` set there is refused as the flag is. Since the compiler
+  (`conformance/build_check_and_build`), and `hot_reload` set there builds for live reload as the flag does. Since the compiler
   reads them before anything runs, each of its options is declared with only a literal (`true` or `false`, a
   whole number, or a text without holes); anything else is an error at the declaration:
   `build.spite:1: error: 'Build.optimization_report' is one of the compiler's options, which the compiler reads
