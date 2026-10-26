@@ -1,0 +1,17 @@
+var name = ""
+var next: Linked? = null
+
+func Bead(new_name: String) {
+    name = new_name
+}
+
+func describe(): String {
+    return "bead {name}"
+}
+
+func follow(): String {
+    if next {
+        return next.describe()
+    }
+    return "nothing"
+}

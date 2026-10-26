@@ -1,0 +1,1 @@
+capped 448 looped 100 total 125 twice 160

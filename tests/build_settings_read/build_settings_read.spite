@@ -1,0 +1,11 @@
+var console = Console()
+
+func BuildSettingsRead() {
+    load "../../../spite_standard_library/windows"
+    var report = File(".spite/build_settings_read.md")
+    var text = report.read()
+    crash text
+    var is_the_report = text.starts_with("# Optimisation report")
+    console.print("report written", is_the_report)
+    report.remove()
+}

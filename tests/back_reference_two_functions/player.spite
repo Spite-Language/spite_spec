@@ -1,0 +1,15 @@
+var name = ""
+var team: Team? = null
+var console = Console()
+
+func Player(new_name: String) {
+    name = new_name
+}
+
+func play_for(new_team: Team) {
+    team = new_team
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

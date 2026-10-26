@@ -1,0 +1,1 @@
+conformance/build_option_literal/build.spite:1: error: 'Build.optimization_report' is one of the compiler's options, which the compiler reads while compiling, before anything runs, so it is declared with only a literal: true or false, a whole number, or a text without holes, like 'var optimization_report = ...' in build.spite

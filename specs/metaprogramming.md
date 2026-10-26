@@ -185,16 +185,31 @@ before it runs. `call.arguments['name'] = value` fills one argument, and `call.c
 - **A declaration known only at run time** is the library's `Spite.Call`, and `call()` tests that the instance's class
   declares the function and halts "call() runs 'f', declared by 'C', on an instance of another class" when it does not.
   The thunk that does so is made only when some code reaches `call()` at run time, so a program without one carries
-  none. A run-time call of a function that takes arguments halts: "call() cannot pass arguments to 'C.f' when the call
-  is known only at run time: build the call from a function named in the code".
+  none. It passes the arguments `.arguments` holds, testing each against its parameter's type: a number, an enum, an
+  object, a nullable one of them, a union (any of its classes) or a `type` (any class that fills it); a missing one
+  halts "call() leaves the argument 'word' of 'C.f' unfilled: ...", one of another type "call() gives 'C.f' an
+  argument 'word' that is not a String, the type it takes", and one beyond the parameters "call() fills an argument
+  'C.f' does not have: it takes 'times', 'word'" (`tests/run_time_call_arguments`, `tests/run_time_call_open_parameters`).
+  A parameter of any other type (a function value) halts: "call() cannot pass the argument '...' of 'C.f' when the
+  call is known only at run time, since a value of its type is not told apart while the program runs: ...". Filling
+  an argument a second time halts as the known call refuses it: "spite: 'call.arguments['times']' is already set: a
+  call fills each argument once, before 'call.call()' runs it" (`tests/run_time_call_filled_twice`).
 - **Calling a `Spite.Class` known only at run time with no arguments** (`part()`) makes an object of it, typed
   `Anything`, through one function the compiler writes that compares the class object with each class of the
-  program's own folder and makes the one it is. The entry class, a class whose constructor takes arguments and a class
-  outside the program's folder halt, naming why.
+  program's own folder, each other class whose class object the program holds (a library class it names, as
+  `kinds.append(HttpResponse)`), and the number classes, `Boolean` and `String` (each its default), and makes the one
+  it is. Only a class whose object the program holds can be known at run time, so the list is complete once the
+  program is built (`tests/run_time_library_class`, `tests/run_time_number_class`). The entry class and a class
+  whose constructor takes arguments halt, naming why; a singleton, a generic class, an enum or a union halts "spite:
+  a class known only at run time makes an object only of a class that is not a singleton, a generic class, an enum
+  or a union".
 - **A singleton made with arguments has one object for each argument list** written (`Channel(1)` and `Channel(2)`
   are two objects, `Channel(1)` twice one); see [classes_and_files.md](classes_and_files.md#singletons).
 - **A function of the calling object passed where a `Spite.Function` is wanted** is described in place, bound to the
-  object, with its arguments and answer.
+  object, with its arguments and answer; so is a function value of another object held in a local that is never
+  assigned again (`var roar = troll.roar`, then `run(roar)`): it is bound to that object, so `call_function()` runs
+  on `troll` (`tests/function_value_of_another_object`). The description is complete, `accesses` included, however
+  late in the program the question that needs it is written (`tests/run_time_accesses`).
 
 **Plural and singular.** A template whose result is a collection of the member's values (`List<member.class>`)
 takes the member in the plural, through `String.pluralize()`; every other template takes it singular. The template
@@ -364,7 +379,9 @@ resolved like any type name from the generic's file. In detail:
 
 - **Fitting is what [Types](values_and_types.md#types) already means by it**: the class a `type` would admit
   fits: a class with the listed functions and attributes, `String`, a number, an enum, a `List<T>` or
-  `Dictionary<Key, Value>` with what the `type` needs, and the `type` itself. A `T?` fits only a `type` that `null` answers itself:
+  `Dictionary<Key, Value>` with what the `type` needs, and the `type` itself. Each member is compared by its type
+  as well as its name, as a value given to a `type` is: "'Stone' does not fit type 'Weighed': its 'weight' returns
+  a String, but the type needs an Integer" (`conformance/generic_constraint_mistyped`). A `T?` fits only a `type` that `null` answers itself:
   `null` answers `to_string()` and `to_debug()` as `null`, so a `T?` fits `Printable` and `Debuggable`. For any other
   `type` it does not fit ("'Integer?' does not fit type 'Sized', which 'Shelf' requires of $item_type: it may be null,
   and null has none of what the type needs"), and neither does a function value.

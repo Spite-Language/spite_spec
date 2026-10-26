@@ -160,7 +160,9 @@ The details:
   compiling, so it is set whole with a written-out map and never changed one key at a time", and so is a local
   holding it, which could change it unseen: "'JsonWriter.keys' is folded into the code while compiling, so it is
   read where it is: a local holding it could change it one key at a time, and the code would keep the keys it
-  was compiled with". Nothing in a class names its own keys.
+  was compiled with", and so is passing it to a function: "'JsonWriter.keys' is folded into the code while
+  compiling, so it is read where it is: 'Main.forget_the_keys' could change it one key at a time, and the code
+  would keep the keys it was compiled with" (`conformance/json_keys_passed`). Nothing in a class names its own keys.
 - **A function `json_key_<attribute>()`**, where `<attribute>` is one of the class's attributes, is the old way
   to name a key and an error at the function, so a key it gave is never silently lost: "'MeshRecord.json_key_minimum_level_of_detail'
   would name the JSON key of 'minimum_level_of_detail', and JsonReader and JsonWriter do not read a function for

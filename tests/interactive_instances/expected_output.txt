@@ -14,7 +14,7 @@ spite> the program holds no Channel(3): a singleton made with arguments has one 
 spite> the program holds no Channel(): a singleton made with arguments has one instance for each argument list the program asks for, Channel(1), Channel(2)
 spite> 'World' is a singleton made without arguments, so it takes none: World()
 spite> 2
-spite> ... live allocations
+spite> ... live allocations holding ... bytes
 spite> {"class":"Integer","address":"0x...","bytes":4,"hex":"02000000","value":"2"}
 spite> {"class":"String","address":"0x...","bytes":8,"hex":"...","value":"world"}
 spite> {"class":"String","address":"0x...","bytes":8,"hex":"...","value":"bob"}

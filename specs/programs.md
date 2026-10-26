@@ -124,7 +124,9 @@ with a literal default, and a program adds its own the same way it adds `Environ
   sets keeps its declared default: the program's own `build.spite` if it reopens it, else a loaded package's,
   else the standard library's `Build`.
   Either way the value is written into the program: `build.serve` compiles to `true`, a condition on it is decided
-  while compiling, the branch not taken is never generated, and nothing is read when the program runs. The field
+  while compiling, the branch not taken is never generated, and nothing is read when the program runs. A default
+  may be arithmetic on literals (`var seconds = 2 * 60`, `var offset = -3`), which is folded the same way; a
+  default that reads anything else is evaluated once, when `Build` is made (`tests/build_constant_defaults`). The field
   still exists on the `Build` singleton with that value, for reflection.
   **In a `--hot-reload` build**, a field the program or a package declares is read by the program's own code
   from the `Build` singleton while it runs instead, and both branches of a condition on it are compiled, so a
@@ -143,7 +145,14 @@ with a literal default, and a program adds its own the same way it adds `Environ
   `final_classes` and `optimization_report`, the path `executable_path`, and `optimized`, `development`, `repl`, `repl_port`,
   `hot_reload` and `debug_memory` ([Command line](compiler.md#command-line)). The compiler reads them from the
   program's resolved `Build`, after the whole program is read, so a program whose `build.spite` says
-  `var optimized = true` is built optimized unless `--optimized=false` is given.
+  `var optimized = true` is built optimized unless `--optimized=false` is given (`tests/build_settings_read`).
+  `check` and `build` both on, from either place, is the error both flags on are
+  (`conformance/build_check_and_build`), and `hot_reload` set there is refused as the flag is. Since the compiler
+  reads them before anything runs, each of its options is declared with only a literal (`true` or `false`, a
+  whole number, or a text without holes); anything else is an error at the declaration:
+  `build.spite:1: error: 'Build.optimization_report' is one of the compiler's options, which the compiler reads
+  while compiling, before anything runs, so it is declared with only a literal: true or false, a whole number, or
+  a text without holes, like 'var optimization_report = ...' in build.spite` (`conformance/build_option_literal`).
 - **Formatting is not an option**: every compile formats first and nothing turns it off, so `--format`
   and a `format` field in a program's `build.spite` are compile errors (`diagnostics/format_flag`,
   `diagnostics/format_setting`).

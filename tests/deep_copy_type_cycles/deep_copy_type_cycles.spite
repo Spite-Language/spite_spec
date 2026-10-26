@@ -1,0 +1,28 @@
+type Linked {
+    name: String
+    describe(): String
+    follow(): String
+}
+
+var console = Console()
+
+func DeepCopyTypeCycles() {
+    load "../../../spite_standard_library/windows"
+    var first = Bead("a")
+    var second = Bead("b")
+    first.next = second
+    second.next = first
+    var copied = first.deep_copy()
+    first.name = "changed"
+    second.name = "changed too"
+    crash copied.next
+    var going = copied.next.describe()
+    console.print("the copy goes on to", going)
+    var closing = copied.next.follow()
+    console.print("the copy closes its ring at", closing)
+    var itself = copied.follow()
+    console.print("the copy itself is", itself)
+    copied.next = null
+    second.next = null
+    console.print("the original is", first.name)
+}
