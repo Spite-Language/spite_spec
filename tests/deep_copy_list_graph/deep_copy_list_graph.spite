@@ -1,0 +1,30 @@
+var console = Console()
+
+func DeepCopyListGraph() {
+    load "../../../spite_standard_library/windows"
+    var root = Node("root")
+    var child = Node("child")
+    root.children.append(child)
+    child.parent = root
+    var nodes = List<Node>()
+    nodes.append(root)
+    nodes.append(child)
+    var copied = nodes.deep_copy()
+    var copied_root = copied[0]
+    var copied_child = copied[1]
+    crash copied_root
+    crash copied_child
+    crash copied_child.parent
+    var first_child = copied_root.children.first()
+    crash first_child
+    console.print(copied_root.name, copied.count(), copied_child.parent == copied_root, first_child == copied_child, copied_root == root)
+    var named = Dictionary<String, Node>()
+    named["root"] = root
+    named["child"] = child
+    var copied_named = named.deep_copy()
+    var named_root = copied_named["root"]
+    var named_child = copied_named["child"]
+    crash named_root
+    crash named_child
+    console.print(named_child.parent == named_root, named_root == root)
+}
