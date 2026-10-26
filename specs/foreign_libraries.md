@@ -82,7 +82,7 @@ asked for. No annotation is needed, and none is accepted.
 A constant or a type is only available when the constructor was given a header; without one a library exposes
 functions and nothing else, and a constant read is `'fixture_answer' is a constant, and a constant comes from the
 library's header: name it as DynamicLibrary's third argument`.
-The reflection members every value has (`.class`, `.attributes`, `.functions`, `.memory`) are never foreign
+The reflection members every value has (`.class`, `.attributes`, `.functions`) are never foreign
 symbols, so a generic class instantiated over `DynamicLibrary` can still ask `current.class.name`; neither are
 `DynamicLibrary`'s own members (`file_name`, `handle` and its functions), so a `List<DynamicLibrary>`'s member
 templates (`find_by_file_name`, `sort_by_handle`) read the attribute
@@ -269,7 +269,7 @@ What [Calling back into Spite](https://github.com/Spite-Language/spite_documenta
   returned, or on another thread: a function C keeps, or calls from a thread of its own, is handed over as a
   ForeignCallback the program keeps for as long as C may call it`. Nothing about threads is checked or changed,
   since it only runs on the calling thread.
-- **`ForeignCallback(function, where_context)`** (`library/foreign_callback.spite`) is an ordinary class
+- **`ForeignCallback(function, where_context)`** is an ordinary class
   whose constructor the compiler finishes at each construction site: it keeps the function value (and so its
   owner), and sets `address` to the trampoline and, for `'context_first'` and `'context_last'`, `context` to a
   ticket: the place of the function value in a table of the living context callbacks, with a count of how many
@@ -279,11 +279,10 @@ What [Calling back into Spite](https://github.com/Spite-Language/spite_documenta
   a function named directly, like 'mixer.voice_ended', and where C passes it back its context: 'no_context',
   'context_first' or 'context_last'`; any other literal is `'somewhere' is not where C passes a callback its
   context: write 'no_context', 'context_first' or 'context_last'` (`diagnostics/foreign_callback_mistakes`).
-- **What crosses into a callback**: each parameter and the result are a number, a `Boolean` or a
-  `Memory.Address`, at the widths of [What crosses](#what-crosses); a `Boolean` is a 32-bit integer on the C side,
+- **What crosses into a callback**: each parameter and the result are a number, a `Boolean` or an
+  address (a `Long`), at the widths of [What crosses](#what-crosses); a `Boolean` is a 32-bit integer on the C side,
   read as `!= 0`. Anything else is `'ForeignCallback(named, 'context_last')' is called by C, which passes numbers
-  and addresses: 'name' is a String, so take it as a number, a Boolean or a Memory.Address (text C passes is read
-  with 'terminated_text()')`, or for the result `... which takes back a number, a Boolean or nothing: it returns a
+  and addresses: 'name' is a String, so take it as a number, a Boolean or a Long (text C passes arrives as its address)`, or for the result `... which takes back a number, a Boolean or nothing: it returns a
   String`. A function value passed for one call names its parameters `'argument 1'` and on.
 - **Lifetime**: the `ForeignCallback` keeps the function value; releasing the last reference runs its
   `drop()`. An attribute whose type is `ForeignCallback` or `ForeignCallback?` is never reported as unread, since
@@ -297,19 +296,19 @@ What [Calling back into Spite](https://github.com/Spite-Language/spite_documenta
 - **`'no_context'`**: the function must belong to a singleton, otherwise `'ForeignCallback(counted,
   'no_context')' gives C no context to find its 'Counter' by, so 'counted' must belong to a singleton: move it into
   a singleton that tells them apart by what C passes, or hand C the context with 'context_first' or
-  'context_last'`. Its trampoline is written once per function (`<Class>_<function>___from_c`) beside one static
-  slot holding the singleton, and calls the function directly. Making the `ForeignCallback` fills the slot and its
+  'context_last'`. Its trampoline is written once per function, beside one slot holding the singleton, and calls the function directly. Making the `ForeignCallback` fills the slot and its
   `drop()` empties it (one atomic store); making a second for the same function while the first is alive stops the
   program (`spite: 'Mixer.voice_started' (mixer.spite:13) was handed to C by a second ForeignCallback while the
   first is alive: C calls it with no context, so a function has one at a time; keep the first and hand C its
   address`), and a call after the drop stops it too (`spite: C called 'Clicks.clicked' (file.spite:12) after its
   ForeignCallback was dropped: keep the ForeignCallback for as long as C may call it`,
-  `conformance/stage6/foreign_callback_dropped`). A table of functions (COM-style) is memory the program allocates
-  with `Memory.Heap` and fills with `TypedMemory<Long>`, one `'no_context'` `ForeignCallback` per entry.
-- **Threads**: C may call a `ForeignCallback` from any thread, so a program that makes one is compiled as a
-  program that makes a `Parallel`: atomic reference counts (`SPITE_THREADS`) for the classes another thread can count, and every singleton the handed-over
+  `conformance/stage6/foreign_callback_dropped`). A table of functions (COM-style) is filled on the C side: the program hands the library the `address` of each
+  `'no_context'` `ForeignCallback`, one per entry, and the library keeps them in its own table; a program cannot write
+  memory at an address.
+- **Threads**: C may call a `ForeignCallback` from any thread, so a program that makes one is built as a
+  program that makes a `Parallel`: atomic reference counts for the classes another thread can count, and every singleton the handed-over
   function reaches made safe for threads in its cheapest form (a `'no_context'` function's own singleton included,
-  whose wrapper takes its lock). A function of an ordinary object is checked with the rule for a `Parallel`'s work,
+  which takes its lock). A function of an ordinary object is checked with the rule for a `Parallel`'s work,
   through every function of its class it calls: `'ForeignCallback(marked, 'context_first')' may be called by C on a
   thread of its own, so 'marked' may reach only the attributes of its own 'Recorder' that hold values, its locals
   and singletons: 'marks' holds a List<Integer>, which another thread may share. Keep it in a singleton the
@@ -320,8 +319,7 @@ What [Calling back into Spite](https://github.com/Spite-Language/spite_documenta
 - **Cost**: a call-site trampoline is one thread-local load and an indirect call; a context one, a table
   read, an atomic load to check the ticket and an indirect call, and making one takes a short lock; a
   `'no_context'` one, an atomic load and a direct call. A program that passes no function to C
-  and makes no `ForeignCallback` compiles to C with none of it: no trampoline, no `ForeignCallback` class, no
-  `SPITE_THREADS`.
+  and makes no `ForeignCallback` carries none of it: no trampoline, no `ForeignCallback` class, no atomic counts.
 - `conformance/stage6/foreign_callbacks`: a synchronous callback with and without a header, a window-procedure
   shape kept with no context, one with the context last, one with the context first called three times from a
   thread the fixture makes, and a two-entry table of functions called from another thread, memory balanced.

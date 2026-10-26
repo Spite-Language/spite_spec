@@ -56,7 +56,7 @@ keeping, and the run's halt is the backstop for what only the run can find.
 | `call_function()` skipping a function that takes arguments | halts naming the function | [testing.md](https://github.com/Spite-Language/spite_documentation/blob/master/testing.md) |
 | C calling a function through a `ForeignCallback` that was dropped | halts naming the function and the line that made it | [foreign_libraries.md](https://github.com/Spite-Language/spite_documentation/blob/master/foreign_libraries.md) |
 | a `while true` that can never leave and calls nothing | compile error | [control_flow.md](https://github.com/Spite-Language/spite_documentation/blob/master/control_flow.md#while-is-the-only-loop) |
-| work given to a `Parallel` that loops forever and never waits | compile error | [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-thread-pool) |
+| work given to a `Parallel` that loops forever and never waits | compile error | [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#threads-for-parallel) |
 | a peer that hung up read as a count of `-1` | `socket.closed` turns `true`; reads answer `0` or `null` | [standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md) |
 | an impossible date such as `Date(2023, 2, 29)` rolled over | halts; text from outside is read with `TimeText`, which answers `null` | [time.md](https://github.com/Spite-Language/spite_documentation/blob/master/time.md) |
 | a `crash` or `assert` whose site cannot be found again | every build writes `<program>.crashes`, one line per site | [what a crash reports](#what-a-crash-reports) |

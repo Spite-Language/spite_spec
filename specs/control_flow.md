@@ -42,7 +42,7 @@ anywhere inside its body, and no call (a function, a method, a constructor) in i
 nothing inside it returns, asserts or crashes, and it calls nothing, so the program would spin here for good: leave
 it with a 'return' ('if done { return }'), or loop 'while' a condition` (`diagnostics/spinning_loop`). One that
 calls something is left alone, since a call may end the program, except in work a `Parallel` runs
-([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-thread-pool)), and inside a locked singleton function
+([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#threads-for-parallel)), and inside a locked singleton function
 ([concurrency.md](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting)).
 
 There is deliberately no `break`/`continue`: `while` is the only loop construct Spite has, full stop.
