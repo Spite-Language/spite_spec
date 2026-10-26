@@ -1,0 +1,1 @@
+--optimization-report=.spite/reports/down_counter_ranges.md
