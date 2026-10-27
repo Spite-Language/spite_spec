@@ -7,9 +7,8 @@ func HotReloadMakesAnAssignedObject() {
 }
 
 func followed_radius(): Integer {
-    var held = follower
-    if held {
-        return held.radius
+    if follower {
+        return follower.radius
     }
     return 0
 }
