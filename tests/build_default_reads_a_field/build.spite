@@ -1,4 +1,4 @@
 var retries = 3
-var attempts = retries
+var attempts: Integer = retries
 var label = "night"
-var shown_label = label
+var shown_label: String = label
