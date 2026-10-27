@@ -1,3 +1,3 @@
 count 3
-spite: the program stopped at tests/json_crash/../../../spite_standard_library/common/json_reader.spite:229 in JsonReader_of_Integer._fail (_crashes=true, wanted=a number, position=10)
+spite: the program stopped at tests/json_crash/../../../spite_standard_library/common/json_reader.spite:212 in JsonReader_of_Integer._fail (_crashes=true, wanted=a number, position=10)
 spite.frame	tests/json_crash/json_crash.spite:9	JsonCrash	JsonCrash
