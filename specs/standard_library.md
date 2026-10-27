@@ -210,7 +210,7 @@ type Printable {
 }
 ```
 
-Every number, `Boolean`, `String` (whose `to_string()` answers itself), `Symbol`, enum value, `Spite.Class` (its
+Every number, `Boolean`, `String` (whose `to_string()` answers itself), enum value, `Spite.Class` (its
 `.name`) and `Spite.Namespace` (its `.name_with_namespaces`) answers it, so everything that printed before prints
 the same. A class of your own prints once it declares `func to_string(): String`, and passing one that does not is
 the ordinary shape error, naming the function: `'Pet' does not fit type 'Printable': it has no function
@@ -257,7 +257,7 @@ In detail:
 - **A class shows its name and its attributes**, in declaration order, as `Name { attribute: value }`, and
   `Name {}` when it has none to show. An attribute that is a class is shown by *its* `to_debug()`, so a class that
   declares its own is shown by it wherever it appears. A `List` is `[a, b]`, a `Dictionary` is `{"key": value}`,
-  text is quoted with `\"`, `\\` and `\n` escaped, a `Symbol` or enum value is written the way Spite writes it
+  text is quoted with `\"`, `\\` and `\n` escaped, an enum value is written the way Spite writes it
   (`'calm'`), a number and a `Boolean` as they print, and an absent `T?` is `null`. A `Spite.Class` is its name.
 - **Private attributes are left out.** The walk is `value.attributes.each(debug_attribute)` run from
   `Spite.DebugInstance` ([reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#a-class-and-an-instance-of-it)), and a walk sees every

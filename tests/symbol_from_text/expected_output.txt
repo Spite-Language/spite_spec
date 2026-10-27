@@ -1,2 +1,0 @@
-wing 4 WING Symbol
-true true

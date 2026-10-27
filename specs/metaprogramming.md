@@ -454,9 +454,8 @@ does not want to spell:
 | `$value_type == List` | any `List<T>` |
 | `$value_type == Dictionary` | any `Dictionary<Key, Value>` |
 | `$value_type == Null` | any `T?` (`Null` is a member of the union a `T?` is) |
-| `$value_type == Symbol` | an enum, or `Symbol` (an enum is a closed list of symbols) |
 | `$value_type == Number` | any number class, `Tiny` to `Double` (a `type` name asks whether the type fits it) |
-| `$value_type == Enum` | an enum only, not a plain `Symbol` (`JsonReader` and `BinaryFormat` need it to read a plain `Symbol` through `Symbol(text)` and an enum through the text cast) |
+| `$value_type == Enum` | an enum (`JsonReader` and `BinaryFormat` read one through its reading from text) |
 
 A union name is true for any of its members, and a `type` name for any type that fits it: `$value_type ==
 Number` is true for every number class ([values_and_types.md](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#every-number-fits-number)).

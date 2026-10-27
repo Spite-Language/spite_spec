@@ -1,0 +1,3 @@
+wing 4 0 Part
+true 7 true
+tail true 2

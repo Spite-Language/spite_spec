@@ -17,8 +17,7 @@ Their members are the tables of [The `Spite` classes](https://github.com/Spite-L
 **Every member is a get-only attribute named for what it answers**, read without `()`: a question is `is_...`, a
 collection is plural. A question that takes something is a collection indexed or filtered instead
 (`Monster.functions['alive']`, `hurt.arguments[1].is_mutated`). What acts rather than answers stays a function:
-`call_function()`, a `Spite.Call`'s `call()`, and a list's own `count()`. A name is a `Symbol`: text from the program's own
-table of symbols, which reads as text anywhere text is expected and costs no allocation to pass around.
+`call_function()`, a `Spite.Call`'s `call()`, and a list's own `count()`. A name is a `String`, constant text the compiler writes once, so passing it around allocates nothing.
 
 **Every member is a getter with no setter**: the data sits in private fields and `get_name()` and the rest answer
 it, so `described.name = ...` is "'name' is read-only". **A name starting with `_` is private** (everywhere but

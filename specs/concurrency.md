@@ -285,7 +285,7 @@ which several elements may share, and a parallel pass may touch only each elemen
 
 - **The race rule, as a compile check.** The member, every function of the element's class it calls
   (transitively, by name), and every `filter_` member in the chain may read and write only the element's
-  attributes that hold a plain value (a number, `Boolean`, `String`, enum or `Symbol`, or a `T?` of one), any
+  attributes that hold a plain value (a number, `Boolean`, `String`, or an enum, or a `T?` of one), any
   singleton (the standard library's, and the program's own, which the compiler makes safe below, including one bound as an
   attribute of the element), and their own parameters and locals. An attribute holding any other object, a list,
   a dictionary or a function value is an error naming the attribute, its type and the one-thread form

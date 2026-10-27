@@ -38,7 +38,7 @@ parameters are the author's free choice and the ordinary rule applies.
 **An attribute nothing reads is an error too.** The message names the attribute and the fix, `the attribute 'world'
 is never read: remove it`, and no spelling keeps an unread attribute (`diagnostics/unused_attributes`,
 `conformance/stage6/attribute_uses`). **A compile-time walk counts only when it reads the attribute's value**:
-`x.attributes[attribute]` read in a Symbol template, and so the JSON and binary writers and
+`x.attributes[attribute]` read in a template, and so the JSON and binary writers and
 `to_debug()`, and the REPL's display. `attribute.name` and `attribute.class` are the attribute's description, not
 its value, so an engine's scheduling markers, such as `var world = Resource.World()` that only a classify walk
 inspects, are errors.
@@ -54,7 +54,7 @@ What counts as a read, and the exceptions:
   rule as for locals.
 - **Source-level, not reachability.** A function nothing calls still reads what it names; tree shaking removes it
   later. Where the compiler does not compile a body (a branch a codegen or `Build` test folds away, a function of
-  a generic class no instance emits, a Symbol template no range reaches), its reads still count: bare names as
+  a generic class no instance emits, a template no range reaches), its reads still count: bare names as
   the class's own attributes, and `x.name` by name for any class (so a fold can hide an unused attribute of the
   same name elsewhere, never report a used one).
 - **`_name` is only private**: a private attribute nothing reads is an error like a public one, judged by

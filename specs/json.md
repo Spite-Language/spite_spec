@@ -118,7 +118,7 @@ The details:
   its block directly, which only `library/` may do.
 - **`BinaryReader` answers `null` for every bad input** (bad input is a normal condition, never a crash):
   bytes that end inside a value, a `Boolean` byte other than 0 or 1, a presence byte other than 0 or 1, an enum
-  index past the enum's last value, a plain `Symbol` name the program does not use, and a count past the bytes
+  index past the enum's last value, and a count past the bytes
   left, and for `read`, bytes left over after the value. A failed read leaves `position` where it was, and a
   negative `start` for `read_from` halts, since it is a mistake in the program and not bad bytes. There is no `read_or_crash` for bytes: the bytes a Spite
   program reads were written by a Spite program, and what went wrong is not something a position would explain.
@@ -179,11 +179,8 @@ The details:
   there checks the number first.
 - `--final-classes` does not print the functions `JsonWriter<Order>` generated, because a generic class's file
   is shared by all its instances.
-- **A plain `Symbol` attribute** (as opposed to an enum) is written as its name and read back through
-  `Symbol(text)`, so a name the program does not already use as a symbol is a value of the wrong kind: `read`
-  answers `null` (`conformance/stage6/json_symbols`). The library tells the two
-  apart with the codegen test `$value_type == Enum`, true for an enum only, where `$value_type == Symbol` is true
-  for both ([metaprogramming.md](https://github.com/Spite-Language/spite_documentation/blob/master/metaprogramming.md)).
+- **An enum attribute** is written as its value's name and read back through the enum's reading from text, so a
+  name the enum does not have is a value of the wrong kind: `read` answers `null` (`tests/json_enum_text`).
 
 ---
 

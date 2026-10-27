@@ -35,7 +35,7 @@ The compiler also follows these rules:
   construction the program reaches first (`conformance/stage6/foreign_library`).
 - The arguments are literals: otherwise `DynamicLibrary(...) takes three literals the compiler reads while it
   compiles: the file, the naming rule ('identity', 'windows' or 'camel_case') and the header`. The naming rule is a
-  symbol literal: otherwise `'shouting' is not a naming rule: a library's functions are named 'identity',
+  value of the enum `DynamicLibrary.Naming`: otherwise `'shouting' is not a naming rule: a library's functions are named 'identity',
   'windows' or 'camel_case'`.
 - The file is named exactly as it is on disk (a wrapper for another platform names that platform's file):
   otherwise `'fixture' has no extension: name the library file exactly as it is on disk, like "user32.dll" or
@@ -111,7 +111,7 @@ func DynamicLibrary(file_name: String, naming: Naming, header: String) {
     assert _handle
 }
 
-func symbol_name(symbol: Symbol): String {
+func symbol_name(symbol: ForeignSymbol): String {
     if symbol.kind == 'constant' {
         return symbol.name.upper_case()
     }

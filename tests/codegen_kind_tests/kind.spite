@@ -6,9 +6,7 @@ func describe(): String {
     } else if $value_type == List {
         return "a list"
     } else if $value_type == Enum {
-        return "an enum, and a symbol too: {is_symbol()}"
-    } else if $value_type == Symbol {
-        return "a plain symbol"
+        return "an enum"
     } else if $value_type == Null {
         return "may be null"
     } else if $value_type == Number {
@@ -19,10 +17,6 @@ func describe(): String {
         return "named"
     }
     return "something else"
-}
-
-func is_symbol(): Boolean {
-    return $value_type == Symbol
 }
 
 func is_named(): Boolean {

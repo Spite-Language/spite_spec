@@ -1,7 +1,6 @@
 a dictionary
 a list
-an enum, and a symbol too: true
-a plain symbol
+an enum
 a shape: false
 a shape: true
 a number

@@ -1,3 +1,0 @@
-{"tag":"blue","color":"blue"}
-blue blue
-a name the program never uses is no Symbol
