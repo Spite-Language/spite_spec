@@ -998,7 +998,7 @@ Rules: 41. Covered before: 14. Covered now: 35.
 | write(value: T?) writes null for an empty T?; a T? attribute is null | tests/json_writes_null | added |
 | A writer and a reader are made once and reused | tests/json_strict_reader | added |
 | read answers T?; read_or_crash halts | tests/json_crash | covered |
-| read_or_crash's crash line carries wanted= and position= | tests/json_crash_position | added (compiler fails: crash names JsonCursor.fail only) |
+| read_or_crash's crash line carries wanted= and position= | tests/json_crash_position | added |
 | The old name Json is an error naming the pair | conformance/json_split | covered |
 | BinaryWriter.write and BinaryReader.read round-trip lists, dictionaries, T?, enums, Boolean | tests/binary_round_trip | added |
 | append_to and read_from with position, many values in one buffer; position unchanged on failure; read wants exactly one value | tests/binary_many_values | added |

@@ -26,12 +26,11 @@ for talking to foreign systems; it is not what Spite programs send each other
   say which member a value is`, and `has no JSON form` or `has no binary form`.
 - The one exception to "writing never fails" is below: a `Float` or `Double` JSON cannot hold.
 
-**Four classes: `JsonWriter`, `JsonReader`, `BinaryWriter`, `BinaryReader`.** Each names its type and is made once
+**Four classes: `JsonWriter`, `JsonReader`, `BinaryWriter`, `BinaryReader`**, and no helper class beside them. Each names its type and is made once
 and reused, and each call carries its own input. Each class is generic, and every conversion it makes is a function the compiler writes from it for
 the types a program actually uses, so a program that never names one carries none of it: no table of
 types, no reflection and no registry exists at run time. At run time a conversion costs what its Spite says:
-`JsonWriter.write(value)` makes one `String` per member and joins them, `JsonReader.read(text)` walks the text once through
-one `JsonCursor`, and the binary pair writes and reads each number with one machine store or load.
+`JsonWriter.write(value)` makes one `String` per member and joins them, `JsonReader.read(text)` walks the text once, and the binary pair writes and reads each number with one machine store or load.
 
 ```gdscript
 var writer = JsonWriter<Order>()        # made once, reused for every order
@@ -67,8 +66,7 @@ makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?'` (`diagn
   `write(value: T): Buffer` and `append_to(value: T, bytes: Buffer)`, and `BinaryReader<T>()` has
   `read(bytes: Buffer): T?`, which reads one value that must fill the bytes, and `read_from(bytes: Buffer,
   start: Integer): T?`, which reads one value from `start` and leaves what follows. The format's numbers are
-  little-endian, and neither call moves the buffer's `position`. The cursors the walk writes and reads with are the library's own and no
-  program names them. There is no reading from a
+  little-endian, and neither call moves the buffer's `position`. There is no reading from a
   `Memory.Address`: bytes from a `Socket` or a `File` are a `Buffer` already, and `read_memory` in a program is
   the error `a BinaryReader reads from a Buffer, not from memory at an address: write 'read(bytes)', or
   'read_from(bytes, start)' to read one value and leave what follows`. The value a writer takes is a `T`, not a `T?`: an empty `T?` is narrowed by the caller, who then
@@ -78,12 +76,11 @@ makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?'` (`diagn
 - **What it is written with** is reflection, a walk of the value's attributes with `each`
   ([reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#known-while-compiling)), and
   [Codegen values (`$`)](metaprogramming.md#codegen-values-) and nothing else, as
-  [How it is written](https://github.com/Spite-Language/spite_documentation/blob/master/json.md#how-it-is-written) shows. The binary walk's helper, `BinaryFormat<T>`, is a `singleton`
-  that holds nothing, bound where it is used (`BinaryFormat<attribute.class>()`), which is allowed since a
-  singleton made from a `$` or `.class` type cannot be an attribute; in a production build it is a static object
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-singleton-that-holds-nothing-is-a-static-object)).
+  [How it is written](https://github.com/Spite-Language/spite_documentation/blob/master/json.md#how-it-is-written) shows. The binary walk has no helper class: `BinaryWriter<T>` and `BinaryReader<T>` hold it themselves, and a nested value, list element or
+  dictionary entry is walked by a `BinaryWriter<attribute.class>()` or `BinaryReader<attribute.class>()` of its own that
+  continues in the same buffer at the same position.
 - **An enum is written by walking its values**, which a generic may do for the enum it is given
-  ([values_and_types.md](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#enums)): that is how `BinaryFormat` finds an enum value's
+  ([values_and_types.md](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#enums)): that is how `BinaryWriter` and `BinaryReader` find an enum value's
   index and how many values the enum has, with no table at run time: writing one costs one comparison per value
   of the enum, and reading one a comparison per value and a text-to-enum cast.
 - **What each type becomes** is [the table on the page](https://github.com/Spite-Language/spite_documentation/blob/master/json.md#what-each-type-becomes), applied again to whatever a value
