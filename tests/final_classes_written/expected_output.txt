@@ -7,5 +7,5 @@ var name = ""
 func Badge(starting_name: String) {
     name = starting_name
 }
-generic template printed false
+generic template printed true
 List<String> printed true

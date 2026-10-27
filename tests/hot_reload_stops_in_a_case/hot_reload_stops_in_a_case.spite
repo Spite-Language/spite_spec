@@ -1,0 +1,7 @@
+var console = Console()
+var namer = Namer()
+
+func HotReloadStopsInACase() {
+    load "../../../spite_standard_library/windows"
+    console.print("ready")
+}

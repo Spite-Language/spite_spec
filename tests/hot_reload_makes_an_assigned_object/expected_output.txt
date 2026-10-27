@@ -1,0 +1,6 @@
+ready
+spite> Circle { radius: 3 }
+spite> 3
+spite> Circle { radius: 4 }
+spite> 4
+spite> 

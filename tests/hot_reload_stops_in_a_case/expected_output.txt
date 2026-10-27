@@ -1,0 +1,10 @@
+ready
+spite> the program stops before the statement on namer.spite:6
+spite> other
+spite> stopped at namer.spite:6
+spite> namer.spite:6
+spite> self: Namer = Namer { asked: 2 }
+number: Integer = 0
+spite> continued from namer.spite:6
+zero
+spite> 

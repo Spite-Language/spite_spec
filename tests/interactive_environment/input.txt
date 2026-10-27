@@ -1,0 +1,4 @@
+classes
+Environment().integer_setting("steps", 4)
+environment.integer_setting("steps", 5)
+exit

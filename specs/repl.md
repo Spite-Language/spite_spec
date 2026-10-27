@@ -186,9 +186,13 @@ the entry class's own Spite name):
   <site>` and reads commands; over `--repl-port`, a stop inside a command the REPL is answering (a call that reaches
   the breakpoint) answers that command `stopped at <site>` at once, and the command's own answer is the answer to
   `continue`; a stop the program's own code reaches answers `continue` with `continued from <site>`, as the console
-  prints it. While stopped, every command answers as usual, `where` answers the site, and a breakpoint reached again
-  (another thread, or a call made at the stop) is passed with `spite: the program passed the breakpoint at '<site>'
-  while it is stopped at '<other>', so it did not stop there` on the error output; one reached before the REPL has
+  prints it. While stopped, every command answers as usual, `where` answers the site, a breakpoint another thread reaches
+  waits its turn (that thread stops there once `continue` lets the first one go, and the program's thread answers
+  no command at its check points or waits meanwhile, since the stop answers them), a breakpoint reached again by a
+  call made at the stop is passed with `spite: the program passed the breakpoint at '<site>'
+  while it is stopped at '<other>', so it did not stop there` on the error output, and a save the watcher finds is
+  reloaded before the next command the stop reads (on the program's thread; a stop on another thread reloads only
+  once it goes on). A line a `switch` case's statement starts on holds a breakpoint like any other; one reached before the REPL has
   the program is passed the same way (`... before the REPL had started ...`). `where`, `locals` and `continue`
   answer `the program is not stopped at a breakpoint: 'break hero.spite:12' sets one` when it is not. `locals` lists
   `self` and every local and parameter in scope at the stop, a line each, `<name>: <type> = <value>`, the value
@@ -286,9 +290,11 @@ the entry class's own Spite name):
   its `T?`) then holds, through `set_<attribute>` when the class declares one, and only when the classes match:
   `follower is a Circle?, and spare is a Square: the loop assigns an instance of the attribute's own class`. A right
   side that is one construction of a class `classes` lists that is not a singleton (`follower = Circle(3)`,
-  `Ui.Panel(2)`, `Lookup<Position>()`) makes its object: in a program built with `--hot-reload` and `--repl-port`
-  it is compiled as `eval`'s code is, into `prompt_made_<n>(): <Class>` of the entry class, which the REPL calls
-  once and assigns as a path's instance; code that does not compile answers the compiler's error; elsewhere it is
+  `Ui.Panel(2)`, `Lookup<Position>()`) makes its object: in a program built with `--hot-reload` and a REPL (`--repl` or `--repl-port`)
+  it is compiled as `run`'s code is, the statement `<target> = <construction>` (the target with `program.` in front
+  when it starts at neither `program` nor a singleton), which the REPL runs once and then answers the target read
+  back, as an assignment does; code that does not compile (a class that does not match) answers the compiler's
+  error, and the program keeps its code; elsewhere it is
   refused (`'follower = Circle(3)' makes an object, which answers in a program built with --hot-reload and
   --repl-port: ...`). The
   compiler-supplied members are `Spite.Attribute`'s `assign_null()` and `assign_attribute(source)`, beside
@@ -330,9 +336,12 @@ The design:
   `WaitForSingleObject` from `kernel32.dll`; `pthread_create` and `pthread_join` elsewhere). No `Thread` class is
   added to the library: [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md) says how a program is concurrent, and this thread belongs
   to the REPL.
-- **Answered where the program waits.** The socket thread only reads a command, hands it to the program's
-  scheduler ([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-repl-answers-at-the-waits)) and waits for the answer. The
-  scheduler answers it on the program's thread the next time the program waits (`program.sleep`,
+- **Answered where the program waits.** The socket thread runs no Spite code: it waits on the socket the REPL
+  reads (the listening socket until a client connects, then the client's) and, the moment a command can be read,
+  raises the check points' flag and wakes the program's wait, then waits until the program's thread has taken it
+  before it watches the socket again; the program's thread reads the command, answers it and writes the answer, so
+  no command waits for a timer ([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-repl-answers-at-the-waits)). The
+  program's thread answers it the next time the program waits (`program.sleep`,
   `Console.read_line()`, a `File` read or write, a `Socket` accept or read, reading an unfinished `Concurrent`'s
   value, joining a `Parallel`), so a command sees the program between two steps, never in the middle of one, and
   the program's state is never read or written by two threads at once. After the constructor returns, the program

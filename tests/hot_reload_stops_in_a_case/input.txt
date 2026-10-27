@@ -1,0 +1,7 @@
+break namer.spite:6
+namer.name_of(2)
+namer.name_of(0)
+where
+locals
+continue
+exit

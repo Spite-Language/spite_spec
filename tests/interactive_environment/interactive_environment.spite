@@ -1,0 +1,8 @@
+var console = Console()
+var environment = Environment()
+
+func InteractiveEnvironment() {
+    load "../../../spite_standard_library/windows"
+    var steps = environment.integer_setting("steps", 3)
+    console.print("steps", steps)
+}
