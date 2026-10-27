@@ -1,0 +1,31 @@
+enum Part {
+    'wing'
+    'tail' = 7
+}
+
+var console = Console()
+
+func EnumConversions() {
+    load "../../../spite_standard_library/windows"
+    var tag: Part = 'wing'
+    var name = tag.to_string()
+    var length = name.length()
+    var number_of_wing = tag.to_integer()
+    console.print(tag, length, number_of_wing, tag.class)
+    var text = "tail"
+    var found = text.to_part()
+    var missing_text = "fin"
+    var missing = missing_text.to_part()
+    crash found
+    var is_tail = found == 'tail'
+    var number_of_tail = found.to_integer()
+    console.print(is_tail, number_of_tail, not missing)
+    var number = 7
+    var numbered = number.to_part()
+    var unnumbered_value = 3
+    var unnumbered = unnumbered_value.to_part()
+    crash numbered
+    var values = Part.values
+    var count = values.count()
+    console.print(numbered, not unnumbered, count)
+}

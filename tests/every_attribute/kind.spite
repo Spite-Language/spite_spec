@@ -5,7 +5,7 @@ func name(): String {
         return "text"
     } else if $kind_type == Integer or $kind_type == Float {
         return "a number"
-    } else if $kind_type == Symbol {
+    } else if $kind_type == Enum {
         return "one of a closed list"
     } else if $kind_type == Null {
         var inner = Kind<$kind_type.value_type>()

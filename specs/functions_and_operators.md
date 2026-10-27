@@ -91,7 +91,7 @@ logger.log(pretty_print)         # passes this instance's pretty_print
   `void*` user data wants: a `ForeignCallback` hands C the function and gets the owner back from the user data
   ([Calling back into Spite](https://github.com/Spite-Language/spite_documentation/blob/master/foreign_libraries.md#calling-back-into-spite)).
 - **An event handler can be the function itself**, `onclick: increment`, checked by signature, rather than
-  the symbol `'increment'` ([Types](values_and_types.md#types)) resolved by name. Symbol literals stay useful elsewhere.
+  a name resolved while the program runs.
 
 **A function value is an instance of `Spite.Function`** generic over its
 arguments and its return, so the type of a function is written the same way any other generic type is:
@@ -211,10 +211,9 @@ shape holds class instances, and these are plain values. Passed to a function th
 copy of the function made for its class as itself; stored where a `type` is wanted (a list's element, an
 attribute, the list of a variadic call such as `console.print`), it is held beside its class's tag with nothing
 allocated, and a call through the shape reaches its class's function (`Integer.to_string()`, for an `Integer`).
-Text and a `Symbol` travel in a small box the compiler allocates and frees like any object, so that a `Symbol`
-keeps its class. An enum value answers two functions, `to_string()` (its name as text; `weather.to_string()` works on
+Text travels in a small box the compiler allocates and frees like any object. An enum value answers two functions, `to_string()` (its name as text; `weather.to_string()` works on
 any enum value) and `to_debug()`, so that is all a shape can ask of one. `.class` read through the shape names the
-value's own class (`Integer`, `Symbol`, the enum), as it does for a class instance. A value of a union passed where a
+value's own class (`Integer`, the enum), as it does for a class instance. A value of a union passed where a
 `type` is wanted brings the union's members into the shape.
 
 ## Operators
@@ -262,7 +261,7 @@ a member name and never a keyword, so a getter or setter named after a keyword i
 (`thing.type`, `thing.type = value`). An `equals` that `==` would not call (an `equals` whose parameter is not a
 class, where `==` compares identity) is called by name.
 
-For a user class or union, `a + b` compiles to `a.sum(b)` when the class defines (an exact function, or Symbol
+For a user class or union, `a + b` compiles to `a.sum(b)` when the class defines (an exact function, or a template
 codegen answers) `sum`; a union duck-types the same way a method call already does (every member must define
 the function with the same signature). Missing the function is an error naming it: "this operator on a 'Money'
 needs it to define 'sum(other)'", "'-' on a 'Money' needs it to define 'negate()'", "indexing a 'Money' needs it
@@ -287,7 +286,7 @@ At run time an operator on a built-in type is the operation itself, and one on a
 of its function, resolved while compiling; nothing is looked up when the program runs.
 
 Attribute access from *outside* a class also goes through operator functions: `person.age = 1` calls
-`person.set_age(1)` when the class defines or Symbol-codegens `set_age` (an exact function always wins over
+`person.set_age(1)` when the class defines or templates `set_age` (an exact function always wins over
 a template), otherwise it assigns the field directly. `person.age` (a read) calls `person.get_age()` the
 same way when defined. The read
 mirrors the write. Every function return is a properly retained, independent reference

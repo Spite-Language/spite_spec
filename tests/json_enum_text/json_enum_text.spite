@@ -5,26 +5,27 @@ enum Color {
 
 var console = Console()
 
-func JsonSymbols() {
+func JsonEnumText() {
     load "../../../spite_standard_library/windows"
     var marker = Marker()
-    var found = Symbol("blue")
+    var text = "blue"
+    var found = text.to_color()
     crash found
     marker.tag = found
     marker.color = 'blue'
     var writer = JsonWriter<Marker>()
-    var text = writer.write(marker)
-    console.print(text)
+    var written = writer.write(marker)
+    console.print(written)
     var reader = JsonReader<Marker>()
-    var read_back = reader.read(text)
+    var read_back = reader.read(written)
     crash read_back
     crash read_back.tag
     console.print(read_back.tag, read_back.color)
     var unknown_reader = JsonReader<Marker>()
-    var unknown = unknown_reader.read("\{\"tag\":\"no such symbol anywhere\"}")
+    var unknown = unknown_reader.read("\{\"tag\":\"green\"}")
     if unknown {
-        console.print("read a symbol the program never uses")
+        console.print("read a colour the enum does not have")
     } else {
-        console.print("a name the program never uses is no Symbol")
+        console.print("a name the enum does not have is no Color")
     }
 }

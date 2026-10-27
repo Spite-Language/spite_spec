@@ -58,7 +58,9 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   the original object otherwise. The compiler writes each class's deep copy: one whose attributes can reach itself (through an
   object attribute, or any class of a union attribute), reach a `type` attribute (whatever fills it, since its
   fillers are known only once the program is built: `tests/deep_copy_type_cycles`), or reach a back reference, remembers the objects copied during the call in a table made for that call; every
-  other class is copied plainly, with no table (`conformance/deep_copy_graphs`). An object reached twice
+  other class is copied plainly, with no table (`conformance/deep_copy_graphs`). A `List`, `Dictionary` or `Items`
+  whose items reach such a class copies all its items through one table, so items that hold each other (a list of
+  a parent and its child) are copied once each and keep their links (`tests/deep_copy_list_graph`). An object reached twice
   through classes that cannot reach themselves (two attributes holding the same leaf) is copied twice.
 - **There is no `Weak<T>`: the compiler picks a cycle's back reference.** A program writes plain references, and the
   compiler decides which reference of a cycle (a child's `parent`, a node's `previous`) holds no count, so a cycle is
@@ -70,7 +72,9 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   function whose name only one class declares counts as the stores that function makes, with `this` and its
   parameters read as the call's receiver and arguments, so `team.recruit(player)` (which appends its argument to
   `players`) beside `player.play_for(team)` (which sets `team`) links them as the two stores written out would
-  (`tests/back_reference_two_functions`). Neither `C` nor `T` is a singleton or generic. The class graph alone cannot tell a `parent` from an owning `answer: Type?` beside
+  (`tests/back_reference_two_functions`). The stores a function makes include those of the program functions it
+  calls the same way, three calls deep, so `team.sign(player)` calling `recruit(player)` and `player.play_for(this)`
+  links them too (`tests/back_reference_two_levels`). Neither `C` nor `T` is a singleton or generic. The class graph alone cannot tell a `parent` from an owning `answer: Type?` beside
   `members: List<Type>`, and taking an owning reference for a back one would free an object a program still holds,
   so a cycle the code does not link this way keeps its counts and leaks: break it by hand by clearing the `T?` field
   that closes the loop.

@@ -3,6 +3,14 @@ enum Weather {
     'rainy'
 }
 
+enum Tag {
+    'wing'
+}
+
+enum Mood {
+    'calm'
+}
+
 union Cargo {
     Crate
     Badge
@@ -31,7 +39,7 @@ func DebugValues() {
     console.debug(labels)
     console.debug(hero.class)
     var cargo: Cargo = Crate()
-    var tag: Symbol = 'wing'
+    var tag: Tag = 'wing'
     var point = {x: 1, y: 2}
     console.debug(cargo, tag, point)
     var first = Node(1)

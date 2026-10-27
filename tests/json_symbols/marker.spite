@@ -1,2 +1,0 @@
-var tag: Symbol? = null
-var color: JsonSymbols.Color = 'red'

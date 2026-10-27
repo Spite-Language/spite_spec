@@ -220,7 +220,7 @@ Two dictionary types are the same type when both their key types and their value
   memory reused by another, while it is a key.
 
 Anything else is `a Dictionary cannot be keyed by 'Integer?': a key is a number, a Boolean, a String, an enum value
-or an object of a class` (a nullable, a union, a shape, a function value, a `Symbol`), and a value class is `a
+or an object of a class` (a nullable, a union, a shape, a function value), and a value class is `a
 Dictionary cannot be keyed by '<class>': it is a value, copied wherever it goes, so it has no identity to key by;
 key the dictionary by a number or a String made from it`. **A class that declares `equals`** (in any file that
 declares or reopens it) cannot be a key, since finding keys by identity would miss an object `equals` calls equal:

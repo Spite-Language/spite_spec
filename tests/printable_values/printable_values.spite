@@ -3,6 +3,10 @@ enum Weather {
     'rainy'
 }
 
+enum Tag {
+    'wing'
+}
+
 type Labeled {
     to_string(): String
 }
@@ -19,7 +23,7 @@ func PrintableValues() {
     var little: Byte = 200
     console.print(count, -count, wide, ratio, small, huge, little, true, false)
     var name = "hero"
-    var tag: Symbol = 'wing'
+    var tag: Tag = 'wing'
     var weather: Weather = 'rainy'
     console.print("literal", name, "{name} {count}", tag, weather)
     var ticket = Pack.Ticket("A12", 3)

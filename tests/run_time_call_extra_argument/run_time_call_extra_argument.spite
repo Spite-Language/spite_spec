@@ -1,0 +1,35 @@
+var console = Console()
+
+func RunTimeCallExtraArgument() {
+    load "../../../spite_standard_library/windows"
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var found = classes[index]
+        if found.name.ends_with("Steps") {
+            run_steps(found)
+        }
+        index = index + 1
+    }
+}
+
+func run_steps(found: Spite.Class) {
+    var instance = found()
+    var functions = found.functions
+    var index = 0
+    while index < functions.count() {
+        var declaration = functions[index]
+        if declaration.name.starts_with("step_") {
+            var call = Spite.Call(declaration, instance)
+            call.arguments["times"] = 2
+            call.arguments["word"] = "go"
+            call.call()
+            var extra = Spite.Call(declaration, instance)
+            extra.arguments["times"] = 1
+            extra.arguments["word"] = "on"
+            extra.arguments["speed"] = 9
+            extra.call()
+        }
+        index = index + 1
+    }
+}

@@ -1,0 +1,2 @@
+var tag: JsonEnumText.Color? = null
+var color: JsonEnumText.Color = 'red'

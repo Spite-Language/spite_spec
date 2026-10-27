@@ -1,0 +1,4 @@
+made
+go
+go
+spite: call() fills an argument 'speed' that 'WalkingSteps.step_repeat' does not have: it takes 'times', 'word'

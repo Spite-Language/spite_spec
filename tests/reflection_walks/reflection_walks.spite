@@ -70,7 +70,7 @@ func made(argument: Spite.Argument): argument.class {
 }
 
 func holds_parts(namespace: Spite.Namespace): Boolean {
-    return namespace.name == 'Part'
+    return namespace.name == "Part"
 }
 
 func count_classes(namespace: Spite.Namespace) {

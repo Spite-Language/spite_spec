@@ -118,7 +118,7 @@ keys), `assign(text)` writes a number, `Boolean`, text or enum value into it (th
 `call_with_text(arguments)` calls it with literal arguments and answers its result as a `Spite.Attribute?`, `null`
 when an argument is not one the loop can write. Outside those builds they answer an empty list, `false` and `null`,
 and the reflection they walk is not emitted. A function is callable from the prompt when every parameter is a
-number, `Boolean`, text or an enum; an instantiated Symbol-codegen function (`set_age`) is one like any other, and a
+number, `Boolean`, text or an enum; an instantiated template function (`set_age`) is one like any other, and a
 template nothing calls is still never instantiated, so tree shaking of templates is unaffected. A REPL build is
 inspectable ([compiler.md](compiler.md#inspectable-and-production-builds)): nothing else is tree-shaken either.
 
@@ -131,7 +131,7 @@ the entry class's own Spite name):
   `program.target`. A path may leave out the leading `program.`, so `player.health` and `program.player.health`
   name the same value. Walking through a non-null `T?` is transparent; a dictionary's entries are walked by key.
 - **calls**: `program.monsters.count()`, `program.monsters[0].roar()`, `program.player.set_age(3)` (any
-  callable function, including an instantiated Symbol-codegen one, and the public functions of a standard library
+  callable function, including an instantiated template one, and the public functions of a standard library
   class a path reaches, `label.upper_case()` or `program.console.read_line()`, `tests/interactive_library_calls`); `List<T>`'s and `Dictionary<Key, Value>`'s `count()`,
   and `Dictionary<Key, Value>`'s `keys()` (the keys, one a line, or `scores holds no keys`) and `has(key)`, each of which
   must end the expression. A call that answers a value is walked on like any path,

@@ -434,32 +434,31 @@ func other_function() {
 - From inside `Player` itself, plain `Job` also works; from elsewhere, both `Player.Job` and, when unambiguous across the whole program, plain `Job` work (searched: the referencing class's own namespace first, then its containing folder, then each parent folder, then the whole program by simple name).
 - An enum value is resolved from where it is used (parameter, annotation, assignment target, comparison). Two enums may share a value name; with no expected type in hand, the value resolves when exactly one enum in the program has it, otherwise it is a compile error listing every enum that does.
 
-**An enum is a closed list of symbols.** `'knight'` is a symbol (a name
-known at compile time), and an `enum Job` declaration lists which symbols are accepted where a `Job` is expected.
-That is all an enum is; the integer it compiles to is a representation detail.
+**An enum is a closed list of values, and `'knight'` is an enum value literal.** A name in single quotes is a
+value of the enum the place expects, and nothing else: there is no symbol type, and an `enum Job` declaration lists
+the values accepted where a `Job` is expected. The number a value compiles to is a representation detail (below).
 
-- **A symbol literal is legal only where something says what it may be.** Where an enum is expected it must be
-  one of that enum's symbols: `set_weapon('orange')`, when the parameter is an enum without `'orange'`, is a
-  compile error listing the symbols that enum accepts. There is no widening from a symbol to an enum, and there
-  is no untyped symbol literal: `var choice = 'orange'`, with nothing to check it against, is an error naming
-  the missing context.
-- **Text is always written in double quotes.** A symbol literal where a `String` is wanted (an argument, a `var`) is an
-  error naming the fix, whether or not an enum has that value: `'world' in single quotes is a symbol, and text is
-  wanted here: text is always written in double quotes, so write "world"` (`diagnostics/symbol_for_text`). Adding
-  an enum value somewhere can then never change what a line passes. Where a `Symbol` is wanted, `'name'` stays
-  the way to write one.
-- **A `Symbol` is text from a precompiled, tree-shaken table.** Every symbol the program uses is an entry in one table the compiler
-  writes, so a `Symbol` value costs no allocation (reading, storing, passing or comparing one never makes new
-  text), and a symbol the program never uses does not exist in it. So all of Spite's own metaprogramming can use
-  symbols freely: a used symbol was needed anyway, and an unused one disappears. A `Symbol` reads as text
-  wherever text is expected (every `String` function answers on it) while `symbol.class` is `Symbol`, and text
-  becomes a `Symbol` only through `Symbol(text)`, which answers `Symbol?`, `null` unless that symbol is already
-  in the table. An enum is still the closed form: the list of symbols a place accepts.
-  A symbol of 15 bytes or fewer is held inline, its bytes inside the value itself, like any short text, and a
-  longer one points at constant text ("TinyString"); that is an optimisation the language does not observe.
-- **What a `Symbol` names is still checked by whatever consumes it**, at compile time, the way the Symbol
-  codegen path checks `set_age(2)` against `Person`'s real attributes
-  ([templates](metaprogramming.md#templates)).
+- **An enum value literal is legal only where an enum is expected.** It must be one of that enum's values:
+  `set_weapon('orange')`, when the parameter is an enum without `'orange'`, is a compile error listing the values
+  that enum accepts. Where no enum is expected (`var choice = 'orange'` with nothing to check it against, or an
+  argument of a parameter that is no enum) it is "'orange' is an enum value literal, and no enum is expected here:
+  declare the enum it belongs to, 'var choice: Fruit = 'orange''" when no enum has it, and resolves to the one enum
+  that has it when exactly one does (above).
+- **Text is always written in double quotes.** An enum value literal where a `String` is wanted (an argument, a
+  `var`) is an error naming the fix, whether or not an enum has that value: `'world' in single quotes is an enum
+  value literal, and text is wanted here: text is always written in double quotes, so write "world"`
+  (`diagnostics/symbol_for_text`). Adding an enum value somewhere can then never change what a line passes.
+- **Every enum is its own class, with its conversions**, each answered while compiling when its operand is
+  constant:
+  - `value.to_string()` is its name (`'wing'` is `"wing"`), which is also how it prints and how JSON writes it;
+  - `value.to_integer()` is its number (below);
+  - `text.to_part()` makes a `Part?` from its name, `null` when the text names no value (below, and
+    `diagnostics/enum_from_text`);
+  - `number.to_part()` on a whole number makes a `Part?` from its number, `null` when no value has that number;
+  - `Part.values` lists the values in their order, and `value.class` is the enum's class (`tests/enum_conversions`).
+- **Reflection on an enum** is through classes of its own, as `Spite.Class` and `Spite.AttributeDeclaration` serve
+  classes: the enum's class and the declaration of each value (its name and its number), folded while compiling
+  where constant.
 
 **An enum can be reopened, and walked.**
 
