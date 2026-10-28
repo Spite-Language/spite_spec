@@ -1,0 +1,4 @@
+a line of 600 bytes, whole: true
+a line that is not UTF-8 is null
+then [next]
+then the end

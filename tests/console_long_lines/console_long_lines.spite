@@ -1,0 +1,21 @@
+var console = Console()
+
+func ConsoleLongLines() {
+    load "../../../spite_standard_library/windows"
+    var long = console.read_line()
+    crash long
+    var count = long.length()
+    var whole = long.starts_with("é") and long.ends_with("é")
+    console.print("a line of {count} bytes, whole: {whole}")
+    var not_text = console.read_line()
+    if not not_text {
+        console.print("a line that is not UTF-8 is null")
+    }
+    var after = console.read_line()
+    crash after
+    console.print("then [{after}]")
+    var end = console.read_line()
+    if not end {
+        console.print("then the end")
+    }
+}

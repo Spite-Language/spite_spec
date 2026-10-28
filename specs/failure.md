@@ -56,6 +56,7 @@ keeping, and the run's halt is the backstop for what only the run can find.
 | a `while true` that can never leave and calls nothing | compile error | [control_flow.md](https://github.com/Spite-Language/spite_documentation/blob/master/control_flow.md#while-is-the-only-loop) |
 | work given to a `Parallel` that loops forever and never waits | compile error | [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#threads-for-parallel) |
 | a peer that hung up read as a count of `-1` | `socket.closed` turns `true`; reads answer `0` or `null` | [standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md) |
+| a read the outside world cut short, a lock or random bytes the system refused, input that is not UTF-8, taken as a halt or a made-up value (D1721) | the library answers `null` or `false` and halts only on the program's own mistakes; the program decides with `assert` or `crash` (`tests/console_long_lines`) | [failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#nothing-fails-silently) |
 | an impossible date such as `Date(2023, 2, 29)` rolled over | halts; text from outside is read with `text.to_date()`, which answers `null` | [time.md](https://github.com/Spite-Language/spite_documentation/blob/master/time.md) |
 | a `crash` or `assert` whose site cannot be found again | every build writes `<program>.crashes`, one line per site | [what a crash reports](#what-a-crash-reports) |
 

@@ -1,0 +1,14 @@
+var console = Console()
+var zones = TimeZones()
+
+func SystemTimeZone() {
+    load "../../../spite_standard_library/windows"
+    var zone = zones.system()
+    if not zone {
+        console.print("the machine's zone could not be opened")
+        return
+    }
+    var identifier = zone.get_identifier()
+    var named = not identifier.is_empty()
+    console.print("the machine's zone is named: {named}")
+}

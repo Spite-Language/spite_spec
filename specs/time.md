@@ -23,7 +23,7 @@ with Temporal's vocabulary and no stored zoned type.
 | `Time(hour, minute, second, nanosecond)` | a clock reading with no date and no zone; `hour`, `minute`, `second`, `nanosecond`, `second_of_day`, `==`, `<`, `>` |
 | `DateTime(date, time)` | both, with no zone; `date`, `time`, `+ Period`, `==`, `<`, `>`; `to_instant_in(zone, ambiguity: TimeZone.Ambiguity): Instant` |
 | `TimeZone(identifier, offset: Duration)` | one class holding a zone's rules (its transitions, the yearly POSIX rule after them, and on Windows its ICU calendar); `offset_at(instant): Duration`, `identifier` (the IANA identifier, or the offset written as `+05:30`, or `UTC`); the constructor is a fixed offset, which halts unless it is under a day; no helper class serves it |
-| `TimeZones()` | the database, a singleton: `find(identifier): TimeZone?`, `utc()`, `fixed_offset(duration)`, `system()`, `read_tzif(identifier, data: Buffer): TimeZone?` (the file's bytes, from `File.read_as_buffer()`) |
+| `TimeZones()` | the database, a singleton: `find(identifier): TimeZone?`, `utc()`, `fixed_offset(duration)`, `system(): TimeZone?` (`null` when the system cannot name or open its zone), `read_tzif(identifier, data: Buffer): TimeZone?` (the file's bytes, from `File.read_as_buffer()`) |
 | `String` | reads ISO 8601 (RFC 3339, RFC 9557): `to_instant()`, `to_date_time()`, `to_date()`, `to_time()`, `to_duration()`, `to_period()`, each answering `T?`; writing is each type's `to_string()` |
 | `Benchmark(work: Spite.Function<T>)` | one timed run of `work`: `answer: T`, what it answered, and `duration: Duration`, the monotonic time it took |
 
@@ -49,7 +49,9 @@ with Temporal's vocabulary and no stored zoned type.
   once. The only other annotation read is `[u-ca=iso8601]`, critical or not; any other is `null`.
 - **The database is the operating system's, and nothing is embedded.** Windows reads IANA zones through
   `icu.dll` (Windows 10 1903 and later), loaded only when a named zone is asked for
-  (`windows/time_zone.spite`, reopening `TimeZone`); Linux and macOS read the TZif files under `/usr/share/zoneinfo` in Spite
+  (`windows/time_zone.spite`, reopening `TimeZone`); ICU refusing to name or open a zone is an answer (`find` and
+  `system()` are `null`), and an offset ICU is asked for an instant outside the years it reckons (about 5.8 million
+  either side of 1970) halts as the program's mistake, since no text the library reads names such an instant; Linux and macOS read the TZif files under `/usr/share/zoneinfo` in Spite
   (`TimeZone`'s own reading, `common/time_zone.spite`: RFC 8536 versions 1 to 4 and the POSIX rule in the footer), and `system()` follows
   `TZ`, then `/etc/localtime`. `read_tzif` is the same reader for a file a program brings. `conformance/stage6/zone_files` runs the
   TZif reader on Windows over three files written for the test and checked with Python's `zoneinfo`.

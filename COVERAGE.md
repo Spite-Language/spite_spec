@@ -857,6 +857,8 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | Console is a singleton, one instance everywhere | tests/console_class | covered |
 | Calling a member on Console() directly is an error | conformance/console_called_directly | added |
 | read_line answers null only at the end; drops \r before the line feed | tests/console_input, tests/console_read_carriage_return | added |
+| TimeZones.system() answers TimeZone?, null when ICU cannot name or open the machine's zone (D1721) | tests/system_time_zone | added |
+| read_line reads a line longer than its 256-byte reads whole, and answers null for a line that is not UTF-8 (D1721) | tests/console_long_lines | added |
 | The entry returning normally is exit code 0 | tests/hello, tests/exit_code | covered |
 | Printing is to_string(); every number, Boolean, String, Symbol, enum, class prints | tests/printable_values | covered |
 | A class without to_string is not Printable | conformance/print_without_to_string | covered |

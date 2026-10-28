@@ -41,6 +41,7 @@ func Hashes() {
     console.print(long_shown)
     var first = random.random_buffer(32)
     var second = random.random_buffer(32)
+    crash first and second
     var first_count = first.count()
     var differ = hex(first) != hex(second)
     console.print("32 secure random bytes, twice: {first_count} bytes, different: {differ}")
@@ -53,6 +54,7 @@ func Hashes() {
         console.print("a text that is not a PHC string is no answer")
     }
     var stored = argon2.hash("correct horse")
+    crash stored
     var prefix = stored.slice(0, 31)
     crash prefix
     var round_trip = argon2.verify("correct horse", stored)

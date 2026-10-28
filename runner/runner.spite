@@ -75,6 +75,7 @@ func jobs_at_once(): Integer {
 
 func start_one(folder: String) {
     var executable = program.executable_path()
+    crash executable
     started_count = started_count + 1
     var output_path = "{outputs_folder}/{started_count}.txt"
     var windows_output = output_path.replace("/", "\\")

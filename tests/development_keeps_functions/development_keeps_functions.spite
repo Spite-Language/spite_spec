@@ -7,6 +7,7 @@ func DevelopmentKeepsFunctions() {
     var used = keeper.used()
     console.print(used)
     var path = program.executable_path()
+    crash path
     var length = path.length()
     var stem = path.slice(0, length - 4)
     crash stem

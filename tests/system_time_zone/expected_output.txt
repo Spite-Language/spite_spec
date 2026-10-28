@@ -1,0 +1,1 @@
+the machine's zone is named: true

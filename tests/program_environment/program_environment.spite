@@ -10,6 +10,7 @@ func ProgramEnvironment() {
         has_path = not path.is_empty()
     }
     var executable = program.executable_path()
+    crash executable
     var named = executable.ends_with("program_environment.exe")
     console.print(missing, has_path, named)
 }
