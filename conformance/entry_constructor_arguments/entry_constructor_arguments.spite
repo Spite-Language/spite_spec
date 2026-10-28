@@ -1,6 +1,6 @@
 var console = Console()
 
-func EntryConstructorArguments(arguments: Arguments) {
+func EntryConstructorArguments(arguments: List<String>) {
     load "../../../spite_standard_library/common"
     var argument_count = arguments.count()
     console.print(argument_count)

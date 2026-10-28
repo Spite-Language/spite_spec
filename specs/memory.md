@@ -100,7 +100,7 @@ Every function/method return retains its result, so a getter's returned value is
 reference, including through attribute read interception ([Operators](functions_and_operators.md#operators)): a `person.age`-shaped read answered by a
 getter, used directly as a call/print argument rather than stored, is released like any other temporary
 (`ExpressionResult.is_owning` in the generator is how a read that compiles to a call, but still
-parses as a `.member`/`.index` expression (an intercepted attribute read, `arguments.some_key`, the
+parses as a `.member`/`.index` expression (an intercepted attribute read, the
 `attributes[attribute]` template form), tells every caller whether it is independently owned regardless of what
 the plain AST shape alone would suggest).
 

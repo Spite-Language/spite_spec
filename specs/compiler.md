@@ -27,7 +27,7 @@ spite program --hot-reload              swap changed classes into the running pr
 spite program --target-operating-system=linux   compile for another system: windows, linux or mac
 spite program --serve=true              set a Build field the program declares in its build.spite (programs.md)
 spite program ada --player-name=x       run it, passing a setting its Environment declares, and any argument
-                                        that is not a flag, to the program (Environment, Arguments)
+                                        that is not a flag, to the program (Environment, Program.arguments)
 spite connect port                      talk to a program running with --repl-port=port (repl.md)
 spite connect port --command="..."      send one REPL command, print its raw JSON answer line, and exit
 spite reload program ... --executable-path=running   what a --hot-reload program runs to rebuild itself (repl.md)
@@ -246,7 +246,7 @@ it. Tree shaking and every other whole-program step run before any output is wri
   --target-operating-system=linux (or windows, or mac)`, and `error: '--program' cannot be given: the program is
   the folder named on the command line, 'spite folder', and Build.program is set from it`.
 - **What the program receives**: every setting its `Environment` declares, and every argument after the folder
-  that is not a flag (the first word that is not a flag is the folder, wherever it stands), in the order given, verbatim (`arguments.get(0)` is the first, `arguments.player` reads
+  that is not a flag (the first word that is not a flag is the folder, wherever it stands), in the order given, verbatim (the first is the first item of `program.arguments()`, `program.argument_named("player")` reads
   `--player=...`, and `Environment` reads the settings it declares); the compiler's own flags and the folder are
   not passed (`conformance/stage6/program_arguments`). **There is no `--` separator**: a bare `--` is an error,
   `error: '--' is not a separator: a program's settings are given beside the compiler's flags, kebab-case like

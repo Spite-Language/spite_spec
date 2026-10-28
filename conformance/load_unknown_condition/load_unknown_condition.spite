@@ -1,6 +1,8 @@
+var program = Program()
+
 func LoadUnknownCondition() {
     load "../../../spite_standard_library/windows"
-    var arguments = Arguments()
+    var arguments = program.arguments()
     if arguments.count() > 1 {
         load "extras"
     }

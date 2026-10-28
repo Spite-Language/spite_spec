@@ -1,15 +1,18 @@
 var console = Console()
+var program = Program()
 
 func ProgramArguments() {
     load "../../../spite_standard_library/windows"
-    var arguments = Arguments()
+    var arguments = program.arguments()
     greet(arguments)
 }
 
-func greet(arguments: Arguments) {
+func greet(arguments: List<String>) {
     var arguments_count = arguments.count()
-    var argument = arguments.get(0)
+    var argument = arguments[0]
+    crash argument
     console.print(arguments_count, argument)
-    assert arguments.player
-    console.print("player", arguments.player)
+    var player = program.argument_named("player")
+    assert player
+    console.print("player", player)
 }

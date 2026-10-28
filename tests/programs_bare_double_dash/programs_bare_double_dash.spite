@@ -1,10 +1,13 @@
 var console = Console()
+var program = Program()
 
 func ProgramsBareDoubleDash() {
     load "../../../spite_standard_library/windows"
-    var arguments = Arguments()
+    var arguments = program.arguments()
     var given = arguments.count()
-    var first = arguments.get(0)
-    var second = arguments.get(1)
+    var first = arguments[0]
+    crash first
+    var second = arguments[1]
+    crash second
     console.print(given, first, second)
 }

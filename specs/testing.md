@@ -22,7 +22,7 @@ is the bug.
   program decides what each test's instance holds and when it is let go, and every call is known while compiling,
   so a test compiles and runs like the rest of the program. A test takes no arguments; one that does is the
   unfilled-argument error of `Spite.Call`. A value a test returns is dropped.
-- **Running one test, one class or a folder** is the runner's business, through `Arguments()`: the runner on this
+- **Running one test, one class or a folder** is the runner's business, through `program.arguments()`: the runner on this
   page and the repository's `tests/` run only the class or test named by the first argument, and crash when it
   names nothing, so a mistyped name never passes. A folder of tests is one program, named on the command line.
 - **Fail-fast is deliberate**: the first failing `crash` ends the run. A person wants every failure at once

@@ -1,0 +1,22 @@
+var console = Console()
+var program = Program()
+
+func ProgramFlagsAndSettings() {
+    load "../../../spite_standard_library/windows"
+    var arguments = program.arguments()
+    var given = arguments.count()
+    console.print("given", given)
+    show("verbose")
+    show("port")
+    show("quiet")
+}
+
+func show(name: String) {
+    var flag = program.has_flag(name)
+    var value = program.argument_named(name)
+    if value {
+        console.print(name, "flag", flag, "value", value)
+    } else {
+        console.print(name, "flag", flag, "no value")
+    }
+}

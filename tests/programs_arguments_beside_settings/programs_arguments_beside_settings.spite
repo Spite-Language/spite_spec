@@ -1,13 +1,15 @@
 var console = Console()
 var environment = Environment()
+var program = Program()
 
 func ProgramsArgumentsBesideSettings() {
     load "../../../spite_standard_library/windows"
-    var arguments = Arguments()
+    var arguments = program.arguments()
     var given = arguments.count()
     console.print(environment.workers, given)
-    if arguments.player_name {
-        console.print("given", arguments.player_name)
+    var player_name = program.argument_named("player-name")
+    if player_name {
+        console.print("given", player_name)
     } else {
         console.print("not given")
     }

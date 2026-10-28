@@ -1,15 +1,16 @@
 var console = Console()
+var program = Program()
 
 func LauncherArguments() {
     load "../../../spite_standard_library/windows"
-    var arguments = Arguments()
+    var arguments = program.arguments()
     show(arguments)
 }
 
-func show(arguments: Arguments) {
+func show(arguments: List<String>) {
     var index = 0
     while index < arguments.count() {
-        var argument = arguments.get(index)
+        var argument = arguments[index]
         console.print("[{argument}]")
         index = index + 1
     }

@@ -907,7 +907,9 @@ Rules: 40. Covered before: 20. Covered now: 35.
 | A folder with no entry file is an error naming the file looked for | conformance/programs_no_entry_file | added (compiler fails: names 'programsnoentryfile.spite') |
 | The entry constructor takes no arguments | conformance/entry_constructor_arguments | covered |
 | The program ends with exit code 0 when the constructor returns | tests/exit_code | covered |
-| `Arguments()`: `count()`, `get(index)`, `.player_name` as `String?` | tests/program_arguments, tests/launcher_arguments | covered |
+| `Program.arguments()` and `argument_named(name)` as `String?` | tests/program_arguments, tests/launcher_arguments | covered |
+| A flag and a setting told apart: `has_flag` answers only a bare `--name`, `argument_named` only a `--name=...` | tests/program_flags_and_settings | added |
+| A bare `--name` for a `String` setting crashes when `Environment` is made | tests/environment_bare_text_setting | added |
 | A flag not given reads `null` | tests/programs_arguments_beside_settings | added |
 | A bare `--` is an ordinary argument | tests/programs_bare_double_dash | added |
 | The launcher loads library, system folder, then the program | tests/launcher_arguments, tests/system_folder | covered |

@@ -146,10 +146,10 @@ func make_a_folder(path: String) {
 
 func named_folders(): List<String> {
     var named = List<String>()
-    var arguments = Arguments()
+    var arguments = program.arguments()
     var index = 0
     while index < arguments.count() {
-        var argument = arguments.get(index)
+        var argument = arguments[index]
         add_named(named, argument)
         index = index + 1
     }

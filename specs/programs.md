@@ -15,28 +15,39 @@ the file looked for. No other file may reopen the entry class
 
 The entry constructor takes **no arguments**: `'Kal' is the entry constructor, and it takes no arguments:
 a program reads its run-time settings through Environment() (declared in its environment.spite, given on the
-command line beside the compiler's flags), what its build decided through Build(), and the raw command line through Arguments(), anywhere`
+command line beside the compiler's flags), what its build decided through Build(), and the raw command line through Program().arguments(), anywhere`
 (`diagnostics/entry_constructor_arguments`).
 
 ```gdscript kal.spite
 var console = Console()
+var program = Program()
 
 func Kal() {
-    var arguments = Arguments()
-    var some_key = arguments.some_key
+    var some_key = program.argument_named("some-key")
     if some_key {
         console.print(some_key)
     }
 }
 ```
 
-**`Arguments()` is the raw command line, anywhere**: what
+**`Program()` holds what the program was started with, anywhere**: `program.arguments(): List<String>` is what
 the program was given (when the compiler runs it, the settings its `Environment` declares and every argument
-after the folder that is not a flag), with `count()`, `get(index)`, and `.player_name` answering the value of
-`--player-name=...` as a `String?`, `null` when that flag was not given; the name is kebab-case on the command
-line and snake_case in code, like a setting's (`conformance/stage6/program_arguments`). A bare `--` is an
-ordinary argument to it. The compiler answers it in any function; its only cost is the slot
-`main` fills with the process's arguments.
+after the folder that is not a flag), in order and verbatim, the executable's own path left out
+(`tests/program_arguments`, `tests/launcher_arguments`). Two reads tell a setting from a flag, and neither stands
+in for the other (`tests/program_flags_and_settings`):
+
+- `argument_named(name): String?` answers the value of `--name=...`, `null` when no such argument was given; the
+  name is written as on the command line, `program.argument_named("player-name")`. A bare `--name` has no value,
+  so it answers `null` here, never made-up text such as `"true"`.
+- `has_flag(name): Boolean` answers whether a bare `--name` was given; a `--name=...` is a setting, and answers
+  `false` here.
+
+The command line is what the person starting the program typed, so neither read halts on it (D1721): a program
+that takes either form asks both and decides.
+
+A bare `--` is an ordinary argument to it (`tests/programs_bare_double_dash`). There is no `Arguments` class:
+`Program` is the one class for what the program was started with, and `Environment` reads its settings from
+`program.arguments()` itself. The command line is read from the process each time `arguments()` is called.
 
 **Nothing starts a program behind its back.** The program is the entry point: there is no launcher. The compiler
 reads the entry file, and the leading `load` lines of its entry function name the standard library, very explicitly
@@ -50,7 +61,7 @@ nothing is an error. See [The standard library is a folder loaded by its path](p
   A `load` compiles to nothing at run time.
 - The program's own folder is the root its entry file sits in, and constructing the entry class is what runs it;
   with `--repl` a loop runs on it when asked, and it is released afterwards.
-- The executable keeps only the floor: it hands the command line to `Arguments()`, constructs the entry class, and
+- The executable keeps only the floor: it leaves the command line to `Program().arguments()`, constructs the entry class, and
   afterwards releases the singletons and class objects and prints the `--debug-memory` balance.
 - The exit code is the value the entry constructor answers; a constructor that answers nothing leaves it at 0.
 
@@ -71,7 +82,7 @@ What follows is how it is compiled:
   the program's own command line, `--serve=true` or, for a `Boolean`, bare `--serve` (what the program
   receives, see [Command line](compiler.md#command-line)); the process environment variable named by the field
   in upper case, `SERVE`; the declared default. The command line wins because it is the more deliberate of the
-  two. An argument that names no field is left alone for `Arguments` to read.
+  two. An argument that names no field is left alone for `program.arguments()` to read.
 - **A setting is written like a compiler flag**: kebab-case on the command line, snake_case in code,
   `--worker-count=4` for `var worker_count = 1` (`conformance/stage6/kebab_setting`). The compiler refuses the
   snake_case spelling before anything is read (`error: '--worker_count' is written '--worker-count': flags and
@@ -92,8 +103,8 @@ What follows is how it is compiled:
   workers = ""' (String)` (`diagnostics/environment_setting`). Text that is not a value of the setting's type
   (`--serve=maybe`, `--workers=many`, a bare `--name` for a `String`) is a compile error when it is given to the
   compiler (`diagnostics/setting_value`), and **crashes** when the singleton is made in a program run directly
-  (a malformed setting is a bug in how the program was started, and there is nothing sensible to continue
-  with).
+  (`tests/environment_bare_text_setting`; a malformed setting is a bug in how the program was started, and there
+  is nothing sensible to continue with).
 - **How the fields get filled.** The compiler prepends one assignment per declared field to `Environment`'s
   constructor, `serve = boolean_setting("serve", serve)`, where `boolean_setting`, `integer_setting` and
   `text_setting` are ordinary Spite functions of `Environment`. The reading itself is Spite; the

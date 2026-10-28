@@ -1,8 +1,9 @@
 var console = Console()
+var program = Program()
 
 func CheckedSumInItsRegister() {
     load "../../../spite_standard_library/windows"
-    var arguments = Arguments()
+    var arguments = program.arguments()
     var given = arguments.count()
     var small = summed(1000, given)
     console.print(small)

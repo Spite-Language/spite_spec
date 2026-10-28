@@ -3,11 +3,12 @@ var program = Program()
 
 func System() {
     load "../../../spite_standard_library/windows"
-    var arguments = Arguments()
+    var arguments = program.arguments()
     var arguments_count = arguments.count()
     console.print(arguments_count, "|")
-    if arguments.nothing_here {
-        console.print("unexpected", arguments.nothing_here)
+    var nothing_here = program.argument_named("nothing-here")
+    if nothing_here {
+        console.print("unexpected", nothing_here)
     } else {
         console.print("no such argument")
     }
