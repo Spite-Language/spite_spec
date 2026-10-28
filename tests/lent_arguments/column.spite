@@ -4,7 +4,7 @@ generic $component_type
 
 var dense_of = List<Integer>()
 var entities = List<Integer>()
-var values = Items<$component_type>()
+var values = List<$component_type>()
 
 func insert(entity: Integer, value: $component_type) {
     var dense = dense_index(entity)

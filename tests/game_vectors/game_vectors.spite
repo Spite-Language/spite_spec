@@ -25,12 +25,12 @@ func three() {
     chained = chained.scaled(3.0)
     chained = chained - first
     console.print("chained {chained}")
-    var positions = Vector<Vector3<Float>>()
+    var positions = List<Vector3<Float>>()
     positions.append(first)
     positions.append(second)
     crash positions.count() == 2
     var stored = positions[1]
-    console.print("in a Vector column {stored.x} {positions.count()}")
+    console.print("in a List column {stored.x} {positions.count()}")
 }
 
 func two_and_four() {

@@ -1,8 +1,0 @@
-type Moving {
-    position: Position
-    velocity: Velocity
-}
-
-func pass_back(moving: Moving): Moving {
-    return moving
-}

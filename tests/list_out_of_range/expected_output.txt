@@ -1,0 +1,4 @@
+null null
+3
+spite: the program stopped at ... in ...set_at...
+spite.frame	tests/list_out_of_range/list_out_of_range.spite:16	ListOutOfRange	ListOutOfRange

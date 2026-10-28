@@ -3,7 +3,7 @@ singleton
 generic $component_type
 
 var rows = List<Integer>()
-var values = Items<$component_type>()
+var values = List<$component_type>()
 var references = List<$component_type>()
 
 func insert(entity: Integer, value: $component_type) {

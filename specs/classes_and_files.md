@@ -161,7 +161,7 @@ var heap = Memory.Heap()
   file" (`diagnostics/local_singleton`). The one exception is a value class such as `String`, which has no
   attribute to spare and binds it as a local `var` in the function that needs it. The exception covers every class
   the compiler treats as a value (`String` and the numbers) and
-  `List`, `Vector` and `Dictionary`, since an attribute there would be carried by every list; and a generic singleton whose
+  `List` and `Dictionary`, since an attribute there would be carried by every list; and a generic singleton whose
   codegen values come from the function's own codegen or template (`Query<argument.class>()`,
   `Debug<$value_type.element_type>()` inside a codegen `if`) stays a local, since no attribute can name that type.
   The singleton is then made when the object that binds it is, not when the function first runs.
@@ -182,7 +182,7 @@ var heap = Memory.Heap()
   the compiler generates is checked: a function nothing calls is not. A member read on a
   generic singleton made from a walked attribute's class (`Column<attribute.class>().values`) is not an error,
   since no attribute can name that type: it is how a walked row reads a sparse column
-  ([memory.md](memory.md#borrowed-items-of-a-vectort)); passing or returning one still is.
+  ([memory.md](memory.md#rows-walked-from-lists)); passing or returning one still is.
 - **An unread singleton binding is an error everywhere**: `var world = World()` that nothing in the
   program reads is `the attribute 'world' is never read: remove it`, even inside a loaded package, whose other
   unread public attributes are tree-shaken rather than reported ([style.md](style.md#unused-is-an-error)).

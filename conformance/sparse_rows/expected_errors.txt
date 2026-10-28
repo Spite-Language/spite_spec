@@ -1,1 +1,0 @@
-conformance/sparse_rows/runner.spite:11: error: 'row' borrows items from 'Column<Position>().values' for the call it is passed to, and 'keeper.spawn_while_moving()' on line 11 may move the items of 'Column<Position>().values': a function that is handed a row may not append to or remove from the vectors it borrows from, directly or through what it calls (in Runner.run)

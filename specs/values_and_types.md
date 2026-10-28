@@ -250,8 +250,8 @@ lies inside the operation's type.
   its value's, cut to its type; each assignment replaces it with the new value's. An operand that is none of these
   has its type's range and nothing narrower: an attribute, the item of a list, the answer of a call, since a call
   or another pass could change them, and a `Long` or an `UnsignedLong` without a narrower range has none, so an
-  operation with one keeps its check. A few answers are narrower than their type: `count()` of a `List`, a
-  `Dictionary`, a `Vector` or an `Items`, and `length()` of a `String`, run from 0 to 2147483647; `x % n` is
+  operation with one keeps its check. A few answers are narrower than their type: `count()` of a `List` or a
+  `Dictionary`, and `length()` of a `String`, run from 0 to 2147483647; `x % n` is
   smaller in size than `n`, no larger than `x`, and has `x`'s sign; `x / n` with `n` a constant is `x`'s range divided;
   `x / y` is no larger in size than `x`; `minimum`, `maximum`, `clamp` and `absolute` of a whole number bound
   their answers by their operands' ranges; `to_long()` and `to_integer()` keep their receiver's range. A right

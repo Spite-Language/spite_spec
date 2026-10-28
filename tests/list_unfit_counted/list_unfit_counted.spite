@@ -1,0 +1,21 @@
+var console = Console()
+var holders = List<Holder>()
+var kept = Holder("kept")
+var listed = List<Holder>()
+
+func ListUnfitCounted() {
+    load "../../../spite_standard_library/windows"
+    var first = Holder("first")
+    holders.append(first)
+    crash holders[0]
+    var item = holders[0]
+    kept = item
+    listed.append(item)
+    var alias = item
+    holders.append(first)
+    alias.scores.append(4)
+    var count = holders.count()
+    var listed_count = listed.count()
+    var score_count = first.scores.count()
+    console.print(kept.name, listed_count, alias.name, count, score_count)
+}

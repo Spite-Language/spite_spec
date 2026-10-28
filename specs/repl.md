@@ -10,15 +10,13 @@ No change to a program's code needs a restart. Every refusal in [What a reload c
 is a gap to close, not a rule. The steps, in the order a game meets them:
 1. **A class's attributes change**, [Changing a class's attributes](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#changing-a-classs-attributes): the reload moves
    every live object to the new layout, copying kept attributes by name, giving new ones their defaults and
-   releasing removed ones; an `Items`' own memory moves the same way. A rename is given at the prompt, never in the
+   releasing removed ones. A rename is given at the prompt, never in the
    program's code: `reload {Hero.attributes['level']: "rank"}`. The rules:
    - A `--hot-reload` build gives each object of a program class two hidden words after its header, `spite_moved`
      (its attributes' block once they moved, else 0) and `spite_live` (its place in the class's list of live
      objects), reads every attribute through `<Class>___fields(object)`, and describes each class's layout --
      every attribute's name, type, offset, size and release, in a table the reload reads (`<Class>___layout`).
-     An `Items` or `Vector` holding a class's objects, in its own memory or as references, is kept in a list of
-     its own.
-   - A class's layout is its attributes' names and types in order, and whether it fits an `Items`' own memory. A
+   - A class's layout is its attributes' names and types in order. A
      reload whose layout for a class differs from what the running program holds compiles the whole program. It
      compiles every function that reads that class's attributes or its size again and swaps it in; one it could
      not swap is refused by name (`the change reaches ...`), and the program keeps all of its code.
@@ -50,18 +48,6 @@ is a gap to close, not a rule. The steps, in the order a game meets them:
      The moves are named in the answer and on the error output (`moved every Hero to its new attributes: health is
      new and holds its default`).
    - Once a class has moved, its code reads through the function for as long as the program runs.
-   - A class that stops fitting an `Items`' own memory (an attribute of a class or a list, a `drop()`, a function
-     that uses `this` as a value) moves each item out: it becomes an object of its own, made like any other with
-     the class's new defaults, takes the item's attributes as a moved object does, joins the class's live objects,
-     and the `Items` keeps a reference to it. A class that starts fitting moves each object an `Items` holds into
-     its own memory once every object of the class has moved, and the object, which the `Items` held alone, is
-     freed. When one of those objects is also held somewhere else (an attribute, another list, a local), the reload
-     is refused before any slot is installed, `the program keeps the code it runs: Step now fits an Items' own
-     memory, but an Items holds a Step that is held elsewhere too, ...`, since an item kept inline is never shared
-     and moving it would part it from the other holder; letting the other reference go and reloading again moves
-     it. The class's `Spite.Class` answers `fits_vector()` from the layout the program runs, so it follows the
-     move. The answer names the move (`its objects moved out of an Items' own memory into objects of their
-     own`, `its objects moved into an Items' own memory`).
 2. **Dependents are rebuilt**: every function of a `--hot-reload` build has a slot, the standard library's, a
    number's (a function a program adds to `Integer`) and the helpers the compiler writes included, so a change
    whose dependents cannot be swapped alone compiles the whole program and swaps in every function whose C

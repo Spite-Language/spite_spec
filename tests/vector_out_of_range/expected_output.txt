@@ -1,4 +1,0 @@
-null null
-3
-spite: the program stopped at ... in ...set_at...
-spite.frame	tests/vector_out_of_range/vector_out_of_range.spite:16	VectorOutOfRange	VectorOutOfRange

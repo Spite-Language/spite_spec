@@ -1,4 +1,0 @@
-func capture(mouse: Mouse) {
-    var moved = mouse.move
-    moved.call_function()
-}

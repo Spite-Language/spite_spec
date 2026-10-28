@@ -1,1 +1,0 @@
-conformance/vector_list_item/vector_list_item.spite:5: error: a Vector holds each item inline, so an item is a number, a Boolean, an enum, a String or a class made only of those, and a List<Integer> is not: keep it in a 'List<List<Integer>>' (in VectorListItem.VectorListItem)

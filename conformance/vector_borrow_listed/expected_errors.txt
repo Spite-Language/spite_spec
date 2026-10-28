@@ -1,1 +1,0 @@
-conformance/vector_borrow_listed/vector_borrow_listed.spite:11: error: 'stored' is borrowed from 'velocities' and cannot be put in a list: a list keeps 'stored.copy()', an independent object (in VectorBorrowListed.VectorBorrowListed)

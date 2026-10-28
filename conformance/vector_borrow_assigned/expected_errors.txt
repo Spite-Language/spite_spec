@@ -1,1 +1,0 @@
-conformance/vector_borrow_assigned/vector_borrow_assigned.spite:13: error: 'stored' is borrowed from 'velocities' and is not assigned again: read another item with a new 'var', such as 'var next = velocities[index]' (in VectorBorrowAssigned.VectorBorrowAssigned)

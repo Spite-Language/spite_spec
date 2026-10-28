@@ -1,0 +1,11 @@
+var console = Console()
+
+func ListUsedAtOnce() {
+    load "../../../spite_standard_library/windows"
+    var playlist = Playlist()
+    playlist.add(185)
+    playlist.add(240)
+    var longest = playlist.longer_of(0, 1)
+    var heard = playlist.times_heard(1)
+    console.print("longest", longest, "heard", heard)
+}

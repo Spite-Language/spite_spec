@@ -1,5 +1,0 @@
-var left = 0
-
-func moved(amount: Integer) {
-    left = left + amount
-}

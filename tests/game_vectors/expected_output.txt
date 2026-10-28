@@ -8,7 +8,7 @@ distance 4.5 squared 20.25
 linear_interpolate (2.5, 0.5, 1.25)
 minimum (1, -1, 0.5) maximum (4, 2, 2) absolute (4, 1, 0.5)
 chained (2, 1, -2)
-in a Vector column 4 2
+in a List column 4 2
 Vector2 (4, 3) 5 (0.6, 0.8) -1
 Vector2 (2.5, 2.75) 5.3851647 (1, -1)
 Vector4 (0.5, 1, 1.5, 2) 5 30 (1, 2, 3, 4)

@@ -3,12 +3,10 @@ generic $component_type
 var inline = $component_type.is_fixed_size
 
 func describe(): String {
+    var kept = List<$component_type>()
+    var kept_count = kept.count()
     if $component_type.is_fixed_size {
-        var packed = Vector<$component_type>()
-        var packed_count = packed.count()
-        return "inline, {packed_count} so far"
+        return "fixed size, {kept_count} so far"
     }
-    var listed = List<$component_type>()
-    var listed_count = listed.count()
-    return "as references, {listed_count} so far"
+    return "grows, {kept_count} so far"
 }

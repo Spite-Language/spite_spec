@@ -1,1 +1,0 @@
-conformance/found_item_borrows/found_item_borrows.spite:10: error: 'found' is borrowed from 'velocities', and 'velocities.append()' on line 10 may move the items of 'velocities', so 'found' is not read after it: read 'velocities[index]' again after that line, or keep 'found.copy()', an independent object (in FoundItemBorrows.FoundItemBorrows)

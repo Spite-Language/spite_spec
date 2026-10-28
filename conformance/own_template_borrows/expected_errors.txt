@@ -1,1 +1,0 @@
-conformance/own_template_borrows/vector.spite:17: error: 'largest' is borrowed from '...' and cannot be returned: return 'largest.copy()', an independent object (in Vector.largest_by_across)

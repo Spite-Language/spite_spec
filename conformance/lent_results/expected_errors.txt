@@ -1,1 +1,0 @@
-conformance/lent_results/lent_results.spite:14: error: 'Layout' fits a Vector, so the items of 'Column<Layout>().values' are borrowed: 'layout' is borrowed from 'Column<Layout>().values' and cannot be kept in the attribute 'kept': keep 'layout.copy()', an independent object (in LentResults.LentResults)

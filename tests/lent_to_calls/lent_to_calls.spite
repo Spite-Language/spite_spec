@@ -4,8 +4,8 @@ type Device {
 }
 
 var console = Console()
-var mice = Vector<Mouse>()
-var keyboards = Vector<Keyboard>()
+var mice = List<Mouse>()
+var keyboards = List<Keyboard>()
 var input = Input()
 
 func LentToCalls() {

@@ -215,11 +215,11 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/interactive_singletons | covered | tests/interactive_singletons |  |
 | conformance/stage6/interactive_templates | covered | tests/interactive_templates |  |
 | conformance/stage6/ipv6_addresses | covered | tests/ipv6_addresses |  |
-| conformance/stage6/items_at_once | covered | tests/items_at_once |  |
-| conformance/stage6/items_columns | covered | tests/items_columns |  |
-| conformance/stage6/items_narrowed | covered | tests/items_narrowed |  |
-| conformance/stage6/items_remove_out_of_range | covered | tests/items_remove_out_of_range |  |
-| conformance/stage6/items_remove_swapping_out_of_range | covered | tests/items_remove_swapping_out_of_range |  |
+| conformance/stage6/items_at_once | covered | tests/list_at_once |  |
+| conformance/stage6/items_columns | covered | tests/list_columns |  |
+| conformance/stage6/items_narrowed | covered | tests/list_narrowed |  |
+| conformance/stage6/items_remove_out_of_range | removed (D1707) | - |  |
+| conformance/stage6/items_remove_swapping_out_of_range | removed (D1707) | - |  |
 | conformance/stage6/json_camel_case | covered | tests/json_camel_case |  |
 | conformance/stage6/json_crash | covered | tests/json_crash |  |
 | conformance/stage6/json_infinity | covered | tests/json_infinity |  |
@@ -415,10 +415,10 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/value_switch | covered | tests/value_switch |  |
 | conformance/stage6/variadic_answers_in_frame | covered | tests/variadic_answers_in_frame |  |
 | conformance/stage6/variadic_arguments | covered | tests/variadic_arguments |  |
-| conformance/stage6/vector_find_sort | covered | tests/vector_find_sort |  |
-| conformance/stage6/vector_items | ported | tests/vector_items_run | D662: the arena placement became a plain second Vector ('kept elsewhere 1') |
-| conformance/stage6/vector_remove_out_of_range | covered | tests/vector_remove_out_of_range |  |
-| conformance/stage6/vector_rows | covered | tests/vector_rows |  |
+| conformance/stage6/vector_find_sort | covered | tests/list_find_sort |  |
+| conformance/stage6/vector_items | ported | tests/list_items_run | D662: the arena placement became a plain second Vector ('kept elsewhere 1') |
+| conformance/stage6/vector_remove_out_of_range | removed (D1707) | - |  |
+| conformance/stage6/vector_rows | covered | tests/list_rows |  |
 | conformance/stage6/wait_index_order | covered | tests/wait_index_order |  |
 | conformance/stage6/wait_order | covered | tests/wait_order |  |
 | conformance/stage6/waiting_systems | covered | tests/waiting_systems |  |
@@ -483,7 +483,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/default_answer | covered | conformance/default_answer |  |
 | diagnostics/default_guard | covered | conformance/default_guard |  |
 | diagnostics/dictionary_type_arguments | covered | conformance/dictionary_type_arguments |  |
-| diagnostics/dispatched_resizes | covered | conformance/dispatched_resizes |  |
+| diagnostics/dispatched_resizes | removed (D1707) | - |  |
 | diagnostics/division_by_constant_zero | covered | conformance/division_by_constant_zero |  |
 | diagnostics/doubled_underscore | covered | conformance/doubled_underscore |  |
 | diagnostics/dropped_construction | covered | conformance/dropped_construction |  |
@@ -515,7 +515,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/foreign_library_mistakes | covered | conformance/foreign_library_mistakes |  |
 | diagnostics/format_flag | covered | conformance/format_flag |  |
 | diagnostics/format_setting | covered | conformance/format_setting |  |
-| diagnostics/found_item_borrows | covered | conformance/found_item_borrows |  |
+| diagnostics/found_item_borrows | removed (D1707) | - |  |
 | diagnostics/from_conversion | covered | conformance/from_conversion |  |
 | diagnostics/function_owner | covered | tests/function_owner |  |
 | diagnostics/function_reflection | covered | conformance/function_reflection |  |
@@ -534,8 +534,8 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/inline_singleton | covered | conformance/inline_singleton |  |
 | diagnostics/inline_singleton_attribute | covered | conformance/inline_singleton_attribute |  |
 | diagnostics/io_system_writes_row | covered | conformance/io_system_writes_row |  |
-| diagnostics/items_borrows | covered | conformance/items_borrows |  |
-| diagnostics/items_nullable_unproven | covered | conformance/items_nullable_unproven |  |
+| diagnostics/items_borrows | removed (D1707) | - |  |
+| diagnostics/items_nullable_unproven | covered | conformance/list_nullable_unproven |  |
 | diagnostics/joined_maybe_boolean | covered | conformance/joined_maybe_boolean |  |
 | diagnostics/joined_text | covered | conformance/joined_text |  |
 | diagnostics/json_key | covered | conformance/json_key |  |
@@ -546,9 +546,9 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/left_over_after_return | covered | conformance/left_over_after_return |  |
 | diagnostics/lent_arguments | covered | tests/lent_arguments |  |
 | diagnostics/lent_element_guard | covered | conformance/lent_element_guard |  |
-| diagnostics/lent_escapes | covered | conformance/lent_escapes |  |
-| diagnostics/lent_results | covered | conformance/lent_results |  |
-| diagnostics/lent_to_calls | covered | conformance/lent_to_calls |  |
+| diagnostics/lent_escapes | removed (D1707) | - |  |
+| diagnostics/lent_results | removed (D1707) | - |  |
+| diagnostics/lent_to_calls | removed (D1707) | - |  |
 | diagnostics/library_class_namespace | covered | conformance/library_class_namespace |  |
 | diagnostics/library_function_mistakes | covered | conformance/library_function_mistakes |  |
 | diagnostics/literal_does_not_fit | covered | conformance/literal_does_not_fit |  |
@@ -597,7 +597,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/old_type_spellings | covered | conformance/old_type_spellings |  |
 | diagnostics/operator_function_call | covered | conformance/operator_function_call |  |
 | diagnostics/overlapping_load | covered | conformance/overlapping_load |  |
-| diagnostics/own_template_borrows | covered | conformance/own_template_borrows |  |
+| diagnostics/own_template_borrows | removed (D1707) | - |  |
 | diagnostics/package_attributes | covered | conformance/package_attributes |  |
 | diagnostics/parallel_function_reach | covered | conformance/parallel_function_reach |  |
 | diagnostics/parallel_handover | covered | conformance/parallel_handover |  |
@@ -611,7 +611,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/path_narrow_else | covered | conformance/path_narrow_else |  |
 | diagnostics/path_narrow_loop | covered | conformance/path_narrow_loop |  |
 | diagnostics/plain_get_at | covered | conformance/plain_get_at |  |
-| diagnostics/plain_items | covered | conformance/plain_items |  |
+| diagnostics/plain_items | removed (D1707) | - |  |
 | diagnostics/plain_symbol_on_list | covered | conformance/plain_symbol_on_list |  |
 | diagnostics/plural_templates | covered | conformance/plural_templates |  |
 | diagnostics/print_without_to_string | covered | conformance/print_without_to_string |  |
@@ -625,7 +625,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/removed_run_flag | covered | conformance/removed_run_flag |  |
 | diagnostics/removed_translation_units_flag | covered | conformance/removed_translation_units_flag |  |
 | diagnostics/removed_tuning_flag | covered | conformance/removed_tuning_flag |  |
-| diagnostics/reopened_vector_borrows | covered | conformance/reopened_vector_borrows |  |
+| diagnostics/reopened_vector_borrows | removed (D1707) | - |  |
 | diagnostics/repeated_branch_call | covered | conformance/repeated_branch_call |  |
 | diagnostics/replaced_items | covered | conformance/replaced_items |  |
 | diagnostics/reserved_signature | covered | conformance/reserved_signature |  |
@@ -647,7 +647,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/singleton_circle | covered | conformance/singleton_circle |  |
 | diagnostics/singleton_function | covered | conformance/singleton_function |  |
 | diagnostics/snapshot_argument_writes | covered | conformance/snapshot_argument_writes |  |
-| diagnostics/sparse_rows | covered | conformance/sparse_rows |  |
+| diagnostics/sparse_rows | removed (D1707) | - |  |
 | diagnostics/spinning_loop | covered | conformance/spinning_loop |  |
 | diagnostics/spite_link_outside_final | covered | conformance/spite_link_outside_final |  |
 | diagnostics/store_through_nullable | covered | conformance/store_through_nullable |  |
@@ -663,7 +663,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/template_walk | covered | conformance/template_walk |  |
 | diagnostics/terminal_if | covered | conformance/terminal_if |  |
 | diagnostics/text_is_to_string | covered | conformance/text_is_to_string |  |
-| diagnostics/text_items_passed | covered | conformance/text_items_passed |  |
+| diagnostics/text_items_passed | removed (D1707) | - |  |
 | diagnostics/text_to_number | covered | conformance/text_to_number |  |
 | diagnostics/type_mistakes | covered | conformance/type_mistakes |  |
 | diagnostics/type_size_mistakes | covered | conformance/type_size_mistakes |  |
@@ -687,13 +687,13 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/value_switch | covered | conformance/value_switch |  |
 | diagnostics/variadic_mistakes | covered | conformance/variadic_mistakes |  |
 | diagnostics/variadic_not_last | covered | conformance/variadic_not_last |  |
-| diagnostics/vector_borrows | covered | conformance/vector_borrows |  |
-| diagnostics/vector_items | covered | conformance/vector_items |  |
-| diagnostics/vector_reserve_borrows | covered | conformance/vector_reserve_borrows |  |
-| diagnostics/vector_rows | covered | conformance/vector_rows |  |
-| diagnostics/vector_template_walk | covered | conformance/vector_template_walk |  |
+| diagnostics/vector_borrows | removed (D1707) | - |  |
+| diagnostics/vector_items | removed (D1707) | - |  |
+| diagnostics/vector_reserve_borrows | removed (D1707) | - |  |
+| diagnostics/vector_rows | removed (D1707) | - |  |
+| diagnostics/vector_template_walk | removed (D1707) | - |  |
 | diagnostics/walk_with_function | covered | conformance/walk_with_function |  |
-| diagnostics/walked_rows | covered | conformance/walked_rows |  |
+| diagnostics/walked_rows | removed (D1707) | - |  |
 | diagnostics/weak_across_threads | not applicable (D755) | - | there is no Weak |
 | diagnostics/whole_number_rotation | covered | conformance/whole_number_rotation |  |
 | diagnostics/wider_bitwise_operand | covered | conformance/wider_bitwise_operand |  |
@@ -712,7 +712,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | examples/linked_walk | ported | tests/linked_walk |  |
 | examples/party | ported | tests/party |  |
 | examples/repository_list | ported | tests/repository_list | D798: Symbol parameters are Spite.AttributeDeclaration |
-| examples/vectors | ported | tests/vectors |  |
+| examples/vectors | ported | tests/lists_inline |  |
 | docs/classes_and_files.md#file_scope_error | covered | conformance/file_scope_statement |  |
 | docs/classes_and_files.md#ordered_file | ported | tests/ordered_file |  |
 | docs/classes_and_files.md#person_basics | covered | tests/accessors |  |
@@ -732,10 +732,10 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/collections.md#dictionary_literals | covered | tests/dictionary_literals |  |
 | docs/collections.md#number_keys_tasks | covered | tests/number_keys |  |
 | docs/collections.md#party_keys | covered | tests/any_keys |  |
-| docs/collections.md#vector_basics | ported | tests/vector_basics |  |
-| docs/collections.md#vector_borrow_mistake | covered | conformance/vector_borrows |  |
-| docs/collections.md#items_basics | ported | tests/items_basics |  |
-| docs/collections.md#items_borrow_mistake | covered | conformance/items_borrow_remove_swapping |  |
+| docs/collections.md#vector_basics | ported | tests/list_shared_items |  |
+| docs/collections.md#vector_borrow_mistake | removed (D1707) | - |  |
+| docs/collections.md#items_basics | ported | tests/list_item_basics |  |
+| docs/collections.md#items_borrow_mistake | removed (D1707) | - |  |
 | docs/collections.md#bulk_removal_doc | covered | tests/bulk_removal |  |
 | docs/collections.md#computed_member | ported | tests/computed_member |  |
 | docs/collections.md#list_helpers | covered | tests/member_templates |  |
@@ -841,11 +841,11 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/json.md#json_values | ported | tests/json_values |  |
 | docs/memory.md#sharing_basics | covered | tests/copy_semantics |  |
 | docs/memory.md#copy_basics | covered | tests/copy_semantics |  |
-| docs/memory.md#vector_row_doc | covered | tests/vector_row_attributes_written |  |
+| docs/memory.md#vector_row_doc | ported | tests/list_rows | the doc example is now row_doc |
 | docs/memory.md#walked_row_doc | covered | tests/walked_rows |  |
 | docs/memory.md#sparse_row_doc | covered | tests/sparse_rows |  |
 | docs/memory.md#lent_arguments_doc | covered | tests/ignored_lent_argument |  |
-| docs/memory.md#lent_result_doc | covered | conformance/lent_result_name_reused |  |
+| docs/memory.md#lent_result_doc | removed (D1707) | - |  |
 | docs/memory.md#lent_call_doc | covered | tests/lent_to_calls |  |
 | docs/memory.md#drop_basics | covered | tests/drop_hook |  |
 | docs/memory.md#tree_basics | ported | tests/tree_basics |  |
@@ -883,7 +883,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/optimizations.md#tested_once | ported | tests/tested_once |  |
 | docs/optimizations.md#held_attributes | ported | tests/held_attributes |  |
 | docs/optimizations.md#stored_in_place | covered | tests/stored_in_place |  |
-| docs/optimizations.md#items_used_at_once | ported | tests/items_used_at_once |  |
+| docs/optimizations.md#items_used_at_once | ported | tests/list_used_at_once |  |
 | docs/optimizations.md#foreign_names | ported | tests/foreign_names |  |
 | docs/optimizations.md#slot_write_back | ported | tests/slot_write_back |  |
 | docs/optimizations.md#tested_items | covered | tests/tested_items |  |

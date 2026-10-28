@@ -3,5 +3,5 @@ var spare: Cargo? = null
 var held = List<Cargo>()
 var tagged: Labeled = Badge("none", 0)
 var described: Describable = Crate("plain")
-var points = Vector<Point>()
-var marks = Items<Point>()
+var points = List<Point>()
+var marks = List<Point>()

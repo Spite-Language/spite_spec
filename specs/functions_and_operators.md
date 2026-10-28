@@ -271,7 +271,7 @@ function call argument.
 
 **`[]` is `get_at`, and `get_at` answers `T?`**, because `[]` is just a
 shortcut for a function, so a moron can also implement indexable classes. Every `get_at` (the library's `List`,
-`Vector` and `Items`, and a program's own) is declared to answer a `T?`, `null` when nothing is at the index; one
+`Dictionary` and `String`, and a program's own) is declared to answer a `T?`, `null` when nothing is at the index; one
 that answers a plain `T` is an error when it is declared: `'get_at' answers 'Integer', but it is what '[ ]'
 calls, and every '[ ]' answers a 'T?' that is narrowed before use: declare it to answer 'Integer?', and answer null
 when nothing is at the index` (`diagnostics/plain_get_at`). A read is narrowed like any `T?` path

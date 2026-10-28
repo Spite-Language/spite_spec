@@ -1,1 +1,0 @@
-conformance/lent_call_passed_on/input.spite:9: error: 'mouse' is lent to 'keep' for one call, by the call on line 5 of 'handle': it is the caller's item, read and written in place, so 'keep' does not keep it in the attribute 'last': keep the values it needs, or have the caller pass something 'keep' may keep (in Input.keep)

@@ -1,5 +1,0 @@
-var number = 0
-
-func itself(): Selfish {
-    return this
-}

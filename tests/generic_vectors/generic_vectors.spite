@@ -28,7 +28,7 @@ func GenericVectors() {
     var bytes = Vector2<Byte>(200, 50)
     var bytes_scaled = bytes.scaled(1)
     console.print(precise_unit, bytes_scaled)
-    var points = Vector<Vector2<Integer>>()
+    var points = List<Vector2<Integer>>()
     var first = Vector2(1, 2)
     points.append(first)
     var stored = points[0]

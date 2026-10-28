@@ -1,3 +1,0 @@
-removed 0 1
-spite: the program stopped at tests/items_remove_out_of_range/../../../spite_standard_library/common/items.spite:51 in Items_of_Velocity.remove_at (index=-1, _length=0)
-spite.frame	tests/items_remove_out_of_range/items_remove_out_of_range.spite:11	ItemsRemoveOutOfRange	ItemsRemoveOutOfRange

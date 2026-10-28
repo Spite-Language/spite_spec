@@ -1,1 +1,0 @@
-conformance/lent_function_type/lent_function_type.spite:13: error: 'Lookup' does not fit type 'Finder': its 'of' lends its caller an item of 'Column<Layout>().values', which only a call written by name can borrow: a call through the type would let go of an item it does not own (in LentFunctionType.LentFunctionType)

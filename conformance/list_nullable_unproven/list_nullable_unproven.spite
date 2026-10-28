@@ -1,0 +1,13 @@
+var console = Console()
+
+func ListNullableUnproven() {
+    load "../../../spite_standard_library/windows"
+    var names = List<String?>()
+    names.append("ada")
+    var index = 0
+    while index < names.count() {
+        var shouted = names[index].upper_case()
+        console.print(shouted)
+        index = index + 1
+    }
+}

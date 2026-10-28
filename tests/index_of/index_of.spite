@@ -26,12 +26,12 @@ func IndexOf() {
         unfound = false
     }
     console.print(place, heavy, unfound)
-    var packed = Vector<Tool>()
+    var packed = List<Tool>()
     packed.append(hammer)
     packed.append(saw)
     var packed_place = packed.find_index_by_weight(2)
     crash packed_place
-    var columns = Items<Tool>()
+    var columns = List<Tool>()
     columns.append(saw)
     columns.append(hammer)
     var column_place = columns.find_index_by_name("hammer")

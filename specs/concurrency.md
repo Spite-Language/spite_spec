@@ -514,8 +514,8 @@ statement; otherwise the loop runs in order, as written. Two objects of one clas
 two classes could ever run together, the statement is the plain loop and the program carries nothing of this. The
 same builds and places are left out as for calls in a row, and a crash halts the same way. `conformance/stage6/row_of_classes`.
 
-**A loop whose passes write only their own item runs in bands.** The same two statements over a `List` or a
-`Vector` of a class of the program (not a singleton), where `function` belongs to that class, takes no arguments
+**A loop whose passes write only their own item runs in bands.** The same two statements over a `List`
+of a class of the program (not a singleton), where `function` belongs to that class, takes no arguments
 and answers nothing, run in bands on threads, one band for each processor with the first on the calling thread
 and all joined before the next statement, when every pass writes only its own element: taken through every function
 it reaches, the pass writes attributes only of the object it runs on (reached as that object, not through another

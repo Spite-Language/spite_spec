@@ -1,9 +1,0 @@
-var across = 0
-
-func Point(new_across: Integer) {
-    across = new_across
-}
-
-func moved(amount: Integer) {
-    across = across + amount
-}

@@ -41,7 +41,7 @@ func remove_creatures() {
 }
 
 func remove_velocities() {
-    var velocities = Vector<Velocity>()
+    var velocities = List<Velocity>()
     var first = Velocity(1.0, "first long label that lives on the heap")
     velocities.append(first)
     var second = Velocity(0.0, "second long label that lives on the heap")
@@ -64,7 +64,7 @@ func remove_velocities() {
 }
 
 func remove_packs() {
-    var packs = Items<Pack>()
+    var packs = List<Pack>()
     var kept = Pack("kept")
     kept.tag("rope")
     packs.append(kept)
@@ -80,7 +80,7 @@ func remove_packs() {
 
 func remove_by_mask() {
     var entities = List<Integer>()
-    var velocities = Items<Velocity>()
+    var velocities = List<Velocity>()
     var entity = 0
     while entity < 8 {
         entities.append(entity)

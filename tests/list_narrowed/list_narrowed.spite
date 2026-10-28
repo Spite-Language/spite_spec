@@ -1,0 +1,29 @@
+var console = Console()
+
+func ListNarrowed() {
+    load "../../../spite_standard_library/windows"
+    var names = List<String?>()
+    names.append("ada")
+    names.append(null)
+    crash names[0]
+    var shouted = names[0].upper_case()
+    console.print(shouted)
+    var trails = List<Trail?>()
+    var trail = Trail()
+    trails.append(trail)
+    crash trails[0]
+    console.print(trails[0].steps)
+    var numbers = List<Integer?>()
+    numbers.append(4)
+    numbers.append(null)
+    var index = 0
+    while index < numbers.count() {
+        if numbers[index] {
+            var doubled = numbers[index] * 2
+            console.print(doubled)
+        } else {
+            console.print("no number at", index)
+        }
+        index = index + 1
+    }
+}

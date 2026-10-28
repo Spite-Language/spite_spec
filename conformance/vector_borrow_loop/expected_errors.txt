@@ -1,1 +1,0 @@
-conformance/vector_borrow_loop/vector_borrow_loop.spite:17: error: 'looped' is borrowed from 'velocities', and 'velocities.remove_at()' on line 17 may move the items of 'velocities', so 'looped' is not read after it: read 'velocities[index]' again after that line, or keep 'looped.copy()', an independent object (in VectorBorrowLoop.VectorBorrowLoop)

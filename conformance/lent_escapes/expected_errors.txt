@@ -1,1 +1,0 @@
-conformance/lent_escapes/lent_escapes.spite:16: error: 'Justify' fits a Vector, so the items of 'Column<Justify>().values' are borrowed: 'justify' is borrowed from 'Column<Justify>().values' and cannot be kept in the attribute 'kept': keep 'justify.copy()', an independent object (in LentEscapes.LentEscapes)

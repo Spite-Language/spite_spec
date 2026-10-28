@@ -1,1 +1,0 @@
-conformance/vector_borrow_call_grows/vector_borrow_call_grows.spite:10: error: 'again' is borrowed from 'velocities', and 'spawn()' on line 10 may move the items of 'velocities', so 'again' is not read after it: read 'velocities[index]' again after that line, or keep 'again.copy()', an independent object (in VectorBorrowCallGrows.VectorBorrowCallGrows)

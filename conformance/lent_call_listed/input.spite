@@ -1,5 +1,0 @@
-var seen = List<Mouse>()
-
-func list(mouse: Mouse) {
-    seen.append(mouse)
-}

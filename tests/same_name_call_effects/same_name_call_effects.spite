@@ -1,6 +1,6 @@
 var console = Console()
 var stock = Stock.Shelf()
-var ticks = Vector<Tick>()
+var ticks = List<Tick>()
 var timers = Timers()
 
 func SameNameCallEffects() {

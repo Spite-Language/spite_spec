@@ -1,7 +1,7 @@
 singleton
 
-var position = Vector<Position>()
-var velocity = Vector<Velocity>()
+var position = List<Position>()
+var velocity = List<Velocity>()
 
 func spawn(left: Float, across: Float) {
     var placed = Position(left)

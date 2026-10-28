@@ -1,1 +1,0 @@
-conformance/lent_call_listed/input.spite:4: error: 'mouse' is lent to 'list' for one call, by the call on line 11 of 'LentCallListed': it is the caller's item, read and written in place, so 'list' does not put it in a list, which would keep it: keep the values it needs (in Input.list)

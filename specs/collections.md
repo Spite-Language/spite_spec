@@ -68,8 +68,7 @@ of each element, never a function of this class, so pass this class's 'say_hello
 The caller's function is passed as a bound function value, owned by whoever it is bound to:
 
 - **The forms.** `each(f)`, `filter(f)`, `any(f)`, `all(f)`, `count(f)`, `find(f)`, `sort_by(f)` and
-  `sum(f)` on a `List` or a `Dictionary` (through its values), for an element of any type, never on a `Vector` or an `Items`,
-  whose items are borrowed or text; `remove_where(f)` on a
+  `sum(f)` on a `List` or a `Dictionary` (through its values), for an element of any type; `remove_where(f)` on a
   `List`, never on a `Dictionary`. `f` takes the element
   as its only argument, with exactly the element's type; [the table of templates](https://github.com/Spite-Language/spite_documentation/blob/master/collections.md#member-templates-loops-you-do-not-write) applies to what it returns (`filter`, `any`,
   `all`, `count` and `find` want `Boolean`, `sum` a number, `sort_by` a number or a `String`, `each`
@@ -165,8 +164,7 @@ range read answers `null` and never a default that would read as a real element)
 and `remove_last` answer `null` on an empty
 list (like `[]`), `insert` clamps to the nearest end, and `set_at`, `remove_at` and `remove_swapping` halt,
 naming the line. `reserve(count)` grows the buffer to hold `count` elements and adds none. A `List` of numbers,
-`Boolean`, enums or `Memory.Address` is the one way to keep a list of them: its buffer holds the values themselves, which is
-what a `Vector` of them held (`conformance/stage6/plain_items`). There is
+`Boolean`, enums or `Memory.Address` holds the values themselves in its buffer. There is
 no `for`: a list is walked with a template, a passed function ([above](#standard-library-metaprogramming)),
 or a `while` that does more than they do.
 
@@ -270,149 +268,24 @@ naming `remove_at(key)`. To walk keys and values together, use `while` over `dic
 down. A `String` is shared rather than duplicated because it is immutable; the rest of what it does, cycles
 included, is [Memory's rule](memory.md#the-memory-model).
 
-## Vector\<T\>
+## One list
 
-A `Vector<T>` holds its items inline, where a `List<T>` holds references, and reading an item gives a borrowed
-reference into the vector. Its members are [the table
-under `Vector<T>`](https://github.com/Spite-Language/spite_documentation/blob/master/collections.md#vectort-items-inline), which is normative. The readings:
-
-- **What an item may be.** A `String`, or a class whose attributes are only numbers, `Boolean`s, enums and
-  `String`s (a `T?` of one of them, or a singleton such as `Console`, included). A number, a `Boolean`, an enum or a
-  `Memory.Address` (or a `T?` of one) is not an item: a `List` holds them flat
-  already, so `Vector<Integer>` is `'Vector<Integer>' holds plain values, and a List keeps numbers, Boolean, enums
-  and Memory.Address flat just as it did, so a list of them has one spelling: write 'List<Integer>'`
-  (`diagnostics/plain_items`), and `Items<Integer>` the same with `Items`. Anything else is an error when the vector
-  type is written: `'Holder' cannot be an item of a Vector: its attribute 'scores' is a List<Integer>, and a
-  Vector holds each item inline, so every attribute is a number, a Boolean, an enum or a String (keep 'Holder' in
-  a 'List<Holder>', or keep 'scores' somewhere else)`; `Vector<List<Integer>>` is `a Vector holds each item
-  inline, so an item is a number, a Boolean, an enum, a String or a class made only of those, and a List<Integer>
-  is not: keep it in a 'List<List<Integer>>'`. A class with a `drop()` is `'Handle' cannot be an item of a Vector:
-  it has a 'drop()', and an item inline in a Vector is never an object of its own to drop (keep 'Handle' in a
-  'List<Handle>')`, and a class whose functions use `this` as a value (return it, pass it, keep it, or name one of
-  its own functions as a value) is `'Selfish.itself' uses 'this' as a value, and an item of a Vector is borrowed
-  from the Vector, never an object to keep or to pass on: read and write its attributes instead`.
-- **Reading.** `vector[index]` and `get_at(index)` are one function and answer a `T?`: `null` out of range, and the
-  item itself, borrowed, once the read is narrowed (by `crash`, `assert` or `if`, or by a proof the compiler already
-  holds), exactly as for a list
-  ([failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#reading-with--answers-t)): `while index < velocities.count()` proves
-  `velocities[index]` in the loop, and `crash velocities.count() >= 2` proves `velocities[0]` and `velocities[1]`.
-  A proven read writes no check of its own; the read itself still compares the index once. A vector of `String`s
-  answers a counted reference, as a list does. What a borrowed item may do, and
-  what a row of them passed to a system may do, is
-  [memory.md's rule](memory.md#borrowed-items-of-a-vectort).
-- **Writing.** `append(value)` and `set_at(index, value)` (`vector[index] = value`) copy the value's attributes
-  into the block, counting each `String` attribute once more; the value itself stays an ordinary object. A constructor
-  cannot be the argument, so an appended item is made on its own line first: `var slow =
-  Velocity(1.0, 0.5)`, then `velocities.append(slow)`.
-- **Removing.** `remove_at(index)` releases the item's `String` attributes and moves every later item down, and
-  halts on an index out of range; `clear()` releases every item's and keeps the capacity; dropping the vector
-  releases them and frees the block.
-- **Templates.** `each_`, `map_`, `filter_`, `count_`, `any_`, `all_`, `sum_`, `find_by_` and
-  `sort_by_<member>()` are in `library/vector.spite`, written over the borrowed items; `filter_` answers a
-  `Vector<T>` of copies and `map_` a `List` of the members' values. `find_by_<member>(value)` answers the first
-  item whose member equals `value` as `vector[index]` does: a `T?`, the item itself, borrowed once narrowed, with
-  every rule of a borrowed item ([memory.md](memory.md#borrowed-items-of-a-vectort)). `sort_by_<member>()` answers a
-  new `Vector<T>` with a copy of every item, sorted as a list's is (stable, a merge sort, each key read once). A
-  chain of them is one loop over the block, with `filter_` steps in the middle; a chain ending in `find_by_` or
-  `sort_by_` on the items themselves runs step by step, which means the same.
-  `parallel_each_<member>()` splits the walk across the thread pool as it does a list's.
-  A program adds a template of its own by reopening `Vector` in a `vector.spite` of its folder, as for a
-  [list](https://github.com/Spite-Language/spite_documentation/blob/master/collections.md#write-your-own-member-template), reading each item with `values.item_at(items, index)`. Its body is
-  checked like any other code of the program: an item it reads is borrowed, so it is not returned, kept or put in
-  a list (`conformance/stage6/own_collection_templates`).
-  No passed-function form is offered, since a `List` of numbers
-  takes every form. A passed function would take a class item as an argument, which a borrowed item never is, so
-  `velocities.each(f)` is `'each' passes each item to a function, and an item of a
-  Vector is borrowed from it, never passed on: give the item's class a function and call it with a member
-  template, such as 'each_<function>()'`; and a vector of `String`s, whose items are references to text, has
-  `names.each(f)` as `'each' passes each item to a function, which a Vector never does: keep the values in a
-  'List<String>' to pass them on` (`diagnostics/text_items_passed`).
-- **Its allocator.** The compiler chooses where the `Vector` object and its block of items are made, as for any
-  object; `velocities.memory.allocator` only reads it back.
-
-`diagnostics/vector_borrows`, `diagnostics/vector_items`, `diagnostics/plain_items`,
-`diagnostics/text_items_passed`, `diagnostics/found_item_borrows`, `conformance/stage6/vector_items`,
-`conformance/stage6/plain_items`, `conformance/stage6/vector_find_sort`.
-
-## Items\<T\>
-
-`Items<T>` chooses its storage while compiling, inline like a
-`Vector<T>` when `T.is_fixed_size` and references like a `List<T>` otherwise, behind one set of members. Its
-members are [the table under `Items<T>`](https://github.com/Spite-Language/spite_documentation/blob/master/collections.md#itemst-the-storage-chosen-for-you), which is normative. The readings:
-
-- **One class, folded.** `library/items.spite` is one generic class. Its storage is the same for both kinds (a
-  heap block, a count and a capacity), and each body that touches an item folds on `$element_type.is_fixed_size`
-  ([metaprogramming.md](https://github.com/Spite-Language/spite_documentation/blob/master/metaprogramming.md#asking-whether-a-class-fits-a-vector)): the inline branch goes through
-  `InlineMemory<T>`, the reference branch through `TypedMemory<T>`, and the branch not taken is not compiled. So a
-  `T` that does not fit never makes a `Vector<T>`, never meets the item errors of
-  [Vector](#vectort), and never has an item function written for it. Both helpers are singletons
-  bound as attributes, so an `Items` object holds one pointer more than a `Vector` or a `List`, one per
-  collection and never per item. No syntax is needed: the language already folds a body on `is_fixed_size`, and
-  the storage needs no attribute of its own per kind.
-- **Which kind.** `T` fits exactly when a `Vector<T>` could be made (a `Vector`'s rule: a `String`, or a class made
-  only of numbers, `Boolean`s, enums and `String`s, with no `drop()` and no function that uses `this` as a value).
-  A union, a `type`, a `List`, a `Dictionary` or a class holding one is kept by reference. `Items<String>` is a
-  plain array of the text's references, as a vector's is. A number, a `Boolean`, an enum or a `Memory.Address` is
-  never an item: `Items<Integer>` is the error naming `List<Integer>`, as for a `Vector`.
-- **Reading.** `items[index]` and `get_at(index)` are one function and answer a `T?` for both kinds,
-  `null` out of range. A read is
-  narrowed as a list's is, by `crash`, `assert`, `if` or a proof the compiler holds. Then, inline, the item is
-  borrowed, and every rule of [memory.md's borrowed items](memory.md#borrowed-items-of-a-vectort)
-  applies to it, rows included. By reference, it is a counted reference like a list element: it may be kept,
-  passed, returned and read after the collection changes size. Code reading an item still compiles the same
-  whichever kind a class falls into, since both kinds answer `T?`, and a walked row states its reads with
-  `crash` lines ([memory.md](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#a-row-of-borrowed-items-for-one-call)).
-- **Items of a `T?`.** `Items<String?>`'s `[]` answers the `String?` that was
-  stored, and `crash names[0]`, `assert names[0]` or `if names[index] { }` narrows that item in place until the
-  collection or the index changes, as a path is narrowed (`conformance/stage6/items_narrowed`). A loop's
-  `index < names.count()` proves only that the index is in range, not that the item is there: reading
-  `names[index].upper_case()` under it alone is still `this value may be null (it is a String?)`
-  (`diagnostics/items_nullable_unproven`).
-- **The borrow checks apply only where the storage is inline.** A class that changes kind can meet new errors
-  where it is read, and each names the choice first: `'Velocity' fits a Vector, so the items of 'velocities' are
-  borrowed: 'stored' is borrowed from 'velocities' and cannot be kept in the attribute 'kept': keep
-  'stored.copy()', an independent object`, and the same for a return, an argument, a list, a second name, a
-  function value, a row that is kept, and a read after a line that may change the size
-  (`diagnostics/items_borrows`). What may change the size is what may change a `Vector`'s, with
-  `remove_swapping` beside `remove_at`: called on the collection, or through a function that calls one, where a call
-  that swaps an item out counts as a removal.
-- **Writing and removing.** `append` and `set_at` copy the value's attributes in when inline (counting each
-  `String` attribute once more) and keep the value when by reference; `remove_at`, `remove_swapping`, `clear` and
-  dropping the collection release what they remove. `remove_swapping(index)` moves the last item into `index`
-  and halts on an index out of range, as `remove_at` does; it keeps no order, and costs the same however many
-  items there are.
-- **Templates.** `each_`, `map_`, `filter_`, `count_`, `any_`, `all_`, `sum_`, `find_by_` and
-  `sort_by_<member>()` are in `library/items.spite`, each folded the same way; `filter_` and `sort_by_` answer an
-  `Items<T>` (copies when inline, the same references otherwise) and `map_` a `List` of the members' values.
-  `find_by_<member>(value)` answers a `T?` read as `items[index]` is: inline, the item, borrowed once narrowed; by
-  reference, a counted reference. A program's own template goes in an `items.spite` of its folder, folded on
-  `$element_type.fits_vector()` as the library's are. A chain is one loop over the block,
-  and `parallel_each_<member>()` splits it across the thread pool, as for a vector. The passed-function forms
-  (`each(f)`, `filter(f)`, ...) are not offered for either kind, since an inline item is never passed on and plain
-  values live in a `List`: `'each'
-  passes each item to a function, and 'Velocity' fits a Vector, so an item of these Items is borrowed from them,
-  never passed on: give the item's class a function and call it with a member template, such as
-  'each_<function>()'`; by reference the error says that `Items` does not do it whichever storage it chose.
-- **Cost.** Nothing runs to choose: the folds are decided while compiling and the untaken branch is absent from
-  the C, so an `Items<Velocity>` compiles to a `Vector<Velocity>`'s code and an `Items<Trail>` to a
-  `List<Trail>`'s, reading its elements uncounted in the templates as a list does
-  ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-name-holding-an-item-or-an-attribute-is-not-counted)). The range
-  check of `[]` is one comparison that answers `null`, small enough for the C compiler to inline, and a proven
-  read uses the item without testing that answer again. A program that makes no `Items` carries none of it. Measured in
-  `benchmarks/an_items_storage_is_chosen_while_compiling`.
-
-`conformance/stage6/items_columns`, `conformance/stage6/plain_items`, `conformance/stage6/vector_find_sort`,
-`diagnostics/items_borrows`, `diagnostics/plain_items`, `diagnostics/text_items_passed`.
+**`List<T>` is the only list** (D1707): there is no `Vector<T>` and no `Items<T>`. A program says what it keeps,
+and how the items are stored is the compiler's choice, never the program's: numbers, `Boolean`s, enums and
+`Memory.Address` are kept flat in the list's buffer, and a list whose items are never held anywhere else may keep
+them inline (spite_compiler#205), with nothing a program can see changing. So an item read from a list is the
+item itself: a change made through one name shows through every other, and the item may be kept, passed, returned
+and read after the list changes size (`tests/list_shared_items`, `tests/list_items_run`). A program's own template
+goes in a `list.spite` of its folder ([above](#standard-library-metaprogramming), `tests/own_collection_templates`).
 
 ## Removing many at once
 
-`List`, `Vector` and `Items` remove many elements in one pass:
+A `List` removes many elements in one pass:
 
 - **`remove_where(test)` and `remove_where_<member>()`.** One template, `remove_where_member(member:
-  Spite.AttributeDeclaration)` in each of `library/list.spite`, `vector.spite` and `items.spite`, so it answers both a
+  Spite.AttributeDeclaration)` in `library/list.spite`, so it answers both a
   member (`creatures.remove_where_dead()`: the member returns `Boolean`) and a passed function
-  (`numbers.remove_where(is_odd)`: on a `List` of anything, never on a `Vector` or `Items`, whose items
-  are borrowed or text, and a borrowed item is never passed on). It walks the collection once; an element that stays is
+  (`numbers.remove_where(is_odd)`, on a `List` of anything). It walks the collection once; an element that stays is
   exchanged with the first place not yet kept, and when the walk ends everything past the kept ones is released.
   The survivors keep their order, and the test sees every element once, first to last.
 - **Why exchange, not move.** At every moment of the walk the collection holds each of its original elements
@@ -431,15 +304,13 @@ members are [the table under `Items<T>`](https://github.com/Spite-Language/spite
   makes a new one that nothing keeps: call it on the collection itself, with one test that says everything to
   remove`. A test returning anything but `Boolean` is `'remove_where(measure)': 'measure' is an Integer, but
   'remove_where' needs it to return Boolean`.
-- **Borrows and proofs.** All three count as shrinking wherever `remove_at` does: on the collection itself, and
-  through the call effects of functions (a function that calls one of them records `shrink:` on the collection). So an item
-  borrowed from a `Vector` or `Items` is not read after one (`'first' is borrowed from 'velocities', and
-  'velocities.truncate()' on line 34 may move the items of 'velocities', ...`), a row's system may not reach
-  one for a vector it borrows from, and a proof about an element is undone by one. `swap` changes no size but
-  changes which element an index names, so it counts too.
+- **Proofs.** All three count as shrinking wherever `remove_at` does: on the collection itself, and
+  through the call effects of functions (a function that calls one of them records `shrink:` on the collection). So
+  a proof about an element is undone by one. `swap` changes no size but changes which element an index names, so it
+  counts too.
 - **Cost.** Only what a program calls is compiled. `swap` is three copies of the element through a temporary on the
   C stack (`TypedMemory.swap_values`, `InlineMemory.swap_items`, written per element type by the generator), with
-  no allocation. Measured at 200 000 `Items<Velocity>` items and a `List<Integer>` beside them: half removed,
+  no allocation. Measured at 200 000 inline `Velocity` items and a `List<Integer>` beside them: half removed,
   340 µs against 370 µs for a `remove_swapping` per removed row while walking the rows and 530 µs for one per
   entity of a despawn list; nine in ten removed, 290 µs against 490 µs and 930 µs.
 

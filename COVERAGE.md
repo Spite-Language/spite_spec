@@ -251,7 +251,7 @@ Rules: 51. Covered before: 19. Covered now: 45.
 | Two such `if`s are left alone | tests/control_switch_chain_two_allowed | added |
 | Chain covering every enum value gets no `_:` | | missing |
 | Walk doing `item.m()`: `each_m()` | conformance/template_walk | covered |
-| Walk on a `Vector`/`Items`: member rows only | conformance/vector_template_walk | covered |
+| Walk on a `Vector`/`Items`: member rows only | none | superseded by D1707 (one List) |
 | Walk calling `f(item)`: `each(f)` | conformance/walk_with_function | covered |
 | Walk rows `map_ms`, `copy`, `filter_m`, `filter_m().map_ns`, `count_m`, `sum_m`, `find_by_m`, `any_m`, `all_m` | conformance/walk_map, walk_copy, walk_filter, walk_filter_map, walk_count_member, walk_sum_member, walk_find_by, walk_any_member, walk_all_member | added (compiler fails: only the `each` rows are detected) |
 | Walk rows `filter(f)`, `count(f)`, `sum(f)`, `find(f)`, `any(f)`, `all(f)` | conformance/walk_filter_function, walk_count_function, walk_sum_function, walk_find_function, walk_any_function, walk_all_function | added (compiler fails: only the `each` rows are detected) |
@@ -462,26 +462,27 @@ Rules: 108. Covered before: 51. Covered now: 100.
 | Binary bytes of a dictionary keyed by objects is an error | conformance/binary_object_key | added (compiler fails: compiles) |
 | remove_where on a Dictionary is an error naming remove | conformance/dictionary_remove_where | added (compiler fails: generic "has no attribute or function") |
 | deep_copy follows classes, lists, dictionaries, unions, shapes, cycles | tests/deep_copies, tests/deep_copy_graphs, tests/deep_copy_unions, tests/shape_copies | covered |
-| Vector item rules: a class with a List attribute is refused | conformance/vector_items | covered |
-| Vector<Integer> holds plain values: write List<Integer> | conformance/plain_items | covered |
-| Vector<List<Integer>> error text | conformance/vector_list_item | added (compiler fails: names List's '_buffer' attribute instead) |
-| A class with drop() cannot be an item | conformance/vector_drop_item | added (compiler fails: refuses its Console attribute first, though a singleton is allowed) |
-| A class using this as a value cannot be an item | conformance/vector_this_item | added (compiler fails: compiles) |
-| vector[index] answers T? null out of range; set_at out of range halts | tests/vector_out_of_range | added |
-| A read narrowed by a loop bound or crash count | tests/vector_rows, tests/proven_ranges | covered |
-| append copies; a constructor is not the argument | tests/vector_find_sort | covered |
-| remove_at moves later items down; out of range halts; clear | tests/vector_remove_moves_down, tests/vector_remove_out_of_range | added |
-| Vector templates, find_by_, sort_by_ copies | tests/vector_find_sort | covered |
-| Borrowed item not read after append or reserve | conformance/vector_borrows, conformance/vector_reserve_borrows, conformance/found_item_borrows | covered |
-| A program's own vector.spite template is checked for borrows | conformance/own_template_borrows, conformance/reopened_vector_borrows | covered |
-| each(f) on a Vector of a class is an error | conformance/vector_each_class | added |
-| each(f) on a Vector of String is an error | conformance/text_items_passed | covered |
-| Items chooses inline or references while compiling | tests/items_columns | covered |
-| Items<Integer> is the error naming List<Integer> | conformance/items_plain | added |
-| Items<T?> narrowed in place; a loop bound does not prove presence | tests/items_narrowed, conformance/items_nullable_unproven | covered |
-| Items borrow errors name the choice first | conformance/items_borrows | covered |
-| Items by reference: a read item is kept across growth and removal | tests/items_by_reference_kept | added (compiler fails: the read item is not the stored object) |
-| Items remove_at and remove_swapping out of range halt | tests/items_remove_out_of_range, tests/items_remove_swapping_out_of_range | covered |
+| Vector item rules: a class with a List attribute is refused | none | superseded by D1707 (one List) |
+| Vector<Integer> holds plain values: write List<Integer> | none | superseded by D1707 (one List) |
+| Vector<List<Integer>> error text | none | superseded by D1707 (one List) |
+| A class with drop() cannot be an item | none | superseded by D1707 (one List) |
+| A class using this as a value cannot be an item | none | superseded by D1707 (one List) |
+| list[index] answers T? null out of range; set_at out of range halts | tests/list_out_of_range | added |
+| A read narrowed by a loop bound or crash count | tests/list_rows, tests/proven_ranges | covered |
+| append copies; a constructor is not the argument | tests/list_find_sort | superseded by D1707 (one List) |
+| remove_at moves later items down; out of range halts; clear | tests/list_remove_moves_down | added |
+| Vector templates, find_by_, sort_by_ copies | tests/list_find_sort | superseded by D1707 (one List) |
+| List is the only list: an item read from it is the item itself, kept, shared and read after the list changes size | tests/list_shared_items, tests/list_items_run, tests/list_by_reference_kept | added |
+| Borrowed item not read after append or reserve | none | superseded by D1707 (one List) |
+| A program's own vector.spite template is checked for borrows | none | superseded by D1707 (one List) |
+| each(f) on a Vector of a class is an error | none | superseded by D1707 (one List) |
+| each(f) on a Vector of String is an error | none | superseded by D1707 (one List) |
+| Items chooses inline or references while compiling | tests/list_columns | superseded by D1707 (one List) |
+| Items<Integer> is the error naming List<Integer> | none | superseded by D1707 (one List) |
+| Items<T?> narrowed in place; a loop bound does not prove presence | tests/list_narrowed, conformance/list_nullable_unproven | superseded by D1707 (one List) |
+| Items borrow errors name the choice first | none | superseded by D1707 (one List) |
+| Items by reference: a read item is kept across growth and removal | tests/list_by_reference_kept | superseded by D1707 (one List) |
+| Items remove_at and remove_swapping out of range halt | none | superseded by D1707 (one List) |
 | remove_where and remove_where_<member> keep survivors in order | tests/bulk_removal | covered |
 | remove_where's test sees every element once, first to last | tests/list_remove_where_order | added |
 | truncate out of range does nothing | tests/list_truncate_edges, tests/bulk_removal | added (compiler fails: truncate(-1) halts) |
@@ -524,8 +525,8 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | A value computed and never read, an attribute nothing reads, is an error | conformance/unused_names, conformance/unused_attributes | covered |
 | An object made and dropped on one line is an error | conformance/dropped_construction | covered |
 | `for`, `break`, `++`, `&&` and other habits are errors naming the Spite form | conformance/old_break, conformance/borrowed_syntax, conformance/borrowed_operators | covered |
-| A borrowed `Vector` item kept or read after the vector moved is an error | conformance/vector_borrows, conformance/vector_reserve_borrows | covered |
-| An item lent to the caller retained and released as owned | conformance/lent_escapes, tests/narrowed_lends | covered |
+| A borrowed `Vector` item kept or read after the vector moved is an error | none | superseded by D1707 (one List) |
+| An item lent to the caller retained and released as owned | tests/narrowed_lends | superseded by D1707 (one List) |
 | A C compile with no executable, or two builds sharing one C file, is an error | | missing |
 | Two threads writing a singleton: the compiler makes it safe | tests/singleton_race | covered |
 | A `while true` holding a singleton's lock forever is an error | conformance/endless_locked_loop | covered |
@@ -731,60 +732,60 @@ Rules: 107. Covered before: 34. Covered now: 81 (24 of them fail on the master c
 | Reading `_memory` inside a number is refused: write `this` | conformance/number_memory_read | covered |
 | Placement: register, frame, in the value, constant, frame objects, pools, heap | none | superseded by D662 (not observable) |
 | Allocators, `Memory.Arena`, `.memory.allocator` and its errors, generic allocator error | none | superseded by D661 and D662 (tests retired) |
-| A Vector of a class keeps its items inline | none | superseded by D662 (layout not observable) |
-| `Vector<Integer>`/`Items<Integer>` refused, naming `List<Integer>` | conformance/plain_items, tests/plain_items | covered |
-| A Vector item class must hold only numbers, Booleans, enums, Strings | conformance/vector_items | covered |
-| A borrowed item's writes write the vector's own item | tests/vector_item_written_in_place | added |
-| Borrowed item kept in an attribute is refused | conformance/vector_borrow_kept | added |
-| Borrowed item put in a list is refused | conformance/vector_borrow_listed | added |
-| Borrowed item returned is refused | conformance/vector_borrow_returned | added |
-| Borrowed item made into a function value is refused | conformance/vector_borrow_function_value | added |
-| Borrowed item given a second name is refused | conformance/vector_borrow_alias | added |
-| Borrowed name assigned again is refused | conformance/vector_borrow_assigned | added |
-| Borrowed from a collection nothing keeps (`copy().find_by_...`) is refused | conformance/vector_borrow_temporary | added |
-| Not read after `append` | conformance/vector_borrows | covered |
-| Not read after `reserve` | conformance/vector_reserve_borrows | covered |
-| Not read after a removal (`remove_at`) | conformance/vector_borrow_removed | added |
-| Not read after `swap` | conformance/vector_borrow_swap | added |
-| Not read after a call of the program that grows the vector (call effects) | conformance/vector_borrow_call_grows, conformance/found_item_borrows | added |
-| A resizing statement in a loop ends the borrow for the whole loop | conformance/vector_borrow_loop | added |
-| A collection read with `[]` from an attribute is that attribute's element | conformance/dispatched_resizes, tests/queued_borrows | covered |
-| A call through a `type` reaches only the classes it is handed | tests/queued_borrows, conformance/dispatched_resizes | covered |
+| A Vector of a class keeps its items inline | none | superseded by D1707 (one List) |
+| `Vector<Integer>`/`Items<Integer>` refused, naming `List<Integer>` | tests/plain_items | superseded by D1707 (one List) |
+| A Vector item class must hold only numbers, Booleans, enums, Strings | none | superseded by D1707 (one List) |
+| A borrowed item's writes write the vector's own item | none | superseded by D1707 (one List) |
+| Borrowed item kept in an attribute is refused | none | superseded by D1707 (one List) |
+| Borrowed item put in a list is refused | none | superseded by D1707 (one List) |
+| Borrowed item returned is refused | none | superseded by D1707 (one List) |
+| Borrowed item made into a function value is refused | none | superseded by D1707 (one List) |
+| Borrowed item given a second name is refused | none | superseded by D1707 (one List) |
+| Borrowed name assigned again is refused | none | superseded by D1707 (one List) |
+| Borrowed from a collection nothing keeps (`copy().find_by_...`) is refused | none | superseded by D1707 (one List) |
+| Not read after `append` | none | superseded by D1707 (one List) |
+| Not read after `reserve` | none | superseded by D1707 (one List) |
+| Not read after a removal (`remove_at`) | none | superseded by D1707 (one List) |
+| Not read after `swap` | none | superseded by D1707 (one List) |
+| Not read after a call of the program that grows the vector (call effects) | none | superseded by D1707 (one List) |
+| A resizing statement in a loop ends the borrow for the whole loop | none | superseded by D1707 (one List) |
+| A collection read with `[]` from an attribute is that attribute's element | tests/queued_borrows | covered |
+| A call through a `type` reaches only the classes it is handed | tests/queued_borrows | covered |
 | Inside the item's class, `this` is not a value | none | missing (rule on collections.md) |
-| A reopened `Vector`/`Items` function is checked; the library's own is trusted | conformance/reopened_vector_borrows, conformance/own_template_borrows | covered (own_template_borrows: compiler fails, it compiles) |
-| `append`/`set_at` copy the value in; the value stays an ordinary object | tests/vector_append_copies | added |
-| A row literal of borrowed items is passed to a `type` parameter and writes the items | tests/vector_rows, tests/vector_row_attributes_written | covered |
-| A row with a counted attribute (a String) is refused | conformance/vector_row_mixed | added (compiler fails: compiles) |
-| A row passed to anything but a function called by name with a `type` parameter is refused | conformance/vector_row_passed | added (compiler fails: compiles) |
-| A row kept in an attribute is refused | conformance/vector_row_kept | added (compiler fails: compiles) |
-| A row returned is refused | conformance/vector_row_returned | added (compiler fails: compiles) |
-| A row given a second name is refused | conformance/vector_row_alias | added |
-| A row's own attribute assigned is refused | conformance/vector_row_attribute_assigned | added (compiler fails: compiles) |
+| A reopened `Vector`/`Items` function is checked; the library's own is trusted | none | superseded by D1707 (one List) |
+| `append`/`set_at` copy the value in; the value stays an ordinary object | none | superseded by D1707 (one List) |
+| A row literal of borrowed items is passed to a `type` parameter and writes the items | tests/list_rows | covered |
+| A row with a counted attribute (a String) is refused | none | superseded by D1707 (one List) |
+| A row passed to anything but a function called by name with a `type` parameter is refused | none | superseded by D1707 (one List) |
+| A row kept in an attribute is refused | none | superseded by D1707 (one List) |
+| A row returned is refused | none | superseded by D1707 (one List) |
+| A row given a second name is refused | none | superseded by D1707 (one List) |
+| A row's own attribute assigned is refused | none | superseded by D1707 (one List) |
 | A row assigned again, a row's required function as a value | none | missing |
-| A call handed a row may not resize what it borrows from | conformance/vector_rows | covered |
-| Walked rows (`fill_attributes`, `attribute: Spite.AttributeDeclaration`), sparse columns, `attribute.index`, walked locals, lent list elements | tests/walked_rows, tests/sparse_rows, tests/walked_row_locals, tests/lent_list_elements, tests/lent_list_elements_parallel, conformance/walked_rows, conformance/sparse_rows | covered |
+| A call handed a row may not resize what it borrows from | none | superseded by D1707 (one List) |
+| Walked rows (`fill_attributes`, `attribute: Spite.AttributeDeclaration`), sparse columns, `attribute.index`, walked locals, lent list elements | tests/walked_rows, tests/sparse_rows, tests/walked_row_locals, tests/lent_list_elements, tests/lent_list_elements_parallel | covered |
 | Arguments a plural fills (`phase_each(made_arguments(...))`, `argument: Spite.Argument`) and their errors | tests/lent_arguments, tests/streamed_rows, tests/ignored_lent_argument, conformance/argument_walk_without_function | added |
 | A walked line names the attribute's class by its full name | none | missing |
-| `Items<T>` whose `T` fits lends as a Vector; errors begin with the choice | conformance/items_borrows, tests/items_columns | covered |
-| `remove_swapping` on `Items` counts as a removal | conformance/items_borrow_remove_swapping | added |
-| `Items<T>` whose `T` does not fit lends nothing: its items are counted | tests/items_unfit_counted | added |
-| A function returning a singleton's Vector/Items item lends it to its caller | tests/lent_results, conformance/lent_results | covered |
+| `Items<T>` whose `T` fits lends as a Vector; errors begin with the choice | tests/list_columns | superseded by D1707 (one List) |
+| `remove_swapping` on `Items` counts as a removal | none | superseded by D1707 (one List) |
+| `Items<T>` whose `T` does not fit lends nothing: its items are counted | tests/list_unfit_counted | superseded by D1707 (one List) |
+| A function returning a singleton's Vector/Items item lends it to its caller | tests/lent_results | superseded by D1707 (one List) |
 | Lending decided per instance with compile-time conditions folded | tests/folded_lends | covered |
-| Narrowing keeps a lent item borrowed | tests/narrowed_lends, conformance/lent_escapes | covered |
-| A lent result is not returned further | conformance/lent_result_returned_further | added |
-| A borrowed item does not reuse a name already used in the block | conformance/lent_result_name_reused | added (compiler fails: compiles) |
-| A lending function is never a function value | conformance/lent_function_value | added (compiler fails: compiles) |
-| A class whose function lends does not fit a `type` requiring it | conformance/lent_function_type | added (compiler fails: compiles) |
-| A lending function returns only items or null | conformance/lent_result_other_value | added (compiler fails: compiles) |
-| An item lent to a call is written in place, and lent on | tests/lent_to_calls, tests/lent_call_written_back | covered |
-| A lent parameter kept in an attribute is refused | conformance/lent_call_kept | added (compiler fails: compiles) |
-| A lent parameter put in a list is refused | conformance/lent_call_listed | added (compiler fails: compiles) |
-| A lent parameter returned is refused | conformance/lent_call_returned | added (compiler fails: compiles) |
-| A lent parameter made into a function value is refused | conformance/lent_call_function_value | added (compiler fails: compiles) |
-| A lent parameter given a second name is refused | conformance/lent_call_alias | added (compiler fails: compiles) |
-| A call lent an item may not resize its collection | conformance/lent_to_calls | covered |
-| Not lent to a library function: the error says why | conformance/lent_call_library | added (compiler fails: compiles) |
-| Not lent to a union parameter: the error says why | conformance/lent_call_union | added (compiler fails: compiles) |
+| Narrowing keeps a lent item borrowed | tests/narrowed_lends | covered |
+| A lent result is not returned further | none | superseded by D1707 (one List) |
+| A borrowed item does not reuse a name already used in the block | none | superseded by D1707 (one List) |
+| A lending function is never a function value | none | superseded by D1707 (one List) |
+| A class whose function lends does not fit a `type` requiring it | none | superseded by D1707 (one List) |
+| A lending function returns only items or null | none | superseded by D1707 (one List) |
+| An item lent to a call is written in place, and lent on | tests/lent_to_calls | covered |
+| A lent parameter kept in an attribute is refused | none | superseded by D1707 (one List) |
+| A lent parameter put in a list is refused | none | superseded by D1707 (one List) |
+| A lent parameter returned is refused | none | superseded by D1707 (one List) |
+| A lent parameter made into a function value is refused | none | superseded by D1707 (one List) |
+| A lent parameter given a second name is refused | none | superseded by D1707 (one List) |
+| A call lent an item may not resize its collection | none | superseded by D1707 (one List) |
+| Not lent to a library function: the error says why | none | superseded by D1707 (one List) |
+| Not lent to a union parameter: the error says why | none | superseded by D1707 (one List) |
 | Not lent from another expression: name it first | none | missing (a call inside an argument is refused first) |
 | Run-time cost statements (rows in the frame, `___lent_` copies) | none | superseded by D662 (not observable) |
 
@@ -1598,7 +1599,7 @@ Rules: 47. Covered before: 19. Covered now: 25.
 | The map literal of `reload {...}` and its refusals | none | missing |
 | A reload pauses every task; a task that reaches no check point in 10 seconds refuses it | none | missing |
 | An attribute gone while another is new holds the reload until a map is given | none | missing |
-| A class that stops or starts fitting an `Items`' own memory moves its items | none | missing |
+| A class that stops or starts fitting an `Items`' own memory moves its items | none | superseded by D1707 (one List) |
 | Dependents are rebuilt; a helper with static state refuses the reload by name | none | missing |
 | Enum values keep their numbers across reloads; a removed value halts a `switch` with no `_:` | none | missing |
 | `environment.spite` and `build.spite` reload; settings are read again from the start's command line | none | missing |

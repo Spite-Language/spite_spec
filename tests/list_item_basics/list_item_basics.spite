@@ -1,0 +1,23 @@
+var console = Console()
+
+func ListItemBasics() {
+    load "../../../spite_standard_library/windows"
+    var velocities = List<Velocity>()
+    var slow = Velocity(1.0)
+    velocities.append(slow)
+    var fast = Velocity(4.0)
+    velocities.append(fast)
+    crash velocities[0]
+    var first = velocities[0]
+    first.across = 2.0
+    var trails = List<Trail>()
+    var trail = Trail()
+    trails.append(trail)
+    crash trails[0]
+    var kept = trails[0]
+    kept.mark(3.5)
+    velocities.remove_swapping(0)
+    var total = velocities.sum_across()
+    var marks = trail.lefts.count()
+    console.print(slow.across, total, trail.last, marks)
+}

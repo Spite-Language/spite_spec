@@ -1,1 +1,0 @@
-conformance/vector_row_mixed/vector_row_mixed.spite:9: error: 'mixed' borrows items from a Vector, so each of its attributes is a borrowed item or a plain value: 'name' holds a String, which the row would have to keep (in VectorRowMixed.VectorRowMixed)

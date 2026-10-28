@@ -1,5 +1,0 @@
-var speeds = Vector<Velocity>()
-
-func reserve_more() {
-    speeds.reserve(50)
-}

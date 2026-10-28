@@ -1,1 +1,0 @@
-conformance/lent_call_variadic/lent_call_variadic.spite:10: error: 'first' is borrowed from 'mice', and 'count_left' gathers it into the list of its variadic arguments, which holds its own values and is never lent an item: pass the attributes it needs, or 'first.copy()' where a snapshot is what it wants (in LentCallVariadic.LentCallVariadic)

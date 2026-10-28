@@ -1,9 +1,0 @@
-var number = 0
-
-func doubled(): Integer {
-    return number * 2
-}
-
-func itself(): Selfish {
-    return this
-}

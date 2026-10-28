@@ -1,1 +1,0 @@
-conformance/lent_call_alias/input.spite:2: error: 'mouse' is lent to 'touch' for one call, by the call on line 11 of 'LentCallAlias': it is the caller's item, read and written in place, and a lent item has one name: use 'mouse' itself instead of 'alias' (in Input.touch)

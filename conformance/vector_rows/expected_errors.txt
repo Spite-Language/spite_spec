@@ -1,1 +1,0 @@
-conformance/vector_rows/vector_rows.spite:15: error: 'row' borrows items from 'world.positions' for the call it is passed to, and 'keeper.spawn_while_moving()' on line 15 may move the items of 'world.positions': a function that is handed a row may not append to or remove from the vectors it borrows from, directly or through what it calls (in VectorRows.VectorRows)

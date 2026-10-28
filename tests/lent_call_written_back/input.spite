@@ -1,8 +1,0 @@
-func apply(mouse: Mouse) {
-    mouse.left = mouse.left + 10
-    pushed(mouse)
-}
-
-func pushed(mouse: Mouse) {
-    mouse.moved(5)
-}

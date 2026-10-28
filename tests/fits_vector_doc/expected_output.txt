@@ -1,2 +1,2 @@
-true inline, 0 so far
-false as references, 0 so far
+true fixed size, 0 so far
+false grows, 0 so far

@@ -9,7 +9,7 @@ is the bug.
 The standard library fills every maths gap a game needs, as a game engine package asks for it.
 
 - **Plain classes of numbers** in `library/` (`vector2.spite`, `vector3.spite`, `vector4.spite`, `matrix3.spite`,
-  `matrix4.spite`, `quaternion.spite`), with no attribute but their parts, so each fits `Vector<T>` and a
+  `matrix4.spite`, `quaternion.spite`), with no attribute but their parts, so each is fixed size (`is_fixed_size`) and fits a
   binary writer. Tree-shaken: a program that names none of them has none of their code, and a program that
   uses `Vector3` carries only the functions it calls. Nothing runs at start-up and nothing is registered.
 - **Parts.** Vectors and quaternions: `x`, `y`, `z`, `w`, the axis names, which are the one

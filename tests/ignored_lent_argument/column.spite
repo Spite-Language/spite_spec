@@ -2,4 +2,4 @@ singleton
 
 generic $component_type
 
-var values = Items<$component_type>()
+var values = List<$component_type>()

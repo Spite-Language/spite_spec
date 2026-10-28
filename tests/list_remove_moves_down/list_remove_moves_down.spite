@@ -1,0 +1,18 @@
+var console = Console()
+
+func ListRemoveMovesDown() {
+    load "../../../spite_standard_library/windows"
+    var velocities = List<Velocity>()
+    var first = Velocity("a")
+    velocities.append(first)
+    var second = Velocity("b")
+    velocities.append(second)
+    var third = Velocity("c")
+    velocities.append(third)
+    velocities.remove_at(0)
+    var names = velocities.map_names().join("")
+    velocities.clear()
+    var cleared = velocities.count()
+    var empty = velocities.is_empty()
+    console.print(names, cleared, empty)
+}

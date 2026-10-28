@@ -1,1 +1,0 @@
-conformance/vector_each_class/vector_each_class.spite:8: error: 'each' passes each item to a function, and an item of a Vector is borrowed from it, never passed on: give the item's class a function and call it with a member template, such as 'each_<function>()' (in VectorEachClass.VectorEachClass)

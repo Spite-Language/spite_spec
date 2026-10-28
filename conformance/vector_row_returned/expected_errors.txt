@@ -1,1 +1,0 @@
-conformance/vector_row_returned/keeper.spite:7: error: 'moving' holds items borrowed from 'positions' and 'velocities' for this call and cannot be returned: return the values the caller needs, or a 'copy()' of one of its items (in Keeper.pass_back)

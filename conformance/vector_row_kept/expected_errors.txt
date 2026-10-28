@@ -1,1 +1,0 @@
-conformance/vector_row_kept/keeper.spite:9: error: 'moving' holds items borrowed from 'positions' and 'velocities' for this call and cannot be kept in the attribute 'kept': keep the values it needs, or a 'copy()' of one of its items (in Keeper.store)

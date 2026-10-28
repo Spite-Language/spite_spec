@@ -47,8 +47,6 @@ keeping, and the run's halt is the backstop for what only the run can find.
 | a value computed and never read, an attribute nothing reads | compile error | [style.md](style.md#unused-is-an-error) |
 | an object made and dropped on the same line, to "do" something | compile error | [classes_and_files.md](classes_and_files.md#a-constructed-object-must-be-kept-and-used) |
 | `for`, `break`, `continue`, `++`, `&&` and other habits that would parse as something else | compile error naming the Spite form | [control_flow.md](control_flow.md#control-flow-in-full) |
-| a borrowed `Vector` item kept, or read after the vector moved | compile error | [memory.md](memory.md#borrowed-items-of-a-vectort) |
-| an item lent to the caller retained and released as if owned: narrowed by `if`, called as a function value or through a `type` | the narrowed name stays borrowed; the other two are compile errors | [memory.md](memory.md#borrowed-items-of-a-vectort) |
 | a C compile that reports success but leaves no executable, or two builds sharing one generated C file | the build is an error naming the missing file; each output gets its own generated C file | [compiler.md](https://github.com/Spite-Language/spite_documentation/blob/master/compiler.md) |
 | two threads writing a singleton at once | the compiler makes the singleton safe; anything else a `Parallel` reaches is an error | [concurrency.md](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting) |
 | a `while true` loop holding a singleton's lock forever | compile error | [concurrency.md](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting) |
@@ -129,8 +127,8 @@ another statement (an outer `if`/`while`/switch case) rather than being the func
 a lint error.
 
 **An `if` that only returns the default is an `assert`.** In a function returning nothing, a `T?`, or a `List`,
-`Dictionary`, `Vector` or `Items`, an `if` with no `else` whose whole body is one `return` of the function's
-default (`null`; an empty collection, `List<T>()`, `Dictionary<Key, Value>()`, `Vector<T>()`, `Items<T>()` or `[]`, in a
+`Dictionary`, an `if` with no `else` whose whole body is one `return` of the function's
+default (`null`; an empty collection, `List<T>()`, `Dictionary<Key, Value>()` or `[]`, in a
 function returning one; or a bare `return` in a function returning nothing) is a compile error wherever it stands in
 the function, inside a `while` or a nested `if` included, and the message names the `assert` of the opposite
 condition:
@@ -333,12 +331,12 @@ How a read is proven:
   `Dictionary` or `String` receiver included, so `items.count()` reaches only `List.count` and never a program's
   own `count`; a receiver that is itself an expression has the class of that expression's type: the class a
   constructor makes (`File(path).read()` reaches `File.read`), the class the called function returns
-  (`names.copy().count()` reaches `List.count`), the element class of a `[]` read on a `List`, `Vector` or
+  (`names.copy().count()` reaches `List.count`), the element class of a `[]` read on a `List` or
   `Dictionary` (`lists[0].count()`), an attribute read's declared class (`receiver_call_effects`); a call whose
   receiver's class cannot be told (a shape, a type parameter, a function value) is followed into every function
   of that name; any of those shrinking calls but `remove` on a collection reached through `[]` or a
-  call rather than a name may be the very list a proof reads, so it undoes every proof about a list
-  (`append`, `prepend` and `insert` there count as growing a borrowed `Vector`'s storage); the calls a `return` makes undo nothing, since nothing after it runs on that path (a call in a branch
+  call rather than a name may be the very list a proof reads, so it undoes every proof about a list;
+  the calls a `return` makes undo nothing, since nothing after it runs on that path (a call in a branch
   before its `return` still undoes proofs after the branch); a list passed to a function that
   shrinks its parameter undoes proofs about the list passed; calling a function value may do anything, so it
   undoes every proof that reads an attribute or a list; operator functions and getters are not followed; a
@@ -355,7 +353,7 @@ How a read is proven:
   outside a counted loop because the list may have been shrunk through another name since the proof (a local that
   aliases it is not tracked); a counted loop's body calls nothing that could.
 - **Every `[]` answers `T?`.**
-  `List`, `Dictionary`, `Vector`, `Items` and `String` alike, and every class that declares `get_at`: the
+  `List`, `Dictionary` and `String` alike, and every class that declares `get_at`: the
   function must answer a `T?`, and one declared with a plain `T` is `'get_at' answers 'Integer', but it is what
   '[ ]' calls, and every '[ ]' answers a 'T?' that is narrowed before use: declare it to answer 'Integer?', and
   answer null when nothing is at the index` (`diagnostics/plain_get_at`). The proofs above (counts, bounds, a
@@ -442,7 +440,7 @@ returns at once, answering:
 
 - nothing, in a function returning nothing;
 - `null`, in a function returning a `T?`;
-- an empty one, in a function returning a `List`, `Dictionary`, `Vector` or `Items`.
+- an empty one, in a function returning a `List` or a `Dictionary`.
 
 In a function returning a whole number or a `Float`/`Double` (`0`), a `Boolean` (`false`), a
 `String` (`""`, since an empty text is a real text), an enum (its first value), a `Memory.Address`, a union or a
@@ -576,7 +574,7 @@ arithmetic; a literal adds nothing. A side an `and` or `or` skipped never ran an
 reported only when it is a bare name, so nothing is read that the condition did not prove readable. **A call is never
 run twice**: a call at a place the condition always runs, with no attribute, path or unheld call read before it, is
 computed into a hidden local before the check, and the check and the report read that local (`next_value(start)=5`).
-`count()`, `length()` and `is_empty()` with no arguments on a plain path to a `List`, `Dictionary`, `Vector`, `Items` or
+`count()`, `length()` and `is_empty()` with no arguments on a plain path to a `List`, `Dictionary` or
 `String` are reads and are read again for the report, as a path is. Any other call (one the condition may skip, or
 after a read it could change) is not reported. A call that is the whole condition, or its `not`, is not reported, since
 its answer is what failed, but its receiver and arguments are. A name that is a class or a namespace is not a value and is
@@ -585,8 +583,8 @@ left out. **Cost:** only the failure branch reads the hidden locals, so the pass
 **A failed narrowing reports what is missing, never a value.** A `crash` that narrows a `T?` (a name, a path, a
 `[ ]` read, or an `and` of them) fails only when something is absent, and printing a value there would print a default,
 which reads as a present zero. It reports only the first link that is absent, testing each link again in order:
-`rig.skeleton is null` for a name or member, `clip.keys[start + 1] is missing: index 3, count 2` for a `List`,
-`Vector` or `Items` read (the index as evaluated and the count), `ages[name] is missing: key "bea"` for any other
+`rig.skeleton is null` for a name or member, `clip.keys[start + 1] is missing: index 3, count 2` for a `List`
+read (the index as evaluated and the count), `ages[name] is missing: key "bea"` for any other
 `[ ]` read (a text key quoted, so an empty one shows). When every link is there the value is shown (`flags[1]=false`),
 and no other value is added (`conformance/crash_missing_item`, `crash_missing_key`, `crash_missing_link`,
 `crash_missing_value`).
@@ -606,7 +604,7 @@ how the program reached the state that crashed, which is usually several frames 
 cost is only on the failure path (a passing `assert` already branches), and the trace is a fixed-size ring buffer with
 a total count, so it never allocates and cannot grow without bound. Each assert line is
 `spite.assert<TAB>id<TAB>path:line<TAB>Class<TAB>function<TAB>answered=...`: `answered=nothing` for a function that
-returns nothing, `null` for a `T?`, `empty` for a function answering a list, a dictionary, a `Vector` or an `Items`, and
+returns nothing, `null` for a `T?`, `empty` for a function answering a list or a dictionary, and
 `repeated=<count>` when the same site failed several times in a row, which takes one line in the ring. The ring holds 32
 lines; a `spite.assert<TAB>earlier=<count>` line says how many were lost before them. An assert keeps no values: its place,
 the `.crashes` map and its condition are what it says.

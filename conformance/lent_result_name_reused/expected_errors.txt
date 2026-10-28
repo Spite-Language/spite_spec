@@ -1,1 +1,0 @@
-conformance/lent_result_name_reused/lent_result_name_reused.spite:11: error: 'layout' already names a value earlier in this block, and an item borrowed from 'Column<Layout>().values' is given a name of its own: call it something new, such as 'var layout_item = ...' (in LentResultNameReused.LentResultNameReused)

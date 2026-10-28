@@ -1,1 +1,0 @@
-conformance/vector_borrow_alias/vector_borrow_alias.spite:10: error: 'stored' is borrowed from 'velocities', and a borrowed item has one name: use 'stored' itself instead of 'alias', or keep 'stored.copy()', an independent object (in VectorBorrowAlias.VectorBorrowAlias)

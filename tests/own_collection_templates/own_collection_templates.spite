@@ -2,7 +2,7 @@ var console = Console()
 
 func OwnCollectionTemplates() {
     load "../../../spite_standard_library/windows"
-    var velocities = Vector<Velocity>()
+    var velocities = List<Velocity>()
     var fast = Velocity(3.0, "fast")
     velocities.append(fast)
     var slow = Velocity(1.0, "slow")
@@ -11,11 +11,11 @@ func OwnCollectionTemplates() {
     crash average
     var moving_average = velocities.filter_moving().average_across()
     crash moving_average
-    var columns = Items<Velocity>()
+    var columns = List<Velocity>()
     columns.append(fast)
     columns.append(slow)
     var widest = columns.largest_across()
-    var trails = Items<Trail>()
+    var trails = List<Trail>()
     var long_trail = Trail(9)
     trails.append(long_trail)
     var longest = trails.largest_length()

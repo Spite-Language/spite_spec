@@ -1,1 +1,0 @@
-conformance/reopened_vector_borrows/vector.spite:4: error: 'first' is borrowed from 'other', and 'other.append()' on line 4 may move the items of 'other', so 'first' is not read after it: read 'other[index]' again after that line, or keep 'first.copy()', an independent object (in Vector.grow_from)

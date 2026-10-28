@@ -1,6 +1,6 @@
 singleton
 
-var values = Vector<Score>()
+var values = List<Score>()
 
 func add(points: Integer) {
     var score = Score()

@@ -1,1 +1,0 @@
-conformance/lent_call_returned/input.spite:2: error: 'mouse' is lent to 'hand_back' for one call, by the call on line 11 of 'LentCallReturned': it is the caller's item, read and written in place, so 'hand_back' does not return it: return the values the caller needs (in Input.hand_back)
