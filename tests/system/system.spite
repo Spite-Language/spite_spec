@@ -21,8 +21,10 @@ func System() {
     var file_exists = file.exists()
     console.print(write, append, file_exists)
     report(file)
-    var joined_files = folder.entries().filter_files().map_file_names().join(",")
-    var folders_count = folder.entries().filter_directories().count()
+    var listed = folder.entries()
+    crash listed
+    var joined_files = listed.filter_files().map_file_names().join(",")
+    var folders_count = listed.filter_directories().count()
     console.print(joined_files, folders_count)
     var remove = file.remove()
     file_exists = file.exists()
@@ -40,6 +42,7 @@ func System() {
     }
     var process = Process("git", ["--version"])
     var exit_code = process.run()
+    crash exit_code
     var trim_is_empty_text = process.read_output_as_string()
     crash trim_is_empty_text
     var trim_is_empty = trim_is_empty_text.trim().is_empty()

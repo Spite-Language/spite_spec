@@ -23,7 +23,7 @@ with Temporal's vocabulary and no stored zoned type.
 | `Time(hour, minute, second, nanosecond)` | a clock reading with no date and no zone; `hour`, `minute`, `second`, `nanosecond`, `second_of_day`, `==`, `<`, `>` |
 | `DateTime(date, time)` | both, with no zone; `date`, `time`, `+ Period`, `==`, `<`, `>` |
 | `TimeZone` | `to_local(instant)`, `to_instant(local, ambiguity)`, `to_text(instant)`, `offset_at(instant)`, `name` |
-| `TimeZones()` | the database, a singleton: `find(name): TimeZone?`, `utc()`, `fixed_offset(duration)`, `system()`, `read_tzif(name, data): TimeZone?` |
+| `TimeZones()` | the database, a singleton: `find(name): TimeZone?`, `utc()`, `fixed_offset(duration)`, `system()`, `read_tzif(name, data: Buffer): TimeZone?` (the file's bytes, from `File.read_as_buffer()`) |
 | `TimeText()` | ISO 8601 (RFC 3339, RFC 9557), a singleton: `read_instant`, `read_date_time`, `read_date`, `read_time`, `read_duration`, `read_period`, each answering `T?`; writing is each type's `to_string()` |
 | `Benchmark(work: Spite.Function<T>)` | one timed run of `work`: `answer: T`, what it answered, and `duration: Duration`, the monotonic time it took |
 

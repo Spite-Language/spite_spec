@@ -8,6 +8,7 @@ func CompilerRunsTheProgram() {
     var arguments = [folder, "ada", "--volume=7", "--optimized", "two words"]
     var running = Process(compiler, arguments)
     var code = running.run()
+    crash code
     var printed_text = running.read_output_as_string()
     crash printed_text
     var printed = printed_text.trim()

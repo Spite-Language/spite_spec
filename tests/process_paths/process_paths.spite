@@ -8,6 +8,7 @@ func ProcessPaths() {
     var script = spaced_script()
     var spaced = Process(script, ["argument one"])
     var run = spaced.run()
+    crash run
     var trimmed_output_text = spaced.read_output_as_string()
     crash trimmed_output_text
     var trimmed_output = trimmed_output_text.trim()
@@ -15,6 +16,7 @@ func ProcessPaths() {
     var no_arguments = List<String>()
     var with_arguments = Process("git --version", no_arguments)
     var with_arguments_run = with_arguments.run()
+    crash with_arguments_run
     var output_starts_with_text = with_arguments.read_output_as_string()
     crash output_starts_with_text
     var output_starts_with = output_starts_with_text.starts_with("git version")

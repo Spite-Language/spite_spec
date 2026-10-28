@@ -228,6 +228,7 @@ func keep_folders_in(parent: String) {
     parent_folder = parent
     var directory = Directory(parent)
     var entries = directory.entries()
+    crash entries
     entries.each(keep_folder)
 }
 
@@ -286,6 +287,7 @@ func run_test(folder: String) {
     var program_arguments = optional_text(folder, "arguments.txt")
     var running = Process("{executable} {program_arguments} {input} 2>&1", no_arguments)
     var answered = running.run()
+    crash answered
     var answer = answered.to_string()
     if answer != wanted {
         fail(folder, "it answered {answer}, and {wanted} was expected")
@@ -413,6 +415,7 @@ func copy_of(folder: String): String? {
         no_arguments,
     )
     var copied = copying.run()
+    crash copied
     if copied >= 8 {
         var output = copying.read_output_as_string()
         crash output
@@ -434,6 +437,7 @@ func build_moved_back(copy: String, folder: String): Boolean {
         no_arguments,
     )
     var moved = moving.run()
+    crash moved
     if moved >= 8 {
         var output = moving.read_output_as_string()
         crash output

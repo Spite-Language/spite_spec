@@ -1420,6 +1420,9 @@ Rules: 24. Covered before: 21. Covered now: 24.
 | `Color` members (`to_hex`, `to_rgb_text`, `to_hsl_text`, sRGB curve, clamped on writing) | tests/game_colors | covered |
 | `Color` has one constructor, `Color(red, green, blue, alpha)`; text becomes a colour only through `to_color()`, a `Color?` | tests/color_from_text | added |
 | Bytes that can be text are one holder with two reads: an HTTP body, a socket read finishing a cut character, a datagram, a process's output | tests/byte_holders | added |
+| `Process.run()` answers `null` when the command cannot start; its output reads `null` before a run | tests/reads_say_nothing | added |
+| `Directory.entries()` answers `null` for a folder that cannot be opened, an empty list for an empty one | tests/directory_missing | added |
+| `File.read_as_string()` answers `null` for bytes that are not UTF-8 | tests/reads_say_nothing | added |
 | `ColorText.read`: hex, `rgb`/`rgba`, `hsl`/`hsla`, names, anything else `null` | tests/game_colors | covered |
 | `ColorText.read` trims and ignores case; `transparent`; `named_hex` answers `#rrggbb` | tests/game_named_colors | added |
 | `named_hex` of an unknown name answers `""` | tests/game_named_colors | added (a default a caller cannot tell from a real answer; a D244 bug in the rule itself) |

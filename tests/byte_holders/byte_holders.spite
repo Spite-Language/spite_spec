@@ -94,6 +94,7 @@ func process_output() {
     crash text
     var trimmed = text.trim()
     var bytes = echoing.read_output_as_buffer()
+    crash bytes
     var byte_count = bytes.count()
     console.print("process output:", trimmed, byte_count)
 }

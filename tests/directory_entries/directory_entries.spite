@@ -11,6 +11,7 @@ func DirectoryEntries() {
 
 func walk(directory: Directory, indent: String) {
     var entries = directory.entries()
+    crash entries
     var index = 0
     while index < entries.count() {
         var entry = entries[index]
@@ -37,6 +38,7 @@ func show_file(file: File, indent: String) {
 func count_files(directory: Directory): Integer {
     var total = 0
     var entries = directory.entries()
+    crash entries
     var index = 0
     while index < entries.count() {
         var entry = entries[index]

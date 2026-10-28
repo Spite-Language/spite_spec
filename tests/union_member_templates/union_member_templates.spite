@@ -4,6 +4,7 @@ func UnionMemberTemplates() {
     load "../../../spite_standard_library/windows"
     var folder = Directory("tests/union_member_templates/tree")
     var entries = folder.entries()
+    crash entries
     var names = entries.map_paths()
     var joined_names = names.join(",")
     console.print("entries:", joined_names)

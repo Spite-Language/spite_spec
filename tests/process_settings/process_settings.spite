@@ -23,6 +23,7 @@ func ProcessSettings() {
     var reading = shell_running("type marker.txt", "cat marker.txt")
     reading.working_directory = ".spite/process_settings"
     var code = reading.run()
+    crash code
     var read_line_text = reading.read_output_as_string()
     crash read_line_text
     var read_line = read_line_text.trim()

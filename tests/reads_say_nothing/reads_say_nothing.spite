@@ -1,0 +1,20 @@
+var console = Console()
+
+func ReadsSayNothing() {
+    load "../../../spite_standard_library/windows"
+    var echoing = Process("cmd", ["/c", "echo", "ok"])
+    var before_text = echoing.read_output_as_string()
+    var before_bytes = echoing.read_output_as_buffer()
+    console.print("output before run: text", not before_text, "bytes", not before_bytes)
+    var binary = File(".spite/reads_say_nothing.bin")
+    var bytes = Buffer(0)
+    bytes.append(104)
+    bytes.append(255)
+    crash binary.write_buffer(bytes)
+    var as_text = binary.read_as_string()
+    var as_bytes = binary.read_as_buffer()
+    crash as_bytes
+    var byte_count = as_bytes.count()
+    console.print("bytes that are not text: text", not as_text, "bytes", byte_count)
+    crash binary.remove()
+}

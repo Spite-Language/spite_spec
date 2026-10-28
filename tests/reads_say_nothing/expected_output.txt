@@ -1,0 +1,2 @@
+output before run: text true bytes true
+bytes that are not text: text true bytes 2

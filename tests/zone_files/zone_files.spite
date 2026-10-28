@@ -34,7 +34,7 @@ func ZoneFiles() {
 
 func read(name: String, file_name: String): TimeZone {
     var file = File("tests/zone_files/{file_name}.tzif")
-    var data = file.read_as_string()
+    var data = file.read_as_buffer()
     crash data
     var zone = zones.read_tzif(name, data)
     crash zone
@@ -61,7 +61,8 @@ func choose(zone: TimeZone, local: DateTime) {
 }
 
 func refused(data: String) {
-    var zone = zones.read_tzif("Broken", data)
+    var bytes = data.to_buffer()
+    var zone = zones.read_tzif("Broken", bytes)
     if zone {
         console.print("read", zone.name)
     } else {
