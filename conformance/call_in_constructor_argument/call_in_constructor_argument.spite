@@ -3,6 +3,6 @@ var console = Console()
 func CallInConstructorArgument() {
     load "../../../spite_standard_library/windows"
     var source = "spite"
-    var token = Token("word", source.slice(0, 1))
+    var token = Token("word", source.upper_case())
     console.print(token.text, token.kind)
 }

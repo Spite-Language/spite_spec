@@ -177,6 +177,7 @@ func add_named(named: List<String>, argument: String) {
     }
     var prefix_length = without_slash.length() - 1
     var prefix = without_slash.slice(0, prefix_length)
+    crash prefix
     var every = every_folder()
     var index = 0
     while index < every.count() {
@@ -244,7 +245,9 @@ func trimmed_slash(folder: String): String {
     var forward = folder.replace("\\", "/")
     if forward.ends_with("/") {
         var last = forward.length() - 1
-        return forward.slice(0, last)
+        var sliced = forward.slice(0, last)
+        crash sliced
+        return sliced
     }
     return forward
 }
@@ -507,6 +510,7 @@ func line_matches(got: String, wanted: String): Boolean {
         var piece = pieces[index]
         var got_length = got.length()
         var rest = got.slice(at, got_length)
+        crash rest
         var found = rest.index_of(piece)
         if index == pieces.count() - 1 {
             return rest.ends_with(piece)

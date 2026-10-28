@@ -12,6 +12,7 @@ func StringMethods() {
     var lower_case_trimmed = trimmed.lower_case()
     console.print(upper_case_trimmed, lower_case_trimmed)
     var trimmed_slice = trimmed.slice(7, 12)
+    crash trimmed_slice
     var first_character = trimmed[0]
     crash first_character
     var first_code = trimmed.byte_at(0)

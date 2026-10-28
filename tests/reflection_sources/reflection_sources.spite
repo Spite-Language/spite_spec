@@ -32,5 +32,7 @@ func inside_program(path: String): String {
     crash start
     var path_length = path.length()
     var marker_length = marker.length()
-    return path.slice(start + marker_length, path_length)
+    var sliced = path.slice(start + marker_length, path_length)
+    crash sliced
+    return sliced
 }

@@ -3,10 +3,15 @@ var console = Console()
 func StringSliceEdges() {
     load "../../../spite_standard_library/windows"
     var word = "hello"
-    var clamped_start = word.slice(-3, 2)
-    var clamped_end = word.slice(2, 99)
-    var backwards = word.slice(3, 1)
     var nothing = word.slice(5, 5)
+    crash nothing
     var whole = word.slice(0, 5)
-    console.print("[{clamped_start}] [{clamped_end}] [{backwards}] [{nothing}] [{whole}]")
+    crash whole
+    var middle = word.slice(2, 4)
+    crash middle
+    console.print("[{nothing}] [{whole}] [{middle}]")
+    var before_start = word.slice(-3, 2)
+    var past_end = word.slice(2, 99)
+    var backwards = word.slice(3, 1)
+    console.print("outside the text:", not before_start, not past_end, not backwards)
 }

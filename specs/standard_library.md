@@ -50,7 +50,7 @@ allocation counts.
 |---|---|---|
 | `length()` | `Integer` | |
 | `is_empty()` | `Boolean` | |
-| `slice(start, end)` | `String` | clamped; `""` for an empty/invalid range |
+| `slice(start, end)` | `String?` | the bytes from `start` up to `end`; `start == end` is `""`; `null` for a `start` below 0 or after `end`, or an `end` past the length, never a shorter text that would read like the right one; the program chooses `crash` or `assert` (D1721, `tests/string_slice_edges`) |
 | `get_at(index)`, written `text[index]` | `String?` | the whole UTF-8 character that starts at byte `index`; `null` below 0, past the end, or inside a character of several bytes (`tests/string_get_at`) |
 | `byte_at(index)` | `Integer` | below 0 or past the end halts, naming the index and the length (`tests/code_past_the_end`) |
 | `contains(text)` / `starts_with(text)` / `ends_with(text)` | `Boolean` | |

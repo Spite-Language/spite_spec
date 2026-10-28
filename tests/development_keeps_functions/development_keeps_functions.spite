@@ -9,6 +9,7 @@ func DevelopmentKeepsFunctions() {
     var path = program.executable_path()
     var length = path.length()
     var stem = path.slice(0, length - 4)
+    crash stem
     var map = File("{stem}.functions")
     var text = map.read_as_string()
     crash text

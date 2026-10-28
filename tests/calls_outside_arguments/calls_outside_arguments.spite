@@ -3,7 +3,9 @@ var console = Console()
 func CallsOutsideArguments() {
     load "../../../spite_standard_library/windows"
     var source = "spite"
-    var shouted = source.slice(0, 1).upper_case()
+    var first_letter = source.slice(0, 1)
+    crash first_letter
+    var shouted = first_letter.upper_case()
     var names = ["ada", "bea"]
     var picked = names[last_index(names)]
     crash picked

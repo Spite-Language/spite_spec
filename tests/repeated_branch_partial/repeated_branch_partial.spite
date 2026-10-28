@@ -11,9 +11,11 @@ func RepeatedBranchPartial() {
 func describe(source: String, end: Integer): String {
     if source.starts_with("s") {
         var part = source.slice(0, end)
+        crash part
         return "s {part}"
     } else if source.starts_with("x") {
         var part = source.slice(0, end)
+        crash part
         return "x {part}"
     } else {
         return "other"

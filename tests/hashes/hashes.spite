@@ -54,6 +54,7 @@ func Hashes() {
     }
     var stored = argon2.hash("correct horse")
     var prefix = stored.slice(0, 31)
+    crash prefix
     var round_trip = argon2.verify("correct horse", stored)
     console.print("{prefix} verifies: {round_trip == true}")
 }

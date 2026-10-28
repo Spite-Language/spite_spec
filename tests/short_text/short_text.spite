@@ -22,6 +22,7 @@ func ShortText() {
     var grown_length = grown.length()
     console.print(grown, grown_length)
     var kept = grown.slice(0, 15)
+    crash kept
     var before = kept
     kept = "{kept}!"
     console.print(before, kept)
@@ -33,7 +34,9 @@ func ShortText() {
     names.append(sixteen)
     var shouted = "x".upper_case()
     names.append(shouted)
-    label = fifteen.slice(0, 3)
+    var sliced_label = fifteen.slice(0, 3)
+    crash sliced_label
+    label = sliced_label
     var joined = names.join(",")
     console.print(joined, label)
     var counts = Dictionary<String, Integer>()

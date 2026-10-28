@@ -3,7 +3,9 @@ var console = Console()
 func LibraryGuardsUntraced() {
     load "../../../spite_standard_library/windows"
     var word = "hello"
-    console.print("past the end: '{word.slice(7, 9)}'")
+    var no_z = word.index_of("z")
+    var missing = not no_z
+    console.print("no z: {missing}")
     console.print("starts with help: {word.starts_with("help")}")
     announce(0)
     console.print("ends with low: {word.ends_with("low")}")

@@ -12,13 +12,14 @@ func CallAsArgument() {
 func rejected() {
     console.print(count_words(source))
     counts.append(count_words(source) + 1)
-    var number = Text(source.slice(0, 2))
-    var token = Token(source.slice(3, 9), number)
-    console.print(token.kind, source.slice(0, 2).upper_case())
+    var number = Text(source.upper_case())
+    var token = Token(source.trim(), number)
+    console.print(token.kind, source.trim().upper_case())
 }
 
 func allowed() {
     var token_slice = source.slice(0, 2)
+    crash token_slice
     var number = Text(token_slice)
     var number_token = Token("number", number)
     tokens.append(number_token)
@@ -27,7 +28,7 @@ func allowed() {
     tokens.append(word)
     var word_count = count_words(source)
     counts.append(word_count + 1)
-    console.print("{count_words(source)} words, the first is {source.slice(0, 2).upper_case()}")
+    console.print("{count_words(source)} words, the first is {source.trim().upper_case()}")
 }
 
 func count_words(text: String): Integer {

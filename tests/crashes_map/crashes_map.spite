@@ -31,6 +31,7 @@ func show(text: String) {
         if line.contains("crashes_map.spite") {
             var length = line.length()
             var site = line.slice(9, length)
+            crash site
             console.print(site)
         }
         index = index + 1

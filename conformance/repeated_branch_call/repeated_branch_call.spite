@@ -52,14 +52,17 @@ func allowed(is_number: Boolean, end_index: Integer) {
     if is_number {
         var start = 0
         var word = source.slice(start, end_index)
+        crash word
         words.append(word)
     } else {
         var start = 1
         var word = source.slice(start, end_index)
+        crash word
         words.append(word)
     }
     if is_number {
         var number = source.slice(0, end_index)
+        crash number
         words.append(number)
     }
 }

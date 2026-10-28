@@ -15,6 +15,7 @@ func StringGetAt() {
     show(word, 10)
     show(word, -1)
     var half = word.slice(0, 2)
+    crash half
     show(half, 1)
 }
 

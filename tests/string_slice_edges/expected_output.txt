@@ -1,1 +1,2 @@
-[he] [llo] [] [] [hello]
+[] [hello] [ll]
+outside the text: true true true
