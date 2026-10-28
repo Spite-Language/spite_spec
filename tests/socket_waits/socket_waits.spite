@@ -3,7 +3,9 @@ var server = Tcp.Server()
 
 func SocketWaits() {
     load "../../../spite_standard_library/windows"
-    crash server.listen_at_host("localhost", 47314)
+    var local_host = "localhost".to_ip_address()
+    crash local_host
+    crash server.listen_at(local_host, 47314)
     var serving = Concurrent(echo_once)
     var client = Tcp.Client()
     var address = "127.0.0.1".to_ip_address()

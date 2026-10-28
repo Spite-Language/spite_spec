@@ -10,7 +10,9 @@ func WebSocketFailures() {
     var plain = WebSocket.Client()
     var request = Http.Request()
     request.path = "/plain"
-    var connected = plain.connect("127.0.0.1", 47914, request)
+    var loopback = "127.0.0.1".to_ip_address()
+    crash loopback
+    var connected = plain.connect(loopback, 47914, request)
     var message = plain.receive()
     var nothing = not message
     console.print("a client of a plain HTTP server: connected", connected, "and receives nothing", nothing)

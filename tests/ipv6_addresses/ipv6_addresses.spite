@@ -14,7 +14,7 @@ func Ipv6Addresses() {
     crash ipv4.listen_at(loopback4, 47321)
     reach(ipv4, "127.0.0.1", 47321)
     reach(ipv6, "::1", 47322)
-    reach(ipv6, "localhost", 47322)
+    reach(ipv4, "localhost", 47321)
     var unknown = Tcp.Client()
     var refused = unknown.connect(loopback6, 47323)
     console.print("nobody on ::1 port 47323:", refused)
@@ -31,7 +31,9 @@ func address_of(text: String): IpAddress {
 
 func reach(server: Tcp.Server, host: String, port: Integer) {
     var client = Tcp.Client()
-    var connected = client.connect_to_host(host, port)
+    var address = host.to_ip_address()
+    crash address
+    var connected = client.connect(address, port)
     crash connected
     var peer = server.accept()
     crash peer

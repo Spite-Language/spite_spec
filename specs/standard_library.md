@@ -189,8 +189,8 @@ library through `DynamicLibrary`. What each member answers is in the section of 
 | `Benchmark(work)` | `answer`, what one call of `work` answered, and `duration: Duration`, the monotonic time the call took; see [Time](time.md#time-one-stored-instant-zones-for-presentation) |
 | `Console()` | a singleton: `print(...values)`, `write(...values)`, `error(...values)`, `debug(...values)`, `read_line(): String?`; see [Console](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#console), and below |
 | `FileSystemWatcher()` | `watch_for_changes(target: FileSystemWatcher.Target): Boolean`, `changes(): List<String>`, `wait_for_changes()`; see [Watch files and folders](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#watch-files-and-folders), which is the rule. `HotReload` is built on it ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
-| `Tcp.Server()`, `Tcp.Client()`, `Tcp.Connection` | TCP over IPv4 and IPv6 on every system. A server listens (`listen_locally(port)`, `listen_everywhere(port)`, `listen_at(address: IpAddress, port)`, `listen_at_host(host, port)`, each `Boolean`) and answers `accept(): Tcp.Connection?`; a client connects (`connect(address: IpAddress, port)`, `connect_to_host(host, port)`, `connect_locally(port)`, each `Boolean`); a client and a connection talk alike: `read_line(): String?` (`null` when the connection ended before a whole line, and for a line whose bytes are not UTF-8, the next call reading the line after it), `read_as_string(): String?`, `read_as_buffer(): Buffer?`, `write_line(text): Boolean`, `write_string(text): Boolean`, `write_buffer(buffer): Boolean`, `closed: Boolean`, `close()`. Every read waits ([Tcp](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#tcp), and below); `--repl-port` and `spite connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
-| `IpAddress` | an IPv4 or IPv6 address and nothing else (a port is a number beside it): `is_ipv4()`, `is_ipv6()`, `==` (its `equals(other)`), `to_string()` (RFC 5952). It is read from text with `String.to_ip_address(): IpAddress?` and resolved from a host name with `String.resolve_ip_addresses(): List<IpAddress>`; `IpAddress()` is `0.0.0.0`, and no constructor takes text (D1718; below) |
+| `Tcp.Server()`, `Tcp.Client()`, `Tcp.Connection` | TCP over IPv4 and IPv6 on every system. A server listens (`listen_locally(port)`, `listen_everywhere(port)`, `listen_at(address: IpAddress, port)`, each `Boolean`) and answers `accept(): Tcp.Connection?`; a client connects (`connect(address: IpAddress, port)`, `connect_locally(port)`, each `Boolean`); a client and a connection talk alike: `read_line(): String?` (`null` when the connection ended before a whole line, and for a line whose bytes are not UTF-8, the next call reading the line after it), `read_as_string(): String?`, `read_as_buffer(): Buffer?`, `write_line(text): Boolean`, `write_string(text): Boolean`, `write_buffer(buffer): Boolean`, `closed: Boolean`, `close()`. Every read waits ([Tcp](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#tcp), and below); `--repl-port` and `spite connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
+| `IpAddress` | an IPv4 or IPv6 address and nothing else (a port is a number beside it): `is_ipv4()`, `is_ipv6()`, `==` (its `equals(other)`), `to_string()` (RFC 5952). It is read from text, a literal or a host name resolved to its first address, with `String.to_ip_address(): IpAddress?`, and every address of a name is `String.resolve_ip_addresses(): List<IpAddress>`; `IpAddress()` is `0.0.0.0`, and no constructor takes text (D1718; below) |
 | `Concurrent(function)`, `Parallel(function)` | the handle stands in for what the function returned, and reading it is the wait; `finished: Boolean` never waits; dropping the handle waits for it; there is no `wait()` and no `join()`; see [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md) |
 | `DynamicLibrary(file_name, naming, header)` | every foreign function, constant and type of a native library; see [Foreign libraries](foreign_libraries.md#foreign-libraries). It holds its `file_name` and `handle`, its constructor and `drop()`; opening, closing and finding a symbol are the compiler's reopening |
 | `ForeignBytes(address, count)` | memory a foreign library hands out (an address and a size it answers): `count(): Long`, `get_at(position): Byte?` (`foreign[position]`), `set_at(position, value)`, `read_<number>_at(position): <number>?` and `write_<number>_at(position, value)`, big-endian forms included, as a `Buffer` has them, `read_buffer_at(position, count): Buffer?` and `write_buffer_at(position, buffer)`; see [Bytes are a Buffer](#bytes-are-a-buffer) |
@@ -315,19 +315,19 @@ each system's library, which the `windows`, `linux` and `mac` folders reopen the
   reads an address from text, writes it as RFC 5952 gives it (lowercase, the longest run of two or more zero groups
   as `::`, the first when two are as long, the zone after a `%`), and turns it into the system's address and back.
   `String.to_ip_address()` reads dotted IPv4 (each part 0 to 255, no leading zero) and IPv6 (one `::` at most, a
-  dotted IPv4 ending, a numeric zone), and answers `null` for anything else, a host name included. An IPv4 address
+  dotted IPv4 ending, a numeric zone), or, for text that is a host name (labels of letters, digits and hyphens, the last not all digits, so `"1.2.3"` is a malformed address and never looked up), resolves it and answers its first address, IPv4 first, keeping the name; `null` when the text is neither or the name names nothing (`tests/ip_addresses`). An IPv4 address
   inside `::ffff:` is that IPv4 address, from text or from the system, so a datagram a dual-stack socket receives
   from `127.0.0.1` comes from `127.0.0.1`, and the two compare equal (`tests/ip_addresses`). `IpAddress()` is
   `0.0.0.0`.
-- **A host name is text, an address is an `IpAddress`** (Spite has no overloading; D1726). `listen_at`, `connect`,
-  `open_at` and `send_to` take an `IpAddress`; `listen_at_host`, `connect_to_host`, `open_at_host` and
-  `send_to_host` take a host name or an address as text and resolve it with `String.resolve_ip_addresses()`: the
-  system's `getaddrinfo`, IPv4 answers first in the order the system gives them, then the IPv6 ones, empty when the
-  name names nothing. `listen_at_host` and `open_at_host` take the first, `connect_to_host` tries them in turn until
-  one connects, and `send_to_host` sends to the first the socket can reach. A name that does not resolve answers
-  `false`. Resolving waits in place, like connecting. `Http.Client.send` and `WebSocket.Client.connect` take the
-  host as text, since they write it in the `host` header. Until the cast of spite_compiler#228 and the folding of
-  #229 land, a program writes `"127.0.0.1".to_ip_address()` and narrows it.
+- **Every network call takes an `IpAddress`, and only one** (Spite has no overloading, the cast fills the gap;
+  D1727). `listen_at`, `connect`, `open_at`, `send_to`, `Http.Client.send` and `WebSocket.Client.connect` take an
+  `IpAddress`; text reaches them through `String.to_ip_address()`, which resolves a host name through
+  `String.resolve_ip_addresses()`: the system's `getaddrinfo`, IPv4 answers first in the order the system gives
+  them, then the IPv6 ones, empty when the name names nothing. Resolving waits in place, like connecting. An address
+  resolved from a name keeps the name, and `Http.Client.send` writes it as the `host` header and
+  `WebSocket.Client.connect` in its handshake; an address read from a literal is written as itself, an IPv6 one in
+  brackets (`tests/http_exchange`). Until the cast of spite_compiler#228 and the folding of #229 land, a program
+  writes `"127.0.0.1".to_ip_address()` and narrows it.
 - **Every interface.** `listen_locally`, `connect_locally` and `open_locally` use `127.0.0.1`; `listen_everywhere`
   and `open_everywhere` use `::` on a socket that takes IPv4 too (`IPV6_V6ONLY` off), or `0.0.0.0` where the system
   has no IPv6. A dual-stack socket sends to an IPv4 address as `::ffff:` and the address; an IPv4 socket cannot
@@ -505,8 +505,8 @@ talk through a `WebSocket.Connection` (the client holds its own), and a message 
   16 bytes in base64; it answers with `sec-websocket-accept`, the key and the protocol's own suffix hashed with
   SHA-1 and written in base64. SHA-1 is private to the connection: it is the protocol's checksum, not a hash to store
   anything with. A server picks no subprotocol and no extension. `Http.Server` has already let go of the
-  connection: `next_request()` keeps a connection again only when `respond` is called. `WebSocket.Client.connect(host,
-  port, request)` sends a fresh key of 16 bytes from `SecureRandom` (`false` when the system gives none; a masked frame with no random bytes for its mask is not sent and answers `false`), `host` with the
+  connection: `next_request()` keeps a connection again only when `respond` is called. `WebSocket.Client.connect(address,
+  port, request)` sends a fresh key of 16 bytes from `SecureRandom` (`false` when the system gives none; a masked frame with no random bytes for its mask is not sent and answers `false`), `host` (the address's name, or the address) with the
   port when it is not 80, and every header of the request; a request that is not a `GET`, has a body, or sets
   `host`, `upgrade`, `connection`, `content-length` or a `sec-websocket-` header other than
   `sec-websocket-protocol` halts, since the handshake writes those itself. The answer must be

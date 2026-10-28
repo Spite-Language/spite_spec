@@ -17,7 +17,9 @@ func HttpKeepAlive() {
     var closing = Http.Request()
     closing.path = "/last"
     closing.set_header("connection", "close")
-    var answer = client.send("127.0.0.1", 47912, closing)
+    var loopback = "127.0.0.1".to_ip_address()
+    crash loopback
+    var answer = client.send(loopback, 47912, closing)
     crash answer
     var said = answer.header("connection")
     crash said
@@ -44,7 +46,9 @@ func serve_four(): Integer {
 func ask(path: String) {
     var request = Http.Request()
     request.path = path
-    var response = client.send("127.0.0.1", 47912, request)
+    var loopback = "127.0.0.1".to_ip_address()
+    crash loopback
+    var response = client.send(loopback, 47912, request)
     crash response
     var said = response.header("connection")
     crash said

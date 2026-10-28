@@ -7,7 +7,9 @@ func SocketBytes() {
     crash address
     crash server.listen_at(address, 47313)
     var client = Tcp.Client()
-    crash client.connect_to_host("localhost", 47313)
+    var local_host = "localhost".to_ip_address()
+    crash local_host
+    crash client.connect(local_host, 47313)
     var peer = server.accept()
     crash peer
     console.print("the peer is open:", not peer.closed)

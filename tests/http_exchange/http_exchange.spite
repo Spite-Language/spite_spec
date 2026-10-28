@@ -23,7 +23,9 @@ func serve_three(): Integer {
         crash request
         var response = Http.Response()
         if request.path == "/hello" {
-            response.write_body_string("hello there")
+            var host = request.header("host")
+            crash host
+            response.write_body_string("hello there, {host}")
         } else if request.path == "/echo" and request.method == "POST" {
             var kind = request.header("Content-Type")
             crash kind
@@ -62,7 +64,9 @@ func ask_missing(): String {
 }
 
 func ask(request: Http.Request): String {
-    var response = client.send("127.0.0.1", 47911, request)
+    var named = "localhost".to_ip_address()
+    crash named
+    var response = client.send(named, 47911, request)
     crash response
     var kind = response.header("content-type")
     var shown_kind = "none"

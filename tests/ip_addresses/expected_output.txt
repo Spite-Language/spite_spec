@@ -17,7 +17,8 @@
 '12345::' is not an address
 '1:2:3:4:5:6:7:8:9' is not an address
 '127.0.0.1%2' is not an address
-'example.com' is not an address
+'no-such-host.invalid' is not an address
+'localhost' is IPv4 127.0.0.1
 '' is not an address
 10.0.0.1 == ::ffff:10.0.0.1: true
 10.0.0.1 != 10.0.0.2: true
