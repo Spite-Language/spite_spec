@@ -21,10 +21,10 @@ func SortingMany() {
     while index < 300 {
         var scrambled = index * 37 % 300
         var file = File("{folder.path}/file_{scrambled}.txt")
-        file.write("")
+        file.write_string("")
         index = index + 1
     }
-    var names = folder.entries().filter_files().map_names()
+    var names = folder.entries().filter_files().map_file_names()
     var name_count = names.count()
     var ordered = in_order(names)
     console.print("listed", name_count, "files, in order:", ordered)

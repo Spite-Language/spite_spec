@@ -4,7 +4,7 @@ var program = Program()
 func PooledLoadsWait() {
     load "../../../spite_standard_library/windows"
     var level = File(".spite/pooled_loads_wait.txt")
-    level.write("forest")
+    level.write_string("forest")
     var blobs = Blobs()
     var text = ""
     while text.is_empty() {

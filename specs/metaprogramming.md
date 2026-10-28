@@ -199,7 +199,7 @@ before it runs. `call.arguments['name'] = value` fills one argument, and `call.c
 - **Calling a `Spite.Class` known only at run time with no arguments** (`part()`) makes an object of it, typed
   `Anything`, through one function the compiler writes that compares the class object with each class of the
   program's own folder, each other class whose class object the program holds (a library class it names, as
-  `kinds.append(HttpResponse)`), and the number classes, `Boolean` and `String` (each its default), and makes the one
+  `kinds.append(Http.Response)`), and the number classes, `Boolean` and `String` (each its default), and makes the one
   it is. Only a class whose object the program holds can be known at run time, so the list is complete once the
   program is built (`tests/run_time_library_class`, `tests/run_time_number_class`). The entry class and a class
   whose constructor takes arguments halt, naming why; a singleton, a generic class, an enum or a union halts "spite:

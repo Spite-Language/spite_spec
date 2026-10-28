@@ -75,7 +75,7 @@ func joined(bytes: Buffer): String {
 }
 
 func show_base64(sample: String) {
-    var bytes = sample.to_bytes()
+    var bytes = sample.to_buffer()
     var encoded = base64.encode(bytes)
     var url = base64.encode_url(bytes)
     var decoded = base64.decode(encoded)

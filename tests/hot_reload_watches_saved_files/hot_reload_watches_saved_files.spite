@@ -27,7 +27,7 @@ func HotReloadWatchesSavedFiles() {
 func write_greeter(word: String) {
     var file = File("{build.program}/greeter.spite")
     var text = "func greeting(): String \{\n    return \"{word}\"\n}\n"
-    var written = file.write(text)
+    var written = file.write_string(text)
     if not written {
         console.print("greeter.spite could not be written")
     }

@@ -8,23 +8,27 @@ func ProcessPaths() {
     var script = spaced_script()
     var spaced = Process(script, ["argument one"])
     var run = spaced.run()
-    var trimmed_output = spaced.output().trim()
+    var trimmed_output_text = spaced.read_output_as_string()
+    crash trimmed_output_text
+    var trimmed_output = trimmed_output_text.trim()
     console.print(run, trimmed_output)
     var no_arguments = List<String>()
     var with_arguments = Process("git --version", no_arguments)
     var with_arguments_run = with_arguments.run()
-    var output_starts_with = with_arguments.output().starts_with("git version")
+    var output_starts_with_text = with_arguments.read_output_as_string()
+    crash output_starts_with_text
+    var output_starts_with = output_starts_with_text.starts_with("git version")
     console.print(with_arguments_run, output_starts_with)
 }
 
 func spaced_script(): String {
     if build.target_operating_system == "windows" {
         var batch = File(".spite/folder with spaces/hello.cmd")
-        batch.write("@echo hello from a spaced path %1\r\n")
+        batch.write_string("@echo hello from a spaced path %1\r\n")
         return ".spite/folder with spaces/hello.cmd"
     }
     var shell = File(".spite/folder with spaces/hello.sh")
-    shell.write("#!/bin/sh\necho \"hello from a spaced path \\\"$1\\\"\"\n")
+    shell.write_string("#!/bin/sh\necho \"hello from a spaced path \\\"$1\\\"\"\n")
     var executable = Process("chmod", ["+x", ".spite/folder with spaces/hello.sh"])
     crash executable.run() == 0
     return ".spite/folder with spaces/hello.sh"

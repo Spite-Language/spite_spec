@@ -3,8 +3,8 @@ var console = Console()
 func CodePastTheEnd() {
     load "../../../spite_standard_library/windows"
     var word = "abc"
-    var last = word.code_at(2)
+    var last = word.byte_at(2)
     console.print("the last code", last)
-    var past = word.code_at(3)
+    var past = word.byte_at(3)
     console.print("never printed", past)
 }

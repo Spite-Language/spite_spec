@@ -5,6 +5,6 @@ func BufferAppendBytesOutside() {
     var bytes = Buffer(0)
     bytes.append(10)
     var copied = Buffer(0)
-    copied.append_bytes(bytes, 0, 2)
+    copied.append_buffer(bytes, 0, 2)
     console.print("never printed")
 }

@@ -49,7 +49,7 @@ var target: Monster? = null
   is what makes it worth having ([failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#a-new-name-for-a-new-type) teaches it):
 
 ```gdscript
-var content = file.read()        # String?
+var content = file.read_as_string()        # String?
 assert content
 var content = content.trim()     # String
 ```

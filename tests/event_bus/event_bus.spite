@@ -29,7 +29,7 @@ func report(counter: Counter) {
     var index = 0
     while index < counter.names.count() {
         var name = counter.names[index]
-        if totals.has(name) {
+        if totals.contains(name) {
             crash totals[name]
             totals[name] = totals[name] + 1
         } else {

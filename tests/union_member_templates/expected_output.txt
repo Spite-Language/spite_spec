@@ -1,4 +1,4 @@
-entries: levels,a.txt,b.md
+entries: tests/union_member_templates/tree/levels,tests/union_member_templates/tree/a.txt,tests/union_member_templates/tree/b.md
 text files: 1
 first file: a.txt hello
 folders: 1 levels

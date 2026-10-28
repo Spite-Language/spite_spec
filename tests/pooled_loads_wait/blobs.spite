@@ -38,7 +38,7 @@ func finish_if_done(index: Integer) {
 
 func locate_then_start() {
     var index_file = File(".spite/pooled_loads_wait.txt")
-    var index_text = index_file.read()
+    var index_text = index_file.read_as_string()
     assert index_text
     start()
 }

@@ -6,5 +6,5 @@ func DirectoryMissing() {
     var exists = folder.exists()
     var entries = folder.entries()
     var count = entries.count()
-    console.print(exists, count, folder.name)
+    console.print(exists, count, folder.folder_name)
 }

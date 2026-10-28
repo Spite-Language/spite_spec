@@ -5,23 +5,23 @@ func OverlappedReads() {
     var first_file = File(".spite/overlapped_first.txt")
     var second_file = File(".spite/overlapped_second.txt")
     var third_file = File(".spite/overlapped_third.txt")
-    first_file.write("first")
-    second_file.write("second")
-    third_file.write("third")
-    var first = first_file.read()
-    var second = second_file.read()
-    var third = third_file.read()
-    first_file.write("changed after the reads")
+    first_file.write_string("first")
+    second_file.write_string("second")
+    third_file.write_string("third")
+    var first = first_file.read_as_string()
+    var second = second_file.read_as_string()
+    var third = third_file.read_as_string()
+    first_file.write_string("changed after the reads")
     crash first
     crash second
     crash third
     console.print(first, second, third)
-    var again = first_file.read()
+    var again = first_file.read_as_string()
     crash again
     console.print(again)
     var missing = File(".spite/overlapped_missing.txt")
-    var absent = missing.read()
-    var present = second_file.read()
+    var absent = missing.read_as_string()
+    var present = second_file.read_as_string()
     crash present
     if absent {
         console.print("the missing file was read")

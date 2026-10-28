@@ -20,5 +20,7 @@ func NearbyPoints() {
         position = position + 1
     }
     var noted = notes.count()
-    console.print("total", total, "notes", noted)
+    var first_note = notes.first()
+    crash first_note
+    console.print("total", total, "notes", noted, first_note.text)
 }

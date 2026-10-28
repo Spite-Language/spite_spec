@@ -3,7 +3,8 @@ var console = Console()
 func JsonKey() {
     load "../../../spite_standard_library/windows"
     var reader = JsonReader<MeshRecord>()
-    var mesh = reader.read_or_crash("\{}")
+    var mesh = reader.read("\{}")
+    crash mesh
     var writer = JsonWriter<MeshRecord>()
     var text = writer.write(mesh)
     console.print(text)

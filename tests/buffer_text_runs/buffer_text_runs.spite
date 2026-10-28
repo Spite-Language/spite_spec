@@ -3,12 +3,12 @@ var console = Console()
 func BufferTextRuns() {
     load "../../../spite_standard_library/windows"
     var word = "héllo"
-    var bytes = word.to_bytes()
+    var bytes = word.to_buffer()
     var count = bytes.count()
-    var whole = bytes.text(0, 6)
-    var cut = bytes.text(0, 2)
-    var tail = bytes.text(3, 3)
+    var whole = bytes.read_string_at(0, 6)
+    var cut = bytes.read_string_at(0, 2)
+    var tail = bytes.read_string_at(3, 3)
     console.print(count, whole, cut, tail)
-    var outside = bytes.text(4, 9)
+    var outside = bytes.read_string_at(4, 9)
     console.print("never printed", outside)
 }

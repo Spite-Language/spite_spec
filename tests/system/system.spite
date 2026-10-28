@@ -16,12 +16,12 @@ func System() {
     var exists = folder.exists()
     console.print(create, exists)
     var file = File(".spite/conformance_system/note.txt")
-    var write = file.write("first line\n")
-    var append = file.append("second line")
+    var write = file.write_string("first line\n")
+    var append = file.append_string("second line")
     var file_exists = file.exists()
     console.print(write, append, file_exists)
     report(file)
-    var joined_files = folder.entries().filter_files().map_names().join(",")
+    var joined_files = folder.entries().filter_files().map_file_names().join(",")
     var folders_count = folder.entries().filter_directories().count()
     console.print(joined_files, folders_count)
     var remove = file.remove()
@@ -40,14 +40,16 @@ func System() {
     }
     var process = Process("git", ["--version"])
     var exit_code = process.run()
-    var trim_is_empty = process.output().trim().is_empty()
+    var trim_is_empty_text = process.read_output_as_string()
+    crash trim_is_empty_text
+    var trim_is_empty = trim_is_empty_text.trim().is_empty()
     console.print(exit_code, trim_is_empty)
     program.sleep(1)
     console.print("done")
 }
 
 func report(file: File) {
-    var content = file.read()
+    var content = file.read_as_string()
     if content {
         var lines_count = content.lines().count()
         var last_line = content.lines().last()

@@ -6,18 +6,16 @@ func BufferReadRuns() {
     bytes.append(10)
     bytes.append(20)
     bytes.append(30)
-    var front = bytes.read_bytes(2)
+    var front = bytes.read_buffer_at(0, 2)
     crash front
     var front_count = front.count()
-    var moved = bytes.position
-    var too_many = bytes.read_bytes(2)
-    var anywhere = bytes.read_bytes_at(1, 2)
+    var anywhere = bytes.read_buffer_at(1, 2)
     crash anywhere
     var anywhere_first = anywhere[0]
-    var outside = bytes.read_bytes_at(2, 2)
-    console.print(front_count, moved, not too_many, anywhere_first, not outside)
+    var outside = bytes.read_buffer_at(2, 2)
+    console.print(front_count, anywhere_first, not outside)
     var copied = Buffer(0)
-    copied.append_bytes(bytes, 1, 2)
+    copied.append_buffer(bytes, 1, 2)
     var copied_count = copied.count()
     var copied_last = copied[1]
     console.print(copied_count, copied_last)

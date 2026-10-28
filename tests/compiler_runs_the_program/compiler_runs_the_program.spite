@@ -8,7 +8,9 @@ func CompilerRunsTheProgram() {
     var arguments = [folder, "ada", "--volume=7", "--optimized", "two words"]
     var running = Process(compiler, arguments)
     var code = running.run()
-    var printed = running.output().trim()
+    var printed_text = running.read_output_as_string()
+    crash printed_text
+    var printed = printed_text.trim()
     console.print(printed)
     console.print("exit code", code)
     var built = File(".spite/relayed/.spite/build/relayed.exe")
@@ -40,7 +42,7 @@ func write_the_program() {
     lines.append("")
     var entry = File("{folder}/relayed.spite")
     var joined = lines.join("\n")
-    entry.write(joined)
+    entry.write_string(joined)
     var settings = File("{folder}/environment.spite")
-    settings.write("var volume = 1\n")
+    settings.write_string("var volume = 1\n")
 }

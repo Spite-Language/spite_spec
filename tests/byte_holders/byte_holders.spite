@@ -1,0 +1,97 @@
+var console = Console()
+var server = Http.Server()
+var client = Http.Client()
+var listener = Socket()
+
+func ByteHolders() {
+    load "../../../spite_standard_library/windows"
+    binary_body()
+    split_character()
+    datagram_text()
+    process_output()
+}
+
+func binary_body() {
+    crash server.listen_locally(47915)
+    var serving = Concurrent(echo_one)
+    var request = Http.Request()
+    request.method = "POST"
+    request.path = "/bytes"
+    var body = Buffer(0)
+    body.append(104)
+    body.append(255)
+    request.write_body_buffer(body)
+    var response = client.send("127.0.0.1", 47915, request)
+    crash response
+    var as_text = response.read_body_as_string()
+    var as_bytes = response.read_body_as_buffer()
+    var byte_count = as_bytes.count()
+    var last = as_bytes[1]
+    crash last
+    console.print("binary body: text", not as_text, "bytes", byte_count, "last", last, "served", serving)
+    server.close()
+}
+
+func echo_one(): Integer {
+    var request = server.next_request()
+    crash request
+    var response = Http.Response()
+    var body = request.read_body_as_buffer()
+    response.write_body_buffer(body)
+    server.respond(request, response)
+    return 1
+}
+
+func split_character() {
+    crash listener.listen_locally(47916)
+    var reading = Concurrent(read_one_string)
+    var sender = Socket()
+    crash sender.connect_locally(47916)
+    var character = "é".to_buffer()
+    var first = Buffer(0)
+    var second = Buffer(0)
+    var lead = character[0]
+    var rest = character[1]
+    crash lead and rest
+    first.append(lead)
+    second.append(rest)
+    crash sender.write_buffer(first)
+    crash sender.write_buffer(second)
+    console.print("a character sent in two writes reads as", reading)
+    sender.close()
+    listener.close()
+}
+
+func read_one_string(): String {
+    var peer = listener.accept_client()
+    crash peer
+    var text = peer.read_as_string()
+    crash text
+    peer.close()
+    return text
+}
+
+func datagram_text() {
+    var receiving = UdpSocket()
+    var sending = UdpSocket()
+    crash receiving.open_locally(47917)
+    crash sending.open_locally(0)
+    var hello = "hello".to_buffer()
+    crash sending.send_to("127.0.0.1", 47917, hello)
+    var text = receiving.receive_as_string()
+    crash text
+    console.print("a datagram read as text:", text)
+    receiving.close()
+    sending.close()
+}
+
+func process_output() {
+    var echoing = Process("cmd", ["/c", "echo", "ok"])
+    echoing.run()
+    var text = echoing.read_output_as_string()
+    crash text
+    var trimmed = text.trim()
+    var bytes = echoing.read_output_as_buffer()
+    var byte_count = bytes.count()
+    console.print("process output:", trimmed, byte_count)
+}

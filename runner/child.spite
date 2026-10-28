@@ -26,7 +26,7 @@ func start(command: String): Boolean {
     var limits = zeroed(limit_size)
     limits.write_integer_little_endian_at(16, kills_on_close)
     kernel.SetInformationJobObject(job, extended_limits, limits, limit_size)
-    var line = command.to_bytes()
+    var line = command.to_buffer()
     var ending: Byte = 0
     line.append(ending)
     var startup = zeroed(startup_size)

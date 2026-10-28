@@ -8,7 +8,7 @@ func FinalClassesWritten() {
     var is_marked = marker.exists()
     console.print("marked", is_marked)
     var printed = File(".spite/final_classes_written/badge.spite")
-    var text = printed.read()
+    var text = printed.read_as_string()
     crash text
     var trimmed = text.trim()
     console.print(trimmed)

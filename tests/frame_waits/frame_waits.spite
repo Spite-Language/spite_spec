@@ -16,7 +16,7 @@ var most_in_flight = 0
 func FrameWaits() {
     load "../../../spite_standard_library/windows"
     var file = File(".spite/frame_waits_report.txt")
-    file.write("sales are up")
+    file.write_string("sales are up")
     while report.text.is_empty() {
         frames = frames + 1
         if frames == 1 {

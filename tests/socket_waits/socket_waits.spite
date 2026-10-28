@@ -12,13 +12,13 @@ func SocketWaits() {
     message.append(20)
     message.append(30)
     message.append(40)
-    crash client.write_bytes(message)
+    crash client.write_buffer(message)
     var answer = Buffer(0)
     while answer.count() < 4 and not client.closed {
-        var more = client.read_bytes()
+        var more = client.read_as_buffer()
         if more {
             var more_count = more.count()
-            answer.append_bytes(more, 0, more_count)
+            answer.append_buffer(more, 0, more_count)
         }
     }
     var received = answer.count()
@@ -39,13 +39,13 @@ func echo_once(): Integer {
     crash peer
     var buffer = Buffer(0)
     while buffer.count() < 4 and not peer.closed {
-        var more = peer.read_bytes()
+        var more = peer.read_as_buffer()
         if more {
             var more_count = more.count()
-            buffer.append_bytes(more, 0, more_count)
+            buffer.append_buffer(more, 0, more_count)
         }
     }
-    var echoed = peer.write_bytes(buffer)
+    var echoed = peer.write_buffer(buffer)
     peer.close()
     if echoed {
         return buffer.count()

@@ -221,7 +221,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/items_remove_out_of_range | removed (D1707) | - |  |
 | conformance/stage6/items_remove_swapping_out_of_range | removed (D1707) | - |  |
 | conformance/stage6/json_camel_case | covered | tests/json_camel_case |  |
-| conformance/stage6/json_crash | covered | tests/json_crash |  |
+| conformance/stage6/json_crash | removed (D1707) | - | read_or_crash went (#23) |
 | conformance/stage6/json_infinity | covered | tests/json_infinity |  |
 | conformance/stage6/json_symbols | covered | tests/json_symbols |  |
 | conformance/stage6/kebab_setting | covered | tests/kebab_setting |  |
@@ -251,7 +251,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/lone_atomic_counter | covered | tests/lone_atomic_counter |  |
 | conformance/stage6/loop_after_assert | ported | tests/loop_after_assert |  |
 | conformance/stage6/loop_reads_changed_attribute | ported | tests/loop_reads_changed_attribute |  |
-| conformance/stage6/mapped_files | covered | tests/mapped_files |  |
+| conformance/stage6/mapped_files | ported | tests/file_as_buffer | MappedFile went (#23); its reads are a Buffer |
 | conformance/stage6/maths_folding | covered | tests/maths_folding |  |
 | conformance/stage6/maths_functions | covered | tests/maths_functions |  |
 | conformance/stage6/maths_precision | covered | tests/maths_precision |  |
@@ -945,7 +945,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/standard_library.md#file_tasks | covered | tests/file_text_basics |  |
 | docs/standard_library.md#byte_records | covered | tests/binary_files |  |
 | docs/standard_library.md#moving_files | covered | tests/moving_files |  |
-| docs/standard_library.md#mapped_records | covered | tests/mapped_files |  |
+| docs/standard_library.md#mapped_records | ported | tests/file_as_buffer |  |
 | docs/standard_library.md#directory_tasks | covered | tests/system | filter_directories; create/exists in tests/directory_missing |
 | docs/standard_library.md#directory_walk | covered | tests/directory_entries |  |
 | docs/standard_library.md#watch_folder | covered | tests/file_watching |  |

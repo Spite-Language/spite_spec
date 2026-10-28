@@ -53,7 +53,7 @@ func ListByteNumbers() {
     }
     console.print("a read past the end and one below 0 are null:", missed == 2)
     var copied = Buffer(0)
-    copied.append_bytes(bytes, 3, 4)
+    copied.append_buffer(bytes, 3, 4)
     var copied_number = copied.read_integer_little_endian_at(0)
     crash copied_number
     console.print("a run copied out:", copied_number)
@@ -78,9 +78,7 @@ func ListByteNumbers() {
     message.append_integer_little_endian(1200)
     message.append_integer_little_endian(-35)
     var records = read_records(message)
-    var left = message.remaining()
     console.print("records:", records)
-    console.print("a position walk leaves:", left)
 }
 
 func show_numbers(bytes: Buffer) {
@@ -137,12 +135,15 @@ func walk_records(bytes: Buffer): Long {
 }
 
 func read_records(message: Buffer): Integer {
-    var count = message.read_unsigned_short_little_endian()
+    var position = 0
+    var count = message.read_unsigned_short_little_endian_at(position)
     crash count
+    position = position + 2
     var whole: Integer = count
-    var first = message.read_integer_little_endian()
+    var first = message.read_integer_little_endian_at(position)
     crash first
-    var second = message.read_integer_little_endian()
+    position = position + 4
+    var second = message.read_integer_little_endian_at(position)
     crash second
     return whole + first + second
 }

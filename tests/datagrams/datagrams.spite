@@ -11,33 +11,33 @@ func Datagrams() {
     var client_port = client.port
     var picked = client_port > 0
     console.print("server port: {server_port}, the client was given a port: {picked}")
-    var nothing_yet = server.receive_now()
+    var nothing_yet = server.receive_as_buffer_now()
     if not nothing_yet {
         console.print("nothing has arrived yet")
     }
     var ping_text = "ping"
-    var ping = ping_text.to_bytes()
+    var ping = ping_text.to_buffer()
     var sent = client.send_to("127.0.0.1", 47811, ping)
     console.print("sent: {sent}")
-    var arrived = server.receive()
+    var arrived = server.receive_as_buffer()
     crash arrived
     var arrived_bytes = joined(arrived)
     var from_host = server.sender_host()
     console.print("server got {arrived_bytes} from {from_host}")
     var pong_text = "pong!"
-    var pong = pong_text.to_bytes()
+    var pong = pong_text.to_buffer()
     var reply_host = server.sender_host()
     var reply_port = server.sender_port()
     var same_port = reply_port == client_port
     console.print("the datagram came from the client's port: {same_port}")
     var replied = server.send_to(reply_host, reply_port, pong)
-    var answer = client.receive()
+    var answer = client.receive_as_buffer()
     crash answer
     var answer_count = answer.count()
     console.print("replied: {replied}, client got {answer_count} bytes")
     var empty = Buffer(0)
     client.send_to("localhost", 47811, empty)
-    var empty_arrived = server.receive()
+    var empty_arrived = server.receive_as_buffer()
     crash empty_arrived
     var empty_count = empty_arrived.count()
     console.print("an empty datagram arrives as {empty_count} bytes")
@@ -45,7 +45,7 @@ func Datagrams() {
     var twice = taken.open_locally(47811)
     console.print("a second socket on the same port: {twice}")
     server.close()
-    var after_close = server.receive()
+    var after_close = server.receive_as_buffer()
     if not after_close {
         console.print("a closed socket receives nothing")
     }

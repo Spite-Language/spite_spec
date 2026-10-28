@@ -6,7 +6,7 @@ func CrashesMap() {
     var is_four = checked == 4
     console.print(is_four)
     var map = File("tests/crashes_map/.spite/build/crashes_map.crashes")
-    var text = map.read()
+    var text = map.read_as_string()
     if text {
         show(text)
     } else {

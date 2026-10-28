@@ -34,7 +34,7 @@ func ZoneFiles() {
 
 func read(name: String, file_name: String): TimeZone {
     var file = File("tests/zone_files/{file_name}.tzif")
-    var data = file.read()
+    var data = file.read_as_string()
     crash data
     var zone = zones.read_tzif(name, data)
     crash zone

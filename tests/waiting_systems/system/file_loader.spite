@@ -2,7 +2,7 @@ var console = Console()
 var level = File(".spite/waiting_systems_level.txt")
 
 func update_each() {
-    var text = level.read()
+    var text = level.read_as_string()
     crash text
     console.print("the loader read", text)
 }

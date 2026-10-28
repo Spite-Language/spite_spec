@@ -25,19 +25,19 @@ func GameColors() {
     crash orange
     var linear = orange.to_linear()
     var back = linear.to_standard_rgb()
-    console.print("linear {linear.to_hex()} {near(linear.green)} back {back.to_hex()}")
+    console.print("linear {linear.to_hexadecimal_string()} {near(linear.green)} back {back.to_hexadecimal_string()}")
     var clear = Color(0.0, 0.0, 1.0, 0.0)
     var halfway = orange.linear_interpolate(clear, 0.5)
-    console.print("blend {halfway} {halfway.to_rgb_text()} {halfway == halfway}")
+    console.print("blend {halfway} {halfway.to_rgb_string()} {halfway == halfway}")
     var gray = "rgb(50%, 50%, 50%)".to_color()
     crash gray
-    console.print("gray {gray.to_hsl_text()} {gray.to_rgb_text()}")
+    console.print("gray {gray.to_hsl_string()} {gray.to_rgb_string()}")
 }
 
 func show(text: String) {
     var color = text.to_color()
     if color {
-        console.print("'{text}': {color} {color.to_rgb_text()} {color.to_hsl_text()}")
+        console.print("'{text}': {color} {color.to_rgb_string()} {color.to_hsl_string()}")
     } else {
         console.print("'{text}': not a colour")
     }

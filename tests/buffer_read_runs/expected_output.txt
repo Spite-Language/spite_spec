@@ -1,2 +1,2 @@
-2 2 true 20 true
+2 20 true
 2 30

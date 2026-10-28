@@ -114,7 +114,7 @@ func finish_one(child: Child) {
     var code = child.exit_code()
     child.close()
     var file = File(child.output_path)
-    var printed = file.read()
+    var printed = file.read_as_string()
     var text = ""
     if printed {
         text = cleaned(printed)
@@ -189,7 +189,7 @@ func add_named(named: List<String>, argument: String) {
 
 func last_failures(): List<String> {
     var file = File(failures_file)
-    var text = file.read()
+    var text = file.read_as_string()
     var found = List<String>()
     if not text {
         return found
@@ -214,7 +214,7 @@ func keep_the_failures() {
     }
     var joined = failed_folders.join("\n")
     var file = File(failures_file)
-    file.write(joined)
+    file.write_string(joined)
 }
 
 func every_folder(): List<String> {
@@ -233,7 +233,7 @@ func keep_folders_in(parent: String) {
 
 func keep_folder(entry: Directory.Entry) {
     if entry == Directory {
-        var name = entry.name
+        var name = entry.folder_name
         found_folders.append("{parent_folder}/{name}")
     }
 }
@@ -269,7 +269,8 @@ func run_test(folder: String) {
     var compile = Process("{compiler} {copy} {flags} --build 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     if compiled != 0 {
-        var output = compile.output()
+        var output = compile.read_output_as_string()
+        crash output
         var errors = in_the_folder(output, copy, folder)
         fail(folder, "it did not compile: {errors}")
         return
@@ -293,7 +294,8 @@ func run_test(folder: String) {
     var output_file = File("{folder}/expected_output.txt")
     if output_file.exists() {
         var expected_output = optional_text(folder, "expected_output.txt")
-        var printed = running.output()
+        var printed = running.read_output_as_string()
+        crash printed
         var moved = in_the_folder(printed, copy, folder)
         var output = cleaned(moved)
         if not matches(output, expected_output) {
@@ -306,7 +308,7 @@ func run_test(folder: String) {
 
 func optional_text(folder: String, name: String): String {
     var file = File("{folder}/{name}")
-    var text = file.read()
+    var text = file.read_as_string()
     if not text {
         return ""
     }
@@ -327,7 +329,8 @@ func run_conformance(folder: String) {
         fail(folder, "it compiled, and it must fail")
         return
     }
-    var output = compile.output()
+    var output = compile.read_output_as_string()
+    crash output
     var moved = in_the_folder(output, copy, folder)
     var errors = cleaned(moved)
     if not wanted.starts_with("formatted ") {
@@ -356,7 +359,8 @@ func check_formatted_once(folder: String, copy: String, flags: String) {
     var no_arguments = List<String>()
     var again = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
     var compiled = again.run()
-    var output = again.output()
+    var output = again.read_output_as_string()
+    crash output
     var moved = in_the_folder(output, copy, folder)
     var printed = cleaned(moved)
     if compiled != 0 or not printed.is_empty() {
@@ -395,7 +399,7 @@ func without_formatting(errors: String): String {
 
 func copy_of(folder: String): String? {
     var directory = Directory(folder)
-    var name = directory.name
+    var name = directory.folder_name
     var copies = copies_folder
     if folder.starts_with("conformance/") {
         copies = "{copies_folder}_conformance"
@@ -410,7 +414,8 @@ func copy_of(folder: String): String? {
     )
     var copied = copying.run()
     if copied >= 8 {
-        var output = copying.output()
+        var output = copying.read_output_as_string()
+        crash output
         fail(
             folder,
             "it could not be copied into {copy}, which the compiler formats instead of the checked-in files: {output}",
@@ -430,7 +435,8 @@ func build_moved_back(copy: String, folder: String): Boolean {
     )
     var moved = moving.run()
     if moved >= 8 {
-        var output = moving.output()
+        var output = moving.read_output_as_string()
+        crash output
         fail(folder, "its build could not be copied back from {copy}: {output}")
         return false
     }
@@ -446,7 +452,7 @@ func in_the_folder(output: String, copy: String, folder: String): String {
 
 func expected_text(folder: String, name: String): String? {
     var file = File("{folder}/{name}")
-    var text = file.read()
+    var text = file.read_as_string()
     if not text {
         fail(folder, "it has no {name}")
         return null
@@ -456,7 +462,7 @@ func expected_text(folder: String, name: String): String? {
 
 func executable_of(folder: String): String {
     var directory = Directory(folder)
-    var name = directory.name
+    var name = directory.folder_name
     var windows_folder = folder.replace("/", "\\")
     return "{windows_folder}\\.spite\\build\\{name}.exe"
 }

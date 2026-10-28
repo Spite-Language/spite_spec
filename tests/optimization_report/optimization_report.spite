@@ -66,7 +66,7 @@ func remember(kept: Spot) {
 }
 
 func print_report() {
-    var report = File(".spite/reports/optimization_report.md").read()
+    var report = File(".spite/reports/optimization_report.md").read_as_string()
     crash report
     var lines = report.split("\n")
     var index = 0

@@ -256,7 +256,7 @@ functions for a program that wants `Concurrent`s to resume only between its own 
   'napping' between two reads and it never finishes` (`diagnostics/unstepped_poll`). A loop that calls anything is
   left to the count, since the call may step it.
 - `conformance/stage6/frames_between_waits`: an engine-shaped loop whose stages join a `Parallel`, sleep and
-  write to a socket while a `Concurrent` reads that socket with `read_bytes` three times; the reader resumes only
+  write to a socket while a `Concurrent` reads that socket with `read_as_buffer` three times; the reader resumes only
   at `run_ready()`, never inside a stage. Without `resume_only_when_asked()` the same program's reader resumes
   inside a stage's sleep.
 
@@ -456,10 +456,10 @@ The task runs exactly as it did; nothing is added at run time. `conformance/stag
 `diagnostics/parallel_handover`.
 
 **Reads in a row overlap.** All the IO classes use it, and a `File` or `Socket` is not changed: the compiler does it
-at the call site. When two or more statements in a row are each `var name = receiver.read()` on a `File` (or
+at the call site. When two or more statements in a row are each `var name = receiver.read_as_string()` on a `File` (or
 `receiver.read_line()` on a `Socket`), with no written type, the receiver a name or an attribute path, no statement
 naming a variable an earlier one declared, and the name never assigned again in the function, every one but the
-last is compiled as `var name = Concurrent(receiver.read)`, and after the last each is joined (its private `_join()`)
+last is compiled as `var name = Concurrent(receiver.read_as_string)`, and after the last each is joined (its private `_join()`)
 before the next statement runs. Every later use of the name is an implicit join of a finished handle (above),
 so narrowing, printing and passing it are unchanged. Only reads, only side by side, and all finished before
 anything else runs, so nothing the program does next (writing one of those files, say) can see a difference;
@@ -568,7 +568,7 @@ frame goes on while it waits.
   and the stack of the work that ran it; nothing is kept back for a later frame to report. An `assert` that fails
   inside it returns from its function, as anywhere.
 - **Where not.** Not in the standard library, not in the copy of a function a `Concurrent` runs (a state machine
-  waits there as before), not for a call whose answer is used (`var text = file.read()` waits where it is written),
+  waits there as before), not for a call whose answer is used (`var text = file.read_as_string()` waits where it is written),
   and not for a call on the loop's own object (`tick()`, `wait_for_next_tick()`), which is the frame's pace.
 - **Answered once every function is compiled.** Whether the function can wait is known once every function it
   reaches has been compiled, so each function of the frame's code holding a statement of that shape is compiled

@@ -20,7 +20,7 @@ func group(words: List<String>) {
     var index = 0
     while index < words.count() {
         var word = words[index]
-        var letter = word.code_at(0) - 97
+        var letter = word.byte_at(0) - 97
         crash groups[letter]
         groups[letter].append(word)
         index = index + 1

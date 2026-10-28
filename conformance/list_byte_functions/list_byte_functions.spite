@@ -4,6 +4,6 @@ func ListByteFunctions() {
     load "../../../spite_standard_library/windows"
     var bytes = List<Byte>()
     bytes.append(1)
-    var number = bytes.read_integer_little_endian()
+    var number = bytes.read_integer_little_endian_at(0)
     console.print(number)
 }

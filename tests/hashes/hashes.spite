@@ -10,7 +10,7 @@ func Hashes() {
     var index = 0
     while index < samples.count() {
         var sample = samples[index]
-        var bytes = sample.to_bytes()
+        var bytes = sample.to_buffer()
         var digest = sha256.hash(bytes)
         var shown = hex(digest)
         console.print(shown)
@@ -24,9 +24,9 @@ func Hashes() {
     var big_shown = hex(big)
     console.print(big_shown)
     var key_text = "key"
-    var key = key_text.to_bytes()
+    var key = key_text.to_buffer()
     var message_text = "The quick brown fox jumps over the lazy dog"
-    var message = message_text.to_bytes()
+    var message = message_text.to_buffer()
     var mac = sha256.hmac(key, message)
     var mac_shown = hex(mac)
     console.print(mac_shown)
@@ -35,12 +35,12 @@ func Hashes() {
         long_key.append(170)
     }
     var test_text = "Test Using Larger Than Block-Size Key - Hash Key First"
-    var test = test_text.to_bytes()
+    var test = test_text.to_buffer()
     var long_mac = sha256.hmac(long_key, test)
     var long_shown = hex(long_mac)
     console.print(long_shown)
-    var first = random.bytes(32)
-    var second = random.bytes(32)
+    var first = random.random_buffer(32)
+    var second = random.random_buffer(32)
     var first_count = first.count()
     var differ = hex(first) != hex(second)
     console.print("32 secure random bytes, twice: {first_count} bytes, different: {differ}")

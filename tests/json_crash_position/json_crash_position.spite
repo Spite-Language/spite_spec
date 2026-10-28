@@ -1,8 +1,0 @@
-var console = Console()
-
-func JsonCrashPosition() {
-    load "../../../spite_standard_library/windows"
-    var reader = JsonReader<Tally>()
-    var tally = reader.read_or_crash("\{\"count\": three}")
-    console.print("never printed", tally.count)
-}

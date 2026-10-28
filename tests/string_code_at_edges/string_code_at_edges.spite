@@ -3,8 +3,8 @@ var console = Console()
 func StringCodeAtEdges() {
     load "../../../spite_standard_library/windows"
     var word = "ab"
-    var inside = word.code_at(1)
-    var past = word.code_at(2)
-    var before = word.code_at(-1)
+    var inside = word.byte_at(1)
+    var past = word.byte_at(2)
+    var before = word.byte_at(-1)
     console.print(inside, past, before)
 }

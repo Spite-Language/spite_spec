@@ -10,4 +10,3 @@ a header read under one bound: 6
 an image read by row and column: 66
 whole integers walked: -4506065045
 records: 1167
-a position walk leaves: 0

@@ -9,8 +9,8 @@ func ShortText() {
     var sixteen = "{fifteen}p"
     var fifteen_length = fifteen.length()
     var sixteen_length = sixteen.length()
-    var last_of_fifteen = fifteen.code_at(14)
-    var last_of_sixteen = sixteen.code_at(15)
+    var last_of_fifteen = fifteen.byte_at(14)
+    var last_of_sixteen = sixteen.byte_at(15)
     console.print(fifteen_length, sixteen_length, last_of_fifteen, last_of_sixteen)
     console.print(fifteen == "abcdefghijklmno", sixteen == "abcdefghijklmnop", fifteen < sixteen)
     var grown = ""

@@ -9,7 +9,6 @@ func Ipv6Addresses() {
         console.print("skipped: this machine has no IPv6, so nothing can listen on ::1")
         return
     }
-    everywhere()
     crash ipv4.listen_at("127.0.0.1", 47321)
     reach(ipv4, "127.0.0.1", 47321)
     reach(ipv6, "::1", 47322)
@@ -20,16 +19,6 @@ func Ipv6Addresses() {
     ipv4.close()
     ipv6.close()
     datagrams()
-}
-
-func everywhere() {
-    var addresses = Socket()
-    var first = addresses.any_ipv6_address(47321)
-    var fallback = addresses.any_address(47321)
-    var first_text = addresses.address_text(first)
-    var first_port = addresses.read_port(first)
-    var fallback_text = addresses.address_text(fallback)
-    console.print("everywhere binds {first_text} port {first_port}, or {fallback_text} without IPv6")
 }
 
 func reach(server: Socket, host: String, port: Integer) {
@@ -60,19 +49,19 @@ func datagrams() {
     send(client4, "127.0.0.1", 47325)
     receive(server4)
     var text = "ping"
-    var bytes = text.to_bytes()
+    var bytes = text.to_buffer()
     var unreachable = client4.send_to("::1", 47324, bytes)
     console.print("an IPv4 socket sends to ::1:", unreachable)
 }
 
 func send(client: UdpSocket, host: String, port: Integer) {
     var text = "to {host}"
-    var bytes = text.to_bytes()
+    var bytes = text.to_buffer()
     crash client.send_to(host, port, bytes)
 }
 
 func receive(server: UdpSocket) {
-    var arrived = server.receive()
+    var arrived = server.receive_as_buffer()
     crash arrived
     var count = arrived.count()
     var sender = server.sender_host()

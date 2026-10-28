@@ -80,7 +80,7 @@ again, a `union` field included, so it is narrowed again after the call (`diagno
 `diagnostics/call_undoes_proof`).
 
 ```gdscript
-var content = program_file.read()
+var content = program_file.read_as_string()
 assert content
 var length = content.length()          # content is a String here, not String?
 console.print(length)
@@ -108,7 +108,7 @@ else lint never applies to it:
 ```gdscript
 # error: rewrite this with assert
 func read_first_line(file: File): String {
-    var content = file.read()
+    var content = file.read_as_string()
     if content {
         return content.lines().first()
     }
@@ -116,7 +116,7 @@ func read_first_line(file: File): String {
 
 # the fix:
 func read_first_line(file: File): String {
-    var content = file.read()
+    var content = file.read_as_string()
     assert content
     return content.lines().first()
 }
@@ -330,7 +330,7 @@ How a read is proven:
   read from declared types (a parameter's type, a `var` built by a constructor or annotated), a `List`,
   `Dictionary` or `String` receiver included, so `items.count()` reaches only `List.count` and never a program's
   own `count`; a receiver that is itself an expression has the class of that expression's type: the class a
-  constructor makes (`File(path).read()` reaches `File.read`), the class the called function returns
+  constructor makes (`File(path).read_as_string()` reaches `File.read_as_string`), the class the called function returns
   (`names.copy().count()` reaches `List.count`), the element class of a `[]` read on a `List` or
   `Dictionary` (`lists[0].count()`), an attribute read's declared class (`receiver_call_effects`); a call whose
   receiver's class cannot be told (a shape, a type parameter, a function value) is followed into every function

@@ -78,9 +78,9 @@ The standard library fills every maths gap a game needs, as a game engine packag
 - **`Color`** (`red`, `green`, `blue`, `alpha`, each 0 to 1 and not clamped when set; made with its one
   constructor, `Color(red, green, blue, alpha)`, or read from text with `text.to_color()`, below):
   `equals` (exact), `linear_interpolate(target, amount)`, `to_linear()` and `to_standard_rgb()` (the sRGB curve on
-  red, green and blue, alpha untouched), `to_hex()` (`#rrggbb`, with `aa` when alpha is below 255/255),
-  `to_rgb_text()` (`rgb(255, 99, 71)`, or `rgba(...)` with alpha to three places), `to_hsl_text()` (hue, saturation
-  and lightness to one place), and `to_string()`, which is `to_hex()`. Writing clamps each channel to 0..1 and rounds
+  red, green and blue, alpha untouched), `to_hexadecimal_string()` (`#rrggbb`, with `aa` when alpha is below 255/255),
+  `to_rgb_string()` (`rgb(255, 99, 71)`, or `rgba(...)` with alpha to three places), `to_hsl_string()` (hue, saturation
+  and lightness to one place), and `to_string()`, which is `to_hexadecimal_string()`. Writing clamps each channel to 0..1 and rounds
   it to a byte.
 - **Colour text** (`text.to_color(): Color?`, the only way text becomes a colour; text is trimmed and read without regard to case): `#` and 3, 4, 6 or 8
   hex digits, `#rgb` doubling each digit; `rgb(`/`rgba(` with three or four numbers, separated by commas, spaces or

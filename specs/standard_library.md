@@ -29,7 +29,7 @@ never allocates; other text of up to 15 bytes is kept in those sixteen bytes and
 text is one block on the heap, counted and freed with its last holder. **Its storage is Spite**:
 `String` declares a `Buffer` for the characters (with a 0 after the last) and a length, and every member but a few is a
 Spite function reading them ([memory.md](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#where-string-and-integer-keep-their-memory)). The ones the compiler supplies are the ones
-that depend on where the characters are: `code_at` (reading one), `sum` (`+`), and the making of a `String` from
+that depend on where the characters are: `byte_at` (reading one), `sum` (`+`), and the making of a `String` from
 bytes, which is how `slice`, `terminated_text()` and anything that fills a buffer itself make text. The right side of `+` casts toward
 `String` (every numeric type, `Boolean`, and enum all format to text; see
 [Numeric types](values_and_types.md#numeric-types) for `Float`/`Double`'s
@@ -52,7 +52,7 @@ allocation counts.
 | `is_empty()` | `Boolean` | |
 | `slice(start, end)` | `String` | clamped; `""` for an empty/invalid range |
 | `get_at(index)`, written `text[index]` | `String?` | the whole UTF-8 character that starts at byte `index`; `null` below 0, past the end, or inside a character of several bytes (`tests/string_get_at`) |
-| `code_at(index)` | `Integer` | below 0 or past the end halts, naming the index and the length (`tests/code_past_the_end`) |
+| `byte_at(index)` | `Integer` | below 0 or past the end halts, naming the index and the length (`tests/code_past_the_end`) |
 | `contains(text)` / `starts_with(text)` / `ends_with(text)` | `Boolean` | |
 | `index_of(text)` | `Integer?` | `null` when absent |
 | `replace(from, to)` | `String` | replaces every occurrence |
@@ -65,7 +65,7 @@ allocation counts.
 | `to_float()` / `to_double()` | `Float?` / `Double?` | digits with an optional sign, `.` and exponent (`-1.5e2`, `.5`), spaces around them allowed; `null` for anything else (`"1e"`, `"nan"`) |
 | `sum(other)` / `equals(other)` / `less_than(other)` / `greater_than(other)` | `String` / `Boolean` | what `+`/`==`/`<`/`>` call; they are only called through the operator |
 | `to_string()` / `to_debug()` | `String` | the text itself / the text quoted, with `"`, `\` and a line feed escaped ([`Console.debug`](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#console)) |
-| `to_bytes()` | `Buffer` | the text's bytes, one per byte of its UTF-8 ([Bytes are a Buffer](#bytes-are-a-buffer)), for [hashing, encoding and compressing](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#bytes-base64-compression-hashes-and-passwords) |
+| `to_buffer()` | `Buffer` | the text's bytes, one per byte of its UTF-8 ([Bytes are a Buffer](#bytes-are-a-buffer)), for [hashing, encoding and compressing](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#bytes-base64-compression-hashes-and-passwords) |
 
 **`pluralize()` and `singularize()` inflect English the way Rails' ActiveSupport does**, so a
 name and its collection read as a pair: `"active_quest".pluralize()` is `"active_quests"`, and
@@ -181,19 +181,18 @@ library through `DynamicLibrary`. What each member answers is in the section of 
 
 | Class | Members |
 |---|---|
-| `File(path)` | `path`, `name` (the last piece of the path), `to_string(): String` (the path), `read(): String?`, `write(text): Boolean`, `append(text): Boolean`, `exists(): Boolean`, `remove(): Boolean`, `move_to(path): Boolean`; bytes: `size(): Long?`, `modified(): Instant?`, `read_bytes(): Buffer?`, `read_bytes_at(position, count): Buffer?`, `write_bytes(bytes: Buffer): Boolean`, `append_bytes(bytes: Buffer): Long?`, `map(): MappedFile?`, `lock(): LockedFile?` ([Bytes are a Buffer](#bytes-are-a-buffer)); see [Read and write a file](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#read-and-write-a-file). `lock()` is a lock between processes: it waits (a point to return from in a `Concurrent`) until no other process holds a lock on this file, creating the file empty when it is missing, and answers a `LockedFile`, or `null` only when the path cannot be opened. The lock is let go by `unlock()`, by `drop()` and by the system when the process ends, so a crash never leaves it held; `LockFileEx` on Windows and `fcntl` on Linux and macOS. A `File` is a path with no open handle: each call opens and closes the file, positions replace seeking (`_fseeki64`/`_ftelli64` on Windows, so a position past 2 GB works), and `modified()` reads `GetFileAttributesExA`'s `ftLastWriteTime` on Windows and `stat`'s modification time on Linux and macOS. `move_to(path)`, on a `File` and on a `Directory`, answers `false` and changes nothing when a file or folder is already at `path`, and otherwise moves with `rename` on Linux and macOS and `MoveFileExA` on Windows (a file may be copied across drives there; a folder never is); on `true` the value names `path` |
-| `MappedFile` | made by `File.map()`: a read-only mapping of the whole file (`CreateFileMappingA`/`MapViewOfFile` on Windows, `mmap` with `PROT_READ` and `MAP_PRIVATE` on Linux and macOS, the file itself closed once mapped), undone by `drop()` (`UnmapViewOfFile`, `munmap`). `size(): Long`; `get_at(position): Byte?` (`mapped[position]`), `read_short_at`, `read_integer_at`, `read_long_at`, `read_float_at`, `read_double_at` (each `(position): T?`, named as a `Buffer`'s are), `read_bytes_at(position, count): Buffer?` and `text(position, count): String?` answer `null` unless every byte they would read is inside the file, so a bad offset read from the file cannot read outside it; a read inside is one load from the mapping. An empty file maps to a `MappedFile` of size 0, since the operating systems refuse to map nothing. `conformance/stage6/mapped_files`; see [A file larger than memory](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#a-file-larger-than-memory-map-it) |
-| `Directory(path)` | `path`, `name` (the last piece of the path), `entries(): List<Directory.Entry>` (below), `exists(): Boolean`, `create(): Boolean`, `move_to(path): Boolean`; see [List a directory](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#list-a-directory) |
-| `Process(command, arguments)` | `working_directory`, `environment_variables`, `with_errors` (false; true reads the child's standard error into `output()` too, as the shell's `2>&1`), `run(): Integer`, `output(): String`, `run_attached(): Integer`; see [Run a process](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#run-a-process). Each argument reaches the child whole: single-quoted for the shell on Linux and macOS, and quoted by the `CommandLineToArgvW` rules on Windows, a `key=value` argument quoting only its value (`-script="a b"`). `run()` reads the child's standard output through `_popen`/`popen`; Windows opens the pipe in binary mode so `0x1A` is ordinary output data. `run_attached()` is the C library's `system` |
+| `File(path)` | `path`, `file_name` (the last piece of the path), `to_string(): String` (the path), `read_as_string(): String?`, `write_string(text): Boolean`, `append_string(text): Boolean`, `exists(): Boolean`, `remove(): Boolean`, `move_to(path): Boolean`; bytes: `byte_count(): Long?`, `last_written(): Instant?`, `read_as_buffer(): Buffer?`, `read_buffer_at(position, count): Buffer?`, `write_buffer(buffer: Buffer): Boolean`, `append_buffer(buffer: Buffer): Long?`, `lock(): LockedFile?` ([Bytes are a Buffer](#bytes-are-a-buffer)); see [Read and write a file](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#read-and-write-a-file). `lock()` is a lock between processes: it waits (a point to return from in a `Concurrent`) until no other process holds a lock on this file, creating the file empty when it is missing, and answers a `LockedFile`, or `null` only when the path cannot be opened. The lock is let go by `unlock()`, by `drop()` and by the system when the process ends, so a crash never leaves it held; `LockFileEx` on Windows and `fcntl` on Linux and macOS. A `File` is a path with no open handle: each call opens and closes the file, positions replace seeking (`_fseeki64`/`_ftelli64` on Windows, so a position past 2 GB works), and `last_written()` reads `GetFileAttributesExA`'s `ftLastWriteTime` on Windows and `stat`'s modification time on Linux and macOS. `move_to(path)`, on a `File` and on a `Directory`, answers `false` and changes nothing when a file or folder is already at `path`, and otherwise moves with `rename` on Linux and macOS and `MoveFileExA` on Windows (a file may be copied across drives there; a folder never is); on `true` the value names `path` |
+| `Directory(path)` | `path`, `folder_name` (the last piece of the path), `entries(): List<Directory.Entry>` (below), `exists(): Boolean`, `create(): Boolean`, `move_to(path): Boolean`; see [List a directory](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#list-a-directory) |
+| `Process(command, arguments)` | `working_directory`, `environment_variables`, `with_errors` (false; true reads the child's standard error into the output too, as the shell's `2>&1`), `run(): Integer`, `read_output_as_string(): String?` (`null` when the output is not UTF-8), `read_output_as_buffer(): Buffer` (the output's bytes as they came), `run_attached(): Integer`; see [Run a process](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#run-a-process). Each argument reaches the child whole: single-quoted for the shell on Linux and macOS, and quoted by the `CommandLineToArgvW` rules on Windows, a `key=value` argument quoting only its value (`-script="a b"`). `run()` reads the child's standard output through `_popen`/`popen`; Windows opens the pipe in binary mode so `0x1A` is ordinary output data. `run_attached()` is the C library's `system` |
 | `Program()` | a singleton: `exit(code)`, `sleep(milliseconds)`, `environment(name): String?`, `executable_path(): String`, `live_allocations(): Long` (allocations not yet freed) and `live_bytes(): Long` (the bytes those asked for), which make the program count its allocations and frees only when it calls one of them; see [Program](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#program). `exit` flushes `Console` first, since the C library's `exit` would drop what the program's own standard output still buffers |
 | `Clock()` | a singleton: `elapsed_nanoseconds(): Long`, `elapsed_milliseconds(): Long`, `now(): Instant`; `elapsed_nanoseconds()` is the monotonic clock, with a nanosecond unit and no allocation per reading; see [Clock](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#clock), [Time](time.md#time-one-stored-instant-zones-for-presentation) |
 | `Benchmark(work)` | `answer`, what one call of `work` answered, and `duration: Duration`, the monotonic time the call took; see [Time](time.md#time-one-stored-instant-zones-for-presentation) |
 | `Console()` | a singleton: `print(...values)`, `write(...values)`, `error(...values)`, `debug(...values)`, `read_line(): String?`; see [Console](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#console), and below |
 | `FileSystemWatcher()` | `watch_for_changes(target: FileSystemWatcher.Target): Boolean`, `changes(): List<String>`, `wait_for_changes()`; see [Watch files and folders](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#watch-files-and-folders), which is the rule. `HotReload` is built on it ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
-| `Socket()` | public library surface: `listen_locally(port): Boolean`, `listen_everywhere(port): Boolean`, `listen_at(host, port): Boolean`, `connect_locally(port): Boolean`, `connect(host, port): Boolean`, `accept_client(): Socket?`, `read_line(): String?`, `read_bytes(): Buffer?`, `write_line(text): Boolean`, `write_bytes(bytes: Buffer): Boolean`, the calls that never wait `accept_client_now(): Socket?`, `read_line_now(): String?`, `read_bytes_now(): Buffer` and `write_bytes_now(bytes): Integer`, `closed: Boolean`, `close()`: TCP over IPv4 and IPv6 on every system ([Socket](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#socket), and below); `--repl-port` and `spite connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
+| `Socket()` | public library surface: `listen_locally(port): Boolean`, `listen_everywhere(port): Boolean`, `listen_at(host, port): Boolean`, `connect_locally(port): Boolean`, `connect(host, port): Boolean`, `accept_client(): Socket?`, `read_line(): String?`, `read_as_string(): String?`, `read_as_buffer(): Buffer?`, `write_line(text): Boolean`, `write_string(text): Boolean`, `write_buffer(buffer: Buffer): Boolean`, the calls that never wait `accept_client_now(): Socket?`, `read_line_now(): String?`, `read_as_buffer_now(): Buffer` and `write_buffer_now(buffer): Integer`, `closed: Boolean`, `close()`: TCP over IPv4 and IPv6 on every system ([Socket](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#socket), and below); `--repl-port` and `spite connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
 | `Concurrent(function)`, `Parallel(function)` | the handle stands in for what the function returned, and reading it is the wait; `finished: Boolean` never waits; dropping the handle waits for it; there is no `wait()` and no `join()`; see [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md) |
 | `DynamicLibrary(file_name, naming, header)` | every foreign function, constant and type of a native library; see [Foreign libraries](foreign_libraries.md#foreign-libraries). It holds its `file_name` and `handle`, its constructor and `drop()`; opening, closing and finding a symbol are the compiler's reopening |
-| `ForeignBytes(address, count)` | memory a foreign library hands out (an address and a size it answers): `count(): Long`, `get_at(position): Byte?` (`foreign[position]`), `set_at(position, value)`, `read_<number>_at(position): <number>?` and `write_<number>_at(position, value)`, big-endian forms included, as a `Buffer` has them, `read_bytes_at(position, count): Buffer?` and `write_bytes_at(position, bytes)`; see [Bytes are a Buffer](#bytes-are-a-buffer) |
+| `ForeignBytes(address, count)` | memory a foreign library hands out (an address and a size it answers): `count(): Long`, `get_at(position): Byte?` (`foreign[position]`), `set_at(position, value)`, `read_<number>_at(position): <number>?` and `write_<number>_at(position, value)`, big-endian forms included, as a `Buffer` has them, `read_buffer_at(position, count): Buffer?` and `write_buffer_at(position, buffer)`; see [Bytes are a Buffer](#bytes-are-a-buffer) |
 
 **`Console` is a singleton:** `Console()` is the same instance everywhere, `Console` is an ordinary class
 name rather than a reserved word, and `console.class.name` is `"Console"` like any other class. Calling a member
@@ -309,16 +308,16 @@ folders reopen it with:
   no IPv6. `listen_at` and `connect` resolve the host with the system's `getaddrinfo`, asking for any family and a
   stream socket, and put the IPv4 answers first, in the order the system gives them, then the IPv6 ones: `listen_at`
   listens on the first, and `connect` tries them in turn until one connects. A name that does not resolve answers `false`. Resolving waits in place, like
-  connecting. The listening queue is 64 connections deep. `UdpSocket` uses the same addresses: `open` and
+  connecting. The listening queue is 64 connections deep. `UdpSocket` uses the same addresses, from its own copy of the address code (it makes no `Socket`): `open` and
   `open_everywhere` take both families on one IPv6 socket, sending to an IPv4 address as `::ffff:` and the address,
   and a sender's address is written as RFC 5952 gives it, with an IPv4 address inside `::ffff:` written as IPv4 and
   a link-local one's scope after a `%`.
-- **Waiting calls.** `accept_client`, `read_line` and `read_bytes` reach `Socket.accept_handle` and
-  `Socket.receive_into`, and `HttpServer.next_request` reaches `Socket.first_readable` (the system's `poll`, or
+- **Waiting calls.** `accept_client`, `read_line`, `read_as_string` and `read_as_buffer` reach `Socket._accept_handle`
+  and `Socket._receive_into`, and `Http.Server.next_request` reaches `Socket._first_readable` (the system's `poll`, or
   `WSAPoll`, over the listener and every kept connection, for at most `idle_limit` or one second), which are the
   compiler's waits ([concurrency.md](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting)):
-  in a `Concurrent` they return to the event loop while a helper thread makes the call. `write_line` and
-  `write_bytes` send until everything is sent, in place, as before.
+  in a `Concurrent` they return to the event loop while a helper thread makes the call. `write_line`,
+  `write_string` and `write_buffer` send until everything is sent, in place, as before.
 - **Calls that never wait** (`_now`) are ordinary calls, not waits, so they add nothing to a state machine. Linux
   and macOS pass `MSG_DONTWAIT` to `recv` and `send` and ask `poll` with a timeout of 0 before `accept`, so a socket
   stays in blocking mode and the waiting calls keep working on it. Windows has no such flag: a socket switches to
@@ -331,8 +330,11 @@ folders reopen it with:
   connection or a failure, once a write fails, or after `close()`. A read on a closed socket answers an empty list or `null`
   without calling the system, a write sends nothing, and nothing crashes. `read_line` answers
   `null` for a closed connection, and sets `closed`.
-- **Lines and bytes mix.** Text `read_line` read past its line waits in the socket, and `read_bytes` and
-  `read_bytes_now` hand those bytes out first.
+- **Lines and bytes mix.** Text `read_line` read past its line waits in the socket, and `read_as_string`,
+  `read_as_buffer` and `read_as_buffer_now` hand those bytes out first.
+- **Text from a stream.** `read_as_string()` reads what `read_as_buffer()` would, and when that run ends inside a
+  character of several bytes it reads up to three more bytes, one at a time, to finish it: a character the network
+  cut in two is never `null`. It answers `null` once the connection is closed, or when the bytes are not UTF-8.
 - **What it costs**: a `Boolean` per `Socket` (and on Windows one more for the mode), and the functions a
   program calls: one that never polls has no `_now` code, and a system function only an unused call reaches
   (`getaddrinfo`, `ioctlsocket`, ...) is never looked up. `conformance/stage6/socket_bytes` (a server and a client in one
@@ -344,9 +346,16 @@ folders reopen it with:
 Bytes a program reads or writes are a `Buffer`, a class of the standard library; no program-facing function takes
 or answers a `List<Byte>` for them ([Bytes are a Buffer](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#bytes-are-a-buffer)).
 Everything that hands bytes over answers a `Buffer`, and everything that takes bytes takes one: `File`, `Socket`,
-`UdpSocket`, `WebSocket` and its `WebSocketBinary`, `String.to_bytes()`, `Base64`, `Deflate`, `Zlib`, `Gzip`,
-`Sha256`, `SecureRandom`, `Argon2.derive`, `BinaryWriter`, `BinaryReader`, `ForeignBytes.read_bytes_at` and
-`MappedFile`'s reads of numbers.
+`UdpSocket`, `WebSocket.Message`, `Http.Request` and `Http.Response` bodies, `Process` output,
+`String.to_buffer()`, `Base64`, `Deflate`, `Zlib`, `Gzip`, `Sha256`, `SecureRandom`, `Argon2.derive`,
+`BinaryWriter`, `BinaryReader` and `ForeignBytes.read_buffer_at`.
+
+**Bytes that may be text are one holder with two reads** (D1708), as a `File` is: `read_as_string(): String?`,
+`null` when the bytes are not UTF-8, and `read_as_buffer()`, the bytes as they are. So a `WebSocket.Message`
+(`is_text()` beside the two reads), a `Socket`, a datagram (`UdpSocket.receive_as_string()` and
+`receive_as_buffer()`), an HTTP body (`read_body_as_string()`, `read_body_as_buffer()`, `write_body_string(text)`,
+`write_body_buffer(buffer)`) and a `Process`'s output (`read_output_as_string()`, `read_output_as_buffer()`):
+nothing that carries bytes forces them through a `String`.
 
 - **There is no `List<Byte>`.** A run of bytes has one class. The type written anywhere (a variable, a parameter,
   a result, an attribute, a generic argument, `List<Byte>()`) is the error `'List<Byte>' is not a type a program
@@ -359,8 +368,10 @@ Everything that hands bytes over answers a `Buffer`, and everything that takes b
   (`diagnostics/list_of_bytes`).
 - **The class.** `Buffer(size)` is an empty buffer with room for `size` bytes. The size is always written: `Buffer(0)` when nothing about it is known. A `Buffer` keeps its bytes in one block it owns, at the
   library's memory floor as `String` and `List` do: the buffer is one object, a read is one load from its block, and
-  there is no `List` inside it. A full block is resized to twice its size; `reserve(count)` makes room for `count`
-  bytes in all without adding any, for a buffer that learns its size later.
+  there is no `List` inside it. A full block is resized to twice its size. How much room it keeps is the library's
+  and the compiler's (its capacity and its `_reserve` are private), with one exception: the room a foreign function
+  writes into. A program passes `Buffer(4096)` to the function, then `take_written(count)` says how many bytes it
+  wrote, halting when `count` is negative or past the room (decided by Mortaro on issue 23).
 - **The size is a suggestion to the compiler, never a limit.** Appending past it grows the buffer as always. The
   compiler may keep less room when it proves fewer bytes are ever written, and may keep a buffer of a few bytes whose
   every read and write is at a proven position, and which never leaves its function or its object, in plain variables
@@ -377,62 +388,62 @@ Everything that hands bytes over answers a `Buffer`, and everything that takes b
 - **Byte order is part of each read and write, not of the buffer, and always named.** Every number of two bytes or
   more is read and written through a function that names its order after the number: `_little_endian` (the order of
   every machine Spite compiles for, and of Spite's own binary format) or `_big_endian` (the most significant byte
-  first: PNG, network order). So `read_integer_little_endian()`, `read_integer_big_endian_at(position)`,
+  first: PNG, network order). So `read_integer_little_endian_at(position)`, `read_integer_big_endian_at(position)`,
   `append_short_little_endian(value)`, `write_long_big_endian_at(position, value)`; a `byte` and a `tiny` have one
   byte and no order. No order is unnamed, so a call says what it reads. The library writes each operation once, a
   template over the enum `Buffer.ByteOrder` (`'little_endian'`, `'big_endian'`) whose value is a word of the
   function's name. One buffer may hold both orders, and the order of every read is known while compiling.
-- **Position.** `position: Integer` starts at `0` and is where the next read at the position starts. Setting it
-  below `0` or above `count()` halts, since the position is the program's own; `remaining(): Integer` is `count() -
-  position`. `truncate` or `clear` below the position moves it to the new `count()`.
+- **No position.** A buffer has no reading position: every read names where it reads, and a walk keeps its
+  position in a variable of its own (`var at = 0`, then `at = at + 4`). There is one way to read a number, so there
+  is no second one to choose between.
 - **Numbers.** `<number>` and its width: `byte` and `tiny` 1, `short` and `unsigned_short` 2, `integer`,
   `unsigned_integer` and `float` 4, `long`, `unsigned_long` and `double` 8. Below, `<number>` stands for the number
   with its order for every number of two bytes or more (`integer_little_endian`, `double_big_endian`), and for the
   number alone for `byte` and `tiny`.
-  - `read_<number>(): <number>?` reads the number whose bytes start at `position` and moves `position` past them;
-    it answers `null`, and leaves `position` where it was, unless all of them are in the buffer.
-  - `read_<number>_at(position): <number>?` reads the number whose bytes start at `position` and moves nothing;
+  - `read_<number>_at(position): <number>?` reads the number whose bytes start at `position`;
     `null` unless `position >= 0` and `position + width <= count()`.
   - `append_<number>(value)` adds the number's bytes at the end.
   - `write_<number>_at(position, value)` replaces the bytes at `position` and halts unless all of them are in the
     buffer, since the position is the program's.
-  - `byte` has `read_byte()` alone, since the list forms already say the rest once: one byte anywhere is
+  - `byte` has none of these, since the list forms already say them once: one byte anywhere is
     `buffer[position]`, one more at the end `append(byte)`, and one replaced `buffer[position] = byte`.
 
   A float is written and read as its IEEE 754 bits, so a `not a number` keeps its bits. The forms that took a
   position before the value are errors naming the form: `'read_integer' reads at the buffer's position and takes
   nothing: write 'read_integer_at(position)' to read anywhere else`, and `Buffer has no method 'write_integer':
   write 'write_integer_at(position, value)', or 'append_integer(value)' to add at the end`.
-- **Runs of bytes.** `read_bytes(count): Buffer?` answers a new buffer of the `count` bytes at `position` and moves
-  past them, and `read_bytes_at(position, count): Buffer?` the same anywhere without moving; each answers `null`
-  unless every byte is in the buffer, and a negative `count` halts. `append_bytes(other, start, count)` copies a run
+- **Runs of bytes.** `read_buffer_at(position, count): Buffer?` answers a new buffer of the `count` bytes at
+  `position`, `null` unless every byte is in the buffer, and a negative `count` halts. `append_buffer(other, start, count)` copies a run
   of another buffer (or the same one) to the end and halts unless `start >= 0`, `count >= 0` and `start + count <=
   other.count()`.
-- **Text.** `text(position, count): String?` is the text of the `count` bytes at `position` (`null` when they are not valid UTF-8, a halt outside the buffer), and `to_utf8_text(): String?` is the text all the bytes spell, `null` when they are not valid UTF-8 (a stray
-  continuation byte, a cut sequence, an overlong form, a surrogate or a value past U+10FFFF); `text.to_bytes()`
+- **Text.** `read_string_at(position, count): String?` is the text of the `count` bytes at `position` (`null` when they are not valid UTF-8, a halt outside the buffer), and `read_as_string(): String?` is the text all the bytes spell, `null` when they are not valid UTF-8 (a stray
+  continuation byte, a cut sequence, an overlong form, a surrogate or a value past U+10FFFF); `text.to_buffer()`
   answers a `Buffer` of the text's UTF-8.
 - **Values are a serializer's job, numbers the buffer's.** `BinaryWriter<T>` and `BinaryReader<T>` turn a whole
   value of type `T` into bytes in a `Buffer` and back, the counterpart of `JsonWriter<T>` and `JsonReader<T>` for
   text ([json.md](json.md#json-is-reflection-not-a-library)); reading and writing single numbers at positions is the buffer's own (and
-  `MappedFile`'s and `ForeignBytes`', with the same names), never a serializer's.
+  `ForeignBytes`', with the same names), never a serializer's. Many values are one value of a list:
+  `BinaryWriter<List<T>>` and `BinaryReader<List<T>>`, never a cursor through the bytes.
 - **A `List` has none of these.** Every function above that a `List` does not have is an error on a list of any
-  element type, naming the class that has it: `List has no method 'read_integer': bytes are a
-  Buffer, which has it: make them with 'Buffer(size)'` (the same for `to_utf8_text`, `append_bytes` and the rest).
-- **Files.** `read_bytes()` answers the whole file, `null` when it cannot be opened, when its size cannot be read, or
-  when fewer bytes arrive than its size said; an empty file is an empty buffer. A file larger than a `Buffer` holds
-  (more than 2 147 483 647 bytes) halts, as any `Long` cut to an `Integer` does, so read it with `read_bytes_at` or
-  `map()`. `read_bytes_at(position, count)` answers up to `count` bytes from `position`: fewer when the file ends
+  element type, naming the class that has it: `List has no method 'read_integer_little_endian_at': bytes are a
+  Buffer, which has it: make them with 'Buffer()'` (the same for `read_as_string`, `append_buffer` and the rest;
+  `conformance/list_byte_functions`).
+- **Files.** `read_as_buffer()` answers the whole file, `null` when it cannot be opened, when its size cannot be read, or
+  when fewer bytes arrive than its size said; an empty file is an empty buffer. Whether the bytes are read or the
+  file is mapped is the compiler's choice, never the program's (D1706). A file larger than a `Buffer` holds
+  (more than 2 147 483 647 bytes) halts, as any `Long` cut to an `Integer` does, so read it in pieces with
+  `read_buffer_at`. `read_buffer_at(position, count)` answers up to `count` bytes from `position`: fewer when the file ends
   first, an empty buffer at or past the end, `null` when it cannot be opened. A negative `position` or `count` halts, since it is
-  the program's own mistake. `write_bytes(bytes)` replaces the content and answers whether every byte was written;
-  `append_bytes(bytes)` answers the position the bytes start at, `null` when the file cannot be opened or not every
-  byte was written. Each call opens and closes the file.
-- **Sockets.** `read_bytes()` waits until at least one byte has arrived and answers a fresh buffer of what arrived
-  (up to 65 536 bytes at once), `null` once the connection is closed; `read_bytes_now()` answers what has arrived, an
+  the program's own mistake. `write_buffer(buffer)` replaces the content and answers whether every byte was written;
+  `append_buffer(buffer)` answers the position the bytes start at, `null` when the file cannot be opened or not every
+  byte was written. Each call opens and closes the file (`tests/file_as_buffer`).
+- **Sockets.** `read_as_buffer()` waits until at least one byte has arrived and answers a fresh buffer of what arrived
+  (up to 65 536 bytes at once), `null` once the connection is closed; `read_as_buffer_now()` answers what has arrived, an
   empty buffer for nothing yet and for a closed connection, which `closed` tells apart. Bytes `read_line` read past its
-  line are handed out first. `write_bytes(bytes)` sends all of it, waiting; `write_bytes_now(bytes)` hands the system
+  line are handed out first. `write_buffer(buffer)` sends all of it, waiting; `write_buffer_now(buffer)` hands the system
   what it takes now and answers how many. A `Socket` keeps one 64 KB block it receives into, made on the first read
   and freed by `close()`, and each read copies what arrived into its own buffer: one allocation per read. A
-  `UdpSocket` datagram and a `WebSocket` binary message, ping or pong are a `Buffer` the same way.
+  `UdpSocket` datagram and a `WebSocket.Message`, ping or pong are a `Buffer` the same way.
 - **A read the compiler proves** is a `read_<number>_at(position)`, and it answers the number itself, not a `T?`:
   under a bound that covers its last byte
   ([proofs.md](https://github.com/Spite-Language/spite_documentation/blob/master/proofs.md#a-proven-count-or-bound-proves-a-read-of-a-width)), or inside a counted loop whose
@@ -443,73 +454,70 @@ Everything that hands bytes over answers a `Buffer`, and everything that takes b
   (two when nothing proves the position is not negative), and when it fails the program halts with `spite:
   'bytes.read_integer_little_endian_at(body + 4)' is outside its buffer: a bound proves only the top of an index, and this one is
   below 0 or the buffer changed, at file:line`. A proven `write_<number>_at` in a counted loop is one store; elsewhere
-  it is the library's checked write. A read at the position, `read_<number>()`, always answers a `T?`; a read the
-  program wants proven is written with `_at`. The byte order is in the function's name, so a read never tests it:
+  it is the library's checked write. The byte order is in the function's name, so a read never tests it:
   a big-endian read is the same load with its bytes swapped.
 - **ForeignBytes.** `ForeignBytes(address, count)` halts when `count` is negative or `address` is `0` with a
   `count` above `0`. It has the same `read_<number>_at(position)` and
   `write_<number>_at(position, value)`, big-endian forms included: its reads answer `null` and its writes halt outside `0` to `count`, exactly
-  as a `Buffer`'s do; `read_bytes_at(position, count)` answers a fresh `Buffer`, and `write_bytes_at(position, bytes)`
+  as a `Buffer`'s do; `read_buffer_at(position, count)` answers a fresh `Buffer`, and `write_buffer_at(position, buffer)`
   halts unless every byte fits. It has no position of its own, since the memory is the library's. It never frees the
   memory, and reading after the library has taken the memory back is the library's fault, reported as a native fault.
-- **The address forms are the library's.** A program that writes them gets an error naming the plain form:
-  - `file.read_bytes(position, count, address)`: `a File reads bytes into a Buffer, not into memory at an address:
-    'read_bytes_at(position, count)' answers a 'Buffer?' of up to 'count' bytes from 'position', and
-    'read_bytes()' the whole file`
-  - `file.write_bytes(address, count)` and `file.append_bytes(address, count)`: `a File writes bytes from a
-    Buffer, not from memory at an address: write 'write_bytes(bytes)'` (`'append_bytes(bytes)'` for the other)
-  - `socket.read_bytes(address, count)`, and the library's own `read_bytes_into(address, count)`: `a Socket reads
-    bytes into a Buffer, not into memory at an address: write 'read_bytes()', which answers a 'Buffer?'`
-  - `socket.read_bytes_now(address, count)` and `read_bytes_now_into`: `a Socket reads bytes into a Buffer, not
-    into memory at an address: write 'read_bytes_now()', which answers a 'Buffer'`
-  - `socket.write_bytes(address, count)`, `write_bytes_now(address, count)` and the library's `write_bytes_from` and
-    `write_bytes_now_from`: `a Socket writes bytes from a Buffer, not from memory at an address: write
-    'write_bytes(bytes)'` (`'write_bytes_now(bytes)'` for the ones that never wait)
-  - `reader.read_memory(address, count)` on a `BinaryReader`: `a BinaryReader reads from a Buffer, not from
-    memory at an address: write 'read(bytes)', or 'read_from(bytes, start)' to read one value and leave what follows`
-  - a `List<Byte>` anywhere: the error for a list of bytes, above.
-
-  The standard library calls `read_bytes_into`, `read_bytes_now_into`, `write_bytes_from` and `write_bytes_now_from`
-  where HTTP and WebSocket read into a block of their own. `diagnostics/address_forms`, `diagnostics/byte_reads`,
-  `conformance/stage6/list_byte_numbers`, `conformance/stage6/binary_files`, `socket_bytes` and `socket_waits`.
+- **Bytes go through a `Buffer`, never an address.** A `File`, a `Socket` and a `BinaryReader` read into and write
+  from a `Buffer`; none of them takes an address and a count, and a `List<Byte>` anywhere is the error above.
+  `conformance/list_byte_functions`, `tests/list_byte_numbers`, `tests/binary_files`, `tests/socket_bytes` and
+  `tests/socket_waits`.
 - **What it costs.** Each function is an ordinary member of `Buffer`, `File`, `Socket` or `ForeignBytes`, so a
   program that reads no bytes carries none of them, and `Buffer` and `ForeignBytes` are not in a program that makes
-  none. A `Buffer` costs a `List`'s fields and one more, its `position`.
+  none. A `Buffer` costs a `List`'s fields.
 
-**`WebSocket` is RFC 6455 written in Spite over `Socket`.** The standard library holds all of it, with
-`WebSocketText` and `WebSocketBinary` beside it:
+**`WebSocket` is RFC 6455 written in Spite over `Socket`**, a namespace of four classes (`common/web_socket/`):
+`WebSocket.Client` connects, `WebSocket.Server` upgrades the requests an `Http.Server` hands out, both sides
+talk through a `WebSocket.Connection` (the client holds its own), and a message received is a
+`WebSocket.Message`:
 
+- **The server is built on an `Http.Server`.** `WebSocket.Server(http)` takes the server the program already
+  serves HTTP with, so one port serves both, as an Express app does: the program reads `http.next_request()`,
+  asks `sockets.asks_to_upgrade(request)` (its `upgrade` header is `websocket`, any case), and calls
+  `sockets.accept(request)` only then; any other request is the program's to answer with `http.respond`. `accept` on
+  a request that does not ask to upgrade halts, since answering it is the program's. `accept` answers a
+  `WebSocket.Connection?`: `null` when the upgrade is malformed, after it has answered the request itself through
+  the `Http.Server` (`400`, or `426` with `sec-websocket-version: 13`), so a request is never answered twice.
 - **The handshake.** `accept` takes a `GET` over HTTP/1.1 whose `upgrade` is `websocket`, whose `connection` lists
   `upgrade` (any case, among other tokens), whose `sec-websocket-version` is `13` and whose `sec-websocket-key` is
   16 bytes in base64; it answers with `sec-websocket-accept`, the key and the protocol's own suffix hashed with
-  SHA-1 and written in base64. SHA-1 is private to the class: it is the protocol's checksum, not a hash to store
-  anything with. A server picks no subprotocol and no extension. `HttpServer` has already let go of the
-  connection: `next_request()` keeps a connection again only when `respond` is called, so a request handed to
-  `accept` is never answered twice. `connect` sends a fresh key of 16 bytes from `SecureRandom`, `host` with the
+  SHA-1 and written in base64. SHA-1 is private to the connection: it is the protocol's checksum, not a hash to store
+  anything with. A server picks no subprotocol and no extension. `Http.Server` has already let go of the
+  connection: `next_request()` keeps a connection again only when `respond` is called. `WebSocket.Client.connect(host,
+  port, request)` sends a fresh key of 16 bytes from `SecureRandom`, `host` with the
   port when it is not 80, and every header of the request; a request that is not a `GET`, has a body, or sets
   `host`, `upgrade`, `connection`, `content-length` or a `sec-websocket-` header other than
   `sec-websocket-protocol` halts, since the handshake writes those itself. The answer must be
   `HTTP/1.1 101` with the right `sec-websocket-accept`, no extension, and a subprotocol only if it is one the
-  request offered. Calling `accept` or `connect` a second time on one `WebSocket` halts.
+  request offered. Calling `connect` a second time on one `WebSocket.Client` halts.
+- **Talking.** The client and a connection have the same members: `send_string(text)`, `send_buffer(buffer)`,
+  `send_ping(buffer)` (125 bytes at most), `receive(): WebSocket.Message?` (`null` once closed), `close()`,
+  `closed`, `close_code`, `close_reason` and `last_pong`. A `WebSocket.Message` is one holder with two reads
+  ([Bytes are a Buffer](#bytes-are-a-buffer)): `is_text()`, `read_as_string(): String?` (`null` for a binary
+  message) and `read_as_buffer()`.
 - **Frames.** A message goes out as one frame, its length in 7, 16 or 64 bits as the protocol asks. A client masks
   every frame with 4 bytes from `SecureRandom`; a server masks none. Reading, a frame is refused (`1002`) when a
   reserved bit is set, its opcode is not continuation, text, binary, close, ping or pong, it is masked the wrong
   way for its side, its length is not written in the fewest bytes or sets the top bit of 64, or it is a control
   frame longer than 125 bytes or in pieces; a continuation with no message started, or a new message before the
-  last one ended, is `1002` too. A message whose pieces would pass `largest_message` is `1009` before its payload is
+  last one ended, is `1002` too. A message whose pieces would pass the connection's `largest_message` is `1009` before its payload is
   read. Text is checked as UTF-8 once whole (`1007`).
 - **Pings, pongs and closes.** A ping is answered with a pong carrying the same bytes, unless this side has sent
   its close. A pong is kept in `last_pong`. A close's code must be 1000 to 1003, 1007 to 1014 or 3000 to 4999, and
   its reason UTF-8; a close of one byte is `1002`. Answering a close sends the same code back (or a close with no
-  code for a close with none) and closes the connection. Before closing the connection, either way, `WebSocket`
+  code for a close with none) and closes the connection. Before closing the connection, either way, the connection
   reads away what has already arrived, so the system does not reset the connection and throw away the close
   frame it just sent.
-- **`drop()`** of a `WebSocket` still open sends a close with `1001` and closes the connection.
-- **What it costs**: nothing for a program that makes no `WebSocket`; for one that does, a frame header and a copy
+- **`drop()`** of a connection still open sends a close with `1001` and closes the connection.
+- **What it costs**: nothing for a program that makes no `WebSocket` class; for one that does, a frame header and a copy
   of each message to send, one read of the system per frame piece, and 4 bytes from the operating system's
-  secure source per frame a client sends. `conformance/stage6/web_socket_exchange` (a server and a client in one
-  program: text, binary of each length size, an empty message, a ping, a close, a refused plain request, and a
-  hand-made client sending a message in pieces with a ping between them) and `web_socket_failures` (every close
+  secure source per frame a client sends. `tests/web_socket_exchange` (a server and a client in one
+  program: text, binary of each length size, an empty message, a ping, a close, a plain request the program answers, and a
+  hand-made client sending a message in pieces with a ping between them) and `tests/web_socket_failures` (every close
   code above, a refused version and a client of a server that does not speak WebSocket) are the proof.
 
 ### Pure Spite: dissolving the runtime
@@ -540,7 +548,7 @@ called, like `+`, or explicit Spite.
    ([memory.md](https://github.com/Spite-Language/spite_documentation/blob/master/memory.md#memory-belongs-to-the-compiler)).
 2. **Supplied bodies**: functions declared without a body that the compiler writes: `Console`'s `_write_output`,
    `_write_error`, `_write_held` and `_flush`, `Program`'s and `Process`'s `_flush_output`, a `Buffer`'s reads,
-   writes and copies, `String.sum`, `String.code_at` and the making of a `String` from bytes (which depend on
+   writes and copies, `String.sum`, `String.byte_at` and the making of a `String` from bytes (which depend on
    whether text fits inside the `String`), the number classes' bit operations, `DynamicLibrary`'s opening, closing
    and symbol lookup, and `Spite.Attribute`'s and `Spite.Function`'s dispatch.
 3. **The object header**: retain, release and the class id are code the compiler emits, not functions anyone

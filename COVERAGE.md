@@ -836,7 +836,7 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | File bytes: size, modified, read_bytes, read_bytes_at, write_bytes, append_bytes | tests/binary_files | covered |
 | File.move_to refuses an existing target, moves files and folders | tests/moving_files | covered |
 | File.lock between processes, unlock | tests/file_lock | added (compiler fails: File has no 'lock') |
-| MappedFile reads null outside the file; empty file maps to size 0 | tests/mapped_files | covered |
+| `File.read_as_buffer()` reads null outside the file; an empty file is an empty buffer | tests/file_as_buffer | covered |
 | Directory entries: folders first, then files, each sorted by name; a union to switch on | tests/directory_entries | covered |
 | A missing Directory: exists false, no entries | tests/directory_missing | added |
 | Process run, output, run_attached, working directory, environment | tests/process_paths, tests/process_settings, tests/system | covered |
@@ -872,7 +872,7 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | buffer[index] null out of range; set_at out of range halts | tests/buffer_index_out_of_range | added |
 | append, truncate, clear, copy, count, is_empty as on a List | tests/buffer_truncate_position, tests/binary_bad_input | added |
 | Byte order is named in every read and write | tests/buffer_bytes | covered |
-| read_<number>() moves position; null leaves it; remaining() | tests/buffer_position_reads | added |
+| read_<number>() moves position; null leaves it; remaining() | none | superseded by D1707 (removals of #23) |
 | position below 0 or above count() halts | tests/buffer_position_out_of_range | added |
 | truncate or clear below the position moves it | tests/buffer_truncate_position | added |
 | read_<number>_at answers null outside | tests/buffer_crash | covered |
@@ -998,12 +998,12 @@ Rules: 41. Covered before: 14. Covered now: 35.
 | One mistake is one error | conformance/json_unwritable | covered |
 | write(value: T?) writes null for an empty T?; a T? attribute is null | tests/json_writes_null | added |
 | A writer and a reader are made once and reused | tests/json_strict_reader | added |
-| read answers T?; read_or_crash halts | tests/json_crash | covered |
-| read_or_crash's crash line carries wanted= and position= | tests/json_crash_position | added |
+| read answers T?; read_or_crash halts | none | superseded by D1707 (removals of #23) |
+| read_or_crash's crash line carries wanted= and position= | none | superseded by D1707 (removals of #23) |
 | The old name Json is an error naming the pair | conformance/json_split | covered |
 | BinaryWriter.write and BinaryReader.read round-trip lists, dictionaries, T?, enums, Boolean | tests/binary_round_trip | added |
-| append_to and read_from with position, many values in one buffer; position unchanged on failure; read wants exactly one value | tests/binary_many_values | added |
-| A negative start for read_from halts | tests/binary_negative_start | added |
+| Many values in one buffer are a `BinaryWriter<List<T>>`; `read` wants exactly one value | tests/binary_many_values | added |
+| A negative start for read_from halts | none | superseded by D1707 (removals of #23) |
 | reader.read_memory is an error | none | superseded by D662 |
 | JSON escapes ", \, \n, \r, \t on writing and reads them back | tests/json_escapes_written | added |
 | Other control characters written as \u00XX | none | missing |
@@ -1419,6 +1419,7 @@ Rules: 24. Covered before: 21. Covered now: 24.
 | `Ray` members, hits answering `Float?` | tests/game_geometry | covered |
 | `Color` members (`to_hex`, `to_rgb_text`, `to_hsl_text`, sRGB curve, clamped on writing) | tests/game_colors | covered |
 | `Color` has one constructor, `Color(red, green, blue, alpha)`; text becomes a colour only through `to_color()`, a `Color?` | tests/color_from_text | added |
+| Bytes that can be text are one holder with two reads: an HTTP body, a socket read finishing a cut character, a datagram, a process's output | tests/byte_holders | added |
 | `ColorText.read`: hex, `rgb`/`rgba`, `hsl`/`hsla`, names, anything else `null` | tests/game_colors | covered |
 | `ColorText.read` trims and ignores case; `transparent`; `named_hex` answers `#rrggbb` | tests/game_named_colors | added |
 | `named_hex` of an unknown name answers `""` | tests/game_named_colors | added (a default a caller cannot tell from a real answer; a D244 bug in the rule itself) |

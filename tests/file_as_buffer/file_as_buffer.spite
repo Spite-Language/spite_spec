@@ -1,0 +1,43 @@
+var console = Console()
+
+func FileAsBuffer() {
+    load "../../../spite_standard_library/windows"
+    var store = File(".spite/file_as_buffer_records.bin")
+    var record = Buffer(0)
+    record.append_long_little_endian(1111)
+    record.append_long_little_endian(2222)
+    store.write_buffer(record)
+    store.append_string("tail")
+    show_records(store)
+    var empty = File(".spite/file_as_buffer_empty.bin")
+    empty.write_string("")
+    show_empty(empty)
+    var missing = File(".spite/file_as_buffer_missing.bin")
+    var nothing = missing.read_as_buffer()
+    console.print("a missing file reads as nothing:", not nothing)
+    var removed = store.remove()
+    var empty_removed = empty.remove()
+    console.print("read, then removed:", removed, empty_removed)
+}
+
+func show_records(file: File) {
+    var bytes = file.read_as_buffer()
+    crash bytes
+    var size = bytes.count()
+    var first = bytes.read_long_little_endian_at(0)
+    var second = bytes.read_long_little_endian_at(8)
+    var tail = bytes.read_string_at(16, 4)
+    var letter = bytes[16]
+    crash first and second and tail and letter
+    var past_end = bytes.read_long_little_endian_at(size - 4)
+    var before_start = bytes[-1]
+    console.print(size, first, second, tail, letter, not past_end, not before_start)
+}
+
+func show_empty(file: File) {
+    var bytes = file.read_as_buffer()
+    crash bytes
+    var size = bytes.count()
+    var first = bytes[0]
+    console.print("empty:", size, not first)
+}

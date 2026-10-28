@@ -10,7 +10,7 @@ func DevelopmentKeepsFunctions() {
     var length = path.length()
     var stem = path.slice(0, length - 4)
     var map = File("{stem}.functions")
-    var text = map.read()
+    var text = map.read_as_string()
     crash text
     var kept = text.contains("\tKeeper.unused")
     console.print("unused kept", kept)

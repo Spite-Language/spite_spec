@@ -15,7 +15,7 @@ func plant() {
 func write_diver(body: String) {
     var file = File("{build.program}/diver.spite")
     var text = "func dive(depth: Integer): Integer \{\n{body}}\n"
-    var written = file.write(text)
+    var written = file.write_string(text)
     if not written {
         console.print("diver.spite could not be written")
     }

@@ -4,11 +4,11 @@ func ReadsInARow() {
     load "../../../spite_standard_library/windows"
     var settings_file = File(".spite/documentation_settings.txt")
     var scores_file = File(".spite/documentation_scores.txt")
-    settings_file.write("volume=7")
-    scores_file.write("ada=12")
-    var settings = settings_file.read()
-    var scores = scores_file.read()
-    settings_file.write("volume=8")
+    settings_file.write_string("volume=7")
+    scores_file.write_string("ada=12")
+    var settings = settings_file.read_as_string()
+    var scores = scores_file.read_as_string()
+    settings_file.write_string("volume=8")
     crash settings
     crash scores
     console.print(settings, scores)

@@ -1,5 +1,6 @@
 var console = Console()
-var server = HttpServer()
+var server = Http.Server()
+var sockets = WebSocket.Server(server)
 var log = List<String>()
 
 func WebSocketExchange() {
@@ -20,24 +21,29 @@ func serve_three(): Integer {
     while served < 3 {
         var request = server.next_request()
         crash request
-        var socket = WebSocket()
-        if socket.accept(request) {
+        if sockets.asks_to_upgrade(request) {
+            var socket = sockets.accept(request)
+            crash socket
             log.append("server: accepted {request.path}")
             converse(socket)
         } else {
             log.append("server: refused {request.path}")
+            var refused = Http.Response()
+            refused.status = 400
+            server.respond(request, refused)
         }
         served = served + 1
     }
     return served
 }
 
-func converse(socket: WebSocket) {
+func converse(socket: WebSocket.Connection) {
     var message = socket.receive()
     while message {
-        switch message {
-            WebSocketText: answer_text(socket, message)
-            WebSocketBinary: answer_binary(socket, message)
+        if message.is_text() {
+            answer_text(socket, message)
+        } else {
+            answer_binary(socket, message)
         }
         message = socket.receive()
     }
@@ -45,15 +51,18 @@ func converse(socket: WebSocket) {
     log.append("server: closed with {socket.close_code} '{socket.close_reason}'")
 }
 
-func answer_text(socket: WebSocket, message: WebSocketText) {
-    log.append("server: text '{message.text}'")
-    socket.send_text("echo: {message.text}")
+func answer_text(socket: WebSocket.Connection, message: WebSocket.Message) {
+    var text = message.read_as_string()
+    crash text
+    log.append("server: text '{text}'")
+    socket.send_string("echo: {text}")
 }
 
-func answer_binary(socket: WebSocket, binary: WebSocketBinary) {
-    var counted = binary.bytes.count()
+func answer_binary(socket: WebSocket.Connection, binary: WebSocket.Message) {
+    var bytes = binary.read_as_buffer()
+    var counted = bytes.count()
     log.append("server: {counted} bytes")
-    var reversed = binary.bytes.copy()
+    var reversed = bytes.copy()
     var index = 0
     while index < counted {
         var held = reversed[counted - index - 1]
@@ -61,12 +70,12 @@ func answer_binary(socket: WebSocket, binary: WebSocketBinary) {
         reversed[index] = held
         index = index + 1
     }
-    socket.send_bytes(reversed)
+    socket.send_buffer(reversed)
 }
 
 func refused_plain_request() {
-    var client = HttpClient()
-    var request = HttpRequest()
+    var client = Http.Client()
+    var request = Http.Request()
     request.path = "/plain"
     var response = client.send("127.0.0.1", 47913, request)
     crash response
@@ -74,37 +83,37 @@ func refused_plain_request() {
 }
 
 func talk() {
-    var socket = WebSocket()
-    var request = HttpRequest()
+    var socket = WebSocket.Client()
+    var request = Http.Request()
     request.path = "/chat"
     request.set_header("Origin", "http://127.0.0.1")
     crash socket.connect("127.0.0.1", 47913, request)
-    socket.send_text("hello")
+    socket.send_string("hello")
     show(socket)
-    socket.send_text("héllo ✓")
+    socket.send_string("héllo ✓")
     show(socket)
     var small = counting_bytes(5)
-    socket.send_bytes(small)
+    socket.send_buffer(small)
     show(socket)
     var medium = counting_bytes(300)
-    socket.send_bytes(medium)
+    socket.send_buffer(medium)
     show(socket)
     var large = counting_bytes(70000)
-    socket.send_bytes(large)
+    socket.send_buffer(large)
     show(socket)
     var empty = Buffer(0)
-    socket.send_bytes(empty)
+    socket.send_buffer(empty)
     show(socket)
-    var question = "are you there".to_bytes()
+    var question = "are you there".to_buffer()
     socket.send_ping(question)
-    socket.send_text("after the ping")
+    socket.send_string("after the ping")
     show(socket)
     crash socket.last_pong
-    var pong = socket.last_pong.to_utf8_text()
+    var pong = socket.last_pong.read_as_string()
     crash pong
     console.print("client: pong '{pong}'")
     socket.close()
-    var sent = socket.send_text("too late")
+    var sent = socket.send_string("too late")
     console.print("client: sending after close:", sent)
     var after = socket.receive()
     var nothing_after = not after
@@ -113,22 +122,26 @@ func talk() {
     console.print("client: closed with {socket.close_code} '{socket.close_reason}'")
 }
 
-func show(socket: WebSocket) {
+func show(socket: WebSocket.Client) {
     var message = socket.receive()
     crash message
-    switch message {
-        WebSocketText: console.print("client: text '{message.text}'")
-        WebSocketBinary: show_bytes(message)
+    if message.is_text() {
+        var text = message.read_as_string()
+        crash text
+        console.print("client: text '{text}'")
+    } else {
+        show_bytes(message)
     }
 }
 
-func show_bytes(binary: WebSocketBinary) {
-    var counted = binary.bytes.count()
+func show_bytes(binary: WebSocket.Message) {
+    var bytes = binary.read_as_buffer()
+    var counted = bytes.count()
     if counted == 0 {
         console.print("client: 0 bytes")
     } else {
-        var first = binary.bytes[0]
-        var last = binary.bytes[counted - 1]
+        var first = bytes[0]
+        var last = bytes[counted - 1]
         crash first
         crash last
         console.print("client: {counted} bytes, first {first}, last {last}")
@@ -169,26 +182,26 @@ func talk_raw() {
     write_frame(socket, 129, false, "no mask")
     var received = Buffer(0)
     while not socket.closed {
-        var got = socket.read_bytes()
+        var got = socket.read_as_buffer()
         if got {
             var got_count = got.count()
-            received.append_bytes(got, 0, got_count)
+            received.append_buffer(got, 0, got_count)
         }
     }
     describe_frames(received)
 }
 
 func write_text(socket: Socket, text: String) {
-    var text_bytes = text.to_bytes()
+    var text_bytes = text.to_buffer()
     write_list(socket, text_bytes)
 }
 
 func write_list(socket: Socket, list: Buffer) {
-    crash socket.write_bytes(list)
+    crash socket.write_buffer(list)
 }
 
 func write_frame(socket: Socket, first: Integer, masked: Boolean, payload: String) {
-    var text_bytes = payload.to_bytes()
+    var text_bytes = payload.to_buffer()
     var counted = text_bytes.count()
     var frame = Buffer(0)
     var opening: Byte = first
@@ -236,7 +249,7 @@ func describe_frames(received: Buffer) {
             var code = high * 256 + low
             console.print("raw: close frame, code {code}")
         } else {
-            var text = payload.to_utf8_text()
+            var text = payload.read_as_string()
             crash text
             console.print("raw: frame {first}, '{text}'")
         }

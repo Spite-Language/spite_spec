@@ -12,7 +12,7 @@ func SocketBytes() {
     var client = Socket()
     crash client.connect("localhost", 47313)
     var peer = accept_eventually()
-    var nothing = peer.read_bytes_now()
+    var nothing = peer.read_as_buffer_now()
     var nothing_count = nothing.count()
     console.print("nothing yet:", nothing_count, peer.closed)
     send(client, 1, 2, 250)
@@ -38,10 +38,10 @@ func SocketBytes() {
     crash line
     console.print("client read the line:", line)
     client.close()
-    var after = peer.read_bytes_now()
+    var after = peer.read_as_buffer_now()
     while not peer.closed {
         program.sleep(1)
-        after = peer.read_bytes_now()
+        after = peer.read_as_buffer_now()
     }
     var after_count = after.count()
     console.print("peer closed:", after_count, peer.closed)
@@ -68,17 +68,17 @@ func send(socket: Socket, first: Byte, second: Byte, third: Byte) {
     message.append(first)
     message.append(second)
     message.append(third)
-    var sent = socket.write_bytes_now(message)
+    var sent = socket.write_buffer_now(message)
     console.print("sent without waiting:", sent)
 }
 
 func receive(socket: Socket, wanted: Integer): Buffer {
-    var received = socket.read_bytes_now()
+    var received = socket.read_as_buffer_now()
     while received.count() < wanted and not socket.closed {
         program.sleep(1)
-        var more = socket.read_bytes_now()
+        var more = socket.read_as_buffer_now()
         var more_count = more.count()
-        received.append_bytes(more, 0, more_count)
+        received.append_buffer(more, 0, more_count)
     }
     return received
 }

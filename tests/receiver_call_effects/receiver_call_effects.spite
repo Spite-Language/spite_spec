@@ -11,11 +11,11 @@ func ReceiverCallEffects() {
 
 func reading() {
     crash names[0]
-    var missing = File("no_such_file.txt").read()
+    var missing = File("no_such_file.txt").read_as_string()
     if missing {
         console.print(missing)
     }
-    console.print("after File().read()", names[0])
+    console.print("after File().read_as_string()", names[0])
 }
 
 func counting() {

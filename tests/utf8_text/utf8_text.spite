@@ -3,8 +3,8 @@ var console = Console()
 func Utf8Text() {
     load "../../../spite_standard_library/windows"
     var greeting = "olá, 世界 😀"
-    var bytes = greeting.to_bytes()
-    var back = bytes.to_utf8_text()
+    var bytes = greeting.to_buffer()
+    var back = bytes.read_as_string()
     crash back
     console.print(back, back == greeting)
     var nothing = Buffer(0)
@@ -41,7 +41,7 @@ func of(...values: List<Integer>): Buffer {
 }
 
 func show(label: String, bytes: Buffer) {
-    var text = bytes.to_utf8_text()
+    var text = bytes.read_as_string()
     if text {
         var length = text.length()
         console.print(label, "is text of", length, "bytes")

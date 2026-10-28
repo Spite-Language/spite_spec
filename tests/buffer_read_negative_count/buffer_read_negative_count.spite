@@ -5,7 +5,7 @@ func BufferReadNegativeCount() {
     var bytes = Buffer(0)
     bytes.append(10)
     var wanted = -1
-    var run = bytes.read_bytes(wanted)
+    var run = bytes.read_buffer_at(0, wanted)
     crash run
     var count = run.count()
     console.print("never printed", count)

@@ -1,2 +1,2 @@
-HttpResponse status 200
+Response status 200
 Integer made

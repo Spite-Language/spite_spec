@@ -1,6 +1,6 @@
 var console = Console()
-var server = HttpServer()
-var client = HttpClient()
+var server = Http.Server()
+var client = Http.Client()
 
 func HttpExchange() {
     load "../../../spite_standard_library/windows"
@@ -21,14 +21,15 @@ func serve_three(): Integer {
     while served < 3 {
         var request = server.next_request()
         crash request
-        var response = HttpResponse()
+        var response = Http.Response()
         if request.path == "/hello" {
-            response.body = "hello there"
+            response.write_body_string("hello there")
         } else if request.path == "/echo" and request.method == "POST" {
             var kind = request.header("Content-Type")
             crash kind
             response.set_header("Content-Type", kind)
-            response.body = request.body
+            var body = request.read_body_as_buffer()
+            response.write_body_buffer(body)
             response.status = 201
         } else {
             response.status = 404
@@ -40,27 +41,27 @@ func serve_three(): Integer {
 }
 
 func ask_hello(): String {
-    var request = HttpRequest()
+    var request = Http.Request()
     request.path = "/hello"
     return ask(request)
 }
 
 func ask_echo(): String {
-    var request = HttpRequest()
+    var request = Http.Request()
     request.method = "POST"
     request.path = "/echo"
     request.set_header("Content-Type", "application/json")
-    request.body = "\{\"name\": \"ada\"}"
+    request.write_body_string("\{\"name\": \"ada\"}")
     return ask(request)
 }
 
 func ask_missing(): String {
-    var request = HttpRequest()
+    var request = Http.Request()
     request.path = "/nowhere"
     return ask(request)
 }
 
-func ask(request: HttpRequest): String {
+func ask(request: Http.Request): String {
     var response = client.send("127.0.0.1", 47911, request)
     crash response
     var kind = response.header("content-type")
@@ -68,5 +69,7 @@ func ask(request: HttpRequest): String {
     if kind {
         shown_kind = kind
     }
-    return "{request.path}: {response.status} {response.reason()}, type {shown_kind}, body '{response.body}'"
+    var body = response.read_body_as_string()
+    crash body
+    return "{request.path}: {response.status} {response.reason()}, type {shown_kind}, body '{body}'"
 }

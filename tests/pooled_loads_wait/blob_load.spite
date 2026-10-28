@@ -6,7 +6,7 @@ func BlobLoad(starting_path: String) {
 
 func run(): String {
     var file = File(path)
-    var text = file.read()
+    var text = file.read_as_string()
     crash text
     return text
 }

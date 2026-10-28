@@ -23,7 +23,7 @@ func ConcurrentWaits() {
 }
 
 func read_itself(): String? {
-    return File("tests/concurrent_waits/concurrent_waits.spite").read()
+    return File("tests/concurrent_waits/concurrent_waits.spite").read_as_string()
 }
 
 func outer(): Integer {

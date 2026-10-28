@@ -37,7 +37,7 @@ func DecidedComparisons() {
 func letter_of(group: Integer, shift: Integer): Integer {
     var moved = group.shifted_right(shift)
     var value = moved.bits_and(63)
-    return alphabet.code_at(value)
+    return alphabet.byte_at(value)
 }
 
 func masked_sign(value: Integer): Boolean {
@@ -79,5 +79,5 @@ func sum_of(values: List<Integer>): Integer {
 func short_alphabet(index: Integer): Integer {
     var short = "abc"
     var masked = index.bits_and(7)
-    return short.code_at(masked)
+    return short.byte_at(masked)
 }

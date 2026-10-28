@@ -28,7 +28,7 @@ func first_code(text: String): Integer {
     if text.is_empty() {
         return 0
     }
-    return text.code_at(0)
+    return text.byte_at(0)
 }
 
 func ratio(divisor: Float): Float {

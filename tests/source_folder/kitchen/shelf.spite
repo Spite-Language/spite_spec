@@ -2,7 +2,7 @@ generic $item_type
 
 func label(): String {
     var folder = $item_type.source_folder()
-    var text = File("{folder}/sauce.txt").read()
+    var text = File("{folder}/sauce.txt").read_as_string()
     crash text
     var trimmed = text.trim()
     return "the shelf's item: {trimmed}"

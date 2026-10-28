@@ -1,13 +1,14 @@
 var console = Console()
-var server = HttpServer()
+var server = Http.Server()
+var sockets = WebSocket.Server(server)
 var log = List<String>()
 
 func WebSocketFailures() {
     load "../../../spite_standard_library/windows"
     crash server.listen_locally(47914)
     var serving = Concurrent(serve_eight)
-    var plain = WebSocket()
-    var request = HttpRequest()
+    var plain = WebSocket.Client()
+    var request = Http.Request()
     request.path = "/plain"
     var connected = plain.connect("127.0.0.1", 47914, request)
     var message = plain.receive()
@@ -26,7 +27,7 @@ func WebSocketFailures() {
     bad_code.append(3)
     bad_code.append(231)
     exchange("/bad-close-code", 136, bad_code)
-    var goodbye = "  bye".to_bytes()
+    var goodbye = "  bye".to_buffer()
     goodbye[0] = 15
     goodbye[1] = 160
     exchange("/goodbye", 136, goodbye)
@@ -43,8 +44,8 @@ func serve_eight(): Integer {
         var request = server.next_request()
         crash request
         if request.path == "/plain" {
-            var response = HttpResponse()
-            response.body = "not a web socket"
+            var response = Http.Response()
+            response.write_body_string("not a web socket")
             server.respond(request, response)
         } else {
             converse(request)
@@ -54,19 +55,20 @@ func serve_eight(): Integer {
     return served
 }
 
-func converse(request: HttpRequest) {
-    var socket = WebSocket()
-    socket.largest_message = 16
-    if not socket.accept(request) {
+func converse(request: Http.Request) {
+    crash sockets.asks_to_upgrade(request)
+    var socket = sockets.accept(request)
+    if not socket {
         log.append("server: refused {request.path}")
         return
     }
+    socket.largest_message = 16
     drain(socket)
     crash socket.close_code
     log.append("server: {request.path} closed with {socket.close_code} '{socket.close_reason}'")
 }
 
-func drain(socket: WebSocket) {
+func drain(socket: WebSocket.Connection) {
     var message = socket.receive()
     while message {
         log.append("server: a message nobody should see")
@@ -130,12 +132,12 @@ func counting_bytes(count: Integer): Buffer {
 }
 
 func write_text(socket: Socket, text: String) {
-    var text_bytes = text.to_bytes()
+    var text_bytes = text.to_buffer()
     write_list(socket, text_bytes)
 }
 
 func write_list(socket: Socket, list: Buffer) {
-    crash socket.write_bytes(list)
+    crash socket.write_buffer(list)
 }
 
 func write_frame(socket: Socket, first: Integer, payload: Buffer) {
@@ -163,10 +165,10 @@ func write_frame(socket: Socket, first: Integer, payload: Buffer) {
 func read_until_closed(socket: Socket): Buffer {
     var received = Buffer(0)
     while not socket.closed {
-        var got = socket.read_bytes()
+        var got = socket.read_as_buffer()
         if got {
             var got_count = got.count()
-            received.append_bytes(got, 0, got_count)
+            received.append_buffer(got, 0, got_count)
         }
     }
     return received

@@ -1,8 +1,7 @@
 var console = Console()
 var program = Program()
-var server = HttpServer()
-var client = HttpClient()
-var connections = List<Socket>()
+var server = Http.Server()
+var client = Http.Client()
 
 func HttpKeepAlive() {
     load "../../../spite_standard_library/windows"
@@ -13,19 +12,17 @@ func HttpKeepAlive() {
     ask("/second")
     program.sleep(400)
     ask("/after-the-server-let-go")
-    var closing = HttpRequest()
+    var closing = Http.Request()
     closing.path = "/last"
     closing.set_header("connection", "close")
     var answer = client.send("127.0.0.1", 47912, closing)
     crash answer
     var said = answer.header("connection")
     crash said
-    console.print("{closing.path}: {answer.body}, connection: {said}")
+    var answer_body = answer.read_body_as_string()
+    crash answer_body
+    console.print("{closing.path}: {answer_body}, connection: {said}")
     console.print("served", serving)
-    var reused = connections[0] == connections[1]
-    var replaced = connections[1] == connections[2]
-    console.print("the second request came over the first one's connection:", reused)
-    console.print("the third came over that connection too:", replaced)
     server.close()
 }
 
@@ -34,9 +31,8 @@ func serve_four(): Integer {
     while served < 4 {
         var request = server.next_request()
         crash request
-        connections.append(request.connection)
-        var response = HttpResponse()
-        response.body = "served {request.path}"
+        var response = Http.Response()
+        response.write_body_string("served {request.path}")
         server.respond(request, response)
         served = served + 1
     }
@@ -44,11 +40,13 @@ func serve_four(): Integer {
 }
 
 func ask(path: String) {
-    var request = HttpRequest()
+    var request = Http.Request()
     request.path = path
     var response = client.send("127.0.0.1", 47912, request)
     crash response
     var said = response.header("connection")
     crash said
-    console.print("{path}: {response.body}, connection: {said}")
+    var body = response.read_body_as_string()
+    crash body
+    console.print("{path}: {body}, connection: {said}")
 }

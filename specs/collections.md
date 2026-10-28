@@ -163,19 +163,19 @@ a shortcut for `get_at`, [functions_and_operators.md](functions_and_operators.md
 range read answers `null` and never a default that would read as a real element); `first`, `last`, `remove_first`
 and `remove_last` answer `null` on an empty
 list (like `[]`), `insert` clamps to the nearest end, and `set_at`, `remove_at` and `remove_swapping` halt,
-naming the line. `reserve(count)` grows the buffer to hold `count` elements and adds none. A `List` of numbers,
+naming the line. How much room a list keeps is the library's and the compiler's (its `_reserve` is private). A `List` of numbers,
 `Boolean`, enums or `Memory.Address` holds the values themselves in its buffer. There is
 no `for`: a list is walked with a template, a passed function ([above](#standard-library-metaprogramming)),
 or a `while` that does more than they do.
 
 **A list has no functions for bytes, and there is no list of bytes.** Every `List<T>` has the same members whatever
 `T` is, and `T` is never `Byte` (the error is in
-[Bytes are a Buffer](standard_library.md#bytes-are-a-buffer)): the numbers laid out in bytes, their byte order, a reading position and the text bytes spell are a
+[Bytes are a Buffer](standard_library.md#bytes-are-a-buffer)): the numbers laid out in bytes, their byte order and the text bytes spell are a
 `Buffer`'s ([Bytes are a Buffer](standard_library.md#bytes-are-a-buffer)). Calling one of a `Buffer`'s byte
-functions on a list of any element type is the error `List has no method 'read_integer': bytes are a Buffer, which
-has it: make them with 'Buffer(size)'`, with the function's own name (`read_<number>`, `read_<number>_at`,
-`append_<number>`, `write_<number>_at`, the old `write_<number>` and `_big_endian` names, `append_bytes`,
-`read_bytes`, `to_utf8_text`) (`diagnostics/address_forms`).
+functions on a list of any element type is the error `List has no method 'read_integer_little_endian_at': bytes are a
+Buffer, which has it: make them with 'Buffer()'`, with the function's own name (`read_<number>_at`,
+`append_<number>`, `write_<number>_at`, the old `write_<number>` and `_big_endian` names, `append_buffer`,
+`read_buffer_at`, `read_as_string`, `read_string_at`) (`conformance/list_byte_functions`).
 
 `contains(value)` compares with `==`, so it is there only for elements that are numbers, `Boolean`, `String` or an
 enum; on a list of a class the call is `List has no method 'contains'`: ask with `any(f)` or `find_by_<member>`.

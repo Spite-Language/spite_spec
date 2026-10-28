@@ -18,5 +18,10 @@ func BinaryCountPastEnd() {
     cut_text.append(4)
     cut_text.append(65)
     var read_cut = text_reader.read(cut_text)
-    console.print(items, not read_too_many, not read_cut)
+    var whole_text = Buffer(0)
+    whole_text.append(1)
+    whole_text.append(65)
+    var read_whole = text_reader.read(whole_text)
+    crash read_whole
+    console.print(items, not read_too_many, not read_cut, read_whole.text)
 }

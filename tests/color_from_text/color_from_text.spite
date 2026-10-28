@@ -4,17 +4,17 @@ func ColorFromText() {
     load "../../../spite_standard_library/windows"
     var white = "#ffffff".to_color()
     crash white
-    var white_hex = white.to_hex()
+    var white_hex = white.to_hexadecimal_string()
     console.print(white, white_hex)
     var orange = "#ff8000".to_color()
     crash orange
-    var shown = orange.to_rgb_text()
+    var shown = orange.to_rgb_string()
     console.print(orange.red, orange.green, orange.blue, shown)
     var blue = "rgb(0, 0, 255)".to_color()
     crash blue
     console.print(blue)
     var sky = Color(0.2, 0.5, 0.9, 1.0)
-    var sky_text = sky.to_rgb_text()
+    var sky_text = sky.to_rgb_string()
     console.print(sky, sky_text)
     var maybe = "not a colour".to_color()
     var missing = not maybe

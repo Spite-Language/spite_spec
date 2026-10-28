@@ -100,11 +100,11 @@ func add_operator(character: String) {
 }
 
 func is_digit_or_dot(character: String): Boolean {
-    var code = character.code_at(0)
+    var code = character.byte_at(0)
     return code >= 48 and code <= 57 or character == "."
 }
 
 func is_letter(character: String): Boolean {
-    var code = character.code_at(0)
+    var code = character.byte_at(0)
     return code >= 97 and code <= 122 or code >= 65 and code <= 90
 }

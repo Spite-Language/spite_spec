@@ -31,7 +31,7 @@ func multiplied(first: Integer, second: Integer): Integer {
 }
 
 func print_report() {
-    var report = File(".spite/reports/hot_reload_proves_ranges.md").read()
+    var report = File(".spite/reports/hot_reload_proves_ranges.md").read_as_string()
     crash report
     var lines = report.split("\n")
     var index = 0

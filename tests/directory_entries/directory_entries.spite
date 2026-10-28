@@ -28,7 +28,7 @@ func show_folder(folder: Directory, indent: String) {
 }
 
 func show_file(file: File, indent: String) {
-    var content = file.read()
+    var content = file.read_as_string()
     crash content
     var trimmed = content.trim()
     console.print("{indent}file {file.path}: {trimmed}")
