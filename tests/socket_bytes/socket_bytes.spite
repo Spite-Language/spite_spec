@@ -40,6 +40,18 @@ func SocketBytes() {
     var line = client.read_line()
     crash line
     console.print("client read the line:", line)
+    var not_text = Buffer(0)
+    not_text.append(255)
+    not_text.append(10)
+    crash peer.write_buffer(not_text)
+    crash peer.write_line("after it")
+    var refused = client.read_line()
+    if not refused {
+        console.print("a line that is not UTF-8 is null, open:", not client.closed)
+    }
+    var following = client.read_line()
+    crash following
+    console.print("then the next line:", following)
     client.close()
     var after = peer.read_as_buffer()
     if not after {

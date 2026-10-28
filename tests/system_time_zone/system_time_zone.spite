@@ -8,7 +8,7 @@ func SystemTimeZone() {
         console.print("the machine's zone could not be opened")
         return
     }
-    var identifier = zone.get_identifier()
+    var identifier = zone.identifier
     var named = not identifier.is_empty()
     console.print("the machine's zone is named: {named}")
 }
