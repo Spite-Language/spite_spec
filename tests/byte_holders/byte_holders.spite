@@ -72,13 +72,15 @@ func read_one_string(): String {
 }
 
 func datagram_text() {
-    var receiving = UdpSocket()
-    var sending = UdpSocket()
+    var receiving = Udp.Socket()
+    var sending = Udp.Socket()
     crash receiving.open_locally(47917)
     crash sending.open_locally(0)
     var hello = "hello".to_buffer()
     crash sending.send_to("127.0.0.1", 47917, hello)
-    var text = receiving.receive_as_string()
+    var datagram = receiving.receive()
+    crash datagram
+    var text = datagram.read_as_string()
     crash text
     console.print("a datagram read as text:", text)
     receiving.close()

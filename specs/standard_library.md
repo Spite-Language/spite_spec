@@ -308,7 +308,7 @@ folders reopen it with:
   no IPv6. `listen_at` and `connect` resolve the host with the system's `getaddrinfo`, asking for any family and a
   stream socket, and put the IPv4 answers first, in the order the system gives them, then the IPv6 ones: `listen_at`
   listens on the first, and `connect` tries them in turn until one connects. A name that does not resolve answers `false`. Resolving waits in place, like
-  connecting. The listening queue is 64 connections deep. `UdpSocket` uses the same addresses, from its own copy of the address code (it makes no `Socket`): `open` and
+  connecting. The listening queue is 64 connections deep. `Udp.Socket` uses the same addresses, from its own copy of the address code (it makes no `Socket`): `open` and
   `open_everywhere` take both families on one IPv6 socket, sending to an IPv4 address as `::ffff:` and the address,
   and a sender's address is written as RFC 5952 gives it, with an IPv4 address inside `::ffff:` written as IPv4 and
   a link-local one's scope after a `%`.
@@ -346,14 +346,15 @@ folders reopen it with:
 Bytes a program reads or writes are a `Buffer`, a class of the standard library; no program-facing function takes
 or answers a `List<Byte>` for them ([Bytes are a Buffer](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#bytes-are-a-buffer)).
 Everything that hands bytes over answers a `Buffer`, and everything that takes bytes takes one: `File`, `Socket`,
-`UdpSocket`, `WebSocket.Message`, `Http.Request` and `Http.Response` bodies, `Process` output,
+`Udp.Datagram`, `WebSocket.Message`, `Http.Request` and `Http.Response` bodies, `Process` output,
 `String.to_buffer()`, `Base64`, `Deflate`, `Zlib`, `Gzip`, `Sha256`, `SecureRandom`, `Argon2.derive`,
 `BinaryWriter`, `BinaryReader` and `ForeignBytes.read_buffer_at`.
 
 **Bytes that may be text are one holder with two reads** (D1708), as a `File` is: `read_as_string(): String?`,
 `null` when the bytes are not UTF-8, and `read_as_buffer()`, the bytes as they are. So a `WebSocket.Message`
-(`is_text()` beside the two reads), a `Socket`, a datagram (`UdpSocket.receive_as_string()` and
-`receive_as_buffer()`), an HTTP body (`read_body_as_string()`, `read_body_as_buffer()`, `write_body_string(text)`,
+(`is_text()` beside the two reads), a `Socket`, a datagram (`Udp.Socket.receive(): Udp.Datagram?`, read with the two reads and carrying its
+`sender_host` and `sender_port`; `null` only when nothing arrives, so a datagram is never lost by reading it the
+wrong way; D1716), an HTTP body (`read_body_as_string()`, `read_body_as_buffer()`, `write_body_string(text)`,
 `write_body_buffer(buffer)`) and a `Process`'s output (`read_output_as_string()`, `read_output_as_buffer()`):
 nothing that carries bytes forces them through a `String`.
 
@@ -443,7 +444,7 @@ nothing that carries bytes forces them through a `String`.
   line are handed out first. `write_buffer(buffer)` sends all of it, waiting; `write_buffer_now(buffer)` hands the system
   what it takes now and answers how many. A `Socket` keeps one 64 KB block it receives into, made on the first read
   and freed by `close()`, and each read copies what arrived into its own buffer: one allocation per read. A
-  `UdpSocket` datagram and a `WebSocket.Message`, ping or pong are a `Buffer` the same way.
+  `Udp.Datagram` and a `WebSocket.Message`, ping or pong are a `Buffer` the same way.
 - **A read the compiler proves** is a `read_<number>_at(position)`, and it answers the number itself, not a `T?`:
   under a bound that covers its last byte
   ([proofs.md](https://github.com/Spite-Language/spite_documentation/blob/master/proofs.md#a-proven-count-or-bound-proves-a-read-of-a-width)), or inside a counted loop whose

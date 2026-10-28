@@ -36,14 +36,14 @@ func reach(server: Socket, host: String, port: Integer) {
 }
 
 func datagrams() {
-    var server6 = UdpSocket()
-    var client6 = UdpSocket()
+    var server6 = Udp.Socket()
+    var client6 = Udp.Socket()
     crash server6.open_at("::1", 47324)
     crash client6.open_at("::1", 0)
     send(client6, "::1", 47324)
     receive(server6)
-    var server4 = UdpSocket()
-    var client4 = UdpSocket()
+    var server4 = Udp.Socket()
+    var client4 = Udp.Socket()
     crash server4.open_at("127.0.0.1", 47325)
     crash client4.open_locally(0)
     send(client4, "127.0.0.1", 47325)
@@ -54,16 +54,17 @@ func datagrams() {
     console.print("an IPv4 socket sends to ::1:", unreachable)
 }
 
-func send(client: UdpSocket, host: String, port: Integer) {
+func send(client: Udp.Socket, host: String, port: Integer) {
     var text = "to {host}"
     var bytes = text.to_buffer()
     crash client.send_to(host, port, bytes)
 }
 
-func receive(server: UdpSocket) {
-    var arrived = server.receive_as_buffer()
+func receive(server: Udp.Socket) {
+    var arrived = server.receive()
     crash arrived
-    var count = arrived.count()
-    var sender = server.sender_host()
+    var bytes = arrived.read_as_buffer()
+    var count = bytes.count()
+    var sender = arrived.sender_host
     console.print("{count} bytes from {sender}")
 }
