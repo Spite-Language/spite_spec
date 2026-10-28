@@ -2,17 +2,24 @@ var console = Console()
 
 func ColorFromText() {
     load "../../../spite_standard_library/windows"
-    var white = Color("#ffffff")
-    console.print(white, white.hexadecimal)
-    var color = Color("black")
-    color.hexadecimal = "#ff8000"
-    var shown = color.to_rgb_text()
-    console.print(color.red, color.green, color.blue, shown)
-    color.hexadecimal = "rgb(0, 0, 255)"
-    console.print(color)
+    var white = "#ffffff".to_color()
+    crash white
+    var white_hex = white.to_hex()
+    console.print(white, white_hex)
+    var orange = "#ff8000".to_color()
+    crash orange
+    var shown = orange.to_rgb_text()
+    console.print(orange.red, orange.green, orange.blue, shown)
+    var blue = "rgb(0, 0, 255)".to_color()
+    crash blue
+    console.print(blue)
+    var sky = Color(0.2, 0.5, 0.9, 1.0)
+    var sky_text = sky.to_rgb_text()
+    console.print(sky, sky_text)
     var maybe = "not a colour".to_color()
     var missing = not maybe
     console.print(missing)
-    var wrong = Color("chartreuse-ish")
+    var wrong = "chartreuse-ish".to_color()
+    crash wrong
     console.print("never printed", wrong)
 }

@@ -1418,6 +1418,7 @@ Rules: 24. Covered before: 21. Covered now: 24.
 | `Frustum` members | tests/game_geometry | covered |
 | `Ray` members, hits answering `Float?` | tests/game_geometry | covered |
 | `Color` members (`to_hex`, `to_rgb_text`, `to_hsl_text`, sRGB curve, clamped on writing) | tests/game_colors | covered |
+| `Color` has one constructor, `Color(red, green, blue, alpha)`; text becomes a colour only through `to_color()`, a `Color?` | tests/color_from_text | added |
 | `ColorText.read`: hex, `rgb`/`rgba`, `hsl`/`hsla`, names, anything else `null` | tests/game_colors | covered |
 | `ColorText.read` trims and ignores case; `transparent`; `named_hex` answers `#rrggbb` | tests/game_named_colors | added |
 | `named_hex` of an unknown name answers `""` | tests/game_named_colors | added (a default a caller cannot tell from a real answer; a D244 bug in the rule itself) |

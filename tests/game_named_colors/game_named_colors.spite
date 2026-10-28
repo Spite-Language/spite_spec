@@ -1,5 +1,5 @@
 var console = Console()
-var palette = Color("black")
+var palette = Color(0.0, 0.0, 0.0, 1.0)
 
 func GameNamedColors() {
     load "../../../spite_standard_library/windows"
@@ -12,7 +12,8 @@ func GameNamedColors() {
 }
 
 func show(text: String) {
-    var color = Color(text)
+    var color = text.to_color()
+    crash color
     var hex = color.to_hex()
     console.print(hex)
 }

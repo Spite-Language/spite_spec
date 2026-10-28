@@ -21,14 +21,16 @@ func GameColors() {
     texts.each(show)
     var bad = ["#12", "#ggg", "rgb(1, 2)", "rgb(a, b, c)", "hsl(1, 2%, 3%, 4, 5)", "notacolor", "rgb(1, 2, 3", ""]
     bad.each(show)
-    var orange = Color("rgb(100%, 50%, 0%)")
+    var orange = "rgb(100%, 50%, 0%)".to_color()
+    crash orange
     var linear = orange.to_linear()
     var back = linear.to_standard_rgb()
     console.print("linear {linear.to_hex()} {near(linear.green)} back {back.to_hex()}")
-    var clear = Color("rgba(0, 0, 255, 0)")
+    var clear = Color(0.0, 0.0, 1.0, 0.0)
     var halfway = orange.linear_interpolate(clear, 0.5)
     console.print("blend {halfway} {halfway.to_rgb_text()} {halfway == halfway}")
-    var gray = Color("rgb(50%, 50%, 50%)")
+    var gray = "rgb(50%, 50%, 50%)".to_color()
+    crash gray
     console.print("gray {gray.to_hsl_text()} {gray.to_rgb_text()}")
 }
 

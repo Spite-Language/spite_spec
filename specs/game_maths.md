@@ -75,21 +75,20 @@ The standard library fills every maths gap a game needs, as a game engine packag
   (`null` when parallel or behind), `hit_box(box): Float?` (the distance where the ray enters, or leaves when it
   starts inside; `null` when it misses or the box is behind), `hit_triangle(first, second, third): Float?` (either
   side, Moller and Trumbore's test; `null` when it misses, is parallel or is behind), `to_string()`.
-- **`Color`** (`red`, `green`, `blue`, `alpha`, each 0 to 1 and not clamped when set; made from text,
-  `Color(text)`, in any form below, and `hexadecimal` reads it as `to_hex()` and takes any form below when set;
-  text that names none stops the program, `spite: '<text>' names no colour: ...`, exit code 1, and
-  `read(text): Boolean` sets the colour from text and answers `false`, changing nothing, when it names none):
+- **`Color`** (`red`, `green`, `blue`, `alpha`, each 0 to 1 and not clamped when set; made with its one
+  constructor, `Color(red, green, blue, alpha)`, or read from text with `text.to_color()`, below):
   `equals` (exact), `linear_interpolate(target, amount)`, `to_linear()` and `to_standard_rgb()` (the sRGB curve on
   red, green and blue, alpha untouched), `to_hex()` (`#rrggbb`, with `aa` when alpha is below 255/255),
   `to_rgb_text()` (`rgb(255, 99, 71)`, or `rgba(...)` with alpha to three places), `to_hsl_text()` (hue, saturation
   and lightness to one place), and `to_string()`, which is `to_hex()`. Writing clamps each channel to 0..1 and rounds
   it to a byte.
-- **Colour text** (`text.to_color(): Color?` and `Color(text)`; text is trimmed and read without regard to case): `#` and 3, 4, 6 or 8
+- **Colour text** (`text.to_color(): Color?`, the only way text becomes a colour; text is trimmed and read without regard to case): `#` and 3, 4, 6 or 8
   hex digits, `#rgb` doubling each digit; `rgb(`/`rgba(` with three or four numbers, separated by commas, spaces or
   a `/` before alpha, each channel 0 to 255 or a percentage and clamped, alpha 0 to 1 or a percentage;
   `hsl(`/`hsla(` with a hue in degrees (a `deg` suffix allowed, any number of turns), saturation and lightness as
   percentages; the CSS named colours and `transparent` (`named_hex(name)` answers one's `#rrggbb`, or `""`).
-  Anything else (a wrong count of digits or numbers, a letter where a number goes, a missing `)`) is `null`.
+  Anything else (a wrong count of digits or numbers, a letter where a number goes, a missing `)`) is `null`, so
+  text a program wrote itself is narrowed with `crash` (`tests/color_from_text`).
 - **`CubicBezier`** (parts `start_x` ... `end_y`, made with four `Vector2`s): `point_at(amount)` (not clamped),
   `y_at_x(x)` (the amount found by at most 8 Newton steps, then 30 halvings if Newton did not settle, `x` held
   between the end points; for a curve whose x goes back on itself the first root found wins).

@@ -1,5 +1,7 @@
 #ffffff #ffffff
 1 0.5019608 0 rgb(255, 128, 0)
 #0000ff
+#3380e6 rgb(51, 128, 230)
 true
-spite: 'chartreuse-ish' names no colour: Color reads '#' and 3, 4, 6 or 8 hexadecimal digits, rgb(...), rgba(...), hsl(...), hsla(...) or a CSS colour name
+spite: the program stopped at tests/color_from_text/color_from_text.spite:23 in ColorFromText.ColorFromText (wrong is null)
+spite.frame	tests/color_from_text/color_from_text.spite:23	ColorFromText	ColorFromText
