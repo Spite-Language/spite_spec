@@ -3,11 +3,12 @@ var beat = Beat()
 var passes = 0
 
 func run() {
+    var one_millisecond = Duration(1, 'milliseconds')
     while passes < 3 {
         passes = passes + 1
         beat.count_later()
         var before = beat.beats
-        program.sleep(1)
+        program.sleep(one_millisecond)
         beat.beats = before + 10
     }
 }

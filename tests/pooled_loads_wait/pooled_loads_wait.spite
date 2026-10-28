@@ -3,6 +3,7 @@ var program = Program()
 
 func PooledLoadsWait() {
     load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
     var level = File(".spite/pooled_loads_wait.txt")
     level.write_string("forest")
     var blobs = Blobs()
@@ -12,7 +13,7 @@ func PooledLoadsWait() {
         if found {
             text = found
         } else {
-            program.sleep(1)
+            program.sleep(one_millisecond)
         }
     }
     console.print("the pool read", text)

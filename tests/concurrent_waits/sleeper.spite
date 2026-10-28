@@ -11,7 +11,8 @@ func Sleeper(starting_name: String, starting_milliseconds: Integer, shared_log: 
 
 func nap(): String {
     log.append("{name} falls asleep")
-    program.sleep(milliseconds)
+    var pause = Duration(milliseconds, 'milliseconds')
+    program.sleep(pause)
     log.append("{name} wakes up")
     return name
 }

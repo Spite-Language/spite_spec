@@ -25,13 +25,15 @@ func WaitOrder() {
 
 func bump_after(milliseconds: Integer): Integer {
     counter = 100
-    program.sleep(milliseconds)
+    var pause = Duration(milliseconds, 'milliseconds')
+    program.sleep(pause)
     return milliseconds
 }
 
 func rename_after(milliseconds: Integer): Integer {
     name = "after"
-    program.sleep(milliseconds)
+    var pause = Duration(milliseconds, 'milliseconds')
+    program.sleep(pause)
     return milliseconds
 }
 
@@ -51,7 +53,8 @@ func arguments_in_order(): String {
 }
 
 func bump_later(): Integer {
-    program.sleep(2)
+    var two_milliseconds = Duration(2, 'milliseconds')
+    program.sleep(two_milliseconds)
     counter = counter + 100
     return counter
 }
@@ -68,6 +71,7 @@ func receiver_in_order(): Integer {
 
 func replace_after(milliseconds: Integer): String {
     current = List<String>()
-    program.sleep(milliseconds)
+    var pause = Duration(milliseconds, 'milliseconds')
+    program.sleep(pause)
     return "item"
 }

@@ -843,6 +843,7 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | Program exit flushes the console first | tests/program_exit_flushes | added |
 | Program environment null when unset; executable_path | tests/program_environment | added |
 | Program sleep | tests/frame_waits | covered |
+| Program sleep takes a Duration; zero, negative and under a millisecond return at once | tests/sleep_durations | added |
 | Program live_allocations | none | superseded by D662 |
 | Clock elapsed and now | tests/clock_reading, tests/clock_reads | covered |
 | Benchmark(work) answer and duration | tests/benchmark_answer | added (compiler fails: unknown type 'Benchmark') |
@@ -985,7 +986,7 @@ Rules: 21. Covered before: 9. Covered now: 21.
 | A bracketed zone must agree with the offset (any known zone after `Z`); an unknown zone, a second zone or an annotation other than `u-ca=iso8601` is `null` | tests/time_text_errors | covered |
 | ISO 8601 writing is each type's `to_string()` | tests/time_text_round_trips | covered |
 | Zones: `find`, `utc`, `fixed_offset`, `system`, `read_tzif` | tests/zone_files, tests/fixed_offsets, tests/daylight_saving | covered |
-| `Clock.elapsed_nanoseconds()`, `elapsed_milliseconds()`, `now()` | tests/clock_reading, tests/clock_reads | covered |
+| `Clock.elapsed()`, `now()` | tests/clock_reading, tests/clock_reads | covered |
 | `Benchmark(work)` runs `work` once, keeps `answer` and `duration`; `Benchmark<Nothing>` | tests/time_benchmark | added (compiler fails: the library has no Benchmark) |
 
 ## json.md

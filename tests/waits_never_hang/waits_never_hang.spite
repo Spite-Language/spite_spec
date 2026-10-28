@@ -74,12 +74,14 @@ func started(name: String, finished: Boolean) {
 }
 
 func napped(milliseconds: Integer): Integer {
-    program.sleep(milliseconds)
+    var pause = Duration(milliseconds, 'milliseconds')
+    program.sleep(pause)
     return milliseconds
 }
 
 func napped_or_null(milliseconds: Integer): Integer? {
-    program.sleep(milliseconds)
+    var pause = Duration(milliseconds, 'milliseconds')
+    program.sleep(pause)
     return milliseconds
 }
 
@@ -161,7 +163,8 @@ func ring_and_leave() {
 }
 
 func ring() {
-    program.sleep(2)
+    var two_milliseconds = Duration(2, 'milliseconds')
+    program.sleep(two_milliseconds)
     log.append("rang")
 }
 
@@ -196,14 +199,16 @@ func started_rings(): List<Concurrent<Nothing>> {
 }
 
 func wait_until_ready(): Integer {
+    var one_millisecond = Duration(1, 'milliseconds')
     while not board.ready {
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     return 13
 }
 
 func join_through_value(): Integer {
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
     var reader = board.value_of
     return reader(0)
 }
@@ -216,7 +221,8 @@ func make_ready(): Integer {
 }
 
 func starts_its_reader(): Integer {
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
     var reader = Concurrent(read_starter)
     board.readers.append(reader)
     return 14

@@ -5,12 +5,13 @@ var redraws = 0
 
 func AWaitInAFrameDoc() {
     load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
     while backup.copied < 3 {
         redraws = redraws + 1
         if redraws <= 3 {
             backup.copy_next()
         }
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("copied", backup.copied, "parts, redrawing the progress bar meanwhile:", redraws > 3)
 }

@@ -11,6 +11,7 @@ func update_each(nap: Nap) {
     naps = naps + 1
     awake = false
     console.print("nap", naps, "for", nap.length, "ms")
-    program.sleep(nap.length)
+    var pause = Duration(nap.length, 'milliseconds')
+    program.sleep(pause)
     awake = true
 }

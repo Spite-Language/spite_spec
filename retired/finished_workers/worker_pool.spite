@@ -10,9 +10,10 @@ func start(items: Integer) {
 }
 
 func drain() {
+    var five_milliseconds = Duration(5, 'milliseconds')
     while pending > 0 {
         pending = pending - 1
-        program.sleep(5)
+        program.sleep(five_milliseconds)
         done = done + 1
     }
 }

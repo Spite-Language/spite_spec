@@ -8,6 +8,7 @@ var environment = Environment()
 
 func Dungeon() {
     load "../../../spite_standard_library/windows"
+    var fifty_milliseconds = Duration(50, 'milliseconds')
     var goblin = Monster("Goblin", 30)
     monsters.append(goblin)
     var orc = Monster("Orc", 50)
@@ -19,7 +20,7 @@ func Dungeon() {
         while tick < 3 {
             console.print("tick", tick)
             tick = tick + 1
-            system.sleep(50)
+            system.sleep(fifty_milliseconds)
         }
     }
 }

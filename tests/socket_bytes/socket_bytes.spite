@@ -4,6 +4,7 @@ var server = Socket()
 
 func SocketBytes() {
     load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
     crash server.listen_at("127.0.0.1", 47313)
     var nobody = server.accept_client_now()
     if not nobody {
@@ -32,7 +33,7 @@ func SocketBytes() {
     crash peer.write_line("hello over the wire")
     var line = client.read_line_now()
     while not line {
-        program.sleep(1)
+        program.sleep(one_millisecond)
         line = client.read_line_now()
     }
     crash line
@@ -40,7 +41,7 @@ func SocketBytes() {
     client.close()
     var after = peer.read_as_buffer_now()
     while not peer.closed {
-        program.sleep(1)
+        program.sleep(one_millisecond)
         after = peer.read_as_buffer_now()
     }
     var after_count = after.count()
@@ -54,9 +55,10 @@ func SocketBytes() {
 }
 
 func accept_eventually(): Socket {
+    var one_millisecond = Duration(1, 'milliseconds')
     var accepted = server.accept_client_now()
     while not accepted {
-        program.sleep(1)
+        program.sleep(one_millisecond)
         accepted = server.accept_client_now()
     }
     crash accepted
@@ -73,9 +75,10 @@ func send(socket: Socket, first: Byte, second: Byte, third: Byte) {
 }
 
 func receive(socket: Socket, wanted: Integer): Buffer {
+    var one_millisecond = Duration(1, 'milliseconds')
     var received = socket.read_as_buffer_now()
     while received.count() < wanted and not socket.closed {
-        program.sleep(1)
+        program.sleep(one_millisecond)
         var more = socket.read_as_buffer_now()
         var more_count = more.count()
         received.append_buffer(more, 0, more_count)

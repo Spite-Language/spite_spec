@@ -3,12 +3,13 @@ var program = Program()
 
 func FinishedPolling() {
     load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
     var gate = Gate()
     var loading = Parallel(gate.wait_until_open)
     console.print("finished while the gate is shut:", loading.finished)
     gate.open()
     while not loading.finished {
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("finished once the gate opened:", loading.finished)
     console.print("it counted", loading)
@@ -16,7 +17,7 @@ func FinishedPolling() {
     var napping = Concurrent(napper.nap)
     console.print("a napping Concurrent has finished:", napping.finished)
     while not napping.finished {
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("after polling it has finished:", napping.finished)
     console.print("it napped", napping, "milliseconds")

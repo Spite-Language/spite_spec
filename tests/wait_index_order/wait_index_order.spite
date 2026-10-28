@@ -25,6 +25,7 @@ func move_slot(): Integer {
 }
 
 func napped(milliseconds: Integer): Integer {
-    program.sleep(milliseconds)
+    var pause = Duration(milliseconds, 'milliseconds')
+    program.sleep(pause)
     return milliseconds
 }

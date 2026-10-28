@@ -6,6 +6,7 @@ func ask(): Boolean {
     if $system_type.function_waits("update_each") {
         return true
     }
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
     return false
 }

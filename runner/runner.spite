@@ -42,6 +42,7 @@ func run_alone(folder: String) {
 }
 
 func run_in_parallel() {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
     var at_once = jobs_at_once()
     var next = 0
     while next < waiting.count() or not running.is_empty() {
@@ -52,7 +53,7 @@ func run_in_parallel() {
         }
         var finished_any = collect_the_finished()
         if not finished_any {
-            program.sleep(20)
+            program.sleep(twenty_milliseconds)
         }
     }
 }

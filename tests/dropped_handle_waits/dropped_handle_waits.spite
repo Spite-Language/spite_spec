@@ -28,7 +28,8 @@ func started(name: String, finished: Boolean) {
 }
 
 func ring() {
-    program.sleep(2)
+    var two_milliseconds = Duration(2, 'milliseconds')
+    program.sleep(two_milliseconds)
     log.append("rang")
 }
 

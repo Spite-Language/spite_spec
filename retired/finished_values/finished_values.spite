@@ -5,6 +5,7 @@ var scheduler = Scheduler()
 func FinishedValues() {
     load "../../../spite_standard_library/common"
     load "../../../spite_standard_library/windows"
+    var two_milliseconds = Duration(2, 'milliseconds')
     scheduler.resume_only_when_asked()
     var loading = Concurrent(load_level)
     var early = loading.finished_value()
@@ -28,7 +29,7 @@ func FinishedValues() {
         if total {
             counted = total
         }
-        program.sleep(2)
+        program.sleep(two_milliseconds)
     }
     console.print("the level after the frames:", level, "over frames:", frame > 1)
     console.print("the Parallel counted", counted)
@@ -42,7 +43,8 @@ func FinishedValues() {
 }
 
 func load_level(): String {
-    program.sleep(30)
+    var thirty_milliseconds = Duration(30, 'milliseconds')
+    program.sleep(thirty_milliseconds)
     return "forest"
 }
 

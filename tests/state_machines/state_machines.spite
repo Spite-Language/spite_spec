@@ -22,12 +22,13 @@ func StateMachines() {
 }
 
 func count_down(): String {
+    var a_hundred_milliseconds = Duration(100, 'milliseconds')
     var remaining = 3
     var seen = ""
     while remaining > 0 {
         log.append("count {remaining}")
         seen = seen + remaining
-        program.sleep(100)
+        program.sleep(a_hundred_milliseconds)
         remaining = remaining - 1
     }
     return seen
@@ -41,7 +42,8 @@ func tag_in_expression(): String {
 }
 
 func napped_text(milliseconds: Integer): String {
-    program.sleep(milliseconds)
+    var pause = Duration(milliseconds, 'milliseconds')
+    program.sleep(pause)
     return milliseconds
 }
 
@@ -59,7 +61,8 @@ func level_one(numbers: List<Integer>, label: String): Integer {
 }
 
 func level_two(numbers: List<Integer>, label: String): Integer {
-    program.sleep(10)
+    var ten_milliseconds = Duration(10, 'milliseconds')
+    program.sleep(ten_milliseconds)
     var letters = label.length()
     numbers.append(letters)
     log.append("level two {label}")
@@ -75,7 +78,8 @@ func poll_until_ready(): Integer {
 }
 
 func next_tick(): Integer {
-    program.sleep(5)
+    var five_milliseconds = Duration(5, 'milliseconds')
+    program.sleep(five_milliseconds)
     ticks = ticks + 1
     return ticks
 }
@@ -96,7 +100,8 @@ func call_through_value(): String {
 }
 
 func napped_five(): String {
-    program.sleep(5)
+    var five_milliseconds = Duration(5, 'milliseconds')
+    program.sleep(five_milliseconds)
     return "five"
 }
 
@@ -109,6 +114,7 @@ func spawn_and_join(): Integer {
 }
 
 func inner_count(): Integer {
-    program.sleep(10)
+    var ten_milliseconds = Duration(10, 'milliseconds')
+    program.sleep(ten_milliseconds)
     return 41
 }

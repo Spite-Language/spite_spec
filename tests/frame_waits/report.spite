@@ -2,7 +2,8 @@ var program = Program()
 var text = ""
 
 func fetch() {
-    program.sleep(100)
+    var a_hundred_milliseconds = Duration(100, 'milliseconds')
+    program.sleep(a_hundred_milliseconds)
     var file = File(".spite/frame_waits_report.txt")
     var read = file.read_as_string()
     crash read

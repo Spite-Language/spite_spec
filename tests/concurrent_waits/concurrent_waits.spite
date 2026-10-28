@@ -27,13 +27,15 @@ func read_itself(): String? {
 }
 
 func outer(): Integer {
+    var five_milliseconds = Duration(5, 'milliseconds')
     var inner = Concurrent(inner_count)
-    program.sleep(5)
+    program.sleep(five_milliseconds)
     return inner + 1
 }
 
 func inner_count(): Integer {
-    program.sleep(5)
+    var five_milliseconds = Duration(5, 'milliseconds')
+    program.sleep(five_milliseconds)
     return 41
 }
 
@@ -43,6 +45,7 @@ func ring_and_forget() {
 }
 
 func ring() {
-    program.sleep(5)
+    var five_milliseconds = Duration(5, 'milliseconds')
+    program.sleep(five_milliseconds)
     log.append("ring")
 }

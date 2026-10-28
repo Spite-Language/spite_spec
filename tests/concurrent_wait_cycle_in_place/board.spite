@@ -13,15 +13,17 @@ func release_second() {
 }
 
 func release_first() {
+    var one_millisecond = Duration(1, 'milliseconds')
     wait_until_both_held()
     while not second_may_go {
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     first_holder = Holder()
 }
 
 func wait_until_both_held() {
+    var one_millisecond = Duration(1, 'milliseconds')
     while not both_held {
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
 }

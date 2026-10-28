@@ -2,6 +2,7 @@ var program = Program()
 var beats = 0
 
 func count_later() {
-    program.sleep(20)
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    program.sleep(twenty_milliseconds)
     beats = beats + 1
 }

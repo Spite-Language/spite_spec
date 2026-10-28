@@ -35,7 +35,8 @@ func call_back(work: Spite.Function<Nothing>) {
 }
 
 func nap() {
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
     console.print("napped")
 }
 

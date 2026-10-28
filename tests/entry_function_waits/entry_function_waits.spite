@@ -15,7 +15,8 @@ func EntryFunctionWaits() {
 }
 
 func load_level(): String {
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
     return "forest"
 }
 

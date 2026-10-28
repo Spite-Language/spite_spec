@@ -3,6 +3,7 @@ var program = Program()
 
 func System() {
     load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
     var arguments = program.arguments()
     var arguments_count = arguments.count()
     console.print(arguments_count, "|")
@@ -48,7 +49,7 @@ func System() {
     crash trim_is_empty_text
     var trim_is_empty = trim_is_empty_text.trim().is_empty()
     console.print(exit_code, trim_is_empty)
-    program.sleep(1)
+    program.sleep(one_millisecond)
     console.print("done")
 }
 

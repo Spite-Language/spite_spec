@@ -5,6 +5,7 @@ var scheduler = Scheduler()
 func FinishedWorkers() {
     load "../../../spite_standard_library/common"
     load "../../../spite_standard_library/windows"
+    var two_milliseconds = Duration(2, 'milliseconds')
     scheduler.resume_only_when_asked()
     var note = File(".spite/finished_workers.txt")
     note.write("frame")
@@ -22,7 +23,7 @@ func FinishedWorkers() {
         scheduler.run_ready()
         var value: Integer = counted
         summed = summed + value
-        program.sleep(2)
+        program.sleep(two_milliseconds)
     }
     var every_frame_read = read_total == frame * 5
     var every_frame_summed = summed == frame * 100

@@ -6,13 +6,14 @@ var greeter = Greeter()
 
 func HotReloadWatchesSavedFiles() {
     load "../../../spite_standard_library/windows"
+    var fifty_milliseconds = Duration(50, 'milliseconds')
     var first = greeter.greeting()
     console.print(first)
     write_greeter("goodbye")
     var waited = 0
     var now = greeter.greeting()
     while now == first and waited < 600 {
-        program.sleep(50)
+        program.sleep(fifty_milliseconds)
         now = greeter.greeting()
         waited = waited + 1
     }

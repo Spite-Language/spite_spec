@@ -41,10 +41,11 @@ func FileWatching() {
 }
 
 func settled_changes(watcher: FileSystemWatcher): List<String> {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
     var changed = watcher.changes()
     var tries = 0
     while changed.count() < 3 and tries < 250 {
-        program.sleep(20)
+        program.sleep(twenty_milliseconds)
         var more = watcher.changes()
         var index = 0
         while index < more.count() {

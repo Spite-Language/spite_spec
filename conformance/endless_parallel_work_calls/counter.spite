@@ -12,9 +12,10 @@ func step(counted: Integer): Integer {
 }
 
 func count_and_wait(): Integer {
+    var one_millisecond = Duration(1, 'milliseconds')
     var counted = 0
     while true {
         counted = counted + step(counted)
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
 }

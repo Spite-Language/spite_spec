@@ -4,8 +4,9 @@ var program = Program()
 var entries = List<String>()
 
 func record(name: String) {
+    var five_milliseconds = Duration(5, 'milliseconds')
     entries.append("{name} starts")
-    program.sleep(5)
+    program.sleep(five_milliseconds)
     entries.append("{name} ends")
 }
 

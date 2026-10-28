@@ -3,8 +3,9 @@ var in_flight = 0
 var done = 0
 
 func slow_job() {
+    var three_hundred_milliseconds = Duration(300, 'milliseconds')
     in_flight = in_flight + 1
-    program.sleep(300)
+    program.sleep(three_hundred_milliseconds)
     in_flight = in_flight - 1
     done = done + 1
 }

@@ -7,6 +7,8 @@ var server = Socket()
 func FramesBetweenWaits() {
     load "../../../spite_standard_library/common"
     load "../../../spite_standard_library/windows"
+    var five_milliseconds = Duration(5, 'milliseconds')
+    var one_millisecond = Duration(1, 'milliseconds')
     scheduler.resume_only_when_asked()
     crash server.listen_locally(47319)
     var reading = SystemSlot<System.NetworkReader>()
@@ -33,11 +35,11 @@ func FramesBetweenWaits() {
             var written = peer.write_bytes_now(message)
             crash written == 1
         }
-        program.sleep(5)
+        program.sleep(five_milliseconds)
         watch.in_stage = false
         scheduler.run_ready()
         running = not reading.finished()
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("the mover ran once a frame:", moving.system.position == frames)
     console.print("the reader resumed inside a stage:", watch.resumed_in_stage)

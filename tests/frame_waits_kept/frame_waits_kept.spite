@@ -7,11 +7,12 @@ var frames = 0
 
 func FrameWaitsKept() {
     load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
     while frames < 3 {
         frames = frames + 1
         tally.add_late()
         queue.drop_last_later()
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("a call that writes back what it read before its wait waited in place:", tally.count)
     var left = queue.items.join(", ")

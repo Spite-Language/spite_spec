@@ -2,6 +2,7 @@ var console = Console()
 var program = Program()
 
 func close() {
-    program.sleep(500)
+    var half_a_second = Duration(500, 'milliseconds')
+    program.sleep(half_a_second)
     console.print("the closing work a frame started finished before the program ended")
 }

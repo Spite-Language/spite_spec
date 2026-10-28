@@ -2,6 +2,7 @@ var program = Program()
 var console = Console()
 
 func update_each() {
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
     console.print("the ticker ticked after a sleep")
 }

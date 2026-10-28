@@ -1,2 +1,2 @@
 spite: the program stopped at a join of a Concurrent that waits for this one, so neither can finish (joins_a_concurrent_that_waits_for_this_one=true)
-spite.frame	tests/concurrent_wait_cycle/concurrent_wait_cycle.spite:10	ConcurrentWaitCycle	ConcurrentWaitCycle
+spite.frame	tests/concurrent_wait_cycle/concurrent_wait_cycle.spite:11	ConcurrentWaitCycle	ConcurrentWaitCycle

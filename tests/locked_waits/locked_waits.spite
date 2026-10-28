@@ -20,13 +20,15 @@ func counted(): Integer {
 }
 
 func record_first(): Boolean {
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
     ledger.record("first")
     return true
 }
 
 func record_second(): Boolean {
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
     ledger.record("second")
     return true
 }

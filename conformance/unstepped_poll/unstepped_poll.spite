@@ -12,5 +12,6 @@ func UnsteppedPoll() {
 }
 
 func nap() {
-    program.sleep(5)
+    var five_milliseconds = Duration(5, 'milliseconds')
+    program.sleep(five_milliseconds)
 }

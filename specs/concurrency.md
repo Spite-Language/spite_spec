@@ -58,7 +58,7 @@ each join as a call to the class's private `_result()`; only a join the compiler
 **`finished` never waits.** `handle.finished` is `true` once the function has
 returned. On a `Parallel` it reads the work's state with one atomic load; on a `Concurrent` it reads the flag its
 state machine's frame carries once it finishes, so a state machine only makes progress when the program waits
-somewhere (`while not reading.finished { program.sleep(1) }` is the polling loop). The same on every system
+somewhere (`while not reading.finished { program.sleep(one_millisecond) }` is the polling loop). The same on every system
 (`conformance/stage6/finished_polling`).
 
 **`finished_value()` takes a finished result without waiting.** `handle.finished_value(): T?` answers the value when the work has finished and `null` otherwise, on a
@@ -200,7 +200,7 @@ a resumable version:
   copied, since nothing can change it while the state machine waits. An assignment works out its value before its
   target. `conformance/stage6/wait_order`.
 - **The waits at the bottom** are small state machines the compiler writes: `Program.sleep` registers a deadline
-  and is over when the clock passes it; `Console.read_line_into`, `File.read_into`, `File.write_text`,
+  (the `Duration`'s whole milliseconds from now) and is over when the clock passes it; `Console.read_line_into`, `File.read_into`, `File.write_text`,
   `File.write_from`, the wait for a file's lock (`File.lock()`), `Socket.accept_handle`, `Socket.receive_into` and `Socket.first_readable` start their one system call on a helper thread
   and are over when it flags that it returned; reading or dropping a `Concurrent` is over when that
   `Concurrent`'s frame has finished.

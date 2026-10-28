@@ -1,0 +1,32 @@
+var console = Console()
+var clock = Clock()
+var program = Program()
+
+func SleepDurations() {
+    load "../../../spite_standard_library/windows"
+    var nothing_at_all = Duration(0, 'seconds')
+    var backwards = Duration(-5, 'seconds')
+    var a_moment = Duration(300, 'microseconds')
+    var five_milliseconds = Duration(5, 'milliseconds')
+    var nearly_five = Duration(4, 'milliseconds')
+    var a_second = Duration(1, 'seconds')
+    var started = clock.elapsed()
+    program.sleep(nothing_at_all)
+    program.sleep(backwards)
+    program.sleep(a_moment)
+    var napping = Concurrent(nap_backwards)
+    var napped: String = napping
+    var quick = clock.elapsed() - started
+    var returned_at_once = quick < a_second
+    var before = clock.elapsed()
+    program.sleep(five_milliseconds)
+    var slept = clock.elapsed() - before
+    var waited_enough = slept >= nearly_five
+    console.print(returned_at_once, napped, waited_enough)
+}
+
+func nap_backwards(): String {
+    var backwards = Duration(-5, 'seconds')
+    program.sleep(backwards)
+    return "napped"
+}

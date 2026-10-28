@@ -5,12 +5,14 @@ var client = Http.Client()
 
 func HttpKeepAlive() {
     load "../../../spite_standard_library/windows"
-    server.idle_limit = 100
+    var four_hundred_milliseconds = Duration(400, 'milliseconds')
+    var idle_limit = Duration(100, 'milliseconds')
+    server.idle_limit = idle_limit
     crash server.listen_locally(47912)
     var serving = Concurrent(serve_four)
     ask("/first")
     ask("/second")
-    program.sleep(400)
+    program.sleep(four_hundred_milliseconds)
     ask("/after-the-server-let-go")
     var closing = Http.Request()
     closing.path = "/last"

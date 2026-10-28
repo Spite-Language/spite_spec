@@ -4,10 +4,11 @@ var board = Board()
 
 func ConcurrentWaitCycle() {
     load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
     start_both()
     board.both_held = true
     while board.both_held {
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("never printed")
 }

@@ -53,24 +53,27 @@ with Temporal's vocabulary and no stored zoned type.
   (`TimeZone`'s own reading, `common/time_zone.spite`: RFC 8536 versions 1 to 4 and the POSIX rule in the footer), and `system()` follows
   `TZ`, then `/etc/localtime`. `read_tzif` is the same reader for a file a program brings. `conformance/stage6/zone_files` runs the
   TZif reader on Windows over three files written for the test and checked with Python's `zoneinfo`.
-- **Clock** keeps `elapsed_nanoseconds()` (the monotonic clock: a `Long` of nanoseconds, no allocation per reading) and `elapsed_milliseconds()` for measuring, and `now()` answers an
-  `Instant`.
+- **Clock** reads `elapsed()` for measuring (the monotonic clock: a `Duration` from an arbitrary start, to the
+  nanosecond; `clock.elapsed() - started` is the time between two readings), and `now()` answers an `Instant`.
+  Every wait the library takes is a `Duration` too: `Program.sleep(duration)`, `Http.Server.idle_limit` and the
+  quiet time a `FileSystemWatcher` waits for after the last change (100 milliseconds).
 - **`Benchmark(work)`** (`library/benchmark.spite`, `generic $answer_type`) is how a piece of work is timed. Its
-  constructor reads `Clock.elapsed_nanoseconds()`, calls `work` exactly once with no arguments, reads the clock
-  again, and keeps the result in `answer` and the difference in `duration`, a `Duration` in nanoseconds; nothing
+  constructor reads `Clock.elapsed()`, calls `work` exactly once with no arguments, reads the clock
+  again, and keeps the result in `answer` and the difference of the two readings in `duration`, a `Duration`; nothing
   else runs between the readings but the call and the store of its answer. `$answer_type` is read from the
   argument (`Benchmark(sum_to_a_million)` is a `Benchmark<Long>`), and a function returning nothing makes a
   `Benchmark<Nothing>`. Keeping the answer is what keeps the work: it is reachable from the benchmark, so it is never
   removed as unused. There is no `clock.benchmark(...)`: only a class takes codegen values, so the answer's type
   can be carried only by a class made from the work ([metaprogramming.md](metaprogramming.md#codegen-values-)). It costs the
-  function value made for `work` and the result's two objects (the `Benchmark` and its `Duration`), all made
-  outside the measured time, and one call through the value inside it; a program that names no `Benchmark`
+  function value made for `work` and the result's two objects (the `Benchmark` and its `Duration`), made
+  outside the measured time, and one call through the value and the first reading's `Duration` (made once the clock
+  is read) inside it; a program that names no `Benchmark`
   carries none of it. `duration.total('microseconds')` rounds toward zero, so it is the difference of the two
   readings divided by 1000. In a program that starts a `Parallel`, `work` counts as code that may run on another
   thread, since a function value is matched to the calls a thread makes by its count of arguments and a worker
   calls values of none ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class)):
   the classes `work` counts are counted atomically and the singletons it calls keep their locks, so work whose point
-  is the cost of those is timed with two `elapsed_nanoseconds()` readings instead.
+  is the cost of those is timed with two `elapsed()` readings instead.
 
 The conformance programs are `conformance/stage6/instant_arithmetic`, `calendar_math`, `daylight_saving`,
 `zone_files`, `fixed_offsets`, `time_text_round_trips` and `time_text_errors`.

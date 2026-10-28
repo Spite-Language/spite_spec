@@ -5,6 +5,7 @@ var program = Program()
 var jobs = List<Concurrent<Nothing>>()
 
 func ring() {
-    program.sleep(5)
+    var five_milliseconds = Duration(5, 'milliseconds')
+    program.sleep(five_milliseconds)
     console.print("the job a singleton holds ran to its end after the entry function returned")
 }

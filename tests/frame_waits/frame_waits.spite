@@ -15,6 +15,7 @@ var most_in_flight = 0
 
 func FrameWaits() {
     load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
     var file = File(".spite/frame_waits_report.txt")
     file.write_string("sales are up")
     while report.text.is_empty() {
@@ -22,7 +23,7 @@ func FrameWaits() {
         if frames == 1 {
             report.fetch()
         }
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("a call on another object did not hold the frame:", frames > 1)
     systems.append(fetcher)
@@ -37,17 +38,17 @@ func FrameWaits() {
         launched = launched + 1
         batch.slow_job()
         most_in_flight = maximum(most_in_flight, batch.in_flight)
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     while batch.done < 12 {
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("never more than eight in flight from one line:", most_in_flight <= 8, "and all", batch.done, "done")
     var passes = 0
     while passes < 1 {
         passes = passes + 1
         closer.close()
-        program.sleep(1)
+        program.sleep(one_millisecond)
     }
     console.print("the entry function returns")
 }
@@ -61,7 +62,8 @@ func update_systems() {
 }
 
 func wait_a_frame() {
-    program.sleep(1)
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
 }
 
 func maximum(left: Integer, right: Integer): Integer {

@@ -11,6 +11,7 @@ func HandleDebugRunning() {
 }
 
 func nap(): Integer {
-    program.sleep(20)
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    program.sleep(twenty_milliseconds)
     return 20
 }

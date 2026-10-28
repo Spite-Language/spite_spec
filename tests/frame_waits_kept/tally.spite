@@ -2,7 +2,8 @@ var program = Program()
 var count = 0
 
 func add_late() {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
     var seen = count
-    program.sleep(20)
+    program.sleep(twenty_milliseconds)
     count = seen + 1
 }

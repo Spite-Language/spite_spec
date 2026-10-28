@@ -5,6 +5,7 @@ var scheduler = Scheduler()
 func TemplateArgumentWait() {
     load "../../../spite_standard_library/common"
     load "../../../spite_standard_library/windows"
+    var sixteen_milliseconds = Duration(16, 'milliseconds')
     scheduler.resume_only_when_asked()
     var driver = Driver<System.Napper>()
     var worker = driver.start_waiting()
@@ -17,7 +18,7 @@ func TemplateArgumentWait() {
         if not napper.awake and not seen_asleep.contains(napper.naps) {
             seen_asleep.append(napper.naps)
         }
-        program.sleep(16)
+        program.sleep(sixteen_milliseconds)
     }
     console.print("the worker waited across frames:", frame > 1)
     var naps_seen = seen_asleep.count()

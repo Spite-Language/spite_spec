@@ -3,13 +3,15 @@ var clock = Clock()
 
 func ClockReads() {
     load "../../../spite_standard_library/windows"
-    var first = clock.elapsed_nanoseconds()
+    var first = clock.elapsed()
     var reads = 0
     while reads < 1000 {
-        var reading = clock.elapsed_nanoseconds()
+        var reading = clock.elapsed()
         crash reading >= first
         reads = reads + 1
     }
-    var milliseconds = clock.elapsed_milliseconds()
-    console.print(reads, milliseconds >= first / 1000000)
+    var last = clock.elapsed()
+    var taken = last - first
+    var never_back = not taken.is_negative
+    console.print(reads, never_back)
 }
