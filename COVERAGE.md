@@ -536,7 +536,7 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | A `while true` that never leaves and calls nothing is an error | conformance/spinning_loop | covered |
 | A `Parallel` that loops forever and never waits is an error | conformance/endless_parallel_work | covered |
 | A peer that hung up: `socket.closed` turns true, reads answer 0 or null | tests/web_socket_failures, tests/concurrent_sockets | covered |
-| An impossible date halts; `TimeText` answers null | tests/time_text_errors | covered |
+| An impossible date halts; `text.to_date()` answers null | tests/time_text_errors | covered |
 | Every build writes `<program>.crashes`, one line per site | tests/crashes_map | added (compiler fails: no `.crashes` file is written) |
 
 ### Narrowing
@@ -960,7 +960,7 @@ Rules: 8. Covered before: 1. Covered now: 5.
 
 ## time.md
 
-Rules: 19. Covered before: 9. Covered now: 19.
+Rules: 21. Covered before: 9. Covered now: 21.
 
 | Rule | Program(s) | Status |
 |---|---|---|
@@ -974,11 +974,13 @@ Rules: 19. Covered before: 9. Covered now: 19.
 | `Time`, `DateTime` | tests/calendar_math, tests/daylight_saving | covered |
 | Old spellings (`LocalDate`) name the new ones | conformance/time_old_spelling | added |
 | An `Instant` and a local reading do not compare | conformance/time_instant_against_local | added (compiler fails: says 'a DateTime cannot be used where a Instant is needed') |
-| `to_instant(local, ambiguity)` resolves gaps and overlaps by `'compatible'`, `'earlier'`, `'later'` | tests/daylight_saving | covered |
+| `local.to_instant_in(zone, ambiguity)` resolves gaps and overlaps by `'compatible'`, `'earlier'`, `'later'` | tests/daylight_saving | covered |
+| A zone is one `TimeZone`; `instant.to_date_time_in(zone)`, `instant.to_string_in(zone)`, `zone.identifier` | tests/daylight_saving, tests/fixed_offsets, tests/zone_files | covered |
 | An impossible `Date` built from numbers crashes | tests/time_impossible_date | added |
 | An impossible `Time` built from numbers crashes | tests/time_impossible_time | added |
-| Text that cannot exist reads as `null`; `read_instant` needs an offset, `read_date_time` refuses one | tests/time_text_errors | covered |
-| A leap second in text reads as the second before | tests/time_text_round_trips | covered |
+| Text that cannot exist reads as `null`; `to_instant()` needs an offset, `to_date_time()` refuses one | tests/time_text_errors | covered |
+| A leap second in text (`23:59:60`) is `null` | tests/time_text_errors | covered |
+| A bracketed zone must agree with the offset (any known zone after `Z`); an unknown zone, a second zone or an annotation other than `u-ca=iso8601` is `null` | tests/time_text_errors | covered |
 | ISO 8601 writing is each type's `to_string()` | tests/time_text_round_trips | covered |
 | Zones: `find`, `utc`, `fixed_offset`, `system`, `read_tzif` | tests/zone_files, tests/fixed_offsets, tests/daylight_saving | covered |
 | `Clock.elapsed_nanoseconds()`, `elapsed_milliseconds()`, `now()` | tests/clock_reading, tests/clock_reads | covered |

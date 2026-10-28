@@ -7,6 +7,13 @@ instant '2024-03-10T07:00:00Z junk' is refused
 instant '2024-03-10T07:00:00Z[America/New_York' is refused
 instant '-000000-01-01T00:00:00Z' is refused
 instant '' is refused
+instant '2024-03-10T06:59:60Z' is refused
+instant '2024-03-10T03:00:00-05:00[America/New_York]' is refused
+instant '2024-03-10T03:00:00+00:00[America/New_York]' is refused
+instant '2024-03-10T12:30:00+05:30[+05:00]' is refused
+instant '2024-03-10T07:00:00Z[Atlantis/Capital]' is refused
+instant '2024-03-10T07:00:00Z[UTC][Europe/Paris]' is refused
+instant '2024-03-10T07:00:00Z[!u-ca=hebrew]' is refused
 date and time '2024-03-10T02:30:00Z' is refused
 date and time '2024-3-10T02:30' is refused
 date and time '2024-03-10T2:30' is refused
@@ -20,6 +27,7 @@ time '12:60' is refused
 time '12:30:00.1234567890' is refused
 time '12' is refused
 time '12:30:00.' is refused
+time '23:59:60' is refused
 duration 'P1D' is refused
 duration 'PT' is refused
 duration 'P' is refused

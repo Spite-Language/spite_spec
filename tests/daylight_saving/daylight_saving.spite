@@ -15,15 +15,15 @@ func around_the_change(zone: TimeZone) {
     var last_winter_second = Duration(1710053999, 'seconds')
     var before = Instant(last_winter_second)
     var after = before + Duration(1, 'seconds')
-    var before_text = zone.to_text(before)
-    var after_text = zone.to_text(after)
+    var before_text = before.to_string_in(zone)
+    var after_text = after.to_string_in(zone)
     var before_offset = zone.offset_at(before)
     var after_offset = zone.offset_at(after)
-    console.print(zone.name, before_text, before_offset)
-    console.print(zone.name, after_text, after_offset)
+    console.print(zone.identifier, before_text, before_offset)
+    console.print(zone.identifier, after_text, after_offset)
     var railway_time = Duration(-5364662400, 'seconds')
     var history = Instant(railway_time)
-    var history_text = zone.to_text(history)
+    var history_text = history.to_string_in(zone)
     console.print("before railway time", history_text)
 }
 
@@ -47,8 +47,8 @@ func the_overlap(zone: TimeZone) {
     var summer_time = Time(12, 0, 0, 0)
     var summer = DateTime(summer_day, summer_time)
     show(zone, summer, 'compatible')
-    var instant = zone.to_instant(summer, 'compatible')
-    var back = zone.to_local(instant)
+    var instant = summer.to_instant_in(zone, 'compatible')
+    var back = instant.to_date_time_in(zone)
     var round_trip = back == summer
     console.print("round trip", round_trip)
 }
@@ -73,14 +73,14 @@ func other_zones() {
     show(lord_howe, half_hour_overlap, 'later')
     var mars = zones.find("Mars/Olympus_Mons")
     if mars {
-        console.print("found", mars.name)
+        console.print("found", mars.identifier)
     } else {
         console.print("no zone is called Mars/Olympus_Mons")
     }
 }
 
 func show(zone: TimeZone, local: DateTime, ambiguity: TimeZone.Ambiguity) {
-    var instant = zone.to_instant(local, ambiguity)
-    var shown = zone.to_text(instant)
-    console.print(zone.name, local, ambiguity, instant, shown)
+    var instant = local.to_instant_in(zone, ambiguity)
+    var shown = instant.to_string_in(zone)
+    console.print(zone.identifier, local, ambiguity, instant, shown)
 }

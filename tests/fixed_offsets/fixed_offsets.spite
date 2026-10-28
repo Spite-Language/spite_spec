@@ -20,15 +20,15 @@ func FixedOffsets() {
     var index = 0
     while index < offsets.count() {
         var zone = offsets[index]
-        var shown = zone.to_text(moment)
+        var shown = moment.to_string_in(zone)
         var offset = zone.offset_at(moment)
-        console.print(zone.name, shown, offset)
+        console.print(zone.identifier, shown, offset)
         index = index + 1
     }
     var noon_day = Date(2024, 3, 10)
     var noon_time = Time(12, 30, 0, 0)
     var noon = DateTime(noon_day, noon_time)
-    var from_india = india.to_instant(noon, 'compatible')
+    var from_india = noon.to_instant_in(india, 'compatible')
     var same_moment = from_india == moment
     console.print(from_india, same_moment)
     var summer_since_1970 = Duration(1720000000, 'seconds')
@@ -37,8 +37,8 @@ func FixedOffsets() {
     var summer_offset = brazil.offset_at(summer)
     var unchanged = winter_offset == summer_offset
     console.print("a fixed offset never changes:", unchanged)
-    var today = india.to_local(moment)
-    var yesterday = baker_island.to_local(moment)
+    var today = moment.to_date_time_in(india)
+    var yesterday = moment.to_date_time_in(baker_island)
     var date_differs = today.date != yesterday.date
     console.print(today.date, yesterday.date, date_differs)
 }

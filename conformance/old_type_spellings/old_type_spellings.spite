@@ -1,5 +1,4 @@
 var console = Console()
-var time_text = TimeText()
 
 func OldTypeSpellings() {
     load "../../../spite_standard_library/windows"
@@ -10,6 +9,6 @@ func OldTypeSpellings() {
     var parsed = text.to_int()
     var day = LocalDate(2024, 3, 10)
     var clock: LocalTime? = null
-    var reading = time_text.read_local_date("2024-03-10")
+    var reading = "2024-03-10".to_local_date()
     console.print(count, ready, mask, parsed, day, clock, reading)
 }

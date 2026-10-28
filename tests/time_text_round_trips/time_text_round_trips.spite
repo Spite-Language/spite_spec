@@ -1,5 +1,4 @@
 var console = Console()
-var time_text = TimeText()
 
 func TimeTextRoundTrips() {
     load "../../../spite_standard_library/windows"
@@ -31,7 +30,7 @@ func TimeTextRoundTrips() {
 }
 
 func instant_round_trip(text: String) {
-    var read = time_text.read_instant(text)
+    var read = text.to_instant()
     crash read
     var written = read.to_string()
     crash written == text
@@ -39,7 +38,7 @@ func instant_round_trip(text: String) {
 }
 
 func date_round_trip(text: String) {
-    var read = time_text.read_date(text)
+    var read = text.to_date()
     crash read
     var written = read.to_string()
     crash written == text
@@ -47,7 +46,7 @@ func date_round_trip(text: String) {
 }
 
 func time_round_trip(text: String) {
-    var read = time_text.read_time(text)
+    var read = text.to_time()
     crash read
     var written = read.to_string()
     crash written == text
@@ -55,7 +54,7 @@ func time_round_trip(text: String) {
 }
 
 func date_time_round_trip(text: String) {
-    var read = time_text.read_date_time(text)
+    var read = text.to_date_time()
     crash read
     var written = read.to_string()
     crash written == text
@@ -63,7 +62,7 @@ func date_time_round_trip(text: String) {
 }
 
 func duration_round_trip(text: String) {
-    var read = time_text.read_duration(text)
+    var read = text.to_duration()
     crash read
     var written = read.to_string()
     crash written == text
@@ -71,7 +70,7 @@ func duration_round_trip(text: String) {
 }
 
 func period_round_trip(text: String) {
-    var read = time_text.read_period(text)
+    var read = text.to_period()
     crash read
     var written = read.to_string()
     crash written == text
@@ -84,17 +83,19 @@ func other_spellings() {
     show_instant("2024-03-10T03:00:00-04:00[America/New_York]")
     show_instant("2024-03-10t07:00:00z")
     show_instant("2024-03-10 07:00:00,5Z")
-    show_instant("2024-03-10T06:59:60Z")
-    var local = time_text.read_date_time("2024-03-10 02:30")
-    var ninety = time_text.read_duration("PT90M")
-    var fortnight = time_text.read_period("P2W")
-    var later = time_text.read_period("-P1Y-2M")
+    show_instant("2024-03-10T07:00:00Z[America/New_York]")
+    show_instant("2024-03-10T12:30:00+05:30[+05:30]")
+    show_instant("2024-03-10T07:00:00Z[u-ca=iso8601]")
+    var local = "2024-03-10 02:30".to_date_time()
+    var ninety = "PT90M".to_duration()
+    var fortnight = "P2W".to_period()
+    var later = "-P1Y-2M".to_period()
     crash local and ninety and fortnight and later
     console.print(local, ninety, fortnight, later)
 }
 
 func show_instant(text: String) {
-    var read = time_text.read_instant(text)
+    var read = text.to_instant()
     crash read
     console.print(text, "is", read)
 }

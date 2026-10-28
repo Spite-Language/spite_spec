@@ -46,25 +46,25 @@ func show_all(zone: TimeZone, moments: List<Long>) {
     while index < moments.count() {
         var since_1970 = Duration(moments[index], 'seconds')
         var moment = Instant(since_1970)
-        var shown = zone.to_text(moment)
-        console.print(zone.name, moment, shown)
+        var shown = moment.to_string_in(zone)
+        console.print(zone.identifier, moment, shown)
         index = index + 1
     }
 }
 
 func choose(zone: TimeZone, local: DateTime) {
-    var earlier = zone.to_instant(local, 'earlier')
-    var later = zone.to_instant(local, 'later')
-    var earlier_text = zone.to_text(earlier)
-    var later_text = zone.to_text(later)
-    console.print(zone.name, local, earlier_text, later_text)
+    var earlier = local.to_instant_in(zone, 'earlier')
+    var later = local.to_instant_in(zone, 'later')
+    var earlier_text = earlier.to_string_in(zone)
+    var later_text = later.to_string_in(zone)
+    console.print(zone.identifier, local, earlier_text, later_text)
 }
 
 func refused(data: String) {
     var bytes = data.to_buffer()
     var zone = zones.read_tzif("Broken", bytes)
     if zone {
-        console.print("read", zone.name)
+        console.print("read", zone.identifier)
     } else {
         console.print("refused {data.length()} bytes that are not a zone file")
     }
