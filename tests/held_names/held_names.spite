@@ -17,7 +17,7 @@ func HeldNames() {
         round = round + 1
     }
     crash weights[1]
-    console.print(first.hits, second.hits, weights[1])
+    console.print(first.name, second.name, first.hits, second.hits, weights[1])
 }
 
 func visit(index: Integer) {

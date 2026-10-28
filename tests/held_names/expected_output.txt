@@ -1,1 +1,1 @@
-3 3 30
+position velocity 3 3 30

@@ -3,9 +3,9 @@ var console = Console()
 func OwnCollectionTemplates() {
     load "../../../spite_standard_library/windows"
     var velocities = List<Velocity>()
-    var fast = Velocity(3.0, "fast")
+    var fast = Velocity(3.0)
     velocities.append(fast)
-    var slow = Velocity(1.0, "slow")
+    var slow = Velocity(1.0)
     velocities.append(slow)
     var average = velocities.average_across()
     crash average
