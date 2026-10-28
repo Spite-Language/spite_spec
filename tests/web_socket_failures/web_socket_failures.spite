@@ -77,7 +77,7 @@ func drain(socket: WebSocket.Connection) {
 }
 
 func old_version() {
-    var socket = Socket()
+    var socket = Tcp.Client()
     crash socket.connect_locally(47914)
     write_text(
         socket,
@@ -104,8 +104,8 @@ func hang_up() {
     socket.close()
 }
 
-func open_raw(path: String): Socket {
-    var socket = Socket()
+func open_raw(path: String): Tcp.Client {
+    var socket = Tcp.Client()
     crash socket.connect_locally(47914)
     write_text(
         socket,
@@ -131,16 +131,16 @@ func counting_bytes(count: Integer): Buffer {
     return counted
 }
 
-func write_text(socket: Socket, text: String) {
+func write_text(socket: Tcp.Client, text: String) {
     var text_bytes = text.to_buffer()
     write_list(socket, text_bytes)
 }
 
-func write_list(socket: Socket, list: Buffer) {
+func write_list(socket: Tcp.Client, list: Buffer) {
     crash socket.write_buffer(list)
 }
 
-func write_frame(socket: Socket, first: Integer, payload: Buffer) {
+func write_frame(socket: Tcp.Client, first: Integer, payload: Buffer) {
     var counted = payload.count()
     var frame = Buffer(0)
     var opening: Byte = first
@@ -162,7 +162,7 @@ func write_frame(socket: Socket, first: Integer, payload: Buffer) {
     write_list(socket, frame)
 }
 
-func read_until_closed(socket: Socket): Buffer {
+func read_until_closed(socket: Tcp.Client): Buffer {
     var received = Buffer(0)
     while not socket.closed {
         var got = socket.read_as_buffer()

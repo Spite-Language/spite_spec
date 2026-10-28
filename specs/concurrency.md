@@ -70,8 +70,8 @@ followed by a read costs, and a program that never calls it carries none of it
 
 **A handle's debug text never waits.** `Concurrent` and `Parallel` have their own `to_debug()`: `running` while the work runs,
 otherwise the result's own debug text (through `finished_value()`), so `console.debug` of a class holding a
-`Parallel<Socket?>?`, and a crash report that shows one, neither join the work nor forward `to_debug` to a
-`Socket?` that may be null (`conformance/stage6/debug_handles`).
+`Parallel<Tcp.Client?>?`, and a crash report that shows one, neither join the work nor forward `to_debug` to a
+`Tcp.Client?` that may be null (`conformance/stage6/debug_handles`).
 
 **A handle made at its defaults started nothing, so it is finished and joins nothing.** Reflection makes one: describing a class whose function takes a `Concurrent<T>` or a `Parallel<T>`
 describes that handle's class too, from a stand-in at its defaults ([reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md)). Such a handle
@@ -201,7 +201,7 @@ a resumable version:
   target. `conformance/stage6/wait_order`.
 - **The waits at the bottom** are small state machines the compiler writes: `Program.sleep` registers a deadline
   (the `Duration`'s whole milliseconds from now) and is over when the clock passes it; `Console.read_line_into`, `File.read_into`, `File.write_text`,
-  `File.write_from`, the wait for a file's lock (`File.lock()`), `Socket.accept_handle`, `Socket.receive_into` and `Socket.first_readable` start their one system call on a helper thread
+  `File.write_from`, the wait for a file's lock (`File.lock()`), `Tcp.Server._accept_handle`, `Tcp.Connection._receive_into` and `Tcp.Server._first_readable` start their one system call on a helper thread
   and are over when it flags that it returned; reading or dropping a `Concurrent` is over when that
   `Concurrent`'s frame has finished.
 
@@ -455,9 +455,9 @@ attributes are never counted either. `diagnostics/parallel_shared_value_writes`.
 The task runs exactly as it did; nothing is added at run time. `conformance/stage6/parallel_handover`,
 `diagnostics/parallel_handover`.
 
-**Reads in a row overlap.** All the IO classes use it, and a `File` or `Socket` is not changed: the compiler does it
+**Reads in a row overlap.** All the IO classes use it, and a `File` or `Tcp.Connection` is not changed: the compiler does it
 at the call site. When two or more statements in a row are each `var name = receiver.read_as_string()` on a `File` (or
-`receiver.read_line()` on a `Socket`), with no written type, the receiver a name or an attribute path, no statement
+`receiver.read_line()` on a `Tcp.Connection` or a `Tcp.Client`), with no written type, the receiver a name or an attribute path, no statement
 naming a variable an earlier one declared, and the name never assigned again in the function, every one but the
 last is compiled as `var name = Concurrent(receiver.read_as_string)`, and after the last each is joined (its private `_join()`)
 before the next statement runs. Every later use of the name is an implicit join of a finished handle (above),
@@ -477,7 +477,7 @@ every function each one reaches, the compiler's own code included: an attribute 
 class count as one, except objects held by attributes made for their owner, below), the items of a list or
 dictionary (two attributes holding lists count apart only when each holds a list made for it and never handed
 anywhere else, and two lists of one kind count as one otherwise); and when neither prints, reads or writes a `File`, a `Directory` or a
-`Socket`, waits, calls anything outside the program but plain arithmetic and the clock, or calls through a
+network class, waits, calls anything outside the program but plain arithmetic and the clock, or calls through a
 function value. Classes the program never makes are left out of the comparison. Nothing is overlapped inside a
 singleton's own functions, inside a counted loop that holds a singleton's lock, in the standard library, or in a
 `--hot-reload`, `--repl` or `--development` build. When an overlapped call crashes, the program halts with that
@@ -521,7 +521,7 @@ and all joined before the next statement, when every pass writes only its own el
 it reaches, the pass writes attributes only of the object it runs on (reached as that object, not through another
 name of its class), or the items of a list or dictionary attribute of it that holds one made for it and never
 handed anywhere else, and reads nothing a pass writes, read through any other name; and it counts no reference,
-prints, reads or writes a `File`, a `Directory` or a `Socket`, waits, calls anything outside the program but plain arithmetic and the clock, or calls through a function value. The compiler weighs the pass while compiling (each statement 1, a loop's body as many times as its bound
+prints, reads or writes a `File`, a `Directory` or a network class, waits, calls anything outside the program but plain arithmetic and the clock, or calls through a function value. The compiler weighs the pass while compiling (each statement 1, a loop's body as many times as its bound
 when the bound is a number, 8 times otherwise, a call what its function weighs) and runs in bands only when the
 pass weighs at least 256 and the list's count, read when the statement runs, times that weight reaches a million (see
 [optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-loop-whose-passes-write-only-their-own-item-runs-in-bands)), and,

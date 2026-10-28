@@ -89,7 +89,7 @@ reload (`--hot-reload`). The REPL is Spite the compiler adds to a build that ask
 reflection; nothing of it is in a build that did not ask for it. It answers paths, singletons by name, assignment of
 a literal, calls with literal arguments and paths through what they answer, `attributes`, `functions`, `classes`,
 `describe`, `enums`, `memory`, `help`, `exit`, `reload`, `last_reload` and `wait_reload`, assignment into elements,
-`T?`s and of whole instances, and walking into a union. `--repl-port` runs it over `spite connect` and `Socket`,
+`T?`s and of whole instances, and walking into a union. `--repl-port` runs it over `spite connect` and `Tcp`,
 answered where the program waits and at each loop's check point. Live reload runs on Windows. Code typed at the
 prompt is compiled and run by `eval` and `run`.
 
@@ -310,12 +310,12 @@ the process stays alive serving the REPL until a client sends `exit`.
 
 The design:
 
-- **Spite, over `Socket`.** The server is `ReadEvaluatePrintLoop.serve`, written by the compiler
-  over the `Socket` class ([System classes](standard_library.md#system-classes)), whose operating-system
+- **Spite, over `Tcp`.** The server is `ReadEvaluatePrintLoop.serve`, written by the compiler
+  over `Tcp.Server` and `Tcp.Connection` ([System classes](standard_library.md#system-classes)), whose operating-system
   members each system's folder of the standard library supplies (`ws2_32.dll` on Windows, `libc.so.6` on Linux,
   `libSystem.dylib` on macOS). The REPL listens with
   `listen_locally`, which binds `127.0.0.1` and nothing else, so "loopback only" holds by construction.
-  `ws2_32.dll` is opened when the first `Socket` is made, so a program without a REPL never loads it.
+  `ws2_32.dll` is opened when the first `Tcp.Server` is made, so a program without a REPL never loads it.
 - **The thread.** The one piece of C this adds is written by the compiler, only in a `--repl-port` build: a
   two-line thread entry, `spite_remote_loop_thread`, that calls `ReadEvaluatePrintLoop.serve` with the entry
   instance. Spite starts it and waits for it through the operating system's folder (`CreateThread` and
@@ -328,7 +328,7 @@ The design:
   before it watches the socket again; the program's thread reads the command, answers it and writes the answer, so
   no command waits for a timer ([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-repl-answers-at-the-waits)). The
   program's thread answers it the next time the program waits (`program.sleep`,
-  `Console.read_line()`, a `File` read or write, a `Socket` accept or read, reading an unfinished `Concurrent`'s
+  `Console.read_line()`, a `File` read or write, a `Tcp` accept or read, reading an unfinished `Concurrent`'s
   value, joining a `Parallel`), so a command sees the program between two steps, never in the middle of one, and
   the program's state is never read or written by two threads at once. After the constructor returns, the program
   waits for nothing but commands. A program that never waits is answered at its loops' check points (below);
@@ -365,7 +365,7 @@ The design:
 
 ### `spite connect <port>`
 
-A tiny client built into the compiler binary itself, over the same `Socket` class: with no `--command`, an
+A tiny client built into the compiler binary itself, over the same `Tcp` classes (a `Tcp.Client`): with no `--command`, an
 interactive prompt that sends each typed line and pretty-prints the JSON response (`value (type)`, just `value`
 when the type is empty or `Nothing`, or `error: message`); with `--command="..."`, sends that one command, prints
 the raw JSON response line, and exits, which is the form tests and AI clients use. Nothing listening on the port

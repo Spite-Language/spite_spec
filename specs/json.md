@@ -44,7 +44,8 @@ var bytes = packer.write(order)         # Buffer: never fails
 var unpacker = BinaryReader<Order>()    # made once, reused for every buffer
 var unpacked = unpacker.read(bytes)     # Order?: null on bytes that are not exactly one Order
 var many = BinaryWriter<List<Order>>()  # many values are one value: a list of them
-var received = connection.read_as_buffer_now()   # Buffer: what a socket has
+var received = connection.read_as_buffer()       # Buffer?: what a connection has
+crash received
 var from_socket = unpacker.read(received)
 ```
 
@@ -63,7 +64,7 @@ makes the text, and 'JsonReader<T>()' whose 'read(text)' answers a 'T?'` (`diagn
   ([standard_library.md](standard_library.md#bytes-are-a-buffer)). `BinaryWriter<T>()` has
   `write(value: T): Buffer`, and `BinaryReader<T>()` has `read(bytes: Buffer): T?`, which reads one value that
   must fill the bytes. The format's numbers are little-endian. There is no reading from a `Memory.Address`:
-  bytes from a `Socket` or a `File` are a `Buffer` already. Many values are one value, `BinaryWriter<List<T>>`
+  bytes from a `Tcp.Connection` or a `File` are a `Buffer` already. Many values are one value, `BinaryWriter<List<T>>`
   and `BinaryReader<List<T>>`, and a part of a buffer is read by taking it first with `read_buffer_at`
   (`tests/binary_many_values`). The value a writer takes is a `T`, not a `T?`: an empty `T?` is narrowed by the caller, who then
   knows whether anything was written (a `T?` inside a value has its presence byte). Nothing is held between

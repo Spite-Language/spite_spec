@@ -1,0 +1,58 @@
+var console = Console()
+
+func IpAddresses() {
+    load "../../../spite_standard_library/windows"
+    show("192.168.1.20")
+    show("0.0.0.0")
+    show("::1")
+    show("::")
+    show("2001:DB8:0:0:0:0:0:7")
+    show("2001:db8:0:0:1:0:0:1")
+    show("2001:0db8::0001")
+    show("1:0:0:2:0:0:0:3")
+    show("::ffff:10.0.0.1")
+    show("::ffff:a00:1")
+    show("64:ff9b::192.0.2.33")
+    show("fe80::1%4")
+    show("256.1.1.1")
+    show("01.2.3.4")
+    show("1.2.3")
+    show("1::2::3")
+    show("12345::")
+    show("1:2:3:4:5:6:7:8:9")
+    show("127.0.0.1%2")
+    show("example.com")
+    show("")
+    var first = "10.0.0.1".to_ip_address()
+    var second = "::ffff:10.0.0.1".to_ip_address()
+    var third = "10.0.0.2".to_ip_address()
+    crash first
+    crash second
+    crash third
+    var same = first == second
+    var different = first != third
+    console.print("10.0.0.1 == ::ffff:10.0.0.1:", same)
+    console.print("10.0.0.1 != 10.0.0.2:", different)
+    var unspecified = IpAddress()
+    console.print("IpAddress() is {unspecified}")
+    var resolved = "localhost".resolve_ip_addresses()
+    var found = resolved[0]
+    crash found
+    console.print("localhost resolves first to {found}")
+    var literal = "::1".resolve_ip_addresses()
+    var literal_count = literal.count()
+    console.print("an address resolves to itself:", literal_count)
+}
+
+func show(text: String) {
+    var address = text.to_ip_address()
+    if address {
+        var kind = "IPv6"
+        if address.is_ipv4() {
+            kind = "IPv4"
+        }
+        console.print("'{text}' is {kind} {address}")
+    } else {
+        console.print("'{text}' is not an address")
+    }
+}

@@ -1,21 +1,16 @@
 var console = Console()
-var program = Program()
-var server = Socket()
+var server = Tcp.Server()
 
 func SocketBytes() {
     load "../../../spite_standard_library/windows"
-    var one_millisecond = Duration(1, 'milliseconds')
-    crash server.listen_at("127.0.0.1", 47313)
-    var nobody = server.accept_client_now()
-    if not nobody {
-        console.print("nobody is connecting yet")
-    }
-    var client = Socket()
-    crash client.connect("localhost", 47313)
-    var peer = accept_eventually()
-    var nothing = peer.read_as_buffer_now()
-    var nothing_count = nothing.count()
-    console.print("nothing yet:", nothing_count, peer.closed)
+    var address = "127.0.0.1".to_ip_address()
+    crash address
+    crash server.listen_at(address, 47313)
+    var client = Tcp.Client()
+    crash client.connect_to_host("localhost", 47313)
+    var peer = server.accept()
+    crash peer
+    console.print("the peer is open:", not peer.closed)
     send(client, 1, 2, 250)
     var received = receive(peer, 3)
     var first = received[0]
@@ -24,29 +19,33 @@ func SocketBytes() {
     crash third
     var received_count = received.count()
     console.print("peer received:", received_count, first, third)
-    send(peer, 7, 8, 9)
-    received = receive(client, 3)
-    var second = received[1]
+    var answer = Buffer(0)
+    answer.append(7)
+    answer.append(8)
+    answer.append(9)
+    crash peer.write_buffer(answer)
+    var from_peer = Buffer(0)
+    while from_peer.count() < 3 and not client.closed {
+        var more = client.read_as_buffer()
+        if more {
+            var more_count = more.count()
+            from_peer.append_buffer(more, 0, more_count)
+        }
+    }
+    var second = from_peer[1]
     crash second
-    received_count = received.count()
+    received_count = from_peer.count()
     console.print("client received:", received_count, second)
     crash peer.write_line("hello over the wire")
-    var line = client.read_line_now()
-    while not line {
-        program.sleep(one_millisecond)
-        line = client.read_line_now()
-    }
+    var line = client.read_line()
     crash line
     console.print("client read the line:", line)
     client.close()
-    var after = peer.read_as_buffer_now()
-    while not peer.closed {
-        program.sleep(one_millisecond)
-        after = peer.read_as_buffer_now()
+    var after = peer.read_as_buffer()
+    if not after {
+        console.print("peer closed:", peer.closed)
     }
-    var after_count = after.count()
-    console.print("peer closed:", after_count, peer.closed)
-    var last_line = peer.read_line_now()
+    var last_line = peer.read_line()
     if not last_line {
         console.print("no line after the close")
     }
@@ -54,34 +53,23 @@ func SocketBytes() {
     server.close()
 }
 
-func accept_eventually(): Socket {
-    var one_millisecond = Duration(1, 'milliseconds')
-    var accepted = server.accept_client_now()
-    while not accepted {
-        program.sleep(one_millisecond)
-        accepted = server.accept_client_now()
-    }
-    crash accepted
-    return accepted
-}
-
-func send(socket: Socket, first: Byte, second: Byte, third: Byte) {
+func send(client: Tcp.Client, first: Byte, second: Byte, third: Byte) {
     var message = Buffer(0)
     message.append(first)
     message.append(second)
     message.append(third)
-    var sent = socket.write_buffer_now(message)
-    console.print("sent without waiting:", sent)
+    var sent = client.write_buffer(message)
+    console.print("sent:", sent)
 }
 
-func receive(socket: Socket, wanted: Integer): Buffer {
-    var one_millisecond = Duration(1, 'milliseconds')
-    var received = socket.read_as_buffer_now()
-    while received.count() < wanted and not socket.closed {
-        program.sleep(one_millisecond)
-        var more = socket.read_as_buffer_now()
-        var more_count = more.count()
-        received.append_buffer(more, 0, more_count)
+func receive(connection: Tcp.Connection, wanted: Integer): Buffer {
+    var received = Buffer(0)
+    while received.count() < wanted and not connection.closed {
+        var more = connection.read_as_buffer()
+        if more {
+            var more_count = more.count()
+            received.append_buffer(more, 0, more_count)
+        }
     }
     return received
 }

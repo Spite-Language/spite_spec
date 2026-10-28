@@ -1,12 +1,14 @@
 var console = Console()
-var server = Socket()
+var server = Tcp.Server()
 
 func SocketWaits() {
     load "../../../spite_standard_library/windows"
-    crash server.listen_at("localhost", 47314)
+    crash server.listen_at_host("localhost", 47314)
     var serving = Concurrent(echo_once)
-    var client = Socket()
-    crash client.connect("127.0.0.1", 47314)
+    var client = Tcp.Client()
+    var address = "127.0.0.1".to_ip_address()
+    crash address
+    crash client.connect(address, 47314)
     var message = Buffer(0)
     message.append(10)
     message.append(20)
@@ -35,7 +37,7 @@ func SocketWaits() {
 }
 
 func echo_once(): Integer {
-    var peer = server.accept_client()
+    var peer = server.accept()
     crash peer
     var buffer = Buffer(0)
     while buffer.count() < 4 and not peer.closed {

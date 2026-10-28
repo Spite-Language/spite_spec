@@ -189,7 +189,8 @@ library through `DynamicLibrary`. What each member answers is in the section of 
 | `Benchmark(work)` | `answer`, what one call of `work` answered, and `duration: Duration`, the monotonic time the call took; see [Time](time.md#time-one-stored-instant-zones-for-presentation) |
 | `Console()` | a singleton: `print(...values)`, `write(...values)`, `error(...values)`, `debug(...values)`, `read_line(): String?`; see [Console](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#console), and below |
 | `FileSystemWatcher()` | `watch_for_changes(target: FileSystemWatcher.Target): Boolean`, `changes(): List<String>`, `wait_for_changes()`; see [Watch files and folders](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#watch-files-and-folders), which is the rule. `HotReload` is built on it ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
-| `Socket()` | public library surface: `listen_locally(port): Boolean`, `listen_everywhere(port): Boolean`, `listen_at(host, port): Boolean`, `connect_locally(port): Boolean`, `connect(host, port): Boolean`, `accept_client(): Socket?`, `read_line(): String?`, `read_as_string(): String?`, `read_as_buffer(): Buffer?`, `write_line(text): Boolean`, `write_string(text): Boolean`, `write_buffer(buffer: Buffer): Boolean`, the calls that never wait `accept_client_now(): Socket?`, `read_line_now(): String?`, `read_as_buffer_now(): Buffer` and `write_buffer_now(buffer): Integer`, `closed: Boolean`, `close()`: TCP over IPv4 and IPv6 on every system ([Socket](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#socket), and below); `--repl-port` and `spite connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
+| `Tcp.Server()`, `Tcp.Client()`, `Tcp.Connection` | TCP over IPv4 and IPv6 on every system. A server listens (`listen_locally(port)`, `listen_everywhere(port)`, `listen_at(address: IpAddress, port)`, `listen_at_host(host, port)`, each `Boolean`) and answers `accept(): Tcp.Connection?`; a client connects (`connect(address: IpAddress, port)`, `connect_to_host(host, port)`, `connect_locally(port)`, each `Boolean`); a client and a connection talk alike: `read_line(): String?`, `read_as_string(): String?`, `read_as_buffer(): Buffer?`, `write_line(text): Boolean`, `write_string(text): Boolean`, `write_buffer(buffer): Boolean`, `closed: Boolean`, `close()`. Every read waits ([Tcp](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#tcp), and below); `--repl-port` and `spite connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
+| `IpAddress` | an IPv4 or IPv6 address and nothing else (a port is a number beside it): `is_ipv4()`, `is_ipv6()`, `==` (its `equals(other)`), `to_string()` (RFC 5952). It is read from text with `String.to_ip_address(): IpAddress?` and resolved from a host name with `String.resolve_ip_addresses(): List<IpAddress>`; `IpAddress()` is `0.0.0.0`, and no constructor takes text (D1718; below) |
 | `Concurrent(function)`, `Parallel(function)` | the handle stands in for what the function returned, and reading it is the wait; `finished: Boolean` never waits; dropping the handle waits for it; there is no `wait()` and no `join()`; see [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md) |
 | `DynamicLibrary(file_name, naming, header)` | every foreign function, constant and type of a native library; see [Foreign libraries](foreign_libraries.md#foreign-libraries). It holds its `file_name` and `handle`, its constructor and `drop()`; opening, closing and finding a symbol are the compiler's reopening |
 | `ForeignBytes(address, count)` | memory a foreign library hands out (an address and a size it answers): `count(): Long`, `get_at(position): Byte?` (`foreign[position]`), `set_at(position, value)`, `read_<number>_at(position): <number>?` and `write_<number>_at(position, value)`, big-endian forms included, as a `Buffer` has them, `read_buffer_at(position, count): Buffer?` and `write_buffer_at(position, buffer)`; see [Bytes are a Buffer](#bytes-are-a-buffer) |
@@ -299,61 +300,78 @@ In detail:
 - `--final-classes` prints `Directory` back out with its `union Entry`, which compiles because a union declared
   again replaces the earlier one ([Packages, namespaces and loading](packages.md#packages-namespaces-and-loading)).
 
-**`Socket` does what a game server needs, on every system.**
-The class holds everything but the calls into each system's library, which the `windows`, `linux` and `mac`
-folders reopen it with:
+**`Tcp` and `Udp` do what a game server needs, on every system** (D1717). Each protocol is a namespace of a
+`Server`, a `Client` and, where a server accepts, a `Connection`. The classes hold everything but the calls into
+each system's library, which the `windows`, `linux` and `mac` folders reopen them with:
 
-- **Addresses.** `listen_locally` and `connect_locally` build `127.0.0.1` themselves, and `listen_everywhere`
-  builds `::` on a socket that takes IPv4 connections too (`IPV6_V6ONLY` off), or `0.0.0.0` where the system has
-  no IPv6. `listen_at` and `connect` resolve the host with the system's `getaddrinfo`, asking for any family and a
-  stream socket, and put the IPv4 answers first, in the order the system gives them, then the IPv6 ones: `listen_at`
-  listens on the first, and `connect` tries them in turn until one connects. A name that does not resolve answers `false`. Resolving waits in place, like
-  connecting. The listening queue is 64 connections deep. `Udp.Socket` uses the same addresses, from its own copy of the address code (it makes no `Socket`): `open` and
-  `open_everywhere` take both families on one IPv6 socket, sending to an IPv4 address as `::ffff:` and the address,
-  and a sender's address is written as RFC 5952 gives it, with an IPv4 address inside `::ffff:` written as IPv4 and
-  a link-local one's scope after a `%`.
-- **Waiting calls.** `accept_client`, `read_line`, `read_as_string` and `read_as_buffer` reach `Socket._accept_handle`
-  and `Socket._receive_into`, and `Http.Server.next_request` reaches `Socket._first_readable` (the system's `poll`, or
-  `WSAPoll`, over the listener and every kept connection, for at most `idle_limit`, a `Duration` (5 seconds unless set), or one second), which are the
-  compiler's waits ([concurrency.md](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting)):
-  in a `Concurrent` they return to the event loop while a helper thread makes the call. `write_line`,
-  `write_string` and `write_buffer` send until everything is sent, in place, as before.
-- **Calls that never wait** (`_now`) are ordinary calls, not waits, so they add nothing to a state machine. Linux
-  and macOS pass `MSG_DONTWAIT` to `recv` and `send` and ask `poll` with a timeout of 0 before `accept`, so a socket
-  stays in blocking mode and the waiting calls keep working on it. Windows has no such flag: a socket switches to
-  non-blocking mode (`ioctlsocket` with `FIONBIO`) the first time a `_now` call reaches it and back when a waiting
-  call does, so a loop that only polls pays for one switch, not one per call. A client that `accept_client_now`
-  hands back is in blocking mode, like every new `Socket`. "Nothing yet" is `EWOULDBLOCK` (`WSAEWOULDBLOCK` on
-  Windows, `EAGAIN` or `EINTR` elsewhere, read through `__errno_location` or `__error`); any other failure, or a
-  read of 0 bytes, is the end of the connection.
-- **`closed`** is an attribute: `false` from `listen_*` or `connect*`, `true` once a read sees the end of the
-  connection or a failure, once a write fails, or after `close()`. A read on a closed socket answers an empty list or `null`
-  without calling the system, a write sends nothing, and nothing crashes. `read_line` answers
-  `null` for a closed connection, and sets `closed`.
-- **Lines and bytes mix.** Text `read_line` read past its line waits in the socket, and `read_as_string`,
-  `read_as_buffer` and `read_as_buffer_now` hand those bytes out first.
+- **One talking code.** `Tcp.Connection` holds the handle, the bytes read past a line and `closed`, and does all the
+  reading and writing. `Tcp.Server.accept()` hands one out, and a `Tcp.Client` holds one, as a `WebSocket.Client`
+  holds a `WebSocket.Connection`: its reads and writes are the connection's. `Http` and `WebSocket` are written on
+  `Tcp.Client` and `Tcp.Connection`. A `Udp.Client` holds a `Udp.Server` opened on a port the system picks, so the
+  datagram code is written once too (D1726).
+- **Addresses are `IpAddress` values.** `IpAddress` holds only the address, four numbers for IPv4 or eight 16-bit
+  groups and an IPv6 zone index (`fe80::1%4`), and the port is always a number beside it. It is the one place that
+  reads an address from text, writes it as RFC 5952 gives it (lowercase, the longest run of two or more zero groups
+  as `::`, the first when two are as long, the zone after a `%`), and turns it into the system's address and back.
+  `String.to_ip_address()` reads dotted IPv4 (each part 0 to 255, no leading zero) and IPv6 (one `::` at most, a
+  dotted IPv4 ending, a numeric zone), and answers `null` for anything else, a host name included. An IPv4 address
+  inside `::ffff:` is that IPv4 address, from text or from the system, so a datagram a dual-stack socket receives
+  from `127.0.0.1` comes from `127.0.0.1`, and the two compare equal (`tests/ip_addresses`). `IpAddress()` is
+  `0.0.0.0`.
+- **A host name is text, an address is an `IpAddress`** (Spite has no overloading; D1726). `listen_at`, `connect`,
+  `open_at` and `send_to` take an `IpAddress`; `listen_at_host`, `connect_to_host`, `open_at_host` and
+  `send_to_host` take a host name or an address as text and resolve it with `String.resolve_ip_addresses()`: the
+  system's `getaddrinfo`, IPv4 answers first in the order the system gives them, then the IPv6 ones, empty when the
+  name names nothing. `listen_at_host` and `open_at_host` take the first, `connect_to_host` tries them in turn until
+  one connects, and `send_to_host` sends to the first the socket can reach. A name that does not resolve answers
+  `false`. Resolving waits in place, like connecting. `Http.Client.send` and `WebSocket.Client.connect` take the
+  host as text, since they write it in the `host` header. Until the cast of spite_compiler#228 and the folding of
+  #229 land, a program writes `"127.0.0.1".to_ip_address()` and narrows it.
+- **Every interface.** `listen_locally`, `connect_locally` and `open_locally` use `127.0.0.1`; `listen_everywhere`
+  and `open_everywhere` use `::` on a socket that takes IPv4 too (`IPV6_V6ONLY` off), or `0.0.0.0` where the system
+  has no IPv6. A dual-stack socket sends to an IPv4 address as `::ffff:` and the address; an IPv4 socket cannot
+  send to an IPv6 address, and `send_to` answers `false`. The listening queue is 64 connections deep.
+- **Every read waits** (D1725). There is one read per kind and no `_now` twin: `accept`, `read_line`,
+  `read_as_string`, `read_as_buffer` and `receive` wait for what they answer, or for the end. A frame loop keeps
+  running because the compiler parks the wait (spite_compiler#218, #219). The REPL's own loop (`--repl-port`)
+  polls through the private `Tcp.Server._accept_now` and `Tcp.Connection._read_line_now`, and `WebSocket` reads
+  what waits unread before it closes through `Tcp.Connection._read_as_buffer_now`; no program can call them.
+- **Waits the compiler knows.** `accept`, `read_line`, `read_as_string` and `read_as_buffer` reach
+  `Tcp.Server._accept_handle` and `Tcp.Connection._receive_into`, and `Http.Server.next_request` reaches
+  `Tcp.Server._first_readable` (the system's `poll`, or `WSAPoll`, over the listener and every kept connection, for
+  at most `idle_limit`, a `Duration` (5 seconds unless set), or one second), which are the compiler's waits
+  ([concurrency.md](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting)): in a `Concurrent` they
+  return to the event loop while a helper thread makes the call. `write_line`, `write_string` and `write_buffer`
+  send until everything is sent, in place.
+- **`closed`** is an attribute: `false` once a connection is accepted or connected, `true` once a read sees the
+  end of the connection or a failure, once a write fails, or after `close()`; a connection never connected is
+  closed. A read on a closed connection answers `null` without calling the system, a write sends nothing, and
+  nothing crashes.
+- **Lines and bytes mix.** Text `read_line` read past its line waits in the connection, and `read_as_string` and
+  `read_as_buffer` hand those bytes out first.
 - **Text from a stream.** `read_as_string()` reads what `read_as_buffer()` would, and when that run ends inside a
   character of several bytes it reads up to three more bytes, one at a time, to finish it: a character the network
   cut in two is never `null`. It answers `null` once the connection is closed, or when the bytes are not UTF-8.
-- **What it costs**: a `Boolean` per `Socket` (and on Windows one more for the mode), and the functions a
-  program calls: one that never polls has no `_now` code, and a system function only an unused call reaches
-  (`getaddrinfo`, `ioctlsocket`, ...) is never looked up. `conformance/stage6/socket_bytes` (a server and a client in one
-  program, bytes both ways and a line without waiting, then the close) and `socket_waits` (the waiting calls,
-  inside a `Concurrent`) are the proof.
+- **What it costs**: a `Boolean` per connection (and on Windows one more for the mode), and the functions a
+  program calls: a system function only an unused call reaches (`getaddrinfo`, `ioctlsocket`, ...) is never looked
+  up. `tests/socket_bytes` (a server and a client in one program, bytes both ways and a line, then the close),
+  `socket_waits` (the waiting calls, inside a `Concurrent`), `ipv6_addresses`, `datagrams` and `ip_addresses` are
+  the proof.
 
 ### Bytes are a Buffer
 
 Bytes a program reads or writes are a `Buffer`, a class of the standard library; no program-facing function takes
 or answers a `List<Byte>` for them ([Bytes are a Buffer](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#bytes-are-a-buffer)).
-Everything that hands bytes over answers a `Buffer`, and everything that takes bytes takes one: `File`, `Socket`,
+Everything that hands bytes over answers a `Buffer`, and everything that takes bytes takes one: `File`, `Tcp.Connection`,
 `Udp.Datagram`, `WebSocket.Message`, `Http.Request` and `Http.Response` bodies, `Process` output,
 `String.to_buffer()`, `Base64`, `Deflate`, `Zlib`, `Gzip`, `Sha256`, `SecureRandom`, `Argon2.derive`,
 `BinaryWriter`, `BinaryReader` and `ForeignBytes.read_buffer_at`.
 
 **Bytes that may be text are one holder with two reads** (D1708), as a `File` is: `read_as_string(): String?`,
 `null` when the bytes are not UTF-8, and `read_as_buffer()`, the bytes as they are. So a `WebSocket.Message`
-(`is_text()` beside the two reads), a `Socket`, a datagram (`Udp.Socket.receive(): Udp.Datagram?`, read with the two reads and carrying its
-`sender_host` and `sender_port`; `null` only when nothing arrives, so a datagram is never lost by reading it the
+(`is_text()` beside the two reads), a `Tcp.Connection`, a datagram (`Udp.Server.receive(): Udp.Datagram?` and
+`Udp.Client.receive()`, read with the two reads and carrying its `sender_address: IpAddress` and `sender_port`;
+`null` only when nothing arrives, so a datagram is never lost by reading it the
 wrong way; D1716), an HTTP body (`read_body_as_string()`, `read_body_as_buffer()`, `write_body_string(text)`,
 `write_body_buffer(buffer)`) and a `Process`'s output (`read_output_as_string()`, `read_output_as_buffer()`):
 nothing that carries bytes forces them through a `String`.
@@ -439,10 +457,8 @@ nothing that carries bytes forces them through a `String`.
   `append_buffer(buffer)` answers the position the bytes start at, `null` when the file cannot be opened or not every
   byte was written. Each call opens and closes the file (`tests/file_as_buffer`).
 - **Sockets.** `read_as_buffer()` waits until at least one byte has arrived and answers a fresh buffer of what arrived
-  (up to 65 536 bytes at once), `null` once the connection is closed; `read_as_buffer_now()` answers what has arrived, an
-  empty buffer for nothing yet and for a closed connection, which `closed` tells apart. Bytes `read_line` read past its
-  line are handed out first. `write_buffer(buffer)` sends all of it, waiting; `write_buffer_now(buffer)` hands the system
-  what it takes now and answers how many. A `Socket` keeps one 64 KB block it receives into, made on the first read
+  (up to 65 536 bytes at once), `null` once the connection is closed. Bytes `read_line` read past its line are handed
+  out first. `write_buffer(buffer)` sends all of it, waiting. A `Tcp.Connection` keeps one 64 KB block it receives into, made on the first read
   and freed by `close()`, and each read copies what arrived into its own buffer: one allocation per read. A
   `Udp.Datagram` and a `WebSocket.Message`, ping or pong are a `Buffer` the same way.
 - **A read the compiler proves** is a `read_<number>_at(position)`, and it answers the number itself, not a `T?`:
@@ -463,15 +479,15 @@ nothing that carries bytes forces them through a `String`.
   as a `Buffer`'s do; `read_buffer_at(position, count)` answers a fresh `Buffer`, and `write_buffer_at(position, buffer)`
   halts unless every byte fits. It has no position of its own, since the memory is the library's. It never frees the
   memory, and reading after the library has taken the memory back is the library's fault, reported as a native fault.
-- **Bytes go through a `Buffer`, never an address.** A `File`, a `Socket` and a `BinaryReader` read into and write
+- **Bytes go through a `Buffer`, never an address.** A `File`, a `Tcp.Connection` and a `BinaryReader` read into and write
   from a `Buffer`; none of them takes an address and a count, and a `List<Byte>` anywhere is the error above.
   `conformance/list_byte_functions`, `tests/list_byte_numbers`, `tests/binary_files`, `tests/socket_bytes` and
   `tests/socket_waits`.
-- **What it costs.** Each function is an ordinary member of `Buffer`, `File`, `Socket` or `ForeignBytes`, so a
+- **What it costs.** Each function is an ordinary member of `Buffer`, `File`, `Tcp.Connection` or `ForeignBytes`, so a
   program that reads no bytes carries none of them, and `Buffer` and `ForeignBytes` are not in a program that makes
   none. A `Buffer` costs a `List`'s fields.
 
-**`WebSocket` is RFC 6455 written in Spite over `Socket`**, a namespace of four classes (`common/web_socket/`):
+**`WebSocket` is RFC 6455 written in Spite over `Tcp.Client` and `Tcp.Connection`**, a namespace of four classes (`common/web_socket/`):
 `WebSocket.Client` connects, `WebSocket.Server` upgrades the requests an `Http.Server` hands out, both sides
 talk through a `WebSocket.Connection` (the client holds its own), and a message received is a
 `WebSocket.Message`:
@@ -538,7 +554,7 @@ called, like `+`, or explicit Spite.
 | Part | How |
 |---|---|
 | `String`, `List<T>`, `Dictionary<Key, Value>`, number to text | over `Buffer`. The syntax stays the compiler's (`[]`, list literals, `List<T>()`), mapped onto these classes' functions; the member templates are Spite ([collections.md](collections.md#standard-library-metaprogramming)) |
-| `File`, `Directory`, `Process`, `Program`, `Console.read_line`, `Clock`, `Socket`, `FileSystemWatcher`, the time-zone database | written once; each operating system's folder reopens the class with the few functions that call its own library (`ucrtbase.dll`/`kernel32.dll`, `libc.so.6`, `libSystem.dylib`) through `DynamicLibrary` |
+| `File`, `Directory`, `Process`, `Program`, `Console.read_line`, `Clock`, `IpAddress`, `Tcp`, `Udp`, `FileSystemWatcher`, the time-zone database | written once; each operating system's folder reopens the class with the few functions that call its own library (`ucrtbase.dll`/`kernel32.dll`, `libc.so.6`, `libSystem.dylib`) through `DynamicLibrary` |
 | printing, `to_debug()`, JSON and bytes | `Console`, `Spite.Debug<T>`, `Spite.DebugInstance<T>`, `JsonWriter<T>`, `JsonReader<T>`, `BinaryWriter<T>` and `BinaryReader<T>` ([json.md](https://github.com/Spite-Language/spite_documentation/blob/master/json.md)) |
 
 **What is the compiler's**:

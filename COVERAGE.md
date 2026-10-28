@@ -848,7 +848,8 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | Clock elapsed and now | tests/clock_reading, tests/clock_reads | covered |
 | Benchmark(work) answer and duration | tests/benchmark_answer | added (compiler fails: unknown type 'Benchmark') |
 | FileSystemWatcher | tests/file_watching | covered |
-| Socket: listen, connect, accept, lines, bytes, _now calls, closed, IPv6 | tests/socket_bytes, tests/socket_waits, tests/concurrent_sockets, tests/ipv6_addresses, tests/datagrams | covered |
+| Tcp.Server, Tcp.Client, Tcp.Connection, Udp.Server, Udp.Client: listen, connect, accept, lines, bytes, closed, IPv6, every read waits | tests/socket_bytes, tests/socket_waits, tests/concurrent_sockets, tests/ipv6_addresses, tests/datagrams | covered |
+| IpAddress: read from text, RFC 5952 text, IPv4 inside ::ffff:, equality, resolving a name | tests/ip_addresses | covered |
 | Concurrent and Parallel handles | tests/concurrent_waits, tests/parallel_work | covered (concurrency.md) |
 | ThreadPool, ThreadLocal, Lock, ThreadSlot classes | retired/ | superseded by D662 |
 | DynamicLibrary and ForeignBytes | tests/foreign_library | covered (compiler fails: exit code); ForeignBytes reads and halts missing |
@@ -889,7 +890,7 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | A List has none of the byte functions | conformance/list_byte_functions | added (compiler fails: generic message) |
 | Files: read_bytes whole, read_bytes_at short at the end, empty file empty buffer | tests/binary_files | covered |
 | A negative file position or count halts | none | missing |
-| Socket bytes: read_bytes, read_bytes_now, write_bytes_now | tests/socket_bytes | covered |
+| Connection bytes: read_as_buffer, write_buffer, the end of a connection | tests/socket_bytes | covered |
 | A proven read_<number>_at answers the number; an unproven one is T? | tests/fixed_offsets, conformance/byte_reads | covered |
 | ForeignBytes reads and writes, halts on a bad address or count | none | missing |
 | Address forms of File, Socket and BinaryReader are errors | none | superseded by D662 (no address a program can hold) |

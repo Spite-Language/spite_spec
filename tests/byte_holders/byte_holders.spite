@@ -1,7 +1,7 @@
 var console = Console()
 var server = Http.Server()
 var client = Http.Client()
-var listener = Socket()
+var listener = Tcp.Server()
 
 func ByteHolders() {
     load "../../../spite_standard_library/windows"
@@ -45,7 +45,7 @@ func echo_one(): Integer {
 func split_character() {
     crash listener.listen_locally(47916)
     var reading = Concurrent(read_one_string)
-    var sender = Socket()
+    var sender = Tcp.Client()
     crash sender.connect_locally(47916)
     var character = "é".to_buffer()
     var first = Buffer(0)
@@ -63,7 +63,7 @@ func split_character() {
 }
 
 func read_one_string(): String {
-    var peer = listener.accept_client()
+    var peer = listener.accept()
     crash peer
     var text = peer.read_as_string()
     crash text
@@ -72,12 +72,12 @@ func read_one_string(): String {
 }
 
 func datagram_text() {
-    var receiving = Udp.Socket()
-    var sending = Udp.Socket()
+    var receiving = Udp.Server()
+    var sending = Udp.Client()
     crash receiving.open_locally(47917)
-    crash sending.open_locally(0)
+    crash sending.open()
     var hello = "hello".to_buffer()
-    crash sending.send_to("127.0.0.1", 47917, hello)
+    crash sending.send_to_host("127.0.0.1", 47917, hello)
     var datagram = receiving.receive()
     crash datagram
     var text = datagram.read_as_string()
