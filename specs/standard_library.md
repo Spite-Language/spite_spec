@@ -51,7 +51,7 @@ allocation counts.
 | `length()` | `Integer` | |
 | `is_empty()` | `Boolean` | |
 | `slice(start, end)` | `String` | clamped; `""` for an empty/invalid range |
-| `character_at(index)` | `String` | `""` out of range |
+| `get_at(index)`, written `text[index]` | `String?` | the whole UTF-8 character that starts at byte `index`; `null` below 0, past the end, or inside a character of several bytes (`tests/string_get_at`) |
 | `code_at(index)` | `Integer` | below 0 or past the end halts, naming the index and the length (`tests/code_past_the_end`) |
 | `contains(text)` / `starts_with(text)` / `ends_with(text)` | `Boolean` | |
 | `index_of(text)` | `Integer?` | `null` when absent |

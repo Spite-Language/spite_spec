@@ -799,7 +799,7 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | String is immutable; short text has no allocation; building text in a loop is linear | tests/text_building | covered |
 | length, is_empty, trim, upper_case, lower_case | tests/string_methods | covered |
 | slice is clamped, "" for an empty or reversed range | tests/string_slice_edges | added |
-| character_at is "" out of range | tests/string_methods, tests/string_code_at_edges | covered |
+| text[index] is the whole character at that byte, null out of range or inside one | tests/string_get_at, conformance/string_index_unproven | added |
 | code_at is 0 out of range | tests/string_code_at_edges | added |
 | contains, starts_with, ends_with | tests/string_methods | covered |
 | index_of answers -1 when absent | tests/string_methods (prints null) | superseded by D669 |

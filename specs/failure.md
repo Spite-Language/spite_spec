@@ -355,13 +355,13 @@ How a read is proven:
   outside a counted loop because the list may have been shrunk through another name since the proof (a local that
   aliases it is not tracked); a counted loop's body calls nothing that could.
 - **Every `[]` answers `T?`.**
-  `List`, `Dictionary`, `Vector` and `Items` alike, and every class that declares `get_at`: the
+  `List`, `Dictionary`, `Vector`, `Items` and `String` alike, and every class that declares `get_at`: the
   function must answer a `T?`, and one declared with a plain `T` is `'get_at' answers 'Integer', but it is what
   '[ ]' calls, and every '[ ]' answers a 'T?' that is narrowed before use: declare it to answer 'Integer?', and
   answer null when nothing is at the index` (`diagnostics/plain_get_at`). The proofs above (counts, bounds, a
   literal's items, the call effects and counted loops) hold for the library's collections, whose
-  `count()` and `get_at` the compiler knows; a read through a program's own `get_at` is narrowed only by what the
-  program writes (`diagnostics/indexable_unproven`). Calling `get_at(index)` by name answers the same `T?`, but a
+  `count()` and `get_at` the compiler knows; a read through a program's own `get_at`, or through a `String`'s, is
+  narrowed only by what the program writes (`diagnostics/indexable_unproven`, `conformance/string_index_unproven`). Calling `get_at(index)` by name answers the same `T?`, but a
   call is not a path, so narrow `list[index]`
   instead. A read used before it is narrowed is an error that names the read and the lines that would
   narrow it: `crash`, `assert` and `if` on the read itself, then the count or loop bound that proves it for a

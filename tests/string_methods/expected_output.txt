@@ -1,6 +1,6 @@
 18 false true
 HELLO, SPITE WORLD hello, spite world
-Spite H 72 |
+Spite H 72
 true true false 7 null
 Bye, Spite Compiler
 4 a|b||c

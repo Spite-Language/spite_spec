@@ -1,0 +1,1 @@
+conformance/string_index_unproven/string_index_unproven.spite:6: error: 'text[0]' may be missing, since every '[ ]' answers a 'T?' (this one is a String?), so 'upper_case' cannot be called on it yet: narrow it first with 'crash text[0]', 'assert text[0]' or 'if text[0] { }' (in StringIndexUnproven.StringIndexUnproven)

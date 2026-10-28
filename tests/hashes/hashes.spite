@@ -65,8 +65,9 @@ func hex(bytes: Buffer): String {
         var held = bytes[index]
         crash held
         var value: Integer = held
-        var high = digits.character_at(value / 16)
-        var low = digits.character_at(value % 16)
+        var high = digits[value / 16]
+        var low = digits[value % 16]
+        crash high and low
         text = text + high + low
         index = index + 1
     }

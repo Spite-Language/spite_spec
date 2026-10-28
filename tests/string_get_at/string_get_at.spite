@@ -1,0 +1,28 @@
+var console = Console()
+
+func StringGetAt() {
+    load "../../../spite_standard_library/windows"
+    var word = "aé€😀"
+    var index = 0
+    while index < word.length() {
+        var character = word[index]
+        crash character
+        var size = character.length()
+        console.print(index, character, size)
+        index = index + size
+    }
+    show(word, 2)
+    show(word, 10)
+    show(word, -1)
+    var half = word.slice(0, 2)
+    show(half, 1)
+}
+
+func show(text: String, index: Integer) {
+    var character = text[index]
+    if character {
+        console.print(index, character)
+    } else {
+        console.print(index, "starts no character")
+    }
+}

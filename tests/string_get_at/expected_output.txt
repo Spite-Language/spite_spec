@@ -1,0 +1,8 @@
+0 a 1
+1 é 2
+3 € 3
+6 😀 4
+2 starts no character
+10 starts no character
+-1 starts no character
+1 starts no character

@@ -1,0 +1,8 @@
+var console = Console()
+
+func StringIndexUnproven() {
+    load "../../../spite_standard_library/windows"
+    var text = "spite"
+    var shouted = text[0].upper_case()
+    console.print(shouted)
+}

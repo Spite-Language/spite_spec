@@ -12,9 +12,10 @@ func StringMethods() {
     var lower_case_trimmed = trimmed.lower_case()
     console.print(upper_case_trimmed, lower_case_trimmed)
     var trimmed_slice = trimmed.slice(7, 12)
-    var first_character = trimmed.character_at(0)
+    var first_character = trimmed[0]
+    crash first_character
     var first_code = trimmed.code_at(0)
-    console.print(trimmed_slice, first_character, first_code, "{trimmed.character_at(99)}|")
+    console.print(trimmed_slice, first_character, first_code)
     var trimmed_contains = trimmed.contains("Spite")
     var trimmed_starts_with = trimmed.starts_with("Hello")
     var trimmed_ends_with = trimmed.ends_with("x")
