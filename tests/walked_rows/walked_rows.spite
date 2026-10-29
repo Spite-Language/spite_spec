@@ -1,6 +1,11 @@
+type Moving {
+    position: Position
+    velocity: Velocity
+}
+
 var console = Console()
 var world = World()
-var runner = Runner<Mover.Moving>()
+var runner = Runner<Moving>()
 var mover = Mover()
 
 func WalkedRows() {

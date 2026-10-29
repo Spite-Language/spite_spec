@@ -1,5 +1,12 @@
+type Moving {
+    entity: Entity
+    position: Position
+    velocity: Velocity
+    trail: Trail
+}
+
 var console = Console()
-var runner = Runner<Mover.Moving>()
+var runner = Runner<Moving>()
 var mover = Mover()
 var positions = Column<Position>()
 var velocities = Column<Velocity>()

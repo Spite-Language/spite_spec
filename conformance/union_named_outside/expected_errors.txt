@@ -1,0 +1,1 @@
+conformance/union_named_outside/union_named_outside.spite:7: error: 'Shelter.Pet' is a union of the class 'Shelter', and a union is never named outside the class that declares it: declare this class's own 'union Pet' with the same members, and write 'Pet' (in UnionNamedOutside.UnionNamedOutside)

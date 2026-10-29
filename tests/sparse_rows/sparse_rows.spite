@@ -1,7 +1,14 @@
+type Moving {
+    entity: Entity
+    position: Position
+    velocity: Velocity
+    journal: Journal
+}
+
 var console = Console()
 var world = World()
-var runner = Runner<Mover.Moving>()
-var hoisted_runner = HoistedRunner<Mover.Moving>()
+var runner = Runner<Moving>()
+var hoisted_runner = HoistedRunner<Moving>()
 var mover = Mover()
 var positions = Column<Position>()
 var journals = ReferenceColumn<Journal>()

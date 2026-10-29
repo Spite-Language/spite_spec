@@ -1,8 +1,13 @@
+type Moving {
+    position: Position
+    trail: Trail
+}
+
 var console = Console()
 var positions = Column<Position>()
 var trails = Column<Trail>()
-var moving = Runner<Mover, Mover.Moving>()
-var removing = Runner<Remover, Remover.Moving>()
+var moving = Runner<Mover, Moving>()
+var removing = Runner<Remover, Moving>()
 
 func LentListElements() {
     load "../../../spite_standard_library/windows"

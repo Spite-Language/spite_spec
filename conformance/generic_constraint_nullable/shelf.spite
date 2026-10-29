@@ -1,3 +1,7 @@
-generic $item_type: GenericConstraintNullable.Labelled
+generic $item_type: Labelled
+
+type Labelled {
+    label(): String
+}
 
 var count = 0

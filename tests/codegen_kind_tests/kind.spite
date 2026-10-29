@@ -1,5 +1,14 @@
 generic $value_type
 
+union Shape {
+    Circle
+    Square
+}
+
+type Named {
+    name: String
+}
+
 func describe(): String {
     if $value_type == Dictionary {
         return "a dictionary"
@@ -11,14 +20,14 @@ func describe(): String {
         return "may be null"
     } else if $value_type == Number {
         return "a number"
-    } else if $value_type == CodegenKindTests.Shape {
+    } else if $value_type == Shape {
         return "a shape: {is_named()}"
-    } else if $value_type == CodegenKindTests.Named {
+    } else if $value_type == Named {
         return "named"
     }
     return "something else"
 }
 
 func is_named(): Boolean {
-    return $value_type == CodegenKindTests.Named
+    return $value_type == Named
 }

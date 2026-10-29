@@ -1,3 +1,7 @@
+type Loaded {
+    library: Library
+}
+
 var console = Console()
 
 func ParameterWriteRows() {
@@ -12,6 +16,6 @@ func ParameterWriteRows() {
     refusing.refuse()
     var pairs = Rows<Pair>()
     pairs.report()
-    var loaded = Rows<Streamer.Loaded>()
+    var loaded = Rows<Loaded>()
     loaded.report()
 }

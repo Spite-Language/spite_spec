@@ -1,0 +1,10 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var taken = 0
+
+func take(pet: Pet) {
+    taken = taken + 1
+}

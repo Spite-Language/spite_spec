@@ -1,4 +1,8 @@
-generic $item_type: GenericConstraintMistyped.Weighed
+generic $item_type: Weighed
+
+type Weighed {
+    weight(): Integer
+}
 
 var items = List<$item_type>()
 

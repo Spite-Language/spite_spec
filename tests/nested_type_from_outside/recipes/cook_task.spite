@@ -1,10 +1,14 @@
-var recipes = List<Recipes.Cookbook.Buildable>()
+type Buildable {
+    build()
+}
 
-func CookTask(chosen: List<Recipes.Cookbook.Buildable>) {
+var recipes = List<Buildable>()
+
+func CookTask(chosen: List<Buildable>) {
     recipes = chosen.copy()
 }
 
-func add(recipe: Recipes.Cookbook.Buildable) {
+func add(recipe: Buildable) {
     recipes.append(recipe)
 }
 

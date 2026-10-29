@@ -3,13 +3,18 @@ enum Side {
     'right'
 }
 
+type Moving {
+    position: Position
+    velocity: Velocity
+}
+
 var console = Console()
 var numbers = List<Integer>()
 var found = List<Integer>()
 var weights = List<Float>()
 var counts = List<Integer>()
 var sides = List<Side>()
-var runner = Runner<Mover.Moving>()
+var runner = Runner<Moving>()
 var mover = Mover()
 var positions = Column<Position>()
 var velocities = Column<Velocity>()

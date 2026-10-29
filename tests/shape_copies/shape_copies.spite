@@ -3,6 +3,10 @@ enum Level {
     'high'
 }
 
+type Printable {
+    to_string(): String
+}
+
 var console = Console()
 
 func ShapeCopies() {
@@ -26,7 +30,7 @@ func ShapeCopies() {
     }
 }
 
-func describe(item: Console.Printable): String {
+func describe(item: Printable): String {
     var text = item.to_string()
     var kind = kind_of(item)
     return "{text}:{kind}"

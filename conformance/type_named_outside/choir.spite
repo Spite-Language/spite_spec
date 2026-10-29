@@ -1,0 +1,10 @@
+type Speaker {
+    speak(): String
+}
+
+var heard = List<String>()
+
+func hear(speaker: Speaker) {
+    var said = speaker.speak()
+    heard.append(said)
+}

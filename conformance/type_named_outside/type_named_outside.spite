@@ -1,0 +1,14 @@
+var console = Console()
+
+func TypeNamedOutside() {
+    load "../../../spite_standard_library/windows"
+    var choir = Choir()
+    var duck = Duck()
+    choir.hear(duck)
+    var heard = describe(duck)
+    console.print(heard)
+}
+
+func describe(speaker: Speaker): String {
+    return speaker.speak()
+}

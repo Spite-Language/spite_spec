@@ -76,8 +76,8 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   and a class's enum (`conformance/stage6/relative_namespaces`).
   **A namespace holds classes and namespaces only.** An `enum`, a `union` and a `type` belong to the class that
   declares them, as its attributes and functions do, never to a namespace: a class is not a namespace and has none.
-  Inside its class one is named plainly, and from anywhere else through the class, `Player.Job`, which takes the
-  walk like any dotted name (`Player.Job` beside `player.spite`, `Game.Player.Job` from outside `game/`;
+  Inside its class one is named plainly; an enum is named from anywhere else through the class, `Player.Job`, which
+  takes the walk like any dotted name, while a union or a `type` is never named outside its class (D1779) (`Player.Job` beside `player.spite`, `Game.Player.Job` from outside `game/`;
   `tests/class_member_types`). A class's folder holds its sibling classes and folders: `click_test/click_test.spite`
   (`ClickTest.ClickTest`) reaches `click_test/system/verify.spite` as `System.Verify()`
   (`conformance/stage6/folder_class_namespace`).
@@ -96,12 +96,12 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   What the using class declares comes before any class, so `type Healing` in `system/regenerate.spite` is what
   `Healing` means there even when the program's entry class is `Healing`, and inside `Directory` a program's class
   `Entry` does not hide `Directory`'s union `Entry` (`conformance/stage6/nearest_type`).
-  From outside its class a declared type is named through its owner, generic arguments included
-  (`List<Recipes.Cookbook.Buildable>`, `conformance/stage6/nested_type_from_outside`). **When an error prints
-  two types that would read the same, both are named through their owners**: two classes' own `type Buildable`
-  are different types, so the message reads "a
-  List<Recipes.CookTask.Buildable> cannot be used where a List<Recipes.Cookbook.Buildable> is needed"
-  (`diagnostics/same_named_types`).
+  From outside its class an enum is named through its owner (`Player.Job`), but a union or a `type` is never
+  named outside the class that declares it (D1779): each class that consumes one declares its own copy, and
+  `Shelter.Pet` outside `Shelter` is an error naming the copy to declare (`conformance/union_named_outside`,
+  `conformance/type_named_outside`). Two classes' own `type Buildable` with the same members are one type, in
+  generic arguments too, so a `List<Buildable>` of one goes where the other's is wanted (D1756,
+  `tests/same_named_types`).
   A generic class's constructor takes the walk too, class and arguments alike: `Asset.Pack<Asset.Texture>()`, or
   `Pack<Rule>()` from inside `game/` for `game/pack.spite` (`conformance/stage6/namespaced_generics`).
   A generic constructor that cannot be made reports once, "there is

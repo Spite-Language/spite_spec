@@ -1,0 +1,1 @@
+conformance/type_named_outside/type_named_outside.spite:12: error: 'Speaker' is a type of the class 'Choir', and a type is never named outside the class that declares it: declare this class's own 'type Speaker' with the same members, and write 'Speaker' (in TypeNamedOutside.)

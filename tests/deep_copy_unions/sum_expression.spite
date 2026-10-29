@@ -1,5 +1,10 @@
-var left: DeepCopyUnions.Expression? = null
-var right: DeepCopyUnions.Expression? = null
+union Expression {
+    NumberExpression
+    SumExpression
+}
+
+var left: Expression? = null
+var right: Expression? = null
 
 func evaluate(): Integer {
     var total = 0

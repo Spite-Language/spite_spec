@@ -1,10 +1,19 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
 var console = Console()
 
 func FriendlyGreetings() {
     console.print("made")
 }
 
-func greet_all(pet: RunTimeCallOpenParameters.Pet, named: RunTimeCallOpenParameters.Named, times: Integer?) {
+func greet_all(pet: Pet, named: Named, times: Integer?) {
     var count = 1
     if times {
         count = times

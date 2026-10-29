@@ -1,6 +1,10 @@
+type Pack {
+    amount: Integer
+}
+
 var console = Console()
 
-func fill(pack: Tools.Pack) {
+func fill(pack: Pack) {
     pack.amount = pack.amount * 10
     console.print("the bag's pack holds", pack.amount)
 }

@@ -51,7 +51,7 @@ A file contains only declarations, in the order the compiler enforces ([A file i
 
 - a `singleton` line, when the class has one instance ([Singleton rules](#singleton-rules))
 - `generic $name` lines: the codegen values a caller supplies, each optionally constrained by a `type`,
-  `generic $name: Console.Printable` ([Codegen values (`$`)](metaprogramming.md#codegen-values-))
+  `generic $name: Printable` ([Codegen values (`$`)](metaprogramming.md#codegen-values-))
 - `enum`, `union` and `type` declarations, which belong to the class: named plainly inside it and through it from
   anywhere else (`Player.Job`), never through a namespace ([packages.md](packages.md#packages-namespaces-and-loading))
 - `var` declarations: the attributes of the class, each with a default

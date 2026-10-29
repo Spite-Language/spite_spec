@@ -1,3 +1,8 @@
+type Device {
+    mouse: Mouse
+    keyboard: Keyboard
+}
+
 var pending = List<Event>()
 var applied = 0
 
@@ -6,7 +11,7 @@ func queue(kind: Event.Kind, left: Integer, top: Integer) {
     pending.append(event)
 }
 
-func after_input_each(device: LentToCalls.Device) {
+func after_input_each(device: Device) {
     var mouse = device.mouse
     var keyboard = device.keyboard
     mouse.pressed = false

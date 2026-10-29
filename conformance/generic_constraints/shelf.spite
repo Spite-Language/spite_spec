@@ -1,4 +1,8 @@
-generic $item_type: Console.Printable
+generic $item_type: Printable
+
+type Printable {
+    to_string(): String
+}
 
 var items = List<$item_type>()
 
