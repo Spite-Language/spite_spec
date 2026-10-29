@@ -1,0 +1,7 @@
+func Older() {
+    load "../../../..@26e6476/tests/namespaces_load/package"
+}
+
+func made(): Widgets.Widget {
+    return Widgets.Widget("older", 1)
+}

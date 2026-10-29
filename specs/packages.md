@@ -274,10 +274,16 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
     a second package reads into a different version is "'load "<text>"' reads <repository> at <commit> as part
     of its package's version from <commit>, and <file>:<line> ('load "..."') reads that commit as part of the
     version from <commit>: a commit's files are read once, into one version, so pin it the same way in both
-    packages".
+    packages" (`conformance/two_versions_commit_read_twice`). Two commits of one repository may hold the same
+    folder: their roots make one namespace, never "both make the namespace".
     A name, or a reopening, that only the versions hold in a package that pinned none of them is an error listing
-    every version as "<repository>@<commit>, pinned by <file>:<line> ('load "..."')". A version's classes are
-    spelled `<repository name>_<commit>.<dotted name>` in messages, reflection and `--final-classes`, which
+    every version as "<repository>@<commit>, pinned by <file>:<line> ('load "..."')", joined by `; `: a name is
+    "'<name>' is a class only versions of a repository hold, and this package pins none of them: <versions>" at
+    its line (`conformance/two_versions_unpinned_name`), and a file is "'<name>' is a class only versions of a
+    repository hold, and the package of this file pins none of them, so it cannot reopen one: <versions>"
+    (`conformance/two_versions_unpinned_reopening`). A version's classes are
+    spelled `<repository name>_<commit>.<dotted name>` in messages, reflection and `--final-classes`
+    (`tests/two_versions`), which
     prints each version into its own folder; the commit is 7 digits, more when two versions share them. Two
     spellings of one commit share nothing but agree. Built by discovering the program twice when a repository is
     pinned at two commits: the first pass learns which package pins what, the second puts each version's
