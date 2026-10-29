@@ -1,4 +1,3 @@
-var console = Console()
 var plain = DynamicLibrary("tests/foreign_callback_kept_attribute/fixture.dll", 'identity', "")
 var clicks = Clicks()
 var clicking: ForeignCallback? = null

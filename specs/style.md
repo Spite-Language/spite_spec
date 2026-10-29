@@ -50,13 +50,17 @@ What counts as a read, and the exceptions:
   getter answering that read, `x.attributes[attribute]` or `attributes[attribute]` in a template, `thing.attributes`
   (the values), a `load` line's folder the compiler reads, and the REPL's `attributes` in a `--repl`/`--repl-port`
   build. A class object's `.attributes` (`Mover.attributes`: names and types) does not count.
+- **A read is a read of one class's attribute.** In compiled code a read counts for the class whose attribute it
+  reads, as the compiler typed it: `tag.label` reads `Tag.label`, so a `label` of the entry that nothing reads is
+  `the attribute 'label' is never read: remove it` however many other classes read a `label` of their own
+  (`conformance/attribute_read_in_another_class`).
 - **Writing is not reading.** An attribute that is only assigned, from inside or outside, is unused, the same
   rule as for locals.
 - **Source-level, not reachability.** A function nothing calls still reads what it names; tree shaking removes it
-  later. Where the compiler does not compile a body (a branch a codegen or `Build` test folds away, a function of
-  a generic class no instance emits, a template no range reaches), its reads still count: bare names as
-  the class's own attributes, and `x.name` by name for any class (so a fold can hide an unused attribute of the
-  same name elsewhere, never report a used one).
+  later. Where the compiler does not compile a body (a function nothing calls, a function of a generic class no
+  instance emits, a template no range reaches, and a function with a branch a codegen or `Build` test folds away),
+  its reads still count: bare names as the class's own attributes, and `x.name` by name for any class (so a fold
+  can hide an unused attribute of the same name elsewhere, never report a used one).
 - **`_name` is only private**: a private attribute nothing reads is an error like a public one, judged by
   its own class, which is its only reader. An attribute kept only for its constructor's side effect (a binding
   such as `var server = Server()` whose construction starts something) is an error too, whatever its name.

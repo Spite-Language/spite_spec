@@ -1,0 +1,8 @@
+var console = Console()
+var label = "never shown"
+var tag = Tag()
+
+func AttributeReadInAnotherClass() {
+    load "../../../spite_standard_library/windows"
+    console.print(tag.label)
+}

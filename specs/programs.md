@@ -145,8 +145,9 @@ with a literal default, and a program adds its own the same way it adds `Environ
   keeps the declared value, so a `--hot-reload` program's reload, which writes elsewhere, changes nothing of `Build`.
   **In a `--hot-reload` build**, a field the program or a package declares is read by the program's own code
   from the `Build` singleton while it runs instead, and both branches of a condition on it are compiled, so a
-  reload that changes `build.spite` swaps the new value in; the standard library's reads of the compiler's own
-  options stay constants ([repl.md](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#what-a-reload-can-change)).
+  reload that changes `build.spite` swaps the new value in; the standard library's reads of the fields its own
+  `Build` declares (the compiler's options among them) stay constants, so `build.hot_reload` in its `Reload` is
+  `true` and only the branch it takes is built (`tests/hot_reload_keeps_library_options`) ([repl.md](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#what-a-reload-can-change)).
 - **The program decides its own `Build`**: a field the program's own `build.spite` declares keeps the
   program's default even when a loaded package's `build.spite` declares the same field, although the package is
   merged later; this is the one exception to "a later root replaces" ([packages.md](packages.md#packages-namespaces-and-loading)).

@@ -1,4 +1,3 @@
-var console = Console()
 var plain = DynamicLibrary("tests/foreign_callback_second_alive/fixture.dll", 'identity', "")
 var clicks = Clicks()
 

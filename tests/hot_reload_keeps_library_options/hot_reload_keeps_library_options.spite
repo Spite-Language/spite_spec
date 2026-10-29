@@ -1,0 +1,43 @@
+var console = Console()
+var build = Build()
+var reload = Reload()
+var written = "tests/hot_reload_keeps_library_options/.spite/build/hot_reload_keeps_library_options.high_ir.txt"
+
+func HotReloadKeepsLibraryOptions() {
+    load "../../../spite_standard_library/windows"
+    var swapped = reload.generation()
+    console.print("generation", swapped)
+    if build.hot_reload {
+        console.print("a hot reload build")
+    }
+    var text = File(written).read_as_string()
+    crash text
+    tell("Reload.generation", text)
+    tell("HotReloadKeepsLibraryOptions.HotReloadKeepsLibraryOptions", text)
+}
+
+func tell(function_key: String, text: String) {
+    var reads = reads_the_option(function_key, text)
+    if reads {
+        console.print(function_key, "reads build.hot_reload while it runs")
+    } else {
+        console.print(function_key, "has build.hot_reload as a constant")
+    }
+}
+
+func reads_the_option(function_key: String, text: String): Boolean {
+    var lines = text.split("\n")
+    var inside = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with("function {function_key}(")
+        }
+        if inside and line.contains(".hot_reload") {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}

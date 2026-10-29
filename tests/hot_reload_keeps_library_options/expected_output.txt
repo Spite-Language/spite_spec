@@ -1,0 +1,4 @@
+generation 0
+a hot reload build
+Reload.generation has build.hot_reload as a constant
+HotReloadKeepsLibraryOptions.HotReloadKeepsLibraryOptions reads build.hot_reload while it runs

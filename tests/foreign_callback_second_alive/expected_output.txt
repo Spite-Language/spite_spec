@@ -1,2 +1,2 @@
 clicked 1
-spite: 'Clicks.clicked' (tests/foreign_callback_second_alive/foreign_callback_second_alive.spite:10) was handed to C by a second ForeignCallback while the first is alive: C calls it with no context, so a function has one at a time; keep the first and hand C its address
+spite: 'Clicks.clicked' (tests/foreign_callback_second_alive/foreign_callback_second_alive.spite:9) was handed to C by a second ForeignCallback while the first is alive: C calls it with no context, so a function has one at a time; keep the first and hand C its address

@@ -1,4 +1,3 @@
-var console = Console()
 var name = "ada"
 var _password = "hidden"
 

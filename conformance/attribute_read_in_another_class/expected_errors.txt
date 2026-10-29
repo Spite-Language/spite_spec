@@ -1,0 +1,1 @@
+conformance/attribute_read_in_another_class/attribute_read_in_another_class.spite:2: error: the attribute 'label' is never read: remove it (in AttributeReadInAnotherClass.)

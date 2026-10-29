@@ -14,5 +14,5 @@ func DictionaryDeepCopyKeys() {
     var shallow = teams.copy()
     var shallow_team = shallow[ada]
     crash shallow_team
-    console.print(still_keyed, copied_team.name, shallow_team.name)
+    console.print(still_keyed, ada.name, copied_team.name, shallow_team.name)
 }

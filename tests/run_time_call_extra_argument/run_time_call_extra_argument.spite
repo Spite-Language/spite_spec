@@ -1,5 +1,3 @@
-var console = Console()
-
 func RunTimeCallExtraArgument() {
     load "../../../spite_standard_library/windows"
     var classes = Spite.Class.instances
