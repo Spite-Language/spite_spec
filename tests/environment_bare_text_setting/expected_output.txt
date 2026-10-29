@@ -1,1 +1,1 @@
-spite: the program stopped at .../spite_standard_library/common/environment.spite:... in Environment.text_setting (is_bare=true, name=name, declared=nobody, flag=name, written=--name)
+error: the setting Environment.name was given '--name', which is not a text after '=': write --name=value on the command line, or NAME=value in the environment or a .env file

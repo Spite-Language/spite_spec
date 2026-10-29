@@ -1,0 +1,21 @@
+var console = Console()
+var environment = Environment()
+var program = Program()
+
+func EnvironmentVariableSetting() {
+    load "../../../spite_standard_library/windows"
+    if environment.role == "child" {
+        console.print(environment.greeting)
+        return
+    }
+    var path = program.executable_path()
+    crash path
+    var child = Process(path, ["--role=child"])
+    child.environment_variables["GREETING"] = "hello from the environment"
+    var code = child.run()
+    crash code
+    var output = child.read_output_as_string()
+    crash output
+    var line = output.trim()
+    console.print(code, line, environment.greeting)
+}

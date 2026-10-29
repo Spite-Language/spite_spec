@@ -1,0 +1,3 @@
+var workers = 1
+var region = "local"
+var verbose = false

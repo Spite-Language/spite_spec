@@ -1,0 +1,13 @@
+var console = Console()
+var environment = Environment()
+
+func EnvironmentFileSettings() {
+    load "../../../spite_standard_library/windows"
+    var folder = Directory(".spite/environment_file_settings")
+    crash folder.create()
+    var settings = File(".spite/environment_file_settings/.env")
+    crash settings.write_string("# read by load_from_file\n\nWORKERS=6\nREGION = north\nVERBOSE=true\nUNKNOWN_THING=1\n")
+    console.print(environment.workers, environment.region, environment.verbose)
+    var loaded = environment.load_from_file(".spite/environment_file_settings/.env")
+    console.print(loaded, environment.workers, environment.region, environment.verbose)
+}

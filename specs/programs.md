@@ -81,8 +81,17 @@ What follows is how it is compiled:
 - **Where a value comes from.** Each field is read once, when the singleton is first made, from the first of:
   the program's own command line, `--serve=true` or, for a `Boolean`, bare `--serve` (what the program
   receives, see [Command line](compiler.md#command-line)); the process environment variable named by the field
-  in upper case, `SERVE`; the declared default. The command line wins because it is the more deliberate of the
-  two. An argument that names no field is left alone for `program.arguments()` to read.
+  in upper case, `SERVE`; a `.env` file the program loaded (below); the declared default. The command line wins
+  because it is the more deliberate, and the process environment wins over a file, as dotenv does. An argument
+  that names no field is left alone for `program.arguments()` to read.
+- **A `.env` file.** `environment.load_from_file(path): Boolean` reads a file of `NAME=value` lines (spaces
+  around both trimmed, blank lines and lines starting with `#` skipped) and reads every setting again, so a
+  setting neither the command line nor the process environment gives takes the file's value
+  (`tests/environment_file_settings`). A name the file gives that no setting declares is reported on the error
+  stream, `warning: 'UNKNOWN_THING' in .env names no setting of Environment, so it was not read`, and the rest
+  is read. A file that cannot be read answers `false` and changes nothing (`tests/environment_file_missing`).
+  The value a file gives is checked like any other (`tests/environment_file_malformed`), and a process
+  environment variable is read the same way (`tests/environment_variable_setting`).
 - **A setting is written like a compiler flag**: kebab-case on the command line, snake_case in code,
   `--worker-count=4` for `var worker_count = 1` (`conformance/stage6/kebab_setting`). The compiler refuses the
   snake_case spelling before anything is read (`error: '--worker_count' is written '--worker-count': flags and
@@ -102,11 +111,14 @@ What follows is how it is compiled:
   default, and the literal is its type: 'var workers = false' (Boolean), 'var workers = 0' (Integer) or 'var
   workers = ""' (String)` (`diagnostics/environment_setting`). Text that is not a value of the setting's type
   (`--serve=maybe`, `--workers=many`, a bare `--name` for a `String`) is a compile error when it is given to the
-  compiler (`diagnostics/setting_value`), and **crashes** when the singleton is made in a program run directly
-  (`tests/environment_bare_text_setting`; a malformed setting is a bug in how the program was started, and there
-  is nothing sensible to continue with).
-- **How the fields get filled.** The compiler prepends one assignment per declared field to `Environment`'s
-  constructor, `serve = boolean_setting("serve", serve)`, where `boolean_setting`, `integer_setting` and
+  compiler (`diagnostics/setting_value`). In a program run directly, wherever the value came from (the command
+  line, the process environment or a `.env` file), it stops the program with exit code 1 after an error naming
+  the setting, the value and the form it takes, since there is no line of the program to point to (D1760):
+  `error: the setting Environment.workers was given 'many', which is not a whole number: write --workers=4 on
+  the command line, or WORKERS=4 in the environment or a .env file` (`tests/programs_setting_value_run`,
+  `tests/environment_bare_text_setting`).
+- **How the fields get filled.** The compiler writes one assignment per declared field into `Environment`'s
+  `_read_settings`, which the constructor and `load_from_file` call, `serve = boolean_setting("serve", serve)`, where `boolean_setting`, `integer_setting` and
   `text_setting` are ordinary Spite functions of `Environment`. The reading itself is Spite; the
   compiler only writes the calls, the way it writes a template
   (`conformance/stage6/environment_settings`).

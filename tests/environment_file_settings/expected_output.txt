@@ -1,0 +1,3 @@
+1 south false
+warning: 'UNKNOWN_THING' in .spite/environment_file_settings/.env names no setting of Environment, so it was not read
+true 6 south true

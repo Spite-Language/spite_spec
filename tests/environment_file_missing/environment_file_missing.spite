@@ -1,0 +1,8 @@
+var console = Console()
+var environment = Environment()
+
+func EnvironmentFileMissing() {
+    load "../../../spite_standard_library/windows"
+    var loaded = environment.load_from_file(".spite/environment_file_missing/no_such.env")
+    console.print(loaded, environment.region)
+}
