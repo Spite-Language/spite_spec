@@ -1,3 +1,8 @@
+type Addable {
+    sum(Addable): Addable
+    describe(): String
+}
+
 var console = Console()
 
 func ShapeOperatorUnlike() {

@@ -538,6 +538,14 @@ func attack(enemy: Enemy): Boolean {
 }
 ```
 
+**A union is declared where it is consumed** (D1745): each class that takes, holds or switches on one declares it,
+and two classes may each declare the same union, at no cost. A union value given where another union is wanted fits
+when every member of it is a member of the wanted one, so `Parser.Expression` passes to a `Printer.Expression` that
+lists the same classes or more (`tests/union_copies`). A member the wanted union lacks is an error naming it: "a
+Shelter.Pet cannot be used where a Groomer.Pet is needed: 'Fish' is a member of Shelter.Pet and not of Groomer.Pet,
+and a union fits another only when every member of it is a member of the other: add 'Fish' to Groomer.Pet, or pass the
+member value itself" (`conformance/union_copy_missing_member`).
+
 **`_:` answers for every member without a case of its own.** It is the
 last case, and it means exactly "this body, written once for each remaining member": the value is narrowed to
 each of those members in turn, so `_: creature.sound()` needs `sound()` only on the members `_` answers for,

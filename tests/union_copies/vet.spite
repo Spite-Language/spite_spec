@@ -1,0 +1,13 @@
+union Patient {
+    Cat
+    Dog
+    Bird
+}
+
+func check(patient: Patient): String {
+    switch patient {
+        Cat: return "a cat of {patient.lives} lives"
+        Dog: return "a dog that barks {patient.barks} times"
+        Bird: return "a bird of {patient.wings} wings"
+    }
+}

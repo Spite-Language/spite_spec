@@ -1,4 +1,0 @@
-type Addable {
-    sum(Addable): Addable
-    describe(): String
-}

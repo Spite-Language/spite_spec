@@ -1,4 +1,0 @@
-type Pair {
-    left: Point
-    right: Point
-}

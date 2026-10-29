@@ -1,3 +1,7 @@
+type Speaker {
+    speak(): Integer
+}
+
 var seen = 0
 
 func take(holder: Holder<Speaker>) {

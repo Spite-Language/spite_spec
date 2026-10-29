@@ -1,3 +1,8 @@
+type Pair {
+    left: Point
+    right: Point
+}
+
 var console = Console()
 var points = List<Point>()
 var spare = List<Point>()

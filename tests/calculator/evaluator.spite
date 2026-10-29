@@ -1,3 +1,9 @@
+union Expression {
+    NumberExpression
+    VariableExpression
+    BinaryExpression
+}
+
 var console = Console()
 var variables = Dictionary<String, Float>()
 var current_tree: Expression? = null

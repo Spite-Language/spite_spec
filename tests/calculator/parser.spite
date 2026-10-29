@@ -1,3 +1,9 @@
+union Expression {
+    NumberExpression
+    VariableExpression
+    BinaryExpression
+}
+
 var tokens = List<Token>()
 var position = 0
 

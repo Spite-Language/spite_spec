@@ -1,3 +1,8 @@
+union Pet {
+    Cat
+    Dog
+}
+
 var console = Console()
 
 func DictionaryUnionKey() {

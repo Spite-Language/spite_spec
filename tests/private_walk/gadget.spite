@@ -1,3 +1,8 @@
+union Pet {
+    Cat
+    Dog
+}
+
 var power = 3
 var _charge = 5
 var _pet: Pet? = null

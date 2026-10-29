@@ -1,5 +1,0 @@
-union Expression {
-    NumberExpression
-    VariableExpression
-    BinaryExpression
-}

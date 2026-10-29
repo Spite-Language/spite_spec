@@ -1,0 +1,28 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func UnionCopies() {
+    load "../../../spite_standard_library/windows"
+    var pets = List<Pet>()
+    var cat = Cat()
+    pets.append(cat)
+    var dog = Dog()
+    pets.append(dog)
+    var vet = Vet()
+    var groomer = Groomer()
+    var index = 0
+    while index < pets.count() {
+        var pet = pets[index]
+        var seen = vet.check(pet)
+        var groomed = groomer.groom(pet)
+        console.print(seen, groomed)
+        index = index + 1
+    }
+    var bird = Bird()
+    var seen_bird = vet.check(bird)
+    console.print(seen_bird)
+}

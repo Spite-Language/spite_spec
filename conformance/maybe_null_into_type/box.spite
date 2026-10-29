@@ -1,1 +1,6 @@
+union Pet {
+    Cat
+    Dog
+}
+
 var pet: Pet? = null

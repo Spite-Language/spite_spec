@@ -1,3 +1,9 @@
+union State {
+    Idle
+    Busy
+    Broken
+}
+
 var console = Console()
 var current: Node? = null
 var steps = List<String>()

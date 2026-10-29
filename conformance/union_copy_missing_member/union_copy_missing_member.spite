@@ -1,0 +1,16 @@
+union Pet {
+    Cat
+    Dog
+    Fish
+}
+
+var console = Console()
+
+func UnionCopyMissingMember() {
+    load "../../../spite_standard_library/windows"
+    var fish = Fish()
+    var pet: Pet = fish
+    var groomer = Groomer()
+    var groomed = groomer.groom(pet)
+    console.print(groomed)
+}
