@@ -1,0 +1,11 @@
+var console = Console()
+
+func MissingConversion() {
+    load "../../../spite_standard_library/windows"
+    var spot = Point(3, 4)
+    connect(spot)
+}
+
+func connect(address: IpAddress) {
+    console.print(address)
+}

@@ -1,0 +1,10 @@
+assigned #ff8000
+declared 10.0.0.1
+not an address true
+argument ::1
+returned 192.168.1.20
+feet 9
+argument in feet 9
+mood number 1
+mood read calm
+counted 42

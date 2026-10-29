@@ -1,0 +1,5 @@
+var amount = 0
+
+func Feet(new_amount: Integer) {
+    amount = new_amount
+}

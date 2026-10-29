@@ -1,0 +1,8 @@
+var console = Console()
+
+func CastAnswerMayBeNull() {
+    load "../../../spite_standard_library/windows"
+    var text = "127.0.0.1"
+    var address: IpAddress = text
+    console.print(address)
+}

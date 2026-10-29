@@ -1,0 +1,51 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var console = Console()
+
+func CastThroughConversions() {
+    load "../../../spite_standard_library/windows"
+    var paint: Color? = "#ff8000"
+    crash paint
+    console.print("assigned", paint)
+    var address: IpAddress? = "10.0.0.1"
+    crash address
+    console.print("declared", address)
+    var missing: IpAddress? = "not an address"
+    var is_missing = not missing
+    console.print("not an address", is_missing)
+    var told = told_address("::1")
+    console.print("argument", told)
+    var answered = answered_address()
+    crash answered
+    console.print("returned", answered)
+    var meters = Meters(3)
+    var feet: Feet = meters
+    console.print("feet", feet.amount)
+    var shown = shown_in_feet(meters)
+    console.print("argument in feet", shown)
+    var mood: Mood = 'angry'
+    var number: Integer = mood
+    console.print("mood number", number)
+    var read_mood: Mood? = 0
+    crash read_mood
+    console.print("mood read", read_mood)
+    var counted: Integer? = "42"
+    crash counted
+    console.print("counted", counted)
+}
+
+func told_address(address: IpAddress?): String {
+    crash address
+    return address.to_string()
+}
+
+func answered_address(): IpAddress? {
+    return "192.168.1.20"
+}
+
+func shown_in_feet(length: Feet): Integer {
+    return length.amount
+}

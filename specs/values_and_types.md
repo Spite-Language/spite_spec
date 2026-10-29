@@ -115,6 +115,18 @@ declares `func to_string(): String`. `label.text = clicks` with an `Integer` `cl
 already made for numbers, extended to classes; the text made is released like any other (`conformance/stage6/direct_text`).
 A class with no `to_string()` stays an error: `a Pet cannot be used where a String is needed`.
 
+**A value meeting another class is cast through its `to_<type>()`** (D1718). Where a value of one class meets a
+place that wants another (an argument, a `return`, an assignment, a `var` with a written type) and none of the casts
+above applies, the compiler calls the given value's conversion, `to_` and the wanted class's name in `snake_case`:
+`var address: IpAddress? = text` is `text.to_ip_address()`, `var paint: Color? = "#ff8000"` is
+`"#ff8000".to_color()`, `var age: Integer? = "42"` is `"42".to_integer()`. The cast answers what the conversion
+answers: a conversion that answers the wanted class goes straight in, and one that answers `T?` goes where a `T?` is
+wanted and is narrowed like any other `T?` where a plain `T` is (the usual `this value may be null` error). An enum
+value goes where an `Integer` is wanted through its `to_integer()`, and a whole number where an enum is wanted through
+`to_<enum>()`, as below. A class with no such conversion is an error naming the call that would be made:
+`a Point cannot be used where an IpAddress is needed: a value is cast to the class a place wants through its own
+conversion, and there is no 'Point.to_ip_address()' to call` (`conformance/missing_conversion`).
+
 **A text of one hole and nothing else is an error.**
 `"{value}"` (no written character before or after, one hole) is the value itself, so writing it is refused
 with the exact line to write instead, the value directly when it is text and cast by the rule above when it is

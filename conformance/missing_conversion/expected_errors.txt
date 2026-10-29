@@ -1,0 +1,1 @@
+conformance/missing_conversion/missing_conversion.spite:6: error: a Point cannot be used where an IpAddress is needed: a value is cast to the class a place wants through its own conversion, and there is no 'Point.to_ip_address()' to call (in MissingConversion.MissingConversion)
