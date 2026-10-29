@@ -1,0 +1,5 @@
+var power = 3
+
+func boost(amount: Integer, word: String): Integer {
+    return amount + power + word.length()
+}

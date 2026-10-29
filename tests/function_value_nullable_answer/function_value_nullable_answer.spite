@@ -1,0 +1,64 @@
+var console = Console()
+var kept: Spite.Function<Integer, Integer?> = halved
+
+func FunctionValueNullableAnswer() {
+    load "../../../spite_standard_library/windows"
+    var local = halved
+    var local_even = local(8)
+    show("local", local_even)
+    var local_odd = local(7)
+    show("local", local_odd)
+    var kept_even = kept(10)
+    show("attribute", kept_even)
+    var kept_odd = kept(3)
+    show("attribute", kept_odd)
+    var listed = List<Spite.Function<Integer, Integer?>>()
+    listed.append(halved)
+    var first = listed[0]
+    crash first
+    var listed_even = first(4)
+    show("list item", listed_even)
+    var listed_odd = first(5)
+    show("list item", listed_odd)
+    asked("parameter", halved, 6)
+    asked("parameter", halved, 9)
+    listed.append(thirded)
+    kept = thirded
+    var kept_thirded = kept(4)
+    show("attribute changed", kept_thirded)
+    var index = 0
+    while index < listed.count() {
+        var change = listed[index]
+        crash change
+        asked("walked", change, 9)
+        asked("walked", change, 8)
+        index = index + 1
+    }
+}
+
+func halved(amount: Integer): Integer? {
+    if amount % 2 == 0 {
+        return amount / 2
+    }
+    return null
+}
+
+func thirded(amount: Integer): Integer? {
+    if amount % 3 == 0 {
+        return amount / 3
+    }
+    return null
+}
+
+func asked(place: String, change: Spite.Function<Integer, Integer?>, amount: Integer) {
+    var answer = change(amount)
+    show(place, answer)
+}
+
+func show(place: String, answer: Integer?) {
+    if answer {
+        console.print(place, "answers", answer)
+    } else {
+        console.print(place, "answers null")
+    }
+}

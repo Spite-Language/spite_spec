@@ -196,8 +196,10 @@ before it runs. `call.arguments['name'] = value` fills one argument, and `call.c
   call is known only at run time, since a value of its type is not told apart while the program runs: ...". Filling
   an argument a second time halts as the known call refuses it: "spite: 'call.arguments['times']' is already set: a
   call fills each argument once, before 'call.call()' runs it" (`tests/run_time_call_filled_twice`).
-- **Calling a `Spite.Class` known only at run time with no arguments** (`part()`) makes an object of it, typed
-  `Anything`, through one function the compiler writes that compares the class object with each class of the
+- **Calling a `Spite.Class` known only at run time with no arguments** makes an object of it, typed `Anything`,
+  wherever the class object is held: a local or parameter (`part()`), an attribute (`kind()`, `shelf.kind()`), or
+  a member read (`thing.class()` on an `Anything`, `argument.class()` on a `Spite.Argument` known only at run
+  time) (`tests/run_time_class_member`). It goes through one function the compiler writes that compares the class object with each class of the
   program's own folder, each other class whose class object the program holds (a library class it names, as
   `kinds.append(Http.Response)`), and the number classes, `Boolean` and `String` (each its default), and makes the one
   it is. Only a class whose object the program holds can be known at run time, so the list is complete once the

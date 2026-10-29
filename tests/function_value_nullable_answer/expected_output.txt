@@ -1,0 +1,13 @@
+local answers 4
+local answers null
+attribute answers 5
+attribute answers null
+list item answers 2
+list item answers null
+parameter answers 3
+parameter answers null
+attribute changed answers null
+walked answers null
+walked answers 4
+walked answers 3
+walked answers null

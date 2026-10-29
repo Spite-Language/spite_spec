@@ -1,0 +1,7 @@
+the attribute makes a Gadget with power 3
+the attribute changed makes a Rock weighing 7
+a Shelf's attribute makes a Rock weighing 7
+another Rock weighing 7
+another Gadget with power 3
+amount makes the Integer 0
+word makes the String ''

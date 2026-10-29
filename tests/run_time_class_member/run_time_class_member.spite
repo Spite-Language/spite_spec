@@ -1,0 +1,55 @@
+var console = Console()
+var kind: Spite.Class = Gadget
+
+func RunTimeClassMember() {
+    load "../../../spite_standard_library/windows"
+    var fresh = kind()
+    if fresh == Gadget {
+        console.print("the attribute makes a Gadget with power", fresh.power)
+    }
+    kind = Rock
+    var other = kind()
+    if other == Rock {
+        console.print("the attribute changed makes a Rock weighing", other.weight)
+    }
+    var shelf = Shelf()
+    var shelved = shelf.kind()
+    if shelved == Rock {
+        console.print("a Shelf's attribute makes a Rock weighing", shelved.weight)
+    }
+    var kept = List<Anything>()
+    var rock = Rock()
+    rock.weight = 1
+    kept.append(rock)
+    var gadget = Gadget()
+    gadget.power = 9
+    kept.append(gadget)
+    kept.each(remake)
+    var functions = List<Spite.Function>()
+    functions.append(gadget.boost)
+    functions.each(describe_taken)
+}
+
+func remake(thing: Anything) {
+    var made = thing.class()
+    if made == Rock {
+        console.print("another Rock weighing", made.weight)
+    }
+    if made == Gadget {
+        console.print("another Gadget with power", made.power)
+    }
+}
+
+func describe_taken(function: Spite.Function) {
+    function.arguments.each(remade)
+}
+
+func remade(taken: Spite.Argument) {
+    var made = taken.class()
+    if made == Integer {
+        console.print(taken.name, "makes the Integer", made)
+    }
+    if made == String {
+        console.print(taken.name, "makes the String '{made}'")
+    }
+}
