@@ -8,7 +8,7 @@ func CallOnOtherUndoesNarrowing() {
 
 func run() {
     keeper.target = Monster()
-    assert keeper.target
+    fallback keeper.target
     keeper.forget()
     console.print(keeper.target.name)
 }

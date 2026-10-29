@@ -1,4 +1,4 @@
 hello ada
 hello bo
-spite.assert	5148224e	answered=nothing
+spite.fallback	5148224e	returned=nothing
 done

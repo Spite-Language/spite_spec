@@ -10,7 +10,7 @@ func NullableNarrowing() {
 }
 
 func update_held() {
-    assert held
+    fallback held
     console.print("box value is {held.value}")
     held.value = 100
     console.print("updated to {held.value}")

@@ -6,7 +6,7 @@ var kept = List<Filler>()
 func touch() {
     kept.clear()
     var held = registry.holders.count()
-    assert held >= 0
+    fallback held >= 0
 }
 
 func drop() {

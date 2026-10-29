@@ -12,9 +12,7 @@ func count_even(limit: Integer, counting: Boolean): Integer {
     var odd = 0
     if counting {
         var index = 0
-        if limit > 100 {
-            return 0
-        }
+        fallback limit <= 100
         while index < limit {
             if index % 2 == 0 {
                 total = total + 1

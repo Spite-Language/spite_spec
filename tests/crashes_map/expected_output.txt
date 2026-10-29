@@ -1,4 +1,4 @@
 true
 true
-tests/crashes_map/crashes_map.spite	18	5	CrashesMap	positive	assert-predicate	value > 0	value:Integer
+tests/crashes_map/crashes_map.spite	18	5	CrashesMap	positive	fallback-predicate	value > 0	value:Integer
 tests/crashes_map/crashes_map.spite	34	13	CrashesMap	show	crash	site	site:String?

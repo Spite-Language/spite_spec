@@ -8,7 +8,7 @@ func NarrowedPathKept() {
 }
 
 func show(outer: Box) {
-    assert outer.inner
+    fallback outer.inner
     outer.inner = Box()
     outer.inner.label = "replaced"
     console.print(outer.inner.label)

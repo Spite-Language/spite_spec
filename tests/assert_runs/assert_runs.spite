@@ -15,11 +15,11 @@ func AssertRuns() {
 }
 
 func name_at(index: Integer): String? {
-    assert index < 2
+    fallback index < 2
     return names[index]
 }
 
 func title_of(text: String): String? {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text
 }

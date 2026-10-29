@@ -21,11 +21,11 @@ func tested(flag: Boolean?) {
 }
 
 func negated(flag: Boolean?) {
-    assert not flag
+    fallback not flag
     console.print("negated")
 }
 
 func answered(flag: Boolean?): Integer {
-    assert flag
+    fallback flag
     return 1
 }

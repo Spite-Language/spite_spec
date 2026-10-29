@@ -1,0 +1,1 @@
+conformance/fallback_built_with_arguments/fallback_built_with_arguments.spite:10: error: 'fallback' returns what the answer type builds with no arguments, and a Slot has none (its constructor takes arguments): make the result 'Slot?' so the fallback returns null, or write 'crash not text.is_empty()' if this is a developer mistake (in FallbackBuiltWithArguments.slot_of)

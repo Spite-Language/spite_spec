@@ -7,7 +7,7 @@ func NarrowedLocalUndoneInLoop() {
 
 func run() {
     var held: Box? = Box()
-    assert held
+    fallback held
     var passes = 0
     while passes < 2 {
         console.print(held.label)

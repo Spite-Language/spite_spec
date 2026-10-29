@@ -14,7 +14,7 @@ func ReturningBranchProof() {
 
 func describe(): String {
     if not document {
-        return ""
+        return "none"
     }
     if kind == 4 {
         return document.array_text()

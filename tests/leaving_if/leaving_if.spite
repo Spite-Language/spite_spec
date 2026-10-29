@@ -23,7 +23,7 @@ func LeavingIf() {
 }
 
 func find_text(text: String): String? {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text
 }
 
@@ -46,21 +46,19 @@ func joined_length(first: String, second: String): Integer {
     var left = find_text(first)
     var right = find_text(second)
     if not left or not right or right.length() > 5 {
-        return 0
+        return -1
     }
     return left.length() + right.length()
 }
 
 func price_of(name: String): Integer {
     if not prices[name] {
-        return 0
+        return -1
     }
     return prices[name] * 100
 }
 
 func is_open(): Boolean {
-    if handle == -1 {
-        return false
-    }
+    fallback handle != -1
     return true
 }

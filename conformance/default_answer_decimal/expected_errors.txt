@@ -1,1 +1,0 @@
-conformance/default_answer_decimal/default_answer_decimal.spite:10: error: this 'assert' would answer a default Float... that a caller cannot tell from a real one: return a value ('if divisor <= 0.0 { return -1.0 }'), make the result 'Float?', or 'crash divisor > 0.0' if this is a developer mistake (in DefaultAnswerDecimal.ratio_of)

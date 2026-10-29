@@ -3,7 +3,7 @@ var known = Dictionary<String, String>()
 func read(text: String) {
     var json = JsonReader<Dictionary<String, String>>()
     var parsed = json.read(text)
-    assert parsed
+    fallback parsed
     known = parsed
 }
 

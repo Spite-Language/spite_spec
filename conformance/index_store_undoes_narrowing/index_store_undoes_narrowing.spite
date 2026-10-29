@@ -9,7 +9,7 @@ func run() {
     var labels = List<String?>()
     labels.append("first")
     var at = 0
-    assert labels[at]
+    fallback labels[at]
     labels[0] = null
     console.print(labels[at].upper_case())
 }

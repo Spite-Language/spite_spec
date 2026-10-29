@@ -42,7 +42,7 @@ one waits; the value is kept, so later ones do not). Exactly, a `Concurrent<T>` 
   `Printable` one included, so `console.print(sum)` prints the value), a `return`, an element of a list literal;
 - as an operand (`+`, `==`, `and`, `not`, any operator) and inside text, `"total {sum}"`;
 - as the receiver of a member the handle does not have: `greeting.upper_case()`, `greeting.length()`;
-- as a condition: `if ready`, `while`, `assert`, `crash`; and when `T` is nullable, narrowing the handle narrows its
+- as a condition: `if ready`, `while`, `fallback`, `crash`; and when `T` is nullable, narrowing the handle narrows its
   value (`if reading { use(reading) }`, `crash reading`), because narrowing applies to a name itself rather than a copy.
   The value is read once, into a hidden local, and the narrowed name reads that. A handle whose `T` is `Boolean?` is refused as a
   condition as any `Boolean?` is, since it would test only that a value came back: compare it, `if ready == true`.
@@ -92,7 +92,7 @@ and whose value joins on first use.
 
 - **Work that never finishes.** For each `Parallel(function)` in the program's own code (not the standard
   library's), every function the work reaches through calls whose class is known is read for a `while true` with
-  no `return`, `assert` or `crash` anywhere inside it. Such a loop in a function that never waits (none of its
+  no `return`, `fallback` or `crash` anywhere inside it. Such a loop in a function that never waits (none of its
   calls reaches a call that waits and gives its thread back, such as a socket read) is the error at the loop,
   once per function:
   `'Parallel(<work>)' runs '<Class>.<function>' on the thread pool, and this loop never ends and never waits, so the
@@ -309,7 +309,7 @@ falls back to form 1: its wrappers call the bodies (still counting the locks hel
 same), and its reads and writes from other classes are plain. Not in `--repl`, `--repl-port`, `--hot-reload` or
 `--development` builds ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#thread-safety-for-singletons-the-cheapest-safe-form)).
 
-**A loop that cannot end inside a locked singleton function is a compile error.** A `while true` with no `return`, `assert` or `crash` inside it, in a function of
+**A loop that cannot end inside a locked singleton function is a compile error.** A `while true` with no `return`, `fallback` or `crash` inside it, in a function of
 a singleton that takes the lock (the fourth form above), would hold the lock for good, so every other call on the
 singleton would wait forever: `'Window.run' holds Window's lock for the whole call, since a Parallel reaches Window,
 and this loop never ends, so every other call on Window would wait forever: move the loop into a class that is not a
@@ -452,7 +452,7 @@ statement that reads its name, or that holds a `return` or a `crash`; one that m
 run, so nothing after it shows before its crash. A call is quiet work when its function,
 through every function it reaches, belongs to a class of the program that is not a singleton (the entry class
 included), takes and answers only numbers, reads only its parameters and locals, writes only its locals, calls only
-functions of `this`, and holds no object, text, list, attribute, assert, foreign call, function value or recursion;
+functions of `this`, and holds no object, text, list, attribute, fallback, foreign call, function value or recursion;
 it may halt, by a `crash`, a whole-number result that does not fit, a division by zero or a number narrowed into
 one it does not fit. Each call must weigh at least a million (each statement 1, a loop's body times its bound, a
 call what its function weighs). Nothing is overlapped in the standard library or in a `--hot-reload`, `--repl` or
@@ -546,7 +546,7 @@ frame goes on while it waits.
   destroyed (above), so its work, its writes and its crash, if it crashes, all happen before the program ends.
   
 - **A failure.** A crash inside a started call halts the program with the report of that crash, naming its own line
-  and the stack of the work that ran it; nothing is kept back for a later frame to report. An `assert` that fails
+  and the stack of the work that ran it; nothing is kept back for a later frame to report. A `fallback` that fails
   inside it returns from its function, as anywhere.
 - **Where not.** Not in the standard library, not in the copy of a function a `Concurrent` runs (a state machine
   waits there as before), not for a call whose answer is used (`var text = file.read_as_string()` waits where it is written),

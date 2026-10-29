@@ -3,9 +3,7 @@ func doubled(number: Integer): Integer {
 }
 
 func counted_down(number: Integer): Integer {
-    if number <= 0 {
-        return 0
-    }
+    fallback number > 0
     var below = counted_down(number - 1)
     return below + 1
 }

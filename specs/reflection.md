@@ -134,8 +134,8 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   and a `var` initialised with a constant and never assigned again, when the function never needs its value at run
   time, `null` from a `[]` that finds nothing included. `filter(function)` asks a function whose body is one `return`, with its parameter bound to each element.
 - **What folds.** A question on a constant is `true` or `false` in the generated code, a count is a number and a
-  name is a literal. An `if`, `assert` or `crash` on a constant keeps only what runs, and one that always holds is
-  not an error. `[]` with a literal name answers a constant `T?`: present, a narrowing `if`, `assert` or `crash` on it
+  name is a literal. An `if`, `fallback` or `crash` on a constant keeps only what runs, and one that always holds is
+  not an error. `[]` with a literal name answers a constant `T?`: present, a narrowing `if`, `fallback` or `crash` on it
   folds to nothing and still narrows that path for what follows; absent, its branch is never compiled.
 - **`each(function)` over a constant list is unrolled** when the function is one of the class's own, takes one
   parameter, and every element fits it: one call per element, and no list. This holds for the attributes of a class,

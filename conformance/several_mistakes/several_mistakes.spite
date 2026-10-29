@@ -8,7 +8,7 @@ func SeveralMistakes() {
 }
 
 func helper(): Integer? {
-    assert 1 > 0
+    fallback 1 > 0
     return 1
 }
 

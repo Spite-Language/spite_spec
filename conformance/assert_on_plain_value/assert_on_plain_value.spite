@@ -7,6 +7,6 @@ func AssertOnPlainValue() {
 }
 
 func show(tracker: Tracker) {
-    assert tracker
+    fallback tracker
     console.print(tracker.name)
 }

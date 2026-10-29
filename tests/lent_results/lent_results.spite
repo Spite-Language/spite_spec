@@ -21,7 +21,7 @@ func LentResults() {
 func move_layouts() {
     var lookup = Lookup<Layout>()
     var layout = lookup.of(7)
-    assert layout
+    fallback layout
     layout.order = 3
     layout.widen(2.5)
     var missing = lookup.of(5)

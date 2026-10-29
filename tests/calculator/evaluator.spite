@@ -53,7 +53,7 @@ func binary_value(expression: BinaryExpression): Float {
 }
 
 func process_line(line: String) {
-    assert not line.is_empty()
+    fallback not line.is_empty()
     if line.contains("=") {
         var parts = line.split("=")
         crash parts.count() > 1

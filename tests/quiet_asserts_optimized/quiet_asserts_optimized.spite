@@ -13,6 +13,6 @@ func QuietAssertsOptimized() {
 }
 
 func greet(index: Integer) {
-    assert index < names.count()
+    fallback index < names.count()
     greeted = greeted + 1
 }

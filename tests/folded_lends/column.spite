@@ -20,9 +20,7 @@ func insert(entity: Integer, value: $component_type) {
 }
 
 func inline(): Boolean {
-    if $component_type == Marker {
-        return false
-    }
+    fallback $component_type != Marker
     return $component_type.fits_vector()
 }
 

@@ -12,7 +12,7 @@ func AndReturnNarrowing() {
 }
 
 func make(kind: String): Order? {
-    assert not kind.is_empty()
+    fallback not kind.is_empty()
     var order = Order()
     order.kind = kind
     return order

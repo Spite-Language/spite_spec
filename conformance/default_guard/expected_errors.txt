@@ -1,1 +1,1 @@
-conformance/default_guard/default_guard.spite:50: error: this 'if' only returns the default 'null', which is how a guard is written: write 'assert not missing' and let the rest run unindented (in DefaultGuard.find_name)
+conformance/default_guard/default_guard.spite:21: error: this 'if' only returns 'false', which is what 'fallback' returns when its condition fails: write 'fallback handle != -1' and let the rest run unindented (in DefaultGuard.is_open)

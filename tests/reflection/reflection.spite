@@ -29,8 +29,6 @@ func console_class_name(): String {
 }
 
 func text_of(attribute: Spite.Attribute): String {
-    if not attribute.value {
-        return ""
-    }
+    fallback attribute.value
     return attribute.value.to_string()
 }

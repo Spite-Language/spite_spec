@@ -2,7 +2,7 @@ var steps = List<Integer>()
 var prepared = false
 
 func prepare(first: Integer) {
-    assert not prepared
+    fallback not prepared
     prepared = true
     steps.append(first)
     steps.append(3)

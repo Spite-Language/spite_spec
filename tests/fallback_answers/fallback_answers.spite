@@ -1,0 +1,49 @@
+var console = Console()
+
+func FallbackAnswers() {
+    load "../../../spite_standard_library/windows"
+    var count = count_of("")
+    var ready = is_ready("")
+    var name = name_of("")
+    var ratio = ratio_of(0.0)
+    var empty_point = point_of("")
+    var empty_tally = tally_of("")
+    console.print(count, ready, "[{name}]", ratio, empty_point.x, empty_tally.total)
+    var full_count = count_of("abc")
+    var full_name = name_of("kal")
+    console.print(full_count, full_name)
+}
+
+func count_of(text: String): Integer {
+    fallback not text.is_empty()
+    return text.length()
+}
+
+func is_ready(text: String): Boolean {
+    fallback not text.is_empty()
+    return true
+}
+
+func name_of(text: String): String {
+    fallback not text.is_empty()
+    return text
+}
+
+func ratio_of(divisor: Float): Float {
+    fallback divisor > 0.0
+    return 1.0 / divisor
+}
+
+func point_of(text: String): Point {
+    fallback not text.is_empty()
+    var made = Point()
+    made.x = text.length()
+    return made
+}
+
+func tally_of(text: String): Tally {
+    fallback not text.is_empty()
+    var made = Tally()
+    made.total = text.length()
+    return made
+}

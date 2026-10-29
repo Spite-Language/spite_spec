@@ -8,11 +8,11 @@ func Car(starting_name: String, starting_engine: Engine) {
 }
 
 func accelerate(amount: Integer) {
-    assert engine
+    fallback engine
     engine.push(amount)
 }
 
 func describe() {
-    assert engine
+    fallback engine
     console.print("{name}: {engine.report()}")
 }

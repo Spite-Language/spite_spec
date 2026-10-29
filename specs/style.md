@@ -137,7 +137,7 @@ tokens.append(Token('number', source.slice(token_start, end_index)))    # error:
   (`diagnostics/constructor_as_argument`, and `diagnostics/long_line_construction` for a long line). It covers a
   constructor inside a constructor's arguments (`Label(Font())`), a generic collection made for a call
   (`buffers.set(List<String>())`), and every argument list: of a `var`, an assignment, a call standing alone, a
-  `return`, an `assert` or `crash`, an `if`, `while` or `switch` condition, an attribute's default, and a call
+  `return`, a `fallback` or `crash`, an `if`, `while` or `switch` condition, an attribute's default, and a call
   inside a text's hole. A constructor used as a
   receiver (`JsonWriter<Order>().write(order)`) and the whole value of a `var` are not arguments; `Parallel(worker.run)` and
   `Concurrent(worker.run)` take a function value, so they are fine; a singleton's constructor passed as an
@@ -359,7 +359,7 @@ error, and nothing is left to the moron's taste. The `--development`-only "skipp
   'Integer'` ([Numeric types](values_and_types.md#numeric-types)).
 - The terminal-`if` lint ([The last `if` of a function](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#the-last-if-of-a-function): a function whose
   body's last statement is `if value { ... }`, with no `else`, wrapping the rest of the function only to check
-  existence, which must be written with `assert`) runs in this same linter, on the parsed tree.
+  existence, which must be written with `fallback`) runs in this same linter, on the parsed tree.
 - A diagnostic names the file the problem is in (`registry.spite:3`), not the entry file.
 
 ---

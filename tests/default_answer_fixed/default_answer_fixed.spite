@@ -11,7 +11,7 @@ func DefaultAnswerFixed() {
 }
 
 func row_of(entity: Integer): Integer? {
-    assert entity < rows.count()
+    fallback entity < rows.count()
     return rows[entity]
 }
 

@@ -1,1 +1,1 @@
-conformance/decided_assert_false/decided_assert_false.spite:10: error: 'assert 1 > 2' is decided while compiling and is always false here, so the function always answers nothing from here: remove it with the code after it (in DecidedAssertFalse.answer)
+conformance/decided_assert_false/decided_assert_false.spite:10: error: 'fallback 1 > 2' is decided while compiling and is always false here, so the function always answers nothing from here: remove it with the code after it (in DecidedAssertFalse.answer)

@@ -3,11 +3,11 @@ var console = Console()
 func AssertInEntryConstructor() {
     load "../../../spite_standard_library/windows"
     var name = find("ada")
-    assert name
+    fallback name
     console.print(name)
 }
 
 func find(text: String): String? {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text
 }

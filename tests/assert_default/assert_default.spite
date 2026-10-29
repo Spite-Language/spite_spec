@@ -11,16 +11,16 @@ func AssertDefault() {
 }
 
 func safe_divide(numerator: Integer, denominator: Integer): Integer? {
-    assert denominator != 0
+    fallback denominator != 0
     return numerator / denominator
 }
 
 func report(result: Integer?) {
-    assert result
+    fallback result
     console.print(result)
 }
 
 func announce(value: Integer) {
-    assert value > 0
+    fallback value > 0
     console.print("positive", value)
 }

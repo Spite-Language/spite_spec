@@ -1,0 +1,12 @@
+var console = Console()
+
+func FallbackBuiltWithArguments() {
+    load "../../../spite_standard_library/windows"
+    var found = slot_of("")
+    console.print(found.index)
+}
+
+func slot_of(text: String): Slot {
+    fallback not text.is_empty()
+    return Slot(text.length())
+}

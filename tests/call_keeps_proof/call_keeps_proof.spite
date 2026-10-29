@@ -9,7 +9,7 @@ func CallKeepsProof() {
 }
 
 func show() {
-    assert target
+    fallback target
     count_shown()
     console.print(target.name, shown)
 }

@@ -8,7 +8,7 @@ func CallInLoopUndoesNarrowing() {
 
 func run() {
     keeper.target = Monster()
-    assert keeper.target
+    fallback keeper.target
     var passes = 0
     while passes < 2 {
         console.print(keeper.target.name)

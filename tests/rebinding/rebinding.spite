@@ -15,12 +15,12 @@ func Rebinding() {
 }
 
 func find(name: String): String? {
-    assert not name.is_empty()
+    fallback not name.is_empty()
     return "  {name}  "
 }
 
 func show(found: String?) {
-    assert found
+    fallback found
     var found = found.trim()
     console.print(found)
 }

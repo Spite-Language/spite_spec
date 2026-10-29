@@ -14,7 +14,7 @@ func LoopAfterAssert() {
 }
 
 func emit() {
-    assert emitted < names.count()
+    fallback emitted < names.count()
     while emitted < names.count() {
         var position = emitted
         emitted = emitted + 1

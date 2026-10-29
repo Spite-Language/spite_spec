@@ -23,9 +23,7 @@ func walk(): Boolean {
     var index = 0
     while index < items.count() {
         var item = items[index]
-        if not is_cheap(item) {
-            return false
-        }
+        fallback is_cheap(item)
         index = index + 1
     }
     return true

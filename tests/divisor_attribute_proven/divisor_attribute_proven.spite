@@ -14,9 +14,7 @@ func DivisorAttributeProven() {
 }
 
 func share(total: Integer): Integer {
-    if parts == 0 {
-        return 0
-    }
+    fallback parts != 0
     return total / parts
 }
 

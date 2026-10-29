@@ -8,6 +8,6 @@ func NullableOrdering() {
 }
 
 func counted(text: String): Integer? {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text.length()
 }

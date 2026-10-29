@@ -16,7 +16,7 @@ func pumped(): Long {
 }
 
 func stop() {
-    assert thread and pump
+    fallback thread and pump
     meter.stop()
     thread = null
 }

@@ -1,0 +1,1 @@
+conformance/assert_is_fallback/assert_is_fallback.spite:10: error: 'assert' is now 'fallback': it returns what the function's answer type builds with no arguments when its condition fails, so write 'fallback' with the same condition

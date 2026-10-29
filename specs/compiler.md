@@ -20,7 +20,7 @@ spite program --optimization-report=file   also write what could not be optimise
 spite program --optimized               a release build: -O3, and link-time optimisation across translation units
 spite program --development             an inspectable build: no tree shaking, internals as ordinary objects
 spite program --debug-memory            count allocations and frees, print the balance when the program ends
-spite program --trace-asserts           print each failed assert as it fails, as well as in a crash's report
+spite program --trace-fallbacks           print each fallback taken as it fails, as well as in a crash's report
 spite program --repl                    run it, then answer REPL commands at the terminal (repl.md)
 spite program --repl-port=4000          serve REPL commands on 127.0.0.1:4000 while it runs (repl.md)
 spite program --hot-reload              swap changed classes into the running program (implies --development)

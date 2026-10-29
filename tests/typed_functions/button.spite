@@ -3,6 +3,6 @@ var presses = 0
 
 func press() {
     presses = presses + 1
-    assert on_press
+    fallback on_press
     on_press()
 }

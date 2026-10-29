@@ -12,12 +12,12 @@ func AssertAnswersEmpty() {
 }
 
 func split_words(text: String): List<String> {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text.split(" ")
 }
 
 func counted(text: String): Dictionary<String, Integer> {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     var table = Dictionary<String, Integer>()
     table[text] = 1
     return table

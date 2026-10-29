@@ -1,1 +1,1 @@
-conformance/guard_inside_loop/guard_inside_loop.spite:13: error: this 'if' only returns the default 'null', which is how a guard is written: write 'assert length >= 0' and let the rest run unindented (in GuardInsideLoop.longer_than)
+conformance/guard_inside_loop/guard_inside_loop.spite:13: error: this 'if' only returns 'null', which is what 'fallback' returns when its condition fails: write 'fallback length >= 0' and let the rest run unindented (in GuardInsideLoop.longer_than)

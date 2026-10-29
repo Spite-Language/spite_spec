@@ -6,12 +6,12 @@ func TerminalIfFixed() {
 }
 
 func try_get_name(known: Boolean): String? {
-    assert known
+    fallback known
     return "Aria"
 }
 
 func announce() {
     var name = try_get_name(true)
-    assert name
+    fallback name
     console.print(name)
 }

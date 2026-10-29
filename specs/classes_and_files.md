@@ -19,7 +19,7 @@ is the bug.
   naming the getter when there is one: `'_hidden' is private to 'Secret': a name starting with '_' is used only
   inside its own class, and 'hidden' reads it from outside`
   ([Reflection objects](reflection.md#reflection-objects)).
-- Keywords: `var func return if else while switch type enum union generic assert crash and or not null true false this`
+- Keywords: `var func return if else while switch type enum union generic fallback crash and or not null true false this`
   (`this` is in every class: it passes or returns the object itself,
   [Numbers are classes, and `this`](values_and_types.md#numbers-are-classes-and-this)).
   - `load` is a keyword at the start of a statement, written without parentheses (`load "engine"`), and
@@ -30,7 +30,7 @@ is the bug.
   - `generics` is reserved only so that writing a header list gets this error: `there is no 'generics' list: a class
     declares each codegen value on its own line at the top of the file, like 'generic $damage_type'`.
 - There is no `do`: `if value { } else { }` narrows in place instead
-  ([Null safety and `assert` narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing)). Writing `do`
+  ([Null safety and `fallback` narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing)). Writing `do`
   is a parse error naming that form: `Spite has no 'do': an 'if' on a value that may be null narrows it in place,
   'if value { ... } else { ... }', and inside the block 'value' is the value itself` (`diagnostics/old_do`).
 - There is no `let` and no `const`: `let total = 1` is `Spite has no 'let': a variable is declared 'var name =
@@ -125,8 +125,8 @@ on other types, or one that reads without writing the object, stays legal.
   empty constructor: delete it. A class without a constructor is already made from its defaults`
   (`diagnostics/empty_constructor`). A generic class needs no constructor either: its codegen values are its
   `generic` lines.
-- `assert` is not allowed in any constructor
-  ([failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#assert-is-not-allowed-in-a-constructor)).
+- `fallback` is not allowed in any constructor
+  ([failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#fallback-is-not-allowed-in-a-constructor)).
 - One file declares each name once, with no overloading: `'DuplicateFunction' declares 'twice' twice: a later
   file may reopen a class and replace a function, but one file declares each name once`
   (`diagnostics/duplicate_function`). An argument casts to the parameter's type instead

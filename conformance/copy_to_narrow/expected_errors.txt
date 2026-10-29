@@ -1,1 +1,1 @@
-conformance/copy_to_narrow/copy_to_narrow.spite:9: error: 'watcher' only copies 'tracker' so it can be narrowed: narrow 'tracker' itself ('assert tracker') and use it directly (in CopyToNarrow.drop)
+conformance/copy_to_narrow/copy_to_narrow.spite:9: error: 'watcher' only copies 'tracker' so it can be narrowed: narrow 'tracker' itself ('fallback tracker') and use it directly (in CopyToNarrow.drop)

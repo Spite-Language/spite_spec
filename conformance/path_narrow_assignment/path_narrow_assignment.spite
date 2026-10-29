@@ -8,7 +8,7 @@ func PathNarrowAssignment() {
 func probe() {
     var outer = Box()
     outer.inner = Box()
-    assert outer.inner
+    fallback outer.inner
     outer = Box()
     console.print(outer.inner.label)
 }

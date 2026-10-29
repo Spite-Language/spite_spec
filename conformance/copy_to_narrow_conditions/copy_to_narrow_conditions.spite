@@ -28,6 +28,6 @@ func loop_while_there() {
 
 func assert_with_more() {
     var watcher = tracker
-    assert watcher and ready
+    fallback watcher and ready
     watcher.note_a_drop()
 }

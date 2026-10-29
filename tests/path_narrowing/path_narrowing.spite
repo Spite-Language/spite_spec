@@ -12,18 +12,18 @@ func run() {
     }
     console.print("a null middle link fails the if")
     outer.inner = Box()
-    assert outer.inner
+    fallback outer.inner
     outer.inner = Box()
     console.print(outer.inner.label)
     outer.inner.label = "inner"
     outer.inner.inner = Box()
-    assert outer.inner.inner
+    fallback outer.inner.inner
     console.print(outer.inner.label, outer.inner.inner.label)
     var walker = Box()
     walker.inner = Box()
     var passes = 0
     while passes < 2 {
-        assert walker.inner
+        fallback walker.inner
         console.print(walker.inner.label)
         walker.inner = null
         walker.inner = Box()

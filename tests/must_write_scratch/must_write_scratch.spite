@@ -35,7 +35,7 @@ func both_ways(scratch: Scratch, wanted: Boolean): Boolean {
 }
 
 func guarded(scratch: Scratch, times: Integer) {
-    assert times > 0
+    fallback times > 0
     var index = 0
     while index < times {
         scratch.ready = false
@@ -50,9 +50,7 @@ func prepare(scratch: Scratch): Boolean {
 }
 
 func check(scratch: Scratch): Boolean {
-    if scratch.marks == 0 {
-        return false
-    }
+    fallback scratch.marks != 0
     scratch.ready = true
     return true
 }

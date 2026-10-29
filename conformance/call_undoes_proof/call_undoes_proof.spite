@@ -16,7 +16,7 @@ func CallUndoesProof() {
 }
 
 func forgetting() {
-    assert target
+    fallback target
     forget_target()
     console.print(target.name)
 }
@@ -36,14 +36,14 @@ func passing() {
 }
 
 func keeping() {
-    assert target
+    fallback target
     crash names[0]
     greet()
     console.print(target.name, names[0])
 }
 
 func looping() {
-    assert target
+    fallback target
     var index = 0
     while index < 2 {
         console.print(target.name)
@@ -53,7 +53,7 @@ func looping() {
 }
 
 func looping_on_it() {
-    assert target
+    fallback target
     while target.name != "dragon" {
         forget_target()
         crash target

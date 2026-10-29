@@ -20,9 +20,7 @@ func Child(starting_folder: String, starting_output_path: String) {
 func start(command: String): Boolean {
     var no_value: Long = 0
     job = kernel.CreateJobObjectA_as_long(no_value, no_value)
-    if job == 0 {
-        return false
-    }
+    fallback job != 0
     var limits = zeroed(limit_size)
     limits.write_integer_little_endian_at(16, kills_on_close)
     kernel.SetInformationJobObject(job, extended_limits, limits, limit_size)
@@ -44,9 +42,7 @@ func start(command: String): Boolean {
         startup,
         information,
     )
-    if made == 0 {
-        return false
-    }
+    fallback made != 0
     var made_process = information.read_long_little_endian_at(0)
     var made_thread = information.read_long_little_endian_at(8)
     crash made_process and made_thread

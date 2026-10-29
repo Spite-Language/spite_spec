@@ -13,6 +13,6 @@ func greet(arguments: List<String>) {
     crash argument
     console.print(arguments_count, argument)
     var player = program.argument_named("player")
-    assert player
+    fallback player
     console.print("player", player)
 }

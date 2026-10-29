@@ -1,1 +1,0 @@
-conformance/default_answer/default_answer.spite:27: error: this 'assert' would answer a default Integer (0) that a caller cannot tell from a real one: return a value ('if entity >= rows.count() { return -1 }'), make the result 'Integer?', or 'crash entity < rows.count()' if this is a developer mistake (in DefaultAnswer.row_of)

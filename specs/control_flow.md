@@ -16,12 +16,12 @@ switch enemy {
 }
 ```
 
-An `if` on a `T?` narrows the value in place ([Null safety and `assert` narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing)): the block runs with `value` as a plain `T`,
-and the `else` runs exactly when it is null/absent: one rule for narrowing everywhere, `assert`/`if`/`switch`
+An `if` on a `T?` narrows the value in place ([Null safety and `fallback` narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing)): the block runs with `value` as a plain `T`,
+and the `else` runs exactly when it is null/absent: one rule for narrowing everywhere, `fallback`/`if`/`switch`
 alike. `do` is not a keyword ([Lexical structure](classes_and_files.md#lexical-structure)). The terminal-`if` lint
 ([The last `if` of a function](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#the-last-if-of-a-function)) applies only when the `if` has no `else`:
 one with an `else` already handles the missing case explicitly, so there is nothing left to rewrite with
-`assert`. `else if` is written on one line; the formatter joins an `else { if ... }` into it.
+`fallback`. `else if` is written on one line; the formatter joins an `else { if ... }` into it.
 
 **A statement ends with its line.** Anything left on the line
 after a statement is a parse error at the first word left over, so nothing written there is silently dropped or

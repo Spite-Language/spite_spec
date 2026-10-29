@@ -39,7 +39,7 @@ func text_reads(row: Row) {
     var loud = row.label.upper_case()
     var size = row.label.length()
     var first = row.flags.first()
-    assert first
+    fallback first
     console.print(loud, size, first)
 }
 

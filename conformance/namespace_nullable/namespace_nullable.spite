@@ -7,6 +7,6 @@ func NamespaceNullable() {
 
 func probe() {
     var ns = NamespaceNullable.namespace
-    assert ns
+    fallback ns
     console.print(NamespaceNullable.namespace.name)
 }

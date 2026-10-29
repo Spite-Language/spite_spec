@@ -480,7 +480,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/declaration_one_per_line | covered | conformance/declaration_one_per_line |  |
 | diagnostics/declaration_order | covered | conformance/declaration_order |  |
 | diagnostics/declaration_walk | covered | conformance/declaration_walk |  |
-| diagnostics/default_answer | covered | conformance/default_answer |  |
+| diagnostics/default_answer | covered | conformance/default_answer_enum |  |
 | diagnostics/default_guard | covered | conformance/default_guard |  |
 | diagnostics/dictionary_type_arguments | covered | conformance/dictionary_type_arguments |  |
 | diagnostics/dispatched_resizes | removed (D1707) | - |  |
@@ -545,7 +545,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/left_over_after_block | covered | conformance/left_over_after_block |  |
 | diagnostics/left_over_after_return | covered | conformance/left_over_after_return |  |
 | diagnostics/lent_arguments | covered | tests/lent_arguments |  |
-| diagnostics/lent_element_guard | covered | conformance/lent_element_guard |  |
+| diagnostics/lent_element_guard | dropped |  | a fallback now returns the object a class makes with no arguments (D1765) |
 | diagnostics/lent_escapes | removed (D1707) | - |  |
 | diagnostics/lent_results | removed (D1707) | - |  |
 | diagnostics/lent_to_calls | removed (D1707) | - |  |
@@ -784,7 +784,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/control_flow.md#returned_local_error | covered | conformance/returned_local |  |
 | docs/failure.md#null_comparison_error | covered | conformance/null_comparison |  |
 | docs/failure.md#nullable_narrowing | covered | tests/nullable_narrowing |  |
-| docs/failure.md#path_narrowing_doc | covered | tests/path_narrowing | path assert through a.b.c; while walk in tests/while_narrowing_walk |
+| docs/failure.md#path_narrowing_doc | covered | tests/path_narrowing | path fallback through a.b.c; while walk in tests/while_narrowing_walk |
 | docs/failure.md#copy_to_narrow_error | covered | conformance/copy_to_narrow |  |
 | docs/failure.md#call_undoes_proof_error | covered | conformance/call_undoes_proof |  |
 | docs/failure.md#call_keeps_proof | ported | tests/call_keeps_proof |  |
@@ -794,14 +794,14 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/failure.md#read_in_index_error | covered | conformance/nested_index_read | same error text |
 | docs/failure.md#nullable_comparison | covered | tests/nullable_comparison |  |
 | docs/failure.md#assert_guard | covered | tests/assert_answers_empty |  |
-| docs/failure.md#default_answer_error | covered | conformance/default_answer |  |
+| docs/failure.md#default_answer_error | covered | conformance/default_answer_enum |  |
 | docs/failure.md#default_answer_fixed | ported | tests/default_answer_fixed |  |
 | docs/failure.md#leaving_if | covered | tests/leaving_if |  |
 | docs/failure.md#falling_end_error | covered | conformance/falling_end |  |
 | docs/failure.md#falling_end_fixed | covered | tests/every_path_returns |  |
 | docs/failure.md#default_guard_error | covered | conformance/guard_inside_loop |  |
 | docs/failure.md#default_guard_fixed | covered | tests/assert_answers_empty |  |
-| docs/failure.md#default_answer | ported | tests/default_answer_doc | the compiling form of the default answer; conformance/default_answer holds the assert form |
+| docs/failure.md#default_answer | ported | tests/default_answer_doc | the default answer written as a fallback (D1765) |
 | docs/failure.md#terminal_if_error | covered | conformance/terminal_if |  |
 | docs/failure.md#terminal_if_fixed | ported | tests/terminal_if_fixed |  |
 | docs/failure.md#constructor_assert_error | covered | conformance/assert_in_entry_constructor |  |

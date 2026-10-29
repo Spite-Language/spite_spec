@@ -1,0 +1,5 @@
+var index = 0
+
+func Slot(starting_index: Integer) {
+    index = starting_index
+}

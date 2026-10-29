@@ -17,6 +17,6 @@ func add_stuff(first_value: Integer, second_value: Float): Integer {
 }
 
 func report_if_large(value: Integer) {
-    assert value > 100
+    fallback value > 100
     console.print("large", value)
 }

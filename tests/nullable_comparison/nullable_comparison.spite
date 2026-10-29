@@ -9,6 +9,6 @@ func NullableComparison() {
 }
 
 func find(text: String): String? {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text
 }

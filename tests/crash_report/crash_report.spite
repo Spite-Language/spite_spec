@@ -16,6 +16,6 @@ func check(value: Integer) {
 }
 
 func announce(amount: Integer) {
-    assert amount > 0
+    fallback amount > 0
     console.print("announced", amount)
 }

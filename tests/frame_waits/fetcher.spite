@@ -4,7 +4,7 @@ var fetched = false
 
 func update() {
     var sixty_milliseconds = Duration(60, 'milliseconds')
-    assert not started
+    fallback not started
     started = true
     program.sleep(sixty_milliseconds)
     fetched = true

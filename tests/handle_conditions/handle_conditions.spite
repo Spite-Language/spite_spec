@@ -18,8 +18,8 @@ func HandleConditions() {
 
 func check_ready() {
     var ready = Concurrent(is_ready)
-    assert ready
-    console.print("assert read the handle's value")
+    fallback ready
+    console.print("fallback read the handle's value")
 }
 
 func three(): Integer {

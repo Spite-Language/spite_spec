@@ -1,1 +1,0 @@
-conformance/default_answer_boolean/default_answer_boolean.spite:11: error: this 'assert' would answer a default Boolean (false) that a caller cannot tell from a real one: return a value ('if handle < 0 { return false }'), or 'crash handle >= 0' if this is a developer mistake (in DefaultAnswerBoolean.is_open)

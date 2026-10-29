@@ -27,7 +27,7 @@ func ShapeMembers() {
 }
 
 func run_first(stages: List<Runnable>) {
-    assert stages[0]
+    fallback stages[0]
     run_in_parallel(stages[0])
     var labelled = stages[0].label
     var first_name = stages[0].name

@@ -7,6 +7,6 @@ func CopyToNarrow() {
 
 func drop() {
     var watcher = tracker
-    assert watcher
+    fallback watcher
     watcher.note_a_drop()
 }

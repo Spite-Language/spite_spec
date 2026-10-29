@@ -6,7 +6,7 @@ func CheckProvesNothing() {
 }
 
 func drop() {
-    assert tracker
-    assert tracker
+    fallback tracker
+    fallback tracker
     tracker.note_a_drop()
 }

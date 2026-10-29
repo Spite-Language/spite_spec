@@ -7,7 +7,7 @@ func LeavingIfProvesNothing() {
 }
 
 func find_text(text: String): String? {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text
 }
 

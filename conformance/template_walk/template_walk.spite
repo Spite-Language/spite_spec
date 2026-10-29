@@ -22,7 +22,7 @@ func show() {
     console.print(joined, total, stocked_count, any_stocked)
     console.print("{stocked.count()} {positions.count()}")
     var found = named("pear")
-    assert found
+    fallback found
     console.print(found.name)
 }
 

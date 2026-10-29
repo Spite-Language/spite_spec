@@ -27,7 +27,7 @@ var target: Monster? = null
   Operations that cannot succeed produce the default instead of crashing, except reading with `[]`, which
   answers `T?`: an index or key that may not be there is a value that may be null, narrowed like any other.
 - `null` exists only as the empty state of `T?`. **`var x: T = null` on a non-nullable `T` is a compile error**:
-  it made a default `T` (a whole object, for a class) while reading as "nothing yet", so a later `assert x` proved nothing. The error names both ways out:
+  it made a default `T` (a whole object, for a class) while reading as "nothing yet", so a later `fallback x` proved nothing. The error names both ways out:
   `the attribute 'target' is declared 'Monster', not 'Monster?', so '= null' would make a default Monster rather
   than nothing: write 'var target: Monster? = null' for none yet, narrowed before use, or 'var target =
   Monster()' for a default, or keep '= null' and assign it at the top of the constructor` (the default of a plain
@@ -50,7 +50,7 @@ var target: Monster? = null
 
 ```gdscript
 var content = file.read_as_string()        # String?
-assert content
+fallback content
 var content = content.trim()     # String
 ```
 
@@ -229,7 +229,7 @@ game/game.spite:22 in Game.share`), since dividing by zero is the moron's mistak
 (`conformance/stage6/division_by_zero`). A divisor the compiler can see is zero, a constant (`total / 0`,
 `total % (2 - 2)`) or a codegen value folded to `0`, is a compile error instead: `'total / 0' divides by zero,
 which always halts the program` (`diagnostics/division_by_constant_zero`). Where a proof already shows the
-divisor is not zero (`assert parts != 0`, `crash parts != 0`, `if parts != 0 { }`, `parts > 0`, or a `while`
+divisor is not zero (`fallback parts != 0`, `crash parts != 0`, `if parts != 0 { }`, `parts > 0`, or a `while`
 condition saying so, kept or undone by a call as any proof is), no check is emitted. The divisor may be a local, a
 parameter or an attribute path through them (`self.parts`, `config.parts`): a path's proof lasts until an
 attribute is assigned, a local the path starts at is assigned, anything is called or made, or a loop starts its
@@ -273,7 +273,7 @@ lies inside the operation's type.
   whatever its type.
 - **Conditions narrow.** Where `x < e`, `x <= e`, `x > e`, `x >= e` or `x == e` is known to hold, either way round,
   with `x` a local or a parameter, `x`'s range is cut by `e`'s: inside a `while` or an `if` whose condition says
-  so, after an `assert` or a `crash` of it, on the right of an `and`, and after an `if` that leaves, by the
+  so, after a `fallback` or a `crash` of it, on the right of an `and`, and after an `if` that leaves, by the
   condition turned around (`if count > 9 { return }` leaves `count` at most 9). An `or`, a `!=` and an `else`
   narrow nothing.
 - **Branches join.** A local assigned inside an `if`, an `else` or a case of a `switch` leaves it with a range
@@ -291,7 +291,7 @@ lies inside the operation's type.
   `counter <= bound` in its condition, runs at most `(last - first) / c + 1` passes, where `first` is the smallest
   value the counter enters with and `last` the largest the condition lets through (one below the bound's largest
   for `<`), and the same downwards under `>` or `>=`, whatever the body does: nothing else can step the counter, and
-  a pass that stops early (a `return`, an `assert`, a `crash`) leaves the loop.
+  a pass that stops early (a `return`, a `fallback`, a `crash`) leaves the loop.
 - **A total adds at most one term a pass.** A local assigned exactly once in such a loop, outside any nested loop,
   as `total = total + a - b ...` with terms that do not name `total`, holds before that assignment its range at
   the loop's start plus between none and one fewer than the passes of the terms' range. A `Long` total of `Integer`
@@ -588,7 +588,7 @@ simpler with no cost to reading is made to be, but a one-liner nobody can read b
 that would need an `else` stays a switch, and so does a switch with more cases: `_:` narrows to each remaining
 member, which an `else` cannot.
 
-Memory safety is done with unions instead of borrow checking noise: `T?` is the union of `T` and `Null`, and it is narrowed before use with `if ... else`, `assert`, `crash` or `switch` ([Null safety and `assert` narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing)).
+Memory safety is done with unions instead of borrow checking noise: `T?` is the union of `T` and `Null`, and it is narrowed before use with `if ... else`, `fallback`, `crash` or `switch` ([Null safety and `fallback` narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing)).
 **`Monster?` is a union.** A `?` suffix is
 sugar for the union of a type and nothing:
 
@@ -605,7 +605,7 @@ write 'Integer?' for a value that may be null" (`conformance/old_nullable_spelli
 
 `Monster?` *is* `union { Monster, Null }`. `Null` is an ordinary class whose only value is the literal `null`,
 the way `true` and `false` are the values of `Boolean`, so nullability is no special case: `switch target {
-Monster: ... Null: ... }` is a switch over a union, and `assert`, `crash` and `if` narrow it by union narrowing.
+Monster: ... Null: ... }` is a switch over a union, and `fallback`, `crash` and `if` narrow it by union narrowing.
 
 At run time a union of a reference and `Null` is just the pointer, null or not; only a scalar `T?` (an
 `Integer?`, a `Boolean?`) needs a wrapper, a flag beside the value, passed by value with no allocation

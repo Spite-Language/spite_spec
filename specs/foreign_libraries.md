@@ -16,7 +16,7 @@ message naming the file, or the symbol and the Spite function that wanted it (`c
 A status a foreign function answers is handled while compiling. A C function that returns a C enum answers a
 Spite enum that the binding writes in Spite, with Spite names, each value given its C number with `=`; no enum is ever
 made with C's names. A C value the Spite enum does not list crashes at the boundary. The result must be used,
-cannot be compared with a number, and cannot be the condition of a `crash` or `assert`; a `switch` over it follows
+cannot be compared with a number, and cannot be the condition of a `crash` or `fallback`; a `switch` over it follows
 the ordinary rule, every value a written line, with no `_:`. So `crash result == 0` does not compile for a call that
 answers a status. A header is not needed for any of this; the compiler may read one to check that a binding's
 numbers match C's.
@@ -108,7 +108,7 @@ func DynamicLibrary(file_name: String, naming: Naming, header: String) {
     _file_name = file_name
     _naming = naming
     _handle = _open(file_name)
-    assert _handle
+    fallback _handle
 }
 
 func symbol_name(symbol: ForeignSymbol): String {

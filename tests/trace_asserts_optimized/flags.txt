@@ -1,1 +1,1 @@
---optimized --trace-asserts
+--optimized --trace-fallbacks

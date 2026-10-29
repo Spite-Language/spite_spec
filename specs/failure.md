@@ -28,10 +28,10 @@ keeping, and the run's halt is the backstop for what only the run can find.
 | reading a value that may be absent as if it were there | `T?` must be narrowed first; `value == null` is an error | [narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing) |
 | an index past the end, a key never set | `[]`, `first()`, `last()`, `remove_first()` answer a `T?` | [reading with `[]`](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#reading-with--answers-t) |
 | a read a loop bound proved, with a counter gone below zero | halts naming the read and the line | [reading with `[]`](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#reading-with--answers-t) |
-| a guard `assert` answering a `0`, `false`, `""` or default object the caller takes for a real answer | compile error unless the result can say "nothing" | [a default that looks like an answer](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#a-default-that-looks-like-an-answer-is-an-error) |
+| a `fallback` in a function whose answer type has no value built with no arguments (an enum, a class made with arguments, a singleton) | compile error naming the `T?` or the `crash` to write | [`fallback` is control flow](#fallback-is-control-flow) |
 | a write to an object only this function holds (made here, a copy, or a function's result that is always made new), with the object never read after it | compile error at the write naming the object (`diagnostics/lost_writes`); a class with `drop()` or a setter for the attribute is left alone, since either may read it | [this section](#nothing-fails-silently-the-rule) |
 | a local read from a list or dictionary (or answered by a function returning one of its items) assigned a value nothing reads, as if that wrote the list | compile error at the assignment naming the write to use (`diagnostics/replaced_items`) | [memory.md](memory.md#assigning-a-name-read-from-a-list-changes-only-the-name) |
-| a `false`, `0` or `""` taken for "missing" | narrowing tests presence, never the value; a `Boolean?` is a condition only in `assert` and `crash`, which ask for `true` | [null safety](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing) |
+| a `false`, `0` or `""` taken for "missing" | narrowing tests presence, never the value; a `Boolean?` is a condition only in `fallback` and `crash`, which ask for `true` | [null safety](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing) |
 | text that is not a number, read as `0` | `to_integer()` and the other readings answer a `T?`; text assigned to a plain number is an error | [standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#string) |
 | a function that declares a result reaching its end without a `return` | compile error at its last line naming the path | [every path ends in a `return`](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#every-path-ends-in-a-return) |
 | a proof that went stale after an assignment or a call | the read must be proven again; in a loop, an error naming the call | [a call may undo a proof](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#a-call-may-undo-a-proof) |
@@ -56,15 +56,15 @@ keeping, and the run's halt is the backstop for what only the run can find.
 | a condition the compiler knows is always true or always false, `while true` included | compile error | [control_flow.md](https://github.com/Spite-Language/spite_documentation/blob/master/control_flow.md#while-is-the-only-loop) |
 | work given to a `Parallel` that loops forever and never waits | compile error | [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#threads-for-parallel) |
 | a peer that hung up read as a count of `-1` | `socket.closed` turns `true`; reads answer `0` or `null` | [standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md) |
-| a read the outside world cut short, a lock or random bytes the system refused, input that is not UTF-8, taken as a halt or a made-up value (D1721) | the library answers `null` or `false` and halts only on the program's own mistakes; the program decides with `assert` or `crash` (`tests/console_long_lines`) | [failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#nothing-fails-silently) |
+| a read the outside world cut short, a lock or random bytes the system refused, input that is not UTF-8, taken as a halt or a made-up value (D1721) | the library answers `null` or `false` and halts only on the program's own mistakes; the program decides with `fallback` or `crash` (`tests/console_long_lines`) | [failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#nothing-fails-silently) |
 | an impossible date such as `Date(2023, 2, 29)` rolled over | halts; text from outside is read with `text.to_date()`, which answers `null` | [time.md](https://github.com/Spite-Language/spite_documentation/blob/master/time.md) |
-| a `crash` or `assert` whose site cannot be found again | every build writes `<program>.crashes`, one line per site | [what a crash reports](#what-a-crash-reports) |
+| a `crash` or `fallback` whose site cannot be found again | every build writes `<program>.crashes`, one line per site | [what a crash reports](#what-a-crash-reports) |
 
-`assert` doubles as the way to prove a `T?` is not null without nesting: after `assert value` on a
+`fallback` doubles as the way to prove a `T?` is not null without nesting: after `fallback value` on a
 `T?` local, parameter, or field, `value` is a plain `T` for the rest of that block and any block
 nested inside it. Reads, writes, and method calls all go straight to the value the `T?` holds, and ownership
 and dropping still belong to that `T?` (assigning a new `T` through the narrowed name drops the old one first,
-exactly like overwriting any other owning slot). `assert value and
+exactly like overwriting any other owning slot). `fallback value and
 other_condition` narrows `value` too, and `other_condition` itself already sees the narrowed type. Assigning
 the narrowed name something that may be null (`value = null`) makes it a `T?` again from that line, so reading
 through it afterwards is the usual may-be-null error (`diagnostics/narrowed_name_reassigned`; the rule for paths
@@ -75,14 +75,14 @@ narrowed `Long?`s, stores the whole `Long?` (its presence and its value) into `g
 **A `T?` is never passed, stored or returned where a `T` is wanted, whatever `T` is**: a class, `String`, a
 number, an enum, a `union` or a `type` (`Anything` too). A `union` or a `type` gets no exemption for being able to
 hold several classes: null is none of them. The error names the narrowing to write: "this value may be null (it is
-an Anything?), but an Anything is needed: narrow it first with 'if value { }', 'assert value' or 'crash value'",
+an Anything?), but an Anything is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value'",
 and for a `[]` read it names the read, as below. A path that a call may have changed since it was proven is a `T?`
 again, a `union` field included, so it is narrowed again after the call (`diagnostics/maybe_null_into_type`,
 `diagnostics/call_undoes_proof`).
 
 ```gdscript
 var content = program_file.read_as_string()
-assert content
+fallback content
 var length = content.length()          # content is a String here, not String?
 console.print(length)
 ```
@@ -92,22 +92,22 @@ Narrowing tests presence and never the value it holds: a `T?` of a number, an en
 presence flag beside the value (`has_value`), a reference's `T?` is its pointer, and a `[]` read goes through
 `get_at`/`get`, which answer that flag, so no representation uses a sentinel and no value can be mistaken for
 absence (`conformance/stage6/present_zero`, which narrows zeros, `false` and `""` from lists, a dictionary, an
-`Integer?` result, `first()`/`last()` and `remove_first()` by `crash`, `assert`, `if` and `and`). A `Boolean?` is
-never a condition but in `assert` and `crash`, which ask for `true` (below), so a `false` that is there is never taken for a
+`Integer?` result, `first()`/`last()` and `remove_first()` by `crash`, `fallback`, `if` and `and`). A `Boolean?` is
+never a condition but in `fallback` and `crash`, which ask for `true` (below), so a `false` that is there is never taken for a
 missing one.
 
 `if` on a `T?` narrows the same way, in place, for the whole block: `if value { } else { }` runs the
 block with `value` already a plain `T`, and the `else` exactly when it is null/absent. One rule for narrowing
-everywhere: `assert`, `if`, and `switch` all read/write/call straight through to the value the `T?`
+everywhere: `fallback`, `if`, and `switch` all read/write/call straight through to the value the `T?`
 still owns, and there is no other form.
 
 **Lint:** a function whose body's *last* statement is `if value { ... }` **with no `else`** (wrapping
 the rest of the function only to check existence) is a compile error, because it should be written with
-`assert` instead. A narrowing `if` with an `else` already handles the missing case explicitly, so the no-
+`fallback` instead. A narrowing `if` with an `else` already handles the missing case explicitly, so the no-
 else lint never applies to it:
 
 ```gdscript
-# error: rewrite this with assert
+# error: rewrite this with fallback
 func read_first_line(file: File): String {
     var content = file.read_as_string()
     if content {
@@ -118,7 +118,7 @@ func read_first_line(file: File): String {
 # the fix:
 func read_first_line(file: File): String {
     var content = file.read_as_string()
-    assert content
+    fallback content
     return content.lines().first()
 }
 ```
@@ -127,54 +127,53 @@ A narrowing `if` that is not the function's last statement (more statements foll
 another statement (an outer `if`/`while`/switch case) rather than being the function body's own tail, is not
 a lint error.
 
-**An `if` that only returns the default is an `assert`.** In a function returning nothing, a `T?`, or a `List`,
-`Dictionary`, an `if` with no `else` whose whole body is one `return` of the function's
-default (`null`; an empty collection, `List<T>()`, `Dictionary<Key, Value>()` or `[]`, in a
-function returning one; or a bare `return` in a function returning nothing) is a compile error wherever it stands in
-the function, inside a `while` or a nested `if` included, and the message names the `assert` of the opposite
-condition:
+**An `if` that only returns what a `fallback` returns is a `fallback`.** An `if` with no `else` whose whole body
+is one `return` of what the function's answer type builds with no arguments (`null` for a `T?`; an empty
+collection, `List<T>()`, `Dictionary<Key, Value>()` or `[]`; `0` or `0.0` for a number; `false`; `""`; `Mark()` for a
+class made with no arguments; or a bare `return` in a function returning nothing) is a compile error wherever it
+stands in the function, inside a `while` or a nested `if` included, and the message names the `fallback` of the
+opposite condition (D1765):
 
 ```gdscript
-func first_name(): String? {
-    if names.is_empty() {    # error: this 'if' only returns the default 'null', which is how a guard is
-        return null          #        written: write 'assert not names.is_empty()' and let the rest run unindented
+func first_name(): String {
+    if names.is_empty() {    # error: this 'if' only returns '""', which is what 'fallback' returns when its
+        return ""            #        condition fails: write 'fallback not names.is_empty()' and let the rest run unindented
     }
     return names.first()
 }
 ```
 
-It is the same rule as narrowing, so `if not value { return null }` becomes `assert value` and narrows `value`
-for the rest of the block. In a function returning anything else (a number, a `Boolean`, a `String`, an enum or
-an object) a guard `assert` is an error (below), so an `if` that returns a value there is an answer written
-down, `return 0` and `return false` included, and is left alone. How the
+It is the same rule as narrowing, so `if not value { return null }` becomes `fallback value` and narrows `value`
+for the rest of the block. A function whose caller must tell "missing" from a real `0` or `""` answers a `T?`, and
+its `fallback` returns `null`. How the
 condition is turned around: `==` and `!=` swap, `<` becomes `>=` and `>` becomes `<=` (and back), `not x` becomes
 `x`, anything else becomes `not x`, and `and`/`or` are turned around by De Morgan, side by side, so
-`if count < 0 or count > limit` becomes `assert count >= 0 and count <= limit`. An `else if` is covered too. In a
-constructor, where `assert` is not allowed, the message names `crash` instead. `diagnostics/default_guard`,
+`if count < 0 or count > limit` becomes `fallback count >= 0 and count <= limit`. An `else if` is covered too. In a
+constructor, where `fallback` is not allowed, the message names `crash` instead. `diagnostics/default_guard`,
 `diagnostics/returning_guard`, `diagnostics/empty_collection_guard`.
 
 **An `if` that leaves proves the opposite of its condition.** An `if` with no `else` whose block's last statement
 is a `return`, a bare `crash`, or a `switch` whose every case's last statement is one of these proves, for the rest
-of the enclosing block, what an `assert` of the opposite condition would: each
-side of an `or` in its condition written `not path` narrows that path, as `assert path` does (the later sides
+of the enclosing block, what a `fallback` of the opposite condition would: each
+side of an `or` in its condition written `not path` narrows that path, as `fallback path` does (the later sides
 already see the earlier ones narrowed, so `if not found or found.count() == 0 { return 0 }` is one test), and every
 other side proves the `[]` reads its opposite bounds (`if index >= names.count() { return "" }` proves
 `names[index]`). The block itself sees none of it. A check that the `if` already proves is the usual "proves
 nothing" error (`conformance/stage6/leaving_if`). Compile time only: the emitted test is the condition as written.
 
-**`assert` narrows every link of a chain, not only the last.** Walking a
-nullable structure would otherwise need one `assert` per hop, and a thousand asserts is not a language, it is a
+**`fallback` narrows every link of a chain, not only the last.** Walking a
+nullable structure would otherwise need one `fallback` per hop, and a thousand fallbacks is not a language, it is a
 tax:
 
 ```gdscript
-assert class.namespace.namespace
+fallback class.namespace.namespace
 console.print(class.namespace.namespace.name)
 ```
 
-One `assert` proves the whole path, so `class.namespace` and `class.namespace.namespace` are both plain values
+One `fallback` proves the whole path, so `class.namespace` and `class.namespace.namespace` are both plain values
 for the rest of that block and any block nested inside it. It is the same rule [narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing) already has for
-`assert value and other_condition`, applied along a member chain instead of across an `and`.
-Across an `and`, every side narrows, for `assert`, `crash` and `if` alike, since each side is known true when the
+`fallback value and other_condition`, applied along a member chain instead of across an `and`.
+Across an `and`, every side narrows, for `fallback`, `crash` and `if` alike, since each side is known true when the
 whole is: `crash names[position] and ages[position]` proves both elements, as two `crash` lines would
 (`conformance/stage6/and_narrowing`). Inside any `and`, in a `return` or any other expression too, the right side
 sees the left side's narrowing, since it is only computed when the left side is true: `return made and
@@ -185,23 +184,23 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
 - A local holding a copy is its own path, so narrowing it says nothing about the path it copied
   (`diagnostics/namespace_nullable`). A local that only copies a name or a path so it can be narrowed is
   itself an error: "'watcher' only copies 'tracker' so it can be narrowed: narrow
-  'tracker' itself ('assert tracker') and use it directly" (`diagnostics/copy_to_narrow`). Its scope: a `var` whose
+  'tracker' itself ('fallback tracker') and use it directly" (`diagnostics/copy_to_narrow`). Its scope: a `var` whose
   value is a bare name or member path of a `T?` type, which is then narrowed by any condition that tests it (`if
-  watcher`, `if not watcher`, `while watcher`, `assert watcher and ready`; `diagnostics/copy_to_narrow_conditions`),
+  watcher`, `if not watcher`, `while watcher`, `fallback watcher and ready`; `diagnostics/copy_to_narrow_conditions`),
   is never assigned again, is not a `var` with a written type in a generic class (there it converts for some
   instance, as `var key: $value_type.key_type? = key_text` does), and whose source is not assigned later in the function either (a snapshot taken
   before the source changes is not a copy for narrowing). A local holding what a `[]` read answered (`var age =
   ages[name]`, `var cell = grid[row].cells[column]`) is not a copy: it is narrowed instead of reading the key twice.
-- A check on something that cannot be null proves nothing and is an error naming the fix: `assert tracker`
+- A check on something that cannot be null proves nothing and is an error naming the fix: `fallback tracker`
   written twice, or `crash` on a path an earlier `crash` already narrowed (`diagnostics/check_proves_nothing`).
   For a `[]` read the message names what proved it, so the
   line can simply go: `crash codes[index]` inside `while index < codes.count()` is "'codes[index]' is already
   proven by the loop condition 'index < codes.count()', so this 'crash' proves nothing: remove it"; a count or
   bound check is named the same way, and anything else as "an earlier check"
   (`diagnostics/proven_element`). A `T?` of any type that is already narrowed names the check that narrowed it:
-  "'tracker' is already narrowed by 'assert tracker' on line 8: remove this check"
+  "'tracker' is already narrowed by 'fallback tracker' on line 8: remove this check"
   (`diagnostics/check_proves_nothing`, `diagnostics/known_fact_checked`); a value that was never a `T?` is "this
-  value cannot be null here (it is a Tracker), so 'assert' on it proves nothing: remove the check", any local whose
+  value cannot be null here (it is a Tracker), so 'fallback' on it proves nothing: remove the check", any local whose
   value cannot be null included, whatever made it: a function's answer, a copy of an attribute or of another local, a
   proven `[]` read (`conformance/check_of_a_returned_local`, `conformance/check_of_a_copied_local`); in a generic class
   or a walk only a written type or a construction makes a local plain, since its type may differ per instance. A
@@ -209,28 +208,28 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   is present: remove this check" (`conformance/proven_present_checked`). A check inside the
   `if`, `while` or `switch` that narrowed names it the same way: "'number' is already narrowed by 'if number' on
   line 13: remove this check" (`conformance/known_fact_inside_its_if`). A `[]` read a count or an earlier check
-  proved is "'names[1]' is already proven by 'names.count() == 2', so this 'assert' proves nothing: remove it" and
+  proved is "'names[1]' is already proven by 'names.count() == 2', so this 'fallback' proves nothing: remove it" and
   "'names[position]' is already proven by an earlier check, ..." (`conformance/proven_element_by_count`,
   `conformance/proven_element_by_earlier_check`). The other facts refused this way:
   - a divisor proven again, `name != 0` after `name != 0` or `name > 0`, and `name > 0` after `name > 0`: "'parts !=
     0' is already proven by 'parts > 0' on line 18: remove this check" (`conformance/known_fact_divisor`);
-  - the same `assert` or `crash` condition on the very next statement of the same block, when it calls nothing:
+  - the same `fallback` or `crash` condition on the very next statement of the same block, when it calls nothing:
     "'total > 2' was already checked on line 20, and nothing between could change it: remove this check"
     (`conformance/known_fact_next_line`);
   - a class test the value's type answers, outside a generic class and a walk: "'monster' is a Monster here, so it
     is never Ghost and this test is decided while compiling: remove it", "'monster' is a Monster here, so this test is
     decided while compiling: remove it", and "'creature' is already a Monster, narrowed by 'if creature == Monster'
     on line 23: remove this test" (`conformance/known_fact_class_never`, `conformance/known_fact_class_again`);
-  - an `assert` or `crash` that is decided while compiling and holds, outside a generic class and a walk: "'crash
+  - a `fallback` or `crash` that is decided while compiling and holds, outside a generic class and a walk: "'crash
     Point.has_function("length")' is decided while compiling and always holds here: remove it"
     (`conformance/check_always_holds`). In a generic class it holds for some instances and not others, so it stays;
   - **a condition decided while compiling** (D1746), outside a generic class and a walk: an `if` or `while` the
-    compiler folds to always true or always false, and an `assert` that folds false, since writing one tells a reader
+    compiler folds to always true or always false, and a `fallback` that folds false, since writing one tells a reader
     nothing: "'if 2 > 1' is decided while compiling and is always true here, so it tells a reader nothing: remove the
     'if' and keep the code it runs", "... is always false here, so the code it guards never runs: remove it, keeping
     its 'else' if it has one", "'while 3 < 1' ... is always false here, so the loop never runs: remove it", "'while
     true' ... is always true here: a loop ends by its condition, so loop 'while' what its leaving paths change, a
-    'running' local they set to false or the loop's real exit test" and "'assert 1 > 2' ... is always false here, so
+    'running' local they set to false or the loop's real exit test" and "'fallback 1 > 2' ... is always false here, so
     the function always answers nothing from here: remove it with the code after it" (`conformance/decided_if_true`,
     `conformance/decided_if_false`, `conformance/decided_while`, `conformance/spinning_loop`,
     `conformance/decided_assert_false`). The literal `while true` is no exception: a loop states the condition it
@@ -241,7 +240,7 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
 
   Inside a `while`, only a proof made inside that loop makes a check redundant: one made before the loop does not,
   since an assignment in the loop would leave the next pass unproven.
-- `crash` (below) narrows a chain the same way, since it narrows exactly as `assert` does but never returns.
+- `crash` (below) narrows a chain the same way, since it narrows exactly as `fallback` does but never returns.
 - **A `T?` the compiler proves present is a `T`, whatever made it** (D1719). It goes where a plain `T` is wanted,
   and is read from and called on, with nothing written:
   - a local every assignment of which in its function cannot be null (`var shown: Tracker? = Tracker()`, then only
@@ -253,7 +252,7 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
 
   A value cannot be null when its type is not a `T?` or when it is itself one of these, so a local holding a proven
   answer is proven too. A proven `Boolean?` is a condition, and a proven `Spite.Class` or function value is called,
-  with nothing written (`tests/proven_present_uses`). An `assert`, `crash`, `if` or `while` on such a name is the
+  with nothing written (`tests/proven_present_uses`). A `fallback`, `crash`, `if` or `while` on such a name is the
   "already narrowed" error above (`conformance/proven_present_checked`, `conformance/proven_present_while_checked`,
   `conformance/proven_present_attribute_checked`,
   `conformance/proven_present_answer_checked`), outside a generic class and a walk, where it holds for some
@@ -270,11 +269,11 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   `outer = Box()` or `outer.inner = null`, `outer.inner` is a `Box?` again. Assigning a value that cannot be null
   (a constructor, a literal, a name that is not `T?`) to the narrowed path itself keeps it narrowed, and still
   undoes everything narrowed beneath it. A narrowed *name* follows the same rule: `current = current.next` or
-  `maybe = null` after `assert current` stores into the `T?` it really is and un-narrows it
+  `maybe = null` after `fallback current` stores into the `T?` it really is and un-narrows it
   (`diagnostics/narrowed_name_reassigned`).
 - **`while value` narrows its body like `if value`**: the
   condition is tested again before every pass, and a store that may be null undoes it for the rest of the pass, so
-  `while current { ... current = current.next }` walks a chain with no `assert` inside (`examples/linked_walk`).
+  `while current { ... current = current.next }` walks a chain with no `fallback` inside (`examples/linked_walk`).
 - Inside a `while`, undoing a narrowing that was made before the loop *and read inside it* is an error, because
   the next pass would read it unproven: narrow it inside the loop instead (`diagnostics/path_narrow_loop`). A read
   counts when the loop's condition names it, or when the body reads it before what undid it; a body that proves it
@@ -300,12 +299,12 @@ How a read is proven:
   (`conformance/stage6/count_bound_proofs`). A count proves indices of a `List` only: a `Dictionary`'s keys need
   not be `0` to `count() - 1`, so after `crash names.count() == 1` a `Dictionary<Integer, Value>`'s `names[0]` is still a `Value?`
   (`diagnostics/count_proves_no_key`).
-- **A bound proves its index.** `index < names.count()` (or `names.count() > index`) in an `assert`, a
+- **A bound proves its index.** `index < names.count()` (or `names.count() > index`) in a `fallback`, a
   `crash`, an `if`, or a `while` proves `names[index]` in what follows (the loop body, for a `while`) and
   `index < names.count() - 1` does too. On the left of an `and`, it proves the right side, so
   `while index < lines.count() and lines[index] != "end"` needs nothing more. Every side of an `and` holds in
   what the condition guards, so `while not found and index < names.count()` proves `names[index]` in the body.
-  A list in a local, a parameter and an attribute are proven alike, and `assert`/`crash` on a read already
+  A list in a local, a parameter and an attribute are proven alike, and `fallback`/`crash` on a read already
   proven is an error that says so (`diagnostics/proven_index_check`).
 - **A bound past the index proves the reads below it.**
   `base + k < names.count()`, `k` a whole-number literal from 1 to 63, proves `names[base]`, `names[base + 1]`
@@ -329,7 +328,7 @@ How a read is proven:
 - **A position known not to be negative** needs no test below: an index that is a whole-number literal of 0 or
   more; a local declared with such a literal whose every assignment in the function is such a literal or adds such a
   literal to itself (`position = position + 16`); or a name `x` after `x >= 0` or
-  `x > 0` in an `assert`, `crash`, `if`, `while` or the left of an `and` inside the same loop as the read. `x + k`
+  `x > 0` in a `fallback`, `crash`, `if`, `while` or the left of an `and` inside the same loop as the read. `x + k`
   with `k` such a literal is not negative when `x` is not.
 - **One guard proves the cells of an area.** `rows * stride <= list.count()` (or `list.count() >= rows *
   stride`), with `rows` and `stride` names or literals, proves `list[row * stride + column]`, and a read of width `w`
@@ -345,7 +344,7 @@ How a read is proven:
   that proves a read from it and then shrinks `names` is the error for a proof undone inside a loop. Only a
   `var` whose value is exactly the count (or the count less a literal) counts; nothing else is traced.
 - **A read proven before a loop may be proven again inside it.** An
-  `assert`/`crash` of a `[]` read inside a `while` is refused as proving nothing only when a proof made inside
+  `fallback`/`crash` of a `[]` read inside a `while` is refused as proving nothing only when a proof made inside
   that same loop already covers it; a proof from before the loop does not, since an assignment in the loop would
   make the next pass read it unproven.
 - **Assigning the list or the index undoes it**, as for any path ([narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing)): `index = index + 1`
@@ -403,22 +402,22 @@ How a read is proven:
   narrowed only by what the program writes (`diagnostics/indexable_unproven`, `conformance/string_index_unproven`). Calling `get_at(index)` by name answers the same `T?`, but a
   call is not a path, so narrow `list[index]`
   instead. A read used before it is narrowed is an error that names the read and the lines that would
-  narrow it: `crash`, `assert` and `if` on the read itself, then the count or loop bound that proves it for a
+  narrow it: `crash`, `fallback` and `if` on the read itself, then the count or loop bound that proves it for a
   library collection ([on the page](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#reading-with--answers-t), `diagnostics/index_reads`).
 - **A `Boolean?` cannot be a condition**, not in `if` or `while`, and not under `not` or `or`: `if
   flags[index]` would test that the element is there, not that it is true, and the two mean opposite things for
   `false`. Prove the element is there first, or `switch` over it; `== true` also works, since comparing needs no
   narrowing.
-- **`assert flag` on a `Boolean?` means the flag is true**, as it does on a `Boolean`: it passes when the flag is
+- **`fallback flag` on a `Boolean?` means the flag is true**, as it does on a `Boolean`: it passes when the flag is
   there and not `false`, and fails (the function answers "nothing") when it is `null` or `false`. **`crash flag`
   reads it exactly the same way**: it halts unless the flag is there and `true`
   (`conformance/stage6/crash_maybe_boolean`). A side of an
-  `and` under `assert` reads the same way. After it the flag is a `Boolean`. Behaviour that depends on whether the
+  `and` under `fallback` reads the same way. After it the flag is a `Boolean`. Behaviour that depends on whether the
   flag is there is written by testing the value (`if flag == true`, `if flag == false`) or by a `switch`; there is
   no `flag != null` form (`conformance/stage6/assert_maybe_boolean`, `diagnostics/maybe_boolean_conditions`).
 - Writing through `[]` is unchanged, and **assigning through a `T?` is an error** naming the fix: "this value
   may be null (it is a Box?), so 'label' cannot be assigned through it yet: narrow it first with 'if value { }',
-  'assert value' or 'crash value'" (`diagnostics/store_through_nullable`).
+  'fallback value' or 'crash value'" (`diagnostics/store_through_nullable`).
 
 `first()` and `last()` answer a `T?` too, `null` on an empty list, by the same argument, and so do `remove_first()`
 and `remove_last()`: nothing to take from an empty list is a normal outcome. `tests/list_tests`,
@@ -431,7 +430,7 @@ equal. Either side may be the `T?`.
 **A chain read inside a comparison needs no narrowing either.** On either side of `==` or `!=`, a member chain
 that reads through a `T?` (`made.kind`, `player.weapon.name`) is itself a `T?`, missing when any link of it is
 missing, so `made.kind == "make"` is `false` when `made` is null and `made.kind != "make"` is `true`, exactly as
-for a `T?` compared directly. It holds wherever the comparison is written: in an `if`, an `assert`, a `crash`, a
+for a `T?` compared directly. It holds wherever the comparison is written: in an `if`, a `fallback`, a `crash`, a
 `return` or any other expression, so `return made.kind == "make"` needs no `made and` in front. The compiler
 writes the presence test of each link while compiling, once per link, and the value read is the chain's own, with
 nothing computed twice. Outside a comparison, reading a member through a `T?` still needs it narrowed first:
@@ -458,7 +457,7 @@ too".
 
 ## Failure: three outcomes and no others
 
-Spite has **a compile error, an `assert`, or a crash**. There are no
+Spite has **a compile error, a `fallback`, or a crash**. There are no
 exceptions, no error unions, no bubbling, and no error value carrying a message, because errors and exceptions
 tend to be useless: they carry a message the program has no action to take on.
 
@@ -466,7 +465,7 @@ tend to be useless: they carry a message the program has no action to take on.
    an unserialisable type ([Foreign libraries](foreign_libraries.md#foreign-libraries)), the wrong target ([targets.md](https://github.com/Spite-Language/spite_documentation/blob/master/targets.md)), an unfilled codegen hole ([Codegen values (`$`)](metaprogramming.md#codegen-values-)), a
    missing foreign symbol ([Foreign libraries](foreign_libraries.md#foreign-libraries)), a member that does not fit a template ([Standard library metaprogramming](collections.md#standard-library-metaprogramming)), a symbol outside its
    enum ([Types](values_and_types.md#types)).
-2. **`assert`**, for when the program should keep running.
+2. **`fallback`**, for when the program should keep running.
 3. **`crash`**, for when everything should stop so the code gets rewritten.
 
 **What `crash` is for**: what the compiler can prove away, so a program written with
@@ -477,54 +476,45 @@ is asked to write ([json.md](https://github.com/Spite-Language/spite_documentati
 a user's bad input, an absent record) answers `T?` or an empty value, never a crash, and a library
 `crash` must be one the compiler can show the program how to avoid, or a bug in the program that made the value.
 
-`T?` is the only runtime failure value, and it carries no reason. A caller narrows it with `assert`,
+`T?` is the only runtime failure value, and it carries no reason. A caller narrows it with `fallback`,
 halts on it with `crash`, or handles the absent case with `if value { } else { }`.
 
 **If a distinction is actionable, it is data, not an error.** A caller that
 must tell a timeout from a rejection takes back a `type`, `union` or enum modelling exactly that: ordinary
 data with ordinary handling. Something you can act on was never an error; it was a value that was not modelled.
 
-### `assert` is control flow
+### `fallback` is control flow
 
-`assert` is a guard clause, not validation: when the value is absent there is no more logic to do here, but the
+`fallback` is a guard clause, not validation: when the value is absent there is no more logic to do here, but the
 program is fine and keeps serving everything else. It is why a web
 server or a game written in Spite should rarely crash.
 
-**A guard `assert` answers "nothing", so it is allowed only where the result can say it.** A failed `assert`
+**A `fallback` returns what the function's answer type builds with no arguments** (D1765). A `fallback` taken
 returns at once, answering:
 
 - nothing, in a function returning nothing;
 - `null`, in a function returning a `T?`;
-- an empty one, in a function returning a `List` or a `Dictionary`.
+- an empty one, in a function returning a `List` or a `Dictionary`;
+- `0` (or `0.0`) for a number, `false` for a `Boolean`, `""` for a `String`;
+- the object its constructor makes, for a class with no constructor or a constructor without parameters
+  (`tests/fallback_answers`).
 
-In a function returning a whole number or a `Float`/`Double` (`0`), a `Boolean` (`false`), a
-`String` (`""`, since an empty text is a real text), an enum (its first value), a `Memory.Address`, a union or a
-class that cannot be null (an object with every attribute at its default), an `assert` is a compile error, since
-the caller would carry on with a default it cannot tell from a real answer:
+The answer type says what comes back, so `fallback name` in a function answering a `String` returns `""` when
+`name` is missing. A function whose caller must tell "missing" from a real answer answers a `T?` instead. Where the
+answer type has no such value, an enum, a class whose constructor takes arguments, a singleton, a `fallback` is a
+compile error naming the `T?` and the `crash`:
 
 ```
-this 'assert' would answer a default Integer (0) that a caller cannot tell from a real one: return a value ('if entity >= rows.count() { return -1 }'), make the result 'Integer?', or 'crash entity < rows.count()' if this is a developer mistake
+'fallback' returns what the answer type builds with no arguments, and a Slot has none (its constructor takes arguments): make the result 'Slot?' so the fallback returns null, or write 'crash not text.is_empty()' if this is a developer mistake
 ```
 
-The message names the opposite condition, an answer of the type (`-1`, `-1.0`, `false`, `""`, the enum's first
-value, or `Mark()` for a class that is made with no arguments and is not a singleton), the nullable result (left out for a `Boolean`, since a `Boolean?` is never a
-condition) and the `crash`. It is checked against the result type of each function as compiled, so in a generic
-class it is checked per instance, and an `assert` whose condition is decided while compiling
-(`assert $slot_type == Entity`) is held to it too: its instance would answer the default every call. `crash` is
-never limited this way. Which of the three a site takes is the writer's decision: a `T?` when the case is
-met in normal use, a value chosen on purpose when one outside the real answers already means "none", a `crash`
-when asking is the caller's bug. Every answer the message offers is code that compiles where it stands: for a class
-made with arguments, a singleton, or a function of a generic class, it offers no answer at all, only the `T?` and
-the `crash`: `this 'assert' would answer a default Badge (an object with every attribute at its default) that a
-caller cannot tell from a real one: make the result 'Badge?', or 'crash ready' if this is a developer mistake`.
-A game engine met it three times in a day: `World.create_entity_from_bundle(): Entity`
-answered a default `Entity` instead of the one just made, `deform_layer(): Integer` answered offset 0 for a mesh
-without skin, `object_world(): Math.Matrix4` answered a default matrix for an object without a parent
-(`diagnostics/default_answer`, `conformance/stage6/leaving_if`).
+It is checked against the result type of each function as compiled, so in a generic class it is checked per
+instance. `crash` is never limited this way. `'fallback'`, the keyword's old spelling, is refused naming `fallback`
+(`conformance/assert_is_fallback`, `conformance/fallback_built_with_arguments`, `conformance/default_answer_enum`).
 
 ```gdscript
 func first_name(): String? {
-    assert not names.is_empty()      # a failed assert answers null
+    fallback not names.is_empty()      # a fallback taken answers null
     return names.first()
 }
 
@@ -550,22 +540,22 @@ would quietly answer `0`, `""`, `false`, a default object or `null`. A path ends
 - at an `if` with an `else` whose two branches both end, and at a `switch` whose cases all end (a `switch`
   covers every member or value, or has `_:`, so there is no other way through it);
 - at an `if` whose condition is decided while compiling (a codegen value, `functions['run_each']`, ...) and whose branch
-  taken ends, and at an `assert` so decided to be false, read per instance of a generic class, as they are
+  taken ends, and at a `fallback` so decided to be false, read per instance of a generic class, as they are
   compiled.
 
 Everything else (an `if` with no `else`, the path where its condition is false; a `while` with any other
-condition, the path after it ends; an `assert` or a `crash` with a condition; any other statement) lets the
+condition, the path after it ends; a `fallback` or a `crash` with a condition; any other statement) lets the
 path through. A result that is a `T?` is held to it too: `return null` is written where that is the answer. The
 check reads each function as it is compiled, so a function the program never reaches is not checked, and a
 generic class's function is reported once, for the first instance that falls off, naming it (`'get_at' answers a
 String in List<String>`). It costs nothing at run time. `diagnostics/falling_end`.
 
-**`assert` is banned in a constructor**, including the entry class's own. A constructor is setup, not
+**`fallback` is banned in a constructor**, including the entry class's own. A constructor is setup, not
 logic: if something can be invalid inside one, function logic has been put where only setup belongs. The caller
 receives an object with every attribute at its default and cannot tell it from a properly built one, which is
 exactly the surprise the rule exists to prevent. A program constructor that grows complex splits into smaller
 functions it calls, and reads as a table of contents for the program, with the logic one level down. The
-error is "'assert' is not allowed in a constructor: a constructor is setup, not logic. Take already resolved
+error is "'fallback' is not allowed in a constructor: a constructor is setup, not logic. Take already resolved
 values, or use 'crash' when absence is a bug", and an `if` that only leaves a constructor is "this 'if' only
 leaves the constructor, and a constructor is setup, not logic: take already resolved values, or write 'crash
 ...' when this is a bug" (`diagnostics/default_guard`). `crash` is allowed in a constructor.
@@ -573,21 +563,21 @@ leaves the constructor, and a constructor is setup, not logic: take already reso
 ### `crash`
 
 `crash` is a keyword, so the compiler takes its context from the program rather than
-from a message string. **It mirrors `assert` exactly** (same polarity, same shape, different severity):
+from a message string. **It mirrors `fallback` exactly** (same polarity, same shape, different severity):
 
 ```gdscript
-assert database.connect()        # falsey: return the default, keep going
+fallback database.connect()        # falsey: return the default, keep going
 crash  database.connect()        # falsey: halt
 ```
 
 The compiler captures the condition's source text and every operand value, so nothing has to be written and
 nothing can drift out of sync. **A bare `crash` is the one form for a branch that cannot happen**: it reports its
 enclosing context, and the formatter rewrites `crash false` to it. `crash
-user` narrows a `T?` exactly as `assert user` does, but never returns.
+user` narrows a `T?` exactly as `fallback user` does, but never returns.
 
-Absence is fine -> `assert`. Absence is a bug -> `crash`. Absence is meaningful -> `if value { } else { }`.
+Absence is fine -> `fallback`. Absence is a bug -> `crash`. Absence is meaningful -> `if value { } else { }`.
 
-**`crash` never takes a message, and neither does `assert`.** There is no syntax for one: a report points at the
+**`crash` never takes a message, and neither does `fallback`.** There is no syntax for one: a report points at the
 code and shows the memory, so the reader reads the source line and the data instead of prose about them. **The
 report is written so that a person or an AI can fix the problem from it**: every value the failed condition reads is
 shown with the position it was read at, and the frames that led there. A position identifies the expression, so the
@@ -600,13 +590,13 @@ crash sites stay tree-shaken. `conformance/crash_scope_values`, `json_crash`, `j
 
 **A call that answers a value cannot stand on a line of its own** (D1721): the library answers what the outside
 world did, and the program decides what that means, so an answer dropped unread would be a failure passing
-unseen (D244). The program keeps the answer, passes it, returns it or compares it, or at least writes `assert
+unseen (D244). The program keeps the answer, passes it, returns it or compares it, or at least writes `fallback
 file.write_string(text)` to carry on without it or `crash file.write_string(text)` when its absence is a bug. It
 holds for every function, the library's and the program's, and for a function value called; a function that
 answers nothing is untouched, and a constructor is covered by the rule that a made object is kept and used.
 
 A dropped `Boolean` or `T?` is the error "'file.write_string(text)' answers a 'Boolean' and drops it: an answer
-must be used, at least with 'assert file.write_string(text)' to carry on without it or 'crash
+must be used, at least with 'fallback file.write_string(text)' to carry on without it or 'crash
 file.write_string(text)' when that is a bug"; any other answer is "'total()' answers an 'Integer' and drops it:
 an answer must be used, so keep it in a variable that is read, pass it, return it or compare it"
 (`validators/high_intermediary_representation/dropped_answer`). A call to a foreign library is not checked: a
@@ -616,7 +606,7 @@ an answer must be used, so keep it in a variable that is read, pass it, return i
 ### What a crash reports
 
 A crash flushes the program's output, writes its report to the error stream and exits with status 1. The report is
-the crash line, the failed asserts that came before it, and the call chain.
+the crash line, the fallbacks taken that came before it, and the call chain.
 
 **The crash line** is `spite: the program stopped at <path>:<line> in <Class>.<function> (name=value, ...)`, one field
 for each value, in this order:
@@ -635,7 +625,7 @@ compiler's internal classes only the condition's parts are shown.
 
 ```
 spite: the program stopped at crash_report/crash_report.spite:17 in CrashReport.check (value=-9, limit=0, scale=2)
-spite.assert	6d183761	crash_report/crash_report.spite:11	CrashReport	announce	answered=nothing
+spite.fallback	6d183761	crash_report/crash_report.spite:11	CrashReport	announce	returned=nothing
 spite.frame	crash_report/crash_report.spite:17	CrashReport	check
 spite.frame	crash_report/crash_report.spite:7	CrashReport	CrashReport
 ```
@@ -663,44 +653,44 @@ and no other value is added (`conformance/crash_missing_item`, `crash_missing_ke
 **The call chain is always written, even when it is one line**: `spite.frame<TAB>path:line<TAB>Class<TAB>function`,
 innermost first, the crashing function at the crash's line and each caller at the line of its call. Only the functions
 of the program and of the packages it loads are listed; a frame inside `library/` or the compiler's own classes is left
-out, as the ring leaves out the library's asserts. Consecutive equal lines are one line with `repeated=<count>`, at most
+out, as the ring leaves out the library's fallbacks. Consecutive equal lines are one line with `repeated=<count>`, at most
 16 lines are written, then `spite.frame<TAB>more`. A function inlined into another keeps its own frame. The chain is
 walked through the saved frame pointers and a table of the program's calls that sits in the executable beside its
 code: every call records its return offset and its frame lines, and the walk follows the frame pointers while each
 return address is a recorded call and the next frame is above the last. No instruction runs for it on the passing
 path; the table costs the executable's size only (`tests/crash_reports_frames`).
 
-**A crash reports the trace of every `assert` that failed before it.** Those asserts are the causal trail explaining
+**A crash reports the trace of every `fallback` that failed before it.** Those fallbacks are the causal trail explaining
 how the program reached the state that crashed, which is usually several frames earlier than the crash itself. The
-cost is only on the failure path (a passing `assert` already branches), and the trace is a fixed-size ring buffer with
-a total count, so it never allocates and cannot grow without bound. Each assert line is
-`spite.assert<TAB>id<TAB>path:line<TAB>Class<TAB>function<TAB>answered=...`: `answered=nothing` for a function that
+cost is only on the failure path (a passing `fallback` already branches), and the trace is a fixed-size ring buffer with
+a total count, so it never allocates and cannot grow without bound. Each fallback line is
+`spite.fallback<TAB>id<TAB>path:line<TAB>Class<TAB>function<TAB>returned=...`: `returned=nothing` for a function that
 returns nothing, `null` for a `T?`, `empty` for a function answering a list or a dictionary, and
 `repeated=<count>` when the same site failed several times in a row, which takes one line in the ring. The ring holds 32
-lines; a `spite.assert<TAB>earlier=<count>` line says how many were lost before them. An assert keeps no values: its place,
+lines; a `spite.fallback<TAB>earlier=<count>` line says how many were lost before them. A fallback keeps no values: its place,
 the `.crashes` map and its condition are what it says.
 
-**A failed `assert` is not printed when it fails; `--trace-asserts` streams them.** A failed `assert` writes nothing
+**A `fallback` taken is not printed when it is taken; `--trace-fallbacks` streams them.** A `fallback` taken writes nothing
 as it fails, in every build, `--debug-memory` and inspectable builds included: it stores its site's line in the ring
-and counts it, and the line reaches the error stream only in a crash's report, or a native fault's. `trace_asserts`
-(`--trace-asserts`, default `false`) opts in to streaming: each failed `assert` then also flushes the program's output
-and writes its `spite.assert` line to the error stream when it fails, in a program that cannot crash too. It is the
-same fixed line the ring holds, with no values, and it covers the asserts the ring covers. Cost: none without the flag,
-since the ring's update is the same either way; with it, a flush and a write per failed `assert`
-(`conformance/quiet_asserts`, `trace_asserts`).
+and counts it, and the line reaches the error stream only in a crash's report, or a native fault's. `trace_fallbacks`
+(`--trace-fallbacks`, default `false`) opts in to streaming: each `fallback` taken then also flushes the program's output
+and writes its `spite.fallback` line to the error stream when it fails, in a program that cannot crash too. It is the
+same fixed line the ring holds, with no values, and it covers the fallbacks the ring covers. Cost: none without the flag,
+since the ring's update is the same either way; with it, a flush and a write per `fallback` taken
+(`conformance/quiet_asserts`, `trace_fallbacks`).
 
 **A crash prints the ring as it stood when it began, and only the first crash reports.** The report reads the ring's
 count once, when it starts, and prints at most 32 lines and the `earlier=` count from it, so a crash on one thread, while
-pool threads keep failing guard asserts, never chases the count forever. A crash first claims the report with one atomic
+pool threads keep fallbacks taken, never chases the count forever. A crash first claims the report with one atomic
 exchange; a thread that crashes while another's report is being written waits for the program to end instead of
-interleaving a second report. A failed `assert` costs one call to the ring's update, kept out of line: a comparison with
+interleaving a second report. A `fallback` taken costs one call to the ring's update, kept out of line: a comparison with
 the newest line and a count, or a new line; in a program with threads, a compare-and-swap on a word that holds the site,
 the line's place and its count together (`conformance/assert_ring_threads`).
 
-An `assert` in `library/` never enters the trace. The trace explains how *the program* reached a crash, and the standard
-library's asserts are routine answers (a missing key, text that does not match, a read past the end) that fire
+A `fallback` in `library/` never enters the trace. The trace explains how *the program* reached a crash, and the standard
+library's fallbacks are routine answers (a missing key, text that does not match, a read past the end) that fire
 constantly and would push the program's own entries out of the ring. The compiler leaves the ring write out of every
-`assert` site whose file is in `library/`, so a library guard costs what an `if` costs; the program's own files and
+`fallback` site whose file is in `library/`, so a library guard costs what an `if` costs; the program's own files and
 every `load`ed package keep recording, and a crash inside the library still reports its own site.
 
 **A crash site is identified by a compile-time id, and the compiler emits an id-to-source map as a build artifact**
@@ -709,9 +699,9 @@ the site's ordinal and the condition source), never a counter, because a counter
 inserted line and destroys both old reports and cross-target identity. The executable carries no condition text.
 
 The map is a greppable tab-separated table named after the program, `<program>.crashes`, beside the executable, written
-by every build that writes one: one line per `crash` site of every function compiled and per `assert` site outside
-`library/`, sorted by id so archived maps diff cleanly: id, file, line, column (of the `assert` or `crash` keyword,
-counting from 1), class, function, kind (`crash`, `assert-predicate`, `assert-narrowing`), the condition source, and
+by every build that writes one: one line per `crash` site of every function compiled and per `fallback` site outside
+`library/`, sorted by id so archived maps diff cleanly: id, file, line, column (of the `fallback` or `crash` keyword,
+counting from 1), class, function, kind (`crash`, `fallback-predicate`, `fallback-narrowing`), the condition source, and
 every part of the condition with its type, in the order the report shows them, receivers whose value the report leaves
 out included (`record:String? cooked.count():Integer cooked:List<String> never_cooked_id:String name:String`); for a
 narrowing, each link of the path. It opens with a `#` comment line carrying the format version and the build hash
@@ -742,12 +732,12 @@ printed.
   exception the process raises, and Spite raises none).
 - **The handler allocates nothing and calls nothing that could**: it builds each line in a buffer on its stack and
   writes it with `WriteFile` or `write`. It writes the `spite.fault` line first, from what is safe to read (the
-  fault record, the faulting address, the function table, the thread's last foreign call), then the assert trace,
+  fault record, the faulting address, the function table, the thread's last foreign call), then the fallback trace,
   then walks the stack, so a stack too damaged to walk still leaves the first line. A second fault on the same
   thread while reporting ends the program at once; a fault on another thread waits for the first report.
 - `spite.fault<TAB>kind<TAB>path:line<TAB>Class<TAB>function<TAB>address=...<TAB>code=...<TAB>at=file+offset<TAB>foreign=...<TAB>library=...<TAB>from=path:line`,
   with `address=` only for a memory fault and `foreign=` only once the thread has called a foreign function; then
-  one `spite.assert` line per failed assert still in the ring, exactly as a crash prints them, when the program keeps
+  one `spite.fallback` line per fallback taken still in the ring, exactly as a crash prints them, when the program keeps
   the ring; then `spite.frame<TAB>path:line<TAB>Class<TAB>function` per Spite function on the stack, innermost
   first, consecutive calls of one function as one line with `repeated=<count>`, at most 16 lines from at most 256
   frames, and `spite.frame<TAB>more` when there were more. Then stdout is flushed and the program ends with the

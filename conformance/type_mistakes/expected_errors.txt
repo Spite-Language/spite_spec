@@ -1,1 +1,1 @@
-conformance/type_mistakes/type_mistakes.spite:6: error: this value may be null (it is a Pet?), so 'name' cannot be read from it yet: narrow it first with 'if value { }', 'assert value' or 'crash value' (in TypeMistakes.TypeMistakes)
+conformance/type_mistakes/type_mistakes.spite:6: error: this value may be null (it is a Pet?), so 'name' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in TypeMistakes.TypeMistakes)

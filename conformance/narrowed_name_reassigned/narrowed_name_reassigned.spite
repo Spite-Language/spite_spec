@@ -9,13 +9,13 @@ func NarrowedNameReassigned() {
 
 func after_null() {
     var maybe: Box? = Box()
-    assert maybe
+    fallback maybe
     maybe = null
     console.print(maybe.label)
 }
 
 func in_a_loop() {
-    assert held
+    fallback held
     var passes = 0
     while passes < 2 {
         console.print(held.label)

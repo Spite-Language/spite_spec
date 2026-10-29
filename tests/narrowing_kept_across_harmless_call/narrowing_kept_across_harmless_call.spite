@@ -8,7 +8,7 @@ func NarrowingKeptAcrossHarmlessCall() {
 
 func run() {
     keeper.target = Monster()
-    assert keeper.target
+    fallback keeper.target
     keeper.count_up()
     var passes = 0
     while passes < 2 {

@@ -1,1 +1,1 @@
-conformance/returning_guard/returning_guard.spite:9: error: this 'if' only returns: write 'assert not name.is_empty()' and let the rest run unindented (in ReturningGuard.announce)
+conformance/returning_guard/returning_guard.spite:9: error: this 'if' only returns: write 'fallback not name.is_empty()' and let the rest run unindented (in ReturningGuard.announce)

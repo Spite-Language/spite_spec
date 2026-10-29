@@ -142,7 +142,7 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   one, and a new class of your own belongs in a namespace of your own" (`diagnostics/new_spite_class`), and
   `load "spite"` is "'spite' is reserved for the built-in Spite namespace: name the folder something else"
   (`diagnostics/reserved_spite_namespace`).
-- **`Spite.Internal` is the compiler's alone.** The scheduler, the assert ring, the fault and crash reports, the copy
+- **`Spite.Internal` is the compiler's alone.** The scheduler, the fallback ring, the fault and crash reports, the copy
   table and the prompt are the compiler's own, added when a program needs one, and no program can name or reopen
   them. Any file that names `Spite.Internal` is refused: a type, a call, an
   inheritance, a class written in a `spite/internal/` folder (new or reopening one), the name inside a string

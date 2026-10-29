@@ -15,11 +15,11 @@ func count(): Integer {
 }
 
 func append(name: String) {
-    assert rows[0]
+    fallback rows[0]
     rows[0].append(name)
 }
 
 func clear() {
-    assert rows[0]
+    fallback rows[0]
     rows[0].clear()
 }

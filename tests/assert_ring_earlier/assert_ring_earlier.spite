@@ -10,9 +10,9 @@ func AssertRingEarlier() {
 }
 
 func first_check(index: Integer) {
-    assert index < 0
+    fallback index < 0
 }
 
 func second_check(index: Integer) {
-    assert index > 100
+    fallback index > 100
 }

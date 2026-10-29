@@ -12,6 +12,6 @@ func TraceAssertsOptimized() {
 }
 
 func greet(index: Integer) {
-    assert index < names.count()
+    fallback index < names.count()
     console.print("hello", names[index])
 }

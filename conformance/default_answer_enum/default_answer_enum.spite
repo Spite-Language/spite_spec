@@ -12,6 +12,6 @@ func DefaultAnswerEnum() {
 }
 
 func day_of(index: Integer): Weekday {
-    assert index == 1
+    fallback index == 1
     return 'tuesday'
 }

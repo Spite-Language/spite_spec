@@ -5,6 +5,6 @@ func AssertTraceEmpty() {
 }
 
 func split_words(text: String): List<String> {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text.split(" ")
 }

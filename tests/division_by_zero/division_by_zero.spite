@@ -11,9 +11,7 @@ func DivisionByZero() {
 }
 
 func halves(whole: Integer, pieces: Integer): Integer {
-    if pieces == 0 {
-        return 0
-    }
+    fallback pieces != 0
     return whole / pieces
 }
 

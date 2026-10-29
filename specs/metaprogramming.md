@@ -408,20 +408,20 @@ shaking), in every build, `--development`, `--hot-reload` and the REPL builds in
 which class this is (`Weapon<Integer, true>` and `Weapon<Integer, false>` are two classes), so there is no
 run-time value for live reload to change. To change one, change the call site.
 
-**An `assert` or `crash` on such a condition folds the same way.** When the condition of an `assert` or `crash`
+**A `fallback` or `crash` on such a condition folds the same way.** When the condition of a `fallback` or `crash`
 asks only what is decided while compiling (a `$flag`, `$slot_type == Entity` or any other test of a codegen type,
 a question asked of a reflection constant (`$T.functions['run_each']`, `.is_resumable`, `.is_mutated`,
 `.is_fixed_size`, `.arguments.count()`, of a codegen type or of a walked member's class), `argument.class == $row_type`,
 a class test the value's type already answers (`item == $wanted_type`), a field of
 [`Build`](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md#compile-time-settings-build), and `not`, `and` and `or` over them), it is decided
 for each instance, with no test at run time: when it holds,
-nothing is written for it; when it does not, the `assert` answers "nothing" (recording its trace line), and the
+nothing is written for it; when it does not, the `fallback` answers "nothing" (recording its trace line), and the
 statements after it in the same block are not compiled for that instance, exactly as after an `if` whose taken
-branch returns. A folded `assert` is held to the same rule as any other: it is allowed only in a function whose
-result can say "nothing" (a `T?`, `Nothing`, or a collection), so `assert $slot_type == Entity` followed by
+branch returns. A folded `fallback` is held to the same rule as any other: it is allowed only in a function whose
+result can say "nothing" (a `T?`, `Nothing`, or a collection), so `fallback $slot_type == Entity` followed by
 `return value.id` is written in a function returning `Integer?`; in one returning `Integer`, the answer for the
 other instances is written down instead, `if $slot_type != Entity { return 0 }`, which folds the same way
-(`conformance/stage6/folded_checks`, [failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#a-default-that-looks-like-an-answer-is-an-error)).
+(`conformance/stage6/folded_checks`, [failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#a-fallback-returns-what-its-answer-type-builds-with-no-arguments)).
 
 **A `crash` that folds to false is a compile error where the program can reach it.** A `crash` whose condition is
 decided while compiling and is false would halt every time its function runs, so it is a developer's mistake the

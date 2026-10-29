@@ -62,7 +62,7 @@ func report_maybe() {
 }
 
 func report_names() {
-    assert names[0]
+    fallback names[0]
     var first = names[0]
     console.print(first)
     if not names[1] {

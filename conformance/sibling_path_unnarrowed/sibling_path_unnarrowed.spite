@@ -10,6 +10,6 @@ func SiblingPathUnnarrowed() {
 }
 
 func show(first: Box, second: Box) {
-    assert first.inner
+    fallback first.inner
     console.print(first.inner.label, second.inner.label)
 }

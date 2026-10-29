@@ -113,9 +113,7 @@ func second_condition(): Integer {
 
 func second_leaving_condition(): Integer {
     var awake = true
-    if not awake or napped(2) == 0 {
-        return 0
-    }
+    fallback awake and napped(2) != 0
     return 4
 }
 

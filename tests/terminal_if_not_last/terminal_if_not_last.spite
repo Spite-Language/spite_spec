@@ -8,7 +8,7 @@ func TerminalIfNotLast() {
 }
 
 func find_name(text: String): String? {
-    assert not text.is_empty()
+    fallback not text.is_empty()
     return text
 }
 

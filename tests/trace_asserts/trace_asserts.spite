@@ -11,6 +11,6 @@ func TraceAsserts() {
 }
 
 func greet(index: Integer) {
-    assert index >= 0 and index < names.count()
+    fallback index >= 0 and index < names.count()
     console.print("hello", names[index])
 }

@@ -15,7 +15,7 @@ func CrashesMap() {
 }
 
 func positive(value: Integer): Integer? {
-    assert value > 0
+    fallback value > 0
     return value
 }
 

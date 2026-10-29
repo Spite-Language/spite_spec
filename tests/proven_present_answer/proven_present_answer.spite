@@ -12,9 +12,9 @@ func strongest(count: Integer): Monster? {
     if count > 2 {
         return Monster("troll")
     }
-    return fallback()
+    return spare()
 }
 
-func fallback(): Monster? {
+func spare(): Monster? {
     return Monster("goblin")
 }

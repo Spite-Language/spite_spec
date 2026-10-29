@@ -10,6 +10,6 @@ func Each(new_function: Spite.Function<$first_type, $second_type, Nothing>) {
 }
 
 func run() {
-    assert function
+    fallback function
     function(first, second)
 }

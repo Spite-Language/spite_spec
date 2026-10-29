@@ -63,7 +63,7 @@ func transforms() {
     var mirrored = mirror.scale_part()
     console.print("a mirrored scale {mirrored}")
     var normals = model.normal_matrix()
-    assert normals
+    fallback normals
     var normal = normals.transform(along)
     console.print("normal matrix turns (1, 0, 0) to {near_vector(normal)}")
 }

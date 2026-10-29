@@ -15,7 +15,7 @@ func ProvenElement() {
 func show_names(position: Integer) {
     var names = ["ada", "bo"]
     crash names.count() == 2
-    assert names[1]
+    fallback names[1]
     crash names[position]
     crash names[position]
     console.print(names[position], names[1])

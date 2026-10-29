@@ -42,6 +42,6 @@ func bump_age(person: Person) {
 }
 
 func find_monster(missing: Boolean): Monster? {
-    assert not missing
+    fallback not missing
     return Monster(42)
 }

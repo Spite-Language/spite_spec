@@ -19,7 +19,7 @@ func take(entity: Integer) {
     matched = true
     var row: $row_type = null
     match_attributes(row, entity)
-    assert matched
+    fallback matched
     fill_attributes(row, entity)
     rows.append(row)
 }

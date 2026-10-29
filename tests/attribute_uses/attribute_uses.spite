@@ -20,8 +20,6 @@ func show_attribute(attribute: Spite.AttributeDeclaration, shown: Lamp, lines: L
 }
 
 func text_of(attribute: Spite.Attribute): String {
-    if not attribute.value {
-        return ""
-    }
+    fallback attribute.value
     return attribute.value.to_string()
 }

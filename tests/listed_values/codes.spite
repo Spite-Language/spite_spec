@@ -8,9 +8,7 @@ func Codes() {
 }
 
 func code_of(text: String): Integer {
-    if text == " " {
-        return 0
-    }
+    fallback text != " "
     return 1
 }
 

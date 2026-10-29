@@ -8,7 +8,7 @@ func ShadowingDoc() {
 }
 
 func read_first_line(text: String?): String? {
-    assert text
+    fallback text
     var text = text.trim()
     var lines = text.lines()
     return lines.first()

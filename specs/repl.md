@@ -54,7 +54,7 @@ is a gap to close, not a rule. The steps, in the order a game meets them:
    changed, keeping the heap. A helper that keeps state of its own (a static variable: a singleton's cache, a list
    of live objects, a foreign function loaded on first use) has no slot, since a new copy would start with its own
    empty state; a change that reaches one is refused by name. The running program's command line, its check point
-   flag and its assert ring are shared with every reload library, so reloaded code reads the arguments the program
+   flag and its fallback ring are shared with every reload library, so reloaded code reads the arguments the program
    started with. The functions the scheduler turns into waits (`Program.sleep`, `Console.read_line_into` and the
    like) keep their direct calls. A `--hot-reload` build is slower for it: every call of the standard library is
    an indirect call the C compiler cannot inline. It exists to give information while the program runs, and
@@ -478,7 +478,7 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   thread of its own, it calls `wait_for_changes()`, which returns once 100 ms pass without a change, then compiles
   the change and wakes the scheduler. The program's own folder is watched with every folder below it, and so is
   **every folder the program loads**: the compiler writes their list into the build, `HotReload.loaded_folders()`.
-- **Crashes and parallel code.** A crash inside reloaded code reports the library's own assert trace. A `Parallel`
+- **Crashes and parallel code.** A crash inside reloaded code reports the library's own fallback trace. A `Parallel`
   running a function whose slot is re-pointed finishes the old code.
 
 ---

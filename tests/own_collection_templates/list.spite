@@ -13,7 +13,7 @@ func best_member(member: Spite.AttributeDeclaration): List<$element_type> {
 }
 
 func average_member(member: Spite.AttributeDeclaration): Float? {
-    assert not is_empty()
+    fallback not is_empty()
     var total = 0.0
     var index = 0
     while index < count() {

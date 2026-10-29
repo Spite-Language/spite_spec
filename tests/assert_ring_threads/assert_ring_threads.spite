@@ -30,6 +30,6 @@ func refuse_many(): Integer {
 }
 
 func refuse(value: Integer) {
-    assert value < 0
+    fallback value < 0
     console.print("never printed", value)
 }

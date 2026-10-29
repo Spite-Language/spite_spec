@@ -8,7 +8,7 @@ func PathNarrowLoop() {
 func probe() {
     var outer = Box()
     outer.inner = Box()
-    assert outer.inner
+    fallback outer.inner
     var passes = 0
     while passes < 2 {
         console.print(outer.inner.label)

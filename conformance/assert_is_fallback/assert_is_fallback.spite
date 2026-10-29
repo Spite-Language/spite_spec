@@ -1,0 +1,12 @@
+var console = Console()
+
+func AssertIsFallback() {
+    load "../../../spite_standard_library/windows"
+    var length = length_of("")
+    console.print(length)
+}
+
+func length_of(text: String): Integer {
+    assert not text.is_empty()
+    return text.length()
+}

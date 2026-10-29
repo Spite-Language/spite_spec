@@ -1,1 +1,1 @@
-conformance/empty_collection_guard/empty_collection_guard.spite:14: error: this 'if' only returns the default 'List<String>()', which is how a guard is written: write 'assert not text.is_empty()' and let the rest run unindented (in EmptyCollectionGuard.split_names)
+conformance/empty_collection_guard/empty_collection_guard.spite:14: error: this 'if' only returns 'List<String>()', which is what 'fallback' returns when its condition fails: write 'fallback not text.is_empty()' and let the rest run unindented (in EmptyCollectionGuard.split_names)

@@ -22,17 +22,17 @@ func AssertMaybeBoolean() {
 }
 
 func confirmed(flag: Boolean?) {
-    assert flag
+    fallback flag
     var proven: Boolean = flag
     seen.append("value={proven}")
 }
 
 func confirmed_at(index: Integer) {
-    assert answers[index]
+    fallback answers[index]
     seen.append("read")
 }
 
 func both(flag: Boolean?, other: Boolean) {
-    assert flag and other
+    fallback flag and other
     seen.append("both")
 }

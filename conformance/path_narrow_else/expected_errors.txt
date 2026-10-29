@@ -1,1 +1,1 @@
-conformance/path_narrow_else/path_narrow_else.spite:12: error: this value may be null (it is a Spite.Namespace?), so 'name' cannot be read from it yet: narrow it first with 'if value { }', 'assert value' or 'crash value' (in PathNarrowElse.probe)
+conformance/path_narrow_else/path_narrow_else.spite:12: error: this value may be null (it is a Spite.Namespace?), so 'name' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in PathNarrowElse.probe)

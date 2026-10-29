@@ -1,3 +1,8 @@
+union Entry {
+    Directory
+    File
+}
+
 var console = Console()
 var program = Program()
 var compiler = "..\\spite_compiler\\.spite\\spite.exe"
@@ -160,7 +165,7 @@ func named_folders(): List<String> {
 
 func add_named(named: List<String>, argument: String) {
     var is_a_setting = argument.starts_with("--") and argument != "--failed"
-    assert not is_a_setting
+    fallback not is_a_setting
     if argument == "--failed" {
         var last = last_failures()
         var failure_index = 0
@@ -235,7 +240,7 @@ func keep_folders_in(parent: String) {
     entries.each(keep_folder)
 }
 
-func keep_folder(entry: Directory.Entry) {
+func keep_folder(entry: Entry) {
     if entry == Directory {
         var name = entry.folder_name
         found_folders.append("{parent_folder}/{name}")
@@ -267,9 +272,9 @@ func run_one(folder: String) {
 
 func run_test(folder: String) {
     var wanted = expected_text(folder, "expected_exit_code.txt")
-    assert wanted
+    fallback wanted
     var copy = copy_of(folder)
-    assert copy
+    fallback copy
     var flags = optional_text(folder, "flags.txt")
     var no_arguments = List<String>()
     var compile = Process("{compiler} {copy} {flags} --build 2>&1 1>nul", no_arguments)
@@ -282,7 +287,7 @@ func run_test(folder: String) {
         return
     }
     var built = build_moved_back(copy, folder)
-    assert built
+    fallback built
     var executable = executable_of(folder)
     var input = "<nul"
     var input_file = File("{folder}/input.txt")
@@ -316,17 +321,15 @@ func run_test(folder: String) {
 func optional_text(folder: String, name: String): String {
     var file = File("{folder}/{name}")
     var text = file.read_as_string()
-    if not text {
-        return ""
-    }
+    fallback text
     return cleaned(text)
 }
 
 func run_conformance(folder: String) {
     var wanted = expected_text(folder, "expected_errors.txt")
-    assert wanted
+    fallback wanted
     var copy = copy_of(folder)
-    assert copy
+    fallback copy
     var flags = built_only(folder)
     var no_arguments = List<String>()
     var compile = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
@@ -382,9 +385,7 @@ func only_formatting(wanted: String): Boolean {
     var index = 0
     while index < lines.count() {
         var line = lines[index]
-        if not line.starts_with("formatted ") {
-            return false
-        }
+        fallback line.starts_with("formatted ")
         index = index + 1
     }
     return true
@@ -479,17 +480,13 @@ func executable_of(folder: String): String {
 func matches(got: String, wanted: String): Boolean {
     var got_lines = got.split("\n")
     var wanted_lines = wanted.split("\n")
-    if got_lines.count() != wanted_lines.count() {
-        return false
-    }
+    fallback got_lines.count() == wanted_lines.count()
     var index = 0
     while index < wanted_lines.count() {
         var wanted_line = wanted_lines[index]
         var got_line = got_lines[index]
         crash got_line
-        if not line_matches(got_line, wanted_line) {
-            return false
-        }
+        fallback line_matches(got_line, wanted_line)
         index = index + 1
     }
     return true
@@ -502,9 +499,7 @@ func line_matches(got: String, wanted: String): Boolean {
     var pieces = wanted.split("...")
     var first = pieces[0]
     crash first
-    if not got.starts_with(first) {
-        return false
-    }
+    fallback got.starts_with(first)
     var at = first.length()
     var index = 1
     while index < pieces.count() {
@@ -516,9 +511,7 @@ func line_matches(got: String, wanted: String): Boolean {
         if index == pieces.count() - 1 {
             return rest.ends_with(piece)
         }
-        if not found {
-            return false
-        }
+        fallback found
         at = at + found + piece.length()
         index = index + 1
     }

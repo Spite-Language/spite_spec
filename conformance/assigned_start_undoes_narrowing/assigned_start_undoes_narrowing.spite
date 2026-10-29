@@ -8,7 +8,7 @@ func AssignedStartUndoesNarrowing() {
 
 func run() {
     target.weapon = Weapon()
-    assert target.weapon
+    fallback target.weapon
     target = Monster()
     console.print(target.weapon.name)
 }

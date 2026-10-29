@@ -20,7 +20,7 @@ func NarrowedValueAssignment() {
 
 func latest_reading() {
     var got = reading_at(0)
-    assert got
+    fallback got
     var index = 1
     while index < 3 {
         var next = reading_at(index)
@@ -35,7 +35,7 @@ func latest_reading() {
 
 func heaviest() {
     var best = weight_at(0)
-    assert best
+    fallback best
     var index = 1
     while index < 2 {
         var next = weight_at(index)
@@ -49,9 +49,9 @@ func heaviest() {
 
 func last_count() {
     var seen = count_at(0)
-    assert seen
+    fallback seen
     var next = count_at(1)
-    assert next
+    fallback next
     seen = next
     seen = seen * 2
     console.print("last count doubled", seen)
@@ -59,7 +59,7 @@ func last_count() {
 
 func cleared() {
     var got = reading_at(2)
-    assert got
+    fallback got
     var missing = reading_at(5)
     got = missing
     var present = false

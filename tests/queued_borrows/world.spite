@@ -23,7 +23,7 @@ func queued(): Integer {
 
 func flush() {
     var commands = buffers.first()
-    assert commands
+    fallback commands
     var index = 0
     while index < commands.count() {
         var command = commands[index]

@@ -215,7 +215,7 @@ Rules: 51. Covered before: 19. Covered now: 45.
 | A word after the `}` closing a statement is an error | conformance/left_over_after_block | covered |
 | Local declared only to be returned is an error | conformance/returned_local | covered |
 | Local declared with another type is not refused | | missing |
-| `while true` with no return/assert/crash and no call is an error | conformance/spinning_loop | covered |
+| `while true` with no return/fallback/crash and no call is an error | conformance/spinning_loop | covered |
 | `while true` that calls something is left alone | tests/control_while_true_returns | added |
 | Spinning-loop exception in `Parallel` work | conformance/endless_parallel_work | covered |
 | Spinning-loop exception in a locked singleton function | conformance/endless_locked_loop | covered |
@@ -272,7 +272,7 @@ Rules: 56. Covered before: 29. Covered now: 53.
 | `&Type` is a parse error | conformance/old_reference_type | covered |
 | An argument casts toward its parameter | tests/functions_argument_cast | added |
 | No overloading: a name declared twice in one file | conformance/duplicate_function | covered |
-| `assert` only where the result can say nothing | conformance/default_answer, tests/assert_runs | covered |
+| `fallback` returns what its answer type builds with no arguments | tests/fallback_answers, tests/assert_runs | covered |
 | A named function is bound to its instance; `.owner` | tests/function_owner, tests/function_values | covered |
 | Attribute named like a function | conformance/shadowed_function | covered |
 | Local named like a function | conformance/functions_shadowed_local | added |
@@ -357,7 +357,7 @@ Rules: 50. Covered before: 32. Covered now: 49.
 | The constructor is the function named like the class; no `new` | tests/constructor_params | covered |
 | No constructor: an implicit one that gives the defaults | tests/classes_implicit_constructor | added |
 | An empty written constructor is an error | conformance/empty_constructor | covered |
-| `assert` is not allowed in a constructor | conformance/constructor_guard | covered |
+| `fallback` is not allowed in a constructor | conformance/constructor_guard | covered |
 | One file declares each name once | conformance/duplicate_function | covered |
 | A constructed object dropped as a statement is an error | conformance/dropped_construction | covered |
 | `singleton` line; `func is_singleton()` is an error | tests/singletons, conformance/singleton_function | covered |
@@ -506,7 +506,7 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | A `T?` read as if present is refused; `value == null` is an error | tests/nullable_narrowing, conformance/maybe_in_arithmetic, conformance/null_comparison | covered |
 | `[]`, `first()`, `last()`, `remove_first()` answer a `T?` | tests/lists, tests/present_zero, conformance/index_reads | covered |
 | A loop-proven read with a counter below zero halts naming the read | tests/proven_read_outside | covered |
-| A guard `assert` answering a default the caller takes for real is an error | conformance/default_answer | covered |
+| A `fallback` where the answer type has nothing built with no arguments is an error | conformance/default_answer_enum, conformance/fallback_built_with_arguments | covered |
 | A write to an object only this function holds, never read after, is an error | conformance/lost_writes | covered |
 | Assigning a local read from a list as if it wrote the list is an error | conformance/replaced_items | covered |
 | `false`, `0`, `""` are never taken for missing | tests/present_zero | covered |
@@ -543,15 +543,15 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 
 | Rule | Program(s) | Status |
 |---|---|---|
-| `assert value` narrows a `T?` local, parameter or field for the rest of the block | tests/nullable_narrowing, tests/nullable_values | covered |
-| `assert value and other` narrows; `other` sees it narrowed | tests/and_narrowing | covered |
+| `fallback value` narrows a `T?` local, parameter or field for the rest of the block | tests/nullable_narrowing, tests/nullable_values | covered |
+| `fallback value and other` narrows; `other` sees it narrowed | tests/and_narrowing | covered |
 | `value = null` after narrowing makes it a `T?` again | conformance/narrowed_name_reassigned | covered |
 | A narrowed value-type `T?` assigned another stores presence and value | tests/narrowed_value_assignment | covered |
 | Narrowing tests presence, never the value (zeros, `false`, `""`) | tests/present_zero | covered |
 | `if value { } else { }` narrows the block; `else` runs when null | tests/nullable_narrowing, tests/narrowed_read_local | covered |
 | A function's last statement `if value { }` with no `else` is an error | conformance/terminal_if | covered |
 | A narrowing `if` not last, or nested in a loop, is no lint error | tests/terminal_if_not_last | added |
-| An `if` whose body only returns the default is an error naming the `assert` | conformance/default_guard, conformance/empty_collection_guard, conformance/returning_guard | covered |
+| An `if` whose body only returns the default is an error naming the `fallback` | conformance/default_guard, conformance/empty_collection_guard, conformance/returning_guard | covered |
 | The guard's condition is turned around, `or` by De Morgan | conformance/guard_de_morgan | added |
 | The guard rule holds inside a `while` or a nested `if` | conformance/guard_inside_loop | added |
 | An `else if` guard is covered too | conformance/default_guard | covered |
@@ -560,9 +560,9 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | An `if` that leaves proves the opposite of its condition for the rest of the block | tests/leaving_if, tests/returning_branch_proof | covered |
 | The leaving `if`'s own block sees none of that proof | | missing |
 | A check the leaving `if` already proves is "proves nothing" | conformance/leaving_if_proves_nothing | added (compiler fails: refuses `crash found` as a String condition) |
-| `assert` narrows every link of a chain and its prefixes | tests/path_narrowing | covered |
+| `fallback` narrows every link of a chain and its prefixes | tests/path_narrowing | covered |
 | A sibling path stays `T?` | conformance/sibling_path_unnarrowed | added |
-| Every side of an `and` narrows, in `assert`, `crash` and `if` | tests/and_narrowing, tests/and_if | covered |
+| Every side of an `and` narrows, in `fallback`, `crash` and `if` | tests/and_narrowing, tests/and_if | covered |
 | The right side of an `and` in any expression sees the left's narrowing | tests/and_return_narrowing | added |
 | A local copy is its own path | conformance/namespace_nullable | covered |
 | A local that only copies a name to narrow it is an error (exact text) | conformance/copy_to_narrow, conformance/copy_to_narrow_conditions | covered |
@@ -571,13 +571,13 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | A local holding a `[]` read is narrowed, not a copy | tests/narrowed_read_local | added |
 | A second check of a narrowed name names the earlier check (exact text) | conformance/check_proves_nothing, conformance/known_fact_checked | covered |
 | A check of a `[]` read proven by a loop names the loop condition (exact text) | conformance/proven_element, conformance/proven_index_check | covered |
-| `assert` on a value that is never `T?` is "cannot be null here" (exact text) | conformance/assert_on_plain_value | added (compiler fails: says a condition must be a Boolean) |
-| `crash` narrows a chain as `assert` does | tests/crash_missing_link, tests/crash_missing_value | covered |
+| `fallback` on a value that is never `T?` is "cannot be null here" (exact text) | conformance/assert_on_plain_value | added (compiler fails: says a condition must be a Boolean) |
+| `crash` narrows a chain as `fallback` does | tests/crash_missing_link, tests/crash_missing_value | covered |
 | Reading through an unnarrowed link is an error | conformance/path_narrow_assignment, conformance/path_narrow_else | covered |
 | Assigning to a narrowed path or what it reads through undoes it | conformance/path_narrow_assignment | covered |
 | Assigning a non-null value to the narrowed path keeps it narrowed | tests/narrowed_path_kept | added |
 | ...and undoes everything narrowed beneath it | conformance/narrowed_path_undone_below | added (compiler fails: compiles) |
-| `while value` narrows its body; walks a chain with no `assert` | tests/while_narrowing_walk | added (compiler fails: `while current` does not narrow) |
+| `while value` narrows its body; walks a chain with no `fallback` | tests/while_narrowing_walk | added (compiler fails: `while current` does not narrow) |
 | Undoing inside a `while` a narrowing made before it and read in it is an error | conformance/path_narrow_loop | covered |
 | Proving it again inside the loop after what undid it is accepted | tests/proof_again_in_loop | covered |
 
@@ -590,7 +590,7 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | A proven count proves indices below it (`== 3`, `>= 3`, `> 2`, `!= 0`, `not is_empty()`) | tests/count_bound_proofs | covered |
 | A count proves `List` indices only, not a `Dictionary`'s keys | conformance/count_proves_no_key | covered |
 | `index < list.count()` proves `list[index]`, also `- 1`, the left of an `and`, every side of a `while`'s `and` | tests/bound_proofs, tests/counted_loops | covered |
-| `assert`/`crash` on an already proven read is an error | conformance/proven_index_check | covered |
+| `fallback`/`crash` on an already proven read is an error | conformance/proven_index_check | covered |
 | `base + k < count()` proves `base` to `base + k`; `<=` proves to `base + k - 1` | tests/bound_proofs, tests/strided_counted_loops, conformance/bound_proofs_undone | covered |
 | A width read is proven by the read of its last byte | tests/buffer_bytes, conformance/byte_reads | covered |
 | A position known not negative needs no lower test (seen only in the generated code) | | missing |
@@ -610,7 +610,7 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | `get_at(index)` called by name answers a `T?` that is not a path | conformance/get_at_by_name | added |
 | A read used before narrowing names the lines that would narrow it | conformance/index_reads | covered |
 | A `Boolean?` is never a condition in `if`, `while`, `not`, `or` | conformance/maybe_boolean_conditions, conformance/joined_maybe_boolean | covered |
-| `assert flag` / `crash flag` on a `Boolean?` ask for `true` | tests/assert_maybe_boolean, tests/crash_maybe_boolean | covered |
+| `fallback flag` / `crash flag` on a `Boolean?` ask for `true` | tests/assert_maybe_boolean, tests/crash_maybe_boolean | covered |
 | `flag == true` needs no narrowing | tests/present_zero, tests/hashes | covered |
 | Assigning through a `T?` is an error naming the fix | conformance/store_through_nullable | covered |
 | `first()`, `last()`, `remove_first()`, `remove_last()` answer `T?` | tests/lists, tests/present_zero | covered |
@@ -619,29 +619,26 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | `<`, `<=`, `>`, `>=` take no `T?` | conformance/nullable_ordering | added |
 | A `Spite.Namespace` compares with text by `equals(String)` | | missing |
 
-### Failure: three outcomes, `assert`, `crash`
+### Failure: three outcomes, `fallback`, `crash`
 
 | Rule | Program(s) | Status |
 |---|---|---|
-| A failed `assert` answers nothing, `null`, or an empty collection | tests/assert_default, tests/assert_runs, tests/assert_answers_empty | added (compiler fails: refuses `assert` in a function returning a `List` or `Dictionary`) |
-| An `assert` in a function returning a whole number is an error (exact text) | conformance/default_answer | covered (compiler wording leaves out the answer offered) |
-| ...returning a `Boolean`: offers `false`, no `Boolean?` | conformance/default_answer_boolean | added (compiler fails: offers 'Boolean?', no answer, bare 'crash') |
-| ...returning a `String`: offers `""` | conformance/default_answer_text | added (compiler fails: no answer offered, bare 'crash') |
-| ...returning an enum: offers its first value | conformance/default_answer_enum | added (compiler fails: no answer offered, bare 'crash') |
-| ...returning a `Float`: offers `-1.0` | conformance/default_answer_decimal | added (compiler fails: no answer offered, bare 'crash') |
-| ...returning a class made with arguments or a singleton: no answer offered | conformance/lent_element_guard | covered |
-| Checked per instance of a generic class; an `assert` decided while compiling too | | missing |
+| A `fallback` taken answers nothing, `null`, or an empty collection | tests/assert_default, tests/assert_runs, tests/assert_answers_empty | added (compiler fails: refuses `fallback` in a function returning a `List` or `Dictionary`) |
+| `fallback` is refused, naming `fallback` | conformance/assert_is_fallback | covered |
+| ...returning an enum: names the `T?` and the `crash` | conformance/default_answer_enum | covered |
+| ...returning a class made with arguments: names the `T?` and the `crash` | conformance/fallback_built_with_arguments | covered |
+| Checked per instance of a generic class; a `fallback` decided while compiling too | | missing |
 | Every path of a function with a result ends in a `return` (exact text) | conformance/falling_end | covered |
 | Paths end at `return`, bare `crash`, both-branch `if`/`else`, a full `switch`, `while true` | tests/every_path_returns | added |
 | A generic class's falling end is reported once, naming the instance | | missing |
-| `assert` in a constructor is an error (exact text) | conformance/assert_in_constructor | added (compiler fails: compiles) |
+| `fallback` in a constructor is an error (exact text) | conformance/assert_in_constructor | added (compiler fails: compiles) |
 | ...including the entry class's constructor | conformance/assert_in_entry_constructor | added (compiler fails: compiles) |
 | `crash` is allowed in a constructor | tests/crash_receiver | covered |
-| `crash` mirrors `assert`'s polarity | tests/crash | covered |
+| `crash` mirrors `fallback`'s polarity | tests/crash | covered |
 | A bare `crash` is the form for a branch that cannot happen | tests/crash, tests/every_path_returns | covered |
 | `crash false` is formatted to a bare `crash` | | missing |
 | `crash user` narrows a `T?` and never returns | tests/crash_missing_value | covered |
-| `crash` and `assert` take no message | | missing |
+| `crash` and `fallback` take no message | | missing |
 
 ### What a crash reports
 
@@ -655,12 +652,12 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | Only what ran in an `and`/`or` is reported | tests/crash_compound | covered (the report's values are not checked) |
 | A failed narrowing reports what is missing: `is null`, `is missing: index, count`, `is missing: key` | tests/crash_reports_null_link, tests/crash_reports_missing_index, tests/crash_reports_missing_key | added (compiler fails: nothing named) |
 | The report lists one `spite.frame` line per Spite function, innermost first | tests/crash_reports_frames | added (compiler fails: no frames) |
-| The report prints the failed asserts before it, oldest first, `answered=` and `repeated=` | tests/crash_report, tests/assert_runs | covered |
-| `answered=empty` for a collection result | tests/assert_trace_empty | added (compiler fails: refuses the `assert`) |
+| The report prints the fallbacks taken before it, oldest first, `returned=` and `repeated=` | tests/crash_report, tests/assert_runs | covered |
+| `returned=empty` for a collection result | tests/assert_trace_empty | added (compiler fails: refuses the `fallback`) |
 | The ring keeps 32 lines and writes `earlier=<count>` | tests/assert_ring_earlier | added |
-| A failed `assert` prints nothing; `--trace-asserts` streams it | tests/quiet_asserts, tests/trace_asserts, tests/quiet_asserts_optimized, tests/trace_asserts_optimized | covered |
-| Asserts on pool threads while a crash reports cannot chase the ring; only the first crash reports | tests/assert_ring_threads | covered |
-| A library `assert` never enters the ring | tests/library_guards_untraced | covered |
+| A `fallback` taken prints nothing; `--trace-fallbacks` streams it | tests/quiet_asserts, tests/trace_asserts, tests/quiet_asserts_optimized, tests/trace_asserts_optimized | covered |
+| Fallbacks on pool threads while a crash reports cannot chase the ring; only the first crash reports | tests/assert_ring_threads | covered |
+| A library `fallback` never enters the ring | tests/library_guards_untraced | covered |
 | Site ids are content-derived; an `--optimized` build writes only the id | tests/trace_asserts_optimized | covered |
 | An `--optimized` crash line is `spite.crash<TAB>id` then the values | | missing |
 | `<program>.crashes`: header, one sorted line per site with file, line, column, class, function, kind, condition, typed operands | tests/crashes_map | added (compiler fails: no `.crashes` file) |
@@ -674,7 +671,7 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | An illegal instruction is reported | tests/native_fault_illegal | covered |
 | A corrupted heap is reported | tests/native_fault_heap | covered |
 | Frames: consecutive calls of one function as `repeated=`, at most 16 lines, `spite.frame<TAB>more` | tests/native_fault_stack | covered (the frame lines are not checked) |
-| The fault report includes the assert ring | | missing |
+| The fault report includes the fallback ring | | missing |
 
 ## memory.md
 
@@ -1180,7 +1177,7 @@ Rules: 67. Covered before: 31. Covered now: 49.
 | A `T?` does not fit a constraint: "it may be null, and null has none of what the type needs" | conformance/generic_constraint_nullable | added (compiler fails: compiles) |
 | A constraint naming a non-`type` is the error on the `generic` line | conformance/generic_constraint_not_a_type | covered |
 | Conditions on codegen values fold in every build | tests/generics, tests/kept_templates | covered |
-| A folded `assert` or `crash` is decided per instance; a folded `assert` needs a result that can say nothing | tests/folded_checks | covered |
+| A folded `fallback` or `crash` is decided per instance; a folded `fallback` needs a result that can say nothing | tests/folded_checks | covered |
 | A `crash` that folds to false where the program reaches it is a compile error naming the instance | conformance/folded_crash, conformance/folded_build_crash | covered |
 | An instance whose function nobody calls compiles | tests/folded_crash_uncalled | covered |
 | The sides of an `and` are checked one at a time | conformance/folded_crash_and_side | added (compiler fails: compiles) |
@@ -1274,7 +1271,7 @@ Rules: 86. Covered before: 52. Covered now: 61.
 | Joins as an operand and inside text | tests/implicit_joins | covered |
 | Joins as the receiver of a member the handle lacks | tests/implicit_joins | covered |
 | Joins as a condition: `if`, `crash` | tests/implicit_joins | covered |
-| Joins as a condition: `while`, `assert` | tests/handle_conditions | added |
+| Joins as a condition: `while`, `fallback` | tests/handle_conditions | added |
 | Narrowing a nullable handle narrows its value | tests/implicit_joins | covered |
 | A `Boolean?` handle is refused as a condition | conformance/joined_maybe_boolean | covered |
 | Stays a handle in an untyped `var`, for `append`, `finished`, `finished_value`, `class`; member templates over `List<Parallel<T>>` read handles | tests/kept_templates | covered |
@@ -1363,7 +1360,7 @@ Rules: 58. Covered before: 27. Covered now: 46.
 | A C enum status is answered as a Spite enum the binding writes with `=` numbers | | missing |
 | A C value the Spite enum does not list crashes at the boundary | | missing |
 | A status must be used and cannot be compared with a number | | missing (no error text stated) |
-| A status cannot be the condition of `crash` or `assert` | | missing (no error text stated) |
+| A status cannot be the condition of `crash` or `fallback` | | missing (no error text stated) |
 | One library per file, naming rule and header; another header is a second instance | tests/foreign_library | covered (compiler fails: the program exits 1) |
 | The three arguments are literals, or the `takes three literals` error | conformance/foreign_literal_arguments | added |
 | The naming rule is a symbol literal, or the `'shouting' is not a naming rule` error | conformance/foreign_naming_rule | added |
@@ -1565,7 +1562,7 @@ Rules: 51. Covered before: 22. Covered now: 35.
 | `--final-classes=folder` writes the merged classes | none | missing |
 | `--optimized` is -O3 with link-time optimisation | tests/quiet_asserts_optimized, tests/trace_asserts_optimized | covered |
 | `--development` is inspectable: nothing shaken, internals as ordinary objects | tests/kept_templates | covered |
-| `--trace-asserts` prints each failed assert | tests/trace_asserts | covered |
+| `--trace-fallbacks` prints each fallback taken | tests/trace_asserts | covered |
 | `spite compiler --verify` and `--release` (the compiler proves itself) | none | missing |
 | A Boolean flag may be bare | tests/kebab_setting | covered |
 | No folder named prints the usage and exits 1 | none | missing |

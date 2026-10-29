@@ -19,7 +19,7 @@ func check() {
     while find("rat") and tries < 2 {
         tries = tries + 1
     }
-    assert find("rat")
+    fallback find("rat")
     console.print(tries)
 }
 
