@@ -1,0 +1,16 @@
+var console = Console()
+
+func JsonRunTimeKeysUnknown() {
+    load "../../../spite_standard_library/windows"
+    var crate = Crate()
+    console.print(crate.size)
+    var keys = Dictionary<Spite.AttributeDeclaration, String>()
+    var sized = Crate.attributes['size']
+    crash sized
+    keys[sized] = "size"
+    var writer = JsonWriter<ShelfItem>()
+    writer.keys = keys
+    var item = ShelfItem()
+    var text = writer.write(item)
+    console.print(text)
+}

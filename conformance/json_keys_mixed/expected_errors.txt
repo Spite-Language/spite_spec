@@ -1,0 +1,1 @@
+conformance/json_keys_mixed/json_keys_mixed.spite:8: error: 'JsonWriter.keys' is given a map made at run time here, and a written-out one the compiler already folded into the code every such serializer is compiled to: give every one a map made the same way (in JsonKeysMixed.JsonKeysMixed)

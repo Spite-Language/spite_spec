@@ -1,0 +1,41 @@
+var console = Console()
+
+func JsonRunTimeKeys() {
+    load "../../../spite_standard_library/windows"
+    var keys = Dictionary<Spite.AttributeDeclaration, String>()
+    var declarations = ShelfItem.attributes
+    var index = 0
+    while index < declarations.count() {
+        var described = declarations[index]
+        keys[described] = "{described.name}_key"
+        index = index + 1
+    }
+    var writer = JsonWriter<ShelfItem>()
+    writer.keys = keys
+    var first = declarations[0]
+    keys[first] = "changed"
+    var item = ShelfItem()
+    item.stock_count = 4
+    item.label = "pen"
+    var text = writer.write(item)
+    var plain = JsonWriter<ShelfItem>()
+    var plain_text = plain.write(item)
+    var reader = JsonReader<ShelfItem>()
+    reader.keys = keys_from_a_function()
+    var back = reader.read("\{\"count\": 7, \"label\": \"ink\"}")
+    crash back
+    var by_name = reader.read("\{\"stock_count\": 9}")
+    crash by_name
+    console.print(text)
+    console.print(plain_text)
+    console.print(back.stock_count, back.label, by_name.stock_count)
+}
+
+func keys_from_a_function(): Dictionary<Spite.AttributeDeclaration, String> {
+    var made = Dictionary<Spite.AttributeDeclaration, String>()
+    var short = "count"
+    var counted = ShelfItem.attributes['stock_count']
+    crash counted
+    made[counted] = short
+    return made
+}

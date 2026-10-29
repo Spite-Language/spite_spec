@@ -1,0 +1,3 @@
+{"stock_count_key":4,"label_key":"pen"}
+{"stock_count":4,"label":"pen"}
+7 ink 0

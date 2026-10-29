@@ -1,0 +1,21 @@
+var console = Console()
+
+func JsonKeysMixed() {
+    load "../../../spite_standard_library/windows"
+    var writer = JsonWriter<MeshRecord>()
+    writer.keys = {MeshRecord.attributes['minimum_level_of_detail']: "min_lod"}
+    var other = JsonWriter<MeshRecord>()
+    other.keys = keys_made_at_run_time()
+    var record = MeshRecord()
+    var text = writer.write(record)
+    var other_text = other.write(record)
+    console.print(text, other_text)
+}
+
+func keys_made_at_run_time(): Dictionary<Spite.AttributeDeclaration, String> {
+    var made = Dictionary<Spite.AttributeDeclaration, String>()
+    var detail = MeshRecord.attributes['minimum_level_of_detail']
+    crash detail
+    made[detail] = "lod"
+    return made
+}

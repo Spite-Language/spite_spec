@@ -1,0 +1,2 @@
+var stock_count = 0
+var label = ""

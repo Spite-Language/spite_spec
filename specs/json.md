@@ -141,9 +141,20 @@ The details:
   attribute's name**: with one, neither the name nor its camelCase and PascalCase spellings read into the
   attribute any more, so each attribute has exactly one key; attributes without one keep the camelCase and
   PascalCase reading. Every serializer takes the same kind of map. A constant map folds into the code the
-  serializer is compiled to: the keys are literal text, and reading matches them as it matches a name. A map made
-  at run time fills a key table once per attribute when the serializer is made (an array by attribute, and a small
-  hash for reading), so each record then costs what the constant case costs. Naming an attribute the class does
+  serializer is compiled to: the keys are literal text, and reading matches them as it matches a name. A map that is not written
+  out (filled in a loop, answered by a function, or a literal with a computed key or text) is made at run time: it is
+  copied when it is set, and the compiler fills a key table from the copy then, one slot per public attribute of
+  the class, so each record then costs what the constant case costs: writing reads the attribute's slot, and
+  reading compares each key with the slots as it compares a constant key (`tests/json_run_time_keys`). The table
+  is the compiler's, never a class of the library or a name a program can write. The copy and its table belong to
+  the serializer it is set on, and changing the map it was copied from later changes neither. A map made at run
+  time that gives a key to anything but one of the class's public attributes holding a value halts where it is
+  set, "spite: 'JsonWriter.keys' gives a key to an attribute that is not one of the public attributes of
+  'ShelfItem' that hold a value, at <file>:<line> in <class>.<function>" (`tests/json_run_time_keys_unknown`).
+  The serializers of one class take their maps one way: a written-out map folded for one and a map made at run
+  time for another is an error, "'JsonWriter.keys' is given a map made at run time here, and a written-out one
+  the compiler already folded into the code every such serializer is compiled to: give every one a map made the
+  same way" (`conformance/json_keys_mixed`). Naming an attribute the class does
   not have, a private one or one holding a singleton is an error. The map is set whole: changing one key through
   an index, `set_at`, `remove_at` or `clear` is an error, "'JsonWriter.keys' is folded into the code while
   compiling, so it is set whole with a written-out map and never changed one key at a time", and so is a local
