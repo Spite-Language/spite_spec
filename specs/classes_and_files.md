@@ -115,6 +115,13 @@ on other types, or one that reads without writing the object, stays legal.
   file may reopen a class and replace a function, but one file declares each name once`
   (`diagnostics/duplicate_function`). An argument casts to the parameter's type instead
   ([functions_and_operators.md](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md)).
+- A reopening replaces an attribute's default, never its type. The type each declaration gives the attribute (written,
+  made by a constructor or a literal list or dictionary, or a literal's) is compared, whichever way each one gives it,
+  and a different one is refused at the reopening's line: `'level' is an Integer where the class first declares
+  it, and this reopening makes it a String: a reopening replaces an attribute's default, never its type, so give the
+  new attribute a name of its own` (`conformance/reopened_var_type`, `conformance/reopened_var_type_written`). A
+  reopening of a standard library class is not compared. Like the other rules that refuse code that would otherwise
+  build, it is told once the program is built, after any mistake of a type or a name.
 
 ## A constructed object must be kept and used
 

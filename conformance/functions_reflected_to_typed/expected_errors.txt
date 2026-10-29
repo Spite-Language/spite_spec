@@ -1,1 +1,1 @@
-conformance/functions_reflected_to_typed/functions_reflected_to_typed.spite:7: error: ...cannot be used where a Spite.Function<String, String> is needed... (in FunctionsReflectedToTyped.FunctionsReflectedToTyped)
+conformance/functions_reflected_to_typed/functions_reflected_to_typed.spite:6: error: ...cannot be used where a Spite.Function<String, String> is needed... (in FunctionsReflectedToTyped.FunctionsReflectedToTyped)

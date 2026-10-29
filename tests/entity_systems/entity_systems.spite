@@ -30,7 +30,6 @@ func EntitySystems() {
     var fighter_index = 0
     while fighter_index < fighters.count() {
         var counted = fighters[fighter_index]
-        crash counted
         if counted.health > 0 {
             standing = standing + 1
         }
@@ -50,7 +49,6 @@ func fight() {
     var index = 0
     while index < fighters.count() {
         var fighter = fighters[index]
-        crash fighter
         var hits = fighter.attack - fighter.defense
         if hits > 0 and fighter.health > 0 {
             wound(fighter)
@@ -70,7 +68,6 @@ func move() {
     var index = 0
     while index < monsters.count() {
         var monster = monsters[index]
-        crash monster
         monster.x = monster.x + monster.speed
         monster.y = monster.y + monster.speed
         index = index + 1

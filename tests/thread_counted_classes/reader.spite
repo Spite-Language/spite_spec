@@ -14,7 +14,6 @@ func run(): Long {
         var position = 0
         while position < shelf.items.count() {
             var item = shelf.items[position]
-            crash item
             kept.append(item)
             position = position + 1
         }

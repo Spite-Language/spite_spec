@@ -5,13 +5,7 @@ func RunTimeNumberClass() {
     var kinds = List<Spite.Class>()
     kinds.append(Integer)
     kinds.append(Boolean)
-    var index = 0
-    while index < kinds.count() {
-        var kind = kinds[index]
-        crash kind
-        make(kind)
-        index = index + 1
-    }
+    kinds.each(make)
 }
 
 func make(kind: Spite.Class) {

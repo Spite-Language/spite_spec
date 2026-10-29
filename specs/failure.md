@@ -201,8 +201,10 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   (`diagnostics/proven_element`). A `T?` of any type that is already narrowed names the check that narrowed it:
   "'tracker' is already narrowed by 'assert tracker' on line 8: remove this check"
   (`diagnostics/check_proves_nothing`, `diagnostics/known_fact_checked`); a value that was never a `T?` is "this
-  value cannot be null here (it is a Tracker), so 'assert' on it proves nothing: remove the check", a local holding
-  a function's answer that cannot be null included (`conformance/check_of_a_returned_local`). A check inside the
+  value cannot be null here (it is a Tracker), so 'assert' on it proves nothing: remove the check", any local whose
+  value cannot be null included, whatever made it: a function's answer, a copy of an attribute or of another local, a
+  proven `[]` read (`conformance/check_of_a_returned_local`, `conformance/check_of_a_copied_local`); in a generic class
+  or a walk only a written type or a construction makes a local plain, since its type may differ per instance. A check inside the
   `if`, `while` or `switch` that narrowed names it the same way: "'number' is already narrowed by 'if number' on
   line 13: remove this check" (`conformance/known_fact_inside_its_if`). A `[]` read a count or an earlier check
   proved is "'names[1]' is already proven by 'names.count() == 2', so this 'assert' proves nothing: remove it" and

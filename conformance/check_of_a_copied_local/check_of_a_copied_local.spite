@@ -1,0 +1,9 @@
+var console = Console()
+var tracker = Tracker()
+
+func CheckOfACopiedLocal() {
+    load "../../../spite_standard_library/windows"
+    var watched = tracker
+    crash watched
+    console.print(watched.name)
+}

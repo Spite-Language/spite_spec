@@ -1,0 +1,8 @@
+var console = Console()
+var label = "ada"
+
+func LoneHoleDeclareAttribute() {
+    load "../../../spite_standard_library/windows"
+    var shown = "{label}"
+    console.print(shown)
+}

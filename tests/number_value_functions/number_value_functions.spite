@@ -8,7 +8,6 @@ func NumberValueFunctions() {
     var index = 0
     while index < numbers.count() {
         var value = numbers[index]
-        crash value
         var shown = value.to_string()
         var positive = value.absolute()
         var wide = positive.to_double()

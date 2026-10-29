@@ -1,0 +1,1 @@
+conformance/lone_hole_declare_attribute/lone_hole_declare_attribute.spite:6: error: '"{label}"' is a text of one value and nothing else: declare the value directly, 'var shown = label' (in LoneHoleDeclareAttribute.LoneHoleDeclareAttribute)

@@ -8,7 +8,6 @@ func NumberValues() {
     var index = 0
     while index < numbers.count() {
         var value = numbers[index]
-        crash value
         var doubled = value + value
         var is_six = doubled == 6
         var is_five = doubled == 5.0

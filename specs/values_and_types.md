@@ -135,7 +135,7 @@ not (`diagnostics/lone_hole`):
 | Where the text stands | The rewrite named |
 |---|---|
 | `counter.label.text = "{counter.click_count.clicks}"` | `assign the value directly, 'counter.label.text = counter.click_count.clicks'` |
-| `var shown = "{clicks}"` | `declare the value directly, 'var shown: String = clicks'` (`'var shown = name'` when `name` is text; a written type is kept) |
+| `var shown = "{clicks}"` | `declare the value directly, 'var shown: String = clicks'` (`'var shown = label'` when the hole is a `String`, whatever it is: a local, a parameter, an attribute, a call; a written type is kept; `conformance/lone_hole_declare_attribute`) |
 | `return "{clicks}"` | `return the value directly, 'return clicks'` |
 | `show("{clicks}")` | `pass the value directly, 'show(clicks)'` |
 | `keyed["{clicks}"]` on a `Dictionary` | `look it up by the value directly, 'keyed[clicks]'` (a whole number then keys it by numbers) |
