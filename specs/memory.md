@@ -140,7 +140,11 @@ name**, naming which classes' instances are still live. The table keeps each liv
 forgets it on free, so the summary names exactly the objects still alive, the same ones on every run; memory that
 is not an object (a list's elements, a string's bytes) is counted but not named. An object a program leaked is
 named even when it points at a singleton, which is still destroyed at exit. The compiler's own bookkeeping
-(the list of singletons to destroy) is allocated outside the table and not counted.
+(the list of singletons to destroy) is allocated outside the table and not counted. The counts are exact and the same on
+every run, so a test pins them, and a change in where the compiler places memory shows as a changed count: objects
+placed in the frame allocate nothing (`tests/memory_debug_memory_placed`), a buffer made in a loop allocates its
+storage once a pass (`tests/memory_counts_buffers`), and a program that keeps nothing frees all it allocated
+(`tests/memory_counts_nothing_leaked`).
 
 **Fresh memory is filled with a fixed pattern.** Every byte an allocation or a growing `resize` hands out that the program has not written is `0xA5`, so a
 `Long` read from it is -6510615555426900571 and an address read from it points nowhere: reading bytes nobody wrote

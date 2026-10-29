@@ -1,0 +1,14 @@
+var console = Console()
+
+func MemoryCountsNothingLeaked() {
+    load "../../../spite_standard_library/windows"
+    var names = List<String>()
+    var index = 0
+    while index < 50 {
+        names.append("name {index}")
+        index = index + 1
+    }
+    var joined = names.join(",")
+    var length = joined.length()
+    console.print("joined:", length)
+}

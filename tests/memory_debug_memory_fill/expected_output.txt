@@ -3,4 +3,4 @@ unwritten room -6510615555426900571
 kept 7 grown tail 165
 a joined text ends where its bytes end: 8
 first second third fourth
-allocations: ... frees: ...
+allocations: 68 frees: 68

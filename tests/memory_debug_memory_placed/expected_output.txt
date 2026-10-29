@@ -1,2 +1,2 @@
-placed tallies: 18
-allocations: ... frees: ...
+placed tallies: 504500
+allocations: 15 frees: 15

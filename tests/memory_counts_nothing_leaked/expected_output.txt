@@ -1,0 +1,2 @@
+joined: 389
+allocations: 71 frees: 71
