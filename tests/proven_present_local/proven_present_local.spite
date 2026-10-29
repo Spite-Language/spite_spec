@@ -1,0 +1,10 @@
+var console = Console()
+
+func ProvenPresentLocal() {
+    load "../../../spite_standard_library/windows"
+    var shown: Tracker? = Tracker("watch")
+    console.print(shown.name)
+    shown = Tracker("guard")
+    var held: Tracker? = shown
+    console.print(held.name)
+}

@@ -1,0 +1,18 @@
+var console = Console()
+
+func ProvenPresentUses() {
+    load "../../../spite_standard_library/windows"
+    var ready: Boolean? = true
+    if ready {
+        console.print("ready")
+    }
+    var maker: Spite.Class? = Monster
+    var made = maker()
+    if made == Monster {
+        console.print(made.name)
+    }
+    var crier = Crier()
+    var greet: Spite.Function<String, String>? = crier.shout
+    var said = greet("hello")
+    console.print(said)
+}

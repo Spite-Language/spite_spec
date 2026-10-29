@@ -1,0 +1,12 @@
+var console = Console()
+
+func DecidedAssertFalse() {
+    load "../../../spite_standard_library/windows"
+    var shown = answer()
+    console.print(shown)
+}
+
+func answer(): Integer? {
+    assert 1 > 2
+    return 3
+}

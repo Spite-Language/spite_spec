@@ -37,13 +37,12 @@ be returned on the next line: write 'return value', since 'return' already makes
 (`diagnostics/returned_local`). A local declared with any other type is a conversion of its own and is not
 refused.
 
-**A `while true` that can never leave and calls nothing is a compile error.** No `return`, `assert` or `crash`
-anywhere inside its body, and no call (a function, a method, a constructor) in it: `this 'while true' never ends:
-nothing inside it returns, asserts or crashes, and it calls nothing, so the program would spin here for good: leave
-it with a 'return' ('if done { return }'), or loop 'while' a condition` (`diagnostics/spinning_loop`). One that
-calls something is left alone, since a call may end the program, except in work a `Parallel` runs
-([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#threads-for-parallel)), and inside a locked singleton function
-([concurrency.md](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting)).
+**A loop states the condition it runs under: `while true` is a compile error** (D1746), like any condition the
+compiler knows is always true: `'while true' is decided while compiling and is always true here: a loop ends by its
+condition, so loop 'while' what its leaving paths change, a 'running' local they set to false or the loop's real exit
+test` (`conformance/spinning_loop`). A loop that waits for a value loops `while not found` and assigns it; one that
+runs until something happens loops `while running` and sets `running = false` where it ends
+([failure.md](failure.md#nothing-fails-silently-the-rule)).
 
 There is deliberately no `break`/`continue`: `while` is the only loop construct Spite has, full stop.
 Neither is a keyword, but either written as a statement of its own is an error naming the form (`Spite has no

@@ -53,7 +53,7 @@ keeping, and the run's halt is the backstop for what only the run can find.
 | a loop polling a `Concurrent`'s `finished` while nothing steps it, spinning forever | halts after a million polls in a row with no step | [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#choosing-where-concurrents-resume) |
 | `call_function()` skipping a function that takes arguments | halts naming the function | [testing.md](https://github.com/Spite-Language/spite_documentation/blob/master/testing.md) |
 | C calling a function through a `ForeignCallback` that was dropped | halts naming the function and the line that made it | [foreign_libraries.md](https://github.com/Spite-Language/spite_documentation/blob/master/foreign_libraries.md) |
-| a `while true` that can never leave and calls nothing | compile error | [control_flow.md](https://github.com/Spite-Language/spite_documentation/blob/master/control_flow.md#while-is-the-only-loop) |
+| a condition the compiler knows is always true or always false, `while true` included | compile error | [control_flow.md](https://github.com/Spite-Language/spite_documentation/blob/master/control_flow.md#while-is-the-only-loop) |
 | work given to a `Parallel` that loops forever and never waits | compile error | [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#threads-for-parallel) |
 | a peer that hung up read as a count of `-1` | `socket.closed` turns `true`; reads answer `0` or `null` | [standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md) |
 | a read the outside world cut short, a lock or random bytes the system refused, input that is not UTF-8, taken as a halt or a made-up value (D1721) | the library answers `null` or `false` and halts only on the program's own mistakes; the program decides with `assert` or `crash` (`tests/console_long_lines`) | [failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#nothing-fails-silently) |
@@ -204,7 +204,9 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   value cannot be null here (it is a Tracker), so 'assert' on it proves nothing: remove the check", any local whose
   value cannot be null included, whatever made it: a function's answer, a copy of an attribute or of another local, a
   proven `[]` read (`conformance/check_of_a_returned_local`, `conformance/check_of_a_copied_local`); in a generic class
-  or a walk only a written type or a construction makes a local plain, since its type may differ per instance. A check inside the
+  or a walk only a written type or a construction makes a local plain, since its type may differ per instance. A
+  `T?` the compiler proves present (below) is "'shown' is already narrowed by the proof that every value it can hold
+  is present: remove this check" (`conformance/proven_present_checked`). A check inside the
   `if`, `while` or `switch` that narrowed names it the same way: "'number' is already narrowed by 'if number' on
   line 13: remove this check" (`conformance/known_fact_inside_its_if`). A `[]` read a count or an earlier check
   proved is "'names[1]' is already proven by 'names.count() == 2', so this 'assert' proves nothing: remove it" and
@@ -221,11 +223,47 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
     on line 23: remove this test" (`conformance/known_fact_class_never`, `conformance/known_fact_class_again`);
   - an `assert` or `crash` that is decided while compiling and holds, outside a generic class and a walk: "'crash
     Point.has_function("length")' is decided while compiling and always holds here: remove it"
-    (`conformance/check_always_holds`). In a generic class it holds for some instances and not others, so it stays.
+    (`conformance/check_always_holds`). In a generic class it holds for some instances and not others, so it stays;
+  - **a condition decided while compiling** (D1746), outside a generic class and a walk: an `if` or `while` the
+    compiler folds to always true or always false, and an `assert` that folds false, since writing one tells a reader
+    nothing: "'if 2 > 1' is decided while compiling and is always true here, so it tells a reader nothing: remove the
+    'if' and keep the code it runs", "... is always false here, so the code it guards never runs: remove it, keeping
+    its 'else' if it has one", "'while 3 < 1' ... is always false here, so the loop never runs: remove it", "'while
+    true' ... is always true here: a loop ends by its condition, so loop 'while' what its leaving paths change, a
+    'running' local they set to false or the loop's real exit test" and "'assert 1 > 2' ... is always false here, so
+    the function always answers nothing from here: remove it with the code after it" (`conformance/decided_if_true`,
+    `conformance/decided_if_false`, `conformance/decided_while`, `conformance/spinning_loop`,
+    `conformance/decided_assert_false`). The literal `while true` is no exception: a loop states the condition it
+    runs under. A condition that reads a `Build` field is kept, since the command line sets it and its branch choice
+    is its purpose ([programs.md](programs.md#build-settings-build)), and so is one on a codegen value, in a generic
+    class or a walk (`tests/decided_conditions_kept`). A name tested where it is already known present or null is
+    named in the error ("since 'size' is proven present here").
 
   Inside a `while`, only a proof made inside that loop makes a check redundant: one made before the loop does not,
   since an assignment in the loop would leave the next pass unproven.
 - `crash` (below) narrows a chain the same way, since it narrows exactly as `assert` does but never returns.
+- **A `T?` the compiler proves present is a `T`, whatever made it** (D1719). It goes where a plain `T` is wanted,
+  and is read from and called on, with nothing written:
+  - a local every assignment of which in its function cannot be null (`var shown: Tracker? = Tracker()`, then only
+    other trackers; `tests/proven_present_local`);
+  - an attribute of a program class whose default and every assignment the built program makes cannot be null
+    (`tests/proven_present_attribute`);
+  - the answer of a program function every `return` of which cannot be null, at every call of it
+    (`tests/proven_present_answer`).
+
+  A value cannot be null when its type is not a `T?` or when it is itself one of these, so a local holding a proven
+  answer is proven too. A proven `Boolean?` is a condition, and a proven `Spite.Class` or function value is called,
+  with nothing written (`tests/proven_present_uses`). An `assert`, `crash`, `if` or `while` on such a name is the
+  "already narrowed" error above (`conformance/proven_present_checked`, `conformance/proven_present_while_checked`,
+  `conformance/proven_present_attribute_checked`,
+  `conformance/proven_present_answer_checked`), outside a generic class and a walk, where it holds for some
+  instances and not others; a check of a call (`crash find()`) is not refused, since an answer must be used. Not
+  proven: a `T?` parameter, an attribute without a default, an attribute or a function of the standard library
+  (whose `T?` is the answer every target keeps: what a program must check is decided by the signature, the same on
+  every target, D1746), an attribute assigned a `T?` through a `type`, and any attribute in a `--hot-reload` or
+  `--repl` build, where a running object may still hold a null an older version stored (D1746;
+  `tests/proven_present_hot_reload`, `tests/proven_present_repl`). The answer of a
+  call worked out while compiling (`"127.0.0.1".to_ip_address()`) is to come (spite_compiler#229, #230).
 - Reading through a link that may be null and has not been narrowed is still an error. This removes the verbosity of
   proving a path, not the requirement to prove it.
 - Assigning to a narrowed path, or to anything it reads through, undoes the narrowing from that point on: after
@@ -511,7 +549,6 @@ would quietly answer `0`, `""`, `false`, a default object or `null`. A path ends
 - at a `return`, or at a bare `crash` (`crash false` is formatted to it);
 - at an `if` with an `else` whose two branches both end, and at a `switch` whose cases all end (a `switch`
   covers every member or value, or has `_:`, so there is no other way through it);
-- at a `while true`, which ends only by leaving the function, since Spite has no `break`;
 - at an `if` whose condition is decided while compiling (a codegen value, `functions['run_each']`, ...) and whose branch
   taken ends, and at an `assert` so decided to be false, read per instance of a generic class, as they are
   compiled.

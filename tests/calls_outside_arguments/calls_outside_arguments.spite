@@ -9,9 +9,7 @@ func CallsOutsideArguments() {
     var names = ["ada", "bea"]
     var picked = names[last_index(names)]
     crash picked
-    if source.starts_with("sp") {
-        console.print(shouted, picked)
-    }
+    console.print(shouted, picked)
     var words = 0
     words = count_words("one two")
     console.print("{count_words(source)} word, then {words}")

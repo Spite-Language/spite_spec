@@ -1,0 +1,23 @@
+generic $is_open
+generic $is_forced
+
+var console = Console()
+var calls = 0
+
+func tell() {
+    if counted() and $is_open {
+        console.print("never")
+    } else {
+        console.print("an 'and false' after a call is decided, calls: {calls}")
+    }
+    if counted() or $is_forced {
+        console.print("an 'or true' after a call is decided, calls: {calls}")
+    }
+    var both = counted() and $is_open
+    console.print(both, calls)
+}
+
+func counted(): Boolean {
+    calls = calls + 1
+    return calls > 1
+}

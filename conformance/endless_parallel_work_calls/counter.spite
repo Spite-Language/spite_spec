@@ -14,8 +14,9 @@ func step(counted: Integer): Integer {
 func count_and_wait(): Integer {
     var one_millisecond = Duration(1, 'milliseconds')
     var counted = 0
-    while true {
+    while counted < 1000 {
         counted = counted + step(counted)
         program.sleep(one_millisecond)
     }
+    return counted
 }

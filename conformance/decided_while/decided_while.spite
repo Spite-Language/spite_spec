@@ -1,0 +1,8 @@
+var console = Console()
+
+func DecidedWhile() {
+    load "../../../spite_standard_library/windows"
+    while 3 < 1 {
+        console.print("never")
+    }
+}

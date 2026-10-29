@@ -33,12 +33,10 @@ func action_of(light: Light): String {
 
 func first_above(limit: Integer): Integer {
     var value = 0
-    while true {
+    while value <= limit {
         value = value + 3
-        if value > limit {
-            return value
-        }
     }
+    return value
 }
 
 func checked(value: Integer): Integer {

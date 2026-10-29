@@ -1,0 +1,13 @@
+var console = Console()
+var target: Monster? = Monster("ogre")
+
+func ProvenPresentRepl() {
+    load "../../../spite_standard_library/windows"
+    var shown: Monster? = Monster("troll")
+    console.print(shown.name)
+    if target {
+        console.print(target.name)
+    } else {
+        console.print("gone")
+    }
+}

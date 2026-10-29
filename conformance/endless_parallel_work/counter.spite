@@ -10,10 +10,8 @@ func count_forever(): Integer {
 
 func count_to_ten(): Integer {
     var counted = 0
-    while true {
+    while counted < 10 {
         counted = counted + 1
-        if counted == 10 {
-            return counted
-        }
     }
+    return counted
 }

@@ -5,12 +5,13 @@ func TerminalIfFixed() {
     announce()
 }
 
-func try_get_name(): String? {
+func try_get_name(known: Boolean): String? {
+    assert known
     return "Aria"
 }
 
 func announce() {
-    var name = try_get_name()
+    var name = try_get_name(true)
     assert name
     console.print(name)
 }

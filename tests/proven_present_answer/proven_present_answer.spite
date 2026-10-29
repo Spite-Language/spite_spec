@@ -1,0 +1,20 @@
+var console = Console()
+
+func ProvenPresentAnswer() {
+    load "../../../spite_standard_library/windows"
+    var found = strongest(3)
+    console.print(found.name)
+    var other = strongest(1)
+    console.print(other.name)
+}
+
+func strongest(count: Integer): Monster? {
+    if count > 2 {
+        return Monster("troll")
+    }
+    return fallback()
+}
+
+func fallback(): Monster? {
+    return Monster("goblin")
+}

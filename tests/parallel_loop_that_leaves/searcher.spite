@@ -2,11 +2,10 @@ var limit = 50
 
 func first_square_above(): Integer {
     var root = 1
-    while true {
-        var square = root * root
-        if square > limit {
-            return square
-        }
+    var square = 1
+    while square <= limit {
         root = root + 1
+        square = root * root
     }
+    return square
 }

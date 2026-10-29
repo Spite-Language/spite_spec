@@ -15,11 +15,10 @@ func FallingEnd() {
     var label = label_for(1)
     var found = find(4)
     crash found
-    var first = first_long(5)
     var answer = forever(1)
     var halted = halts(2)
     var left = leaves(1)
-    console.print(sign, word, wait, size, label, found, first, answer, halted, left)
+    console.print(sign, word, wait, size, label, found, answer, halted, left)
 }
 
 func sign_of(value: Integer): String {
@@ -66,12 +65,6 @@ func label_for(index: Integer): String {
 
 func find(value: Integer): Integer? {
     while value > 0 {
-        return value
-    }
-}
-
-func first_long(value: Long): Long {
-    while true {
         return value
     }
 }

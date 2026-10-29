@@ -1,0 +1,1 @@
+conformance/proven_present_checked/proven_present_checked.spite:6: error: 'shown' is already narrowed by the proof that every value it can hold is present: remove this check (in ProvenPresentChecked.ProvenPresentChecked)

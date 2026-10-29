@@ -1,0 +1,13 @@
+var console = Console()
+var target: Monster? = Monster("ogre")
+
+func ProvenPresentAttribute() {
+    load "../../../spite_standard_library/windows"
+    console.print(target.name)
+    swap()
+    console.print(target.name)
+}
+
+func swap() {
+    target = Monster("troll")
+}

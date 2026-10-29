@@ -1,0 +1,8 @@
+var console = Console()
+var target: Tracker? = Tracker()
+
+func ProvenPresentAttributeChecked() {
+    load "../../../spite_standard_library/windows"
+    crash target
+    console.print(target.name)
+}

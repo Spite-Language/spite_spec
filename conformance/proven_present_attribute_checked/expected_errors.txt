@@ -1,0 +1,1 @@
+conformance/proven_present_attribute_checked/proven_present_attribute_checked.spite:6: error: 'target' is already narrowed by the proof that every value it can hold is present: remove this check (in ProvenPresentAttributeChecked.ProvenPresentAttributeChecked)

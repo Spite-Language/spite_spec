@@ -1,0 +1,1 @@
+conformance/decided_while/decided_while.spite:5: error: 'while 3 < 1' is decided while compiling and is always false here, so the loop never runs: remove it (in DecidedWhile.DecidedWhile)

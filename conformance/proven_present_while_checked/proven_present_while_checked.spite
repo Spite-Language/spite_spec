@@ -1,0 +1,10 @@
+var console = Console()
+
+func ProvenPresentWhileChecked() {
+    load "../../../spite_standard_library/windows"
+    var shown: Tracker? = Tracker()
+    while shown {
+        console.print(shown.name)
+        return
+    }
+}

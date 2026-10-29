@@ -1,0 +1,1 @@
+conformance/decided_if_false/decided_if_false.spite:5: error: 'if 1 > 2' is decided while compiling and is always false here, so the code it guards never runs: remove it, keeping its 'else' if it has one (in DecidedIfFalse.DecidedIfFalse)

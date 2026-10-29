@@ -1,0 +1,8 @@
+var console = Console()
+
+func DecidedIfTrue() {
+    load "../../../spite_standard_library/windows"
+    if 2 > 1 {
+        console.print("always")
+    }
+}

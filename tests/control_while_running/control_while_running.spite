@@ -1,13 +1,14 @@
 var console = Console()
 var seen = 0
 
-func ControlWhileTrueReturns() {
+func ControlWhileRunning() {
     load "../../../spite_standard_library/windows"
-    while true {
+    var running = true
+    while running {
         step()
         if seen == 3 {
             console.print("done", seen)
-            return
+            running = false
         }
     }
 }

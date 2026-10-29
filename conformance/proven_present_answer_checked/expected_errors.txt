@@ -1,0 +1,1 @@
+conformance/proven_present_answer_checked/proven_present_answer_checked.spite:6: error: 'found' is already narrowed by the proof that every value it can hold is present: remove this check (in ProvenPresentAnswerChecked.ProvenPresentAnswerChecked)

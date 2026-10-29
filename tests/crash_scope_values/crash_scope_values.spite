@@ -24,6 +24,5 @@ func load_level(level: String, depth: Integer) {
     }
     var count = names.count()
     console.print("never printed", level, scale, count, title, mood, retries)
-    assert nickname
     console.print(nickname)
 }

@@ -1,0 +1,13 @@
+var console = Console()
+
+func ProvenPresentAnswerChecked() {
+    load "../../../spite_standard_library/windows"
+    var found = made()
+    if found {
+        console.print(found.name)
+    }
+}
+
+func made(): Tracker? {
+    return Tracker()
+}

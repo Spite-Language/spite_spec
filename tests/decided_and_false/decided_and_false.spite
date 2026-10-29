@@ -2,14 +2,7 @@ var console = Console()
 
 func DecidedAndFalse() {
     load "../../../spite_standard_library/windows"
-    var count = 3
-    if count > 1 and false {
-        console.print("never")
-    } else {
-        console.print("an 'and false' is decided while compiling")
-    }
-    if count > 5 or true {
-        console.print("an 'or true' is decided while compiling")
-    }
+    var gate = Gate<false, true>()
+    gate.tell(3)
     console.print("done")
 }
