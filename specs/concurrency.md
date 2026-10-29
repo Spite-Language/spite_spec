@@ -444,22 +444,27 @@ uses the scheduler and counts references atomically; a program without two reads
 before. A `Directory` listing is not a waiting call (it has no helper thread), so starting it early would not overlap
 anything, and it is left alone. `conformance/stage6/overlapped_reads`.
 
-**Calls in a row run at once.** Two or more statements in a row, each `receiver.function()` with no arguments and
-its value unused, where `receiver` is a name or a path of attributes, the function answers nothing and belongs to a
-class of the program that is not a singleton, run at once when every pair of them is independent and each reaches
-a loop: every one but the last runs on a thread of its own, the last on the calling thread, and all are joined before
-the next statement. Two calls are independent when neither writes what the other reads or writes, taken through
-every function each one reaches, the compiler's own code included: an attribute of a class (two objects of one
-class count as one, except objects held by attributes made for their owner, below), the items of a list or
-dictionary (two attributes holding lists count apart only when each holds a list made for it and never handed
-anywhere else, and two lists of one kind count as one otherwise); and when neither prints, reads or writes a `File`, a `Directory` or a
-network class, waits, calls anything outside the program but plain arithmetic and the clock, or calls through a
-function value. Classes the program never makes are left out of the comparison. Nothing is overlapped inside a
-singleton's own functions, inside a counted loop that holds a singleton's lock, in the standard library, or in a
-`--hot-reload`, `--repl` or `--development` build. When an overlapped call crashes, the program halts with that
-call's report; if two crash at once, one of the two reports is printed. A program in which no calls run at once
-compiles exactly as before, and one in which some do starts threads, as a program that writes `Parallel`
-does.
+**Calls in a row run at once.** Two or more declarations in a row, each `var name = receiver.function(arguments)`
+where `receiver` is `this` or an attribute of `this` and the arguments and the answer are numbers, run at once when
+every call is quiet work and no argument reads a name an earlier one of them declares: every call but the last runs
+on a thread of the pool, the last on the calling thread, and each started one is joined right before the first
+statement that reads its name, or that holds a `return` or a `crash`; one that may halt is joined right after the
+run, so nothing after it shows before its crash. A call is quiet work when its function,
+through every function it reaches, belongs to a class of the program that is not a singleton (the entry class
+included), takes and answers only numbers, reads only its parameters and locals, writes only its locals, calls only
+functions of `this`, and holds no object, text, list, attribute, assert, foreign call, function value or recursion;
+it may halt, by a `crash`, a whole-number result that does not fit, a division by zero or a number narrowed into
+one it does not fit. Each call must weigh at least a million (each statement 1, a loop's body times its bound, a
+call what its function weighs). Nothing is overlapped in the standard library or in a `--hot-reload`, `--repl` or
+`--development` build. The compiler finds independent work wherever it can prove it, not where the program says
+so; overlapping by the data each piece of work touches (inside one function, across classes) is
+spite_compiler#242. `tests/overlapped_work`, `tests/overlapped_work_in_the_entry`.
+
+**The first crash stops the program.** When work that runs at once crashes, the first crash that happens stops the
+program at once: its report is printed and nothing else runs or prints, and a thread that crashes after it never
+reports. So when two pieces of work would both crash, either one's report may be the one printed, and exactly one
+is. The report lists the frames of the thread that crashed. A program in which nothing runs at once halts as it
+always did. `tests/overlapped_work_crashes`, `tests/overlapped_work_halts`.
 
 **Objects made for their owner count apart.** An attribute is made for its owner when every assignment to it in
 the program (its declaration and constructor included) gives it an object constructed right there, or nothing, and
