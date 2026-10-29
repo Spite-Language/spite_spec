@@ -1,4 +1,4 @@
 true false false
 false true true
 true 2.5 3
-spite: 'whole + decimal' works in an Integer, the class of its left side, and its right side is a Float, which would be cut to fit, at tests/number_values/number_values.spite:28 in NumberValues.NumberValues
+spite: 'whole + decimal' works in an Integer, the class of its left side, and its right side is a Float, which would be cut to fit, at tests/number_values/number_values.spite:27 in NumberValues.NumberValues
