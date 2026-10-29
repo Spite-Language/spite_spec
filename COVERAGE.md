@@ -721,7 +721,7 @@ Rules: 107. Covered before: 34. Covered now: 81 (24 of them fail on the master c
 | A library class is not checked by the replaced-item rule | none | missing |
 | `--debug-memory` prints `allocations: N frees: N` at exit, balanced | tests/memory_debug_memory_balance | added (compiler fails: nothing is printed) |
 | `--debug-memory` names the classes of leaked objects | none | missing (no spec program can leak once D759 frees cycles) |
-| `--debug-memory` fills fresh memory with 0xA5 | none | superseded by D662 (no program reads raw memory) |
+| `--debug-memory` fills fresh memory with 0xA5 (a `Buffer`'s room, a grown tail; a text's end byte still written for C) | tests/memory_debug_memory_fill | added |
 | Only a `--debug-memory` build carries the table; `live_allocations()`, `live_bytes()` | none | superseded by D662 |
 | `value.memory` (`address`, `bytes`, `section`) and its read-only error | none | superseded by D662 |
 | `Memory` is a namespace; `Memory.Address` and its reads and writes; only `library/` calls them | none | superseded by D661 and D662 |

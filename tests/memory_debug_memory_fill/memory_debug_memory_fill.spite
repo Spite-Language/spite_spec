@@ -1,0 +1,38 @@
+var console = Console()
+var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
+
+func MemoryDebugMemoryFill() {
+    load "../../../spite_standard_library/windows"
+    var small = Buffer(8)
+    small.take_written(8)
+    var inline_read = small.read_long_little_endian_at(0)
+    crash inline_read
+    console.print("unwritten inline room", inline_read)
+    var large = Buffer(64)
+    large.take_written(64)
+    var large_read = large.read_long_little_endian_at(56)
+    crash large_read
+    console.print("unwritten room", large_read)
+    var grown = Buffer(64)
+    var index = 0
+    while index < 65 {
+        grown.append(7)
+        index = index + 1
+    }
+    grown.take_written(128)
+    var kept = grown[64]
+    var tail = grown[100]
+    crash kept
+    crash tail
+    console.print("kept", kept, "grown tail", tail)
+    var joined = "count {index}"
+    var counted = c_runtime.strlen(joined)
+    console.print("a joined text ends where its bytes end:", counted)
+    var words = List<String>()
+    words.insert(0, "second")
+    words.insert(0, "first")
+    words.insert(2, "fourth")
+    words.insert(2, "third")
+    var listed = words.join(" ")
+    console.print(listed)
+}
