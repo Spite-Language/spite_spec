@@ -1,0 +1,27 @@
+var console = Console()
+var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
+
+func ForeignTextEndByte() {
+    load "../../../spite_standard_library/windows"
+    var written = "plain"
+    var plain = c_runtime.strlen(written)
+    console.print("a written text:", plain)
+    var count = 12
+    var joined = "count {count}"
+    var joined_length = c_runtime.strlen(joined)
+    console.print("a joined text:", joined_length)
+    var sliced = joined.slice(0, 3)
+    crash sliced
+    var sliced_length = c_runtime.strlen(sliced)
+    console.print("a slice:", sliced_length)
+    var grown = "ab"
+    var letter = "c"
+    var index = 0
+    while index < 40 {
+        grown = grown + letter
+        index = index + 1
+    }
+    var grown_length = c_runtime.strlen(grown)
+    var counted = grown.length()
+    console.print("a grown text:", grown_length, counted)
+}

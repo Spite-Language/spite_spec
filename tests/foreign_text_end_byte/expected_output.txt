@@ -1,0 +1,4 @@
+a written text: 5
+a joined text: 8
+a slice: 3
+a grown text: 42 42

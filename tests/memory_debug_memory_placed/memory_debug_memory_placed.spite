@@ -1,0 +1,14 @@
+var console = Console()
+
+func MemoryDebugMemoryPlaced() {
+    load "../../../spite_standard_library/windows"
+    var total = 0
+    var index = 0
+    while index < 3 {
+        var tally = Tally(index)
+        tally.add(5)
+        total = total + tally.count
+        index = index + 1
+    }
+    console.print("placed tallies:", total)
+}
