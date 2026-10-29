@@ -1,0 +1,10 @@
+var console = Console()
+
+func ProcessAttachedCode() {
+    load "../../../spite_standard_library/windows"
+    var arguments = ["/c", "exit", "3"]
+    var exiting = Process("cmd", arguments)
+    var code = exiting.run_attached()
+    crash code
+    console.print(code)
+}

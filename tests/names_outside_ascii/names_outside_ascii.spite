@@ -1,0 +1,39 @@
+var console = Console()
+var program = Program()
+
+func NamesOutsideAscii() {
+    load "../../../spite_standard_library/windows"
+    var folder = Directory(".spite/names_outside_ascii_café")
+    crash folder.create()
+    var file = File("{folder.path}/crème brûlée €.txt")
+    var moved = File("{folder.path}/naïve 日本.txt")
+    if moved.exists() {
+        crash moved.remove()
+    }
+    crash file.write_string("ünïcödé")
+    crash file.exists()
+    var entries = folder.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var entry = entries[index]
+        if entry == File {
+            console.print(entry.file_name)
+        }
+        index = index + 1
+    }
+    var read = file.read_as_string()
+    crash read
+    console.print(read)
+    var old_path = file.path
+    crash file.move_to(moved.path)
+    crash moved.exists()
+    var left = File(old_path)
+    crash not left.exists()
+    var executable = program.executable_path()
+    crash executable
+    var is_an_executable = executable.ends_with(".exe")
+    console.print(is_an_executable)
+    crash moved.remove()
+    console.print("done")
+}
