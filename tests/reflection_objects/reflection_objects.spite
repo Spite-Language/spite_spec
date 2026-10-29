@@ -1,3 +1,9 @@
+enum Phase {
+    'start'
+    'update'
+    'finish'
+}
+
 var console = Console()
 
 func ReflectionObjects() {

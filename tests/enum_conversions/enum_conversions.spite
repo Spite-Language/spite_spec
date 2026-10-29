@@ -13,17 +13,17 @@ func EnumConversions() {
     var number_of_wing = tag.to_integer()
     console.print(tag, length, number_of_wing, tag.class)
     var text = "tail"
-    var found = text.to_part()
+    var found = text.to_enum_conversions_part()
     var missing_text = "fin"
-    var missing = missing_text.to_part()
+    var missing = missing_text.to_enum_conversions_part()
     crash found
     var is_tail = found == 'tail'
     var number_of_tail = found.to_integer()
     console.print(is_tail, number_of_tail, not missing)
     var number = 7
-    var numbered = number.to_part()
+    var numbered = number.to_enum_conversions_part()
     var unnumbered_value = 3
-    var unnumbered = unnumbered_value.to_part()
+    var unnumbered = unnumbered_value.to_enum_conversions_part()
     crash numbered
     var values = Part.values
     var count = values.count()

@@ -1,5 +1,0 @@
-enum Phase {
-    'start'
-    'update'
-    'finish'
-}

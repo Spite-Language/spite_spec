@@ -1,1 +1,1 @@
-var mood: Mood = 'calm'
+var mood: Dog.Mood = 'calm'

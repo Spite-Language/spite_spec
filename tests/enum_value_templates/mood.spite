@@ -1,4 +1,0 @@
-enum Mood {
-    'calm'
-    'angry'
-}

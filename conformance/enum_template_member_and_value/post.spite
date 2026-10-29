@@ -1,3 +1,8 @@
+enum Stage {
+    'draft'
+    'published'
+}
+
 var stage: Stage = 'draft'
 var published = false
 

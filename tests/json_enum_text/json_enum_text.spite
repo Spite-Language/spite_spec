@@ -9,7 +9,7 @@ func JsonEnumText() {
     load "../../../spite_standard_library/windows"
     var marker = Marker()
     var text = "blue"
-    var found = text.to_color()
+    var found = text.to_json_enum_text_color()
     crash found
     marker.tag = found
     marker.color = 'blue'

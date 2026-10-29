@@ -123,7 +123,7 @@ above applies, the compiler calls the given value's conversion, `to_` and the wa
 answers: a conversion that answers the wanted class goes straight in, and one that answers `T?` goes where a `T?` is
 wanted and is narrowed like any other `T?` where a plain `T` is (the usual `this value may be null` error). An enum
 value goes where an `Integer` is wanted through its `to_integer()`, and a whole number where an enum is wanted through
-`to_<enum>()`, as below. A class with no such conversion is an error naming the call that would be made:
+`to_<owner>_<enum>()`, as below. A class with no such conversion is an error naming the call that would be made:
 `a Point cannot be used where an IpAddress is needed: a value is cast to the class a place wants through its own
 conversion, and there is no 'Point.to_ip_address()' to call` (`conformance/missing_conversion`).
 
@@ -148,12 +148,13 @@ statement of a function body as written, before it is generated, so it costs not
 attribute's default is not checked.
 
 **Text is read as an enum by its name**:
-`name.to_course()` answers a `Recipe.Course?`: the value spelled `name`, or `null` when the enum has none, exactly as
-`to_integer()` answers `null` for text that is not a number. The reading is `to_` and the enum's name in
-`snake_case`, resolved from where it is called as the enum's name written there would be, and a `String` function
-of the same name comes first. `var course: Recipe.Course? = name` calls it too, and `var course: Recipe.Course =
+`name.to_recipe_course()` answers a `Recipe.Course?`: the value spelled `name`, or `null` when the enum has none, exactly as
+`to_integer()` answers `null` for text that is not a number. The reading is `to_`, then the name of the class that declares the enum and the enum's own name, in `snake_case`
+(D1745): `Recipe.Course` is read by `to_recipe_course()` inside `Recipe` as everywhere else, so two classes may
+each declare a `Course` without their readings meeting, and a namespace is no part of the name
+(`Kitchen.Recipe.Course` is still `to_recipe_course()`). A `String` function of the same name comes first. `var course: Recipe.Course? = name` calls it too, and `var course: Recipe.Course =
 name` is an error: `text is not a Course until it is read as one, and text that names none of its values has none
-to give: read it with 'to_course()', which answers 'Course?', null when the text names none of its values, and
+to give: read it with 'to_recipe_course()', which answers 'Course?', null when the text names none of its values, and
 narrow it, or declare the value 'Course?'` (`diagnostics/enum_from_text`).
 
 ### Numeric types
@@ -465,9 +466,9 @@ the values accepted where a `Job` is expected. The number a value compiles to is
   constant:
   - `value.to_string()` is its name (`'wing'` is `"wing"`), which is also how it prints and how JSON writes it;
   - `value.to_integer()` is its number (below);
-  - `text.to_part()` makes a `Part?` from its name, `null` when the text names no value (below, and
+  - `text.to_bird_part()` makes a `Bird.Part?` from its name (`to_`, the declaring class and the enum, D1745), `null` when the text names no value (below, and
     `diagnostics/enum_from_text`);
-  - `number.to_part()` on a whole number makes a `Part?` from its number, `null` when no value has that number;
+  - `number.to_bird_part()` on a whole number makes a `Bird.Part?` from its number, `null` when no value has that number;
   - `Part.values` lists the values in their order, and `value.class` is the enum's class (`tests/enum_conversions`).
 - **Reflection on an enum** is through classes of its own, as `Spite.Class` and `Spite.AttributeDeclaration` serve
   classes: the enum's class and the declaration of each value (its name and its number), folded while compiling

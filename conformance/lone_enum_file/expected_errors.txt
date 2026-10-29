@@ -1,0 +1,1 @@
+conformance/lone_enum_file/stage.spite:1: error: 'enum Stage' is a file of its own, and an enum belongs to the class that uses it: declare it inside that class ('Owner.Stage'), and outside it give a value by its short form ('draft') (in Stage)

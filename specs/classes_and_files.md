@@ -57,6 +57,13 @@ A file contains only declarations, in the order the compiler enforces ([A file i
 - `var` declarations: the attributes of the class, each with a default
 - `func` declarations: the constructor, then the other functions of the class
 
+**An enum is declared inside the class that uses it** (D1745). A file whose only declaration is an `enum` of its own
+name is an error, since that enum would belong to no class: "stage.spite:1: error: 'enum Stage' is a file of its own,
+and an enum belongs to the class that uses it: declare it inside that class ('Owner.Stage'), and outside it give a
+value by its short form ('draft')" (`conformance/lone_enum_file`). An enum is written for the narrow set of values
+its class needs; another class gives a value by its short form (`'draft'`), which the owner's parameter or
+attribute turns into the enum, and writes `Owner.Stage` only where a variable must hold one.
+
 There are **no file level statements**: no loops, ifs or calls outside a function. One is a parse error:
 `a file holds declarations and nothing else: move this statement into a function, or into the class's
 constructor` (`diagnostics/file_scope_statement`).

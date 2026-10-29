@@ -1,3 +1,9 @@
+enum Stage {
+    'draft'
+    'published'
+    'archived'
+}
+
 var title = ""
 var stage: Stage = 'draft'
 

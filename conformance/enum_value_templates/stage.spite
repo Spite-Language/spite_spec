@@ -1,4 +1,0 @@
-enum Stage {
-    'draft'
-    'published'
-}

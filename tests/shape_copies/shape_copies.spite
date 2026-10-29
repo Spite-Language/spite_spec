@@ -1,3 +1,8 @@
+enum Level {
+    'low'
+    'high'
+}
+
 var console = Console()
 
 func ShapeCopies() {

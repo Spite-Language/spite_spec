@@ -1,1 +1,6 @@
+enum Kind {
+    'normal'
+    'urgent'
+}
+
 var kind: Kind = 'normal'
