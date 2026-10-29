@@ -1,0 +1,3 @@
+func hire(player: Player, wanted: Job) {
+    player.job = wanted
+}

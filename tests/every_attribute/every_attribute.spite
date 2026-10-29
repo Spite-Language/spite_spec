@@ -17,7 +17,7 @@ func EveryAttribute() {
     console.print(recipe.title, recipe.servings, recipe.course)
     var named: Recipe.Course? = "dessert"
     crash named
-    var unknown = "brunch".to_course()
+    var unknown: Recipe.Course? = "brunch"
     if not unknown {
         console.print(named, "and no course named brunch")
     }

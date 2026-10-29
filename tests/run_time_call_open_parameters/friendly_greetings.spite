@@ -4,7 +4,7 @@ func FriendlyGreetings() {
     console.print("made")
 }
 
-func greet_all(pet: Pet, named: Named, times: Integer?) {
+func greet_all(pet: RunTimeCallOpenParameters.Pet, named: RunTimeCallOpenParameters.Named, times: Integer?) {
     var count = 1
     if times {
         count = times

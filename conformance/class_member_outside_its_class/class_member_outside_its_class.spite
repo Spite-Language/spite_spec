@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassMemberOutsideItsClass() {
+    load "../../../spite_standard_library/windows"
+    var player = Game.Player()
+    var world = Game.World()
+    world.hire(player, 'magician')
+    console.print(player.job)
+}

@@ -443,7 +443,8 @@ func other_function() {
 ```
 
 - An enum declared in `player.spite` is `Player.Job`. It is rarely written that way, because `'knight'` alone is enough wherever the expected type is known.
-- From inside `Player` itself, plain `Job` also works; from elsewhere, both `Player.Job` and, when unambiguous across the whole program, plain `Job` work (searched: the referencing class's own namespace first, then its containing folder, then each parent folder, then the whole program by simple name).
+- The enum belongs to `Player`, as its attributes and functions do (a namespace holds only classes and namespaces): inside `Player` plain `Job` works, and from anywhere else it is named through the class, `Player.Job`, found by the walk of [packages.md](packages.md#packages-namespaces-and-loading). A plain `Job` outside `Player` is refused, naming `Player.Job` (`conformance/class_member_outside_its_class`); the same holds for a `type` and a `union`.
+- `text.to_job()` and `number.to_job()` name the enum by its plain name, so they are written inside `Player`; elsewhere the cast reaches it, `var job: Player.Job? = text` (`tests/class_member_types`).
 - An enum value is resolved from where it is used (parameter, annotation, assignment target, comparison). Two enums may share a value name; with no expected type in hand, the value resolves when exactly one enum in the program has it, otherwise it is a compile error listing every enum that does.
 
 **An enum is a closed list of values, and `'knight'` is an enum value literal.** A name in single quotes is a

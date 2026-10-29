@@ -1,0 +1,1 @@
+conformance/class_member_through_a_namespace/class_member_through_a_namespace.spite:6: error: 'Game.Job' reaches 'Job' through the namespace 'Game', which holds only classes and namespaces: 'Job' is declared by the class 'Game.Player', so name it through the class, 'Game.Player.Job' (in ClassMemberThroughANamespace.ClassMemberThroughANamespace)

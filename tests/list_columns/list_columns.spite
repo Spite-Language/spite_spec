@@ -1,5 +1,5 @@
 var console = Console()
-var runner = Runner<Moving>()
+var runner = Runner<Mover.Moving>()
 var mover = Mover()
 var positions = Column<Position>()
 var velocities = Column<Velocity>()

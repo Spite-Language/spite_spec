@@ -12,6 +12,6 @@ func ParameterWriteRows() {
     refusing.refuse()
     var pairs = Rows<Pair>()
     pairs.report()
-    var loaded = Rows<Loaded>()
+    var loaded = Rows<Streamer.Loaded>()
     loaded.report()
 }

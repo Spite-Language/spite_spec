@@ -1,0 +1,25 @@
+var console = Console()
+
+func ClassMemberTypes() {
+    load "../../../spite_standard_library/windows"
+    var player = Game.Player()
+    var world = Game.World()
+    var wanted: Game.Player.Job = 'magician'
+    world.hire(player, wanted)
+    var gem = Game.Gem()
+    console.print(gem.shine)
+    var coin = Game.Coin(3)
+    console.print(coin.amount)
+    world.pay(player, coin)
+    world.meet(player, player)
+    var number = 0
+    var numbered: Game.Player.Job? = number
+    var written = "knight"
+    var from_text: Game.Player.Job? = written
+    var is_paid = player.reward == Game.Coin
+    console.print(player.job, is_paid, numbered, from_text)
+    console.print(world.trade)
+    var jobs = Game.Player.Job.values
+    var job_count = jobs.count()
+    console.print(job_count)
+}

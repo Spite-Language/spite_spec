@@ -4,6 +4,6 @@ func Points(amount: Integer) {
     count = amount
 }
 
-func sum(_other: Amount): Integer {
+func sum(_other: FunctionsUnionOperator.Amount): Integer {
     return count * 2
 }

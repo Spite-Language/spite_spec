@@ -1,0 +1,5 @@
+var amount = 0
+
+func Coin(starting_amount: Integer) {
+    amount = starting_amount
+}

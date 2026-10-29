@@ -1,0 +1,18 @@
+enum Job {
+    'farmer'
+    'miner'
+}
+
+var trade: Job = 'miner'
+
+func hire(player: Player, wanted: Player.Job) {
+    player.job = wanted
+}
+
+func pay(player: Player, given: Player.Reward) {
+    player.reward = given
+}
+
+func meet(player: Player, stranger: Player.Named) {
+    player.greet(stranger)
+}

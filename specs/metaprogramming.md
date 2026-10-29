@@ -375,11 +375,12 @@ var sword = Weapon<Integer, true>(10)
   a '?', and narrow it before use, or give it a real object in the constructor` (`diagnostics/function_shape_default`).
 
 **A `generic` line may name a constraint.**
-`generic $item_type: Printable` accepts only types that fit the `type` `Printable`, and a use that does not
+`generic $item_type: Console.Printable` accepts only types that fit `Console`'s `type` `Printable`, and a use that does not
 (`Shelf<Pet>`) is an error where the class is named, naming the constraint, the class and what it lacks:
 "'Pet' does not fit type 'Printable', which 'Shelf' requires of $item_type: it has no function 'to_string'",
 instead of an error deep inside the generic's body. The constraint is optional and uses an existing `type`,
-resolved like any type name from the generic's file. In detail:
+resolved like any type name from the generic's file, so a `type` another class declares is named through it
+([packages.md](packages.md#packages-namespaces-and-loading)). In detail:
 
 - **Fitting is what [Types](values_and_types.md#types) already means by it**: the class a `type` would admit
   fits: a class with the listed functions and attributes, `String`, a number, an enum, a `List<T>` or
@@ -391,7 +392,7 @@ resolved like any type name from the generic's file. In detail:
   and null has none of what the type needs"), and neither does a function value.
 - **A constraint names a `type`, not a class, a union or a number type**: anything else is an error on the
   `generic` line: "'$count_type' is constrained by 'Integer', which is not a 'type': a constraint names a
-  'type' the class given must fit, like 'generic $count_type: Printable'".
+  'type' the class given must fit, like 'generic $count_type: Console.Printable'".
 - **It is checked once per class given**, where the compiler first makes that instance, written out or read
   from the constructor's arguments. After the error the generic is compiled as if it had been given the `type`
   itself, so its body adds no errors of its own.

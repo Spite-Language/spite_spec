@@ -1,7 +1,7 @@
-var cargo: Cargo = Crate("empty")
-var spare: Cargo? = null
-var held = List<Cargo>()
-var tagged: Labeled = Badge("none", 0)
-var described: Describable = Crate("plain")
+var cargo: DeepCopyUnions.Cargo = Crate("empty")
+var spare: DeepCopyUnions.Cargo? = null
+var held = List<DeepCopyUnions.Cargo>()
+var tagged: DeepCopyUnions.Labeled = Badge("none", 0)
+var described: DeepCopyUnions.Describable = Crate("plain")
 var points = List<Point>()
 var marks = List<Point>()

@@ -1,8 +1,8 @@
-var operator: TokenKind = 'plus'
+var operator: Token.TokenKind = 'plus'
 var left: Expression? = null
 var right: Expression? = null
 
-func BinaryExpression(starting_operator: TokenKind, left_expression: Expression, right_expression: Expression) {
+func BinaryExpression(starting_operator: Token.TokenKind, left_expression: Expression, right_expression: Expression) {
     operator = starting_operator
     left = left_expression
     right = right_expression

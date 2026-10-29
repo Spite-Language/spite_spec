@@ -1,5 +1,5 @@
 var name = ""
-var next: Linked? = null
+var next: DeepCopyTypeCycles.Linked? = null
 
 func Bead(new_name: String) {
     name = new_name

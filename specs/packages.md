@@ -68,24 +68,34 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   (`conformance/load_path_folder_name`). `.` and `..` are not folder names, so the last folder is the last one
   that is neither.
   snake_case is a lowercase letter, then lowercase letters, digits and single `_`, not ending in `_`.
-- Resolving an unqualified `Name` from inside a class tries, in order: that class's own namespace (so a nested enum/type/union
-  resolves by its plain name from inside its own class), the same folder's namespace, each parent folder's namespace, then the
-  whole program globally. Ambiguity *between roots* at the same level is never an error, because of the next rule.
+- Resolving an unqualified `Name` from inside a class tries, in order: what that class declares (its own `enum`,
+  `union` and `type`, so one resolves by its plain name inside its own class), the same folder's namespace, each parent
+  folder's namespace, then the whole program globally. Ambiguity *between roots* at the same level is never an error, because of the next rule.
   A dotted name (`Component.Requested`) takes the same walk, in every position a name is written: constructor
   call, parameter, return type, attribute or local annotation, generic argument, `type`/`union` member, class test
   and a class's enum (`conformance/stage6/relative_namespaces`).
-  A class's own namespace holds only what it declares (its `enum`, `union` and `type`), and its folder holds its
-  sibling classes and folders: `click_test/click_test.spite` (`ClickTest.ClickTest`) reaches
-  `click_test/system/verify.spite` as `System.Verify()` (`conformance/stage6/folder_class_namespace`).
+  **A namespace holds classes and namespaces only.** An `enum`, a `union` and a `type` belong to the class that
+  declares them, as its attributes and functions do, never to a namespace: a class is not a namespace and has none.
+  Inside its class one is named plainly, and from anywhere else through the class, `Player.Job`, which takes the
+  walk like any dotted name (`Player.Job` beside `player.spite`, `Game.Player.Job` from outside `game/`;
+  `tests/class_member_types`). A class's folder holds its sibling classes and folders: `click_test/click_test.spite`
+  (`ClickTest.ClickTest`) reaches `click_test/system/verify.spite` as `System.Verify()`
+  (`conformance/stage6/folder_class_namespace`).
+  A plain name that only other classes declare is refused, naming each class that declares it and the name to
+  write: "game/world.spite:1: error: 'Job' is declared by the class 'Game.Player' and belongs to it: outside that
+  class, name it through the class, 'Player.Job'" (`conformance/class_member_outside_its_class`); when several classes the program
+  reads declare it, the message names each of them and each name to write. A dotted name that reaches one through a namespace instead of its
+  class is "'Game.Job' reaches 'Job' through the namespace 'Game', which holds only classes and namespaces: 'Job' is
+  declared by the class 'Game.Player', so name it through the class, 'Game.Player.Job'"
+  (`conformance/class_member_through_a_namespace`).
   A name the walk does not find is `unknown type 'Server.Component.Eye'` at the line that writes it, in every
   position above, a `type`'s attribute included; when dropping its leading parts names a class, or a plain name
   is the last part of exactly one class, the error says which: `unknown type 'Server.Component.Eye': did you mean
   'Component.Eye'?`. The usual slip is an environment's folder written into the name, when the folder joins
   the program's own namespaces (`diagnostics/unknown_type_in_shape`, `diagnostics/unknown_type_suggestion`).
-  A `type`, `union` or `enum` sits in the walk at the level of the class that declares it, so the nearest
-  declaration wins: one in the using class before any class, so `type Healing` in `system/regenerate.spite` is
-  what `Healing` means there even when the program's entry class is `Healing`, and a program's class `Entry` does not hide `Directory`'s union `Entry`
-  (`conformance/stage6/nearest_type`).
+  What the using class declares comes before any class, so `type Healing` in `system/regenerate.spite` is what
+  `Healing` means there even when the program's entry class is `Healing`, and inside `Directory` a program's class
+  `Entry` does not hide `Directory`'s union `Entry` (`conformance/stage6/nearest_type`).
   From outside its class a declared type is named through its owner, generic arguments included
   (`List<Recipes.Cookbook.Buildable>`, `conformance/stage6/nested_type_from_outside`). **When an error prints
   two types that would read the same, both are named through their owners**: two classes' own `type Buildable`
@@ -95,8 +105,8 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   A generic class's constructor takes the walk too, class and arguments alike: `Asset.Pack<Asset.Texture>()`, or
   `Pack<Rule>()` from inside `game/` for `game/pack.spite` (`conformance/stage6/namespaced_generics`).
   A generic constructor that cannot be made reports once, "there is
-  no generic class 'Asset.Pak' here: a name is looked up in this class's own namespace, its folder, each parent
-  folder, then the whole program", and every later line that reads the value it would have made is not
+  no generic class 'Asset.Pak' here: a class name is looked up in this class's folder, each parent folder, then
+  the whole program", and every later line that reads the value it would have made is not
   reported again, so one mistake is one error (`diagnostics/failed_constructor`).
 - Every loaded root merges into the same namespaces. A second root with the same folder structure and file name **reopens** the
   class, and this is how monkey patching and game mods work: a later `func`/`var` with the same name replaces the earlier one (in

@@ -30,6 +30,6 @@ func is_wanted(health: Health): Boolean {
     return health == $wanted_type
 }
 
-func is_part(part: Part): Boolean {
+func is_part(part: CodegenClassTest.Part): Boolean {
     return part == $wanted_type
 }

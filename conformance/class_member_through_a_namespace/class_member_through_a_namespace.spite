@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassMemberThroughANamespace() {
+    load "../../../spite_standard_library/windows"
+    var player = Game.Player()
+    var wanted: Game.Job = 'magician'
+    player.job = wanted
+    console.print(player.job)
+}

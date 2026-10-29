@@ -34,7 +34,7 @@ Decision numbers are those of `DECISIONS.md` in the [mortaros_spite](https://git
 | json.md | 41 | 14 | 35 |
 | reflection.md | 64 | 32 | 52 |
 | metaprogramming.md | 67 | 31 | 49 |
-| packages.md | 52 | 36 | 47 |
+| packages.md | 55 | 36 | 50 |
 | concurrency.md | 86 | 52 | 61 |
 | foreign_libraries.md | 58 | 27 | 46 |
 | game_maths.md | 24 | 21 | 24 |
@@ -1212,10 +1212,13 @@ Rules: 52. Covered before: 36. Covered now: 47.
 | Only the last folder a load names is held to snake_case; the folders it climbs through may have any name | conformance/load_path_folder_name | added |
 | Folders with no `.spite` file, and `.git`, `.spite`, `.spite-cache`, are never walked | tests/working_directory | covered |
 | Folders above a root that a path passes through are not checked | tests/namespaces_load | covered |
-| Name lookup: own namespace, folder, parent folders, then global | tests/relative_namespaces, tests/folder_class_namespace | covered |
+| Name lookup: what the class declares, folder, parent folders, then global | tests/relative_namespaces, tests/folder_class_namespace | covered |
+| A namespace holds classes and namespaces only: a class's `enum`, `union` and `type` are named plainly inside it and through it elsewhere | tests/class_member_types | added |
+| A plain name only other classes declare is refused, naming the class | conformance/class_member_outside_its_class | added |
+| A dotted name reaching a class's declaration through a namespace is refused | conformance/class_member_through_a_namespace | added |
 | A dotted name takes the same walk in every position | tests/relative_namespaces | covered |
 | An unknown name is `unknown type '...'`, with 'did you mean' when one class fits | conformance/unknown_type_in_shape, conformance/unknown_type_suggestion | covered |
-| The nearest `type`, `union` or `enum` wins | tests/nearest_type | covered |
+| What the using class declares comes before any class | tests/nearest_type | covered |
 | A declared type is named through its owner from outside | tests/nested_type_from_outside | covered |
 | Two types that read the same are printed through their owners in an error | conformance/same_named_types | covered |
 | A generic constructor takes the walk too | tests/namespaced_generics | covered |

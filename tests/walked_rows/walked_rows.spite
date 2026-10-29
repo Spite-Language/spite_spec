@@ -1,6 +1,6 @@
 var console = Console()
 var world = World()
-var runner = Runner<Moving>()
+var runner = Runner<Mover.Moving>()
 var mover = Mover()
 
 func WalkedRows() {

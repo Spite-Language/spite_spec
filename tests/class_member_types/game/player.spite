@@ -1,0 +1,22 @@
+enum Job {
+    'knight'
+    'magician'
+}
+
+union Reward {
+    Coin
+    Gem
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+var name = "Ada"
+var job: Job = 'knight'
+var reward: Reward = Gem()
+
+func greet(other: Named) {
+    console.print(name, "greets", other.name)
+}

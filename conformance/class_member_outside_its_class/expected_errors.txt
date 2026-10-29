@@ -1,0 +1,1 @@
+conformance/class_member_outside_its_class/game/world.spite:1: error: 'Job' is declared by the class 'Game.Player' and belongs to it: outside that class, name it through the class, 'Player.Job' (in Game.World.)

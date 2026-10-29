@@ -1,4 +1,4 @@
-generic $item_type: Printable
+generic $item_type: Console.Printable
 
 var items = List<$item_type>()
 
