@@ -1034,6 +1034,9 @@ Rules: 41. Covered before: 14. Covered now: 35.
 | camelCase and PascalCase keys read into snake_case; the later key wins | tests/json_camel_case | covered |
 | A serializer's keys map renames an attribute both ways and replaces its name | tests/json_custom_keys | added (compiler fails: JsonWriter has no 'keys') |
 | A keys map naming a missing, private or singleton attribute is an error | none | missing |
+| A keys map made at run time is copied and turned into a table when set | tests/json_run_time_keys | added |
+| A keys map made at run time keying anything but a public attribute holding a value halts | tests/json_run_time_keys_unknown | added |
+| A written-out keys map and one made at run time for one class's serializers is an error | conformance/json_keys_mixed | added |
 | json_key_<attribute>() is an error | conformance/json_key | covered |
 | A number reads into the attribute's number type: 3.7 into an Integer is 3 | tests/json_number_into_integer | added (compiler fails: read answers null) |
 | A whole number reads into a decimal attribute | tests/json_integer_into_decimal | added |
@@ -1091,6 +1094,7 @@ Rules: 64. Covered before: 32. Covered now: 52 (14 of them fail on the master co
 | The entry class's `.functions` is empty | tests/reflection_entry_functions_empty | added |
 | A class object is made once, behind a lock only with threads | tests/threaded_class_objects | covered |
 | `Spite.Class.instances` is every class of the program, not the library's | tests/every_class, tests/reflection_narrowing | covered |
+| A program naming every class of the library reads them all | tests/whole_library | added |
 | Constants fold: questions, counts, names; `if` on a constant keeps only what runs | tests/folded_checks, tests/codegen_member_fold, tests/reflection_narrowing | covered |
 | `[]` with a literal name absent: the branch is never compiled | tests/reflection_narrowing | covered |
 | `each(function)` over a constant list is unrolled | tests/private_walk | covered |
