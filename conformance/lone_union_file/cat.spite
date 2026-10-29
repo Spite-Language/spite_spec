@@ -1,0 +1,5 @@
+var lives = 9
+
+func to_string(): String {
+    return "cat"
+}

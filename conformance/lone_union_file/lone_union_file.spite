@@ -1,0 +1,8 @@
+var console = Console()
+
+func LoneUnionFile() {
+    load "../../../spite_standard_library/windows"
+    var cat = Cat()
+    var pet: Pet = cat
+    console.print(pet)
+}

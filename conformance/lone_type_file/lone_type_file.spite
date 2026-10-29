@@ -1,0 +1,9 @@
+var console = Console()
+
+func LoneTypeFile() {
+    load "../../../spite_standard_library/windows"
+    var duck = Duck()
+    var speaker: Speaker = duck
+    var said = speaker.speak()
+    console.print(said)
+}

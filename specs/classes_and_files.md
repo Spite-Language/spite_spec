@@ -64,6 +64,14 @@ value by its short form ('draft')" (`conformance/lone_enum_file`). An enum is wr
 its class needs; another class gives a value by its short form (`'draft'`), which the owner's parameter or
 attribute turns into the enum, and writes `Owner.Stage` only where a variable must hold one.
 
+**A union and a type are declared in the class that consumes them** (D1745). A file whose only declaration is a
+`union` or a `type` of its own name is an error too: "pet.spite:1: error: 'union Pet' is a file of its own, and a union
+belongs to the class that consumes it: declare it in each class that takes, holds or switches on it (two classes may
+each declare it), and elsewhere pass the member value itself" (`conformance/lone_union_file`,
+`conformance/lone_type_file`). Each class that takes, holds or switches on one declares its own copy, a class that
+only hands a member value on declares none, and copies with the same members are one type, inside a generic too
+([Unions in full](values_and_types.md#unions-in-full)).
+
 There are **no file level statements**: no loops, ifs or calls outside a function. One is a parse error:
 `a file holds declarations and nothing else: move this statement into a function, or into the class's
 constructor` (`diagnostics/file_scope_statement`).

@@ -1,0 +1,1 @@
+conformance/lone_union_file/pet.spite:1: error: 'union Pet' is a file of its own, and a union belongs to the class that consumes it: declare it in each class that takes, holds or switches on it (two classes may each declare it), and elsewhere pass the member value itself (in Pet)

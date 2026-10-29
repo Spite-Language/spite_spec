@@ -1,0 +1,1 @@
+conformance/lone_type_file/speaker.spite:1: error: 'type Speaker' is a file of its own, and a type belongs to the class that consumes it: declare it in each class that takes or holds it (two classes may each declare it), and elsewhere pass the value that fits it (in Speaker)

@@ -1,0 +1,5 @@
+var barks = 3
+
+func to_string(): String {
+    return "dog"
+}
