@@ -1,0 +1,27 @@
+var console = Console()
+var server = Udp.Server()
+
+func UdpWaits() {
+    load "../../../spite_standard_library/windows"
+    crash server.open_locally(47316)
+    var receiving = Concurrent(receive_once)
+    var client = Udp.Client()
+    crash client.open()
+    var address = "127.0.0.1".to_ip_address()
+    crash address
+    var message = Buffer(0)
+    message.append(10)
+    message.append(20)
+    message.append(30)
+    crash client.send_to(address, 47316, message)
+    console.print("the server received", receiving, "bytes")
+    client.close()
+    server.close()
+}
+
+func receive_once(): Integer {
+    var datagram = server.receive()
+    crash datagram
+    var bytes = datagram.read_as_buffer()
+    return bytes.count()
+}
