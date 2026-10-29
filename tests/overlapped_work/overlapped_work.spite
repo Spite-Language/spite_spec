@@ -1,0 +1,22 @@
+var console = Console()
+var mixer = Mixer()
+
+func OverlappedWork() {
+    load "../../../spite_standard_library/windows"
+    var left = mixer.blend(3)
+    var right = mixer.blend(5)
+    var middle = mixer.blend(7)
+    console.print("side by side:", left, right, middle)
+    var first = mixer.blend(2)
+    var second = mixer.scaled(first)
+    console.print("the second reads the first:", first, second)
+    var loud = mixer.blend_loudly(4)
+    var calm = mixer.blend(6)
+    console.print("one prints:", loud, calm)
+    var small = mixer.light(1)
+    var other = mixer.light(2)
+    console.print("too light:", small, other)
+    var tripled = mixer.tripled(3)
+    var doubled = mixer.blend(8)
+    console.print("one keeps an overflow check:", tripled, doubled)
+}

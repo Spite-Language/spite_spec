@@ -1,0 +1,38 @@
+var console = Console()
+var program = Program()
+var mixer = Mixer()
+
+func OverlappedWorkRunsAtOnce() {
+    load "../../../spite_standard_library/windows"
+    var left = mixer.blend(3)
+    var right = mixer.blend(5)
+    var middle = mixer.blend(7)
+    console.print(left, right, middle)
+    var first = mixer.blend(2)
+    var second = mixer.scaled(first)
+    console.print(first, second)
+    var started = started_on_the_pool()
+    console.print("started on the pool:", started)
+}
+
+func started_on_the_pool(): Integer {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var written = File(low_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var in_the_entry = false
+    var started = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            in_the_entry = line.starts_with("function OverlappedWorkRunsAtOnce.OverlappedWorkRunsAtOnce:")
+        } else if in_the_entry and line.contains("address of _parallel_") {
+            started = started + 1
+        }
+        index = index + 1
+    }
+    return started
+}

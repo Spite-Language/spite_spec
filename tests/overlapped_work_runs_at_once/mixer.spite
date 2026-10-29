@@ -1,0 +1,20 @@
+func blend(seed: Integer): Double {
+    var total: Double = 0.0
+    var step: Double = seed
+    var index = 0
+    while index < 3000000 {
+        total = total * 0.999999 + step
+        index = index + 1
+    }
+    return total
+}
+
+func scaled(amount: Double): Double {
+    var total: Double = 0.0
+    var index = 0
+    while index < 3000000 {
+        total = total * 0.999999 + amount * 0.001
+        index = index + 1
+    }
+    return total
+}

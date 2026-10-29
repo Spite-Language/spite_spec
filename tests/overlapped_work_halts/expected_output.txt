@@ -1,0 +1,2 @@
+before the halt
+spite: 'total * 3' does not fit in an Integer (1937102445 * 3), at tests/overlapped_work_halts/mixer.spite:16 in Mixer.grown

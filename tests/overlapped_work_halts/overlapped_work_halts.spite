@@ -1,0 +1,11 @@
+var console = Console()
+var mixer = Mixer()
+
+func OverlappedWorkHalts() {
+    load "../../../spite_standard_library/windows"
+    var left = mixer.blend(3)
+    var right = mixer.blend(5)
+    console.print("before the halt")
+    var grown = mixer.grown(5)
+    console.print(left, right, grown)
+}
