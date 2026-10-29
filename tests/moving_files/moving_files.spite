@@ -3,11 +3,11 @@ var console = Console()
 func MovingFiles() {
     load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/conformance_moving")
-    folder.create()
+    crash folder.create()
     var inner = Directory(".spite/conformance_moving/inner")
-    inner.create()
+    crash inner.create()
     var note = File(".spite/conformance_moving/note.txt")
-    note.write_string("hello")
+    crash note.write_string("hello")
     var renamed = note.move_to(".spite/conformance_moving/renamed.txt")
     var old_note = File(".spite/conformance_moving/note.txt")
     var old_exists = old_note.exists()
@@ -17,7 +17,7 @@ func MovingFiles() {
     crash content
     console.print(moved, content)
     var blocker = File(".spite/conformance_moving/blocker.txt")
-    blocker.write_string("in the way")
+    crash blocker.write_string("in the way")
     var refused = note.move_to(".spite/conformance_moving/blocker.txt")
     var kept = blocker.read_as_string()
     crash kept
@@ -29,7 +29,7 @@ func MovingFiles() {
     var missing = File(".spite/conformance_moving/missing.txt")
     var nothing_moved = missing.move_to(".spite/conformance_moving/anywhere.txt")
     console.print(nothing_moved)
-    through.remove()
-    blocker.remove()
-    inner.move_to(".spite/conformance_moving/inner")
+    crash through.remove()
+    crash blocker.remove()
+    crash inner.move_to(".spite/conformance_moving/inner")
 }

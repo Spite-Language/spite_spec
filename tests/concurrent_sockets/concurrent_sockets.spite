@@ -19,7 +19,7 @@ func serve_two(): Integer {
         crash client
         var line = client.read_line()
         crash line
-        client.write_line("hello {line}")
+        crash client.write_line("hello {line}")
         client.close()
         served = served + 1
     }
@@ -37,7 +37,7 @@ func ask_grace(): String {
 func ask(name: String): String {
     var connection = Tcp.Client()
     crash connection.connect_locally(47311)
-    connection.write_line(name)
+    crash connection.write_line(name)
     var answer = connection.read_line()
     connection.close()
     crash answer

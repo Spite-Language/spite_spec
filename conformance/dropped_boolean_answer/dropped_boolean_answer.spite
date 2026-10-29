@@ -1,0 +1,12 @@
+var console = Console()
+
+func DroppedBooleanAnswer() {
+    load "../../../spite_standard_library/windows"
+    save("level 3")
+}
+
+func save(text: String) {
+    var file = File(".spite/dropped_boolean_answer.txt")
+    file.write_string(text)
+    console.print("saved")
+}

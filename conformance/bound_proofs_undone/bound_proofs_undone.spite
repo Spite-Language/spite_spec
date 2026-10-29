@@ -10,7 +10,7 @@ func BoundProofsUndone() {
     }
     var names = ["ada", "bo"]
     var count = names.count()
-    names.remove_last()
+    crash names.remove_last()
     var index = 0
     while index < count {
         console.print(names[index].upper_case())

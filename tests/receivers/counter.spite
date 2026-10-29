@@ -1,5 +1,5 @@
 func Counter() {
-    value()
+    crash value() == 7
 }
 
 func value(): Integer {

@@ -1,5 +1,5 @@
 func Maker() {
-    shared()
+    crash shared() == 3
 }
 
 func shared(): Integer {

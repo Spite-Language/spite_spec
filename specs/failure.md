@@ -543,6 +543,23 @@ condition written only to put text into the report (`crash bone_matrix_is_finite
 reason to exist. What it costs to keep a value for the report is paid only in builds that can crash there, and the
 crash sites stay tree-shaken. `conformance/crash_scope_values`, `json_crash`, `json_infinity`.
 
+### An answer is used
+
+**A call that answers a value cannot stand on a line of its own** (D1721): the library answers what the outside
+world did, and the program decides what that means, so an answer dropped unread would be a failure passing
+unseen (D244). The program keeps the answer, passes it, returns it or compares it, or at least writes `assert
+file.write_string(text)` to carry on without it or `crash file.write_string(text)` when its absence is a bug. It
+holds for every function, the library's and the program's, and for a function value called; a function that
+answers nothing is untouched, and a constructor is covered by the rule that a made object is kept and used.
+
+A dropped `Boolean` or `T?` is the error "'file.write_string(text)' answers a 'Boolean' and drops it: an answer
+must be used, at least with 'assert file.write_string(text)' to carry on without it or 'crash
+file.write_string(text)' when that is a bug"; any other answer is "'total()' answers an 'Integer' and drops it:
+an answer must be used, so keep it in a variable that is read, pass it, return it or compare it"
+(`validators/high_intermediary_representation/dropped_answer`). A call to a foreign library is not checked: a
+`DynamicLibrary` function declares no answer, so the compiler cannot tell one that answers from one that does not. `conformance/dropped_boolean_answer`,
+`dropped_nullable_answer`, `dropped_number_answer`, `dropped_function_value_answer`.
+
 ### What a crash reports
 
 A crash flushes the program's output, writes its report to the error stream and exits with status 1. The report is

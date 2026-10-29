@@ -1,5 +1,5 @@
 func Other() {
-    value()
+    crash value() == 11
 }
 
 func value(): Integer {

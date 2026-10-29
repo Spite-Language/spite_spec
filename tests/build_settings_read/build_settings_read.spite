@@ -7,5 +7,5 @@ func BuildSettingsRead() {
     crash text
     var is_the_report = text.starts_with("# Optimisation report")
     console.print("report written", is_the_report)
-    report.remove()
+    crash report.remove()
 }

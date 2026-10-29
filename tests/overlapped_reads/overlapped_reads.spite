@@ -5,13 +5,13 @@ func OverlappedReads() {
     var first_file = File(".spite/overlapped_first.txt")
     var second_file = File(".spite/overlapped_second.txt")
     var third_file = File(".spite/overlapped_third.txt")
-    first_file.write_string("first")
-    second_file.write_string("second")
-    third_file.write_string("third")
+    crash first_file.write_string("first")
+    crash second_file.write_string("second")
+    crash third_file.write_string("third")
     var first = first_file.read_as_string()
     var second = second_file.read_as_string()
     var third = third_file.read_as_string()
-    first_file.write_string("changed after the reads")
+    crash first_file.write_string("changed after the reads")
     crash first
     crash second
     crash third

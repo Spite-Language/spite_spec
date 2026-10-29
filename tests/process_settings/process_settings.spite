@@ -4,22 +4,22 @@ var build = Build()
 func ProcessSettings() {
     load "../../../spite_standard_library/windows"
     var echoed = echoing(["-script=a b", "-plain=x", "two words", "say \"hi\"", "C:\\a b\\"])
-    echoed.run()
+    crash echoed.run()
     var echoed_line_text = echoed.read_output_as_string()
     crash echoed_line_text
     var echoed_line = echoed_line_text.trim()
     console.print(echoed_line)
     var greeting = shell_running("set SPITE_GREETING", "echo \"SPITE_GREETING=$SPITE_GREETING\"")
     greeting.environment_variables["SPITE_GREETING"] = "hello there"
-    greeting.run()
+    crash greeting.run()
     var greeting_line_text = greeting.read_output_as_string()
     crash greeting_line_text
     var greeting_line = greeting_line_text.trim()
     console.print(greeting_line)
     var folder = Directory(".spite/process_settings")
-    folder.create()
+    crash folder.create()
     var marker = File(".spite/process_settings/marker.txt")
-    marker.write_string("found beside the child")
+    crash marker.write_string("found beside the child")
     var reading = shell_running("type marker.txt", "cat marker.txt")
     reading.working_directory = ".spite/process_settings"
     var code = reading.run()

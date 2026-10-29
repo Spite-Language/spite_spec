@@ -5,6 +5,6 @@ func copy_next() {
     var twenty_milliseconds = Duration(20, 'milliseconds')
     program.sleep(twenty_milliseconds)
     var file = File(".spite/documentation_backup.txt")
-    file.write_string("part {copied}")
+    crash file.write_string("part {copied}")
     copied = copied + 1
 }

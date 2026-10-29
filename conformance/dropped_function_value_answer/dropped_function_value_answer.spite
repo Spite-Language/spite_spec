@@ -1,0 +1,15 @@
+var console = Console()
+
+func DroppedFunctionValueAnswer() {
+    load "../../../spite_standard_library/windows"
+    apply(doubled)
+}
+
+func apply(change: Spite.Function<Integer, Integer>) {
+    change(4)
+    console.print("applied")
+}
+
+func doubled(value: Integer): Integer {
+    return value * 2
+}

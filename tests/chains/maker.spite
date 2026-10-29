@@ -1,5 +1,5 @@
 func Maker() {
-    count()
+    crash count() == 5
 }
 
 func helper(): Maker {

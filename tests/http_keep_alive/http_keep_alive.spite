@@ -37,7 +37,7 @@ func serve_four(): Integer {
         crash request
         var response = Http.Response()
         response.write_body_string("served {request.path}")
-        server.respond(request, response)
+        crash server.respond(request, response)
         served = served + 1
     }
     return served

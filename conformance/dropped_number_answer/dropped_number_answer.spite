@@ -1,0 +1,23 @@
+var console = Console()
+var scores = [3, 5, 8]
+
+func DroppedNumberAnswer() {
+    load "../../../spite_standard_library/windows"
+    report()
+}
+
+func report() {
+    total()
+    var listed = scores.count()
+    console.print(listed)
+}
+
+func total(): Integer {
+    var sum = 0
+    var index = 0
+    while index < scores.count() {
+        sum = sum + scores[index]
+        index = index + 1
+    }
+    return sum
+}

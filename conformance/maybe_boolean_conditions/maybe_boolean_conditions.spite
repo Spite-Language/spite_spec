@@ -5,7 +5,7 @@ func MaybeBooleanConditions() {
     halted(true)
     tested(true)
     negated(true)
-    answered(true)
+    crash answered(true) == 1
 }
 
 func halted(flag: Boolean?) {

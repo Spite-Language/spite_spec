@@ -30,7 +30,7 @@ func serve_three(): Integer {
             log.append("server: refused {request.path}")
             var refused = Http.Response()
             refused.status = 400
-            server.respond(request, refused)
+            crash server.respond(request, refused)
         }
         served = served + 1
     }
@@ -55,7 +55,7 @@ func answer_text(socket: WebSocket.Connection, message: WebSocket.Message) {
     var text = message.read_as_string()
     crash text
     log.append("server: text '{text}'")
-    socket.send_string("echo: {text}")
+    crash socket.send_string("echo: {text}")
 }
 
 func answer_binary(socket: WebSocket.Connection, binary: WebSocket.Message) {
@@ -70,7 +70,7 @@ func answer_binary(socket: WebSocket.Connection, binary: WebSocket.Message) {
         reversed[index] = held
         index = index + 1
     }
-    socket.send_buffer(reversed)
+    crash socket.send_buffer(reversed)
 }
 
 func refused_plain_request() {
@@ -92,25 +92,25 @@ func talk() {
     var server_address = "127.0.0.1".to_ip_address()
     crash server_address
     crash socket.connect(server_address, 47913, request)
-    socket.send_string("hello")
+    crash socket.send_string("hello")
     show(socket)
-    socket.send_string("héllo ✓")
+    crash socket.send_string("héllo ✓")
     show(socket)
     var small = counting_bytes(5)
-    socket.send_buffer(small)
+    crash socket.send_buffer(small)
     show(socket)
     var medium = counting_bytes(300)
-    socket.send_buffer(medium)
+    crash socket.send_buffer(medium)
     show(socket)
     var large = counting_bytes(70000)
-    socket.send_buffer(large)
+    crash socket.send_buffer(large)
     show(socket)
     var empty = Buffer(0)
-    socket.send_buffer(empty)
+    crash socket.send_buffer(empty)
     show(socket)
     var question = "are you there".to_buffer()
-    socket.send_ping(question)
-    socket.send_string("after the ping")
+    crash socket.send_ping(question)
+    crash socket.send_string("after the ping")
     show(socket)
     crash socket.last_pong
     var pong = socket.last_pong.read_as_string()

@@ -55,10 +55,10 @@ func BinaryFiles() {
     }
     var empty = File(".spite/binary_files_empty.bin")
     var nothing_written = Buffer(0)
-    empty.write_buffer(nothing_written)
+    crash empty.write_buffer(nothing_written)
     var no_bytes = empty.read_as_buffer()
     crash no_bytes
     var empty_count = no_bytes.count()
     console.print("an empty file is an empty list:", empty_count)
-    empty.remove()
+    crash empty.remove()
 }

@@ -3,7 +3,7 @@ var console = Console()
 func WaitingSystems() {
     load "../../../spite_standard_library/windows"
     var level = File(".spite/waiting_systems_level.txt")
-    level.write_string("forest")
+    crash level.write_string("forest")
     System.classes.each(run_system)
     var loader_waits = System.FileLoader.function_waits("update_each")
     var mover_waits = System.Mover.function_waits("update_each")

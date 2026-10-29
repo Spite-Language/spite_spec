@@ -1,0 +1,1 @@
+conformance/dropped_function_value_answer/dropped_function_value_answer.spite:9: error: 'change(4)' answers an 'Integer' and drops it: an answer must be used, so keep it in a variable that is read, pass it, return it or compare it (in DroppedFunctionValueAnswer.apply)

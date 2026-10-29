@@ -31,7 +31,7 @@ func shrunk_in_a_loop() {
     var passes = 0
     while passes < 2 {
         console.print(names[1])
-        names.remove_last()
+        crash names.remove_last()
         passes = passes + 1
     }
 }

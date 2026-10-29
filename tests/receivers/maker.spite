@@ -1,5 +1,6 @@
 func Maker() {
-    make()
+    var made = make()
+    crash made.value() == 7
 }
 
 func make(): Counter {

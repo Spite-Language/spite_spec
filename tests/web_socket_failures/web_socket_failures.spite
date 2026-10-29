@@ -48,7 +48,7 @@ func serve_eight(): Integer {
         if request.path == "/plain" {
             var response = Http.Response()
             response.write_body_string("not a web socket")
-            server.respond(request, response)
+            crash server.respond(request, response)
         } else {
             converse(request)
         }

@@ -36,7 +36,7 @@ func serve_three(): Integer {
         } else {
             response.status = 404
         }
-        server.respond(request, response)
+        crash server.respond(request, response)
         served = served + 1
     }
     return served

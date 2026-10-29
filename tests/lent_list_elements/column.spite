@@ -19,5 +19,5 @@ func at(row: Integer): $component_type {
 }
 
 func remove_last_reference() {
-    references.remove_last()
+    crash references.remove_last()
 }

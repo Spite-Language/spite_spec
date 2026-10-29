@@ -6,7 +6,7 @@ var _values = List<$value_type>()
 func show_all(value: $value_type) {
     _values.append(value)
     $value_type.attributes.each(show)
-    _values.remove_last()
+    crash _values.remove_last()
 }
 
 func show(attribute: Spite.AttributeDeclaration) {

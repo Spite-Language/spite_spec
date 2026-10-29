@@ -37,7 +37,7 @@ func Datagrams() {
     var empty = Buffer(0)
     var local_host = "localhost".to_ip_address()
     crash local_host
-    client.send_to(local_host, 47811, empty)
+    crash client.send_to(local_host, 47811, empty)
     var empty_arrived = server.receive()
     crash empty_arrived
     var empty_buffer = empty_arrived.read_as_buffer()

@@ -142,7 +142,7 @@ func make_the_working_folder() {
 func make_a_folder(path: String) {
     var folder = Directory(path)
     if not folder.exists() {
-        folder.create()
+        crash folder.create()
     }
 }
 
@@ -213,11 +213,11 @@ func last_failures(): List<String> {
 func keep_the_failures() {
     var folder = Directory("runner/.spite")
     if not folder.exists() {
-        folder.create()
+        crash folder.create()
     }
     var joined = failed_folders.join("\n")
     var file = File(failures_file)
-    file.write_string(joined)
+    crash file.write_string(joined)
 }
 
 func every_folder(): List<String> {

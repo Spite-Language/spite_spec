@@ -40,7 +40,7 @@ func echo_one(): Integer {
     var response = Http.Response()
     var body = request.read_body_as_buffer()
     response.write_body_buffer(body)
-    server.respond(request, response)
+    crash server.respond(request, response)
     return 1
 }
 
@@ -93,7 +93,7 @@ func datagram_text() {
 
 func process_output() {
     var echoing = Process("cmd", ["/c", "echo", "ok"])
-    echoing.run()
+    crash echoing.run()
     var text = echoing.read_output_as_string()
     crash text
     var trimmed = text.trim()

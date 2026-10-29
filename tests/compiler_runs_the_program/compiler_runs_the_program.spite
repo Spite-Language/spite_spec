@@ -22,7 +22,7 @@ func CompilerRunsTheProgram() {
 func write_the_program() {
     var made = Directory(folder)
     if not made.exists() {
-        made.create()
+        crash made.create()
     }
     var lines = List<String>()
     lines.append("var console = Console()")
@@ -46,7 +46,7 @@ func write_the_program() {
     lines.append("")
     var entry = File("{folder}/relayed.spite")
     var joined = lines.join("\n")
-    entry.write_string(joined)
+    crash entry.write_string(joined)
     var settings = File("{folder}/environment.spite")
-    settings.write_string("var volume = 1\n")
+    crash settings.write_string("var volume = 1\n")
 }

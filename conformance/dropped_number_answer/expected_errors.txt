@@ -1,0 +1,1 @@
+conformance/dropped_number_answer/dropped_number_answer.spite:10: error: 'total()' answers an 'Integer' and drops it: an answer must be used, so keep it in a variable that is read, pass it, return it or compare it (in DroppedNumberAnswer.report)

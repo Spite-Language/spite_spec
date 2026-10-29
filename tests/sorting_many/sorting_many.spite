@@ -16,12 +16,12 @@ func SortingMany() {
     var stable = keeps_ties(sorted)
     console.print("ties keep their order:", stable)
     var folder = Directory(".spite/sorting_many")
-    folder.create()
+    crash folder.create()
     index = 0
     while index < 300 {
         var scrambled = index * 37 % 300
         var file = File("{folder.path}/file_{scrambled}.txt")
-        file.write_string("")
+        crash file.write_string("")
         index = index + 1
     }
     var listed = folder.entries()

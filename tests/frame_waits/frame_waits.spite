@@ -17,7 +17,7 @@ func FrameWaits() {
     load "../../../spite_standard_library/windows"
     var one_millisecond = Duration(1, 'milliseconds')
     var file = File(".spite/frame_waits_report.txt")
-    file.write_string("sales are up")
+    crash file.write_string("sales are up")
     while report.text.is_empty() {
         frames = frames + 1
         if frames == 1 {

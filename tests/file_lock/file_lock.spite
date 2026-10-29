@@ -3,7 +3,9 @@ var console = Console()
 func FileLock() {
     load "../../../spite_standard_library/windows"
     var guard = File(".spite/file_lock.lock")
-    guard.remove()
+    if guard.exists() {
+        crash guard.remove()
+    }
     var held = guard.lock()
     crash held
     var made = guard.exists()
@@ -11,6 +13,6 @@ func FileLock() {
     var again = guard.lock()
     crash again
     again.unlock()
-    guard.remove()
+    crash guard.remove()
     console.print(made, "locked twice")
 }
