@@ -1,6 +1,6 @@
 var console = Console()
 
-func ParallelEach() {
+func EachOverParticles() {
     load "../../../spite_standard_library/windows"
     var particles = List<Particle>()
     var index = 0
@@ -9,19 +9,19 @@ func ParallelEach() {
         particles.append(particle)
         index = index + 1
     }
-    particles.parallel_each_step()
-    particles.parallel_each_step()
+    particles.each_step()
+    particles.each_step()
     var moved = particles.sum_position()
     console.print("after two steps the positions add up to", moved)
-    particles.filter_awake().parallel_each_step()
+    particles.filter_awake().each_step()
     var after_filter = particles.sum_position()
     console.print("after a step of the awake ones only", after_filter)
     var few = List<Particle>()
     var only_particle = Particle(1)
     few.append(only_particle)
-    few.parallel_each_step()
+    few.each_step()
     var empty = List<Particle>()
-    empty.parallel_each_step()
+    empty.each_step()
     var few_moved = few.sum_position()
     var empty_moved = empty.sum_position()
     console.print("a list of one and an empty list:", few_moved, empty_moved)
