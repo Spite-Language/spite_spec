@@ -1,3 +1,8 @@
+union Event {
+    Arrival
+    Departure
+}
+
 var listeners = List<Spite.Function<Event, Nothing>>()
 
 func subscribe(listener: Spite.Function<Event, Nothing>) {

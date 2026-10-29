@@ -1,3 +1,8 @@
+union Event {
+    Arrival
+    Departure
+}
+
 var seen = 0
 var names = List<String>()
 

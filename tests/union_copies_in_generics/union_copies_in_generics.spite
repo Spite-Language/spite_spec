@@ -1,0 +1,30 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func UnionCopiesInGenerics() {
+    load "../../../spite_standard_library/windows"
+    var pets = List<Pet>()
+    var cat = Cat()
+    pets.append(cat)
+    var dog = Dog()
+    pets.append(dog)
+    var groomer = Groomer()
+    var groomed = groomer.groom_all(pets)
+    console.print(groomed)
+    var named = Dictionary<String, Pet>()
+    named["tom"] = cat
+    var found = groomer.find_named(named, "tom")
+    console.print(found)
+    groomer.each_pet(pets, show)
+}
+
+func show(pet: Pet) {
+    switch pet {
+        Cat: console.print("shown a cat")
+        Dog: console.print("shown a dog")
+    }
+}

@@ -1,3 +1,8 @@
+union Event {
+    Arrival
+    Departure
+}
+
 var console = Console()
 
 func EventBus() {

@@ -545,6 +545,11 @@ lists the same classes or more (`tests/union_copies`). A member the wanted union
 Shelter.Pet cannot be used where a Groomer.Pet is needed: 'Fish' is a member of Shelter.Pet and not of Groomer.Pet,
 and a union fits another only when every member of it is a member of the other: add 'Fish' to Groomer.Pet, or pass the
 member value itself" (`conformance/union_copy_missing_member`).
+Copies with the same members, in any order, are one type (D1756), inside a generic and a function value too: a
+`List<Parser.Expression>` goes where a `List<Printer.Expression>` is wanted, a `Dictionary` or a `Spite.Function` of
+one copy where the other's is, with nothing written and nothing converted (`tests/union_copies_in_generics`,
+`tests/event_bus`). A generic of a union with fewer members is refused where one with more is wanted, since the
+receiver could put in a member the smaller union lacks (`conformance/union_copy_smaller_in_generic`).
 
 **`_:` answers for every member without a case of its own.** It is the
 last case, and it means exactly "this body, written once for each remaining member": the value is narrowed to

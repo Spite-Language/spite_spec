@@ -1,0 +1,16 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func UnionCopySmallerInGeneric() {
+    load "../../../spite_standard_library/windows"
+    var pets = List<Pet>()
+    var cat = Cat()
+    pets.append(cat)
+    var vet = Vet()
+    var seen = vet.see_all(pets)
+    console.print(seen)
+}

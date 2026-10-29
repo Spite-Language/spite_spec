@@ -1,0 +1,34 @@
+union Pet {
+    Dog
+    Cat
+}
+
+func groom_all(pets: List<Pet>): Integer {
+    var groomed = 0
+    var index = 0
+    while index < pets.count() {
+        var pet = pets[index]
+        if pet == Dog {
+            groomed = groomed + pet.barks
+        }
+        index = index + 1
+    }
+    return groomed
+}
+
+func find_named(named: Dictionary<String, Pet>, name: String): String {
+    var pet = named[name]
+    if pet == Cat {
+        return "a cat of {pet.lives} lives"
+    }
+    return "nothing"
+}
+
+func each_pet(pets: List<Pet>, act: Spite.Function<Pet, Nothing>) {
+    var index = 0
+    while index < pets.count() {
+        var pet = pets[index]
+        act(pet)
+        index = index + 1
+    }
+}

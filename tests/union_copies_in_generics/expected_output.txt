@@ -1,0 +1,4 @@
+3
+a cat of 9 lives
+shown a cat
+shown a dog

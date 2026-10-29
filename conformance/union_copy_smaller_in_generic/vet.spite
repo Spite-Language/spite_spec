@@ -1,0 +1,9 @@
+union Patient {
+    Cat
+    Dog
+    Bird
+}
+
+func see_all(patients: List<Patient>): Integer {
+    return patients.count()
+}
