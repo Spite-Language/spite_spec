@@ -12,8 +12,8 @@ folder of blocks is one program), and where SpiteSpec tests the same behaviour.
 A ported program that the compiler gets wrong says why after "fails:"; each of those is a compiler or library gap,
 listed again under [Gaps](#gaps).
 
-Old programs: 975. Covered: 835. Ported: 99. Not applicable:
-41. Ported programs that fail: 2.
+Old programs: 975. Covered: 833. Ported: 99. Not applicable:
+43. Ported programs that fail: 2.
 
 ## Gaps
 
@@ -292,7 +292,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/owned_conditions | covered | tests/owned_conditions |  |
 | conformance/stage6/owned_objects | covered | tests/owned_objects |  |
 | conformance/stage6/package_attributes | covered | tests/package_attributes |  |
-| conformance/stage6/parallel_each | covered | tests/parallel_each |  |
+| conformance/stage6/parallel_each | covered | tests/each_over_particles | now `each_step()`, which the compiler may band (D1735) |
 | conformance/stage6/parallel_handover | covered | tests/parallel_handover |  |
 | conformance/stage6/parallel_receivers | covered | tests/parallel_receivers |  |
 | conformance/stage6/parallel_stages | not applicable (D662) | retired/parallel_stages | kept in retired/parallel_stages (D665) |
@@ -601,7 +601,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/package_attributes | covered | conformance/package_attributes |  |
 | diagnostics/parallel_function_reach | covered | conformance/parallel_function_reach |  |
 | diagnostics/parallel_handover | covered | conformance/parallel_handover |  |
-| diagnostics/parallel_reach | covered | conformance/parallel_reach |  |
+| diagnostics/parallel_reach | not applicable (D1735) | - | its point is the race rule of `parallel_each_`, which is gone |
 | diagnostics/parallel_shared_value_writes | covered | conformance/parallel_shared_value_writes |  |
 | diagnostics/parallel_shared_writes | covered | conformance/parallel_shared_writes |  |
 | diagnostics/parameter_write_question | covered | conformance/parameter_write_question |  |
@@ -762,8 +762,8 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/concurrency.md#shared_counter | covered | tests/singleton_lock_calls |  |
 | docs/concurrency.md#locked_wait_doc | covered | conformance/locked_wait |  |
 | docs/concurrency.md#handed_over_doc | covered | tests/parallel_handover |  |
-| docs/concurrency.md#parallel_pass | covered | tests/parallel_each |  |
-| docs/concurrency.md#parallel_reach | covered | conformance/parallel_reach |  |
+| docs/concurrency.md#parallel_pass | covered | tests/each_over_particles | now `each_step()`, which the compiler may band (D1735) |
+| docs/concurrency.md#parallel_reach | not applicable (D1735) | - | its point is the race rule of `parallel_each_`, which is gone |
 | docs/concurrency.md#frame_loop | ported | tests/frame_loop |  |
 | docs/concurrency.md#busy_loop | ported | tests/busy_loop |  |
 | docs/control_flow.md#if_chains | ported | tests/if_chains |  |

@@ -100,7 +100,7 @@ and whose value joins on first use.
   on the program's own thread` (`diagnostics/endless_parallel_work`). A function that waits anywhere is left alone,
   as is a loop that can leave. Checked while compiling; nothing runs for it.
 - **Joining.** Reading a `Parallel`'s value, or dropping it, waits until its thread has returned. A `Parallel`
-  started from inside another one, or a `parallel_each_` inside one, joins the same way.
+  started from inside another one joins the same way.
 - **Join on drop is kept.** Dropping the last handle runs its `drop()` straight away, and that waits.
 - **At exit** every `Parallel` still running is finished before the program ends: its handle's `drop()` waits for it.
 - **Cost.** A `Parallel` hands its work to a waiting thread of the pool (a lock, a queue and a wake), and pays for
@@ -265,49 +265,25 @@ a `ForeignCallback` it may call from one, counts references with atomic operatio
 Every other program keeps the plain counts. Spite code on the program's thread only ever changes hands at a wait,
 so state machines need nothing more. A singleton first used from two threads at once is made once: the fetch takes
 the singleton's own lock only while its slot is empty (`conformance/stage6/singleton_race`). The race rule is checked
-for `parallel_each_` (below) and for a `Parallel(function)` (above): neither may reach a list or object
-another thread could hold, though two threads writing one number attribute of a shared instance is still the
-program's mistake. A
-program's own singletons are made safe (below); the standard library's are not guarded, but `Console` writes each
+for a `Parallel(function)` (above): it may not reach a list or object another thread could hold, though two threads
+writing one number attribute of a shared instance is still the program's mistake. A program's own singletons are made safe (below); the standard library's are not guarded, but `Console` writes each
 `print`, `write`, `error` and `debug` in one piece, so two threads printing at once never interleave the pieces of
 their lines. One smaller gap: a REPL client's `exit` while a helper
 thread is blocked reading the console may wait for that read when the process exits.
 
-**`parallel_each_`.** `list.parallel_each_update()` calls `update()` on every element,
-split across threads, and returns when all are done. The compiler writes the pass as it writes a fused chain: the
-list is cut into pieces, one thread runs each piece but the first, which the calling thread runs itself, and the
-calling thread joins the rest. One allocation per call for the pieces' states, one function value, and none per
-element. A list of fewer than two elements runs on the
-calling thread. `filter_` steps before it fuse into the piece loop (`entities.filter_alive().parallel_each_update()`
-is one pass with no list in between); a `map_` step is an error, since it reaches another object that several
-elements may share: `'parallel_each_grow' can follow only 'filter_' steps: 'map_next' reaches another object,
-which several elements may share, and a parallel pass may touch only each element's own attributes`.
-
-- **The race rule, as a compile check.** The member, every function of the element's class it calls
-  (transitively, by name), and every `filter_` member in the chain may read and write only the element's
-  attributes that hold a plain value (a number, `Boolean`, `String`, or an enum, or a `T?` of one), any
-  singleton (the standard library's, and the program's own, which the compiler makes safe below, including one bound as an
-  attribute of the element), and their own parameters and locals. An attribute holding any other object, a list,
-  a dictionary or a function value is an error naming the attribute, its type and the one-thread form
-  (`diagnostics/parallel_reach`):
-  `'parallel_each_follow' runs 'follow' on many elements at once, so it may reach only its own 'Boid' attributes
-  that hold values, and its locals: 'leader' holds a 'Boid?', which another element may share. ...`. A list
-  of numbers or text has no members, so `parallel_each_` on one is an error naming `each_`:
-  `'parallel_each_to_string' runs a member of each element on many threads, and 'Integer' is not a class: only a
-  list of a class has members to run there (write 'each_to_string' to run it on one thread)`.
-- **What it cannot see:** one object listed twice runs on two threads at once; a local made from something the
-  member was handed (it is handed nothing, so only through a singleton); a list of a
-  `type` or union (the element's class is not known, so it is an error).
-- `conformance/stage6/parallel_each` runs ten thousand elements twice, filtered once, and a list of one and of none.
+**A walk over every element is written once.** A program writes `list.each_update()`; there is no parallel form of
+it. The compiler runs the walk in bands on the thread pool when it proves each pass touches only its own element and
+the work pays, and on one thread otherwise; the output is the same either way
+([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-loop-whose-passes-write-only-their-own-item-runs-in-bands)).
+`list.parallel_each_update()` is an unknown member (`conformance/parallel_each_is_gone`).
 
 **A singleton a `Parallel` reaches is made thread-safe by the compiler, in the cheapest safe form.** There is no
-keyword and no `shared` header line. In a program that makes a `Parallel` or runs a
-`parallel_each_` pass, each singleton of the program's own (not the standard library's) gets the first of these that is
-proven safe for what its functions actually do; the exact conditions are on
+keyword and no `shared` header line. In a program that makes a `Parallel`, each singleton of the program's own (not
+the standard library's) gets the first of these that is proven safe for what its functions actually do; the exact conditions are on
 [optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#thread-safety-for-singletons-the-cheapest-safe-form):
 
 1. **Nothing**, when no function a `Parallel` can run reaches it (a walk over the calls from every
-   function taken as a value and every `parallel_each_`/`filter_` member).
+   function taken as a value).
 2. **Nothing**, when it never changes after it is made: no function of its own assigns its attributes outside the
    constructor, no other class assigns them, and it holds no list, dictionary, function value or object that can
    change.
@@ -361,7 +337,7 @@ What it does not see, and so still leaves to the program: a handle that escapes 
 attribute or a list, passed, returned) and is read by another locked function later; a call the call effects
 cannot place on a class (through a function value, a union, or a receiver whose class is not known); work that
 reaches the singleton only by reading or writing its attributes from outside (those take the lock too);
-`parallel_each_` passes, whose members are found by name on every class; and generic singletons (`Column<T>`),
+and generic singletons (`Column<T>`),
 whose call effects do not tell one instance's lock from another's. A `Concurrent` cannot hang this way: it runs on
 the thread that waits for it, and the lock is re-entered by the thread that owns it.
 
@@ -383,7 +359,7 @@ locals only, calls only to reading functions of its class, to the reading member
 numbers, to reading functions of a singleton that holds no state,
 attributes read without a getter, no text holes, operators only on numbers unless the program declares none) takes
 the readers' side, when no writing function of the singleton (and no write to its attributes from another class) is
-reachable from what a `Parallel` or `parallel_each_` pass runs. That is the shape of a column written between
+reachable from what a `Parallel` runs. That is the shape of a column written between
 stages and read by the systems of a stage; one also written from the work keeps the plain lock, since each write would scan the
 counts. A reader adds one to its thread's count and waits only while a writing function holds the lock; a writing
 function takes the lock and then waits for every reader to finish. Reads and writes of its attributes from other classes and counted loops
@@ -411,8 +387,8 @@ thread are both freed there.
 
 A program without `Parallel` gets none of it: an atomic singleton compiles to plain reads and writes, and no
 singleton has a lock.
-`conformance/stage6/singleton_guard`, `singleton_forms`, `singleton_lock_calls`. The rule for
-`Parallel(function)` is checked like `parallel_each_`'s (`diagnostics/parallel_function_reach`).
+`conformance/stage6/singleton_guard`, `singleton_forms`, `singleton_lock_calls`. The race rule for
+`Parallel(function)` is above (`diagnostics/parallel_function_reach`).
 
 **A task may keep what was handed to it.** `Parallel(maker.work)` may reach an attribute of
 `maker` that holds a list or an object (which is otherwise refused) when the compiler proves the task is its only

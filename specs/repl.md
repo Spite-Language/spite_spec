@@ -27,7 +27,7 @@ is a gap to close, not a rule. The steps, in the order a game meets them:
      moved object finds it moved. Objects made while moving (a new attribute's default) are made in the new layout
      and not moved again.
    - Nothing else runs while it installs and moves: the scheduler's tasks are paused, and every task on the thread
-     pool (a `Parallel`'s work, a `parallel_each_` pass) stops first at the next pass of one of its loops, where it
+     pool (a `Parallel`'s work) stops first at the next pass of one of its loops, where it
      holds no attribute half read, and goes on once the swap is done; a task that starts meanwhile waits to start.
      A task that reaches no such point within 10 seconds (it waits on a lock, sleeps, or reads a socket) refuses
      the reload: `a task on another thread did not reach a loop's check point within 10 seconds, so nothing was

@@ -20,7 +20,7 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   does nothing, and it is destroyed at exit ([classes_and_files.md](https://github.com/Spite-Language/spite_documentation/blob/master/classes_and_files.md#singletons)).
 - **Run-time cost.** A count in every object's header and one addition or subtraction per retain and
   release. The counts are atomic only in a program that can share an object between threads (one that makes a
-  `Concurrent` or a `Parallel`, runs a `parallel_each_` pass, or is built with `--repl-port` or `--hot-reload`),
+  `Concurrent` or a `Parallel`, runs a loop the compiler splits into bands, or is built with `--repl-port` or `--hot-reload`),
   and in a production build only for the classes whose objects code on another thread can retain or release;
   every other program, and every other class, counts with plain arithmetic
   ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class),

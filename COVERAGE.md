@@ -35,14 +35,14 @@ Decision numbers are those of `DECISIONS.md` in the [mortaros_spite](https://git
 | reflection.md | 64 | 32 | 52 |
 | metaprogramming.md | 67 | 31 | 49 |
 | packages.md | 52 | 36 | 47 |
-| concurrency.md | 85 | 53 | 64 |
+| concurrency.md | 86 | 52 | 61 |
 | foreign_libraries.md | 58 | 27 | 46 |
 | game_maths.md | 24 | 21 | 24 |
 | style.md | 79 | 38 | 67 |
 | write_it_plainly.md | 11 | 4 | 4 |
 | compiler.md | 51 | 22 | 35 |
 | repl.md | 47 | 19 | 25 |
-| all | 1413 | 727 | 1198 |
+| all | 1414 | 726 | 1195 |
 
 ## values_and_types.md
 
@@ -1250,7 +1250,7 @@ Rules: 52. Covered before: 36. Covered now: 47.
 
 ## concurrency.md
 
-Rules: 85. Covered before: 53. Covered now: 64.
+Rules: 86. Covered before: 52. Covered now: 61.
 
 | Rule | Program(s) | Status |
 |---|---|---|
@@ -1308,12 +1308,13 @@ Rules: 85. Covered before: 53. Covered now: 64.
 | A `while` polling `finished` that calls nothing is the `unstepped_poll` error | conformance/unstepped_poll | covered |
 | A program with threads uses atomic reference counts | tests/threaded_class_objects, tests/cycles_across_threads | covered |
 | A singleton first used from two threads is made once | tests/singleton_race | covered |
-| `parallel_each_`: every element, split; fewer than two on the caller; `filter_` fuses | tests/parallel_each | covered |
-| `parallel_each_` after a `map_` step is an error | conformance/parallel_each_after_map | added (compiler fails: it compiles) |
-| The race rule: an attribute holding an object is an error | conformance/parallel_reach | covered |
-| The race rule follows the functions the member calls | conformance/parallel_each_reach_through_call | added |
-| `parallel_each_` on a list of numbers is an error naming `each_` | conformance/parallel_each_numbers | added (compiler fails: it compiles) |
-| `parallel_each_` on a list of a `type` or union is an error | | missing (no error text stated) |
+| `each_<member>()` runs the member on every element; the compiler may run it in bands | tests/each_over_particles | covered |
+| `parallel_each_<member>()` is an unknown member | conformance/parallel_each_is_gone | added |
+| `parallel_each_` after a `map_` step is an error | none | superseded by D1735 |
+| The race rule of `parallel_each_`: an attribute holding an object is an error | none | superseded by D1735 |
+| The race rule follows the functions the member calls | none | superseded by D1735 |
+| `parallel_each_` on a list of numbers is an error naming `each_` | none | superseded by D1735 |
+| `parallel_each_` on a list of a `type` or union is an error | none | superseded by D1735 |
 | A reached singleton gets the cheapest safe form: nothing, immutable, atomics, lock | tests/singleton_forms, tests/singleton_guard, tests/lone_atomic_counter | covered |
 | A locked singleton's function that touches no state runs unlocked | tests/singleton_stateless_calls | covered |
 | Reads and writes of its attributes from other classes take the lock | tests/singleton_lock_calls, tests/singleton_attribute_reads | covered |

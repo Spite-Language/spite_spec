@@ -1,1 +1,0 @@
-conformance/parallel_each_after_map/parallel_each_after_map.spite:8: error: 'parallel_each_grow' can follow only 'filter_' steps: 'map_partners' reaches another object, which several elements may share, and a parallel pass may touch only each element's own attributes (in ParallelEachAfterMap.ParallelEachAfterMap)

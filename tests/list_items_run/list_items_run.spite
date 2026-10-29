@@ -50,7 +50,7 @@ func ListItemsRun() {
     var chained_name_count = chained_names.count()
     console.print("chained", chained, chained_count, chained_name_count, copied_count)
     velocities.filter_moving().each_integrate()
-    velocities.parallel_each_integrate()
+    velocities.each_integrate()
     var replacement = Velocity(5.0, 6.0, "replacement")
     velocities[0] = replacement
     velocities[0].name = "renamed"

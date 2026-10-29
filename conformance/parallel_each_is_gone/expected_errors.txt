@@ -1,0 +1,1 @@
+conformance/parallel_each_is_gone/parallel_each_is_gone.spite:6: error: a List<Integer> has no attribute or function 'parallel_each_to_string' (in ParallelEachIsGone.ParallelEachIsGone)
