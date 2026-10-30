@@ -1,0 +1,8 @@
+var console = Console()
+var label = "whisper"
+
+func SymbolAsAName() {
+    load "../../../spite_standard_library/windows"
+    var named = SymbolAsAName.attributes['label']
+    console.print(named.name)
+}

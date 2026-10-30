@@ -5,7 +5,7 @@ func JsonRunTimeKeysUnknown() {
     var crate = Crate()
     console.print(crate.size)
     var keys = Dictionary<Spite.AttributeDeclaration, String>()
-    var sized = Crate.attributes['size']
+    var sized = Crate.attributes["size"]
     keys[sized] = "size"
     var writer = JsonWriter<ShelfItem>()
     writer.keys = keys

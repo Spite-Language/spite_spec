@@ -135,7 +135,7 @@ The details:
   for a key the first walk did not match: snake_case input runs the same comparisons it did before, and a program that reads
   no JSON carries none of it (`conformance/stage6/json_camel_case`).
 - **A key that is not an attribute's name comes from the serializer's optional `keys` attribute, a map keyed by
-  attribute objects and set before the serializer's first use**: `{MeshRecord.attributes['minimum_level_of_detail']: "min_lod"}`. `JsonWriter` writes the attribute
+  attribute objects and set before the serializer's first use**: `{MeshRecord.attributes["minimum_level_of_detail"]: "min_lod"}`. `JsonWriter` writes the attribute
   under its key and `JsonReader` reads that key into it, so the text round-trips. **The key replaces the
   attribute's name**: with one, neither the name nor its camelCase and PascalCase spellings read into the
   attribute any more, so each attribute has exactly one key; attributes without one keep the camelCase and
@@ -163,7 +163,7 @@ The details:
   to name a key and an error at the function, so a key it gave is never silently lost: "'MeshRecord.json_key_minimum_level_of_detail'
   would name the JSON key of 'minimum_level_of_detail', and JsonReader and JsonWriter do not read a function for
   it: a key that is not an attribute's name is given to the serializer in a map keyed by the attribute,
-  '{MeshRecord.attributes['minimum_level_of_detail']: "..."}'" (`diagnostics/json_key`).
+  '{MeshRecord.attributes["minimum_level_of_detail"]: "..."}'" (`diagnostics/json_key`).
 - **What a reader makes** (D1784). A class made without arguments (no constructor, or one without parameters) is
   made so and its attributes are filled. A class whose constructor takes arguments is read through its first
   conversion, `func Version(from: String): Version?` (D1776): `JsonReader` reads the value the conversion takes, any

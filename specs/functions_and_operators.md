@@ -73,9 +73,9 @@ logger.log(pretty_print)         # passes this instance's pretty_print
   scope. That is the whole of the feature; there is no environment to capture and no lifetime to reason about.
 - **A class has no function values.** `Monster.is_alive` names nothing: `Monster` written as a value is the
   class's `Spite.Class` object ([Reflection](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md)), which has no `is_alive` (the function itself is
-  `Monster.functions['is_alive']`). It is the error "'Monster.is_alive' is not a function: 'Monster' is the
+  `Monster.functions["is_alive"]`). It is the error "'Monster.is_alive' is not a function: 'Monster' is the
   class's 'Spite.Class' object, which has no 'is_alive' (the function itself is
-  'Monster.functions['is_alive']'). A function value belongs to an instance: pass 'monster.is_alive', or ask
+  'Monster.functions["is_alive"]'). A function value belongs to an instance: pass 'monster.is_alive', or ask
   each element of a list through its member template, such as 'filter_is_alive()'" (`diagnostics/passed_functions`).
   At run time a function value is one small object (the owner, retained, and a call pointer) and a call through
   it is one indirect call. A function value whose answer may be null (`Spite.Function<Integer, Integer?>`) answers

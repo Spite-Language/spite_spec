@@ -4,7 +4,7 @@ var kept = List<Spite.Function>()
 func RunTimeAccesses() {
     load "../../../spite_standard_library/windows"
     var movement = Movement()
-    var update = Movement.functions['update_each']
+    var update = Movement.functions["update_each"]
     crash update
     kept.append(update)
     var remember = movement.remember
@@ -13,7 +13,7 @@ func RunTimeAccesses() {
     var anything: Anything = movement
     var kind = anything.class
     var functions = kind.functions
-    var first = functions['update_each']
+    var first = functions["update_each"]
     crash first
     describe(first)
 }

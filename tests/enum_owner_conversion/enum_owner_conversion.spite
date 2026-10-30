@@ -1,0 +1,27 @@
+enum Job {
+    'knight'
+    'mage'
+}
+
+var console = Console()
+
+func EnumOwnerConversion() {
+    load "../../../spite_standard_library/windows"
+    var score = 2.5
+    var job: Job? = score
+    crash job
+    var named = "knight"
+    var from_text: Job? = named
+    crash from_text
+    var player = Player()
+    var hired = player.hire(0.5)
+    console.print(job, from_text, hired)
+}
+
+func Job(from: Float): Job? {
+    fallback from >= 0.0
+    if from > 2.0 {
+        return 'mage'
+    }
+    return 'knight'
+}

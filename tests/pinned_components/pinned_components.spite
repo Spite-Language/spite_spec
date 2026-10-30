@@ -14,7 +14,7 @@ func place(function: Spite.Function) {
 }
 
 func check(target: Spite.Argument) {
-    var pinned = target.class.functions['pinned_to_creating_thread']
+    var pinned = target.class.functions["pinned_to_creating_thread"]
     if pinned {
         console.print(" ", target.name, "runs on the thread that made it")
     } else {

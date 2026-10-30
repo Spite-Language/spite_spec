@@ -1,1 +1,1 @@
-conformance/reflection_call_unfilled/reflection_call_unfilled.spite:8: error: 'call' leaves the argument 'velocity' of 'hurt' unfilled: set 'call.arguments['velocity']' before 'call()' (in ReflectionCallUnfilled.ReflectionCallUnfilled)
+conformance/reflection_call_unfilled/reflection_call_unfilled.spite:8: error: 'call' leaves the argument 'velocity' of 'hurt' unfilled: set 'call.arguments["velocity"]' before 'call()' (in ReflectionCallUnfilled.ReflectionCallUnfilled)

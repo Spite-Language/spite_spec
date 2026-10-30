@@ -3,10 +3,10 @@ var console = Console()
 func ReflectionCallOtherClass() {
     load "../../../spite_standard_library/windows"
     var rock = Rock()
-    var hurt = Monster.functions['hurt']
+    var hurt = Monster.functions["hurt"]
     crash hurt
     var call = Spite.Call(hurt, rock)
-    call.arguments['amount'] = 3
+    call.arguments["amount"] = 3
     call.call()
     console.print(rock.weight)
 }

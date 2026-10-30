@@ -117,7 +117,7 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   `--hot-reload` reload replaces it the same way. Load order stays the rule even where a package would rather be
   configured by the program it is loaded into: such a package calls a function the program declares (a
   `build.base_folder()` in the program's `build.spite`), which is an error when missing unless the package
-  supplies a default behind `Build.functions['base_folder']`. **`Build` is the one exception**: a field the program's
+  supplies a default behind `Build.functions["base_folder"]`. **`Build` is the one exception**: a field the program's
   own `build.spite` declares is not replaced by a loaded package's declaration of it, so the program decides its
   build and a package's field is only a default ([programs.md](programs.md#build-settings-build),
   `conformance/stage6/build_precedence`). The standard library is loaded

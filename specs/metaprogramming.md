@@ -108,7 +108,7 @@ The hole is any part of the name between the pattern's fixed words, with no enum
 system's `update_all`, `render_all` and also a `sum_all`. The template is called as the plural of its name,
 `run_phases_each(...)` for every function that fits (in the order they were made), or with the hole written,
 `run_render_each(...)` for one. Inside an instance, `phase.name` is the function's name (`update_each`), `phase.hole` the
-text in place of `phase` (`update`, a symbol), `phase.index` its place, and `phase.argument_count()` the number of its
+text in place of `phase` (`update`, a `String` known while compiling), `phase.index` its place, and `phase.argument_count()` the number of its
 arguments. `$t.argument_count("<pattern>")` refuses a pattern whose functions take different numbers of arguments:
 "... has no one answer: the functions of 'Painter' that fit it ...". `argument_count()` asked with no name of
 anything but a walk over functions, such as the `argument` of a walk over arguments, is "'argument.argument_count()'
@@ -173,16 +173,16 @@ parameter type of its own:
 ### Calls built before they run
 
 `Spite.Call(declaration, instance)` is a call of a function on an instance of the class that declares it, built
-before it runs. `call.arguments['name'] = value` fills one argument, and `call.call()` runs it.
+before it runs. `call.arguments["name"] = value` fills one argument, and `call.call()` runs it.
 
-- **A declaration named in the code** (`Monster.functions['hurt']`, or a `var` initialised with one and never
+- **A declaration named in the code** (`Monster.functions["hurt"]`, or a `var` initialised with one and never
   assigned) makes the call compile away: the instance and each argument become hidden locals and `call.call()` is the
   direct call. An instance of another class is "'rock' is a 'Rock', and 'hurt' is declared by 'Monster': a call runs a
   declaration on an instance of its own class" (`conformance/reflection_call_other_class`); a missing argument is
-  "'call' leaves the argument 'velocity' of 'hurt' unfilled: set 'call.arguments['velocity']' before 'call()'"
-  (`conformance/reflection_call_unfilled`); filling one twice is "'call.arguments['amount']' is already set: a call
+  "'call' leaves the argument 'velocity' of 'hurt' unfilled: set 'call.arguments["velocity"]' before 'call()'"
+  (`conformance/reflection_call_unfilled`); filling one twice is "'call.arguments["amount"]' is already set: a call
   fills each argument once, before 'call.call()' runs it"; a name the function lacks is "'hurt' has no argument
-  'speed', so 'call.arguments['speed']' fills nothing"; and the call used as a value is "'call' is a call known
+  'speed', so 'call.arguments["speed"]' fills nothing"; and the call used as a value is "'call' is a call known
   while compiling, which becomes the plain call itself and has no object to pass on".
 - **A declaration known only at run time** is the library's `Spite.Call`, and `call()` tests that the instance's class
   declares the function and halts "call() runs 'f', declared by 'C', on an instance of another class" when it does not.
@@ -196,7 +196,7 @@ before it runs. `call.arguments['name'] = value` fills one argument, and `call.c
   `tests/run_time_call_extra_argument`).
   A parameter of any other type (a function value) halts: "call() cannot pass the argument '...' of 'C.f' when the
   call is known only at run time, since a value of its type is not told apart while the program runs: ...". Filling
-  an argument a second time halts as the known call refuses it: "spite: 'call.arguments['times']' is already set: a
+  an argument a second time halts as the known call refuses it: "spite: 'call.arguments["times"]' is already set: a
   call fills each argument once, before 'call.call()' runs it" (`tests/run_time_call_filled_twice`).
 - **Calling a `Spite.Class` known only at run time with no arguments** makes an object of it, typed `Anything`,
   wherever the class object is held: a local or parameter (`part()`), an attribute (`kind()`, `shelf.kind()`), or
@@ -416,7 +416,7 @@ run-time value for live reload to change. To change one, change the call site.
 
 **A `fallback` or `crash` on such a condition folds the same way.** When the condition of a `fallback` or `crash`
 asks only what is decided while compiling (a `$flag`, `$slot_type == Entity` or any other test of a codegen type,
-a question asked of a reflection constant (`$T.functions['run_each']`, `.is_resumable`, `.is_mutated`,
+a question asked of a reflection constant (`$T.functions["run_each"]`, `.is_resumable`, `.is_mutated`,
 `.is_fixed_size`, `.arguments.count()`, of a codegen type or of a walked member's class), `argument.class == $row_type`,
 a class test the value's type already answers (`item == $wanted_type`), a field of
 [`Build`](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md#compile-time-settings-build), and `not`, `and` and `or` over them), it is decided
@@ -438,9 +438,9 @@ change what the condition asks` (`diagnostics/folded_crash`, and `diagnostics/fo
 field and a class test). Only a function the program reaches counts (the
 same reach tree shaking keeps in a production build, worked out for an inspectable build too, where nothing is
 shaken), so an instance whose function nobody calls compiles (`conformance/stage6/folded_crash_uncalled`). This
-is how a library turns its rules into compile errors: a `crash $system_type.functions['update_each']` in the
+is how a library turns its rules into compile errors: a `crash $system_type.functions["update_each"]` in the
 function that runs a system fails the build for the class that breaks the rule, not the run. The sides of an `and`
-are checked one at a time, as two `crash` lines would be, so in `crash $system_type.functions['update_each'] and
+are checked one at a time, as two `crash` lines would be, so in `crash $system_type.functions["update_each"] and
 ready` the first side folds on its own and is this compile error when it is false, whatever `ready` holds; only a
 condition that mixes a run-time value in through `or` (or `not` over an `and`) is tested at run time as a whole.
 

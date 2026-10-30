@@ -10,6 +10,6 @@ func ReflectionNarrowing() {
     var rocks = Caller<Rock>()
     var rocked = rocks.call(rock)
     console.print(rocked, rock.weight)
-    crash Spite.Class.instances['Walker']
-    console.print("the program has", Spite.Class.instances['Walker'])
+    crash Spite.Class.instances["Walker"]
+    console.print("the program has", Spite.Class.instances["Walker"])
 }

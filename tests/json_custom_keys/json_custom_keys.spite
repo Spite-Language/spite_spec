@@ -3,12 +3,12 @@ var console = Console()
 func JsonCustomKeys() {
     load "../../../spite_standard_library/windows"
     var writer = JsonWriter<MeshRecord>()
-    writer.keys = {MeshRecord.attributes['minimum_level_of_detail']: "min_lod"}
+    writer.keys = {MeshRecord.attributes["minimum_level_of_detail"]: "min_lod"}
     var record = MeshRecord()
     record.minimum_level_of_detail = 3
     var text = writer.write(record)
     var reader = JsonReader<MeshRecord>()
-    reader.keys = {MeshRecord.attributes['minimum_level_of_detail']: "min_lod"}
+    reader.keys = {MeshRecord.attributes["minimum_level_of_detail"]: "min_lod"}
     var back = reader.read(text)
     crash back
     var by_name = reader.read("\{\"minimum_level_of_detail\": 9}")

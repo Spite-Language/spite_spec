@@ -3,6 +3,6 @@ generic $system_type
 var steps = 0
 
 func run(ready: Boolean) {
-    crash $system_type.functions['update_each'] and ready
+    crash $system_type.functions["update_each"] and ready
     steps = steps + 1
 }

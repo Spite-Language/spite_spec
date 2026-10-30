@@ -483,9 +483,19 @@ the values accepted where a `Job` is expected. The number a value compiles to is
     `diagnostics/enum_from_text`);
   - `var part: Bird.Part? = number` on a whole number reads a value from its number, `null` when no value has that number;
   - `Part.values` lists the values in their order, and `value.class` is the enum's class (`tests/enum_conversions`).
+  - The conversions from text and from a whole number are the compiler's, in the form of [D1776](classes_and_files.md):
+    the enum behaves as if its class declared `func Part(from: String): Part?` and `func Part(from: Integer): Part?`,
+    so writing `Part(text)` is refused as a conversion called by name (`conformance/conversion_by_name_enum`).
+  - The class that declares the enum may declare further conversions for it, named by the enum alone
+    (`func Job(from: Float): Job?`); a value of that source type meeting the enum goes through it, inside the class
+    and outside it, and one from `String` or `Integer` replaces the compiler's own (`tests/enum_owner_conversion`).
+    A class's own conversions are told apart from its enums' by their return type.
 - **Reflection on an enum** is through classes of its own, as `Spite.Class` and `Spite.AttributeDeclaration` serve
-  classes: the enum's class and the declaration of each value (its name and its number), folded while compiling
-  where constant.
+  classes: `Spite.Enum`, the enum's class (`.name`, `.name_with_namespaces`, `.owner`, the `Spite.Class` that declares
+  it, and `.values`, a `Dictionary<String, Spite.EnumValue>` keyed by name in declaration order), and
+  `Spite.EnumValue`, the declaration of each value (`.name`, `.number`, `.index`). An enum named as a value (`Part.name`)
+  and `value.class` on one of its values answer its `Spite.Enum`; `Part.values` on the enum itself stays the list of
+  its values (`tests/enum_reflection`).
 
 **An enum can be reopened, and walked.**
 

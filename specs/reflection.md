@@ -16,7 +16,7 @@ Their members are the tables of [The `Spite` classes](https://github.com/Spite-L
 
 **Every member is a get-only attribute named for what it answers**, read without `()`: a question is `is_...`, a
 collection is plural. A question that takes something is a collection indexed or filtered instead
-(`Monster.functions['alive']`, `hurt.arguments[1].is_mutated`). What acts rather than answers stays a function:
+(`Monster.functions["alive"]`, `hurt.arguments[1].is_mutated`). What acts rather than answers stays a function:
 `call_function()`, a `Spite.Call`'s `call()`, and a list's own `count()`. A name is a `String`, constant text the compiler writes once, so passing it around allocates nothing.
 
 **Every member is a getter with no setter**: the data sits in private fields and `get_name()` and the rest answer
@@ -38,7 +38,10 @@ not answer on an instance, it makes one. A class of the standard library describ
 **`.class` is a real `Spite.Class`, not the class's name as text**, and so are `Spite.Attribute.class` and
 `Spite.Argument.class`: `function.arguments[0].class == ServerContext` is an identity comparison the compiler
 checks, where a test on the name's text quietly turns false when a class is renamed. Printing a `Spite.Class`
-prints its `.name`, and printing a `Spite.Namespace` its dotted name.
+prints its `.name`, and printing a `Spite.Namespace` its dotted name. **An enum's reflection object is a
+`Spite.Enum`, not a `Spite.Class`**: an enum named as a value and `.class` on one of its values answer it, and its
+`.values` are its `Spite.EnumValue` declarations keyed by name ([Enums in full](values_and_types.md#enums-in-full),
+`tests/enum_reflection`). A `Spite.Class` describing an enum type (an attribute's `.class`) answers only `.is_enum`.
 
 **A namespace is an instance of `Spite.Namespace`**: the tree of folders made readable, `.parent` walking up,
 `.classes` and `.namespaces` walking down. `.namespace` and `.parent` are `Spite.Namespace?`, and the chain ends
@@ -80,10 +83,10 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   the instance it is bound to.
 - **`Spite.Call(declaration, instance)` builds a call without running it**, the only way to build one: the
   declaration is a `Spite.FunctionDeclaration`, and `instance` must be of the class that declares it.
-  `.arguments['name'] = value`
+  `.arguments["name"] = value`
   fills each argument once, and `call()` runs it. With the function and the arguments known while compiling it is
   the plain direct call, and no object exists. An argument left unfilled is "'call' leaves the argument 'velocity'
-  of 'run_each' unfilled: set 'call.arguments['velocity']' before 'call()'" where the compiler sees it; otherwise
+  of 'run_each' unfilled: set 'call.arguments["velocity"]' before 'call()'" where the compiler sees it; otherwise
   `call()` halts naming it. An instance of another class is "'rock' is a 'Rock', and 'hurt' is declared by
   'Monster': a call runs a declaration on an instance of its own class". The rules and every error text are
   [Calls built before they run](metaprogramming.md#calls-built-before-they-run).

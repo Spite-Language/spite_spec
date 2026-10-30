@@ -1,0 +1,29 @@
+enum Part {
+    'wing'
+    'tail' = 7
+    'beak'
+}
+
+var console = Console()
+
+func EnumReflection() {
+    load "../../../spite_standard_library/windows"
+    var tag: Part = 'tail'
+    var described = tag.class
+    console.print(described, described.name_with_namespaces, described.owner)
+    var declared = described.values
+    var names = declared.keys().join(" ")
+    console.print(names)
+    var tail = declared["tail"]
+    crash tail
+    console.print(tail.name, tail.number, tail.index)
+    var named = Part.name
+    var owner = Part.owner
+    var count = Part.values.count()
+    console.print(named, owner, count)
+    var text = "beak"
+    var found: Part? = text
+    crash found
+    var number: Integer = found
+    console.print(found, number)
+}

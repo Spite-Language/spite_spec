@@ -11,7 +11,7 @@ is a gap to close, not a rule. The steps, in the order a game meets them:
 1. **A class's attributes change**, [Changing a class's attributes](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#changing-a-classs-attributes): the reload moves
    every live object to the new layout, copying kept attributes by name, giving new ones their defaults and
    releasing removed ones. A rename is given at the prompt, never in the
-   program's code: `reload {Hero.attributes['level']: "rank"}`. The rules:
+   program's code: `reload {Hero.attributes["level"]: "rank"}`. The rules:
    - A `--hot-reload` build gives each object of a program class two hidden words after its header, `spite_moved`
      (its attributes' block once they moved, else 0) and `spite_live` (its place in the class's list of live
      objects), reads every attribute through `<Class>___fields(object)`, and describes each class's layout --
@@ -43,8 +43,8 @@ is a gap to close, not a rule. The steps, in the order a game meets them:
      commas (a last comma allowed), each a key, a colon and a value, at any spacing; a key is
      `<Class>.attributes[<name>]`, the name a symbol (`'level'`) or a text, and a value is a text literal, escapes
      included, holding an attribute's name. Anything else is refused before anything is compiled, naming the entry
-     and the form (`'Hero.attributes['level'] "rank"' is not an entry of the map: a key, a colon and a value, as
-     Hero.attributes['level']: "rank"`).
+     and the form (`'Hero.attributes["level"] "rank"' is not an entry of the map: a key, a colon and a value, as
+     Hero.attributes["level"]: "rank"`).
      The moves are named in the answer and on the error output (`moved every Hero to its new attributes: health is
      new and holds its default`).
    - Once a class has moved, its code reads through the function for as long as the program runs.

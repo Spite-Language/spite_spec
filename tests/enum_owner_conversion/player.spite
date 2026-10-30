@@ -1,0 +1,8 @@
+var job: EnumOwnerConversion.Job = 'knight'
+
+func hire(score: Float): EnumOwnerConversion.Job {
+    var found: EnumOwnerConversion.Job? = score
+    crash found
+    job = found
+    return job
+}

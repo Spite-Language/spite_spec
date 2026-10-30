@@ -1,0 +1,5 @@
+Part EnumReflection.Part EnumReflection
+wing tail beak
+tail 7 1
+Part EnumReflection 3
+beak 8

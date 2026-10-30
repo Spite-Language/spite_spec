@@ -4,7 +4,7 @@ func AttributeNamedAsValue() {
     load "../../../spite_standard_library/windows"
     var to = Whisper.attributes["to"]
     console.print(to.name, to.index, to.class)
-    var from = Whisper.attributes['from']
+    var from = Whisper.attributes["from"]
     console.print(from.name, from.index)
     var count = Whisper.attributes.count()
     console.print("declared:", count)

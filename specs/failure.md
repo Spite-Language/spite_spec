@@ -539,7 +539,7 @@ would quietly answer `0`, `""`, `false`, a default object or `null`. A path ends
 - at a `return`, or at a bare `crash` (`crash false` is formatted to it);
 - at an `if` with an `else` whose two branches both end, and at a `switch` whose cases all end (a `switch`
   covers every member or value, or has `_:`, so there is no other way through it);
-- at an `if` whose condition is decided while compiling (a codegen value, `functions['run_each']`, ...) and whose branch
+- at an `if` whose condition is decided while compiling (a codegen value, `functions["run_each"]`, ...) and whose branch
   taken ends, and at a `fallback` so decided to be false, read per instance of a generic class, as they are
   compiled.
 

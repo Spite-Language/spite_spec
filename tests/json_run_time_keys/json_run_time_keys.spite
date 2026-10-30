@@ -34,7 +34,7 @@ func JsonRunTimeKeys() {
 func keys_from_a_function(): Dictionary<Spite.AttributeDeclaration, String> {
     var made = Dictionary<Spite.AttributeDeclaration, String>()
     var short = "count"
-    var counted = ShelfItem.attributes['stock_count']
+    var counted = ShelfItem.attributes["stock_count"]
     made[counted] = short
     return made
 }
