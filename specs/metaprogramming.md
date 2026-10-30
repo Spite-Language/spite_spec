@@ -164,6 +164,9 @@ parameter type of its own:
   enum, is the constant list of its values.
 - A walker takes one parameter, and the state it needs goes in attributes. A namespace that names no folder is an
   unknown name.
+- The walker is any function the compiler can name: one of the walking class (`each(add_system)`) or one of another
+  object (`Part.classes.each(registry.add)`, `Registry.Phase.values.each(registry.note)`), whose copies are made in
+  that object's class and called on it, the object read once (`tests/walker_of_another_object`).
 - `Symbol<System>`, `Symbol<Phase>` and the other enum spellings are errors that name the walk to write: "'system:
   Symbol<System>' is not a type: ... walk the classes of 'System' as ordinary code, 'System.classes.each(add_system)',
   with 'system: Spite.Class'" (`conformance/template_symbol_namespace`), and "... walk the values of 'Phase' as ordinary

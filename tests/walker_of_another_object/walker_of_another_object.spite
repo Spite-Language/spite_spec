@@ -1,0 +1,9 @@
+var console = Console()
+
+func WalkerOfAnotherObject() {
+    load "../../../spite_standard_library/windows"
+    var registry = Registry()
+    Part.classes.each(registry.add)
+    Registry.Phase.values.each(registry.note)
+    console.print(registry.count)
+}

@@ -1,0 +1,3 @@
+func turns(): Boolean {
+    return true
+}

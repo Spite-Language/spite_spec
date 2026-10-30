@@ -1,0 +1,7 @@
+func rolls(): Boolean {
+    return true
+}
+
+func spins(): Boolean {
+    return true
+}

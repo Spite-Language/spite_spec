@@ -1,0 +1,17 @@
+enum Phase {
+    'start'
+    'finish'
+}
+
+var console = Console()
+var count = 0
+
+func add(part: Spite.Class) {
+    count = count + 1
+    var functions = part.functions.count()
+    console.print("found", part.name, "with", functions, "functions")
+}
+
+func note(phase: Phase) {
+    console.print("phase", phase)
+}
