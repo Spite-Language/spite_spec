@@ -248,7 +248,9 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
     (`+refs/heads/*` and `+refs/tags/*`) only when it lacks a pinned commit, and writes the files from it the same
     way. Last it writes `<commit>.files` beside the copy: the full commit, then every file of the copy, a `.spite`
     file with its length and two hashes of its text, any other with its size and modification time. A copy counts as fetched only once that file exists, so an interrupted fetch is
-    redone; a compile that finds both runs no git. The compiler prints `fetched <repository>@<commit> into <folder>`
+    redone; a compile that finds both runs no git. Compiles run at once take turns: each holds `.spite/git/fetching.lock`
+    (a lock the system lets go when the compile ends, however it ends) while it looks for, fetches and checks its copies,
+    so a second compile that meets the same pin waits for the first and reads the finished copy. The compiler prints `fetched <repository>@<commit> into <folder>`
     to the error output when it fetches, as it prints `formatted <path>`.
   - **Every failure names the `load` line**: `<file>:<line>: error: ...` for no `git` on the `PATH`
     ("'load "<text>"' fetches <repository> with git, and there is no 'git' on the PATH"), a local repository that
