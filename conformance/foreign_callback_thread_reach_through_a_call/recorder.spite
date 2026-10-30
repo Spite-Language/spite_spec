@@ -1,0 +1,11 @@
+var count = 0
+var marks = List<Integer>()
+
+func marked(value: Integer) {
+    count = count + 1
+    remembered(value)
+}
+
+func remembered(value: Integer) {
+    marks.append(value)
+}
