@@ -10,7 +10,7 @@ func first(store: Store): $wanted_type? {
     var found: $wanted_type? = null
     while index < store.items.count() {
         var item = store.items[index]
-        if item == $wanted_type {
+        if item.class == $wanted_type {
             found = item
         }
         index = index + 1
@@ -23,7 +23,7 @@ func others(store: Store): Integer {
     var counted = 0
     while index < store.items.count() {
         var item = store.items[index]
-        if item != $wanted_type {
+        if item.class != $wanted_type {
             counted = counted + 1
         }
         index = index + 1
@@ -32,9 +32,9 @@ func others(store: Store): Integer {
 }
 
 func is_wanted(health: Health): Boolean {
-    return health == $wanted_type
+    return health.class == $wanted_type
 }
 
 func is_part(part: Part): Boolean {
-    return part == $wanted_type
+    return part.class == $wanted_type
 }

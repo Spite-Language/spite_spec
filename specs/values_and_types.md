@@ -559,18 +559,18 @@ of a class or a union covers the class (or every member of the union) and `Null`
 be forgotten: "this switch over 'target' has no case for Null: 'target' is a Monster?, and a switch over a 'T?' covers
 its value and null, so a null cannot be forgotten; add the cases, or end with '_:' for the rest".
 
-**`value == Circle` asks what class a value is.** A class name on the right
-of `==` or `!=` is a class test, true when the value is an instance of that class: `expression ==
+**`value.class == Circle` asks what class a value is** (D1770). `value == Circle` is refused: "'value == Circle' tests what a value is, and a class is compared with a class: write 'value.class == Circle'" (`conformance/class_test_on_value`). A class name on the right
+of `==` or `!=`, beside the value's `.class`, is a class test, true when the value is an instance of that class: `expression.class ==
 Syntax.Expressions.TrueLiteral`. A `T?` that is null is no class, so the test is false. Naming a class that is not
 a member of the value's union is an error, since the answer could only be false (`conformance/stage6/class_test`).
-`if value == Circle { }` narrows `value` to a `Circle` inside the block, the way a switch case does.
-A generic class is named with its codegen values and no parentheses, `found == Storage<$component_type>`:
+`if value.class == Circle { }` narrows `value` to a `Circle` inside the block, the way a switch case does.
+A generic class is named with its codegen values and no parentheses, `found.class == Storage<$component_type>`:
 only the right side of `==`/`!=` reads that form, and anywhere
 else it is an error saying to call it. Tested through a `type`, a class that fits is admitted to the shape
 by the test itself, so a value read back from a `Dictionary<String, AnyStorage>` can be narrowed before this function
 has stored one (`conformance/stage6/generic_class_test`).
 **A codegen value bound to a class is a class test too**: inside `Fetch<$wanted_type>`, `if item == $wanted_type { found = item }` narrows `item`
-to the bound class, as `if item == Health` would. A binding that is a number, `Boolean` or enum tests for its
+to the bound class, as `if item.class == Health` would. A binding that is a number, `Boolean` or enum tests for its
 class, since such a value keeps it inside a `type`, and the narrowed name is the plain value again;
 `String`, a `List` or a `Dictionary` test for their own classes. Where the value's static type already answers,
 the test is decided while compiling instead: a `Health` against `$wanted_type` bound to `Health` is `true`, bound
@@ -579,8 +579,8 @@ error, since another binding of the same class may make it true. A `T?` holding 
 null. A binding that is a `type` or a union is no class, so it is still "'$wanted_type' is a type here"
 (`conformance/stage6/codegen_class_test`).
 **So a switch that is one early return is an error** (`diagnostics/switch_single_case`): one class case and
-`_:`, each a single `return`, is `if value == Class { return ... }` followed by what `_:` returns, and when both
-return `Boolean` literals it is `return value == Class` (or `!=`). Code that can be written
+`_:`, each a single `return`, is `if value.class == Class { return ... }` followed by what `_:` returns, and when both
+return `Boolean` literals it is `return value.class == Class` (or `!=`). Code that can be written
 simpler with no cost to reading is made to be, but a one-liner nobody can read back is not the goal. Anything
 that would need an `else` stays a switch, and so does a switch with more cases: `_:` narrows to each remaining
 member, which an `else` cannot.
@@ -630,7 +630,7 @@ time, so it names the class the value really is (`Widget`), not the shape it is 
 An object literal has no class of its own, so it answers `Object`. A call through a `type` on a value whose class
 is known only at run time compares that tag
 against the classes admitted to the shape (only the classes the program actually passes to it), so nothing
-is registered or looked up by name at run time. A class test admits nothing: `item == Ghost` on an `Anything` that
+is registered or looked up by name at run time. A class test admits nothing: `item.class == Ghost` on an `Anything` that
 no `Ghost` ever reaches is false for every value, and the program carries no copy, no case and no code for `Ghost`
 because of it (`conformance/stage6/tested_classes`). A `--repl`, `--repl-port` or `--hot-reload` build, where code
 the compiler has not seen may bring a `Ghost` later, admits it.

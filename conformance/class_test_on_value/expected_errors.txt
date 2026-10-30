@@ -1,0 +1,1 @@
+conformance/class_test_on_value/class_test_on_value.spite:11: error: 'creature == Fish' tests what a value is, and a class is compared with a class: write 'creature.class == Fish' (in ClassTestOnValue.ClassTestOnValue)

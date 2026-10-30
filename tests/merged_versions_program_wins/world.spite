@@ -1,3 +1,0 @@
-func describe(): String {
-    return "the program's world holds {bodies}"
-}

@@ -10,7 +10,7 @@ func RunTimeLibraryClass() {
 
 func make(kind: Spite.Class) {
     var made = kind()
-    if made == Http.Response {
+    if made.class == Http.Response {
         console.print(kind.name, "status", made.status)
     } else {
         console.print(kind.name, "made")

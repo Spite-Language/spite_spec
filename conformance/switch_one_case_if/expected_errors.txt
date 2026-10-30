@@ -1,1 +1,1 @@
-conformance/switch_one_case_if/switch_one_case_if.spite:14: error: a switch with one case and '_:' is an if: write 'if creature == Fish { ... }', returning early, and then what '_:' does (in SwitchOneCaseIf.fins_of)
+conformance/switch_one_case_if/switch_one_case_if.spite:14: error: a switch with one case and '_:' is an if: write 'if creature.class == Fish { ... }', returning early, and then what '_:' does (in SwitchOneCaseIf.fins_of)

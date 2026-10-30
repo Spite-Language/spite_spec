@@ -23,11 +23,11 @@ func StaticSingletons() {
     var tested = 0
     while tested < helpers.count() {
         var helper = helpers[tested]
-        if helper == Doubler {
+        if helper.class == Doubler {
             var doubled = helper.doubled(5)
             console.print("a doubler", doubled)
         }
-        if helper == Greeter {
+        if helper.class == Greeter {
             helper.greet("there")
         }
         tested = tested + 1

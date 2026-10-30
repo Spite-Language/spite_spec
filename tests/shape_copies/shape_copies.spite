@@ -37,10 +37,10 @@ func describe(item: Printable): String {
 }
 
 func kind_of(item: Anything): String {
-    if item == Gadget {
+    if item.class == Gadget {
         return "gadget"
     }
-    if item == Integer {
+    if item.class == Integer {
         return "integer"
     }
     return "other"

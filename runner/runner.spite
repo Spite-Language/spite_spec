@@ -241,7 +241,7 @@ func keep_folders_in(parent: String) {
 }
 
 func keep_folder(entry: Entry) {
-    if entry == Directory {
+    if entry.class == Directory {
         var name = entry.folder_name
         found_folders.append("{parent_folder}/{name}")
     }

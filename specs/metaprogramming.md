@@ -439,7 +439,7 @@ ready` the first side folds on its own and is this compile error when it is fals
 condition that mixes a run-time value in through `or` (or `not` over an `and`) is tested at run time as a whole.
 
 **A class test that can never be true for one instantiation folds to `false`.** Inside
-a generic class, `if item == Health { }` where `item`'s type comes from a codegen value that is not `Health` in
+a generic class, `if item.class == Health { }` where `item`'s type comes from a codegen value that is not `Health` in
 this copy is `false`, and its branch is removed from that copy only, since generic code that a particular copy does
 not use is what tree shaking removes, so it is on purpose not an error. Outside generics the never-true test stays
 an error ([control_flow.md](control_flow.md#control-flow-in-full)). A codegen value bound to a class is itself
@@ -449,7 +449,7 @@ a class test on the right of `==`, `item == $wanted_type`
 **Asking what type a generic was given.** When a codegen value is a type, `$value_type == String` is decided at
 compile time like any other condition on a codegen value, and only the branch taken is compiled, so each branch
 may use what only that type has, which is what lets one generic class treat text, numbers, lists and classes
-differently. It is the class test ([control_flow.md](https://github.com/Spite-Language/spite_documentation/blob/master/control_flow.md#value--class)) asked of a type instead of a
+differently. It is the class test ([control_flow.md](https://github.com/Spite-Language/spite_documentation/blob/master/control_flow.md#valueclass--class)) asked of a type instead of a
 value. A type name asks for exactly that type; four names ask for a kind, since the type has arguments the test
 does not want to spell:
 

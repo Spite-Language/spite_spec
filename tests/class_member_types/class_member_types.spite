@@ -16,7 +16,7 @@ func ClassMemberTypes() {
     var numbered: Game.Player.Job? = number
     var written = "knight"
     var from_text: Game.Player.Job? = written
-    var is_paid = player.reward == Game.Coin
+    var is_paid = player.reward.class == Game.Coin
     console.print(player.job, is_paid, numbered, from_text)
     console.print(world.trade)
     var jobs = Game.Player.Job.values

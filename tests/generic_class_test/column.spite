@@ -9,7 +9,7 @@ func Column(starting_key: String) {
 
 func storage(): Storage<$component_type> {
     var found = registry.storages[key]
-    if found == Storage<$component_type> {
+    if found.class == Storage<$component_type> {
         return found
     }
     var made = Storage<$component_type>()
@@ -19,5 +19,5 @@ func storage(): Storage<$component_type> {
 
 func holds_health(): Boolean {
     var found = registry.storages[key]
-    return found == Storage<Health>
+    return found.class == Storage<Health>
 }

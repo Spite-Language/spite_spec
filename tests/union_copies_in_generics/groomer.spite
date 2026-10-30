@@ -8,7 +8,7 @@ func groom_all(pets: List<Pet>): Integer {
     var index = 0
     while index < pets.count() {
         var pet = pets[index]
-        if pet == Dog {
+        if pet.class == Dog {
             groomed = groomed + pet.barks
         }
         index = index + 1
@@ -18,7 +18,7 @@ func groom_all(pets: List<Pet>): Integer {
 
 func find_named(named: Dictionary<String, Pet>, name: String): String {
     var pet = named[name]
-    if pet == Cat {
+    if pet.class == Cat {
         return "a cat of {pet.lives} lives"
     }
     return "nothing"

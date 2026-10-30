@@ -27,13 +27,13 @@ func KnownFactDivisor() {
     crash total > 2
     console.print(total)
     var monster = Monster()
-    if monster == Ghost {
+    if monster.class == Ghost {
         console.print(monster.health)
     }
     var creature: Creature = Monster()
-    if creature == Monster {
+    if creature.class == Monster {
         console.print("a monster")
-        if creature == Monster {
+        if creature.class == Monster {
             console.print(creature.health)
         }
     }

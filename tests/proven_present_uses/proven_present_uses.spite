@@ -8,7 +8,7 @@ func ProvenPresentUses() {
     }
     var maker: Spite.Class? = Monster
     var made = maker()
-    if made == Monster {
+    if made.class == Monster {
         console.print(made.name)
     }
     var crier = Crier()

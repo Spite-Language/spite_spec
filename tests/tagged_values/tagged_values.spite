@@ -24,7 +24,7 @@ func TaggedValues() {
     var joined = kinds.join(" ")
     console.print(joined)
     var first: Anything? = held.first()
-    if first == Integer {
+    if first.class == Integer {
         var doubled = first * 2
         console.print("first doubled", doubled)
     }
@@ -32,11 +32,11 @@ func TaggedValues() {
 }
 
 func add_kind(item: Anything) {
-    if item == Integer {
+    if item.class == Integer {
         kinds.append("integer {item}")
-    } else if item == Long {
+    } else if item.class == Long {
         kinds.append("long")
-    } else if item == Boolean {
+    } else if item.class == Boolean {
         kinds.append("boolean")
     } else {
         kinds.append("object")

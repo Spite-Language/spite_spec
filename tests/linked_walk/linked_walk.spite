@@ -45,7 +45,7 @@ func build_chain(length: Integer): Node? {
 }
 
 func describe(state: State): String {
-    if state == Busy {
+    if state.class == Busy {
         return "busy with {state.jobs} jobs"
     }
     return "not working: {state.class.name}"

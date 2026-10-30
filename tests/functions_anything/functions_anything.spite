@@ -11,7 +11,7 @@ func FunctionsAnything() {
     var index = 0
     while index < things.count() {
         var thing = things[index]
-        if thing == Health {
+        if thing.class == Health {
             console.print("health", thing.points)
             count = count + 1
         }

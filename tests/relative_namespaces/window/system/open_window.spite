@@ -19,7 +19,7 @@ func run() {
     removals.removed.append(request)
     var removal_text = removals.describe()
     var event: Event = created
-    var is_created = event == Component.Created
+    var is_created = event.class == Component.Created
     last = request
     console.print(created.id, removal_text, is_created, size, last.size)
 }

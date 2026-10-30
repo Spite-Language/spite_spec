@@ -1,1 +1,1 @@
-conformance/switch_single_case/switch_single_case.spite:19: error: this switch only asks what 'creature' is: write 'return creature == Fish' (in SwitchSingleCase.is_fish)
+conformance/switch_single_case/switch_single_case.spite:19: error: this switch only asks what 'creature' is: write 'return creature.class == Fish' (in SwitchSingleCase.is_fish)

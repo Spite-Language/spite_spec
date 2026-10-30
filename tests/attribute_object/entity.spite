@@ -10,10 +10,10 @@ func show() {
     while index < components.count() {
         var component = components[index]
         var described: String = component.class
-        if component == Health {
+        if component.class == Health {
             described = "Health {component.amount}"
         }
-        if component == Integer {
+        if component.class == Integer {
             described = "Integer {component + 1}"
         }
         console.print(described)

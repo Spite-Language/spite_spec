@@ -1,0 +1,3 @@
+func with_bang(): String {
+    return "{this}!"
+}

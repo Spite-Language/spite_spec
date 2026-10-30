@@ -218,7 +218,7 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
     (`conformance/known_fact_next_line`);
   - a class test the value's type answers, outside a generic class and a walk: "'monster' is a Monster here, so it
     is never Ghost and this test is decided while compiling: remove it", "'monster' is a Monster here, so this test is
-    decided while compiling: remove it", and "'creature' is already a Monster, narrowed by 'if creature == Monster'
+    decided while compiling: remove it", and "'creature' is already a Monster, narrowed by 'if creature.class == Monster'
     on line 23: remove this test" (`conformance/known_fact_class_never`, `conformance/known_fact_class_again`);
   - a `fallback` or `crash` that is decided while compiling and holds, outside a generic class and a walk: "'crash
     Point.has_function("length")' is decided while compiling and always holds here: remove it"

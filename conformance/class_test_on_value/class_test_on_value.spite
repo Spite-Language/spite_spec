@@ -1,0 +1,14 @@
+union Creature {
+    Fish
+    Bird
+}
+
+var console = Console()
+
+func ClassTestOnValue() {
+    load "../../../spite_standard_library/windows"
+    var creature: Creature = Fish()
+    if creature == Fish {
+        console.print("fish")
+    }
+}

@@ -167,7 +167,7 @@ declares an empty `type` of its own for that. An empty `type` requires nothing, 
 function taking `Anything` is compiled once for each class that reaches it
 ([values_and_types.md](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#inline-types-and-duck-typing)), so a number, `Boolean` or enum passed
 to it arrives as itself; one stored as `Anything` (in a `List<Anything>`, say) keeps its class beside it, as any
-plain value stored as a `type` does, and `if component == Health` narrows it back. `Spite.Attribute.value`, the instance an attribute holds, is typed `Anything?`
+plain value stored as a `type` does, and `if component.class == Health` narrows it back. `Spite.Attribute.value`, the instance an attribute holds, is typed `Anything?`
 ([Reflection objects](reflection.md#reflection-objects)). An empty `type` costs nothing until a value is
 passed to it: it holds no functions, and nothing is allocated for a number, `Boolean` or enum value stored
 as `Anything`.

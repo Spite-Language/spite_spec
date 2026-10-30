@@ -4,17 +4,17 @@ var kind: Spite.Class = Gadget
 func RunTimeClassMember() {
     load "../../../spite_standard_library/windows"
     var fresh = kind()
-    if fresh == Gadget {
+    if fresh.class == Gadget {
         console.print("the attribute makes a Gadget with power", fresh.power)
     }
     kind = Rock
     var other = kind()
-    if other == Rock {
+    if other.class == Rock {
         console.print("the attribute changed makes a Rock weighing", other.weight)
     }
     var shelf = Shelf()
     var shelved = shelf.kind()
-    if shelved == Rock {
+    if shelved.class == Rock {
         console.print("a Shelf's attribute makes a Rock weighing", shelved.weight)
     }
     var kept = List<Anything>()
@@ -32,10 +32,10 @@ func RunTimeClassMember() {
 
 func remake(thing: Anything) {
     var made = thing.class()
-    if made == Rock {
+    if made.class == Rock {
         console.print("another Rock weighing", made.weight)
     }
-    if made == Gadget {
+    if made.class == Gadget {
         console.print("another Gadget with power", made.power)
     }
 }
@@ -46,10 +46,10 @@ func describe_taken(function: Spite.Function) {
 
 func remade(taken: Spite.Argument) {
     var made = taken.class()
-    if made == Integer {
+    if made.class == Integer {
         console.print(taken.name, "makes the Integer", made)
     }
-    if made == String {
+    if made.class == String {
         console.print(taken.name, "makes the String '{made}'")
     }
 }

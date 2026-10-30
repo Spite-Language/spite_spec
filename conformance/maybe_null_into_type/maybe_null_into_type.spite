@@ -25,7 +25,7 @@ func pick(flag: Boolean): Anything? {
 }
 
 func show(value: Anything) {
-    console.print(value == Integer)
+    console.print(value.class == Integer)
 }
 
 func empty(box: Box) {
@@ -33,5 +33,5 @@ func empty(box: Box) {
 }
 
 func keep(pet: Pet) {
-    console.print(pet == Cat)
+    console.print(pet.class == Cat)
 }

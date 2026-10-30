@@ -15,10 +15,10 @@ func TestedClasses() {
 }
 
 func described(item: Anything): String {
-    if item == Ghost {
+    if item.class == Ghost {
         return item.haunt()
     }
-    if item == Coin {
+    if item.class == Coin {
         return item.shine()
     }
     return "something else"

@@ -25,9 +25,9 @@ func KnownFactClassAgain() {
     crash total > 2
     console.print(total)
     var creature: Creature = Monster()
-    if creature == Monster {
+    if creature.class == Monster {
         console.print("a monster")
-        if creature == Monster {
+        if creature.class == Monster {
             console.print(creature.health)
         }
     }

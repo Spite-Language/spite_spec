@@ -8,7 +8,9 @@ func ClassAndInstance() {
     troll.attributes.each(show)
     troll.attributes.each(heal)
     console.print("health is now", troll.health)
-    console.print("troll is a Monster:", troll.class == Monster)
+    var troll_class = troll.class
+    var is_a_monster = troll_class == Monster
+    console.print("troll is a Monster:", is_a_monster)
     var bound = troll.functions['alive']
     crash bound
     console.print("bound to troll:", bound.name)

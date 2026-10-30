@@ -9,12 +9,12 @@ var favorite: Shape? = null
 func ClassTest() {
     load "../../../spite_standard_library/windows"
     var shape: Shape = Circle()
-    console.print(shape == Circle)
-    console.print(shape == Square)
-    console.print(shape != Square)
-    console.print(favorite == Circle)
+    console.print(shape.class == Circle)
+    console.print(shape.class == Square)
+    console.print(shape.class != Square)
+    console.print(favorite.class == Circle)
     favorite = Square()
-    console.print(favorite == Square)
+    console.print(favorite.class == Square)
     var described_circle = Circle()
     var circle_description = describe(described_circle)
     console.print(circle_description)
@@ -24,7 +24,7 @@ func ClassTest() {
 }
 
 func describe(shape: Shape): String {
-    if shape == Circle {
+    if shape.class == Circle {
         return "a circle of radius {shape.radius}"
     }
     return "not a circle"

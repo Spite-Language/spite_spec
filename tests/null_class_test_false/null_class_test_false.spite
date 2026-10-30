@@ -8,7 +8,7 @@ var favorite: Shape? = null
 
 func NullClassTestFalse() {
     load "../../../spite_standard_library/windows"
-    var round = favorite == Circle
-    var square = favorite != Square
+    var round = favorite.class == Circle
+    var square = favorite.class != Square
     console.print(round, square)
 }
