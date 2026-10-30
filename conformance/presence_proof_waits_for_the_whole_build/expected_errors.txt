@@ -1,0 +1,1 @@
+conformance/presence_proof_waits_for_the_whole_build/shelf.spite:11: error: 'missing' is not a local, an attribute or a function of 'Shelf' (in Shelf.report)

@@ -1,0 +1,14 @@
+var console = Console()
+var item: Item? = Item()
+
+func show() {
+    if item {
+        console.print(item.name)
+    } else {
+        console.print("nothing")
+    }
+}
+
+func empty() {
+    item = null
+}

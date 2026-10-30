@@ -1,0 +1,16 @@
+var console = Console()
+var item: Item? = Item()
+
+func show() {
+    crash item
+    console.print(item.name)
+    report()
+}
+
+func report() {
+    console.print(missing)
+}
+
+func empty() {
+    item = null
+}

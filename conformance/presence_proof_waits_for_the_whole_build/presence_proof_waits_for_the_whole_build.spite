@@ -1,0 +1,11 @@
+var shelf = Shelf()
+
+func PresenceProofWaitsForTheWholeBuild() {
+    load "../../../spite_standard_library/windows"
+    shelf.show()
+    later()
+}
+
+func later() {
+    shelf.empty()
+}
