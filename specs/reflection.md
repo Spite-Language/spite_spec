@@ -85,7 +85,11 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   members, and a template is written over the declaration with the object as a parameter of its own.
 - **A bound function** is a function value of that instance ([functions_and_operators.md](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md#functions-are-values)),
   so a function named on an instance and its reflection are the same object. Calling it always calls. Its `.owner` is
-  the instance it is bound to.
+  the instance it is bound to, and its `.declaration` the `Spite.FunctionDeclaration` it is bound from; its
+  `.name`, `.arguments`, `.returns`, `.is_resumable`, `.returned_literal`, `.reads` and `.writes` are read through
+  the declaration. A class's declarations have no `call_function()`: one runs only on an object, through a bound
+  function or a `Spite.Call` (`tests/function_declarations`). A function value given where a
+  `Spite.FunctionDeclaration` is wanted is its declaration.
 - **`Spite.Call(declaration, instance)` builds a call without running it**, the only way to build one: the
   declaration is a `Spite.FunctionDeclaration`, and `instance` must be of the class that declares it.
   `.arguments["name"] = value`

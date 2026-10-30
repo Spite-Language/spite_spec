@@ -6,7 +6,7 @@ func PinnedComponents() {
     systems.each(place)
 }
 
-func place(function: Spite.Function) {
+func place(function: Spite.FunctionDeclaration) {
     var mutated = function.arguments.filter_is_mutated()
     var mutated_count = mutated.count()
     console.print(function.name, "writes", mutated_count)

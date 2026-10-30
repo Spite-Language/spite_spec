@@ -32,7 +32,7 @@ func show_held(attribute: Spite.Attribute) {
     )
 }
 
-func show_callable(function: Spite.Function) {
+func show_callable(function: Spite.FunctionDeclaration) {
     console.print(" ", function.name)
     function.arguments.each(show_taken)
     if function.name == "greeting" {

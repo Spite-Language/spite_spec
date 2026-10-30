@@ -1,0 +1,30 @@
+var console = Console()
+
+func FunctionDeclarations() {
+    load "../../../spite_standard_library/windows"
+    var declared = Monster.functions["roar"]
+    crash declared
+    var answer = declared.returns
+    var taken = declared.arguments.count()
+    console.print(declared.name, answer, taken)
+    var troll = Monster()
+    var bound = troll.functions["roar"]
+    crash bound
+    var same = bound.declaration.name == declared.name
+    var owner = bound.owner
+    var owner_class = owner.class
+    console.print(bound.name, same, owner_class)
+    bound.call_function()
+    var hurt = Monster.functions["hurt"]
+    crash hurt
+    var call = Spite.Call(hurt, troll)
+    call.arguments["amount"] = 4
+    call.call()
+    describe(troll.roar)
+    console.print(troll.health)
+}
+
+func describe(function: Spite.FunctionDeclaration) {
+    var taken = function.arguments.count()
+    console.print("declared", function.name, taken)
+}

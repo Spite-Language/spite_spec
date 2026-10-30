@@ -1,0 +1,5 @@
+roar String 0
+roar true Monster
+roar
+declared roar 0
+6

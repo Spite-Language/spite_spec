@@ -2,7 +2,8 @@ var console = Console()
 
 func CallFunctionArguments() {
     load "../../../spite_standard_library/windows"
-    var functions = Greeter.functions.values()
+    var greeter = Greeter()
+    var functions = greeter.functions.values()
     var index = 0
     while index < functions.count() {
         var function = functions[index]

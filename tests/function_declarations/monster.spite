@@ -1,0 +1,11 @@
+var console = Console()
+var health = 10
+
+func roar(): String {
+    console.print("roar")
+    return "roared"
+}
+
+func hurt(amount: Integer) {
+    health = health - amount
+}

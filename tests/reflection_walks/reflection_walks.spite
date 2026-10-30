@@ -50,11 +50,11 @@ func show_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
     console.print("template", attribute.name, monster.attributes[attribute])
 }
 
-func walks_each(function: Spite.Function): Boolean {
+func walks_each(function: Spite.FunctionDeclaration): Boolean {
     return function.name.ends_with("_each")
 }
 
-func run(function: Spite.Function) {
+func run(function: Spite.FunctionDeclaration) {
     var arguments_count = function.arguments.count()
     console.print(function.name, "takes", arguments_count)
     function.arguments.each(describe_taken)

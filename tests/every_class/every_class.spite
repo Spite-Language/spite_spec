@@ -18,18 +18,21 @@ func EveryClass() {
     while index < classes.count() {
         var zoo_namespace = classes[index].namespace
         if zoo_namespace and zoo_namespace.name_with_namespaces == "Zoo" {
-            var speakers = classes[index].functions.values()
-            run_speakers(speakers)
+            run_speakers(classes[index])
         }
         index = index + 1
     }
 }
 
-func run_speakers(functions: List<Spite.Function>) {
+func run_speakers(described: Spite.Class) {
+    var speaker = described()
+    var functions = described.functions.values()
     var index = 0
     while index < functions.count() {
-        if functions[index].name == "speak" {
-            functions[index].call_function()
+        var declaration = functions[index]
+        if declaration.name == "speak" {
+            var call = Spite.Call(declaration, speaker)
+            call.call()
         }
         index = index + 1
     }

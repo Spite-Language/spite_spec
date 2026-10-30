@@ -1,5 +1,5 @@
 var console = Console()
-var kept = List<Spite.Function>()
+var kept = List<Spite.FunctionDeclaration>()
 
 func RunTimeAccesses() {
     load "../../../spite_standard_library/windows"
@@ -18,7 +18,7 @@ func RunTimeAccesses() {
     describe(first)
 }
 
-func describe(function: Spite.Function) {
+func describe(function: Spite.FunctionDeclaration) {
     var reads = function.reads
     var writes = function.writes
     var read_count = reads.count()

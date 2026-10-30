@@ -2,7 +2,7 @@ var console = Console()
 var sound = "woof"
 
 func Dog() {
-    sound = "WOOF, from a constructor reflection never runs"
+    sound = "WOOF, from its constructor"
 }
 
 func speak() {
