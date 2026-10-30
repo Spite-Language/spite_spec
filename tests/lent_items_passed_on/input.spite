@@ -1,0 +1,15 @@
+var left = 0
+
+func handle(mouse: Mouse) {
+    mouse.left = 2
+    var measure = left_of
+    left = measure(mouse)
+}
+
+func hand_back(mouse: Mouse): Mouse {
+    return mouse
+}
+
+func left_of(mouse: Mouse): Integer {
+    return mouse.left
+}

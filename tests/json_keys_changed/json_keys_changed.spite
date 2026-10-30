@@ -1,0 +1,23 @@
+var console = Console()
+
+func JsonKeysChanged() {
+    load "../../../spite_standard_library/windows"
+    var detail = MeshRecord.attributes['minimum_level_of_detail']
+    crash detail
+    var writer = JsonWriter<MeshRecord>()
+    writer.keys = {MeshRecord.attributes['minimum_level_of_detail']: "min_lod"}
+    writer.keys[detail] = "lod"
+    var other = JsonWriter<MeshRecord>()
+    other.keys = {MeshRecord.attributes['minimum_level_of_detail']: "level"}
+    var record = MeshRecord()
+    record.minimum_level_of_detail = 2
+    var text = writer.write(record)
+    var other_text = other.write(record)
+    var reader = JsonReader<MeshRecord>()
+    reader.keys = {MeshRecord.attributes['minimum_level_of_detail']: "min_lod"}
+    var held = reader.keys
+    held[detail] = "level"
+    var back = reader.read(other_text)
+    crash back
+    console.print(text, other_text, back.minimum_level_of_detail)
+}

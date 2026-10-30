@@ -1035,7 +1035,9 @@ Rules: 41. Covered before: 14. Covered now: 35.
 | A keys map naming a missing, private or singleton attribute is an error | none | missing |
 | A keys map made at run time is copied and turned into a table when set | tests/json_run_time_keys | added |
 | A keys map made at run time keying anything but a public attribute holding a value halts | tests/json_run_time_keys_unknown | added |
-| A written-out keys map and one made at run time for one class's serializers is an error | conformance/json_keys_mixed | added |
+| A keys map mixed, changed, held or passed on is read as the program runs (D1781) | tests/json_keys_mixed, json_keys_passed, json_keys_changed | added |
+| A register called outside the setup leaves the walk as written (D1781) | tests/register_outside_setup | added |
+| A lent item passed where the compiler cannot follow it stays counted (D1781) | tests/lent_items_passed_on | added |
 | json_key_<attribute>() is an error | conformance/json_key | covered |
 | A number reads into the attribute's number type: 3.7 into an Integer is 3 | tests/json_number_into_integer | added (compiler fails: read answers null) |
 | A whole number reads into a decimal attribute | tests/json_integer_into_decimal | added |

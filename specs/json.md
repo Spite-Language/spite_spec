@@ -150,18 +150,15 @@ The details:
   time that gives a key to anything but one of the class's public attributes holding a value halts where it is
   set, "spite: 'JsonWriter.keys' gives a key to an attribute that is not one of the public attributes of
   'ShelfItem' that hold a value, at <file>:<line> in <class>.<function>" (`tests/json_run_time_keys_unknown`).
-  The serializers of one class take their maps one way: a written-out map folded for one and a map made at run
-  time for another is an error, "'JsonWriter.keys' is given a map made at run time here, and a written-out one
-  the compiler already folded into the code every such serializer is compiled to: give every one a map made the
-  same way" (`conformance/json_keys_mixed`). Naming an attribute the class does
-  not have, a private one or one holding a singleton is an error. The map is set whole: changing one key through
-  an index, `set_at`, `remove_at` or `clear` is an error, "'JsonWriter.keys' is folded into the code while
-  compiling, so it is set whole with a written-out map and never changed one key at a time", and so is a local
-  holding it, which could change it unseen: "'JsonWriter.keys' is folded into the code while compiling, so it is
-  read where it is: a local holding it could change it one key at a time, and the code would keep the keys it
-  was compiled with", and so is passing it to a function: "'JsonWriter.keys' is folded into the code while
-  compiling, so it is read where it is: 'Main.forget_the_keys' could change it one key at a time, and the code
-  would keep the keys it was compiled with" (`conformance/json_keys_passed`). Nothing in a class names its own keys.
+  A map is folded only where the compiler proves it fixed: every serializer of the class is given the same
+  written-out map, and nothing changes it, holds it in a local or passes it to a function. Anywhere else (one
+  serializer given a written-out map and another a map made at run time, two different written-out maps, a key
+  changed through an index, `set_at`, `remove_at` or `clear`, the map held in a local or passed to a function) the
+  serializer reads its own map while the program runs, looking each key up where it writes or reads the
+  attribute, so a change made through any name is seen; nothing is refused (D1781 under D1758; `tests/json_keys_mixed`,
+  `tests/json_keys_passed`, `tests/json_keys_changed`). The compiler decides once every function but the
+  serializers' is built, so the order the program is written in changes nothing. Naming an attribute the class
+  does not have, a private one or one holding a singleton is an error. Nothing in a class names its own keys.
 - **A function `json_key_<attribute>()`**, where `<attribute>` is one of the class's attributes, is the old way
   to name a key and an error at the function, so a key it gave is never silently lost: "'MeshRecord.json_key_minimum_level_of_detail'
   would name the JSON key of 'minimum_level_of_detail', and JsonReader and JsonWriter do not read a function for

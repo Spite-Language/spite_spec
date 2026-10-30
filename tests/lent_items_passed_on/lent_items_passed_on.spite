@@ -1,0 +1,40 @@
+union Device {
+    Mouse
+    Keyboard
+}
+
+var console = Console()
+var mice = List<Mouse>()
+var input = Input()
+
+func LentItemsPassedOn() {
+    load "../../../spite_standard_library/windows"
+    var made = Mouse()
+    mice.append(made)
+    crash mice[0]
+    var first = mice[0]
+    first.left = 1
+    var measure = left_of
+    var left = measure(first)
+    var total = count_left(first, first)
+    var described = describe(first)
+    input.handle(first)
+    var back = input.hand_back(first)
+    back.left = 3
+    console.print(left, total, described, input.left, first.left)
+}
+
+func left_of(mouse: Mouse): Integer {
+    return mouse.left
+}
+
+func count_left(...gathered: List<Mouse>): Integer {
+    return gathered.sum_left()
+}
+
+func describe(device: Device): String {
+    if device.class == Keyboard {
+        return "a keyboard of {device.keys} keys"
+    }
+    return "a mouse"
+}
