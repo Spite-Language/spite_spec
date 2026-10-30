@@ -7,11 +7,11 @@ var _high_health = 300
 func SingletonFunctionValues() {
     load "../../../spite_standard_library/windows"
     rows.least = _least_health
-    var filling = List<Parallel<Integer>>()
+    var filling = List<Integer>()
     var start = 0
     while start < _filled_rows {
         var filler = Filler(start)
-        var fill = Parallel(filler.fill)
+        var fill = filler.fill()
         filling.append(fill)
         start = start + 100
     }

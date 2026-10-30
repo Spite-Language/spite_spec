@@ -7,13 +7,13 @@ func SingletonReads() {
     load "../../../spite_standard_library/windows"
     add_rows(0, _first_rows)
     var first = Reader(_first_rows)
-    var first_run = Parallel(first.run)
+    var first_run = first.run()
     var second = Reader(_first_rows)
-    var second_run = Parallel(second.run)
+    var second_run = second.run()
     var third = Reader(_first_rows)
-    var third_run = Parallel(third.run)
+    var third_run = third.run()
     add_rows(_first_rows, _all_rows)
-    var read: Integer = first_run + second_run + third_run
+    var read = first_run + second_run + third_run
     var last = Reader(_all_rows)
     var everything: Integer = last.run()
     console.print("three readers saw", read, "while rows were added, and all rows add up to", everything)

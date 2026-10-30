@@ -28,7 +28,7 @@ is the bug.
   class what it already has) is a compile error that names the library form to write. The recognised patterns
   are few and each one is added as it is seen; a similar piece of code that is not one of them is never refused.
 - A plain program written with lists, loops and classes must be able to reach the speed of the same program
-  written with `Concurrent`, `Parallel` and `Memory` by hand. Where it does not, the compiler is wrong.
+  written with threads, waiting work and raw memory by hand. Where it does not, the compiler is wrong.
 
 ---
 

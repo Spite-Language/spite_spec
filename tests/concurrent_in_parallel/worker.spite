@@ -1,10 +1,8 @@
 var program = Program()
 
 func run(): Integer {
-    var first = Concurrent(nap)
-    var second = Concurrent(nap)
-    var one: Integer = first
-    var two: Integer = second
+    var one = nap()
+    var two = nap()
     return one + two
 }
 

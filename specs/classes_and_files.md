@@ -216,8 +216,8 @@ var heap = Memory.Heap()
   `conformance/stage6/singleton_counts`).
 - **Teardown order.** A singleton counts as made
   when its constructor *finishes*, so a singleton its attributes or constructor made is made before it and
-  outlives it. At exit every `Concurrent` still running is run to its end first
-  ([concurrency.md](concurrency.md)), then standard output is flushed, then singletons are destroyed newest first, and every
+  outlives it. At exit every call a frame loop started that is still running is run to its end first
+  ([concurrency.md](concurrency.md#a-wait-in-a-frame-does-not-hold-the-frame)), then standard output is flushed, then singletons are destroyed newest first, and every
   `DynamicLibrary` is unloaded after all of them. A `drop()` may therefore use any singleton made before its
   own, and any library. A `drop()` that fetches a singleton already destroyed, one first made *after* the
   dropping singleton, halts with `spite: a drop() at exit used the singleton Archive after it was destroyed:
@@ -247,11 +247,8 @@ var heap = Memory.Heap()
 - **Made once, whichever thread asks first.** In a program that starts
   threads, the first fetch of a singleton takes a lock of its own, checks again and makes it; every later fetch
   is still one load. A program with no threads keeps the plain check (`conformance/stage6/singleton_race`).
-- **Safe for threads without a keyword.** A singleton a `Parallel` can reach is made thread-safe
-  by the compiler in the cheapest form proven safe, a lock of its own being the fallback, only in programs that
-  use `Parallel`. The details are in
-  [optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#thread-safety-for-singletons-the-cheapest-safe-form) and
-  [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md).
+- **Safe for threads without a keyword.** Work the compiler runs at once never shares a singleton one of them
+  writes, so no singleton needs a lock ([concurrency.md](concurrency.md#what-runs-at-once)).
 - **A singleton that holds nothing**, with no attributes but settings the compiler folds, and no `drop()`, such as
   `Memory.Heap`, `Build` and `TypedMemory<T>`, is one static object in a production build and an ordinary
   singleton in an inspectable one ([Command line](compiler.md#command-line)). There it may be made again

@@ -7,14 +7,10 @@ var earlier = List<String>()
 
 func WaitOrder() {
     load "../../../spite_standard_library/windows"
-    var summing = Concurrent(sum_in_order)
-    var naming = Concurrent(text_in_order)
-    var passing = Concurrent(arguments_in_order)
-    var appending = Concurrent(receiver_in_order)
-    var sum: Integer = summing
-    var text: String = naming
-    var passed: String = passing
-    var appended: Integer = appending
+    var sum = sum_in_order()
+    var text = text_in_order()
+    var passed = arguments_in_order()
+    var appended = receiver_in_order()
     console.print("counter + bump(): the counter was read first:", sum)
     console.print(text)
     console.print("arguments around a join:", passed)
@@ -48,8 +44,9 @@ func text_in_order(): String {
 
 func arguments_in_order(): String {
     counter = 2
-    var bumping = Concurrent(bump_later)
-    return pair(counter, bumping, counter)
+    var first = counter
+    var bumped = bump_later()
+    return pair(first, bumped, counter)
 }
 
 func bump_later(): Integer {

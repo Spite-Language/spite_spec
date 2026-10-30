@@ -4,445 +4,129 @@ The specification of [Concurrency: waiting without colouring](https://github.com
 its edge cases and its exact error texts. The page teaches; this one decides, and where they disagree, the page
 is the bug.
 
-## Concurrency: `Concurrent`, `Parallel` and hidden waiting
+## What runs at once
 
-No function is coloured, and dropping a handle joins. The compiler injects the REPL's drain points where the program
-already waits. IO never blocks the program by the program's own hand. Async waiting and threads are two different
-things, so they are two classes, `Concurrent` and `Parallel`, and one scheduler.
+No function is coloured, and a program never says what runs at once: the compiler decides. It overlaps work it
+proves independent, wherever the work stands and where it pays, and a program shows exactly what running it in
+order shows: the same output, the same answers, the same values read. The one exception is a crash: the first
+crash stops the program (below). Wherever the compiler cannot yet prove work independent, the program runs it in
+order, slower and with the same output; spite_compiler#218, #219 and #220 widen what it overlaps. IO never blocks
+the program by the program's own hand, and the compiler puts the REPL's drain points where the program already
+waits.
 
-- **`Concurrent(function)`** runs a function value as a **state machine**
-  the compiler writes (below), on the program's own thread, starting straight away; reading the handle is what waits for its value (below) and
-  `drop()` waits for it, so scope exit is a join point. It is for work that waits: IO, sleeps, database calls.
-- **`Parallel(function)`** runs one on a **thread of its own** (below), with
-  the same reading and join on drop. It is for work that computes.
-- The type is never written: `Concurrent(file.read)` is a `Concurrent<String?>`, worked out from the function's
-  return. Writing it on the `var` that makes the handle is an error,
-  `the type of a 'Parallel' handle is never written: it is worked out from the function it runs, so write 'var
-  total = Parallel(count)'` (`diagnostics/written_handle_type`); where no function is there to infer from (the
-  element type of `List<Parallel<Integer>>()`, a parameter) it is still written: the rule covers only the declaration
-  that starts the work. A function that returns nothing gives a `Concurrent<Nothing>`,
-  which has no value to read and is waited for by dropping it: keep such handles in a list, and clearing the list
-  or leaving its function waits for all of them.
-- **The program ends after its `Concurrent`s.** When the entry function returns, every `Concurrent` made on the
-  program's thread that has not finished runs to its end, before standard output is flushed and before any
-  singleton is destroyed ([classes_and_files.md](classes_and_files.md), teardown order). So a handle a singleton
-  holds is finished by the time the singleton lets it go, its work ran while every singleton it uses was still
-  whole, and a handle no one lets go of (one an object cycle keeps) still had its work done. Two of them that each
-  wait for the other halt as they would anywhere (below). Only a program that makes a `Concurrent` has this: one
-  call after the entry function, and nothing at all in any other program
-  (`conformance/stage6/concurrent_unfinished_at_exit`).
-- **Every attribute of both classes is private** (`_work`, `_results`, `_state`, ...), and the one public member is
-  `finished: Boolean` (below). Nothing outside the class reaches the thread, the state machine or the work.
+**`Parallel(...)` and `Concurrent(...)` are not part of Spite.** Writing either is an error at the call:
+`'Parallel' is not part of Spite: the compiler decides what runs at once, so call the function itself`
+(`conformance/parallel_is_gone`), and the same with `'Concurrent'` (`conformance/concurrent_is_gone`). There is
+no handle type to name and no parallel form of a walk: `list.parallel_each_update()` is an unknown member
+(`conformance/parallel_each_is_gone`).
 
-**A concurrent result joins on first use.** There is no `wait()` and no `join()`: **the handle stands in for its
-result wherever the result's type is expected, and the compiler inserts the join at each such use** (the first
-one waits; the value is kept, so later ones do not). Exactly, a `Concurrent<T>` or `Parallel<T>` becomes its `T`:
+**Threads.** Work the compiler overlaps (calls in a row, a loop over different classes, bands) runs on a thread of
+the program's thread pool, and nothing else starts one but a blocking call's helper (below). The pool is made
+empty at the first such start and grows: the work goes to a thread that finished earlier work and waits for more,
+and when none is waiting the pool starts a new thread for it, which then stays in the pool. So no work ever waits
+for a thread to come free, and a program in which nothing is overlapped has no pool and starts no thread. Each
+start hands the work to a waiting thread (a lock, a queue and a wake) and pays for starting a thread only when none
+is waiting; everything started is joined before the statement after the one that started it.
 
-- where it is stored or passed as a `T`: a `var` whose type is written, an assignment, an argument (a variadic
-  `Printable` one included, so `console.print(sum)` prints the value), a `return`, an element of a list literal;
-- as an operand (`+`, `==`, `and`, `not`, any operator) and inside text, `"total {sum}"`;
-- as the receiver of a member the handle does not have: `greeting.upper_case()`, `greeting.length()`;
-- as a condition: `if ready`, `while`, `fallback`, `crash`; and when `T` is nullable, narrowing the handle narrows its
-  value (`if reading { use(reading) }`, `crash reading`), because narrowing applies to a name itself rather than a copy.
-  The value is read once, into a hidden local, and the narrowed name reads that. A handle whose `T` is `Boolean?` is refused as a
-  condition as any `Boolean?` is, since it would test only that a value came back: compare it, `if ready == true`.
-
-It stays a handle where a handle is expected (`List<Parallel<T>>.append(handle)`), in a `var` without a written
-type (`var loading = Parallel(asset.load)` is the running work), and for the handle's own members, `finished` and
-`finished_value()`, and `class`, `attributes` and `functions`, which every object has, so a member template over a
-`List<Parallel<T>>` reads the handles (`runs.all_finished()`, `conformance/stage6/kept_templates`). A
-`T` of `Nothing` is never read, so such a handle only joins on drop. Comparing two handles with `==` compares their
-values; there is no way to compare the handles themselves. The compiler writes
-each join as a call to the class's private `_result()`; only a join the compiler inserted may call it.
-
-**`finished` never waits.** `handle.finished` is `true` once the function has
-returned. On a `Parallel` it reads the work's state with one atomic load; on a `Concurrent` it reads the flag its
-state machine's frame carries once it finishes, so a state machine only makes progress when the program waits
-somewhere (`while not reading.finished { program.sleep(one_millisecond) }` is the polling loop). The same on every system
-(`conformance/stage6/finished_polling`).
-
-**`finished_value()` takes a finished result without waiting.** `handle.finished_value(): T?` answers the value when the work has finished and `null` otherwise, on a
-`Concurrent` and on a `Parallel`: `finished`, then the value,  in one call. It is never a wait point, so `is_resumable` answers `false` for a function
-whose only handle read is `finished_value()`, while reading the handle as its value still waits and still counts:
-an engine system that only collects finished work is not taken for one that does IO. It costs what `finished`
-followed by a read costs, and a program that never calls it carries none of it
-(`conformance/stage6/finished_values`).
-
-**A handle's debug text never waits.** `Concurrent` and `Parallel` have their own `to_debug()`: `running` while the work runs,
-otherwise the result's own debug text (through `finished_value()`), so `console.debug` of a class holding a
-`Parallel<Tcp.Client?>?`, and a crash report that shows one, neither join the work nor forward `to_debug` to a
-`Tcp.Client?` that may be null (`conformance/stage6/debug_handles`).
-
-**A handle made at its defaults started nothing, so it is finished and joins nothing.** Reflection makes one: describing a class whose function takes a `Concurrent<T>` or a `Parallel<T>`
-describes that handle's class too, from a stand-in at its defaults ([reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md)). Such a handle
-has no frame and no thread: `finished` is `true`, `finished_value()` is `null`, and dropping it waits for nothing
-and frees nothing.  Nothing
-is added to pay for it: a `Concurrent` starts with its `finished` flag set and clears it only when it starts a
-frame, and a `Parallel` allocates its state only when it starts the work
-
-(`conformance/stage6/default_handles`, which describes a function taking each of the four).
-
-**Threads.** A `Parallel(function)` runs on a thread of the program's thread pool, and nothing else starts one
-but a blocking call's helper (below). The pool is made empty at the first `Parallel` and grows: the work goes to a
-thread that finished earlier work and waits for more, and when none is waiting the pool starts a new thread for it,
-which then stays in the pool. So no work ever waits for a thread to come free (a `Parallel` that waits for another
-one, or never ends, cannot keep the others from running), and a program that makes no `Parallel` has no pool and
-starts no thread. Any code hands work over by `Parallel(function)` and gets a handle whose `finished` never blocks
-and whose value joins on first use.
-
-- **Work that never finishes.** For each `Parallel(function)` in the program's own code (not the standard
-  library's), every function the work reaches through calls whose class is known is read for a `while true` with
-  no `return`, `fallback` or `crash` anywhere inside it. Such a loop in a function that never waits (none of its
-  calls reaches a call that waits and gives its thread back, such as a socket read) is the error at the loop,
-  once per function:
-  `'Parallel(<work>)' runs '<Class>.<function>' on the thread pool, and this loop never ends and never waits, so the
-  work never finishes and keeps its thread for good: return from the loop once the work is done, or run the loop
-  on the program's own thread` (`diagnostics/endless_parallel_work`). A function that waits anywhere is left alone,
-  as is a loop that can leave. Checked while compiling; nothing runs for it.
-- **Joining.** Reading a `Parallel`'s value, or dropping it, waits until its thread has returned. A `Parallel`
-  started from inside another one joins the same way.
-- **Join on drop is kept.** Dropping the last handle runs its `drop()` straight away, and that waits.
-- **At exit** every `Parallel` still running is finished before the program ends: its handle's `drop()` waits for it.
-- **Cost.** A `Parallel` hands its work to a waiting thread of the pool (a lock, a queue and a wake), and pays for
-  starting a thread only when none is waiting; it makes a small, fixed number of allocations. The threads the pool
-  started wait for work until the program ends.
-
-**Locks and per-thread values are not the program's to write.** There is no lock, atomic or thread-local class for a
-program to name. Something of its own on each thread is an object the work makes itself; a short section only one
-thread may be in is a function of a singleton a `Parallel` reaches, which the compiler makes safe (below); a number
-or flag threads share is an attribute of such a singleton. Naming `Spite.Internal` anything in a program is a
-compile error ([packages.md](packages.md)).
+**Locks and per-thread values are not the program's to write.** Work the compiler overlaps never shares anything
+one of them writes, so it needs no lock, and no singleton gets one. There is no lock, atomic or thread-local class
+for a program to name, and naming `Spite.Internal` anything in a program is a compile error
+([packages.md](packages.md)). `conformance/stage6/singleton_guard`, `singleton_forms`, `singleton_lock_calls`,
+`singleton_reads`, `unshared_locks`, `coarse_locks`, `locked_waits` and `parallel_handover` call singletons and
+objects from many pieces of work and print what running them in order prints.
 
 **The mechanism: compile-time state machines, and a helper thread per blocking call.** The aim is no runtime, only
-compile time. The machine has no coroutines, so the compiler writes them. Every function that can
-reach a wait from inside a `Concurrent` is compiled twice: the plain function, for code outside a `Concurrent`, and
-a resumable version:
+compile time. The machine has no coroutines, so the compiler writes them. Every function that can reach a wait
+from inside work the compiler starts as a state machine of its own (a call a frame loop starts, a read it
+overlaps, below) is compiled twice: the plain function, for every other call, and a resumable version:
 
 - **Which functions.** A function *waits* when it is one of the waits below or calls a function that waits: by
   name, through a constructor, through a union's or a `type`'s function that waits for one of its classes, or
   through a function value of a signature some function made into a value with that signature waits for (found
-  over the calls the plain bodies make, to a fixpoint). A `Concurrent`'s function gets a state machine when it
-  waits and is a function value made in an argument of `Concurrent(...)`, or of a program class; every function a
-  state machine calls that waits gets one too, constructors included. A singleton's constructor, a function of a
-  singleton that takes the singleton's lock (only in a program a `Parallel` reaches it in, since a lock held across
-  a point the state machine returns from would let another `Concurrent` on the same thread into it) get none. In a
-  `--hot-reload` build a program class's state machine starts through a slot a reload swaps, and a reload waits
-  while a `Concurrent` is stopped inside a function it swaps
+  over the calls the plain bodies make, to a fixpoint). The function of work the compiler starts gets a state
+  machine when it waits, and so does every function a state machine calls that waits, constructors included; a
+  singleton's constructor gets none. In a `--hot-reload` build a program class's state machine starts through a
+  slot a reload swaps, and a reload waits while such work is stopped inside a function it swaps
   ([repl.md](repl.md), "A reload waits for the waits of what it swaps").
 - **The frame** is a block on the heap: a header (the step function, the wait it stopped at, whether it runs or
-  has finished, and, for a `Concurrent`'s own frame, the function value it runs), the result, `self`, the parameters, every local and temporary of the body (a name declared twice in
-  nested blocks gets two fields), and one slot per wait for the frame it waits on.
-- **A `Concurrent` holds its function only while it runs.** The handle lets go of
-  the function value as soon as the work has started: its frame holds it instead, and the scheduler releases it
-  when the frame finishes (work with no state machine has already finished by then). A class that keeps
-  `Concurrent(drain)` of its own function in a list is therefore a cycle only while that work runs, not after, even
-  when nobody reads `finished` again (`conformance/stage6/finished_workers`). It costs one pointer in each frame's
-  header and a retain and a release per `Concurrent`.
+  has finished), the result, `self`, the parameters, every local and temporary of the body (a name declared twice
+  in nested blocks gets two fields), and one slot per wait for the frame it waits on.
 - **The step function** runs the body with every local read from the frame, starts with a jump to the wait it
   stopped at, and answers `true` when the body returns and `false` at a wait that is not over. Jumping into a
   `while` or an `if` needs nothing, since no local lives on the stack.
 - **A wait** written as a call to a function that waits, anywhere an unconditional value is computed (a
   statement, a `var`, an argument, an operand, a `{...}` in text, a condition), becomes: hold the receiver, make
   the callee's frame with the arguments, step it until it answers `true` (returning `false` from this step while it
-  does not), take its result and free it. It runs before the rest of the statement it is written in (code cannot be jumped back into the middle of a statement). A `while` whose condition waits becomes a loop that waits at the top of
-  every pass and leaves when the condition is false. A call inside a template is a call by name like any other:
-  `system.phase_each(made_arguments())`, whose arguments a plural template makes, holds the receiver and then
-  makes each argument in order into the frame before the wait, and a helper the template passes its symbol to,
-  `nap_again(phase)`, waits the same way (`conformance/stage6/template_argument_wait`).
+  does not), take its result and free it. It runs before the rest of the statement it is written in. A `while`
+  whose condition waits becomes a loop that waits at the top of every pass and leaves when the condition is false.
+  A call inside a template is a call by name like any other.
 - **Waits in a condition, a comparison, or behind a choice made while running** are points the state machine
-  returns from too, so two waits never hold each other on the stack:
-  - The right side of `and`/`or`, and every side of an `if`'s conditions after the first, is computed only if what came before lets it, with its waits inside that test.
-  - `==` and `!=` on a nullable left side whose right side waits keep the left side, wait for the right side once,
-    then compare the two kept values.
-  - A call through a function value makes the frame of whichever function the value holds: a small function per
-    signature compares the value's function with each function made into a value with that signature that has a
-    state machine, and makes its frame, or answers none, and the value is then called plainly. A union's or a
-    `type`'s function does the same by class.
-  - A constructor that waits makes the object, then steps the constructor's own state machine on it.
-  - A local that holds a `Concurrent`, a list of them, or an object of a program class whose attributes hold one
-    (through a `T?`, a list or another such object, however deep, a class seen once on the way), waits at the end
-    of its scope for each handle it holds the last reference to, before letting it go; `clear()` on a list of
-    `Concurrent`s waits for each of them first. An assignment that replaces such a value (a local assigned again,
-    an attribute assigned again, `keeper.job = Concurrent(ring)` a second time) stores the new value first, then
-    waits the same way for the old one, then lets it go. The drop that follows then finds the work finished
-    (`conformance/stage6/dropped_handle_waits`).
-  - A `type`'s function held as a value (`var nap = sleepy.nap`) is a value of its own that holds the shape's value,
-    and calling it waits like a call through any function value, by class (`conformance/stage6/type_function_values`).
-  - A function of a singleton that holds the singleton's lock has no state machine (a lock held across a point the
-    state machine returns from would let another `Concurrent` on the same thread into it), so a wait inside it does
-    not run the event loop: it blocks there, as it would outside a `Concurrent`, and every other `Concurrent` waits
-    until the call is done, which keeps the call one step (`conformance/stage6/locked_waits`). Each locked call
-    counts itself on its thread to decide this, only in a program that has both locks and waits.
-  What still waits by running the event loop where it is (holding its `Concurrent` while every other state machine
-  goes on): dropping a `Concurrent` held in some other way inside a `Concurrent` (an element taken out of a list
-  with `remove_at` or `remove_where`, an object let go by a release no local or assignment makes), a wait through
-  a `String`'s or a number's function held as a value (a reopening's function that waits), a join of a
-  `Concurrent` inside a function of a singleton that holds its lock. Two such waits that each wait for the other could never end, so a join that
-  waits in place for a `Concurrent` whose state machine is running further down the same stack halts at the join
-  (`waits_for_its_own_caller=true`); a join that is a point to return from just waits, and the machine below it
-  carries on, unless the `Concurrent` it joins waits, through joins of its own, for the one that is joining: two
-  `Concurrent`s that each drop the other's last handle would wait for each other for ever, so the join that closes
-  the circle halts there (`joins_a_concurrent_that_waits_for_this_one=true`,
-  `conformance/stage6/concurrent_wait_cycle`). The scheduler keeps, for each `Concurrent` waiting at such a join
-  and for each one waiting in place, the one it waits for, only in a program that makes a `Concurrent`, so the
-  circle is found at whichever join closes it, however each of the others waits: a `Concurrent` that drops the
-  other's handle in place (with `remove_at`) while the other drops its own at a point to return from halts the
-  same way (`conformance/stage6/concurrent_wait_cycle_in_place`). A `Concurrent` whose function has
-  no state machine runs it to the end when it is made. `is_resumable` answers `true` for a function whose only wait
-  is one of these, since it does wait. `conformance/stage6/waits_never_hang` starts a `Concurrent` through each form
-  and finds it unfinished straight after, and joins, through a function value, work that a wait below it finishes.
+  returns from too, so two waits never hold each other on the stack: the right side of `and`/`or`, and every
+  condition of an `if` after the first, is computed only if what came before lets it, with its waits inside that
+  test; `==` and `!=` on a nullable left side whose right side waits keep the left side, wait for the right side
+  once, then compare the two kept values; a call through a function value makes the frame of whichever function
+  the value holds (a small function per signature compares the value's function with each function made into a
+  value with that signature that has a state machine, and makes its frame, or answers none, and the value is then
+  called plainly), and a union's or a `type`'s function does the same by class; a constructor that waits makes the
+  object, then steps the constructor's own state machine on it. A wait through a `String`'s or a number's function
+  held as a value runs the event loop where it is.
 - **A wait inside an expression keeps the written order.** What the expression computes before the wait (the
   left operand of an operator, the earlier pieces of a text, the earlier arguments of a call, the receiver of a
   call, the left side of an `and`/`or` or a comparison) is computed before it, into a temporary in the frame, and
   what comes after it is computed after it. A reference read that way is held for the wait and let go once the
-  expression is done, so a change another `Concurrent` makes during the wait (assigning the attribute anew, say)
-  neither frees it nor is seen by it. A local, a parameter, a constant, `self` or another wait's result is not
-  copied, since nothing can change it while the state machine waits. An assignment works out its value before its
-  target. `conformance/stage6/wait_order`.
+  expression is done, so a change other work makes during the wait neither frees it nor is seen by it. A local, a
+  parameter, a constant, `self` or another wait's result is not copied, since nothing can change it while the
+  state machine waits. An assignment works out its value before its target. `conformance/stage6/wait_order`.
 - **The waits at the bottom** are small state machines the compiler writes: `Program.sleep` registers a deadline
-  (the `Duration`'s whole milliseconds from now) and is over when the clock passes it; `Console.read_line_into`, `File.read_into`, `File.write_text`,
-  `File.write_from`, the wait for a file's lock (`File.lock()`), `Tcp.Server._accept_handle`, `Tcp.Connection._receive_into` and `Tcp.Server._first_readable` start their one system call on a helper thread
-  and are over when it flags that it returned; reading or dropping a `Concurrent` is over when that
-  `Concurrent`'s frame has finished.
+  (the `Duration`'s whole milliseconds from now) and is over when the clock passes it; `Console.read_line_into`,
+  `File.read_into`, `File.write_text`, `File.write_from`, the wait for a file's lock (`File.lock()`),
+  `Tcp.Server._accept_handle`, `Tcp.Connection._receive_into` and `Tcp.Server._first_readable` start their one
+  system call on a helper thread and are over when it flags that it returned; waiting for work the compiler
+  started is over when that work's frame has finished.
 
 Files cannot be waited on without blocking on any of the three systems, so a blocking call is handed to a
 helper thread of the pool (what libuv does for files). The alternative, each system's own readiness (IOCP, epoll,
 kqueue), is not used: an ordinary file is always "ready" to epoll and kqueue, the Windows console cannot be read
 through IOCP, and one mechanism keeps each system's folder small.
 
-**What the compiler writes for code outside a `Concurrent`.** In a program that uses the scheduler (one that makes
-a `Concurrent`, or is built with `--repl-port` or `--hot-reload`) each blocking call outside a state machine is
-wrapped: a sleep runs the event loop until its time, a blocking call runs on a helper thread while the event loop
-runs, and the join of a `Parallel` joins and then runs whatever is ready once (none of which steps a state machine
-after `resume_only_when_asked()`, below). Every other program gets none of it: no wrapper, no scheduler, no state
-machine.
+**What the compiler writes for code outside a state machine.** In a program that uses the scheduler (one in which
+the compiler starts waiting work, or built with `--repl-port` or `--hot-reload`) each blocking call outside a state
+machine is wrapped: a sleep runs the event loop until its time, and a blocking call runs on a helper thread while
+the event loop runs. Every other program gets none of it: no wrapper, no scheduler, no state machine.
 
-**Blocking is what the compiler picks when it is faster.** The wrapper asks the scheduler first: when no
-`Concurrent` made on the caller's thread is alive and no REPL is listening there, nothing else could run on that
-thread meanwhile, so the wrapper makes the plain blocking call.
+**Blocking is what the compiler picks when it is faster.** The wrapper asks the scheduler first: when no work it
+started on the caller's thread is alive and no REPL is listening there, nothing else could run on that thread
+meanwhile, so the wrapper makes the plain blocking call.
 
-**The scheduler** is the compiler's own: it exists only in a program that waits inside a `Concurrent`, and it keeps
-one loop per thread, made the first time a thread waits, so a `Concurrent` made inside a `Parallel`'s work runs on
-that thread's own loop and overlaps with the others made there, with nothing for the program to write
-(`conformance/stage6/concurrent_in_parallel`). The REPL's commands and reloads are answered only on the program's
-own thread. Each loop keeps the frames of the `Concurrent`s that have not finished, the deadlines of the
-sleeps in them and a count of helper threads in flight. Its loop answers the REPL's pending command and a pending
-reload, if any, steps every frame that is not already running further down the stack, and, when none finished,
-waits until a helper thread or the REPL's socket thread signals, with the nearest deadline as its timeout. Waiting
-forever on nothing is a deadlock, and a crash.
+**The scheduler** is the compiler's own, and a program cannot name it. It keeps one loop per thread, made the first
+time a thread waits (`conformance/stage6/concurrent_in_parallel`). The REPL's commands and reloads are answered
+only on the program's own thread. Each loop keeps the frames of the work that has not finished, the deadlines of
+the sleeps in them and a count of helper threads in flight. Its loop answers the REPL's pending command and a
+pending reload, if any, steps every frame that is not already running further down the stack, and, when none
+finished, waits until a helper thread or the REPL's socket thread signals, with the nearest deadline as its
+timeout. Waiting forever on nothing is a deadlock, and a crash.
 
-**Where `Concurrent`s resume.** An engine runs IO tasks between frames, so the program's `Scheduler()` has two
-functions for a program that wants `Concurrent`s to resume only between its own stages:
-
-- **`run_ready(): Integer`** steps once every `Concurrent` frame that is not already running, and answers how many
-  finished. It never blocks. On any thread but the scheduler's, and before any `Concurrent` exists, it does
-  nothing and answers `0`, so a `Parallel` cannot touch the scheduler's frames through it.
-- **`resume_only_when_asked()`** holds for the rest of the run. A wait
-  on the program's thread outside a state machine then steps no frame: with no REPL listening, the waiting
-  wrapper makes the plain blocking call; in a `--repl-port` build the wait still answers commands; after joining a
-  `Parallel`, nothing ready runs. A wait that runs the loop in place inside a state machine (the list above) steps
-  no other frame either. Frames are then stepped only by `run_ready()` and by joining a `Concurrent` outside a
-  state machine (reading its value or dropping it), which steps every frame until that one has finished,
-  because it may be waiting on another `Concurrent`: a join never waits for a loop the program has stopped.
-  Inside a state machine a wait is a point it returns from, as before.
-- **A poll that can never see the end halts.** Every read of `finished` that answers `false` counts, and stepping
-  any `Concurrent` (`run_ready()`, a join, or a wait that resumes them) sets the count back to zero. Between two
-  steps a `Concurrent` cannot move, so a loop that polls `finished` without stepping one, under
-  `resume_only_when_asked()` or with no wait in it at all, could only spin forever: at a million polls in a row
-  it halts, naming the program's frames and not the scheduler's: `spite: the program stopped polling a Concurrent that
-  nothing steps between two reads (unfinished_polls_with_no_frame_stepped=1000000)` (`tests/poll_without_step_halts`). Where the compiler can see it, it is a
-  compile error first: a `while` whose condition reads `finished` of a `Concurrent` held in a local, and which calls
-  nothing in its condition or its body, is `this loop reads 'napping.finished' and calls nothing, so nothing steps
-  'napping' between two reads and it never finishes` (`diagnostics/unstepped_poll`). A loop that calls anything is
-  left to the count, since the call may step it.
-- `conformance/stage6/frames_between_waits`: an engine-shaped loop whose stages join a `Parallel`, sleep and
-  write to a socket while a `Concurrent` reads that socket with `read_as_buffer` three times; the reader resumes only
-  at `run_ready()`, never inside a stage. Without `resume_only_when_asked()` the same program's reader resumes
-  inside a stage's sleep.
-
-**Soundness.** A program that starts a thread (a `Concurrent`'s helpers, a `Parallel`, or `--repl-port`), or hands C
-a `ForeignCallback` it may call from one, counts references with atomic operations, and the `--debug-memory` counts are kept safely.
-Every other program keeps the plain counts. Spite code on the program's thread only ever changes hands at a wait,
-so state machines need nothing more. A singleton first used from two threads at once is made once: the fetch takes
-the singleton's own lock only while its slot is empty (`conformance/stage6/singleton_race`). The race rule is checked
-for a `Parallel(function)` (above): it may not reach a list or object another thread could hold, though two threads
-writing one number attribute of a shared instance is still the program's mistake. A program's own singletons are made safe (below); the standard library's are not guarded, but `Console` writes each
-`print`, `write`, `error` and `debug` in one piece, so two threads printing at once never interleave the pieces of
-their lines. One smaller gap: a REPL client's `exit` while a helper
-thread is blocked reading the console may wait for that read when the process exits.
-
-**A walk over every element is written once.** A program writes `list.each_update()`; there is no parallel form of
-it. The compiler runs the walk in bands on the thread pool when it proves each pass touches only its own element and
-the work pays, and on one thread otherwise; the output is the same either way
-([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-loop-whose-passes-write-only-their-own-item-runs-in-bands)).
-`list.parallel_each_update()` is an unknown member (`conformance/parallel_each_is_gone`).
-
-**A singleton a `Parallel` reaches is made thread-safe by the compiler, in the cheapest safe form.** There is no
-keyword and no `shared` header line. In a program that makes a `Parallel`, each singleton of the program's own (not
-the standard library's) gets the first of these that is proven safe for what its functions actually do; the exact conditions are on
-[optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#thread-safety-for-singletons-the-cheapest-safe-form):
-
-1. **Nothing**, when no function a `Parallel` can run reaches it (a walk over the calls from every
-   function taken as a value).
-2. **Nothing**, when it never changes after it is made: no function of its own assigns its attributes outside the
-   constructor, no other class assigns them, and it holds no list, dictionary, function value or object that can
-   change.
-3. **Atomics**, when what changes is whole numbers or `Boolean`s and each function touches that state once: each
-   read and write is one atomic instruction.
-4. **Its own lock**, the fallback: each function that touches its changing state (reads or writes an attribute
-   that can change, calls a function of its own that does, or calls out to code that can call back into it) is
-   run holding the singleton's lock (reentrant by owner thread), and a function that touches none runs unlocked, so work calling it never waits on a
-   locked function polling that work (`conformance/stage6/singleton_stateless_calls`); a call it makes to itself
-   does not take the lock again, and a write to its attribute from another class takes the lock too, and so does a read
-   of it (`var last = registry.last` in another class loads it under the lock; an atomic singleton's
-   attribute is read with one atomic load; `conformance/stage6/singleton_lock_calls`). An attribute holding an
-   object that nothing assigns after the singleton is made is read with no lock and no count, since it stays the
-   same object for the rest of the program ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#thread-safety-for-singletons-the-cheapest-safe-form)).
-
-The first walk is made while compiling, so it counts every function made into a value as one a thread might run.
-Once the program is written out (every generic class made, the program tree shaken), the walk that decides
-[plain counts](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class) is made again over
-it: from every function whose address the program keeps but a singleton's teardown, a function value's target only
-where that code calls a value with as many arguments, following every call. A singleton that took a lock or an
-atomic attribute in forms 3 and 4, and whose lock, readers' counts and atomic attributes none of that code names,
-falls back to form 1: its wrappers call the bodies (still counting the locks held, so a wait inside behaves the
-same), and its reads and writes from other classes are plain. Not in `--repl`, `--repl-port`, `--hot-reload` or
-`--development` builds ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#thread-safety-for-singletons-the-cheapest-safe-form)).
-
-**A loop that cannot end inside a locked singleton function is a compile error.** A `while true` with no `return`, `fallback` or `crash` inside it, in a function of
-a singleton that takes the lock (the fourth form above), would hold the lock for good, so every other call on the
-singleton would wait forever: `'Window.run' holds Window's lock for the whole call, since a Parallel reaches Window,
-and this loop never ends, so every other call on Window would wait forever: move the loop into a class that is not a
-singleton, and call Window from it` (`diagnostics/endless_locked_loop`).
-
-**A locked singleton function that waits for work calling back into it is a compile error.** A function of a singleton
-that takes the lock (the fourth form above) holds it while it waits, and a `Parallel`'s work runs on a thread of its own,
-so work that calls a locked function of the same singleton waits for the lock while the function waits for the
-work, and the program hangs silently. The compiler refuses it where it can prove it:
-
-- **The wait.** The locked function makes the `Parallel` in a `var` of its own (`var removing =
-  Parallel(remover.run)`, at any depth of `if` and `while`) and the handle stays there (it is never passed as an
-  argument, assigned to anything, returned, or put in a list literal), so the function reads it (a join, whether
-  or not it polled `finished` or `finished_value()` first) or drops it at its end, which waits too.
-- **The call back.** What the work runs reaches a function of the same singleton that takes the lock, following
-  the call effects through every call whose class is known (`columns.remove_row(entity)` on an attribute bound
-  to `Columns()`, a constructor, a function of the work's own class), the work's function itself included when it
-  is one of the singleton's.
-- **The error** is at the `var` line and names both functions and both ways out: `'Columns.despawn_all' waits for
-  'Parallel(remover.run)' while it holds Columns's lock, since a Parallel reaches Columns, and what 'remover.run'
-  runs calls 'Columns.remove_row', which takes that lock: each would wait for the other forever. Wait for the
-  Parallel outside Columns's functions, or do not call Columns from its work` (`diagnostics/locked_wait`).
-
-What it does not see, and so still leaves to the program: a handle that escapes the function (stored in an
-attribute or a list, passed, returned) and is read by another locked function later; a call the call effects
-cannot place on a class (through a function value, a union, or a receiver whose class is not known); work that
-reaches the singleton only by reading or writing its attributes from outside (those take the lock too);
-and generic singletons (`Column<T>`),
-whose call effects do not tell one instance's lock from another's. A `Concurrent` cannot hang this way: it runs on
-the thread that waits for it, and the lock is re-entered by the thread that owns it.
-
-**A counted loop of calls to one locked singleton takes the lock once.** The per-call lock is two atomic operations uncontended
-(about 2 ns) and a cache line handed between cores contended; a game engine's workload took 44 ms on eight `Parallel`s against
-25.5 ms on one thread for 800 000 such calls. A `while` outside the singleton that is counted (`index < bound`,
-stepped only by its last line), calls only that singleton's functions through the attribute binding it and a
-list of plain values, computes only plain values, cannot return, and reaches no wait nor any other lock through the
-singleton's functions it calls, holds the singleton's lock for the whole loop and calls the bodies that take no lock. It cannot deadlock: it ends on its own, takes no other lock
-while holding this one (the singleton's own functions already take theirs under it), and holds it across no wait,
-which is also what the locked-wait check above enforces from the other side. The full conditions and measurements are in
-[optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-counted-loop-of-calls-to-one-singleton-takes-its-lock-once)
-(`conformance/stage6/coarse_locks`, `benchmarks/a_counted_loop_of_calls_to_one_singleton_takes_its_lock_once`). The compiler cannot take no lock at all where one
-`Parallel`'s work is the only thread touching a singleton while it runs: which other threads run at the same time
-is not known while compiling, since any function a `Parallel` reaches may be running on another worker.
-
-**Reading functions share the lock.** A function the lock would wrap that provably changes nothing (its own
-locals only, calls only to reading functions of its class, to the reading members of lists, dictionaries, text and
-numbers, to reading functions of a singleton that holds no state,
-attributes read without a getter, no text holes, operators only on numbers unless the program declares none) takes
-the readers' side, when no writing function of the singleton (and no write to its attributes from another class) is
-reachable from what a `Parallel` runs. That is the shape of a column written between
-stages and read by the systems of a stage; one also written from the work keeps the plain lock, since each write would scan the
-counts. A reader adds one to its thread's count and waits only while a writing function holds the lock; a writing
-function takes the lock and then waits for every reader to finish. Reads and writes of its attributes from other classes and counted loops
-(the readers' side when every call in the loop reads) take the matching side. It is as safe as the lock: a
-writing function still runs alone, and a reading one never beside it. No lock at all while every `Parallel`
-reaching a singleton only reads it, with writes only between stages, cannot be proven at compile time (a handle
-kept in an attribute or a list may still be running when the program writes), so the readers' side is what the
-compiler uses, measured on the shape of a game engine's columns
-(`benchmarks/a_singletons_reading_functions_do_not_exclude_each_other`: eight systems reading one singleton per row,
-17 ms against 103 ms for C taking a mutex per read). `conformance/stage6/singleton_reads` reads while the
-main thread writes.
-
-**While no task is in flight, the lock is skipped.** The program counts each running task from its start until its
-work has returned. A call that finds the count zero runs the function without the lock, since only the program's
-own thread runs the program then. A task started while such a call is running (by the function itself, or anything
-it calls) first takes every lock that call skipped, before it is counted; the call lets each go as it returns. So
-a task never sees a singleton's function half-way through unlocked. `conformance/stage6/unshared_locks` starts
-work inside a skipped call that writes the same singleton. A `while` that meets every condition of the counted loop above but being counted tests the count
-once before it starts: when it is zero it holds the skipped lock for the whole loop and calls the unlocked
-bodies, and when it is not every call takes the lock as before. Nothing the loop runs can start a task or wait, so
-the count stays zero until the loop ends
-([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-counted-loop-of-calls-to-one-singleton-takes-its-lock-once)). A cycle's back reference
-(the compiler's choice, [memory.md](memory.md)) needs no care across threads: a parent and its child built on another
-thread are both freed there.
-
-A program without `Parallel` gets none of it: an atomic singleton compiles to plain reads and writes, and no
-singleton has a lock.
-`conformance/stage6/singleton_guard`, `singleton_forms`, `singleton_lock_calls`. The race rule for
-`Parallel(function)` is above (`diagnostics/parallel_function_reach`).
-
-**A task may keep what was handed to it.** `Parallel(maker.work)` may reach an attribute of
-`maker` that holds a list or an object (which is otherwise refused) when the compiler proves the task is its only
-holder. Everything else stays refused, with an error that names this way out. The proof, all
-of it at compile time over the source:
-
-- **The instance is handed over.** `maker` is a local made by `var maker = Maker(...)` earlier in the same block as
-  the `Parallel(...)`; between the two lines it is used only to call its functions and to read or write its
-  attributes that hold values (not passed, stored, given another name, or read for an attribute that holds an
-  object); and no function of `Maker` uses `this` as a value (naming one of its own functions as the argument
-  of `each`, `filter`, `any`, `all`, `count`, `find`, `sort_by` or `sum` does not count, since those call it
-  and let it go: `stale.each(rebuild)`). `this` itself (`Parallel(own_function)`), a
-  parameter, an attribute, or an object made in an enclosing block is never handed over.
-- **The attribute is its own.** Its default is `null` or something made there (a constructor, `List<T>()`, a list
-  literal); every assignment to it in `Maker` makes a new one; no other class writes it; and no function of
-  `Maker` hands it out (returns it, passes it, stores it, names it again, or reads a member of it that is not a
-  call or an attribute holding a value).
-- **What it holds.** A `List` or `Dictionary` of plain values (numbers, `Boolean`, enums, text) needs nothing more. An object needs its class to be the program's own, never to use
-  `this` as a value (with the same allowance), and every attribute of its own that is not a value to pass the same
-  two checks. A list of
-  objects, a function value, a union or a `type` stays refused: its elements could be held elsewhere.
-- **The maker lets go.** Any later statement of that block that names `maker` is `'crafter' was handed to
-  'Parallel(crafter.craft)', which keeps its 'recipe_ids' on another thread, so it is not used after that line:
-  make another 'Crafter' for what follows, or read the task's result`, on that statement. The same holds when the
-  task writes an attribute of `maker` that holds a value, since the two threads would write it at once and one write
-  would be lost: `'counter' was handed to 'Parallel(counter.bump)', which writes its 'count' on another thread, so it
-  is not used after that line: ...` (`diagnostics/parallel_shared_writes`). Each pass of a loop makes
-  its own, so `var crafter = Crafter(first)` then `Parallel(crafter.craft)` inside a `while` hands over a new one
-  every pass.
-
-**A task writes a value attribute only of an object handed to it.** When the work of `Parallel(...)` writes an
-attribute holding a value (a number, a `Boolean`, an enum or text) of an object that was not handed over as above
-(`this` for `Parallel(own_function)`, a parameter, an attribute, or a local named again or passed before the
-`Parallel` line), it is a compile error: another thread may write the same attribute at the same time, and one write
-would be lost. `'Parallel(kept.bump)' writes 'count' of 'kept' on another thread, and 'kept' is not handed over to
-it, ...` names the ways out: hand over a new object, answer the value from the work and read the task's result, or
-keep the value in a singleton, which is made safe for threads. A singleton's own
-attributes are never counted either. `diagnostics/parallel_shared_value_writes`.
-
-The task runs exactly as it did; nothing is added at run time. `conformance/stage6/parallel_handover`,
-`diagnostics/parallel_handover`.
+**Soundness.** A program that starts a thread (overlapped work, a blocking call's helper, or `--repl-port`), or
+hands C a `ForeignCallback` it may call from one, counts references with atomic operations, and the
+`--debug-memory` counts are kept safely. Every other program keeps the plain counts. Spite code on the program's
+thread only ever changes hands at a wait, so state machines need nothing more. A singleton first used from two
+threads at once is made once: the fetch takes the singleton's own lock only while its slot is empty
+(`conformance/stage6/singleton_race`). A cycle's back reference (the compiler's choice, [memory.md](memory.md))
+needs no care across threads: a parent and its child built on another thread are both freed there. One smaller
+gap: a REPL client's `exit` while a helper thread is blocked reading the console may wait for that read when the
+process exits.
 
 **Reads in a row overlap.** All the IO classes use it, and a `File` or `Tcp.Connection` is not changed: the compiler does it
 at the call site. When two or more statements in a row are each `var name = receiver.read_as_string()` on a `File` (or
 `receiver.read_line()` on a `Tcp.Connection` or a `Tcp.Client`), with no written type, the receiver a name or an attribute path, no statement
-naming a variable an earlier one declared, and the name never assigned again in the function, every one but the
-last is compiled as `var name = Concurrent(receiver.read_as_string)`, and after the last each is joined (its private `_join()`)
-before the next statement runs. Every later use of the name is an implicit join of a finished handle (above),
-so narrowing, printing and passing it are unchanged. Only reads, only side by side, and all finished before
-anything else runs, so nothing the program does next (writing one of those files, say) can see a difference;
-reads followed by other work, or a read into a name that is assigned later, stay where they are. Such a program
-uses the scheduler and counts references atomically; a program without two reads in a row compiles as
-before. A `Directory` listing is not a waiting call (it has no helper thread), so starting it early would not overlap
-anything, and it is left alone. `conformance/stage6/overlapped_reads`.
+naming a variable an earlier one declared, and the name never assigned again in the function, the compiler starts
+every one but the last as a state machine of its own, and after the last waits for each before the next statement
+runs. Only reads, only side by side, and all finished before anything else runs, so nothing the program does next
+(writing one of those files, say) can see a difference; reads followed by other work, or a read into a name that
+is assigned later, stay where they are. Such a program uses the scheduler and counts references atomically; a
+program without two reads in a row compiles as before. A `Directory` listing is not a waiting call (it has no
+helper thread), so starting it early would not overlap anything, and it is left alone.
+`conformance/stage6/overlapped_reads`.
 
 **Calls in a row run at once.** Two or more declarations in a row, each `var name = receiver.function(arguments)`
 where `receiver` is `this` or an attribute of `this` and the arguments and the answer are numbers, run at once when
@@ -515,8 +199,8 @@ are left out as for calls in a row, and a crash halts the same way. `conformance
 
 ## A wait in a frame does not hold the frame
 
-A call that waits, made by the work a frame loop runs, is started the way `Concurrent` starts a function, so the
-frame goes on while it waits.
+A call that waits, made by the work a frame loop runs, is started by the compiler as a state machine of its own,
+so the frame goes on while it waits.
 
 - **A frame loop** is a `while` in a function of a class of the program (not the standard library's, not a generic class's
   template) whose body calls `sleep` on a `Program` (an attribute whose type is `Program`, or `Program()` itself),
@@ -532,28 +216,25 @@ frame goes on while it waits.
   type is a class of the program that is not a singleton or a value class, whose `function` (not its constructor)
   answers nothing, or a `type` that requires `function` answering nothing; and where that function can wait, as
   `is_resumable` answers ([metaprogramming.md](metaprogramming.md#asking-a-question-while-compiling)): for a `type`,
-  when any of its classes' functions can. It is compiled as `Concurrent(receiver.function)`, which runs the work
-  until its first wait, and the handle is kept, with the site that made it,
-  instead of being dropped, so the statement does not wait for it. Every other statement, a call whose function
-  never waits included, is compiled as before.
-- **Where it moves on.** A started call is a `Concurrent`, so it moves on wherever one does (above): at every wait
-  on the program's thread, which in a frame loop is the frame's sleep, or only at `Scheduler().run_ready()` and at
-  joins after `resume_only_when_asked()`.
-- **In flight.** Each unfinished handle is kept with the site (one per started statement) that made
-  it. Each time one is handed over, it first lets go of every handle that has finished, then keeps the new one when
-  it has not finished; while more than eight from the same site have not finished, it waits for the oldest of them
-  as dropping a `Concurrent` waits. So no site has more than eight in flight once its statement is done, and
-  nothing is ever dropped unfinished.
-- **Its end.** A started call that is never waited for is finished like any `Concurrent`: when the entry function
-  returns, every `Concurrent` runs to its end before standard output is flushed and before any singleton is
-  destroyed (above), so its work, its writes and its crash, if it crashes, all happen before the program ends.
-  
+  when any of its classes' functions can. The compiler starts it as a state machine of its own, which runs the
+  work until its first wait, and keeps it, with the site that started it, instead of waiting for it. Every other
+  statement, a call whose function never waits included, is compiled as before.
+- **Where it moves on.** Started work moves on at every wait on the program's thread, which in a frame loop is the
+  frame's sleep.
+- **In flight.** Each unfinished piece of work is kept with the site (one per started statement) that started
+  it. Each time one is started, the site first lets go of every one that has finished, then keeps the new one when
+  it has not finished; while more than eight from the same site have not finished, it waits in place for the
+  oldest of them. So no site has more than eight in flight once its statement is done, and nothing is ever
+  dropped unfinished.
+- **Its end.** When the entry function returns, every started call that has not finished runs to its end before
+  standard output is flushed and before any singleton is destroyed ([classes_and_files.md](classes_and_files.md),
+  teardown order), so its work, its writes and its crash, if it crashes, all happen before the program ends.
 - **A failure.** A crash inside a started call halts the program with the report of that crash, naming its own line
   and the stack of the work that ran it; nothing is kept back for a later frame to report. A `fallback` that fails
   inside it returns from its function, as anywhere.
-- **Where not.** Not in the standard library, not in the copy of a function a `Concurrent` runs (a state machine
-  waits there as before), not for a call whose answer is used (`var text = file.read_as_string()` waits where it is written),
-  and not for a call on the loop's own object (`tick()`, `wait_for_next_tick()`), which is the frame's pace.
+- **Where not.** Not in the standard library, not inside a state machine (it waits there as before), not for a
+  call whose answer is used (`var text = file.read_as_string()` waits where it is written), and not for a call on
+  the loop's own object (`tick()`, `wait_for_next_tick()`), which is the frame's pace.
 - **Answered once every function is compiled.** Whether the function can wait is known once every function it
   reaches has been compiled, so each function of the frame's code holding a statement of that shape is compiled
   after the others. If a function compiled later still changes the answer, the build fails at the statement:
@@ -561,8 +242,7 @@ frame goes on while it waits.
   is true once they are, so this frame would wait where it should go on: call it from a function the frame loop's
   own class declares`.
 - **What it costs.** A program in which no statement is started compiles as before. One in which some are uses the
-  scheduler as a program that writes `Concurrent` does, plus two lists of handles, scanned each time a call
-  is started. `conformance/stage6/frame_waits`.
+  scheduler, plus two lists of started work, scanned each time a call is started. `conformance/stage6/frame_waits`.
 - **No write is lost.** The started work and the frame run in turns, each step from one wait to the next, so a
   value one of them reads before a wait may be stale after it. A call is started only when neither side can write
   back such a value. The compiler reads the plain (not resumable) code of every function the started work reaches

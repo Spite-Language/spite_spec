@@ -1,12 +1,12 @@
-var thread: Parallel<Integer>? = null
+var pumped: Integer? = null
 var _pump_limit = 300000
 
 func start() {
     var pump = Pump(_pump_limit)
-    thread = Parallel(pump.run)
+    pumped = pump.run()
 }
 
 func finish(): Integer {
-    crash thread
-    return thread
+    crash pumped
+    return pumped
 }

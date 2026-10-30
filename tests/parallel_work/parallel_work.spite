@@ -6,11 +6,11 @@ func ParallelWork() {
     load "../../../spite_standard_library/windows"
     var small = Summer(1000000)
     var large = Summer(_large_sum_limit)
-    var small_sum = Parallel(small.total)
-    var large_sum = Parallel(large.total)
+    var small_sum = small.total()
+    var large_sum = large.total()
     console.print(small_sum, large_sum)
-    var greeting = Parallel(greet)
-    var nobody = Parallel(nobody_found)
+    var greeting = greet()
+    var nobody = nobody_found()
     if nobody {
         console.print(nobody)
     } else {
@@ -19,14 +19,14 @@ func ParallelWork() {
     var index = 0
     while index < 20 {
         var namer = Namer(index)
-        var naming = Parallel(namer.name)
+        var naming = namer.name()
         names.append(naming)
         index = index + 1
     }
     var last_name = names.last()
     crash last_name
     console.print(last_name)
-    count_and_forget()
+    say_done()
 }
 
 func greet(): String {
@@ -35,12 +35,6 @@ func greet(): String {
 
 func nobody_found(): String? {
     return null
-}
-
-func count_and_forget() {
-    var running = List<Parallel<Nothing>>()
-    var farewell = Parallel(say_done)
-    running.append(farewell)
 }
 
 func say_done() {

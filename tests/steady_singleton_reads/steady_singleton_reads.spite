@@ -3,10 +3,10 @@ var limits = Limits()
 
 func SteadySingletonReads() {
     load "../../../spite_standard_library/windows"
-    var runs = List<Parallel<Integer>>()
+    var runs = List<Integer>()
     var index = 0
     while index < 4 {
-        var run = Parallel(capped)
+        var run = capped()
         runs.append(run)
         index = index + 1
     }

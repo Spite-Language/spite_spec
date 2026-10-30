@@ -1,0 +1,1 @@
+conformance/concurrent_is_gone/concurrent_is_gone.spite:5: error: 'Concurrent' is not part of Spite: the compiler decides what runs at once, so call the function itself (in ConcurrentIsGone.ConcurrentIsGone)

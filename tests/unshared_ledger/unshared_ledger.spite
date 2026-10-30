@@ -4,7 +4,7 @@ var ledger = Ledger()
 func UnsharedLedger() {
     load "../../../spite_standard_library/windows"
     var counter = Counter()
-    var counted = Parallel(counter.run)
+    var counted = counter.run()
     var amounts = [4, 12, 30, 7]
     var large = amounts.filter(ledger.is_large)
     var index = 0

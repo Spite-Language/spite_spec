@@ -5,11 +5,11 @@ var _textures_per_loader = 2000
 
 func SingletonGuard() {
     load "../../../spite_standard_library/windows"
-    var loading = List<Parallel<Integer>>()
+    var loading = List<Integer>()
     var start = 0
     while start < _all_textures {
         var loader = Loader(start)
-        var loading_run = Parallel(loader.load_many)
+        var loading_run = loader.load_many()
         loading.append(loading_run)
         start = start + _textures_per_loader
     }

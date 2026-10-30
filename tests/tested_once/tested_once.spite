@@ -4,8 +4,7 @@ var tally = Tally()
 func TestedOnce() {
     load "../../../spite_standard_library/windows"
     var worker = Worker()
-    var started = Parallel(worker.run)
-    var first: Integer = started
+    var first = worker.run()
     var index = 0
     while index < 1000 {
         index = tally.add(index)

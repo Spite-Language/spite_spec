@@ -294,8 +294,8 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
 - **What the compiler supplies is a reopening too.** The members whose bodies the compiler supplies are `Console`'s
   raw writes, `Memory.Heap`'s allocation and `Memory.Address`'s reads, writes and atomics, `DynamicLibrary`'s opening
   and symbol lookup, `TypedMemory`'s typed slots, a number's casts and bit operations,
-  the REPL's hooks on `Spite.Attribute`/`Spite.Function`, `HotReload`'s build facts, a `Concurrent`'s state machine,
-  `ThreadPool`'s entry address and `Scheduler`'s step. They are declarations the compiler merges into their classes
+  the REPL's hooks on `Spite.Attribute`/`Spite.Function`, `HotReload`'s build facts, the state machines of waiting work,
+  the thread pool's entry address and the scheduler's step. They are declarations the compiler merges into their classes
   right after `library/` (and its operating system's folder), exactly as a later root merges a file, so a program
   can still reopen them, and `--final-classes` shows the actual content of the class. Nothing is registered by hand.
   **The form:** **a `func` with a signature and no block** is a member whose body the compiler supplies, which is how

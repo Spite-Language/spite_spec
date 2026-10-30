@@ -12,8 +12,8 @@ folder of blocks is one program), and where SpiteSpec tests the same behaviour.
 A ported program that the compiler gets wrong says why after "fails:"; each of those is a compiler or library gap,
 listed again under [Gaps](#gaps).
 
-Old programs: 975. Covered: 830. Ported: 99. Not applicable:
-46. Ported programs that fail: 2.
+Old programs: 975. Covered: 801. Ported: 99. Not applicable:
+75. Ported programs that fail: 2.
 
 ## Gaps
 
@@ -100,10 +100,10 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/comment_link_depth | covered | tests/comment_link_depth |  |
 | conformance/stage6/concurrent_in_parallel | covered | tests/concurrent_in_parallel |  |
 | conformance/stage6/concurrent_sockets | covered | tests/concurrent_sockets |  |
-| conformance/stage6/concurrent_unfinished_at_exit | covered | tests/concurrent_unfinished_at_exit |  |
-| conformance/stage6/concurrent_wait_cycle | covered | tests/concurrent_wait_cycle |  |
-| conformance/stage6/concurrent_wait_cycle_in_place | covered | tests/concurrent_wait_cycle_in_place |  |
-| conformance/stage6/concurrent_waits | covered | tests/concurrent_waits |  |
+| conformance/stage6/concurrent_unfinished_at_exit | not applicable (D1715) | retired/concurrent_unfinished_at_exit | kept in retired/concurrent_unfinished_at_exit |
+| conformance/stage6/concurrent_wait_cycle | not applicable (D1715) | retired/concurrent_wait_cycle | kept in retired/concurrent_wait_cycle |
+| conformance/stage6/concurrent_wait_cycle_in_place | not applicable (D1715) | retired/concurrent_wait_cycle_in_place | kept in retired/concurrent_wait_cycle_in_place |
+| conformance/stage6/concurrent_waits | not applicable (D1715) | retired/concurrent_waits | kept in retired/concurrent_waits |
 | conformance/stage6/configured_tables | covered | tests/configured_tables |  |
 | conformance/stage6/console_class | covered | tests/console_class |  |
 | conformance/stage6/console_error | covered | tests/console_error |  |
@@ -130,7 +130,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/deep_copies | covered | tests/deep_copies |  |
 | conformance/stage6/deep_copy_graphs | covered | tests/deep_copy_graphs |  |
 | conformance/stage6/deep_copy_unions | covered | tests/deep_copy_unions |  |
-| conformance/stage6/default_handles | covered | tests/default_handles |  |
+| conformance/stage6/default_handles | not applicable (D1715) | retired/default_handles | kept in retired/default_handles |
 | conformance/stage6/development_internals | not applicable (D662) | - | Memory.Heap, TypedMemory and Build.instances are hidden |
 | conformance/stage6/dictionary_folding | covered | tests/dictionary_folding |  |
 | conformance/stage6/dictionary_read_kept | covered | tests/dictionary_read_kept |  |
@@ -139,7 +139,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/discarded_results | covered | tests/discarded_results |  |
 | conformance/stage6/division_by_zero | covered | tests/division_by_zero |  |
 | conformance/stage6/double_maths | covered | tests/double_maths |  |
-| conformance/stage6/dropped_handle_waits | covered | tests/dropped_handle_waits |  |
+| conformance/stage6/dropped_handle_waits | not applicable (D1715) | retired/dropped_handle_waits | kept in retired/dropped_handle_waits |
 | conformance/stage6/empty_folder_range | covered | tests/empty_folder_range |  |
 | conformance/stage6/empty_plural | covered | tests/empty_plural |  |
 | conformance/stage6/encodings | covered | tests/encodings |  |
@@ -152,7 +152,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/every_attribute | covered | tests/every_attribute |  |
 | conformance/stage6/every_class | covered | tests/every_class |  |
 | conformance/stage6/file_watching | covered | tests/file_watching |  |
-| conformance/stage6/finished_polling | covered | tests/finished_polling |  |
+| conformance/stage6/finished_polling | not applicable (D1715) | retired/finished_polling | kept in retired/finished_polling |
 | conformance/stage6/finished_values | not applicable (D662) | retired/finished_values | kept in retired/finished_values (D665) |
 | conformance/stage6/finished_workers | not applicable (D662) | retired/finished_workers | kept in retired/finished_workers (D665) |
 | conformance/stage6/fixed_offsets | covered | tests/fixed_offsets |  |
@@ -307,7 +307,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/plain_counts | covered | tests/plain_counts |  |
 | conformance/stage6/plain_items | covered | tests/plain_items |  |
 | conformance/stage6/plural_templates | covered | tests/plural_templates |  |
-| conformance/stage6/pooled_loads_wait | covered | tests/pooled_loads_wait |  |
+| conformance/stage6/pooled_loads_wait | not applicable (D1715) | retired/pooled_loads_wait | kept in retired/pooled_loads_wait |
 | conformance/stage6/present_zero | covered | tests/present_zero |  |
 | conformance/stage6/printable_values | covered | tests/printable_values |  |
 | conformance/stage6/private_walk | covered | tests/private_walk |  |
@@ -363,7 +363,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/singleton_race | covered | tests/singleton_race |  |
 | conformance/stage6/singleton_reads | covered | tests/singleton_reads |  |
 | conformance/stage6/singleton_stand_in | covered | tests/singleton_stand_in |  |
-| conformance/stage6/singleton_stateless_calls | covered | tests/singleton_stateless_calls |  |
+| conformance/stage6/singleton_stateless_calls | not applicable (D1715) | retired/singleton_stateless_calls | kept in retired/singleton_stateless_calls |
 | conformance/stage6/singleton_teardown | covered | tests/singleton_teardown |  |
 | conformance/stage6/singleton_used_after_exit | covered | tests/singleton_used_after_exit |  |
 | conformance/stage6/singletons | covered | tests/singletons |  |
@@ -376,7 +376,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/source_folder | covered | tests/source_folder |  |
 | conformance/stage6/sparse_rows | covered | tests/sparse_rows |  |
 | conformance/stage6/specialised_elsewhere | covered | tests/specialised_elsewhere |  |
-| conformance/stage6/state_machines | covered | tests/state_machines |  |
+| conformance/stage6/state_machines | not applicable (D1715) | retired/state_machines | kept in retired/state_machines |
 | conformance/stage6/stored_in_place | covered | tests/stored_in_place |  |
 | conformance/stage6/streamed_rows | covered | tests/streamed_rows |  |
 | conformance/stage6/strided_counted_loops | covered | tests/strided_counted_loops |  |
@@ -403,7 +403,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/time_text_round_trips | covered | tests/time_text_round_trips |  |
 | conformance/stage6/trace_asserts | covered | tests/trace_asserts |  |
 | conformance/stage6/trace_asserts_optimized | covered | tests/trace_asserts_optimized |  |
-| conformance/stage6/type_function_values | covered | tests/type_function_values |  |
+| conformance/stage6/type_function_values | not applicable (D1715) | retired/type_function_values | kept in retired/type_function_values |
 | conformance/stage6/type_size | covered | tests/type_size |  |
 | conformance/stage6/typed_functions | covered | tests/typed_functions |  |
 | conformance/stage6/union_identity | covered | tests/union_identity |  |
@@ -421,14 +421,14 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/vector_rows | covered | tests/list_rows |  |
 | conformance/stage6/wait_index_order | covered | tests/wait_index_order |  |
 | conformance/stage6/wait_order | covered | tests/wait_order |  |
-| conformance/stage6/waiting_systems | covered | tests/waiting_systems |  |
-| conformance/stage6/waits_never_hang | covered | tests/waits_never_hang |  |
+| conformance/stage6/waiting_systems | not applicable (D1715) | retired/waiting_systems | kept in retired/waiting_systems |
+| conformance/stage6/waits_never_hang | not applicable (D1715) | retired/waits_never_hang | kept in retired/waits_never_hang |
 | conformance/stage6/walked_class_fold | covered | tests/walked_class_fold |  |
 | conformance/stage6/walked_row_locals | covered | tests/walked_row_locals |  |
 | conformance/stage6/walked_rows | covered | tests/walked_rows |  |
 | conformance/stage6/weak_parent | covered | tests/parent_back_reference |  |
-| conformance/stage6/web_socket_exchange | covered | tests/web_socket_exchange |  |
-| conformance/stage6/web_socket_failures | covered | tests/web_socket_failures |  |
+| conformance/stage6/web_socket_exchange | not applicable (D1715) | retired/web_socket_exchange | kept in retired/web_socket_exchange |
+| conformance/stage6/web_socket_failures | not applicable (D1715) | retired/web_socket_failures | kept in retired/web_socket_failures |
 | conformance/stage6/working_directory | covered | tests/working_directory |  |
 | conformance/stage6/wrapping_functions | covered | tests/wrapping_functions |  |
 | conformance/stage6/written_codegen_in_frame | covered | tests/written_codegen_in_frame |  |
@@ -491,8 +491,8 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/empty_collection_guard | covered | conformance/empty_collection_guard |  |
 | diagnostics/empty_constructor | covered | conformance/empty_constructor |  |
 | diagnostics/empty_folder_range | covered | tests/empty_folder_range |  |
-| diagnostics/endless_locked_loop | covered | conformance/endless_locked_loop |  |
-| diagnostics/endless_parallel_work | covered | conformance/endless_parallel_work |  |
+| diagnostics/endless_locked_loop | not applicable (D1715) | - | conformance/endless_locked_loop removed with spite_compiler#224 |
+| diagnostics/endless_parallel_work | not applicable (D1715) | - | conformance/endless_parallel_work removed with spite_compiler#224 |
 | diagnostics/entry_class_reopened | covered | conformance/entry_class_reopened |  |
 | diagnostics/entry_constructor_arguments | covered | conformance/entry_constructor_arguments |  |
 | diagnostics/enum_from_text | covered | conformance/enum_from_text |  |
@@ -536,7 +536,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/io_system_writes_row | covered | conformance/io_system_writes_row |  |
 | diagnostics/items_borrows | removed (D1707) | - |  |
 | diagnostics/items_nullable_unproven | covered | conformance/list_nullable_unproven |  |
-| diagnostics/joined_maybe_boolean | covered | conformance/joined_maybe_boolean |  |
+| diagnostics/joined_maybe_boolean | not applicable (D1715) | - | conformance/joined_maybe_boolean removed with spite_compiler#224 |
 | diagnostics/joined_text | covered | conformance/joined_text |  |
 | diagnostics/json_key | covered | conformance/json_key |  |
 | diagnostics/json_split | covered | conformance/json_split |  |
@@ -559,7 +559,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/load_unknown_condition | covered | conformance/load_unknown_condition |  |
 | diagnostics/loaded_folder_namespace | covered | conformance/loaded_folder_namespace |  |
 | diagnostics/local_singleton | covered | conformance/local_singleton |  |
-| diagnostics/locked_wait | covered | conformance/locked_wait |  |
+| diagnostics/locked_wait | not applicable (D1715) | - | conformance/locked_wait removed with spite_compiler#224 |
 | diagnostics/lone_hole | covered | conformance/lone_hole |  |
 | diagnostics/long_line_construction | covered | conformance/long_line_construction |  |
 | diagnostics/lost_writes | covered | conformance/lost_writes |  |
@@ -599,11 +599,11 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/overlapping_load | covered | conformance/overlapping_load |  |
 | diagnostics/own_template_borrows | removed (D1707) | - |  |
 | diagnostics/package_attributes | covered | conformance/package_attributes |  |
-| diagnostics/parallel_function_reach | covered | conformance/parallel_function_reach |  |
-| diagnostics/parallel_handover | covered | conformance/parallel_handover |  |
+| diagnostics/parallel_function_reach | not applicable (D1715) | - | conformance/parallel_function_reach removed with spite_compiler#224 |
+| diagnostics/parallel_handover | not applicable (D1715) | - | conformance/parallel_handover removed with spite_compiler#224 |
 | diagnostics/parallel_reach | not applicable (D1735) | - | its point is the race rule of `parallel_each_`, which is gone |
-| diagnostics/parallel_shared_value_writes | covered | conformance/parallel_shared_value_writes |  |
-| diagnostics/parallel_shared_writes | covered | conformance/parallel_shared_writes |  |
+| diagnostics/parallel_shared_value_writes | not applicable (D1715) | - | conformance/parallel_shared_value_writes removed with spite_compiler#224 |
+| diagnostics/parallel_shared_writes | not applicable (D1715) | - | conformance/parallel_shared_writes removed with spite_compiler#224 |
 | diagnostics/parameter_write_question | covered | conformance/parameter_write_question |  |
 | diagnostics/passed_functions | covered | conformance/passed_functions |  |
 | diagnostics/passed_symbol | covered | tests/passed_symbol |  |
@@ -675,7 +675,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/unknown_compiler_flag | covered | conformance/unknown_compiler_flag |  |
 | diagnostics/unknown_type_in_shape | covered | conformance/unknown_type_in_shape |  |
 | diagnostics/unknown_type_suggestion | covered | conformance/unknown_type_suggestion |  |
-| diagnostics/unstepped_poll | covered | conformance/unstepped_poll |  |
+| diagnostics/unstepped_poll | not applicable (D1715) | - | conformance/unstepped_poll removed with spite_compiler#224 |
 | diagnostics/unused_attributes | covered | conformance/unused_attributes |  |
 | diagnostics/unused_names | covered | conformance/unused_names |  |
 | diagnostics/upper_is_upper_case | covered | conformance/upper_is_upper_case |  |
@@ -699,7 +699,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/wider_bitwise_operand | covered | conformance/wider_bitwise_operand |  |
 | diagnostics/wider_comparison | covered | conformance/wider_comparison |  |
 | diagnostics/wider_right_operand | covered | conformance/wider_right_operand |  |
-| diagnostics/written_handle_type | covered | conformance/written_handle_type |  |
+| diagnostics/written_handle_type | not applicable (D1715) | - | conformance/written_handle_type removed with spite_compiler#224 |
 | diagnostics/written_not_read | covered | conformance/written_not_read |  |
 | examples/arsenal | ported | tests/arsenal | D628: --name=server moved from flags.txt to arguments.txt |
 | examples/battle | ported | tests/battle |  |
@@ -750,17 +750,17 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/collections.md#fused_chain | covered | tests/fused_chains |  |
 | docs/collections.md#list_average | covered | tests/own_collection_templates |  |
 | docs/collections.md#plain_symbol_template | covered | conformance/plain_symbol_on_list | D798: the error now names Spite.AttributeDeclaration instead of Symbol<$element_type> |
-| docs/concurrency.md#concurrent_tour | covered | tests/concurrent_waits |  |
+| docs/concurrency.md#concurrent_tour | not applicable (D1715) | retired/concurrent_waits | kept in retired/concurrent_waits |
 | docs/concurrency.md#reads_in_a_row | ported | tests/reads_in_a_row |  |
 | docs/concurrency.md#written_order | covered | tests/wait_order |  |
-| docs/concurrency.md#joined_on_drop | covered | tests/concurrent_waits |  |
-| docs/concurrency.md#polled_loading | covered | tests/finished_polling |  |
+| docs/concurrency.md#joined_on_drop | not applicable (D1715) | retired/concurrent_waits | kept in retired/concurrent_waits |
+| docs/concurrency.md#polled_loading | not applicable (D1715) | retired/finished_polling | kept in retired/finished_polling |
 | docs/concurrency.md#frame_io | not applicable (D662) | - | its point is Scheduler.resume_only_when_asked and run_ready; Scheduler is hidden |
 | docs/concurrency.md#frame_waits | covered | tests/frame_waits |  |
 | docs/concurrency.md#parallel_tour | covered | tests/parallel_work |  |
 | docs/concurrency.md#per_thread_buffers | ported | tests/per_thread_buffers |  |
 | docs/concurrency.md#shared_counter | covered | tests/singleton_lock_calls |  |
-| docs/concurrency.md#locked_wait_doc | covered | conformance/locked_wait |  |
+| docs/concurrency.md#locked_wait_doc | not applicable (D1715) | - | conformance/locked_wait removed with spite_compiler#224 |
 | docs/concurrency.md#handed_over_doc | covered | tests/parallel_handover |  |
 | docs/concurrency.md#parallel_pass | covered | tests/each_over_particles | now `each_step()`, which the compiler may band (D1735) |
 | docs/concurrency.md#parallel_reach | not applicable (D1735) | - | its point is the race rule of `parallel_each_`, which is gone |

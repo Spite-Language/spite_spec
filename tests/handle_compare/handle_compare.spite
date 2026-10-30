@@ -2,9 +2,9 @@ var console = Console()
 
 func HandleCompare() {
     load "../../../spite_standard_library/windows"
-    var first = Parallel(three)
-    var second = Concurrent(three)
-    var other = Parallel(four)
+    var first = three()
+    var second = three()
+    var other = four()
     var same = first == second
     var different = first != other
     console.print("two handles of 3 are equal:", same)

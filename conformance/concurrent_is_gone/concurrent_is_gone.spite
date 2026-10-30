@@ -1,0 +1,11 @@
+var console = Console()
+
+func ConcurrentIsGone() {
+    load "../../../spite_standard_library/windows"
+    var text = Concurrent(greeting)
+    console.print(text)
+}
+
+func greeting(): String {
+    return "hello"
+}

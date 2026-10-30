@@ -1,3 +1,3 @@
-var running: Parallel<Tcp.Client?>? = null
-var counting: Parallel<Integer>? = null
-var waiting: Concurrent<Integer>? = null
+var running: Tcp.Client? = null
+var counting: Integer? = null
+var waiting: Integer? = null

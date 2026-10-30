@@ -5,10 +5,8 @@ var values = [0, 0, 0]
 
 func WaitIndexOrder() {
     load "../../../spite_standard_library/windows"
-    var writing = Concurrent(write_late)
-    var moving = Concurrent(move_slot)
-    var written: Integer = writing
-    var moved: Integer = moving
+    var written = write_late()
+    var moved = move_slot()
     var shown = values.join(" ")
     console.print(shown, written, moved)
 }

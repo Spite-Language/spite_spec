@@ -5,7 +5,6 @@ var _port = 47316
 func UdpWaits() {
     load "../../../spite_standard_library/windows"
     crash server.open_locally(_port)
-    var receiving = Concurrent(receive_once)
     var client = Udp.Client()
     crash client.open()
     var address: IpAddress? = "127.0.0.1"
@@ -15,6 +14,7 @@ func UdpWaits() {
     message.append(20)
     message.append(30)
     crash client.send_to(address, _port, message)
+    var receiving = receive_once()
     console.print("the server received", receiving, "bytes")
     client.close()
     server.close()

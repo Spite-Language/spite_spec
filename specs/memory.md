@@ -19,13 +19,13 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   releasing is released, then the object is freed. A singleton is never counted: fetching and letting go of one
   does nothing, and it is destroyed at exit ([classes_and_files.md](https://github.com/Spite-Language/spite_documentation/blob/master/classes_and_files.md#singletons)).
 - **Run-time cost.** A count in every object's header and one addition or subtraction per retain and
-  release. The counts are atomic only in a program that can share an object between threads (one that makes a
-  `Concurrent` or a `Parallel`, runs a loop the compiler splits into bands, or is built with `--repl-port` or `--hot-reload`),
+  release. The counts are atomic only in a program that can share an object between threads (one in which the
+  compiler starts work on another thread, or that is built with `--repl-port` or `--hot-reload`),
   and in a production build only for the classes whose objects code on another thread can retain or release;
   every other program, and every other class, counts with plain arithmetic
   ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class),
   [plain counts](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class)). A loop over a
-  list of different classes that may run them at once ([concurrency](concurrency.md#concurrency-concurrent-parallel-and-hidden-waiting))
+  list of different classes that may run them at once ([concurrency](concurrency.md#what-runs-at-once))
   is followed class by class: a class that only one of the calls able to run together retains, releases, makes or
   frees, and no other code on another thread does, keeps plain counts and its pool; a class two of them count is
   counted atomically while the loop runs them at once and plainly otherwise, and its pool of objects is kept per
@@ -278,12 +278,8 @@ program can see (spite_compiler#205). An object literal of a `type` whose attrib
     function value, and no class whose objects can be let go in the meantime has a `drop()` reaching that
     singleton or its list. The row then holds the element as it lies in the list, never retained or released, read
     through a copy of the function, `<name>___lent_element`, which answers exactly what the function answers, crash
-    included. In a program where a `Parallel` reaches the singleton, the element is also held against other
-    threads for the rest of the block: the block takes the singleton's readers' side or its lock once, and
-    only when what the block runs reaches no singleton and nothing that waits; otherwise the line calls the function
-    and counts its result as above. Nothing is an error: every other caller of the function, and every line that
-    keeps the element, counts it as before. **Cost**: none; the lock or readers' side is taken once for the block
-    where the call would have taken it once. `tests/lent_list_elements`,
+    included. Nothing is an error: every other caller of the function, and every line that
+    keeps the element, counts it as before. **Cost**: none. `tests/lent_list_elements`,
     `tests/lent_list_elements_parallel`
     ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#objects-that-never-leave-their-function-live-in-registers-or-the-frame)).
   - **Cost.** Nothing runs for any of it: the singleton is the one a program would reach anyway, `attribute.index`

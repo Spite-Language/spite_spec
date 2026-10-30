@@ -2,14 +2,14 @@ var console = Console()
 
 func HandleConditions() {
     load "../../../spite_standard_library/windows"
-    var limit = Parallel(three)
+    var limit = three()
     var index = 0
     while index < limit {
         index = index + 1
     }
     console.print("the while ran", index, "times")
     check_ready()
-    var going = Parallel(is_ready)
+    var going = is_ready()
     while not going {
         console.print("never printed")
     }
@@ -17,7 +17,7 @@ func HandleConditions() {
 }
 
 func check_ready() {
-    var ready = Concurrent(is_ready)
+    var ready = is_ready()
     fallback ready
     console.print("fallback read the handle's value")
 }

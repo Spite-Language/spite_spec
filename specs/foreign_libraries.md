@@ -305,15 +305,13 @@ What [Calling back into Spite](https://github.com/Spite-Language/spite_documenta
   `conformance/stage6/foreign_callback_dropped`). A table of functions (COM-style) is filled on the C side: the program hands the library the `address` of each
   `'no_context'` `ForeignCallback`, one per entry, and the library keeps them in its own table; a program cannot write
   memory at an address.
-- **Threads**: C may call a `ForeignCallback` from any thread, so a program that makes one is built as a
-  program that makes a `Parallel`: atomic reference counts for the classes another thread can count, and every singleton the handed-over
-  function reaches made safe for threads in its cheapest form (a `'no_context'` function's own singleton included,
-  which takes its lock). A function of an ordinary object is checked with the rule for a `Parallel`'s work,
-  through every function of its class it calls: `'ForeignCallback(marked, 'context_first')' may be called by C on a
+- **Threads**: C may call a `ForeignCallback` from any thread, so a program that makes one counts
+  references atomically for the classes another thread can count, and every singleton the handed-over
+  function reaches is made safe for threads in its cheapest form (a `'no_context'` function's own singleton included,
+  which takes its lock). A function of an ordinary object is checked through every function of its class it calls: `'ForeignCallback(marked, 'context_first')' may be called by C on a
   thread of its own, so 'marked' may reach only the attributes of its own 'Recorder' that hold values, its locals
   and singletons: 'marks' holds a List<Integer>, which another thread may share. Keep it in a singleton the
-  callback calls, which is made safe for threads, or give the callback numbers and text of its own`. The
-  handover a `Parallel` allows is not offered here, since C, not the program, decides when the callback runs. A singleton owner is
+  callback calls, which is made safe for threads, or give the callback numbers and text of its own`. A singleton owner is
   not checked that way: its own lock covers its attributes. A callback on another thread never runs the scheduler: every waiting
   call already makes the plain blocking call off the program's thread ([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md)).
 - **Cost**: a call-site trampoline is one thread-local load and an indirect call; a context one, a table

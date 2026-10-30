@@ -3,12 +3,12 @@ var names = List<String>()
 
 func ImplicitJoins() {
     load "../../../spite_standard_library/windows"
-    var greeting = Parallel(greet)
+    var greeting = greet()
     console.print(greeting)
     var shouted = greeting.upper_case()
     var letters = greeting.length()
     console.print(shouted, letters)
-    var counting = Concurrent(count_to_three)
+    var counting = count_to_three()
     console.print(counting + 1, "and interpolated: {counting}")
     var total: Integer = counting
     var twice = doubled(counting)
@@ -17,21 +17,18 @@ func ImplicitJoins() {
     var joined_names = names.join(",")
     var returned = later_count()
     console.print(joined_names, returned)
-    var nothing_found = Parallel(find_nobody)
+    var nothing_found = find_nobody()
     if nothing_found {
         console.print(nothing_found)
     } else {
         console.print("nobody was found")
     }
-    var someone = Concurrent(find_somebody)
-    if someone {
-        var someone_letters = someone.length()
-        console.print("found", someone, "with", someone_letters, "letters")
-    }
-    var checked = Parallel(find_somebody)
-    crash checked
+    var someone = find_somebody()
+    var someone_letters = someone.length()
+    console.print("found", someone, "with", someone_letters, "letters")
+    var checked = find_somebody()
     console.print("crash proved", checked)
-    var ready = Parallel(is_ready)
+    var ready = is_ready()
     if ready and not not ready {
         console.print("ready is a Boolean")
     }
@@ -62,5 +59,5 @@ func doubled(value: Integer): Integer {
 }
 
 func later_count(): Integer {
-    return Parallel(count_to_three)
+    return count_to_three()
 }

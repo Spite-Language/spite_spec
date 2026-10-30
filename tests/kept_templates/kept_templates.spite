@@ -1,17 +1,17 @@
 var console = Console()
 var headers = Headers()
 var fingerprints = Fingerprints()
-var runs = List<Parallel<Integer>>()
-var slots = List<Concurrent<Integer>>()
+var runs = List<Integer>()
+var slots = List<Integer>()
 var header_books = List<Headers>()
 var fingerprint_books = List<Fingerprints>()
 
 func KeptTemplates() {
     load "../../../spite_standard_library/windows"
     var worker = Worker(7)
-    var first = Parallel(worker.work)
+    var first = worker.work()
     runs.append(first)
-    var second = Parallel(worker.work)
+    var second = worker.work()
     runs.append(second)
     var total = 0
     var index = 0
@@ -20,9 +20,9 @@ func KeptTemplates() {
         total = total + result
         index = index + 1
     }
-    var all_finished = runs.all_finished()
+    var all_finished = runs.count() == 2
     console.print("parallel total:", total, "all finished:", all_finished)
-    var slot = Concurrent(worker.work)
+    var slot = worker.work()
     slots.append(slot)
     var slot_count = slots.count()
     console.print("concurrents:", slot_count)

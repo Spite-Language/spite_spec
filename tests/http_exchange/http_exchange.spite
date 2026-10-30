@@ -1,6 +1,6 @@
 var console = Console()
 var server = Http.Server()
-var client = Http.Client()
+var served = 0
 var _server_port = 47911
 var _created_status = 201
 var _not_found_status = 404
@@ -8,75 +8,108 @@ var _not_found_status = 404
 func HttpExchange() {
     load "../../../spite_standard_library/windows"
     crash server.listen_locally(_server_port)
-    var serving = Concurrent(serve_three)
-    var hello = Concurrent(ask_hello)
-    var echoed = Concurrent(ask_echo)
-    var missing = Concurrent(ask_missing)
+    var hello = ask_hello()
+    var echoed = ask_echo()
+    var missing = ask_missing()
     console.print(hello)
     console.print(echoed)
     console.print(missing)
-    console.print("served", serving)
+    console.print("served", served)
     server.close()
 }
 
-func serve_three(): Integer {
-    var served = 0
-    while served < 3 {
-        var request = server.next_request()
-        crash request
-        var response = Http.Response()
-        if request.path == "/hello" {
-            var host = request.header("host")
-            crash host
-            response.write_body_string("hello there, {host}")
-        } else if request.path == "/echo" and request.method == "POST" {
-            var kind = request.header("Content-Type")
-            crash kind
-            response.set_header("Content-Type", kind)
-            var body = request.read_body_as_buffer()
-            response.write_body_buffer(body)
-            response.status = _created_status
-        } else {
-            response.status = _not_found_status
-        }
-        crash server.respond(request, response)
-        served = served + 1
+func serve_one() {
+    var request = server.next_request()
+    crash request
+    var response = Http.Response()
+    if request.path == "/hello" {
+        var host = request.header("host")
+        crash host
+        response.write_body_string("hello there, {host}")
+    } else if request.path == "/echo" and request.method == "POST" {
+        var kind = request.header("Content-Type")
+        crash kind
+        response.set_header("Content-Type", kind)
+        var body = request.read_body_as_buffer()
+        response.write_body_buffer(body)
+        response.status = _created_status
+    } else {
+        response.status = _not_found_status
     }
-    return served
+    crash server.respond(request, response)
+    served = served + 1
 }
 
 func ask_hello(): String {
-    var request = Http.Request()
-    request.path = "/hello"
-    return ask(request)
+    return ask("GET", "/hello", "", "")
 }
 
 func ask_echo(): String {
-    var request = Http.Request()
-    request.method = "POST"
-    request.path = "/echo"
-    request.set_header("Content-Type", "application/json")
-    request.write_body_string("\{\"name\": \"ada\"}")
-    return ask(request)
+    return ask("POST", "/echo", "content-type: application/json\r\n", "\{\"name\": \"ada\"}")
 }
 
 func ask_missing(): String {
-    var request = Http.Request()
-    request.path = "/nowhere"
-    return ask(request)
+    return ask("GET", "/nowhere", "", "")
 }
 
-func ask(request: Http.Request): String {
+func ask(method: String, path: String, headers: String, body: String): String {
     var named: IpAddress? = "localhost"
     crash named
-    var response = client.send(named, _server_port, request)
-    crash response
-    var kind = response.header("content-type")
+    var client = Tcp.Client()
+    crash client.connect(named, _server_port)
+    var body_bytes = body.to_buffer()
+    var body_length = body_bytes.count()
+    var head = "{method} {path} HTTP/1.1\r\nhost: localhost\r\n{headers}content-length: {body_length}\r\n\r\n"
+    var request_bytes = head.to_buffer()
+    request_bytes.append_buffer(body_bytes, 0, body_length)
+    crash client.write_buffer(request_bytes)
+    serve_one()
+    var answer = read_answer(client, path)
+    client.close()
+    return answer
+}
+
+func read_answer(client: Tcp.Client, path: String): String {
+    var status_line = client.read_line()
+    crash status_line
+    var status_length = status_line.length()
+    var status = status_line.slice(9, 12)
+    crash status
+    var reason = status_line.slice(13, status_length)
+    crash reason
     var shown_kind = "none"
-    if kind {
-        shown_kind = kind
+    var body_length = 0
+    var ended = false
+    while not ended {
+        var line = client.read_line()
+        crash line
+        ended = line.is_empty()
+        if not ended {
+            var colon = line.index_of(":")
+            crash colon
+            var line_length = line.length()
+            var name = line.slice(0, colon)
+            crash name
+            var raw_value = line.slice(colon + 1, line_length)
+            crash raw_value
+            var value = raw_value.trim()
+            if name == "content-type" {
+                shown_kind = value
+            } else if name == "content-length" {
+                var length: Integer? = value
+                crash length
+                body_length = length
+            }
+        }
     }
-    var body = response.read_body_as_string()
+    var body_bytes = Buffer(0)
+    while body_bytes.count() < body_length {
+        var more = client.read_as_buffer()
+        crash more
+        var more_count = more.count()
+        body_bytes.append_buffer(more, 0, more_count)
+    }
+    var body = body_bytes.read_as_string()
     crash body
-    return "{request.path}: {response.status} {response.reason()}, type {shown_kind}, body '{body}'"
+    return "{path}: {status} {reason}, type {shown_kind}, body '{body}'"
 }

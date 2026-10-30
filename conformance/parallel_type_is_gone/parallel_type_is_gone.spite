@@ -1,0 +1,8 @@
+var console = Console()
+
+func ParallelTypeIsGone() {
+    load "../../../spite_standard_library/windows"
+    var totals = List<Parallel<Integer>>()
+    var counted = totals.count()
+    console.print(counted)
+}

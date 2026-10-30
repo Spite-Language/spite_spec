@@ -139,8 +139,7 @@ tokens.append(Token('number', source.slice(token_start, end_index)))    # error:
   (`buffers.set(List<String>())`), and every argument list: of a `var`, an assignment, a call standing alone, a
   `return`, a `fallback` or `crash`, an `if`, `while` or `switch` condition, an attribute's default, and a call
   inside a text's hole. A constructor used as a
-  receiver (`JsonWriter<Order>().write(order)`) and the whole value of a `var` are not arguments; `Parallel(worker.run)` and
-  `Concurrent(worker.run)` take a function value, so they are fine; a singleton's constructor passed as an
+  receiver (`JsonWriter<Order>().write(order)`) and the whole value of a `var` are not arguments; a singleton's constructor passed as an
   argument keeps its own error instead of this one.
 - **An `if` and its `else` do not repeat the same work**: when both branches compute the same thing,
   it is computed once before the `if`. In the example, both branches sliced the same range. **It stays narrow**:

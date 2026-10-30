@@ -3,12 +3,9 @@ var _describe_rounds = 3000
 
 func DebugThreads() {
     load "../../../spite_standard_library/windows"
-    var first = Parallel(describe)
-    var second = Parallel(describe)
-    var third = Parallel(describe)
-    var first_text: String = first
-    var second_text: String = second
-    var third_text: String = third
+    var first_text = describe()
+    var second_text = describe()
+    var third_text = describe()
     console.print(first_text)
     console.print(first_text == second_text and second_text == third_text)
 }

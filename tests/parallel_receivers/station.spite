@@ -1,14 +1,16 @@
 singleton
 
 var meter = Meter()
-var thread: Parallel<Nothing>? = null
 var pump: Siphon? = null
 
 func start() {
     var created = Siphon()
     pump = created
-    var started = Parallel(created.run)
-    thread = started
+}
+
+func pump_once() {
+    crash pump
+    pump.pump_once()
 }
 
 func pumped(): Long {
@@ -16,7 +18,7 @@ func pumped(): Long {
 }
 
 func stop() {
-    fallback thread and pump
+    fallback pump
     meter.stop()
-    thread = null
+    pump = null
 }

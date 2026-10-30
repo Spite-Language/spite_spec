@@ -2,8 +2,8 @@ var console = Console()
 
 func HandleListLiteral() {
     load "../../../spite_standard_library/windows"
-    var counting = Parallel(three)
-    var waiting = Concurrent(four)
+    var counting = three()
+    var waiting = four()
     var values: List<Integer> = [counting, waiting, 5]
     var joined = values.join(",")
     console.print(joined)

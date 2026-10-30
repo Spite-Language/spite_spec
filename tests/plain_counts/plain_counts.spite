@@ -4,7 +4,7 @@ var _far_distance = 1500
 func PlainCounts() {
     load "../../../spite_standard_library/windows"
     var summer = Summer(1000000)
-    var sum = Parallel(summer.total)
+    var sum = summer.total()
     var points = List<Point>()
     var index = 0
     while index < 1000 {

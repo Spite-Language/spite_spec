@@ -374,8 +374,7 @@ var sword = Weapon<Integer, true>(10)
   matched against its argument's type (`$name` itself, `$name?` (a `T` or a `T?` both give `T`), `List<$name>`,
   `Dictionary<$key, $value>`, and the arguments and return of a `Spite.Function<...>`). A `null` argument says nothing.
   Only when every `$name` is found; otherwise the error asks for them between `<` and `>`: "'Box' takes 1 codegen
-  value(s), in this order: $held_type. Write them between < and > before the arguments". `Pair("Hero", 7)`,
-  `Concurrent(file.read)`.
+  value(s), in this order: $held_type. Write them between < and > before the arguments". `Pair("Hero", 7)`.
 - `$name()` makes the default of what `$name` is bound to: a class through
   its constructor with no arguments, an empty `List` or `Dictionary`, `0`, `""`, and for a `type` whose members
   are all attributes a real object. `var held: $held_type = null` is an error, since `null` belongs to `T?`

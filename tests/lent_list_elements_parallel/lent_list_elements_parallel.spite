@@ -23,11 +23,10 @@ func LentListElementsParallel() {
     var low = Runner<Mover, Moving>(0, _half_entity_count)
     var high = Runner<Mover, Moving>(_half_entity_count, _entity_count)
     var peeking = Runner<Peeker, Moving>(0, _entity_count)
-    var low_run = Parallel(low.run)
-    var high_run = Parallel(high.run)
-    var moved: Integer = low_run + high_run
-    var peek_run = Parallel(peeking.run)
-    var peeked: Integer = peek_run
+    var low_run = low.run()
+    var high_run = high.run()
+    var moved = low_run + high_run
+    var peeked = peeking.run()
     var last = trails.at(_last_entity_index)
     var lefts = last.lefts.count()
     crash positions.values[_last_entity_index]

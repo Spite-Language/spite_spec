@@ -71,11 +71,11 @@ with Temporal's vocabulary and no stored zoned type.
   outside the measured time, and one call through the value and the first reading's `Duration` (made once the clock
   is read) inside it; a program that names no `Benchmark`
   carries none of it. `duration.total('microseconds')` rounds toward zero, so it is the difference of the two
-  readings divided by 1000. In a program that starts a `Parallel`, `work` counts as code that may run on another
-  thread, since a function value is matched to the calls a thread makes by its count of arguments and a worker
+  readings divided by 1000. In a program in which the compiler runs work on another thread, `work` counts as code that may
+  run there, since a function value is matched to the calls a thread makes by its count of arguments and a worker
   calls values of none ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#plain-counts-where-no-other-thread-counts-a-class)):
-  the classes `work` counts are counted atomically and the singletons it calls keep their locks, so work whose point
-  is the cost of those is timed with two `elapsed()` readings instead.
+  the classes `work` counts are counted atomically, so work whose point
+  is the cost of counting is timed with two `elapsed()` readings instead.
 
 The conformance programs are `conformance/stage6/instant_arithmetic`, `calendar_math`, `daylight_saving`,
 `zone_files`, `fixed_offsets`, `time_text_round_trips` and `time_text_errors`.

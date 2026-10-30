@@ -27,7 +27,7 @@ is a gap to close, not a rule. The steps, in the order a game meets them:
      moved object finds it moved. Objects made while moving (a new attribute's default) are made in the new layout
      and not moved again.
    - Nothing else runs while it installs and moves: the scheduler's tasks are paused, and every task on the thread
-     pool (a `Parallel`'s work) stops first at the next pass of one of its loops, where it
+     pool (work the compiler runs at once) stops first at the next pass of one of its loops, where it
      holds no attribute half read, and goes on once the swap is done; a task that starts meanwhile waits to start.
      A task that reaches no such point within 10 seconds (it waits on a lock, sleeps, or reads a socket) refuses
      the reload: `a task on another thread did not reach a loop's check point within 10 seconds, so nothing was
@@ -328,8 +328,7 @@ The design:
   before it watches the socket again; the program's thread reads the command, answers it and writes the answer, so
   no command waits for a timer ([concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-repl-answers-at-the-waits)). The
   program's thread answers it the next time the program waits (`program.sleep`,
-  `Console.read_line()`, a `File` read or write, a `Tcp` accept or read, reading an unfinished `Concurrent`'s
-  value, joining a `Parallel`), so a command sees the program between two steps, never in the middle of one, and
+  `Console.read_line()`, a `File` read or write, a `Tcp` accept or read), so a command sees the program between two steps, never in the middle of one, and
   the program's state is never read or written by two threads at once. After the constructor returns, the program
   waits for nothing but commands. A program that never waits is answered at its loops' check points (below);
   [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#the-repl-answers-at-the-waits) shows a frame loop served between frames and a
@@ -340,7 +339,7 @@ The design:
   relaxed load of a flag that the scheduler raises, which the REPL's thread and the file watcher call when
   they hand something over. Only when it is raised does the pass call the scheduler's check point, which lowers it
   and, on the scheduler's thread, answers a pending command (the handover flag `answer_pending` already reads) and
-  runs a pending reload. On any other thread (a `Parallel`, a helper) it does nothing. A loop that never waits is
+  runs a pending reload. On any other thread (the thread pool's, a helper) it does nothing. A loop that never waits is
   answered between two passes. A build without those flags has no check point: its C is byte for byte what it
   would otherwise be. `--repl` alone answers after the constructor returns, from the console, so it needs none. The
   cost where it exists is one load per pass: 400 000 000 passes took 106 ms, against 1 566 ms when each pass called
@@ -397,14 +396,15 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   running meanwhile. A file new since the last compile is seen only through the watcher's event. It never hangs:
   after ten minutes it answers `the watcher has not swapped in the saved files after 10 minutes: 'reload'
   compiles them now`.
-- **A reload waits for the waits of what it swaps.** A program function that waits inside a `Concurrent` is a state
-  machine in a `--hot-reload` build too, so a `Concurrent` overlaps as in any other build. A reload that would swap
-  a function while a `Concurrent` is stopped at a wait inside it (the function's own wait, or a call below it that
-  has not returned) is held until no `Concurrent` is stopped inside any function it swaps; the program runs on
+- **A reload waits for the waits of what it swaps.** A program function that waits inside work the compiler
+  started ([concurrency.md](concurrency.md#a-wait-in-a-frame-does-not-hold-the-frame)) is a state machine in a
+  `--hot-reload` build too, so such work overlaps as in any other build. A reload that would swap a function while
+  such work is stopped at a wait inside it (the function's own wait, or a call below it that has not returned) is
+  held until no such work is stopped inside any function it swaps; the program runs on
   meanwhile, and the reload is swapped in at the first check point after that. So a wait always finishes on the
   code that started it, and the code after it is the new code the next time the function is called. A reload held
   for more than 10 seconds says once which function it waits for: `spite: the reload waits for
-  'Server.accept_next', where a Concurrent is stopped at a wait, and is swapped in once it returns`. `reload` and
+  'Server.accept_next', where started work is stopped at a wait, and is swapped in once it returns`. `reload` and
   `wait_reload` answer once it is swapped in, as for any reload. Each such function's first frame (its machine's
   entry, `<name>___begin`) goes through a slot like every function, and each frame counts itself in a table kept
   by name while it lives, only in a `--hot-reload` build.
@@ -478,8 +478,8 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   thread of its own, it calls `wait_for_changes()`, which returns once 100 ms pass without a change, then compiles
   the change and wakes the scheduler. The program's own folder is watched with every folder below it, and so is
   **every folder the program loads**: the compiler writes their list into the build, `HotReload.loaded_folders()`.
-- **Crashes and parallel code.** A crash inside reloaded code reports the library's own fallback trace. A `Parallel`
-  running a function whose slot is re-pointed finishes the old code.
+- **Crashes and work on other threads.** A crash inside reloaded code reports the library's own fallback trace.
+  Work on the thread pool running a function whose slot is re-pointed finishes the old code.
 
 ---
 

@@ -30,7 +30,7 @@ func allowed() {
     var font = Font()
     var label = Label(font)
     var written = JsonWriter<Label>().write(label)
-    var sizes = Parallel(font_size)
+    var sizes = font_size()
     var size: Integer = sizes
     console.print(written, size)
 }

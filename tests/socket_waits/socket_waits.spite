@@ -7,7 +7,6 @@ func SocketWaits() {
     var local_host: IpAddress? = "localhost"
     crash local_host
     crash server.listen_at(local_host, _port)
-    var serving = Concurrent(echo_once)
     var client = Tcp.Client()
     var address: IpAddress? = "127.0.0.1"
     crash address
@@ -18,6 +17,7 @@ func SocketWaits() {
     message.append(30)
     message.append(40)
     crash client.write_buffer(message)
+    var serving = echo_once()
     var answer = Buffer(0)
     while answer.count() < 4 and not client.closed {
         var more = client.read_as_buffer()

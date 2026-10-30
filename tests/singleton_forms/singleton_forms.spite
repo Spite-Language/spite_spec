@@ -7,12 +7,12 @@ var _worker_rounds = 5000
 func SingletonForms() {
     load "../../../spite_standard_library/windows"
     journal.note("starting")
-    var working = List<Parallel<Integer>>()
+    var working = List<Integer>()
     var started = 0
     while started < 4 {
         counter.enter()
         var worker = Worker(_worker_rounds)
-        var work = Parallel(worker.run)
+        var work = worker.run()
         working.append(work)
         started = started + 1
     }

@@ -1,12 +1,11 @@
 var meter = Meter()
+var names = List<String>()
 
-func run() {
-    var names = List<String>()
-    while not meter.is_stopping() {
-        names.append("siphoned")
-        if names.count() > 50 {
-            names.clear()
-        }
-        meter.add_one()
+func pump_once() {
+    fallback not meter.is_stopping()
+    names.append("siphoned")
+    if names.count() > 50 {
+        names.clear()
     }
+    meter.add_one()
 }

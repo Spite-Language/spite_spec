@@ -1,1 +1,0 @@
-conformance/written_handle_type/written_handle_type.spite:5: error: the type of a 'Parallel' handle is never written: it is worked out from the function it runs, so write 'var total = Parallel(count)' (in WrittenHandleType.WrittenHandleType)

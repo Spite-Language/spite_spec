@@ -1,7 +1,0 @@
-var crafters = List<Crafter>()
-
-func collect(): Integer {
-    var made = Crafter()
-    crafters.append(made)
-    return crafters.count()
-}

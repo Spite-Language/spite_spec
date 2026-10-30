@@ -3,12 +3,12 @@ var _upper_half_end = 2000
 
 func ParallelInsideParallel() {
     load "../../../spite_standard_library/windows"
-    var outer = Parallel(sum_of_halves)
+    var outer = sum_of_halves()
     console.print("the halves add up to", outer)
 }
 
 func sum_of_halves(): Long {
-    var lower = Parallel(lower_half)
+    var lower = lower_half()
     var upper = upper_half()
     return lower + upper
 }

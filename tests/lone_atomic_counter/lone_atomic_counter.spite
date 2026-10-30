@@ -6,10 +6,10 @@ func LoneAtomicCounter() {
     var round = 0
     while round < 3 {
         ledger.stage = ledger.stage + 1
-        var runs = List<Parallel<Integer>>()
+        var runs = List<Integer>()
         var index = 0
         while index < 4 {
-            var run = Parallel(read_stage)
+            var run = read_stage()
             runs.append(run)
             index = index + 1
         }

@@ -2,7 +2,7 @@ var console = Console()
 
 func JoinedMaybeBoolean() {
     load "../../../spite_standard_library/windows"
-    var ready = Concurrent(answer)
+    var ready = answer()
     if ready {
         console.print("ready")
     }

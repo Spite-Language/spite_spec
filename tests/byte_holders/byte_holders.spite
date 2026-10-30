@@ -1,6 +1,5 @@
 var console = Console()
 var server = Http.Server()
-var client = Http.Client()
 var listener = Tcp.Server()
 var _http_port = 47915
 var _tcp_port = 47916
@@ -18,18 +17,20 @@ func ByteHolders() {
 
 func binary_body() {
     crash server.listen_locally(_http_port)
-    var serving = Concurrent(echo_one)
-    var request = Http.Request()
-    request.method = "POST"
-    request.path = "/bytes"
+    var loopback: IpAddress? = "127.0.0.1"
+    crash loopback
+    var asking = Tcp.Client()
+    crash asking.connect(loopback, _http_port)
     var body = Buffer(0)
     body.append(_letter_h_code)
     body.append(_largest_byte)
-    request.write_body_buffer(body)
-    var loopback: IpAddress? = "127.0.0.1"
-    crash loopback
-    var response = client.send(loopback, _http_port, request)
-    crash response
+    var head = "POST /bytes HTTP/1.1\r\nhost: 127.0.0.1\r\ncontent-length: 2\r\n\r\n"
+    var request_bytes = head.to_buffer()
+    request_bytes.append_buffer(body, 0, 2)
+    crash asking.write_buffer(request_bytes)
+    var serving = echo_one()
+    var response = read_response(asking)
+    asking.close()
     var as_text = response.read_body_as_string()
     var as_bytes = response.read_body_as_buffer()
     var byte_count = as_bytes.count()
@@ -37,6 +38,36 @@ func binary_body() {
     crash last
     console.print("binary body: text", not as_text, "bytes", byte_count, "last", last, "served", serving)
     server.close()
+}
+
+func read_response(asking: Tcp.Client): Http.Response {
+    var status_line = asking.read_line()
+    crash status_line
+    var body_length = 0
+    var ended = false
+    while not ended {
+        var line = asking.read_line()
+        crash line
+        ended = line.is_empty()
+        if line.starts_with("content-length: ") {
+            var line_length = line.length()
+            var length_text = line.slice(16, line_length)
+            crash length_text
+            var length: Integer? = length_text
+            crash length
+            body_length = length
+        }
+    }
+    var received = Buffer(0)
+    while received.count() < body_length {
+        var more = asking.read_as_buffer()
+        crash more
+        var more_count = more.count()
+        received.append_buffer(more, 0, more_count)
+    }
+    var response = Http.Response()
+    response.write_body_buffer(received)
+    return response
 }
 
 func echo_one(): Integer {
@@ -51,7 +82,6 @@ func echo_one(): Integer {
 
 func split_character() {
     crash listener.listen_locally(_tcp_port)
-    var reading = Concurrent(read_one_string)
     var sender = Tcp.Client()
     crash sender.connect_locally(_tcp_port)
     var character = "é".to_buffer()
@@ -64,6 +94,7 @@ func split_character() {
     second.append(rest)
     crash sender.write_buffer(first)
     crash sender.write_buffer(second)
+    var reading = read_one_string()
     console.print("a character sent in two writes reads as", reading)
     sender.close()
     listener.close()

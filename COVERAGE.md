@@ -35,14 +35,14 @@ Decision numbers are those of `DECISIONS.md` in the [mortaros_spite](https://git
 | reflection.md | 64 | 32 | 52 |
 | metaprogramming.md | 67 | 31 | 49 |
 | packages.md | 55 | 36 | 50 |
-| concurrency.md | 86 | 52 | 61 |
+| concurrency.md | 61 | 15 | 18 |
 | foreign_libraries.md | 58 | 27 | 46 |
 | game_maths.md | 24 | 21 | 24 |
 | style.md | 79 | 38 | 67 |
 | write_it_plainly.md | 11 | 4 | 4 |
 | compiler.md | 51 | 22 | 35 |
 | repl.md | 47 | 19 | 25 |
-| all | 1414 | 726 | 1195 |
+| all | 1389 | 689 | 1152 |
 
 ## values_and_types.md
 
@@ -196,7 +196,7 @@ Rules: 148. Covered before: 90. Covered now: 144.
 | The type's own name in a required signature stands for the class that fits | tests/number_type | covered |
 | A type as the element of a variadic parameter | tests/variadic_arguments | covered |
 | A function taking a type is compiled once per class that reaches it | tests/shape_copies | covered |
-| A required function named without calling is bound to the value | tests/type_function_values | covered |
+| A required function named without calling is bound to the value | none | missing (tests/type_function_values kept in retired/type_function_values) |
 | A List of a type answers the member templates over its members | tests/shape_members | covered |
 
 ## control_flow.md
@@ -217,8 +217,8 @@ Rules: 51. Covered before: 19. Covered now: 45.
 | Local declared with another type is not refused | | missing |
 | `while true` with no return/fallback/crash and no call is an error | conformance/spinning_loop | covered |
 | `while true` that calls something is left alone | tests/control_while_true_returns | added |
-| Spinning-loop exception in `Parallel` work | conformance/endless_parallel_work | covered |
-| Spinning-loop exception in a locked singleton function | conformance/endless_locked_loop | covered |
+| Spinning-loop exception in `Parallel` work | none | superseded by D1715 (conformance/endless_parallel_work removed with spite_compiler#224) |
+| Spinning-loop exception in a locked singleton function | none | superseded by D1715 (conformance/endless_locked_loop removed with spite_compiler#224) |
 | `break` as a statement is an error naming the form | conformance/old_break | covered |
 | `continue` as a statement is an error naming the form | conformance/control_old_continue | added |
 | `break` and `continue` stay usable as names | tests/control_break_as_name | added (compiler fails: refuses `var break` as a statement) |
@@ -373,8 +373,8 @@ Rules: 50. Covered before: 32. Covered now: 49.
 | Teardown newest first; drop() using a destroyed singleton halts | tests/singleton_teardown, tests/singleton_used_after_exit, tests/singleton_held_at_exit, tests/singleton_freed_after_teardown | covered |
 | Singletons made in a circle: compile error, or run-time halt | conformance/singleton_circle, tests/singleton_circle | covered |
 | Made once whichever thread asks first | tests/singleton_race | covered |
-| Thread safety only in programs that use `Parallel` | tests/singleton_lock_calls, tests/unshared_locks | covered |
-| A singleton that holds nothing is one static object | tests/singleton_stateless_calls | covered |
+| Work the compiler runs at once shares no singleton one of them writes, so no singleton needs a lock | tests/singleton_lock_calls, tests/unshared_locks | covered |
+| A singleton that holds nothing is one static object | none | missing (tests/singleton_stateless_calls kept in retired/singleton_stateless_calls) |
 | A reopening may add the `singleton` line | | missing |
 
 ## collections.md
@@ -529,13 +529,13 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | An item lent to the caller retained and released as owned | tests/narrowed_lends | superseded by D1707 (one List) |
 | A C compile with no executable, or two builds sharing one C file, is an error | | missing |
 | Two threads writing a singleton: the compiler makes it safe | tests/singleton_race | covered |
-| A `while true` holding a singleton's lock forever is an error | conformance/endless_locked_loop | covered |
-| Polling a `Concurrent`'s `finished` with nothing stepping it halts | tests/finished_polling, conformance/unstepped_poll | covered |
+| A `while true` holding a singleton's lock forever is an error | none | superseded by D1715 (conformance/endless_locked_loop removed with spite_compiler#224) |
+| Polling a `Concurrent`'s `finished` with nothing stepping it halts | none | superseded by D1715 (tests/finished_polling kept in retired/finished_polling; conformance/unstepped_poll removed with spite_compiler#224) |
 | `call_function()` skipping a function that takes arguments halts | tests/call_function_arguments | covered |
 | C calling a dropped `ForeignCallback` halts naming it | tests/foreign_callback_dropped | covered |
 | A `while true` that never leaves and calls nothing is an error | conformance/spinning_loop | covered |
-| A `Parallel` that loops forever and never waits is an error | conformance/endless_parallel_work | covered |
-| A peer that hung up: `socket.closed` turns true, reads answer 0 or null | tests/web_socket_failures, tests/concurrent_sockets | covered |
+| A `Parallel` that loops forever and never waits is an error | none | superseded by D1715 (conformance/endless_parallel_work removed with spite_compiler#224) |
+| A peer that hung up: `socket.closed` turns true, reads answer 0 or null | tests/concurrent_sockets | covered (tests/web_socket_failures kept in retired/web_socket_failures) |
 | An impossible date halts; `text.to_date()` answers null | tests/time_text_errors | covered |
 | Every build writes `<program>.crashes`, one line per site | tests/crashes_map | added (compiler fails: no `.crashes` file is written) |
 
@@ -609,7 +609,7 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | A read through a program's own `get_at` is narrowed only by what it writes | conformance/indexable_unproven, tests/indexable_class | covered |
 | `get_at(index)` called by name answers a `T?` that is not a path | conformance/get_at_by_name | added |
 | A read used before narrowing names the lines that would narrow it | conformance/index_reads | covered |
-| A `Boolean?` is never a condition in `if`, `while`, `not`, `or` | conformance/maybe_boolean_conditions, conformance/joined_maybe_boolean | covered |
+| A `Boolean?` is never a condition in `if`, `while`, `not`, `or` | conformance/maybe_boolean_conditions | covered (conformance/joined_maybe_boolean removed with spite_compiler#224) |
 | `fallback flag` / `crash flag` on a `Boolean?` ask for `true` | tests/assert_maybe_boolean, tests/crash_maybe_boolean | covered |
 | `flag == true` needs no narrowing | tests/present_zero, tests/hashes | covered |
 | Assigning through a `T?` is an error naming the fix | conformance/store_through_nullable | covered |
@@ -847,7 +847,7 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | FileSystemWatcher | tests/file_watching | covered |
 | Tcp.Server, Tcp.Client, Tcp.Connection, Udp.Server, Udp.Client: listen, connect, accept, lines, bytes, closed, IPv6, every read waits | tests/socket_bytes, tests/socket_waits, tests/concurrent_sockets, tests/ipv6_addresses, tests/datagrams | covered |
 | IpAddress: read from text, RFC 5952 text, IPv4 inside ::ffff:, equality, resolving a name | tests/ip_addresses | covered |
-| Concurrent and Parallel handles | tests/concurrent_waits, tests/parallel_work | covered (concurrency.md) |
+| Concurrent and Parallel handles | none | superseded by D1715 (tests/concurrent_waits kept in retired/concurrent_waits) |
 | ThreadPool, ThreadLocal, Lock, ThreadSlot classes | retired/ | superseded by D662 |
 | DynamicLibrary and ForeignBytes | tests/foreign_library | covered (compiler fails: exit code); ForeignBytes reads and halts missing |
 | Memory.Heap, Memory.Arena, Memory.Address, TypedMemory as program classes | none | superseded by D661, D662 |
@@ -868,7 +868,7 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | to_debug leaves private attributes out; Name {} with nothing to show | tests/debug_private_hidden | added |
 | A cycle ends at Name {...} | tests/debug_values | covered |
 | The REPL keeps its own display | tests/interactive_loop | covered (repl.md) |
-| WebSocket handshake, frames, pings, closes, failures | tests/web_socket_exchange, tests/web_socket_failures | covered |
+| WebSocket handshake, frames, pings, closes, failures | none | missing (tests/web_socket_exchange and tests/web_socket_failures kept in retired/) |
 | Buffer(size) is required, the size never a limit | tests/buffer_bytes, conformance/byte_reads | covered |
 | Buffer(-1) halts | tests/buffer_negative_size | covered |
 | buffer[index] null out of range; set_at out of range halts | tests/buffer_index_out_of_range | added |
@@ -1258,89 +1258,64 @@ Rules: 52. Covered before: 36. Covered now: 47.
 
 ## concurrency.md
 
-Rules: 86. Covered before: 52. Covered now: 61.
+Rules: 61. Covered before: 15. Covered now: 18.
 
 | Rule | Program(s) | Status |
 |---|---|---|
-| `Concurrent(function)` runs on the program's thread, starts at once; reading waits, drop waits | tests/concurrent_waits, tests/state_machines | covered |
-| `Parallel(function)` runs on the pool with the same reading and join on drop | tests/parallel_work | covered |
-| The handle's type is worked out; writing it on the starting `var` is the `written_handle_type` error | conformance/written_handle_type | covered |
-| The handle type is still written for a list's element type or a parameter | tests/default_handles, tests/debug_handles, tests/kept_templates | covered |
-| `Concurrent<Nothing>` is waited for by dropping; clearing or leaving a list of them waits for all | tests/waits_never_hang | covered |
-| The program ends after its `Concurrent`s, before output is flushed and singletons torn down | tests/concurrent_unfinished_at_exit | covered |
-| Every attribute of both classes is private; `finished` is the one public member | | missing (no error text stated) |
-| A handle joins on first use and keeps the value | tests/implicit_joins | covered |
-| Joins where stored or passed as `T`: typed `var`, assignment, argument, variadic `print`, `return` | tests/implicit_joins | covered |
-| Joins as an element of a list literal | tests/handle_list_literal | added |
-| Joins as an operand and inside text | tests/implicit_joins | covered |
-| Joins as the receiver of a member the handle lacks | tests/implicit_joins | covered |
-| Joins as a condition: `if`, `crash` | tests/implicit_joins | covered |
-| Joins as a condition: `while`, `fallback` | tests/handle_conditions | added |
-| Narrowing a nullable handle narrows its value | tests/implicit_joins | covered |
-| A `Boolean?` handle is refused as a condition | conformance/joined_maybe_boolean | covered |
-| Stays a handle in an untyped `var`, for `append`, `finished`, `finished_value`, `class`; member templates over `List<Parallel<T>>` read handles | tests/kept_templates | covered |
-| `==` on two handles compares their values | tests/handle_compare | added |
-| Only a join the compiler inserted may call `_result()` | | missing (no error text stated) |
-| `finished` never waits; a `Concurrent` moves only where the program waits | tests/finished_polling | covered |
-| `finished_value()` is `null` while running and the value once finished | tests/finished_value_running | added |
-| `finished_value()` is not a wait point for `is_resumable` | | missing |
-| A handle's debug text is `running` while it runs and never waits | tests/debug_handles, tests/handle_debug_running | added (compiler fails: `console.debug` joins the handle and prints its value) |
-| A handle made at its defaults is finished, joins nothing, frees nothing | tests/default_handles | covered |
+| `Parallel(...)` is the `'Parallel' is not part of Spite` error | conformance/parallel_is_gone | added |
+| `Concurrent(...)` is the `'Concurrent' is not part of Spite` error | conformance/concurrent_is_gone | added |
+| `parallel_each_<member>()` is an unknown member | conformance/parallel_each_is_gone | added |
+| `Concurrent(function)` runs on the program's thread, starts at once; reading waits, drop waits | none | superseded by D1715 (tests/concurrent_waits and tests/state_machines kept in retired/) |
+| `Parallel(function)` runs on the pool with the same reading and join on drop | none | superseded by D1715 |
+| The handle's type is worked out; writing it on the starting `var` is the `written_handle_type` error | none | superseded by D1715 (conformance/written_handle_type removed with spite_compiler#224) |
+| The handle type is still written for a list's element type or a parameter | none | superseded by D1715 (tests/default_handles kept in retired/default_handles) |
+| `Concurrent<Nothing>` is waited for by dropping; clearing or leaving a list of them waits for all | none | superseded by D1715 (tests/waits_never_hang kept in retired/waits_never_hang) |
+| The program ends after its `Concurrent`s, before output is flushed and singletons torn down | none | superseded by D1715 (tests/concurrent_unfinished_at_exit kept in retired/concurrent_unfinished_at_exit) |
+| Every attribute of both classes is private; `finished` is the one public member | none | superseded by D1715 |
+| A handle joins on first use wherever its `T` is expected, narrows as its value, and `==` compares values | none | superseded by D1715 |
+| A `Boolean?` handle is refused as a condition | none | superseded by D1715 (conformance/joined_maybe_boolean removed with spite_compiler#224) |
+| A handle's members: `finished`, `finished_value()`, its debug text, a handle made at its defaults | none | superseded by D1715 (tests/finished_polling, tests/finished_value_running, tests/handle_debug_running and tests/default_handles kept in retired/) |
 | `Lock`/`ThreadSlot` made at defaults give back nothing | | superseded by D662 |
 | The pool is the `ThreadPool` singleton; `size()`, `worker_index()`, queue, compiler-supplied entries | | superseded by D662 |
-| A `Parallel` inside a `Parallel` cannot deadlock (a join claims an untaken job) | tests/parallel_inside_parallel | added (compiler fails: compiler crashes in `need_text_constants`, "making_room is null") |
-| Endless `while true` in a `Parallel`'s work is the `endless_parallel_work` error | conformance/endless_parallel_work | covered |
-| A loop that can leave is not that error | tests/parallel_loop_that_leaves | added |
-| A loop in a function that waits is not that error | | missing |
+| A `Parallel` joins on read and drop, inside another one too, and at exit | none | superseded by D1715 |
+| Endless `while true` in a `Parallel`'s work is the `endless_parallel_work` error | none | superseded by D1715 (conformance/endless_parallel_work and conformance/endless_parallel_work_calls removed with spite_compiler#224) |
 | No thread for a program with no `Parallel`; about 25 allocations per `Parallel` | | superseded by D662 |
-| Join on drop is kept (the queue holds the call, not the handle) | tests/parallel_work | covered |
-| At exit the pool finishes what is queued | | missing |
 | `Lock`, `ThreadSlot`, `ThreadLocal<T>` classes | | superseded by D662 |
 | `Atomic<T>` class and its misuse errors | | superseded by D662 |
-| Functions that reach a wait get a resumable copy: by name, constructor, union, `type`, function value | tests/state_machines, tests/waits_never_hang | covered |
-| A singleton's constructor and its locked functions get none; a wait there blocks | tests/locked_waits | covered |
+| Work the compiler overlaps runs on a pool that grows; a program with nothing overlapped starts no thread | | missing |
+| Singletons and objects called from many pieces of work print what running in order prints | tests/singleton_forms, tests/singleton_guard, tests/singleton_lock_calls, tests/singleton_reads, tests/unshared_locks, tests/coarse_locks, tests/locked_waits, tests/parallel_handover | covered |
+| Functions that reach a wait get a resumable copy: by name, constructor, union, `type`, function value | | missing (tests/state_machines and tests/waits_never_hang kept in retired/) |
+| A singleton's constructor gets no state machine | | missing |
 | A `--hot-reload` build starts state machines through a swappable slot | | missing (rule on repl.md) |
-| A `Concurrent` holds its function only while it runs (no cycle afterwards) | | missing |
-| Waits in `and`/`or`, later `if` conditions, nullable `==`, function values, constructors | tests/waits_never_hang | covered |
-| A local, list or object holding a `Concurrent` waits at scope end; reassignment stores, then waits | tests/dropped_handle_waits | covered |
-| A `type`'s function held as a value waits by class | tests/type_function_values | covered |
+| A `Concurrent` holds its function only while it runs (no cycle afterwards) | none | superseded by D1715 |
+| Waits in `and`/`or`, later `if` conditions, nullable `==`, function values, constructors | | missing (tests/waits_never_hang kept in retired/waits_never_hang) |
+| A local, list or object holding a `Concurrent` waits at scope end; reassignment stores, then waits | none | superseded by D1715 (tests/dropped_handle_waits kept in retired/dropped_handle_waits) |
+| A `type`'s function held as a value waits by class | none | superseded by D1715 (tests/type_function_values kept in retired/type_function_values) |
 | A call inside a template waits in argument order | | missing |
-| A join waiting in place for a `Concurrent` below it, or a wait cycle, halts | tests/concurrent_wait_cycle, tests/concurrent_wait_cycle_in_place | covered |
+| A join waiting in place for a `Concurrent` below it, or a wait cycle, halts | none | superseded by D1715 (tests/concurrent_wait_cycle and tests/concurrent_wait_cycle_in_place kept in retired/) |
 | A wait inside an expression keeps the written order | tests/wait_order, tests/wait_index_order | covered |
-| The waits at the bottom: sleep, console, file and socket calls | tests/concurrent_waits, tests/socket_waits, tests/concurrent_sockets | covered |
-| Outside a `Concurrent`, blocking calls get waiting wrappers; plain blocking when nothing else runs | | superseded by D662 |
-| A `Concurrent` made in a `Parallel`'s work runs on that thread's loop | tests/concurrent_in_parallel | covered |
+| The waits at the bottom: sleep, console, file and socket calls | tests/socket_waits, tests/concurrent_sockets | covered |
+| Outside a state machine, blocking calls get waiting wrappers; plain blocking when nothing else runs | | superseded by D662 |
+| The scheduler keeps one loop per thread | tests/concurrent_in_parallel | covered |
 | Waiting forever on nothing is a deadlock and a crash | | missing |
 | `Scheduler.run_ready()` and `resume_only_when_asked()` | | superseded by D662 |
-| A million polls of `finished` with nothing stepped halts | tests/poll_without_step_halts | added (compiler fails: no poll count, the loop spins until an Integer overflows) |
-| A `while` polling `finished` that calls nothing is the `unstepped_poll` error | conformance/unstepped_poll | covered |
+| A million polls of `finished` with nothing stepped halts; a `while` polling `finished` that calls nothing is the `unstepped_poll` error | none | superseded by D1715 (tests/poll_without_step_halts kept in retired/poll_without_step_halts; conformance/unstepped_poll removed with spite_compiler#224) |
 | A program with threads uses atomic reference counts | tests/threaded_class_objects, tests/cycles_across_threads | covered |
 | A singleton first used from two threads is made once | tests/singleton_race | covered |
 | `each_<member>()` runs the member on every element; the compiler may run it in bands | tests/each_over_particles | covered |
-| `parallel_each_<member>()` is an unknown member | conformance/parallel_each_is_gone | added |
 | `parallel_each_` after a `map_` step is an error | none | superseded by D1735 |
 | The race rule of `parallel_each_`: an attribute holding an object is an error | none | superseded by D1735 |
 | The race rule follows the functions the member calls | none | superseded by D1735 |
 | `parallel_each_` on a list of numbers is an error naming `each_` | none | superseded by D1735 |
 | `parallel_each_` on a list of a `type` or union is an error | none | superseded by D1735 |
-| A reached singleton gets the cheapest safe form: nothing, immutable, atomics, lock | tests/singleton_forms, tests/singleton_guard, tests/lone_atomic_counter | covered |
-| A locked singleton's function that touches no state runs unlocked | tests/singleton_stateless_calls | covered |
-| Reads and writes of its attributes from other classes take the lock | tests/singleton_lock_calls, tests/singleton_attribute_reads | covered |
-| The second walk drops locks no thread names | tests/singleton_counts, tests/plain_counts | covered |
-| An endless loop in a locked singleton function is the `endless_locked_loop` error | conformance/endless_locked_loop | covered |
-| A locked function waiting for work that calls back into it is the `locked_wait` error | conformance/locked_wait | covered |
-| A counted loop of calls to one locked singleton takes the lock once | tests/coarse_locks | covered |
-| Reading functions share the lock | tests/singleton_reads | covered |
-| While no task is in flight the lock is skipped | tests/unshared_locks | covered |
-| A `Weak` a `Parallel` reaches is an error | | missing (rule on memory.md) |
-| `Parallel(function)` follows the race rule (`parallel_function_reach`) | conformance/parallel_function_reach | covered |
-| A task may keep an object handed over to it | tests/parallel_handover | covered |
-| The maker used after the handover is an error | conformance/parallel_handover | covered |
-| A handed-over object whose value attribute the task writes is not used again | conformance/parallel_shared_writes | covered |
-| A task writing a value attribute of an object not handed over is an error | conformance/parallel_shared_value_writes | covered |
+| A singleton a `Parallel` reaches is made thread-safe: its forms, unlocked stateless calls, locked attribute reads and writes, the second walk, coarse and readers' locks, skipped locks | none | superseded by D1715 (tests/singleton_stateless_calls kept in retired/singleton_stateless_calls) |
+| An endless loop in a locked singleton function, and a locked function waiting for work that calls back into it, are errors | none | superseded by D1715 (conformance/endless_locked_loop, conformance/endless_locked_loop_on_a_local and conformance/locked_wait removed with spite_compiler#224) |
+| A `Weak` a `Parallel` reaches is an error | none | superseded by D1715 |
+| `Parallel(function)` follows the race rule, may keep an object handed over to it, and may not write a value attribute shared with another thread | none | superseded by D1715 (conformance/parallel_function_reach, conformance/parallel_handover, conformance/parallel_held_value_writes, conformance/parallel_shared_value_writes and conformance/parallel_shared_writes removed with spite_compiler#224) |
 | A write inside `Lock.while_locked` is not counted | | superseded by D662 |
 | Reads in a row overlap | tests/overlapped_reads | covered |
-| Independent calls in a row run at once | tests/overlapped_calls | covered |
+| Independent calls in a row run at once | tests/overlapped_calls, tests/overlapped_work, tests/overlapped_work_in_the_entry | covered |
+| The first crash of work that runs at once stops the program, with one report | tests/overlapped_work_crashes, tests/overlapped_work_halts | covered |
 | Objects made for their owner count apart | tests/owned_objects, tests/owned_conditions | covered |
 | A loop over a list of different classes runs them at once | tests/row_of_classes | covered |
 | A loop whose passes write only their own item runs in bands | tests/band_passes | covered |
@@ -1490,7 +1465,7 @@ Rules: 79. Covered before: 38. Covered now: 67.
 | A call in a condition, return, assignment or index is not an argument | tests/calls_outside_arguments | added |
 | A constructor call is never an argument, naming the variable to make | conformance/constructor_as_argument, conformance/long_line_construction | covered |
 | A constructor inside a constructor's arguments | conformance/constructor_in_constructor | added |
-| A constructor as a receiver, and `Parallel(worker.run)`, are fine | tests/json_camel_case, tests/parallel_work | covered |
+| A constructor as a receiver is fine | tests/json_camel_case | covered |
 | A singleton constructor passed as an argument keeps its own error | conformance/inline_singleton | covered |
 | A call repeated at the start of both branches is an error | conformance/repeated_branch_call | covered |
 | A call repeated in every branch of an `else if` chain: "computed in every branch" | conformance/repeated_branch_call_chain | added |

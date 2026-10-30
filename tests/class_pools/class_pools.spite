@@ -5,7 +5,7 @@ var _points_added_per_round = 500
 func ClassPools() {
     load "../../../spite_standard_library/windows"
     var maker = Maker(1000)
-    var marked = Parallel(maker.total)
+    var marked = maker.total()
     var total = 0
     var letters = 0
     var round = 0

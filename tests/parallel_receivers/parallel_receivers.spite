@@ -10,9 +10,8 @@ func ParallelReceivers() {
     var pumped = owner.finish()
     console.print("a local pump outlived the function that made it and pumped", pumped)
     station.start()
-    var waited = 0
     while station.pumped() < 1000 {
-        waited = waited + 1
+        station.pump_once()
     }
     station.stop()
     console.print("the station's own pump stopped when asked")

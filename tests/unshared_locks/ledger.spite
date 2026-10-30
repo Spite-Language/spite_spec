@@ -3,9 +3,9 @@ singleton
 var entries = 0
 var posted = 0
 
-func start_posting(count: Integer): Parallel<Integer> {
+func start_posting(count: Integer): Integer {
     var poster = Poster(count)
-    var posting = Parallel(poster.run)
+    var posting = poster.run()
     var index = 0
     while index < count {
         entries = entries + 1

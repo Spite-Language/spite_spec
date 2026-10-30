@@ -3,6 +3,6 @@ var console = Console()
 func CyclesAcrossThreads() {
     load "../../../spite_standard_library/windows"
     var tree = Tree()
-    var counted = Parallel(tree.grow)
+    var counted = tree.grow()
     console.print(counted)
 }

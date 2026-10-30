@@ -28,16 +28,16 @@ func ShapeMembers() {
 
 func run_first(stages: List<Runnable>) {
     fallback stages[0]
-    run_in_parallel(stages[0])
+    run_and_label(stages[0])
     var labelled = stages[0].label
     var first_name = stages[0].name
     var text = labelled()
     console.print(text, first_name)
 }
 
-func run_in_parallel(stage: Runnable) {
+func run_and_label(stage: Runnable) {
     stage.run_once()
-    var running = List<Parallel<String>>()
-    var stage_label = Parallel(stage.label)
+    var running = List<String>()
+    var stage_label = stage.label()
     running.append(stage_label)
 }

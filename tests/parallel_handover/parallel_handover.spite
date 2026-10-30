@@ -3,15 +3,15 @@ var _first_numbers_end = 400
 
 func ParallelHandover() {
     load "../../../spite_standard_library/windows"
-    var crafting = List<Parallel<Integer>>()
+    var crafting = List<Integer>()
     var first = 0
     while first < _first_numbers_end {
         var crafter = Crafter(first)
         crafter.want(1)
         crafter.want(2)
         crafter.want(3)
-        var run = Parallel(crafter.craft)
-        crafting.append(run)
+        var result = crafter.craft()
+        crafting.append(result)
         first = first + 100
     }
     var index = 0

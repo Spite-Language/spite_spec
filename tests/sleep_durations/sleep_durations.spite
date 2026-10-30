@@ -15,8 +15,7 @@ func SleepDurations() {
     program.sleep(nothing_at_all)
     program.sleep(backwards)
     program.sleep(a_moment)
-    var napping = Concurrent(nap_backwards)
-    var napped: String = napping
+    var napped = nap_backwards()
     var quick = clock.elapsed() - started
     var returned_at_once = quick < a_second
     var before = clock.elapsed()
