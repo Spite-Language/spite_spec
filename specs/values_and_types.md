@@ -564,16 +564,17 @@ one copy where the other's is, with nothing written and nothing converted (`test
 `tests/event_bus`). A generic of a union with fewer members is refused where one with more is wanted, since the
 receiver could put in a member the smaller union lacks (`conformance/union_copy_smaller_in_generic`).
 
-**`_:` answers for every member without a case of its own.** It is the
-last case, and it means exactly "this body, written once for each remaining member": the value is narrowed to
-each of those members in turn, so `_: creature.sound()` needs `sound()` only on the members `_` answers for,
-not on the whole union. A switch is still exhaustive: `_` is how it covers the rest, not a way to skip it.
-**A repeated case body is an error** whenever `_` could absorb it: two cases doing the same thing when there is
-no `_` yet, or a case doing what `_` already does. `_` after every member already has a case, or anywhere but
-last, is an error too (`diagnostics/switch_rest_case`, `conformance/stage6/rest_case`). A switch over a `T?`
-of a class or a union covers the class (or every member of the union) and `Null`, or ends with `_:`, so a null cannot
-be forgotten: "this switch over 'target' has no case for Null: 'target' is a Monster?, and a switch over a 'T?' covers
-its value and null, so a null cannot be forgotten; add the cases, or end with '_:' for the rest".
+**A switch names every member, and there is no `_:`** (D1770). A member added to the union later is then an error
+at every switch until it has a case. **Two cases may share a one-line body** (D1762): in each, the value is narrowed
+to that case's member, so `Cat: creature.sound()` and `Dog: creature.sound()` need `sound()` only on `Cat` and `Dog`.
+`_:` anywhere is an error: "'_:' answers for what the switch does not name, so a value added later slips past it:
+name every value with a case of its own (cases may share a one-line body), or choose among values with no closed set
+with an 'if'" (`conformance/switch_rest_refused`). A switch whose cases all share one body but one is an error writing
+the `if`/`else` on that one (D1778, `conformance/switch_one_exception`), unless the shared body reads the switched
+value, which an `else` would not narrow (D1791). A switch over a `T?` of a class or a union covers the class (or
+every member of the union) and `Null`, so a null cannot be forgotten: "this switch over 'target' has no case for
+Null: 'target' is a Monster?, and a switch over a 'T?' covers its value and null, so a null cannot be forgotten; add
+the cases".
 
 **`value.class == Circle` asks what class a value is** (D1770). `value == Circle` is refused: "'value == Circle' tests what a value is, and a class is compared with a class: write 'value.class == Circle'" (`conformance/class_test_on_value`). A class name on the right
 of `==` or `!=`, beside the value's `.class`, is a class test, true when the value is an instance of that class: `expression.class ==
@@ -596,10 +597,9 @@ null. A binding that is a `type` or a union is no class, so it is still "'$wante
 (`conformance/stage6/codegen_class_test`).
 **So a switch that is one early return is an error** (`diagnostics/switch_single_case`): one class case and
 `_:`, each a single `return`, is `if value.class == Class { return ... }` followed by what `_:` returns, and when both
-return `Boolean` literals it is `return value.class == Class` (or `!=`). Code that can be written
-simpler with no cost to reading is made to be, but a one-liner nobody can read back is not the goal. Anything
-that would need an `else` stays a switch, and so does a switch with more cases: `_:` narrows to each remaining
-member, which an `else` cannot.
+return `Boolean` literals it is `return value.class == Class` (or `!=`). `_:` is refused anyway; for this shape this
+error comes first, since it names the shorter form. Code that can be written simpler with no cost to reading is made
+to be, but a one-liner nobody can read back is not the goal.
 
 Memory safety is done with unions instead of borrow checking noise: `T?` is the union of `T` and `Null`, and it is narrowed before use with `if ... else`, `fallback`, `crash` or `switch` ([Null safety and `fallback` narrowing](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#narrowing)).
 **`Monster?` is a union.** A `?` suffix is

@@ -91,58 +91,43 @@ A case of a `switch` is one statement: a call, an assignment, a `return` or a `c
 one statement inside `{ }`. A case of two statements or more is an error: "this case runs 2 statements: a case is
 one statement, so move them into a function named for what they do and call it here". Each case reads as one thing
 that happens to its member or value, and a path that needs more is a function with a name. The rule holds for every
-switch, over a union, a `T?`, an enum, a number or a text, and for `_:`.
+switch, over a union, a `T?`, an enum or a `Boolean`.
 
 ### `switch` over values
 
-A `switch` whose subject is an enum value, a whole number or a `String` takes value cases: an enum literal
-(`'red':`), a whole-number literal, negative included (`-1:`), or a text literal without holes (`"es":`), and `_:`
-as its last case for the values without one.
+A `switch` whose subject is an enum value or a `Boolean` takes value cases: an enum literal (`'red':`), or `true`
+and `false`. **It names every value, and there is no `_:`** (D1770): a value added to the enum later is an error at
+every switch until it has a case.
 
-- A switch over an enum names only its values; one that leaves a value out without `_:` is "this switch over
-  'light' has no case for 'amber': a switch over an enum covers every value, so a value added later cannot be
-  forgotten; add the cases, or end with '_:' for the rest", and a `_:` after every value is "every value of
-  'Light' already has a case, so '_:' answers for nothing: remove it".
-- A switch over a number or a text always ends with `_:` ("this switch over 'number' has no '_:': an Integer has
-  more values than a switch can list, ...").
+- One that leaves a value out is "this switch over 'light' has no case for 'amber': a switch over an enum covers
+  every value, so a value added later cannot be forgotten; add the cases".
+- `_:` anywhere is "'_:' answers for what the switch does not name, so a value added later slips past it: name every
+  value with a case of its own (cases may share a one-line body), or choose among values with no closed set with an
+  'if'" (`conformance/switch_rest_refused`).
+- **A switch over a number or a text is an error**: "'switch word' chooses among values with no closed set, so no case
+  list is ever whole: switch on an enum's values or a union's members, or write the choice as 'if' tests"
+  (`conformance/switch_on_text`). Code that switches on a thing's name switches on the thing (its class, an enum
+  value) instead.
+- Two cases may share a one-line body (D1762). A switch whose cases all share one body but one is an error writing
+  the `if`/`else` (D1778): "every case of this switch but 'Fish' does the same thing: write 'if creature.class == Fish
+  { ... } else { ... }'" (`conformance/switch_one_exception`), unless the shared body reads the switched value (D1791).
 - A value named twice is "this switch has two cases for 'red': keep one"; a value outside the enum is the usual
   "'blue' is not a value of this enum"; a class as a case of such a switch, a name or a call as a case, a value
   case in a switch over a union, and a value case over a `T?` (narrow it first) are errors saying so.
-- `_:`, two cases with the same body, and a switch of one case and `_:` that each only return follow the rules of
-  union switches ([Unions](values_and_types.md#unions-in-full)): the last one names `return light ==
-  'red'`, "this switch only asks whether 'light' is 'red'".
 - The subject is evaluated once, into a temporary; the cases are tested in order as an `if`/`else if` chain on
-  it, with `==` as it compares that type (a text by its bytes). Nothing is added at run time beyond those tests.
+  it. Nothing is added at run time beyond those tests.
 - A `switch` whose every case ends by leaving the function leaves too, so after `if not found { switch ... }`
   whose cases all return, `found` is narrowed ([failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#an-if-that-leaves-proves-the-rest)).
-- `conformance/stage6/value_switch`, `diagnostics/value_switch`.
 
-### A chain of `if`s on one value is a `switch`
+### A chain of `if`s on one enum value is a `switch`
 
-Three or more `if`s in a row, each with no `else`, whose condition is `subject == constant` and whose
-whole block is one `return`, with the same `subject` (a name or a member path, no call) and a constant that is
-an enum literal, a whole-number literal (negative included) or a text literal, are a compile error at the first
-`if`. So is an `if`/`else if` chain of three or more such links. The message writes the switch out:
-
-```
-these 6 'if's each compare 'index' with a value and return, which is what a 'switch' says: write 'switch index { 1: return 'tuesday'  2: return 'wednesday'  ...  _: return 'monday' }'
-```
-
-`_:` answers with the `return` that follows the chain (or the final `else`), and is `_: ...` when something else
-follows; a chain that covers every value of an enum gets no `_:`. Two such `if`s, a comparison with anything but
-a constant, and an `if` doing more than return are left alone. Compile time only (`diagnostics/switch_chain`).
-
-**A link may compare its subject with several values joined by `or`.** A condition that is `subject == constant`
-joined by `or` to more comparisons of the same `subject` with constants (`if word == "byte" or word == "tiny"`)
-is a link like any other, and the chain counts it once. Every comparison becomes a case of its own with the
-link's `return`, in the order written, and the message counts the `if`s and writes every case out:
-
-```
-these 4 'if's each compare 'word' with a value and return, which is what a 'switch' says: write 'switch word { "byte": return 1  "tiny": return 1  "short": return 2  ...  _: return 0 }'
-```
-
-An `or` that mixes in anything else (another subject, a call, a comparison other than `==`) makes the link not
-a link, and the chain is counted without it (`diagnostics/switch_chain_or`).
+Three or more `if`s in a row, each with no `else`, whose condition is `subject == constant` and whose whole block is
+one `return`, with the same `subject` (a name or a member path, no call) and an enum literal as the constant, are a
+compile error at the first `if`; so is an `if`/`else if` chain of three or more such links. The message writes the
+cases out and asks for every value: "these 3 'if's each compare 'light' with one of its enum values and return,
+which is what a 'switch' says: write 'switch light { 'red': return 30  'amber': return 5  ... }', naming every
+value". A chain over numbers or text stays as it is, since no switch can list every number or text (D1770,
+`diagnostics/switch_chain`). A link may compare its subject with several values joined by `or`; each becomes a case.
 
 ### A `while` that a member template already says
 

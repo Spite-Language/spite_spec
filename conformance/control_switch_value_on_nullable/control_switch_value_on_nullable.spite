@@ -1,15 +1,20 @@
+enum Light {
+    'red'
+    'green'
+}
+
 var console = Console()
 
 func ControlSwitchValueOnNullable() {
     load "../../../spite_standard_library/windows"
-    var name = name_of(2)
+    var name = name_of('red')
     console.print(name)
 }
 
-func name_of(number: Integer?): String {
-    switch number {
-        1: return "one"
-        2: return "two"
-        _: return "other"
+func name_of(light: Light?): String {
+    switch light {
+        'red': return "stop"
+        'green': return "go"
+        Null: return "dark"
     }
 }

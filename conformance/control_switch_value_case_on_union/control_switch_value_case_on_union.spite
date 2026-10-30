@@ -16,6 +16,6 @@ func name_of(creature: Creature): String {
     switch creature {
         "cat": return "a cat"
         Cat: return "a real cat"
-        _: return "a dog"
+        Dog: return "a dog"
     }
 }

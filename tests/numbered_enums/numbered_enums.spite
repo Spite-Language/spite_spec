@@ -14,7 +14,9 @@ func NumberedEnums() {
     switch role {
         'admin': console.print("admin")
         'user': console.print("user, after admin")
-        _: console.print("another role")
+        'guest': console.print("another role")
+        'nobody': console.print("another role")
+        'owner': console.print("another role")
     }
     var parsed: Role? = "guest"
     crash parsed

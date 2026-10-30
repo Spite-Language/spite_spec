@@ -20,7 +20,7 @@ func describe(creature: Creature) {
     switch creature {
         Dog: show_trick(creature)
         Fish: console.print("a fish with", creature.fins, "fins")
-        _: show_sound(creature)
+        Cat: show_sound(creature)
     }
 }
 

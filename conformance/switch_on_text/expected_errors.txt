@@ -1,0 +1,1 @@
+conformance/switch_on_text/switch_on_text.spite:6: error: 'switch word' chooses among values with no closed set, so no case list is ever whole: switch on an enum's values or a union's members, or write the choice as 'if' tests (in SwitchOnText.SwitchOnText)

@@ -1,0 +1,1 @@
+conformance/switch_one_exception/switch_one_exception.spite:16: error: every case of this switch but 'Fish' does the same thing: write 'if creature.class == Fish { console.print("swims") } else { console.print("walks") }' (in SwitchOneException.show)

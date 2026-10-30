@@ -19,6 +19,7 @@ func RestCase() {
 func describe(creature: Creature) {
     switch creature {
         Fish: console.print("a fish says nothing")
-        _: console.print("a {creature.class.name} says {creature.sound()}")
+        Cat: console.print("a {creature.class.name} says {creature.sound()}")
+        Dog: console.print("a {creature.class.name} says {creature.sound()}")
     }
 }

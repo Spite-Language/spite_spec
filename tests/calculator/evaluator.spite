@@ -48,7 +48,13 @@ func binary_value(expression: BinaryExpression): Float {
         'plus': return left_value + right_value
         'minus': return left_value - right_value
         'star': return left_value * right_value
-        _: return left_value / right_value
+        'end': return left_value / right_value
+        'number': return left_value / right_value
+        'identifier': return left_value / right_value
+        'slash': return left_value / right_value
+        'left_paren': return left_value / right_value
+        'right_paren': return left_value / right_value
+        'equals': return left_value / right_value
     }
 }
 

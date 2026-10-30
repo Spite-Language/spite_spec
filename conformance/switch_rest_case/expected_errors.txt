@@ -1,1 +1,1 @@
-conformance/switch_rest_case/switch_rest_case.spite:19: error: the cases 'Cat' and 'Dog' do the same thing: write it once, as the last case '_:' (in SwitchRestCase.repeated)
+conformance/switch_rest_case/switch_rest_case.spite:19: error: every case of this switch but 'Fish' does the same thing: write 'if creature.class == Fish { console.print("not a pet") } else { console.print("pet") }' (in SwitchRestCase.repeated)

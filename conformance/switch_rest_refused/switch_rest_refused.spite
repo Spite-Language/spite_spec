@@ -1,20 +1,20 @@
 union Creature {
     Cat
     Dog
+    Fish
 }
 
 var console = Console()
 
-func SwitchRestAfterAll() {
+func SwitchRestRefused() {
     load "../../../spite_standard_library/windows"
-    var cat = Cat()
-    describe(cat)
+    var creature: Creature = Cat()
+    describe(creature)
 }
 
 func describe(creature: Creature) {
     switch creature {
-        Cat: console.print("a cat")
-        Dog: console.print("a dog")
-        _: console.print("something")
+        Fish: console.print("swims")
+        _: console.print("walks")
     }
 }

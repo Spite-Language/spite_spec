@@ -1,0 +1,10 @@
+var console = Console()
+
+func SwitchOnText() {
+    load "../../../spite_standard_library/windows"
+    var word = "north"
+    switch word {
+        "north": console.print("up")
+        "south": console.print("down")
+    }
+}

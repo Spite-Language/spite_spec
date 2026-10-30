@@ -13,10 +13,14 @@ func next_number(number: Integer): Integer {
 }
 
 func name_of(number: Integer): String {
-    switch next_number(number) {
-        1: return "one"
-        2: return "two"
-        3: return "three"
-        _: return "many"
+    var switched_16 = next_number(number)
+    if switched_16 == 1 {
+        return "one"
+    } else if switched_16 == 2 {
+        return "two"
+    } else if switched_16 == 3 {
+        return "three"
+    } else {
+        return "many"
     }
 }

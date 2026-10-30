@@ -28,15 +28,14 @@ func name_for(light: Light): String {
         'red': return "stop"
         'amber': return "wait"
         'green': return "go"
-        _: return "?"
     }
 }
 
 func code_for(number: Integer): String {
-    switch number {
-        1: return "one"
-        2: return "two"
+    if number == 1 {
+        return "one"
     }
+    return "two"
 }
 
 func twice(light: Light): Integer {
@@ -44,7 +43,6 @@ func twice(light: Light): Integer {
         'red': return 1
         'red': return 2
         'blue': return 3
-        _: return 4
     }
 }
 

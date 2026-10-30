@@ -49,15 +49,17 @@ func following(light: Light): Light {
     switch light {
         'green': return 'amber'
         'amber': return 'red'
-        _: return 'green'
+        'red': return 'green'
     }
 }
 
 func sign_of(number: Integer): String {
-    switch number {
-        -4: return "minus four"
-        0: return "zero"
-        _: return other_of(number)
+    if number == -4 {
+        return "minus four"
+    } else if number == 0 {
+        return "zero"
+    } else {
+        return other_of(number)
     }
 }
 
@@ -68,9 +70,12 @@ func other_of(number: Integer): String {
 
 func greeting(index: Integer): String {
     crash names[index]
-    switch names[index].upper_case() {
-        "ADA": return "hello ada"
-        "BO": return "hi bo"
-        _: return "hey {names[index]}"
+    var switched_71 = names[index].upper_case()
+    if switched_71 == "ADA" {
+        return "hello ada"
+    } else if switched_71 == "BO" {
+        return "hi bo"
+    } else {
+        return "hey {names[index]}"
     }
 }

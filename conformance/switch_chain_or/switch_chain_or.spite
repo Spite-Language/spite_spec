@@ -1,16 +1,25 @@
-func SwitchChainOr(): Integer {
-    load "../../../spite_standard_library/common"
-    return width_of("byte")
+enum Word {
+    'byte'
+    'tiny'
+    'short'
+    'integer'
+    'float'
+    'long'
 }
 
-func width_of(word: String): Integer {
-    if word == "byte" or word == "tiny" {
+func SwitchChainOr(): Integer {
+    load "../../../spite_standard_library/common"
+    return width_of('byte')
+}
+
+func width_of(word: Word): Integer {
+    if word == 'byte' or word == 'tiny' {
         return 1
     }
-    if word == "short" {
+    if word == 'short' {
         return 2
     }
-    if word == "integer" or word == "float" {
+    if word == 'integer' or word == 'float' {
         return 4
     }
     return 0

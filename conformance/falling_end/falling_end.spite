@@ -77,10 +77,10 @@ func forever(value: Integer): Integer {
 }
 
 func halts(value: Integer): Integer {
-    switch value {
-        1: return 10
-        _: crash
+    if value == 1 {
+        return 10
     }
+    crash
 }
 
 func leaves(value: Integer): Integer {

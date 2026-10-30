@@ -1,1 +1,1 @@
-conformance/control_switch_number_no_rest/control_switch_number_no_rest.spite:10: error: this switch over 'number' has no '_:': an Integer has more values than a switch can list... (in ControlSwitchNumberNoRest.name_of)
+conformance/control_switch_number_no_rest/control_switch_number_no_rest.spite:10: error: 'switch number' chooses among values with no closed set, so no case list is ever whole: switch on an enum's values or a union's members, or write the choice as 'if' tests (in ControlSwitchNumberNoRest.name_of)

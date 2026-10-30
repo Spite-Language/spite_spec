@@ -1,1 +1,1 @@
-conformance/control_switch_text_no_rest/control_switch_text_no_rest.spite:10: error: this switch over 'language' has no '_:'... (in ControlSwitchTextNoRest.greeting_in)
+conformance/control_switch_text_no_rest/control_switch_text_no_rest.spite:10: error: 'switch language' chooses among values with no closed set, so no case list is ever whole: switch on an enum's values or a union's members, or write the choice as 'if' tests (in ControlSwitchTextNoRest.greeting_in)

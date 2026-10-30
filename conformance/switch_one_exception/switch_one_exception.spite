@@ -1,0 +1,21 @@
+union Creature {
+    Cat
+    Dog
+    Fish
+}
+
+var console = Console()
+
+func SwitchOneException() {
+    load "../../../spite_standard_library/windows"
+    var creature: Creature = Cat()
+    show(creature)
+}
+
+func show(creature: Creature) {
+    switch creature {
+        Cat: console.print("walks")
+        Dog: console.print("walks")
+        Fish: console.print("swims")
+    }
+}

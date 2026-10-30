@@ -15,6 +15,6 @@ func seconds_for(light: Light): Integer {
     switch light {
         'red': return 30
         'blue': return 10
-        _: return 20
+        'green': return 20
     }
 }

@@ -25,7 +25,7 @@ func EventBus() {
 func log_event(event: Event) {
     switch event {
         Arrival: console.print("arrived", event.name)
-        _: console.print("something else happened to", event.name)
+        Departure: console.print("something else happened to", event.name)
     }
 }
 
