@@ -1,3 +1,0 @@
-func loudly(): String {
-    return "{name} x{quantity}!"
-}

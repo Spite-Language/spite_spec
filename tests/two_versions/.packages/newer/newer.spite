@@ -1,7 +1,0 @@
-func Newer() {
-    load "../../../..@b98492b/tests/namespaces_load/package"
-}
-
-func made(): Widgets.Widget {
-    return Widgets.Widget("newer", 2)
-}
