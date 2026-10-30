@@ -6,35 +6,32 @@ is the bug.
 
 ## How testing works
 
-- **A test is a package that crashes, not a framework.** There is no `expect`, no
-  matcher vocabulary, no reporter and no summary. A test is ordinary Spite shipped beside the project as a program
-  that `load`s it, and an expectation is `crash <condition>`, which halts on a false condition and reports the
+- **A test is a function that crashes, not a framework.** Its name is `test` or starts with `test_`, it takes no
+  arguments, and an expectation is `crash <condition>`, which halts on a false condition and reports the
   condition's source text with every operand's value ([What a crash reports](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#what-a-crash-reports)).
-  The testing story needs no language feature of its own: `crash`, `load` and reflection are the whole of it.
-- **Discovery is reflection.** `Spite.Class.instances` is every class in the program and a class object's
-  `.functions` its functions, so a runner finds each `test_` function of each class named `...Tests` without
-  registration. The names are the repository's convention, not a rule of the language: the runner decides them.
-  The program's entry class has no stand-in instance, so its `.functions` is empty
-  ([reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md)): tests go in a class of their own.
-- **A test runs on an instance the runner makes**: the runner calls the walked class (`tested()`, as any walk of
-  classes makes an object, [reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md)), which runs the test class's constructor, and runs each
-  test through `Spite.Call(declaration, instance)` and `call.call()`, the one way a declaration is called. The
-  program decides what each test's instance holds and when it is let go, and every call is known while compiling,
-  so a test compiles and runs like the rest of the program. A test takes no arguments; one that does is the
-  unfilled-argument error of `Spite.Call`. A value a test returns is dropped.
-- **Running one test, one class or a folder** is the runner's business, through `program.arguments()`: the runner on this
-  page and the repository's `tests/` run only the class or test named by the first argument, and crash when it
-  names nothing, so a mistyped name never passes. A folder of tests is one program, named on the command line.
-- **Fail-fast is deliberate**: the first failing `crash` ends the run. A person wants every failure at once
-  to batch the work; an AI wants one precise failure to fix before running again, since a list of mostly
-  cascading failures invites shotgun fixes. The crash report is the test output.
-- **Every test is a leak test** in the repository's runner: each test runs twice, and the second run must leave
-  `program.live_allocations()` where it was, and a run of `tests/` with `--debug-memory` prints nothing and
-  balances its allocations.
-- **The constructor is the set-up**: the instance is made by its constructor, so a test class sets up what its
-  tests share there, or in an attribute's default (`var creatures = [Creature("rat", 3, true), ...]` in
-  `tests/member_tests.spite`), and a test that needs its own state makes it in its body. Loading another program to
-  test it does not run that program's entry ([reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md)).
+  There is no `expect` and no matcher vocabulary. A value a test returns is dropped.
+- **A project keeps one entry point; its tests are a separate program** that `load`s it (D1768), so tests are
+  never part of the program a hot reload rebuilds. The library's `Test` class runs them:
+  `var tester = Test(namespace)` takes a namespace (`Test(Checks)`, a folder's namespace named alone or by its
+  dotted path), and `tester.run()` runs every test in it (`tests/test_class_passing`).
+- **Discovery is reflection**: `run()` walks the namespace's `.classes`, then each of its `.namespaces` the same
+  way, and in each class its `.functions` in the order they are declared, keeping those named `test` or
+  `test_...` (`testing_is_not_a_test` is not one). Nothing is registered.
+- **The constructor is the set-up**: each test runs on an instance made by calling the walked class with no
+  arguments, which runs its constructor and its attributes' defaults, so a class sets up what its tests share
+  there (`tests/test_class_setup`). The test is called through `Spite.Call(declaration, instance)` and
+  `call.call()`.
+- **Each test runs on its own**: `run()` starts the program again (`Program().executable_path()`) once per test,
+  with the environment variable `SPITE_TEST` holding the test's dotted name (`Bank.AccountTests.test_withdraws`).
+  That run builds the class and calls only that test, in place, printing nothing of its own, and its status is the
+  test's: 0, or the crash's. So no test sees the state another left, and a crash fails only its test.
+- **The report**: for each test, `pass <name>` or `fail <name>` (a run that ended with any status other than 0),
+  then every non-empty line its run printed, both streams, trimmed and indented by four spaces; then
+  `<count> tests, <passed> passed, <failed> failed`. The program then exits with status 1 when any test failed,
+  0 otherwise (`tests/test_class_failing`, whose failing test is followed by one that still runs).
+- **The program's entry class has no stand-in instance**, so its `.functions` is empty
+  ([reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md)): tests go in
+  classes of a namespace of their own. Loading another program to test it does not run that program's entry.
 
 ---
 

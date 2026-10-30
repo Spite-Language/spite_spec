@@ -1,0 +1,9 @@
+var weight = 3
+
+func test() {
+    crash weight == 3
+}
+
+func testing_is_not_a_test() {
+    crash false
+}

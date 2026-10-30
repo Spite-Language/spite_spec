@@ -1,0 +1,20 @@
+var console = Console()
+var items = List<String>()
+
+func Cart() {
+    items.append("apple")
+    items.append("pear")
+}
+
+func test_counts() {
+    crash items.count() == 2
+    console.print("two items")
+}
+
+func test_finds() {
+    crash items.contains("pear")
+}
+
+func total(): Integer {
+    return items.count()
+}

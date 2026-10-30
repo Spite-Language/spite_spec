@@ -1,0 +1,9 @@
+var balance = 0
+
+func deposit(amount: Integer) {
+    balance = balance + amount
+}
+
+func withdraw(amount: Integer) {
+    balance = balance - amount
+}

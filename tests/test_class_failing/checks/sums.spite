@@ -1,0 +1,16 @@
+var console = Console()
+
+func test_adds() {
+    var sum = 2 + 2
+    crash sum == 4
+}
+
+func test_wrong_answer() {
+    var sum = 2 + 3
+    console.print("the sum is", sum)
+    crash sum == 4
+}
+
+func test_still_runs() {
+    console.print("this test ran after a failing one")
+}
