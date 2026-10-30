@@ -47,7 +47,12 @@ prints its `.name`, and printing a `Spite.Namespace` its dotted name. **An enum'
 `.classes` and `.namespaces` walking down. `.namespace` and `.parent` are `Spite.Namespace?`, and the chain ends
 at `null`; there is no root object. `Spite.Namespace.instances` is every namespace of the program's own classes,
 parents first, in the order the classes were found. A namespace lists no enums, unions or types: each belongs to
-the class that declares it (D1745), never to a folder. **A class and a namespace with the same dotted name is a compile
+the class that declares it (D1745), never to a folder. **A class lists what it declares**: `.enums`, `.unions` and `.types` are
+`Dictionary<String, Spite.Enum>`, `Dictionary<String, Spite.Union>` and `Dictionary<String, Spite.Type>`, keyed by name in
+declaration order; a `Spite.Union` and a `Spite.Type` answer `.name`, `.name_with_namespaces` and `.owner`, and a union's
+`.members` is a `Dictionary<String, Spite.Class>` keyed by each member's name with namespaces. Since a union or a
+`type` is never named outside its class (D1779), this is the only way another class reaches one
+(`tests/class_declarations`). **A class and a namespace with the same dotted name is a compile
 error.**
 
 **`.source_files` and `.source_directories` are where a class and a namespace come from**: a `File` for every file

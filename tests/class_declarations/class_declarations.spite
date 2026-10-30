@@ -1,0 +1,50 @@
+enum Diet {
+    'meat'
+    'plants'
+}
+
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+var favourite: Pet = Cat()
+var diet: Diet = 'meat'
+
+func ClassDeclarations() {
+    load "../../../spite_standard_library/windows"
+    var enums = ClassDeclarations.enums
+    var enum_names = enums.keys().join(" ")
+    console.print("enums", enum_names)
+    var diets = enums["Diet"]
+    crash diets
+    var diet_names = diets.values.keys().join(" ")
+    console.print(diets.name_with_namespaces, diet_names)
+    var unions = ClassDeclarations.unions
+    var pet = unions["Pet"]
+    crash pet
+    var members = pet.members.keys().join(" ")
+    console.print(pet, pet.owner, members)
+    var cat = pet.members["Cat"]
+    crash cat
+    console.print(cat.name, cat.is_singleton)
+    var types = ClassDeclarations.types
+    var named = types["Named"]
+    crash named
+    var type_count = types.count()
+    console.print(named.name_with_namespaces, type_count)
+    var tom = Cat()
+    greet(tom)
+    var rex = Dog()
+    greet(rex)
+    console.print(favourite.class, diet)
+}
+
+func greet(other: Named) {
+    console.print("hello", other.name)
+}

@@ -1,0 +1,8 @@
+enums Diet
+ClassDeclarations.Diet meat plants
+Pet ClassDeclarations Cat Dog
+Cat false
+ClassDeclarations.Named 1
+hello Tom
+hello Rex
+Cat meat
