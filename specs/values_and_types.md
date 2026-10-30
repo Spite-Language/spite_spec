@@ -166,6 +166,15 @@ All the basic types a language has, with written names ("never `u64`"), and neve
 new one: `'Int' is spelled 'Integer'` (`diagnostics/old_type_spellings`). The ten types and the machine types
 they are built on are [the table at the top of the page](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#numeric-types-and-the-casting-rule).
 
+A number literal is digits, and a decimal one has a `.` with digits on both sides; there is no exponent, so
+`2.5e3` is an error that writes the number in full: `Spite writes no exponent in a number: write '2.5e3' as 2_500,
+its digits in full, separated by '_' where that helps reading, as in 1_000_000` (`conformance/decimal_exponent`,
+D1782). A `_` may stand between two digits and the value ignores it (`1_000_000`, `0.000_01`,
+`tests/digit_separators`); one at the start or end, two together, or one beside the `.` is an error: `'1__000'
+separates its digits wrongly: a '_' stands between two digits, one at a time, as in 1_000_000 or 0.000_01`
+(`conformance/digit_separator_doubled`, `conformance/digit_separator_trailing`,
+`conformance/digit_separator_beside_point`).
+
 An integer literal defaults to `Integer`; one too large to fit becomes a `Long` instead. A decimal literal
 defaults to `Float`. All of them follow the same right-side-casts-toward-left-side rule as everything else
 (`var tiny: Tiny = some_integer_variable` narrows with an ordinary cast); a value that does not fit the narrower

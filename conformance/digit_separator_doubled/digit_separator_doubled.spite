@@ -1,0 +1,7 @@
+var console = Console()
+
+func DigitSeparatorDoubled() {
+    load "../../../spite_standard_library/windows"
+    var count = 1__000
+    console.print(count)
+}

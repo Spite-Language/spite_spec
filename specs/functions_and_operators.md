@@ -260,7 +260,10 @@ error naming the shortcut**: `person.set_attribute('age', 2)` is "write 'person.
 `person.get_attribute('age')` is "write 'person.age'", since a write and a read have one spelling. This also settles `get_x()` against `.x`: there
 is one spelling. A union receiver is covered when every member offers the operator. After a `.` a word is always
 a member name and never a keyword, so a getter or setter named after a keyword is covered like any other
-(`thing.type`, `thing.type = value`). An `equals` that `==` would not call (an `equals` whose parameter is not a
+(`thing.return`, `thing.return = value`), except `type` and `singleton`, which are reserved and never a name, a
+member after a `.` included: "'type' is a reserved word and never a name: name it for what it holds, like 'kind'"
+("like 'instance'" for `singleton`; `conformance/type_as_name`, `conformance/singleton_as_name`,
+`conformance/type_as_member`, D1782). An `equals` that `==` would not call (an `equals` whose parameter is not a
 class, where `==` compares identity) is called by name.
 
 For a user class or union, `a + b` compiles to `a.sum(b)` when the class defines (an exact function, or a template

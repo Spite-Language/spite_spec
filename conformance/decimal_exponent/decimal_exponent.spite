@@ -1,0 +1,7 @@
+var console = Console()
+
+func DecimalExponent() {
+    load "../../../spite_standard_library/windows"
+    var light: Double = 2.5e3
+    console.print(light)
+}

@@ -1,0 +1,1 @@
+conformance/decimal_exponent_negative/decimal_exponent_negative.spite:5: error: Spite writes no exponent in a number: write '1e-5' as 0.00001, its digits in full, separated by '_' where that helps reading, as in 1_000_000

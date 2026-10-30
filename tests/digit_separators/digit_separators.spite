@@ -1,0 +1,14 @@
+var console = Console()
+
+func DigitSeparators() {
+    load "../../../spite_standard_library/windows"
+    var million = 1_000_000
+    var plain = 1000000
+    var price: Double = 1_234.5
+    var small: Double = 0.000_01
+    var mask: Long = 4_294_967_296
+    console.print(million, million == plain)
+    console.print(price, price == 1234.5)
+    console.print(small == 0.00001)
+    console.print(mask)
+}

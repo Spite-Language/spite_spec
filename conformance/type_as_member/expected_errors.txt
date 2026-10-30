@@ -1,0 +1,1 @@
+conformance/type_as_member/type_as_member.spite:6: error: 'type' is a reserved word and never a name: name it for what it holds, like 'kind'

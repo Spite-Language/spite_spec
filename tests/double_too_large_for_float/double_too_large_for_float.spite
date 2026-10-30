@@ -5,7 +5,7 @@ func DoubleTooLargeForFloat() {
     var fits: Double = 1000000.0
     var narrow: Float = fits
     console.print(narrow)
-    var huge: Double = 1e39
+    var huge: Double = 1_000_000_000_000_000_000_000_000_000_000_000_000_000.0
     var lost: Float = huge
     console.print(lost)
 }

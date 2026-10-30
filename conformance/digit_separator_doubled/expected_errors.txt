@@ -1,0 +1,1 @@
+conformance/digit_separator_doubled/digit_separator_doubled.spite:5: error: '1__000' separates its digits wrongly: a '_' stands between two digits, one at a time, as in 1_000_000 or 0.000_01

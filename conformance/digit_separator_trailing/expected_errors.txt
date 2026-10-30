@@ -1,0 +1,1 @@
+conformance/digit_separator_trailing/digit_separator_trailing.spite:5: error: '1000_' separates its digits wrongly: a '_' stands between two digits, one at a time, as in 1_000_000 or 0.000_01

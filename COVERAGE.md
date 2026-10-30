@@ -129,7 +129,7 @@ Rules: 148. Covered before: 90. Covered now: 144.
 | A conversion belongs to the value converted: `to_<type>()` casts | tests/numbers, tests/arithmetic | covered |
 | Declaring a `from_` function is an error | conformance/from_conversion | covered |
 | Calling `Float.from_integer()` is an error | conformance/cast_by_name | covered |
-| `type` may name a parameter | tests/type_parameter_name | added (compiler fails: "a parameter is declared 'name: Type', and found 'type'") |
+| `type` and `singleton` are reserved and never a name, a parameter, a local or a member (D1782) | conformance/type_as_name, conformance/singleton_as_name, conformance/type_as_member | added |
 | Bitwise functions of the whole numbers, their widths and counts | tests/bitwise_functions | covered |
 | `<<` and `>>` are errors naming the function | conformance/old_shift | covered |
 | Lone `&` is an error naming `bits_and` | conformance/old_ampersand | covered |
@@ -335,7 +335,7 @@ Rules: 50. Covered before: 32. Covered now: 49.
 | A private name is used freely inside its own class | tests/classes_private_inside | added |
 | `_name` on a parameter means ignored on purpose | conformance/read_underscore_name | covered |
 | `load` cannot name a function, variable or parameter | conformance/load_function, conformance/load_parentheses | covered |
-| `singleton` stays usable as a name | tests/classes_singleton_as_name | added (compiler fails: refuses 'singleton' as a variable name) |
+| `singleton` stays usable as a name | | superseded by D1782 |
 | `generics` header list is an error | conformance/classes_generics_list | added (compiler fails: generic 'a file holds declarations' text) |
 | No `do` | conformance/old_do | covered |
 | No `let`/`const`; both usable as names | conformance/old_let, tests/classes_old_keywords_as_names | added |

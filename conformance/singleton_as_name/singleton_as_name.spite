@@ -1,6 +1,6 @@
 var console = Console()
 
-func ClassesSingletonAsName() {
+func SingletonAsName() {
     load "../../../spite_standard_library/windows"
     var singleton = 1
     console.print(singleton)

@@ -1,6 +1,6 @@
 var console = Console()
 
-func TypeParameterName() {
+func TypeAsName() {
     load "../../../spite_standard_library/windows"
     var described = describe("knight")
     console.print(described)

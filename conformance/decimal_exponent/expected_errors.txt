@@ -1,0 +1,1 @@
+conformance/decimal_exponent/decimal_exponent.spite:5: error: Spite writes no exponent in a number: write '2.5e3' as 2_500, its digits in full, separated by '_' where that helps reading, as in 1_000_000

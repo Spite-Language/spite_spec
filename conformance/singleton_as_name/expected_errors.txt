@@ -1,0 +1,1 @@
+conformance/singleton_as_name/singleton_as_name.spite:5: error: 'singleton' is a reserved word and never a name: name it for what it holds, like 'instance'
