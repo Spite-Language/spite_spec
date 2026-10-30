@@ -1,0 +1,42 @@
+var console = Console()
+var program = Program()
+var folder = ".spite/here"
+
+func CompilerBuildsItsFolder() {
+    load "../../../spite_standard_library/windows"
+    write_the_program()
+    var old = File(".spite/here/.spite/build/here.exe")
+    if old.exists() {
+        crash old.remove()
+    }
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var arguments = ["--build"]
+    var building = Process(compiler, arguments)
+    building.working_directory = folder
+    var code = building.run()
+    crash code
+    console.print("exit code", code)
+    var built = File(".spite/here/.spite/build/here.exe")
+    var is_built = built.exists()
+    console.print("built", is_built)
+}
+
+func write_the_program() {
+    var made = Directory(folder)
+    if not made.exists() {
+        crash made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("")
+    lines.append("func Here() \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append("    console.print(\"here\")")
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/here.spite")
+    var joined = lines.join("\n")
+    crash entry.write_string(joined)
+}
