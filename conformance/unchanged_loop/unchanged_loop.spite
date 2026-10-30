@@ -1,0 +1,13 @@
+var console = Console()
+
+func UnchangedLoop() {
+    load "../../../spite_standard_library/common"
+    console.print("waiting")
+    var running = true
+    var limit = 3
+    var spins = 0
+    while running and limit > 0 {
+        spins = spins + 1
+    }
+    console.print(spins)
+}

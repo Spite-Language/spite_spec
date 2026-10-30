@@ -1,0 +1,9 @@
+var console = Console()
+var window = Window()
+
+func EndlessLockedLoopOnALocal() {
+    load "../../../spite_standard_library/windows"
+    var counting = Parallel(window.frames)
+    window.run()
+    console.print(counting)
+}

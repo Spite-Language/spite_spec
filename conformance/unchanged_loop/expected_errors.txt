@@ -1,0 +1,1 @@
+conformance/unchanged_loop/unchanged_loop.spite:9: error: 'while running and limit > 0' never ends: nothing inside it changes 'running', 'limit', and it calls nothing and has no 'return', 'fallback' or 'crash', so the program would spin here for good: change 'running', 'limit' inside the loop, or leave it with a 'return' (in UnchangedLoop.UnchangedLoop)

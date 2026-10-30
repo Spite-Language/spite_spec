@@ -1,10 +1,12 @@
 var program = Program()
 
 func count_forever(): Integer {
+    var counting = true
     var counted = 0
-    while true {
+    while counting {
         counted = counted + step(counted)
     }
+    return counted
 }
 
 func step(counted: Integer): Integer {

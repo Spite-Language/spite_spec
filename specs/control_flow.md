@@ -43,6 +43,16 @@ condition, so loop 'while' what its leaving paths change, a 'running' local they
 test` (`conformance/spinning_loop`). A loop that waits for a value loops `while not found` and assigns it; one that
 runs until something happens loops `while running` and sets `running = false` where it ends
 ([failure.md](failure.md#nothing-fails-silently-the-rule)).
+**A loop whose condition nothing inside it can change is a compile error** (D1746): a `while` whose condition reads
+only locals and parameters (with literals and operators), none of which the loop assigns, that holds no `return`,
+`fallback` or `crash` and calls nothing, is refused at its line, naming the names in the order the condition reads
+them: `'while running and limit > 0' never ends: nothing inside it changes 'running', 'limit', and it calls nothing
+and has no 'return', 'fallback' or 'crash', so the program would spin here for good: change 'running', 'limit' inside
+the loop, or leave it with a 'return'` (`conformance/unchanged_loop`). A call cannot change a local, so such a loop
+that does call is read as endless by the rules for `Parallel` work and locked singletons, like `while true`
+([concurrency.md](concurrency.md); `conformance/endless_parallel_work_calls`, `conformance/endless_locked_loop_on_a_local`);
+on the program's own thread it is left alone, since what it calls can end the program. A condition that reads an
+attribute, a member or a call is not judged: another thread may change it.
 
 There is deliberately no `break`/`continue`: `while` is the only loop construct Spite has, full stop.
 Neither is a keyword, but either written as a statement of its own is an error naming the form (`Spite has no
