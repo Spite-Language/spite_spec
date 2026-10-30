@@ -124,7 +124,14 @@ through it. The cast answers what the conversion answers: a conversion that answ
 in, and one that answers `T?` goes where a `T?` is wanted and is narrowed like any other `T?` where a plain `T` is (the
 usual `this value may be null` error). An enum value goes where an `Integer` is wanted as its number, text where an
 enum is wanted by the enum's values, and a whole number where an enum is wanted by its numbers, with nothing
-declared. A conversion is never called by name. A class with no such conversion is an error naming the conversion
+declared. A conversion is never called by name (D1730): writing the call where the place wants the class is
+"'IpAddress(text)' is what writing 'text' here already does: the compiler casts a value to the class its place
+wants, so write 'text'" (`conformance/conversion_by_name_argument`, `_return`, `_typed`), and writing it where
+nothing wants the class is "'Float(count)' calls a conversion by name, and the compiler applies a conversion only
+where a value meets the class it makes: give 'count' a place that wants it, as in 'var converted: Float = count'"
+(`conformance/conversion_by_name_untyped`, `_enum`), the `?` there being what the conversion answers. A number
+class, an enum and a class that declares a conversion are each read this way when called with one argument, unless
+the class's constructor takes exactly one. A class with no such conversion is an error naming the conversion
 it would need: `a Point cannot be used where an IpAddress is needed: a value is cast to the class a place wants
 through that class's conversion, and IpAddress declares no 'IpAddress(from: Point)'` (`conformance/missing_conversion`).
 

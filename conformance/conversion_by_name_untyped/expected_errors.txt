@@ -1,0 +1,1 @@
+conformance/conversion_by_name_untyped/conversion_by_name_untyped.spite:6: error: 'Float(count)' calls a conversion by name, and the compiler applies a conversion only where a value meets the class it makes: give 'count' a place that wants it, as in 'var converted: Float = count' (in ConversionByNameUntyped.ConversionByNameUntyped)

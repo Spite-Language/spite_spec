@@ -1,0 +1,1 @@
+conformance/conversion_by_name_enum/conversion_by_name_enum.spite:11: error: 'Mood(text)' calls a conversion by name, and the compiler applies a conversion only where a value meets the class it makes: give 'text' a place that wants it, as in 'var converted: ConversionByNameEnum.Mood? = text' (in ConversionByNameEnum.ConversionByNameEnum)

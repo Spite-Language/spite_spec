@@ -1,0 +1,1 @@
+conformance/conversion_by_name_argument/conversion_by_name_argument.spite:6: error: 'IpAddress(text)' is what writing 'text' here already does: the compiler casts a value to the class its place wants, so write 'text' (in ConversionByNameArgument.ConversionByNameArgument)

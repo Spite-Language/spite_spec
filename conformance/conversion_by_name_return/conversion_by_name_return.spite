@@ -1,0 +1,11 @@
+var console = Console()
+
+func ConversionByNameReturn() {
+    load "../../../spite_standard_library/windows"
+    var paint = parsed("#ff8000")
+    console.print(paint)
+}
+
+func parsed(text: String): Color? {
+    return Color(text)
+}

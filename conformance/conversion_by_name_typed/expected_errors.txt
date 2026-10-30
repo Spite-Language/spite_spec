@@ -1,0 +1,1 @@
+conformance/conversion_by_name_typed/conversion_by_name_typed.spite:5: error: 'Integer("42")' is what writing '"42"' here already does: the compiler casts a value to the class its place wants, so write '"42"' (in ConversionByNameTyped.ConversionByNameTyped)

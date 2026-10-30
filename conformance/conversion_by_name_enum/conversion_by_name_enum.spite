@@ -1,0 +1,13 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var console = Console()
+
+func ConversionByNameEnum() {
+    load "../../../spite_standard_library/windows"
+    var text = "calm"
+    var mood = Mood(text)
+    console.print(mood)
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func ConversionByNameArgument() {
+    load "../../../spite_standard_library/windows"
+    var text = "127.0.0.1"
+    connect(IpAddress(text), 8080)
+}
+
+func connect(address: IpAddress?, port: Integer) {
+    console.print(address, port)
+}

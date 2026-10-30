@@ -1,0 +1,1 @@
+conformance/conversion_by_name_return/conversion_by_name_return.spite:10: error: 'Color(text)' is what writing 'text' here already does: the compiler casts a value to the class its place wants, so write 'text' (in ConversionByNameReturn.parsed)

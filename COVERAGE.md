@@ -129,6 +129,8 @@ Rules: 148. Covered before: 90. Covered now: 144.
 | A conversion belongs to the value converted: `to_<type>()` casts | tests/numbers, tests/arithmetic | covered |
 | Declaring a `from_` function is an error | conformance/from_conversion | covered |
 | Calling `Float.from_integer()` is an error | conformance/cast_by_name | covered |
+| Calling a conversion by name where the place wants its class is an error (D1730) | conformance/conversion_by_name_argument, conversion_by_name_return, conversion_by_name_typed | added |
+| Calling a conversion by name where nothing wants its class is an error (D1730) | conformance/conversion_by_name_untyped, conversion_by_name_enum | added |
 | `type` and `singleton` are reserved and never a name, a parameter, a local or a member (D1782) | conformance/type_as_name, conformance/singleton_as_name, conformance/type_as_member | added |
 | Bitwise functions of the whole numbers, their widths and counts | tests/bitwise_functions | covered |
 | `<<` and `>>` are errors naming the function | conformance/old_shift | covered |
