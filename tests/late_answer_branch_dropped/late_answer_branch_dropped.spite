@@ -1,0 +1,31 @@
+var console = Console()
+
+func LateAnswerBranchDropped() {
+    load "../../../spite_standard_library/windows"
+    if LateAnswerBranchDropped.function_waits("blend") {
+        started_slowly()
+    } else {
+        started_at_once()
+    }
+    var map = File("tests/late_answer_branch_dropped/.spite/build/late_answer_branch_dropped.functions")
+    var text = map.read_as_string()
+    crash text
+    var kept = text.contains("started_at_once")
+    var dropped = not text.contains("started_slowly")
+    console.print("the taken branch is kept:", kept)
+    console.print("the other branch is dropped:", dropped)
+}
+
+func blend(seed: Integer): Integer {
+    return seed * 3
+}
+
+func started_slowly() {
+    var blended = blend(2)
+    console.print("started slowly", blended)
+}
+
+func started_at_once() {
+    var blended = blend(3)
+    console.print("started at once", blended)
+}

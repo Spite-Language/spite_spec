@@ -1,0 +1,3 @@
+started at once 9
+the taken branch is kept: true
+the other branch is dropped: true
