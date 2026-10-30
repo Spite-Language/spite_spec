@@ -1,0 +1,1 @@
+conformance/time_reading_is_not_instant/time_reading_is_not_instant.spite:10: error: a DateTime cannot be used where an Instant is needed (in TimeReadingIsNotInstant.TimeReadingIsNotInstant)

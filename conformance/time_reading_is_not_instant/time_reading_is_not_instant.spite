@@ -1,0 +1,11 @@
+var console = Console()
+
+func TimeReadingIsNotInstant() {
+    load "../../../spite_standard_library/windows"
+    var meeting_day = Date(2024, 3, 10)
+    var meeting_time = Time(9, 30, 0, 0)
+    var meeting = DateTime(meeting_day, meeting_time)
+    var launch_since_1970 = Duration(1710054000, 'seconds')
+    var launch = Instant(launch_since_1970)
+    console.print(meeting == launch)
+}
