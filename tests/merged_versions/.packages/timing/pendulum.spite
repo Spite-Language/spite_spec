@@ -1,0 +1,5 @@
+var swings = 0
+
+func swing() {
+    swings = swings + 1
+}
