@@ -1,0 +1,13 @@
+var bodies = 0
+
+func add_body() {
+    bodies = bodies + 1
+}
+
+func describe(): String {
+    return "{bodies} bodies in the world"
+}
+
+func gravity(): String {
+    return "bodies fall"
+}

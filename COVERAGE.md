@@ -1249,7 +1249,9 @@ Rules: 52. Covered before: 36. Covered now: 47.
 | A pin that is not 7 to 40 hexadecimal digits is "... which is not a commit ..." | conformance/load_git_branch_pin | added (compiler fails: reports the folder name is not snake_case) |
 | A folder after the commit that leaves the repository is the error | conformance/load_git_outside_repository | added (compiler fails: reads it as a missing folder) |
 | A repository that is neither a URL nor a path is "... names no repository ..." | conformance/load_git_no_repository | added (compiler fails: reports the folder name is not snake_case) |
-| Fetching, the `.files` check, read-only copies, pins inside a package, two versions of one repository | none | missing |
+| Fetching, the `.files` check, read-only copies, pins inside a package | none | missing |
+| Two versions of one repository are one library, the program's own files winning | tests/merged_versions, tests/merged_versions_program_wins | added |
+| Two commits giving one declaration two bodies or two types is the error | conformance/merged_versions_two_bodies, conformance/merged_versions_two_types | added |
 | A bodiless `func` where the compiler supplies nothing is "give it a body" | conformance/bodiless_function | added (compiler fails: compiles and then reports a fault of the compiler) |
 
 ## concurrency.md

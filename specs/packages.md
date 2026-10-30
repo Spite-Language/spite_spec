@@ -270,34 +270,21 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
     fetched from a URL it is "... fetched from a URL, and names a repository by a path on this machine". An
     ordinary `load` in a copy whose folder leaves the copy is "'load "<text>"' is written in
     <repository>@<commit> and leaves that repository".
-  - **Two versions of one repository are two libraries**: two pins of one repository that resolve to different
-    commits are never
-    unified and never an error. A package is a pinned copy (every folder of it), or the program (its own folder
-    and every folder it loads without a pin). Each version's classes are its own: a name written in a package
-    resolves, at each step of the namespace walk, first as it does without versions and then in each version the
-    package pinned; a value of one version's class is not the other's type, a singleton of one version is not
-    the other's, and a file outside a version that has the dotted name of one of its classes reopens the version
-    its package pinned. A class of the standard library a version reopens stays the one class. **One package
-    pinning two commits** of one repository reads them as two ordinary loads into one namespace, the later
-    reopening the earlier under the load-order rule; together they are that package's version, spelled by its
-    first commit. A commit is read once, into one version, so a commit one package reads alongside another and
-    a second package reads into a different version is "'load "<text>"' reads <repository> at <commit> as part
-    of its package's version from <commit>, and <file>:<line> ('load "..."') reads that commit as part of the
-    version from <commit>: a commit's files are read once, into one version, so pin it the same way in both
-    packages" (`conformance/two_versions_commit_read_twice`). Two commits of one repository may hold the same
-    folder: their roots make one namespace, never "both make the namespace".
-    A name, or a reopening, that only the versions hold in a package that pinned none of them is an error listing
-    every version as "<repository>@<commit>, pinned by <file>:<line> ('load "..."')", joined by `; `: a name is
-    "'<name>' is a class only versions of a repository hold, and this package pins none of them: <versions>" at
-    its line (`conformance/two_versions_unpinned_name`), and a file is "'<name>' is a class only versions of a
-    repository hold, and the package of this file pins none of them, so it cannot reopen one: <versions>"
-    (`conformance/two_versions_unpinned_reopening`). A version's classes are
-    spelled `<repository name>_<commit>.<dotted name>` in messages, reflection and `--final-classes`
-    (`tests/two_versions`), which
-    prints each version into its own folder; the commit is 7 digits, more when two versions share them. Two
-    spellings of one commit share nothing but agree. Built by discovering the program twice when a repository is
-    pinned at two commits: the first pass learns which package pins what, the second puts each version's
-    classes under its own name. The duplicate code costs nothing because identical functions are folded into one.
+  - **Two versions of one repository are one library** (D1771): every commit of one repository a program loads,
+    whichever package pins it, reopens the same namespaces and classes, merged the way any reopening is, so a game
+    and the plugins that pin its engine at other commits share one engine (`tests/merged_versions`). A package is a
+    pinned copy (every folder of it), or the program (its own folder and every folder it loads without a pin). The
+    files of pinned copies are merged before the program's own, so where the program's own files declare a name
+    their declaration is the one that stays (`tests/merged_versions_program_wins`). Two commits of one repository
+    may hold the same folder: their roots make one namespace, never "both make the namespace". A declaration two
+    commits of one repository both make, an attribute, a function, an enum, a union or a type, must be the same in
+    both, read as its lines without blank lines and comments: one given two bodies, or an attribute given two
+    types, is "'<class>.<name>' is declared one way by <commit> and another by <commit>, two commits of one
+    repository this program loads as one library (<file>:<line> and <file>:<line>): pin commits that agree, or
+    declare it in the program's own files, which win" at the later one's line, the commits 7 digits
+    (`conformance/merged_versions_two_bodies`, `conformance/merged_versions_two_types`), unless the program's own
+    files declare that name. A class keeps its plain name: no version is spelled in messages, reflection or
+    `--final-classes`.
   - Compile time only: a git load costs what a folder load costs at run time, nothing.
 - Because patching is dangerous to read, the toolchain writes a **final class** folder: every class after all codegen, with the
   winning function of every replacement, each preceded by a `#` comment naming the root it came from (and which roots it

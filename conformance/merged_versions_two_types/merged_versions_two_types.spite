@@ -1,0 +1,10 @@
+var console = Console()
+
+func MergedVersionsTwoTypes() {
+    load "../../../spite_standard_library/windows"
+    load "../..@b561721/tests/merged_versions/.packages/timing"
+    load "../..@f6bb50b/tests/merged_versions/.packages/timing"
+    var pendulum = Pendulum()
+    pendulum.swing()
+    console.print(pendulum.swings)
+}

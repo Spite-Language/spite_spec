@@ -1,3 +1,0 @@
-func greeting(): String {
-    return "reopened"
-}

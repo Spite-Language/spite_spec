@@ -1,1 +1,0 @@
-conformance/two_versions_unpinned_reopening/widgets/widget.spite: error: 'Widgets.Widget' is a class only versions of a repository hold, and the package of this file pins none of them, so it cannot reopen one: ../../../..@26e6476, pinned by .../e67e4e2/tests/two_versions/.packages/older/older.spite:2 ('load "../../../..@26e6476/tests/namespaces_load/package"')
