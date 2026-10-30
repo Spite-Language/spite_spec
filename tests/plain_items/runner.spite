@@ -9,7 +9,6 @@ func run(mover: Mover, entity_count: Integer) {
         var row: $row_type = null
         find_attributes(row, entity)
         if not matcher.missing {
-            fill_attributes(row)
             mover.update_each(row)
         }
         entity = entity + 1
@@ -30,17 +29,14 @@ func run_passed(mover: Mover, entity_count: Integer) {
     }
 }
 
-func find_attribute(attribute: Spite.AttributeDeclaration, _row: $row_type, entity: Integer) {
+func find_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {
     var column = Column<attribute.class>()
     var dense = column.set.dense_index(entity)
     matcher.note(dense)
-}
-
-func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type) {
-    crash matcher.rows[attribute.index]
-    var stored_row = matcher.rows[attribute.index]
-    crash Column<attribute.class>().values[stored_row]
-    row.attributes[attribute] = Column<attribute.class>().values[stored_row]
+    if dense >= 0 {
+        crash column.values[dense]
+        row.attributes[attribute] = column.values[dense]
+    }
 }
 
 func pass_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows: List<Integer>) {

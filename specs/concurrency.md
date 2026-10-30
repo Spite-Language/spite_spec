@@ -463,7 +463,10 @@ spite_compiler#242. `tests/overlapped_work`, `tests/overlapped_work_in_the_entry
 **The first crash stops the program.** When work that runs at once crashes, the first crash that happens stops the
 program at once: its report is printed and nothing else runs or prints, and a thread that crashes after it never
 reports. So when two pieces of work would both crash, either one's report may be the one printed, and exactly one
-is. The report lists the frames of the thread that crashed. A program in which nothing runs at once halts as it
+is. The report is what any crash prints (D1783): the line and values, and the frames of the work that crashed down
+to its first function, then one frame line more, marked `started`, naming where the program wrote the call that
+ran apart, `spite.frame	tests/overlapped_work_crashes/overlapped_work_crashes.spite:6	OverlappedWorkCrashes	OverlappedWorkCrashes	started`,
+since the program text never says that work ran apart; the caller's further frames are left out. A program in which nothing runs at once halts as it
 always did. `tests/overlapped_work_crashes`, `tests/overlapped_work_halts`.
 
 **Objects made for their owner count apart.** An attribute is made for its owner when every assignment to it in

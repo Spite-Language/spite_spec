@@ -1,0 +1,1 @@
+conformance/template_reads_no_parameter/template_reads_no_parameter.spite:9: error: 'show_attribute' is a template over the attributes of a class, because 'attribute' is a word of its name, but its body reads 'attribute' on no value, so nothing says which class: read it as 'shown[attribute]' on a value of the class it walks (in TemplateReadsNoParameter.show_attribute)

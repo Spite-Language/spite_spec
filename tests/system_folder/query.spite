@@ -18,19 +18,16 @@ func refresh() {
 func take(entity: Integer) {
     matched = true
     var row: $row_type = null
-    match_attributes(row, entity)
-    fallback matched
     fill_attributes(row, entity)
+    fallback matched
     rows.append(row)
-}
-
-func match_attribute(attribute: Spite.AttributeDeclaration, _row: $row_type, entity: Integer) {
-    var store = Store<attribute.class>()
-    var stored = store.has(entity)
-    matched = matched and stored
 }
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {
     var store = Store<attribute.class>()
-    row.attributes[attribute] = store.of(entity)
+    if store.has(entity) {
+        row.attributes[attribute] = store.of(entity)
+    } else {
+        matched = false
+    }
 }

@@ -5,8 +5,6 @@ enum Phase {
     'update'
 }
 
-var found = List<Integer>()
-
 func run(system: $system_type, entity_count: Integer) {
     run_phases_each(system, entity_count)
 }
@@ -14,33 +12,24 @@ func run(system: $system_type, entity_count: Integer) {
 func run_phase_each(phase: Spite.FunctionDeclaration, system: $system_type, entity_count: Integer) {
     var entity = 0
     while entity < entity_count {
-        found.clear()
-        var row: $row_type = null
-        find_attributes(row, entity)
-        system.phase_each(streamed_arguments(found))
+        system.phase_each(streamed_arguments(entity))
         entity = entity + 1
     }
 }
 
-func find_attribute(attribute: Spite.AttributeDeclaration, _row: $row_type, entity: Integer) {
-    var column = Column<attribute.class>()
-    var dense = column.dense_index(entity)
-    found.append(dense)
-}
-
-func streamed_argument(argument: Spite.Argument, rows: List<Integer>): argument.class {
+func streamed_argument(argument: Spite.Argument, entity: Integer): argument.class {
     if argument.class == $row_type {
         var row: $row_type = null
-        fill_attributes(row, rows)
+        fill_attributes(row, entity)
         return row
     }
     var other: argument.class = null
     return other
 }
 
-func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows: List<Integer>) {
-    crash rows[attribute.index]
-    var stored_row = rows[attribute.index]
-    crash Column<attribute.class>().values[stored_row]
-    row.attributes[attribute] = Column<attribute.class>().values[stored_row]
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {
+    var column = Column<attribute.class>()
+    var dense = column.dense_index(entity)
+    crash column.values[dense]
+    row.attributes[attribute] = column.values[dense]
 }

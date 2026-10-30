@@ -1,0 +1,11 @@
+var console = Console()
+var lamp = Lamp()
+
+func TemplateReadsNoParameter() {
+    load "../../../spite_standard_library/windows"
+    show_attributes(lamp)
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, shown: Lamp) {
+    console.print(attribute.name)
+}

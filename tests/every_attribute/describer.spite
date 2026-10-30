@@ -1,15 +1,17 @@
 generic $described_type
 
-func describe(value: $described_type): String {
-    var lines = List<String>()
-    describe_attributes(value, lines)
-    return lines.join(", ")
+var _lines = List<String>()
+
+func describe(_value: $described_type): String {
+    _lines.clear()
+    $described_type.attributes.each(describe_one)
+    return _lines.join(", ")
 }
 
-func describe_attribute(attribute: Spite.AttributeDeclaration, value: $described_type, lines: List<String>) {
+func describe_one(attribute: Spite.AttributeDeclaration) {
     var kind = Kind<attribute.class>()
     var kind_name = kind.name()
-    lines.append("{attribute.name} is {kind_name}")
+    _lines.append("{attribute.name} is {kind_name}")
 }
 
 func reset_attribute(attribute: Spite.AttributeDeclaration, value: $described_type, fresh: $described_type) {

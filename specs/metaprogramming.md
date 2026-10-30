@@ -35,12 +35,14 @@ prints each instance.
   constructor, an own function's answer, or an element of a list so known. Reads on parameters count before the
   others, so the declaration (and `attribute.class`) is that of the first parameter read. Reads on several classes
   narrow the walk to the attributes they all have, in the first class's order. A body that reads the parameter on
-  nothing takes the class of the function it passes the parameter to, otherwise of its first parameter that is a class
-  or a `type`. A nullable class is walked as nothing.
+  nothing takes the class of the function it passes the parameter to, and with no such function it is an error, even
+  when the template has a parameter of a class: nothing is guessed from it (D1783, superseding D810's default to the
+  first such parameter). A nullable class is walked as nothing.
 - **Errors.** A body that reads the declaration on no value: "'show_attribute' is a template over the attributes of a
   class, because 'attribute' is a word of its name, but its body reads 'attribute' on no value, so nothing says
   which class: read it as 'value[attribute]' on a value of the class it walks"
-  (`conformance/template_unused_attribute`). A value whose class its declaration does not say: "'show_attribute' uses
+  (`conformance/template_unused_attribute`); with a parameter of a class it names that parameter, "read it as
+  'shown[attribute]'" (`conformance/template_reads_no_parameter`). A value whose class its declaration does not say: "'show_attribute' uses
   'attribute' on 'shown', whose class is not known from its declaration, so nothing says which class it walks: use it
   on a parameter, an attribute or a local declared with its type, as in 'var shown: Monster = ...'"
   (`conformance/template_unknown_value`). Two classes with no attribute in common: "'copy_attribute' reads
