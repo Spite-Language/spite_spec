@@ -1,1 +1,1 @@
-conformance/loaded_folder_namespace/kitchen/chef.spite:6: error: unknown type 'Garnish.Pepper.Topping': did you mean 'Topping'? (in Chef.)
+conformance/loaded_folder_namespace/kitchen/chef.spite:6: error: unknown type 'Garnish.Pepper.Topping': did you mean 'Topping'? (in Chef.serve)

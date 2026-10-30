@@ -1,0 +1,13 @@
+type Moving {
+    entity: Integer
+    speed: Integer
+}
+
+var console = Console()
+
+func WalkOverAType() {
+    load "../../../spite_standard_library/windows"
+    var runner = Runner<Moving>()
+    var answer = runner.search()
+    console.print(answer)
+}

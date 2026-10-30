@@ -1,0 +1,1 @@
+conformance/unknown_type_in_answer/unknown_type_in_answer.spite:10: error: unknown type 'Fraction' (in UnknownTypeInAnswer.halved)

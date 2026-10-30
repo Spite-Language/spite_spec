@@ -1,0 +1,7 @@
+var console = Console()
+
+func UnknownTypeInFunction() {
+    load "../../../spite_standard_library/windows"
+    var half: Fraction<Integer> = 0.5
+    console.print(half)
+}

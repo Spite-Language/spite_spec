@@ -1,0 +1,1 @@
+conformance/unknown_type_in_function/unknown_type_in_function.spite:5: error: unknown type 'Fraction' (in UnknownTypeInFunction.UnknownTypeInFunction)

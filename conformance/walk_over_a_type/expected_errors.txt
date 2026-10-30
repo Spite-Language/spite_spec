@@ -1,0 +1,1 @@
+conformance/walk_over_a_type/runner.spite:6: error: '$row_type.attributes' walks the attributes of a class, and '$row_type' is 'WalkOverAType.Moving', a type, whose members are not attributes: walk a class, or read each of the type's members by its name (in Runner.search)

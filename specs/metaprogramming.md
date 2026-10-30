@@ -294,6 +294,9 @@ A walk is a call on a list of reflection objects, under [reflection.md's rules f
   known only to read, since an answer the study cannot prove is `true`. **`.is_stateful`** is the same study asked of the object: some function besides the constructor
   and `drop()` writes the class's own attributes or anything reached through them, or a singleton, or a singleton the
   class binds has state.
+- **A `type` has no attributes to walk**: `$row_type.attributes.each(find)` with `$row_type` bound to a `type` is
+  "'$row_type.attributes' walks the attributes of a class, and '$row_type' is 'WalkOverAType.Moving', a type, whose members are not
+  attributes: walk a class, or read each of the type's members by its name" (`conformance/walk_over_a_type`).
 - **An empty walk is loud when it must not be**: `crash Runner.functions.filter_name_ends_with("_each").count() > 0`
   folds, and is the compile error below when it is false.
 

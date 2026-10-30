@@ -1,0 +1,12 @@
+generic $row_type
+
+var found = ""
+
+func search(): String {
+    $row_type.attributes.each(find)
+    return found
+}
+
+func find(attribute: Spite.AttributeDeclaration) {
+    found = attribute.name
+}

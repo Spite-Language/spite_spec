@@ -293,7 +293,8 @@ the program's exit code.
 ## How many errors are listed
 
 Every error is `<path>:<line>: error:
-<message> (in <Class>.<function>)`, each listed once. The errors in files under the program's own folder come first,
+<message> (in <Class>.<function>)`, each listed once; an error among a class's attributes and types ends
+`(in <Class>.)`, and one in a function, its signature included, names that function (`conformance/unknown_type_in_function`, `conformance/unknown_type_in_answer`). The errors in files under the program's own folder come first,
 at most 25, followed by `and N more in the program` when there were more. Then come the errors in the packages it
 loads (the standard library and every loaded folder), at most 25 of them together, in the order they
 were found, followed by one `and N more in <package>` per package that had more, the package named by its folder, relative to the folder `spite` was run from when it is
