@@ -296,7 +296,8 @@ A walk is a call on a list of reflection objects, under [reflection.md's rules f
   class binds has state.
 - **A `type` has no attributes to walk**: `$row_type.attributes.each(find)` with `$row_type` bound to a `type` is
   "'$row_type.attributes' walks the attributes of a class, and '$row_type' is 'WalkOverAType.Moving', a type, whose members are not
-  attributes: walk a class, or read each of the type's members by its name" (`conformance/walk_over_a_type`).
+  attributes: walk a class, or read each of the type's members by its name" (`conformance/walk_over_a_type`), and so is
+  reading the list itself, `var listed = $row_type.attributes`, with the same words (`conformance/attributes_of_a_type`).
 - **An empty walk is loud when it must not be**: `crash Runner.functions.filter_name_ends_with("_each").count() > 0`
   folds, and is the compile error below when it is false.
 
