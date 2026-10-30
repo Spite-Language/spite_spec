@@ -12,8 +12,8 @@ folder of blocks is one program), and where SpiteSpec tests the same behaviour.
 A ported program that the compiler gets wrong says why after "fails:"; each of those is a compiler or library gap,
 listed again under [Gaps](#gaps).
 
-Old programs: 975. Covered: 833. Ported: 99. Not applicable:
-43. Ported programs that fail: 2.
+Old programs: 975. Covered: 830. Ported: 99. Not applicable:
+46. Ported programs that fail: 2.
 
 ## Gaps
 
@@ -279,7 +279,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/nested_type_from_outside | covered | tests/nested_type_from_outside |  |
 | conformance/stage6/nullable_values | covered | tests/nullable_values |  |
 | conformance/stage6/number_keys | covered | tests/number_keys |  |
-| conformance/stage6/number_parameter | covered | tests/number_parameter |  |
+| conformance/stage6/number_parameter | not applicable (D1733) | - | a parameter typed Number: no type stands for every number |
 | conformance/stage6/number_type | covered | tests/number_type |  |
 | conformance/stage6/numbered_enums | covered | tests/numbered_enums |  |
 | conformance/stage6/numbers_are_classes | ported | tests/numbers_are_classes | D662: the Memory.Heap.functions line dropped |
@@ -343,7 +343,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/shape_defaults | covered | tests/shape_defaults |  |
 | conformance/stage6/shape_functions | covered | tests/shape_functions |  |
 | conformance/stage6/shape_members | covered | tests/shape_members |  |
-| conformance/stage6/shape_operator_cut | covered | tests/shape_operator_cut |  |
+| conformance/stage6/shape_operator_cut | not applicable (D1733) | - | an operator on Number parameters in a REPL build |
 | conformance/stage6/shape_operator_unlike | covered | tests/shape_operator_unlike |  |
 | conformance/stage6/shape_operators | covered | tests/shape_operators |  |
 | conformance/stage6/shapes | covered | tests/shapes |  |
@@ -987,7 +987,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/values_and_types.md#bitwise_basics | covered | tests/bitwise_functions |  |
 | docs/values_and_types.md#maths_basics | covered | tests/maths_functions |  |
 | docs/values_and_types.md#number_type_doc | covered | tests/number_type |  |
-| docs/values_and_types.md#number_parameter_doc | covered | tests/number_parameter |  |
+| docs/values_and_types.md#number_parameter_doc | not applicable (D1733) | - | a parameter typed Number |
 | docs/values_and_types.md#lone_hole | covered | conformance/lone_hole |  |
 | docs/values_and_types.md#direct_text | covered | tests/direct_text |  |
 | docs/values_and_types.md#text_building | covered | tests/text_building |  |

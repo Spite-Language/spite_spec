@@ -1,7 +1,7 @@
 generic $kind_type
 
 func name(): String {
-    if $kind_type == Number {
+    if $kind_type.is_number {
         return "a number"
     }
     return "not a number"

@@ -16,19 +16,24 @@ The standard library fills every maths gap a game needs, as a game engine packag
   exception to the rule against single letters ([style.md](https://github.com/Spite-Language/spite_documentation/blob/master/style.md#names)). Matrices: `column_C_row_R`,
   column-major, `Matrix4<Float>()` and `Matrix3<Float>()` the identity. A vector is made with all its parts
   (`Vector3(1.0, 2.0, 3.0)`); a quaternion and a matrix are made from their defaults and set.
-- **Vectors are generic over their number class**: `generic $number_type: Number`, inferred from the parts
+- **Vectors are generic over their number class**: `generic $number_type: Component`, where each vector declares
+  `type Component` with what it uses (the four operators' functions, `equals`, `minimum`, `maximum`, `absolute`),
+  inferred from the parts
   (`Vector3(1, 2, 3)` is a `Vector3<Integer>`, `Vector3(1.0, 2.0, 3.0)` a `Vector3<Float>`) and written out where a
   type is named (`Vector3<Float>`); each class compiles to its own copy, so a `Vector3<Float>` is three `float`s.
   No `Vector3i`-style name exists. Every member answers the vector's own class and takes it (`scaled(factor)`,
   `linear_interpolate(target, amount)`): `length()`, `distance_to` and `normalized()` on whole numbers truncate as
   integer division does (the root is taken in `Double` and cut), and `normalized()` divides each part by the
   length.
-- **Matrices and quaternions are generic over their number class too**: `generic $number_type: Number`, written
+- **Matrices and quaternions are generic over their number class too**: `generic $number_type: Element` in
+  `Matrix3` and `Matrix4`, `Part` in `Quaternion`, each a `type` the class declares with what it uses, written
   out at every construction since an empty constructor infers nothing (`Matrix4<Float>()`, `Quaternion<Double>()`),
   and every member takes and answers its own class (`Matrix4<Double>.transform_point` takes a `Vector3<Double>`,
-  `set_rotation` a `Quaternion<Double>`). Only `Float` and `Double` are accepted: any other class is
-  "'crash $number_type == Float or $number_type == Double' always halts in Quaternion<Integer>: ...", reported by
-  the class's constructor. Planes, rays, boxes, frustums and curves hold `Float`s and take `Vector2<Float>`,
+  `set_rotation` a `Quaternion<Double>`). Only `Float` and `Double` are accepted. A whole number class does not fit
+  `Matrix4.Element` or `Quaternion.Part`, which require `square_root()`: "'Integer' does not fit type 'Part', which
+  'Quaternion' requires of $number_type: it has no function 'square_root'"; in `Matrix3`, whose type it fits, it is
+  "'crash $number_type == Float or $number_type == Double' always halts in Matrix3<Integer>: ...", reported by the
+  class's constructor. Planes, rays, boxes, frustums and curves hold `Float`s and take `Vector2<Float>`,
   `Vector3<Float>`, `Vector4<Float>` and `Matrix4<Float>`.
 - **Vectors** (`Vector2`, `Vector3`, `Vector4`): `sum`, `subtract`, `multiply`, `divide` (part by part, and so the
   operators `+ - * /`), `negate` (unary `-`), `equals` (`==`, every part exactly), `scaled(factor)`,

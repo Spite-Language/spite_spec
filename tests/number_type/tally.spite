@@ -1,4 +1,12 @@
-generic $number_type: Number
+generic $number_type: Counted
+
+type Counted {
+    sum(Counted): Counted
+    subtract(Counted): Counted
+    remainder(Counted): Counted
+    less_than(Counted): Boolean
+    greater_than(Counted): Boolean
+}
 
 func largest(values: List<$number_type>): $number_type {
     crash values[0]

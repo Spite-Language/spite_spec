@@ -113,7 +113,7 @@ Rules: 148. Covered before: 90. Covered now: 144.
 | A folded zero divisor (`total % (2 - 2)`) is an error | conformance/remainder_by_folded_zero | added (compiler fails: compiles) |
 | A proven divisor is not checked | tests/divisions | covered |
 | Float division by 0.0 is infinity or NaN | tests/float_remainder | added |
-| Float `%` truncates toward zero and keeps the left side's sign; `% 0.0` is NaN | tests/float_remainder, tests/number_parameter | added |
+| Float `%` truncates toward zero and keeps the left side's sign; `% 0.0` is NaN | tests/float_remainder, tests/number_type | added |
 | Floats keep infinity and NaN with no check | tests/nan_passes | covered |
 | Shortest-round-trip printing (`0.1` on a Float) | tests/float_printing, tests/printable_values | added |
 | Exponent forms `%.17g` / `%.9g`; `inf` and `nan` | tests/float_printing, tests/half_precision | added |
@@ -155,11 +155,9 @@ Rules: 148. Covered before: 90. Covered now: 144.
 | A decimal literal is a decimal in what is emitted (`1.0 / 3.0`) | tests/decimal_literal_division | added |
 | A decimal literal beside a Float is a Float; two literals keep Double precision | tests/float_precision | covered |
 | The last bits of a decimal result in a counted loop are no guarantee | tests/float_precision | covered |
-| Every number class fits `type Number`; Boolean does not | tests/number_type, conformance/number_type_mistakes | covered |
-| A `Number` parameter takes the operators, compiled per class | tests/number_parameter | covered |
-| An operator through a `type` that requires its function | tests/shape_operators, tests/shape_operator_cut, tests/shape_operator_unlike | covered |
+| No type stands for every number: a generic class declares the `type` it needs, which every number class fits and Boolean does not (D1733) | tests/number_type, conformance/number_type_mistakes | covered |
+| An operator through a `type` that requires its function | tests/shape_operators, tests/shape_operator_unlike | covered |
 | An operator through a `type` without the function is an error | conformance/shape_operator_without_function | added (compiler fails: "has no attribute or function 'sum'") |
-| `Number` operators in a REPL or hot-reload build halt on a wider right side | none | missing |
 | An enum takes no `=` and one value per line | conformance/enum_with_equals, conformance/declaration_one_per_line | added |
 | An enum in `player.spite` is `Player.Job`, plain `Job` where unambiguous | tests/enum_qualified_names | added |
 | An enum value resolved from where it is used | tests/enums | covered |
@@ -1186,7 +1184,7 @@ Rules: 67. Covered before: 31. Covered now: 49.
 | An instance whose function nobody calls compiles | tests/folded_crash_uncalled | covered |
 | The sides of an `and` are checked one at a time | conformance/folded_crash_and_side | added (compiler fails: compiles) |
 | A class test never true in one instance folds to false in that copy | tests/generic_class_test, tests/walked_class_fold | covered |
-| `$value_type == List`, `Dictionary`, `Null`, `Symbol`, `Number`, `Enum`; a union and a `type` name | tests/codegen_kind_tests, tests/folded_helpers, tests/every_attribute, tests/number_type | added (compiler fails: a union or type name on the right never matches) |
+| `$value_type == List`, `Dictionary`, `Null`, `Symbol`, `Enum`, and `.is_number`; a union and a `type` name | tests/codegen_kind_tests, tests/folded_helpers, tests/every_attribute, tests/number_type | added (compiler fails: a union or type name on the right never matches) |
 | Only what survives folding is compiled; a non-generic class compiles every function | tests/folded_helpers, tests/folded_functions | covered |
 | `$value_type.element_type`, `.key_type`, `.value_type` fold; a missing name is the error listing them | tests/codegen_member_fold, conformance/every_attribute | covered (compiler fails: every_attribute's error differs) |
 | An `and` left false or an `or` left true folds without its right side | tests/codegen_short_circuit, tests/codegen_member_fold | added |
@@ -1426,7 +1424,7 @@ Rules: 24. Covered before: 21. Covered now: 24.
 | Parts `x`, `y`, `z`, `w`; matrices `column_C_row_R`, column-major; `Matrix4<Float>()` is the identity | tests/game_matrices, tests/axis_names | covered |
 | A vector's number class is inferred from its parts (`Vector3(1, 2, 3)` is `Vector3<Integer>`) | tests/generic_vectors | covered |
 | Whole-number `length()`, `distance_to`, `normalized()` truncate | tests/generic_vectors | covered |
-| Matrices and quaternions take `Float` or `Double` only; another class is the folded-crash error | conformance/whole_number_rotation | covered |
+| Matrices and quaternions take `Float` or `Double` only; another class does not fit their type, or is the folded-crash error | conformance/whole_number_rotation | covered |
 | `Matrix4<Double>` members take and answer `Double` classes | tests/double_maths | covered |
 | Vector operators, `dot`, `cross`, `length`, `normalized` (zero stays zero), `distance_*`, `linear_interpolate`, `minimum`/`maximum`/`absolute`, `to_string` | tests/game_vectors, tests/generic_vectors | covered |
 | `minimum`/`maximum` ignore a not-a-number part | tests/nan_passes | covered |

@@ -18,7 +18,7 @@ func describe(): String {
         return "an enum"
     } else if $value_type == Null {
         return "may be null"
-    } else if $value_type == Number {
+    } else if $value_type.is_number {
         return "a number"
     } else if $value_type == Shape {
         return "a shape: {is_named()}"

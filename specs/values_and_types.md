@@ -409,27 +409,19 @@ names the presets the class answers
   infinities still come out where they did. A loop that compares a decimal with
   `==` or `!=` (or a value whose type the compiler does not know there) keeps its operations as written, so an
   exact comparison sees exact values; nothing that writes to a file can run inside such a loop.
-- **Every number class fits the library's `type Number`** (`library/number.spite`): `sum`, `subtract`, `multiply`,
-  `divide`, `remainder`, `less_than` and `greater_than`, each taking and answering the class itself (`Boolean` for the two
-  comparisons), and `to_long(): Long` and `to_double(): Double`. A number class declares no function for an
-  operator: the compiler's own arithmetic answers it, so the class fits. `Boolean` and `Memory.Address` do not fit,
-  and neither does anything else unless it declares those functions. `$value_type == Number` is decided while
-  compiling ([metaprogramming.md](metaprogramming.md#codegen-values-)). A generic constrained by `Number` is compiled
-  once per number class it is given, with plain values and no box. **A parameter typed `Number` takes the
-  operators `+`, `-`, `*`, `/`, `%`, `<`, `>`, `<=` and `>=`**: the function is compiled once per number class that
-  reaches it, and in each copy the operator is that class's arithmetic, with that class's rules (an `Integer` copy
-  of `value + 0.5` is the "would be cut to fit" error). A conversion is called on the value's class. In a
-  `--hot-reload`, `--repl` or `--repl-port` build the function is compiled as written, and an operator on a value
-  typed `Number` finds the classes of both sides while the program runs and is the left side's class's own operator,
-  under the casting rules above: a right side that is not wider is converted as the copy would convert it (an
-  integer literal that fits the left side's class is not wider), and a wider one, the copy's compile error, halts
-  with `spite: '<operation>' works in <class>, the class of its left side, and its right side is <class>, which would
-  be cut to fit, at <place>`. `Number` has no operators of its own. An operator through any `type` that requires its
+- **No `type` stands for every number (D1733).** A class written over numbers is generic and declares the `type`
+  its codegen value needs, listing only the operators and functions it uses (`generic $number_type: Component` with
+  `type Component { sum(Component): Component }` in `Vector3`). Every number class, `Tiny` to `Double`, has `sum`,
+  `subtract`, `multiply`, `divide`, `remainder`, `less_than`, `greater_than` and `equals`, each taking and answering
+  the class itself (`Boolean` for the comparisons), and fits such a type as any class does, by having its members;
+  `Boolean` has none of them. The class is compiled once per number class it is given, with plain values and no box,
+  and inside each copy an operator is that class's arithmetic. `$value_type.is_number` is true for a number class
+  and decided while compiling ([metaprogramming.md](metaprogramming.md#codegen-values-)). `Number` names nothing: a
+  value, parameter or list cannot be typed by "any number" (`tests/number_type`, `conformance/number_type_mistakes`).
+  An operator through any `type` that requires its
   function on a class instance is that class's own function (`sum` for `+`, `less_than` for `<` and `>=`,
   `greater_than` for `>` and `<=`), and a right side of another class halts with `which is not one`
-  (`diagnostics/number_type_mistakes`, `conformance/stage6/number_type`, `conformance/stage6/number_parameter`,
-  `conformance/stage6/shape_operators`, `conformance/stage6/shape_operator_cut`,
-  `conformance/stage6/shape_operator_unlike`). A `type` that does not require an operator's function still refuses the
+  (`conformance/stage6/shape_operators`, `conformance/stage6/shape_operator_unlike`). A `type` that does not require an operator's function still refuses the
   operator: `'+' on a value read as '<type>' needs the class that fits the type, which is not known while
   compiling: take the value through a codegen value the type constrains, 'generic $value_type: <type>'`.
 - None of it costs anything at run time: a number stays a plain machine value, a cast is the one conversion written
@@ -671,7 +663,7 @@ type Renderable {
 ```
 
 Any class with a `render()` of that signature is accepted. **The type's own name inside a required signature
-stands for the class that fits**: `sum(Number): Number` in `type Number` is met by an `Integer`'s
+stands for the class that fits**: `sum(Addable): Addable` in `type Addable` is met by an `Integer`'s
 `sum(Integer): Integer`, so a type can ask for a function that takes and answers the class itself. A member
 whose type is a union is met by the same union or by one of its classes; one whose type is another `type` by that
 `type`, or by a class or a union whose classes each have its members; one whose type is a function value by a

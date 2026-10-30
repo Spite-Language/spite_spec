@@ -464,11 +464,12 @@ does not want to spell:
 | `$value_type == List` | any `List<T>` |
 | `$value_type == Dictionary` | any `Dictionary<Key, Value>` |
 | `$value_type == Null` | any `T?` (`Null` is a member of the union a `T?` is) |
-| `$value_type == Number` | any number class, `Tiny` to `Double` (a `type` name asks whether the type fits it) |
 | `$value_type == Enum` | an enum (`JsonReader` and `BinaryReader` read one through its reading from text) |
+| `$value_type.is_number` | any number class, `Tiny` to `Double`, never `Boolean` |
 
-A union name is true for any of its members, and a `type` name for any type that fits it: `$value_type ==
-Number` is true for every number class ([values_and_types.md](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#every-number-fits-number)).
+A union name is true for any of its members, and a `type` name for any type that fits it. `.is_number` asks
+whether the type is a number class, answered from the class and never from a name a program writes
+([values_and_types.md](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#a-number-library-declares-the-type-it-needs)).
 Such a test always folds, `--development` included, because the
 branch it rules out would not compile.
 

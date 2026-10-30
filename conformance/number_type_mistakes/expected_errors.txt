@@ -1,1 +1,1 @@
-conformance/number_type_mistakes/number_type_mistakes.spite:5: error: 'Boolean' does not fit type 'Number', which 'Summer' requires of $number_type: it has no function 'sum' (in NumberTypeMistakes.NumberTypeMistakes)
+conformance/number_type_mistakes/number_type_mistakes.spite:5: error: 'Boolean' does not fit type 'Summed', which 'Summer' requires of $number_type: it has no function 'sum' (in NumberTypeMistakes.NumberTypeMistakes)
