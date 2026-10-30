@@ -115,17 +115,18 @@ declares `func to_string(): String`. `label.text = clicks` with an `Integer` `cl
 already made for numbers, extended to classes; the text made is released like any other (`conformance/stage6/direct_text`).
 A class with no `to_string()` stays an error: `a Pet cannot be used where a String is needed`.
 
-**A value meeting another class is cast through its `to_<type>()`** (D1718). Where a value of one class meets a
-place that wants another (an argument, a `return`, an assignment, a `var` with a written type) and none of the casts
-above applies, the compiler calls the given value's conversion, `to_` and the wanted class's name in `snake_case`:
-`var address: IpAddress? = text` is `text.to_ip_address()`, `var paint: Color? = "#ff8000"` is
-`"#ff8000".to_color()`, `var age: Integer? = "42"` is `"42".to_integer()`. The cast answers what the conversion
-answers: a conversion that answers the wanted class goes straight in, and one that answers `T?` goes where a `T?` is
-wanted and is narrowed like any other `T?` where a plain `T` is (the usual `this value may be null` error). An enum
-value goes where an `Integer` is wanted through its `to_integer()`, and a whole number where an enum is wanted through
-`to_<owner>_<enum>()`, as below. A class with no such conversion is an error naming the call that would be made:
-`a Point cannot be used where an IpAddress is needed: a value is cast to the class a place wants through its own
-conversion, and there is no 'Point.to_ip_address()' to call` (`conformance/missing_conversion`).
+**A value meeting another class is cast through that class's conversion** (D1718, D1776). Where a value of one
+class meets a place that wants another (an argument, a `return`, an assignment, a `var` with a written type) and none
+of the casts above applies, the compiler calls the wanted class's conversion from the given class,
+`func IpAddress(from: String): IpAddress?` declared in `IpAddress` ([classes_and_files.md](classes_and_files.md)):
+`var address: IpAddress? = text`, `var paint: Color? = "#ff8000"` and `var age: Integer? = "42"` each read their text
+through it. The cast answers what the conversion answers: a conversion that answers the wanted class goes straight
+in, and one that answers `T?` goes where a `T?` is wanted and is narrowed like any other `T?` where a plain `T` is (the
+usual `this value may be null` error). An enum value goes where an `Integer` is wanted as its number, text where an
+enum is wanted by the enum's values, and a whole number where an enum is wanted by its numbers, with nothing
+declared. A conversion is never called by name. A class with no such conversion is an error naming the conversion
+it would need: `a Point cannot be used where an IpAddress is needed: a value is cast to the class a place wants
+through that class's conversion, and IpAddress declares no 'IpAddress(from: Point)'` (`conformance/missing_conversion`).
 
 **A text of one hole and nothing else is an error.**
 `"{value}"` (no written character before or after, one hole) is the value itself, so writing it is refused
@@ -147,21 +148,21 @@ The message starts `'"{clicks}"' is a text of one value and nothing else:`. A te
 statement of a function body as written, before it is generated, so it costs nothing in what is emitted; an
 attribute's default is not checked.
 
-**Text is read as an enum by its name**:
-`name.to_recipe_course()` answers a `Recipe.Course?`: the value spelled `name`, or `null` when the enum has none, exactly as
-`to_integer()` answers `null` for text that is not a number. The reading is `to_`, then the name of the class that declares the enum and the enum's own name, in `snake_case`
-(D1745): `Recipe.Course` is read by `to_recipe_course()` inside `Recipe` as everywhere else, so two classes may
-each declare a `Course` without their readings meeting, and a namespace is no part of the name
-(`Kitchen.Recipe.Course` is still `to_recipe_course()`). A `String` function of the same name comes first. `var course: Recipe.Course? = name` calls it too, and `var course: Recipe.Course =
-name` is an error: `text is not a Course until it is read as one, and text that names none of its values has none
-to give: read it with 'to_recipe_course()', which answers 'Course?', null when the text names none of its values, and
-narrow it, or declare the value 'Course?'` (`diagnostics/enum_from_text`).
+**Text is read as an enum by its name**: `var course: Recipe.Course? = name` is the value spelled `name`, or `null`
+when the enum has none, exactly as `var count: Integer? = text` is `null` for text that is not a number. The compiler
+reads it with nothing declared; a class may declare its own conversion for its enum, named by the enum alone
+(`func Course(from: String): Course?` in `Recipe`, D1776), which is used instead. A conversion is never called by
+name (`text.to_recipe_course()` is "a conversion is never called by name: the compiler applies it where a value meets
+the class it makes, so cast by assignment: 'var converted: Recipe.Course? = value'", `conformance/written_conversion`),
+and `var course: Recipe.Course = name` is an error: `text is not a Course until it is read as one, and text that
+names none of its values has none to give: declare the value 'Course?', which reads the text and is null when it
+names none of its values, and narrow it` (`diagnostics/enum_from_text`).
 
 ### Numeric types
 
 All the basic types a language has, with written names ("never `u64`"), and never abbreviated:
 `Integer`, `UnsignedInteger` and `Boolean`, not `Int` and `Bool`, with every name built from them following
-(`to_integer()`, `read_unsigned_integer`, `library/integer.spite`). The old spelling is an error that names the
+(`Integer.Largest()`, `read_unsigned_integer`, `library/integer.spite`). The old spelling is an error that names the
 new one: `'Int' is spelled 'Integer'` (`diagnostics/old_type_spellings`). The ten types and the machine types
 they are built on are [the table at the top of the page](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#numeric-types-and-the-casting-rule).
 
@@ -169,14 +170,14 @@ An integer literal defaults to `Integer`; one too large to fit becomes a `Long` 
 defaults to `Float`. All of them follow the same right-side-casts-toward-left-side rule as everything else
 (`var tiny: Tiny = some_integer_variable` narrows with an ordinary cast); a value that does not fit the narrower
 type halts, as [Arithmetic that does not fit halts](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#arithmetic-that-does-not-fit-halts) says, rather than wrapping or saturating. `List<T>`, `Dictionary<Key, Value>`, `T?`, and generics all work
-with every numeric type; so does `String` conversion both ways: text is read as a number through `String`'s one
-`to_<name>()` method per type, `to_tiny()`, `to_short()`, `to_integer()`, `to_long()`, `to_byte()`,
-`to_unsigned_short()`, `to_unsigned_integer()`, `to_unsigned_long()`, `to_float()`, `to_double()`, each answering a
-`T?` that is `null` when the text is not a number the type can hold ([standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#string)
-has what each accepts). Assigning a `String` to a `T?` of a number calls the same function; assigning it to a plain
-number is an error, since text that is not a number would have nothing to give: `text is not an Integer until it
-is read as one, and text that is not a number has none to give: read it with 'to_integer()', which answers
-'Integer?', null when the text is not a number that fits, and narrow it, or declare the value 'Integer?'`. The
+with every numeric type; so does `String` conversion both ways: text is read as a number through each number
+class's conversion from text, `func Integer(from: String): Integer?` and its like in every number class (D1776),
+each answering a `T?` that is `null` when the text is not a number the type can hold
+([standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#string)
+has what each accepts). Assigning a `String` to a `T?` of a number calls it; assigning it to a plain number is an
+error, since text that is not a number would have nothing to give: `text is not an Integer until it is read as one,
+and text that is not a number has none to give: declare the value 'Integer?', which reads the text through
+'Integer(from: String)' and is null when the text is not a number that fits, and narrow it`. The
 same goes for the compiler's own readings of text: an integer literal too large for a `Long` is a compile error,
 and a remote REPL command assigning or passing a number that does not parse is refused. `count()`, `length()`, and
 `index_of()` always return `Integer`, never a wider type.
@@ -200,7 +201,7 @@ ordinary build and `--optimized` check exactly as `--debug-memory` does. The sam
     `conformance/stage6/narrowing_overflow`). A decimal is checked the same way, so not-a-number, an infinity and
     anything outside the range halts instead of becoming a value C leaves undefined (`spite: 99999997952, a Float,
     does not fit in an Integer, at ...`, `conformance/stage6/decimal_narrowing`); inside the range its fraction is
-    cut as before. `to_<type>()` on a number checks the same way. A change of signedness is checked like any
+    cut as before. A change of signedness is checked like any
     other: `-1` stored in an `UnsignedInteger`, or an `UnsignedLong` past the `Long` range stored in a `Long`, halts
     (`spite: -3, an Integer, does not fit in an UnsignedInteger, at ...`, `conformance/stage6/signedness_change`). Only an unsigned value stored in a wider
     signed type is never checked, since it always fits. To read the same bits with the other signedness, call
@@ -213,7 +214,7 @@ ordinary build and `--optimized` check exactly as `--debug-memory` does. The sam
 **Wrapping is a function named for it.** Every whole number has `wrapping_sum(other)`, `wrapping_subtract(other)`
 and `wrapping_multiply(other)`, which work in the receiver's type, take `other` as a parameter of that type, and
 keep the low bits of the answer (`UnsignedInteger 4000000000.wrapping_multiply(3)` is `3410065408`,
-`Long.largest.wrapping_sum(1)` is `Long.smallest`). Each is one C operation on the bits
+`Long.Largest().wrapping_sum(1)` is `Long.Smallest()`). Each is one C operation on the bits
 (`conformance/stage6/wrapping_functions`). The hashes and codecs of the library (`Dictionary`'s and the
 allocation table's hash, `Sha256`, `Argon2`, `Noise`) call them where they wrap on purpose. A constant expression
 that overflows is still a compile error, and `/` and `%` keep the check described next. The compiler leaves the
@@ -267,7 +268,7 @@ lies inside the operation's type.
   `Dictionary`, and `length()` of a `String`, run from 0 to 2147483647; `x % n` is
   smaller in size than `n`, no larger than `x`, and has `x`'s sign; `x / n` with `n` a constant is `x`'s range divided;
   `x / y` is no larger in size than `x`; `minimum`, `maximum`, `clamp` and `absolute` of a whole number bound
-  their answers by their operands' ranges; `to_long()` and `to_integer()` keep their receiver's range. A right
+  their answers by their operands' ranges; a widening cast keeps its value's range. A right
   side is cast to the left side's type first, so where its range does not fit that type it has the type's range.
   The compiler works with ranges below 2 to the 62nd in size; an answer that could be larger is not proven,
   whatever its type.
@@ -316,25 +317,22 @@ the emitted code (the class gives it functions, not a header), and a function of
 as the receiver. Inside it, **`this`** is that value: `func doubled(): Integer { return this * 2 }`, and
 `count.doubled()` calls it. A number class is reopened like any other ([Packages, namespaces and loading](packages.md#packages-namespaces-and-loading)), by a file named after it.
 
-- **Writing a number as text is its `to_string()`** (converting to text is a cast like
-  `to_integer()`), in Spite: `Long.to_string()` writes the digits, `Double.to_string()` is the
+- **Writing a number as text is its `to_string()`** (converting to text is a cast, the one a class
+  describes itself by), in Spite: `Long.to_string()` writes the digits, `Double.to_string()` is the
   shortest-round-trip formatting above (over the digit arithmetic in `library/number_text.spite`), and the
   smaller types widen and call `Long.to_string()`. `Boolean.to_string()` answers `"true"` or `"false"`.
   Interpolation (`"count {count}"`), `+` onto a `String` and `console.print` call it
   ([standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md)).
-- **A conversion belongs to the value converted**: there is no `from_` conversion anywhere: never `Class.from_x()`, never
-  `from_class`, not for the compiler's own number casts either. Each number class and `Memory.Address` has a `to_<type>()` for each number type, a template over the program's types, and
-  the compiler makes each right-to-left cast with the source's `to_<type>()` (`count.to_float()`,
-  `wide.to_short()`, `number.to_memory_address()`). Its body is the compiler's (a C cast, emitted inline, so a cast
-  costs only the conversion), and `--final-classes` prints the declaration in every number class. A cast is
-  written by assignment or by passing (`var half: Float = count`, or `count` handed to a parameter typed `Float`)
-  or as the call `count.to_float()`; both are allowed.
+- **A conversion belongs to the class it makes** (D1776): there is no `from_` function and no `to_<type>()` conversion
+  on the source; the one exception is `to_string()`, which describes a value as text. A cast between two numbers is
+  the compiler's own (one machine conversion), written by assignment or by passing (`var half: Float = count`, or
+  `count` handed to a parameter typed `Float`); there is no call form.
 - **Declaring a function whose name starts with `from_` is an error** (`diagnostics/from_conversion`): "'Celsius.from_integer' makes a Celsius from another value, and a
-  conversion belongs to the value converted: declare 'to_celsius()' on the class it converts from, or take
-  the value in the constructor". Calling one by name on a number class is the same rule
-  (`diagnostics/cast_by_name`): "there is no 'Float.from_integer()': a conversion belongs to the value
-  converted, so write 'value.to_float()' on an Integer, or cast by assignment: 'var converted: Float =
-  value'". `type` may name a parameter and begin a type path, although it is a keyword elsewhere.
+  conversion is written 'func Celsius(from: Integer): Celsius?', which the compiler applies wherever a value
+  of that type meets the class". Calling one by name on a number class is the same rule
+  (`diagnostics/cast_by_name`): "there is no 'Float.from_integer()': a conversion is written in the class it
+  makes, 'func Float(from: Integer): Float?', and the compiler applies it, so cast by assignment: 'var converted:
+  Float? = value'". `type` may name a parameter and begin a type path, although it is a keyword elsewhere.
 - **Bitwise operations are functions of the whole-number classes.** `Tiny`, `Short`, `Integer`, `Long`, `Byte`, `UnsignedShort`,
   `UnsignedInteger` and `UnsignedLong` each answer the functions in [the table on the page](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#bitwise-functions):
   `shifted_left(count: Integer)`, `shifted_right(count: Integer)` and the three `bits_` functions of `other` and
@@ -372,13 +370,12 @@ as the receiver. Inside it, **`this`** is that value: `func doubled(): Integer {
   none of it. `conformance/stage6/half_precision` pins them.
 - **The maths functions and the constants are members of the number classes** ([taught on the page](https://github.com/Spite-Language/spite_documentation/blob/master/values_and_types.md#maths-functions)).
   Which there are, what each answers at its edges and how each is lowered is
-  [standard_library.md](standard_library.md#maths)'s, their one home. A constant is answered only by
-  the class: `angle.pi` is "'pi' is a constant of the class Float, not of a value: write 'Float.pi'". A constant
-  is a get-only attribute: `Float.pi()` is "'Float.pi' is a constant, read as an attribute and never called: write
-  'Float.pi'", and `Float.pi = 3.0` is "'Float.pi' is a constant, and a constant is get-only: nothing can assign
-  it" (`diagnostics/maths_constant_assigned`). A
-  function of a value called on the class, `Float.square_root()`, names the constants the class answers
-  (`diagnostics/maths_constant_on_value`). The short names other languages use are errors naming the Spite one:
+  [standard_library.md](standard_library.md#maths)'s, their one home. A special value is a preset, called on
+the class: `angle.pi` is "'Pi' is a preset of the class Float, not of a value: write 'Float.Pi()'", and `Float.pi()`
+is "'Float.pi' is the preset 'Float.Pi()': a special value of a class is a preset, named in PascalCase and called on
+the class" (`diagnostics/maths_constant_assigned`). A function of a value called on the class, `Float.square_root()`,
+names the presets the class answers
+(`diagnostics/maths_constant_on_value`). The short names other languages use are errors naming the Spite one:
   `side.sqrt()` is "Float has no function 'sqrt': Spite spells it 'square_root', since no name is abbreviated"
   (`diagnostics/maths_other_spellings`).
 - **`this` works in every class**, only to pass or return the object itself, as in
@@ -445,7 +442,7 @@ func other_function() {
 
 - An enum declared in `player.spite` is `Player.Job`. It is rarely written that way, because `'knight'` alone is enough wherever the expected type is known.
 - The enum belongs to `Player`, as its attributes and functions do (a namespace holds only classes and namespaces): inside `Player` plain `Job` works, and from anywhere else it is named through the class, `Player.Job`, found by the walk of [packages.md](packages.md#packages-namespaces-and-loading). A plain `Job` outside `Player` is refused, naming `Player.Job` (`conformance/class_member_outside_its_class`). A `type` and a `union` are never named outside their class at all: a class that needs one declares its own copy (D1779).
-- `text.to_player_job()` and `number.to_player_job()` name the enum by its class and name, inside `Player` as everywhere else (D1745), and the cast reaches it too, `var job: Player.Job? = text` (`tests/class_member_types`).
+- Text and whole numbers are read into an enum by the cast, `var job: Player.Job? = text`, inside `Player` as everywhere else, and a conversion `Player` declares for it is named by the enum alone, `func Job(from: String): Job?` (D1776, `tests/class_member_types`).
 - An enum value is resolved from where it is used (parameter, annotation, assignment target, comparison). Two enums may share a value name; with no expected type in hand, the value resolves when exactly one enum in the program has it, otherwise it is a compile error listing every enum that does.
 
 **An enum is a closed list of values, and `'knight'` is an enum value literal.** A name in single quotes is a
@@ -465,10 +462,10 @@ the values accepted where a `Job` is expected. The number a value compiles to is
 - **Every enum is its own class, with its conversions**, each answered while compiling when its operand is
   constant:
   - `value.to_string()` is its name (`'wing'` is `"wing"`), which is also how it prints and how JSON writes it;
-  - `value.to_integer()` is its number (below);
-  - `text.to_bird_part()` makes a `Bird.Part?` from its name (`to_`, the declaring class and the enum, D1745), `null` when the text names no value (below, and
+  - `var number: Integer = value` is its number (below);
+  - `var part: Bird.Part? = text` reads a value from its name, `null` when the text names no value (below, and
     `diagnostics/enum_from_text`);
-  - `number.to_bird_part()` on a whole number makes a `Bird.Part?` from its number, `null` when no value has that number;
+  - `var part: Bird.Part? = number` on a whole number reads a value from its number, `null` when no value has that number;
   - `Part.values` lists the values in their order, and `value.class` is the enum's class (`tests/enum_conversions`).
 - **Reflection on an enum** is through classes of its own, as `Spite.Class` and `Spite.AttributeDeclaration` serve
   classes: the enum's class and the declaration of each value (its name and its number), folded while compiling
@@ -499,7 +496,7 @@ the values accepted where a `Job` is expected. The number a value compiles to is
   value is written as any value is, `'admin'`, with no number after it. The number is a whole number, negative allowed, and fits an
   `Integer`; a value written without one counts on from the value before it, and the first value without one is 0.
   An enum with no number written is numbered 0, 1, 2 in its order.
-- **`to_integer()` answers a value's number**, the written one or the counted one: `role.to_integer()` is `99` for
+- **An enum value cast to an `Integer` is its number**, the written one or the counted one: `var number: Integer = role` is `99` for
   `'admin'` above, and `100` for the value after it. It is how library code writes a value as its number (a binary
   file, a C binding) (`conformance/stage6/enum_to_integer`).
 - Two values with one number are a compile error naming both and the number

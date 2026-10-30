@@ -10,7 +10,7 @@ func WebSocketFailures() {
     var plain = WebSocket.Client()
     var request = Http.Request()
     request.path = "/plain"
-    var loopback = "127.0.0.1".to_ip_address()
+    var loopback: IpAddress? = "127.0.0.1"
     crash loopback
     var connected = plain.connect(loopback, 47914, request)
     var message = plain.receive()

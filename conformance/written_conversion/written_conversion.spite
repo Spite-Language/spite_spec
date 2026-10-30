@@ -1,0 +1,11 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+func WrittenConversion() {
+    load "../../../spite_standard_library/windows"
+    var text = "calm"
+    var mood = text.to_written_conversion_mood()
+    crash mood
+}

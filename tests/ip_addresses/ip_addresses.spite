@@ -24,9 +24,9 @@ func IpAddresses() {
     show("no-such-host.invalid")
     show("localhost")
     show("")
-    var first = "10.0.0.1".to_ip_address()
-    var second = "::ffff:10.0.0.1".to_ip_address()
-    var third = "10.0.0.2".to_ip_address()
+    var first: IpAddress? = "10.0.0.1"
+    var second: IpAddress? = "::ffff:10.0.0.1"
+    var third: IpAddress? = "10.0.0.2"
     crash first
     crash second
     crash third
@@ -46,7 +46,7 @@ func IpAddresses() {
 }
 
 func show(text: String) {
-    var address = text.to_ip_address()
+    var address: IpAddress? = text
     if address {
         var kind = "IPv6"
         if address.is_ipv4() {

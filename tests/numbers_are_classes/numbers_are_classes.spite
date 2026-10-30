@@ -10,10 +10,10 @@ func NumbersAreClasses() {
     var third_text = third.to_string()
     console.print(third_text, third)
     var small: Byte = 255
-    var wide = UnsignedLong.largest
+    var wide = UnsignedLong.Largest()
     console.print("{small} {wide} {true}")
-    var parsed = "42".to_unsigned_integer()
-    var tiny = "-7".to_tiny()
+    var parsed: UnsignedInteger? = "42"
+    var tiny: Tiny? = "-7"
     crash parsed and tiny
     console.print(parsed, tiny)
     var registry = List<Node>()

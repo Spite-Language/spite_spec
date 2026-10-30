@@ -3,7 +3,8 @@ var console = Console()
 func BufferFloatBits() {
     load "../../../spite_standard_library/windows"
     var bytes = Buffer(0)
-    bytes.append_double_little_endian(Double.not_a_number)
+    var double_not_a_number = Double.NotANumber()
+    bytes.append_double_little_endian(double_not_a_number)
     bytes.append_float_big_endian(1.5)
     var nothing = bytes.read_double_little_endian_at(0)
     crash nothing

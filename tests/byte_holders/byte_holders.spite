@@ -21,7 +21,7 @@ func binary_body() {
     body.append(104)
     body.append(255)
     request.write_body_buffer(body)
-    var loopback = "127.0.0.1".to_ip_address()
+    var loopback: IpAddress? = "127.0.0.1"
     crash loopback
     var response = client.send(loopback, 47915, request)
     crash response
@@ -79,7 +79,7 @@ func datagram_text() {
     crash receiving.open_locally(47917)
     crash sending.open()
     var hello = "hello".to_buffer()
-    var receiver = "127.0.0.1".to_ip_address()
+    var receiver: IpAddress? = "127.0.0.1"
     crash receiver
     crash sending.send_to(receiver, 47917, hello)
     var datagram = receiving.receive()

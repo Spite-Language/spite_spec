@@ -64,7 +64,7 @@ func ask_missing(): String {
 }
 
 func ask(request: Http.Request): String {
-    var named = "localhost".to_ip_address()
+    var named: IpAddress? = "localhost"
     crash named
     var response = client.send(named, 47911, request)
     crash response

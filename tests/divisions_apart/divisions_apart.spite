@@ -4,11 +4,11 @@ func DivisionsApart() {
     load "../../../spite_standard_library/windows"
     var first_line = console.read_line()
     crash first_line
-    var parsed = first_line.trim().to_long()
+    var parsed: Long? = first_line.trim()
     crash parsed
     var base_line = console.read_line()
     crash base_line
-    var base = base_line.trim().to_long()
+    var base: Long? = base_line.trim()
     crash base
     var negative = 0 - parsed
     var positive_digits = digit_sum(parsed, base)
@@ -17,8 +17,8 @@ func DivisionsApart() {
     var parts = parts_of(parsed, base)
     console.print("parts", parts)
     var small = parsed % 1000000000
-    var seconds = small.to_integer()
-    var few = base.to_integer()
+    var seconds: Integer = small
+    var few: Integer = base
     var backwards = 0 - seconds
     var forward_clock = clock(seconds)
     var backward_clock = clock(backwards)

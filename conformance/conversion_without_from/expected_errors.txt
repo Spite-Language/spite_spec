@@ -1,0 +1,1 @@
+conformance/conversion_without_from/meters.spite:7: error: 'Meters' answers a value and is named after its class, so it is a conversion: it takes one parameter named 'from', the value it converts, as in 'func Meters(from: String): Meters?' (in Meters)

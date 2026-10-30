@@ -1,1 +1,1 @@
-conformance/maths_constant_on_value/maths_constant_on_value.spite:6: error: 'pi' is a constant of the class Float, not of a value: write 'Float.pi' (in MathsConstantOnValue.MathsConstantOnValue)
+conformance/maths_constant_on_value/maths_constant_on_value.spite:6: error: 'Pi' is a preset of the class Float, not of a value: write 'Float.Pi()' (in MathsConstantOnValue.MathsConstantOnValue)

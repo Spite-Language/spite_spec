@@ -14,9 +14,9 @@ func TextToNumber() {
     decimal("-1.5e2")
     decimal("1e")
     decimal("nan")
-    var wide = "9000000000".to_long()
-    var small = "300".to_byte()
-    var unsigned = "-1".to_unsigned_integer()
+    var wide: Long? = "9000000000"
+    var small: Byte? = "300"
+    var unsigned: UnsignedInteger? = "-1"
     crash wide
     console.print("long", wide)
     if small {
@@ -41,7 +41,7 @@ func TextToNumber() {
 }
 
 func whole(text: String) {
-    var number = text.to_integer()
+    var number: Integer? = text
     if number {
         console.print("[{text}] is", number)
     } else {
@@ -50,7 +50,7 @@ func whole(text: String) {
 }
 
 func decimal(text: String) {
-    var number = text.to_double()
+    var number: Double? = text
     if number {
         console.print("[{text}] is", number)
     } else {
@@ -61,7 +61,7 @@ func decimal(text: String) {
 func read_setting(line: String) {
     var parts = line.split("=")
     crash parts.count() == 2
-    var value = parts[1].to_integer()
+    var value: Integer? = parts[1]
     fallback value
     var name = parts[0]
     settings[name] = value

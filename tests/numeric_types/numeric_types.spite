@@ -9,7 +9,7 @@ func NumericTypes() {
     var octet: Byte = 44
     var zero: UnsignedInteger = 0
     var wide = zero.wrapping_subtract(1)
-    var huge = UnsignedLong.largest
+    var huge = UnsignedLong.Largest()
     var long_value: Long = 3000000000
     console.print(level, wrapped, small, octet, port)
     console.print(wide, huge, long_value)

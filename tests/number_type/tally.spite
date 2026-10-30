@@ -20,7 +20,7 @@ func total(values: List<$number_type>): Double {
         sum = sum + values[index]
         index = index + 1
     }
-    return sum.to_double()
+    return sum
 }
 
 func span(values: List<$number_type>): Long {
@@ -38,8 +38,7 @@ func span(values: List<$number_type>): Long {
         }
         index = index + 1
     }
-    var difference = high - low
-    return difference.to_long()
+    return high - low
 }
 
 func leftover(value: $number_type, divisor: $number_type): $number_type {

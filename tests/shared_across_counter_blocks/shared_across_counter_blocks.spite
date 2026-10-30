@@ -4,7 +4,7 @@ func SharedAcrossCounterBlocks() {
     load "../../../spite_standard_library/windows"
     var line = console.read_line()
     crash line
-    var count = line.trim().to_integer()
+    var count: Integer? = line.trim()
     crash count
     var values = List<Integer>()
     var made = 0

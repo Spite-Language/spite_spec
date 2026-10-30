@@ -4,22 +4,24 @@ func DivisionsInMachineCode() {
     load "../../../spite_standard_library/windows"
     var first_line = console.read_line()
     crash first_line
-    var parsed = first_line.trim().to_long()
+    var parsed: Long? = first_line.trim()
     crash parsed
     var base_line = console.read_line()
     crash base_line
-    var base = base_line.trim().to_integer()
+    var base: Integer? = base_line.trim()
     crash base
     var decimal_line = console.read_line()
     crash decimal_line
-    var decimal = decimal_line.trim().to_double()
+    var decimal: Double? = decimal_line.trim()
     crash decimal
-    var seed = parsed.to_unsigned_long()
+    var seed: UnsignedLong = parsed
     var values = List<UnsignedLong>()
     values.append(seed)
-    values.append(UnsignedLong.largest - seed)
+    var unsigned_long_largest = UnsignedLong.Largest()
+    values.append(unsigned_long_largest - seed)
     values.append(seed / 13)
-    values.append(UnsignedLong.largest)
+    var unsigned_long_largest = UnsignedLong.Largest()
+    values.append(unsigned_long_largest)
     var inverted = seed.bits_inverted()
     values.append(inverted / 5)
     values.each(print_divided)
@@ -32,7 +34,7 @@ func DivisionsInMachineCode() {
 }
 
 func print_divided(value: UnsignedLong) {
-    var big = UnsignedLong.largest - 9223372036854775806
+    var big = UnsignedLong.Largest() - 9223372036854775806
     var power: UnsignedLong = 1099511627776
     console.print(value / 3, value % 3, value / 7, value % 7, value / 10, value % 10)
     console.print(value / 1000000007, value % 1000000007, value / power, value % power)
@@ -40,7 +42,7 @@ func print_divided(value: UnsignedLong) {
 }
 
 func digit_sum(value: Long, base: Integer): Long {
-    var wide_base = base.to_long()
+    var wide_base: Long = base
     var rest = value
     var total: Long = 0
     while rest > 0 {
@@ -61,7 +63,7 @@ func halves_of(value: Integer, divisor: Integer): Integer {
 }
 
 func compare_decimals(decimal: Double) {
-    var others = [decimal, decimal + 1.0, Double.not_a_number, 0.0 - decimal]
+    var others = [decimal, decimal + 1.0, Double.NotANumber(), 0.0 - decimal]
     var index = 0
     while index < others.count() {
         var other = others[index]

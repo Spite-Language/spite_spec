@@ -16,7 +16,7 @@ func NumberedEnums() {
         'user': console.print("user, after admin")
         _: console.print("another role")
     }
-    var parsed = "guest".to_numbered_enums_role()
+    var parsed: Role? = "guest"
     crash parsed
     console.print(parsed, parsed == 'guest', parsed != 'nobody')
     var roles = List<Role>()

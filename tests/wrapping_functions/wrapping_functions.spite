@@ -17,7 +17,7 @@ func WrappingFunctions() {
     var tiny_sum = tiny.wrapping_sum(100)
     var tiny_difference = tiny.wrapping_subtract(-100)
     console.print(tiny_sum, tiny_difference)
-    var wide = Long.largest
+    var wide = Long.Largest()
     var past = wide.wrapping_sum(1)
     console.print(past)
     var big: UnsignedLong = 1469598103934665603

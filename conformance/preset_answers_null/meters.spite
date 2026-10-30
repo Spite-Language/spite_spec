@@ -1,0 +1,9 @@
+var amount = 0
+
+func Meters(starting_amount: Integer) {
+    amount = starting_amount
+}
+
+func Marathon(): Meters? {
+    return Meters(42195)
+}

@@ -144,7 +144,7 @@ Rules: 148. Covered before: 90. Covered now: 144.
 | Maths functions and constants are members of the number classes | tests/maths_functions | covered |
 | `angle.pi`: "'pi' is a constant of the class Float, not of a value" | conformance/maths_constant_on_value | covered |
 | `Float.pi()`: a constant is never called | conformance/maths_constant_called | added (compiler fails: "a Spite.Class has no attribute or function 'pi'") |
-| `Float.pi = 3.0`: a constant is get-only | conformance/maths_constant_assigned | covered |
+| `Float.Pi() = 3.0`: a constant is get-only | conformance/maths_constant_assigned | covered |
 | A function of a value called on the class names the class's constants | conformance/maths_function_on_class | added (compiler fails: "a Spite.Class has no attribute or function 'square_root'") |
 | Short names of other languages (`sqrt`) are errors | conformance/maths_other_spellings | covered |
 | `this` passes or returns the object itself | tests/this_passed | added |

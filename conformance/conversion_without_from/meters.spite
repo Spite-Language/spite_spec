@@ -1,0 +1,11 @@
+var amount = 0
+
+func Meters(starting_amount: Integer) {
+    amount = starting_amount
+}
+
+func Meters(text: String): Meters? {
+    var read: Integer? = text
+    fallback read
+    return Meters(read)
+}

@@ -47,7 +47,7 @@ func TimeTextErrors() {
 }
 
 func refuse_instant(text: String) {
-    var read = text.to_instant()
+    var read: Instant? = text
     if read {
         console.print("instant '{text}' was read as", read)
     } else {
@@ -56,7 +56,7 @@ func refuse_instant(text: String) {
 }
 
 func refuse_date_time(text: String) {
-    var read = text.to_date_time()
+    var read: DateTime? = text
     if read {
         console.print("date and time '{text}' was read as", read)
     } else {
@@ -65,7 +65,7 @@ func refuse_date_time(text: String) {
 }
 
 func refuse_date(text: String) {
-    var read = text.to_date()
+    var read: Date? = text
     if read {
         console.print("date '{text}' was read as", read)
     } else {
@@ -74,7 +74,7 @@ func refuse_date(text: String) {
 }
 
 func refuse_time(text: String) {
-    var read = text.to_time()
+    var read: Time? = text
     if read {
         console.print("time '{text}' was read as", read)
     } else {
@@ -83,7 +83,7 @@ func refuse_time(text: String) {
 }
 
 func refuse_duration(text: String) {
-    var read = text.to_duration()
+    var read: Duration? = text
     if read {
         console.print("duration '{text}' was read as", read)
     } else {
@@ -92,7 +92,7 @@ func refuse_duration(text: String) {
 }
 
 func refuse_period(text: String) {
-    var read = text.to_period()
+    var read: Period? = text
     if read {
         console.print("period '{text}' was read as", read)
     } else {

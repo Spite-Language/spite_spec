@@ -10,9 +10,8 @@ func NumberValueFunctions() {
         var value = numbers[index]
         var shown = value.to_string()
         var positive = value.absolute()
-        var wide = positive.to_double()
-        var is_three = wide == 3.0
-        var is_half_five = wide == 2.5
+        var is_three = positive == 3
+        var is_half_five = positive == 2.5
         console.print(shown, is_three, is_half_five)
         index = index + 1
     }

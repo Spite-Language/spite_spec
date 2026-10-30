@@ -1,0 +1,1 @@
+conformance/conversion_twice/meters.spite:13: error: 'Meters' has two conversions from one type: a class has one conversion from each type, so delete one (in Meters)

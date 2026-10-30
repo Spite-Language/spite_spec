@@ -7,7 +7,7 @@ func NegateOverflow() {
     var nothing: UnsignedInteger = 0
     var still = -nothing
     console.print(negated, still)
-    var lowest = Integer.smallest
+    var lowest = Integer.Smallest()
     var flipped = -lowest
     console.print("never printed", flipped)
 }

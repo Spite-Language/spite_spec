@@ -1,0 +1,5 @@
+marathon 42195
+each call is fresh 42195
+walked 1200
+not a number true
+largest 2147483647

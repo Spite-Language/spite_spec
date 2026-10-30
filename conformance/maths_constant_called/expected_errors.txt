@@ -1,1 +1,1 @@
-conformance/maths_constant_called/maths_constant_called.spite:5: error: 'Float.pi' is a constant, read as an attribute and never called: write 'Float.pi' (in MathsConstantCalled.MathsConstantCalled)
+conformance/maths_constant_called/maths_constant_called.spite:5: error: 'Float.pi' is the preset 'Float.Pi()': a special value of a class is a preset, named in PascalCase and called on the class (in MathsConstantCalled.MathsConstantCalled)

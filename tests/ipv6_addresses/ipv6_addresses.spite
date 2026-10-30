@@ -24,14 +24,14 @@ func Ipv6Addresses() {
 }
 
 func address_of(text: String): IpAddress {
-    var address = text.to_ip_address()
+    var address: IpAddress? = text
     crash address
     return address
 }
 
 func reach(server: Tcp.Server, host: String, port: Integer) {
     var client = Tcp.Client()
-    var address = host.to_ip_address()
+    var address: IpAddress? = host
     crash address
     var connected = client.connect(address, port)
     crash connected

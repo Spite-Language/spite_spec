@@ -5,7 +5,7 @@ func MathsConstantOnValue() {
     var angle = 1.5
     var circle = angle.pi
     var root = Float.square_root()
-    var whole = Integer.pi
+    var whole = Integer.Pi()
     var called = Double.euler_number()
     var named = angle.tau()
     console.print(circle, root, whole, called, named)

@@ -18,7 +18,7 @@ func DivisionsByPowers() {
     var inside = guarded(1234)
     console.print("guarded", large, negative, inside)
     var one: Float = 1.5
-    var pattern: Long = one.bits().to_long()
+    var pattern: Long = one.bits()
     var sign = pattern / 2147483648
     var exponent = pattern / 8388608 % 256
     var mantissa = pattern % 8388608

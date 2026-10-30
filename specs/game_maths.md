@@ -76,13 +76,13 @@ The standard library fills every maths gap a game needs, as a game engine packag
   starts inside; `null` when it misses or the box is behind), `hit_triangle(first, second, third): Float?` (either
   side, Moller and Trumbore's test; `null` when it misses, is parallel or is behind), `to_string()`.
 - **`Color`** (`red`, `green`, `blue`, `alpha`, each 0 to 1 and not clamped when set; made with its one
-  constructor, `Color(red, green, blue, alpha)`, or read from text with `text.to_color()`, below):
+  constructor, `Color(red, green, blue, alpha)`, or read from text with `var read: Color? = text`, below):
   `equals` (exact), `linear_interpolate(target, amount)`, `to_linear()` and `to_standard_rgb()` (the sRGB curve on
   red, green and blue, alpha untouched), `to_hexadecimal_string()` (`#rrggbb`, with `aa` when alpha is below 255/255),
   `to_rgb_string()` (`rgb(255, 99, 71)`, or `rgba(...)` with alpha to three places), `to_hsl_string()` (hue, saturation
   and lightness to one place), and `to_string()`, which is `to_hexadecimal_string()`. Writing clamps each channel to 0..1 and rounds
   it to a byte.
-- **Colour text** (`text.to_color(): Color?`, the only way text becomes a colour; text is trimmed and read without regard to case): `#` and 3, 4, 6 or 8
+- **Colour text** (`var read: Color? = text`, the only way text becomes a colour; text is trimmed and read without regard to case): `#` and 3, 4, 6 or 8
   hex digits, `#rgb` doubling each digit; `rgb(`/`rgba(` with three or four numbers, separated by commas, spaces or
   a `/` before alpha, each channel 0 to 255 or a percentage and clamped, alpha 0 to 1 or a percentage;
   `hsl(`/`hsla(` with a hue in degrees (a `deg` suffix allowed, any number of turns), saturation and lightness as

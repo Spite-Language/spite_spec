@@ -129,17 +129,16 @@ On every whole number, `Tiny` to `UnsignedLong`, answering the receiver's type:
 | `minimum(other)`, `maximum(other)` | the smaller or larger, `other` cast to the receiver's type first like any argument: a `Byte`'s `minimum(300)` is a compile error for the literal and halts for a value that does not fit, as every narrowing that does not fit does |
 | `clamp(low, high)` | `value` held between `low` and `high`, with `high` winning when `low` is above it, as on a float |
 
-**Constants are get-only attributes of the class itself** (a class is an object): `Float.pi`, `tau`, `euler_number`,
-`infinity`, `not_a_number`, `largest` (the largest finite value) and `smallest` (the most negative finite
-one) on `Float` and `Double`, and `largest` and `smallest` on each whole number (`UnsignedLong.largest` is
-18446744073709551615, its `smallest` 0). They are read without parentheses, and nothing can assign one:
-`Float.pi = 3.0` is "'Float.pi' is a constant, and a constant is get-only: nothing can assign it", and
-`Float.pi()` is "'Float.pi' is a constant, read as an attribute and never called: write 'Float.pi'"
-(`diagnostics/maths_constant_assigned`). Each is the value itself in the C, written exactly (`0x1.921fb6p+1f`
-for `Float.pi`, `INT32_MAX` for `Integer.largest`). On a value, `angle.pi` is "'pi' is a constant of the
-class Float, not of a value: write 'Float.pi'"; on the class, a function of a value is "'Float.square_root()'
-calls a function of a value on the class: the class Float answers only its constants, ..." and a name that is
-neither is "the class Integer answers only its constants, largest and smallest, and 'pi' is not one of them"
+**A number class's special values are presets** (D1776): `Float.Pi()`, `Tau()`, `EulerNumber()`, `Infinity()`,
+`NotANumber()`, `Largest()` (the largest finite value) and `Smallest()` (the most negative finite one) on `Float` and
+`Double`, and `Largest()` and `Smallest()` on each whole number (`UnsignedLong.Largest()` is 18446744073709551615,
+its `Smallest()` 0). Each builds its value on the class, and the compiler folds it. The old spelling names the
+preset: `Float.pi()` is "'Float.pi' is the preset 'Float.Pi()': a special value of a class is a preset, named in
+PascalCase and called on the class", and a call is never assigned (`Float.Pi() = 3.0` is "only a local, an attribute
+or an index is assigned with '='", `diagnostics/maths_constant_assigned`). On a value, `angle.pi` is "'Pi' is a preset
+of the class Float, not of a value: write 'Float.Pi()'"; on the class, a function of a value is "'Float.square_root()'
+calls a function of a value on the class: the class Float answers only its presets, ...", and a name that is neither
+is "the class Integer answers only its presets, Largest() and Smallest(), and 'Pi' is not one of them"
 (`diagnostics/maths_constant_on_value`).
 
 **Nothing here halts.** Floats keep infinity and not-a-number, so every edge answers the IEEE 754 value the
@@ -153,7 +152,7 @@ place, so no Spite changes with the backend). `--final-classes` prints them as b
 class, and the compiler is the one place that says what each becomes:
 a call of the C library's function written where it is called, so `angle.sine()` is `sinf(angle)`, with no function of Spite's own
 around it, and a whole number's `clamp` is two comparisons in one statement. None has hand-written C in a `.spite`
-file of the standard library. A call whose operands are all constants, `(0.5).sine()` or `Float.pi.cosine()`, is worked out
+file of the standard library. A call whose operands are all constants, `(0.5).sine()` or `Float.Pi().cosine()`, is worked out
 while compiling with the same C library function, so its answer is bit for bit the one the program would have
 computed ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#maths-on-constants-is-worked-out-while-compiling);
 `conformance/stage6/maths_folding`).
@@ -190,7 +189,7 @@ library through `DynamicLibrary`. What each member answers is in the section of 
 | `Console()` | a singleton: `print(...values)`, `write(...values)`, `error(...values)`, `debug(...values)`, `read_line(): String?`; see [Console](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#console), and below |
 | `FileSystemWatcher()` | `watch_for_changes(target: FileSystemWatcher.Target): Boolean`, `changes(): List<String>`, `wait_for_changes()`; see [Watch files and folders](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#watch-files-and-folders), which is the rule. `HotReload` is built on it ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
 | `Tcp.Server()`, `Tcp.Client()`, `Tcp.Connection` | TCP over IPv4 and IPv6 on every system. A server listens (`listen_locally(port)`, `listen_everywhere(port)`, `listen_at(address: IpAddress, port)`, each `Boolean`) and answers `accept(): Tcp.Connection?`; a client connects (`connect(address: IpAddress, port)`, `connect_locally(port)`, each `Boolean`); a client and a connection talk alike: `read_line(): String?` (`null` when the connection ended before a whole line, and for a line whose bytes are not UTF-8, the next call reading the line after it), `read_as_string(): String?`, `read_as_buffer(): Buffer?`, `write_line(text): Boolean`, `write_string(text): Boolean`, `write_buffer(buffer): Boolean`, `closed: Boolean`, `close()`. Every read waits ([Tcp](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#tcp), and below); `--repl-port` and `spite connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
-| `IpAddress` | an IPv4 or IPv6 address and nothing else (a port is a number beside it): `is_ipv4()`, `is_ipv6()`, `==` (its `equals(other)`), `to_string()` (RFC 5952). It is read from text, a literal or a host name resolved to its first address, with `String.to_ip_address(): IpAddress?`, and every address of a name is `String.resolve_ip_addresses(): List<IpAddress>`; `IpAddress()` is `0.0.0.0`, and no constructor takes text (D1718; below) |
+| `IpAddress` | an IPv4 or IPv6 address and nothing else (a port is a number beside it): `is_ipv4()`, `is_ipv6()`, `==` (its `equals(other)`), `to_string()` (RFC 5952). It is read from text, a literal or a host name resolved to its first address, with `IpAddress(from: String): IpAddress?`, and every address of a name is `String.resolve_ip_addresses(): List<IpAddress>`; `IpAddress()` is `0.0.0.0`, and no constructor takes text (D1718; below) |
 | `Concurrent(function)`, `Parallel(function)` | the handle stands in for what the function returned, and reading it is the wait; `finished: Boolean` never waits; dropping the handle waits for it; there is no `wait()` and no `join()`; see [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md) |
 | `DynamicLibrary(file_name, naming, header)` | every foreign function, constant and type of a native library; see [Foreign libraries](foreign_libraries.md#foreign-libraries). It holds its `file_name` and `handle`, its constructor and `drop()`; opening, closing and finding a symbol are the compiler's reopening |
 | `ForeignBytes(address, count)` | memory a foreign library hands out (an address and a size it answers): `count(): Long`, `get_at(position): Byte?` (`foreign[position]`), `set_at(position, value)`, `read_<number>_at(position): <number>?` and `write_<number>_at(position, value)`, big-endian forms included, as a `Buffer` has them, `read_buffer_at(position, count): Buffer?` and `write_buffer_at(position, buffer)`; see [Bytes are a Buffer](#bytes-are-a-buffer) |
@@ -317,20 +316,20 @@ each system's library, which the `windows`, `linux` and `mac` folders reopen the
   groups and an IPv6 zone index (`fe80::1%4`), and the port is always a number beside it. It is the one place that
   reads an address from text, writes it as RFC 5952 gives it (lowercase, the longest run of two or more zero groups
   as `::`, the first when two are as long, the zone after a `%`), and turns it into the system's address and back.
-  `String.to_ip_address()` reads dotted IPv4 (each part 0 to 255, no leading zero) and IPv6 (one `::` at most, a
+  `IpAddress(from: String): IpAddress?` reads dotted IPv4 (each part 0 to 255, no leading zero) and IPv6 (one `::` at most, a
   dotted IPv4 ending, a numeric zone), or, for text that is a host name (labels of letters, digits and hyphens, the last not all digits, so `"1.2.3"` is a malformed address and never looked up), resolves it and answers its first address, IPv4 first, keeping the name; `null` when the text is neither or the name names nothing (`tests/ip_addresses`). An IPv4 address
   inside `::ffff:` is that IPv4 address, from text or from the system, so a datagram a dual-stack socket receives
   from `127.0.0.1` comes from `127.0.0.1`, and the two compare equal (`tests/ip_addresses`). `IpAddress()` is
   `0.0.0.0`.
 - **Every network call takes an `IpAddress`, and only one** (Spite has no overloading, the cast fills the gap;
   D1727). `listen_at`, `connect`, `open_at`, `send_to`, `Http.Client.send` and `WebSocket.Client.connect` take an
-  `IpAddress`; text reaches them through `String.to_ip_address()`, which resolves a host name through
+  `IpAddress`; text reaches them through `IpAddress(from: String): IpAddress?`, which resolves a host name through
   `String.resolve_ip_addresses()`: the system's `getaddrinfo`, IPv4 answers first in the order the system gives
   them, then the IPv6 ones, empty when the name names nothing. Resolving waits in place, like connecting. An address
   resolved from a name keeps the name, and `Http.Client.send` writes it as the `host` header and
   `WebSocket.Client.connect` in its handshake; an address read from a literal is written as itself, an IPv6 one in
   brackets (`tests/http_exchange`). Until the cast of spite_compiler#228 and the folding of #229 land, a program
-  writes `"127.0.0.1".to_ip_address()` and narrows it.
+  writes `var read: IpAddress? = "127.0.0.1"` and narrows it.
 - **Every interface.** `listen_locally`, `connect_locally` and `open_locally` use `127.0.0.1`; `listen_everywhere`
   and `open_everywhere` use `::` on a socket that takes IPv4 too (`IPV6_V6ONLY` off), or `0.0.0.0` where the system
   has no IPv6. A dual-stack socket sends to an IPv4 address as `::ffff:` and the address; an IPv4 socket cannot

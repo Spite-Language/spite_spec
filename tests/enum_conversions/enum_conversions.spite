@@ -10,20 +10,20 @@ func EnumConversions() {
     var tag: Part = 'wing'
     var name = tag.to_string()
     var length = name.length()
-    var number_of_wing = tag.to_integer()
+    var number_of_wing: Integer = tag
     console.print(tag, length, number_of_wing, tag.class)
     var text = "tail"
-    var found = text.to_enum_conversions_part()
+    var found: Part? = text
     var missing_text = "fin"
-    var missing = missing_text.to_enum_conversions_part()
+    var missing: Part? = missing_text
     crash found
     var is_tail = found == 'tail'
-    var number_of_tail = found.to_integer()
+    var number_of_tail: Integer = found
     console.print(is_tail, number_of_tail, not missing)
     var number = 7
-    var numbered = number.to_enum_conversions_part()
+    var numbered: Part? = number
     var unnumbered_value = 3
-    var unnumbered = unnumbered_value.to_enum_conversions_part()
+    var unnumbered: Part? = unnumbered_value
     crash numbered
     var values = Part.values
     var count = values.count()

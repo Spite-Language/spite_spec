@@ -38,13 +38,13 @@ func StringMethods() {
     crash letters.count() == 3
     var letters_count = letters.count()
     console.print(letters_count, letters[1])
-    var forty_two = "42".to_integer()
-    var seven = "7".to_long()
-    var two_and_a_half = "2.5".to_float()
-    var one_and_a_quarter = "1.25".to_double()
+    var forty_two: Integer? = "42"
+    var seven: Long? = "7"
+    var two_and_a_half: Float? = "2.5"
+    var one_and_a_quarter: Double? = "1.25"
     crash forty_two and seven and two_and_a_half and one_and_a_quarter
     console.print(forty_two + 1, seven, two_and_a_half, one_and_a_quarter)
-    var oops_number = "oops".to_integer()
+    var oops_number: Integer? = "oops"
     if oops_number {
         console.print("oops is", oops_number)
     } else {

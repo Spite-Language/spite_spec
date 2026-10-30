@@ -3,3 +3,8 @@ var amount = 0
 func Feet(new_amount: Integer) {
     amount = new_amount
 }
+
+func Feet(from: Meters): Feet {
+    var converted = from.amount * 3
+    return Feet(converted)
+}

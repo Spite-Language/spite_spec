@@ -21,8 +21,8 @@ func NumberValues() {
     crash decimal
     var mixed = decimal + whole
     var is_mixed = mixed == 5.5
-    var wide = decimal.to_double()
-    var whole_long = whole.to_long()
+    var wide: Double = decimal
+    var whole_long: Long = whole
     console.print(is_mixed, wide, whole_long)
     var cut = whole + decimal
     console.print(cut == 0)

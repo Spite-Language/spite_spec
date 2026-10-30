@@ -1,1 +1,1 @@
-conformance/maths_unknown_constant/maths_unknown_constant.spite:5: error: the class Integer answers only its constants, largest and smallest, and 'pi' is not one of them (in MathsUnknownConstant.MathsUnknownConstant)
+conformance/maths_unknown_constant/maths_unknown_constant.spite:5: error: the class Integer answers only its presets, Largest() and Smallest(), and 'Pi' is not one of them (in MathsUnknownConstant.MathsUnknownConstant)

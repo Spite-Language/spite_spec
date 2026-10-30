@@ -304,7 +304,7 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   replaced); see `--final-classes` in [Command line](compiler.md#command-line). The language server reads it too.
 - **What the compiler supplies is a reopening too.** The members whose bodies the compiler supplies are `Console`'s
   raw writes, `Memory.Heap`'s allocation and `Memory.Address`'s reads, writes and atomics, `DynamicLibrary`'s opening
-  and symbol lookup, `TypedMemory`'s typed slots, a number's casts (the source's `to_<type>()`) and bit operations,
+  and symbol lookup, `TypedMemory`'s typed slots, a number's casts and bit operations,
   the REPL's hooks on `Spite.Attribute`/`Spite.Function`, `HotReload`'s build facts, a `Concurrent`'s state machine,
   `ThreadPool`'s entry address and `Scheduler`'s step. They are declarations the compiler merges into their classes
   right after `library/` (and its operating system's folder), exactly as a later root merges a file, so a program

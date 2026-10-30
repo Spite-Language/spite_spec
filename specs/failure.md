@@ -57,7 +57,7 @@ keeping, and the run's halt is the backstop for what only the run can find.
 | work given to a `Parallel` that loops forever and never waits | compile error | [concurrency.md](https://github.com/Spite-Language/spite_documentation/blob/master/concurrency.md#threads-for-parallel) |
 | a peer that hung up read as a count of `-1` | `socket.closed` turns `true`; reads answer `0` or `null` | [standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md) |
 | a read the outside world cut short, a lock or random bytes the system refused, input that is not UTF-8, taken as a halt or a made-up value (D1721) | the library answers `null` or `false` and halts only on the program's own mistakes; the program decides with `fallback` or `crash` (`tests/console_long_lines`) | [failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#nothing-fails-silently) |
-| an impossible date such as `Date(2023, 2, 29)` rolled over | halts; text from outside is read with `text.to_date()`, which answers `null` | [time.md](https://github.com/Spite-Language/spite_documentation/blob/master/time.md) |
+| an impossible date such as `Date(2023, 2, 29)` rolled over | halts; text from outside is read with `var read: Date? = text`, which answers `null` | [time.md](https://github.com/Spite-Language/spite_documentation/blob/master/time.md) |
 | a `crash` or `fallback` whose site cannot be found again | every build writes `<program>.crashes`, one line per site | [what a crash reports](#what-a-crash-reports) |
 
 `fallback` doubles as the way to prove a `T?` is not null without nesting: after `fallback value` on a
@@ -262,7 +262,7 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   every target, D1746), an attribute assigned a `T?` through a `type`, and any attribute in a `--hot-reload` or
   `--repl` build, where a running object may still hold a null an older version stored (D1746;
   `tests/proven_present_hot_reload`, `tests/proven_present_repl`). The answer of a
-  call worked out while compiling (`"127.0.0.1".to_ip_address()`) is to come (spite_compiler#229, #230).
+  call worked out while compiling (`var read: IpAddress? = "127.0.0.1"`) is to come (spite_compiler#229, #230).
 - Reading through a link that may be null and has not been narrowed is still an error. This removes the verbosity of
   proving a path, not the requirement to prove it.
 - Assigning to a narrowed path, or to anything it reads through, undoes the narrowing from that point on: after

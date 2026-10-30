@@ -4,7 +4,7 @@ func SignednessChange() {
     load "../../../spite_standard_library/windows"
     var count = 0 - 3
     var minus_one: Long = -1
-    var top = UnsignedLong.largest
+    var top = UnsignedLong.Largest()
     var tiny: Tiny = -128
     console.print(
         "{count.bits_as_unsigned()} {minus_one.bits_as_unsigned()} {top.bits_as_signed()} {tiny.bits_as_unsigned()}",

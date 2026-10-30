@@ -17,7 +17,11 @@ func EnumToInteger() {
     var owner: Role = 'owner'
     var guest: Role = 'guest'
     var phase: Phase = 'late'
-    var numbers = [guest.to_integer(), role.to_integer(), owner.to_integer(), phase.to_integer()]
+    var guest_number: Integer = guest
+    var role_number: Integer = role
+    var owner_number: Integer = owner
+    var phase_number: Integer = phase
+    var numbers = [guest_number, role_number, owner_number, phase_number]
     var shown = numbers.join(" ")
     console.print(shown)
 }

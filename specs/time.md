@@ -30,7 +30,7 @@ with Temporal's vocabulary and no stored zoned type.
 - **A local reading never becomes an instant without a zone.** No local type has a function answering an
   `Instant`, `==` between the two kinds is a type error (`an Instant cannot be used where a DateTime is
   needed`), and `local.to_instant_in(zone, ambiguity)` is the only
-  bridge. `text.to_instant()` refuses text without an offset, and `to_date_time()` refuses text with one.
+  bridge. `var read: Instant? = text` refuses text without an offset, and `to_date_time()` refuses text with one.
 - **Exact and calendar lengths never mix.** A `Duration` has no days, since a day is 23 to 25 hours where clocks
   change; a `Period` has no hours and adds only to the local types, months first (a day past the new month's end
   becomes its last day: January 31 plus a month is February 29 in 2024), then days. `period_until` is

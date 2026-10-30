@@ -1,0 +1,19 @@
+var console = Console()
+
+func Presets() {
+    load "../../../spite_standard_library/windows"
+    var run = Meters.Marathon()
+    console.print("marathon", run.amount)
+    var again = Meters.Marathon()
+    again.amount = 1
+    var fresh = Meters.Marathon()
+    console.print("each call is fresh", fresh.amount)
+    var walked: Meters? = "1200"
+    crash walked
+    console.print("walked", walked.amount)
+    var nowhere: Meters? = "far"
+    var is_missing = not nowhere
+    console.print("not a number", is_missing)
+    var largest = Integer.Largest()
+    console.print("largest", largest)
+}

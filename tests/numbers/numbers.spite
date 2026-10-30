@@ -29,10 +29,12 @@ func Numbers(): Integer {
     if holder.whole == holder.whole {
         total = total + 64
     }
-    if holder.small.to_integer() == 5 {
+    var small_integer: Integer? = holder.small
+    if small_integer == 5 {
         total = total + 128
     }
-    if holder.small.to_byte() == 5 {
+    var small_byte: Byte? = holder.small
+    if small_byte == 5 {
         total = total + 256
     }
     if holder.whole + holder.bigger == 3000 {

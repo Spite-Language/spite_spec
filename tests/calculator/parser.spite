@@ -77,7 +77,7 @@ func parse_factor(): Expression {
         return inner
     }
     if is_kind('number') {
-        var value = current().text.to_float()
+        var value: Float? = current().text
         crash value
         advance()
         return NumberExpression(value)

@@ -7,7 +7,7 @@ func UdpWaits() {
     var receiving = Concurrent(receive_once)
     var client = Udp.Client()
     crash client.open()
-    var address = "127.0.0.1".to_ip_address()
+    var address: IpAddress? = "127.0.0.1"
     crash address
     var message = Buffer(0)
     message.append(10)

@@ -17,7 +17,7 @@ func TextToEnum() {
     var index = 0
     while index < names.count() {
         var name = names[index]
-        var mood = name.to_text_to_enum_mood()
+        var mood: Mood? = name
         if mood {
             console.print(name, "is", mood)
         } else {
@@ -30,10 +30,11 @@ func TextToEnum() {
     }
     var ending = "ert"
     var built = "dess{ending}"
-    var kind = built.to_text_to_enum_course_kind()
+    var kind: CourseKind? = built
     crash kind
     console.print(kind)
-    var joined = ("{built}!").to_text_to_enum_course_kind()
+    var joined_text = "{built}!"
+    var joined: CourseKind? = joined_text
     if not joined {
         console.print("joined is no course kind")
     }

@@ -1,2 +1,2 @@
 2147483647 7
-spite: 'zero - value' does not fit in an Integer (0 - -2147483648), at tests/smallest_absolute/../../../spite_standard_library/common/integer.spite:59 in Integer.absolute
+spite: 'zero - value' does not fit in an Integer (0 - -2147483648), at tests/smallest_absolute/../../../spite_standard_library/common/integer.spite:33 in Integer.absolute

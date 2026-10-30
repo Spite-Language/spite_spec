@@ -13,7 +13,7 @@ func Datagrams() {
     console.print("server port: {server_port}, the client was given a port: {picked}")
     var ping_text = "ping"
     var ping = ping_text.to_buffer()
-    var server_address = "127.0.0.1".to_ip_address()
+    var server_address: IpAddress? = "127.0.0.1"
     crash server_address
     var sent = client.send_to(server_address, 47811, ping)
     console.print("sent: {sent}")
@@ -35,7 +35,7 @@ func Datagrams() {
     var answer_count = answer_buffer.count()
     console.print("replied: {replied}, client got {answer_count} bytes")
     var empty = Buffer(0)
-    var local_host = "localhost".to_ip_address()
+    var local_host: IpAddress? = "localhost"
     crash local_host
     crash client.send_to(local_host, 47811, empty)
     var empty_arrived = server.receive()

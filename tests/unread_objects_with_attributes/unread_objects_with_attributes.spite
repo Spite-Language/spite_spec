@@ -4,7 +4,7 @@ func UnreadObjectsWithAttributes() {
     load "../../../spite_standard_library/windows"
     var line = console.read_line()
     crash line
-    var seed = line.trim().to_integer()
+    var seed: Integer? = line.trim()
     crash seed
     var total = 0
     var step = 0

@@ -1,1 +1,1 @@
-conformance/maths_constant_assigned/maths_constant_assigned.spite:5: error: 'Float.pi' is a constant, and a constant is get-only: nothing can assign it (in MathsConstantAssigned.MathsConstantAssigned)
+conformance/maths_constant_assigned/maths_constant_assigned.spite:5: error: only a local, an attribute or an index is assigned with '=' (in MathsConstantAssigned.MathsConstantAssigned)

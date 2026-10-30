@@ -12,7 +12,7 @@ func GameNamedColors() {
 }
 
 func show(text: String) {
-    var color = text.to_color()
+    var color: Color? = text
     crash color
     var hex = color.to_hexadecimal_string()
     console.print(hex)

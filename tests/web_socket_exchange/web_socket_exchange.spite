@@ -77,7 +77,7 @@ func refused_plain_request() {
     var client = Http.Client()
     var request = Http.Request()
     request.path = "/plain"
-    var loopback = "127.0.0.1".to_ip_address()
+    var loopback: IpAddress? = "127.0.0.1"
     crash loopback
     var response = client.send(loopback, 47913, request)
     crash response
@@ -89,7 +89,7 @@ func talk() {
     var request = Http.Request()
     request.path = "/chat"
     request.set_header("Origin", "http://127.0.0.1")
-    var server_address = "127.0.0.1".to_ip_address()
+    var server_address: IpAddress? = "127.0.0.1"
     crash server_address
     crash socket.connect(server_address, 47913, request)
     crash socket.send_string("hello")

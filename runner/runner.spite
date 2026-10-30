@@ -71,7 +71,7 @@ func jobs_at_once(): Integer {
     if not processors {
         return 4
     }
-    var number = processors.to_integer()
+    var number: Integer? = processors
     if not number or number < 1 {
         return 4
     }

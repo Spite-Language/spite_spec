@@ -5,12 +5,12 @@ func DictionaryNotANumberKey() {
     var weights = Dictionary<Double, String>()
     var zero = 0.0
     var first = zero / zero
-    var second = Double.not_a_number
+    var second = Double.NotANumber()
     weights[first] = "first"
     weights[second] = "second"
     weights[1.5] = "one and a half"
     var count = weights.count()
-    var found = weights[Double.not_a_number]
+    var found = weights[Double.NotANumber()]
     crash found
     console.print(count, found)
 }
