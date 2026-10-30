@@ -1,0 +1,5 @@
+var count = 0
+var wide: Long = 0
+var small: Byte = 0
+var shown = false
+var ratio = 0.0

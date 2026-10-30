@@ -1,0 +1,41 @@
+var console = Console()
+var _past_32_bits: Long = 9000000000
+var _high_byte: Byte = 200
+
+func ArgumentsByParameterType() {
+    load "../../../spite_standard_library/windows"
+    var holder = Holder()
+    holder.count = 41
+    holder.wide = _past_32_bits
+    holder.small = _high_byte
+    holder.shown = true
+    holder.ratio = 2.5
+    var count = 41
+    var wide = _past_32_bits
+    var small = _high_byte
+    var shown = true
+    var ratio = 2.5
+    var from_the_attributes = described(holder.count, holder.wide, holder.small, holder.shown, holder.ratio)
+    var from_the_locals = described(count, wide, small, shown, ratio)
+    console.print(from_the_attributes)
+    console.print(from_the_locals)
+    var counts = List<Integer>()
+    counts.append(41)
+    var from_a_list = counts[0]
+    crash from_a_list
+    var from_an_item = doubled(from_a_list)
+    var from_an_attribute = doubled(holder.count)
+    var from_a_local = doubled(count)
+    console.print(from_an_item, from_an_attribute, from_a_local)
+    var attribute_text = holder.count.to_string()
+    var local_text = count.to_string()
+    console.print(attribute_text, local_text)
+}
+
+func described(count: Integer, wide: Long, small: Byte, shown: Boolean, ratio: Float): String {
+    return "{count} {wide} {small} {shown} {ratio}"
+}
+
+func doubled(count: Integer): Integer {
+    return count * 2
+}
