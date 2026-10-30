@@ -16,7 +16,7 @@ func TestingDiscovery() {
 
 func run_class(tested: Spite.Class) {
     var instance = tested()
-    var functions = tested.functions
+    var functions = tested.functions.values()
     var index = 0
     while index < functions.count() {
         var declaration = functions[index]

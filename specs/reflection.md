@@ -9,7 +9,7 @@ is the bug.
 **Every class is an instance of `Spite.Class`**, every namespace of `Spite.Namespace`, every function declared in a
 class of `Spite.FunctionDeclaration` (and bound to an instance, of `Spite.Function`), every attribute declared in a
 class of `Spite.AttributeDeclaration` (and bound to an instance, of `Spite.Attribute`, which holds its `declaration`, its
-`value` and its `owner`), and every argument and access of `Spite.Argument` and `Spite.Access`. They live in the `Spite` namespace (`Spite.Class`, not `SpiteClass`), so nothing in it can be
+`value` and its `owner`), and every argument of `Spite.Argument`. A class's `.attributes` is a `Dictionary<String, Spite.AttributeDeclaration>` and an instance's a `Dictionary<String, Spite.Attribute>`, keyed by name; `Whisper.attributes["to"]` names an attribute as a value, and a literal key on a class named in the code that declares no attribute of that name is a compile error naming the class (`tests/attribute_named_as_value`, `conformance/attribute_named_unknown`). A function's `.reads` and `.writes` are the `Spite.AttributeDeclaration`s of its class its code reads and writes, following every call to its own class (`tests/function_accesses`). They live in the `Spite` namespace (`Spite.Class`, not `SpiteClass`), so nothing in it can be
 mistaken for a class of a program. `Spite` is a reserved root namespace: a program's `spite/` folder may only
 reopen its classes, and `load "spite"` is an error ([packages.md](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#the-spite-namespace-is-reserved)).
 Their members are the tables of [The `Spite` classes](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#the-spite-classes).
@@ -154,8 +154,8 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   something calls it with a run-time object or uses it as a value.
 - **A run-time object** (a value typed `Anything` or a union, a reflection object kept in an attribute, anything
   typed at the REPL) is answered from the run-time tables, built only for the classes such a read can reach, and for
-  every class in a `--repl`, `--repl-port` or `--development` build. A run-time function's `.accesses` comes from
-  a table of every function the program makes an object for, emitted only when some code reads `.accesses` at run
+  every class in a `--repl`, `--repl-port` or `--development` build. A run-time function's `.reads` and `.writes` come
+  from a table of every function the program makes an object for, emitted only when some code reads them at run
   time. A standard library function, a function value taken through a `type` and every function of a `--hot-reload`
   build are not in it, and asking them halts. A run-time object answers the questions a constant does
   (`.is_stateful`, `.is_list`, `.index`, `argument.is_mutated` and the rest); the answers to the kind questions,

@@ -1,9 +1,8 @@
-accesses: 6 written: 3 read: 6
-position true true
-speed true false
-trail true true
-label true false
-steps true false
-log true true
-speed is written: false
+reads: 4 writes: 2
+reads position Integer
+reads speed Integer
+reads trail List<Integer>
+reads label String
+writes position
+writes trail
 2 1

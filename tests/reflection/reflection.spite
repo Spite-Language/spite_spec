@@ -6,13 +6,8 @@ func Reflection() {
     crash monster.class.namespace
     console.print(monster.class, monster.class.name, "{monster.class.namespace.name_with_namespaces}|")
     var attributes = monster.attributes
-    var index = 0
-    while index < attributes.count() {
-        var attribute = attributes[index]
-        console.print(attribute.name, attribute.class, "{text_of(attribute)}|")
-        index = index + 1
-    }
-    var joined_map_name = monster.attributes.map_names().join(",")
+    attributes.each(show)
+    var joined_map_name = monster.attributes.keys().join(",")
     console.print(joined_map_name)
     var kind_of_health = monster.kind_of_health()
     var kind_of_name = monster.kind_of_name()
@@ -26,6 +21,10 @@ func Reflection() {
 func console_class_name(): String {
     var reflection = Reflection2()
     return reflection.class.name
+}
+
+func show(attribute: Spite.Attribute) {
+    console.print(attribute.name, attribute.class, "{text_of(attribute)}|")
 }
 
 func text_of(attribute: Spite.Attribute): String {

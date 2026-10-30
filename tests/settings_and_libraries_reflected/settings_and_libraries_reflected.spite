@@ -3,7 +3,7 @@ var build = Build()
 
 func SettingsAndLibrariesReflected() {
     load "../../../spite_standard_library/windows"
-    var attributes = build.attributes
+    var attributes = build.attributes.values()
     var index = 0
     while index < attributes.count() {
         if attributes[index].name == "check" or attributes[index].name == "optimized" {

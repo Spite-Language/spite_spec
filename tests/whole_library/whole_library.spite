@@ -48,7 +48,6 @@ func WholeLibrary() {
     classes.append(SecureRandom)
     classes.append(Sha256)
     classes.append(Short)
-    classes.append(Spite.Access)
     classes.append(Spite.Argument)
     classes.append(Spite.Attribute)
     classes.append(Spite.AttributeDeclaration)

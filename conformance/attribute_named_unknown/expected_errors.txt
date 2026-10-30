@@ -1,0 +1,1 @@
+conformance/attribute_named_unknown/attribute_named_unknown.spite:5: error: 'Whisper' declares no attribute 'towards', so 'Whisper.attributes["towards"]' names nothing: name one of the attributes it declares (in AttributeNamedUnknown.AttributeNamedUnknown)

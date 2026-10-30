@@ -1,0 +1,7 @@
+to 1 Integer
+from 0
+declared: 3
+text text 2
+owned by Whisper
+from,to,text
+no shout

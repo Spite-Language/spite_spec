@@ -13,8 +13,8 @@ func FoldedArgumentCount() {
     var chase_arguments = chase.class.argument_count("update_each")
     console.print("asked at run time", chase_arguments)
     var chase_functions = chase.class.functions
-    crash chase_functions[0]
-    var described = chase_functions[0]
+    crash chase_functions["update_each"]
+    var described = chase_functions["update_each"]
     var described_arguments = described.argument_count()
     console.print(described.name, "takes", described_arguments)
 }

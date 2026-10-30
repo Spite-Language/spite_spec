@@ -4,15 +4,13 @@ func FunctionAccesses() {
     load "../../../spite_standard_library/windows"
     var update = Movement.functions['update_each']
     crash update
-    var written = update.accesses.filter_written()
-    var written_count = written.count()
-    var read_count = update.accesses.count_read()
-    var access_count = update.accesses.count()
-    console.print("accesses:", access_count, "written:", written_count, "read:", read_count)
-    update.accesses.each(describe)
-    var speed = update.accesses['speed']
-    crash speed
-    console.print("speed is written:", speed.is_written)
+    var reads = update.reads
+    var writes = update.writes
+    var read_count = reads.count()
+    var written_count = writes.count()
+    console.print("reads:", read_count, "writes:", written_count)
+    reads.each(describe_read)
+    writes.each(describe_write)
     var movement = Movement()
     var log = List<String>()
     movement.update_each(2, log)
@@ -20,6 +18,10 @@ func FunctionAccesses() {
     console.print(movement.position, logged)
 }
 
-func describe(access: Spite.Access) {
-    console.print(access.target.name, access.is_read, access.is_written)
+func describe_read(attribute: Spite.AttributeDeclaration) {
+    console.print("reads", attribute.name, attribute.class)
+}
+
+func describe_write(attribute: Spite.AttributeDeclaration) {
+    console.print("writes", attribute.name)
 }

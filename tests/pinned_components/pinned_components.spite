@@ -7,14 +7,13 @@ func PinnedComponents() {
 }
 
 func place(function: Spite.Function) {
-    var written = function.accesses.filter_written()
-    var written_count = written.count()
-    console.print(function.name, "writes", written_count)
-    function.accesses.each(check)
+    var mutated = function.arguments.filter_is_mutated()
+    var mutated_count = mutated.count()
+    console.print(function.name, "writes", mutated_count)
+    function.arguments.each(check)
 }
 
-func check(access: Spite.Access) {
-    var target = access.target
+func check(target: Spite.Argument) {
     var pinned = target.class.functions['pinned_to_creating_thread']
     if pinned {
         console.print(" ", target.name, "runs on the thread that made it")

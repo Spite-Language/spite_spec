@@ -8,7 +8,7 @@ func AttributeUses() {
     show_attributes(lamp, lines)
     var joined = lines.join(", ")
     console.print(joined)
-    var reflected = shelf.attributes
+    var reflected = shelf.attributes.values()
     var first = reflected.first()
     crash first
     var first_text = text_of(first)

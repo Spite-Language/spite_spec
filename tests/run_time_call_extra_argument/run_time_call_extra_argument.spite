@@ -13,7 +13,7 @@ func RunTimeCallExtraArgument() {
 
 func run_steps(found: Spite.Class) {
     var instance = found()
-    var functions = found.functions
+    var functions = found.functions.values()
     var index = 0
     while index < functions.count() {
         var declaration = functions[index]

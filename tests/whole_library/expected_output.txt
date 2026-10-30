@@ -43,7 +43,6 @@ Reload
 SecureRandom
 Sha256
 Short
-Spite.Access
 Spite.Argument
 Spite.Attribute
 Spite.AttributeDeclaration

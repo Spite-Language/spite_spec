@@ -214,7 +214,7 @@ before it runs. `call.arguments['name'] = value` fills one argument, and `call.c
 - **A function of the calling object passed where a `Spite.Function` is wanted** is described in place, bound to the
   object, with its arguments and answer; so is a function value of another object held in a local that is never
   assigned again (`var roar = troll.roar`, then `run(roar)`): it is bound to that object, so `call_function()` runs
-  on `troll` (`tests/function_value_of_another_object`). The description is complete, `accesses` included, however
+  on `troll` (`tests/function_value_of_another_object`). The description is complete, `reads` and `writes` included, however
   late in the program the question that needs it is written (`tests/run_time_accesses`).
 
 **Plural and singular.** A template whose result is a collection of the member's values (`List<member.class>`)
@@ -250,12 +250,12 @@ one is (`true` for an empty list), and `remove_where_directories()` removes the 
 list, the result typed from that common attribute. A name that matches both a member class and an attribute is a
 compile error naming the fix.
 
-**A `Dictionary` takes the same member templates as a `List`, over its values**: `accesses.filter_written()`.
+**A `Dictionary` takes the same member templates as a `List`, over its values**: `Monster.attributes.map_names()`.
 
 **A question member is asked without its `is_`.** The templates that ask a question of each element (`filter_`,
 `count_`, `any_`, `all_`, `remove_where_`) name a member `is_<word>` as `<word>` when the element has no member
-`<word>` of its own: `accesses.filter_written()` keeps the accesses whose `is_written` is true, as
-`monsters.filter_alive()` would for an `is_alive`. Naming it in full, `filter_is_written()`, is the same template.
+`<word>` of its own: `arguments.filter_mutated()` keeps the arguments whose `is_mutated` is true, as
+`monsters.filter_alive()` would for an `is_alive`. Naming it in full, `filter_is_mutated()`, is the same template.
 
 **There is no plain `map(function)`, and a class has no function values.** A member's values are collected with
 `map_<members>()`; a value computed from an element becomes a get-only attribute of the element's class and is

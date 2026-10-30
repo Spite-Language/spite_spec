@@ -8,8 +8,8 @@ func FunctionValueMistakes() {
     var changed = change("a", "b")
     console.print(changed)
     var described = FunctionValueMistakes.functions
-    crash described[0]
-    var applied = apply(described[0], "y")
+    crash described['shout']
+    var applied = apply(described['shout'], "y")
     console.print(applied)
 }
 

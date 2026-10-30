@@ -1,2 +1,2 @@
 0
-spite: 'JsonWriter.keys' gives a key to an attribute that is not one of the public attributes of 'ShelfItem' that hold a value, at tests/json_run_time_keys_unknown/json_run_time_keys_unknown.spite:12 in JsonRunTimeKeysUnknown.JsonRunTimeKeysUnknown
+spite: 'JsonWriter.keys' gives a key to an attribute that is not one of the public attributes of 'ShelfItem' that hold a value, at tests/json_run_time_keys_unknown/json_run_time_keys_unknown.spite:11 in JsonRunTimeKeysUnknown.JsonRunTimeKeysUnknown

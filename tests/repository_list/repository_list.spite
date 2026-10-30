@@ -27,7 +27,7 @@ func RepositoryList() {
         console.print(repository.name, repository.stars)
         index = index + 1
     }
-    var attributes = first.attributes
+    var attributes = first.attributes.values()
     var attribute_index = 0
     while attribute_index < attributes.count() {
         var attribute = attributes[attribute_index]

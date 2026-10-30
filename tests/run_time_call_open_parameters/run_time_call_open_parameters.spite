@@ -24,7 +24,7 @@ func RunTimeCallOpenParameters() {
 
 func run_greetings(found: Spite.Class) {
     var instance = found()
-    var functions = found.functions
+    var functions = found.functions.values()
     var index = 0
     while index < functions.count() {
         var declaration = functions[index]

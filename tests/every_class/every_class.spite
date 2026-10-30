@@ -18,7 +18,8 @@ func EveryClass() {
     while index < classes.count() {
         var zoo_namespace = classes[index].namespace
         if zoo_namespace and zoo_namespace.name_with_namespaces == "Zoo" {
-            run_speakers(classes[index].functions)
+            var speakers = classes[index].functions.values()
+            run_speakers(speakers)
         }
         index = index + 1
     }

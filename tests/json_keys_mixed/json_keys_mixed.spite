@@ -15,7 +15,6 @@ func JsonKeysMixed() {
 func keys_made_at_run_time(): Dictionary<Spite.AttributeDeclaration, String> {
     var made = Dictionary<Spite.AttributeDeclaration, String>()
     var detail = MeshRecord.attributes['minimum_level_of_detail']
-    crash detail
     made[detail] = "lod"
     return made
 }

@@ -5,7 +5,7 @@ func RunTimeType() {
     var gadget = Gadget()
     var anything: Anything = gadget
     var attributes = anything.attributes
-    var first = attributes.first()
+    var first = attributes.values().first()
     crash first
     var made = fresh(first)
     console.print(made)

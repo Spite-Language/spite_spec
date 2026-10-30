@@ -4,7 +4,7 @@ func create_entity(): Entity {
 
 func create_entity_from_bundle(bundle: Anything): Entity {
     var entity = create_entity()
-    var attributes = bundle.attributes
+    var attributes = bundle.attributes.values()
     var index = 0
     while index < attributes.count() {
         var attribute = attributes[index]

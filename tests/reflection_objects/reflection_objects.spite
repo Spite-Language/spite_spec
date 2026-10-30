@@ -49,6 +49,5 @@ func ReflectionObjects() {
     var found = Phase.values.find_by_name('finish')
     console.print("found", found)
     var console_attribute = ReflectionObjects.attributes['console']
-    crash console_attribute
     console.print(console_attribute.name, "holds a singleton:", console_attribute.is_singleton)
 }

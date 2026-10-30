@@ -3,7 +3,6 @@ var console = Console()
 func JsonKeysChanged() {
     load "../../../spite_standard_library/windows"
     var detail = MeshRecord.attributes['minimum_level_of_detail']
-    crash detail
     var writer = JsonWriter<MeshRecord>()
     writer.keys = {MeshRecord.attributes['minimum_level_of_detail']: "min_lod"}
     writer.keys[detail] = "lod"

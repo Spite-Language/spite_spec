@@ -1,14 +1,16 @@
-update_each 4 written: 2
-  position true true
-  speed true false
-  trail true true
-  steps true false
+update_each 3 written: 2
+  reads position
+  reads speed
+  reads trail
+  writes position
+  writes trail
 remember 2 written: 1
-  position true false
-  trail true true
-update_each 4 written: 2
-  position true true
-  speed true false
-  trail true true
-  steps true false
-steps is an argument: steps true false
+  reads position
+  reads trail
+  writes trail
+update_each 3 written: 2
+  reads position
+  reads speed
+  reads trail
+  writes position
+  writes trail

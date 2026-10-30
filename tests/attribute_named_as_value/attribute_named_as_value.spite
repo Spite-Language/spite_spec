@@ -1,0 +1,26 @@
+var console = Console()
+
+func AttributeNamedAsValue() {
+    load "../../../spite_standard_library/windows"
+    var to = Whisper.attributes["to"]
+    console.print(to.name, to.index, to.class)
+    var from = Whisper.attributes['from']
+    console.print(from.name, from.index)
+    var count = Whisper.attributes.count()
+    console.print("declared:", count)
+    var whisper = Whisper()
+    whisper.text = "psst"
+    var bound = whisper.attributes["text"]
+    crash bound
+    var declaration = bound.declaration
+    console.print(bound.name, declaration.name, declaration.index)
+    var owner = bound.owner
+    console.print("owned by", owner.class)
+    var names = whisper.attributes.keys()
+    var joined = names.join(",")
+    console.print(joined)
+    var absent = whisper.attributes["shout"]
+    if not absent {
+        console.print("no shout")
+    }
+}

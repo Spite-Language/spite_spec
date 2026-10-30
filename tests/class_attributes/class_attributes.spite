@@ -2,7 +2,7 @@ var console = Console()
 
 func ClassAttributes() {
     load "../../../spite_standard_library/windows"
-    var declarations = Sticker.attributes
+    var declarations = Sticker.attributes.values()
     var index = 0
     while index < declarations.count() {
         var described = declarations[index]
@@ -10,7 +10,7 @@ func ClassAttributes() {
         index = index + 1
     }
     var sticker = Sticker("pinned")
-    var values = sticker.attributes
+    var values = sticker.attributes.values()
     index = 0
     while index < values.count() {
         var value_text = text_of(values[index])
