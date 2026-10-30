@@ -1,0 +1,10 @@
+var console = Console()
+
+func UnionOwnerConversion() {
+    load "../../../spite_standard_library/windows"
+    var player = Player()
+    var found = player.picked("smith")
+    console.print(found)
+    var missing = player.picked("nobody")
+    console.print(missing)
+}

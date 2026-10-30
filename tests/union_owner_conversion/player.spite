@@ -1,0 +1,22 @@
+union Job {
+    Miner
+    Smith
+}
+
+func Job(from: String): Job? {
+    if from == "miner" {
+        return Miner()
+    }
+    if from == "smith" {
+        return Smith()
+    }
+    return null
+}
+
+func picked(named: String): String {
+    var job: Job? = named
+    if job {
+        return job.title()
+    }
+    return "no job for {named}"
+}

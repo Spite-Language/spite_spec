@@ -565,6 +565,9 @@ Copies with the same members, in any order, are one type (D1756), inside a gener
 one copy where the other's is, with nothing written and nothing converted (`tests/union_copies_in_generics`,
 `tests/event_bus`). A generic of a union with fewer members is refused where one with more is wanted, since the
 receiver could put in a member the smaller union lacks (`conformance/union_copy_smaller_in_generic`).
+**The class that declares a union may write conversions for it** in the form of [D1776](classes_and_files.md), named by
+the union alone (`func Job(from: String): Job?` beside `union Job`); a value of that source type meeting the union goes
+through it, so `var job: Job? = named` reads a `Job` from text (`tests/union_owner_conversion`).
 
 **A switch names every member, and there is no `_:`** (D1770). A member added to the union later is then an error
 at every switch until it has a case. **Two cases may share a one-line body** (D1762): in each, the value is narrowed
