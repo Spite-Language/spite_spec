@@ -1,3 +1,3 @@
-spite: the program stopped at tests/assert_trace_empty/assert_trace_empty.spite:4 in AssertTraceEmpty.AssertTraceEmpty (words.count()=0)
+spite: the program stopped at tests/assert_trace_empty/assert_trace_empty.spite:4 in AssertTraceEmpty.AssertTraceEmpty, site 49083ab9 (words.count()=0)
 spite.fallback	...	tests/assert_trace_empty/assert_trace_empty.spite:8	AssertTraceEmpty	split_words	returned=empty
 spite.frame	tests/assert_trace_empty/assert_trace_empty.spite:4	AssertTraceEmpty	AssertTraceEmpty

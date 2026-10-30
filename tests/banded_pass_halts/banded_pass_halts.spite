@@ -1,0 +1,15 @@
+var console = Console()
+
+func BandedPassHalts() {
+    load "../../../spite_standard_library/windows"
+    var counters = List<Counter>()
+    var index = 0
+    while index < 3000 {
+        var counter = Counter(index)
+        counters.append(counter)
+        index = index + 1
+    }
+    console.print("before the bands")
+    counters.each_grow()
+    console.print("after the bands")
+}

@@ -4,6 +4,6 @@ true true
 200 7
 29
 99
-spite: the program stopped at ... in String.byte_at (index=5, _length=3)
+spite: the program stopped at ... in String.byte_at, site ... (index=5, _length=3)
 spite.frame	tests/decided_comparisons/decided_comparisons.spite:82	DecidedComparisons	short_alphabet
 spite.frame	tests/decided_comparisons/decided_comparisons.spite:33	DecidedComparisons	DecidedComparisons

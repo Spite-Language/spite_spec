@@ -1,3 +1,3 @@
 a Boolean? that is there and true passes: true
-spite: the program stopped at tests/crash_maybe_boolean/crash_maybe_boolean.spite:9 in CrashMaybeBoolean.CrashMaybeBoolean (flags[1]=false, present=true)
+spite: the program stopped at tests/crash_maybe_boolean/crash_maybe_boolean.spite:9 in CrashMaybeBoolean.CrashMaybeBoolean, site c8d7276c (flags[1]=false, present=true)
 spite.frame	tests/crash_maybe_boolean/crash_maybe_boolean.spite:9	CrashMaybeBoolean	CrashMaybeBoolean

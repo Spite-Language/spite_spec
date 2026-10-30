@@ -1,4 +1,4 @@
 bones 2
-spite: the program stopped at tests/crash_reports_null_link/crash_reports_null_link.spite:13 in CrashReportsNullLink.show (rig.skeleton is null)
+spite: the program stopped at tests/crash_reports_null_link/crash_reports_null_link.spite:13 in CrashReportsNullLink.show, site 4db0884e (rig.skeleton is null)
 spite.frame	tests/crash_reports_null_link/crash_reports_null_link.spite:13	CrashReportsNullLink	show
 spite.frame	tests/crash_reports_null_link/crash_reports_null_link.spite:9	CrashReportsNullLink	CrashReportsNullLink

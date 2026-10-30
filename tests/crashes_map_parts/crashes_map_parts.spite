@@ -1,0 +1,27 @@
+var console = Console()
+var names = ["ada", "bo"]
+
+func CrashesMapParts() {
+    load "../../../spite_standard_library/windows"
+    var found = name_at(1)
+    console.print(found)
+    var map = File("tests/crashes_map_parts/.spite/build/crashes_map_parts.crashes")
+    var text = map.read_as_string()
+    crash text
+    var lines = text.lines()
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains("crashes_map_parts.spite") and line.contains("name_at") {
+            var length = line.length()
+            var site = line.slice(9, length)
+            console.print(site)
+        }
+        index = index + 1
+    }
+}
+
+func name_at(index: Integer): String? {
+    fallback index >= 0 and index < names.count()
+    return names[index]
+}

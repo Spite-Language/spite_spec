@@ -1,3 +1,3 @@
 the last code 99
-spite: the program stopped at .../spite_standard_library/common/string.spite:... in String.byte_at (index=3, _length=3)
+spite: the program stopped at .../spite_standard_library/common/string.spite:... in String.byte_at, site ... (index=3, _length=3)
 spite.frame	tests/code_past_the_end/code_past_the_end.spite:8	CodePastTheEnd	CodePastTheEnd

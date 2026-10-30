@@ -1,3 +1,3 @@
-spite: the program stopped at tests/crash_reports_receiver/crash_reports_receiver.spite:8 in CrashReportsReceiver.check (settings=saves/missing_settings.txt)
+spite: the program stopped at tests/crash_reports_receiver/crash_reports_receiver.spite:8 in CrashReportsReceiver.check, site 399c57ff (settings=saves/missing_settings.txt)
 spite.frame	tests/crash_reports_receiver/crash_reports_receiver.spite:8	CrashReportsReceiver	check
 spite.frame	tests/crash_reports_receiver/crash_reports_receiver.spite:3	CrashReportsReceiver	CrashReportsReceiver

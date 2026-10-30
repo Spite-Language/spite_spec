@@ -1,0 +1,10 @@
+var console = Console()
+var value = 0
+
+func Probe(seed: Integer) {
+    value = seed
+}
+
+func drop() {
+    console.print("dropped", value)
+}

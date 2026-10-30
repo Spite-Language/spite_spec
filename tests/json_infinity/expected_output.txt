@@ -1,3 +1,3 @@
 {"item":"tea","price":2.5}
-spite: the program stopped at tests/json_infinity/../../../spite_standard_library/common/json_writer.spite:115 in JsonWriter_of_Double.written_decimal (shown=inf, path=Order.price)
+spite: the program stopped at tests/json_infinity/../../../spite_standard_library/common/json_writer.spite:115 in JsonWriter_of_Double.written_decimal, site fce94c28 (shown=inf, path=Order.price)
 spite.frame	tests/json_infinity/json_infinity.spite:13	JsonInfinity	JsonInfinity

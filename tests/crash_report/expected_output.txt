@@ -1,6 +1,6 @@
 before the crash
 announced 5
-spite: the program stopped at tests/crash_report/crash_report.spite:15 in CrashReport.check (value=-9, limit=0)
+spite: the program stopped at tests/crash_report/crash_report.spite:15 in CrashReport.check, site 8f08ef15 (value=-9, limit=0)
 spite.fallback	31e75702	tests/crash_report/crash_report.spite:19	CrashReport	announce	returned=nothing	repeated=2
 spite.frame	tests/crash_report/crash_report.spite:15	CrashReport	check
 spite.frame	tests/crash_report/crash_report.spite:9	CrashReport	CrashReport

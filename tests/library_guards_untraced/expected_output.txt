@@ -1,7 +1,7 @@
 no z: true
 starts with help: false
 ends with low: false
-spite: the program stopped at tests/library_guards_untraced/library_guards_untraced.spite:23 in LibraryGuardsUntraced.check (length=5)
+spite: the program stopped at tests/library_guards_untraced/library_guards_untraced.spite:23 in LibraryGuardsUntraced.check, site dc55d30c (length=5)
 spite.fallback	36762b5a	tests/library_guards_untraced/library_guards_untraced.spite:18	LibraryGuardsUntraced	announce	returned=nothing
 spite.frame	tests/library_guards_untraced/library_guards_untraced.spite:23	LibraryGuardsUntraced	check
 spite.frame	tests/library_guards_untraced/library_guards_untraced.spite:13	LibraryGuardsUntraced	LibraryGuardsUntraced

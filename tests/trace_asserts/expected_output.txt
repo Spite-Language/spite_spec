@@ -1,5 +1,5 @@
 hello ada
-spite.fallback	f969dad0	tests/trace_asserts/trace_asserts.spite:14	TraceAsserts	greet	returned=nothing
+spite.fallback	6de57e7d	tests/trace_asserts/trace_asserts.spite:14	TraceAsserts	greet	returned=nothing
 hello bo
-spite.fallback	f969dad0	tests/trace_asserts/trace_asserts.spite:14	TraceAsserts	greet	returned=nothing
+spite.fallback	2b377c3f	tests/trace_asserts/trace_asserts.spite:14	TraceAsserts	greet	returned=nothing
 done

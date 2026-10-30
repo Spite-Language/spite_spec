@@ -1,4 +1,4 @@
-spite: the program stopped at tests/assert_ring_earlier/assert_ring_earlier.spite:9 in AssertRingEarlier.AssertRingEarlier (index=20)
+spite: the program stopped at tests/assert_ring_earlier/assert_ring_earlier.spite:9 in AssertRingEarlier.AssertRingEarlier, site 817efd21 (index=20)
 spite.fallback	earlier=8
 spite.fallback	...	tests/assert_ring_earlier/assert_ring_earlier.spite:13	AssertRingEarlier	first_check	returned=nothing
 spite.fallback	...	tests/assert_ring_earlier/assert_ring_earlier.spite:17	AssertRingEarlier	second_check	returned=nothing

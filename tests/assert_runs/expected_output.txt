@@ -1,4 +1,4 @@
-spite: the program stopped at tests/assert_runs/assert_runs.spite:14 in AssertRuns.AssertRuns (title is null)
+spite: the program stopped at tests/assert_runs/assert_runs.spite:14 in AssertRuns.AssertRuns, site 55d1f1ab (title is null)
 spite.fallback	8f2c4b4d	tests/assert_runs/assert_runs.spite:18	AssertRuns	name_at	returned=null	repeated=1000
 spite.fallback	36590a54	tests/assert_runs/assert_runs.spite:23	AssertRuns	title_of	returned=null
 spite.frame	tests/assert_runs/assert_runs.spite:14	AssertRuns	AssertRuns

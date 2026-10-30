@@ -1,4 +1,4 @@
 width 0
-spite: the program stopped at tests/crash_missing_value/crash_missing_value.spite:11 in CrashMissingValue.show (width is null)
+spite: the program stopped at tests/crash_missing_value/crash_missing_value.spite:11 in CrashMissingValue.show, site 92afd713 (width is null)
 spite.frame	tests/crash_missing_value/crash_missing_value.spite:11	CrashMissingValue	show
 spite.frame	tests/crash_missing_value/crash_missing_value.spite:7	CrashMissingValue	CrashMissingValue

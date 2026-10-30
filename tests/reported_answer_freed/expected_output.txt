@@ -1,0 +1,3 @@
+dropped 3
+after the check
+checked

@@ -3,5 +3,5 @@
 #0000ff
 #3380e6 rgb(51, 128, 230)
 true
-spite: the program stopped at tests/color_from_text/color_from_text.spite:23 in ColorFromText.ColorFromText (wrong is null)
+spite: the program stopped at tests/color_from_text/color_from_text.spite:23 in ColorFromText.ColorFromText, site 1aaf19ba (wrong is null)
 spite.frame	tests/color_from_text/color_from_text.spite:23	ColorFromText	ColorFromText

@@ -614,8 +614,8 @@ so when the walked member answers a value the program's call is the error "'spee
 A crash flushes the program's output, writes its report to the error stream and exits with status 1. The report is
 the crash line, the fallbacks taken that came before it, and the call chain.
 
-**The crash line** is `spite: the program stopped at <path>:<line> in <Class>.<function> (name=value, ...)`, one field
-for each value, in this order:
+**The crash line** is `spite: the program stopped at <path>:<line> in <Class>.<function>, site <id> (name=value, ...)`,
+where `<id>` is the site's id in the `.crashes` map, one field for each value, in this order:
 
 1. every part of the condition, left to right and each once by its text: bare names, paths, `[ ]` reads whose index has
    no call, the answer of each call, and inside a call its receiver and its arguments;
@@ -630,7 +630,7 @@ are shown, and an object only as a part of the condition, through a `to_string()
 compiler's internal classes only the condition's parts are shown.
 
 ```
-spite: the program stopped at crash_report/crash_report.spite:17 in CrashReport.check (value=-9, limit=0, scale=2)
+spite: the program stopped at crash_report/crash_report.spite:17 in CrashReport.check, site 8f08ef15 (value=-9, limit=0, scale=2)
 spite.fallback	6d183761	crash_report/crash_report.spite:11	CrashReport	announce	returned=nothing
 spite.frame	crash_report/crash_report.spite:17	CrashReport	check
 spite.frame	crash_report/crash_report.spite:7	CrashReport	CrashReport
@@ -673,7 +673,8 @@ a total count, so it never allocates and cannot grow without bound. Each fallbac
 `spite.fallback<TAB>id<TAB>path:line<TAB>Class<TAB>function<TAB>returned=...`: `returned=nothing` for a function that
 returns nothing, `null` for a `T?`, `empty` for a function answering a list or a dictionary, and
 `repeated=<count>` when the same site failed several times in a row, which takes one line in the ring. The ring holds 32
-lines; a `spite.fallback<TAB>earlier=<count>` line says how many were lost before them. A fallback keeps no values: its place,
+lines, and room for all 32 is made once, when the first `fallback` is taken, so a program that never takes one makes
+none and a taken one never grows it; a `spite.fallback<TAB>earlier=<count>` line says how many were lost before them. A fallback keeps no values: its place,
 the `.crashes` map and its condition are what it says.
 
 **A `fallback` taken is not printed when it is taken; `--trace-fallbacks` streams them.** A `fallback` taken writes nothing
@@ -708,9 +709,11 @@ The map is a greppable tab-separated table named after the program, `<program>.c
 by every build that writes one: one line per `crash` site of every function compiled and per `fallback` site outside
 `library/`, sorted by id so archived maps diff cleanly: id, file, line, column (of the `fallback` or `crash` keyword,
 counting from 1), class, function, kind (`crash`, `fallback-predicate`, `fallback-narrowing`), the condition source, and
-every part of the condition with its type, in the order the report shows them, receivers whose value the report leaves
-out included (`record:String? cooked.count():Integer cooked:List<String> never_cooked_id:String name:String`); for a
-narrowing, each link of the path. It opens with a `#` comment line carrying the format version and the build hash
+every part of the condition with its type and the line and column it is read at, in the order the report shows them,
+receivers whose value the report leaves out included (`record:String?@12:11 cooked.count():Integer@12:24
+cooked:List<String>@12:24 never_cooked_id:String@12:43`); for a narrowing, each link of the path. A `fallback` whose
+condition is an `and` of several parts is one site per part, each with its own id, column and kind, and the part that
+failed is the one its trace line names. It opens with a `#` comment line carrying the format version and the build hash
 (`# spite crashes 1 2660c8aa`). The crash line is written by the program's own writer to the error stream, so a program
 that never crashes makes no `Console` for it.
 

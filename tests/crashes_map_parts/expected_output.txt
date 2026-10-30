@@ -1,0 +1,3 @@
+bo
+tests/crashes_map_parts/crashes_map_parts.spite	25	29	CrashesMapParts	name_at	fallback-narrowing	index < names.count()	index:Integer@25:29
+tests/crashes_map_parts/crashes_map_parts.spite	25	14	CrashesMapParts	name_at	fallback-predicate	index >= 0	index:Integer@25:14

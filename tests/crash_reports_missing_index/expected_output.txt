@@ -1,4 +1,4 @@
 key 0
-spite: the program stopped at tests/crash_reports_missing_index/crash_reports_missing_index.spite:13 in CrashReportsMissingIndex.read (clip.keys[start + 1] is missing: index 3, count 2)
+spite: the program stopped at tests/crash_reports_missing_index/crash_reports_missing_index.spite:13 in CrashReportsMissingIndex.read, site 9d745464 (clip.keys[start + 1] is missing: index 3, count 2)
 spite.frame	tests/crash_reports_missing_index/crash_reports_missing_index.spite:13	CrashReportsMissingIndex	read
 spite.frame	tests/crash_reports_missing_index/crash_reports_missing_index.spite:9	CrashReportsMissingIndex	CrashReportsMissingIndex

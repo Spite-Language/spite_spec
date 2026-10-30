@@ -1,0 +1,16 @@
+var console = Console()
+
+func ReportedAnswerFreed() {
+    load "../../../spite_standard_library/windows"
+    check(3)
+    console.print("checked")
+}
+
+func probe(seed: Integer): Probe {
+    return Probe(seed)
+}
+
+func check(seed: Integer) {
+    crash probe(seed).value > 0
+    console.print("after the check")
+}
