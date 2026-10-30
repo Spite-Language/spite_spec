@@ -20,13 +20,10 @@ command line beside the compiler's flags), what its build decided through Build(
 
 ```gdscript kal.spite
 var console = Console()
-var program = Program()
+var environment = Environment()
 
 func Kal() {
-    var some_key = program.argument_named("some-key")
-    if some_key {
-        console.print(some_key)
-    }
+    console.print(environment.some_key)
 }
 ```
 
@@ -36,14 +33,8 @@ after the folder that is not a flag), in order and verbatim, the executable's ow
 (`tests/program_arguments`, `tests/launcher_arguments`). Two reads tell a setting from a flag, and neither stands
 in for the other (`tests/program_flags_and_settings`):
 
-- `argument_named(name): String?` answers the value of `--name=...`, `null` when no such argument was given; the
-  name is written as on the command line, `program.argument_named("player-name")`. A bare `--name` has no value,
-  so it answers `null` here, never made-up text such as `"true"`.
-- `has_flag(name): Boolean` answers whether a bare `--name` was given; a `--name=...` is a setting, and answers
-  `false` here.
-
-The command line is what the person starting the program typed, so neither read halts on it (D1721): a program
-that takes either form asks both and decides.
+- A named value (`--name=value`, a bare `--name`) is never read by its text: it reaches the program only as the
+  `Environment` or `Build` attribute it sets (D1760), `program.argument_named` and `program.has_flag` having gone.
 
 A bare `--` is an ordinary argument to it (`tests/programs_bare_double_dash`). There is no `Arguments` class:
 `Program` is the one class for what the program was started with, and `Environment` reads its settings from

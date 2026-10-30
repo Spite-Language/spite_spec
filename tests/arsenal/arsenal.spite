@@ -12,9 +12,8 @@ func Arsenal() {
     } else {
         console.print("environment is not server")
     }
-    var player = program.argument_named("player")
-    if player {
-        console.print("player", player)
+    if not environment.player.is_empty() {
+        console.print("player", environment.player)
     }
     var arguments_count = arguments.count()
     console.print("argument count", arguments_count)

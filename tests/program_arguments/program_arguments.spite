@@ -1,5 +1,6 @@
 var console = Console()
 var program = Program()
+var environment = Environment()
 
 func ProgramArguments() {
     load "../../../spite_standard_library/windows"
@@ -12,7 +13,6 @@ func greet(arguments: List<String>) {
     var argument = arguments[0]
     crash argument
     console.print(arguments_count, argument)
-    var player = program.argument_named("player")
-    fallback player
-    console.print("player", player)
+    fallback not environment.player.is_empty()
+    console.print("player", environment.player)
 }

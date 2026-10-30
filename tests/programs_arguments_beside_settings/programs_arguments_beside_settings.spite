@@ -7,9 +7,8 @@ func ProgramsArgumentsBesideSettings() {
     var arguments = program.arguments()
     var given = arguments.count()
     console.print(environment.workers, given)
-    var player_name = program.argument_named("player-name")
-    if player_name {
-        console.print("given", player_name)
+    if not environment.player_name.is_empty() {
+        console.print("given", environment.player_name)
     } else {
         console.print("not given")
     }

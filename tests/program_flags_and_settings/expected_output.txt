@@ -1,4 +1,4 @@
 given 3
-verbose flag true no value
-port flag false value 4000
-quiet flag false no value
+verbose true
+port 4000
+quiet false

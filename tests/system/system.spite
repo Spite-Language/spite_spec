@@ -7,12 +7,6 @@ func System() {
     var arguments = program.arguments()
     var arguments_count = arguments.count()
     console.print(arguments_count, "|")
-    var nothing_here = program.argument_named("nothing-here")
-    if nothing_here {
-        console.print("unexpected", nothing_here)
-    } else {
-        console.print("no such argument")
-    }
     var folder = Directory(".spite/conformance_system")
     var create = folder.create()
     var exists = folder.exists()
