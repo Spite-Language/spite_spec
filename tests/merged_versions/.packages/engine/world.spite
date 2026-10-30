@@ -5,7 +5,7 @@ func add_body() {
 }
 
 func describe(): String {
-    return "a world of {bodies} bodies"
+    return "{bodies} bodies in the world"
 }
 
 func gravity(): String {

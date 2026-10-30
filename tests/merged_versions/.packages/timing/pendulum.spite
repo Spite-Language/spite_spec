@@ -1,5 +1,5 @@
-var swings = 0
+var swings = 0.0
 
 func swing() {
-    swings = swings + 1
+    swings = swings + 1.0
 }
