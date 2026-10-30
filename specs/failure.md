@@ -603,6 +603,12 @@ an answer must be used, so keep it in a variable that is read, pass it, return i
 `DynamicLibrary` function declares no answer, so the compiler cannot tell one that answers from one that does not. `conformance/dropped_boolean_answer`,
 `dropped_nullable_answer`, `dropped_number_answer`, `dropped_function_value_answer`.
 
+A walk drops each answer the same way: `speeds.each_described()` runs `described` on every item and keeps nothing,
+so when the walked member answers a value the program's call is the error "'speeds.each_described()' runs
+'described', which answers a 'String', and drops each answer: an answer must be used, so keep the answers with a
+'map_' over 'described', or walk a member that answers nothing", at the program's line (spite_compiler#235,
+`conformance/dropped_walk_answer`).
+
 ### What a crash reports
 
 A crash flushes the program's output, writes its report to the error stream and exits with status 1. The report is

@@ -1,0 +1,9 @@
+recruiting for red
+recruiting for green
+chained: 7
+recruiting for red
+recruiting for green
+recruiting for late red
+recruiting for late green
+step by step: 9
+teams: 9

@@ -1,0 +1,10 @@
+var console = Console()
+
+func DroppedWalkAnswer() {
+    load "../../../spite_standard_library/windows"
+    var speeds = List<Speed>()
+    var first = Speed(3)
+    speeds.append(first)
+    speeds.each_described()
+    console.print("walked")
+}

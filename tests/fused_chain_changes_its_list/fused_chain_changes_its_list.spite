@@ -1,0 +1,19 @@
+var console = Console()
+var roster = Roster()
+
+func FusedChainChangesItsList() {
+    load "../../../spite_standard_library/windows"
+    var red = Team("red", true, 3)
+    roster.teams.append(red)
+    var blue = Team("blue", false, 5)
+    roster.teams.append(blue)
+    var green = Team("green", true, 4)
+    roster.teams.append(green)
+    var chained = roster.teams.filter_is_active().sum_recruited_size()
+    console.print("chained:", chained)
+    var active = roster.teams.filter_is_active()
+    var stepwise = active.sum_recruited_size()
+    console.print("step by step:", stepwise)
+    var teams = roster.teams.count()
+    console.print("teams:", teams)
+}

@@ -17,3 +17,4 @@ visitor with 0 tags 3
 ## Overflow checks kept
 - [tests/optimization_report/optimization_report.spite:58](../../tests/optimization_report/optimization_report.spite#L58): `product * 3` keeps its overflow check: 'product' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
 ## Waits that hold the frame
+## Chains run step by step

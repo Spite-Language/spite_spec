@@ -1,0 +1,9 @@
+var value = 0
+
+func Speed(new_value: Integer) {
+    value = new_value
+}
+
+func described(): String {
+    return "speed {value}"
+}

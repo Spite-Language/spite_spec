@@ -1,0 +1,22 @@
+var console = Console()
+var roster = Roster()
+var name = ""
+var active = false
+var size = 0
+
+func Team(new_name: String, new_active: Boolean, new_size: Integer) {
+    name = new_name
+    active = new_active
+    size = new_size
+}
+
+func is_active(): Boolean {
+    return active
+}
+
+func recruited_size(): Integer {
+    console.print("recruiting for", name)
+    var late = Team("late {name}", true, 1)
+    roster.teams.append(late)
+    return size
+}

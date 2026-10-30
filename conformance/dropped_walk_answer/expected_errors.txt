@@ -1,0 +1,1 @@
+conformance/dropped_walk_answer/dropped_walk_answer.spite:8: error: 'speeds.each_described()' runs 'described', which answers a 'String', and drops each answer: an answer must be used, so keep the answers with a 'map_' over 'described', or walk a member that answers nothing (in DroppedWalkAnswer.DroppedWalkAnswer)
