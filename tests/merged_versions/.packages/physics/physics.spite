@@ -1,0 +1,9 @@
+func Physics() {
+    load "../../../..@23ba1a8/tests/merged_versions/.packages/engine"
+}
+
+func made(): World {
+    var world = World()
+    world.add_body()
+    return world
+}
