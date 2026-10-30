@@ -1,0 +1,26 @@
+var console = Console()
+
+func Paths() {
+    load "../../../spite_standard_library/windows"
+    var tidy: Path = "./a/b/../c/./d.txt"
+    var name = tidy.name
+    var extension = tidy.extension
+    var parent = tidy.parent
+    console.print(tidy, name, extension, parent)
+    var up: Path = "../x/y/"
+    console.print(up)
+    var root: Path = "/a/../../b"
+    var is_rooted = root.is_rooted
+    console.print(root, is_rooted)
+    var base: Path = "folder"
+    var leaf: Path = "file.json"
+    var whole = base.joined(leaf)
+    console.print(whole)
+    var same: Path = "folder/./file.json"
+    var is_same = whole == same
+    console.print("same", is_same)
+    console.print(tidy.written)
+    var file = File("./tests/paths/../paths/paths.spite")
+    var exists = file.exists()
+    console.print(file.path, exists)
+}

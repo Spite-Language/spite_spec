@@ -1,0 +1,7 @@
+a/c/d.txt d.txt txt a/c
+../x/y
+/b true
+folder/file.json
+same true
+./a/b/../c/./d.txt
+./tests/paths/../paths/paths.spite true
