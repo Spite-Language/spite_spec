@@ -1,0 +1,19 @@
+var console = Console()
+
+func DictionaryKeysCastAsArguments() {
+    load "../../../spite_standard_library/windows"
+    var scores = Dictionary<String, Integer>()
+    scores[7] = 3
+    var by_text = scores["7"]
+    crash by_text
+    var by_number = scores[7]
+    crash by_number
+    var known = scores.contains(7)
+    console.print(by_text, by_number, known)
+    var names = Dictionary<Long, String>()
+    var small = 4
+    names[small] = "four"
+    var four = names[small]
+    crash four
+    console.print(four)
+}

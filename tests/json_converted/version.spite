@@ -1,0 +1,18 @@
+var major = 0
+var minor = 0
+
+func Version(starting_major: Integer, starting_minor: Integer) {
+    major = starting_major
+    minor = starting_minor
+}
+
+func Version(from: String): Version? {
+    var parts = from.split(".")
+    fallback parts.count() == 2
+    var major_text = parts[0]
+    var minor_text = parts[1]
+    var read_major: Integer? = major_text
+    var read_minor: Integer? = minor_text
+    fallback read_major and read_minor
+    return Version(read_major, read_minor)
+}

@@ -7,7 +7,9 @@ func JsonBasics() {
     order.customer = "Ada \"the\" first"
     order.total = 12.5
     order.status = 'shipped'
-    var tea = Item("tea", 2)
+    var tea = Item()
+    tea.name = "tea"
+    tea.count = 2
     order.items.append(tea)
     var writer = JsonWriter<Order>()
     var text = writer.write(order)

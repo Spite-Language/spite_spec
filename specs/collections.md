@@ -202,7 +202,10 @@ written type and in `Dictionary<Key, Value>()` alike. Any other count is `a Dict
 and then its values', as in 'Dictionary<String, Integer>', and this one names 1`
 (`diagnostics/dictionary_type_arguments`). Nothing about the key is inferred from how the dictionary is used: a
 key given to `[]`, `[] =`, `get_at`, `set_at`, `has` or `remove` is an argument of type `Key`, cast to it as any
-argument is ([casting](values_and_types.md#casting)), and a key that does not fit is the ordinary mismatch error.
+argument is ([casting](values_and_types.md#casting)), and a key that does not fit is the ordinary mismatch error:
+`dictionary[key]` is the call `get_at(key)` and `dictionary[key] = value` the call `set_at(key, value)`, so a number
+key meets a `String` key type through the number's `to_string()` as any argument does, with no rule for keys alone
+(`tests/dictionary_keys_cast_as_arguments`, D1784).
 Two dictionary types are the same type when both their key types and their value types are.
 
 **What can be a key**, and how it is found (one key per value the type tells apart):

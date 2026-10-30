@@ -1,0 +1,2 @@
+var name = ""
+var version = Version(0, 1)

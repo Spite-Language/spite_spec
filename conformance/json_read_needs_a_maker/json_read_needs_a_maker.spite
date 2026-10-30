@@ -1,0 +1,10 @@
+var console = Console()
+
+func JsonReadNeedsAMaker() {
+    load "../../../spite_standard_library/windows"
+    var reader = JsonReader<Order>()
+    var order = reader.read("\{\"items\": []}")
+    crash order
+    var count = order.items.count()
+    console.print(count)
+}

@@ -1,0 +1,13 @@
+var console = Console()
+
+func BinaryReadNeedsAMaker() {
+    load "../../../spite_standard_library/windows"
+    var order = Order()
+    var writer = BinaryWriter<Order>()
+    var bytes = writer.write(order)
+    var reader = BinaryReader<Order>()
+    var read = reader.read(bytes)
+    crash read
+    var count = read.items.count()
+    console.print(count)
+}

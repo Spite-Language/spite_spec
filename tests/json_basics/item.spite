@@ -1,7 +1,2 @@
 var name = ""
 var count = 1
-
-func Item(starting_name: String, starting_count: Integer) {
-    name = starting_name
-    count = starting_count
-}

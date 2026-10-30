@@ -3,7 +3,11 @@ var console = Console()
 func JsonNumberIntoInteger() {
     load "../../../spite_standard_library/windows"
     var reader = JsonReader<Order>()
-    var order = reader.read("\{\"count\": 3.7}")
-    crash order
-    console.print(order.count)
+    var whole = reader.read("\{\"count\": 3}")
+    crash whole
+    console.print(whole.count)
+    var fraction = reader.read("\{\"count\": 3.7}")
+    if not fraction {
+        console.print("3.7 is not an Integer")
+    }
 }

@@ -118,8 +118,7 @@ The details:
   ([Reading input you did not write](https://github.com/Spite-Language/spite_documentation/blob/master/json.md#reading-input-you-did-not-write), and
   [Failure](failure.md#failure-three-outcomes-and-no-others)'s three outcomes). An unknown key is skipped,
   whatever it holds, because foreign systems send more than a program asks for; a missing attribute keeps the
-  default its class declares (the reader makes the object from its attribute defaults and does not run its
-  constructor, so a class whose constructor takes arguments reads too, `tests/json_basics`), the value [Variables and values](values_and_types.md#variables-and-values)
+  default its class declares (`tests/json_basics`), the value [Variables and values](values_and_types.md#variables-and-values)
   gives anything never set. Besides a value of the wrong kind, a missing brace and anything after the value
   (`{} x`) make `read` answer `null`: the object would be wrong, and a wrong object that looks right is a
   surprise.
@@ -168,8 +167,20 @@ The details:
   would name the JSON key of 'minimum_level_of_detail', and JsonReader and JsonWriter do not read a function for
   it: a key that is not an attribute's name is given to the serializer in a map keyed by the attribute,
   '{MeshRecord.attributes['minimum_level_of_detail']: "..."}'" (`diagnostics/json_key`).
-- **A number reads into whatever number type the attribute has** through the ordinary text-to-number cast, so
-  `3.7` read into an `Integer` is `3`; JSON has one number type and the class already says which one it wants.
+- **What a reader makes** (D1784). A class made without arguments (no constructor, or one without parameters) is
+  made so and its attributes are filled. A class whose constructor takes arguments is read through its first
+  conversion, `func Version(from: String): Version?` (D1776): `JsonReader` reads the value the conversion takes, any
+  type it reads itself, and converts it, and a conversion that answers `null` makes the read `null`
+  (`tests/json_converted`). A class with neither is refused at the line that makes the reader: "JsonReader cannot
+  read 'Order': 'Order.items' is Item, whose constructor takes arguments, so the reader cannot make one to fill, and
+  Item has no conversion from what JSON holds: give Item a constructor without parameters, or a conversion like
+  'func Item(from: String): Item?'. ..." (`conformance/json_read_needs_a_maker`). `BinaryReader` makes a class only
+  the first way, since its bytes hold the attributes and never what a conversion takes: "... so the reader cannot
+  make one to fill: give Item a constructor without parameters" (`conformance/binary_read_needs_a_maker`).
+- **A number reads into whatever number type the attribute has** through that class's conversion from text, with
+  no rule of the reader's own, so `3.7` read into an `Integer` makes the read `null`, since `Integer(from: String)`
+  answers `null` for it (`tests/json_number_into_integer`, D1784); JSON has one number type and the class already
+  says which one it wants.
 - **Infinity and not-a-number crash `JsonWriter`**: JSON
   (RFC 8259) holds neither, and a float became one through a division by zero or an overflow the program did not
   guard, which is the moron's mistake ([failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md)); floats themselves keep them,
