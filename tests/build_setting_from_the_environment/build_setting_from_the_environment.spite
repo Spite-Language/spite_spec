@@ -12,8 +12,8 @@ func BuildSettingFromTheEnvironment() {
     var settings = File("{folder}/.env")
     crash settings.write_string("# the program's own Build field\nVOLUME = 9\n")
     console.print("from .env")
-    var none = Dictionary<String, String>()
-    compile_and_run(none)
+    var no_variables = Dictionary<String, String>()
+    compile_and_run(no_variables)
     console.print("the environment over .env")
     compile_and_run(variables)
 }
