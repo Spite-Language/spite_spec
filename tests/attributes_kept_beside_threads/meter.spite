@@ -1,0 +1,14 @@
+var total = 0
+var step_size = 1
+var marks = List<Integer>()
+
+func run(limit: Integer) {
+    var step = 0
+    while step < limit {
+        total = total + step_size
+        if total % 97 == 0 {
+            marks.append(total)
+        }
+        step = step + 1
+    }
+}

@@ -1,0 +1,75 @@
+var console = Console()
+var program = Program()
+
+func AttributesKeptBesideThreads() {
+    load "../../../spite_standard_library/windows"
+    var left = blend(3)
+    var right = blend(5)
+    var whole: Long = left + right
+    console.print(whole)
+    var meter = Meter()
+    meter.step_size = 3
+    meter.run(1000)
+    var mark_count = meter.marks.count()
+    console.print(meter.total, mark_count)
+    var meter_away = accesses_away_from_calls("function Meter.run:", "in Meter.total")
+    console.print("accesses in the loop away from its calls:", meter_away)
+}
+
+func blend(seed: Integer): Double {
+    var total: Double = 0.0
+    var step: Double = seed
+    var index = 0
+    while index < 1_000_000 {
+        total = total * 0.999999 + step
+        index = index + 1
+    }
+    return total
+}
+
+func accesses_away_from_calls(heading: String, marker: String): Integer {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var written = File(low_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var in_the_function = false
+    var block_accesses = 0
+    var block_calls = false
+    var block_ends = false
+    var block_first = false
+    var away = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var starts_a_block = line.starts_with("  block ")
+        if line.starts_with("function ") or starts_a_block {
+            if in_the_function and not block_calls and not block_ends and not block_first {
+                away = away + block_accesses
+            }
+            block_accesses = 0
+            block_calls = false
+            block_ends = false
+            block_first = line == "  block 0"
+        }
+        if line.starts_with("function ") {
+            in_the_function = line.starts_with(heading)
+        } else if in_the_function {
+            if line.contains(marker) {
+                block_accesses = block_accesses + 1
+            }
+            if line.contains("(") {
+                block_calls = true
+            }
+            if line.contains("return") {
+                block_ends = true
+            }
+        }
+        index = index + 1
+    }
+    if in_the_function and not block_calls and not block_ends and not block_first {
+        away = away + block_accesses
+    }
+    return away
+}

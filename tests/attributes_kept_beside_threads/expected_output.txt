@@ -1,0 +1,3 @@
+5056965
+3000 10
+accesses in the loop away from its calls: 0
