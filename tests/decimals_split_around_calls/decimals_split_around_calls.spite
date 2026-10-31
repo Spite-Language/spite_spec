@@ -1,0 +1,49 @@
+var console = Console()
+var _steps = 1000
+var _rare = 97
+
+func DecimalsSplitAroundCalls() {
+    load "../../../spite_standard_library/windows"
+    var first = 1.5
+    var second = 2.25
+    var third = 3.125
+    var fourth = 0.5
+    var fifth = 0.25
+    var sixth = 0.75
+    var seventh = 1.25
+    var eighth = 1.75
+    var ninth = 2.5
+    var tenth = 2.75
+    var eleventh = 3.5
+    var twelfth = 3.75
+    var thirteenth = 4.5
+    var fourteenth = 4.75
+    var calls = List<Integer>()
+    var step = 0
+    while step < _steps {
+        first = first * 0.5 + second * 0.5
+        second = second * 0.5 + third * 0.5
+        third = third * 0.5 + fourth * 0.5
+        fourth = fourth * 0.5 + fifth * 0.5
+        fifth = fifth * 0.5 + sixth * 0.5
+        sixth = sixth * 0.5 + seventh * 0.5
+        seventh = seventh * 0.5 + eighth * 0.5
+        eighth = eighth * 0.5 + ninth * 0.5
+        ninth = ninth * 0.5 + tenth * 0.5
+        tenth = tenth * 0.5 + eleventh * 0.5
+        eleventh = eleventh * 0.5 + twelfth * 0.5
+        twelfth = twelfth * 0.5 + thirteenth * 0.5
+        thirteenth = thirteenth * 0.5 + fourteenth * 0.5
+        fourteenth = fourteenth * 0.5 + 8.0
+        if step % _rare == 0 {
+            calls.append(step)
+        }
+        step = step + 1
+    }
+    var early = first + second + third + fourth + fifth + sixth + seventh
+    var late = eighth + ninth + tenth + eleventh + twelfth + thirteenth + fourteenth
+    var sum = early + late
+    var whole: Long = sum * 100.0
+    var call_count = calls.count()
+    console.print(whole, call_count)
+}
