@@ -390,8 +390,8 @@ nothing that carries bytes forces them through a `String`.
   (`diagnostics/list_of_bytes`).
 - **The class.** `Buffer(size)` is an empty buffer with room for `size` bytes. The size is always written: `Buffer(0)` when nothing about it is known. A `Buffer` keeps its bytes in one block it owns, at the
   library's memory floor as `String` and `List` do: the buffer is one object, a read is one load from its block, and
-  there is no `List` inside it. A full block is resized to twice its size. How much room it keeps is the library's
-  and the compiler's (its capacity and its `_reserve` are private), with one exception: the room a foreign function
+  there is no `List` inside it. A full block is resized to twice its size. How much room it keeps, and when it grows,
+  is the compiler's alone (D1735), with one exception: the room a foreign function
   writes into. A program passes `Buffer(4096)` to the function, then `take_written(count)` says how many bytes it
   wrote, halting when `count` is negative or past the room (decided by Mortaro on issue 23).
 - **The size is a suggestion to the compiler, never a limit.** Appending past it grows the buffer as always. The

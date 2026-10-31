@@ -163,7 +163,7 @@ a shortcut for `get_at`, [functions_and_operators.md](functions_and_operators.md
 range read answers `null` and never a default that would read as a real element); `first`, `last`, `remove_first`
 and `remove_last` answer `null` on an empty
 list (like `[]`), `insert` clamps to the nearest end, and `set_at`, `remove_at` and `remove_swapping` halt,
-naming the line. How much room a list keeps is the library's and the compiler's (its `_reserve` is private). A `List` of numbers,
+naming the line. How much room a list keeps, and when it grows, is the compiler's alone: neither the library nor a program names it ([memory.md](memory.md#placement-the-compiler-decides-where-memory-lives)). A `List` of numbers,
 `Boolean`, enums or `Memory.Address` holds the values themselves in its buffer. There is
 no `for`: a list is walked with a template, a passed function ([above](#standard-library-metaprogramming)),
 or a `while` that does more than they do.

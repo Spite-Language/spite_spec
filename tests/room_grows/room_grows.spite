@@ -1,0 +1,43 @@
+var console = Console()
+
+func RoomGrows() {
+    load "../../../spite_standard_library/windows"
+    var bytes = Buffer(0)
+    var index = 0
+    while index < 1000 {
+        var byte: Byte = index % 256
+        bytes.append(byte)
+        index = index + 1
+    }
+    bytes.append_integer_little_endian(77)
+    bytes.append_buffer(bytes, 0, 100)
+    var first = bytes.read_integer_little_endian_at(1000)
+    crash first
+    var byte_count = bytes.count()
+    var copied = bytes[byte_count - 1]
+    crash copied
+    console.print("bytes", byte_count, first, copied)
+    var numbers = List<Integer>()
+    index = 0
+    while index < 128 {
+        numbers.insert(0, index)
+        numbers.append(index)
+        index = index + 1
+    }
+    var number_count = numbers.count()
+    var front = numbers[0]
+    var back = numbers[number_count - 1]
+    crash front
+    crash back
+    console.print("numbers", number_count, front, back)
+    var text = "ab"
+    index = 0
+    while index < 8 {
+        text = text + text
+        index = index + 1
+    }
+    var piece = text.slice(64, 68)
+    crash piece
+    var text_length = text.length()
+    console.print("text", text_length, piece)
+}

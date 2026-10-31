@@ -181,6 +181,12 @@ or for a place, and none to observe the choice ([Memory is not observable](#memo
   ([optimizations.md](https://github.com/Spite-Language/spite_compiler/blob/master/OPTIMIZATIONS.md#a-buffer-starts-with-the-room-it-is-proven-to-use),
   `tests/trimmed_buffer`). Room handed to a foreign call is the exception: there the size is the least the compiler
   gives (until spite_compiler#226 sizes that room itself, D1766).
+- **How room grows is the compiler's** (D1735): the library's `Buffer`, `List` and `String` say only what they hold
+  (a count raised, an item written at the end) and name no function that makes room; the compiler makes it, and
+  grows it to at least twice what it held, so a run of appends copies each byte a constant number of times; the library copies bytes with a plain loop, which
+  the compiler makes one block copy
+  ([optimizations.md](https://github.com/Spite-Language/spite_compiler/blob/master/OPTIMIZATIONS.md#a-buffer-grows-where-its-count-does),
+  `tests/room_grows`).
 - **In the value:** text of up to 15 bytes is kept in the sixteen bytes of the `String` itself
   ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#short-text-lives-inside-the-string)).
 - **Constant:** a `String` literal's characters are part of the program.

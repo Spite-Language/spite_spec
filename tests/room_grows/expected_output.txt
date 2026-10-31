@@ -1,0 +1,3 @@
+bytes 1104 77 99
+numbers 256 127 127
+text 512 abab

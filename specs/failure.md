@@ -451,8 +451,8 @@ only when `equals` takes that class.
 
 The compiler knows some of the standard library's functions and attributes by name: the calls that wait (a socket
 accepting, connecting or receiving, a UDP receive, a console read, a file read, write or lock, `Program.sleep`),
-the attributes it lays out itself (`String._buffer`, `List._length`, `Buffer.item_count`) and the functions it
-emits calls to (`List._make_room`, `Buffer._reserve`). Every one is listed once, in the compiler's
+the attributes it lays out itself (`String._buffer`, `List._length`, `Buffer.item_count`) and the ones the room
+functions it writes read (`Buffer._capacity`, `List._capacity`). Every one is listed once, in the compiler's
 `symbols/library_names.spite`, and checked when the program's classes are read: a library class the program reaches
 that no longer declares one, or a class of the list the library no longer has, is a compile error naming the
 compiler file that relies on it, so a rename in the library never silently changes what the compiler does:
