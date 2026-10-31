@@ -1,0 +1,27 @@
+var name = ""
+var team: Team? = null
+var console = Console()
+
+func Player(new_name: String) {
+    name = new_name
+}
+
+func play_for(new_team: Team) {
+    sign_on(new_team)
+}
+
+func sign_on(new_team: Team) {
+    settle_in(new_team)
+}
+
+func settle_in(new_team: Team) {
+    take_the_shirt(new_team)
+}
+
+func take_the_shirt(new_team: Team) {
+    team = new_team
+}
+
+func drop() {
+    console.print(name, "is freed")
+}
