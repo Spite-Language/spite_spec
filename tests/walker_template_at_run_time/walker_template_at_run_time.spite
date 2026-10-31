@@ -1,0 +1,37 @@
+var console = Console()
+
+func WalkerTemplateAtRunTime() {
+    load "../../../spite_standard_library/windows"
+    var functions = List<Spite.FunctionDeclaration>()
+    var roar = Monster.functions["roar"]
+    if roar {
+        functions.append(roar)
+    }
+    var rest = Monster.functions["rest"]
+    if rest {
+        functions.append(rest)
+    }
+    functions.each(count_function)
+    show_all(functions)
+    var described = Spite.Class.instances["Monster"]
+    crash described
+    described.functions.each(show_function)
+}
+
+func show_all(functions: List<Spite.FunctionDeclaration>) {
+    functions.each(show_function)
+}
+
+func count_function(function: Spite.FunctionDeclaration) {
+    var count = function.arguments.count()
+    console.print(function.name, "takes", count)
+    function.arguments.each(show_argument)
+}
+
+func show_function(function: Spite.FunctionDeclaration) {
+    console.print("function", function.name)
+}
+
+func show_argument(argument: Spite.Argument) {
+    console.print("  argument", argument.name, argument.class.name)
+}

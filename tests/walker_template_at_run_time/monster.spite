@@ -1,0 +1,9 @@
+var health = 3
+
+func roar(volume: Integer): String {
+    return "roar {volume}"
+}
+
+func rest() {
+    health = health + 1
+}

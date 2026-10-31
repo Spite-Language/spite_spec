@@ -142,7 +142,9 @@ function's result is typed `argument.class`. Inside an instance, `argument.name`
 - **A template handed to `each`.** A template whose only parameter is its word's, `show_function(function:
   Spite.FunctionDeclaration)` or `show_argument(argument: Spite.Argument)`, given by name to `each` over a class's
   `.functions` or a function's `.arguments` known while compiling, is that walk's walker: one copy for each item, as a
-  plain walker that walks `.arguments` gets (`tests/walker_named_for_its_parameter`). A plain walker
+  plain walker that walks `.arguments` gets (`tests/walker_named_for_its_parameter`). Handed to `each` over a list known
+  only at run time (a `List<Spite.FunctionDeclaration>` parameter, a run-time class's `.functions`), it is called as a
+  plain function taking the item (`tests/walker_template_at_run_time`). A plain walker
   (`function.arguments.each(describe_taken)`) may leave the word out of its name.
 - **The enum spelling is gone.** `argument: Symbol<$system_type.update_each>` is "... write 'argument:
   Spite.Argument' and spread its plural into the call, as in 'value.update_each(made_arguments())'"
