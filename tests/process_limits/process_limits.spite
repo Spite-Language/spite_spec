@@ -1,0 +1,44 @@
+var console = Console()
+var _short_limit_milliseconds = 500
+var _long_limit_seconds = 30
+
+func ProcessLimits() {
+    load "../../../spite_standard_library/windows"
+    var folder = Directory(".spite/process_limits")
+    crash folder.create()
+    var script = File(".spite/process_limits/answers_on_both.cmd")
+    crash script.write_string("@echo answer\r\n@echo microseconds 12 1>&2\r\n@exit /b 3\r\n")
+    var both = Process("cmd", ["/c", ".spite\\process_limits\\answers_on_both.cmd"])
+    both.keeps_errors_apart = true
+    var both_code = both.run()
+    crash both_code
+    var answer = both.read_output_as_string()
+    var reported = both.read_errors_as_string()
+    crash answer and reported
+    var trimmed_answer = answer.trim()
+    var trimmed_report = reported.trim()
+    console.print("exit code", both_code, "output", trimmed_answer, "errors", trimmed_report)
+    var merged = Process("cmd", ["/c", ".spite\\process_limits\\answers_on_both.cmd"])
+    merged.with_errors = true
+    var merged_code = merged.run()
+    crash merged_code
+    var merged_output = merged.read_output_as_string()
+    crash merged_output
+    var merged_errors = merged.read_errors_as_string()
+    var merged_trimmed = merged_output.trim()
+    var merged_lines = merged_trimmed.split("\n")
+    var line_count = merged_lines.count()
+    console.print("lines in the output", line_count, "errors read apart", merged_errors)
+    var quick = Process("cmd", ["/c", "echo", "quick"])
+    quick.time_limit = Duration(_long_limit_seconds, 'seconds')
+    var quick_code = quick.run()
+    crash quick_code
+    var quick_output = quick.read_output_as_string()
+    crash quick_output
+    var trimmed_quick = quick_output.trim()
+    console.print("within the limit", quick_code, trimmed_quick, "stopped", quick.was_stopped)
+    var slow = Process("cmd", ["/c", "ping", "-n", "60", "127.0.0.1"])
+    slow.time_limit = Duration(_short_limit_milliseconds, 'milliseconds')
+    var slow_code = slow.run()
+    console.print("past the limit", slow_code, "stopped", slow.was_stopped)
+}

@@ -1,0 +1,4 @@
+exit code 3 output answer errors microseconds 12
+lines in the output 2 errors read apart null
+within the limit 0 quick stopped false
+past the limit null stopped true

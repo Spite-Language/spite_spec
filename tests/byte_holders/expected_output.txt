@@ -1,4 +1,4 @@
 binary body: text true bytes 2 last 255 served 1
 a character sent in two writes reads as é
 a datagram read as text: hello
-process output: ok 3
+process output: ok 4
