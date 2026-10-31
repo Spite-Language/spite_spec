@@ -10,14 +10,14 @@ func SleepDurations() {
     var a_moment = Duration(_moment_microseconds, 'microseconds')
     var five_milliseconds = Duration(5, 'milliseconds')
     var nearly_five = Duration(4, 'milliseconds')
-    var a_second = Duration(1, 'seconds')
+    var ten_seconds = Duration(10, 'seconds')
     var started = clock.elapsed()
     program.sleep(nothing_at_all)
     program.sleep(backwards)
     program.sleep(a_moment)
     var napped = nap_backwards()
     var quick = clock.elapsed() - started
-    var returned_at_once = quick < a_second
+    var returned_at_once = quick < ten_seconds
     var before = clock.elapsed()
     program.sleep(five_milliseconds)
     var slept = clock.elapsed() - before

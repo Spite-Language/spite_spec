@@ -1,0 +1,6 @@
+var radius = 2
+var total = 0
+
+func add(amount: Integer) {
+    total = total + amount
+}

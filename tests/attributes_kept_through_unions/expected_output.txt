@@ -1,0 +1,2 @@
+499500 90 2
+accesses in the loop away from its calls: 0
