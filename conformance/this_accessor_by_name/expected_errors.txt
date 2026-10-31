@@ -1,0 +1,1 @@
+conformance/this_accessor_by_name/this_accessor_by_name.spite:6: error: 'get_this' is what reading 'this' calls: write 'count' (in ThisAccessorByName.ThisAccessorByName)

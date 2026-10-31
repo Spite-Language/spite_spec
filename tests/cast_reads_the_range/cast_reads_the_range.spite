@@ -1,0 +1,29 @@
+var console = Console()
+var _lowest_tiny = -128
+var _highest_tiny = 127
+var _highest_long: Long = 9223372036854775807
+var _highest_unsigned_long: UnsignedLong = 18446744073709551615
+var _past_the_highest_tiny = 128
+
+func CastReadsTheRange() {
+    load "../../../spite_standard_library/windows"
+    var low: Tiny = _lowest_tiny
+    var high: Tiny = _highest_tiny
+    var top: UnsignedLong = _highest_long
+    console.print(low, high, top)
+    var unsigned_long_top = _highest_unsigned_long
+    var long_top = signed(_highest_long)
+    console.print(long_top)
+    var never = as_a_long(unsigned_long_top)
+    console.print("never printed", never)
+    var cut: Tiny = _past_the_highest_tiny
+    console.print("never printed", cut)
+}
+
+func signed(value: Long): Long {
+    return value
+}
+
+func as_a_long(value: UnsignedLong): Long {
+    return value
+}

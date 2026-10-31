@@ -430,15 +430,16 @@ names the presets the class answers
 
 ### A number states its range
 
-**A number's width is stated by its class's own code** (D1757, D1780). Each number class of the library (`Tiny` to
-`Double`, and `Boolean`) has a private `_set_this(value)` whose first statement checks the range the class holds,
-with its bounds named:
+**A number's width is stated by its class's own code** (D1757, D1780, D1810). Each number class of the library
+(`Tiny` to `Double`, and `Boolean`) reaches its own value through public `set_this(value)` and `get_this()`, the
+way any class reaches an attribute `x` through `set_x` and `get_x`, and the first statement of `set_this` checks
+the range the class holds, with its bounds named:
 
 ```gdscript
 var _smallest_value: Long = -128
 var _largest_value: Long = 127
 
-func _set_this(value: Long) {
+func set_this(value: Long) {
     crash value >= _smallest_value and value <= _largest_value
     _buffer._write_tiny_at(0, value)
 }
@@ -448,10 +449,21 @@ The compiler reads every number's width and signedness from that check, never fr
 below zero makes the class signed; the width is the fewest of 1, 2, 4 or 8 bytes that hold both bounds; decimal
 bounds make it a decimal, 4 bytes when the largest fits single precision and 8 otherwise. A bound may be a named
 number less one (`_smallest_value_but_one - 1` in `Long`, whose smallest value is not a literal). A library that
-changes a range changes the width the compiler uses; a range wider than 8 bytes, or a `_set_this` with no range it
+changes a range changes the width the compiler uses; a range wider than 8 bytes, or a `set_this` with no range it
 can read, stops the compiler naming the class. A program that loads no standard library has no number classes, so it holds no numbers and no
 `Boolean`: a literal or a number type there is `unknown type 'Integer'` (`tests/debug_memory_without_library` writes none). A whole literal written where an `UnsignedLong` is wanted may be as
 large as an `UnsignedLong` holds (`var _largest_value: UnsignedLong = 18446744073709551615`).
+
+**A cast to a number class checks the range its `set_this` states**: a bound of the target that the value cast
+could pass is tested, and a value outside it halts with `spite: 300, an Integer, does not fit in a Tiny, at ...`
+(`tests/cast_reads_the_range`), so a library that narrows a range narrows what a cast lets through. A decimal cast
+to a whole number checks the same bounds. `Boolean` is told apart from the numbers by its code as well: it has a
+`set_this` and no `sum`, so it is a truth value, never a number.
+
+A program writes the value itself (`count = 3`, `count + 1`), never the accessor: a store of the class is its
+`set_this`, whose check the compiler folds where the value's own class proves it, and a read is its `get_this`.
+Calling one by name is refused like any accessor: `count.get_this()` is `'get_this' is what reading 'this' calls:
+write 'count'` (`conformance/this_accessor_by_name`); the library's own classes call them by name.
 
 Arithmetic that does not fit still halts. Each whole number class also offers wrapping arithmetic as named
 functions with no operator (`wrapping_sum`, `wrapping_subtract`, `wrapping_multiply`), which keep the low bits and

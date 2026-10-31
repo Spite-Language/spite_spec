@@ -1,0 +1,21 @@
+var console = Console()
+
+func TrimmedBuffer() {
+    load "../../../spite_standard_library/windows"
+    var total = 0
+    var round = 0
+    while round < 20 {
+        total = total + header_sum(round)
+        round = round + 1
+    }
+    console.print("total", total)
+}
+
+func header_sum(round: Integer): Integer {
+    var bytes = Buffer(4096)
+    bytes.append(7)
+    bytes.append_integer_little_endian(round)
+    var second = bytes.read_integer_little_endian_at(1)
+    crash second
+    return second + bytes.count()
+}

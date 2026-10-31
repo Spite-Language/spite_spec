@@ -1,0 +1,3 @@
+-128 127 9223372036854775807
+9223372036854775807
+spite: 18446744073709551615, an UnsignedLong, does not fit in a Long, at tests/cast_reads_the_range/cast_reads_the_range.spite:28 in CastReadsTheRange.as_a_long

@@ -1,0 +1,8 @@
+var console = Console()
+
+func ThisAccessorByName() {
+    load "../../../spite_standard_library/windows"
+    var count = 3
+    var read = count.get_this()
+    console.print(read)
+}
