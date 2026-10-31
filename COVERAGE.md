@@ -40,9 +40,9 @@ Decision numbers are those of `DECISIONS.md` in the [mortaros_spite](https://git
 | game_maths.md | 24 | 21 | 24 |
 | style.md | 79 | 38 | 69 |
 | write_it_plainly.md | 11 | 4 | 4 |
-| compiler.md | 51 | 22 | 35 |
+| compiler.md | 51 | 22 | 37 |
 | repl.md | 47 | 19 | 25 |
-| all | 1389 | 689 | 1160 |
+| all | 1389 | 689 | 1162 |
 
 ## values_and_types.md
 
@@ -1529,7 +1529,7 @@ Rules: 11. Covered before: 4. Covered now: 4.
 
 ## compiler.md
 
-Rules: 51. Covered before: 22. Covered now: 35.
+Rules: 51. Covered before: 22. Covered now: 37.
 
 | Rule | Program(s) | Status |
 |---|---|---|
@@ -1542,9 +1542,9 @@ Rules: 51. Covered before: 22. Covered now: 35.
 | `--trace-fallbacks` prints each fallback taken | tests/trace_asserts | covered |
 | `spite compiler --verify` and `--release` (the compiler proves itself) | none | missing |
 | A Boolean flag may be bare | tests/kebab_setting | covered |
-| No folder named prints the usage and exits 1 | none | missing |
+| No folder named prints the usage and exits 1 | none | superseded by D1815 (the compiler builds the folder it runs in, and a word by position is refused) |
 | A word given by position, the folder too, is "'game' is given by position: every value on the command line is a named setting ..." | conformance/folder_by_position | covered |
-| A folder without its entry is "'game' holds no program ..." | none | missing |
+| A folder without its entry is "'game' holds no program ..." | conformance/folder_without_entry | added |
 | An entry constructor with parameters is an error at its line | conformance/entry_constructor_arguments | covered |
 | `--check` and `--build` together is the "give one of them" error | conformance/check_and_build_flags | added (compiler fails: '--build' is an unknown option) |
 | `--check` never writes, moves or removes an executable; other builds remove it first | none | missing |
@@ -1555,7 +1555,7 @@ Rules: 51. Covered before: 22. Covered now: 35.
 | A C compiler that reports success with no executable is the error | none | missing |
 | `.spite`, `.spite-cache` and `.git` folders are never read as part of a program | tests/working_directory | covered |
 | The optimisation report: sections, entries, order, `None.` | tests/optimization_report, tests/frame_waits_kept | covered (compiler fails: optimization_report's output differs) |
-| A report that cannot be written is `error: could not write '<path>'` | none | missing |
+| A report that cannot be written is `error: could not write '<path>'` | conformance/report_not_writable | added |
 | Translation units, the object cache, LTO flags, `-ffp-contract=off`, `-march=native` | none | missing |
 | `--tune-for-this-machine` is not an option | conformance/removed_tuning_flag | added (compiler fails: the generic unknown-option error) |
 | `--translation-units` is not an option | conformance/removed_translation_units_flag | added (compiler fails: the generic unknown-option error) |

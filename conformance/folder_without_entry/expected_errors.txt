@@ -1,0 +1,1 @@
+error: 'conformance/folder_without_entry' holds no program: a program is a folder holding an entry file named after it, 'conformance/folder_without_entry/folder_without_entry.spite'
