@@ -1,0 +1,40 @@
+var console = Console()
+
+func TestsDecidedByADominatingTest() {
+    load "../../../spite_standard_library/windows"
+    var below = decided(1, 5)
+    var above = decided(7, 5)
+    var equal = decided(5, 5)
+    console.print(below, above, equal)
+    var summed = 0
+    var index = 0
+    while index < 20 {
+        var low = index < 10
+        if index < 10 and low {
+            summed = summed + index
+        }
+        if index >= 10 and low {
+            summed = summed - 1000
+        }
+        index = index + 1
+    }
+    console.print(summed)
+}
+
+func decided(index: Integer, limit: Integer): Integer {
+    var inside = index < limit
+    var total = 0
+    if index < limit and inside {
+        total = total + 10
+    }
+    if index < limit and not inside {
+        total = total + 100
+    }
+    if index >= limit and inside {
+        total = total + 1000
+    }
+    if index >= limit and not inside {
+        total = total + 10000
+    }
+    return total
+}
