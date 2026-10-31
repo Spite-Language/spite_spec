@@ -152,8 +152,17 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
 - **`each(function)` over a constant list is unrolled** when the function is one of the class's own, takes one
   parameter, and every element fits it: one call per element, and no list. This holds for the attributes of a class,
   the classes of a namespace (`Shop.Tools.classes.each(make)` makes one copy of `make` for each class, in which the
-  parameter is the class), the values of an enum (`Phase.values.each(run)` calls `run` once for each value) and the
-  known functions and arguments of [Walks](metaprogramming.md#walks).
+  parameter is the class), the values of an enum (`Phase.values.each(run)` calls `run` once for each value, when
+  `run` takes that enum), the known functions and arguments of [Walks](metaprogramming.md#walks), the `.enums`,
+  `.unions` and `.types` of a constant class (one call per declaration, each given its constant `Spite.Enum`,
+  `Spite.Union` or `Spite.Type`), and the `.members` of a constant union (`Shelter.unions["Pet"].members.each(make)` makes
+  one copy of `make` for each member class, as a namespace's classes do; `tests/declared_walks`).
+- **A walk copy reads the declaration it stands for.** In a walk over an instance's attributes, `attribute.declaration`
+  is the class's own declaration (`Monster.attributes["health"]`), and `attribute.declaration.name`, `.index`, `.class`
+  and the case spellings fold as `attribute.name` and the rest do. In a template over functions, `.reads`, `.writes`,
+  `.returns`, `.is_resumable`, `.returned_literal` and `.source_file` are read from the class's declaration of the
+  function the copy stands for, so they answer what `Mover.functions["update_each"]` answers
+  (`tests/walk_copy_declarations`).
 - **`Enum.values[n]` answers `Enum?`** like every `[ ]`, also with a literal `n`, so a `crash` narrows it;
   `Enum.values.find_by_name(text)` is the text read as the enum, an `Enum?`.
 - **A function called with a constant for a reflection parameter is compiled once for it**, whether it is the

@@ -1,0 +1,1 @@
+conformance/enum_walker_kind/enum_walker_kind.spite:10: error: 'each' calls 'show_value' with each 'EnumWalkerKind.Diet', but 'show_value' takes 'Spite.EnumValue' (in EnumWalkerKind.EnumWalkerKind)

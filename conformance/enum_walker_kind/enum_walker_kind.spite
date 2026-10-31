@@ -1,0 +1,15 @@
+enum Diet {
+    'meat'
+    'plants'
+}
+
+var console = Console()
+
+func EnumWalkerKind() {
+    load "../../../spite_standard_library/windows"
+    Diet.values.each(show_value)
+}
+
+func show_value(value: Spite.EnumValue) {
+    console.print("value", value.name, value.number)
+}
