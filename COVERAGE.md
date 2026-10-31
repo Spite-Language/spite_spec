@@ -21,28 +21,28 @@ Decision numbers are those of `DECISIONS.md` in the [mortaros_spite](https://git
 | Page | Rules | Covered before | Covered now |
 |---|---|---|---|
 | values_and_types.md | 148 | 90 | 144 |
-| control_flow.md | 51 | 19 | 45 |
+| control_flow.md | 51 | 19 | 46 |
 | functions_and_operators.md | 56 | 29 | 53 |
-| classes_and_files.md | 50 | 32 | 49 |
+| classes_and_files.md | 50 | 32 | 50 |
 | collections.md | 108 | 51 | 100 |
-| failure.md | 147 | 95 | 133 |
+| failure.md | 147 | 95 | 134 |
 | memory.md | 107 | 34 | 81 |
-| standard_library.md | 100 | 50 | 86 |
+| standard_library.md | 100 | 50 | 88 |
 | programs.md | 40 | 20 | 35 |
 | testing.md | 8 | 1 | 5 |
 | time.md | 19 | 9 | 19 |
-| json.md | 41 | 14 | 35 |
+| json.md | 41 | 14 | 36 |
 | reflection.md | 64 | 32 | 52 |
 | metaprogramming.md | 67 | 31 | 49 |
 | packages.md | 55 | 36 | 50 |
 | concurrency.md | 61 | 15 | 18 |
 | foreign_libraries.md | 58 | 27 | 46 |
 | game_maths.md | 24 | 21 | 24 |
-| style.md | 79 | 38 | 67 |
+| style.md | 79 | 38 | 69 |
 | write_it_plainly.md | 11 | 4 | 4 |
 | compiler.md | 51 | 22 | 35 |
 | repl.md | 47 | 19 | 25 |
-| all | 1389 | 689 | 1152 |
+| all | 1389 | 689 | 1160 |
 
 ## values_and_types.md
 
@@ -201,7 +201,7 @@ Rules: 148. Covered before: 90. Covered now: 144.
 
 ## control_flow.md
 
-Rules: 51. Covered before: 19. Covered now: 45.
+Rules: 51. Covered before: 19. Covered now: 46.
 
 | Rule | Program(s) | Status |
 |---|---|---|
@@ -214,7 +214,7 @@ Rules: 51. Covered before: 19. Covered now: 45.
 | Words left after a statement: error at the first one | conformance/left_over_after_return | covered |
 | A word after the `}` closing a statement is an error | conformance/left_over_after_block | covered |
 | Local declared only to be returned is an error | conformance/returned_local | covered |
-| Local declared with another type is not refused | | missing |
+| Local declared with another type is not refused | tests/returned_local_other_type | added |
 | `while true` with no return/fallback/crash and no call is an error | conformance/spinning_loop | covered |
 | `while true` that calls something is left alone | tests/control_while_true_returns | added |
 | Spinning-loop exception in `Parallel` work | none | superseded by D1715 (conformance/endless_parallel_work removed with spite_compiler#224) |
@@ -322,7 +322,7 @@ Rules: 56. Covered before: 29. Covered now: 53.
 
 ## classes_and_files.md
 
-Rules: 50. Covered before: 32. Covered now: 49.
+Rules: 50. Covered before: 32. Covered now: 50.
 
 | Rule | Program(s) | Status |
 |---|---|---|
@@ -375,7 +375,7 @@ Rules: 50. Covered before: 32. Covered now: 49.
 | Made once whichever thread asks first | tests/singleton_race | covered |
 | Work the compiler runs at once shares no singleton one of them writes, so no singleton needs a lock | tests/singleton_lock_calls, tests/unshared_locks | covered |
 | A singleton that holds nothing is one static object | none | missing (tests/singleton_stateless_calls kept in retired/singleton_stateless_calls) |
-| A reopening may add the `singleton` line | | missing |
+| A reopening may add the `singleton` line | tests/reopening_adds_singleton | added |
 
 ## collections.md
 
@@ -495,7 +495,7 @@ Rules: 108. Covered before: 51. Covered now: 100.
 
 ## failure.md
 
-Rules: 147. Covered before: 95. Covered now: 133.
+Rules: 147. Covered before: 95. Covered now: 134.
 
 The crash report's stop line is written as D672 words it, `spite: the program stopped at <path>:<line> in <Class>.<function> (<name>=<value>, ...)`, instead of the page's `spite.crash<TAB>id...` line; the programs added keep the page's content (values in scope, missing links, calls, frames) in that line.
 
@@ -638,7 +638,7 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | A bare `crash` is the form for a branch that cannot happen | tests/crash, tests/every_path_returns | covered |
 | `crash false` is formatted to a bare `crash` | | missing |
 | `crash user` narrows a `T?` and never returns | tests/crash_missing_value | covered |
-| `crash` and `fallback` take no message | | missing |
+| `crash` and `fallback` take no message | conformance/crash_takes_no_message, conformance/fallback_takes_no_message | added |
 
 ### What a crash reports
 
@@ -788,7 +788,7 @@ Rules: 107. Covered before: 34. Covered now: 81 (24 of them fail on the master c
 
 ## standard_library.md
 
-Rules: 100. Covered before: 50. Covered now: 86.
+Rules: 100. Covered before: 50. Covered now: 88.
 
 | Rule | Program(s) | Status |
 |---|---|---|
@@ -889,12 +889,12 @@ Rules: 100. Covered before: 50. Covered now: 86.
 | to_utf8_text: null for every invalid form | tests/utf8_text | covered |
 | A List has none of the byte functions | conformance/list_byte_functions | added (compiler fails: generic message) |
 | Files: read_bytes whole, read_bytes_at short at the end, empty file empty buffer | tests/binary_files | covered |
-| A negative file position or count halts | none | missing |
+| A negative file position or count halts | tests/file_negative_position | added |
 | Connection bytes: read_as_buffer, write_buffer, the end of a connection | tests/socket_bytes | covered |
 | A proven read_<number>_at answers the number; an unproven one is T? | tests/fixed_offsets, conformance/byte_reads | covered |
 | ForeignBytes reads and writes, halts on a bad address or count | none | missing |
 | Address forms of File, Socket and BinaryReader are errors | none | superseded by D662 (no address a program can hold) |
-| A List<Byte> where a Buffer is expected is the type error | none | missing |
+| A List<Byte> where a Buffer is expected is the type error | conformance/list_where_buffer_needed | added |
 | String, List, Dictionary, number text are Spite over the floor | none | not a program rule |
 | examples/calculator | none | not a program rule |
 
@@ -990,7 +990,7 @@ Rules: 21. Covered before: 9. Covered now: 21.
 
 ## json.md
 
-Rules: 41. Covered before: 14. Covered now: 35.
+Rules: 41. Covered before: 14. Covered now: 36.
 
 | Rule | Program(s) | Status |
 |---|---|---|
@@ -1010,7 +1010,7 @@ Rules: 41. Covered before: 14. Covered now: 35.
 | A negative start for read_from halts | none | superseded by D1707 (removals of #23) |
 | reader.read_memory is an error | none | superseded by D662 |
 | JSON escapes ", \, \n, \r, \t on writing and reads them back | tests/json_escapes_written | added |
-| Other control characters written as \u00XX | none | missing |
+| Other control characters written as \u00XX | tests/json_control_characters_written | added |
 | \uXXXX read back as UTF-8, surrogate pairs included | tests/json_unicode_read | added |
 | Private attributes are left out | tests/json_private_skipped | added |
 | Attributes holding a singleton are left out | tests/serializer_singletons | covered |
@@ -1425,7 +1425,7 @@ Rules: 24. Covered before: 21. Covered now: 24.
 
 ## style.md
 
-Rules: 79. Covered before: 38. Covered now: 67.
+Rules: 79. Covered before: 38. Covered now: 69.
 
 | Rule | Program(s) | Status |
 |---|---|---|
@@ -1468,7 +1468,7 @@ Rules: 79. Covered before: 38. Covered now: 67.
 | A call repeated at the start of both branches is an error | conformance/repeated_branch_call | covered |
 | A call repeated in every branch of an `else if` chain: "computed in every branch" | conformance/repeated_branch_call_chain | added |
 | A chain where only some branches share the call is not reported | tests/repeated_branch_partial | added |
-| Four spaces, no tabs, no trailing whitespace, one newline at the end | none | missing (a formatting program rewrites itself; the runner needs to format a copy) |
+| Four spaces, no tabs, no trailing whitespace, one newline at the end | conformance/formatted_layout | added (the runner builds a copy, so the rewrite stays out of the repository) |
 | A single named codegen value in `<...>` becomes positional | none | missing |
 | Every compile formats and prints `formatted <path>` | conformance/blank_line | covered (compiler fails: compiles; the file is rewritten by the run) |
 | One space around binary operators, the minimum parentheses, `else if` on one line | none | missing (as above) |
@@ -1479,7 +1479,7 @@ Rules: 79. Covered before: 38. Covered now: 67.
 | `crash false` prints as `crash` | none | missing |
 | A file is ordered; out of order is an error naming what came before | conformance/declaration_order | covered |
 | `union` goes beside `enum`, before `type` | conformance/union_after_type | added |
-| Consecutive `var`s may stay grouped; one blank line between other declarations | none | missing |
+| Consecutive `var`s may stay grouped; one blank line between other declarations | conformance/formatted_layout | added |
 | K&R braces; empty body as `{ }` | none | missing |
 | Comments are `# text` with one space; string contents never reformatted | none | missing |
 | A comment is one line, a link to a markdown section, checked to resolve | tests/comment_link, conformance/comment_broken_link, conformance/comment_missing_file | covered |

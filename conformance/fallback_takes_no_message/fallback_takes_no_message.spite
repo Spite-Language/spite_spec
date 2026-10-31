@@ -1,0 +1,11 @@
+var console = Console()
+
+func FallbackTakesNoMessage() {
+    load "../../../spite_standard_library/windows"
+    shown(3)
+}
+
+func shown(count: Integer) {
+    fallback count > 0, "count must be positive"
+    console.print(count)
+}

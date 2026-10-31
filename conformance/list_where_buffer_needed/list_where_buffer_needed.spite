@@ -1,0 +1,12 @@
+var console = Console()
+
+func ListWhereBufferNeeded() {
+    load "../../../spite_standard_library/windows"
+    var bytes = List<Byte>()
+    var size = measured(bytes)
+    console.print(size)
+}
+
+func measured(buffer: Buffer): Integer {
+    return buffer.count()
+}

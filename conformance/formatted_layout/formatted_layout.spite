@@ -1,0 +1,16 @@
+var console = Console()
+var first = 1
+var second = 2
+
+var third = 3
+func FormattedLayout() {
+	load "../../../spite_standard_library/windows"
+  var total = first+second*third   
+    var text = "a  +  b #x"
+    if total>3 {
+        console.print(total, text)
+    }
+    else {
+        console.print("small")
+    }
+}

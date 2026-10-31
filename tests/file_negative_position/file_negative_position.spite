@@ -1,0 +1,13 @@
+var console = Console()
+var _back = -4
+
+func FileNegativePosition() {
+    load "../../../spite_standard_library/windows"
+    var file = File(".spite/file_negative_position.txt")
+    var written = file.write_string("hello")
+    console.print(written)
+    var bytes = file.read_buffer_at(_back, 2)
+    crash bytes
+    var count = bytes.count()
+    console.print(count)
+}

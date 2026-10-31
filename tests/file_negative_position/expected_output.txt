@@ -1,0 +1,3 @@
+true
+spite: the program stopped at ...in File.read_buffer_at, site ... (position=-4, count=2, path=.spite/file_negative_position.txt)
+spite.frame	tests/file_negative_position/file_negative_position.spite:9	FileNegativePosition	FileNegativePosition

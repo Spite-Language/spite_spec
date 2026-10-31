@@ -1,0 +1,20 @@
+var console = Console()
+var _boxes = 300
+var _measured = 2.6
+
+func ReturnedLocalOtherType() {
+    load "../../../spite_standard_library/windows"
+    var wide = widened(_boxes)
+    var cut = rounded(_measured)
+    console.print(wide, cut)
+}
+
+func widened(small: Integer): Long {
+    var narrowed: Short = small
+    return narrowed
+}
+
+func rounded(scaled: Float): Long {
+    var whole: Integer = scaled.round()
+    return whole
+}

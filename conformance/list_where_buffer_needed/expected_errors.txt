@@ -1,0 +1,1 @@
+conformance/list_where_buffer_needed/list_where_buffer_needed.spite:6: error: a List<Byte> cannot be used where a Buffer is needed (in ListWhereBufferNeeded.ListWhereBufferNeeded)

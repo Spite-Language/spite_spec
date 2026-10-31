@@ -1,0 +1,20 @@
+var console = Console()
+var _bell = 7
+var _unit_separator = 31
+
+func JsonControlCharactersWritten() {
+    load "../../../spite_standard_library/windows"
+    var note = Note()
+    var text = "a"
+    text.append_code(_bell)
+    text = "{text}b"
+    text.append_code(_unit_separator)
+    note.text = text
+    var writer = JsonWriter<Note>()
+    var written = writer.write(note)
+    console.print(written)
+    var reader = JsonReader<Note>()
+    var back = reader.read(written)
+    crash back
+    console.print(back.text == note.text)
+}
