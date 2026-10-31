@@ -1,0 +1,85 @@
+var console = Console()
+
+func ValuesACopyAndItsSourceShare() {
+    load "../../../spite_standard_library/windows"
+    var many = sums(1000)
+    var one = sums(1)
+    console.print(many, one)
+    var rounded = rounds(1000)
+    console.print(rounded)
+    var pairs = swapped(10)
+    console.print(pairs)
+    var best = picked(100)
+    console.print(best)
+}
+
+func sums(limit: Integer): Long {
+    var evens: Long = 0
+    var index = 0
+    while index < limit {
+        evens = evens + index % 7
+        index = index + 2
+    }
+    var odds: Long = 0
+    index = 1
+    while index < limit {
+        odds = odds + index % 7
+        index = index + 2
+    }
+    return evens * 1000 + odds
+}
+
+func rounds(count: Integer): Long {
+    var total: Long = 0
+    var round = 0
+    while round < count {
+        var biggest = largest(round)
+        total = total + biggest
+        round = round + 1
+    }
+    return total
+}
+
+func largest(round: Integer): Integer {
+    var remainders = [round % 10, round % 7, round % 13, round % 3]
+    var weights = [4, 3, 2, 1]
+    var biggest = 0
+    var index = 0
+    while index < remainders.count() {
+        crash weights[index]
+        var weighted = remainders[index] * weights[index]
+        if weighted > biggest {
+            biggest = weighted
+        }
+        index = index + 1
+    }
+    return biggest
+}
+
+func swapped(count: Integer): Integer {
+    var first = 1
+    var second = 2
+    var index = 0
+    while index < count {
+        var kept = first
+        first = second
+        second = kept + second
+        index = index + 1
+    }
+    return first * 1000 + second
+}
+
+func picked(count: Integer): Integer {
+    var best = 0
+    var index = 0
+    while index < count {
+        var next = index * 3
+        if index % 4 == 0 {
+            best = next + 1
+        } else {
+            best = best + next
+        }
+        index = index + 1
+    }
+    return best
+}

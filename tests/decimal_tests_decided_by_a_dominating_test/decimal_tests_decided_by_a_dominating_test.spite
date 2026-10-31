@@ -1,0 +1,74 @@
+var console = Console()
+
+func DecimalTestsDecidedByADominatingTest() {
+    load "../../../spite_standard_library/windows"
+    var low = 1.5
+    var high = 2.5
+    var negative = 0.0 - low
+    var missing = negative.square_root()
+    var below = sides(low, high)
+    var above = sides(high, low)
+    var level = sides(low, low)
+    console.print(below, above, level)
+    var missing_left = sides(missing, low)
+    var missing_right = sides(low, missing)
+    var missing_both = sides(missing, missing)
+    console.print(missing_left, missing_right, missing_both)
+    var unequal = matches(low, high)
+    var equal = matches(low, low)
+    var unmatched = matches(missing, missing)
+    console.print(unequal, equal, unmatched)
+    var quarters = folded(10)
+    console.print(quarters)
+}
+
+func sides(left: Double, right: Double): Integer {
+    var total = 0
+    if left < right {
+        total = total + 1
+        if left < right {
+            total = total + 10
+        }
+        if left >= right {
+            total = total + 100
+        }
+    } else {
+        if left < right {
+            total = total + 1000
+        }
+        if left >= right {
+            total = total + 10000
+        }
+    }
+    return total
+}
+
+func matches(left: Double, right: Double): Integer {
+    var total = 0
+    if left == right {
+        total = total + 1
+        if left != right {
+            total = total + 10
+        }
+    } else {
+        if left != right {
+            total = total + 100
+        }
+        if left == right {
+            total = total + 1000
+        }
+    }
+    return total
+}
+
+func folded(count: Integer): Double {
+    var total = 0.0
+    var index = 0
+    while index < count {
+        var half = 0.5
+        var quarter = half * half
+        total = total + quarter
+        index = index + 1
+    }
+    return total
+}
