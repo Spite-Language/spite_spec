@@ -1,0 +1,34 @@
+var console = Console()
+
+func DeclarationSourceFile() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    load "mod"
+    var hurt = Creatures.Monster.functions["hurt"]
+    crash hurt
+    show("hurt", hurt.source_file)
+    var harden = Creatures.Monster.functions["harden"]
+    crash harden
+    show("harden", harden.source_file)
+    var armor = Creatures.Monster.attributes["armor"]
+    show("armor", armor.source_file)
+    var monster = Creatures.Monster()
+    var bound = monster.functions["hurt"]
+    crash bound
+    show("bound hurt", bound.source_file)
+    var health = monster.attributes["health"]
+    crash health
+    show("bound health", health.declaration.source_file)
+}
+
+func show(what: String, file: File) {
+    var marker = "declaration_source_file/"
+    var path = file.path
+    var start = path.index_of(marker)
+    crash start
+    var path_length = path.length()
+    var marker_length = marker.length()
+    var sliced = path.slice(start + marker_length, path_length)
+    crash sliced
+    console.print(what, sliced)
+}

@@ -1,0 +1,59 @@
+enum Diet {
+    'meat'
+    'plants'
+}
+
+enum Mood {
+    'calm'
+}
+
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+var favourite: Pet = Cat()
+
+func DeclaredWalks() {
+    load "../../../spite_standard_library/windows"
+    DeclaredWalks.enums.each(show_enum)
+    DeclaredWalks.unions.each(show_union)
+    DeclaredWalks.types.each(show_type)
+    DeclaredWalks.unions["Pet"].members.each(make_member)
+    var diet = DeclaredWalks.enums["Diet"]
+    crash diet
+    console.print(diet.name, diet.owner)
+    var missing = DeclaredWalks.enums["Hunger"]
+    if not missing {
+        console.print("no Hunger")
+    }
+    greet(favourite)
+}
+
+func show_enum(described: Spite.Enum) {
+    var count = described.values.count()
+    console.print("enum", described.name_with_namespaces, count)
+}
+
+func show_union(described: Spite.Union) {
+    var count = described.members.count()
+    console.print("union", described.name, count)
+}
+
+func show_type(described: Spite.Type) {
+    console.print("type", described.name, described.owner)
+}
+
+func make_member(member: Spite.Class) {
+    var made = member()
+    console.print("member", member.name, made.name, made.lives)
+}
+
+func greet(other: Named) {
+    console.print("hello", other.name)
+}

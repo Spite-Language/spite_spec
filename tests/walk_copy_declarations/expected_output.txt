@@ -1,0 +1,7 @@
+update_each reads 2 writes 1 in mover.spite
+render_each reads 1 writes 1 in mover.spite
+26
+steps 0 true 0
+speed 1 true 3
+steps in mover.spite
+speed in mover.spite

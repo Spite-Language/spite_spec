@@ -9,7 +9,7 @@ is the bug.
 **Every class is an instance of `Spite.Class`**, every namespace of `Spite.Namespace`, every function declared in a
 class of `Spite.FunctionDeclaration` (and bound to an instance, of `Spite.Function`), every attribute declared in a
 class of `Spite.AttributeDeclaration` (and bound to an instance, of `Spite.Attribute`, which holds its `declaration`, its
-`value` and its `owner`), and every argument of `Spite.Argument`. A class's `.attributes` is a `Dictionary<String, Spite.AttributeDeclaration>` and an instance's a `Dictionary<String, Spite.Attribute>`, keyed by name; `Whisper.attributes["to"]` names an attribute as a value, and a literal key on a class named in the code that declares no attribute of that name is a compile error naming the class (`tests/attribute_named_as_value`, `conformance/attribute_named_unknown`). A function's `.reads` and `.writes` are the `Spite.AttributeDeclaration`s of its class its code reads and writes, following every call to its own class (`tests/function_accesses`). They live in the `Spite` namespace (`Spite.Class`, not `SpiteClass`), so nothing in it can be
+`value` and its `owner`), and every argument of `Spite.Argument`. A class's `.attributes` is a `Dictionary<String, Spite.AttributeDeclaration>` and an instance's a `Dictionary<String, Spite.Attribute>`, keyed by name; `Whisper.attributes["to"]` names an attribute as a value, and a literal key on a class named in the code that declares no attribute of that name is a compile error naming the class (`tests/attribute_named_as_value`, `conformance/attribute_named_unknown`). A function's `.reads` and `.writes` are the `Spite.AttributeDeclaration`s of its class its code reads and writes, following every call to its own class (`tests/function_accesses`). A function's and an attribute's declaration answer `.source_file`, the `File` it is written in (a reopening's file for a member the reopening declares; `tests/declaration_source_file`), filled only in a program that asks it, and a bound function reads it through its declaration. They live in the `Spite` namespace (`Spite.Class`, not `SpiteClass`), so nothing in it can be
 mistaken for a class of a program. `Spite` is a reserved root namespace: a program's `spite/` folder may only
 reopen its classes, and `load "spite"` is an error ([packages.md](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#the-spite-namespace-is-reserved)).
 Their members are the tables of [The `Spite` classes](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#the-spite-classes).
@@ -58,7 +58,7 @@ error.**
 **`.source_files` and `.source_directories` are where a class and a namespace come from**: a `File` for every file
 that declares or reopens the class, and a `Directory` for every directory a namespace's classes come from, each in
 load order. A question about a path is asked of those `File` and `Directory` values; reflection has no other path
-member. They are build-machine paths: a shipped program that needs the files beside a package copies them into its
+member but a declaration's `.source_file`, the one file a function or an attribute is written in. They are build-machine paths: a shipped program that needs the files beside a package copies them into its
 output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#files-beside-a-packages-source)).
 
 ## A class and an instance

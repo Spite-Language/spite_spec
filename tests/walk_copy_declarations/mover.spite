@@ -1,0 +1,10 @@
+var steps = 0
+var speed = 3
+
+func update_each(amount: Integer) {
+    steps = steps + amount * speed
+}
+
+func render_each(amount: Integer) {
+    steps = steps + 10 * amount
+}

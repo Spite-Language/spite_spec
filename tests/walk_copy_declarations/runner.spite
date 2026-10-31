@@ -1,0 +1,16 @@
+generic $system_type
+
+var console = Console()
+var system = $system_type()
+
+func run_all(amount: Integer) {
+    run_phases_each(amount)
+}
+
+func run_phase_each(phase: Spite.FunctionDeclaration, amount: Integer) {
+    var reads = phase.reads.count()
+    var writes = phase.writes.count()
+    var file = phase.source_file.file_name
+    console.print(phase.name, "reads", reads, "writes", writes, "in", file)
+    system.phase_each(amount)
+}

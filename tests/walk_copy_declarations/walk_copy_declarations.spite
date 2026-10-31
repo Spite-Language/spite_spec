@@ -1,0 +1,21 @@
+var console = Console()
+
+func WalkCopyDeclarations() {
+    load "../../../spite_standard_library/windows"
+    var all = Runner<Mover>()
+    all.run_all(2)
+    console.print(all.system.steps)
+    var mover = Mover()
+    mover.attributes.each(show)
+    Mover.attributes.each(locate)
+}
+
+func show(attribute: Spite.Attribute) {
+    var declared = attribute.declaration
+    var same = declared.name == attribute.name
+    console.print(attribute.declaration.name, attribute.declaration.index, same, attribute.value)
+}
+
+func locate(attribute: Spite.AttributeDeclaration) {
+    console.print(attribute.name, "in", attribute.source_file.file_name)
+}
