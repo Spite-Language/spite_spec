@@ -1,0 +1,8 @@
+var console = Console()
+var _every_bit: UnsignedLong = 18446744073709551615
+
+func UnsignedLongTopLiteral() {
+    load "../../../spite_standard_library/windows"
+    var largest = UnsignedLong.Largest()
+    console.print(_every_bit, _every_bit == largest)
+}

@@ -1,4 +1,5 @@
 func Receivers(): Integer {
+    load "../../../spite_standard_library/common"
     var maker = Maker()
     var made = maker.make()
     var counted = made.value()

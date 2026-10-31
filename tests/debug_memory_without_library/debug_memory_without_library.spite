@@ -1,9 +1,4 @@
-func DebugMemoryWithoutLibrary(): Integer {
-    var total = 0
-    var index = 1
-    while index <= 4 {
-        total = total + index
-        index = index + 1
-    }
-    return total
+func DebugMemoryWithoutLibrary() {
+    var helper = Helper()
+    helper.note()
 }

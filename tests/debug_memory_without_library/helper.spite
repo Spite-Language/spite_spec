@@ -1,0 +1,7 @@
+func Helper() {
+    note()
+}
+
+func note() {
+    return
+}

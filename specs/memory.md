@@ -169,8 +169,14 @@ Memory is an abstraction: the compiler places a value in a register, in the fram
 what it proves, and the program's text is the same whichever it chooses. A program has no way to ask for raw memory
 or for a place, and none to observe the choice ([Memory is not observable](#memory-is-not-observable)):
 
-- **Register:** a number's own room, whose size its file states as `var _memory = Buffer(4)` (for `Integer`). The
-  wrapper is flattened: a number is its machine scalar, and `this` is the value.
+- **Register:** a number's own value. Its width is not a name the compiler knows and not the size of its room
+  (`var _buffer = Buffer(4)` in `Integer`): it is the range its class's `_set_this` checks
+  ([values_and_types.md](values_and_types.md#a-number-states-its-range), D1757, D1780). The wrapper is flattened: a
+  number is its machine scalar, and `this` is the value.
+- **A buffer's size is a starting size** (D1757): `Buffer(size)` suggests how much room to start with, never a
+  promise; the compiler may start it smaller or larger, or size it from what it proves is written, and nothing a
+  program sees changes. Room handed to a foreign call is the exception: there the size is the least the compiler
+  gives (until spite_compiler#226 sizes that room itself, D1766).
 - **In the value:** text of up to 15 bytes is kept in the sixteen bytes of the `String` itself
   ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#short-text-lives-inside-the-string)).
 - **Constant:** a `String` literal's characters are part of the program.

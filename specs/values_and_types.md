@@ -428,6 +428,35 @@ names the presets the class answers
   inline, a bitwise function is the single operation, and a number class's Spite functions (`to_string()`, a reopening's
   `doubled()`) are emitted only when the program calls them.
 
+### A number states its range
+
+**A number's width is stated by its class's own code** (D1757, D1780). Each number class of the library (`Tiny` to
+`Double`, and `Boolean`) has a private `_set_this(value)` whose first statement checks the range the class holds,
+with its bounds named:
+
+```gdscript
+var _smallest_value: Long = -128
+var _largest_value: Long = 127
+
+func _set_this(value: Long) {
+    crash value >= _smallest_value and value <= _largest_value
+    _buffer._write_tiny_at(0, value)
+}
+```
+
+The compiler reads every number's width and signedness from that check, never from a table of names: a lower bound
+below zero makes the class signed; the width is the fewest of 1, 2, 4 or 8 bytes that hold both bounds; decimal
+bounds make it a decimal, 4 bytes when the largest fits single precision and 8 otherwise. A bound may be a named
+number less one (`_smallest_value_but_one - 1` in `Long`, whose smallest value is not a literal). A library that
+changes a range changes the width the compiler uses; a range wider than 8 bytes, or a `_set_this` with no range it
+can read, stops the compiler naming the class. A program that loads no standard library has no number classes, so it holds no numbers and no
+`Boolean`: a literal or a number type there is `unknown type 'Integer'` (`tests/debug_memory_without_library` writes none). A whole literal written where an `UnsignedLong` is wanted may be as
+large as an `UnsignedLong` holds (`var _largest_value: UnsignedLong = 18446744073709551615`).
+
+Arithmetic that does not fit still halts. Each whole number class also offers wrapping arithmetic as named
+functions with no operator (`wrapping_sum`, `wrapping_subtract`, `wrapping_multiply`), which keep the low bits and
+never check (`tests/wrapping_functions`, `tests/unsigned_long_top_literal`).
+
 ### Named numbers
 
 An esoteric number written bare is a compile error naming a private attribute to declare for it (D1777, D1780): the
