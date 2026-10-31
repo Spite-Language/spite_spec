@@ -139,8 +139,11 @@ function's result is typed `argument.class`. Inside an instance, `argument.name`
   which: spread it into a call, as in 'value.update_each(show_arguments())', or call it inside a template over
   'Spite.FunctionDeclaration', where it walks the arguments of that function"
   (`conformance/argument_walk_without_function`).
-- **A plain walker over arguments** (`function.arguments.each(describe_taken)`) takes a name without the word, since a
-  parameter named by a word of the name is a template.
+- **A template handed to `each`.** A template whose only parameter is its word's, `show_function(function:
+  Spite.FunctionDeclaration)` or `show_argument(argument: Spite.Argument)`, given by name to `each` over a class's
+  `.functions` or a function's `.arguments` known while compiling, is that walk's walker: one copy for each item, as a
+  plain walker that walks `.arguments` gets (`tests/walker_named_for_its_parameter`). A plain walker
+  (`function.arguments.each(describe_taken)`) may leave the word out of its name.
 - **The enum spelling is gone.** `argument: Symbol<$system_type.update_each>` is "... write 'argument:
   Spite.Argument' and spread its plural into the call, as in 'value.update_each(made_arguments())'"
   (`conformance/template_symbol_argument`).

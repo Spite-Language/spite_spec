@@ -9,7 +9,9 @@ var count = 0
 func add(part: Spite.Class) {
     count = count + 1
     var functions = part.functions.count()
-    console.print("found", part.name, "with", functions, "functions")
+    var made = part()
+    var shown = made.to_debug()
+    console.print("found", part.name, "with", functions, "functions, made", shown)
 }
 
 func note(phase: Phase) {

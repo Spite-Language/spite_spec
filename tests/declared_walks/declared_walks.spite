@@ -50,7 +50,8 @@ func show_type(described: Spite.Type) {
 }
 
 func make_member(member: Spite.Class) {
-    console.print("member", member.name, member.is_singleton)
+    var made = member()
+    console.print("member", member.name, member.is_singleton, made.name)
 }
 
 func greet(other: Named) {

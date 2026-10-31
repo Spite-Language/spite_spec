@@ -1,0 +1,21 @@
+var console = Console()
+
+func WalkerNamedForItsParameter() {
+    load "../../../spite_standard_library/windows"
+    Monster.functions.each(show_function)
+    Monster.functions.each(count_function)
+}
+
+func show_function(function: Spite.FunctionDeclaration) {
+    console.print("function", function.name)
+}
+
+func count_function(function: Spite.FunctionDeclaration) {
+    var count = function.arguments.count()
+    console.print(function.name, "takes", count)
+    function.arguments.each(show_argument)
+}
+
+func show_argument(argument: Spite.Argument) {
+    console.print("  argument", argument.name)
+}

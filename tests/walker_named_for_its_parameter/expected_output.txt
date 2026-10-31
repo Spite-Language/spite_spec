@@ -1,0 +1,5 @@
+function roar
+function rest
+roar takes 1
+  argument volume
+rest takes 0

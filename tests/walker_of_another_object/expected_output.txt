@@ -1,5 +1,5 @@
-found Part.Axle with 1 functions
-found Part.Wheel with 2 functions
+found Part.Axle with 1 functions, made Axle {}
+found Part.Wheel with 2 functions, made Wheel {}
 phase start
 phase finish
 2

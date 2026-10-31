@@ -2,8 +2,8 @@ enum DeclaredWalks.Diet 2
 enum DeclaredWalks.Mood 1
 union Pet 2
 type Named DeclaredWalks
-member Cat false
-member Dog false
+member Cat false Tom
+member Dog false Rex
 Diet DeclaredWalks
 no Hunger
 hello Tom
