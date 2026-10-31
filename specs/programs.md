@@ -125,9 +125,11 @@ What follows is how it is compiled:
   executable, and the program the compiler runs reads them from the environment (`SERVE=true`) or a `.env` file
   (D1812, D1813). There is no `--` separator (`diagnostics/separator_flag`).
 - **Run-time cost**: one pass over the command line and one environment lookup per declared field, once,
-  when `Environment()` is first made. A program that never makes `Environment()` reads no flag and refuses none,
-  and has none of its code: the
-  class is tree-shaken with the rest of the unused library.
+  when `Environment()` is first made. The compiler makes `Environment()` as the entry's constructor starts, so a
+  program that never makes it still reads and checks every flag: one no setting declares, a word given by
+  position or a value not of its setting's type stops it as above (`tests/program_without_environment_refuses_flag`,
+  `tests/program_without_environment_refuses_word`, `tests/program_unmade_environment_reads_flag`, D1820). A
+  program that loads no standard library has no `Environment` and reads no argument.
 - **A `--hot-reload` build reads the settings again after a reload**: a reload that changes
   `environment.spite` moves `Environment` to its new attributes and reads every setting again, as when the program
   starts, from the command line it was started with, then the environment, then the declared default. To read

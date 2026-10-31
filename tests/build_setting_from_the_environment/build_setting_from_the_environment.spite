@@ -1,0 +1,62 @@
+var console = Console()
+var program = Program()
+var folder = ".spite/volumed"
+
+func BuildSettingFromTheEnvironment() {
+    load "../../../spite_standard_library/windows"
+    write_the_program()
+    var variables = Dictionary<String, String>()
+    variables["VOLUME"] = "7"
+    console.print("from the environment")
+    compile_and_run(variables)
+    var settings = File("{folder}/.env")
+    crash settings.write_string("# the program's own Build field\nVOLUME = 9\n")
+    console.print("from .env")
+    var none = Dictionary<String, String>()
+    compile_and_run(none)
+    console.print("the environment over .env")
+    compile_and_run(variables)
+}
+
+func compile_and_run(variables: Dictionary<String, String>) {
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\..\spite_compiler\.spite\spite.exe"
+    var no_arguments = List<String>()
+    var running = Process(compiler, no_arguments)
+    running.working_directory = folder
+    running.environment_variables = variables
+    running.with_errors = true
+    var code = running.run()
+    crash code
+    var printed_text = running.read_output_as_string()
+    crash printed_text
+    var printed = printed_text.trim()
+    console.print(printed)
+    console.print("exit code", code)
+}
+
+func write_the_program() {
+    var made = Directory(folder)
+    if not made.exists() {
+        crash made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("var build = Build()")
+    lines.append("")
+    lines.append("func Volumed() \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append("    console.print(\"volume\", build.volume)")
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/volumed.spite")
+    var joined = lines.join("\n")
+    crash entry.write_string(joined)
+    var settings = File("{folder}/build.spite")
+    crash settings.write_string("var volume = 1\n")
+    var stale = File("{folder}/.env")
+    if stale.exists() {
+        crash stale.remove()
+    }
+}

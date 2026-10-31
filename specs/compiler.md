@@ -230,7 +230,12 @@ it. Tree shaking and every other whole-program step run before any output is wri
   Environment.repl_port was given 'many', which is not an Integer, a whole number: write --repl-port=4 on the
   command line, or REPL_PORT=4 in the environment or a .env file`. Each setting is also read from its variable
   (`OPTIMIZED=true`), and a field of the program's own `Build` that no flag sets is read from its variable
-  (`SERVE=true` for `var serve = false`), checked against its type.
+  (`SERVE=true` for `var serve = false`), then from the `NAME=value` lines of a `.env` file in the folder built,
+  the variable winning (`tests/build_setting_from_the_environment`, D1813). Either is checked against the field's
+  type, and a value that does not fit is an error naming where it was read, `error: 'VOLUME=many' in .env sets
+  'Build.volume', which is an Integer: a whole number, like VOLUME=3` (`tests/build_setting_file_malformed`), or
+  `in the environment` for a variable. The `.env` file fills only the fields the program's own `build.spite`
+  declares, as the variable does.
 - **One set of names**: a program's `Environment` field named like a field its own `build.spite` declares is an
   error naming both, at the setting: `conformance/setting_named_like_flag/environment.spite:2: error: 'Environment.player_count' and
   'Build.player_count' are both '--player-count': the program's Build is given when it is compiled and its

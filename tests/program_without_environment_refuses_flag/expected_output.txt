@@ -1,0 +1,1 @@
+error: '--colour' names no setting of Environment: declare it in environment.spite, like 'var colour = ""', and the program reads it as Environment().colour

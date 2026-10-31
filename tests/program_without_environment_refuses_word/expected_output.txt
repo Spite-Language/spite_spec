@@ -1,0 +1,1 @@
+error: 'red' is given by position: every value on the command line is a named setting, like --name=red, declared in environment.spite as 'var name = ""'

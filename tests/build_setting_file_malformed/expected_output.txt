@@ -1,0 +1,2 @@
+error: 'VOLUME=many' in .env sets 'Build.volume', which is an Integer: a whole number, like VOLUME=3
+exit code 1

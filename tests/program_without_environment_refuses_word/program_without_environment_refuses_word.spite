@@ -1,0 +1,6 @@
+var console = Console()
+
+func ProgramWithoutEnvironmentRefusesWord() {
+    load "../../../spite_standard_library/windows"
+    console.print("the program ran")
+}
