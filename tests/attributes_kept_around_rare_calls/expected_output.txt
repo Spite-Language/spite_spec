@@ -1,0 +1,2 @@
+49521 994 2000 52 11
+attribute accesses in the loop away from its calls: 0

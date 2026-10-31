@@ -1,0 +1,39 @@
+var total = 0
+var largest = 0
+var weight = 1.0
+var trims = 0
+var rare = List<Integer>()
+var _limit = 100000
+
+func count_up(limit: Integer) {
+    var step = 0
+    while step < limit {
+        total = total + step
+        weight = weight * 0.5 + 1.0
+        if step > largest {
+            largest = step
+        }
+        if step % 97 == 0 {
+            rare.append(total)
+            trim(_limit)
+        }
+        step = step + 1
+    }
+}
+
+func trim(limit: Integer) {
+    weight = weight * 0.25
+    while total > limit {
+        total = total - limit / 10
+        trims = trims + 1
+        if trims % 3 == 0 {
+            largest = largest - 1
+        }
+        if trims % 5 == 0 {
+            weight = weight + 0.5
+        }
+        if trims % 7 == 0 {
+            total = total + 3
+        }
+    }
+}

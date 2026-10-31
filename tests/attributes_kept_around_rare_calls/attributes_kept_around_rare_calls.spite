@@ -1,0 +1,62 @@
+var console = Console()
+var program = Program()
+var _later_limit = 50000
+
+func AttributesKeptAroundRareCalls() {
+    load "../../../spite_standard_library/windows"
+    var tally = Tally()
+    tally.count_up(1000)
+    tally.trim(_later_limit)
+    var rare_count = tally.rare.count()
+    var weight: Long = tally.weight * 1000.0
+    console.print(tally.total, tally.largest, weight, tally.trims, rare_count)
+    var away = accesses_away_from_calls()
+    console.print("attribute accesses in the loop away from its calls:", away)
+}
+
+func accesses_away_from_calls(): Integer {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var written = File(low_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var in_the_loop = false
+    var block_accesses = 0
+    var block_calls = false
+    var block_ends = false
+    var block_first = false
+    var away = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var starts_a_block = line.starts_with("  block ")
+        if line.starts_with("function ") or starts_a_block {
+            if in_the_loop and not block_calls and not block_ends and not block_first {
+                away = away + block_accesses
+            }
+            block_accesses = 0
+            block_calls = false
+            block_ends = false
+            block_first = line == "  block 0"
+        }
+        if line.starts_with("function ") {
+            in_the_loop = line.starts_with("function Tally.count_up:")
+        } else if in_the_loop {
+            if line.contains("in Tally.total") or line.contains("in Tally.weight") or line.contains("in Tally.largest") {
+                block_accesses = block_accesses + 1
+            }
+            if line.contains("(") {
+                block_calls = true
+            }
+            if line.contains("return") {
+                block_ends = true
+            }
+        }
+        index = index + 1
+    }
+    if in_the_loop and not block_calls and not block_ends and not block_first {
+        away = away + block_accesses
+    }
+    return away
+}
