@@ -1,0 +1,3 @@
+made
+twice 12
+spite: call() gives 'NumberChangers.apply_twice' an argument 'change' whose function is not a Spite.Function<Integer, Integer>, the type it takes

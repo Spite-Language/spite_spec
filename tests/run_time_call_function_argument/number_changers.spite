@@ -1,0 +1,11 @@
+var console = Console()
+
+func NumberChangers() {
+    console.print("made")
+}
+
+func apply_twice(change: Spite.Function<Integer, Integer>, start: Integer) {
+    var once = change(start)
+    var twice = change(once)
+    console.print("twice", twice)
+}

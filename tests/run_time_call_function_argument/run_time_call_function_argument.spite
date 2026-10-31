@@ -1,0 +1,31 @@
+func RunTimeCallFunctionArgument() {
+    load "../../../spite_standard_library/windows"
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var found = classes[index]
+        if found.name.ends_with("Changers") {
+            run_changers(found)
+        }
+        index = index + 1
+    }
+}
+
+func run_changers(found: Spite.Class) {
+    var instance = found()
+    var declaration = found.functions["apply_twice"]
+    crash declaration
+    var doubler = Doubler()
+    var doubled = doubler.functions["doubled"]
+    crash doubled
+    var call = Spite.Call(declaration, instance)
+    call.arguments["change"] = doubled
+    call.arguments["start"] = 3
+    call.call()
+    var shouted = doubler.functions["shouted"]
+    crash shouted
+    var wrong = Spite.Call(declaration, instance)
+    wrong.arguments["change"] = shouted
+    wrong.arguments["start"] = 1
+    wrong.call()
+}

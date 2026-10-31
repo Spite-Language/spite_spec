@@ -1,0 +1,9 @@
+var factor = 2
+
+func doubled(number: Integer): Integer {
+    return number * factor
+}
+
+func shouted(word: String): String {
+    return word.upper_case()
+}

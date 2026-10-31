@@ -197,8 +197,11 @@ before it runs. `call.arguments["name"] = value` fills one argument, and `call.c
   the order it was filled, "call() fills an argument 'speed' that 'C.f' does not have: it takes 'times', 'word'" (or
   "it takes no arguments") (`tests/run_time_call_arguments`, `tests/run_time_call_open_parameters`,
   `tests/run_time_call_extra_argument`).
-  A parameter of any other type (a function value) halts: "call() cannot pass the argument '...' of 'C.f' when the
-  call is known only at run time, since a value of its type is not told apart while the program runs: ...". Filling
+  A function-value parameter takes the function bound to its object, `object.functions["doubled"]`, a
+  `Spite.Function` (a bare function value fits no `Anything`, D1751): one that is not a `Spite.Function` halts
+  "call() gives 'C.f' an argument 'change' that is not a Spite.Function: ...", one whose declaration has another
+  signature halts "call() gives 'C.f' an argument 'change' whose function is not a Spite.Function<Integer, Integer>,
+  the type it takes", and one that fits is called on its object (`tests/run_time_call_function_argument`). Filling
   an argument a second time halts as the known call refuses it: "spite: 'call.arguments["times"]' is already set: a
   call fills each argument once, before 'call.call()' runs it" (`tests/run_time_call_filled_twice`).
 - **Calling a `Spite.Class` known only at run time with no arguments** makes an object of it, typed `Anything`,
