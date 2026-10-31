@@ -1,0 +1,57 @@
+var console = Console()
+
+func DecimalsBeyondTheirRegisters() {
+    load "../../../spite_standard_library/windows"
+    var value_aa = 0.5
+    var value_bb = 1.5
+    var value_cc = 2.5
+    var value_dd = 3.5
+    var value_ee = 4.5
+    var value_ff = 5.5
+    var value_gg = 6.5
+    var value_hh = 7.5
+    var value_ii = 8.5
+    var value_jj = 9.5
+    var value_kk = 10.5
+    var value_ll = 11.5
+    var value_mm = 12.5
+    var value_nn = 13.5
+    var value_oo = 14.5
+    var value_pp = 15.5
+    var value_qq = 16.5
+    var value_rr = 17.5
+    var zero = 0.0
+    var step = 0
+    while step < 100 {
+        value_aa = value_aa * 0.5 + value_bb * 0.25 + zero
+        value_bb = value_bb * 0.5 + value_cc * 0.25
+        value_cc = value_cc * 0.5 + value_dd * 0.25
+        value_dd = value_dd * 0.5 + value_ee * 0.25
+        value_ee = value_ee * 0.5 + value_ff * 0.25
+        value_ff = value_ff * 0.5 + value_gg * 0.25
+        value_gg = value_gg * 0.5 + value_hh * 0.25
+        value_hh = value_hh * 0.5 + value_ii * 0.25
+        value_ii = value_ii * 0.5 + value_jj * 0.25
+        value_jj = value_jj * 0.5 + value_kk * 0.25
+        value_kk = value_kk * 0.5 + value_ll * 0.25
+        value_ll = value_ll * 0.5 + value_mm * 0.25
+        value_mm = value_mm * 0.5 + value_nn * 0.25
+        value_nn = value_nn * 0.5 + value_oo * 0.25
+        value_oo = value_oo * 0.5 + value_pp * 0.25
+        value_pp = value_pp * 0.5 + value_qq * 0.25
+        value_qq = value_qq * 0.5 + value_rr * 0.25
+        value_rr = value_rr * 0.5 + 2.0
+        step = step + 1
+    }
+    var sum = value_aa + value_bb + value_cc + value_dd + value_ee + value_ff + value_gg + value_hh + value_ii + value_jj + value_kk + value_ll + value_mm + value_nn + value_oo + value_pp + value_qq + value_rr
+    var whole: Long = sum * 1000000.0
+    console.print(whole)
+    var small: Float = 0.0
+    var count = 0
+    while count < 10 {
+        small = small + 0.25
+        count = count + 1
+    }
+    var small_whole: Long = small * 100.0
+    console.print(small_whole)
+}

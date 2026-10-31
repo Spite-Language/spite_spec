@@ -1,0 +1,35 @@
+var console = Console()
+var _wrap = 1000003
+
+func ResultsJoinTheOperandTheyEnd() {
+    load "../../../spite_standard_library/windows"
+    var previous = 1
+    var current = 1
+    var step = 0
+    while step < 60 {
+        var started = current
+        current = (previous + current) % _wrap
+        previous = started
+        step = step + 1
+    }
+    console.print(previous, current)
+    var total = 0
+    var start = 7
+    var round = 0
+    while round < 30 {
+        var moved = start * 3
+        total = moved + round
+        start = total % 97
+        round = round + 1
+    }
+    console.print(total, start)
+    var weight = 1.0
+    var count = 0
+    while count < 20 {
+        var halved = weight * 0.5
+        weight = halved + 0.75
+        count = count + 1
+    }
+    var scaled: Long = weight * 1000000.0
+    console.print(scaled)
+}

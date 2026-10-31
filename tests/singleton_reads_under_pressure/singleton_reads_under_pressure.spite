@@ -1,0 +1,43 @@
+var console = Console()
+var _wrap = 100003
+
+func SingletonReadsUnderPressure() {
+    load "../../../spite_standard_library/windows"
+    var first = 1
+    var second = 2
+    var third = 3
+    var fourth = 4
+    var fifth = 5
+    var sixth = 6
+    var seventh = 7
+    var eighth = 8
+    var ninth = 9
+    var tenth = 10
+    var eleventh = 11
+    var twelfth = 12
+    var lines = List<Integer>()
+    var step = 0
+    while step < 50 {
+        first = first + second % _wrap
+        second = second + third % _wrap
+        third = third + fourth % _wrap
+        fourth = fourth + fifth % _wrap
+        fifth = fifth + sixth % _wrap
+        sixth = sixth + seventh % _wrap
+        seventh = seventh + eighth % _wrap
+        eighth = eighth + ninth % _wrap
+        ninth = ninth + tenth % _wrap
+        tenth = tenth + eleventh % _wrap
+        eleventh = eleventh + twelfth % _wrap
+        twelfth = twelfth % 1000 + step
+        if step % 7 == 0 {
+            lines.append(first % 1000)
+            console.print(step, twelfth)
+        }
+        step = step + 1 % _wrap
+    }
+    var total = first % 1000 + second % 1000 + third % 1000 + fourth % 1000 + fifth % 1000 + sixth % 1000
+    var more = seventh % 1000 + eighth % 1000 + ninth % 1000 + tenth % 1000 + eleventh % 1000
+    var line_count = lines.count()
+    console.print(total, more, line_count)
+}
