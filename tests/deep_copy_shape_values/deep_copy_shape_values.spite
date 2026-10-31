@@ -1,0 +1,34 @@
+enum Colour {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func DeepCopyShapeValues() {
+    load "../../../spite_standard_library/windows"
+    var number = Box()
+    number.held = 5
+    var copied_number = number.deep_copy()
+    var shown_number = copied_number.describe()
+    console.print("number", shown_number)
+    var words = Box()
+    words.held = "words"
+    var copied_words = words.deep_copy()
+    var shown_words = copied_words.describe()
+    console.print("text", shown_words)
+    var crated = Box()
+    var crate = Crate()
+    crate.label = "crate"
+    crated.held = crate
+    var copied_crate = crated.deep_copy()
+    crate.label = "changed"
+    var shown_crate = copied_crate.describe()
+    console.print("crate", shown_crate)
+    var kind = Box()
+    var red: Colour = 'red'
+    kind.held = red
+    var copied_kind = kind.deep_copy()
+    var shown_kind = copied_kind.describe()
+    console.print("enum", shown_kind)
+}

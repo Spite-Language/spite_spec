@@ -46,7 +46,8 @@ Scalars (every numeric type, `Boolean`, an enum value) are plain values, copied.
   `deep_copy()` recurses: every reference-kind attribute/element gets its own `deep_copy()`/independent buffer
   instead of being shared. An attribute or element typed as a union or a `type` shape is copied through the class
   of the value it holds at run time, so a `Cargo` holding a `Crate` gets a new `Crate`; a `String`, a number held
-  in one and a singleton are shared, since none of them can be changed through the copy. A union or a shape value
+  in one, an enum value and a singleton are shared, since none of them can be changed through the copy, even
+  inside a class copied through its table (`tests/deep_copy_shape_values`). A union or a shape value
   answers `deep_copy()` itself (`var copied = cargo.deep_copy()`, a `Cargo`). A class that declares its own
   `deep_copy()` is copied through it wherever it is reached. A self-referring structure (a tree, a linked list, an
   expression whose operands are expressions) is copied node by node (`conformance/stage6/deep_copy_unions`).

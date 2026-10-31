@@ -1,0 +1,12 @@
+type Described {
+    to_string(): String
+}
+
+var held: Described? = null
+
+func describe(): String {
+    if held {
+        return held.to_string()
+    }
+    return "nothing"
+}
