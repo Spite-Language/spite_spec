@@ -1,0 +1,100 @@
+var console = Console()
+
+func VariablesWrittenManyTimes() {
+    load "../../../spite_standard_library/windows"
+    var line = 3
+    var first = line * 7
+    line = first + 2
+    var second = line * line
+    console.print(first, second)
+    var older = 0
+    var newer = 1
+    var step = 0
+    while step < 40 {
+        var swapped = older
+        older = newer
+        newer = newer + swapped
+        step = step + 1
+    }
+    console.print(older, newer)
+    var low = 0
+    var high = 100
+    var guesses = 0
+    while low < high {
+        var middle = (low + high) / 2
+        if middle < 37 {
+            low = middle + 1
+        } else {
+            high = middle
+        }
+        guesses = guesses + 1
+    }
+    console.print(low, guesses)
+    var total = 0
+    var outer = 0
+    while outer < 10 {
+        var inner = outer
+        var kept = total
+        while inner < 10 {
+            if inner % 3 == 0 {
+                total = total + inner
+            } else {
+                total = total - 1
+            }
+            inner = inner + 1
+        }
+        if total < kept {
+            total = kept + outer
+        }
+        outer = outer + 1
+    }
+    console.print(total)
+    var scale = 1.5
+    var drift = 0.25
+    var round = 0
+    while round < 8 {
+        var before = scale
+        scale = scale * 1.25 + drift
+        drift = before * 0.125
+        round = round + 1
+    }
+    var scaled: Long = scale * 1000.0
+    var drifted: Long = drift * 1000.0
+    console.print(scaled, drifted)
+    var from_twelve = counted_down(12)
+    var from_zero = counted_down(0)
+    var from_seven = counted_down(7)
+    console.print(from_twelve, from_zero, from_seven)
+    var words = List<String>()
+    words.append("a")
+    words.append("bb")
+    words.append("ccc")
+    var longest = ""
+    var shortest = "zzzzzz"
+    var index = 0
+    while index < words.count() {
+        var word = words[index]
+        if word.length() > longest.length() {
+            longest = word
+        }
+        if word.length() < shortest.length() {
+            shortest = word
+        }
+        index = index + 1
+    }
+    console.print(longest, shortest)
+}
+
+func counted_down(start: Integer): Integer {
+    var left = start
+    var steps = 0
+    while left > 1 {
+        if left % 2 == 0 {
+            left = left / 2
+        } else {
+            left = left * 3 + 1
+        }
+        steps = steps + 1
+    }
+    return steps
+}
