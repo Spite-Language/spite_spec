@@ -474,6 +474,9 @@ data. What counts as esoteric starts narrow and grows, each widening its own dec
    like 'var _what_it_means = 146097', and write the name here`. When it is the value of a whole-number preset, the
    error adds `, or write Byte.Largest() if it means that`.
 
+A preset may be the default (`var _full_turn = Float.Tau()`), and the attribute is of the preset's class
+(`tests/bands_of_orbits`).
+
 Exempt: an attribute's default (lists and calls in it too), the body of a preset (`func Largest(): Tiny { return
 127 }`, D1776), numbers of one or two digits, and text. `tests/magic_number_exempt`, `conformance/esoteric_number`,
 `conformance/esoteric_preset`.
