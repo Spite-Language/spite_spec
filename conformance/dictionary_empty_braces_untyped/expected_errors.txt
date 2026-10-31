@@ -1,0 +1,1 @@
+conformance/dictionary_empty_braces_untyped/dictionary_empty_braces_untyped.spite:6: error: an Object has no attribute or function 'count' (in DictionaryEmptyBracesUntyped.DictionaryEmptyBracesUntyped)

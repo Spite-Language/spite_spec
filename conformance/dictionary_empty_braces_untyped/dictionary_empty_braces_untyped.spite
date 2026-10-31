@@ -1,0 +1,8 @@
+var console = Console()
+
+func DictionaryEmptyBracesUntyped() {
+    load "../../../spite_standard_library/windows"
+    var scores = {}
+    var count = scores.count()
+    console.print(count)
+}

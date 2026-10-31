@@ -239,8 +239,11 @@ and a value, then `}`. A key is a text literal or a whole-number literal: a brac
 literal instead. The entries are set in the order written. Stored where a `Dictionary<Key, Value>` is declared, the
 literal has that type and each key and value is cast to it; otherwise its key type is `String` when its first key
 is text and `Integer` when it is a number, and its value type is the first value's. The same key twice is `"key" is
-written twice in this dictionary: keep one entry for each key`. `{}` is an empty object literal, never a
-dictionary: an empty dictionary is `Dictionary<Key, Value>()`.
+written twice in this dictionary: keep one entry for each key`. `{}` where a `Dictionary<Key, Value>` is declared
+(a variable, an attribute, a parameter) is that empty dictionary, as `[]` is an empty list where a `List<T>` is
+declared (`tests/dictionary_empty_braces`). Where nothing names the type, `{}` is an empty object literal, never a
+dictionary, so `var scores = {}` then `scores.count()` is `an Object has no attribute or function 'count'`
+(`conformance/dictionary_empty_braces_untyped`); an empty dictionary there is `Dictionary<Key, Value>()`.
 
 **A key the literal lacks, asked for by a `crash`, is a compile error.** A local dictionary written out and read only
 by keys written out is known while compiling, so `crash points["platinum"]` on a key it does not hold would halt every

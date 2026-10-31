@@ -1,0 +1,17 @@
+var console = Console()
+
+func DictionaryEmptyBraces() {
+    load "../../../spite_standard_library/windows"
+    var scores: Dictionary<String, Integer> = {}
+    var before = scores.count()
+    scores["ada"] = 3
+    var after = scores.count()
+    var board = Board()
+    var held = board.points.count()
+    var given = count_entries({})
+    console.print(before, after, held, given)
+}
+
+func count_entries(entries: Dictionary<String, Integer>): Integer {
+    return entries.count()
+}

@@ -1,0 +1,1 @@
+var points: Dictionary<String, Integer> = {}
