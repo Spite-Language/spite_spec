@@ -1,6 +1,7 @@
 var console = Console()
 var _first_factor = 46341
 var _second_factor = 46340
+var build = Build()
 
 func HotReloadProvesRanges() {
     load "../../../spite_standard_library/windows"
@@ -33,7 +34,7 @@ func multiplied(first: Integer, second: Integer): Integer {
 }
 
 func print_report() {
-    var report = File(".spite/reports/hot_reload_proves_ranges.md").read_as_string()
+    var report = File("{build.program}/.spite/reports/hot_reload_proves_ranges.md").read_as_string()
     crash report
     var lines = report.split("\n")
     var index = 0

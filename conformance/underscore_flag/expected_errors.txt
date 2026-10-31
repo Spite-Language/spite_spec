@@ -1,1 +1,1 @@
-error: '--repl_port' is written '--repl-port': flags and settings are kebab-case on the command line, and the field they set is 'repl_port'
+error: '--repl_port' is written '--repl-port': a program's setting is kebab-case on the command line, like the compiler's flags, and it sets Environment.repl_port

@@ -1,2 +1,2 @@
 report written true
-allocations: 61 frees: 61
+allocations: 105 frees: 105

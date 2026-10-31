@@ -1,1 +1,1 @@
-error: '--program' cannot be given: the program is the folder named on the command line, 'spite folder', and Build.program is set from it
+error: '--program' cannot be given: the program is the folder the compiler runs in, 'cd folder' then 'spite', and Build.program is set from it

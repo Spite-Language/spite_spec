@@ -4,6 +4,7 @@ var tally = Tally()
 var pulse = Pulse()
 var queue = Queue()
 var frames = 0
+var build = Build()
 
 func FrameWaitsKept() {
     load "../../../spite_standard_library/windows"
@@ -23,7 +24,7 @@ func FrameWaitsKept() {
 }
 
 func print_report() {
-    var report = File(".spite/reports/frame_waits_kept.md").read_as_string()
+    var report = File("{build.program}/.spite/reports/frame_waits_kept.md").read_as_string()
     crash report
     var lines = report.split("\n")
     var index = 0

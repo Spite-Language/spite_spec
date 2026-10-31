@@ -22,6 +22,7 @@ or inspect. They are kept so that the behaviour they checked can be rebuilt as l
 - number_memory: a number declaring a wrong byte size with Memory.Bytes (conformance); retired because Memory is not a class under D662
 - number_memory_spelling: a number's memory spelled with a heap allocation (conformance); retired because Memory.Heap is not a class under D662
 - foreign_callbacks_voices: C calling a callback table kept in heap memory; retired because Memory.Heap and Memory.Address are not classes under D662 (the rest of foreign_callbacks stays in tests)
+- program_arguments, launcher_arguments, programs_bare_double_dash: `Program.arguments()` read the raw command line; retired because every value on a command line is a named setting and `arguments()` is gone (D1775)
 
 These programs used `Concurrent` or `Parallel`, which left the language under D1715 (spite_compiler#224): what they printed came from the handles themselves, so plain code that runs in order cannot print it. They are kept so the behaviour can be rebuilt as work the compiler overlaps itself (spite_compiler#218, #219, #220).
 

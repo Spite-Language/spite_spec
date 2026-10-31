@@ -89,7 +89,7 @@ reload (`--hot-reload`). The REPL is Spite the compiler adds to a build that ask
 reflection; nothing of it is in a build that did not ask for it. It answers paths, singletons by name, assignment of
 a literal, calls with literal arguments and paths through what they answer, `attributes`, `functions`, `classes`,
 `describe`, `enums`, `memory`, `help`, `exit`, `reload`, `last_reload` and `wait_reload`, assignment into elements,
-`T?`s and of whole instances, and walking into a union. `--repl-port` runs it over `spite connect` and `Tcp`,
+`T?`s and of whole instances, and walking into a union. `--repl-port` runs it over `spite --connect` and `Tcp`,
 answered where the program waits and at each loop's check point. Live reload runs on Windows. Code typed at the
 prompt is compiled and run by `eval` and `run`.
 
@@ -359,12 +359,15 @@ The design:
   still runs (a loop told to stop prints its last line): it ends at once only when nothing would wake the wait it
   answered at (no sleep or helper thread running), or when the constructor has already returned. When the constructor returns first, `main` serves commands until then. With `--repl` too, the console
   loop runs first, and after its `exit` the process keeps serving.
-- `spite program --repl-port=4000` is the form, as for every `Build` field; a port outside 1 to 65535 is
-  `error: --repl-port takes a port number from 1 to 65535: spite program --repl-port=4000`.
+- `spite --repl-port=4000` is the form, as for every `Build` field; a port outside 1 to 65535 is
+  `error: --repl-port takes a port number from 1 to 65535: spite --repl-port=4000`.
 
-### `spite connect <port>`
+### `spite --connect=<port>`
 
-A tiny client built into the compiler binary itself, over the same `Tcp` classes (a `Tcp.Client`): with no `--command`, an
+A tiny client built into the compiler binary itself, over the same `Tcp` classes (a `Tcp.Client`), run from any folder
+with `--connect=<port>` and, optionally, `--command="..."`; any other setting beside them is `error: '<setting>' is
+not a setting of --connect, which takes a port and an optional command: spite --connect=4000 --command="..."`, and a
+port outside 1 to 65535 is `error: --connect takes a port number from 1 to 65535: spite --connect=4000`. With no `--command`, an
 interactive prompt that sends each typed line and pretty-prints the JSON response (`value (type)`, just `value`
 when the type is empty or `Nothing`, or `error: message`); with `--command="..."`, sends that one command, prints
 the raw JSON response line, and exits, which is the form tests and AI clients use. Nothing listening on the port
@@ -384,7 +387,7 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   it has no slots, no watcher and no reload code: `reload` answers `'reload' answers in a program built with
   --hot-reload, which swaps its code while it runs, and this one was not`, from a branch folded on the `Build`
   constant. As with `--repl-port`, a `--hot-reload` build swaps where the program waits and at each loop's check
-  point. `spite program --hot-reload` runs the program attached to the terminal, like a REPL build.
+  point. `spite --hot-reload` runs the program attached to the terminal, like a REPL build.
 - **A `--hot-reload` build compiles like an inspectable build.** It keeps every run-time check of one, and it
   inlines no call and evaluates no call while compiling, so every call of a function a reload can replace reaches the
   function's slot, also from a loop that is running when the reload swaps (a loop that called an inlined copy would

@@ -1,2 +1,2 @@
 var player_name = ""
-var optimized = false
+var player_count = 1

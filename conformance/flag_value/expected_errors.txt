@@ -1,1 +1,1 @@
-error: '--optimized=maybe' was given to the compiler, but 'Build.optimized' is a Boolean: --optimized, --optimized=true or --optimized=false
+error: the setting Environment.optimized was given 'maybe', which is not a Boolean, 'true' or 'false': write --optimized=true on the command line, or OPTIMIZED=true in the environment or a .env file

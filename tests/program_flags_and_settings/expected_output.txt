@@ -1,4 +1,3 @@
-given 3
 verbose true
 port 4000
 quiet false

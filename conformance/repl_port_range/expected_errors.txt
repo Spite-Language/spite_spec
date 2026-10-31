@@ -1,1 +1,1 @@
-error: --repl-port takes a port number from 1 to 65535: spite program --repl-port=4000
+error: --repl-port takes a port number from 1 to 65535: spite --repl-port=4000

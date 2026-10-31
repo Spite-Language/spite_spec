@@ -4,9 +4,6 @@ var program = Program()
 func System() {
     load "../../../spite_standard_library/windows"
     var one_millisecond = Duration(1, 'milliseconds')
-    var arguments = program.arguments()
-    var arguments_count = arguments.count()
-    console.print(arguments_count, "|")
     var folder = Directory(".spite/conformance_system")
     var create = folder.create()
     var exists = folder.exists()

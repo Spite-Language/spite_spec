@@ -1,1 +1,1 @@
-conformance/setting_named_like_flag/environment.spite:2: error: 'Environment.optimized' and 'Build.optimized' are both '--optimized' on the command line: a program's settings and the compiler's flags share one set of names, so one of them needs another name
+conformance/setting_named_like_flag/environment.spite:2: error: 'Environment.player_count' and 'Build.player_count' are both '--player-count': the program's Build is given when it is compiled and its Environment when it runs, and both are read from PLAYER_COUNT in the environment too, so one of them needs another name

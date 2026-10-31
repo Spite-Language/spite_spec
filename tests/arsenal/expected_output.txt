@@ -1,4 +1,2 @@
 magic hit for 10
 environment is server
-argument count 1
-first argument --name=server

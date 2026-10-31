@@ -1,12 +1,17 @@
 var console = Console()
-var compiler = "..\\spite_compiler\\.spite\\spite.exe"
+var program = Program()
 var folder = ".spite/relayed"
 
 func CompilerRunsTheProgram() {
     load "../../../spite_standard_library/windows"
     write_the_program()
-    var arguments = [folder, "ada", "--volume=7", "--optimized", "two words"]
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var arguments = ["--optimized"]
     var running = Process(compiler, arguments)
+    running.working_directory = folder
+    running.environment_variables["VOLUME"] = "7"
     var code = running.run()
     crash code
     var printed_text = running.read_output_as_string()
@@ -27,18 +32,10 @@ func write_the_program() {
     var lines = List<String>()
     lines.append("var console = Console()")
     lines.append("var environment = Environment()")
-    lines.append("var program = Program()")
     lines.append("")
     lines.append("func Relayed(): Integer \{")
     lines.append("    load \"../../../spite_standard_library/windows\"")
-    lines.append("    var arguments = program.arguments()")
-    lines.append("    var count = arguments.count()")
-    lines.append("    var first = arguments[0]")
-    lines.append("    crash first")
-    lines.append("    var last = arguments[2]")
-    lines.append("    crash last")
-    lines.append("    var volume = environment.volume")
-    lines.append("    console.print(count, first, last, volume)")
+    lines.append("    console.print(\"volume\", environment.volume)")
     lines.append("    var line = console.read_line()")
     lines.append("    console.print(line)")
     lines.append("    return 3")

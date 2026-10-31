@@ -153,20 +153,7 @@ func make_a_folder(path: String) {
 
 func named_folders(): List<String> {
     var named = List<String>()
-    var arguments = program.arguments()
-    var index = 0
-    while index < arguments.count() {
-        var argument = arguments[index]
-        add_named(named, argument)
-        index = index + 1
-    }
-    return named
-}
-
-func add_named(named: List<String>, argument: String) {
-    var is_a_setting = argument.starts_with("--") and argument != "--failed"
-    fallback not is_a_setting
-    if argument == "--failed" {
+    if environment.failed {
         var last = last_failures()
         var failure_index = 0
         while failure_index < last.count() {
@@ -174,9 +161,24 @@ func add_named(named: List<String>, argument: String) {
             named.append(failure)
             failure_index = failure_index + 1
         }
-        return
     }
-    var without_slash = trimmed_slash(argument)
+    if environment.tests.is_empty() {
+        return named
+    }
+    var patterns = environment.tests.split(",")
+    var index = 0
+    while index < patterns.count() {
+        var pattern = patterns[index]
+        var trimmed = pattern.trim()
+        add_named(named, trimmed)
+        index = index + 1
+    }
+    return named
+}
+
+func add_named(named: List<String>, pattern: String) {
+    fallback not pattern.is_empty()
+    var without_slash = trimmed_slash(pattern)
     if not without_slash.ends_with("*") {
         named.append(without_slash)
         return
@@ -277,7 +279,8 @@ func run_test(folder: String) {
     fallback copy
     var flags = optional_text(folder, "flags.txt")
     var no_arguments = List<String>()
-    var compile = Process("{compiler} {copy} {flags} --build 2>&1 1>nul", no_arguments)
+    var compiling = compiling_in(copy)
+    var compile = Process("{compiling} {flags} --build 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     if compiled != 0 {
         var output = compile.read_output_as_string()
@@ -318,6 +321,19 @@ func run_test(folder: String) {
     passed = passed + 1
 }
 
+func compiling_in(copy: String): String {
+    var working = absolute_working()
+    var windows_copy = copy.replace("/", "\\")
+    var windows_compiler = compiler.replace("/", "\\")
+    return "cd /d \"{working}\\{windows_copy}\" && \"{working}\\{windows_compiler}\""
+}
+
+func absolute_working(): String {
+    var working = program.working_directory()
+    crash working
+    return working
+}
+
 func optional_text(folder: String, name: String): String {
     var file = File("{folder}/{name}")
     var text = file.read_as_string()
@@ -332,7 +348,8 @@ func run_conformance(folder: String) {
     fallback copy
     var flags = built_only(folder)
     var no_arguments = List<String>()
-    var compile = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
+    var compiling = compiling_in(copy)
+    var compile = Process("{compiling} {flags} 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     var only_formats = only_formatting(wanted)
     if compiled == 0 and not only_formats {
@@ -367,7 +384,8 @@ func built_only(folder: String): String {
 
 func check_formatted_once(folder: String, copy: String, flags: String) {
     var no_arguments = List<String>()
-    var again = Process("{compiler} {copy} {flags} 2>&1 1>nul", no_arguments)
+    var compiling = compiling_in(copy)
+    var again = Process("{compiling} {flags} 2>&1 1>nul", no_arguments)
     var compiled = again.run()
     var output = again.read_output_as_string()
     crash output
@@ -456,7 +474,11 @@ func build_moved_back(copy: String, folder: String): Boolean {
 func in_the_folder(output: String, copy: String, folder: String): String {
     var windows_copy = copy.replace("/", "\\")
     var windows_folder = folder.replace("/", "\\")
-    var forward = output.replace(copy, folder)
+    var working = absolute_working()
+    var forward_working = working.replace("\\", "/")
+    var absolute = output.replace("{working}\\{windows_copy}", folder)
+    var absolute_forward = absolute.replace("{forward_working}/{copy}", folder)
+    var forward = absolute_forward.replace(copy, folder)
     return forward.replace(windows_copy, windows_folder)
 }
 

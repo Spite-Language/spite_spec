@@ -8,14 +8,13 @@ is the bug.
 
 There is no `main`: a program is a folder, its entry file is the file named after the folder (`kal/kal.spite`,
 class `Kal`), and the program is run by constructing that class; when the constructor returns, the program
-ends with exit code `0`. A program is named only by its folder: `error: 'game/game.spite' is a file, and
-a program is named by its folder: spite game`, and a folder with no entry file named after it is an error naming
+ends with exit code `0`. A program is its folder, the one the compiler runs in, and a folder with no entry file named after it is an error naming
 the file looked for. No other file may reopen the entry class
 ([Packages, namespaces and loading](packages.md#packages-namespaces-and-loading)).
 
 The entry constructor takes **no arguments**: `'Kal' is the entry constructor, and it takes no arguments:
 a program reads its run-time settings through Environment() (declared in its environment.spite, given on the
-command line beside the compiler's flags), what its build decided through Build(), and the raw command line through Program().arguments(), anywhere`
+command line beside the compiler's flags), and what its build decided through Build(), anywhere`
 (`diagnostics/entry_constructor_arguments`).
 
 ```gdscript kal.spite
@@ -27,18 +26,11 @@ func Kal() {
 }
 ```
 
-**`Program()` holds what the program was started with, anywhere**: `program.arguments(): List<String>` is what
-the program was given (when the compiler runs it, the settings its `Environment` declares and every argument
-after the folder that is not a flag), in order and verbatim, the executable's own path left out
-(`tests/program_arguments`, `tests/launcher_arguments`). Two reads tell a setting from a flag, and neither stands
-in for the other (`tests/program_flags_and_settings`):
-
-- A named value (`--name=value`, a bare `--name`) is never read by its text: it reaches the program only as the
-  `Environment` or `Build` attribute it sets (D1760), `program.argument_named` and `program.has_flag` having gone.
-
-A bare `--` is an ordinary argument to it (`tests/programs_bare_double_dash`). There is no `Arguments` class:
-`Program` is the one class for what the program was started with, and `Environment` reads its settings from
-`program.arguments()` itself. The command line is read from the process each time `arguments()` is called.
+**Every value on a command line is a named setting** (D1775): `--name=value`, or a bare `--name` for a
+`Boolean`, reaching the program only as the `Environment` or `Build` attribute it sets (D1760). Nothing is given
+by position and nothing is read by its text: `Program` has no `arguments()`, `argument_named` or `has_flag`, and
+a word, a bare `--` or a flag the program declares no setting for is not read
+(`tests/program_flags_and_settings`, `tests/programs_arguments_beside_settings`).
 
 **Nothing starts a program behind its back.** The program is the entry point: there is no launcher. The compiler
 reads the entry file, and the leading `load` lines of its entry function name the standard library, very explicitly
@@ -52,7 +44,7 @@ nothing is an error. See [The standard library is a folder loaded by its path](p
   A `load` compiles to nothing at run time.
 - The program's own folder is the root its entry file sits in, and constructing the entry class is what runs it;
   with `--repl` a loop runs on it when asked, and it is released afterwards.
-- The executable keeps only the floor: it leaves the command line to `Program().arguments()`, constructs the entry class, and
+- The executable keeps only the floor: it leaves the command line to `Environment()`, constructs the entry class, and
   afterwards releases the singletons and class objects and prints the `--debug-memory` balance.
 - The exit code is the value the entry constructor answers; a constructor that answers nothing leaves it at 0.
 
@@ -74,7 +66,15 @@ What follows is how it is compiled:
   receives, see [Command line](compiler.md#command-line)); the process environment variable named by the field
   in upper case, `SERVE`; a `.env` file the program loaded (below); the declared default. The command line wins
   because it is the more deliberate, and the process environment wins over a file, as dotenv does. An argument
-  that names no field is left alone for `program.arguments()` to read.
+  that names no field stops the program as `Environment` is first made, with exit code 1 after `error: '--colour'
+  names no setting of Environment: declare it in environment.spite, like 'var colour = ""', and the program reads it
+  as Environment().colour` (`tests/environment_undeclared_flag`), and so does a word given by position, `error:
+  'red' is given by position: every value on the command line is a named setting, like --name=red, declared in
+  environment.spite as 'var name = ""'` (`tests/environment_word_by_position`): every value is a declared setting
+  (D1812). There is no `unread_settings()`. The compiler is the one program that reads the flags its `Environment`
+  does not declare, as the `Build` flags of the program it compiles ([compiler.md](compiler.md#flags-and-settings)):
+  its `environment.spite` declares the private `_flags`, which the compiler fills with every flag given in its
+  `_read_settings`, and then no flag is refused (D1813, D1815).
 - **A `.env` file.** `environment.load_from_file(path): Boolean` reads a file of `NAME=value` lines (spaces
   around both trimmed, blank lines and lines starting with `#` skipped) and reads every setting again, so a
   setting neither the command line nor the process environment gives takes the file's value
@@ -92,33 +92,41 @@ What follows is how it is compiled:
   kebab-case on the command line, like the compiler's flags, and it sets Environment.worker_count`, exit code 1.
   The check is one pass over the arguments when `Environment` is first made, and only in a program that
   declares a setting.
-- **One set of names.** A setting and a compiler flag are written the same way, so an `Environment` field named
-  like a field of `Build` (the compiler's options, or one the program's `build.spite` or a package declares) is
-  a compile error naming both (`diagnostics/setting_named_like_flag`): rename one.
+- **One set of names.** A program's `Build` field is given when it is compiled and its `Environment` field when
+  it runs (D1813), both written the same way and both read from the same variable, so an `Environment` field
+  named like a field the program's `build.spite` declares is a compile error naming both
+  (`diagnostics/setting_named_like_flag`): rename one. The compiler's options are flags of the compiler's own
+  `Environment`, so a program's setting may share their names.
 - **The default's literal is the type.** A setting is declared with nothing but a literal default: `false`/`true`
-  is a `Boolean`, a whole number (negative too) an `Integer`, `""` a `String`. A type annotation, or any other
-  default, is a compile error naming the three forms: `'Environment.workers' is a setting, read from the
+  is a `Boolean`, a whole number (negative too) an `Integer`, `""` a `String`. A setting of an enum the
+  `Environment` declares writes its type, `var mood: Mood = 'calm'`, and takes only that enum's value names
+  (`tests/environment_enum_setting`); any other text stops the program with `error: the setting Environment.mood
+  was given 'happy', which is not one of its values: calm, angry: write --mood=calm on the command line, or
+  MOOD=calm in the environment or a .env file` (`tests/environment_enum_refused`, D1812). Any other type
+  annotation, or any other default, is a compile error naming the forms: `'Environment.workers' is a setting, read from the
   program's command line (--workers=value) or its environment (WORKERS), so it is declared with only a literal
   default, and the literal is its type: 'var workers = false' (Boolean), 'var workers = 0' (Integer) or 'var
-  workers = ""' (String)` (`diagnostics/environment_setting`). Text that is not a value of the setting's type
+  workers = ""' (String), or one value of an enum the Environment declares, its type written: 'var workers: Kind
+  = ...'` (`diagnostics/environment_setting`). Text that is not a value of the setting's type
   (`--serve=maybe`, `--workers=many`, a bare `--name` for a `String`) is a compile error when it is given to the
   compiler (`diagnostics/setting_value`). In a program run directly, wherever the value came from (the command
   line, the process environment or a `.env` file), it stops the program with exit code 1 after an error naming
   the setting, the value and the form it takes, since there is no line of the program to point to (D1760):
-  `error: the setting Environment.workers was given 'many', which is not a whole number: write --workers=4 on
-  the command line, or WORKERS=4 in the environment or a .env file` (`tests/programs_setting_value_run`,
+  `error: the setting Environment.workers was given 'many', which is not an Integer, a whole number: write
+  --workers=4 on the command line, or WORKERS=4 in the environment or a .env file` (`tests/programs_setting_value_run`,
   `tests/environment_bare_text_setting`).
 - **How the fields get filled.** The compiler writes one assignment per declared field into `Environment`'s
   `_read_settings`, which the constructor and `load_from_file` call, `serve = boolean_setting("serve", serve)`, where `boolean_setting`, `integer_setting` and
   `text_setting` are ordinary Spite functions of `Environment`. The reading itself is Spite; the
   compiler only writes the calls, the way it writes a template
   (`conformance/stage6/environment_settings`).
-- **The compiler passes a setting on.** `spite program --serve=true` with `serve` declared in `Environment`
-  checks the value while compiling and gives `--serve=true` to the program when it runs it; nothing about the
-  setting is written into the build. There is no `--` separator between the compiler's flags and the program's
-  (`diagnostics/separator_flag`).
+- **The compiler passes no setting on.** `spite --serve=true` is refused, since `serve` is no flag of the
+  compiler's `Environment` and no field of the program's `Build`: a program's settings are given to its
+  executable, and the program the compiler runs reads them from the environment (`SERVE=true`) or a `.env` file
+  (D1812, D1813). There is no `--` separator (`diagnostics/separator_flag`).
 - **Run-time cost**: one pass over the command line and one environment lookup per declared field, once,
-  when `Environment()` is first made. A program that never makes `Environment()` has none of its code: the
+  when `Environment()` is first made. A program that never makes `Environment()` reads no flag and refuses none,
+  and has none of its code: the
   class is tree-shaken with the rest of the unused library.
 - **A `--hot-reload` build reads the settings again after a reload**: a reload that changes
   `environment.spite` moves `Environment` to its new attributes and reads every setting again, as when the program
@@ -158,8 +166,8 @@ with a literal default, and a program adds its own the same way it adds `Environ
   sets any other; a field only one side declares is unchanged (`conformance/stage6/build_precedence`). A field
   that decides a `load` is still read before any package is loaded, so it must be the program's or the library's.
 - **Flags are kebab-case**: `--repl-port=4000` sets the field `repl_port`, and a flag written with `_` is
-  an error before anything is read: `'--repl_port' is written '--repl-port': a flag is kebab-case, and it sets
-  the Build field 'repl_port'` (`diagnostics/underscore_flag`).
+  an error before anything is read, naming the hyphen form ([compiler.md](compiler.md#flags-and-settings),
+  `diagnostics/underscore_flag`).
 - **The compiler's options are fields**: `check`, `build`,
   `final_classes` and `optimization_report`, the path `executable_path`, and `optimized`, `development`, `repl`, `repl_port`,
   `hot_reload` and `debug_memory` ([Command line](compiler.md#command-line)). The compiler reads them from the
@@ -197,8 +205,8 @@ with a literal default, and a program adds its own the same way it adds `Environ
   keeps one branch. Each system's folder reopens `Build` with `var target_operating_system = "linux"`, which is
   only the default for a program that is read without the flag. The compiler
   learns which system it runs on from its own `build.target_operating_system`, folded when it was built.
-- **`program`** is the folder named on the command line, as it is written there (`tests/loaded_program` for
-  `spite tests/loaded_program`); the compiler supplies it and giving it is an error
+- **`program`** is the full path of the folder the compiler built, the one it runs in (`D:\games\loaded_program`
+  for `cd D:\games\loaded_program` then `spite`); the compiler supplies it and giving it is an error
   (`tests/loaded_program`).
 - **`--final-classes` prints `Build` with its declared defaults**, not the values one build folded, so running the
   printed program takes its flags again instead of, say, printing its classes forever.

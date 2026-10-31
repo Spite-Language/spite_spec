@@ -909,12 +909,10 @@ Rules: 40. Covered before: 20. Covered now: 35.
 | A folder with no entry file is an error naming the file looked for | conformance/programs_no_entry_file | added (compiler fails: names 'programsnoentryfile.spite') |
 | The entry constructor takes no arguments | conformance/entry_constructor_arguments | covered |
 | The program ends with exit code 0 when the constructor returns | tests/exit_code | covered |
-| `Program.arguments()` and `argument_named(name)` as `String?` | tests/program_arguments, tests/launcher_arguments | covered |
-| A flag and a setting told apart: `has_flag` answers only a bare `--name`, `argument_named` only a `--name=...` | tests/program_flags_and_settings | added |
+| A bare flag and a valued one set a `Boolean` and an `Integer` setting, and a setting not given keeps its default | tests/program_flags_and_settings | added |
 | A bare `--name` for a `String` setting crashes when `Environment` is made | tests/environment_bare_text_setting | added |
-| A flag not given reads `null` | tests/programs_arguments_beside_settings | added |
-| A bare `--` is an ordinary argument | tests/programs_bare_double_dash | added |
-| The launcher loads library, system folder, then the program | tests/launcher_arguments, tests/system_folder | covered |
+| A setting not given keeps its default | tests/programs_arguments_beside_settings | added |
+| The launcher loads library, system folder, then the program | tests/system_folder | covered |
 | A `load` names its folder with literal text, may sit under a `Build` `if` | conformance/load_unknown_condition, tests/load_on_build | covered |
 | `Environment` reopened with one `var` per setting | tests/environment_settings | covered |
 | Setting from the command line, bare `--name` for a `Boolean` | tests/programs_setting_bare_boolean, tests/environment_settings | added |
@@ -1545,7 +1543,7 @@ Rules: 51. Covered before: 22. Covered now: 35.
 | `spite compiler --verify` and `--release` (the compiler proves itself) | none | missing |
 | A Boolean flag may be bare | tests/kebab_setting | covered |
 | No folder named prints the usage and exits 1 | none | missing |
-| A `.spite` path is "'game/game.spite' is a file, and a program is named by its folder ..." | none | missing |
+| A word given by position, the folder too, is "'game' is given by position: every value on the command line is a named setting ..." | conformance/folder_by_position | covered |
 | A folder without its entry is "'game' holds no program ..." | none | missing |
 | An entry constructor with parameters is an error at its line | conformance/entry_constructor_arguments | covered |
 | `--check` and `--build` together is the "give one of them" error | conformance/check_and_build_flags | added (compiler fails: '--build' is an unknown option) |
@@ -1575,7 +1573,7 @@ Rules: 51. Covered before: 22. Covered now: 35.
 | `target_operating_system` in `build.spite` is the error naming the flag | conformance/target_in_build | covered |
 | `--operating-system` cannot be given | conformance/operating_system_flag | added (compiler fails: compiles) |
 | `--program` cannot be given | conformance/program_flag | added (compiler fails: compiles) |
-| The program receives its settings and every argument that is not a flag, in order | tests/program_arguments, tests/launcher_arguments | covered |
+| The program receives the settings its `Environment` declares, and the compiler builds the folder it runs in | tests/compiler_runs_the_program, tests/compiler_builds_its_folder | covered |
 | A bare `--` is not a separator | conformance/separator_flag | added (compiler fails: the generic unknown-option error) |
 | A flag or setting given twice is the error | conformance/flag_given_twice | covered |
 | Inspectable builds keep every function and make stateless singletons objects; production builds shake | tests/kept_templates | covered |

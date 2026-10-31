@@ -1,10 +1,8 @@
 var console = Console()
 var environment = Environment()
-var program = Program()
 
 func Arsenal() {
     load "../../../spite_standard_library/windows"
-    var arguments = program.arguments()
     var sword = Weapon<Integer, true>(10)
     sword.hit()
     if environment.name == "server" {
@@ -15,9 +13,4 @@ func Arsenal() {
     if not environment.player.is_empty() {
         console.print("player", environment.player)
     }
-    var arguments_count = arguments.count()
-    console.print("argument count", arguments_count)
-    var argument = arguments[0]
-    crash argument
-    console.print("first argument", argument)
 }

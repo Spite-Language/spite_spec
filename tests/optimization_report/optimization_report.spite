@@ -1,6 +1,7 @@
 var console = Console()
 var badges = List<Badge>()
 var spots = List<Spot>()
+var build = Build()
 
 func OptimizationReport() {
     load "../../../spite_standard_library/windows"
@@ -66,7 +67,7 @@ func remember(kept: Spot) {
 }
 
 func print_report() {
-    var report = File(".spite/reports/optimization_report.md").read_as_string()
+    var report = File("{build.program}/.spite/reports/optimization_report.md").read_as_string()
     crash report
     var lines = report.split("\n")
     var index = 0

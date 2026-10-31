@@ -1,0 +1,7 @@
+var console = Console()
+var environment = Environment()
+
+func EnvironmentEnumRefused() {
+    load "../../../spite_standard_library/windows"
+    console.print(environment.mood)
+}

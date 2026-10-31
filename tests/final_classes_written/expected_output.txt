@@ -1,9 +1,9 @@
 gold
 marked true
-# ../../tests/final_classes_written/badge.spite
+# ../../badge.spite
 var name = ""
 
-# ../../tests/final_classes_written/badge.spite
+# ../../badge.spite
 func Badge(starting_name: String) {
     name = starting_name
 }

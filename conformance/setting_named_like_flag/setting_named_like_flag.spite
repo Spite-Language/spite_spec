@@ -3,5 +3,5 @@ var environment = Environment()
 
 func SettingNamedLikeFlag() {
     load "../../../spite_standard_library/windows"
-    console.print(environment.player_name, environment.optimized)
+    console.print(environment.player_name, environment.player_count)
 }

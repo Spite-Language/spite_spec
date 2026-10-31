@@ -1,1 +1,1 @@
-error: the setting Environment.name was given '--name', which is not a text after '=': write --name=value on the command line, or NAME=value in the environment or a .env file
+error: the setting Environment.name was given '--name', which is not a String, a text after '=': write --name=value on the command line, or NAME=value in the environment or a .env file

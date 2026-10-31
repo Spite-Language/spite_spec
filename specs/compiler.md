@@ -6,31 +6,33 @@ is the bug.
 
 ## Command line
 
-Every command and flag the compiler has. `program` is a folder; every flag is a field of `Build`
-([Build options](https://github.com/Spite-Language/spite_documentation/blob/master/compiler.md#build-options), [programs.md](programs.md#build-settings-build)) or of the program's
-`Environment` ([programs.md](programs.md#program-settings-environment)), which the program reads when it runs.
+Every command and flag the compiler has. The compiler builds the program in the folder it is run from, so `cd
+game` then `spite` builds `game` (D1775): nothing is given by position. The compiler is an executable like any
+other (D1813): every flag below is a setting its own `environment.spite` declares, read and checked like a
+program's ([programs.md](programs.md#program-settings-environment)), and running it is the compile of the program
+it builds, so a flag may also set a field of that program's `Build` ([Build options](https://github.com/Spite-Language/spite_documentation/blob/master/compiler.md#build-options),
+[programs.md](programs.md#build-settings-build)). A flag that is neither is refused, and so is a setting of the
+program's `Environment`, which its executable is given when it runs.
 
 ```
-spite program                           build .spite/build/program/program.exe and run it
-spite program --check                   format the program and compile it, writing nothing but its formatting
-spite program --build                   build the executable without running it
-spite program --executable-path=path    put the executable at path (not with --check)
-spite program --final-classes=folder    also write the final classes into folder (inspect merged classes)
-spite program --optimization-report=file   also write what could not be optimised, and why, into file
-spite program --optimized               a release build: -O3, and link-time optimisation across translation units
-spite program --development             an inspectable build: no tree shaking, internals as ordinary objects
-spite program --debug-memory            count allocations and frees, print the balance when the program ends
-spite program --trace-fallbacks           print each fallback taken as it fails, as well as in a crash's report
-spite program --repl                    run it, then answer REPL commands at the terminal (repl.md)
-spite program --repl-port=4000          serve REPL commands on 127.0.0.1:4000 while it runs (repl.md)
-spite program --hot-reload              swap changed classes into the running program (implies --development)
-spite program --target-operating-system=linux   compile for another system: windows, linux or mac
-spite program --serve=true              set a Build field the program declares in its build.spite (programs.md)
-spite program ada --player-name=x       run it, passing a setting its Environment declares, and any argument
-                                        that is not a flag, to the program (Environment, Program.arguments)
-spite connect port                      talk to a program running with --repl-port=port (repl.md)
-spite connect port --command="..."      send one REPL command, print its raw JSON answer line, and exit
-spite reload program ... --executable-path=running   what a --hot-reload program runs to rebuild itself (repl.md)
+spite                                   build .spite/build/<folder>.exe and run it
+spite --check                           format the program and compile it, writing nothing but its formatting
+spite --build                           build the executable without running it
+spite --executable-path=path            put the executable at path (not with --check)
+spite --final-classes=folder            also write the final classes into folder (inspect merged classes)
+spite --optimization-report=file        also write what could not be optimised, and why, into file
+spite --optimized                       a release build: -O3, and link-time optimisation across translation units
+spite --development                     an inspectable build: no tree shaking, internals as ordinary objects
+spite --debug-memory                    count allocations and frees, print the balance when the program ends
+spite --trace-fallbacks                 print each fallback taken as it fails, as well as in a crash's report
+spite --repl                            run it, then answer REPL commands at the terminal (repl.md)
+spite --repl-port=4000                  serve REPL commands on 127.0.0.1:4000 while it runs (repl.md)
+spite --hot-reload                      swap changed classes into the running program (implies --development)
+spite --target-operating-system=linux   compile for another system: windows, linux or mac
+spite --serve=true                      set a Build field the program declares in its build.spite (programs.md)
+spite --connect=port                    talk to a program running with --repl-port=port (repl.md)
+spite --connect=port --command="..."    send one REPL command, print its raw JSON answer line, and exit
+spite ... --executable-path=running --reload-at=address   what a --hot-reload program runs to rebuild itself (repl.md)
 ```
 
 ### The compiler proves itself
@@ -60,8 +62,8 @@ How a run works:
   compiler compiles its own sources needs one more generation to settle: the new C is built into a compiler, that
   compiler compiles the sources once more, those two must be identical, and every program then runs with the
   settled compiler, which is the one kept.
-- **Every program is a compile of its own.** Each program is built and run by this compiler as `spite program
-  --debug-memory`, one process each, as many at once as there are processors (`CHECK_JOBS` sets how many). Its whole
+- **Every program is a compile of its own.** Each program is built and run by this compiler as `spite
+  --debug-memory` in its folder, one process each, as many at once as there are processors (`CHECK_JOBS` sets how many). Its whole
   output must equal its `expected_output.txt` (its `expected_output.<system>.txt` where the systems differ), with
   allocations equal to frees and, where an `allocations.txt` pins them, exactly that many; a program with a
   `crashes.txt` is held to the crash it reports, compared without what differs on every run. A program that prints
@@ -83,16 +85,16 @@ A `Boolean` flag may be given bare: `--optimized` is `--optimized=true`, and `--
 Flags mix freely, and every output that is on comes from the same compile: an `--optimized` build may keep
 the REPL (it is then inspectable), and `--build --final-classes=folder` builds the executable and writes the
 classes. Building and running are the same command. There is no `--mode`, `--output` or `--format`: `--check` and
-`--build` stop the build sooner, `--final-classes` adds its folder, formatting is not an option, and `spite connect`
-and `spite reload` are commands of the compiler, not options. There is no `spite format`: every compile formats.
+`--build` stop the build sooner, `--final-classes` adds its folder, formatting is not an option, and `--connect`
+is a client the compiler holds, not an option of a build. There is no `spite format`: every compile formats.
 
 ## Naming a program
 
 A program is named only by its folder, and its entry file is the one named after the folder. The
-compiler's own entry is `compiler/compiler.spite`, class `Compiler`, so it compiles itself as `spite compiler`.
-With no folder named, the compiler builds the folder it is run from (D1775): `cd game` then `spite`.
+compiler's own entry is `spite_compiler/spite_compiler.spite`, class `SpiteCompiler`, so it compiles itself as
+`cd spite_compiler` then `spite`. The compiler builds the folder it is run from (D1775): `cd game` then `spite`,
+and `Build.program` is that folder's full path.
 
-- A `.spite` path: `error: 'game/game.spite' is a file, and a program is named by its folder: spite game`.
 - A folder without its entry: `error: 'game' holds no program: a program is a folder holding an entry file named
   after it, 'game/game.spite'`.
 - An entry constructor with parameters is an error at its line ([programs.md](programs.md#constructors-and-the-entrypoint);
@@ -121,10 +123,10 @@ it. Tree shaking and every other whole-program step run before any output is wri
   `error: '<path>' is left from an earlier build and could not be removed (is it still running?): a build removes
   it first, so a failed build never leaves the old one to run` and exit status 1.
 - **The flags `--check` and `--build` replaced** are errors that name them, when the program declares no setting of
-  that name: `--run` is `error: '--run' is not a compiler option: 'spite program' builds the program and runs it,
-  'spite program --check' only checks that it compiles, and 'spite program --build' builds it without running it`
+  that name: `--run` is `error: '--run' is not a compiler option: 'spite' builds the program and runs it,
+  'spite --check' only checks that it compiles, and 'spite --build' builds it without running it`
   (`diagnostics/removed_run_flag`), and `--executable` is `error: '--executable' is not a compiler option: 'spite
-  program --build' builds the executable without running it, and 'spite program' builds it and runs it`
+  --build' builds the executable without running it, and 'spite' builds it and runs it`
   (`diagnostics/removed_executable_flag`).
 
 - **Where outputs go**: `executable_path`, `""` by default, which means the
@@ -212,45 +214,61 @@ it. Tree shaking and every other whole-program step run before any output is wri
 - **Flags are kebab-case, fields stay snake_case**: `--repl-port=4000` sets
   `Build.repl_port`, `--hot-reload` sets `hot_reload`, and a program's own field `worker_stack_size` is
   `--worker-stack-size=256` (`conformance/stage6/build_settings`). An underscore in a flag's name is an error,
-  checked before anything is read, naming the hyphen form: `error: '--repl_port' is written '--repl-port': a flag
-  is kebab-case, and it sets the Build field 'repl_port'` (`diagnostics/underscore_flag`); the value after `=` is
-  never touched. The rule covers the compiler's flags and the program's settings alike (`--player-name=x` sets
-  `Environment.player_name`), and every message that names a flag names the kebab form
-  (`diagnostics/underscore_setting`). A program run directly, without the compiler, reads the same kebab spelling
+  checked before anything is read, naming the hyphen form. For one of the compiler's own settings it is the
+  library's words, as for any program: `error: '--repl_port' is written '--repl-port': a program's setting is
+  kebab-case on the command line, like the compiler's flags, and it sets Environment.repl_port`
+  (`diagnostics/underscore_flag`); for any other flag, `error: '--player_name' is written '--player-name': flags
+  and settings are kebab-case on the command line, and the field they set is 'player_name'`
+  (`diagnostics/underscore_setting`). The value after `=` is never touched, and every message that names a flag
+  names the kebab form. A program run directly, without the compiler, reads the same kebab spelling
   and refuses the snake_case one ([programs.md](programs.md#program-settings-environment)).
-- **One set of names**: an `Environment` field named like a field of `Build` is an error naming both, at the
-  setting: `environment.spite:2: error: 'Environment.optimized' and 'Build.optimized' are both '--optimized' on
-  the command line: a program's settings and the compiler's flags share one set of names, so one of them needs
+- **How the compiler reads them** (D1812, D1813): its `environment.spite` declares each flag above, and the
+  private `_flags`, which the compiler fills, in the `_read_settings` it writes for an `Environment`
+  declaring it, with every flag given (the library's private `_given_flags()`); an `Environment` holding it refuses no flag, so the compiler checks
+  every flag that names none of its settings against the `Build` of the program it compiles. A value that does
+  not fit one of the compiler's own settings stops it as a program's would: `error: the setting
+  Environment.repl_port was given 'many', which is not an Integer, a whole number: write --repl-port=4 on the
+  command line, or REPL_PORT=4 in the environment or a .env file`. Each setting is also read from its variable
+  (`OPTIMIZED=true`), and a field of the program's own `Build` that no flag sets is read from its variable
+  (`SERVE=true` for `var serve = false`), checked against its type.
+- **One set of names**: a program's `Environment` field named like a field its own `build.spite` declares is an
+  error naming both, at the setting: `conformance/setting_named_like_flag/environment.spite:2: error: 'Environment.player_count' and
+  'Build.player_count' are both '--player-count': the program's Build is given when it is compiled and its
+  Environment when it runs, and both are read from PLAYER_COUNT in the environment too, so one of them needs
   another name` (`diagnostics/setting_named_like_flag`).
-- A `--name=value` naming a `Build` field sets it, and is written into the build as a constant. One naming a
-  field of `Environment` is checked against the setting's type while compiling (`error: '--volume=loud' was
-  given, but 'Environment.volume' is an Integer: a whole number, like --volume=3`, `diagnostics/setting_value`;
-  a bare flag only for a `Boolean`) and passed to the program. One that names no field is an error that shows
+- A `--name=value` naming a `Build` field sets it, and is written into the build as a constant. One that names
+  a field of the program's `Environment` is refused as any unknown flag is: the setting is given to the
+  executable, or read from the environment by the program the compiler runs. One that names no field is an error that shows
   both places a setting can belong (`diagnostics/unknown_compiler_flag`): `error: '--serve' is not a compiler
   option, and this program declares no setting 'serve' (its Build declares check, build, ...). To decide it
   when compiling, reopen Build in the program's build.spite with 'var serve = ...'; to read it when the program
-  runs, declare it in environment.spite with 'var serve = ...'`.
+  runs, declare it in environment.spite with 'var serve = ...' and give it to the program's executable`.
 - **A program that loads no standard library** has no `Build`, and takes only `--debug-memory` and `--optimized`
   (each a `Boolean`, given bare or `=true`/`=false`, `tests/debug_memory_without_library`); any other option is
   `error: '--repl' is not a compiler option this program can take: it loads no standard library, so it has no
   Build, and only --debug-memory and --optimized are read without one. To decide 'repl' when compiling, load the
   standard library and reopen Build in the program's build.spite with 'var repl = ...'`.
-- A value that does not fit the field is an error naming the flag and the forms it takes, and no file position,
-  since the mistake is on the command line: `error: '--optimized=maybe' was given to the compiler, but
-  'Build.optimized' is a Boolean: --optimized, --optimized=true or --optimized=false` (`diagnostics/flag_value`).
+- A value that does not fit one of the compiler's settings stops it as any program is stopped, naming the type:
+  `error: the setting Environment.optimized was given 'maybe', which is not a Boolean, 'true' or 'false': write
+  --optimized=true on the command line, or OPTIMIZED=true in the environment or a .env file`
+  (`diagnostics/flag_value`). One that does not fit a field of the program's `Build` is an error naming the flag
+  and the forms it takes, and no file position, since the mistake is on the command line: `error:
+  '--workers=many' was given to the compiler, but 'Build.workers' is an Integer: a whole number, like
+  --workers=3` (`diagnostics/build_setting_type`).
   `--repl-port` takes 1 to 65535: `error: --repl-port takes a port number from 1 to 65535: spite program
   --repl-port=4000`. `--target-operating-system` takes `windows`, `linux` or `mac`: `error:
   '--target-operating-system=beos' names no operating system the library has a folder for: windows, linux or mac`.
 - `--operating-system` and `--program` cannot be given: `error: '--operating-system' cannot be given:
   Build.operating_system is the system doing the compiling (windows). To write the program for another system, give
   --target-operating-system=linux (or windows, or mac)`, and `error: '--program' cannot be given: the program is
-  the folder named on the command line, 'spite folder', and Build.program is set from it`.
-- **What the program receives**: every setting its `Environment` declares, and every argument after the folder
-  that is not a flag (the first word that is not a flag is the folder, wherever it stands), in the order given, verbatim (the first is the first item of `program.arguments()`, `program.argument_named("player")` reads
-  `--player=...`, and `Environment` reads the settings it declares); the compiler's own flags and the folder are
-  not passed (`conformance/stage6/program_arguments`). **There is no `--` separator**: a bare `--` is an error,
-  `error: '--' is not a separator: a program's settings are given beside the compiler's flags, kebab-case like
-  them: spite program --optimized --player-name=Bob` (`diagnostics/separator_flag`). A flag or setting given twice is an
+  the folder the compiler runs in, 'cd folder' then 'spite', and Build.program is set from it`.
+- **What the program receives**: no flag; the program the compiler runs reads its settings from the
+  environment and a `.env` file (`tests/compiler_runs_the_program`). A word given by position is an error, the
+  folder too, since every value is a named setting (D1775, D1812): `error: 'game' is given by position: every
+  value on the command line is a named setting, like --name=game, declared in environment.spite as 'var name =
+  ""'` (`conformance/folder_by_position`). **There is no `--` separator**: a bare `--` is an error,
+  `error: '--' is not a separator: a program's Build flags are given beside the compiler's, kebab-case like
+  them: spite --optimized --player-count=2` (`diagnostics/separator_flag`). A flag or setting given twice is an
   error too, `error: '--optimized' is given twice: a flag or a setting is given once`
   (`diagnostics/flag_given_twice`), so a later one never silently replaces an earlier one.
 - Every setting is decided while compiling and costs nothing at run time; only the builds that ask for it

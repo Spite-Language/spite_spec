@@ -1,0 +1,7 @@
+var console = Console()
+var environment = Environment()
+
+func EnvironmentUndeclaredFlag() {
+    load "../../../spite_standard_library/windows"
+    console.print(environment.size)
+}

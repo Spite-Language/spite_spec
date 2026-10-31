@@ -1,0 +1,1 @@
+error: the setting Environment.mood was given 'happy', which is not one of its values: calm, angry: write --mood=calm on the command line, or MOOD=calm in the environment or a .env file

@@ -10,7 +10,7 @@ var headerless = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', 
 var windows = DynamicLibrary(
     "tests/foreign_library/fixture.dll",
     'windows',
-    "tests/foreign_library/fixture.h",
+    "fixture.h",
 )
 
 func ForeignLibrary() {

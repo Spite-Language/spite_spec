@@ -7,14 +7,14 @@ visitor with 0 tags 3
 - [tests/optimization_report/optimization_report.spite:2](../../tests/optimization_report/optimization_report.spite#L2): `List<Badge>` keeps a reference to each item: its attribute 'tags' is a List<String>, which cannot be laid inline
 - [tests/optimization_report/optimization_report.spite:3](../../tests/optimization_report/optimization_report.spite#L3): `List<Spot>` keeps a reference to each item: 'Spot' is made only of numbers, text and enum values and would fit inline, as it does in a 'Vector<Spot>'
 ## Lists not in the frame
-- [tests/optimization_report/optimization_report.spite:9](../../tests/optimization_report/optimization_report.spite#L9): `names` is made on the heap: line 12 appends to it in a loop, so how many items it holds is not known while compiling
+- [tests/optimization_report/optimization_report.spite:10](../../tests/optimization_report/optimization_report.spite#L10): `names` is made on the heap: line 13 appends to it in a loop, so how many items it holds is not known while compiling
 ## Objects not in the frame
-- [tests/optimization_report/optimization_report.spite:25](../../tests/optimization_report/optimization_report.spite#L25): `badge` (`Badge`) is made on the heap: line 26 lets it go: `badges.append(badge)`
+- [tests/optimization_report/optimization_report.spite:26](../../tests/optimization_report/optimization_report.spite#L26): `badge` (`Badge`) is made on the heap: line 27 lets it go: `badges.append(badge)`
 ## Copies not elided
-- [tests/optimization_report/optimization_report.spite:27](../../tests/optimization_report/optimization_report.spite#L27): `var twin = badge.copy()` allocates a copy: 'Badge' holds text, a list or another object, and only a copy of a class of numbers is laid in the frame
-- [tests/optimization_report/optimization_report.spite:33](../../tests/optimization_report/optimization_report.spite#L33): `var copied = spot.copy()` allocates a copy: line 34 lets it go: `spots.append(copied)`
-- [tests/optimization_report/optimization_report.spite:35](../../tests/optimization_report/optimization_report.spite#L35): `var shared = spot.copy()` allocates a copy: line 36 lets it go: `remember(shared)`
+- [tests/optimization_report/optimization_report.spite:28](../../tests/optimization_report/optimization_report.spite#L28): `var twin = badge.copy()` allocates a copy: 'Badge' holds text, a list or another object, and only a copy of a class of numbers is laid in the frame
+- [tests/optimization_report/optimization_report.spite:34](../../tests/optimization_report/optimization_report.spite#L34): `var copied = spot.copy()` allocates a copy: line 35 lets it go: `spots.append(copied)`
+- [tests/optimization_report/optimization_report.spite:36](../../tests/optimization_report/optimization_report.spite#L36): `var shared = spot.copy()` allocates a copy: line 37 lets it go: `remember(shared)`
 ## Overflow checks kept
-- [tests/optimization_report/optimization_report.spite:58](../../tests/optimization_report/optimization_report.spite#L58): `product * 3` keeps its overflow check: 'product' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+- [tests/optimization_report/optimization_report.spite:59](../../tests/optimization_report/optimization_report.spite#L59): `product * 3` keeps its overflow check: 'product' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
 ## Waits that hold the frame
 ## Chains run step by step

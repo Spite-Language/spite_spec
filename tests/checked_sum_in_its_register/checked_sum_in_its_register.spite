@@ -1,11 +1,10 @@
 var console = Console()
-var program = Program()
+var environment = Environment()
 var _start_near_the_largest_integer = 2147483000
 
 func CheckedSumInItsRegister() {
     load "../../../spite_standard_library/windows"
-    var arguments = program.arguments()
-    var given = arguments.count()
+    var given = environment.given
     var small = summed(1000, given)
     console.print(small)
     var product = scaled(given, 7)

@@ -1,12 +1,8 @@
 var console = Console()
-var program = Program()
 var environment = Environment()
 
 func ProgramFlagsAndSettings() {
     load "../../../spite_standard_library/windows"
-    var arguments = program.arguments()
-    var given = arguments.count()
-    console.print("given", given)
     console.print("verbose", environment.verbose)
     console.print("port", environment.port)
     console.print("quiet", environment.quiet)

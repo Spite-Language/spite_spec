@@ -42,14 +42,14 @@ make.
 The runner is a Spite program, `runner/runner.spite`, built by the compiler it runs the tests with (build
 the compiler first with `bash scripts/bootstrap.sh --install` in `../spite_compiler`). Run from this folder:
 
-    ../spite_compiler/.spite/spite.exe runner --build
+    (cd runner && ../../spite_compiler/.spite/spite.exe --build)
     runner/.spite/build/runner.exe
-    runner/.spite/build/runner.exe tests/sum conformance/duplicate_function
+    runner/.spite/build/runner.exe --tests=tests/sum,conformance/duplicate_function
 
-With no names it runs every test; with names it runs only those. A name ending in `*` runs every folder that
-starts with it (`tests/float*`), and `--failed` runs again only the tests that failed in the last run, so the
+With no `--tests` it runs every test; `--tests` names the ones to run, separated by commas. A name ending in `*`
+runs every folder that starts with it (`--tests=tests/float*`), and `--failed` runs again only the tests that failed in the last run, so the
 loop while fixing something is the tests it touches, not the whole corpus. It compiles each one with the new compiler,
-`../spite_compiler/.spite/spite.exe`, prints `FAILED <folder>: <why>` for each that fails, then how many passed
+`../spite_compiler/.spite/spite.exe`, run inside a copy of its folder, prints `FAILED <folder>: <why>` for each that fails, then how many passed
 and failed, and leaves 1 when any failed.
 
 The tests run in parallel, as many at once as the machine has processors; `--jobs=4` sets how many. Each has
@@ -60,6 +60,7 @@ fails one test and never stops the run. Each test runs in a process of its own, 
 
 One program by hand (the compiler builds it and runs it, or only builds it with `--build`):
 
-    ../spite_compiler/.spite/spite.exe tests/exit_code
-    ../spite_compiler/.spite/spite.exe tests/exit_code --build
-    tests/exit_code/.spite/build/exit_code.exe
+    cd tests/exit_code
+    ../../../spite_compiler/.spite/spite.exe
+    ../../../spite_compiler/.spite/spite.exe --build
+    .spite/build/exit_code.exe
