@@ -1,1 +1,1 @@
-conformance/guard_de_morgan/guard_de_morgan.spite:10: error: this 'if' only returns: write 'fallback count >= 0 and count <= limit' and let the rest run unindented (in GuardDeMorgan.announce)
+conformance/guard_de_morgan/guard_de_morgan.spite:10: fixed: this 'if' only returned; wrote 'fallback count >= 0 and count <= limit' in its place (in GuardDeMorgan.announce)

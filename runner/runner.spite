@@ -403,7 +403,7 @@ func only_formatting(wanted: String): Boolean {
     var index = 0
     while index < lines.count() {
         var line = lines[index]
-        fallback line.starts_with("formatted ")
+        fallback line.starts_with("formatted ") or line.contains(": fixed: ")
         index = index + 1
     }
     return true

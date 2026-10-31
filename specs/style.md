@@ -182,8 +182,10 @@ tokens.append(Token('number', source.slice(token_start, end_index)))    # error:
   `--final-classes` writes its classes already formatted. A list or object literal over 120 columns is written
   one entry per line with no commas.
 - **A file is ordered**: the `singleton` line, `generic` lines, enums, unions, types, variables, the constructor,
-  then functions. Anything out of that order is a compile error naming what came before it
-  (`diagnostics/declaration_order`). `union` goes beside `enum` and before `type`. Consecutive `generic` lines stay
+  then functions. The compiler puts a program's file that is out of that order back in it, and says so (D1767,
+  [below](#the-compiler-fixes-what-has-one-fix)): `<path>:<line>: fixed: a variable came after the constructor
+  here; moved it up, since a file is ordered: ...` (`conformance/declaration_order`). A library file out of
+  order is still the error naming what came before it. `union` goes beside `enum` and before `type`. Consecutive `generic` lines stay
   together with no blank line between them; one blank line follows the `singleton` line and the last `generic` line.
 - One blank line between declarations at file level, except that consecutive `var` declarations may stay
   grouped with no blank line between them if they were already written that way (a blank line the source did
@@ -221,6 +223,22 @@ tokens.append(Token('number', source.slice(token_start, end_index)))    # error:
   added, dropped, or reordered; and (b) every comment's
   text appears, in the same order, in the formatted output. Either check failing refuses to write the file and
   reports an internal formatter error instead.
+
+### The compiler fixes what has one fix
+
+What the compiler can fix in a program's file without a choice, it fixes in the file instead of refusing it, and it
+writes a line for each fix on the error output, then compiles the fixed file (D800, D1767):
+`<path>:<line>: fixed: <what was wrong>; <what it did> (in <Class>.<function>)`. The line is the one the mistake
+was on before the fix. A mistake whose fix needs a choice is still an error, and so is one in a file of the
+library or of a pinned package, which the compiler never rewrites. The fixes so far:
+
+- **Declarations out of order** are moved, each keeping the comment lines right above it, in the order of
+  [A file is ordered](#formatting); the others keep their order (`conformance/declaration_order`,
+  `conformance/union_after_type`).
+- **An `if` that only returns what `fallback` returns** becomes the `fallback` it names, on the `if`'s line:
+  `fixed: this 'if' only returned '0', which is what 'fallback' returns when its condition fails; wrote 'fallback
+  text.length() > 0' in its place` ([failure.md](failure.md)). An `if` that only leaves a constructor stays an
+  error, since a constructor takes no `fallback`, and so does one holding a comment.
 
 ### Comments
 

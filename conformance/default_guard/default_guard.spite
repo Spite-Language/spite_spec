@@ -14,7 +14,6 @@ func DefaultGuard() {
     var gate = Gate(1)
     console.print(open, code, divided, text, sent, answer, walked, kept, gate.size)
     find_name(false)
-    checked(5)
 }
 
 func is_open(): Boolean {
@@ -85,15 +84,6 @@ func walk(steps: Integer): Integer {
         index = index + 1
     }
     return index
-}
-
-func checked(value: Integer) {
-    if value > 3 {
-        console.print("big")
-    } else if value < 0 {
-        return
-    }
-    console.print(value)
 }
 
 func kept_count(first: Boolean, second: Boolean, third: Boolean): Integer {

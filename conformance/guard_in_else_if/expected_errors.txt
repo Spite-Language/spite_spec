@@ -1,0 +1,1 @@
+conformance/guard_in_else_if/guard_in_else_if.spite:11: error: this 'if' only returns: write 'fallback value >= 0' and let the rest run unindented (in GuardInElseIf.checked)

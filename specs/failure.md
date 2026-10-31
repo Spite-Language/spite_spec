@@ -127,18 +127,23 @@ a lint error.
 **An `if` that only returns what a `fallback` returns is a `fallback`.** An `if` with no `else` whose whole body
 is one `return` of what the function's answer type builds with no arguments (`null` for a `T?`; an empty
 collection, `List<T>()`, `Dictionary<Key, Value>()` or `[]`; `0` or `0.0` for a number; `false`; `""`; `Mark()` for a
-class made with no arguments; or a bare `return` in a function returning nothing) is a compile error wherever it
-stands in the function, inside a `while` or a nested `if` included, and the message names the `fallback` of the
-opposite condition (D1765):
+class made with no arguments; or a bare `return` in a function returning nothing) is the `fallback` of the
+opposite condition wherever it stands in the function, inside a `while` or a nested `if` included (D1765), and
+the compiler rewrites it into that `fallback` in a program's file, printing a `fixed:` line
+([style.md](style.md#the-compiler-fixes-what-has-one-fix), D1767):
 
 ```gdscript
 func first_name(): String {
-    if names.is_empty() {    # error: this 'if' only returns '""', which is what 'fallback' returns when its
-        return ""            #        condition fails: write 'fallback not names.is_empty()' and let the rest run unindented
+    if names.is_empty() {    # fixed: this 'if' only returned '""', which is what 'fallback' returns when its
+        return ""            #        condition fails; wrote 'fallback not names.is_empty()' in its place
     }
     return names.first()
 }
 ```
+
+It stays the error `this 'if' only returns '""', which is what 'fallback' returns when its condition fails: write
+'fallback not names.is_empty()' and let the rest run unindented` in a library's file and in an `if` holding a
+comment, which the rewrite would lose.
 
 It is the same rule as narrowing, so `if not value { return null }` becomes `fallback value` and narrows `value`
 for the rest of the block. A function whose caller must tell "missing" from a real `0` or `""` answers a `T?`, and
@@ -146,7 +151,7 @@ its `fallback` returns `null`. How the
 condition is turned around: `==` and `!=` swap, `<` becomes `>=` and `>` becomes `<=` (and back), `not x` becomes
 `x`, anything else becomes `not x`, and `and`/`or` are turned around by De Morgan, side by side, so
 `if count < 0 or count > limit` becomes `fallback count >= 0 and count <= limit`. An `else if` is covered too. In a
-constructor, where `fallback` is not allowed, the message names `crash` instead. `diagnostics/default_guard`,
+constructor, where `fallback` is not allowed, it stays an error and the message names `crash` instead. `diagnostics/default_guard`,
 `diagnostics/returning_guard`, `diagnostics/empty_collection_guard`.
 
 **An `if` that leaves proves the opposite of its condition.** An `if` with no `else` whose block's last statement

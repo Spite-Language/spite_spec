@@ -1,0 +1,15 @@
+var console = Console()
+
+func GuardInElseIf() {
+    load "../../../spite_standard_library/windows"
+    checked(5)
+}
+
+func checked(value: Integer) {
+    if value > 3 {
+        console.print("big")
+    } else if value < 0 {
+        return
+    }
+    console.print(value)
+}

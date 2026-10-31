@@ -551,10 +551,10 @@ The crash report's stop line is written as D672 words it, `spite: the program st
 | `if value { } else { }` narrows the block; `else` runs when null | tests/nullable_narrowing, tests/narrowed_read_local | covered |
 | A function's last statement `if value { }` with no `else` is an error | conformance/terminal_if | covered |
 | A narrowing `if` not last, or nested in a loop, is no lint error | tests/terminal_if_not_last | added |
-| An `if` whose body only returns the default is an error naming the `fallback` | conformance/default_guard, conformance/empty_collection_guard, conformance/returning_guard | covered |
+| An `if` whose body only returns the default is rewritten into its `fallback`, printing `fixed:` (D1767) | conformance/default_guard, conformance/empty_collection_guard, conformance/returning_guard | covered |
 | The guard's condition is turned around, `or` by De Morgan | conformance/guard_de_morgan | added |
 | The guard rule holds inside a `while` or a nested `if` | conformance/guard_inside_loop | added |
-| An `else if` guard is covered too | conformance/default_guard | covered |
+| An `else if` guard is covered too, and stays an error, since its rewrite is not one `fallback` | conformance/guard_in_else_if | added |
 | A guard `if` in a constructor names `crash` instead | conformance/constructor_guard | covered |
 | An `if` returning a value in a number or Boolean function is left alone | tests/leaving_if | covered |
 | An `if` that leaves proves the opposite of its condition for the rest of the block | tests/leaving_if, tests/returning_branch_proof | covered |
@@ -1477,7 +1477,7 @@ Rules: 79. Covered before: 38. Covered now: 69.
 | A file the formatter refuses stops the compile with its reason | none | missing |
 | The formatter's safety check: same program, every comment kept | none | missing |
 | `crash false` prints as `crash` | none | missing |
-| A file is ordered; out of order is an error naming what came before | conformance/declaration_order | covered |
+| A file is ordered; a program's file out of order is reordered, printing `fixed:` (D1767) | conformance/declaration_order | covered |
 | `union` goes beside `enum`, before `type` | conformance/union_after_type | added |
 | Consecutive `var`s may stay grouped; one blank line between other declarations | conformance/formatted_layout | added |
 | K&R braces; empty body as `{ }` | none | missing |

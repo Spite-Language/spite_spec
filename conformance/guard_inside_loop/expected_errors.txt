@@ -1,1 +1,1 @@
-conformance/guard_inside_loop/guard_inside_loop.spite:13: error: this 'if' only returns 'null', which is what 'fallback' returns when its condition fails: write 'fallback length >= 0' and let the rest run unindented (in GuardInsideLoop.longer_than)
+conformance/guard_inside_loop/guard_inside_loop.spite:13: fixed: this 'if' only returned 'null', which is what 'fallback' returns when its condition fails; wrote 'fallback length >= 0' in its place (in GuardInsideLoop.longer_than)
