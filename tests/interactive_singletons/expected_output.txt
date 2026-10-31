@@ -3,6 +3,7 @@ spite> console: Console = Console {...}
 world: World = World {...}
 spite> to_debug(): String
 spite> Build()
+Environment() not made yet
 World()
 Tick()
 Column<Position>()

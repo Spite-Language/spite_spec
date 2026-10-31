@@ -21,7 +21,7 @@ func BuildSettingFromTheEnvironment() {
 func compile_and_run(variables: Dictionary<String, String>) {
     var here = program.working_directory()
     crash here
-    var compiler = "{here}\..\spite_compiler\.spite\spite.exe"
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
     var no_arguments = List<String>()
     var running = Process(compiler, no_arguments)
     running.working_directory = folder

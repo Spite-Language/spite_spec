@@ -230,7 +230,8 @@ the entry class's own Spite name):
   World().entity_count()`, and `... which has no attributes`. A function whose name starts with `_` is private to
   its class and `drop()` runs only when a value is released, so the prompt neither lists nor calls either:
   `'_swap' is private to values, and the prompt calls what code outside the class may call`. `classes` answers the
-  singletons the prompt can bind, `World()` a line with `not made yet` after one the program has not made, then the
+  singletons the prompt can bind, `World()` a line with `not made yet` after one the program has not made (`Environment()` among them in every
+  program whose `Program` reads its arguments, made only when it is given one, D1820), then the
   program's other classes a line each. Then `help`, `exit`, and `reload`, `last_reload` and `wait_reload`
   ([Live reload in detail](#live-reload-in-detail)).
 - Printing a class instance shows `ClassName { attribute: value, ... }` one level deep: a nested class attribute

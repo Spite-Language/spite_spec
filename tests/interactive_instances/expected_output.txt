@@ -1,5 +1,6 @@
 ready
 spite> Build()
+Environment() not made yet
 World()
 Channel(1)
 Channel(2)
@@ -29,6 +30,7 @@ spite> 'clear' answers in a program built with --hot-reload and --repl-port: a b
 spite> 'last_reload' answers in a program built with --hot-reload, which swaps its code while it runs, and this one was not
 spite> 'wait_reload' answers in a program built with --hot-reload, which swaps its code while it runs, and this one was not
 spite> Build()
+Environment() not made yet
 World()
 Channel(1)
 Channel(2)
