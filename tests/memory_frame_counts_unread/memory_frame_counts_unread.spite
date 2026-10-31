@@ -1,0 +1,24 @@
+var console = Console()
+
+func MemoryFrameCountsUnread() {
+    load "../../../spite_standard_library/windows"
+    var first = Pair(3, 4)
+    var second = Pair(5, 6)
+    var total = described(first, second)
+    second.left = total
+    var again = described(second, first)
+    console.print("described:", total, again)
+}
+
+func described(first: Pair, second: Pair): Integer {
+    var total = 0
+    var index = 0
+    while index < first.left {
+        total = total + second.right * index + first.right
+        if total > 100 {
+            total = total - 7
+        }
+        index = index + 1
+    }
+    return total
+}

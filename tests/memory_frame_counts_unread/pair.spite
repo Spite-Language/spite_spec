@@ -1,0 +1,7 @@
+var left = 0
+var right = 0
+
+func Pair(starting_left: Integer, starting_right: Integer) {
+    left = starting_left
+    right = starting_right
+}

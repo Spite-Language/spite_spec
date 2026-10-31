@@ -143,7 +143,7 @@ is not an object (a list's elements, a string's bytes) is counted but not named.
 named even when it points at a singleton, which is still destroyed at exit. The compiler's own bookkeeping
 (the list of singletons to destroy) is allocated outside the table and not counted. The counts are exact and the same on
 every run, so a test pins them, and a change in where the compiler places memory shows as a changed count: objects
-placed in the frame allocate nothing (`tests/memory_debug_memory_placed`), a buffer made in a loop allocates its
+placed in the frame allocate nothing (`tests/memory_debug_memory_placed`), and neither do objects in the frame handed to a function that only reads them (`tests/memory_frame_counts_unread`), a buffer made in a loop allocates its
 storage once a pass (`tests/memory_counts_buffers`), and a program that keeps nothing frees all it allocated
 (`tests/memory_counts_nothing_leaked`).
 
