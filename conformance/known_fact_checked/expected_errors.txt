@@ -1,1 +1,2 @@
-conformance/known_fact_checked/known_fact_checked.spite:14: error: 'first' is already narrowed by 'crash first' on line 13: remove this check (in KnownFactChecked.KnownFactChecked)
+conformance/known_fact_checked/known_fact_checked.spite:14: fixed: 'first' was already narrowed by 'crash first' on line 13; removed this check (in KnownFactChecked.KnownFactChecked)
+conformance/known_fact_checked/known_fact_checked.spite:20: error: 'number' is already narrowed by 'if number' on line 18: remove this check (in KnownFactChecked.KnownFactChecked)

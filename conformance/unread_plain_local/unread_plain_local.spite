@@ -1,0 +1,15 @@
+var console = Console()
+
+func UnreadPlainLocal() {
+    load "../../../spite_standard_library/windows"
+    var spare = 2
+    var label = "count"
+    var shown = label
+    var counted = count_twice(3)
+    console.print(label)
+}
+
+func count_twice(amount: Integer): Integer {
+    console.print(amount)
+    return amount * 2
+}

@@ -195,6 +195,10 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   ages[name]`, `var cell = grid[row].cells[column]`) is not a copy: it is narrowed instead of reading the key twice.
 - A check on something that cannot be null proves nothing and is an error naming the fix: `fallback tracker`
   written twice, or `crash` on a path an earlier `crash` already narrowed (`diagnostics/check_proves_nothing`).
+  A `crash` or `fallback` line of the kinds below in a program's own file is removed instead
+  ([the compiler fixes what has one fix](style.md#the-compiler-fixes-what-has-one-fix), D1833), printing its
+  message in the past with "removed this check" or "removed it"; the errors below are what an `if` or `while`,
+  a generic class, a walk and a library file still get.
   For a `[]` read the message names what proved it, so the
   line can simply go: `crash codes[index]` inside `while index < codes.count()` is "'codes[index]' is already
   proven by the loop condition 'index < codes.count()', so this 'crash' proves nothing: remove it"; a count or

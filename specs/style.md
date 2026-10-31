@@ -6,7 +6,8 @@ is the bug.
 
 ## Unused is an error
 
-A local variable or parameter that is never read is a compile error.
+A local variable or parameter that is never read is a compile error. An unread local never assigned whose value
+does nothing is removed instead ([the compiler fixes what has one fix](#the-compiler-fixes-what-has-one-fix)).
 **Only a read counts**: a local or parameter that is only ever assigned is unused,
 `'total' is never read: remove it`; a read in the new value, `label = "{label} of things"`, is a read
 (`diagnostics/written_not_read`). **Only a parameter may be `_name`**: a signature can need a parameter
@@ -239,6 +240,20 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   `fixed: this 'if' only returned '0', which is what 'fallback' returns when its condition fails; wrote 'fallback
   text.length() > 0' in its place` ([failure.md](failure.md)). An `if` that only leaves a constructor stays an
   error, since a constructor takes no `fallback`, and so does one holding a comment.
+- **A `crash` or `fallback` that proves nothing** ([failure.md](failure.md#nothing-fails-silently-the-rule): a
+  value that cannot be null, a check already narrowed or proven, the same check on the next line, a divisor
+  proven again, a check decided while compiling that holds) is removed when it is a line of its own outside a
+  generic class and a walk: `fixed: 'tracker' was already narrowed by 'fallback tracker' on line 8; removed this
+  check` (`conformance/check_proves_nothing`). Written as an `if` or a `while` it stays the
+  error.
+- **A local nothing reads whose value does nothing** (a literal, a text with no hole, a name) is removed: `fixed:
+  'spare' was never read, and making it does nothing; removed it` (`conformance/unread_plain_local`). One made by a
+  call stays the error, since removing it would drop the call.
+
+These two are found while or after the program is built, when the build already holds the mistake, so after
+writing the fix the compiler runs itself again with the same flags, folder and environment and answers what that
+run answers (D1833). The program built is always the files as they are written, and since each such fix removes
+a line, the runs end.
 
 ### Comments
 
