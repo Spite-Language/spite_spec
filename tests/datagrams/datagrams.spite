@@ -1,10 +1,11 @@
 var console = Console()
+var _server_port = 47811
 
 func Datagrams() {
     load "../../../spite_standard_library/windows"
     var server = Udp.Server()
     var client = Udp.Client()
-    var server_open = server.open_locally(47811)
+    var server_open = server.open_locally(_server_port)
     var client_open = client.open()
     console.print("server open: {server_open}, client open: {client_open}")
     var server_port = server.port
@@ -15,7 +16,7 @@ func Datagrams() {
     var ping = ping_text.to_buffer()
     var server_address: IpAddress? = "127.0.0.1"
     crash server_address
-    var sent = client.send_to(server_address, 47811, ping)
+    var sent = client.send_to(server_address, _server_port, ping)
     console.print("sent: {sent}")
     var arrived = server.receive()
     crash arrived
@@ -37,14 +38,14 @@ func Datagrams() {
     var empty = Buffer(0)
     var local_host: IpAddress? = "localhost"
     crash local_host
-    crash client.send_to(local_host, 47811, empty)
+    crash client.send_to(local_host, _server_port, empty)
     var empty_arrived = server.receive()
     crash empty_arrived
     var empty_buffer = empty_arrived.read_as_buffer()
     var empty_count = empty_buffer.count()
     console.print("an empty datagram arrives as {empty_count} bytes")
     var taken = Udp.Server()
-    var twice = taken.open_locally(47811)
+    var twice = taken.open_locally(_server_port)
     console.print("a second server on the same port: {twice}")
     server.close()
     var after_close = server.receive()

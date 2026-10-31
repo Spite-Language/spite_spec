@@ -2,6 +2,11 @@ var console = Console()
 var server = Http.Server()
 var client = Http.Client()
 var listener = Tcp.Server()
+var _http_port = 47915
+var _tcp_port = 47916
+var _udp_port = 47917
+var _letter_h_code: Byte = 104
+var _largest_byte: Byte = 255
 
 func ByteHolders() {
     load "../../../spite_standard_library/windows"
@@ -12,18 +17,18 @@ func ByteHolders() {
 }
 
 func binary_body() {
-    crash server.listen_locally(47915)
+    crash server.listen_locally(_http_port)
     var serving = Concurrent(echo_one)
     var request = Http.Request()
     request.method = "POST"
     request.path = "/bytes"
     var body = Buffer(0)
-    body.append(104)
-    body.append(255)
+    body.append(_letter_h_code)
+    body.append(_largest_byte)
     request.write_body_buffer(body)
     var loopback: IpAddress? = "127.0.0.1"
     crash loopback
-    var response = client.send(loopback, 47915, request)
+    var response = client.send(loopback, _http_port, request)
     crash response
     var as_text = response.read_body_as_string()
     var as_bytes = response.read_body_as_buffer()
@@ -45,10 +50,10 @@ func echo_one(): Integer {
 }
 
 func split_character() {
-    crash listener.listen_locally(47916)
+    crash listener.listen_locally(_tcp_port)
     var reading = Concurrent(read_one_string)
     var sender = Tcp.Client()
-    crash sender.connect_locally(47916)
+    crash sender.connect_locally(_tcp_port)
     var character = "é".to_buffer()
     var first = Buffer(0)
     var second = Buffer(0)
@@ -76,12 +81,12 @@ func read_one_string(): String {
 func datagram_text() {
     var receiving = Udp.Server()
     var sending = Udp.Client()
-    crash receiving.open_locally(47917)
+    crash receiving.open_locally(_udp_port)
     crash sending.open()
     var hello = "hello".to_buffer()
     var receiver: IpAddress? = "127.0.0.1"
     crash receiver
-    crash sending.send_to(receiver, 47917, hello)
+    crash sending.send_to(receiver, _udp_port, hello)
     var datagram = receiving.receive()
     crash datagram
     var text = datagram.read_as_string()

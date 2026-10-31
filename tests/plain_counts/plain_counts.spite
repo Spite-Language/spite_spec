@@ -1,4 +1,5 @@
 var console = Console()
+var _far_distance = 1500
 
 func PlainCounts() {
     load "../../../spite_standard_library/windows"
@@ -15,7 +16,7 @@ func PlainCounts() {
     var position = 0
     while position < points.count() {
         var point = points[position]
-        if point.across + point.down > 1500 {
+        if point.across + point.down > _far_distance {
             far = far + 1
         }
         position = position + 1

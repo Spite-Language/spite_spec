@@ -1,4 +1,11 @@
 var console = Console()
+var _sample_moment_seconds: Long = 1710054000
+var _sample_moment_milliseconds: Long = 1710054000000
+var _precise_moment_milliseconds: Long = 1700000000123
+var _extra_milliseconds: Long = 2500
+var _negative_span_milliseconds: Long = 1500
+var _seconds_from_year_one_to_1970: Long = 62135596800
+var _seconds_from_1970_to_year_ten_thousand: Long = 253402300800
 
 func InstantArithmetic() {
     load "../../../spite_standard_library/windows"
@@ -10,7 +17,7 @@ func InstantArithmetic() {
 func instants() {
     var start_since_1970 = Duration(0, 'seconds')
     var start = Instant(start_since_1970)
-    var moment_since_1970 = Duration(1710054000, 'seconds')
+    var moment_since_1970 = Duration(_sample_moment_seconds, 'seconds')
     var moment = Instant(moment_since_1970)
     console.print(start, moment)
     var hour = Duration(1, 'hours')
@@ -19,13 +26,13 @@ func instants() {
     var forward = later - moment
     var backward = earlier - moment
     console.print(later, earlier, forward, backward)
-    var same_since_1970 = Duration(1710054000000, 'milliseconds')
+    var same_since_1970 = Duration(_sample_moment_milliseconds, 'milliseconds')
     var same = Instant(same_since_1970)
     var equal = moment == same
     var ordered = earlier < moment and moment < later
     var reversed = later > earlier
     console.print(equal, ordered, reversed)
-    var precise_since_1970 = Duration(1700000000123, 'milliseconds')
+    var precise_since_1970 = Duration(_precise_moment_milliseconds, 'milliseconds')
     var precise = Instant(precise_since_1970)
     var since_1970 = precise.since_1970
     var milliseconds = since_1970.total('milliseconds')
@@ -43,10 +50,10 @@ func durations() {
     var minutes = ninety.total('minutes')
     var minute_part = ninety.part('minutes')
     console.print(ninety, hours, minutes, minute_part)
-    var longer = ninety + Duration(2500, 'milliseconds')
+    var longer = ninety + Duration(_extra_milliseconds, 'milliseconds')
     var shorter = ninety - Duration(91, 'minutes')
     console.print(longer, shorter)
-    var negative = Duration(-1500, 'milliseconds')
+    var negative = Duration(-_negative_span_milliseconds, 'milliseconds')
     var negative_seconds = negative.total('seconds')
     var negative_milliseconds = negative.part('milliseconds')
     var tripled = negative * 3
@@ -66,9 +73,9 @@ func durations() {
 }
 
 func far_instants() {
-    var first_year_since_1970 = Duration(-62135596800, 'seconds')
+    var first_year_since_1970 = Duration(-_seconds_from_year_one_to_1970, 'seconds')
     var first_year = Instant(first_year_since_1970)
-    var year_ten_thousand_since_1970 = Duration(253402300800, 'seconds')
+    var year_ten_thousand_since_1970 = Duration(_seconds_from_1970_to_year_ten_thousand, 'seconds')
     var year_ten_thousand = Instant(year_ten_thousand_since_1970)
     var before_year_one = first_year + Duration(-1, 'seconds')
     console.print(first_year, year_ten_thousand, before_year_one)

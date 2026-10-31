@@ -1,7 +1,8 @@
 var console = Console()
+var _too_large_for_a_long = 99999999999999999999
 
 func LiteralTooLarge() {
     load "../../../spite_standard_library/windows"
-    var huge = 99999999999999999999
+    var huge = _too_large_for_a_long
     console.print(huge)
 }

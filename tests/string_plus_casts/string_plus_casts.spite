@@ -4,13 +4,14 @@ enum Mood {
 }
 
 var console = Console()
+var _sample_long: Long = 9000000000
 
 func StringPlusCasts() {
     load "../../../spite_standard_library/windows"
     var mood: Mood = 'angry'
     var count = 3
     var ratio = 2.5
-    var wide: Long = 9000000000
+    var wide: Long = _sample_long
     var label = "value "
     var with_count = label + count
     var with_ratio = label + ratio

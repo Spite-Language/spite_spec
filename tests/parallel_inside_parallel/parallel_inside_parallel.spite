@@ -1,4 +1,5 @@
 var console = Console()
+var _upper_half_end = 2000
 
 func ParallelInsideParallel() {
     load "../../../spite_standard_library/windows"
@@ -25,7 +26,7 @@ func lower_half(): Long {
 func upper_half(): Long {
     var total: Long = 0
     var index = 1000
-    while index < 2000 {
+    while index < _upper_half_end {
         total = total + index
         index = index + 1
     }

@@ -1,5 +1,6 @@
 var console = Console()
 var account = Bank.Account()
+var _balance_after_deposit = 105
 
 func AccountTests() {
     account.deposit(100)
@@ -14,5 +15,5 @@ func test_withdraws() {
 func test_starts_from_its_own_setup() {
     crash account.balance == 100
     account.deposit(5)
-    crash account.balance == 105
+    crash account.balance == _balance_after_deposit
 }

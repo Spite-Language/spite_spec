@@ -1,2 +1,2 @@
 255 0
-spite: 'steps + 1' does not fit in a Byte (255 + 1), at tests/counter_room/counter_room.spite:17 in CounterRoom.CounterRoom
+spite: 'steps + 1' does not fit in a Byte (255 + 1), at tests/counter_room/counter_room.spite:19 in CounterRoom.CounterRoom

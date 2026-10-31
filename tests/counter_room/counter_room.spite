@@ -1,9 +1,11 @@
 var console = Console()
+var _byte_near_the_top: Byte = 250
+var _largest_byte: Byte = 255
 
 func CounterRoom() {
     load "../../../spite_standard_library/windows"
-    var index: Byte = 250
-    while index < 255 {
+    var index: Byte = _byte_near_the_top
+    while index < _largest_byte {
         index = index + 1
     }
     var left: UnsignedInteger = 3
@@ -11,8 +13,8 @@ func CounterRoom() {
         left = left - 1
     }
     console.print(index, left)
-    var steps: Byte = 250
-    while steps < 255 {
+    var steps: Byte = _byte_near_the_top
+    while steps < _largest_byte {
         steps = steps + 1
         steps = steps + 1
     }

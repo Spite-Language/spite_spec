@@ -1,13 +1,15 @@
 var console = Console()
+var _atlas_pages = 120
+var _novel_pages = 300
 
 func DictionaryTemplates() {
     load "../../../spite_standard_library/windows"
     var shelf = Dictionary<String, Book>()
-    var atlas = Book("atlas", 120, true)
+    var atlas = Book("atlas", _atlas_pages, true)
     shelf["atlas"] = atlas
     var poems = Book("poems", 40, false)
     shelf["poems"] = poems
-    var novel = Book("novel", 300, true)
+    var novel = Book("novel", _novel_pages, true)
     shelf["novel"] = novel
     var total_pages = shelf.sum_pages()
     var borrowed_count = shelf.count_borrowed()

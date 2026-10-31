@@ -5,11 +5,12 @@ enum Level {
 
 var console = Console()
 var kinds = List<String>()
+var _sample_total: Long = 40000000000
 
 func TaggedValues() {
     load "../../../spite_standard_library/windows"
     var count = 3
-    var total: Long = 40000000000
+    var total: Long = _sample_total
     var ratio = 0.5
     var level: Level = 'high'
     console.print(count, total, ratio, true, level)

@@ -1,11 +1,12 @@
 var console = Console()
+var _sample_byte: Byte = 200
 
 func SignednessNotWider() {
     load "../../../spite_standard_library/windows"
     var signed = 5
     var unsigned: UnsignedInteger = 7
     var total = signed + unsigned
-    var small: Byte = 200
+    var small: Byte = _sample_byte
     var next = small + 1
     var above = small > 1
     console.print(total, next, above)

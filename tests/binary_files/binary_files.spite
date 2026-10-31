@@ -1,12 +1,13 @@
 var console = Console()
 var clock = Clock()
+var _header_stamp: Long = 1234567890123
 
 func BinaryFiles() {
     load "../../../spite_standard_library/windows"
     var store = File(".spite/binary_files.bin")
     var header = Buffer(0)
     header.append_integer_little_endian(7)
-    header.append_long_little_endian(1234567890123)
+    header.append_long_little_endian(_header_stamp)
     var saved = store.write_buffer(header)
     var record = Buffer(0)
     record.append_long_little_endian(-42)

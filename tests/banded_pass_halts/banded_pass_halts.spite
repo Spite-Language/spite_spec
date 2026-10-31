@@ -4,7 +4,7 @@ func BandedPassHalts() {
     load "../../../spite_standard_library/windows"
     var counters = List<Counter>()
     var index = 0
-    while index < 3000 {
+    while index < 4096 {
         var counter = Counter(index)
         counters.append(counter)
         index = index + 1

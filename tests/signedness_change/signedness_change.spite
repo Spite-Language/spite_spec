@@ -1,4 +1,5 @@
 var console = Console()
+var _largest_unsigned_short: UnsignedShort = 65535
 
 func SignednessChange() {
     load "../../../spite_standard_library/windows"
@@ -9,7 +10,7 @@ func SignednessChange() {
     console.print(
         "{count.bits_as_unsigned()} {minus_one.bits_as_unsigned()} {top.bits_as_signed()} {tiny.bits_as_unsigned()}",
     )
-    var small: UnsignedShort = 65535
+    var small: UnsignedShort = _largest_unsigned_short
     var widened: Integer = small
     console.print(widened)
     var unsigned_count: UnsignedInteger = count

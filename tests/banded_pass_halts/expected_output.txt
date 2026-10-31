@@ -1,2 +1,2 @@
 before the bands
-spite: 'total + step' does not fit in an Integer (2000000000 + 1000000000), at tests/banded_pass_halts/counter.spite:14 in Counter.grow
+spite: 'total + step' does not fit in an Integer (2000000000 + 1000000000), at tests/banded_pass_halts/counter.spite:15 in Counter.grow

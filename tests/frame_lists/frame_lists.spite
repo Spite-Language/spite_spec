@@ -1,4 +1,6 @@
 var console = Console()
+var _large_byte: Byte = 200
+var _beyond_integer: Long = 5000000000
 
 func FrameLists() {
     load "../../../spite_standard_library/windows"
@@ -10,8 +12,8 @@ func FrameLists() {
         round = round + 1
     }
     console.print("largest", total)
-    var bytes: List<Byte> = [7, 200, 13]
-    var big: List<Long> = [5000000000, 2, 3]
+    var bytes: List<Byte> = [7, _large_byte, 13]
+    var big: List<Long> = [_beyond_integer, 2, 3]
     var byte_count = bytes.count()
     crash bytes[1]
     crash big[0]

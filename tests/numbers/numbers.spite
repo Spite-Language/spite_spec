@@ -1,3 +1,6 @@
+var _bigger_value = 2000
+var _whole_and_bigger_sum = 3000
+
 func Numbers(): Integer {
     load "../../../spite_standard_library/common"
     var holder = Holder()
@@ -6,7 +9,7 @@ func Numbers(): Integer {
     holder.negative = -1
     holder.positive = 5
     holder.whole = 1000
-    holder.bigger = 2000
+    holder.bigger = _bigger_value
     var total = 0
     if holder.small < holder.large {
         total = total + 1
@@ -37,13 +40,13 @@ func Numbers(): Integer {
     if small_byte == 5 {
         total = total + 256
     }
-    if holder.whole + holder.bigger == 3000 {
+    if holder.whole + holder.bigger == _whole_and_bigger_sum {
         total = total + 512
     }
     if holder.small.minimum(holder.large) == 5 {
         total = total + 1024
     }
-    if holder.whole.maximum(holder.bigger) == 2000 {
+    if holder.whole.maximum(holder.bigger) == _bigger_value {
         total = total + 2048
     }
     if holder.negative.absolute() == 1 {

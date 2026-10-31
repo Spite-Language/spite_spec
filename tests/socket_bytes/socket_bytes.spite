@@ -1,19 +1,22 @@
 var console = Console()
 var server = Tcp.Server()
+var _port = 47313
+var _third_byte: Byte = 250
+var _invalid_utf8_byte: Byte = 255
 
 func SocketBytes() {
     load "../../../spite_standard_library/windows"
     var address: IpAddress? = "127.0.0.1"
     crash address
-    crash server.listen_at(address, 47313)
+    crash server.listen_at(address, _port)
     var client = Tcp.Client()
     var local_host: IpAddress? = "localhost"
     crash local_host
-    crash client.connect(local_host, 47313)
+    crash client.connect(local_host, _port)
     var peer = server.accept()
     crash peer
     console.print("the peer is open:", not peer.closed)
-    send(client, 1, 2, 250)
+    send(client, 1, 2, _third_byte)
     var received = receive(peer, 3)
     var first = received[0]
     crash first
@@ -43,7 +46,7 @@ func SocketBytes() {
     crash line
     console.print("client read the line:", line)
     var not_text = Buffer(0)
-    not_text.append(255)
+    not_text.append(_invalid_utf8_byte)
     not_text.append(10)
     crash peer.write_buffer(not_text)
     crash peer.write_line("after it")

@@ -1,8 +1,9 @@
 var total: Long = 0
+var _steps = 200000
 
 func run() {
     var index = 0
-    while index < 200000 {
+    while index < _steps {
         total = total + index % 7
         index = index + 1
     }

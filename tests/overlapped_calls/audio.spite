@@ -1,8 +1,9 @@
 var samples = List<Integer>()
+var _sample_count = 500
 
 func step() {
     var index = 0
-    while index < 500 {
+    while index < _sample_count {
         samples.append(index * 2)
         index = index + 1
     }

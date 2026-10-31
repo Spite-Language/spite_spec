@@ -1,6 +1,8 @@
 var console = Console()
 var clock = Clock()
 var program = Program()
+var _start_of_2020_seconds: Long = 1577836800
+var _slowest_wait_milliseconds: Long = 5000
 
 func ClockReading() {
     load "../../../spite_standard_library/windows"
@@ -11,10 +13,10 @@ func ClockReading() {
     var taken = finished - started
     var waited = taken.total('milliseconds')
     var now = clock.now()
-    var since_1970 = Duration(1577836800, 'seconds')
+    var since_1970 = Duration(_start_of_2020_seconds, 'seconds')
     var year_2020 = Instant(since_1970)
     var after_2020 = now > year_2020
     var reading = clock.elapsed()
     var counted_from_a_start = not reading.is_negative
-    console.print(waited >= 19, waited < 5000, after_2020, counted_from_a_start)
+    console.print(waited >= 19, waited < _slowest_wait_milliseconds, after_2020, counted_from_a_start)
 }

@@ -1,5 +1,6 @@
 var cache = TextureCache()
 var first = 0
+var _textures_per_loader = 2000
 
 func Loader(starting_first: Integer) {
     first = starting_first
@@ -7,7 +8,7 @@ func Loader(starting_first: Integer) {
 
 func load_many(): Integer {
     var index = 0
-    while index < 2000 {
+    while index < _textures_per_loader {
         var number = first + index
         cache.remember("texture {number}", number)
         index = index + 1

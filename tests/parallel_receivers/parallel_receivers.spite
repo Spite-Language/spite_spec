@@ -1,6 +1,7 @@
 var console = Console()
 var owner = Owner()
 var station = Station()
+var _churned_names = 2000
 
 func ParallelReceivers() {
     load "../../../spite_standard_library/windows"
@@ -20,7 +21,7 @@ func ParallelReceivers() {
 func churn() {
     var names = List<String>()
     var index = 0
-    while index < 2000 {
+    while index < _churned_names {
         names.append("churn {index}")
         index = index + 1
     }

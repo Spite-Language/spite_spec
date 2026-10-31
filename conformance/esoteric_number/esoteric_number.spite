@@ -1,0 +1,8 @@
+var console = Console()
+
+func EsotericNumber() {
+    load "../../../spite_standard_library/windows"
+    var days = 1000000
+    var eras = days / 146097
+    console.print(eras)
+}

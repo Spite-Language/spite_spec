@@ -3,6 +3,7 @@ var build = Build()
 var program = Program()
 var reload = Reload()
 var greeter = Greeter()
+var _most_waits = 600
 
 func HotReloadWatchesSavedFiles() {
     load "../../../spite_standard_library/windows"
@@ -12,7 +13,7 @@ func HotReloadWatchesSavedFiles() {
     write_greeter("goodbye")
     var waited = 0
     var now = greeter.greeting()
-    while now == first and waited < 600 {
+    while now == first and waited < _most_waits {
         program.sleep(fifty_milliseconds)
         now = greeter.greeting()
         waited = waited + 1

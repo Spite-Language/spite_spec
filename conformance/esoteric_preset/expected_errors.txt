@@ -1,0 +1,1 @@
+conformance/esoteric_preset/esoteric_preset.spite:6: error: the number 3.14159 is Double.Pi() or Float.Pi(): write Double.Pi() or Float.Pi() instead of the number (in EsotericPreset.EsotericPreset)

@@ -1,4 +1,14 @@
 var console = Console()
+var _leap_year = 2024
+var _common_year = 2023
+var _century_common_year = 1900
+var _millennium_year = 2000
+var _next_century_common_year = 2100
+var _epoch_year = 1970
+var _year_before_epoch = 1969
+var _birth_year = 1990
+var _year_after_leap_year = 2025
+var _five_digit_year = 12345
 
 func CalendarMath() {
     load "../../../spite_standard_library/windows"
@@ -12,17 +22,17 @@ func CalendarMath() {
 func month_ends() {
     var month = Period(1, 'months')
     var year = Period(1, 'years')
-    var leap_end = Date(2024, 1, 31) + month
-    var common_end = Date(2023, 1, 31) + month
-    var leap_day_next_year = Date(2024, 2, 29) + year
-    var leap_day_in_four = Date(2024, 2, 29) + Period(4, 'years')
-    var back_from_march = Date(2024, 3, 31) + -month
+    var leap_end = Date(_leap_year, 1, 31) + month
+    var common_end = Date(_common_year, 1, 31) + month
+    var leap_day_next_year = Date(_leap_year, 2, 29) + year
+    var leap_day_in_four = Date(_leap_year, 2, 29) + Period(4, 'years')
+    var back_from_march = Date(_leap_year, 3, 31) + -month
     console.print(leap_end, common_end, leap_day_next_year, leap_day_in_four, back_from_march)
-    var new_year = Date(2024, 12, 31) + Period(1, 'days')
-    var old_year = Date(2024, 1, 1) + Period(-1, 'days')
-    var next_week = Date(2024, 2, 26) + Period(1, 'weeks')
-    var mixed = Date(2024, 1, 31) + Period(1, 'months') + Period(1, 'days')
-    var last_of_january = Date(2024, 1, 31)
+    var new_year = Date(_leap_year, 12, 31) + Period(1, 'days')
+    var old_year = Date(_leap_year, 1, 1) + Period(-1, 'days')
+    var next_week = Date(_leap_year, 2, 26) + Period(1, 'weeks')
+    var mixed = Date(_leap_year, 1, 31) + Period(1, 'months') + Period(1, 'days')
+    var last_of_january = Date(_leap_year, 1, 31)
     var half_past_nine = Time(9, 30, 0, 0)
     var morning = DateTime(last_of_january, half_past_nine)
     var month_later = morning + month
@@ -30,14 +40,14 @@ func month_ends() {
 }
 
 func leap_years() {
-    show_leap_year(1900)
-    show_leap_year(2000)
-    show_leap_year(2023)
-    show_leap_year(2024)
-    show_leap_year(2100)
+    show_leap_year(_century_common_year)
+    show_leap_year(_millennium_year)
+    show_leap_year(_common_year)
+    show_leap_year(_leap_year)
+    show_leap_year(_next_century_common_year)
     show_leap_year(-4)
-    var february = Date(2100, 2, 1)
-    var april = Date(2024, 4, 1)
+    var february = Date(_next_century_common_year, 2, 1)
+    var april = Date(_leap_year, 4, 1)
     console.print(february.days_in_month, april.days_in_month)
 }
 
@@ -48,25 +58,25 @@ func show_leap_year(year: Integer) {
 }
 
 func weekdays() {
-    var epoch = Date(1970, 1, 1)
-    var before_epoch = Date(1969, 12, 31)
-    var millennium = Date(2000, 1, 1)
-    var sunday = Date(2024, 3, 10)
+    var epoch = Date(_epoch_year, 1, 1)
+    var before_epoch = Date(_year_before_epoch, 12, 31)
+    var millennium = Date(_millennium_year, 1, 1)
+    var sunday = Date(_leap_year, 3, 10)
     var year_zero = Date(0, 1, 1)
     console.print(epoch.weekday, before_epoch.weekday, millennium.weekday, sunday.weekday, year_zero.weekday)
     console.print(epoch.days_since_1970, before_epoch.days_since_1970, millennium.days_since_1970)
 }
 
 func periods_between() {
-    var january = Date(2024, 1, 31)
-    var march = Date(2024, 3, 1)
-    var birthday = Date(1990, 5, 15)
-    var today = Date(2024, 3, 10)
+    var january = Date(_leap_year, 1, 31)
+    var march = Date(_leap_year, 3, 1)
+    var birthday = Date(_birth_year, 5, 15)
+    var today = Date(_leap_year, 3, 10)
     var forward = january.period_until(march)
     var age = birthday.period_until(today)
     var backward = today.period_until(january)
-    var next_new_year = Date(2025, 1, 1)
-    var days = Date(2024, 1, 1).days_until(next_new_year)
+    var next_new_year = Date(_year_after_leap_year, 1, 1)
+    var days = Date(_leap_year, 1, 1).days_until(next_new_year)
     console.print(forward, age, backward, days)
     var whole = Period(1, 'years') + Period(2, 'months') + Period(3, 'days')
     var weeks = Period(2, 'weeks')
@@ -76,13 +86,13 @@ func periods_between() {
     console.print(whole, weeks, nothing, undone, same)
     var earlier = january < march
     var later = march > january
-    var equal = january == Date(2024, 1, 31)
+    var equal = january == Date(_leap_year, 1, 31)
     console.print(earlier, later, equal)
 }
 
 func formatted_years() {
     var before_year_one = Date(-1, 1, 1)
     var year_zero = Date(0, 1, 1)
-    var distant = Date(12345, 6, 7)
+    var distant = Date(_five_digit_year, 6, 7)
     console.print(before_year_one, year_zero, distant)
 }

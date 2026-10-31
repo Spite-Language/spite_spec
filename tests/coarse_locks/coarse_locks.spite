@@ -1,19 +1,21 @@
 var console = Console()
 var tally = Tally()
 var mailbox = Mailbox()
+var _rounds_per_counter = 20000
+var _post_count = 500
 
 func CoarseLocks() {
     load "../../../spite_standard_library/windows"
-    var first = Counter(20000)
+    var first = Counter(_rounds_per_counter)
     var first_run = Parallel(first.count_up)
-    var second = Counter(20000)
+    var second = Counter(_rounds_per_counter)
     var second_run = Parallel(second.count_up)
-    var third = Counter(20000)
+    var third = Counter(_rounds_per_counter)
     var third_run = Parallel(third.count_up)
-    var poster = Counter(500)
+    var poster = Counter(_post_count)
     var posting = Parallel(poster.count_and_post)
     var got = 0
-    while got < 500 {
+    while got < _post_count {
         got = mailbox.take()
     }
     var counted: Integer = first_run + second_run + third_run + posting

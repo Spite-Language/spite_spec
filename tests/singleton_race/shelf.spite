@@ -5,10 +5,11 @@ generic $item_type
 var stamp = 0
 var items = List<$item_type>()
 var census = Census()
+var _spin_limit = 20000000
 
 func Shelf() {
     var spin = 0
-    while spin < 20000000 {
+    while spin < _spin_limit {
         spin = spin + items.count() + 1
     }
     census.made = census.made + 1

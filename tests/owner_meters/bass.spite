@@ -1,9 +1,10 @@
 var meter = Meter()
 var phase = 0
+var _rendered_steps = 3000000
 
 func render() {
     var step = 0
-    while step < 3000000 {
+    while step < _rendered_steps {
         phase = (phase + 13) % 1000
         meter.record(phase)
         step = step + 1

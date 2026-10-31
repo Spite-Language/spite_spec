@@ -1,10 +1,11 @@
 var console = Console()
+var _orbit_count = 3000
 
 func BandsOfOrbits() {
     load "../../../spite_standard_library/windows"
     var orbits = List<Orbit>()
     var index = 0
-    while index < 3000 {
+    while index < _orbit_count {
         var orbit = Orbit(index)
         orbits.append(orbit)
         index = index + 1

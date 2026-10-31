@@ -1,5 +1,6 @@
 var letters = List<Letter>()
 var kept_total = 0
+var _sorting_rounds = 300
 
 func Archive() {
     var index = 0
@@ -12,7 +13,7 @@ func Archive() {
 
 func sort() {
     var round = 0
-    while round < 300 {
+    while round < _sorting_rounds {
         var kept = List<Letter>()
         var index = 0
         while index < letters.count() {

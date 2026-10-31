@@ -1,16 +1,17 @@
 var console = Console()
 var server = Tcp.Server()
+var _port = 47314
 
 func SocketWaits() {
     load "../../../spite_standard_library/windows"
     var local_host: IpAddress? = "localhost"
     crash local_host
-    crash server.listen_at(local_host, 47314)
+    crash server.listen_at(local_host, _port)
     var serving = Concurrent(echo_once)
     var client = Tcp.Client()
     var address: IpAddress? = "127.0.0.1"
     crash address
-    crash client.connect(address, 47314)
+    crash client.connect(address, _port)
     var message = Buffer(0)
     message.append(10)
     message.append(20)

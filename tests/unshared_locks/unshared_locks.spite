@@ -1,10 +1,11 @@
 var console = Console()
 var ledger = Ledger()
+var _postings = 20000
 
 func UnsharedLocks() {
     load "../../../spite_standard_library/windows"
     var before = ledger.total()
-    var posting = ledger.start_posting(20000)
+    var posting = ledger.start_posting(_postings)
     var posted: Integer = posting
     var after = ledger.total()
     console.print("before", before, "posted", posted, "after", after)

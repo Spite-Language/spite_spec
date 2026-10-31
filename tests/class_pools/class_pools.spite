@@ -1,5 +1,6 @@
 var console = Console()
 var points = List<Point>()
+var _points_added_per_round = 500
 
 func ClassPools() {
     load "../../../spite_standard_library/windows"
@@ -9,7 +10,7 @@ func ClassPools() {
     var letters = 0
     var round = 0
     while round < 3 {
-        letters = letters + fill(1000 + round * 500)
+        letters = letters + fill(1000 + round * _points_added_per_round)
         total = total + sum()
         points.clear()
         round = round + 1

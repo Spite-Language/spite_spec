@@ -1,2 +1,2 @@
 5 6
-spite: 300, an Integer, does not fit in a Byte, at tests/byte_minimum_does_not_fit/byte_minimum_does_not_fit.spite:10 in ByteMinimumDoesNotFit.ByteMinimumDoesNotFit
+spite: 300, an Integer, does not fit in a Byte, at tests/byte_minimum_does_not_fit/byte_minimum_does_not_fit.spite:11 in ByteMinimumDoesNotFit.ByteMinimumDoesNotFit

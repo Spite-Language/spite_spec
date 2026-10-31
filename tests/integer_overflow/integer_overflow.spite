@@ -1,16 +1,18 @@
 var console = Console()
+var _large_hash: UnsignedInteger = 4000000000
+var _large_amount = 2000000000
 
 func IntegerOverflow() {
     load "../../../spite_standard_library/windows"
     var small: Tiny = 100
     var fits = small + 27
-    var hash: UnsignedInteger = 4000000000
+    var hash: UnsignedInteger = _large_hash
     var mixed = hash.wrapping_multiply(3)
     console.print(fits, mixed)
     var lowest = Long.Smallest()
     var above = lowest + 1
     console.print(above)
-    var total = scaled(2000000000, 2)
+    var total = scaled(_large_amount, 2)
     console.print("never printed", total)
 }
 

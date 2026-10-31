@@ -1,12 +1,15 @@
 var console = Console()
 var rows = Row<Health>()
+var _least_health = 250
+var _filled_rows = 400
+var _high_health = 300
 
 func SingletonFunctionValues() {
     load "../../../spite_standard_library/windows"
-    rows.least = 250
+    rows.least = _least_health
     var filling = List<Parallel<Integer>>()
     var start = 0
-    while start < 400 {
+    while start < _filled_rows {
         var filler = Filler(start)
         var fill = Parallel(filler.fill)
         filling.append(fill)
@@ -15,7 +18,7 @@ func SingletonFunctionValues() {
     var index = 0
     while index < filling.count() {
         var seen: Integer = filling[index]
-        crash seen <= 400
+        crash seen <= _filled_rows
         index = index + 1
     }
     var matching = rows.matching()
@@ -29,7 +32,7 @@ func SingletonFunctionValues() {
     var judge = Judge()
     var strong = judge.count_strong(healths)
     var check = rows.matches
-    var high = Health(300)
+    var high = Health(_high_health)
     var passes = check(high)
     var stored = rows.found.count()
     console.print("stored", stored, "matching", matching, "strong", strong, "passes", passes)

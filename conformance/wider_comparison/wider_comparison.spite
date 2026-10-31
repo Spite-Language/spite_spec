@@ -1,4 +1,5 @@
 var console = Console()
+var _wider_than_byte = 300
 
 func WiderComparison() {
     load "../../../spite_standard_library/windows"
@@ -6,6 +7,6 @@ func WiderComparison() {
     var total: Long = 4294967296
     var progress = 0
     var small: Byte = 7
-    console.print(count < total, count == total, progress > -0.5, small <= 300)
+    console.print(count < total, count == total, progress > -0.5, small <= _wider_than_byte)
     console.print(total > count, -0.5 < progress, small < 10, count >= 2)
 }

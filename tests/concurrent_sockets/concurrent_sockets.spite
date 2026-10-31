@@ -1,9 +1,10 @@
 var console = Console()
 var server = Tcp.Server()
+var _server_port = 47311
 
 func ConcurrentSockets() {
     load "../../../spite_standard_library/windows"
-    crash server.listen_locally(47311)
+    crash server.listen_locally(_server_port)
     var serving = Concurrent(serve_two)
     var first = Concurrent(ask_ada)
     var second = Concurrent(ask_grace)
@@ -36,7 +37,7 @@ func ask_grace(): String {
 
 func ask(name: String): String {
     var connection = Tcp.Client()
-    crash connection.connect_locally(47311)
+    crash connection.connect_locally(_server_port)
     crash connection.write_line(name)
     var answer = connection.read_line()
     connection.close()

@@ -1,4 +1,5 @@
 var console = Console()
+var _sample_year = 2024
 
 func OldTypeSpellings() {
     load "../../../spite_standard_library/windows"
@@ -7,7 +8,7 @@ func OldTypeSpellings() {
     var mask: UnsignedInt = 7
     var text = "42"
     var parsed = text.to_int()
-    var day = LocalDate(2024, 3, 10)
+    var day = LocalDate(_sample_year, 3, 10)
     var clock: LocalTime? = null
     var reading = "2024-03-10".to_local_date()
     console.print(count, ready, mask, parsed, day, clock, reading)

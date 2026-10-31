@@ -2,6 +2,6 @@ var console = Console()
 
 func ConstantOverflow() {
     load "../../../spite_standard_library/windows"
-    var area = (65536 - 120) * 65536
+    var area = (65536 - 128) * 65536
     console.print(area)
 }

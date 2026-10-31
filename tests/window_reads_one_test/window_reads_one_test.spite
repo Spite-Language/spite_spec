@@ -1,16 +1,18 @@
 var console = Console()
+var _value_modulus = 101
+var _last_index = 999
 
 func WindowReadsOneTest() {
     load "../../../spite_standard_library/windows"
     var values = List<Integer>()
     var index = 0
     while index < 1000 {
-        values.append(index * 37 % 101)
+        values.append(index * 37 % _value_modulus)
         index = index + 1
     }
     var summed = windows(values, 3)
     console.print("windows", summed)
-    var picks = [5, 0, 999, 17]
+    var picks = [5, 0, _last_index, 17]
     var chosen = picked(values, picks)
     console.print("picked", chosen)
 }

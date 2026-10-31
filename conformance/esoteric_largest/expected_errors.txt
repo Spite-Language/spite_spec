@@ -1,0 +1,1 @@
+conformance/esoteric_largest/esoteric_largest.spite:6: error: the number 255 does not say what it means: declare a private attribute that names it, like 'var _what_it_means = 255', and write the name here, or write Byte.Largest() if it means that (in EsotericLargest.EsotericLargest)

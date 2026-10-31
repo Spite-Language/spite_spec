@@ -3,6 +3,8 @@ var argon2 = Argon2()
 var random = SecureRandom()
 var sha256 = Sha256()
 var digits = "0123456789abcdef"
+var _long_key_length = 131
+var _long_key_byte: Byte = 170
 
 func Hashes() {
     load "../../../spite_standard_library/windows"
@@ -31,8 +33,8 @@ func Hashes() {
     var mac_shown = hex(mac)
     console.print(mac_shown)
     var long_key = Buffer(0)
-    while long_key.count() < 131 {
-        long_key.append(170)
+    while long_key.count() < _long_key_length {
+        long_key.append(_long_key_byte)
     }
     var test_text = "Test Using Larger Than Block-Size Key - Hash Key First"
     var test = test_text.to_buffer()

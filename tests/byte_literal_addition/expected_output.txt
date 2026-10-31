@@ -1,2 +1,2 @@
 255
-spite: 'next + 1' does not fit in a Byte (255 + 1), at tests/byte_literal_addition/byte_literal_addition.spite:8 in ByteLiteralAddition.ByteLiteralAddition
+spite: 'next + 1' does not fit in a Byte (255 + 1), at tests/byte_literal_addition/byte_literal_addition.spite:9 in ByteLiteralAddition.ByteLiteralAddition

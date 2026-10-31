@@ -1,9 +1,10 @@
 var amount = 0
+var _marathon_meters = 42195
 
 func Meters(starting_amount: Integer) {
     amount = starting_amount
 }
 
 func Marathon(): Meters? {
-    return Meters(42195)
+    return Meters(_marathon_meters)
 }

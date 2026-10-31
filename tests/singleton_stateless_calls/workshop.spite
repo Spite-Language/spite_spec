@@ -2,6 +2,7 @@ singleton
 
 var program = Program()
 var pieces = List<Integer>()
+var _most_polls = 5000
 
 func build(): Integer {
     var one_millisecond = Duration(1, 'milliseconds')
@@ -9,7 +10,7 @@ func build(): Integer {
     var working = Parallel(helper.work)
     var polls = 0
     var made = 0
-    while made == 0 and polls < 5000 {
+    while made == 0 and polls < _most_polls {
         polls = polls + 1
         var finished = working.finished_value()
         if finished {

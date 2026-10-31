@@ -1,5 +1,6 @@
 var console = Console()
 var program = Program()
+var _most_tries = 250
 
 func FileWatching() {
     load "../../../spite_standard_library/windows"
@@ -48,7 +49,7 @@ func settled_changes(watcher: FileSystemWatcher): List<String> {
     var twenty_milliseconds = Duration(20, 'milliseconds')
     var changed = watcher.changes()
     var tries = 0
-    while changed.count() < 3 and tries < 250 {
+    while changed.count() < 3 and tries < _most_tries {
         program.sleep(twenty_milliseconds)
         var more = watcher.changes()
         var index = 0

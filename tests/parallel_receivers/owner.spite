@@ -1,7 +1,8 @@
 var thread: Parallel<Integer>? = null
+var _pump_limit = 300000
 
 func start() {
-    var pump = Pump(300000)
+    var pump = Pump(_pump_limit)
     thread = Parallel(pump.run)
 }
 

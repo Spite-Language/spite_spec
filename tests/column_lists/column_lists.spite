@@ -1,10 +1,12 @@
 var console = Console()
 var cells = List<Cell>()
+var _cell_count = 3000
+var _last_cell_index = 2999
 
 func ColumnLists() {
     load "../../../spite_standard_library/windows"
     var index = 0
-    while index < 3000 {
+    while index < _cell_count {
         var cell = Cell(index, index % 7)
         cells.append(cell)
         index = index + 1
@@ -23,7 +25,7 @@ func ColumnLists() {
         checked = checked + 1
     }
     var weights = cells.sum_weight()
-    crash cells[2999]
-    var last = cells[2999]
+    crash cells[_last_cell_index]
+    var last = cells[_last_cell_index]
     console.print("total", total, "weights", weights, "last", last.weight, last.small, last.big)
 }

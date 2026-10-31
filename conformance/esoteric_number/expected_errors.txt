@@ -1,0 +1,1 @@
+conformance/esoteric_number/esoteric_number.spite:6: error: the number 146097 does not say what it means: declare a private attribute that names it, like 'var _what_it_means = 146097', and write the name here (in EsotericNumber.EsotericNumber)

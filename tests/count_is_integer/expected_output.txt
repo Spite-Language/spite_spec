@@ -1,1 +1,1 @@
-spite: 'count * large' does not fit in an Integer (2 * 2000000000), at tests/count_is_integer/count_is_integer.spite:8 in CountIsInteger.CountIsInteger
+spite: 'count * large' does not fit in an Integer (2 * 2000000000), at tests/count_is_integer/count_is_integer.spite:9 in CountIsInteger.CountIsInteger

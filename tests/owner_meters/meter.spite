@@ -1,9 +1,10 @@
 var total: Long = 0
 var loud = List<Integer>()
+var _loud_threshold = 995
 
 func record(sample: Integer) {
     total = total + sample
-    if sample > 995 {
+    if sample > _loud_threshold {
         loud.append(sample)
     }
 }

@@ -1,4 +1,6 @@
 var meter = Meter()
+var _recorded_steps = 200000
+var _sample_period = 5003
 
 func listen(heard: Meter) {
     meter = heard
@@ -6,8 +8,8 @@ func listen(heard: Meter) {
 
 func run() {
     var step = 0
-    while step < 200000 {
-        meter.record(step % 5003)
+    while step < _recorded_steps {
+        meter.record(step % _sample_period)
         step = step + 1
     }
 }

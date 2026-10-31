@@ -1,15 +1,22 @@
 var console = Console()
+var _large_hash: UnsignedInteger = 4000000000
+var _hash_addition: UnsignedInteger = 500000000
+var _large_byte: Byte = 250
+var _fowler_noll_vo_offset_basis: UnsignedLong = 1469598103934665603
+var _fowler_noll_vo_prime: UnsignedLong = 1099511628211
+var _room_left_in_hash: UnsignedInteger = 294967295
+var _low_byte_mask: UnsignedInteger = 255
 
 func WrappingFunctions() {
     load "../../../spite_standard_library/windows"
-    var hash: UnsignedInteger = 4000000000
+    var hash: UnsignedInteger = _large_hash
     var tripled = hash.wrapping_multiply(3)
-    var summed = hash.wrapping_sum(500000000)
+    var summed = hash.wrapping_sum(_hash_addition)
     console.print(tripled, summed)
     var low: UnsignedInteger = 1
     var below = low.wrapping_subtract(2)
     console.print(below)
-    var small: Byte = 250
+    var small: Byte = _large_byte
     var small_sum = small.wrapping_sum(10)
     var small_product = small.wrapping_multiply(2)
     console.print(small_sum, small_product)
@@ -20,10 +27,10 @@ func WrappingFunctions() {
     var wide = Long.Largest()
     var past = wide.wrapping_sum(1)
     console.print(past)
-    var big: UnsignedLong = 1469598103934665603
-    var hashed = big.wrapping_multiply(1099511628211)
+    var big: UnsignedLong = _fowler_noll_vo_offset_basis
+    var hashed = big.wrapping_multiply(_fowler_noll_vo_prime)
     console.print(hashed)
-    var fits = hash + 294967295
-    var cut: Byte = fits.bits_and(255)
+    var fits = hash + _room_left_in_hash
+    var cut: Byte = fits.bits_and(_low_byte_mask)
     console.print(fits, cut)
 }

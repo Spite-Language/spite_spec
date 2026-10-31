@@ -1,4 +1,5 @@
 var console = Console()
+var _wider_than_a_byte = 300
 
 func ByteMinimumDoesNotFit() {
     load "../../../spite_standard_library/windows"
@@ -6,7 +7,7 @@ func ByteMinimumDoesNotFit() {
     var lower = small.minimum(5)
     var held = small.clamp(2, 6)
     console.print(lower, held)
-    var wide = 300
+    var wide = _wider_than_a_byte
     var never = small.maximum(wide)
     console.print("never printed", never)
 }

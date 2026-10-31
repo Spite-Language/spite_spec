@@ -1,4 +1,16 @@
 var console = Console()
+var _two_byte_lead = 195
+var _overlong_two_byte_lead = 192
+var _slash_continuation = 175
+var _three_byte_lead = 224
+var _surrogate_lead = 237
+var _surrogate_continuation = 160
+var _highest_four_byte_lead = 244
+var _past_highest_second_byte = 144
+var _highest_second_byte = 143
+var _last_continuation = 191
+var _letter_h_code = 104
+var _letter_i_code = 105
 
 func Utf8Text() {
     load "../../../spite_standard_library/windows"
@@ -11,21 +23,21 @@ func Utf8Text() {
     show("empty", nothing)
     var lone = of(128)
     show("a lone continuation byte", lone)
-    var cut = of(195)
+    var cut = of(_two_byte_lead)
     show("a cut sequence", cut)
-    var overlong_slash = of(192, 175)
+    var overlong_slash = of(_overlong_two_byte_lead, _slash_continuation)
     show("an overlong slash", overlong_slash)
-    var overlong_three = of(224, 128, 175)
+    var overlong_three = of(_three_byte_lead, 128, _slash_continuation)
     show("an overlong three-byte form", overlong_three)
-    var surrogate = of(237, 160, 128)
+    var surrogate = of(_surrogate_lead, _surrogate_continuation, 128)
     show("a surrogate", surrogate)
-    var past = of(244, 144, 128, 128)
+    var past = of(_highest_four_byte_lead, _past_highest_second_byte, 128, 128)
     show("past U+10FFFF", past)
-    var highest = of(244, 143, 191, 191)
+    var highest = of(_highest_four_byte_lead, _highest_second_byte, _last_continuation, _last_continuation)
     show("U+10FFFF", highest)
-    var zero_byte = of(104, 0, 105)
+    var zero_byte = of(_letter_h_code, 0, _letter_i_code)
     show("a zero byte", zero_byte)
-    var plain = of(104, 105)
+    var plain = of(_letter_h_code, _letter_i_code)
     show("plain", plain)
 }
 

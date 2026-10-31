@@ -1,10 +1,11 @@
 var console = Console()
 var passes: Long = 0
 var running = true
+var _pass_limit: Long = 300000000
 
 func BusyLoop() {
     load "../../../spite_standard_library/windows"
-    while running and passes < 300000000 {
+    while running and passes < _pass_limit {
         passes = passes + 1
     }
     console.print("stopped after at least one pass:", passes > 0)

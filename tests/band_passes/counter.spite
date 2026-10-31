@@ -1,5 +1,6 @@
 var total: Long = 0
 var step = 0
+var _bump_rounds = 200
 
 func Counter(seed: Integer) {
     step = seed % 5 + 1
@@ -7,7 +8,7 @@ func Counter(seed: Integer) {
 
 func bump() {
     var round = 0
-    while round < 200 {
+    while round < _bump_rounds {
         total = total + step
         round = round + 1
     }

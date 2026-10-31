@@ -1,5 +1,6 @@
 var step = 0
 var points = List<Point>()
+var _points_made = 20000
 
 func Maker(new_step: Integer) {
     step = new_step
@@ -8,7 +9,7 @@ func Maker(new_step: Integer) {
 func made(): Long {
     var found: Long = 0
     var index = 0
-    while index < 20000 {
+    while index < _points_made {
         var passing = Point(index, step)
         found = found + passing.sum()
         if index % 10 == 0 {

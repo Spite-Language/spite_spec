@@ -1,6 +1,8 @@
+var _engine_horsepower = 200
+
 func MultipleClasses() {
     load "../../../spite_standard_library/windows"
-    var engine = Engine(200)
+    var engine = Engine(_engine_horsepower)
     var car = Car("Roadster", engine)
     car.describe()
     car.accelerate(50)

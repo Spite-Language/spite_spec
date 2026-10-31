@@ -1,9 +1,10 @@
 var console = Console()
+var _first_charge = 120
 
 func HeldAttributes() {
     load "../../../spite_standard_library/windows"
     var invoice = Invoice()
-    invoice.add(120)
+    invoice.add(_first_charge)
     invoice.add(80)
     var due = invoice.due()
     console.print("due", due)

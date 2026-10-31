@@ -1,9 +1,10 @@
 var console = Console()
 var server = Udp.Server()
+var _port = 47316
 
 func UdpWaits() {
     load "../../../spite_standard_library/windows"
-    crash server.open_locally(47316)
+    crash server.open_locally(_port)
     var receiving = Concurrent(receive_once)
     var client = Udp.Client()
     crash client.open()
@@ -13,7 +14,7 @@ func UdpWaits() {
     message.append(10)
     message.append(20)
     message.append(30)
-    crash client.send_to(address, 47316, message)
+    crash client.send_to(address, _port, message)
     console.print("the server received", receiving, "bytes")
     client.close()
     server.close()

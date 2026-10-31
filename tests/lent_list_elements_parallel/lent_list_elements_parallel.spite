@@ -6,27 +6,30 @@ type Moving {
 var console = Console()
 var positions = Column<Position>()
 var trails = Column<Trail>()
+var _entity_count = 400
+var _half_entity_count = 200
+var _last_entity_index = 399
 
 func LentListElementsParallel() {
     load "../../../spite_standard_library/windows"
     var entity = 0
-    while entity < 400 {
+    while entity < _entity_count {
         var position = Position()
         positions.insert(position)
         var trail = Trail(entity)
         trails.insert(trail)
         entity = entity + 1
     }
-    var low = Runner<Mover, Moving>(0, 200)
-    var high = Runner<Mover, Moving>(200, 400)
-    var peeking = Runner<Peeker, Moving>(0, 400)
+    var low = Runner<Mover, Moving>(0, _half_entity_count)
+    var high = Runner<Mover, Moving>(_half_entity_count, _entity_count)
+    var peeking = Runner<Peeker, Moving>(0, _entity_count)
     var low_run = Parallel(low.run)
     var high_run = Parallel(high.run)
     var moved: Integer = low_run + high_run
     var peek_run = Parallel(peeking.run)
     var peeked: Integer = peek_run
-    var last = trails.at(399)
+    var last = trails.at(_last_entity_index)
     var lefts = last.lefts.count()
-    crash positions.values[399]
-    console.print("moved", moved, "peeked", peeked, "last trail", lefts, positions.values[399].left)
+    crash positions.values[_last_entity_index]
+    console.print("moved", moved, "peeked", peeked, "last trail", lefts, positions.values[_last_entity_index].left)
 }

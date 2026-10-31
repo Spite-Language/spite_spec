@@ -2,13 +2,15 @@ var console = Console()
 var program = Program()
 var server = Http.Server()
 var client = Http.Client()
+var _past_the_idle_limit_milliseconds: Long = 400
+var _server_port = 47912
 
 func HttpKeepAlive() {
     load "../../../spite_standard_library/windows"
-    var four_hundred_milliseconds = Duration(400, 'milliseconds')
+    var four_hundred_milliseconds = Duration(_past_the_idle_limit_milliseconds, 'milliseconds')
     var idle_limit = Duration(100, 'milliseconds')
     server.idle_limit = idle_limit
-    crash server.listen_locally(47912)
+    crash server.listen_locally(_server_port)
     var serving = Concurrent(serve_four)
     ask("/first")
     ask("/second")
@@ -19,7 +21,7 @@ func HttpKeepAlive() {
     closing.set_header("connection", "close")
     var loopback: IpAddress? = "127.0.0.1"
     crash loopback
-    var answer = client.send(loopback, 47912, closing)
+    var answer = client.send(loopback, _server_port, closing)
     crash answer
     var said = answer.header("connection")
     crash said
@@ -48,7 +50,7 @@ func ask(path: String) {
     request.path = path
     var loopback: IpAddress? = "127.0.0.1"
     crash loopback
-    var response = client.send(loopback, 47912, request)
+    var response = client.send(loopback, _server_port, request)
     crash response
     var said = response.header("connection")
     crash said

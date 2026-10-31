@@ -1,9 +1,10 @@
 var console = Console()
+var _port = 8080
 
 func ConversionByNameArgument() {
     load "../../../spite_standard_library/windows"
     var text = "127.0.0.1"
-    connect(IpAddress(text), 8080)
+    connect(IpAddress(text), _port)
 }
 
 func connect(address: IpAddress?, port: Integer) {

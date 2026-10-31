@@ -1,21 +1,29 @@
 var console = Console()
+var _sample_short: Short = -300
+var _sample_unsigned_short: UnsignedShort = 65000
+var _sample_negative_integer = -70000
+var _sample_integer = 258
+var _sample_unsigned_integer: UnsignedInteger = 4000000000
+var _sample_long: Long = -9000000000
+var _sample_unsigned_long: UnsignedLong = 9000000000000000000
+var _first_record_value = 1200
 
 func ListByteNumbers() {
     load "../../../spite_standard_library/windows"
     var bytes = Buffer(0)
     var tiny: Tiny = -5
     bytes.append_tiny(tiny)
-    var short: Short = -300
+    var short: Short = _sample_short
     bytes.append_short_little_endian(short)
-    var unsigned_short: UnsignedShort = 65000
+    var unsigned_short: UnsignedShort = _sample_unsigned_short
     bytes.append_unsigned_short_little_endian(unsigned_short)
-    bytes.append_integer_little_endian(-70000)
-    bytes.append_integer_little_endian(258)
-    var unsigned_integer: UnsignedInteger = 4000000000
+    bytes.append_integer_little_endian(_sample_negative_integer)
+    bytes.append_integer_little_endian(_sample_integer)
+    var unsigned_integer: UnsignedInteger = _sample_unsigned_integer
     bytes.append_unsigned_integer_little_endian(unsigned_integer)
-    var long: Long = -9000000000
+    var long: Long = _sample_long
     bytes.append_long_little_endian(long)
-    var unsigned_long: UnsignedLong = 9000000000000000000
+    var unsigned_long: UnsignedLong = _sample_unsigned_long
     bytes.append_unsigned_long_little_endian(unsigned_long)
     var float: Float = 1.5
     bytes.append_float_little_endian(float)
@@ -25,8 +33,8 @@ func ListByteNumbers() {
     console.print("appended", counted, "bytes")
     show_numbers(bytes)
     var big = Buffer(10)
-    big.append_unsigned_short_big_endian(65000)
-    big.append_integer_big_endian(258)
+    big.append_unsigned_short_big_endian(_sample_unsigned_short)
+    big.append_integer_big_endian(_sample_integer)
     big.append_float_big_endian(1.5)
     var big_short = big.read_unsigned_short_big_endian_at(0)
     crash big_short
@@ -38,7 +46,7 @@ func ListByteNumbers() {
     var wrong_order = big.read_integer_little_endian_at(2)
     crash wrong_order
     console.print("big-endian bytes read little-endian:", wrong_order)
-    bytes.write_integer_little_endian_at(1, 258)
+    bytes.write_integer_little_endian_at(1, _sample_integer)
     var rewritten = bytes.read_integer_little_endian_at(1)
     crash rewritten
     console.print("written in place:", rewritten)
@@ -75,7 +83,7 @@ func ListByteNumbers() {
     console.print("whole integers walked:", walked)
     var message = Buffer(0)
     message.append_unsigned_short_little_endian(2)
-    message.append_integer_little_endian(1200)
+    message.append_integer_little_endian(_first_record_value)
     message.append_integer_little_endian(-35)
     var records = read_records(message)
     console.print("records:", records)

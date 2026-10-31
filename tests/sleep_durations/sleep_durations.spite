@@ -1,12 +1,13 @@
 var console = Console()
 var clock = Clock()
 var program = Program()
+var _moment_microseconds: Long = 300
 
 func SleepDurations() {
     load "../../../spite_standard_library/windows"
     var nothing_at_all = Duration(0, 'seconds')
     var backwards = Duration(-5, 'seconds')
-    var a_moment = Duration(300, 'microseconds')
+    var a_moment = Duration(_moment_microseconds, 'microseconds')
     var five_milliseconds = Duration(5, 'milliseconds')
     var nearly_five = Duration(4, 'milliseconds')
     var a_second = Duration(1, 'seconds')

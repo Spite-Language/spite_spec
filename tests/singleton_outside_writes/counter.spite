@@ -1,8 +1,9 @@
 var tally = Tally()
+var _counted_times = 200000
 
 func count_many(): Integer {
     var index = 0
-    while index < 200000 {
+    while index < _counted_times {
         tally.total = tally.total + 1
         index = index + 1
     }

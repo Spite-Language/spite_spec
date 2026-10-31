@@ -1,13 +1,18 @@
 var console = Console()
 var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+var _group_count = 70000
+var _sample_interval = 9973
+var _high_byte_value = 200
+var _all_but_sign_mask = 2147483647
+var _largest_byte_value = 255
 
 func DecidedComparisons() {
     load "../../../spite_standard_library/windows"
     var letters = String()
     var group = 0
-    while group < 70000 {
+    while group < _group_count {
         var digit = letter_of(group, 6)
-        if group % 9973 == 0 {
+        if group % _sample_interval == 0 {
             letters.append_code(digit)
         }
         group = group + 1
@@ -19,7 +24,7 @@ func DecidedComparisons() {
     var small_kept = below_ten(3)
     var negative_kept = below_ten(-4)
     console.print(small_kept, negative_kept)
-    var high_byte = byte_tests(200)
+    var high_byte = byte_tests(_high_byte_value)
     var low_byte = byte_tests(7)
     console.print(high_byte, low_byte)
     var values = List<Integer>()
@@ -41,7 +46,7 @@ func letter_of(group: Integer, shift: Integer): Integer {
 }
 
 func masked_sign(value: Integer): Boolean {
-    var all = value.bits_and(2147483647)
+    var all = value.bits_and(_all_but_sign_mask)
     return all >= 0
 }
 
@@ -57,7 +62,7 @@ func byte_tests(value: Integer): Integer {
     var read = bytes[0]
     crash read
     var widened: Integer = read
-    if widened > 255 {
+    if widened > _largest_byte_value {
         return -1
     }
     if widened < 0 {

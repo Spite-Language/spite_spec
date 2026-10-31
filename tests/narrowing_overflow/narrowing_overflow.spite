@@ -1,8 +1,9 @@
 var console = Console()
+var _byte_sized_value = 200
 
 func NarrowingOverflow() {
     load "../../../spite_standard_library/windows"
-    var wide = 200
+    var wide = _byte_sized_value
     var fits: Byte = wide
     console.print(fits)
     var small = shrunk(wide)

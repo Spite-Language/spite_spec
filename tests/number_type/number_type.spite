@@ -4,6 +4,7 @@ enum Shade {
 }
 
 var console = Console()
+var _large_byte: Byte = 200
 
 func NumberType() {
     load "../../../spite_standard_library/windows"
@@ -22,7 +23,7 @@ func NumberType() {
     var bytes = ByteTally<Byte>()
     var small = Buffer(0)
     small.append(7)
-    small.append(200)
+    small.append(_large_byte)
     small.append(10)
     var byte_best = bytes.largest(small)
     var byte_total = bytes.total(small)

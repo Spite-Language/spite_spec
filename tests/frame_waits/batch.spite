@@ -1,9 +1,10 @@
 var program = Program()
 var in_flight = 0
 var done = 0
+var _slow_job_milliseconds: Long = 300
 
 func slow_job() {
-    var three_hundred_milliseconds = Duration(300, 'milliseconds')
+    var three_hundred_milliseconds = Duration(_slow_job_milliseconds, 'milliseconds')
     in_flight = in_flight + 1
     program.sleep(three_hundred_milliseconds)
     in_flight = in_flight - 1

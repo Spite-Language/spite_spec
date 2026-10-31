@@ -1,3 +1,3 @@
-spite: the program stopped at tests/overlapped_work_crashes/mixer.spite:20 in Mixer.checked_blend, site bbe1eea3 (total=2850639.0188691653, seed=3, step=3, index=3000000)
+spite: the program stopped at tests/overlapped_work_crashes/mixer.spite:20 in Mixer.checked_blend, site bbe1eea3 (total=1896362.2282822588, seed=3, step=3, index=1000000)
 spite.frame	tests/overlapped_work_crashes/mixer.spite:20	Mixer	checked_blend
 spite.frame	tests/overlapped_work_crashes/overlapped_work_crashes.spite:6	OverlappedWorkCrashes	OverlappedWorkCrashes	started

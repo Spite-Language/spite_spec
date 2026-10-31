@@ -2,37 +2,45 @@ var console = Console()
 var server = Http.Server()
 var sockets = WebSocket.Server(server)
 var log = List<String>()
+var _port = 47914
+var _letter_h_code: Byte = 104
+var _invalid_utf8_byte: Byte = 255
+var _final_text_frame = 129
+var _final_binary_frame = 130
+var _bad_close_code_low_byte: Byte = 231
+var _final_close_frame = 136
+var _goodbye_close_code_low_byte: Byte = 160
 
 func WebSocketFailures() {
     load "../../../spite_standard_library/windows"
-    crash server.listen_locally(47914)
+    crash server.listen_locally(_port)
     var serving = Concurrent(serve_eight)
     var plain = WebSocket.Client()
     var request = Http.Request()
     request.path = "/plain"
     var loopback: IpAddress? = "127.0.0.1"
     crash loopback
-    var connected = plain.connect(loopback, 47914, request)
+    var connected = plain.connect(loopback, _port, request)
     var message = plain.receive()
     var nothing = not message
     console.print("a client of a plain HTTP server: connected", connected, "and receives nothing", nothing)
     old_version()
     var invalid = Buffer(0)
-    invalid.append(104)
-    invalid.append(255)
-    exchange("/invalid-text", 129, invalid)
+    invalid.append(_letter_h_code)
+    invalid.append(_invalid_utf8_byte)
+    exchange("/invalid-text", _final_text_frame, invalid)
     var oversized = counting_bytes(20)
-    exchange("/oversized", 130, oversized)
+    exchange("/oversized", _final_binary_frame, oversized)
     var nothing_started = counting_bytes(3)
     exchange("/stray-continuation", 128, nothing_started)
     var bad_code = Buffer(0)
     bad_code.append(3)
-    bad_code.append(231)
-    exchange("/bad-close-code", 136, bad_code)
+    bad_code.append(_bad_close_code_low_byte)
+    exchange("/bad-close-code", _final_close_frame, bad_code)
     var goodbye = "  bye".to_buffer()
     goodbye[0] = 15
-    goodbye[1] = 160
-    exchange("/goodbye", 136, goodbye)
+    goodbye[1] = _goodbye_close_code_low_byte
+    exchange("/goodbye", _final_close_frame, goodbye)
     hang_up()
     console.print("served", serving)
     var joined = log.join("\n")
@@ -80,7 +88,7 @@ func drain(socket: WebSocket.Connection) {
 
 func old_version() {
     var socket = Tcp.Client()
-    crash socket.connect_locally(47914)
+    crash socket.connect_locally(_port)
     write_text(
         socket,
         "GET /old HTTP/1.1\r\nhost: 127.0.0.1\r\nupgrade: websocket\r\nconnection: Upgrade\r\nsec-websocket-key: dGhlIHNhbXBsZSBub25jZQ==\r\nsec-websocket-version: 8\r\n\r\n",
@@ -108,7 +116,7 @@ func hang_up() {
 
 func open_raw(path: String): Tcp.Client {
     var socket = Tcp.Client()
-    crash socket.connect_locally(47914)
+    crash socket.connect_locally(_port)
     write_text(
         socket,
         "GET {path} HTTP/1.1\r\nhost: 127.0.0.1\r\nupgrade: websocket\r\nconnection: Upgrade\r\nsec-websocket-key: dGhlIHNhbXBsZSBub25jZQ==\r\nsec-websocket-version: 13\r\n\r\n",

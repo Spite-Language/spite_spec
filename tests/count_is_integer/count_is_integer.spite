@@ -1,9 +1,10 @@
 var console = Console()
+var _large_amount = 2000000000
 
 func CountIsInteger() {
     load "../../../spite_standard_library/windows"
     var names = ["ada", "bea"]
-    var large = 2000000000
+    var large = _large_amount
     var count = names.count()
     var total = count * large
     console.print("never printed", total)

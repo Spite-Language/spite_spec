@@ -1,10 +1,11 @@
 var console = Console()
 var program = Program()
 var log = List<String>()
+var _slow_nap_milliseconds = 150
 
 func ConcurrentWaits() {
     load "../../../spite_standard_library/windows"
-    var slow_sleeper = Sleeper("slow", 150, log)
+    var slow_sleeper = Sleeper("slow", _slow_nap_milliseconds, log)
     var fast_sleeper = Sleeper("fast", 10, log)
     var slow = Concurrent(slow_sleeper.nap)
     var fast = Concurrent(fast_sleeper.nap)

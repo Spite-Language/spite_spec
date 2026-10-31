@@ -1,5 +1,6 @@
 var console = Console()
 var shelf = Shelf()
+var _replacement_words = 500
 
 func MirroredWriteBacks() {
     load "../../../spite_standard_library/windows"
@@ -24,7 +25,7 @@ func replaced() {
     shelf.stock(4)
     shelf.take(1)
     shelf.open.words = shelf.open.words + 3
-    shelf.replace(1, 500)
+    shelf.replace(1, _replacement_words)
     shelf.put_back()
     var text = shelf.listing("replaced")
     console.print(text)

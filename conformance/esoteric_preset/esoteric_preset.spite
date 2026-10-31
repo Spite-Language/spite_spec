@@ -1,0 +1,8 @@
+var console = Console()
+var _radius = 2.0
+
+func EsotericPreset() {
+    load "../../../spite_standard_library/windows"
+    var area = _radius * _radius * 3.14159
+    console.print(area)
+}

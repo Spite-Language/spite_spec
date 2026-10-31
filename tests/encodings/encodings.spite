@@ -2,15 +2,18 @@ var console = Console()
 var base64 = Base64()
 var zlib = Zlib()
 var gzip = Gzip()
+var _first_sample_byte: Byte = 251
+var _second_sample_byte: Byte = 255
+var _third_sample_byte: Byte = 191
 
 func Encodings() {
     load "../../../spite_standard_library/windows"
     var samples = ["", "f", "fo", "foo", "foob", "fooba", "foobar"]
     samples.each(show_base64)
     var binary = Buffer(0)
-    binary.append(251)
-    binary.append(255)
-    binary.append(191)
+    binary.append(_first_sample_byte)
+    binary.append(_second_sample_byte)
+    binary.append(_third_sample_byte)
     var standard = base64.encode(binary)
     var url_safe = base64.encode_url(binary)
     console.print("standard {standard}, url {url_safe}")

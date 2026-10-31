@@ -1,4 +1,5 @@
 var console = Console()
+var _large_addend: Long = 2000000000
 
 func Arithmetic() {
     load "../../../spite_standard_library/windows"
@@ -17,8 +18,8 @@ func Arithmetic() {
     console.print(truncated)
     var count = 0
     console.print(count)
-    var widened: Long = 2000000000
-    widened = widened + 2000000000
+    var widened: Long = _large_addend
+    widened = widened + _large_addend
     console.print(widened)
     var negated = negate(5)
     console.print(negated)

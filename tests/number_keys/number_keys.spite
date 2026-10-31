@@ -1,4 +1,6 @@
 var console = Console()
+var _far_key: Long = 5000000000
+var _largest_key = 6993
 
 func NumberKeys() {
     load "../../../spite_standard_library/windows"
@@ -31,7 +33,7 @@ func NumberKeys() {
         index = index + 1
     }
     var distances = Dictionary<Long, Integer>()
-    var far: Long = 5000000000
+    var far: Long = _far_key
     distances[far] = 1
     distances[far + 1] = 2
     distances[2] = 3
@@ -61,11 +63,11 @@ func NumberKeys() {
         number = number + 1
     }
     many.remove_at(0)
-    crash many[6993]
+    crash many[_largest_key]
     var many_count = many.count()
     var has_zero = many.contains(0)
     var has_seven = many.contains(7)
-    console.print(many_count, many[6993], has_zero, has_seven)
+    console.print(many_count, many[_largest_key], has_zero, has_seven)
     var ages_writer = JsonWriter<Dictionary<Integer, String>>()
     var ages_text = ages_writer.write(ages)
     var ages_reader = JsonReader<Dictionary<Integer, String>>()

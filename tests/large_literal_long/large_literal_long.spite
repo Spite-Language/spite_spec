@@ -1,8 +1,9 @@
 var console = Console()
+var _beyond_integer: Long = 3000000000
 
 func LargeLiteralLong() {
     load "../../../spite_standard_library/windows"
-    var big = 3000000000
+    var big = _beyond_integer
     var factor = 2
     var doubled = big * factor
     console.print(big, doubled, big.class)

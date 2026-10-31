@@ -1,27 +1,31 @@
 var console = Console()
 var level: Tiny = 100
 var port: UnsignedShort = 8080
+var _sample_short: Short = 30000
+var _sample_long: Long = 3000000000
+var _large_byte: Byte = 250
+var _second_port: UnsignedShort = 4464
 
 func NumericTypes() {
     load "../../../spite_standard_library/windows"
     var wrapped: Tiny = -100
-    var small: Short = 30000
+    var small: Short = _sample_short
     var octet: Byte = 44
     var zero: UnsignedInteger = 0
     var wide = zero.wrapping_subtract(1)
     var huge = UnsignedLong.Largest()
-    var long_value: Long = 3000000000
+    var long_value: Long = _sample_long
     console.print(level, wrapped, small, octet, port)
     console.print(wide, huge, long_value)
     var level_wide: Integer = level
     var total = level_wide + octet
     var ratio: Double = 1.5
     var rounded: Short = ratio * 3
-    var added_bytes = add_bytes(250, 10)
+    var added_bytes = add_bytes(_large_byte, 10)
     console.print(total, rounded, "port {port}", added_bytes)
     var ports = List<UnsignedShort>()
     ports.append(port)
-    ports.append(4464)
+    ports.append(_second_port)
     crash ports.count() == 2
     var ports_count = ports.count()
     console.print(ports[0], ports[1], ports_count)

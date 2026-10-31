@@ -1,4 +1,5 @@
 var console = Console()
+var _large_addition: UnsignedLong = 8000000000000000000
 
 func UnsignedLongDecimals() {
     load "../../../spite_standard_library/windows"
@@ -8,7 +9,7 @@ func UnsignedLongDecimals() {
     var low: Double = 12345.0
     var plain: UnsignedLong = low
     console.print(plain)
-    var top: UnsignedLong = whole + 8000000000000000000
+    var top: UnsignedLong = whole + _large_addition
     var back: Double = top
     console.print(back)
     var half: Float = top

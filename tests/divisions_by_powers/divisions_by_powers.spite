@@ -1,11 +1,15 @@
 var console = Console()
+var _part_count = 2000
+var _index_multiplier = 997
+var _large_guarded_value: Long = 70000
+var _small_guarded_value: Long = 1234
 
 func DivisionsByPowers() {
     load "../../../spite_standard_library/windows"
     var total: Long = 0
     var index = 0
-    while index < 2000 {
-        total = total + parts(index * 997)
+    while index < _part_count {
+        total = total + parts(index * _index_multiplier)
         index = index + 1
     }
     console.print("parts", total)
@@ -13,9 +17,9 @@ func DivisionsByPowers() {
     var above = rounded(7)
     var whole = rounded(-8)
     console.print("signed", below, above, whole)
-    var large = guarded(70000)
-    var negative = guarded(-70000)
-    var inside = guarded(1234)
+    var large = guarded(_large_guarded_value)
+    var negative = guarded(-_large_guarded_value)
+    var inside = guarded(_small_guarded_value)
     console.print("guarded", large, negative, inside)
     var one: Float = 1.5
     var pattern: Long = one.bits()

@@ -1,7 +1,8 @@
 var console = Console()
+var _non_leap_year = 2023
 
 func TimeImpossibleDate() {
     load "../../../spite_standard_library/windows"
-    var day = Date(2023, 2, 29)
+    var day = Date(_non_leap_year, 2, 29)
     console.print(day)
 }

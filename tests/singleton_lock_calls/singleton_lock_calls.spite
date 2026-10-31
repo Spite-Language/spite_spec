@@ -1,11 +1,12 @@
 var console = Console()
 var registry = Registry()
+var _all_textures = 4000
 
 func SingletonLockCalls() {
     load "../../../spite_standard_library/windows"
     var loading = List<Parallel<Integer>>()
     var start = 0
-    while start < 4000 {
+    while start < _all_textures {
         var loader = Loader(start)
         var loading_run = Parallel(loader.load_many)
         loading.append(loading_run)

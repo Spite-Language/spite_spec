@@ -1,5 +1,6 @@
 var across = 0
 var down = 0
+var _far_distance = 500
 
 func Point(starting_across: Integer, starting_down: Integer) {
     across = starting_across
@@ -7,5 +8,5 @@ func Point(starting_across: Integer, starting_down: Integer) {
 }
 
 func is_far(): Boolean {
-    return across > 500
+    return across > _far_distance
 }

@@ -1,16 +1,17 @@
 var total = 0
 var step = 0
+var _last_seed = 4095
 
 func Counter(seed: Integer) {
     step = 1
-    if seed == 2999 {
+    if seed == _last_seed {
         step = 1000000000
     }
 }
 
 func grow() {
     var round = 0
-    while round < 2000 {
+    while round < 2048 {
         total = total + step
         round = round + 1
     }

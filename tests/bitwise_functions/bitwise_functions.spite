@@ -1,4 +1,8 @@
 var console = Console()
+var _low_byte_mask = 255
+var _largest_byte: Byte = 255
+var _largest_unsigned_short: UnsignedShort = 65535
+var _high_nibble_mask: Byte = 240
 
 func BitwiseFunctions() {
     load "../../../spite_standard_library/windows"
@@ -8,7 +12,7 @@ func BitwiseFunctions() {
     console.print("inverted {eleven.bits_inverted()} left {eleven.shifted_left(2)} right {eleven.shifted_right(1)}")
     var negative = -20
     console.print("negative right {negative.shifted_right(2)} left {negative.shifted_left(1)}")
-    console.print("negative and {negative.bits_and(255)} inverted {negative.bits_inverted()}")
+    console.print("negative and {negative.bits_and(_low_byte_mask)} inverted {negative.bits_inverted()}")
     var all_ones = -1
     console.print("int all ones {all_ones.shifted_right(31)} {all_ones.shifted_left(31)} {all_ones.set_bit_count()}")
     console.print("int by 0 {eleven.shifted_left(0)} {eleven.shifted_right(0)}")
@@ -23,12 +27,12 @@ func BitwiseFunctions() {
     console.print("tiny {tiny.shifted_right(7)} {tiny.shifted_right(8)} {tiny.shifted_left(1)} {tiny.bits_inverted()}")
     var tiny_one: Tiny = 1
     console.print("tiny one {tiny_one.shifted_left(7)} {tiny_one.shifted_left(8)}")
-    var byte: Byte = 255
+    var byte: Byte = _largest_byte
     console.print("byte {byte.shifted_right(7)} {byte.shifted_left(7)} {byte.shifted_left(8)} {byte.bits_inverted()}")
     console.print("byte counts {byte.set_bit_count()} {byte.leading_zero_count()} {byte.trailing_zero_count()}")
     var small: Short = -32768
     console.print("small {small.shifted_right(15)} {small.shifted_right(16)} {small.bits_exclusive_or(-1)}")
-    var unsigned_short: UnsignedShort = 65535
+    var unsigned_short: UnsignedShort = _largest_unsigned_short
     console.print(
         "unsigned short {unsigned_short.shifted_right(15)} {unsigned_short.shifted_left(15)} {unsigned_short.shifted_right(16)}",
     )
@@ -48,7 +52,7 @@ func BitwiseFunctions() {
     console.print("zero counts {zero.set_bit_count()} {zero.leading_zero_count()} {zero.trailing_zero_count()}")
     var narrow: Byte = 15
     console.print("a narrower argument widens {eleven.bits_or(narrow)} {byte.bits_and(narrow)}")
-    var mask: Byte = 240
+    var mask: Byte = _high_nibble_mask
     var wide_value: Long = 1000
     console.print("receiver keeps its width {wide_value.bits_and(mask)} {wide_value.bits_exclusive_or(mask)}")
 }

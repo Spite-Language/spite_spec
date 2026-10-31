@@ -2,11 +2,12 @@ var console = Console()
 var program = Program()
 var frame = 0
 var running = true
+var _frame_limit = 200
 
 func FrameLoop() {
     load "../../../spite_standard_library/windows"
     var ten_milliseconds = Duration(10, 'milliseconds')
-    while running and frame < 200 {
+    while running and frame < _frame_limit {
         frame = frame + 1
         program.sleep(ten_milliseconds)
     }

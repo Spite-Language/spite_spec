@@ -2,6 +2,7 @@ var source = ""
 var tokens = List<Token>()
 var token_start = -1
 var buffer_is_number = false
+var _lowercase_z_code = 122
 
 func Lexer(starting_source: String) {
     source = starting_source
@@ -107,5 +108,5 @@ func is_digit_or_dot(character: String): Boolean {
 
 func is_letter(character: String): Boolean {
     var code = character.byte_at(0)
-    return code >= 97 and code <= 122 or code >= 65 and code <= 90
+    return code >= 97 and code <= _lowercase_z_code or code >= 65 and code <= 90
 }

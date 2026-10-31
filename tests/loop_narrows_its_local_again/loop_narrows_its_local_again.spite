@@ -1,10 +1,12 @@
 var console = Console()
+var _letter_h_code = 104
+var _letter_i_code = 105
 
 func LoopNarrowsItsLocalAgain() {
     load "../../../spite_standard_library/windows"
     var codes = List<Integer>()
-    codes.append(104)
-    codes.append(105)
+    codes.append(_letter_h_code)
+    codes.append(_letter_i_code)
     codes.append(0)
     var index = 0
     var code = codes[index]

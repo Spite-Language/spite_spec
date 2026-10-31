@@ -1,10 +1,11 @@
 var console = Console()
+var _element_count = 20000
 
 func BandPasses() {
     load "../../../spite_standard_library/windows"
     var counters = List<Counter>()
     var index = 0
-    while index < 20000 {
+    while index < _element_count {
         var counter = Counter(index)
         counters.append(counter)
         index = index + 1
@@ -20,7 +21,7 @@ func BandPasses() {
     console.print("one counter held twice:", second_total)
     var links = List<Link>()
     index = 0
-    while index < 20000 {
+    while index < _element_count {
         var link = Link(index)
         links.append(link)
         index = index + 1

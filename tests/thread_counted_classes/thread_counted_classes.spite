@@ -1,4 +1,6 @@
 var console = Console()
+var _reader_rounds = 200
+var _rounds = 300
 
 func ThreadCountedClasses() {
     load "../../../spite_standard_library/windows"
@@ -9,11 +11,11 @@ func ThreadCountedClasses() {
         shelf.items.append(item)
         index = index + 1
     }
-    var reader = Reader(shelf, 200)
+    var reader = Reader(shelf, _reader_rounds)
     var read = Parallel(reader.run)
     var mine: Long = 0
     var round = 0
-    while round < 300 {
+    while round < _rounds {
         var position = 0
         while position < shelf.items.count() {
             var item = shelf.items[position]

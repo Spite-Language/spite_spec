@@ -6,11 +6,12 @@ union Combatant {
 var console = Console()
 var fighters = List<Combatant>()
 var monsters = List<Monster>()
+var _monster_count = 200000
 
 func EntitySystems() {
     load "../../../spite_standard_library/windows"
     var index = 0
-    while index < 200000 {
+    while index < _monster_count {
         var monster = Monster(index)
         monsters.append(monster)
         fighters.append(monster)

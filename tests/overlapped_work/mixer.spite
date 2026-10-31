@@ -1,10 +1,11 @@
 var console = Console()
+var _prime_modulus = 1000003
 
 func blend(seed: Integer): Double {
     var total: Double = 0.0
     var step: Double = seed
     var index = 0
-    while index < 3000000 {
+    while index < 1_000_000 {
         total = total * 0.999999 + step
         index = index + 1
     }
@@ -14,7 +15,7 @@ func blend(seed: Integer): Double {
 func scaled(amount: Double): Double {
     var total: Double = 0.0
     var index = 0
-    while index < 3000000 {
+    while index < 1_000_000 {
         total = total * 0.999999 + amount * 0.001
         index = index + 1
     }
@@ -40,8 +41,8 @@ func light(seed: Integer): Double {
 func tripled(seed: Integer): Integer {
     var total = seed
     var index = 0
-    while index < 3000000 {
-        total = total * 3 % 1000003
+    while index < 1_000_000 {
+        total = total * 3 % _prime_modulus
         index = index + 1
     }
     return total

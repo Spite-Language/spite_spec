@@ -1,5 +1,6 @@
 var console = Console()
 var program = Program()
+var _start_near_the_largest_integer = 2147483000
 
 func CheckedSumInItsRegister() {
     load "../../../spite_standard_library/windows"
@@ -9,7 +10,7 @@ func CheckedSumInItsRegister() {
     console.print(small)
     var product = scaled(given, 7)
     console.print(product)
-    var large = summed(2147483000, given * 50)
+    var large = summed(_start_near_the_largest_integer, given * 50)
     console.print("never printed", large)
 }
 

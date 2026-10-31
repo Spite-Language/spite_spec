@@ -1,4 +1,6 @@
 var console = Console()
+var _minimal_standard_multiplier: Long = 48271
+var _minimal_standard_modulus: Long = 2147483647
 
 func ProvenRanges() {
     load "../../../spite_standard_library/windows"
@@ -24,7 +26,7 @@ func ProvenRanges() {
     var seed: Long = 7
     var round = 0
     while round < 50 {
-        seed = seed * 48271 % 2147483647
+        seed = seed * _minimal_standard_multiplier % _minimal_standard_modulus
         round = round + 1
     }
     var rises = 0

@@ -1,8 +1,9 @@
 var console = Console()
+var _too_large_for_a_byte: Byte = 300
 
 func ByteMinimumLiteralDoesNotFit() {
     load "../../../spite_standard_library/windows"
     var small: Byte = 7
-    var never = small.minimum(300)
+    var never = small.minimum(_too_large_for_a_byte)
     console.print(never)
 }

@@ -1,5 +1,6 @@
 var paintings = List<Painting>()
 var hung_total = 0
+var _sorting_rounds = 300
 
 func Gallery() {
     var index = 0
@@ -12,7 +13,7 @@ func Gallery() {
 
 func sort() {
     var round = 0
-    while round < 300 {
+    while round < _sorting_rounds {
         var hung = List<Painting>()
         var index = 0
         while index < paintings.count() {

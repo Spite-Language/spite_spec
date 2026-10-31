@@ -1,5 +1,6 @@
 var value: Long = 0
 var before: Link? = null
+var _pull_rounds = 200
 
 func Link(seed: Integer) {
     value = seed
@@ -11,7 +12,7 @@ func follow(previous: Link) {
 
 func pull() {
     var round = 0
-    while round < 200 {
+    while round < _pull_rounds {
         if before {
             value = value + before.value % 3
         }

@@ -1,4 +1,5 @@
 var console = Console()
+var _nearly_two_microseconds: Long = 1999
 
 func TimeDurationUnits() {
     load "../../../spite_standard_library/windows"
@@ -7,7 +8,7 @@ func TimeDurationUnits() {
     var minutes = span.part('minutes')
     var seconds = span.total('seconds')
     console.print(hours, minutes, seconds)
-    var tiny = Duration(1999, 'nanoseconds')
+    var tiny = Duration(_nearly_two_microseconds, 'nanoseconds')
     var micro = tiny.total('microseconds')
     console.print(micro)
 }

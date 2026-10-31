@@ -1,10 +1,12 @@
 var console = Console()
+var _first_song_seconds = 185
+var _second_song_seconds = 240
 
 func ListUsedAtOnce() {
     load "../../../spite_standard_library/windows"
     var playlist = Playlist()
-    playlist.add(185)
-    playlist.add(240)
+    playlist.add(_first_song_seconds)
+    playlist.add(_second_song_seconds)
     var longest = playlist.longer_of(0, 1)
     var heard = playlist.times_heard(1)
     console.print("longest", longest, "heard", heard)

@@ -1,17 +1,19 @@
 var angle = 0.0
 var speed = 0.0
 var turns = 0
+var _steps_per_advance = 2000
 
 func Orbit(seed: Integer) {
     speed = seed % 17 + 1
 }
 
 func advance() {
+    var full_turn = Float.Tau()
     var step = 0
-    while step < 2000 {
+    while step < _steps_per_advance {
         angle = angle + speed * 0.001
-        if angle > 6.28318 {
-            angle = angle - 6.28318
+        if angle > full_turn {
+            angle = angle - full_turn
             turns = turns + 1
         }
         step = step + 1

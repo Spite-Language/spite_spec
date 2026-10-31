@@ -1,4 +1,6 @@
 var console = Console()
+var _letter_h_code: Byte = 104
+var _invalid_utf8_byte: Byte = 255
 
 func ReadsSayNothing() {
     load "../../../spite_standard_library/windows"
@@ -8,8 +10,8 @@ func ReadsSayNothing() {
     console.print("output before run: text", not before_text, "bytes", not before_bytes)
     var binary = File(".spite/reads_say_nothing.bin")
     var bytes = Buffer(0)
-    bytes.append(104)
-    bytes.append(255)
+    bytes.append(_letter_h_code)
+    bytes.append(_invalid_utf8_byte)
     crash binary.write_buffer(bytes)
     var as_text = binary.read_as_string()
     var as_bytes = binary.read_as_buffer()

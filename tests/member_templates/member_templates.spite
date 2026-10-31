@@ -1,5 +1,6 @@
 var console = Console()
 var repositories = List<Repository>()
+var _missing_star_count = 999
 
 func MemberTemplates() {
     load "../../../spite_standard_library/windows"
@@ -52,7 +53,7 @@ func MemberTemplates() {
     crash least_starred
     var first_by_stars = least_starred.name
     console.print(stars_by_name, active_names, any_active_by_name, first_by_stars)
-    var missing = repositories.find_by_stars(999)
+    var missing = repositories.find_by_stars(_missing_star_count)
     if missing {
         console.print("unexpected")
     } else {

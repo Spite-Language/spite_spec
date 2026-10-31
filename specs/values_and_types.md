@@ -428,6 +428,35 @@ names the presets the class answers
   inline, a bitwise function is the single operation, and a number class's Spite functions (`to_string()`, a reopening's
   `doubled()`) are emitted only when the program calls them.
 
+### Named numbers
+
+An esoteric number written bare is a compile error naming a private attribute to declare for it (D1777, D1780): the
+attribute's default is the one place the number may stand, and the code writes its name
+(`var _days_in_400_years = 146097`, then `days / _days_in_400_years`). It is an error, not a fix, since the name is
+a choice. It reaches everything: programs, the library, the compiler's machine-code tables and spec programs' test
+data. What counts as esoteric starts narrow and grows, each widening its own decision and its own line here:
+
+1. **A decimal literal that is a library preset** (D1777): a decimal literal with at least two digits after the point
+   that agrees with the value a preset of the library returns, written to the digits it has, rounded or cut
+   (`3.14159` is `Float.Pi()`), is refused anywhere but the preset itself:
+   `the number 3.14159 is Double.Pi() or Float.Pi(): write Double.Pi() or Float.Pi() instead of the number`.
+2. **A whole number of three or more digits that is neither a power of ten nor a power of two** (D1777), written
+   inside a function: `the number 146097 does not say what it means: declare a private attribute that names it,
+   like 'var _what_it_means = 146097', and write the name here`. When it is the value of a whole-number preset, the
+   error adds `, or write Byte.Largest() if it means that`.
+
+Exempt: an attribute's default (lists and calls in it too), the body of a preset (`func Largest(): Tiny { return
+127 }`, D1776), numbers of one or two digits, and text. `tests/magic_number_exempt`, `conformance/esoteric_number`,
+`conformance/esoteric_preset`.
+
+**A named number costs nothing** (D1758): an attribute nothing writes is read as its default where it is read
+([attributes nothing writes are rebuilt where read](https://github.com/Spite-Language/spite_compiler/blob/master/OPTIMIZATIONS.md#attributes-nothing-writes-are-rebuilt-where-read)),
+so a named number is a constant like the literal it names. A number class names its numbers the same way
+(`var _special_exponent_field: Long = 2047` in `Double`), and so do the library's other classes: there a private
+attribute whose default is one number literal (or its negation) and that no function of the class assigns is read
+as that number while the program is built, since a number has no room for attributes beyond its value and the
+library's classes keep the layouts the compiler gives them (`Buffer`, `String`, `Dictionary`).
+
 ## Types
 
 ### Enums in full

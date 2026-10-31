@@ -1,10 +1,13 @@
 var console = Console()
 var server = Http.Server()
 var client = Http.Client()
+var _server_port = 47911
+var _created_status = 201
+var _not_found_status = 404
 
 func HttpExchange() {
     load "../../../spite_standard_library/windows"
-    crash server.listen_locally(47911)
+    crash server.listen_locally(_server_port)
     var serving = Concurrent(serve_three)
     var hello = Concurrent(ask_hello)
     var echoed = Concurrent(ask_echo)
@@ -32,9 +35,9 @@ func serve_three(): Integer {
             response.set_header("Content-Type", kind)
             var body = request.read_body_as_buffer()
             response.write_body_buffer(body)
-            response.status = 201
+            response.status = _created_status
         } else {
-            response.status = 404
+            response.status = _not_found_status
         }
         crash server.respond(request, response)
         served = served + 1
@@ -66,7 +69,7 @@ func ask_missing(): String {
 func ask(request: Http.Request): String {
     var named: IpAddress? = "localhost"
     crash named
-    var response = client.send(named, 47911, request)
+    var response = client.send(named, _server_port, request)
     crash response
     var kind = response.header("content-type")
     var shown_kind = "none"

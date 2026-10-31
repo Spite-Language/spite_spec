@@ -1,16 +1,18 @@
+var _sample_integer = 1200
+
 func BufferBytes(): Integer {
     load "../../../spite_standard_library/common"
     var bytes = Buffer(16)
     bytes.append(65)
-    bytes.append_integer_little_endian(1200)
-    bytes.append_integer_big_endian(1200)
+    bytes.append_integer_little_endian(_sample_integer)
+    bytes.append_integer_big_endian(_sample_integer)
     var first = bytes[0]
     var little = bytes.read_integer_little_endian_at(1)
     var big = bytes.read_integer_big_endian_at(5)
     crash first
     crash little
     crash big
-    if first == 65 and little == 1200 and big == 1200 {
+    if first == 65 and little == _sample_integer and big == _sample_integer {
         return 0
     }
     return 1

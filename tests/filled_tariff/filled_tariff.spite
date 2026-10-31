@@ -1,8 +1,9 @@
 var console = Console()
+var _sample_amount = 1250
 
 func FilledTariff() {
     load "../../../spite_standard_library/windows"
     var tariff = Tariff()
-    var total = tariff.price(1250)
+    var total = tariff.price(_sample_amount)
     console.print("total", total)
 }

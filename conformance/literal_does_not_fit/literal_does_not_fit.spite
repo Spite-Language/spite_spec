@@ -1,8 +1,10 @@
 var console = Console()
+var _too_large_for_a_byte: Byte = 300
+var _too_small_for_a_tiny: Tiny = -129
 
 func LiteralDoesNotFit() {
     load "../../../spite_standard_library/windows"
-    var small: Byte = 300
-    var signed: Tiny = -129
+    var small: Byte = _too_large_for_a_byte
+    var signed: Tiny = _too_small_for_a_tiny
     console.print(small, signed)
 }

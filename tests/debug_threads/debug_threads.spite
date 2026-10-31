@@ -1,4 +1,5 @@
 var console = Console()
+var _describe_rounds = 3000
 
 func DebugThreads() {
     load "../../../spite_standard_library/windows"
@@ -16,7 +17,7 @@ func describe(): String {
     var room = Room()
     var text = ""
     var index = 0
-    while index < 3000 {
+    while index < _describe_rounds {
         text = room.to_debug()
         index = index + 1
     }

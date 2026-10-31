@@ -1,4 +1,7 @@
 var console = Console()
+var _big_divisor_below_largest: UnsignedLong = 9223372036854775806
+var _prime_divisor: UnsignedLong = 1000000007
+var _third_of_largest_divisor: UnsignedLong = 6148914691236517205
 
 func DivisionsInMachineCode() {
     load "../../../spite_standard_library/windows"
@@ -34,11 +37,11 @@ func DivisionsInMachineCode() {
 }
 
 func print_divided(value: UnsignedLong) {
-    var big = UnsignedLong.Largest() - 9223372036854775806
+    var big = UnsignedLong.Largest() - _big_divisor_below_largest
     var power: UnsignedLong = 1099511627776
     console.print(value / 3, value % 3, value / 7, value % 7, value / 10, value % 10)
-    console.print(value / 1000000007, value % 1000000007, value / power, value % power)
-    console.print(value / 6148914691236517205, value % 6148914691236517205, value / big, value % big)
+    console.print(value / _prime_divisor, value % _prime_divisor, value / power, value % power)
+    console.print(value / _third_of_largest_divisor, value % _third_of_largest_divisor, value / big, value % big)
 }
 
 func digit_sum(value: Long, base: Integer): Long {

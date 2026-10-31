@@ -1,8 +1,9 @@
 var total: Long = 0
+var _count_limit = 3000000
 
 func count() {
     var index = 0
-    while index < 3000000 {
+    while index < _count_limit {
         total = total + index * 2 + 1
         index = index + 1
     }

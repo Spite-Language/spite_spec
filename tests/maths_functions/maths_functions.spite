@@ -1,4 +1,8 @@
 var console = Console()
+var _sample_tiny: Tiny = -127
+var _sample_byte: Byte = 200
+var _larger_byte: Byte = 250
+var _sample_long: Long = -9000000000
 
 func MathsFunctions() {
     load "../../../spite_standard_library/windows"
@@ -107,13 +111,13 @@ func whole_numbers() {
     console.print("Integer largest {integer_largest} smallest {Integer.Smallest()}")
     var near_lowest = Integer.Smallest() + 1
     console.print("absolute of one above the smallest: {near_lowest.absolute()}")
-    var tiny: Tiny = -127
+    var tiny: Tiny = _sample_tiny
     var tiny_largest = Tiny.Largest()
     console.print("Tiny {tiny_largest} {Tiny.Smallest()} {tiny.absolute()}")
-    var byte: Byte = 200
+    var byte: Byte = _sample_byte
     var byte_largest = Byte.Largest()
-    console.print("Byte {byte_largest} {Byte.Smallest()} {byte.absolute()} {byte.clamp(10, 100)} {byte.minimum(250)}")
-    var long: Long = -9000000000
+    console.print("Byte {byte_largest} {Byte.Smallest()} {byte.absolute()} {byte.clamp(10, 100)} {byte.minimum(_larger_byte)}")
+    var long: Long = _sample_long
     var long_largest = Long.Largest()
     console.print("Long {long_largest} {Long.Smallest()} {long.absolute()} {long.maximum(4)}")
     var unsigned_long_largest = UnsignedLong.Largest()

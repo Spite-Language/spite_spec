@@ -1,10 +1,11 @@
 var console = Console()
+var _first_numbers_end = 400
 
 func ParallelHandover() {
     load "../../../spite_standard_library/windows"
     var crafting = List<Parallel<Integer>>()
     var first = 0
-    while first < 400 {
+    while first < _first_numbers_end {
         var crafter = Crafter(first)
         crafter.want(1)
         crafter.want(2)
