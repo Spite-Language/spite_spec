@@ -1,4 +1,5 @@
 var console = Console()
+var clock = Clock()
 
 func JoinedMaybeBoolean() {
     load "../../../spite_standard_library/windows"
@@ -10,5 +11,8 @@ func JoinedMaybeBoolean() {
 }
 
 func answer(): Boolean? {
+    var now = clock.elapsed()
+    var zero = Duration(0, 'seconds')
+    fallback now >= zero
     return false
 }
