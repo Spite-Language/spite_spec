@@ -1,0 +1,5 @@
+hello
+hello
+spite: rebuilt Greeter
+read go
+goodbye

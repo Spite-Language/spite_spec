@@ -6,18 +6,20 @@ func HotReloadSwapsAFunction() {
     load "../../../spite_standard_library/windows"
     var said = greeter.greeting()
     console.print(said)
-    write_greeter("goodbye")
+    save_greeter_from("goodbye.txt")
 }
 
 func restore() {
-    write_greeter("hello")
+    save_greeter_from("hello.txt")
 }
 
-func write_greeter(word: String) {
-    var file = File("{build.program}/greeter.spite")
-    var text = "func greeting(): String \{\n    return \"{word}\"\n}\n"
-    var written = file.write_string(text)
-    if not written {
+# ../../specs/repl.md#--repl-portport
+func save_greeter_from(name: String) {
+    var folder = build.program.replace("/", "\\")
+    var no_arguments = List<String>()
+    var copying = Process("copy /y {folder}\\{name} {folder}\\greeter.spite", no_arguments)
+    var copied = copying.run()
+    if copied != 0 {
         console.print("greeter.spite could not be written")
     }
 }

@@ -345,6 +345,16 @@ The design:
   would otherwise be. `--repl` alone answers after the constructor returns, from the console, so it needs none. The
   cost where it exists is one load per pass: 400 000 000 passes took 106 ms, against 1 566 ms when each pass called
   `check_point()` ([optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md)).
+- **A wait is a check point too** (spite_compiler#292). In those builds a call from the program's own code to a
+  library function that waits has a check point just before and just after it, so a file saved while the program
+  waits there is swapped in before the next statement runs. The waits are the ones started work moves on at
+  ([concurrency.md](concurrency.md#a-wait-in-a-frame-does-not-hold-the-frame)): `Console.read_line`, a `File` read,
+  write or `lock`, a `Tcp` or `Udp` receive, accept or connect, and a library function that reaches one. So a program
+  that saves its own code with a `File` write may see it swapped in right after the write. `Program.sleep` wakes when the flag is raised, runs the check point and
+  sleeps for what is left, so a program with no loop reloads while it sleeps
+  (`tests/hot_reload_during_a_sleep`, `tests/hot_reload_after_a_read_line`). A check point that finds a saved file
+  still being written waits until it is quiet (`FileSystemWatcher.settled_changes`) instead of passing it by, so the
+  save is not left for a check point that may never come.
 - **The port is part of the build**, like any flag the compiler folds: `main` listens on it, on the main
   thread, before the constructor runs, so a client that connects any time after the program starts is served. A
   port another program holds stops the program before its constructor with `error: the REPL could not listen on
@@ -387,8 +397,8 @@ own. [Live reload](https://github.com/Spite-Language/spite_documentation/blob/ma
   `wait_reload` answers the same once the watcher is done (below). A build without
   it has no slots, no watcher and no reload code: `reload` answers `'reload' answers in a program built with
   --hot-reload, which swaps its code while it runs, and this one was not`, from a branch folded on the `Build`
-  constant. As with `--repl-port`, a `--hot-reload` build swaps where the program waits and at each loop's check
-  point. `spite --hot-reload` runs the program attached to the terminal, like a REPL build.
+  constant. As with `--repl-port`, a `--hot-reload` build swaps where the program waits, at each loop's check
+  point, and around each blocking call and inside `Program.sleep` (above). `spite --hot-reload` runs the program attached to the terminal, like a REPL build.
 - **A `--hot-reload` build compiles like an inspectable build.** It keeps every run-time check of one, and it
   inlines no call and evaluates no call while compiling, so every call of a function a reload can replace reaches the
   function's slot, also from a loop that is running when the reload swaps (a loop that called an inlined copy would

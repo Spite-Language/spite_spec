@@ -1,0 +1,30 @@
+var console = Console()
+var build = Build()
+var greeter = Greeter()
+
+func HotReloadAfterAReadLine() {
+    load "../../../spite_standard_library/windows"
+    var first = greeter.greeting()
+    console.print(first)
+    save_the_new_greeter()
+    var still = greeter.greeting()
+    console.print(still)
+    var line = console.read_line()
+    crash line
+    var trimmed = line.trim()
+    console.print("read", trimmed)
+    var second = greeter.greeting()
+    console.print(second)
+}
+
+func save_the_new_greeter() {
+    var folder = build.program.replace("/", "\\")
+    var no_arguments = List<String>()
+    var copying = Process("copy /y {folder}\\goodbye.txt {folder}\\greeter.spite", no_arguments)
+    var copied = copying.run()
+    if copied != 0 {
+        console.print("greeter.spite could not be replaced")
+    }
+    var pinging = Process("ping -n 2 127.0.0.1", no_arguments)
+    crash pinging.run()
+}
