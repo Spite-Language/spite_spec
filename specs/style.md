@@ -40,17 +40,17 @@ parameters are the author's free choice and the ordinary rule applies.
 is never read: remove it`, and no spelling keeps an unread attribute (`diagnostics/unused_attributes`,
 `conformance/stage6/attribute_uses`). **A compile-time walk counts only when it reads the attribute's value**:
 `x.attributes[attribute]` read in a template, and so the JSON and binary writers and
-`to_debug()`, and the REPL's display. `attribute.name` and `attribute.class` are the attribute's description, not
+`to_debug()`. `attribute.name` and `attribute.class` are the attribute's description, not
 its value, so an engine's scheduling markers, such as `var world = Resource.World()` that only a classify walk
 inspects, are errors.
 
 What counts as a read, and the exceptions:
 
-- **A read takes the value**: the attribute's name in its own class's functions or attribute defaults,
-  `thing.world` from another class (including through a union's members or a `type` a class is admitted to), a
-  getter answering that read, `x.attributes[attribute]` or `attributes[attribute]` in a template, `thing.attributes`
-  (the values), a `load` line's folder the compiler reads, and the REPL's `attributes` in a `--repl`/`--repl-port`
-  build. A class object's `.attributes` (`Mover.attributes`: names and types) does not count.
+- **A read takes the value**: the attribute's name in its own class's functions or attribute defaults, `thing.world`
+  from another class (including through a union's members or a `type` a class is admitted to), a getter answering that
+  read, `x.attributes[attribute]` or `attributes[attribute]` in a template, `thing.attributes` (the values), and a
+  `load` line's folder the compiler reads. A class object's `.attributes` (`Mover.attributes`: names and types) does
+  not count.
 - **A read is a read of one class's attribute.** In compiled code a read counts for the class whose attribute it
   reads, as the compiler typed it: `tag.label` reads `Tag.label`, so a `label` of the entry that nothing reads is
   `the attribute 'label' is never read: remove it` however many other classes read a `label` of their own

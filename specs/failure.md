@@ -738,8 +738,8 @@ printed.
   `calloc`, by the names the dynamic linker gives the return addresses) is `heap-corruption`, any other `abort`.
   Reading the stack for that is the one thing the handler does that the C library does not promise is safe in a
   signal handler, so the program reads it once at start, which loads what reading it needs before anything can
-  break. Every thread the program starts
-  (a pool runner, a waiting call's thread, the REPL's and the file watcher's) sets up its own room the same way.
+  break. Every thread the program starts (a pool runner, a waiting call's thread, the REPL console's, an MCP
+  connection's and the file watcher's) sets up its own room the same way.
   An unhandled exception only: a fault a foreign library catches itself never reaches it. On Windows a corrupted
   heap (`0xC0000374`) never reaches the unhandled-exception filter, since the system ends the program straight after
   raising it, so the same report is also installed as a vectored exception handler, `AddVectoredExceptionHandler`,
@@ -765,7 +765,7 @@ printed.
   same data walks the stack in every build, `--optimized` included, with no frame pointers. On Linux and macOS the
   function is the one whose start is the nearest below the address, inside the program's own file, and the stack is
   walked by frame pointers: a build without `--optimized` always keeps them, and an inspectable build
-  (`--development`, `--hot-reload`, `--repl`, `--repl-port`) is compiled with `-fno-omit-frame-pointer` there, so
+  (`--development`, `--hot-reload`, `--repl`, `--mcp-port`) is compiled with `-fno-omit-frame-pointer` there, so
   only an `--optimized` production build on Linux or macOS names the faulting function alone. Keeping them in
   production too was measured and not taken (the numbers are in
   [optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md#a-fault-report-is-the-only-machinery-in-every-program)).

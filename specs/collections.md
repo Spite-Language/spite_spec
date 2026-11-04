@@ -36,9 +36,9 @@ zero-argument function, which is "the value held in that field" applied to membe
 members are `String`'s own zero-argument functions (`upper_case`, `length`, `is_empty`, ...). The generator binds the template to the
 element's member and checks [the table](https://github.com/Spite-Language/spite_documentation/blob/master/collections.md#member-templates-loops-you-do-not-write) before it compiles the body, so a member that does not fit is still
 the error naming the member, its type and what the template needs; it writes none of the templates' C. Only the
-names a program calls are compiled. A `--repl`/`--repl-port` build compiles every template that fits every
-element class of a list the loop can reach, and lists them as that list's functions, so `monsters.sum_health()`
-works at the prompt. A `Dictionary` answers the same names through its values (`inventory.sum_price()` is
+names a program calls are compiled. A `--repl` or `--mcp-port` build compiles every template that fits every element
+class of a list the loop can reach, and lists them as that list's functions, so `monsters.sum_health()` works in a
+REPL line or an MCP `evaluate`. A `Dictionary` answers the same names through its values (`inventory.sum_price()` is
 `inventory.values().sum_price()`), and a program's own `list.spite` reopens `List` to add a template of its own,
 as its `dictionary.spite` reopens `Dictionary` (over `Spite.AttributeDeclaration`, read on a `$value_type`).
 A template there reads its member on an item (`item[member]`), which is what makes it a template over the element
@@ -103,8 +103,7 @@ The caller's function is passed as a bound function value, owned by whoever it i
   the owner (the function's instance, passed at the call site), and `item[member]` reads as
   `owner.say_hello(item)`, or `owner(item)` when the owner is a held function value. A function written by name
   therefore costs no allocation and no indirect call; only a held value is called through `Spite.Function`. Only
-  the forms a program calls are instantiated, and these instances are not listed among the list's `functions`
-  nor offered at a `--repl` prompt.
+  the forms a program calls are instantiated, and these instances are not listed among the list's `functions`.
 - **Chains.** A passed function chains and fuses with the member templates: `filter(f)` may sit in the middle
   of a chain and any form may end one, so `people.filter_active().each(greeter.greet)` and
   `names.filter(is_short).sum(doubled_length)` are each one loop; the fused function takes each owner as a

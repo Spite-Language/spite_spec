@@ -189,7 +189,7 @@ library through `DynamicLibrary`. What each member answers is in the section of 
 | `Benchmark(work)` | `answer`, what one call of `work` answered, and `duration: Duration`, the monotonic time the call took; see [Time](time.md#time-one-stored-instant-zones-for-presentation) |
 | `Console()` | a singleton: `print(...values)`, `write(...values)`, `error(...values)`, `debug(...values)`, `read_line(): String?`; see [Console](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#console), and below |
 | `FileSystemWatcher()` | `watch_for_changes(target: FileSystemWatcher.Target): Boolean`, `changes(): List<String>`, `wait_for_changes()`; see [Watch files and folders](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#watch-files-and-folders), which is the rule. `HotReload` is built on it ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
-| `Tcp.Server()`, `Tcp.Client()`, `Tcp.Connection` | TCP over IPv4 and IPv6 on every system. A server listens (`listen_locally(port)`, `listen_everywhere(port)`, `listen_at(address: IpAddress, port)`, each `Boolean`) and answers `accept(): Tcp.Connection?`; a client connects (`connect(address: IpAddress, port)`, `connect_locally(port)`, each `Boolean`); a client and a connection talk alike: `read_line(): String?` (`null` when the connection ended before a whole line, and for a line whose bytes are not UTF-8, the next call reading the line after it), `read_as_string(): String?`, `read_as_buffer(): Buffer?`, `write_line(text): Boolean`, `write_string(text): Boolean`, `write_buffer(buffer): Boolean`, `closed: Boolean`, `close()`. Every read waits ([Tcp](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#tcp), and below); `--repl-port` and `spite --connect` use `listen_locally` and `connect_locally` ([REPL and live reload](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#repl-and-live-reload)) |
+| `Tcp.Server()`, `Tcp.Client()`, `Tcp.Connection` | TCP over IPv4 and IPv6 on every system. A server listens (`listen_locally(port)`, `listen_everywhere(port)`, `listen_at(address: IpAddress, port)`, each `Boolean`) and answers `accept(): Tcp.Connection?`; a client connects (`connect(address: IpAddress, port)`, `connect_locally(port)`, each `Boolean`); a client and a connection talk alike: `read_line(): String?` (`null` when the connection ended before a whole line, and for a line whose bytes are not UTF-8, the next call reading the line after it), `read_as_string(): String?`, `read_as_buffer(): Buffer?`, `write_line(text): Boolean`, `write_string(text): Boolean`, `write_buffer(buffer): Boolean`, `closed: Boolean`, `close()`. Every read waits ([Tcp](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#tcp), and below); a `--mcp-port` program listens with `listen_locally` ([The language's MCP](mcp.md#the-programs-side)) |
 | `IpAddress` | an IPv4 or IPv6 address and nothing else (a port is a number beside it): `is_ipv4()`, `is_ipv6()`, `==` (its `equals(other)`), `to_string()` (RFC 5952). It is read from text, a literal or a host name resolved to its first address, with `IpAddress(from: String): IpAddress?`, and every address of a name is `String.resolve_ip_addresses(): List<IpAddress>`; `IpAddress()` is `0.0.0.0`, and no constructor takes text (D1718; below) |
 | `DynamicLibrary(file_name, naming, header)` | every foreign function, constant and type of a native library; see [Foreign libraries](foreign_libraries.md#foreign-libraries). It holds its `file_name` and `handle`, its constructor and `drop()`; opening, closing and finding a symbol are the compiler's reopening |
 | `ForeignBytes(address, count)` | memory a foreign library hands out (an address and a size it answers): `count(): Long`, `get_at(position): Byte?` (`foreign[position]`), `set_at(position, value)`, `read_<number>_at(position): <number>?` and `write_<number>_at(position, value)`, big-endian forms included, as a `Buffer` has them, `read_buffer_at(position, count): Buffer?` and `write_buffer_at(position, buffer)`; see [Bytes are a Buffer](#bytes-are-a-buffer) |
@@ -277,9 +277,6 @@ In detail:
   instance. The generator's whole part is that asking a class for a `to_debug()` it does not declare answers one
   that calls them, created only when something asks, so a program that never debugs a class compiles nothing for
   it. A `type` or union that does not require `to_debug()` still answers it, dispatched to the class the value is.
-- **The REPL keeps its own display** (`Player { name: hero, ... }`: text unquoted, nested objects as `Name {...}`,
-  lists as `List<String>(...)`), which it builds from `Spite.Attribute`'s `.value` through `value.to_string()`,
-  and the documented sessions depend on it.
 - **What it costs**: in a program that calls `debug`, one generated `to_debug()` per class it shows, which
   builds the text as `String`s; the walk is compiled once per attribute, so each `attribute.value` is a typed read
   of the field and nothing is boxed. Every attribute it shows counts as read.
@@ -336,9 +333,8 @@ each system's library, which the `windows`, `linux` and `mac` folders reopen the
   send to an IPv6 address, and `send_to` answers `false`. The listening queue is 64 connections deep.
 - **Every read waits** (D1725). There is one read per kind and no `_now` twin: `accept`, `read_line`,
   `read_as_string`, `read_as_buffer` and `receive` wait for what they answer, or for the end. A frame loop keeps
-  running because the compiler parks the wait (spite_compiler#218, #219). The REPL's own loop (`--repl-port`)
-  polls through the private `Tcp.Server._accept_now` and `Tcp.Connection._read_line_now`, and `WebSocket` reads
-  what waits unread before it closes through `Tcp.Connection._read_as_buffer_now`; no program can call them.
+  running because the compiler parks the wait (spite_compiler#218, #219). `WebSocket` reads what waits unread before
+  it closes through the private `Tcp.Connection._read_as_buffer_now`, which no program can call.
 - **Waits the compiler knows.** `accept`, `read_line`, `read_as_string` and `read_as_buffer` reach
   `Tcp.Server._accept_handle` and `Tcp.Connection._receive_into`, and `Http.Server.next_request` reaches
   `Tcp.Server._first_readable` (the system's `poll`, or `WSAPoll`, over the listener and every kept connection, for
@@ -549,8 +545,9 @@ called, like `+`, or explicit Spite.
 
 - **Purity costs no performance**: a Spite-written `trim()` goes through the same optimiser a hand-written one
   would, and is the same machine code from a better source.
-- **Library classes stop being special**: they are reopenable like any class, and an inspectable build shows
-  every one of them to the REPL, while a production build carries only those the program reaches.
+- **Library classes stop being special**: they are reopenable like any class, and an inspectable build shows every one
+  of them to a REPL line, an MCP `evaluate` and reflection, while a production build carries only those the program
+  reaches.
 
 **What is Spite**, in the standard library:
 

@@ -42,8 +42,10 @@ nothing is an error. See [The standard library is a folder loaded by its path](p
   the compiler reads every loaded folder before it compiles, so the folder cannot be computed`; it may sit under an
   `if` on a `Build` field ([`load` is a bundle boundary](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#load-is-a-bundle-boundary)).
   A `load` compiles to nothing at run time.
-- The program's own folder is the root its entry file sits in, and constructing the entry class is what runs it;
-  with `--repl` a loop runs on it when asked, and it is released afterwards.
+- The program's own folder is the root its entry file sits in, and constructing the entry class is what runs it; with
+  `--repl` or `--mcp-port` the process goes on after the constructor returns, running the lines and requests it is
+  sent, and the entry instance is released when it ends ([repl.md](repl.md#--repl),
+  [mcp.md](mcp.md#the-programs-side)).
 - The executable keeps only the floor: it leaves the command line to `Environment()`, constructs the entry class, and
   afterwards releases the singletons and class objects and prints the `--debug-memory` balance.
 - The exit code is the value the entry constructor answers; a constructor that answers nothing leaves it at 0.
@@ -169,14 +171,14 @@ with a literal default, and a program adds its own the same way it adds `Environ
   The order is a flag, then the program, then the package, and a flag sets a field only a package declares as it
   sets any other; a field only one side declares is unchanged (`conformance/stage6/build_precedence`). A field
   that decides a `load` is still read before any package is loaded, so it must be the program's or the library's.
-- **Flags are kebab-case**: `--repl-port=4000` sets the field `repl_port`, and a flag written with `_` is
+- **Flags are kebab-case**: `--mcp-port=4000` sets the field `mcp_port`, and a flag written with `_` is
   an error before anything is read, naming the hyphen form ([compiler.md](compiler.md#flags-and-settings),
   `diagnostics/underscore_flag`).
-- **The compiler's options are fields**: `check`, `build`,
-  `final_classes` and `optimization_report`, the path `executable_path`, and `optimized`, `development`, `repl`, `repl_port`,
-  `hot_reload` and `debug_memory` ([Command line](compiler.md#command-line)). The compiler reads them from the
-  program's resolved `Build`, after the whole program is read, so a program whose `build.spite` says
-  `var optimized = true` is built optimized unless `--optimized=false` is given (`tests/build_settings_read`).
+- **The compiler's options are fields**: `check`, `build`, `final_classes` and `optimization_report`, the path
+  `executable_path`, and `optimized`, `development`, `repl`, `mcp_port`, `hot_reload` and `debug_memory`
+  ([Command line](compiler.md#command-line)). The compiler reads them from the program's resolved `Build`, after
+  the whole program is read, so a program whose `build.spite` says `var optimized = true` is built optimized
+  unless `--optimized=false` is given (`tests/build_settings_read`).
   `check` and `build` both on, from either place, is the error both flags on are
   (`conformance/build_check_and_build`), and `hot_reload` set there builds for live reload as the flag does. Since the compiler
   reads them before anything runs, each of its options is declared with only a literal (`true` or `false`, a

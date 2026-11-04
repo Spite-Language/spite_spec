@@ -194,9 +194,8 @@ has what each accepts). Assigning a `String` to a `T?` of a number calls it; ass
 error, since text that is not a number would have nothing to give: `text is not an Integer until it is read as one,
 and text that is not a number has none to give: declare the value 'Integer?', which reads the text through
 'Integer(from: String)' and is null when the text is not a number that fits, and narrow it`. The
-same goes for the compiler's own readings of text: an integer literal too large for a `Long` is a compile error,
-and a remote REPL command assigning or passing a number that does not parse is refused. `count()`, `length()`, and
-`index_of()` always return `Integer`, never a wider type.
+same goes for the compiler's own readings of text: an integer literal too large for a `Long` is a compile error.
+`count()`, `length()`, and `index_of()` always return `Integer`, never a wider type.
 
 **Arithmetic that does not fit halts, in every build.** Every `+`, `-` and `*` whose left side (the type the
 arithmetic is done in) is a whole number, signed (`Tiny`, `Short`, `Integer`, `Long`) or unsigned (`Byte`,
@@ -313,9 +312,10 @@ lies inside the operation's type.
   as `total = total + a - b ...` with terms that do not name `total`, holds before that assignment its range at
   the loop's start plus between none and one fewer than the passes of the terms' range. A `Long` total of `Integer`
   terms over a list's items cannot overflow, since the count is an `Integer`.
-- **In every build.** A `--repl`, `--repl-port` or `--hot-reload` build proves ranges as every build does: a range
-  is about one function's own locals and parameters, which no REPL command writes (typed code reaches the program
-  only through `program`) and no reload changes (a call already running finishes on the code it started in).
+- **In every build.** A `--repl`, `--mcp-port` or `--hot-reload` build proves ranges as every build does: a range is
+  about one function's own locals and parameters, which no REPL line or MCP `evaluate` writes (a line is a function of
+  the session, and reaches the program only through `program`) and no reload changes (a call already running finishes
+  on the code it started in).
 - **Every check kept is reported.** `--optimization-report` lists each operation whose check stays, with the
   operand whose range is unknown or the ranges that do not prove it:
   `` `product * 3` keeps its overflow check: 'product' runs from -2147483648 to 2147483647, so the answer may not
@@ -726,7 +726,7 @@ is known only at run time compares that tag
 against the classes admitted to the shape (only the classes the program actually passes to it), so nothing
 is registered or looked up by name at run time. A class test admits nothing: `item.class == Ghost` on an `Anything` that
 no `Ghost` ever reaches is false for every value, and the program carries no copy, no case and no code for `Ghost`
-because of it (`conformance/stage6/tested_classes`). A `--repl`, `--repl-port` or `--hot-reload` build, where code
+because of it (`conformance/stage6/tested_classes`). A `--repl`, `--mcp-port` or `--hot-reload` build, where code
 the compiler has not seen may bring a `Ghost` later, admits it.
 
 **A `type` may require functions, not only attributes**, matched by shape
@@ -763,12 +763,12 @@ no general version of the function is in the program. The function as written is
 in it is reported against the `type` it names; a class test that only a copy decides is not the "decided while
 compiling" error. Not copied: a parameter the function assigns to, a `T?` of a `type`, a row of borrowed items, a
 function that waits, and the functions of `List`, `Dictionary` and the other containers of the library. A
-`--repl`, `--repl-port` or `--hot-reload` build compiles the function as written and no copies, since a class the
+`--repl`, `--mcp-port` or `--hot-reload` build compiles the function as written and no copies, since a class the
 compiler has not seen may reach it later.
 
 **A `type` has no functions of its own.** A required function is not an attribute holding a function value, and a
 `type` has no dispatch object: a call through a `type` is always the function of the class the value really is,
-compiled in that class's copy, and a `--repl`, `--repl-port` or `--hot-reload` build reaches that same function
+compiled in that class's copy, and a `--repl`, `--mcp-port` or `--hot-reload` build reaches that same function
 through the dispatch the compiler writes. A required function named without calling it (`sleepy.nap`) is that
 class's function bound to the value, as on any instance
 ([functions_and_operators.md](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md#functions-are-values)); the value is held in a box of its

@@ -142,9 +142,9 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   one, and a new class of your own belongs in a namespace of your own" (`diagnostics/new_spite_class`), and
   `load "spite"` is "'spite' is reserved for the built-in Spite namespace: name the folder something else"
   (`diagnostics/reserved_spite_namespace`).
-- **`Spite.Internal` is the compiler's alone.** The scheduler, the fallback ring, the fault and crash reports, the copy
-  table and the prompt are the compiler's own, added when a program needs one, and no program can name or reopen
-  them. Any file that names `Spite.Internal` is refused: a type, a call, an
+- **`Spite.Internal` is the compiler's alone.** The scheduler, the fallback ring, the fault and crash reports, and the
+  copy table are the compiler's own, added when a program needs one, and no program can name or reopen them. Any file
+  that names `Spite.Internal` is refused: a type, a call, an
   inheritance, a class written in a `spite/internal/` folder (new or reopening one), the name inside a string
   interpolation, or a member of a union or the type of a `type`'s member. A text holding the name is only text
   (the compiler, a Spite program, names these classes in its own texts). The message names the class written (or `Spite.Internal` alone when no class follows) and the plain
@@ -293,11 +293,12 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   replaced); see `--final-classes` in [Command line](compiler.md#command-line). The language server reads it too.
 - **What the compiler supplies is a reopening too.** The members whose bodies the compiler supplies are `Console`'s
   raw writes, `Memory.Heap`'s allocation and `Memory.Address`'s reads, writes and atomics, `DynamicLibrary`'s opening
-  and symbol lookup, `TypedMemory`'s typed slots, a number's casts and bit operations,
-  the REPL's hooks on `Spite.Attribute`/`Spite.Function`, `HotReload`'s build facts, the state machines of waiting work,
-  the thread pool's entry address and the scheduler's step. They are declarations the compiler merges into their classes
-  right after `library/` (and its operating system's folder), exactly as a later root merges a file, so a program
-  can still reopen them, and `--final-classes` shows the actual content of the class. Nothing is registered by hand.
+  and symbol lookup, `TypedMemory`'s typed slots, a number's casts and bit operations, `Spite.Attribute`'s memory
+  reads (`held_memory()`, `stored_memory()`, `buffer_memory()`), `HotReload`'s build facts, the state machines of
+  waiting work, the thread pool's entry address and the scheduler's step. They are declarations the compiler merges
+  into their classes right after `library/` (and its operating system's folder), exactly as a later root merges a
+  file, so a program can still reopen them, and `--final-classes` shows the actual content of the class. Nothing is
+  registered by hand.
   **The form:** **a `func` with a signature and no block** is a member whose body the compiler supplies, which is how
   `--final-classes` prints it (`func allocate(bytes: Long): Memory.Address`), and reading that back is what lets the
   printed program compile. It borrows the shape a `type` already uses for a member without a body. Anywhere the

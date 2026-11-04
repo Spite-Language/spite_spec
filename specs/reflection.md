@@ -173,9 +173,9 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   whose result is typed by its reflection parameter (`func made(argument: Spite.Argument): argument.class`) answers
   that type. A specialisation is not one of the class's `.functions`; the function itself is compiled only when
   something calls it with a run-time object or uses it as a value.
-- **A run-time object** (a value typed `Anything` or a union, a reflection object kept in an attribute, anything
-  typed at the REPL) is answered from the run-time tables, built only for the classes such a read can reach, and for
-  every class in a `--repl`, `--repl-port` or `--development` build. A run-time function's `.reads` and `.writes` come
+- **A run-time object** (a value typed `Anything` or a union, a reflection object kept in an attribute) is
+  answered from the run-time tables, built only for the classes such a read can reach, and for every class in a
+  `--repl`, `--mcp-port` or `--development` build. A run-time function's `.reads` and `.writes` come
   from a table of every function the program makes an object for, emitted only when some code reads them at run
   time. A standard library function, a function value taken through a `type` and every function of a `--hot-reload`
   build are not in it, and asking them halts. A run-time object answers the questions a constant does

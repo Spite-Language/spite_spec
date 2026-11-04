@@ -25,15 +25,18 @@ spite --optimized                       a release build: -O3, and link-time opti
 spite --development                     an inspectable build: no tree shaking, internals as ordinary objects
 spite --debug-memory                    count allocations and frees, print the balance when the program ends
 spite --trace-fallbacks                 print each fallback taken as it fails, as well as in a crash's report
-spite --repl                            run it, then answer REPL commands at the terminal (repl.md)
-spite --repl-port=4000                  serve REPL commands on 127.0.0.1:4000 while it runs (repl.md)
+spite --repl                            run it with a console where Spite typed at the terminal runs in it (repl.md)
+spite --mcp-port=4000                   let the language's MCP reach it on 127.0.0.1:4000 (implies --hot-reload, mcp.md)
 spite --hot-reload                      swap changed classes into the running program (implies --development)
 spite --target-operating-system=linux   compile for another system: windows, linux or mac
 spite --serve=true                      set a Build field the program declares in its build.spite (programs.md)
-spite --connect=port                    talk to a program running with --repl-port=port (repl.md)
-spite --connect=port --command="..."    send one REPL command, print its raw JSON answer line, and exit
+spite --mcp=4000                        serve the language's MCP over standard input and output for the program
+                                        built with --mcp-port=4000 (mcp.md)
 spite ... --executable-path=running --reload-at=address   what a --hot-reload program runs to rebuild itself (repl.md)
 ```
+
+`--repl`, `--mcp-port`, `--mcp` and `--hot-reload` run on Windows for now, since the swap machinery they share does
+([repl.md](repl.md)); Linux and macOS are spite_compiler#297.
 
 ### The compiler proves itself
 
@@ -85,8 +88,8 @@ A `Boolean` flag may be given bare: `--optimized` is `--optimized=true`, and `--
 Flags mix freely, and every output that is on comes from the same compile: an `--optimized` build may keep
 the REPL (it is then inspectable), and `--build --final-classes=folder` builds the executable and writes the
 classes. Building and running are the same command. There is no `--mode`, `--output` or `--format`: `--check` and
-`--build` stop the build sooner, `--final-classes` adds its folder, formatting is not an option, and `--connect`
-is a client the compiler holds, not an option of a build. There is no `spite format`: every compile formats.
+`--build` stop the build sooner, `--final-classes` adds its folder, formatting is not an option, and `--mcp`
+is a server the compiler holds, not an option of a build. There is no `spite format`: every compile formats.
 
 ## Naming a program
 
@@ -211,12 +214,12 @@ it. Tree shaking and every other whole-program step run before any output is wri
 
 ## Flags and settings
 
-- **Flags are kebab-case, fields stay snake_case**: `--repl-port=4000` sets
-  `Build.repl_port`, `--hot-reload` sets `hot_reload`, and a program's own field `worker_stack_size` is
+- **Flags are kebab-case, fields stay snake_case**: `--mcp-port=4000` sets
+  `Build.mcp_port`, `--hot-reload` sets `hot_reload`, and a program's own field `worker_stack_size` is
   `--worker-stack-size=256` (`conformance/stage6/build_settings`). An underscore in a flag's name is an error,
   checked before anything is read, naming the hyphen form. For one of the compiler's own settings it is the
-  library's words, as for any program: `error: '--repl_port' is written '--repl-port': a program's setting is
-  kebab-case on the command line, like the compiler's flags, and it sets Environment.repl_port`
+  library's words, as for any program: `error: '--mcp_port' is written '--mcp-port': a program's setting is
+  kebab-case on the command line, like the compiler's flags, and it sets Environment.mcp_port`
   (`diagnostics/underscore_flag`); for any other flag, `error: '--player_name' is written '--player-name': flags
   and settings are kebab-case on the command line, and the field they set is 'player_name'`
   (`diagnostics/underscore_setting`). The value after `=` is never touched, and every message that names a flag
@@ -227,8 +230,8 @@ it. Tree shaking and every other whole-program step run before any output is wri
   declaring it, with every flag given (the library's private `_given_flags()`); an `Environment` holding it refuses no flag, so the compiler checks
   every flag that names none of its settings against the `Build` of the program it compiles. A value that does
   not fit one of the compiler's own settings stops it as a program's would: `error: the setting
-  Environment.repl_port was given 'many', which is not an Integer, a whole number: write --repl-port=4 on the
-  command line, or REPL_PORT=4 in the environment or a .env file`. Each setting is also read from its variable
+  Environment.mcp_port was given 'many', which is not an Integer, a whole number: write --mcp-port=4 on the
+  command line, or MCP_PORT=4 in the environment or a .env file`. Each setting is also read from its variable
   (`OPTIMIZED=true`), and a field of the program's own `Build` that no flag sets is read from its variable
   (`SERVE=true` for `var serve = false`), then from the `NAME=value` lines of a `.env` file in the folder built,
   the variable winning (`tests/build_setting_from_the_environment`, D1813). Either is checked against the field's
@@ -260,9 +263,10 @@ it. Tree shaking and every other whole-program step run before any output is wri
   and the forms it takes, and no file position, since the mistake is on the command line: `error:
   '--workers=many' was given to the compiler, but 'Build.workers' is an Integer: a whole number, like
   --workers=3` (`diagnostics/build_setting_type`).
-  `--repl-port` takes 1 to 65535: `error: --repl-port takes a port number from 1 to 65535: spite program
-  --repl-port=4000`. `--target-operating-system` takes `windows`, `linux` or `mac`: `error:
-  '--target-operating-system=beos' names no operating system the library has a folder for: windows, linux or mac`.
+  `--mcp-port` takes 1 to 65535: `error: --mcp-port takes a port number from 1 to 65535: spite --mcp-port=4000`, and
+  `--mcp` the same ([mcp.md](mcp.md#two-halves)). `--target-operating-system` takes `windows`, `linux` or `mac`:
+  `error: '--target-operating-system=beos' names no operating system the library has a folder for: windows, linux or
+  mac`.
 - `--operating-system` and `--program` cannot be given: `error: '--operating-system' cannot be given:
   Build.operating_system is the system doing the compiling (windows). To write the program for another system, give
   --target-operating-system=linux (or windows, or mac)`, and `error: '--program' cannot be given: the program is
@@ -277,27 +281,27 @@ it. Tree shaking and every other whole-program step run before any output is wri
   error too, `error: '--optimized' is given twice: a flag or a setting is given once`
   (`diagnostics/flag_given_twice`), so a later one never silently replaces an earlier one.
 - Every setting is decided while compiling and costs nothing at run time; only the builds that ask for it
-  carry `--debug-memory`'s table, the REPL (`--repl`, `--repl-port`) or live reload (`--hot-reload`).
+  carry `--debug-memory`'s table, the REPL (`--repl`), the MCP (`--mcp-port`) or live reload (`--hot-reload`).
 
 ## Inspectable and production builds
 
-A build with `--development`,
-`--hot-reload`, `--repl` or `--repl-port` is *inspectable* (`--development=false`, `--repl=false` and the others
-given `false` are not): nothing is tree-shaken, and the singletons that hold
-nothing (`Build`, [Singletons](classes_and_files.md#singleton-rules)) are ordinary
-objects (allocated at first use, listed by `.instances`, destroyed at exit), so the REPL and reflection see the
-internals as normal classes; since nothing is shaken, every `DynamicLibrary` looks up every symbol it declares.
+A build with `--development`, `--hot-reload`, `--repl` or `--mcp-port` is *inspectable* (`--development=false`,
+`--repl=false` and the others given `false` are not): nothing is tree-shaken, and the singletons that hold nothing
+(`Build`, [Singletons](classes_and_files.md#singleton-rules)) are ordinary objects (allocated at first use, listed by
+`.instances`, destroyed at exit), so a REPL line, an MCP `evaluate` and reflection see the internals as normal
+classes; since nothing is shaken, every `DynamicLibrary` looks up every symbol it declares.
 Nothing tree-shaken means that every function of every class of the program and its packages that the program
 makes is compiled, whether or not anything calls it (`tests/development_keeps_functions`): every one whose
 parameters and answer are values (numbers, texts, objects, enums, unions), the constructors aside, since a made
 class ran one; a function of a generic class or with a function or shape parameter is compiled for each use, as in
 any build, since it has no code of its own until it is used. The standard library's functions are compiled as the
-program and its prompt call them.
+program and the lines run in it call them.
 Every other build, the ordinary one included and not only `--optimized`, is a *production* build, where those
 singletons are static objects and everything unused is tree-shaken, down to the classes nothing reachable uses.
-`--optimized` with a REPL flag is inspectable. The optimisations that change only speed (chains as one loop,
-placement, text appended in place) apply in both; [optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md) says which build each
-optimisation applies in (`conformance/stage6/development_internals`).
+`--optimized` with `--repl`, `--mcp-port` or `--hot-reload` is inspectable. The optimisations that change only speed
+(chains as one loop, placement, text appended in place) apply in both;
+[optimizations.md](https://github.com/Spite-Language/spite_documentation/blob/master/optimizations.md) says which
+build each optimisation applies in (`conformance/stage6/development_internals`).
 
 ## What the C compiler says
 

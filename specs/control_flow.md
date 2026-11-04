@@ -68,11 +68,9 @@ helpers or 'while index < list.count() { ... }' instead." Loops and ifs are othe
 code.
 
 `while` costs nothing at run time beyond the loop itself, with one exception in debugging builds: in a
-`--repl-port` or `--hot-reload` build, each pass of a `while` in the program's own code (not `library/` or
-`launcher/`) ends with a check point that answers a waiting REPL command or reload
-([repl.md](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md#remote---repl-port)); every other build has none. A local `--repl` build gets none either: it
-reads its commands from the console only after the entry constructor returns, so a check point there would have
-nothing to answer and would cost a call per pass for nothing.
+`--repl`, `--mcp-port` or `--hot-reload` build, each pass of a `while` in the program's own code (not the standard
+library's) ends with a check point that runs a waiting REPL line or MCP request, or swaps in a waiting reload
+([repl.md](repl.md#answered-where-the-program-waits)); every other build has none.
 
 ### Nested `if`/`else`
 

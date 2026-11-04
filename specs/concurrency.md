@@ -11,8 +11,8 @@ proves independent, wherever the work stands and where it pays, and a program sh
 order shows: the same output, the same answers, the same values read. The one exception is a crash: the first
 crash stops the program (below). Wherever the compiler cannot yet prove work independent, the program runs it in
 order, slower and with the same output; spite_compiler#218, #219 and #220 widen what it overlaps. IO never blocks
-the program by the program's own hand, and the compiler puts the REPL's drain points where the program already
-waits.
+the program by the program's own hand, and the compiler runs REPL lines, MCP requests and reloads at the points
+where the program already waits.
 
 **`Parallel(...)` and `Concurrent(...)` are not part of Spite.** Writing either is an error at the call:
 `'Parallel' is not part of Spite: the compiler decides what runs at once, so call the function itself`
@@ -89,32 +89,32 @@ helper thread of the pool (what libuv does for files). The alternative, each sys
 kqueue), is not used: an ordinary file is always "ready" to epoll and kqueue, the Windows console cannot be read
 through IOCP, and one mechanism keeps each system's folder small.
 
-**What the compiler writes for code outside a state machine.** In a program that uses the scheduler (one in which
-the compiler starts waiting work, or built with `--repl-port` or `--hot-reload`) each blocking call outside a state
-machine is wrapped: a sleep runs the event loop until its time, and a blocking call runs on a helper thread while
-the event loop runs. Every other program gets none of it: no wrapper, no scheduler, no state machine.
+**What the compiler writes for code outside a state machine.** In a program that uses the scheduler (one in which the
+compiler starts waiting work, or built with `--repl`, `--mcp-port` or `--hot-reload`) each blocking call outside a
+state machine is wrapped: a sleep runs the event loop until its time, and a blocking call runs on a helper thread
+while the event loop runs. Every other program gets none of it: no wrapper, no scheduler, no state machine.
 
 **Blocking is what the compiler picks when it is faster.** The wrapper asks the scheduler first: when no work it
-started on the caller's thread is alive and no REPL is listening there, nothing else could run on that thread
-meanwhile, so the wrapper makes the plain blocking call.
+started on the caller's thread is alive and no REPL console or MCP connection can hand it a line, nothing else could
+run on that thread meanwhile, so the wrapper makes the plain blocking call.
 
 **The scheduler** is the compiler's own, and a program cannot name it. It keeps one loop per thread, made the first
-time a thread waits (`conformance/stage6/concurrent_in_parallel`). The REPL's commands and reloads are answered
-only on the program's own thread. Each loop keeps the frames of the work that has not finished, the deadlines of
-the sleeps in them and a count of helper threads in flight. Its loop answers the REPL's pending command and a
-pending reload, if any, steps every frame that is not already running further down the stack, and, when none
-finished, waits until a helper thread or the REPL's socket thread signals, with the nearest deadline as its
-timeout. Waiting forever on nothing is a deadlock, and a crash.
+time a thread waits (`conformance/stage6/concurrent_in_parallel`). REPL lines, MCP requests and reloads run only on
+the program's own thread. Each loop keeps the frames of the work that has not finished, the deadlines of the sleeps in
+them and a count of helper threads in flight. Its loop runs a pending REPL line or MCP request and swaps in a pending
+reload, if any, steps every frame that is not already running further down the stack, and, when none finished, waits
+until a helper thread, the REPL console's thread, an MCP connection's thread or the file watcher signals, with the
+nearest deadline as its timeout. Waiting forever on nothing is a deadlock, and a crash.
 
-**Soundness.** A program that starts a thread (overlapped work, a blocking call's helper, or `--repl-port`), or
-hands C a `ForeignCallback` it may call from one, counts references with atomic operations, and the
-`--debug-memory` counts are kept safely. Every other program keeps the plain counts. Spite code on the program's
-thread only ever changes hands at a wait, so state machines need nothing more. A singleton first used from two
-threads at once is made once: the fetch takes the singleton's own lock only while its slot is empty
-(`conformance/stage6/singleton_race`). A cycle's back reference (the compiler's choice, [memory.md](memory.md))
-needs no care across threads: a parent and its child built on another thread are both freed there. One smaller
-gap: a REPL client's `exit` while a helper thread is blocked reading the console may wait for that read when the
-process exits.
+**Soundness.** A program that starts a thread (overlapped work, a blocking call's helper, `--repl`'s console or
+`--mcp-port`'s connection), or hands C a `ForeignCallback` it may call from one, counts references with atomic
+operations, and the `--debug-memory` counts are kept safely. Every other program keeps the plain counts. Spite code on
+the program's thread only ever changes hands at a wait, so state machines need nothing more. A singleton first used
+from two threads at once is made once: the fetch takes the singleton's own lock only while its slot is empty
+(`conformance/stage6/singleton_race`). A cycle's back reference (the compiler's choice, [memory.md](memory.md)) needs
+no care across threads: a parent and its child built on another thread are both freed there. One smaller gap: an MCP
+`evaluate` calling `program.exit(code)` while a helper thread is blocked reading the console may wait for that read
+when the process exits.
 
 **Reads in a row overlap.** All the IO classes use it, and a `File` or `Tcp.Connection` is not changed: the compiler does it
 at the call site. When two or more statements in a row are each `var name = receiver.read_as_string()` on a `File` (or
@@ -139,9 +139,9 @@ included), takes and answers only numbers, reads only its parameters and locals,
 functions of `this`, and holds no object, text, list, attribute, fallback, foreign call, function value or recursion;
 it may halt, by a `crash`, a whole-number result that does not fit, a division by zero or a number narrowed into
 one it does not fit. Each call must weigh at least a million (each statement 1, a loop's body times its bound, a
-call what its function weighs). Nothing is overlapped in the standard library or in a `--hot-reload`, `--repl` or
-`--development` build. The compiler finds independent work wherever it can prove it, not where the program says
-so; overlapping by the data each piece of work touches (inside one function, across classes) is
+call what its function weighs). Nothing is overlapped in the standard library or in a `--hot-reload`, `--repl`,
+`--mcp-port` or `--development` build. The compiler finds independent work wherever it can prove it, not where the
+program says so; overlapping by the data each piece of work touches (inside one function, across classes) is
 spite_compiler#242. `tests/overlapped_work`, `tests/overlapped_work_in_the_entry`.
 
 **The first crash stops the program.** When work that runs at once crashes, the first crash that happens stops the

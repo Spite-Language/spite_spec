@@ -40,7 +40,8 @@ In the documentation's reading order. Four pages of the documentation have none 
 19. [Foreign libraries and operating systems](foreign_libraries.md), specifying [foreign_libraries.md](https://github.com/Spite-Language/spite_documentation/blob/master/foreign_libraries.md).
 20. [Compiler command line](compiler.md), specifying [compiler.md](https://github.com/Spite-Language/spite_documentation/blob/master/compiler.md).
 21. [REPL and live reload](repl.md), specifying [repl.md](https://github.com/Spite-Language/spite_documentation/blob/master/repl.md).
-22. [Testing](testing.md), specifying [testing.md](https://github.com/Spite-Language/spite_documentation/blob/master/testing.md).
+22. [The language's MCP](mcp.md), specifying [mcp.md](https://github.com/Spite-Language/spite_documentation/blob/master/mcp.md).
+23. [Testing](testing.md), specifying [testing.md](https://github.com/Spite-Language/spite_documentation/blob/master/testing.md).
 
 ---
 

@@ -420,8 +420,8 @@ its own copy ([classes_and_files.md](classes_and_files.md#files-are-classes)). I
 `diagnostics/generic_constraint_not_a_type`.
 
 **Conditions on codegen values fold.** They are decided at compile time and the untaken branch is removed (tree
-shaking), in every build, `--development`, `--hot-reload` and the REPL builds included: a codegen value is part of
-which class this is (`Weapon<Integer, true>` and `Weapon<Integer, false>` are two classes), so there is no
+shaking), in every build, `--development`, `--hot-reload`, `--repl` and `--mcp-port` builds included: a codegen value
+is part of which class this is (`Weapon<Integer, true>` and `Weapon<Integer, false>` are two classes), so there is no
 run-time value for live reload to change. To change one, change the call site.
 
 **A `fallback` or `crash` on such a condition folds the same way.** When the condition of a `fallback` or `crash`
