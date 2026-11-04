@@ -1,0 +1,1 @@
+every check of the compiler is a rule of validators/

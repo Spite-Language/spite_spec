@@ -1,0 +1,107 @@
+var console = Console()
+var root = "../spite_compiler"
+var broken = 0
+var waiting = {
+    "abstract_syntax_tree/lexer/lexer.spite": "the spelling rule, after spite_compiler#25",
+    "abstract_syntax_tree/parser/parser.spite": "the syntax rule, after spite_compiler#25",
+    "validators/abstract_syntax_tree/spelling/validator.spite": "the spelling rule, after spite_compiler#25",
+    "validators/abstract_syntax_tree/syntax/validator.spite": "the syntax rule, after spite_compiler#25",
+    "high_intermediary_representation/building/values.spite": "the typing rules, after spite_compiler#25",
+    "high_intermediary_representation/building/statements.spite": "the typing rules, after spite_compiler#25",
+    "high_intermediary_representation/building/known_calls.spite": "the typing rules, after spite_compiler#25",
+    "high_intermediary_representation/building/template_walks.spite": "the typing rules, after spite_compiler#25",
+}
+
+# ../../../spite_compiler/ARCHITECTURE.md#validators
+func CompilerRulesAreValidators() {
+    load "../../../spite_standard_library/windows"
+    var top = Directory(root)
+    read_a_folder(top, "")
+    if broken == 0 {
+        console.print("every check of the compiler is a rule of validators/")
+    }
+}
+
+func read_a_folder(folder: Directory, relative: String) {
+    var entries = folder.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var entry = entries[index]
+        switch entry {
+            Directory: read_a_subfolder(entry, relative)
+            File: read_a_file(entry, relative)
+        }
+        index = index + 1
+    }
+}
+
+func read_a_subfolder(folder: Directory, relative: String) {
+    var name = folder.folder_name
+    fallback not name.starts_with(".")
+    read_a_folder(folder, "{relative}{name}/")
+}
+
+func read_a_file(file: File, relative: String) {
+    var name = file.file_name
+    fallback name.ends_with(".spite")
+    var text = file.read_as_string()
+    crash text
+    judge("{relative}{name}", name, text)
+}
+
+func judge(path: String, name: String, text: String) {
+    var problems = List<String>()
+    var lines = text.split("\n")
+    var is_a_rule = path.starts_with("validators/")
+    var may_refuse = is_a_rule or path.starts_with("proofs/")
+    if is_a_rule and name == "validator.spite" and not defines_a_check(lines) {
+        problems.append("defines no 'check' or 'check_...', so it only words what its caller decided")
+    }
+    if not may_refuse {
+        note_the_refusals(lines, problems)
+    }
+    var reason = waiting[path]
+    if reason and problems.is_empty() {
+        broken = broken + 1
+        console.print("{path} waits for {reason} on the list, but it breaks no rule now: take it off the list")
+    }
+    fallback not reason
+    var index = 0
+    while index < problems.count() {
+        var problem = problems[index]
+        broken = broken + 1
+        console.print("{path} {problem}")
+        index = index + 1
+    }
+}
+
+func defines_a_check(lines: List<String>): Boolean {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("func check") {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}
+
+func note_the_refusals(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("func refuse") {
+            var opening = line.index_of("(")
+            crash opening
+            var declared = line.slice(5, opening)
+            crash declared
+            problems.append("defines '{declared}' outside validators/: hand what it judges to a rule there")
+        }
+        if line.contains("Diagnostics.Failure()") {
+            problems.append("builds a Diagnostics.Failure outside validators/: hand what it judges to a rule there")
+        }
+        index = index + 1
+    }
+}
