@@ -1,0 +1,2 @@
+sum 27000 squares 171000
+changed 33000 squares 199500 sum 31500

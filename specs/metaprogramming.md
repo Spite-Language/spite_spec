@@ -320,16 +320,17 @@ A walk is a call on a list of reflection objects, under [reflection.md's rules f
 
 ```gdscript weapon.spite
 generic $damage_type
-generic $is_magic
 
 var damage: $damage_type = 0
+var is_magic = false
 
-func Weapon(new_damage: $damage_type) {
+func Weapon(new_damage: $damage_type, magic: Boolean) {
     damage = new_damage
+    is_magic = magic
 }
 
 func hit(): Integer {
-    if $is_magic {
+    if is_magic {
         return 1
     }
     return 2
@@ -337,7 +338,7 @@ func hit(): Integer {
 ```
 
 ```gdscript
-var sword = Weapon<Integer, true>(10)
+var sword = Weapon<Integer>(10, true)
 ```
 
 - **Every value is declared, even a single one**, so skimming the top of a file is how a human sees what a class
@@ -345,7 +346,14 @@ var sword = Weapon<Integer, true>(10)
   and a comma is an error naming the line to write: "a 'generic' line declares one codegen value: write 'generic
   $left_type' and put the next one on its own line".
 - **Call sites are positional, always, in the order of the lines.** There is no named form: `List<Integer>()`,
-  `Weapon<Integer, true>(10)`.
+  `Pair<String, Integer>("answer", 42)`.
+- **A codegen value is a type, never a literal** (D1845). A value that picks a branch is given to the
+  constructor or set on an attribute, as `Weapon<Integer>(10, true)` does, and the compiler decides the branch where
+  the value is known while compiling: it splits the class by usage, one copy per value its objects are made with,
+  each with its branch decided (D1846, [the optimisation](https://github.com/Spite-Language/spite_compiler/blob/master/OPTIMIZATIONS.md#a-class-is-split-where-a-constant-attribute-decides-its-branches)).
+  A literal between `<` and `>` is an error: "a codegen value is a type, and 'true' is a value: pass it to the
+  constructor or set an attribute, and the compiler decides the branch where the value is known"
+  (`conformance/codegen_literal`).
 - **`$` is for generics only.** Every `$name` a class uses has a `generic` line and is supplied by the caller, so
   the lines are exactly "what a caller must pass". A `$name` with no line is a compile error. Used as a value it
   points at [`Environment`](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md#run-time-settings-environment), which is where a program's settings
@@ -361,14 +369,14 @@ var sword = Weapon<Integer, true>(10)
 - **Every hole must be filled.** There are no defaults. A call supplying the wrong number is a compile error
   naming the class's codegen values, in order: "'Box' takes 1 codegen value(s), in this order: $held_type,but 2 were given", so the mistake is corrected from the message rather than by opening the class. A `$name`
   that is not declared is an error too, which is what a typo like `$is_magik` produces.
-- Reordering the `generic` lines changes what every existing positional call site means. Where the values
-  have different kinds (a class versus a `Boolean`) the compiler catches it immediately; where they are the same
-  kind (`Pair<Integer, String>` swapped) it compiles and means something else, and the tests are what catch it. This
+- Reordering the `generic` lines changes what every existing positional call site means. Where the classes
+  given have different shapes (a `List` where a number is used) the compiler catches it immediately; where they fit
+  alike (`Pair<Integer, String>` swapped) it compiles and means something else, and the tests are what catch it. This
   is a deliberate, accepted trade.
 - **Each set of values is its own class**, made only where a program names it, with its own copy of every
   function surviving code calls. Nothing chooses between them at run time; what a generic costs is that code,
   once per set of values used, and a generic nobody makes costs nothing. `--final-classes` prints each
-  class with its codegen values already bound, which is where `true` reads as `is_magic` again.
+  class with its codegen values already bound.
 - Writing `generics` is a parse error naming this form, and so is listing codegen values on a function,
   `func Weapon<$damage_type, $is_magic>(...)`, on a constructor or any other function: "a function no longer
   lists codegen values between '<' and '>': declare each at the top of the file on its own line ('generic
@@ -421,11 +429,11 @@ its own copy ([classes_and_files.md](classes_and_files.md#files-are-classes)). I
 
 **Conditions on codegen values fold.** They are decided at compile time and the untaken branch is removed (tree
 shaking), in every build, `--development`, `--hot-reload` and the REPL builds included: a codegen value is part of
-which class this is (`Weapon<Integer, true>` and `Weapon<Integer, false>` are two classes), so there is no
+which class this is (`Shelf<Integer>` and `Shelf<String>` are two classes), so there is no
 run-time value for live reload to change. To change one, change the call site.
 
 **A `fallback` or `crash` on such a condition folds the same way.** When the condition of a `fallback` or `crash`
-asks only what is decided while compiling (a `$flag`, `$slot_type == Entity` or any other test of a codegen type,
+asks only what is decided while compiling (`$slot_type == Entity` or any other test of a codegen type,
 a question asked of a reflection constant (`$T.functions["run_each"]`, `.is_resumable`, `.is_mutated`,
 `.is_fixed_size`, `.arguments.count()`, of a codegen type or of a walked member's class), `argument.class == $row_type`,
 a class test the value's type already answers (`item == $wanted_type`), a field of

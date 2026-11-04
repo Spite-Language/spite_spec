@@ -1,15 +1,16 @@
 generic $damage_type
-generic $is_magic
 
 var console = Console()
 var damage: $damage_type = null
+var is_magic = false
 
-func Weapon(new_damage: $damage_type) {
+func Weapon(new_damage: $damage_type, magic: Boolean) {
     damage = new_damage
+    is_magic = magic
 }
 
 func hit() {
-    if $is_magic {
+    if is_magic {
         console.print("magic hit for", damage)
     } else {
         console.print("normal hit for", damage)

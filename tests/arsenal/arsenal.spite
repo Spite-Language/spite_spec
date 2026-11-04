@@ -3,7 +3,7 @@ var environment = Environment()
 
 func Arsenal() {
     load "../../../spite_standard_library/windows"
-    var sword = Weapon<Integer, true>(10)
+    var sword = Weapon<Integer>(10, true)
     sword.hit()
     if environment.name == "server" {
         console.print("environment is server")

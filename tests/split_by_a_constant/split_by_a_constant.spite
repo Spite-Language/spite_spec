@@ -1,0 +1,43 @@
+var console = Console()
+
+func SplitByAConstant() {
+    load "../../../spite_standard_library/windows"
+    var values = List<Integer>()
+    var index = 0
+    while index < 1000 {
+        values.append(index % 10)
+        index = index + 1
+    }
+    var plain = Meter(false)
+    var squared = Meter(true)
+    var round = 0
+    while round < 3 {
+        measure(values, plain, squared)
+        measure_again(values, plain, squared)
+        round = round + 1
+    }
+    console.print("sum", plain.total, "squares", squared.total)
+    var changed = Meter(false)
+    measure(values, changed, squared)
+    changed.is_squared = true
+    measure(values, changed, plain)
+    console.print("changed", changed.total, "squares", squared.total, "sum", plain.total)
+}
+
+func measure(values: List<Integer>, plain: Meter, squared: Meter) {
+    var index = 0
+    while index < values.count() {
+        var value = values[index]
+        plain.add(value)
+        squared.add(value)
+        index = index + 1
+    }
+}
+
+func measure_again(values: List<Integer>, plain: Meter, squared: Meter) {
+    var round = 0
+    while round < 1 {
+        measure(values, plain, squared)
+        round = round + 1
+    }
+}

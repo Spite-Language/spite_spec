@@ -244,7 +244,7 @@ out of arithmetic on constants ([proofs.md](https://github.com/Spite-Language/sp
 the program, naming the operation and the line (`spite: 'total / parts' divided by zero, at
 game/game.spite:22 in Game.share`), since dividing by zero is the moron's mistake
 (`conformance/stage6/division_by_zero`). A divisor the compiler can see is zero, a constant (`total / 0`,
-`total % (2 - 2)`) or a codegen value folded to `0`, is a compile error instead: `'total / 0' divides by zero,
+`total % (2 - 2)`), is a compile error instead: `'total / 0' divides by zero,
 which always halts the program` (`diagnostics/division_by_constant_zero`). Where a proof already shows the
 divisor is not zero (`fallback parts != 0`, `crash parts != 0`, `if parts != 0 { }`, `parts > 0`, or a `while`
 condition saying so, kept or undone by a call as any proof is), no check is emitted. The divisor may be a local, a

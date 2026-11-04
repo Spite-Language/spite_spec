@@ -1,14 +1,15 @@
 generic $damage_type
-generic $is_magic
 
 var damage: $damage_type = null
+var is_magic = false
 
-func Weapon(new_damage: $damage_type) {
+func Weapon(new_damage: $damage_type, magic: Boolean) {
     damage = new_damage
+    is_magic = magic
 }
 
 func hit(): Integer {
-    if $is_magic {
+    if is_magic {
         return 1
     } else {
         return 2
@@ -16,10 +17,7 @@ func hit(): Integer {
 }
 
 func describe(): String {
-    if $is_magic and not $is_magic {
-        return "impossible"
-    }
-    if not $is_magic {
+    if not is_magic {
         return "plain {damage}"
     }
     return "magic {damage}"

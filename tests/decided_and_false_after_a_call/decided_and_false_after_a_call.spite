@@ -1,5 +1,5 @@
 func DecidedAndFalseAfterACall() {
     load "../../../spite_standard_library/windows"
-    var gate = Gate<false, true>()
+    var gate = Gate(false, true)
     gate.tell()
 }

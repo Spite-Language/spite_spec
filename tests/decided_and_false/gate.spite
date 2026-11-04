@@ -1,15 +1,19 @@
-generic $is_open
-generic $is_forced
-
 var console = Console()
+var is_open = false
+var is_forced = false
+
+func Gate(open: Boolean, forced: Boolean) {
+    is_open = open
+    is_forced = forced
+}
 
 func tell(count: Integer) {
-    if count > 1 and $is_open {
+    if count > 1 and is_open {
         console.print("never")
     } else {
         console.print("an 'and false' is decided while compiling")
     }
-    if count > 5 or $is_forced {
+    if count > 5 or is_forced {
         console.print("an 'or true' is decided while compiling")
     }
 }

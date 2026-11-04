@@ -1,19 +1,23 @@
-generic $is_open
-generic $is_forced
-
 var console = Console()
 var calls = 0
+var is_open = false
+var is_forced = false
+
+func Gate(open: Boolean, forced: Boolean) {
+    is_open = open
+    is_forced = forced
+}
 
 func tell() {
-    if counted() and $is_open {
+    if counted() and is_open {
         console.print("never")
     } else {
         console.print("an 'and false' after a call is decided, calls: {calls}")
     }
-    if counted() or $is_forced {
+    if counted() or is_forced {
         console.print("an 'or true' after a call is decided, calls: {calls}")
     }
-    var both = counted() and $is_open
+    var both = counted() and is_open
     console.print(both, calls)
 }
 
