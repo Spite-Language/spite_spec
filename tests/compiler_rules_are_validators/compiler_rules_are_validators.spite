@@ -2,14 +2,14 @@ var console = Console()
 var root = "../spite_compiler"
 var broken = 0
 var waiting = {
-    "abstract_syntax_tree/lexer/lexer.spite": "the spelling rule, after spite_compiler#25",
-    "abstract_syntax_tree/parser/parser.spite": "the syntax rule, after spite_compiler#25",
-    "validators/abstract_syntax_tree/spelling/validator.spite": "the spelling rule, after spite_compiler#25",
-    "validators/abstract_syntax_tree/syntax/validator.spite": "the syntax rule, after spite_compiler#25",
-    "high_intermediary_representation/building/values.spite": "the typing rules, after spite_compiler#25",
-    "high_intermediary_representation/building/statements.spite": "the typing rules, after spite_compiler#25",
-    "high_intermediary_representation/building/known_calls.spite": "the typing rules, after spite_compiler#25",
-    "high_intermediary_representation/building/template_walks.spite": "the typing rules, after spite_compiler#25",
+    "abstract_syntax_tree/lexer/lexer.spite": "the spelling rule, after spite_compiler#25"
+    "abstract_syntax_tree/parser/parser.spite": "the syntax rule, after spite_compiler#25"
+    "validators/abstract_syntax_tree/spelling/validator.spite": "the spelling rule, after spite_compiler#25"
+    "validators/abstract_syntax_tree/syntax/validator.spite": "the syntax rule, after spite_compiler#25"
+    "high_intermediary_representation/building/values.spite": "the typing rules, after spite_compiler#25"
+    "high_intermediary_representation/building/statements.spite": "the typing rules, after spite_compiler#25"
+    "high_intermediary_representation/building/known_calls.spite": "the typing rules, after spite_compiler#25"
+    "high_intermediary_representation/building/template_walks.spite": "the typing rules, after spite_compiler#25"
 }
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators

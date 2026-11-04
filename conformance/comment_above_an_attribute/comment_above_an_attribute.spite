@@ -1,0 +1,8 @@
+var console = Console()
+# notes.md#why-a-shape
+var shown = "shown"
+
+func CommentAboveAnAttribute() {
+    load "../../../spite_standard_library/windows"
+    console.print(shown)
+}

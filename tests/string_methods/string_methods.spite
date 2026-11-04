@@ -53,7 +53,7 @@ func StringMethods() {
     var number: Integer? = "12"
     crash number
     console.print(number * 2)
-    var joined_length = ("x{1}").length()
+    var joined_length = "x{1}".length()
     var built_upper_case = build("q").upper_case()
     console.print(joined_length, built_upper_case)
     console.print("abc" < "abd", "abc" == "abc", "b" > "a", "abc" != "abc")

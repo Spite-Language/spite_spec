@@ -8,10 +8,7 @@ var library = DynamicLibrary("fixture.dll", 'identity', "")
 
 func ForeignTypeWithText() {
     load "../../../spite_standard_library/windows"
-    var labelled: Labelled = {
-        label: "one"
-        count: 1
-    }
+    var labelled: Labelled = {label: "one", count: 1}
     var stored = library.store(labelled)
     console.print(stored)
 }

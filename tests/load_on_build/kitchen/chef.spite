@@ -1,7 +1,7 @@
 var build = Build()
 
 func Chef() {
-    if build.garnished and not (build.flavor == "sweet") {
+    if build.garnished and not build.flavor == "sweet" {
         load "garnish/pepper"
     } else if build.garnished {
         load "garnish/sugar"

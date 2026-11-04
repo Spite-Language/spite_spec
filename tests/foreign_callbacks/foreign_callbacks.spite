@@ -1,10 +1,6 @@
 var console = Console()
 var plain = DynamicLibrary("tests/foreign_callbacks/fixture.dll", 'identity', "")
-var declared = DynamicLibrary(
-    "tests/foreign_callbacks/fixture.dll",
-    'identity',
-    "fixture.h",
-)
+var declared = DynamicLibrary("tests/foreign_callbacks/fixture.dll", 'identity', "fixture.h")
 var scale = 3
 var windows = Windows()
 

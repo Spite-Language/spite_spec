@@ -7,11 +7,7 @@ var console = Console()
 var plain = DynamicLibrary("tests/foreign_library/fixture.dll", 'identity', "")
 var camel = DynamicLibrary("tests/foreign_library/fixture.dll", 'camel_case', "")
 var headerless = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', "")
-var windows = DynamicLibrary(
-    "tests/foreign_library/fixture.dll",
-    'windows',
-    "fixture.h",
-)
+var windows = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', "fixture.h")
 
 func ForeignLibrary() {
     load "../../../spite_standard_library/windows"

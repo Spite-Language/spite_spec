@@ -1,5 +1,24 @@
 var console = Console()
-var words = ["box", "enemy", "wolf", "knife", "analysis", "medium", "index", "matrix", "vertex", "mouse", "ox", "octopus", "quiz", "status", "person", "child", "sheep", "quest"]
+var words = [
+    "box"
+    "enemy"
+    "wolf"
+    "knife"
+    "analysis"
+    "medium"
+    "index"
+    "matrix"
+    "vertex"
+    "mouse"
+    "ox"
+    "octopus"
+    "quiz"
+    "status"
+    "person"
+    "child"
+    "sheep"
+    "quest"
+]
 
 func StringPluralizeRules() {
     load "../../../spite_standard_library/windows"

@@ -116,7 +116,9 @@ func whole_numbers() {
     console.print("Tiny {tiny_largest} {Tiny.Smallest()} {tiny.absolute()}")
     var byte: Byte = _sample_byte
     var byte_largest = Byte.Largest()
-    console.print("Byte {byte_largest} {Byte.Smallest()} {byte.absolute()} {byte.clamp(10, 100)} {byte.minimum(_larger_byte)}")
+    console.print(
+        "Byte {byte_largest} {Byte.Smallest()} {byte.absolute()} {byte.clamp(10, 100)} {byte.minimum(_larger_byte)}",
+    )
     var long: Long = _sample_long
     var long_largest = Long.Largest()
     console.print("Long {long_largest} {Long.Smallest()} {long.absolute()} {long.maximum(4)}")

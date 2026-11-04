@@ -7,9 +7,9 @@ var console = Console()
 
 func ShapeMismatch() {
     load "../../../spite_standard_library/windows"
-    show({ name: "fine", size: 1 })
-    show({ name: "no size" })
-    show({ name: "wrong", size: "big" })
+    show({name: "fine", size: 1})
+    show({name: "no size"})
+    show({name: "wrong", size: "big"})
 }
 
 func show(thing: Named) {

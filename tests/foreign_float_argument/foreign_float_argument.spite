@@ -1,9 +1,5 @@
 var console = Console()
-var windows = DynamicLibrary(
-    "tests/foreign_float_argument/fixture.dll",
-    'windows',
-    "fixture.h",
-)
+var windows = DynamicLibrary("tests/foreign_float_argument/fixture.dll", 'windows', "fixture.h")
 
 func ForeignFloatArgument() {
     load "../../../spite_standard_library/windows"

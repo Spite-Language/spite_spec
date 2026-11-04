@@ -5,5 +5,5 @@ func test() {
 }
 
 func testing_is_not_a_test() {
-    crash false
+    crash
 }

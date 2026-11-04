@@ -166,13 +166,14 @@ tokens.append(Token('number', source.slice(token_start, end_index)))    # error:
 - A `<...>` list holding a single named codegen value is rewritten to the positional form
   ([Codegen values (`$`)](metaprogramming.md#codegen-values-)), so there is one way to write each call.
 - The formatter is the compiler, and it runs on every compile; there is no command that only formats. It needs
-  a file to parse, not to compile. It does: 4-space indentation, one space around binary
+  a file to parse, not to compile. **There is one way to print a file: the compiler prints its syntax tree**, and
+  the same tree always prints the same text on any machine; nothing is copied from the text as written. A file
+  that differs from its printed tree is rewritten. The printer does: 4-space indentation, one space around binary
   operators, the minimum parentheses (a receiver that is an operation always keeps them), `else if` on one line,
   a switch case with one short statement on its own line, a call or a signature wider than 120 columns broken
-  one argument per line with trailing commas, floats as written, `: Nothing` dropped from a shape function,
-  top-level link comments (the only comments allowed) kept before the declaration they preceded, and the
-  blank-line rule for grouped `var`s. **Safety check:** the formatted text must lex, parse, print to the same
-  fully-parenthesised program as the original, and keep every comment, or the file is left alone and the reason
+  one argument per line with trailing commas, numbers as written, `: Nothing` dropped, the comments the tree
+  holds ([Comments](#comments)), and the blank-line rule for grouped `var`s. **Safety check:** the printed text
+  must parse and print the same text again, and keep every comment, or the file is left alone and the reason
   printed. **Every compile formats** the entry folder's files and every `load`-ed root once the whole program is
   read (not `library/`), printing `formatted <path>` for each file it rewrote and reading the program again when one
   was; nothing turns it off (the errors for trying are in
@@ -211,19 +212,9 @@ tokens.append(Token('number', source.slice(token_start, end_index)))    # error:
   member per line).
 - Comments are `# text`, exactly one space after `#` (a comment with no text is just `#`). String contents are
   never reformatted: whatever is between the quotes is untouched, escapes and all.
-- **Lossless.** A leading (own-line) comment before a declaration/statement/list-or-object-entry/enum-value/
-  union-member/type-field/switch-case, a trailing same-line comment after one, and whether a blank line
-  preceded one are all attached to that AST node by the parser (`ast.Trivia`) and reproduced by the formatter;
-  formatting a file never drops or reorders a comment. **Limitation:** a comment is only ever attached at
-  those specific points; one written in the middle of an expression, an argument list, or with nothing
-  following it before a closing bracket/brace (an "orphan" comment) is not tracked anywhere. The safety check
-  below catches this rather than silently losing the comment.
-- **Safety check.** After formatting, the formatter re-lexes and re-parses its own output and confirms, before
-  ever writing a file: (a) the formatted-and-reparsed AST prints (via the older, comment-blind but
-  round-trip-stable canonical printer) to exactly the same text as the original AST does, proving no code was
-  added, dropped, or reordered; and (b) every comment's
-  text appears, in the same order, in the formatted output. Either check failing refuses to write the file and
-  reports an internal formatter error instead.
+- **What the tree keeps.** The parser keeps in the tree everything the printer needs: a function's comments, the
+  class's heading, whether two `var`s had a blank line between them, and how a number was written. Nothing else
+  of the layout as written survives a compile.
 
 ### The compiler fixes what has one fix
 
@@ -270,7 +261,12 @@ func Game() {
   depth (`conformance/stage6/comment_link_depth`).
 - The compiler checks that the file exists and has a heading with that anchor. A link that does not resolve fails
   the build, which is the point: prose in source rots into a lie, a link either resolves or stops you.
-- A comment may only appear outside functions and declaration bodies. A line that seems to need explaining
+- A comment sits in one of two places: right above a function, where it belongs to that function's declaration,
+  or at the top of the file, where its lines are the class's heading, printed on line 1 above everything else. A
+  comment anywhere else at the level of declarations (above a `type`, an attribute, an `enum`, a `generic` line,
+  or after the last declaration) has one right place, so the compiler moves it to the heading, after the
+  heading's own lines, and says so: `fixed: a comment above a type belongs to its class; moved it to the top of
+  the file` (`conformance/comment_above_an_attribute`). A comment inside a function or a declaration body is an error: a line that seems to need explaining
   becomes a named function instead, and unlike a comment a name is visible to `functions`, to `--final-classes`
   and to every tool.
 - `//` and `/* */` are recognised by the lexer only to be rejected with the explanation.

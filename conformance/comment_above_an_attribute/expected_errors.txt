@@ -1,0 +1,1 @@
+conformance/comment_above_an_attribute/comment_above_an_attribute.spite:2: fixed: a comment above an attribute belongs to its class; moved it to the top of the file (in CommentAboveAnAttribute)

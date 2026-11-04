@@ -41,5 +41,22 @@ func OuterValuesInInnerLoops() {
         outer = outer + 1
     }
     var named = names.count()
-    console.print("total", total, "names", named, first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth)
+    console.print(
+        "total",
+        total,
+        "names",
+        named,
+        first,
+        second,
+        third,
+        fourth,
+        fifth,
+        sixth,
+        seventh,
+        eighth,
+        ninth,
+        tenth,
+        eleventh,
+        twelfth,
+    )
 }

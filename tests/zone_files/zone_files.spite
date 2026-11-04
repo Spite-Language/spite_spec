@@ -1,14 +1,6 @@
 var console = Console()
 var zones = TimeZones()
-var _eastern_moments: List<Long> = [
-    -5364662400
-    1205045999
-    1205046000
-    1225605599
-    1225605600
-    1710053999
-    1710054000
-]
+var _eastern_moments: List<Long> = [-5364662400, 1205045999, 1205046000, 1225605599, 1225605600, 1710053999, 1710054000]
 var _southern_moments: List<Long> = [1712415599, 1712415600, 1728143999, 1728144000, 1719792000, 1704067200]
 var _half_hour_moments: List<Long> = [1712415599, 1712415600, 1728142199, 1728142200]
 var _daylight_change_year = 2024
