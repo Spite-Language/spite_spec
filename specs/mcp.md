@@ -80,7 +80,7 @@ macOS are spite_compiler#297.
 
 The language's MCP is a debugging tool, never shipped: it runs any code, with no authentication. A program that
 lets an AI change it in production (a game server letting an AI tune its tick rate) writes its own tools, which
-decide what an AI can touch: an application's MCP. A library for writing one is proposed in spite_compiler#298 and
+decide what an AI can touch: an application's MCP. A library for writing one is proposed in spite_standard_library#39 and
 not specified yet.
 
 ---
