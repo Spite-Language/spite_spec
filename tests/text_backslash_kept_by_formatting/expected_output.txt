@@ -1,0 +1,18 @@
+a\b
+D:\t\x
+\n
+\
+\\
+a\\b
+\
+
+end\
+ab
+D:	x
+[
+]
+attribute\b
+D:\temp\n\x\new
+out\ain\b\z\c
+{not\a}
+quote"\"

@@ -174,7 +174,8 @@ tokens.append(Token('number', source.slice(token_start, end_index)))    # error:
   one argument per line with trailing commas, numbers as written, `: Nothing` dropped, the comments the tree
   holds ([Comments](#comments)), and the blank-line rule for grouped `var`s. **Safety check:** the printed text
   must parse and print the same text again, and keep every comment, or the file is left alone and the reason
-  printed. **Every compile formats** the entry folder's files and every `load`-ed root once the whole program is
+  printed; a printed file whose texts would not read back as the same values stops the compiler with a crash that
+  names them, since that is the printer's fault. **Every compile formats** the entry folder's files and every `load`-ed root once the whole program is
   read (not `library/`), printing `formatted <path>` for each file it rewrote and reading the program again when one
   was; nothing turns it off (the errors for trying are in
   [compiler.md](compiler.md#formatting-before-compiling)). `crash false` prints as a bare `crash`.

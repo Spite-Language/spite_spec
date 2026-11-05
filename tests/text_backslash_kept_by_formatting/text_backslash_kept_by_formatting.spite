@@ -1,0 +1,32 @@
+var console = Console()
+
+
+
+var kept = "attribute\\b"
+
+func TextBackslashKeptByFormatting() {
+    load "../../../spite_standard_library/windows"
+
+
+    console.print("a\\b")
+    console.print("D:\\t\\x")
+    console.print("\\n")
+    console.print("\\")
+    console.print("\\\\")
+    console.print("a\\\\b")
+    console.print("\\\n")
+    console.print("end\\")
+    console.print("a\b")
+    console.print("D:\t\x")
+    console.print("[\n]")
+    console.print(kept)
+    var name = "n\\x"
+    console.print("D:\\temp\\{name}\\new")
+    console.print("out\\a{inner("in\\b")}\\c")
+    console.print("\{not\\a}")
+    console.print("quote\"\\\"")
+}
+
+func inner(given: String): String {
+    return "{given}\\z"
+}
