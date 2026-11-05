@@ -1,0 +1,25 @@
+text from a length 3
+text from a known start 3
+text in an attribute 3
+text in a parameter 3
+three tests 3
+grouped tests 3
+two reads 3
+or 3
+or entered by its left side 4
+equal to the end 5
+equal stops 3
+read alone 3
+list of texts 2
+list of numbers 2
+list of numbers alone 2
+answered by a call 3
+proven read 2
+written out list 4
+written out list after a test 4
+made in the condition 4
+nested loops 27
+returns from the body 5
+asked 4 5
+items stay intact true true 40
+same test in an if 3

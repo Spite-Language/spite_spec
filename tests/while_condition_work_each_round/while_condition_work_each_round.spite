@@ -1,0 +1,324 @@
+var console = Console()
+var kept_path = "ab/cdefg"
+var asked = 0
+
+func WhileConditionWorkEachRound() {
+    load "../../../spite_standard_library/windows"
+    var from_a_length = text_from_a_length()
+    console.print("text from a length", from_a_length)
+    var known_start = text_from_a_known_start()
+    console.print("text from a known start", known_start)
+    var in_an_attribute = text_in_an_attribute()
+    console.print("text in an attribute", in_an_attribute)
+    var in_a_parameter = text_in_a_parameter("ab/cdefg")
+    console.print("text in a parameter", in_a_parameter)
+    var three_tests = three_tests_in_a_row()
+    console.print("three tests", three_tests)
+    var grouped = grouped_tests()
+    console.print("grouped tests", grouped)
+    var two_reads = two_reads_in_a_test()
+    console.print("two reads", two_reads)
+    var with_or = or_test()
+    console.print("or", with_or)
+    var entered_by_the_left = or_entered_by_its_left_side()
+    console.print("or entered by its left side", entered_by_the_left)
+    var equal_goes_on = equal_test("aaaab")
+    console.print("equal to the end", equal_goes_on)
+    var equal_stops = equal_test("aabaa")
+    console.print("equal stops", equal_stops)
+    var alone = read_alone()
+    console.print("read alone", alone)
+    var texts = list_of_texts()
+    console.print("list of texts", texts)
+    var numbers = list_of_numbers()
+    console.print("list of numbers", numbers)
+    var number_alone = list_of_numbers_alone()
+    console.print("list of numbers alone", number_alone)
+    var from_a_call = answered_by_a_call()
+    console.print("answered by a call", from_a_call)
+    var proven = proven_read()
+    console.print("proven read", proven)
+    var written_list = written_out_list()
+    console.print("written out list", written_list)
+    var written_list_after_a_test = written_out_list_after_a_test()
+    console.print("written out list after a test", written_list_after_a_test)
+    var made = made_in_the_condition()
+    console.print("made in the condition", made)
+    var nested = nested_loops()
+    console.print("nested loops", nested)
+    var left_early = returns_from_the_body()
+    console.print("returns from the body", left_early)
+    var rounds = condition_runs_once_a_round()
+    console.print("asked", rounds, asked)
+    var intact = items_stay_intact()
+    console.print("items stay intact", intact)
+    var inside_an_if = same_test_in_an_if()
+    console.print("same test in an if", inside_an_if)
+}
+
+func text_from_a_length(): Integer {
+    var path = "ab/cdefg"
+    var cut = path.length() - 1
+    while cut > 0 and path[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func text_from_a_known_start(): Integer {
+    var path = "ab/cdefg"
+    var cut = 7
+    while cut > 0 and path[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func text_in_an_attribute(): Integer {
+    var cut = kept_path.length() - 1
+    while cut > 0 and kept_path[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func text_in_a_parameter(path: String): Integer {
+    var cut = path.length() - 1
+    while cut > 0 and path[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func three_tests_in_a_row(): Integer {
+    var path = "ab/cdefg"
+    var cut = path.length() - 1
+    while cut > 0 and cut < 100 and path[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func grouped_tests(): Integer {
+    var path = "ab/cdefg"
+    var cut = path.length() - 1
+    while cut > 0 and (cut < 100 and path[cut - 1] != "/") {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func two_reads_in_a_test(): Integer {
+    var path = "ab/cdefg"
+    var cut = path.length() - 1
+    while cut > 0 and path[cut - 1] != "/" and path[cut] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func or_test(): Integer {
+    var path = "ab/cdefg"
+    var cut = path.length() - 1
+    while cut > 5 or path[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func or_entered_by_its_left_side(): Integer {
+    var path = "ab/cdefg"
+    var cut = path.length() - 1
+    while cut == 7 or path[cut - 1] != "c" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func equal_test(path: String): Integer {
+    var cut = 1
+    while cut < 5 and path[cut - 1] == "a" {
+        cut = cut + 1
+    }
+    return cut
+}
+
+func read_alone(): Integer {
+    var path = "ab/cdefg"
+    var cut = 7
+    while path[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func list_of_texts(): Integer {
+    var items = List<String>()
+    items.append("ab")
+    items.append("/")
+    items.append("cd")
+    items.append("ef")
+    items.append("gh")
+    var cut = 4
+    while cut > 0 and items[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func list_of_numbers(): Integer {
+    var items = List<Integer>()
+    items.append(1)
+    items.append(7)
+    items.append(3)
+    items.append(4)
+    var cut = 3
+    while cut > 0 and items[cut - 1] != 7 {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func list_of_numbers_alone(): Integer {
+    var items = List<Integer>()
+    items.append(1)
+    items.append(7)
+    items.append(3)
+    items.append(4)
+    var cut = 3
+    while items[cut - 1] != 7 {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func letter_at(path: String, place: Integer): String? {
+    asked = asked + 1
+    return path[place]
+}
+
+func answered_by_a_call(): Integer {
+    var path = "ab/cdefg"
+    var cut = path.length() - 1
+    while cut > 0 and letter_at(path, cut - 1) != "/" {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func proven_read(): Integer {
+    var items = List<String>()
+    items.append("ab")
+    items.append("")
+    items.append("cd")
+    items.append("ef")
+    var cut = 3
+    while cut - 1 < items.count() and items[cut - 1].length() != 0 {
+        cut = cut - 1
+    }
+    return cut
+}
+
+func written_out_list(): Integer {
+    var cut = 1
+    while [1, 2, 3].contains(cut) {
+        cut = cut + 1
+    }
+    return cut
+}
+
+func written_out_list_after_a_test(): Integer {
+    var cut = 1
+    while cut > 0 and [1, 2, 3].contains(cut) {
+        cut = cut + 1
+    }
+    return cut
+}
+
+func made_in_the_condition(): Integer {
+    var cut = 1
+    while cut > 0 and Piece(cut).kept < 4 {
+        cut = cut + 1
+    }
+    return cut
+}
+
+func nested_loops(): Integer {
+    var path = "ab/cd/ef"
+    var found = 0
+    var outer = path.length()
+    while outer > 0 and path[outer - 1] != "a" {
+        var inner = outer
+        while inner > 0 and path[inner - 1] != "/" {
+            inner = inner - 1
+        }
+        found = found + inner
+        outer = outer - 1
+    }
+    return found
+}
+
+func returns_from_the_body(): Integer {
+    var path = "ab/cdefg"
+    var cut = path.length() - 1
+    while cut > 0 and path[cut - 1] != "/" {
+        if cut == 5 {
+            return cut
+        }
+        cut = cut - 1
+    }
+    return -1
+}
+
+func condition_runs_once_a_round(): Integer {
+    asked = 0
+    var path = "ab/cdefg"
+    var rounds = 0
+    var cut = path.length() - 1
+    while cut > 0 and letter_at(path, cut - 1) != "/" {
+        cut = cut - 1
+        rounds = rounds + 1
+    }
+    return rounds
+}
+
+func long_text(letter: String): String {
+    var text = ""
+    var index = 0
+    while index < 40 {
+        text = text + letter
+        index = index + 1
+    }
+    return text
+}
+
+func items_stay_intact(): String {
+    var items = List<String>()
+    var first = long_text("a")
+    var second = long_text("b")
+    items.append(first)
+    items.append(second)
+    var cut = 2
+    while cut > 0 and items[cut - 1] != "/" {
+        cut = cut - 1
+    }
+    var also = long_text("c")
+    var left = items[0]
+    var right = items[1]
+    var first_again = long_text("a")
+    var second_again = long_text("b")
+    return "{left == first_again} {right == second_again} {also.length()}"
+}
+
+func same_test_in_an_if(): Integer {
+    var path = "ab/cdefg"
+    var cut = 7
+    var rounds = 0
+    while rounds < 20 {
+        if cut > 0 and path[cut - 1] != "/" {
+            cut = cut - 1
+        }
+        rounds = rounds + 1
+    }
+    return cut
+}

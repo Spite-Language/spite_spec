@@ -1,0 +1,5 @@
+var kept = 0
+
+func Piece(starting: Integer) {
+    kept = starting
+}
