@@ -1,0 +1,1 @@
+every stage of the compiler has its entry and a contract that names only what is there

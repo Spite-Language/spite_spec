@@ -1,0 +1,158 @@
+var console = Console()
+var root = "../spite_compiler"
+var broken = 0
+var stages = [
+    "abstract_syntax_tree"
+    "command_line"
+    "fixes"
+    "high_intermediary_representation"
+    "high_optimization_passes"
+    "low_intermediary_representation"
+    "low_optimization_passes"
+    "mapping"
+    "name_resolution"
+    "outputs"
+    "proofs"
+    "symbols"
+]
+var file_endings = [".spite", ".md", ".sh"]
+
+# ../../../spite_compiler/ARCHITECTURE.md#the-folders
+func CompilerContractsAreTrue() {
+    load "../../../spite_standard_library/windows"
+    var flags = declared_flags()
+    var index = 0
+    while index < stages.count() {
+        var stage = stages[index]
+        judge_a_stage(stage, flags)
+        index = index + 1
+    }
+    if broken == 0 {
+        console.print("every stage of the compiler has its entry and a contract that names only what is there")
+    }
+}
+
+func declared_flags(): List<String> {
+    var flags = List<String>()
+    var file = File("{root}/environment.spite")
+    var text = file.read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("var ") {
+            var line_length = line.length()
+            var rest = line.slice(4, line_length)
+            crash rest
+            var parts = rest.split(" ")
+            var name = parts.first()
+            crash name
+            flags.append(name)
+        }
+        index = index + 1
+    }
+    return flags
+}
+
+func judge_a_stage(stage: String, flags: List<String>) {
+    var entry = File("{root}/{stage}/{stage}.spite")
+    if not entry.exists() {
+        broken = broken + 1
+        console.print("{stage} has no entry file {stage}.spite")
+    }
+    var contract = File("{root}/{stage}/contract.md")
+    if not contract.exists() {
+        broken = broken + 1
+        console.print("{stage} has no contract.md")
+        return
+    }
+    var text = contract.read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        judge_a_line(stage, line, flags)
+        index = index + 1
+    }
+}
+
+func judge_a_line(stage: String, line: String, flags: List<String>) {
+    var parts = line.split("`")
+    var index = 1
+    while index < parts.count() {
+        var named = parts[index]
+        judge_a_name(stage, named, flags)
+        index = index + 2
+    }
+}
+
+func judge_a_name(stage: String, named: String, flags: List<String>) {
+    var is_written_out = not named.contains(" ") and not named.contains("(") and not named.contains("<")
+    fallback is_written_out
+    fallback not named.contains("$")
+    if named.starts_with("--") {
+        judge_a_flag(stage, named, flags)
+        return
+    }
+    var path = named.split("#").first()
+    crash path
+    var is_a_file = ends_a_file(path)
+    if is_a_file and not exists_beside(stage, path) {
+        broken = broken + 1
+        console.print("the contract of {stage} names the file {path}, which is not there")
+    }
+    var is_a_folder = path.contains("/") and not is_a_file and not path.starts_with(".")
+    if is_a_folder and not exists_beside(stage, path) {
+        broken = broken + 1
+        console.print("the contract of {stage} names the folder {path}, which is not there")
+    }
+}
+
+func judge_a_flag(stage: String, named: String, flags: List<String>) {
+    var named_length = named.length()
+    var written = named.slice(2, named_length)
+    crash written
+    var word = written.split("=").first()
+    crash word
+    var name = word.replace("-", "_")
+    if not flags.contains(name) {
+        broken = broken + 1
+        console.print("the contract of {stage} names the flag {named}, which environment.spite does not declare")
+    }
+}
+
+func ends_a_file(path: String): Boolean {
+    var index = 0
+    while index < file_endings.count() {
+        var ending = file_endings[index]
+        if path.ends_with(ending) {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}
+
+func exists_beside(stage: String, path: String): Boolean {
+    var in_the_stage = File("{root}/{stage}/{path}")
+    if in_the_stage.exists() {
+        return true
+    }
+    var in_the_compiler = File("{root}/{path}")
+    if in_the_compiler.exists() {
+        return true
+    }
+    var folder_in_the_stage = Directory("{root}/{stage}/{path}")
+    var entries_in_the_stage = folder_in_the_stage.entries()
+    if entries_in_the_stage {
+        return true
+    }
+    var folder_in_the_compiler = Directory("{root}/{path}")
+    var entries_in_the_compiler = folder_in_the_compiler.entries()
+    if entries_in_the_compiler {
+        return true
+    }
+    return false
+}
