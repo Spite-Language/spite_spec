@@ -1,0 +1,1 @@
+conformance/decided_if_shadow/decided_if_shadow.spite:7: error: 'if 2 > 1' is decided while compiling and is always true here, so it tells a reader nothing: remove the 'if' and keep the code it runs (in DecidedIfShadow.DecidedIfShadow)

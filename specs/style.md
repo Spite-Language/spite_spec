@@ -242,7 +242,9 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   always true becomes its body, one always false becomes its `else` or goes (an `else if` becomes the `if`), and a
   `while` always false goes (`conformance/decided_if_true`, `conformance/decided_if_false`,
   `conformance/decided_else_if`, `conformance/decided_while`). A `while` always true stays the error, since the
-  only rewrite is a loop that never ends, and so does a `fallback` that folds false.
+  only rewrite is a loop that never ends, and so does a `fallback` that folds false. An `if` whose kept code
+  declares a name the rest of the function also mentions stays the error too, since moving it left would change
+  what that name means (`conformance/decided_if_shadow`, `conformance/decided_if_later_name`).
 - **A local nothing reads whose value does nothing** (a literal, a text with no hole, a name) is removed: `fixed:
   'spare' was never read, and making it does nothing; removed it` (`conformance/unread_plain_local`). One made by a
   call stays the error, since removing it would drop the call.
