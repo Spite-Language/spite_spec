@@ -1,0 +1,42 @@
+var console = Console()
+
+func ClassGenerics() {
+    load "../../../spite_standard_library/windows"
+    var numbers = List<Integer>()
+    numbers.append(1)
+    var listed = numbers.class.generics
+    var listed_names = listed.keys().join(" ")
+    var listed_count = listed.count()
+    console.print("list", listed_names, listed_count)
+    var element = numbers.class.generics["element_type"]
+    console.print("element", element.name)
+    var ages = Dictionary<String, Integer>()
+    ages["tom"] = 3
+    var keyed = ages.class.generics
+    var keyed_names = keyed.keys().join(" ")
+    console.print("dictionary", keyed_names)
+    var key = ages.class.generics["key_type"]
+    var value = ages.class.generics["value_type"]
+    console.print("key", key.name, "value", value.name)
+    var box = Box<String>()
+    box.add("hat")
+    var held = box.class.generics["held_type"]
+    var box_count = box.count()
+    console.print("held", held.name, box_count)
+    var items = box.class.attributes["items"]
+    crash items
+    var items_element = items.class.generics["element_type"]
+    crash items_element
+    console.print("items", items.class.name, items_element.name)
+    var empty = box.class.functions["empty"]
+    crash empty
+    var answers_nothing = empty.returns == Nothing
+    console.print("empty returns", empty.returns, answers_nothing)
+    var counted = box.class.functions["count"]
+    crash counted
+    console.print("count returns", counted.returns)
+    var plain = console.class.generics
+    var plain_count = plain.count()
+    console.print("console", plain_count)
+    box.empty()
+}

@@ -64,7 +64,7 @@ func row_argument(argument: Spite.Argument): argument.class {
 }
 
 func every_argument(argument: Spite.Argument): argument.class {
-    var query = Query<argument.class.element_type>()
+    var query = Query<argument.class.generics["element_type"]>()
     query.refresh()
     return query.rows
 }

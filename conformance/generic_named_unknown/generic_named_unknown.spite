@@ -1,0 +1,9 @@
+var console = Console()
+
+func GenericNamedUnknown() {
+    load "../../../spite_standard_library/windows"
+    var numbers = List<Integer>()
+    numbers.append(1)
+    var held = numbers.class.generics["value_type"]
+    console.print(held)
+}

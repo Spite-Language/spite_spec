@@ -1,0 +1,1 @@
+conformance/generic_named_in_a_type/runner.spite:6: error: 'List<Integer>' has no generic 'value_type', so 'argument.class.generics["value_type"]' names nothing: 'generics' holds a class for each 'generic' line of a generic class (in Runner.every_numbers)

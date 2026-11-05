@@ -1,0 +1,7 @@
+func start(job: Job) {
+    job.run(every_arguments())
+}
+
+func every_argument(argument: Spite.Argument): argument.class {
+    return List<argument.class.generics["value_type"]>()
+}

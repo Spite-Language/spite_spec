@@ -9,10 +9,38 @@ is the bug.
 **Every class is an instance of `Spite.Class`**, every namespace of `Spite.Namespace`, every function declared in a
 class of `Spite.FunctionDeclaration` (and bound to an instance, of `Spite.Function`), every attribute declared in a
 class of `Spite.AttributeDeclaration` (and bound to an instance, of `Spite.Attribute`, which holds its `declaration`, its
-`value` and its `owner`), and every argument of `Spite.Argument`. A class's `.attributes` is a `Dictionary<String, Spite.AttributeDeclaration>` and an instance's a `Dictionary<String, Spite.Attribute>`, keyed by name; `Whisper.attributes["to"]` names an attribute as a value, and a literal key on a class named in the code that declares no attribute of that name is a compile error naming the class (`tests/attribute_named_as_value`, `conformance/attribute_named_unknown`). A function's `.reads` and `.writes` are the `Spite.AttributeDeclaration`s of its class its code reads and writes, following every call to its own class (`tests/function_accesses`). A function's and an attribute's declaration answer `.source_file`, the `File` it is written in (a reopening's file for a member the reopening declares; `tests/declaration_source_file`), filled only in a program that asks it, and a bound function reads it through its declaration. They live in the `Spite` namespace (`Spite.Class`, not `SpiteClass`), so nothing in it can be
+`value` and its `owner`), and every argument of `Spite.Argument`. A class's `.attributes` is a `Dictionary<String, Spite.AttributeDeclaration>` and an instance's a `Dictionary<String, Spite.Attribute>`, keyed by name; `Whisper.attributes["to"]` names an attribute as a value, and a literal key on a class named in the code that declares no attribute of that name is a compile error naming the class (`tests/attribute_named_as_value`, `conformance/attribute_named_unknown`). A function's `.reads` and `.writes` are the `Spite.AttributeDeclaration`s of its class its code reads and writes, following every call to its own class (`tests/function_accesses`). A function's and an attribute's declaration answer `.source_file`, the `File` it is written in (a reopening's file for a member the reopening declares; `tests/declaration_source_file`), and a bound function reads it through its declaration. They live in the `Spite` namespace (`Spite.Class`, not `SpiteClass`), so nothing in it can be
 mistaken for a class of a program. `Spite` is a reserved root namespace: a program's `spite/` folder may only
 reopen its classes, and `load "spite"` is an error ([packages.md](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#the-spite-namespace-is-reserved)).
 Their members are the tables of [The `Spite` classes](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#the-spite-classes).
+
+**A reflection object is made whole.** Each `Spite` class takes in its constructor every field the compiler always
+knows that is not a collection, and the compiler makes every reflection object through that constructor; its
+collections (`.attributes`, `.functions`, `.generics`, `.classes`, ...) start empty and are filled right after,
+since they can name the object itself. None of those fields is nullable: an attribute's `.declaration`, `.class`
+and `.owner`, a function's `.declaration` and `.owner`, a declaration's `.source_file`, the `.owner` of an enum, a
+union and a type. A function that answers nothing `.returns` `Nothing`, as an argument or an attribute whose type is
+not a class (a function type, a `type`) has `.class` `Nothing`. A field a program never reads is the compiler's to
+leave out (tree shaking, spite_compiler#73): it is never `null` for it. Only what can really be absent is nullable,
+each for its reason: `Spite.Class.namespace` and `Spite.Namespace.parent`, since the chain of namespaces ends and
+there is no root object; and a bound attribute's `.value`, which is `null` when the instance's field is. A
+declaration's `.returned_literal` exists only for a function whose body is one `return` of a text literal, and
+reading it of another halts naming it. The private function values behind `call_function()` and a built call
+stay nullable too: one exists only where the compiler has an object to bind and the program can call it.
+
+**A class's `.generics` is a `Dictionary<String, Spite.Class>`**: every `generic` line of the class bound to the class
+it was given, in `generic`-line order, keyed by its name without the `$` (`numbers.class.generics["element_type"]` of a
+`List<Integer>` is `Integer`; a dictionary's are `"key_type"` and `"value_type"`), and empty for a class that is not generic. A generic
+takes only a class (D1845), so every entry is one. On a class known while compiling, `[]` with a literal name folds
+to that class's object, present with nothing to narrow and no dictionary read, and a name the class has no `generic` line for is a compile error: "'List<Integer>' has no
+generic 'value_type', so 'List<Integer>.generics["value_type"]' names nothing: name one of its generics,
+'element_type'", or, for a class that is not generic, "'Monster' is not generic, so
+'Monster.generics["element_type"]' names nothing: 'generics' holds a class for each 'generic' line of a generic
+class" (`conformance/generic_named_unknown`, `conformance/generic_named_on_a_plain_class`). A walk over arguments or attributes names one in a type, as
+`Query<argument.class.generics["element_type"]>()` (`tests/system_folder`, `tests/class_generics`), and a name it has no `generic` line for is "'List<Integer>' has no
+generic 'value_type', so 'argument.class.generics["value_type"]' names nothing: 'generics' holds a class for each
+'generic' line of a generic class" (`conformance/generic_named_in_a_type`). There is no
+`.element_type` on a class: a codegen value reads the same names directly, `$list_type.element_type`.
 
 **Every member is a get-only attribute named for what it answers**, read without `()`: a question is `is_...`, a
 collection is plural. A question that takes something is a collection indexed or filtered instead
