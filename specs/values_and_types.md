@@ -410,9 +410,8 @@ names the presets the class answers
   `==` or `!=` (or a value whose type the compiler does not know there) keeps its operations as written, so an
   exact comparison sees exact values; nothing that writes to a file can run inside such a loop.
 - **No `type` stands for every number (D1733).** A class written over numbers is generic and declares the `type`
-  its codegen value needs, listing only the operators and functions it uses (`generic $number_type: Common.Component` with
-  `type Component { sum(Component): Component }` in `Common`, the entry class of the folder `Vector2`, `Vector3` and
-  `Vector4` share). Every number class, `Tiny` to `Double`, has `sum`,
+  its codegen value needs, listing only the operators and functions it uses (`generic $number_type: Addable` with
+  `type Addable { sum(Addable): Addable }` in the same class). Every number class, `Tiny` to `Double`, has `sum`,
   `subtract`, `multiply`, `divide`, `remainder`, `less_than`, `greater_than` and `equals`, each taking and answering
   the class itself (`Boolean` for the comparisons), and fits such a type as any class does, by having its members;
   `Boolean` has none of them. The class is compiled once per number class it is given, with plain values and no box,

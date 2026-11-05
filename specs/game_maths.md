@@ -16,8 +16,8 @@ The standard library fills every maths gap a game needs, as a game engine packag
   exception to the rule against single letters ([style.md](https://github.com/Spite-Language/spite_documentation/blob/master/style.md#names)). Matrices: `column_C_row_R`,
   column-major, `Matrix4<Float>()` and `Matrix3<Float>()` the identity. A vector is made with all its parts
   (`Vector3(1.0, 2.0, 3.0)`); a quaternion and a matrix are made from their defaults and set.
-- **Vectors are generic over their number class**: `generic $number_type: Common.Component`, where the library's entry class `Common` holds
-  the one `type Component` the three vectors repeat, with what they use (the four operators' functions, `equals`, `minimum`, `maximum`, `absolute`),
+- **Vectors are generic over their number class**: `generic $number_type: Vector3Component` in `Vector3`, and each vector declares its own
+  `type`, `Vector2Component`, `Vector3Component` and `Vector4Component`, with what it uses (the four operators' functions, `equals`, `minimum`, `maximum`, `absolute`),
   inferred from the parts
   (`Vector3(1, 2, 3)` is a `Vector3<Integer>`, `Vector3(1.0, 2.0, 3.0)` a `Vector3<Float>`) and written out where a
   type is named (`Vector3<Float>`); each class compiles to its own copy, so a `Vector3<Float>` is three `float`s.
