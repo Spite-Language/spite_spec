@@ -236,6 +236,12 @@ it. Tree shaking and every other whole-program step run before any output is wri
   'Build.volume', which is an Integer: a whole number, like VOLUME=3` (`tests/build_setting_file_malformed`), or
   `in the environment` for a variable. The `.env` file fills only the fields the program's own `build.spite`
   declares, as the variable does.
+- **A flag is one line** (D1856): the compiler's `environment.spite` is the only place that lists its flags. The code that reads them
+  (`Settings`), checks them against the program's `Build` and passes them on to a reload walks the `Environment`'s
+  attributes through reflection, so a new setting, `var verbose = false`, is read from `--verbose` and `VERBOSE`, checked as
+  its type and accepted, with no other line (`scripts/flag_is_one_line.sh` of the compiler builds a copy with one more setting and shows it). What a flag is besides a setting, an output
+  that changes nothing the program does or one a program reads as `Build.x`, is said in the same file by naming it in a
+  group, and a name that is not a flag there is a compile error.
 - **One set of names**: a program's `Environment` field named like a field its own `build.spite` declares is an
   error naming both, at the setting: `conformance/setting_named_like_flag/environment.spite:2: error: 'Environment.player_count' and
   'Build.player_count' are both '--player-count': the program's Build is given when it is compiled and its
