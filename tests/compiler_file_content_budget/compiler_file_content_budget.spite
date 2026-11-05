@@ -5,7 +5,6 @@ var waiting = [
     "spite_compiler/high_intermediary_representation/building/values.spite"
     "spite_compiler/high_intermediary_representation/building/statements.spite"
     "spite_compiler/generators/x64/allocation.spite"
-    "spite_compiler/high_intermediary_representation/building/reflection.spite"
 ]
 
 # ../../specs/style.md#the-file-content-budget
