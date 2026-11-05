@@ -1,0 +1,1 @@
+conformance/generic_named_without_arguments/generic_named_without_arguments.spite:5: error: 'List' takes 1 codegen value(s), in this order: $element_type. Write them between < and > before the arguments

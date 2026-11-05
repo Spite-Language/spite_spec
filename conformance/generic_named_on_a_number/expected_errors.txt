@@ -1,0 +1,1 @@
+conformance/generic_named_on_a_number/generic_named_on_a_number.spite:5: error: 'Integer' is not a generic class, so it takes no type in '<>': write 'Integer' alone

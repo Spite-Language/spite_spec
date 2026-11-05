@@ -1,0 +1,1 @@
+conformance/generic_named_on_a_plain_name/generic_named_on_a_plain_name.spite:5: error: 'Console' is not a generic class, so it takes no type in '<>': write 'Console' alone

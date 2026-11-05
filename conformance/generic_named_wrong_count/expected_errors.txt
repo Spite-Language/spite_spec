@@ -1,0 +1,1 @@
+conformance/generic_named_wrong_count/generic_named_wrong_count.spite:5: error: 'Pair' takes 2 codegen value(s), in this order: $left_type, $right_type, but 1 were given

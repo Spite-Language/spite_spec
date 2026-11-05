@@ -1,0 +1,8 @@
+var console = Console()
+
+func GenericNamedOnEveryClass() {
+    load "../../../spite_standard_library/windows"
+    var held = Spite.Class<Float>.instances
+    var count = held.count()
+    console.print(count)
+}

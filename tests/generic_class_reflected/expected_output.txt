@@ -1,0 +1,21 @@
+element Float
+listed 1
+vector true false
+is list true true
+names Box Box
+held Float String
+pair Float String
+nested List<Float> Float
+value Integer
+attribute held Float?
+function make_it Boolean
+crate Crate Game.Crate<Float> Float
+test true true false
+shown List<Float>
+shown Crate
+shown Box
+namespace Game
+plain true
+walked held Float?
+walked held String?
+walks 1 1 1

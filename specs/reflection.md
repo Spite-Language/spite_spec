@@ -142,6 +142,14 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   `Weapon.name` is `Weapon`, and `Weapon.namespace` is the same namespace `weapon.class.namespace` gives. A function
   of the class described called on its name (`Weapon.debug()`) is "'Weapon' is a class, not a value: write
   'Weapon()' to make one, and give it a name with 'var ... = '", since there are no static functions.
+- **A generic class is named with its codegen values**, dotted or not, and that names one instance of it:
+  `List<Float>.generics["element_type"]` is `Float`, `Vector3<Float>.is_fixed_size` is `true`, and
+  `Game.Crate<Float>.name_with_namespaces` is `Game.Crate<Float>` (`tests/generic_class_reflected`). The count is checked as in a
+  construction: `List.name` is "'List' takes 1 codegen value(s), in this order: $element_type. Write them between < and
+  > before the arguments", and a name that takes none, a plain class, an enum, a namespace or a number class, is
+  "'Monster' is not a generic class, so it takes no type in '<>': write 'Monster' alone"
+  (`conformance/generic_named_wrong_count`, `conformance/generic_named_without_arguments`,
+  `conformance/generic_named_on_a_plain_name`, `conformance/generic_named_on_an_enum`).
 - **A class name where a `Spite.Class` is wanted is its class object**: an argument, `var kind: Spite.Class =
   Health`, an assignment to such a name and a `return` from a function returning one; a codegen value bound to a
   class passes the same way. Anywhere else (`var kind = Health`, an argument whose parameter is a `type`) a bare

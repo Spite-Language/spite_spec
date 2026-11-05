@@ -1,0 +1,7 @@
+var console = Console()
+
+func GenericNamedWrongCount() {
+    load "../../../spite_standard_library/windows"
+    var held = Pair<Float>.generics["left_type"]
+    console.print(held)
+}

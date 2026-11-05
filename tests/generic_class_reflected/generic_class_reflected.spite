@@ -1,0 +1,62 @@
+var console = Console()
+
+func GenericClassReflected() {
+    load "../../../spite_standard_library/windows"
+    var element = List<Float>.generics["element_type"]
+    console.print("element", element)
+    var listed_count = List<Float>.generics.count()
+    console.print("listed", listed_count)
+    console.print("vector", Vector3<Float>.is_fixed_size, List<Float>.is_fixed_size)
+    console.print("is list", List<Float>.is_list, Dictionary<String, Integer>.is_dictionary)
+    console.print("names", Box<Float>.name, Box<String>.name)
+    var held = Box<Float>.generics["held_type"]
+    var other = Box<String>.generics["held_type"]
+    console.print("held", held, other)
+    var right = Pair<Float, String>.generics["right_type"]
+    var left = Pair<Float, String>.generics["left_type"]
+    console.print("pair", left, right)
+    var nested = List<List<Float>>.generics["element_type"]
+    var inner = nested.generics["element_type"]
+    console.print("nested", nested, inner)
+    var value = Dictionary<String, Integer>.generics["value_type"]
+    console.print("value", value)
+    var attribute = Box<Float>.attributes["held"]
+    console.print("attribute", attribute.name, attribute.class)
+    var function = Box<Float>.functions["make_it"]
+    crash function
+    console.print("function", function.name, function.returns)
+    var crate_held = Game.Crate<Float>.generics["held_type"]
+    console.print("crate", Game.Crate<Float>.name, Game.Crate<Float>.name_with_namespaces, crate_held)
+    var crate = Game.Crate<Float>()
+    var empty = crate.is_empty()
+    var crate_class: Spite.Class = crate.class
+    var same = crate_class == Game.Crate<Float>
+    var different = crate_class == Game.Crate<String>
+    console.print("test", empty, same, different)
+    show(List<Float>)
+    show(Game.Crate<Integer>)
+    var kind: Spite.Class = Box<Integer>
+    show(kind)
+    console.print("namespace", Game.name)
+    console.print("plain", Console.is_singleton)
+    Box<Float>.attributes.each(describe)
+    Game.Crate<String>.attributes.each(describe)
+    var named = Box<Float>.functions.filter(is_made)
+    var named_count = named.count()
+    var made = Box<Float>.functions.filter_name_starts_with("make")
+    var made_count = made.count()
+    var counted = Box<Float>.functions.count_name_starts_with("make")
+    console.print("walks", named_count, made_count, counted)
+}
+
+func describe(attribute: Spite.AttributeDeclaration) {
+    console.print("walked", attribute.name, attribute.class)
+}
+
+func is_made(function: Spite.FunctionDeclaration): Boolean {
+    return function.name == "make_it"
+}
+
+func show(kind: Spite.Class) {
+    console.print("shown", kind.name)
+}

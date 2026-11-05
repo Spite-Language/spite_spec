@@ -1,0 +1,8 @@
+generic $held_type
+
+var held: $held_type? = null
+
+func make_it(): Boolean {
+    fallback not held
+    return true
+}
