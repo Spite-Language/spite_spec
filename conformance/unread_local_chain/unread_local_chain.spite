@@ -1,0 +1,8 @@
+var console = Console()
+
+func UnreadLocalChain() {
+    load "../../../spite_standard_library/windows"
+    var first = 2
+    var second = first
+    console.print("done")
+}

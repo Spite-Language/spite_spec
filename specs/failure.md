@@ -238,7 +238,11 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
     'running' local they set to false or the loop's real exit test" and "'fallback 1 > 2' ... is always false here, so
     the function always answers nothing from here: remove it with the code after it" (`conformance/decided_if_true`,
     `conformance/decided_if_false`, `conformance/decided_while`, `conformance/spinning_loop`,
-    `conformance/decided_assert_false`). The literal `while true` is no exception: a loop states the condition it
+    `conformance/decided_assert_false`). In a program's own file the compiler fixes the first three instead
+    ([style.md](style.md#the-compiler-fixes-what-has-one-fix)): an `if` always true becomes its body, one always
+    false becomes its `else` (an `else if` becoming the `if`) or goes, and a `while` always false goes, each with a
+    `fixed:` line in the past tense: "'if 2 > 1' was decided while compiling and was always true here, so it told
+    a reader nothing; removed the 'if' and kept the code it runs" (`conformance/decided_else_if`). The literal `while true` is no exception: a loop states the condition it
     runs under. A condition that reads a `Build` field is kept, since the command line sets it and its branch choice
     is its purpose ([programs.md](programs.md#build-settings-build)), and so is one on a codegen value, in a generic
     class or a walk (`tests/decided_conditions_kept`). A name tested where it is already known present or null is

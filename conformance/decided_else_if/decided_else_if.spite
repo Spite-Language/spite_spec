@@ -1,0 +1,20 @@
+var console = Console()
+
+func DecidedElseIf() {
+    load "../../../spite_standard_library/windows"
+    var counts = List<Integer>()
+    counts.append(3)
+    var count = counts.count()
+    if 1 > 2 {
+        console.print("never")
+    } else if count > 2 {
+        console.print("many")
+    } else {
+        console.print("few")
+    }
+    if 2 > 1 {
+        console.print("always")
+    } else {
+        console.print("never")
+    }
+}

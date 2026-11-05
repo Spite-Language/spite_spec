@@ -5,4 +5,5 @@ func DecidedWhile() {
     while 3 < 1 {
         console.print("never")
     }
+    console.print("after")
 }

@@ -238,6 +238,11 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   generic class and a walk: `fixed: 'tracker' was already narrowed by 'fallback tracker' on line 8; removed this
   check` (`conformance/check_proves_nothing`). Written as an `if` or a `while` it stays the
   error.
+- **An `if` or `while` decided while compiling** ([failure.md](failure.md#nothing-fails-silently-the-rule)): an `if`
+  always true becomes its body, one always false becomes its `else` or goes (an `else if` becomes the `if`), and a
+  `while` always false goes (`conformance/decided_if_true`, `conformance/decided_if_false`,
+  `conformance/decided_else_if`, `conformance/decided_while`). A `while` always true stays the error, since the
+  only rewrite is a loop that never ends, and so does a `fallback` that folds false.
 - **A local nothing reads whose value does nothing** (a literal, a text with no hole, a name) is removed: `fixed:
   'spare' was never read, and making it does nothing; removed it` (`conformance/unread_plain_local`). One made by a
   call stays the error, since removing it would drop the call.
@@ -246,9 +251,9 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   namespace; moved it to its entry class 'Bunda.Bunda', and this class names it 'Bunda.Snack'`
   ([A repeated union or type](classes_and_files.md#a-repeated-union-or-type-moves-to-the-entry-class),
   `conformance/repeated_union_rewrites`). It reaches several files in one run, is found once every class is read,
-  before a name is resolved, and restarts the compile like the two above.
+  before a name is resolved, and restarts the compile like those above.
 
-The last two are found while or after the program is built, when the build already holds the mistake. The compiler
+The checks, decided conditions and locals above are found while or after the program is built, when the build already holds the mistake. The compiler
 gathers every such fix of the run, writes them once the proofs end (or before it tells the first error), and then
 runs itself again, once, with the same flags, folder and environment and answers what that run answers (D1833).
 The program built is always the files as they are written. Each `fixed:` line names the line the mistake was on

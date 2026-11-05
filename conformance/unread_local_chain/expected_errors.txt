@@ -1,0 +1,2 @@
+conformance/unread_local_chain/unread_local_chain.spite:6: fixed: 'second' was never read, and making it does nothing; removed it (in UnreadLocalChain.UnreadLocalChain)
+conformance/unread_local_chain/unread_local_chain.spite:5: fixed: 'first' was never read, and making it does nothing; removed it (in UnreadLocalChain.UnreadLocalChain)
