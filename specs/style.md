@@ -199,7 +199,7 @@ tokens.append(Token('number', source.slice(token_start, end_index)))    # error:
 - K&R braces: `func name() {`, `if condition {`, `} else {`, `} else if other {`. `else` always continues on
   the closing `}`'s own line, and a nested `if` in an `else` branch collapses onto one `else if` line whenever
   it does not itself carry a comment that would need its own line. An empty body prints as `{ }` on one line
-  rather than an empty `{\n}`.
+  rather than an empty `{\n}`, and an empty `else` is not printed at all, since it says nothing.
 - One space around every binary operator (`a + b`, `a and b`) and after `:`/`,`; no space before `:`/`,`, and
   none just inside `(`/`)`/`[`/`]` (`f(a, b)`, `list[0]`, not `f( a, b )` or `list[ 0 ]`).
 - The minimum parentheses needed to preserve meaning are kept (`1 + 2 * 3`, not `1 + (2 * 3)`); parentheses
