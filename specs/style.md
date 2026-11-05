@@ -241,10 +241,12 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   'spare' was never read, and making it does nothing; removed it` (`conformance/unread_plain_local`). One made by a
   call stays the error, since removing it would drop the call.
 
-These two are found while or after the program is built, when the build already holds the mistake, so after
-writing the fix the compiler runs itself again with the same flags, folder and environment and answers what that
-run answers (D1833). The program built is always the files as they are written, and since each such fix removes
-a line, the runs end.
+These two are found while or after the program is built, when the build already holds the mistake. The compiler
+gathers every such fix of the run, writes them once the proofs end (or before it tells the first error), and then
+runs itself again, once, with the same flags, folder and environment and answers what that run answers (D1833).
+The program built is always the files as they are written. Each `fixed:` line names the line the mistake was on
+in the file that run read. The runs end, since each fix removes code; a fix that still came back after 8 runs
+again would be a fault of the compiler, which names it and crashes.
 
 ### Comments
 

@@ -1,2 +1,4 @@
 conformance/unused_names/unused_names.spite:5: fixed: 'forgotten' was never read, and making it does nothing; removed it (in UnusedNames.UnusedNames)
+conformance/unused_names/unused_names.spite:8: fixed: '_spare' was never read, and making it does nothing; removed it (in UnusedNames.UnusedNames)
+conformance/unused_names/unused_names.spite:15: fixed: 'inner' was never read, and making it does nothing; removed it (in UnusedNames.helper)
 conformance/unused_names/unused_names.spite:5: error: '_counted' is read, so it must not start with an underscore: only a parameter the body ignores is named that way (in UnusedNames.UnusedNames)

@@ -1,3 +1,3 @@
 conformance/known_fact_divisor/known_fact_divisor.spite:24: fixed: 'parts != 0' was already proven by 'parts > 0' on line 23; removed this check (in KnownFactDivisor.KnownFactDivisor)
-conformance/known_fact_divisor/known_fact_divisor.spite:26: fixed: 'total > 2' was already checked on line 25, and nothing between could change it; removed this check (in KnownFactDivisor.KnownFactDivisor)
+conformance/known_fact_divisor/known_fact_divisor.spite:27: fixed: 'total > 2' was already checked on line 26, and nothing between could change it; removed this check (in KnownFactDivisor.KnownFactDivisor)
 conformance/known_fact_divisor/known_fact_divisor.spite:28: error: 'monster' is a Monster here, so it is never Ghost and this test is decided while compiling: remove it (in KnownFactDivisor.KnownFactDivisor)
