@@ -1,0 +1,10 @@
+var console = Console()
+var part = Part(7)
+
+func Holder(given: Part, stops_first: Boolean) {
+    if stops_first {
+        console.print("stopped first")
+        return
+    }
+    part = given
+}

@@ -1,0 +1,5 @@
+var seen = 0
+
+func Back(found: Holder) {
+    seen = found.part.value
+}

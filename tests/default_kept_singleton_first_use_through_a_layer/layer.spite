@@ -1,0 +1,10 @@
+var value = 0
+var inner = Inner()
+
+func Layer(starting: Integer) {
+    value = starting
+}
+
+func limit(): Integer {
+    return inner.limit() + value
+}

@@ -1,0 +1,11 @@
+var console = Console()
+var layer: Layer? = Layer(2)
+
+func Holder(given: Layer?) {
+    console.print("constructor")
+    layer = given
+}
+
+func is_empty(): Boolean {
+    return not layer
+}

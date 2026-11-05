@@ -1,0 +1,8 @@
+var part = Part(7)
+var seen = 0
+
+func Holder(given: Part) {
+    var looker = Looker()
+    seen = looker.look_at(this)
+    part = given
+}

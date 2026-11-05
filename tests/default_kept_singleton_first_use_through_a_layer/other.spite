@@ -1,0 +1,5 @@
+var settings = OtherSettings()
+
+func limit(): Integer {
+    return settings.limit
+}

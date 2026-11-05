@@ -1,0 +1,6 @@
+var reader = Reader(part)
+var part = Part(7)
+
+func total(): Integer {
+    return reader.seen + part.value
+}

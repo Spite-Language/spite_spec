@@ -1,0 +1,5 @@
+var part = Part("default")
+
+func Holder(given: Part) {
+    part = given
+}

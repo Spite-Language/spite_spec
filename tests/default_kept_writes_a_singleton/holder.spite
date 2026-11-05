@@ -1,0 +1,5 @@
+var marker = Marker(true)
+
+func Holder(given: Marker) {
+    marker = given
+}

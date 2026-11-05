@@ -1,0 +1,9 @@
+var marks = false
+var board = Board()
+
+func Marker(starting: Boolean) {
+    marks = starting
+    if starting {
+        board.mark()
+    }
+}

@@ -1,0 +1,6 @@
+var other = Other()
+var settings = Settings()
+
+func limit(): Integer {
+    return other.limit() + settings.limit
+}

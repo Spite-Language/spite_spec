@@ -1,0 +1,12 @@
+var console = Console()
+var part = Part(7)
+
+func Holder(given: Part) {
+    var seen = read_the_part()
+    console.print("before", seen)
+    part = given
+}
+
+func read_the_part(): Integer {
+    return part.value
+}

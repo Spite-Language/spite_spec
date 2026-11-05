@@ -1,0 +1,5 @@
+made the default
+constructor
+spite: the program stopped at tests/default_kept_constructor_crashes_first/holder.spite:7 in Holder.Holder, site d9175766 (given.value=1)
+spite.frame	tests/default_kept_constructor_crashes_first/holder.spite:7	Holder	Holder
+spite.frame	tests/default_kept_constructor_crashes_first/default_kept_constructor_crashes_first.spite:6	DefaultKeptConstructorCrashesFirst	DefaultKeptConstructorCrashesFirst

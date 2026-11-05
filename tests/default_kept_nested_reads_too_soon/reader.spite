@@ -1,0 +1,5 @@
+var seen = 0
+
+func Reader(read: Part) {
+    seen = read.value
+}

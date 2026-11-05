@@ -1,0 +1,10 @@
+var console = Console()
+
+func DefaultKeptConstructorReturnsFirst() {
+    load "../../../spite_standard_library/windows"
+    var given = Part(1)
+    var returned = Holder(given, true)
+    console.print(returned.part.value)
+    var finished = Holder(given, false)
+    console.print(finished.part.value)
+}

@@ -1,0 +1,7 @@
+var console = Console()
+var part = Noisy("default")
+
+func Holder(given: Noisy) {
+    console.print("constructor")
+    part = given
+}

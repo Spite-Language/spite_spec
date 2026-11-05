@@ -1,0 +1,5 @@
+var value = 0
+
+func Part(starting: Integer) {
+    value = starting
+}

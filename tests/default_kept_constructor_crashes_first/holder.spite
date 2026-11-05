@@ -1,0 +1,11 @@
+var console = Console()
+var noisy = Noisy()
+var part = Part(7)
+
+func Holder(given: Part) {
+    console.print("constructor")
+    crash given.value > 100
+    part = given
+    noisy = Noisy()
+    console.print(noisy.name)
+}

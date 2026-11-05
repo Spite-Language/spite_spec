@@ -1,0 +1,9 @@
+var console = Console()
+
+func DefaultKeptNestedReadsTooSoon() {
+    load "../../../spite_standard_library/windows"
+    console.print("start")
+    var holder = Holder(null)
+    var empty = holder.is_empty()
+    console.print("not reached", empty)
+}

@@ -1,0 +1,9 @@
+var console = Console()
+
+func DefaultKeptWritesSharedState() {
+    load "../../../spite_standard_library/windows"
+    var first = Counter()
+    var given = Wrapper(first)
+    var holder = Holder(given)
+    console.print(holder.counter.touched, holder.wrapper.held.touched)
+}

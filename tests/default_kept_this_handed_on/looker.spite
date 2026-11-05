@@ -1,0 +1,3 @@
+func look_at(found: Holder): Integer {
+    return found.part.value
+}

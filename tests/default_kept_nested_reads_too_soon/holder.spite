@@ -1,0 +1,9 @@
+var inner: Odd? = Odd()
+
+func Holder(given: Odd?) {
+    inner = given
+}
+
+func is_empty(): Boolean {
+    return not inner
+}

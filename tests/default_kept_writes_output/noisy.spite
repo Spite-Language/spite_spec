@@ -1,0 +1,7 @@
+var console = Console()
+var name = ""
+
+func Noisy(starting: String) {
+    name = starting
+    console.print("made", starting)
+}

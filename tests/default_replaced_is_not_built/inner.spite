@@ -1,0 +1,5 @@
+var value = 0
+
+func Inner(starting: Integer) {
+    value = starting
+}

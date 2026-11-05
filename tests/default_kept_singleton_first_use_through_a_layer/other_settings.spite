@@ -1,0 +1,8 @@
+singleton
+
+var console = Console()
+var limit = 3
+
+func OtherSettings() {
+    console.print("other settings made")
+}

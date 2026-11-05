@@ -1,0 +1,9 @@
+var console = Console()
+
+func DefaultKeptSingletonFirstUse() {
+    load "../../../spite_standard_library/windows"
+    console.print("start")
+    var holder = Holder(null)
+    var empty = holder.is_empty()
+    console.print("end", empty)
+}

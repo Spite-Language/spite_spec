@@ -1,0 +1,10 @@
+var console = Console()
+var board = Board()
+
+func DefaultKeptWritesASingleton() {
+    load "../../../spite_standard_library/windows"
+    console.print("before", board.marked)
+    var given = Marker(false)
+    var holder = Holder(given)
+    console.print("after", board.marked, holder.marker.marks)
+}

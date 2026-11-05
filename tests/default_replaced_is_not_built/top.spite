@@ -1,0 +1,28 @@
+var first_kept = Inner(1)
+var second_kept = Inner(2)
+var third_kept = Inner(3)
+var fourth_kept = Inner(4)
+var part: Part? = Part(2)
+var layer = Layer(part)
+var middle = Middle(part)
+
+func Top(given: Part?) {
+    part = given
+    layer = Layer(given)
+    middle = Middle(given)
+}
+
+func is_empty(): Boolean {
+    return layer.is_empty() and middle.is_empty() and not part
+}
+
+func kept_total(): Integer {
+    return first_kept.value + second_kept.value + third_kept.value + fourth_kept.value
+}
+
+func replace_the_kept() {
+    first_kept = Inner(5)
+    second_kept = Inner(6)
+    third_kept = Inner(7)
+    fourth_kept = Inner(8)
+}

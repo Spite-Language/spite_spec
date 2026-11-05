@@ -1,0 +1,9 @@
+var part: Part? = Part(4)
+
+func Layer(given: Part?) {
+    part = given
+}
+
+func is_empty(): Boolean {
+    return not part
+}

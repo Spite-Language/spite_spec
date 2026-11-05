@@ -1,0 +1,5 @@
+var outer = Wrapped(0)
+
+func Holder(given: Wrapped) {
+    outer = given
+}

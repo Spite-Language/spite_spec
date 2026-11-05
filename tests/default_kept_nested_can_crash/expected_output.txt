@@ -1,0 +1,6 @@
+made the given
+spite: the program stopped at tests/default_kept_nested_can_crash/risky.spite:4 in Risky.Risky, site 0da3a7d6 (starting=0, value=0)
+spite.frame	tests/default_kept_nested_can_crash/risky.spite:4	Risky	Risky
+spite.frame	tests/default_kept_nested_can_crash/wrapped.spite:4	Wrapped	Wrapped
+spite.frame	tests/default_kept_nested_can_crash/default_kept_nested_can_crash.spite:1	DefaultKeptNestedCanCrash	DefaultKeptNestedCanCrash
+spite.frame	tests/default_kept_nested_can_crash/default_kept_nested_can_crash.spite:7	DefaultKeptNestedCanCrash	DefaultKeptNestedCanCrash

@@ -1,0 +1,7 @@
+singleton
+
+var marked = false
+
+func mark() {
+    marked = true
+}

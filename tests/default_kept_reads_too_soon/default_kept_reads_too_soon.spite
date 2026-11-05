@@ -1,0 +1,8 @@
+var console = Console()
+
+func DefaultKeptReadsTooSoon() {
+    load "../../../spite_standard_library/windows"
+    var first = Part(1)
+    var holder = Holder(first)
+    console.print(holder.reader.seen, holder.part.value)
+}

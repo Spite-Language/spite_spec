@@ -1,0 +1,6 @@
+var held = Counter()
+
+func Wrapper(given: Counter) {
+    held = given
+    given.touch()
+}

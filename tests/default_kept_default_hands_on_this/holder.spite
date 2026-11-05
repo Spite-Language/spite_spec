@@ -1,0 +1,6 @@
+var part = Part(7)
+var back = Back(this)
+
+func Holder(given: Part) {
+    part = given
+}

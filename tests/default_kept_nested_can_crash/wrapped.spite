@@ -1,0 +1,5 @@
+var inner = Risky(1)
+
+func Wrapped(starting: Integer) {
+    inner = Risky(starting)
+}

@@ -1,0 +1,11 @@
+var console = Console()
+var part: Part? = Part(2)
+
+func Holder(given: Part?) {
+    console.print("constructor")
+    part = given
+}
+
+func is_empty(): Boolean {
+    return not part
+}

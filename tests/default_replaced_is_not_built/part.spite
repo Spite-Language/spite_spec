@@ -1,0 +1,10 @@
+var value = 0
+var inner = Inner(1)
+
+func Part(starting: Integer) {
+    value = starting
+}
+
+func described(): String {
+    return "{value} {inner.value}"
+}
