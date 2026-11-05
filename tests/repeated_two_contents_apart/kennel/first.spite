@@ -1,0 +1,7 @@
+union Held {
+    Cat
+}
+
+func named(_held: Held): String {
+    return "kennel one"
+}

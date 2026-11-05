@@ -1,12 +1,7 @@
-type Moving {
-    position: Position
-    trail: Trail
-}
-
 var trails = Column<Trail>()
 var owners = 0
 
-func update_each(moving: Moving) {
+func update_each(moving: LentListElements.Moving) {
     trails.remove_last_reference()
     moving.trail.lefts.append(moving.position.left)
     owners = owners + moving.trail.owner

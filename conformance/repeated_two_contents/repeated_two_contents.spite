@@ -1,0 +1,13 @@
+func RepeatedTwoContents() {
+    load "../../../spite_standard_library/windows"
+    var first = Cheese.First()
+    var second = Cheese.Second()
+    var third = Bread.First()
+    var fourth = Bread.Second()
+    var cat = Cat()
+    var dog = Dog()
+    first.take(cat)
+    second.take(dog)
+    third.take(cat)
+    fourth.take(dog)
+}

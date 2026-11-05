@@ -1,0 +1,1 @@
+conformance/entry_union_named_outside/other/keeper.spite:1: error: 'Bunda.Pet' is a union of the class 'Bunda.Bunda', and a union is never named outside the class that declares it: declare this class's own 'union Pet' with the same members, and write 'Pet' (in Other.Keeper.)

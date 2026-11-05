@@ -1,14 +1,12 @@
-union Expression {
-    NumberExpression
-    VariableExpression
-    BinaryExpression
-}
-
 var operator: Token.TokenKind = 'plus'
-var left: Expression? = null
-var right: Expression? = null
+var left: Calculator.Expression? = null
+var right: Calculator.Expression? = null
 
-func BinaryExpression(starting_operator: Token.TokenKind, left_expression: Expression, right_expression: Expression) {
+func BinaryExpression(
+    starting_operator: Token.TokenKind,
+    left_expression: Calculator.Expression,
+    right_expression: Calculator.Expression,
+) {
     operator = starting_operator
     left = left_expression
     right = right_expression

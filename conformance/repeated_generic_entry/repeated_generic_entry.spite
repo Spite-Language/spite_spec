@@ -1,0 +1,8 @@
+func RepeatedGenericEntry() {
+    load "../../../spite_standard_library/windows"
+    var first = Bunda.First()
+    var second = Bunda.Second()
+    var cat = Bunda.Cat()
+    first.take(cat)
+    second.take(cat)
+}

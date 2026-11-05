@@ -1,0 +1,10 @@
+union Snack {
+    Dog
+    Cat
+}
+
+func take(snack: Snack): Integer {
+    var kept = List<Snack>()
+    kept.append(snack)
+    return kept.count()
+}

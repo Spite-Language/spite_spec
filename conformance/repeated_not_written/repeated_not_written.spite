@@ -1,0 +1,9 @@
+func RepeatedNotWritten() {
+    load "../../../spite_standard_library/windows"
+    load "vendor/spite_standard_library/linux"
+    var first = First()
+    var second = Second()
+    var cat = Cat()
+    first.take(cat)
+    second.take(cat)
+}

@@ -1,0 +1,10 @@
+func RepeatedCapturedName() {
+    load "../../../spite_standard_library/windows"
+    var first = Tools.Kit.First()
+    var second = Tools.Kit.Second()
+    var cat = Cat()
+    first.take(cat)
+    second.take(cat)
+    var kit = Kit.Kit()
+    crash kit.open()
+}

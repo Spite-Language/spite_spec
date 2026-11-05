@@ -1,0 +1,11 @@
+union Client {
+    Dog
+    Cat
+}
+
+func groom(client: Client): String {
+    switch client {
+        Cat: return "a brushed cat"
+        Dog: return "a washed dog"
+    }
+}

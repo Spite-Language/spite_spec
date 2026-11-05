@@ -1,0 +1,1 @@
+conformance/repeated_not_written/vendor/spite_standard_library/linux/first.spite:1: error: 'union Pet' is declared with the same content by 'First' and 'Second', in files the compiler does not write: move it to their namespace's entry class 'Linux' by hand, where a class of the namespace names it through that class (in First)

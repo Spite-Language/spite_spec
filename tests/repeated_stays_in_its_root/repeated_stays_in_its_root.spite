@@ -1,0 +1,21 @@
+union Pet {
+    Cat
+}
+
+var console = Console()
+
+func RepeatedStaysInItsRoot() {
+    load "../../../spite_standard_library/windows"
+    var cat = Cat()
+    load "kitchen"
+    var pan = Pan()
+    var pot = Pot()
+    var ours = named(cat)
+    var pan_said = pan.cooked(cat)
+    var pot_said = pot.cooked(cat)
+    console.print(ours, pan_said, pot_said)
+}
+
+func named(_pet: Pet): String {
+    return "the program's"
+}

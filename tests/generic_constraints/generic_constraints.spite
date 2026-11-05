@@ -1,3 +1,7 @@
+type Printable {
+    to_string(): String
+}
+
 var console = Console()
 
 func GenericConstraints() {

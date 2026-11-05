@@ -1,0 +1,6 @@
+func named(pet: Shelter.Pet): String {
+    switch pet {
+        Shelter.Cat: return "the room's cat"
+        Shelter.Dog: return "the room's dog"
+    }
+}

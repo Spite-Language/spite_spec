@@ -240,8 +240,14 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
 - **A local nothing reads whose value does nothing** (a literal, a text with no hole, a name) is removed: `fixed:
   'spare' was never read, and making it does nothing; removed it` (`conformance/unread_plain_local`). One made by a
   call stays the error, since removing it would drop the call.
+- **A `union` or a `type` two classes of a root declare with one name and content** moves to the entry class of the
+  lowest namespace holding every copy, and every use is rewritten: `fixed: the union 'Snack' repeats in 2 classes of this
+  namespace; moved it to its entry class 'Bunda.Bunda', and this class names it 'Bunda.Snack'`
+  ([A repeated union or type](classes_and_files.md#a-repeated-union-or-type-moves-to-the-entry-class),
+  `conformance/repeated_union_rewrites`). It reaches several files in one run, is found once every class is read,
+  before a name is resolved, and restarts the compile like the two above.
 
-These two are found while or after the program is built, when the build already holds the mistake. The compiler
+The last two are found while or after the program is built, when the build already holds the mistake. The compiler
 gathers every such fix of the run, writes them once the proofs end (or before it tells the first error), and then
 runs itself again, once, with the same flags, folder and environment and answers what that run answers (D1833).
 The program built is always the files as they are written. Each `fixed:` line names the line the mistake was on

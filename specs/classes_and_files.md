@@ -64,12 +64,62 @@ value by its short form ('draft')" (`conformance/lone_enum_file`). An enum is wr
 its class needs; another class gives a value by its short form (`'draft'`), which the owner's parameter or
 attribute turns into the enum, and writes `Owner.Stage` only where a variable must hold one.
 
-**A union and a type are declared in the class that consumes them** (D1745). A file whose only declaration is a
-`union` or a `type` of its own name is an error too: "pet.spite:1: error: 'union Pet' is a file of its own, and a union
-belongs to the class that consumes it: declare it in each class that takes, holds or switches on it (two classes may
-each declare it), and elsewhere pass the member value itself" (`conformance/lone_union_file`,
-`conformance/lone_type_file`). Each class that takes, holds or switches on one declares its own copy, a class that
-only hands a member value on declares none, and copies with the same members are one type, inside a generic too
+**A union and a type belong to a class** (D1745). A file whose only declaration is a `union` or a `type` of its own
+name is an error too: "pet.spite:1: error: 'union Pet' is a file of its own, and a union belongs to a class: declare it
+in the class that takes, holds or switches on it (when two classes of a namespace declare it, it moves to the
+namespace's entry class), and elsewhere pass the member value itself" (`conformance/lone_union_file`,
+`conformance/lone_type_file`). A class that takes, holds or switches on one declares it, and a class that only hands
+a member value on declares none. Declared in one class, it stays there.
+
+### A repeated union or type moves to the entry class
+
+**One name and content declared by two classes of a root is fixed, not kept** (spite_compiler#310). The entry class of
+a namespace is the class named like its folder: `Bunda.Bunda` in `bunda/bunda.spite`, or, for the namespace of a whole
+root, the class named like the root's folder (`game/game.spite` is `Game`).
+
+- **The same means both the name and the content.** The content of a union is the set of classes its members reach,
+  and of a `type` the set of its fields and functions with the types they reach, each in any order. The same content
+  under two names is two declarations: they may mean different things, as `Directory.Entry` and `Target` do, and
+  spotting a rename is a reviewer's job. A subset is another content, so narrowing a union to what a class takes is
+  still allowed (`tests/repeated_keeps_apart`).
+- **It moves to the entry class of the lowest namespace holding every copy**, and the copies go
+  (`tests/repeated_union_moves`, `tests/repeated_type_moves`, the `fixed:` lines in
+  `conformance/repeated_union_rewrites`). The fix creates the entry class's file when the
+  namespace has none, and an entry class that holds only unions and types is valid. `union Pet` alone in `pet.spite`
+  stays an error.
+- **Every use is rewritten.** The entry class writes the plain name; any other class of that namespace or below writes
+  the name through the entry class, `Bunda.Pet`, which the ordinary walk of a dotted name reaches
+  (`tests/entry_union_named_through`). A plain `Pet` in a
+  side class does not reach the entry class's union: "'Pet' is a union of 'Bunda.Bunda', the entry class of this
+  class's namespace, and only that class names it plainly: write 'Bunda.Pet'"
+  (`conformance/entry_union_named_plainly`).
+- **A class outside that namespace still may not name it** (D1779's error, `conformance/entry_union_named_outside`). If
+  it needs one it declares a copy, and the fix then moves both up to the namespace holding both.
+- **Nothing moves between roots.** The library and a program, or two packages, each keep their own declaration
+  (`tests/repeated_stays_in_its_root`).
+- **It is one fix over the whole root**, found once every class is read, before name resolution: each changed file is
+  printed and read back before the first is written, each moved copy is a `fixed:` line, and the compile restarts
+  once ([The compiler fixes what has one fix](style.md#the-compiler-fixes-what-has-one-fix)). Only classes the compile
+  reads count, which for a program's own root is every file. A generic class's copy counts and moves like any other,
+  its `generic` line rewritten too, except one that names a codegen value (`$number_type`), which means something else
+  in each instance and never counts.
+- **What the fix cannot do it refuses**, naming every class that declares it:
+  - the same name with two contents landing in one entry class, or the entry class already declaring that name:
+    "... and it moves to their namespace's entry class 'Game', where a 'Pet' with other content moves or lives too: a
+    class holds one of a name and a fix cannot invent a good one, so rename one of them"
+    (`conformance/repeated_two_contents`, `conformance/repeated_two_contents_entry`, and `tests/repeated_two_contents_apart` for two contents landing in two
+    entry classes, which is allowed);
+  - a name that already means a class there, `Bunda.Pet` being a class in the folder, or a union named like the class
+    it would land in (`conformance/repeated_taken_name`);
+  - an entry class that is generic (`conformance/repeated_generic_entry`);
+  - a file the compiler does not write, a library or a pinned package's: "... in files the compiler does not write: move
+    it to their namespace's entry class 'Common' by hand" (`conformance/repeated_not_written`);
+  - an entry class with no file yet, whose name would take what the namespace reaches today, as a new
+    `Fixes.AbstractSyntaxTree.AbstractSyntaxTree` would take `AbstractSyntaxTree.AbstractSyntaxTree` from every class
+    below it (`conformance/repeated_captured_name`).
+
+Where a union is written changes, and nothing else: its metaprogramming is still compiled per class that uses it (D1779),
+and a union given where another with more members is wanted still fits, a list of it too
 ([Unions in full](values_and_types.md#unions-in-full)).
 
 There are **no file level statements**: no loops, ifs or calls outside a function. One is a parse error:

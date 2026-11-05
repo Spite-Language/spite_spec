@@ -1,7 +1,2 @@
-union Pet {
-    Cat
-    Dog
-}
-
 var name = "ada"
-var pet: Pet = Cat()
+var pet: JsonUnwritable.Pet = Cat()

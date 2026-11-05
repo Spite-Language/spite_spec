@@ -1,0 +1,1 @@
+conformance/entry_union_named_plainly/bunda/keeper.spite:1: error: 'Pet' is a union of 'Bunda.Bunda', the entry class of this class's namespace, and only that class names it plainly: write 'Bunda.Pet' (in Bunda.Keeper.)

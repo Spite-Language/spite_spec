@@ -1,0 +1,6 @@
+func EntryUnionNamedOutside() {
+    load "../../../spite_standard_library/windows"
+    var cat = Bunda.Cat()
+    var keeper = Other.Keeper()
+    keeper.take(cat)
+}

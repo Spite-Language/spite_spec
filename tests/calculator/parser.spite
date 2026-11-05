@@ -1,9 +1,3 @@
-union Expression {
-    NumberExpression
-    VariableExpression
-    BinaryExpression
-}
-
 var tokens = List<Token>()
 var position = 0
 
@@ -27,16 +21,16 @@ func advance() {
     position = position + 1
 }
 
-func parse(): Expression {
+func parse(): Calculator.Expression {
     return parse_expression()
 }
 
-func parse_expression(): Expression {
+func parse_expression(): Calculator.Expression {
     var parsed_term = parse_term()
     return parse_expression_rest(parsed_term)
 }
 
-func parse_expression_rest(left: Expression): Expression {
+func parse_expression_rest(left: Calculator.Expression): Calculator.Expression {
     if is_kind('plus') or is_kind('minus') {
         var operator_kind = current().kind
         advance()
@@ -47,12 +41,12 @@ func parse_expression_rest(left: Expression): Expression {
     return left
 }
 
-func parse_term(): Expression {
+func parse_term(): Calculator.Expression {
     var parsed_factor = parse_factor()
     return parse_term_rest(parsed_factor)
 }
 
-func parse_term_rest(left: Expression): Expression {
+func parse_term_rest(left: Calculator.Expression): Calculator.Expression {
     if is_kind('star') or is_kind('slash') {
         var operator_kind = current().kind
         advance()
@@ -63,7 +57,7 @@ func parse_term_rest(left: Expression): Expression {
     return left
 }
 
-func parse_factor(): Expression {
+func parse_factor(): Calculator.Expression {
     if is_kind('minus') {
         advance()
         var parsed_factor = parse_factor()

@@ -1,0 +1,15 @@
+var console = Console()
+
+func RepeatedUnionMoves() {
+    load "../../../spite_standard_library/windows"
+    var cheese = Bunda.Cheese()
+    var hot_dog = Bunda.HotDog()
+    var cat = Bunda.Cat()
+    var dog = Bunda.Dog()
+    var first = cheese.named(cat)
+    var second = hot_dog.named(dog)
+    console.print(first, second)
+    var deep = Bunda.Deep.Bun()
+    var third = deep.named(cat)
+    console.print(third)
+}

@@ -1,0 +1,11 @@
+var kept = List<Shelter.Pet>()
+
+func named(pet: Shelter.Pet): String {
+    kept.append(pet)
+    var first: Shelter.Pet? = kept[0]
+    crash first
+    switch first {
+        Cat: return "the keeper's cat"
+        Dog: return "the keeper's dog"
+    }
+}

@@ -1,0 +1,21 @@
+union Patient {
+    Cat
+    Dog
+}
+
+union OnlyCat {
+    Cat
+}
+
+func check(patient: Patient): String {
+    switch patient {
+        Cat: return "a patient cat"
+        Dog: return "a patient dog"
+    }
+}
+
+func narrowed(only: OnlyCat): String {
+    switch only {
+        Cat: return "only a cat"
+    }
+}

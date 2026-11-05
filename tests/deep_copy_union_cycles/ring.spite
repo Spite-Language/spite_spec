@@ -1,10 +1,5 @@
-union Link {
-    Ring
-    Tail
-}
-
 var name = ""
-var next: Link? = null
+var next: DeepCopyUnionCycles.Link? = null
 
 func Ring(new_name: String) {
     name = new_name

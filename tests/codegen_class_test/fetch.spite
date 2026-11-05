@@ -1,10 +1,5 @@
 generic $wanted_type
 
-union Part {
-    Health
-    Label
-}
-
 func first(store: Store): $wanted_type? {
     var index = 0
     var found: $wanted_type? = null
@@ -35,6 +30,6 @@ func is_wanted(health: Health): Boolean {
     return health.class == $wanted_type
 }
 
-func is_part(part: Part): Boolean {
+func is_part(part: CodegenClassTest.Part): Boolean {
     return part.class == $wanted_type
 }

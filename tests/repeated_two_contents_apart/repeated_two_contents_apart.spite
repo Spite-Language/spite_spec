@@ -1,0 +1,16 @@
+var console = Console()
+
+func RepeatedTwoContentsApart() {
+    load "../../../spite_standard_library/windows"
+    var cat = Kennel.Cat()
+    var boat = Harbor.Boat()
+    var one = Kennel.First()
+    var two = Kennel.Second()
+    var three = Harbor.First()
+    var four = Harbor.Second()
+    var first = one.named(cat)
+    var second = two.named(cat)
+    var third = three.named(boat)
+    var fourth = four.named(boat)
+    console.print(first, second, third, fourth)
+}

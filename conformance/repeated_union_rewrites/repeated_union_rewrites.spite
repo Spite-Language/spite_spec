@@ -1,0 +1,12 @@
+var console = Console()
+
+func RepeatedUnionRewrites() {
+    load "../../../spite_standard_library/windows"
+    var cheese = Bunda.Cheese()
+    var hot_dog = Bunda.HotDog()
+    var cat = Bunda.Cat()
+    cheese.take(cat)
+    var taken = hot_dog.take(cat)
+    var count = cheese.kept.count()
+    console.print(count, taken)
+}

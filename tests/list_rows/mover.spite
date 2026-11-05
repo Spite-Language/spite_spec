@@ -1,11 +1,6 @@
-type Moving {
-    position: Position
-    velocity: Velocity
-}
-
 var moved = 0
 
-func update_each(moving: Moving) {
+func update_each(moving: ListRows.Moving) {
     moving.position.left = moving.position.left + moving.velocity.across
     var position = moving.position
     position.top = position.top + moving.velocity.down
@@ -16,7 +11,7 @@ func update_each(moving: Moving) {
     moved = moved + 1
 }
 
-func report_speed(moving: Moving) {
+func report_speed(moving: ListRows.Moving) {
     if moving.velocity.across > 100.0 {
         moved = moved + 1000
     }

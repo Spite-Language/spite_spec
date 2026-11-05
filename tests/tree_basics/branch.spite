@@ -1,12 +1,7 @@
-union TreeNode {
-    Leaf
-    Branch
-}
+var left: TreeBasics.TreeNode? = null
+var right: TreeBasics.TreeNode? = null
 
-var left: TreeNode? = null
-var right: TreeNode? = null
-
-func Branch(left_node: TreeNode, right_node: TreeNode) {
+func Branch(left_node: TreeBasics.TreeNode, right_node: TreeBasics.TreeNode) {
     left = left_node
     right = right_node
 }

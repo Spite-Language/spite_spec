@@ -1,0 +1,10 @@
+type Goods {
+    name(): String
+}
+
+func carry(goods: Goods): String {
+    var carried = Dictionary<String, Goods>()
+    carried["one"] = goods
+    crash carried["one"]
+    return carried["one"].name()
+}

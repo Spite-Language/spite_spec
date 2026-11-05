@@ -2,7 +2,7 @@ type Buildable {
     build()
 }
 
-var cookbook = Recipes.Cookbook()
+var cookbook = Cookbook()
 
 func run(recipe: Buildable) {
     var recipes = List<Buildable>()

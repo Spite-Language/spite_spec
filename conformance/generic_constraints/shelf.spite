@@ -1,8 +1,4 @@
-generic $item_type: Printable
-
-type Printable {
-    to_string(): String
-}
+generic $item_type: GenericConstraints.Printable
 
 var items = List<$item_type>()
 

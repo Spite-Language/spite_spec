@@ -2,6 +2,11 @@ type Loaded {
     library: Library
 }
 
+type Moving {
+    position: Position
+    entity: Entity
+}
+
 var console = Console()
 
 func ParameterWriteRows() {

@@ -1,4 +1,4 @@
-union Event {
+union Signal {
     Arrival
     Departure
 }
@@ -6,7 +6,7 @@ union Event {
 var seen = 0
 var names = List<String>()
 
-func count_event(event: Event) {
+func count_event(event: Signal) {
     seen = seen + 1
     names.append(event.name)
 }

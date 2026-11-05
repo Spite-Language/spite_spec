@@ -1,0 +1,12 @@
+type Goods {
+    name(): String
+}
+
+var held = List<Goods>()
+
+func keep(goods: Goods): String {
+    held.append(goods)
+    var first = held[0]
+    crash first
+    return first.name()
+}

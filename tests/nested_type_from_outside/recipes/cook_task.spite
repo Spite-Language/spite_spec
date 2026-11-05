@@ -1,14 +1,10 @@
-type Buildable {
-    build()
-}
+var recipes = List<Recipes.Buildable>()
 
-var recipes = List<Buildable>()
-
-func CookTask(chosen: List<Buildable>) {
+func CookTask(chosen: List<Recipes.Buildable>) {
     recipes = chosen.copy()
 }
 
-func add(recipe: Buildable) {
+func add(recipe: Recipes.Buildable) {
     recipes.append(recipe)
 }
 

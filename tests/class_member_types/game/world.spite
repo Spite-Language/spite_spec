@@ -3,25 +3,16 @@ enum Job {
     'miner'
 }
 
-union Reward {
-    Coin
-    Gem
-}
-
-type Named {
-    name: String
-}
-
 var trade: Job = 'miner'
 
 func hire(player: Player, wanted: Player.Job) {
     player.job = wanted
 }
 
-func pay(player: Player, given: Reward) {
+func pay(player: Player, given: Game.Reward) {
     player.reward = given
 }
 
-func meet(player: Player, stranger: Named) {
+func meet(player: Player, stranger: Game.Named) {
     player.greet(stranger)
 }

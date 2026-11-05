@@ -1,0 +1,1 @@
+conformance/repeated_taken_name/bunda/first.spite:1: error: 'union Pet' is declared with the same content by 'Bunda.First' and 'Bunda.Second', and it moves to their namespace's entry class 'Bunda.Bunda', where the name 'Pet' already means a class: a dotted name means one thing, so rename it (in Bunda.First)

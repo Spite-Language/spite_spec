@@ -1,6 +1,7 @@
 func SameNamedTypes() {
     load "../../../spite_standard_library/windows"
     var task = Recipes.CookTask()
+    load "pantry"
     var soup = Recipes.Soup()
     task.run(soup)
 }

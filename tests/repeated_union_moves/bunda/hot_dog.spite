@@ -1,0 +1,15 @@
+union Snack {
+    Dog
+    Cat
+}
+
+var kept = List<Snack>()
+
+func named(snack: Snack): String {
+    kept.append(snack)
+    var count = kept.count()
+    if snack.class == Cat {
+        return "a cat, held {count}"
+    }
+    return "a dog, held {count}"
+}

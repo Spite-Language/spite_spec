@@ -1,0 +1,12 @@
+var console = Console()
+
+func RepeatedTypeMoves() {
+    load "../../../spite_standard_library/windows"
+    var shelf = Store.Food.Shelf()
+    var cart = Store.Toys.Cart()
+    var apple = Store.Apple()
+    var named = shelf.keep(apple)
+    var carried = cart.carry(apple)
+    var store = Store.Store()
+    console.print(named, carried, store.title)
+}

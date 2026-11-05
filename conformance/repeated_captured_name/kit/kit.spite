@@ -1,0 +1,3 @@
+func open(): Boolean {
+    return true
+}

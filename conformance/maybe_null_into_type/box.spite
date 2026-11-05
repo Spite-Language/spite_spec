@@ -1,6 +1,1 @@
-union Pet {
-    Cat
-    Dog
-}
-
-var pet: Pet? = null
+var pet: MaybeNullIntoType.Pet? = null

@@ -1,0 +1,7 @@
+union Held {
+    Boat
+}
+
+func named(_held: Held): String {
+    return "harbor one"
+}

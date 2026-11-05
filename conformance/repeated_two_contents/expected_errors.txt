@@ -1,0 +1,1 @@
+conformance/repeated_two_contents/cheese/first.spite:1: error: 'union Pet' is declared with the same content by 'Cheese.First' and 'Bread.First', and it moves to their namespace's entry class 'RepeatedTwoContents', where a 'Pet' with other content moves or lives too: a class holds one of a name and a fix cannot invent a good one, so rename one of them (in Cheese.First)

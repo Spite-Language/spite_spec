@@ -410,8 +410,9 @@ names the presets the class answers
   `==` or `!=` (or a value whose type the compiler does not know there) keeps its operations as written, so an
   exact comparison sees exact values; nothing that writes to a file can run inside such a loop.
 - **No `type` stands for every number (D1733).** A class written over numbers is generic and declares the `type`
-  its codegen value needs, listing only the operators and functions it uses (`generic $number_type: Component` with
-  `type Component { sum(Component): Component }` in `Vector3`). Every number class, `Tiny` to `Double`, has `sum`,
+  its codegen value needs, listing only the operators and functions it uses (`generic $number_type: Common.Component` with
+  `type Component { sum(Component): Component }` in `Common`, the entry class of the folder `Vector2`, `Vector3` and
+  `Vector4` share). Every number class, `Tiny` to `Double`, has `sum`,
   `subtract`, `multiply`, `divide`, `remainder`, `less_than`, `greater_than` and `equals`, each taking and answering
   the class itself (`Boolean` for the comparisons), and fits such a type as any class does, by having its members;
   `Boolean` has none of them. The class is compiled once per number class it is given, with plain values and no box,
@@ -626,17 +627,17 @@ func attack(enemy: Enemy): Boolean {
 }
 ```
 
-**A union is declared where it is consumed** (D1745): each class that takes, holds or switches on one declares it,
-and two classes may each declare the same union, at no cost. A union value given where another union is wanted fits
-when every member of it is a member of the wanted one, so `Parser.Expression` passes to a `Printer.Expression` that
-lists the same classes or more (`tests/union_copies`). A member the wanted union lacks is an error naming it: "a
+**A union is declared where it is consumed** (D1745): a class that takes, holds or switches on one declares it, and
+a name and content two classes of a root declare moves to their namespace's entry class by a fix
+([A repeated union or type](classes_and_files.md#a-repeated-union-or-type-moves-to-the-entry-class)). A union value
+given where another union is wanted fits when every member of it is a member of the wanted one, so a class's narrow
+`union Patient` passes to a `union Client` that lists the same classes or more (`tests/union_copies`). A member the wanted union lacks is an error naming it: "a
 Shelter.Pet cannot be used where a Groomer.Pet is needed: 'Fish' is a member of Shelter.Pet and not of Groomer.Pet,
 and a union fits another only when every member of it is a member of the other: add 'Fish' to Groomer.Pet, or pass the
 member value itself" (`conformance/union_copy_missing_member`).
-Copies with the same members, in any order, are one type (D1756), inside a generic and a function value too: a
-`List<Parser.Expression>` goes where a `List<Printer.Expression>` is wanted, a `Dictionary` or a `Spite.Function` of
-one copy where the other's is, with nothing written and nothing converted (`tests/union_copies_in_generics`,
-`tests/event_bus`). A generic of a union with fewer members is refused where one with more is wanted, since the
+Unions with the same members, in any order, are one type (D1756), inside a generic and a function value too: a
+`List<Patient>` goes where a `List<Client>` is wanted, a `Dictionary` or a `Spite.Function` of one where the other's
+is, with nothing written and nothing converted (`tests/union_copies_in_generics`, `tests/event_bus`). A generic of a union with fewer members is refused where one with more is wanted, since the
 receiver could put in a member the smaller union lacks (`conformance/union_copy_smaller_in_generic`).
 **The class that declares a union may write conversions for it** in the form of [D1776](classes_and_files.md), named by
 the union alone (`func Job(from: String): Job?` beside `union Job`); a value of that source type meeting the union goes

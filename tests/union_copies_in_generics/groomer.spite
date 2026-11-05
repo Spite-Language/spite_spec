@@ -1,9 +1,9 @@
-union Pet {
+union Client {
     Dog
     Cat
 }
 
-func groom_all(pets: List<Pet>): Integer {
+func groom_all(pets: List<Client>): Integer {
     var groomed = 0
     var index = 0
     while index < pets.count() {
@@ -16,7 +16,7 @@ func groom_all(pets: List<Pet>): Integer {
     return groomed
 }
 
-func find_named(named: Dictionary<String, Pet>, name: String): String {
+func find_named(named: Dictionary<String, Client>, name: String): String {
     var pet = named[name]
     if pet.class == Cat {
         return "a cat of {pet.lives} lives"
@@ -24,7 +24,7 @@ func find_named(named: Dictionary<String, Pet>, name: String): String {
     return "nothing"
 }
 
-func each_pet(pets: List<Pet>, act: Spite.Function<Pet, Nothing>) {
+func each_pet(pets: List<Client>, act: Spite.Function<Client, Nothing>) {
     var index = 0
     while index < pets.count() {
         var pet = pets[index]

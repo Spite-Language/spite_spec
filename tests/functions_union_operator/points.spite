@@ -1,14 +1,9 @@
-union Amount {
-    Money
-    Points
-}
-
 var count = 0
 
 func Points(amount: Integer) {
     count = amount
 }
 
-func sum(_other: Amount): Integer {
+func sum(_other: FunctionsUnionOperator.Amount): Integer {
     return count * 2
 }

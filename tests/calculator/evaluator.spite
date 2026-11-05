@@ -1,25 +1,19 @@
-union Expression {
-    NumberExpression
-    VariableExpression
-    BinaryExpression
-}
-
 var console = Console()
 var variables = Dictionary<String, Float>()
-var current_tree: Expression? = null
+var current_tree: Calculator.Expression? = null
 
 func assign(name: String, value: Float) {
     variables[name] = value
 }
 
-func evaluate_tree(tree: Expression): Float {
+func evaluate_tree(tree: Calculator.Expression): Float {
     current_tree = tree
     var stored_tree = current_tree
     crash stored_tree
     return evaluate(stored_tree)
 }
 
-func evaluate(expression: Expression): Float {
+func evaluate(expression: Calculator.Expression): Float {
     switch expression {
         NumberExpression: return expression.value
         VariableExpression: return variable_value(expression.name)

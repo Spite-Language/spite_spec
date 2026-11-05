@@ -1,9 +1,9 @@
-union Pet {
+union Client {
     Cat
     Dog
 }
 
-func groom(pet: Pet): String {
+func groom(pet: Client): String {
     switch pet {
         Cat: return "brushed"
         Dog: return "washed"

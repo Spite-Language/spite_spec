@@ -1,0 +1,8 @@
+union Reward {
+    Coin
+    Gem
+}
+
+type Named {
+    name: String
+}

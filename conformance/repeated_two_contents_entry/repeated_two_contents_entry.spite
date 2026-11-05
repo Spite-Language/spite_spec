@@ -1,0 +1,16 @@
+union Pet {
+    Dog
+}
+
+func RepeatedTwoContentsEntry() {
+    load "../../../spite_standard_library/windows"
+    var first = Cheese.First()
+    var second = Bread.First()
+    var cat = Cat()
+    first.take(cat)
+    second.take(cat)
+}
+
+func other(pet: Pet) {
+    pet.to_debug()
+}

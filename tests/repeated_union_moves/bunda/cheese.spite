@@ -1,0 +1,11 @@
+union Snack {
+    Cat
+    Dog
+}
+
+func named(snack: Snack): String {
+    switch snack {
+        Cat: return "cat with {snack.lives}"
+        Dog: return "dog with {snack.barks}"
+    }
+}
