@@ -1,0 +1,1 @@
+conformance/file_content_budget/file_content_budget.spite: error: this file holds 1201 statements, over its file content budget of 1200: clean it up until it is back within it, grouping state into an object and giving each concern a file of its own (in FileContentBudget)

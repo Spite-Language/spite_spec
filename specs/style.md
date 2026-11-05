@@ -254,6 +254,40 @@ The program built is always the files as they are written. Each `fixed:` line na
 in the file that run read. The runs end, since each fix removes code; a fix that still came back after 8 runs
 again would be a fault of the compiler, which names it and crashes.
 
+### The file content budget
+
+A `.spite` file holds at most 1200 statements, its file content budget, in every Spite program (spite_compiler#311).
+More than that is a compile error naming the file, its count and the budget, and no flag, setting or comment lifts it
+(`conformance/file_content_budget`; `tests/file_content_budget` holds exactly 1200):
+
+    drawing.spite: error: this file holds 1201 statements, over its file content budget of 1200: clean it up until it is back within it, grouping state into an object and giving each concern a file of its own (in Drawing)
+
+The count comes from the file's tree, after the file's fixes, so formatting never changes it:
+
+- **What counts, as one each:** every statement at any depth (a local, an assignment, a call, `return`, `if`, each
+  `else if`, `while`, `switch`, `fallback`, `crash`, `load`) and a class-level `var`.
+- **What does not count:** comments, blank lines, closing braces, an `else` by itself, function headers, and the
+  entries of an `enum`, `union` or `type`.
+- **A statement spread over many lines is one**, so a printed call with one argument per line or a long list literal
+  costs one.
+- **A `switch` is one and its cases add nothing:** each case is one line (D1762), and an exhaustive switch over a large
+  enum cannot be split. A case's own line stays free even when it opens an `if` or a `while`, but what that holds counts:
+  every statement at any depth.
+
+It counts statements and not lines because counting lines would forbid one thing outright: an enum is one entry per
+line and reopening replaces it, and a switch over it is exhaustive with one value per case, so an enum over the budget
+could not exist. Counting statements forbids nothing.
+
+It is an error and not a fix: where to split a file is a design choice the compiler cannot make. A file gets back
+within it by cleaning up, not by being cut in two at the number: state grouped into an object, concerns named, each
+in a file of its own.
+
+Until the files over it are split, the compiler holds a waiting list of them: nine of its own and
+`tests/text_escapes`, each named by its program's folder and its path inside it. A file on the list that comes back
+within the budget is an error until it leaves the list, and `tests/compiler_file_content_budget` keeps the list from
+growing. It is a literal inside the compiler, with no flag, setting or file that adds to it, and it goes when the last
+of those files is split.
+
 ### Comments
 
 **A comment is one line, and it is nothing but a link to a markdown section**:

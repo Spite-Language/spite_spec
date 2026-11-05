@@ -1,0 +1,84 @@
+var console = Console()
+var path_of_the_list = "../spite_compiler/validators/abstract_syntax_tree/file_content_budget/waiting_list.spite"
+var broken = 0
+var waiting = [
+    "spite_compiler/high_intermediary_representation/building/values.spite"
+    "spite_compiler/low_intermediary_representation/lowering/function_lowering.spite"
+    "spite_compiler/high_intermediary_representation/building/statements.spite"
+    "spite_compiler/high_intermediary_representation/building/prompt/text.spite"
+    "spite_compiler/generators/x64/allocation.spite"
+    "spite_compiler/high_intermediary_representation/building/prompt/source.spite"
+    "spite_compiler/high_intermediary_representation/building/reflection.spite"
+    "spite_compiler/name_resolution/resolver.spite"
+    "spite_compiler/low_optimization_passes/vector_loops/pass.spite"
+    "text_escapes/text_escapes.spite"
+]
+
+# ../../specs/style.md#the-file-content-budget
+func CompilerFileContentBudget() {
+    load "../../../spite_standard_library/windows"
+    var file = File(path_of_the_list)
+    var text = file.read_as_string()
+    crash text
+    var listed = listed_paths(text)
+    judge_what_the_compiler_lists(listed)
+    judge_what_waits_here(listed)
+    if broken == 0 {
+        console.print("the compiler's waiting list is the waiting list here")
+    }
+}
+
+func listed_paths(text: String): List<String> {
+    var listed = List<String>()
+    var lines = text.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var written = line.trim()
+        if written.starts_with("\"") and written.ends_with(".spite\"") {
+            var closing = written.length() - 1
+            var path = written.slice(1, closing)
+            crash path
+            listed.append(path)
+        }
+        index = index + 1
+    }
+    return listed
+}
+
+func judge_what_the_compiler_lists(listed: List<String>) {
+    var index = 0
+    while index < listed.count() {
+        var path = listed[index]
+        if not waiting.contains(path) {
+            broken = broken + 1
+            console.print("{path} is on the compiler's waiting list but not here: the list can only shrink, so clean the file up instead")
+        }
+        index = index + 1
+    }
+}
+
+func judge_what_waits_here(listed: List<String>) {
+    var index = 0
+    while index < waiting.count() {
+        var path = waiting[index]
+        if not listed.contains(path) {
+            broken = broken + 1
+            console.print("{path} waits here but not on the compiler's waiting list: take it off here too")
+        }
+        var folder = folder_of(path)
+        var file = File("{folder}{path}")
+        if not file.exists() {
+            broken = broken + 1
+            console.print("{path} waits here but is gone: take it off both lists")
+        }
+        index = index + 1
+    }
+}
+
+func folder_of(path: String): String {
+    if path.starts_with("spite_compiler/") {
+        return "../"
+    }
+    return "tests/"
+}
