@@ -1,0 +1,9 @@
+a/b/c a/b a/b/c.txt a/b/c
+an empty path is . and so is a lone dot .
+written keeps the text as it came: a\b\c.txt
+parent of a one-piece path: .
+extension of .gitignore  name .gitignore
+extension of readme  of data.tar.gz gz
+empty for none true empty for a leading dot true
+parent of /folder: /
+joined folder/inside/file.txt a rooted other is itself /elsewhere/file.txt climbing sibling

@@ -1,0 +1,7 @@
+the working directory holds the test: true
+the executable is program_edges.exe: true
+one buffer alive: allocations 1 bytes at least the room true
+the buffer is empty: 0
+the child ended with 0
+the child reads a variable of 5000 bytes
+a variable that is not set is null

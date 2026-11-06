@@ -1,0 +1,73 @@
+var console = Console()
+
+func FileEdges() {
+    load "../../../spite_standard_library/windows"
+    unopenable_paths()
+    empty_folder()
+    lock_let_go_by_leaving()
+}
+
+func unopenable_paths() {
+    var missing = File(".spite/file_edges_no_such_folder/data.bin")
+    var bytes = Buffer(0)
+    bytes.append(7)
+    var appended = missing.append_buffer(bytes)
+    var written = missing.write_buffer(bytes)
+    var locked = missing.lock()
+    var read = missing.read_as_buffer()
+    var piece = missing.read_buffer_at(0, 1)
+    var appended_text = answer(appended)
+    var locked_text = locked_answer(locked)
+    var read_text = buffer_answer(read)
+    var piece_text = buffer_answer(piece)
+    console.print("append_buffer", appended_text, "write_buffer", written)
+    console.print("lock", locked_text, "read_as_buffer", read_text, "read_buffer_at", piece_text)
+}
+
+func answer(position: Long?): String {
+    if position {
+        return "answered {position}"
+    }
+    return "null"
+}
+
+func locked_answer(locked: LockedFile?): String {
+    if locked {
+        locked.unlock()
+        return "locked"
+    }
+    return "null"
+}
+
+func buffer_answer(held: Buffer?): String {
+    if held {
+        return "bytes"
+    }
+    return "null"
+}
+
+func empty_folder() {
+    var folder = Directory(".spite/file_edges_empty")
+    var made = folder.create()
+    crash made
+    var entries = folder.entries()
+    crash entries
+    var count = entries.count()
+    var empty = entries.is_empty()
+    console.print("an empty folder has", count, "entries", empty)
+}
+
+func lock_and_leave(file: File): Boolean {
+    var held = file.lock()
+    fallback held
+    return true
+}
+
+func lock_let_go_by_leaving() {
+    var file = File(".spite/file_edges.lock")
+    var first = lock_and_leave(file)
+    var second = lock_and_leave(file)
+    var third = lock_and_leave(file)
+    console.print("a lock left behind when the variable goes:", first, second, third)
+    crash file.remove()
+}

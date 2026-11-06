@@ -1,0 +1,147 @@
+var console = Console()
+var _short_limit_milliseconds = 1500
+
+func ProcessEdges() {
+    load "../../../spite_standard_library/windows"
+    var folder = Directory(".spite/process_edges")
+    crash folder.create()
+    reads_before_a_run()
+    errors_apart()
+    both_flags()
+    bytes_as_written()
+    a_command_that_cannot_start()
+    stopped_output()
+    attached_output()
+}
+
+func reads_before_a_run() {
+    var child = Process("cmd", ["/c", "echo", "x"])
+    child.keeps_errors_apart = true
+    var text = child.read_output_as_string()
+    var buffer = child.read_output_as_buffer()
+    var errors = child.read_errors_as_string()
+    var error_buffer = child.read_errors_as_buffer()
+    var text_answer = answer(text)
+    var buffer_text = buffer_answer(buffer)
+    var errors_answer = answer(errors)
+    var error_buffer_text = buffer_answer(error_buffer)
+    console.print("before a run: output", text_answer, buffer_text, "errors", errors_answer, error_buffer_text)
+}
+
+func answer(text: String?): String {
+    if text {
+        return "text"
+    }
+    return "null"
+}
+
+func buffer_answer(held: Buffer?): String {
+    if held {
+        return "bytes"
+    }
+    return "null"
+}
+
+func errors_apart() {
+    var script = File(".spite/process_edges/answers_on_both.cmd")
+    crash script.write_string("@echo answer\r\n@echo trouble 1>&2\r\n@exit /b 3\r\n")
+    var apart = Process("cmd", ["/c", ".spite\\process_edges\\answers_on_both.cmd"])
+    apart.keeps_errors_apart = true
+    var code = apart.run()
+    crash code
+    var output = apart.read_output_as_buffer()
+    var errors = apart.read_errors_as_buffer()
+    var error_text = apart.read_errors_as_string()
+    crash output
+    crash errors
+    crash error_text
+    var output_size = output.count()
+    var error_size = errors.count()
+    var trimmed = error_text.trim()
+    console.print("exit code", code, "output bytes", output_size, "error bytes", error_size, "errors", trimmed)
+    var together = Process("cmd", ["/c", "echo", "x"])
+    var together_code = together.run()
+    crash together_code
+    var lost = together.read_errors_as_string()
+    var lost_buffer = together.read_errors_as_buffer()
+    var shown_1 = answer(lost)
+    var shown_2 = buffer_answer(lost_buffer)
+    console.print("keeps_errors_apart false: errors", shown_1, shown_2)
+}
+
+func both_flags() {
+    var both = Process("cmd", ["/c", ".spite\\process_edges\\answers_on_both.cmd"])
+    both.keeps_errors_apart = true
+    both.with_errors = true
+    var code = both.run()
+    crash code
+    var output = both.read_output_as_string()
+    var errors = both.read_errors_as_buffer()
+    crash output
+    crash errors
+    var trimmed = output.trim()
+    var lines = trimmed.split("\n")
+    var line_count = lines.count()
+    var error_size = errors.count()
+    console.print(
+        "with both flags the output holds",
+        line_count,
+        "lines and the errors read apart hold",
+        error_size,
+        "bytes",
+    )
+}
+
+func bytes_as_written() {
+    var data = Buffer(0)
+    data.append(65)
+    data.append(26)
+    data.append(13)
+    data.append(10)
+    var largest = Byte.Largest()
+    data.append(largest)
+    var file = File(".spite/process_edges/bytes.bin")
+    crash file.write_buffer(data)
+    var typed = Process("cmd", ["/c", "type", ".spite\\process_edges\\bytes.bin"])
+    var code = typed.run()
+    crash code
+    var output = typed.read_output_as_buffer()
+    crash output
+    var size = output.count()
+    var first = output[0]
+    var substitute = output[1]
+    var carriage = output[2]
+    var feed = output[3]
+    var last = output[4]
+    var as_text = typed.read_output_as_string()
+    console.print("the child's bytes as written:", size, first, substitute, carriage, feed, last)
+    var shown_3 = answer(as_text)
+    console.print("bytes that are not UTF-8 read as text:", shown_3)
+}
+
+func a_command_that_cannot_start() {
+    var missing = Process("no_such_program_in_this_test", ["a"])
+    missing.with_errors = true
+    var code = missing.run()
+    crash code
+    console.print("an unknown command is the shell's exit code", code)
+}
+
+func stopped_output() {
+    var slow = Process("cmd", ["/c", "ping", "-n", "60", "127.0.0.1"])
+    slow.time_limit = Duration(_short_limit_milliseconds, 'milliseconds')
+    var code = slow.run()
+    var output = slow.read_output_as_string()
+    crash output
+    var has_the_address = output.contains("127.0.0.1")
+    console.print("stopped", slow.was_stopped, "the output until then holds the first line", has_the_address)
+    console.print("run() of a stopped child answers", code)
+}
+
+func attached_output() {
+    console.print("before the child")
+    var child = Process("cmd", ["/c", "echo", "the child writes here"])
+    var code = child.run_attached()
+    crash code
+    console.print("after the child", code)
+}

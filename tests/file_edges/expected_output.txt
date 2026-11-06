@@ -1,0 +1,4 @@
+append_buffer null write_buffer false
+lock null read_as_buffer null read_buffer_at null
+an empty folder has 0 entries true
+a lock left behind when the variable goes: true true true

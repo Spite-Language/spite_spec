@@ -1,0 +1,12 @@
+before a run: output null null errors null null
+exit code 3 output bytes 8 error bytes 10 errors trouble
+keeps_errors_apart false: errors null null
+with both flags the output holds 2 lines and the errors read apart hold 0 bytes
+the child's bytes as written: 5 65 26 13 10 255
+bytes that are not UTF-8 read as text: null
+an unknown command is the shell's exit code 1
+stopped true the output until then holds the first line true
+run() of a stopped child answers null
+before the child
+"the child writes here"
+after the child 0

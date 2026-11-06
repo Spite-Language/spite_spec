@@ -1,0 +1,83 @@
+var console = Console()
+var program = Program()
+var environment = Environment()
+var _long_value_length = 5000
+var _buffer_size = 4096
+
+func ProgramEdges() {
+    load "../../../spite_standard_library/windows"
+    if environment.role == "child" {
+        report_environment()
+        return
+    }
+    where_it_runs()
+    counting()
+    long_environment_value()
+}
+
+func report_environment() {
+    var value = program.environment("SPITE_PROGRAM_EDGES_LONG")
+    crash value
+    var length = value.length()
+    console.print("the child reads a variable of", length, "bytes")
+    var missing = program.environment("SPITE_PROGRAM_EDGES_NOT_SET")
+    if missing {
+        console.print("a variable that is not set was read")
+    } else {
+        console.print("a variable that is not set is null")
+    }
+}
+
+func where_it_runs() {
+    var folder = program.working_directory()
+    crash folder
+    var source = File("{folder}/tests/program_edges/program_edges.spite")
+    var found = source.exists()
+    console.print("the working directory holds the test:", found)
+    var executable = program.executable_path()
+    crash executable
+    var named = executable.ends_with("program_edges.exe")
+    console.print("the executable is program_edges.exe:", named)
+}
+
+func counting() {
+    var allocations_before = program.live_allocations()
+    var bytes_before = program.live_bytes()
+    var room = hold_a_buffer()
+    var allocations_during = program.live_allocations()
+    var bytes_during = program.live_bytes()
+    var more_allocations = allocations_during - allocations_before
+    var more_bytes = bytes_during - bytes_before
+    console.print(
+        "one buffer alive: allocations",
+        more_allocations,
+        "bytes at least the room",
+        more_bytes >= _buffer_size,
+    )
+    var size = room.count()
+    console.print("the buffer is empty:", size)
+}
+
+func hold_a_buffer(): Buffer {
+    return Buffer(_buffer_size)
+}
+
+func long_environment_value() {
+    var executable = program.executable_path()
+    crash executable
+    var child = Process(executable, ["--role=child"])
+    var letters = ""
+    var length = 0
+    while length < _long_value_length {
+        letters = "{letters}x"
+        length = length + 1
+    }
+    child.environment_variables["SPITE_PROGRAM_EDGES_LONG"] = letters
+    var code = child.run()
+    crash code
+    var output = child.read_output_as_string()
+    crash output
+    var trimmed = output.trim()
+    console.print("the child ended with", code)
+    console.print(trimmed)
+}

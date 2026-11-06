@@ -1,0 +1,53 @@
+var console = Console()
+
+func PathEdges() {
+    load "../../../spite_standard_library/windows"
+    tidying()
+    pieces()
+    joining()
+}
+
+func tidying() {
+    var doubled: Path = "a//b///c"
+    var dots: Path = "./a/./b/."
+    var backslashes: Path = "a\\b\\c.txt"
+    var mixed: Path = "a\\b/c"
+    var nothing: Path = ""
+    var only_dot: Path = "./."
+    console.print(doubled, dots, backslashes, mixed)
+    console.print("an empty path is", nothing, "and so is a lone dot", only_dot)
+    var written = backslashes.written
+    console.print("written keeps the text as it came:", written)
+}
+
+func pieces() {
+    var bare: Path = "notes"
+    var hidden: Path = "folder/.gitignore"
+    var plain: Path = "folder/readme"
+    var archive: Path = "folder/data.tar.gz"
+    var bare_parent = bare.parent
+    var hidden_extension = hidden.extension
+    var plain_extension = plain.extension
+    var archive_extension = archive.extension
+    var hidden_name = hidden.name
+    console.print("parent of a one-piece path:", bare_parent)
+    console.print("extension of .gitignore", hidden_extension, "name", hidden_name)
+    console.print("extension of readme", plain_extension, "of data.tar.gz", archive_extension)
+    var empty = plain_extension.is_empty()
+    var hidden_empty = hidden_extension.is_empty()
+    console.print("empty for none", empty, "empty for a leading dot", hidden_empty)
+    var below_root: Path = "/folder"
+    var root_parent = below_root.parent
+    console.print("parent of /folder:", root_parent)
+}
+
+func joining() {
+    var base: Path = "folder"
+    var relative: Path = "inside/file.txt"
+    var rooted: Path = "/elsewhere/file.txt"
+    var joined = base.joined(relative)
+    var kept = base.joined(rooted)
+    var climbing: Path = "../sibling"
+    var climbed = base.joined(climbing)
+    console.print("joined", joined, "a rooted other is itself", kept, "climbing", climbed)
+}
