@@ -1,5 +1,5 @@
 type Shape {
-    area(): Integer
+    area: Spite.Function<Integer>
 }
 
 var console = Console()

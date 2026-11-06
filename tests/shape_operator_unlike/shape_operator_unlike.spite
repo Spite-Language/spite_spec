@@ -1,6 +1,6 @@
 type Addable {
-    sum(Addable): Addable
-    describe(): String
+    sum: Spite.Function<Addable, Addable>
+    describe: Spite.Function<String>
 }
 
 var console = Console()

@@ -1,5 +1,5 @@
 type Describable {
-    describe(): String
+    describe: Spite.Function<String>
 }
 
 var console = Console()

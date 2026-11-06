@@ -1,7 +1,7 @@
 type Linked {
     name: String
-    describe(): String
-    follow(): String
+    describe: Spite.Function<String>
+    follow: Spite.Function<String>
 }
 
 var console = Console()

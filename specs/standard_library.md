@@ -249,8 +249,7 @@ with its length rather than up to its first zero byte. `conformance/stage6/text_
 printed before it.
 
 **`Console.debug` and `to_debug()`.** Each class has an automatic `to_debug(): String` that returns something like
-`Class {attribute: value, other: value}` by nesting `to_debug()`s. `debug(...values: List<Debuggable>)`, where `type Debuggable { to_debug():
-String }`, writes each value's `to_debug()` separated by a space, then a line break. Every value answers it:
+`Class {attribute: value, other: value}` by nesting `to_debug()`s. `debug(...values: List<Debuggable>)`, where `type Debuggable { to_debug: Spite.Function<String> }`, writes each value's `to_debug()` separated by a space, then a line break. Every value answers it:
 
 ```text
 Player { name: "hero", scores: [3, 7], bag: {"gold": 2}, partner: null, mood: 'calm' }

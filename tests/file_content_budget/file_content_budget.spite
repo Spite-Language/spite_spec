@@ -1208,7 +1208,7 @@ union Held {
 }
 
 type Named {
-    name_of(Shade): String
+    name_of: Spite.Function<Shade, String>
 }
 
 var console = Console()

@@ -1,5 +1,5 @@
 type Labelled {
-    label(): String
+    label: Spite.Function<String>
 }
 
 var console = Console()

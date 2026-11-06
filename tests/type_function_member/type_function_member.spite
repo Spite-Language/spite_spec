@@ -1,0 +1,76 @@
+type Worker {
+    add: Spite.Function<Integer, Integer>
+    label: Spite.Function<String>
+    ping: Spite.Function<Nothing>
+}
+
+type Printed {
+    to_string: Spite.Function<String>
+}
+
+type Turning {
+    turn: Spite.Function<Integer, Integer>
+}
+
+var console = Console()
+
+func TypeFunctionMember() {
+    load "../../../spite_standard_library/windows"
+    var function_worker = ByFunction()
+    var held_worker = ByHeld()
+    work(function_worker)
+    work(held_worker)
+    var workers = List<Worker>()
+    workers.append(function_worker)
+    workers.append(held_worker)
+    var index = 0
+    while index < workers.count() {
+        var worker = workers[index]
+        var named = worker.label()
+        var added = worker.add(index)
+        console.print(named, added)
+        index = index + 1
+    }
+    read_the_value(function_worker)
+    read_the_value(held_worker)
+    show(function_worker)
+    show(held_worker)
+    console.print(function_worker)
+    console.print(held_worker)
+    var only = OnlyHeld()
+    turn_it(only)
+    var direct = held_worker.add(21)
+    console.print(direct)
+}
+
+func work(worker: Worker) {
+    var named = worker.label()
+    var added = worker.add(1)
+    console.print(named, added)
+    worker.ping()
+}
+
+func read_the_value(worker: Worker) {
+    var adding = worker.add
+    var labelling = worker.label
+    var named = labelling()
+    var added = adding(2)
+    console.print(named, added)
+}
+
+func show(printed: Printed) {
+    var shown = printed.to_string()
+    console.print(shown, printed)
+}
+
+func turn_it(turning: Turning) {
+    var before = turning.turn(1)
+    console.print(before)
+    turning.turn = second_turn
+    var after = turning.turn(1)
+    console.print(after)
+}
+
+func second_turn(number: Integer): Integer {
+    return number + 100
+}

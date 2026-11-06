@@ -1,0 +1,12 @@
+type Worker {
+    add(Integer): Integer
+    label(): String
+    ping()
+    picked(List<Integer>, String?): Integer?
+    held: Spite.Function<Integer>
+}
+
+func TypeMemberCallForm(): Integer {
+    load "../../../spite_standard_library/windows"
+    return 0
+}

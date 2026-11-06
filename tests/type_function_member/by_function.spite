@@ -1,0 +1,18 @@
+var console = Console()
+var base = 10
+
+func add(number: Integer): Integer {
+    return base + number
+}
+
+func label(): String {
+    return "function"
+}
+
+func ping() {
+    console.print("ping by function")
+}
+
+func to_string(): String {
+    return "ByFunction"
+}

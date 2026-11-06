@@ -1,7 +1,7 @@
 generic $number_type: Summed
 
 type Summed {
-    sum(Summed): Summed
+    sum: Spite.Function<Summed, Summed>
 }
 
 func twice(value: $number_type): $number_type {

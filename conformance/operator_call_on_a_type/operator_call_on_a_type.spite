@@ -1,5 +1,5 @@
 type Ordered {
-    less_than(Weight): Boolean
+    less_than: Spite.Function<Weight, Boolean>
 }
 
 var console = Console()

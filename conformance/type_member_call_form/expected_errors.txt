@@ -1,0 +1,4 @@
+conformance/type_member_call_form/type_member_call_form.spite:2: fixed: a member of a type has one form: 'add(Integer): Integer' is now written 'add: Spite.Function<Integer, Integer>' (in TypeMemberCallForm)
+conformance/type_member_call_form/type_member_call_form.spite:3: fixed: a member of a type has one form: 'label(): String' is now written 'label: Spite.Function<String>' (in TypeMemberCallForm)
+conformance/type_member_call_form/type_member_call_form.spite:4: fixed: a member of a type has one form: 'ping()' is now written 'ping: Spite.Function<Nothing>' (in TypeMemberCallForm)
+conformance/type_member_call_form/type_member_call_form.spite:5: fixed: a member of a type has one form: 'picked(List<Integer>, String?): Integer?' is now written 'picked: Spite.Function<List<Integer>, String?, Integer?>' (in TypeMemberCallForm)

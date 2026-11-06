@@ -5,7 +5,7 @@ enum Phase {
 
 type Runnable {
     placed_in: Phase
-    run()
+    run: Spite.Function<Nothing>
 }
 
 var runners = List<Runnable>()

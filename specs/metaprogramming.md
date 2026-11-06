@@ -402,7 +402,7 @@ var sword = Weapon<Integer>(10, true)
   a '?', and narrow it before use, or give it a real object in the constructor` (`diagnostics/function_shape_default`).
 
 **A `generic` line may name a constraint.**
-`generic $item_type: Printable`, with the class's own `type Printable { to_string(): String }`, accepts only types that
+`generic $item_type: Printable`, with the class's own `type Printable { to_string: Spite.Function<String> }`, accepts only types that
 fit it, and a use that does not
 (`Shelf<Pet>`) is an error where the class is named, naming the constraint, the class and what it lacks:
 "'Pet' does not fit type 'Printable', which 'Shelf' requires of $item_type: it has no function 'to_string'",

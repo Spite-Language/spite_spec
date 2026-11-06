@@ -1,0 +1,13 @@
+type Turning {
+    turn: Spite.Function<Integer, Integer>
+}
+
+func TypeMemberHeldMistyped(): Integer {
+    load "../../../spite_standard_library/windows"
+    var thing = Holder()
+    return change(thing)
+}
+
+func change(turning: Turning): Integer {
+    return turning.turn(1)
+}

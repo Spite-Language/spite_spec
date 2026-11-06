@@ -1,5 +1,5 @@
 type Buildable {
-    build()
+    build: Spite.Function<Nothing>
 }
 
 var cookbook = Cookbook()

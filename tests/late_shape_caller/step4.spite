@@ -1,5 +1,5 @@
 type Speaker {
-    speak(): Integer
+    speak: Spite.Function<Integer>
 }
 
 var seen = 0

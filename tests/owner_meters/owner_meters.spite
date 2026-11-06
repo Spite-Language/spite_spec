@@ -1,5 +1,5 @@
 type Track {
-    render()
+    render: Spite.Function<Nothing>
 }
 
 var console = Console()

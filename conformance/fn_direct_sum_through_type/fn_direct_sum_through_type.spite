@@ -1,5 +1,5 @@
 type Addable {
-    sum(Money): Money
+    sum: Spite.Function<Money, Money>
 }
 
 var console = Console()

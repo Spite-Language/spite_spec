@@ -1,0 +1,5 @@
+var turn: Spite.Function<String, Integer> = measured
+
+func measured(text: String): Integer {
+    return text.length()
+}

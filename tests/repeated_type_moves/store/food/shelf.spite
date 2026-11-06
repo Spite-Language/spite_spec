@@ -1,5 +1,5 @@
 type Goods {
-    name(): String
+    name: Spite.Function<String>
 }
 
 var held = List<Goods>()

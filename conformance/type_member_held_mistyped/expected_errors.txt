@@ -1,0 +1,1 @@
+conformance/type_member_held_mistyped/type_member_held_mistyped.spite:8: error: 'Holder' does not fit type 'Turning': attribute 'turn' is a Spite.Function<String, Integer>, but the type needs a Spite.Function<Integer, Integer> (in TypeMemberHeldMistyped.TypeMemberHeldMistyped)

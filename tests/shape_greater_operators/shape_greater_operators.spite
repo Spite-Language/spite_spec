@@ -1,6 +1,6 @@
 type Comparable {
-    less_than(Comparable): Boolean
-    greater_than(Comparable): Boolean
+    less_than: Spite.Function<Comparable, Boolean>
+    greater_than: Spite.Function<Comparable, Boolean>
 }
 
 var console = Console()

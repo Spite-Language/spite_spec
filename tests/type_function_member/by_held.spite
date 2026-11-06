@@ -1,0 +1,21 @@
+var console = Console()
+var add: Spite.Function<Integer, Integer> = doubled
+var label: Spite.Function<String> = named
+var ping: Spite.Function<Nothing> = pinged
+var to_string: Spite.Function<String> = printed
+
+func doubled(number: Integer): Integer {
+    return number + number
+}
+
+func named(): String {
+    return "held"
+}
+
+func pinged() {
+    console.print("ping by held")
+}
+
+func printed(): String {
+    return "ByHeld"
+}

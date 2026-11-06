@@ -1,5 +1,5 @@
 type Collection {
-    sort()
+    sort: Spite.Function<Nothing>
 }
 
 var console = Console()

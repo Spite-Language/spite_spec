@@ -1,5 +1,5 @@
 type Weighed {
-    weight(): Integer
+    weight: Spite.Function<Integer>
 }
 
 var console = Console()

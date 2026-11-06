@@ -1,0 +1,1 @@
+var turn: Spite.Function<Integer, Integer>? = null

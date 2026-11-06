@@ -9,7 +9,7 @@ union Cargo {
 }
 
 type Describable {
-    describe(): String
+    describe: Spite.Function<String>
 }
 
 type Labeled {

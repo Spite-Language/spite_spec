@@ -1,7 +1,7 @@
 singleton
 
 type Counted {
-    total(): Integer
+    total: Spite.Function<Integer>
 }
 
 var tallies = List<Counted>()

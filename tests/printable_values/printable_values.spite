@@ -8,7 +8,7 @@ enum Tag {
 }
 
 type Labeled {
-    to_string(): String
+    to_string: Spite.Function<String>
 }
 
 var console = Console()

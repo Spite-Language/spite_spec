@@ -1,7 +1,7 @@
 singleton
 
 type Command {
-    apply()
+    apply: Spite.Function<Nothing>
 }
 
 var buffers = List<List<Command>>()

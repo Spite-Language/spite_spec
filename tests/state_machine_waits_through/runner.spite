@@ -1,5 +1,5 @@
 type Napping {
-    nap(): Integer
+    nap: Spite.Function<Integer>
 }
 
 var console = Console()

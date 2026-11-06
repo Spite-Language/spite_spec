@@ -1,5 +1,5 @@
 type Described {
-    to_string(): String
+    to_string: Spite.Function<String>
 }
 
 var held: Described? = null

@@ -1,0 +1,3 @@
+func turn(number: Integer): Integer {
+    return number
+}

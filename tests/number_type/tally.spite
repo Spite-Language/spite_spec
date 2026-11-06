@@ -1,11 +1,11 @@
 generic $number_type: Counted
 
 type Counted {
-    sum(Counted): Counted
-    subtract(Counted): Counted
-    remainder(Counted): Counted
-    less_than(Counted): Boolean
-    greater_than(Counted): Boolean
+    sum: Spite.Function<Counted, Counted>
+    subtract: Spite.Function<Counted, Counted>
+    remainder: Spite.Function<Counted, Counted>
+    less_than: Spite.Function<Counted, Boolean>
+    greater_than: Spite.Function<Counted, Boolean>
 }
 
 func largest(values: List<$number_type>): $number_type {

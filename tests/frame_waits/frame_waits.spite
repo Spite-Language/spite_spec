@@ -1,5 +1,5 @@
 type Ticking {
-    update()
+    update: Spite.Function<Nothing>
 }
 
 var console = Console()

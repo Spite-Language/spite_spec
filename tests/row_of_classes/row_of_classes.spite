@@ -1,5 +1,5 @@
 type Task {
-    run()
+    run: Spite.Function<Nothing>
 }
 
 var console = Console()

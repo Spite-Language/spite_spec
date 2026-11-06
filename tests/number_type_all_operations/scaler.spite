@@ -1,14 +1,14 @@
 generic $number_type: Arithmetic
 
 type Arithmetic {
-    sum(Arithmetic): Arithmetic
-    subtract(Arithmetic): Arithmetic
-    multiply(Arithmetic): Arithmetic
-    divide(Arithmetic): Arithmetic
-    remainder(Arithmetic): Arithmetic
-    less_than(Arithmetic): Boolean
-    greater_than(Arithmetic): Boolean
-    equals(Arithmetic): Boolean
+    sum: Spite.Function<Arithmetic, Arithmetic>
+    subtract: Spite.Function<Arithmetic, Arithmetic>
+    multiply: Spite.Function<Arithmetic, Arithmetic>
+    divide: Spite.Function<Arithmetic, Arithmetic>
+    remainder: Spite.Function<Arithmetic, Arithmetic>
+    less_than: Spite.Function<Arithmetic, Boolean>
+    greater_than: Spite.Function<Arithmetic, Boolean>
+    equals: Spite.Function<Arithmetic, Boolean>
 }
 
 func combine(first: $number_type, second: $number_type): String {

@@ -1,7 +1,7 @@
 singleton
 
 type Buildable {
-    build()
+    build: Spite.Function<Nothing>
 }
 
 func take(more: List<Buildable>) {

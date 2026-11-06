@@ -1,8 +1,8 @@
 type Addable {
-    sum(Addable): Addable
-    less_than(Addable): Boolean
-    greater_than(Addable): Boolean
-    describe(): String
+    sum: Spite.Function<Addable, Addable>
+    less_than: Spite.Function<Addable, Boolean>
+    greater_than: Spite.Function<Addable, Boolean>
+    describe: Spite.Function<String>
 }
 
 var console = Console()

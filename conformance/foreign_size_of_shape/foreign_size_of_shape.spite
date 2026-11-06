@@ -1,5 +1,5 @@
 type Speaker {
-    speak(): String
+    speak: Spite.Function<String>
 }
 
 var console = Console()

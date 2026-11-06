@@ -1,0 +1,5 @@
+var turn: Spite.Function<Integer, Integer> = first_turn
+
+func first_turn(number: Integer): Integer {
+    return number + 1
+}

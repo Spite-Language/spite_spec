@@ -4,11 +4,11 @@ enum Mood {
 }
 
 type Printable {
-    to_string(): String
+    to_string: Spite.Function<String>
 }
 
 type Counted {
-    count(): Integer
+    count: Spite.Function<Integer>
 }
 
 var console = Console()

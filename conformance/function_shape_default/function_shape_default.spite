@@ -1,5 +1,5 @@
 type Weapon {
-    strike(): Integer
+    strike: Spite.Function<Integer>
 }
 
 var console = Console()

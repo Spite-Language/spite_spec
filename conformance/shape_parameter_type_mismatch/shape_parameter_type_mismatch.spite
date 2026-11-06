@@ -1,5 +1,5 @@
 type Scaled {
-    scaled(Integer): Integer
+    scaled: Spite.Function<Integer, Integer>
 }
 
 var console = Console()

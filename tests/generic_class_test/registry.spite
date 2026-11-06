@@ -1,7 +1,7 @@
 singleton
 
 type AnyStorage {
-    clear()
+    clear: Spite.Function<Nothing>
 }
 
 var storages = Dictionary<String, AnyStorage>()

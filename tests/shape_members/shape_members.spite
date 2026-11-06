@@ -1,8 +1,8 @@
 type Runnable {
     name: String
     active: Boolean
-    run_once()
-    label(): String
+    run_once: Spite.Function<Nothing>
+    label: Spite.Function<String>
 }
 
 var console = Console()

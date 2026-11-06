@@ -1,0 +1,18 @@
+type Turning {
+    turn: Spite.Function<Integer, Integer>
+}
+
+func TypeMemberAssignedFunction(): Integer {
+    load "../../../spite_standard_library/windows"
+    var thing = ByFunction()
+    return change(thing)
+}
+
+func change(turning: Turning): Integer {
+    turning.turn = other
+    return turning.turn(1)
+}
+
+func other(number: Integer): Integer {
+    return number + 1
+}

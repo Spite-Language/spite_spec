@@ -1,5 +1,5 @@
 type Runnable {
-    run()
+    run: Spite.Function<Nothing>
 }
 
 var runners = List<Runnable>()
