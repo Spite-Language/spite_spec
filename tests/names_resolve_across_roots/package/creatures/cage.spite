@@ -1,0 +1,5 @@
+func label(): String {
+    var monster = Monster("cage monster")
+    var trainer = monster.owner()
+    return "{monster.name} of {trainer.name}"
+}

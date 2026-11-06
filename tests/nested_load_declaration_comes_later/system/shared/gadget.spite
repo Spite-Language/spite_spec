@@ -1,0 +1,13 @@
+var name = ""
+
+func Gadget(starting_name: String) {
+    name = starting_name
+}
+
+func describe(): String {
+    return "common {name}"
+}
+
+func shared(): String {
+    return "{name} shared"
+}

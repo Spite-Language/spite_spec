@@ -1,0 +1,7 @@
+func describe(): String {
+    return "special {name}"
+}
+
+func platform(): String {
+    return "{name} on special"
+}

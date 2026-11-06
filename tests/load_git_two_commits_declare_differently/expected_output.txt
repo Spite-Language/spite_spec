@@ -1,0 +1,6 @@
+compile exit 1
+a file beside the copies: fetching.lock
+.spite/git/repo_N/<commit>/kit/pet.spite:1: error: 'Pet.Mood' is declared one way by <first> and another by <commit>, two commits of one repository this program loads as one library (.spite/git/repo_N/<first>/kit/pet.spite:1 and .spite/git/repo_N/<commit>/kit/pet.spite:1): pin commits that agree, or declare it in the program's own files, which win
+compile exit 1
+a file beside the copies: fetching.lock
+.spite/git/repo_N/<commit>/kit/pet.spite:6: error: 'Pet.Shape' is declared one way by <first> and another by <commit>, two commits of one repository this program loads as one library (.spite/git/repo_N/<first>/kit/pet.spite:6 and .spite/git/repo_N/<commit>/kit/pet.spite:6): pin commits that agree, or declare it in the program's own files, which win

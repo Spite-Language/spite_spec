@@ -1,0 +1,3 @@
+func Anchor() {
+    load "../shared"
+}

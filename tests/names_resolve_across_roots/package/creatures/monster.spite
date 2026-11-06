@@ -1,0 +1,13 @@
+var name = ""
+
+func Monster(starting_name: String) {
+    name = starting_name
+}
+
+func owner(): Trainer {
+    return Trainer("package")
+}
+
+func describe(): String {
+    return "monster {name}"
+}

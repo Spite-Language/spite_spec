@@ -1,0 +1,11 @@
+var console = Console()
+
+func NestedLoadDeclarationComesLater() {
+    load "../../../spite_standard_library/windows"
+    load "system/special"
+    var gadget = Gadget("lever")
+    var described = gadget.describe()
+    var platform = gadget.platform()
+    var shared = gadget.shared()
+    console.print(described, platform, shared)
+}

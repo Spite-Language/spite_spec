@@ -1,0 +1,10 @@
+var name = ""
+
+func Trainer(starting_name: String) {
+    name = starting_name
+}
+
+func team(): String {
+    var monster = Monster("{name}'s")
+    return monster.describe()
+}

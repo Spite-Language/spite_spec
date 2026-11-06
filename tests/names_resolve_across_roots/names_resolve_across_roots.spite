@@ -1,0 +1,12 @@
+var console = Console()
+
+func NamesResolveAcrossRoots() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    load "mod"
+    var trainer = Creatures.Trainer("ann")
+    var team = trainer.team()
+    var cage = Creatures.Cage()
+    var label = cage.label()
+    console.print(team, label)
+}
