@@ -1,5 +1,9 @@
 func notes(): String {
-    var folder = class.source_folder()
+    var written = class.source_files.first()
+    crash written
+    var path: Path? = written.path
+    crash path
+    var folder = path.parent
     var text_path: Path? = "{folder}/notes.txt"
     crash text_path
     var text = File(text_path).read_as_string()

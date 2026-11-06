@@ -373,7 +373,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | conformance/stage6/socket_bytes | covered | tests/socket_bytes |  |
 | conformance/stage6/socket_waits | covered | tests/socket_waits |  |
 | conformance/stage6/sorting_many | covered | tests/sorting_many |  |
-| conformance/stage6/source_folder | covered | tests/source_folder |  |
+| conformance/stage6/source_folder | covered | tests/files_beside_a_class |  |
 | conformance/stage6/sparse_rows | covered | tests/sparse_rows |  |
 | conformance/stage6/specialised_elsewhere | covered | tests/specialised_elsewhere |  |
 | conformance/stage6/state_machines | not applicable (D1715) | removed | removed; last at 56e86911 |

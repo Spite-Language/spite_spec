@@ -1,6 +1,6 @@
 var console = Console()
 
-func SourceFolder() {
+func FilesBesideAClass() {
     load "../../../spite_standard_library/windows"
     load "kitchen"
     var recipe = Recipe()
@@ -13,9 +13,10 @@ func SourceFolder() {
     var labelled = shelf.label()
     console.print(labelled)
     var kind: Spite.Class = Recipe
-    var asked = kind.source_folder()
-    var folded = Recipe.source_folder()
-    console.print("asked at run time, the same folder:", asked == folded)
-    var ends = folded.ends_with("/source_folder/kitchen")
-    console.print("the folder of the package:", ends)
+    var asked = kind.source_files.first()
+    var folded = Recipe.source_files.first()
+    crash asked and folded
+    console.print("asked at run time, the same file:", asked.path == folded.path)
+    var ends = folded.path.ends_with("/files_beside_a_class/kitchen/recipe.spite")
+    console.print("the file of the package:", ends)
 }

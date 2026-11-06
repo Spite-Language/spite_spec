@@ -1,0 +1,1 @@
+conformance/source_folder_is_gone/source_folder_is_gone.spite:5: error: a class has no one folder, since a reopening may live anywhere a program loads: ask its '.source_files', every file that declares or reopens it, and its namespace's '.source_directories' (in SourceFolderIsGone.SourceFolderIsGone)

@@ -86,7 +86,7 @@ error.**
 **`.source_files` and `.source_directories` are where a class and a namespace come from**: a `File` for every file
 that declares or reopens the class, and a `Directory` for every directory a namespace's classes come from, each in
 load order. A question about a path is asked of those `File` and `Directory` values; reflection has no other path
-member but a declaration's `.source_file`, the one file a function or an attribute is written in. They are build-machine paths: a shipped program that needs the files beside a package copies them into its
+member but a declaration's `.source_file`, the one file a function or an attribute is written in. Asking a class for a `source_folder` is "a class has no one folder, since a reopening may live anywhere a program loads: ask its '.source_files', every file that declares or reopens it, and its namespace's '.source_directories'" (`conformance/source_folder_is_gone`). They are build-machine paths: a shipped program that needs the files beside a package copies them into its
 output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob/master/packages.md#files-beside-a-packages-source)).
 
 ## A class and an instance

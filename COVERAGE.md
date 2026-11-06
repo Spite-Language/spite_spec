@@ -1247,7 +1247,7 @@ Rules: 52. Covered before: 36. Covered now: 47.
 | A `load` under an `if` folds on Build fields; only the taken branch loads | tests/load_on_build | covered |
 | A condition it cannot fold is the error | conformance/load_unknown_condition | covered |
 | A `load` inside a `while` or a `switch` is an error | conformance/load_in_while | added |
-| `class.source_files` and a namespace's `source_directories` fold to the files in load order | tests/reflection_sources, tests/source_folder, tests/class_walk | covered (compiler fails: class_walk does not compile) |
+| `class.source_files` and a namespace's `source_directories` fold to the files in load order | tests/reflection_sources, tests/files_beside_a_class, tests/class_walk | covered (compiler fails: class_walk does not compile) |
 | A git load with no commit is "... names a repository without its commit ..." | conformance/load_git_without_commit | added (compiler fails: reads it as a missing folder) |
 | A pin that is not 7 to 40 hexadecimal digits is "... which is not a commit ..." | conformance/load_git_branch_pin | added (compiler fails: reports the folder name is not snake_case) |
 | A folder after the commit that leaves the repository is the error | conformance/load_git_outside_repository | added (compiler fails: reads it as a missing folder) |
