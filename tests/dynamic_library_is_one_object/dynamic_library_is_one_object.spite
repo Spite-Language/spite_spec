@@ -1,0 +1,17 @@
+var console = Console()
+var first = DynamicLibrary("ucrtbase.dll", 'identity', "")
+var second = DynamicLibrary("ucrtbase.dll", 'identity', "")
+var other_rule = DynamicLibrary("ucrtbase.dll", 'camel_case', "")
+var other_file = DynamicLibrary("kernel32.dll", 'identity', "")
+
+func DynamicLibraryIsOneObject() {
+    load "../../../spite_standard_library/windows"
+    var keeper = Keeper()
+    var kept = keeper.library
+    console.print(first == second, first == kept, first == other_rule, first == other_file)
+    console.print(first.handle == other_file.handle, first.file_name)
+    var text_length = kept.strlen("spite")
+    var text_size = other_rule.strlen("spite")
+    var process = other_file.GetCurrentProcessId()
+    console.print(text_length, text_size, process > 0)
+}
