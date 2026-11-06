@@ -1,0 +1,29 @@
+type Comparable {
+    less_than(Comparable): Boolean
+    greater_than(Comparable): Boolean
+}
+
+var console = Console()
+
+func ShapeGreaterOperators() {
+    load "../../../spite_standard_library/windows"
+    var small = Purse(3)
+    var large = Purse(8)
+    var greater = is_greater(large, small)
+    var greater_or_equal = is_greater_or_equal(small, small)
+    var greater_reversed = is_greater(small, large)
+    var less_or_equal = is_less_or_equal(large, small)
+    console.print(greater, greater_or_equal, greater_reversed, less_or_equal)
+}
+
+func is_greater(left: Comparable, right: Comparable): Boolean {
+    return left > right
+}
+
+func is_greater_or_equal(left: Comparable, right: Comparable): Boolean {
+    return left >= right
+}
+
+func is_less_or_equal(left: Comparable, right: Comparable): Boolean {
+    return left <= right
+}

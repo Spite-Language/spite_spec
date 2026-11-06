@@ -1,0 +1,1 @@
+conformance/untyped_literal_past_integer/untyped_literal_past_integer.spite:2: error: 3000000000 does not fit in an Integer, whose numbers run from -2147483648 to 2147483647: store it in a wider type, or use a number that fits (in UntypedLiteralPastInteger._attribute_defaults)

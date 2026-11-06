@@ -1,0 +1,13 @@
+var count = 0
+
+func Purse(given: Integer) {
+    count = given
+}
+
+func less_than(other: Purse): Boolean {
+    return count < other.count
+}
+
+func greater_than(other: Purse): Boolean {
+    return count > other.count
+}

@@ -1,0 +1,7 @@
+attribute
+shadowed parameter
+parameter
+inner
+1
+local
+done attribute

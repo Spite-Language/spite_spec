@@ -1,0 +1,18 @@
+enum Rank {
+    'novice'
+    'master'
+}
+
+var rank: Rank = 'novice'
+
+func Rank(from: String): Rank? {
+    fallback from != ""
+    return 'master'
+}
+
+func promote(word: String): Rank {
+    var found: Rank? = word
+    crash found
+    rank = found
+    return rank
+}

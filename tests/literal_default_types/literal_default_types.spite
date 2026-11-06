@@ -1,0 +1,11 @@
+var console = Console()
+var _decimal = 0.1
+
+func LiteralDefaultTypes() {
+    load "../../../spite_standard_library/windows"
+    var whole = 3
+    var decimal = _decimal
+    console.print(whole.class, decimal.class)
+    var tenth: Float = 0.1
+    console.print(decimal == tenth)
+}

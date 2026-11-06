@@ -1,0 +1,1 @@
+conformance/enum_literal_with_one_enum_no_context/enum_literal_with_one_enum_no_context.spite:10: error: 'calm' is an enum value literal, and no enum is expected here: declare the enum it belongs to and write it where that enum is expected (in EnumLiteralWithOneEnumNoContext.EnumLiteralWithOneEnumNoContext)

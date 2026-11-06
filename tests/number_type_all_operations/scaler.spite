@@ -1,0 +1,21 @@
+generic $number_type: Arithmetic
+
+type Arithmetic {
+    sum(Arithmetic): Arithmetic
+    subtract(Arithmetic): Arithmetic
+    multiply(Arithmetic): Arithmetic
+    divide(Arithmetic): Arithmetic
+    remainder(Arithmetic): Arithmetic
+    less_than(Arithmetic): Boolean
+    greater_than(Arithmetic): Boolean
+    equals(Arithmetic): Boolean
+}
+
+func combine(first: $number_type, second: $number_type): String {
+    var product = first * second
+    var quotient = first / second
+    var rest = first % second
+    var same = first == second
+    var smaller = first < second
+    return "{product} {quotient} {rest} {same} {smaller}"
+}

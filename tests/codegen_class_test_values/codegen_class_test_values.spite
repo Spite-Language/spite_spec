@@ -1,0 +1,39 @@
+enum Shade {
+    'light'
+    'dark'
+}
+
+var console = Console()
+var _ready = true
+
+func CodegenClassTestValues() {
+    load "../../../spite_standard_library/windows"
+    var store = Store()
+    store.add("text")
+    store.add(_ready)
+    var dark: Shade = 'dark'
+    store.add(dark)
+    var names = List<String>()
+    store.add(names)
+    var text_fetch = Fetch<String>()
+    var text = text_fetch.first(store)
+    crash text
+    console.print("text", text)
+    var boolean_fetch = Fetch<Boolean>()
+    var truth = boolean_fetch.first(store)
+    crash truth
+    console.print("boolean", truth)
+    var shade_fetch = Fetch<Shade>()
+    var shade = shade_fetch.first(store)
+    crash shade
+    console.print("shade", shade)
+    var list_fetch = Fetch<List<String>>()
+    var list = list_fetch.first(store)
+    crash list
+    var list_count = list.count()
+    console.print("list", list_count)
+    var absent: Integer? = null
+    var integer_fetch = Fetch<Integer>()
+    var absent_wanted = integer_fetch.nothing_wanted(absent)
+    console.print("null", absent_wanted)
+}

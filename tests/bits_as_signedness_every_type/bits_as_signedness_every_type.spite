@@ -1,0 +1,26 @@
+var console = Console()
+
+func BitsAsSignednessEveryType() {
+    load "../../../spite_standard_library/windows"
+    var short: Short = -1
+    var long: Long = -2
+    var integer: Integer = -1
+    var tiny: Tiny = -1
+    var short_bits = short.bits_as_unsigned()
+    var long_bits = long.bits_as_unsigned()
+    var integer_bits = integer.bits_as_unsigned()
+    var tiny_bits = tiny.bits_as_unsigned()
+    console.print(short_bits, long_bits, integer_bits, tiny_bits)
+    var byte = Byte.Largest()
+    var unsigned_short = UnsignedShort.Largest()
+    var unsigned_integer = UnsignedInteger.Largest()
+    var unsigned_long = UnsignedLong.Largest()
+    var byte_bits = byte.bits_as_signed()
+    var unsigned_short_bits = unsigned_short.bits_as_signed()
+    var unsigned_integer_bits = unsigned_integer.bits_as_signed()
+    var unsigned_long_bits = unsigned_long.bits_as_signed()
+    console.print(byte_bits, unsigned_short_bits, unsigned_integer_bits, unsigned_long_bits)
+    var minus_one = -1
+    var minus_bits = minus_one.bits_as_unsigned()
+    console.print(minus_bits)
+}

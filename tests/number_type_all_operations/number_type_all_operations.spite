@@ -1,0 +1,25 @@
+var console = Console()
+
+func NumberTypeAllOperations() {
+    load "../../../spite_standard_library/windows"
+    var whole = Scaler<Integer>()
+    var float = Scaler<Float>()
+    var byte = Scaler<Byte>()
+    var long = Scaler<Long>()
+    var first: Integer = 7
+    var second: Integer = 2
+    var whole_answer = whole.combine(first, second)
+    console.print(whole_answer)
+    var float_first: Float = 7.5
+    var float_second: Float = 2.5
+    var float_answer = float.combine(float_first, float_second)
+    console.print(float_answer)
+    var byte_first: Byte = 9
+    var byte_second: Byte = 9
+    var byte_answer = byte.combine(byte_first, byte_second)
+    console.print(byte_answer)
+    var long_first: Long = 4
+    var long_second: Long = 8
+    var long_answer = long.combine(long_first, long_second)
+    console.print(long_answer)
+}

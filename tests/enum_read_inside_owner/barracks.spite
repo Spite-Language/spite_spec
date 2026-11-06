@@ -1,0 +1,20 @@
+enum Rank {
+    'recruit'
+    'captain'
+}
+
+var rank: Rank = 'recruit'
+
+func read_text(word: String): Rank? {
+    return word
+}
+
+func read_number(number: Integer): Rank? {
+    return number
+}
+
+func assign(word: String) {
+    var found: Rank? = word
+    fallback found
+    rank = found
+}

@@ -1,0 +1,15 @@
+var console = Console()
+
+func EnumOwnerTextConversion() {
+    load "../../../spite_standard_library/windows"
+    var guild = Guild()
+    var word = "novice"
+    var promoted = guild.promote(word)
+    console.print(promoted)
+    var number = 0
+    var by_number: Guild.Rank? = number
+    console.print(by_number)
+    var empty = ""
+    var nothing: Guild.Rank? = empty
+    console.print(nothing)
+}

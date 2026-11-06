@@ -1,0 +1,32 @@
+var console = Console()
+var label = "attribute"
+
+func ShadowInInnerScope() {
+    load "../../../spite_standard_library/windows"
+    var shown = label
+    console.print(shown)
+    var picked = pick(true, "parameter")
+    console.print(picked)
+    var outer = 1
+    if outer == 1 {
+        var outer = "inner"
+        console.print(outer)
+    }
+    console.print(outer)
+    var attribute_shadow = shadow_attribute()
+    console.print(attribute_shadow, label)
+}
+
+func pick(label: Boolean, other: String): String {
+    if label {
+        var other = "shadowed {other}"
+        console.print(other)
+    }
+    return other
+}
+
+func shadow_attribute(): String {
+    var label = "local"
+    console.print(label)
+    return "done"
+}

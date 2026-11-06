@@ -1,0 +1,7 @@
+var console = Console()
+var _large = 3000000000
+
+func UntypedLiteralPastInteger() {
+    load "../../../spite_standard_library/windows"
+    console.print(_large)
+}

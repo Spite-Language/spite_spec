@@ -1,0 +1,5 @@
+var items = List<Anything>()
+
+func add(item: Anything) {
+    items.append(item)
+}
