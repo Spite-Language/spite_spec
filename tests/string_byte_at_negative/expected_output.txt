@@ -1,0 +1,3 @@
+first 116 last 97
+spite: the program stopped at tests/string_byte_at_negative/../../../spite_standard_library/common/string.spite:86 in String.byte_at, site b47037e9 (index=-1, _length=3)
+spite.frame	tests/string_byte_at_negative/string_byte_at_negative.spite:9	StringByteAtNegative	StringByteAtNegative

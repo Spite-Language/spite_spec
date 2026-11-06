@@ -1,0 +1,1 @@
+conformance/matrix_set_translation_by_name/matrix_set_translation_by_name.spite:7: error: 'set_translation' is what writing 'translation' calls: write 'matrix.translation = offset' (in MatrixSetTranslationByName.MatrixSetTranslationByName)

@@ -1,0 +1,11 @@
+var console = Console()
+
+func StringByteAtNegative() {
+    load "../../../spite_standard_library/windows"
+    var word = "tea"
+    var first = word.byte_at(0)
+    var last = word.byte_at(2)
+    console.print("first", first, "last", last)
+    var before = word.byte_at(-1)
+    console.print("never printed", before)
+}

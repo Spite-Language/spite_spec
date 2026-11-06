@@ -1,0 +1,9 @@
+var console = Console()
+
+func MatrixSetTranslationByName() {
+    load "../../../spite_standard_library/windows"
+    var matrix = Matrix4<Float>()
+    var offset = Vector3(1.0, 2.0, 3.0)
+    matrix.set_translation(offset)
+    console.print(matrix)
+}
