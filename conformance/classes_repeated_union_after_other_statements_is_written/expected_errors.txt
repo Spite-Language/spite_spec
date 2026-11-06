@@ -1,0 +1,3 @@
+conformance/classes_repeated_union_after_other_statements_is_written/pack/pack.spite:1: fixed: the union 'Pet' repeats in 2 classes of this namespace, so it lives here, in its entry class (in Pack)
+conformance/classes_repeated_union_after_other_statements_is_written/pack/first.spite:1: fixed: the union 'Pet' repeats in 2 classes of this namespace; moved it to its entry class 'Pack', and this class names it 'Pack.Pet' (in First)
+conformance/classes_repeated_union_after_other_statements_is_written/pack/second.spite:1: fixed: the union 'Pet' repeats in 2 classes of this namespace; moved it to its entry class 'Pack', and this class names it 'Pack.Pet' (in Second)

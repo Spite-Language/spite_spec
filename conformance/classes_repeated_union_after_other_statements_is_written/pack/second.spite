@@ -1,0 +1,9 @@
+union Pet {
+    Cat
+}
+
+func take(pet: Pet): String {
+    switch pet {
+        Cat: return pet.name()
+    }
+}

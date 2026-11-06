@@ -1,0 +1,7 @@
+union Pet {
+    Cat
+}
+
+func cooked(_pet: Pet): String {
+    return "alpha's"
+}
