@@ -1,0 +1,7 @@
+generic $element_type
+
+func announced(): Integer {
+    var console = Console()
+    console.print("list printing")
+    return count()
+}

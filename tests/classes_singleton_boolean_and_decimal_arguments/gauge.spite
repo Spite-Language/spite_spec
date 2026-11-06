@@ -1,0 +1,9 @@
+singleton
+
+var console = Console()
+var ratio = 0.0
+
+func Gauge(starting_ratio: Float) {
+    ratio = starting_ratio
+    console.print("made gauge", starting_ratio)
+}

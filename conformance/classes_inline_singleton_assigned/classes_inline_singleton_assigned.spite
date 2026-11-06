@@ -1,0 +1,8 @@
+var console = Console()
+var other: Console = null
+
+func ClassesInlineSingletonAssigned() {
+    load "../../../spite_standard_library/windows"
+    other = Console()
+    console.print("done")
+}

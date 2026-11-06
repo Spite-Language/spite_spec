@@ -1,0 +1,13 @@
+var console = Console()
+var on_lamp = Lamp(true)
+var off_lamp = Lamp(false)
+var again_lamp = Lamp(true)
+var half = Gauge(0.5)
+var whole = Gauge(1.0)
+var again_half = Gauge(0.5)
+
+func ClassesSingletonBooleanAndDecimalArguments() {
+    load "../../../spite_standard_library/windows"
+    console.print(on_lamp == again_lamp, on_lamp == off_lamp, half == again_half, half == whole)
+    console.print(on_lamp.lit, off_lamp.lit, half.ratio, whole.ratio)
+}

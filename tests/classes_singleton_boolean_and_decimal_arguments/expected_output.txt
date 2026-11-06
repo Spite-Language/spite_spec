@@ -1,0 +1,6 @@
+made lamp true
+made lamp false
+made gauge 0.5
+made gauge 1
+true false true false
+true false 0.5 1

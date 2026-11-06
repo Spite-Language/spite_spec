@@ -1,0 +1,13 @@
+var console = Console()
+
+func ClassesValueClassesBindSingletonLocally() {
+    load "../../../spite_standard_library/windows"
+    var number = 7
+    var numbers = [1, 2, 3]
+    var ages = Dictionary<String, Integer>()
+    ages["ada"] = 36
+    var from_number = number.announced()
+    var from_list = numbers.announced()
+    var from_dictionary = ages.announced()
+    console.print(from_number, from_list, from_dictionary)
+}

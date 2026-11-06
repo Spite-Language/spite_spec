@@ -1,0 +1,11 @@
+func trace(): Float {
+    return column_0_row_0
+}
+
+func put_corner(value: Float) {
+    column_0_row_0 = value
+}
+
+func total_with(left: Matrix4): Float {
+    return left.column_0_row_0 + column_0_row_0
+}

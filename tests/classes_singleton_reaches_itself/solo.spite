@@ -1,0 +1,8 @@
+singleton
+
+var entries = List<Entry>()
+
+func Solo() {
+    var first = Entry()
+    entries.append(first)
+}

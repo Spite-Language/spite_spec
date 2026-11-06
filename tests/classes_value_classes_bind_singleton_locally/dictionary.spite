@@ -1,0 +1,8 @@
+generic $key_type
+generic $value_type
+
+func announced(): Integer {
+    var console = Console()
+    console.print("dictionary printing")
+    return count()
+}

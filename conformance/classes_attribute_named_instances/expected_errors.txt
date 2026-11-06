@@ -1,0 +1,1 @@
+conformance/classes_attribute_named_instances/table.spite:1: error: the attribute 'instances' has a name reflection gives every object: 'Monster.instances' lists every live instance of a class, and one of its own would hide it. Name it something else, like 'table_instances' (in Table)

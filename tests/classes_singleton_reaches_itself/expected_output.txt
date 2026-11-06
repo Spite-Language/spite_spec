@@ -1,0 +1,1 @@
+spite: singleton 'Solo' binds 'Solo': singletons initialise each other in a circle

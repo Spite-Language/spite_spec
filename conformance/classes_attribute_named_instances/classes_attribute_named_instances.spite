@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassesAttributeNamedInstances() {
+    load "../../../spite_standard_library/windows"
+    var table = Table()
+    var writer = JsonWriter<Table>()
+    var text = writer.write(table)
+    console.print(text)
+}

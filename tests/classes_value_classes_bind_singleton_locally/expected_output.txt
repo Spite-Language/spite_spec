@@ -1,0 +1,4 @@
+integer printing
+list printing
+dictionary printing
+7 3 1

@@ -1,0 +1,13 @@
+var console = Console()
+
+func ClassesLibraryReopeningLegalFunctions() {
+    load "../../../spite_standard_library/windows"
+    var source = Matrix4<Float>()
+    source.put_corner(2.0)
+    var target = Matrix4<Float>()
+    target.put_corner(3.0)
+    var total = target.total_with(source)
+    var source_trace = source.trace()
+    var target_trace = target.trace()
+    console.print(source_trace, target_trace, total)
+}

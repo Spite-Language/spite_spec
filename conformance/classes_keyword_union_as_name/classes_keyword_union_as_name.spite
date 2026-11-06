@@ -1,0 +1,7 @@
+var console = Console()
+
+func ClassesKeywordUnionAsName() {
+    load "../../../spite_standard_library/windows"
+    var union = 1
+    console.print(union)
+}

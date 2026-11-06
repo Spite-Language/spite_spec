@@ -1,0 +1,5 @@
+var solo = Solo()
+
+func size(): Integer {
+    return solo.entries.count()
+}

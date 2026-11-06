@@ -1,0 +1,13 @@
+var console = Console()
+
+func ClassesStandardSingletons() {
+    load "../../../spite_standard_library/windows"
+    console.print("Console", Console.is_singleton)
+    console.print("Program", Program.is_singleton)
+    console.print("Environment", Environment.is_singleton)
+    console.print("Build", Build.is_singleton)
+    console.print("Clock", Clock.is_singleton)
+    console.print("File", File.is_singleton)
+    console.print("Directory", Directory.is_singleton)
+    console.print("Process", Process.is_singleton)
+}
