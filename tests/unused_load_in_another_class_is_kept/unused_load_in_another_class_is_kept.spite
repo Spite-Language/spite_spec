@@ -1,0 +1,8 @@
+var console = Console()
+var worker = Worker()
+
+func UnusedLoadInAnotherClassIsKept() {
+    load "../../../spite_standard_library/windows"
+    var name = worker.name()
+    console.print(name)
+}

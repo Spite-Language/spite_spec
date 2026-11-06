@@ -1,0 +1,11 @@
+var size = 3
+
+func Shelf() {
+    size = size + 0
+}
+
+var width = 2
+
+func count(): Integer {
+    return size * width
+}

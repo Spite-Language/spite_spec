@@ -1,0 +1,10 @@
+var size = 3   
+
+
+
+func count(): Integer {
+
+    return size * 2  
+
+
+}

@@ -1,0 +1,4 @@
+# gone.spite
+func FinalClassesLinkToAMissingSpiteFile() {
+    load "../../../spite_standard_library/common"
+}

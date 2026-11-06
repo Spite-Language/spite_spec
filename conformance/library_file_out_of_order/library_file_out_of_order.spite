@@ -1,0 +1,9 @@
+var console = Console()
+
+func LibraryFileOutOfOrder() {
+    load "../../../spite_standard_library/windows"
+    load "spite_standard_library/linux"
+    var shelf = Shelf()
+    var count = shelf.count()
+    console.print(count)
+}

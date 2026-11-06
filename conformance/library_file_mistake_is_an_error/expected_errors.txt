@@ -1,0 +1,1 @@
+conformance/library_file_mistake_is_an_error/spite_standard_library/linux/shelf.spite:4: error: the variable 'doubleSize' must be written in snake_case: lowercase words joined by underscores (in Shelf.count)

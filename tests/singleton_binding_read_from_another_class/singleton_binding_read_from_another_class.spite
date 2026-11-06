@@ -1,0 +1,6 @@
+var holder = Holder()
+
+func SingletonBindingReadFromAnotherClass() {
+    load "../../../spite_standard_library/windows"
+    holder.console.print("read from the entry class")
+}

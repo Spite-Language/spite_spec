@@ -1,0 +1,1 @@
+conformance/final_classes_link_to_a_missing_spite_file/final_classes_link_to_a_missing_spite_file.spite:1: error: this comment links to 'gone.spite', which does not exist (the path is relative to the folder of the file the comment is in, like load) (in FinalClassesLinkToAMissingSpiteFile)

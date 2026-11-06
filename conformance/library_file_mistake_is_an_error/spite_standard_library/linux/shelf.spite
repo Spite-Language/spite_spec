@@ -1,0 +1,6 @@
+var size = 3
+
+func count(): Integer {
+    var doubleSize = size * 2
+    return doubleSize + 1
+}

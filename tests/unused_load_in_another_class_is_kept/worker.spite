@@ -1,0 +1,7 @@
+func Worker() {
+    load "helpers"
+}
+
+func name(): String {
+    return "worker"
+}
