@@ -1,0 +1,1 @@
+conformance/call_result_method_in_argument/call_result_method_in_argument.spite:7: error: 'source.trim().upper_case()' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name (in CallResultMethodInArgument.CallResultMethodInArgument)

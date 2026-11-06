@@ -1,0 +1,13 @@
+var console = Console()
+var label = "name"
+
+func FailingStatementHidesUnreadAttribute() {
+    load "../../../spite_standard_library/windows"
+    console.print("start")
+    show()
+}
+
+func show() {
+    var shown = label.missing_function()
+    console.print(shown)
+}

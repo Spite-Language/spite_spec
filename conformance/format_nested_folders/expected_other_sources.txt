@@ -1,0 +1,2 @@
+paint/tint.spite
+paint/inks/ink.spite

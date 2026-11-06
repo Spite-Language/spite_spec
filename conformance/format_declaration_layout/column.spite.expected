@@ -1,0 +1,7 @@
+singleton
+
+generic $first_type
+generic $second_type
+
+var values = List<$first_type>()
+var moods = List<$second_type>()

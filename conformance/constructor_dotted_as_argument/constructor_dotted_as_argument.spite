@@ -1,0 +1,11 @@
+var console = Console()
+
+func ConstructorDottedAsArgument() {
+    load "../../../spite_standard_library/windows"
+    var total = score_of(Game.Player())
+    console.print(total)
+}
+
+func score_of(player: Game.Player): Integer {
+    return player.score
+}

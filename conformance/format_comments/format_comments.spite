@@ -1,0 +1,14 @@
+#notes.md#notes
+
+var console = Console()
+
+#   notes.md#why-this-program-exists
+func FormatComments() {
+    load "../../../spite_standard_library/windows"
+    show()
+}
+
+#notes.md#notes
+func show() {
+    console.print("comments are printed with one space after the hash")
+}

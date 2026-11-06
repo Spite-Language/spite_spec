@@ -1,0 +1,9 @@
+var count = 1
+
+func Counter(start: Integer) {
+    count = start
+}
+
+func to_string(): String {
+    return "counter {count}"
+}

@@ -1,0 +1,14 @@
+var console = Console()
+
+func ConstructorArgumentInHole() {
+    load "../../../spite_standard_library/windows"
+    console.print("{reads(Counter(1))} read")
+}
+
+func reads(counter: Counter): Boolean {
+    return counter.count > 0
+}
+
+func show(counter: Counter) {
+    console.print(counter.count)
+}

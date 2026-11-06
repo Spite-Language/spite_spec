@@ -1,0 +1,1 @@
+conformance/unread_underscore_local/unread_underscore_local.spite:5: error: '_spare' is never read: remove it (in UnreadUnderscoreLocal.UnreadUnderscoreLocal)

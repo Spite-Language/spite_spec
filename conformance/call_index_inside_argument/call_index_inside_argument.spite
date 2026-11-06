@@ -1,0 +1,12 @@
+var console = Console()
+var names = List<String>()
+
+func CallIndexInsideArgument() {
+    load "../../../spite_standard_library/windows"
+    names.append("ann")
+    console.print(names[index_of("ann")])
+}
+
+func index_of(name: String): Integer {
+    return name.length()
+}

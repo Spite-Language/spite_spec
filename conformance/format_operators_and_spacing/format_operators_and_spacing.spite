@@ -1,0 +1,19 @@
+var console = Console()
+
+func FormatOperatorsAndSpacing() {
+    load "../../../spite_standard_library/windows"
+    var first=1
+    var second = 2
+    var third=3
+    var total = first+second*third
+    var grouped = (first+second)*third
+    var extra = (first*second)+third
+    var doubled = ((first))+(second)
+    var small = not (first>second and second>third)
+    var either = (first<second) or (second<third)
+    var names = ["ann" ,"bo","cy"]
+    var other: Integer = third
+    var picked = names[ 1 ]
+    console.print( total,grouped,extra,doubled )
+    console.print( small , either , other , picked )
+}

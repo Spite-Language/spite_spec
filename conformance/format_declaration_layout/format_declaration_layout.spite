@@ -1,0 +1,25 @@
+var console = Console()
+var columns = Column<Health, Spare>()
+var first=1
+
+var second=2
+var third = 3
+
+
+
+
+func FormatDeclarationLayout() {
+
+    load "../../../spite_standard_library/windows"
+    var health = Health()
+    columns.values.append(health)
+
+    var spare = Spare()
+    columns.moods.append(spare)
+    var total = columns.values.count()
+
+
+    console.print(total, first, second, third, health.points, spare.points)
+
+}
+func other() { }

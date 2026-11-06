@@ -1,0 +1,35 @@
+var console = Console()
+var count = 3
+
+func FormatBracesAndCases() {
+    load "../../../spite_standard_library/windows"
+    describe(true)
+    switch count > 2 {
+        true: 
+          console.print("many")
+        false:
+          console.print("few")
+    }
+    if count > 5 {
+    }
+    if count > 1 {
+        console.print("some")
+    }
+    else if count > 0 {
+        console.print("one")
+    }
+    else {
+        console.print("none")
+    }
+    if count > 8 {
+        console.print("big")
+    } else {
+    }
+}
+
+func describe(flag: Boolean): Nothing {
+    if flag { console.print("yes") }
+}
+
+func nothing() {
+}

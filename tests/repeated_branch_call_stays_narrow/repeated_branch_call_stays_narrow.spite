@@ -1,0 +1,70 @@
+var console = Console()
+var source = "12 apples"
+var words = List<String>()
+
+func RepeatedBranchCallStaysNarrow() {
+    load "../../../spite_standard_library/windows"
+    made_in_both(true)
+    assigned_first(true)
+    called_after_a_nested_if(true, true)
+    right_of_or(true, false)
+    var joined = words.join(",")
+    console.print(joined)
+}
+
+func made_in_both(flag: Boolean) {
+    if flag {
+        var counter = Counter(2)
+        var text = counter.to_string()
+        words.append(text)
+    } else {
+        var counter = Counter(2)
+        var text = counter.to_string()
+        words.append(text)
+    }
+}
+
+func assigned_first(flag: Boolean) {
+    var start = 0
+    if flag {
+        start = 1
+        var found = label_of(start)
+        words.append(found)
+    } else {
+        start = 1
+        var found = label_of(start)
+        words.append(found)
+    }
+}
+
+func called_after_a_nested_if(flag: Boolean, other: Boolean) {
+    if flag {
+        if other {
+            words.append("nested")
+        }
+        var found = label_of(2)
+        words.append(found)
+    } else {
+        if other {
+            words.append("nested")
+        }
+        var found = label_of(2)
+        words.append(found)
+    }
+}
+
+func right_of_or(flag: Boolean, other: Boolean) {
+    if flag {
+        var found = other or source.contains("12")
+        var text = found.to_string()
+        words.append(text)
+    } else {
+        var found = other or source.contains("12")
+        var text = found.to_string()
+        words.append(text)
+    }
+}
+
+func label_of(number: Integer): String {
+    return "n{number}"
+}

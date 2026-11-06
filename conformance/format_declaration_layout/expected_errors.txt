@@ -1,0 +1,2 @@
+formatted conformance/format_declaration_layout/format_declaration_layout.spite
+formatted conformance/format_declaration_layout/column.spite

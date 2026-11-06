@@ -1,0 +1,17 @@
+var console = Console()
+
+func FormatLongLines() {
+    load "../../../spite_standard_library/windows"
+    var names = ["alphabetical", "bravo", "charlie", "delta", "echo", "foxtrot", "golf", "hotel", "india", "juliet", "kilo"]
+    var first_of_the_numbers = names.count()
+    var second_of_the_numbers = 2
+    var third_of_the_numbers = 3
+    var fourth_of_the_numbers = 4
+    var fifth_of_the_numbers = 5
+    var total = add_everything(first_of_the_numbers, second_of_the_numbers, third_of_the_numbers, fourth_of_the_numbers, fifth_of_the_numbers)
+    console.print(total)
+}
+
+func add_everything(first_number: Integer, second_number: Integer, third_number: Integer, fourth_number: Integer, fifth_number: Integer): Integer {
+    return first_number + second_number + third_number + fourth_number + fifth_number
+}

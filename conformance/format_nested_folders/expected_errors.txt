@@ -1,0 +1,2 @@
+formatted conformance/format_nested_folders/paint/tint.spite
+formatted conformance/format_nested_folders/paint/inks/ink.spite

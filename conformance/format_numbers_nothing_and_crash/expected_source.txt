@@ -1,0 +1,17 @@
+var console = Console()
+
+func FormatNumbersNothingAndCrash() {
+    load "../../../spite_standard_library/windows"
+    var ratio = 1.50
+    var tiny = 0.50
+    var big = 1000000
+    var total = ratio + tiny + big
+    console.print(total)
+    stop(false)
+}
+
+func stop(flag: Boolean) {
+    if flag {
+        crash
+    }
+}

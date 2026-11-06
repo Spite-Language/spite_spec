@@ -1,0 +1,11 @@
+var console = Console()
+
+func UnreadUnderscoreLocal() {
+    load "../../../spite_standard_library/windows"
+    var _spare = count_things()
+    console.print("done")
+}
+
+func count_things(): Integer {
+    return 3
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func ConstructorGenericAsArgument() {
+    load "../../../spite_standard_library/windows"
+    var total = count_of(List<String>())
+    console.print(total)
+}
+
+func count_of(items: List<String>): Integer {
+    return items.count()
+}

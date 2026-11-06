@@ -1,0 +1,1 @@
+conformance/constructor_argument_in_if/constructor_argument_in_if.spite:5: error: 'Counter(1)' is constructed inside an argument of 'reads': a constructor call is never an argument, so make it first on a line of its own, 'var counter = Counter(1)', and pass 'counter' (in ConstructorArgumentInIf.ConstructorArgumentInIf)

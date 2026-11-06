@@ -1,0 +1,1 @@
+conformance/call_index_inside_argument/call_index_inside_argument.spite:7: error: 'index_of("ann")' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name (in CallIndexInsideArgument.CallIndexInsideArgument)

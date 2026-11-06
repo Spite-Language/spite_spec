@@ -1,0 +1,10 @@
+var console = Console()
+
+func FormatNestedFolders() {
+    load "../../../spite_standard_library/windows"
+    var tint = Paint.Tint()
+    var ink = Paint.Inks.Ink()
+    var shown = tint.describe()
+    var drawn = ink.describe()
+    console.print(shown, drawn)
+}

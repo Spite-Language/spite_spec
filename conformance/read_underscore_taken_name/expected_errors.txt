@@ -1,0 +1,1 @@
+conformance/read_underscore_taken_name/read_underscore_taken_name.spite:6: error: '_counted' is read, so it must not start with an underscore: only a parameter the body ignores is named that way (in ReadUnderscoreTakenName.ReadUnderscoreTakenName)

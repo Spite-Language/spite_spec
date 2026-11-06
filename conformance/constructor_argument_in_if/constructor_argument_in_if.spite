@@ -1,0 +1,16 @@
+var console = Console()
+
+func ConstructorArgumentInIf() {
+    load "../../../spite_standard_library/windows"
+    if reads(Counter(1)) {
+        console.print("yes")
+    }
+}
+
+func reads(counter: Counter): Boolean {
+    return counter.count > 0
+}
+
+func show(counter: Counter) {
+    console.print(counter.count)
+}

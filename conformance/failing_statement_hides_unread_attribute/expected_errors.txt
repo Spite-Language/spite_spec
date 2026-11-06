@@ -1,0 +1,1 @@
+conformance/failing_statement_hides_unread_attribute/failing_statement_hides_unread_attribute.spite:11: error: a String has no attribute or function 'missing_function' (in FailingStatementHidesUnreadAttribute.show)

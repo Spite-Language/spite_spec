@@ -1,0 +1,1 @@
+conformance/constructor_generic_as_argument/constructor_generic_as_argument.spite:5: error: 'List<String>()' is constructed inside an argument of 'count_of': a constructor call is never an argument, so make it first on a line of its own, 'var list = List<String>()', and pass 'list' (in ConstructorGenericAsArgument.ConstructorGenericAsArgument)

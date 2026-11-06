@@ -413,7 +413,50 @@ func check_formatted_once(folder: String, copy: String, flags: String) {
         fail(folder, "compiling the formatted program again did not pass silently: {printed}")
         return
     }
+    fallback source_is_as_expected(folder, copy)
     passed = passed + 1
+}
+
+func source_is_as_expected(folder: String, copy: String): Boolean {
+    var parts = folder.split("/")
+    var name = parts.last()
+    crash name
+    var entry_is_right = source_matches(folder, copy, "{name}.spite", "expected_source.txt")
+    fallback entry_is_right
+    var others = optional_text(folder, "expected_other_sources.txt")
+    var paths = others.split("\n")
+    var index = 0
+    while index < paths.count() {
+        var path = paths[index]
+        var right = true
+        if not path.is_empty() {
+            right = source_matches(folder, copy, path, "{path}.expected")
+        }
+        fallback right
+        index = index + 1
+    }
+    return true
+}
+
+func source_matches(folder: String, copy: String, written_name: String, expected_name: String): Boolean {
+    var asked = File("{folder}/{expected_name}")
+    if not asked.exists() {
+        return true
+    }
+    var wanted = exact_text(folder, expected_name)
+    var written = exact_text(copy, written_name)
+    if written == wanted {
+        return true
+    }
+    fail(folder, "the formatted {written_name} differs\n  expected: {wanted}\n  got:      {written}")
+    return false
+}
+
+func exact_text(folder: String, name: String): String {
+    var file = File("{folder}/{name}")
+    var text = file.read_as_string()
+    fallback text
+    return text.replace("\r", "")
 }
 
 func only_formatting(wanted: String): Boolean {

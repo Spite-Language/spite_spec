@@ -1,0 +1,1 @@
+conformance/call_negation_receiver/call_negation_receiver.spite:6: error: '(not done).to_string(...)' calls a function on a value computed in place: name it first ('var named = not done') and call 'named.to_string(...)', since only a name calls a function (in CallNegationReceiver.CallNegationReceiver)
