@@ -1,0 +1,1 @@
+conformance/copy_to_narrow_with_two_locals_of_one_name/copy_to_narrow_with_two_locals_of_one_name.spite:8: error: 'copy' only copies 'first' so it can be narrowed: narrow 'first' itself ('fallback first') and use it directly (in CopyToNarrowWithTwoLocalsOfOneName.CopyToNarrowWithTwoLocalsOfOneName)

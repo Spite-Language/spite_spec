@@ -1,0 +1,11 @@
+var across = 0
+var down = 0
+
+func Displacement(starting_across: Integer, starting_down: Integer) {
+    across = starting_across
+    down = starting_down
+}
+
+func equals(other: Displacement): Boolean {
+    return across == other.across
+}

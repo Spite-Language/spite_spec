@@ -1,0 +1,17 @@
+var console = Console()
+
+func CopyToNarrowWithTwoLocalsOfOneName() {
+    load "../../../spite_standard_library/windows"
+    var names = List<String>()
+    names.append("a")
+    var first = names.first()
+    var copy = first
+    if copy {
+        console.print(copy)
+    }
+    var copy_again = first
+    var copy = names.first()
+    if copy {
+        console.print(copy)
+    }
+}

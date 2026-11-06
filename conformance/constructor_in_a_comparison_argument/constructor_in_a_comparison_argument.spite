@@ -1,0 +1,8 @@
+var console = Console()
+
+func ConstructorInAComparisonArgument() {
+    load "../../../spite_standard_library/windows"
+    var first = Displacement(1, 2)
+    var second = Displacement(1, 2)
+    console.print(first == Displacement(1, 2), second.across)
+}
