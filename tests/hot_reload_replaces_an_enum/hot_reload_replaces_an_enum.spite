@@ -1,0 +1,15 @@
+var console = Console()
+var build = Build()
+var palette = Palette()
+
+func HotReloadReplacesAnEnum() {
+    load "../../../spite_standard_library/windows"
+    var count = palette.shade_count()
+    console.print(count)
+    var file = File("{build.program}/palette.spite")
+    var text = "enum Shade \{\n    'red'\n    'blue'\n    'green'\n}\n\nfunc shade_count(): Integer \{\n    return Shade.values.count()\n}\n"
+    var written = file.write_string(text)
+    if not written {
+        console.print("palette.spite could not be written")
+    }
+}

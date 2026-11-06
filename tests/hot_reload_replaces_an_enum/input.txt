@@ -1,0 +1,3 @@
+reload
+palette.shade_count()
+exit

@@ -1,0 +1,8 @@
+enum Shade {
+    'red'
+    'blue'
+}
+
+func shade_count(): Integer {
+    return Shade.values.count()
+}
