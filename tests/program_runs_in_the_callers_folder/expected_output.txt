@@ -1,0 +1,5 @@
+wrote note.txt
+exit code 0
+note.txt in the folder the compiler ran in true
+note.txt in the folder of this test false
+.spite in the folder the compiler ran in true

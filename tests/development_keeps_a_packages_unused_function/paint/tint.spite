@@ -1,0 +1,9 @@
+var name = "red"
+
+func describe(): String {
+    return "tint {name}"
+}
+
+func unused(): String {
+    return "nobody calls this {name}"
+}

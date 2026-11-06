@@ -1,0 +1,1 @@
+conformance/parse_error_is_not_formatted/parse_error_is_not_formatted.spite:7: error: expected a value and found '}'

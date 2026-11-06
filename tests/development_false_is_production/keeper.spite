@@ -1,0 +1,9 @@
+var count = 2
+
+func used(): Integer {
+    return count
+}
+
+func unused(): Integer {
+    return count * 3
+}

@@ -1,0 +1,6 @@
+no variable
+optimized false
+exit code 0
+OPTIMIZED=true
+optimized true
+exit code 0

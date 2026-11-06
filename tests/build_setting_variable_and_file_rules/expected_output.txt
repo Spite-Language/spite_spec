@@ -1,0 +1,6 @@
+.env with a name that is no field
+volume 4
+exit code 0
+variable that does not fit
+error: 'VOLUME=many' in the environment sets 'Build.volume', which is an Integer: a whole number, like VOLUME=3
+exit code 1

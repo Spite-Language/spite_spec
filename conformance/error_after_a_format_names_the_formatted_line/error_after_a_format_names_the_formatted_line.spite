@@ -1,0 +1,10 @@
+var console = Console()
+
+func ErrorAfterAFormatNamesTheFormattedLine() {
+    load "../../../spite_standard_library/windows"
+    var name = "ada"
+
+
+    console.print(name)
+    console.print(missing_name)
+}

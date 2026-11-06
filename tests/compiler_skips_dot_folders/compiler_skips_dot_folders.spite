@@ -1,0 +1,52 @@
+var console = Console()
+var program = Program()
+var folder = ".spite/dot_folders"
+
+func CompilerSkipsDotFolders() {
+    load "../../../spite_standard_library/windows"
+    write_the_program()
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var no_arguments = List<String>()
+    var running = Process(compiler, no_arguments)
+    running.working_directory = folder
+    running.with_errors = true
+    var code = running.run()
+    crash code
+    var printed_text = running.read_output_as_string()
+    crash printed_text
+    var printed = printed_text.trim()
+    console.print(printed)
+    console.print("exit code", code)
+}
+
+func write_the_program() {
+    var made = Directory(folder)
+    if not made.exists() {
+        crash made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("")
+    lines.append("func DotFolders() \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append("    console.print(\"compiled\")")
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/dot_folders.spite")
+    var joined = lines.join("\n")
+    crash entry.write_string(joined)
+    var names = [".spite", ".spite-cache", ".git"]
+    var index = 0
+    while index < names.count() {
+        var name = names[index]
+        var inner = Directory("{folder}/{name}")
+        if not inner.exists() {
+            crash inner.create()
+        }
+        var broken = File("{folder}/{name}/broken.spite")
+        crash broken.write_string("this is not a program\n")
+        index = index + 1
+    }
+}

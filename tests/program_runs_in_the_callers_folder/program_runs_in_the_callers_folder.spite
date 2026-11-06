@@ -1,0 +1,55 @@
+var console = Console()
+var program = Program()
+var folder = ".spite/callers_folder"
+
+func ProgramRunsInTheCallersFolder() {
+    load "../../../spite_standard_library/windows"
+    write_the_program()
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var no_arguments = List<String>()
+    var running = Process(compiler, no_arguments)
+    running.working_directory = folder
+    running.with_errors = true
+    var code = running.run()
+    crash code
+    var printed_text = running.read_output_as_string()
+    crash printed_text
+    var printed = printed_text.trim()
+    console.print(printed)
+    console.print("exit code", code)
+    var note = File("{folder}/note.txt")
+    var beside = note.exists()
+    console.print("note.txt in the folder the compiler ran in", beside)
+    var elsewhere = File("note.txt")
+    var here_too = elsewhere.exists()
+    console.print("note.txt in the folder of this test", here_too)
+    var outputs = Directory("{folder}/.spite")
+    var made = outputs.exists()
+    console.print(".spite in the folder the compiler ran in", made)
+}
+
+func write_the_program() {
+    var made = Directory(folder)
+    if not made.exists() {
+        crash made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("")
+    lines.append("func CallersFolder() \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append("    var note = File(\"note.txt\")")
+    lines.append("    crash note.write_string(\"written\")")
+    lines.append("    console.print(\"wrote note.txt\")")
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/callers_folder.spite")
+    var joined = lines.join("\n")
+    crash entry.write_string(joined)
+    var old = File("{folder}/note.txt")
+    if old.exists() {
+        crash old.remove()
+    }
+}
