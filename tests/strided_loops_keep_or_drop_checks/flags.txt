@@ -1,0 +1,1 @@
+--optimization-report=.spite/reports/strided_loops_keep_or_drop_checks.md 
