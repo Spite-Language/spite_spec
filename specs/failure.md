@@ -192,9 +192,9 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   watcher`, `if not watcher`, `while watcher`, `fallback watcher and ready`; `diagnostics/copy_to_narrow_conditions`),
   is never assigned again, is not a `var` with a written type in a generic class (there it converts for some
   instance, as `var key: $value_type.key_type? = key_text` does), and whose source is not assigned later in the function either (a snapshot taken
-  before the source changes is not a copy for narrowing). Nor is a local whose source a call may write between the copy and a read of the
+  before the source changes is not a copy for narrowing). Nor is a local whose source a call, or a write to the same attribute through any object, may change between the copy and a read of the
   local, the one question `narrowings_kept_across_calls` asks of a narrowed attribute: there the copy is what keeps the value, so it is
-  neither refused nor rewritten (`tests/copy_keeps_a_value_across_a_call`). A local holding what a `[]` read answered (`var age =
+  neither refused nor rewritten (`tests/copy_keeps_a_value_across_a_call`, `tests/copy_keeps_a_value_past_a_write`). A local holding what a `[]` read answered (`var age =
   ages[name]`, `var cell = grid[row].cells[column]`) is not a copy: it is narrowed instead of reading the key twice.
 - A check on something that cannot be null proves nothing and is an error naming the fix: `fallback tracker`
   written twice, or `crash` on a path an earlier `crash` already narrowed (`diagnostics/check_proves_nothing`).
@@ -371,6 +371,10 @@ How a read is proven:
   since the call could answer something else the second time. A call *between* the check and the read undoes it
   only when the call may change the list or what the index reads (next). `conformance/stage6/structural_index`,
   `diagnostics/structural_index_undone`.
+- **A write to the attribute through another object undoes the proof too**, since `alias` may be `shelf`: after `fallback shelf.item`,
+  `alias.item = null` makes a read of `shelf.item` an error, "'shelf.item' was proven before line 17, where a write through another
+  object may assign 'item' again, so this read would use what that write left there, unproven: prove 'shelf.item' again after that line"
+  (`conformance/narrowed_past_a_write_through_another_object`). A write to the same path is followed as an assignment, and a write to an object made in the same function reaches nothing proven (`tests/narrowed_past_a_write_to_a_new_object`).
 - **A call undoes a proof only if it may change what the proof depends on**, with no `const` keyword to declare:
   the compiler is smart enough to tell whether going down into that function has any chance of altering the value.
   This covers every proof, a
