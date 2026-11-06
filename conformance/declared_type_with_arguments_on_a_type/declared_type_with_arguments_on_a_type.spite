@@ -1,0 +1,15 @@
+type Phase {
+    total: Integer
+}
+
+var console = Console()
+
+func DeclaredTypeWithArgumentsOnAType() {
+    load "../../../spite_standard_library/windows"
+    var filler = Filler()
+    show(filler)
+}
+
+func show(phase: Phase<Integer>) {
+    console.print(phase.total)
+}

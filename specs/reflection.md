@@ -149,7 +149,12 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   > before the arguments", and a name that takes none, a plain class, an enum, a namespace or a number class, is
   "'Monster' is not a generic class, so it takes no type in '<>': write 'Monster' alone"
   (`conformance/generic_named_wrong_count`, `conformance/generic_named_without_arguments`,
-  `conformance/generic_named_on_a_plain_name`, `conformance/generic_named_on_an_enum`).
+  `conformance/generic_named_on_a_plain_name`, `conformance/generic_named_on_an_enum`). A declared type refuses them
+  in the same words wherever it is read, an attribute, a local, a parameter, an answer, a list's element or a generic
+  argument, when it names an enum, a union, a `type` or a number class: `var phase: Phase<Integer> = 'idle'` is
+  "'Phase' is not a generic class, so it takes no type in '<>': write 'Phase' alone"
+  (`conformance/declared_type_with_arguments_on_an_enum`, `_on_a_union`, `_on_a_type`, `_in_a_list`, `_on_an_answer`,
+  `_on_an_attribute`, `_on_a_number`).
 - **A class name where a `Spite.Class` is wanted is its class object**: an argument, `var kind: Spite.Class =
   Health`, an assignment to such a name and a `return` from a function returning one; a codegen value bound to a
   class passes the same way. Anywhere else (`var kind = Health`, an argument whose parameter is a `type`) a bare

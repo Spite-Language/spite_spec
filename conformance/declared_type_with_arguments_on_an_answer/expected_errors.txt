@@ -1,0 +1,1 @@
+conformance/declared_type_with_arguments_on_an_answer/declared_type_with_arguments_on_an_answer.spite:14: error: 'Phase' is not a generic class, so it takes no type in '<>': write 'Phase' alone

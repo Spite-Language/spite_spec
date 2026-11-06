@@ -1,0 +1,17 @@
+union Phase {
+    Circle
+    Square
+}
+
+var console = Console()
+
+func DeclaredTypeWithArgumentsOnAUnion() {
+    load "../../../spite_standard_library/windows"
+    var circle = Circle()
+    var phase: Phase<Integer> = circle
+    show(phase)
+}
+
+func show(phase: Phase) {
+    console.print("shown")
+}

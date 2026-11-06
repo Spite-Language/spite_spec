@@ -1,0 +1,16 @@
+enum Phase {
+    'idle'
+    'angry'
+}
+
+var console = Console()
+
+func DeclaredTypeWithArgumentsOnAnAnswer() {
+    load "../../../spite_standard_library/windows"
+    var held = given()
+    console.print(held)
+}
+
+func given(): Phase<Integer> {
+    return 'idle'
+}

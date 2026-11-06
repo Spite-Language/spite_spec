@@ -1,0 +1,1 @@
+conformance/declared_type_with_arguments_on_an_attribute/declared_type_with_arguments_on_an_attribute.spite:6: error: 'Phase' is not a generic class, so it takes no type in '<>': write 'Phase' alone

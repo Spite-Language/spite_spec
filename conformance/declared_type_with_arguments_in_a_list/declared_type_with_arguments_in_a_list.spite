@@ -1,0 +1,13 @@
+enum Phase {
+    'idle'
+    'angry'
+}
+
+var console = Console()
+
+func DeclaredTypeWithArgumentsInAList() {
+    load "../../../spite_standard_library/windows"
+    var phases = List<Phase<Integer>>()
+    var counted = phases.count()
+    console.print(counted)
+}
