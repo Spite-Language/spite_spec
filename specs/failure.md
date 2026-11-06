@@ -371,10 +371,10 @@ How a read is proven:
   since the call could answer something else the second time. A call *between* the check and the read undoes it
   only when the call may change the list or what the index reads (next). `conformance/stage6/structural_index`,
   `diagnostics/structural_index_undone`.
-- **A write to the attribute through another object undoes the proof too**, since `alias` may be `shelf`: after `fallback shelf.item`,
+- **A write to the attribute through another object undoes the proof when it could break it**, since `alias` may be `shelf`: after `fallback shelf.item`,
   `alias.item = null` makes a read of `shelf.item` an error, "'shelf.item' was proven before line 17, where a write through another
   object may assign 'item' again, so this read would use what that write left there, unproven: prove 'shelf.item' again after that line"
-  (`conformance/narrowed_past_a_write_through_another_object`). A write to the same path is followed as an assignment, and a write to an object made in the same function reaches nothing proven (`tests/narrowed_past_a_write_to_a_new_object`).
+  (`conformance/narrowed_past_a_write_through_another_object`). A write of a value of the narrowed type leaves the proof true, and the read answers what is there now (`tests/narrowed_past_a_present_write`). A write to the same path is followed as an assignment, and a write to an object made in the same function reaches nothing proven (`tests/narrowed_past_a_write_to_a_new_object`).
 - **A call undoes a proof only if it may change what the proof depends on**, with no `const` keyword to declare:
   the compiler is smart enough to tell whether going down into that function has any chance of altering the value.
   This covers every proof, a

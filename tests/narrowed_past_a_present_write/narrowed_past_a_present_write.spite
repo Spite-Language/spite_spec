@@ -1,0 +1,21 @@
+var console = Console()
+
+func NarrowedPastAPresentWrite() {
+    load "../../../spite_standard_library/windows"
+    var shelf = kept_shelf()
+    var other = Item()
+    other.number = 2
+    show(shelf, shelf, other)
+}
+
+func kept_shelf(): Shelf {
+    var shelf = Shelf()
+    shelf.item = Item()
+    return shelf
+}
+
+func show(shelf: Shelf, alias: Shelf, other: Item) {
+    fallback shelf.item
+    alias.item = other
+    console.print(shelf.item.number)
+}
