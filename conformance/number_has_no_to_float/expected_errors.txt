@@ -1,0 +1,1 @@
+conformance/number_has_no_to_float/number_has_no_to_float.spite:6: error: an Integer has no attribute or function 'to_float' (in NumberHasNoToFloat.NumberHasNoToFloat)
