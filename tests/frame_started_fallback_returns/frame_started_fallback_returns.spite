@@ -1,0 +1,18 @@
+var console = Console()
+var program = Program()
+var worker = Worker()
+var frames = 0
+
+func FrameStartedFallbackReturns() {
+    load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not worker.finished {
+        frames = frames + 1
+        if frames == 1 {
+            worker.go()
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("the call was started:", frames > 1)
+    console.print("a failed fallback returned from the started function:", not worker.reached_the_end)
+}

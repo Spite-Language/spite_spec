@@ -1,0 +1,1 @@
+conformance/foreign_external_keyword_is_gone/foreign_external_keyword_is_gone.spite:1: error: a file holds declarations and nothing else, so a statement cannot stand here

@@ -1,0 +1,4 @@
+func SchedulerCannotBeNamed() {
+    load "../../../spite_standard_library/windows"
+    var running = Scheduler()
+}

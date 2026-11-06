@@ -1,0 +1,12 @@
+var program = Program()
+var ready = false
+var reached_the_end = false
+var finished = false
+
+func go() {
+    var thirty_milliseconds = Duration(30, 'milliseconds')
+    program.sleep(thirty_milliseconds)
+    finished = true
+    fallback ready
+    reached_the_end = true
+}

@@ -1,0 +1,2 @@
+the call was started: true
+a failed fallback returned from the started function: true

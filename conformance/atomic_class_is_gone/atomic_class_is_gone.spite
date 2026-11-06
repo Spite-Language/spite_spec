@@ -1,0 +1,4 @@
+func AtomicClassIsGone() {
+    load "../../../spite_standard_library/windows"
+    var counter = Atomic<Integer>()
+}

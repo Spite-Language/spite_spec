@@ -1,0 +1,1 @@
+conformance/lock_class_is_gone/lock_class_is_gone.spite:3: error: unknown type 'Lock' (in LockClassIsGone.LockClassIsGone)

@@ -1,0 +1,4 @@
+func ThreadLocalClassIsGone() {
+    load "../../../spite_standard_library/windows"
+    var slot = ThreadLocal<Integer>()
+}

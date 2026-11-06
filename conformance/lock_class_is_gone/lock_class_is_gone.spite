@@ -1,0 +1,4 @@
+func LockClassIsGone() {
+    load "../../../spite_standard_library/windows"
+    var guard = Lock()
+}
