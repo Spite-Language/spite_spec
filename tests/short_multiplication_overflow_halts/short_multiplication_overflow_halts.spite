@@ -1,0 +1,13 @@
+var console = Console()
+var _wide_short: Short = 300
+var _hundred: Short = 100
+var _two_hundred: Short = 200
+
+func ShortMultiplicationOverflowHalts() {
+    load "../../../spite_standard_library/windows"
+    var first = _wide_short
+    var fits = first * _hundred
+    console.print(fits)
+    var product = first * _two_hundred
+    console.print("never printed", product)
+}

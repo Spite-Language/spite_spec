@@ -1,0 +1,9 @@
+var console = Console()
+
+func WiderFloatUnderDouble() {
+    load "../../../spite_standard_library/windows"
+    var narrow: Float = 1.5
+    var wide: Double = 2.5
+    var sum = narrow + wide
+    console.print(sum)
+}

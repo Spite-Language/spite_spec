@@ -1,0 +1,9 @@
+var console = Console()
+
+func NotANumberStoredInIntegerHalts() {
+    load "../../../spite_standard_library/windows"
+    var nobody = 0.0
+    var ratio = nobody / nobody
+    var whole: Integer = ratio
+    console.print("never printed", whole)
+}

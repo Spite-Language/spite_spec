@@ -1,0 +1,1 @@
+conformance/lone_hole_declare_keeps_type/lone_hole_declare_keeps_type.spite:6: error: '"{clicks}"' is a text of one value and nothing else: declare the value directly, 'var shown: String = clicks' (in LoneHoleDeclareKeepsType.LoneHoleDeclareKeepsType)

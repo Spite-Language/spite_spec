@@ -1,0 +1,7 @@
+var console = Console()
+
+func NumberNamesNothing() {
+    load "../../../spite_standard_library/windows"
+    var amount: Number = 3
+    console.print(amount)
+}

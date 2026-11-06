@@ -1,0 +1,8 @@
+var console = Console()
+
+func SetThisByName() {
+    load "../../../spite_standard_library/windows"
+    var count = 3
+    count.set_this(4)
+    console.print(count)
+}

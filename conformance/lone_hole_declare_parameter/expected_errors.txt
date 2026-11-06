@@ -1,0 +1,1 @@
+conformance/lone_hole_declare_parameter/lone_hole_declare_parameter.spite:9: error: '"{name}"' is a text of one value and nothing else: declare the value directly, 'var shown = name' (in LoneHoleDeclareParameter.show)

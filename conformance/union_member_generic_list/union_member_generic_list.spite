@@ -1,0 +1,10 @@
+union Message {
+    List<Integer>
+}
+
+var console = Console()
+
+func UnionMemberGenericList() {
+    load "../../../spite_standard_library/windows"
+    console.print("never compiled")
+}

@@ -1,0 +1,10 @@
+union Message {
+    Boolean
+}
+
+var console = Console()
+
+func UnionMemberBoolean() {
+    load "../../../spite_standard_library/windows"
+    console.print("never compiled")
+}

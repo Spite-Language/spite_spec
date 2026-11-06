@@ -1,0 +1,1 @@
+spite: a value that is not a number, or outside every whole number, a Float, does not fit in an Integer, at tests/infinity_stored_in_integer_halts/infinity_stored_in_integer_halts.spite:8 in InfinityStoredInIntegerHalts.InfinityStoredInIntegerHalts

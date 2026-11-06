@@ -1,0 +1,8 @@
+var console = Console()
+
+func BitwiseOnBoolean() {
+    load "../../../spite_standard_library/windows"
+    var ready = true
+    var flipped = ready.bits_inverted()
+    console.print(flipped)
+}

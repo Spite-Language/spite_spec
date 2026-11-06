@@ -1,0 +1,9 @@
+enum Size {
+    'small'
+    'large'
+}
+
+func EnumNumberWrittenElsewhere() {
+    load "../../../spite_standard_library/common"
+    var size: Size = 'small' = 5
+}

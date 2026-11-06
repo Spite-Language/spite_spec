@@ -1,0 +1,1 @@
+conformance/union_member_boolean/union_member_boolean.spite:1: error: 'Boolean' cannot be a member of union 'Message': a union holds objects whose class a switch tests, and a Boolean is a value; make the member a class of your own that keeps it in an attribute (in UnionMemberBoolean.)

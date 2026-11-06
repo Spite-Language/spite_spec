@@ -1,0 +1,1 @@
+conformance/union_member_generic_list/union_member_generic_list.spite:1: error: 'List<Integer>' cannot be a member of union 'Message': a union holds objects whose class a switch tests, and a switch could tell only that a value is a List, not of what; make the member a class of your own that keeps it in an attribute (in UnionMemberGenericList.)

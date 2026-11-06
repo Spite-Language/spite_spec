@@ -1,0 +1,6 @@
+var _loop_count = 0
+
+func LibraryNotLoadedUnknownType() {
+    var count: Integer = _loop_count
+    count = count + 1
+}

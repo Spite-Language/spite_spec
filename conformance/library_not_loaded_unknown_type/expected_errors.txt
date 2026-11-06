@@ -1,0 +1,1 @@
+conformance/library_not_loaded_unknown_type/library_not_loaded_unknown_type.spite:1: error: unknown type 'Integer' (in LibraryNotLoadedUnknownType.)

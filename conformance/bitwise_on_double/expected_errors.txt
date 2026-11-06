@@ -1,0 +1,1 @@
+conformance/bitwise_on_double/bitwise_on_double.spite:6: error: a Double has no function 'bits_and': the bitwise functions are on the whole numbers, Tiny to UnsignedLong. Cast it first, like 'var whole: Long = value' (in BitwiseOnDouble.BitwiseOnDouble)

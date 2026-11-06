@@ -1,0 +1,1 @@
+conformance/type_declared_with_equals/type_declared_with_equals.spite:1: error: expected an opening brace and found '='

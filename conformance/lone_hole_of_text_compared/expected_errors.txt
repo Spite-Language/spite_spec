@@ -1,0 +1,1 @@
+conformance/lone_hole_of_text_compared/lone_hole_of_text_compared.spite:6: error: '"{name}"' is a text of one value and nothing else: write its text as 'name.to_string()' (in LoneHoleOfTextCompared.LoneHoleOfTextCompared)

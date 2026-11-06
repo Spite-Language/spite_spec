@@ -1,0 +1,11 @@
+var console = Console()
+var _small_count = 5
+
+func UnsignedShortSubtractionHalts() {
+    load "../../../spite_standard_library/windows"
+    var count: UnsignedShort = _small_count
+    var left = count - 5
+    console.print(left)
+    var below = left - 1
+    console.print("never printed", below)
+}

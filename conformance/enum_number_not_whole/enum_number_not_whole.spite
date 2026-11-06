@@ -1,0 +1,9 @@
+enum Size {
+    'small' = 1.5
+    'large'
+}
+
+func EnumNumberNotWhole() {
+    load "../../../spite_standard_library/common"
+    var size: Size = 'small'
+}

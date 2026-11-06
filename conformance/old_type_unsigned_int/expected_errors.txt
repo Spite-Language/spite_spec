@@ -1,0 +1,1 @@
+conformance/old_type_unsigned_int/old_type_unsigned_int.spite:5: error: 'UnsignedInt' is spelled 'UnsignedInteger' (in OldTypeUnsignedInt.OldTypeUnsignedInt)

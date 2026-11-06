@@ -1,0 +1,1 @@
+conformance/null_default_string/null_default_string.spite:5: error: the variable 'label' is declared 'String', not 'String?', so '= null' would make a default String rather than nothing: write 'var label: String? = null' for none yet, narrowed before use, or 'var label = ""' for a default (in NullDefaultString.NullDefaultString)

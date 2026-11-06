@@ -1,0 +1,9 @@
+var console = Console()
+
+func WiderByteUnderShort() {
+    load "../../../spite_standard_library/windows"
+    var small: Byte = 7
+    var medium: Short = 300
+    var sum = small + medium
+    console.print(sum)
+}

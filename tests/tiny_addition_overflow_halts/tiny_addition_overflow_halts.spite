@@ -1,0 +1,11 @@
+var console = Console()
+var _near_top = 120
+
+func TinyAdditionOverflowHalts() {
+    load "../../../spite_standard_library/windows"
+    var small: Tiny = _near_top
+    var fits = small + 7
+    console.print(fits)
+    var total = small + 8
+    console.print("never printed", total)
+}

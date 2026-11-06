@@ -1,0 +1,1 @@
+conformance/union_member_number_class/union_member_number_class.spite:1: error: 'Integer' cannot be a member of union 'Message': a union holds objects whose class a switch tests, and an Integer is a value; make the member a class of your own that keeps it in an attribute (in UnionMemberNumberClass.)

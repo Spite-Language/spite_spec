@@ -1,0 +1,1 @@
+conformance/enum_number_not_whole/enum_number_not_whole.spite:1: error: an enum value's number is a whole number written out, as in ''admin' = 7' (in EnumNumberNotWhole)

@@ -1,0 +1,10 @@
+union Message {
+    Integer
+}
+
+var console = Console()
+
+func UnionMemberNumberClass() {
+    load "../../../spite_standard_library/windows"
+    console.print("never compiled")
+}

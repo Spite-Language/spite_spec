@@ -1,0 +1,8 @@
+var console = Console()
+
+func LoneHoleDeclareCall() {
+    load "../../../spite_standard_library/windows"
+    var name = "ada"
+    var shown = "{name.upper_case()}"
+    console.print(shown)
+}

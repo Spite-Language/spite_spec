@@ -1,0 +1,10 @@
+type Sized = {
+    size: Integer
+}
+
+var console = Console()
+
+func TypeDeclaredWithEquals() {
+    load "../../../spite_standard_library/windows"
+    console.print("never compiled")
+}

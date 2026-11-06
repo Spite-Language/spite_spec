@@ -1,0 +1,11 @@
+var console = Console()
+
+func LoneHoleDeclareParameter() {
+    load "../../../spite_standard_library/windows"
+    show("ada")
+}
+
+func show(name: String) {
+    var shown = "{name}"
+    console.print(shown)
+}
