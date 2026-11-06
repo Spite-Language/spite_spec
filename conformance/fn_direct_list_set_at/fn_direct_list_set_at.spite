@@ -1,0 +1,8 @@
+var console = Console()
+
+func FnDirectListSetAt() {
+    load "../../../spite_standard_library/common"
+    var shelf = [1, 2]
+    shelf.set_at(0, 3)
+    console.print(shelf.count())
+}

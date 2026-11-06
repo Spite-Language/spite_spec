@@ -1,0 +1,1 @@
+conformance/fn_direct_sum_through_union/fn_direct_sum_through_union.spite:17: error: 'sum' is what '+' calls: write 'left + right' (in FnDirectSumThroughUnion.added)

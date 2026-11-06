@@ -1,0 +1,21 @@
+var console = Console()
+var _whole_a = 3
+var _whole_b = 4
+
+func FnVariadicValuesCast() {
+    load "../../../spite_standard_library/windows"
+    var first = _whole_a
+    var second = _whole_b
+    var total = add_up(first, second, 5)
+    console.print(total)
+}
+
+func add_up(...values: List<Float>): Float {
+    var total = 0.0
+    var index = 0
+    while index < values.count() {
+        total = total + values[index]
+        index = index + 1
+    }
+    return total
+}

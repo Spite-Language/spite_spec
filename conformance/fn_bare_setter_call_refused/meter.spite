@@ -1,0 +1,14 @@
+var _stored = 0
+
+func set_turns(value: Integer) {
+    _stored = value * 2
+}
+
+func get_turns(): Integer {
+    return _stored
+}
+
+func show(): String {
+    set_turns(3)
+    return "{_stored}"
+}

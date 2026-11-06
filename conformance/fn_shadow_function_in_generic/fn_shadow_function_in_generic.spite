@@ -1,0 +1,9 @@
+var console = Console()
+
+func FnShadowFunctionInGeneric() {
+    load "../../../spite_standard_library/common"
+    var column = Column<Integer>()
+    column.add(3)
+    var size = column.size()
+    console.print(size)
+}

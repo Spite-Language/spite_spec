@@ -1,0 +1,2 @@
+to output
+to errors 1 true

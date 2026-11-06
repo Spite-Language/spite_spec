@@ -1,0 +1,1 @@
+conformance/fn_direct_negate_own_class/fn_direct_negate_own_class.spite:6: error: 'negate' is what '-' calls: write '-debt' (in FnDirectNegateOwnClass.FnDirectNegateOwnClass)

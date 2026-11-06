@@ -1,0 +1,15 @@
+var console = Console()
+
+func FnAndOrShortCircuit() {
+    load "../../../spite_standard_library/windows"
+    var skipped = false and noisy("and")
+    var kept = true or noisy("or")
+    var reached = true and noisy("second and")
+    var tried = false or noisy("second or")
+    console.print(skipped, kept, reached, tried)
+}
+
+func noisy(label: String): Boolean {
+    console.print("called", label)
+    return true
+}

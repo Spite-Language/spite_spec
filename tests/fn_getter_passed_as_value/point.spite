@@ -1,0 +1,9 @@
+var _x = 0
+
+func Point(starting_x: Integer) {
+    _x = starting_x
+}
+
+func get_x(): Integer {
+    return _x
+}

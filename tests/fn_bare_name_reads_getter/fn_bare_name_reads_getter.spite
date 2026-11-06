@@ -1,0 +1,8 @@
+var console = Console()
+
+func FnBareNameReadsGetter() {
+    load "../../../spite_standard_library/windows"
+    var gauge = Gauge()
+    var shown = gauge.show()
+    console.print(shown)
+}

@@ -1,0 +1,1 @@
+conformance/fn_bare_setter_call_refused/meter.spite:12: error: 'set_turns' is what writing 'turns' calls: write 'turns = 3' (in Meter.show)

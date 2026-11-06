@@ -1,0 +1,10 @@
+var _stored = 0
+
+func get_largest(): Integer {
+    return _stored
+}
+
+func show(): String {
+    var largest_seen = get_largest()
+    return "{largest_seen}"
+}

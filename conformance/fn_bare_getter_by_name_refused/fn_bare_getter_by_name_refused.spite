@@ -1,0 +1,8 @@
+var console = Console()
+
+func FnBareGetterByNameRefused() {
+    load "../../../spite_standard_library/common"
+    var meter = Meter()
+    var shown = meter.show()
+    console.print(shown)
+}

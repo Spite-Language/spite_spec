@@ -1,0 +1,1 @@
+conformance/fn_direct_dictionary_get_at/fn_direct_dictionary_get_at.spite:7: error: 'get_at' is what '[]' calls: write 'ages["ann"]' (in FnDirectDictionaryGetAt.FnDirectDictionaryGetAt)

@@ -1,0 +1,21 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var console = Console()
+var _starting_mood: Mood = 'calm'
+
+func FnByValueBooleanEnum() {
+    load "../../../spite_standard_library/windows"
+    var ready = false
+    var mood: Mood = _starting_mood
+    flip(ready, mood)
+    console.print(ready, mood)
+}
+
+func flip(ready: Boolean, mood: Mood) {
+    ready = true
+    mood = 'angry'
+    console.print(ready, mood)
+}

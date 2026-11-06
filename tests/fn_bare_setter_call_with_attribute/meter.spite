@@ -1,0 +1,17 @@
+var turns = 0
+
+func set_turns(value: Integer) {
+    turns = value * 2
+}
+
+func get_turns(): Integer {
+    return turns
+}
+
+func show(): String {
+    set_turns(3)
+    var raw = turns
+    turns = 1
+    var again = turns
+    return "{raw} {again}"
+}

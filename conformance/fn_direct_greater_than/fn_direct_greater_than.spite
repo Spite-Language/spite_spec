@@ -1,0 +1,11 @@
+var console = Console()
+var _first_number = 6
+var _second_number = 2
+
+func FnDirectGreaterThan() {
+    load "../../../spite_standard_library/common"
+    var first = _first_number
+    var second = _second_number
+    var result = first.greater_than(second)
+    console.print(result, second)
+}

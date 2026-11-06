@@ -1,0 +1,1 @@
+conformance/fn_direct_remainder/fn_direct_remainder.spite:9: error: 'remainder' is what '%' calls: write 'first % second' (in FnDirectRemainder.FnDirectRemainder)

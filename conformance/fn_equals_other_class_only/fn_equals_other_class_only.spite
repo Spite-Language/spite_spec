@@ -1,0 +1,8 @@
+var console = Console()
+
+func FnEqualsOtherClassOnly() {
+    load "../../../spite_standard_library/common"
+    var thing = Thing(3)
+    var same = thing.equals(3)
+    console.print(same)
+}

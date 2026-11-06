@@ -1,0 +1,1 @@
+conformance/fn_shadow_function_uncalled/shop.spite:2: error: the variable 'discount' has the name of a function of this class, and a function is a value passed by its name: give the variable a name of its own (in Shop.price)

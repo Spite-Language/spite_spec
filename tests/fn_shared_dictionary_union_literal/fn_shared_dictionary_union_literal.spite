@@ -1,0 +1,34 @@
+union Holder {
+    Crate
+    Barrel
+}
+
+type Loadout {
+    power: Integer
+}
+
+var console = Console()
+
+func FnSharedDictionaryUnionLiteral() {
+    load "../../../spite_standard_library/windows"
+    var ages = Dictionary<String, Integer>()
+    ages["ann"] = 1
+    var crate = Crate()
+    var barrel = Barrel()
+    var loadout: Loadout = {power: 4}
+    stir(ages, crate, loadout)
+    stir_barrel(barrel)
+    var ann = ages["ann"]
+    crash ann
+    console.print(ann, crate.count, barrel.count, loadout.power)
+}
+
+func stir(ages: Dictionary<String, Integer>, holder: Holder, loadout: Loadout) {
+    ages["ann"] = 50
+    holder.fill()
+    loadout.power = 9
+}
+
+func stir_barrel(holder: Holder) {
+    holder.fill()
+}

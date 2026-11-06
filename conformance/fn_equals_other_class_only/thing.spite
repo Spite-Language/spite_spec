@@ -1,0 +1,9 @@
+var number = 0
+
+func Thing(starting_number: Integer) {
+    number = starting_number
+}
+
+func equals(other: Integer): Boolean {
+    return number == other
+}

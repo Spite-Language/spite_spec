@@ -1,0 +1,8 @@
+var console = Console()
+
+func FnShadowFunctionUncalled() {
+    load "../../../spite_standard_library/common"
+    var shop = Shop()
+    var price = shop.price()
+    console.print(price)
+}

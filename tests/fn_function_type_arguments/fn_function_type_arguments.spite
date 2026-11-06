@@ -1,0 +1,38 @@
+var console = Console()
+
+func FnFunctionTypeArguments() {
+    load "../../../spite_standard_library/windows"
+    var no_arguments: Spite.Function<Boolean> = ready
+    var two_arguments: Spite.Function<String, Integer, Boolean> = long_enough
+    var takes_a_string: Spite.Function<String, Nothing> = say
+    var supplies_a_string: Spite.Function<String> = greeting
+    var is_ready = no_arguments()
+    var is_long = two_arguments("abc", 2)
+    var is_short = two_arguments("abc", 5)
+    takes_a_string("said")
+    var text = supplies_a_string()
+    console.print(is_ready, is_long, is_short, text)
+    var first_count = no_arguments.arguments.count()
+    var second_count = two_arguments.arguments.count()
+    console.print(first_count, second_count)
+    var first_returns = no_arguments.returns.name
+    var second_returns = two_arguments.returns.name
+    var third_returns = takes_a_string.returns.name
+    console.print(first_returns, second_returns, third_returns)
+}
+
+func ready(): Boolean {
+    return true
+}
+
+func long_enough(text: String, length: Integer): Boolean {
+    return text.length() >= length
+}
+
+func say(text: String) {
+    console.print(text)
+}
+
+func greeting(): String {
+    return "hello"
+}

@@ -1,0 +1,2 @@
+2
+spite: 'total % parts' divided by zero, at tests/fn_remainder_by_zero_halts/fn_remainder_by_zero_halts.spite:13 in FnRemainderByZeroHalts.leftover

@@ -1,0 +1,9 @@
+var cents = 0
+
+func Money(starting_cents: Integer) {
+    cents = starting_cents
+}
+
+func sum(_other: FnDirectSumThroughUnion.Amount): Integer {
+    return cents * 2
+}

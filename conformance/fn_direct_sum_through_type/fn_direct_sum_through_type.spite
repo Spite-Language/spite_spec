@@ -1,0 +1,17 @@
+type Addable {
+    sum(Money): Money
+}
+
+var console = Console()
+
+func FnDirectSumThroughType() {
+    load "../../../spite_standard_library/common"
+    var first = Money(1)
+    var second = Money(2)
+    var total = added(first, second)
+    console.print(total.cents)
+}
+
+func added(left: Addable, right: Money): Money {
+    return left.sum(right)
+}

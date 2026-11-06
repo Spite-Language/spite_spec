@@ -1,0 +1,15 @@
+var _stored = 0
+
+func get_level(): Integer {
+    return _stored + 1
+}
+
+func set_level(value: Integer) {
+    _stored = value * 2
+}
+
+func show(): String {
+    level = 5
+    var read = level
+    return "{_stored} {read}"
+}

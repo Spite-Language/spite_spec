@@ -1,0 +1,12 @@
+var console = Console()
+
+func FnGetterPassedAsValue() {
+    load "../../../spite_standard_library/windows"
+    var point = Point(7)
+    var shown = run_callback(point.get_x)
+    console.print(shown)
+}
+
+func run_callback(callback: Spite.Function<Integer>): Integer {
+    return callback()
+}

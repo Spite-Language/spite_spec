@@ -1,0 +1,13 @@
+var console = Console()
+
+func FnFunctionValueWrongArgument() {
+    load "../../../spite_standard_library/common"
+    var change = shout
+    var badge = Badge()
+    var changed = change(badge)
+    console.print(changed)
+}
+
+func shout(text: String): String {
+    return text.upper_case()
+}

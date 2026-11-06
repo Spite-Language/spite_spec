@@ -1,0 +1,1 @@
+conformance/fn_direct_divide/fn_direct_divide.spite:9: error: 'divide' is what '/' calls: write 'first / second' (in FnDirectDivide.FnDirectDivide)

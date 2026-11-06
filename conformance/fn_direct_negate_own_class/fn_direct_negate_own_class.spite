@@ -1,0 +1,8 @@
+var console = Console()
+
+func FnDirectNegateOwnClass() {
+    load "../../../spite_standard_library/common"
+    var debt = Duration(5)
+    var flipped = debt.negate()
+    console.print(flipped.seconds)
+}

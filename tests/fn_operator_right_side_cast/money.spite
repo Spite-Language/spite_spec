@@ -1,0 +1,9 @@
+var amount = 0.0
+
+func Money(starting_amount: Float) {
+    amount = starting_amount
+}
+
+func multiply(factor: Float): Money {
+    return Money(amount * factor)
+}

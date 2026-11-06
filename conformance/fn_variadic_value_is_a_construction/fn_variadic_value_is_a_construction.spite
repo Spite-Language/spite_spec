@@ -1,0 +1,10 @@
+var console = Console()
+
+func FnVariadicValueIsAConstruction() {
+    load "../../../spite_standard_library/common"
+    greet(Badge("Aria"))
+}
+
+func greet(...people: List<Badge>) {
+    console.print(people.count())
+}

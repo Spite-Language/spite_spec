@@ -1,0 +1,18 @@
+union Amount {
+    Money
+    Points
+}
+
+var console = Console()
+
+func FnDirectSumThroughUnion() {
+    load "../../../spite_standard_library/common"
+    var first = Money(1)
+    var second = Money(2)
+    var total = added(first, second)
+    console.print(total)
+}
+
+func added(left: Amount, right: Amount): Integer {
+    return left.sum(right)
+}

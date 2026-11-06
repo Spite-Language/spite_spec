@@ -1,0 +1,13 @@
+var seconds = 0
+
+func Duration(starting_seconds: Integer) {
+    seconds = starting_seconds
+}
+
+func negate(): Duration {
+    return Duration(-seconds)
+}
+
+func flipped(): Duration {
+    return negate()
+}

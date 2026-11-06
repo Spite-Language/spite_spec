@@ -1,0 +1,11 @@
+var console = Console()
+
+func FnGetterNamedLikeKeyword() {
+    load "../../../spite_standard_library/windows"
+    var thing = Thing()
+    thing.return = 3
+    thing.while = 4
+    var returned = thing.return
+    var looped = thing.while
+    console.print(returned, looped)
+}

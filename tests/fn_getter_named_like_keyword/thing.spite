@@ -1,0 +1,18 @@
+var _stored = 0
+var _looped = 0
+
+func get_return(): Integer {
+    return _stored
+}
+
+func set_return(value: Integer) {
+    _stored = value * 10
+}
+
+func get_while(): Integer {
+    return _looped
+}
+
+func set_while(value: Integer) {
+    _looped = value + 1
+}

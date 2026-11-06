@@ -1,0 +1,8 @@
+var console = Console()
+
+func FnDirectDictionarySetAt() {
+    load "../../../spite_standard_library/common"
+    var ages = Dictionary<String, Integer>()
+    ages.set_at("ann", 3)
+    console.print(ages.count())
+}

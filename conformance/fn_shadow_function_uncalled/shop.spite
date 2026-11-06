@@ -1,0 +1,8 @@
+func price(): Integer {
+    var discount = 5
+    return 100 - discount
+}
+
+func discount(): Integer {
+    return 5
+}

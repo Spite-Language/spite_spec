@@ -1,0 +1,8 @@
+var console = Console()
+
+func FnDirectNegateBareInClass() {
+    load "../../../spite_standard_library/common"
+    var debt = Duration(5)
+    var flipped = debt.flipped()
+    console.print(flipped.seconds)
+}

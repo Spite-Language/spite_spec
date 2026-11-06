@@ -1,0 +1,11 @@
+var console = Console()
+
+func FnVariadicValueIsACall() {
+    load "../../../spite_standard_library/common"
+    var first = "Aria"
+    greet(first.upper_case())
+}
+
+func greet(...people: List<String>) {
+    console.print(people.count())
+}

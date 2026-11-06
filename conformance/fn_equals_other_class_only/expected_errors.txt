@@ -1,0 +1,1 @@
+conformance/fn_equals_other_class_only/thing.spite:7: error: 'equals' is called by the compiler for '==' and '!=', so it is declared exactly 'func equals(other: Thing): Boolean' (in Thing)

@@ -1,0 +1,1 @@
+conformance/fn_direct_negate_bare_in_class/duration.spite:12: error: 'negate' is what '-' calls: write '-this' (in Duration.flipped)

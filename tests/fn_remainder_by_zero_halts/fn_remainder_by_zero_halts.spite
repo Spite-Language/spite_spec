@@ -1,0 +1,14 @@
+var console = Console()
+
+func FnRemainderByZeroHalts() {
+    load "../../../spite_standard_library/windows"
+    var left = leftover(17, 5)
+    console.print(left)
+    var nobody = 0
+    var never = leftover(17, nobody)
+    console.print("never printed", never)
+}
+
+func leftover(total: Integer, parts: Integer): Integer {
+    return total % parts
+}

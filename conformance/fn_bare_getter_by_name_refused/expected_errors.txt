@@ -1,0 +1,1 @@
+conformance/fn_bare_getter_by_name_refused/meter.spite:8: error: 'get_largest' is what reading 'largest' calls: write 'largest' (in Meter.show)

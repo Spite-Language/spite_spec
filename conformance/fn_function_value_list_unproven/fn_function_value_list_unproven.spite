@@ -1,0 +1,14 @@
+var console = Console()
+var steps = List<Spite.Function<Integer, Integer>>()
+
+func FnFunctionValueListUnproven() {
+    load "../../../spite_standard_library/common"
+    steps.append(double)
+    var index = 0
+    var value = steps[index](5)
+    console.print(value)
+}
+
+func double(number: Integer): Integer {
+    return number * 2
+}

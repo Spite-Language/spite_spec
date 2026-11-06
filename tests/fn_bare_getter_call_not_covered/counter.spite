@@ -1,0 +1,11 @@
+var count = 2
+
+func get_count(): Integer {
+    return count * 10
+}
+
+func read_both(): String {
+    var raw = count
+    var computed = get_count()
+    return "{raw} {computed}"
+}

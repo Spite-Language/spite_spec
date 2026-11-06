@@ -1,0 +1,1 @@
+conformance/fn_variadic_value_is_a_construction/fn_variadic_value_is_a_construction.spite:5: error: 'Badge("Aria")' is constructed inside an argument of 'greet': a constructor call is never an argument, so make it first on a line of its own, 'var badge = Badge("Aria")', and pass 'badge' (in FnVariadicValueIsAConstruction.FnVariadicValueIsAConstruction)

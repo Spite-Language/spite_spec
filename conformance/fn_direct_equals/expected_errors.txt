@@ -1,0 +1,1 @@
+conformance/fn_direct_equals/fn_direct_equals.spite:9: error: 'equals' is what '==' calls: write 'first == second', or 'first != second' for 'not first.equals(second)' (in FnDirectEquals.FnDirectEquals)

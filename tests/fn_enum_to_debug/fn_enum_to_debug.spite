@@ -1,0 +1,15 @@
+enum Weather {
+    'sunny'
+    'rainy'
+}
+
+var console = Console()
+var _today: Weather = 'rainy'
+
+func FnEnumToDebug() {
+    load "../../../spite_standard_library/windows"
+    var today: Weather = _today
+    var named = today.to_string()
+    var debugged = today.to_debug()
+    console.print(named, debugged)
+}

@@ -1,0 +1,9 @@
+var console = Console()
+
+func FnDirectListGetAt() {
+    load "../../../spite_standard_library/common"
+    var shelf = [1, 2]
+    var first = shelf.get_at(0)
+    crash first
+    console.print(first)
+}

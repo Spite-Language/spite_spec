@@ -1,0 +1,1 @@
+conformance/fn_shadow_function_in_generic/column.spite:10: error: the variable 'size' has the name of a function of this class, and a function is a value passed by its name: give the variable a name of its own (in Column.size)
