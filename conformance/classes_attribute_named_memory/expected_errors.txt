@@ -1,1 +1,1 @@
-conformance/classes_attribute_named_memory/table.spite:1: error: the attribute 'memory' has a name reflection gives every object... (in Table)
+conformance/classes_attribute_named_memory/table.spite:1: error: the attribute 'memory' has a name reflection gives every object: 'value.memory' says where the value lives, and one of its own would hide it. Name it something else, like 'table_memory' (in Table)
