@@ -5,8 +5,12 @@ func NamesOutsideAscii() {
     load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/names_outside_ascii_café")
     crash folder.create()
-    var file = File("{folder.path}/crème brûlée €.txt")
-    var moved = File("{folder.path}/naïve 日本.txt")
+    var file_path: Path? = "{folder.path}/crème brûlée €.txt"
+    crash file_path
+    var file = File(file_path)
+    var moved_path: Path? = "{folder.path}/naïve 日本.txt"
+    crash moved_path
+    var moved = File(moved_path)
     if moved.exists() {
         crash moved.remove()
     }
@@ -26,9 +30,13 @@ func NamesOutsideAscii() {
     crash read
     console.print(read)
     var old_path = file.path
-    crash file.move_to(moved.path)
+    var moved_path: Path? = moved.path
+    crash moved_path
+    crash file.move_to(moved_path)
     crash moved.exists()
-    var left = File(old_path)
+    var left_path: Path? = old_path
+    crash left_path
+    var left = File(left_path)
     crash not left.exists()
     var executable = program.executable_path()
     crash executable

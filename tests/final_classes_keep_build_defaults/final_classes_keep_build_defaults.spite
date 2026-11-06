@@ -4,7 +4,9 @@ var build = Build()
 func FinalClassesKeepBuildDefaults() {
     load "../../../spite_standard_library/windows"
     console.print("this build folded serve to", build.serve)
-    var printed = File("{build.program}/.spite/final_classes_build_defaults/build.spite")
+    var printed_path: Path? = "{build.program}/.spite/final_classes_build_defaults/build.spite"
+    crash printed_path
+    var printed = File(printed_path)
     var text = printed.read_as_string()
     crash text
     var lines = text.split("\n")

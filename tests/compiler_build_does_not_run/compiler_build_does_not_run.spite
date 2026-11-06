@@ -5,7 +5,9 @@ var folder = ".spite/built_only"
 func CompilerBuildDoesNotRun() {
     load "../../../spite_standard_library/windows"
     write_the_program()
-    var marker = File("{folder}/ran.txt")
+    var marker_path: Path? = "{folder}/ran.txt"
+    crash marker_path
+    var marker = File(marker_path)
     if marker.exists() {
         crash marker.remove()
     }
@@ -17,12 +19,16 @@ func CompilerBuildDoesNotRun() {
     building.working_directory = folder
     var code = building.run()
     crash code
-    var executable = File("{folder}/.spite/build/built_only.exe")
+    var executable_path: Path? = "{folder}/.spite/build/built_only.exe"
+    crash executable_path
+    var executable = File(executable_path)
     var is_built = executable.exists()
     var has_run = marker.exists()
     console.print("--build", code, "built", is_built, "ran", has_run)
     crash executable.remove()
-    var target_folder = Directory("{folder}/placed")
+    var target_path: Path? = "{folder}/placed"
+    crash target_path
+    var target_folder = Directory(target_path)
     if not target_folder.exists() {
         crash target_folder.create()
     }
@@ -31,7 +37,9 @@ func CompilerBuildDoesNotRun() {
     placing.working_directory = folder
     var placed_code = placing.run()
     crash placed_code
-    var at_path = File("{folder}/placed/elsewhere.exe")
+    var placed_path: Path? = "{folder}/placed/elsewhere.exe"
+    crash placed_path
+    var at_path = File(placed_path)
     var is_at_path = at_path.exists()
     var is_at_default = executable.exists()
     var has_run_again = marker.exists()
@@ -46,7 +54,9 @@ func CompilerBuildDoesNotRun() {
 }
 
 func write_the_program() {
-    var made = Directory(folder)
+    var folder_path: Path? = folder
+    crash folder_path
+    var made = Directory(folder_path)
     if not made.exists() {
         crash made.create()
     }
@@ -60,7 +70,9 @@ func write_the_program() {
     lines.append("    console.print(\"ran\")")
     lines.append("}")
     lines.append("")
-    var entry = File("{folder}/built_only.spite")
+    var entry_path: Path? = "{folder}/built_only.spite"
+    crash entry_path
+    var entry = File(entry_path)
     var joined = lines.join("\n")
     crash entry.write_string(joined)
 }

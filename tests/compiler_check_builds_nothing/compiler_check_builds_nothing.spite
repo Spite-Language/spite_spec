@@ -13,7 +13,9 @@ func CompilerCheckBuildsNothing() {
     building.working_directory = folder
     var built_code = building.run()
     crash built_code
-    var executable = File("{folder}/.spite/build/checked.exe")
+    var executable_path: Path? = "{folder}/.spite/build/checked.exe"
+    crash executable_path
+    var executable = File(executable_path)
     var kept_before = executable.exists()
     console.print("built", built_code, kept_before)
     write_the_program("    console.print(\"checked\")   ")
@@ -29,7 +31,9 @@ func CompilerCheckBuildsNothing() {
     console.print("said formatted", said_formatted)
     var kept_after = executable.exists()
     console.print("checked", checked_code, "executable kept", kept_after)
-    var entry = File("{folder}/checked.spite")
+    var entry_path: Path? = "{folder}/checked.spite"
+    crash entry_path
+    var entry = File(entry_path)
     var text = entry.read_as_string()
     crash text
     var trailing = text.contains("   \n")
@@ -45,7 +49,9 @@ func CompilerCheckBuildsNothing() {
 }
 
 func write_the_program(statement: String) {
-    var made = Directory(folder)
+    var made_path: Path? = folder
+    crash made_path
+    var made = Directory(made_path)
     if not made.exists() {
         crash made.create()
     }
@@ -57,7 +63,9 @@ func write_the_program(statement: String) {
     lines.append(statement)
     lines.append("}")
     lines.append("")
-    var entry = File("{folder}/checked.spite")
+    var entry_path_text: Path? = "{folder}/checked.spite"
+    crash entry_path_text
+    var entry = File(entry_path_text)
     var joined = lines.join("\n")
     crash entry.write_string(joined)
 }

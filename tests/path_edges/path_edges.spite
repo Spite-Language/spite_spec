@@ -12,10 +12,9 @@ func tidying() {
     var dots: Path = "./a/./b/."
     var backslashes: Path = "a\\b\\c.txt"
     var mixed: Path = "a\\b/c"
-    var nothing: Path = ""
     var only_dot: Path = "./."
     console.print(doubled, dots, backslashes, mixed)
-    console.print("an empty path is", nothing, "and so is a lone dot", only_dot)
+    console.print("a lone dot is", only_dot)
     var written = backslashes.written
     console.print("written keeps the text as it came:", written)
 }

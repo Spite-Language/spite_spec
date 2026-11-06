@@ -10,6 +10,6 @@ func Meters(from: String): Meters? {
     return Meters(read)
 }
 
-func Meters(from: String): Meters {
+func Meters(from: String): Meters? {
     return Meters(0)
 }

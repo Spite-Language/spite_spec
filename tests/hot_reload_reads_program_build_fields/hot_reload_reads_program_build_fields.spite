@@ -9,7 +9,9 @@ func HotReloadReadsProgramBuildFields() {
     var path = program.executable_path()
     crash path
     var high_path = path.replace(".exe", ".high_ir.txt")
-    var text = File(high_path).read_as_string()
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
     crash text
     var reads_the_field = function_holds("Choice.answer(", ".serve", text)
     var has_the_other_branch = function_holds("Choice.answer(", "not serving", text)

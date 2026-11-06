@@ -5,18 +5,26 @@ func FinalClassesWritten() {
     load "../../../spite_standard_library/windows"
     var badge = Badge("gold")
     console.print(badge.name)
-    var marker = File("{build.program}/.spite/final_classes_written/.final-classes")
+    var marker_path: Path? = "{build.program}/.spite/final_classes_written/.final-classes"
+    crash marker_path
+    var marker = File(marker_path)
     var is_marked = marker.exists()
     console.print("marked", is_marked)
-    var printed = File("{build.program}/.spite/final_classes_written/badge.spite")
+    var printed_path: Path? = "{build.program}/.spite/final_classes_written/badge.spite"
+    crash printed_path
+    var printed = File(printed_path)
     var text = printed.read_as_string()
     crash text
     var trimmed = text.trim()
     console.print(trimmed)
-    var listed = File("{build.program}/.spite/final_classes_written/list.spite")
+    var listed_path: Path? = "{build.program}/.spite/final_classes_written/list.spite"
+    crash listed_path
+    var listed = File(listed_path)
     var is_listed = listed.exists()
     console.print("generic template printed", is_listed)
-    var instantiated = File("{build.program}/.spite/final_classes_written/instantiated/list_string.spite")
+    var instantiated_path: Path? = "{build.program}/.spite/final_classes_written/instantiated/list_string.spite"
+    crash instantiated_path
+    var instantiated = File(instantiated_path)
     var is_instantiated = instantiated.exists()
     console.print("List<String> printed", is_instantiated)
 }

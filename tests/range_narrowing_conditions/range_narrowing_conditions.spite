@@ -83,7 +83,9 @@ func else_narrows_nothing(amount: Integer): Integer {
 }
 
 func print_report() {
-    var report = File("{build.program}/.spite/reports/range_narrowing_conditions.md").read_as_string()
+    var report_path: Path? = "{build.program}/.spite/reports/range_narrowing_conditions.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
     crash report
     var lines = report.split("\n")
     var index = 0

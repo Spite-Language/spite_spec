@@ -6,7 +6,9 @@ func HotReloadReplacesAnEnum() {
     load "../../../spite_standard_library/windows"
     var count = palette.shade_count()
     console.print(count)
-    var file = File("{build.program}/palette.spite")
+    var file_path: Path? = "{build.program}/palette.spite"
+    crash file_path
+    var file = File(file_path)
     var text = "enum Shade \{\n    'red'\n    'blue'\n    'green'\n}\n\nfunc shade_count(): Integer \{\n    return Shade.values.count()\n}\n"
     var written = file.write_string(text)
     if not written {

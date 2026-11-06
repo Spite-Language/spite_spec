@@ -6,13 +6,11 @@ var line = ""
 
 func listen(port: Integer): Boolean {
     var local_host: IpAddress? = "127.0.0.1"
-    crash local_host
     return server.listen_at(local_host, port)
 }
 
 func connect(port: Integer): Boolean {
     var local_host: IpAddress? = "127.0.0.1"
-    crash local_host
     return client.connect(local_host, port)
 }
 

@@ -67,7 +67,9 @@ func hand_on(pair: Pair): Integer {
 }
 
 func print_section() {
-    var report = File("{build.program}/.spite/reports/frame_placement_report.md").read_as_string()
+    var report_path: Path? = "{build.program}/.spite/reports/frame_placement_report.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
     crash report
     var lines = report.split("\n")
     var inside = false

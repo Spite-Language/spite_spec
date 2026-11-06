@@ -18,7 +18,9 @@ func FrameHelperThreadWaits() {
 }
 
 func waits_for_a_file_lock() {
-    var guard = File(_lock_path)
+    var guard_path: Path? = _lock_path
+    crash guard_path
+    var guard = File(guard_path)
     var held = guard.lock()
     crash held
     frames = 0
@@ -85,7 +87,9 @@ func reads_a_console_line_and_writes_a_file() {
         }
         wait_a_frame()
     }
-    var note = File(_note_path)
+    var note_path: Path? = _note_path
+    crash note_path
+    var note = File(note_path)
     var text = note.read_as_string()
     crash text
     console.print("a started call read the console and wrote the file:", text)

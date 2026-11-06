@@ -22,7 +22,9 @@ func CompilerSkipsDotFolders() {
 }
 
 func write_the_program() {
-    var made = Directory(folder)
+    var made_path: Path? = folder
+    crash made_path
+    var made = Directory(made_path)
     if not made.exists() {
         crash made.create()
     }
@@ -34,18 +36,24 @@ func write_the_program() {
     lines.append("    console.print(\"compiled\")")
     lines.append("}")
     lines.append("")
-    var entry = File("{folder}/dot_folders.spite")
+    var entry_path: Path? = "{folder}/dot_folders.spite"
+    crash entry_path
+    var entry = File(entry_path)
     var joined = lines.join("\n")
     crash entry.write_string(joined)
     var names = [".spite", ".spite-cache", ".git"]
     var index = 0
     while index < names.count() {
         var name = names[index]
-        var inner = Directory("{folder}/{name}")
+        var inner_path: Path? = "{folder}/{name}"
+        crash inner_path
+        var inner = Directory(inner_path)
         if not inner.exists() {
             crash inner.create()
         }
-        var broken = File("{folder}/{name}/broken.spite")
+        var broken_path: Path? = "{folder}/{name}/broken.spite"
+        crash broken_path
+        var broken = File(broken_path)
         crash broken.write_string("this is not a program\n")
         index = index + 1
     }

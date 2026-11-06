@@ -7,7 +7,9 @@ func FileWatchingSettled() {
     load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/file_watching_settled")
     crash folder.create()
-    var note = File("{folder.path}/note.txt")
+    var note_path: Path? = "{folder.path}/note.txt"
+    crash note_path
+    var note = File(note_path)
     if note.exists() {
         crash note.remove()
     }

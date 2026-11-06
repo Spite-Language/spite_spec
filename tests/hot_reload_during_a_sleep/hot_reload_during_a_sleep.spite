@@ -15,7 +15,9 @@ func HotReloadDuringASleep() {
 }
 
 func write_greeter(word: String) {
-    var file = File("{build.program}/greeter.spite")
+    var file_path: Path? = "{build.program}/greeter.spite"
+    crash file_path
+    var file = File(file_path)
     var text = "func greeting(): String \{\n    return \"{word}\"\n}\n"
     var written = file.write_string(text)
     if not written {

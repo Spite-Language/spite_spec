@@ -7,7 +7,9 @@ func FinalClassesSpiteClassReopened() {
     var gadget = Gadget()
     var gadget_class = gadget.class
     console.print("Gadget is singleton:", gadget_class.is_singleton, gadget.size)
-    var printed = File("{build.program}/.spite/final_spite_class/spite/class.spite")
+    var printed_path: Path? = "{build.program}/.spite/final_spite_class/spite/class.spite"
+    crash printed_path
+    var printed = File(printed_path)
     var text = printed.read_as_string()
     crash text
     var lines = text.split("\n")

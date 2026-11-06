@@ -1,0 +1,5 @@
+a literal is a path levels/forest.txt false
+empty text is refused true
+a zero byte is refused true
+a computed path, narrowed levels/forest.txt
+joined folder/file.txt folder/file.txt

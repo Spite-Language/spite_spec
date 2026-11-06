@@ -5,11 +5,17 @@ var _most_tries = 250
 func FileWatching() {
     load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/file_watching")
-    var inner = Directory("{folder.path}/inner")
+    var inner_path: Path? = "{folder.path}/inner"
+    crash inner_path
+    var inner = Directory(inner_path)
     crash folder.create()
     crash inner.create()
-    var note = File("{folder.path}/note.txt")
-    var deep = File("{inner.path}/deep.txt")
+    var note_path: Path? = "{folder.path}/note.txt"
+    crash note_path
+    var note = File(note_path)
+    var deep_path: Path? = "{inner.path}/deep.txt"
+    crash deep_path
+    var deep = File(deep_path)
     var settings = File(".spite/file_watching_settings.txt")
     var neighbour = File(".spite/file_watching_neighbour.txt")
     if note.exists() {

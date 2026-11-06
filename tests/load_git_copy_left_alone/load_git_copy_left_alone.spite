@@ -16,12 +16,16 @@ func LoadGitCopyLeftAlone() {
     var fetched = first.contains("fetched")
     console.print("first compile fetched:", fetched)
     find_the_copy(commit)
-    var widget = File("{copy_path}/kit/widget.spite")
+    var widget_path: Path? = "{copy_path}/kit/widget.spite"
+    crash widget_path
+    var widget = File(widget_path)
     var kept = widget.read_as_string()
     crash kept
     var untouched = kept == written
     console.print("the copy's source was not formatted:", untouched)
-    var cache = File("{copy_path}/kit/cache.txt")
+    var cache_path: Path? = "{copy_path}/kit/cache.txt"
+    crash cache_path
+    var cache = File(cache_path)
     crash cache.write_string("written beside the source at run time")
     var second = compile("{root}/app")
     var errors = second.contains("error")
@@ -49,12 +53,16 @@ func reset() {
 }
 
 func make_directory(path: String) {
-    var made = Directory(path)
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
     crash made.create()
 }
 
 func write_file(path: String, text: String) {
-    var file = File(path)
+    var file_path: Path? = path
+    crash file_path
+    var file = File(file_path)
     crash file.write_string(text)
 }
 
@@ -136,7 +144,9 @@ func make_widget_repository(text: String): String {
 }
 
 func find_the_copy(commit: String) {
-    var git_folder = Directory("{root}/app/.spite/git")
+    var git_path: Path? = "{root}/app/.spite/git"
+    crash git_path
+    var git_folder = Directory(git_path)
     var entries = git_folder.entries()
     crash entries
     var index = 0

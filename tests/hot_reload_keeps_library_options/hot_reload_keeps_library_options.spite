@@ -10,7 +10,9 @@ func HotReloadKeepsLibraryOptions() {
     if build.hot_reload {
         console.print("a hot reload build")
     }
-    var text = File(written).read_as_string()
+    var text_path: Path? = written
+    crash text_path
+    var text = File(text_path).read_as_string()
     crash text
     tell("Reload.generation", text)
     tell("HotReloadKeepsLibraryOptions.HotReloadKeepsLibraryOptions", text)

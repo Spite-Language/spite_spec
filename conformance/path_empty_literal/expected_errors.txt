@@ -1,0 +1,1 @@
+conformance/path_empty_literal/path_empty_literal.spite:3: error: the literal "" does not convert: 'Path(from: String)' answers null for it (in PathEmptyLiteral.PathEmptyLiteral)

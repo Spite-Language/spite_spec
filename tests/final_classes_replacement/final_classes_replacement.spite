@@ -9,7 +9,9 @@ func FinalClassesReplacement() {
     var monster = Creatures.Monster("rat")
     var described = monster.describe()
     console.print(described)
-    var printed = File("{build.program}/.spite/final_replacement/creatures/monster.spite")
+    var printed_path: Path? = "{build.program}/.spite/final_replacement/creatures/monster.spite"
+    crash printed_path
+    var printed = File(printed_path)
     var text = printed.read_as_string()
     crash text
     var lines = text.split("\n")

@@ -22,7 +22,9 @@ func CompilerFolderLayoutBroken() {
 }
 
 func remove_the_old_copy() {
-    var old = Directory(copy)
+    var old_path: Path? = copy
+    crash old_path
+    var old = Directory(old_path)
     fallback old.exists()
     var no_arguments = List<String>()
     var windows_copy = copy.replace("/", "\\")
@@ -32,14 +34,18 @@ func remove_the_old_copy() {
 }
 
 func make_a_folder(path: String) {
-    var made = Directory(path)
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
     fallback not made.exists()
     crash made.create()
 }
 
 func copy_a_folder(from: String, to: String) {
     make_a_folder(to)
-    var folder = Directory(from)
+    var folder_path: Path? = from
+    crash folder_path
+    var folder = Directory(folder_path)
     var entries = folder.entries()
     crash entries
     var index = 0
@@ -64,20 +70,28 @@ func copy_a_file(file: File, to: String) {
     fallback name.ends_with(".spite") or name.ends_with(".md")
     var text = file.read_as_string()
     crash text
-    var written = File("{to}/{name}")
+    var written_path: Path? = "{to}/{name}"
+    crash written_path
+    var written = File(written_path)
     crash written.write_string(text)
 }
 
 func write_a_printer_folder_without_a_printer() {
     var folder = "{compiler_copy}/printers/folder_without_printer"
-    var made = Directory(folder)
+    var made_path_text: Path? = folder
+    crash made_path_text
+    var made = Directory(made_path_text)
     crash made.create()
-    var helper = File("{folder}/helper.spite")
+    var helper_path: Path? = "{folder}/helper.spite"
+    crash helper_path
+    var helper = File(helper_path)
     crash helper.write_string("func answer(): Integer \{\n    return 1\n}\n")
 }
 
 func wanted_error(): String {
-    var layout = File("{compiler_copy}/folder_layout/folder_layout.spite")
+    var layout_path: Path? = "{compiler_copy}/folder_layout/folder_layout.spite"
+    crash layout_path
+    var layout = File(layout_path)
     var text = layout.read_as_string()
     crash text
     var lines = text.split("\n")

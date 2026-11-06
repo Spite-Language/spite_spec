@@ -2,7 +2,9 @@ var taken = false
 var _lock_path = ".spite/frame_helper_thread_waits.lock"
 
 func take() {
-    var guard = File(_lock_path)
+    var guard_path: Path? = _lock_path
+    crash guard_path
+    var guard = File(guard_path)
     var held = guard.lock()
     crash held
     held.unlock()

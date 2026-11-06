@@ -5,7 +5,9 @@ var _note_path = ".spite/frame_helper_thread_waits.txt"
 func copy_a_line() {
     var typed = console.read_line()
     crash typed
-    var note = File(_note_path)
+    var note_path: Path? = _note_path
+    crash note_path
+    var note = File(note_path)
     crash note.write_string(typed)
     finished = true
 }

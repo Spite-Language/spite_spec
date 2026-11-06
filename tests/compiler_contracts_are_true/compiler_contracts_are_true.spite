@@ -34,7 +34,9 @@ func CompilerContractsAreTrue() {
 
 func declared_flags(): List<String> {
     var flags = List<String>()
-    var file = File("{root}/environment.spite")
+    var file_path: Path? = "{root}/environment.spite"
+    crash file_path
+    var file = File(file_path)
     var text = file.read_as_string()
     crash text
     var lines = text.split("\n")
@@ -56,12 +58,16 @@ func declared_flags(): List<String> {
 }
 
 func judge_a_stage(stage: String, flags: List<String>) {
-    var entry = File("{root}/{stage}/{stage}.spite")
+    var entry_path: Path? = "{root}/{stage}/{stage}.spite"
+    crash entry_path
+    var entry = File(entry_path)
     if not entry.exists() {
         broken = broken + 1
         console.print("{stage} has no entry file {stage}.spite")
     }
-    var contract = File("{root}/{stage}/contract.md")
+    var contract_path: Path? = "{root}/{stage}/contract.md"
+    crash contract_path
+    var contract = File(contract_path)
     if not contract.exists() {
         broken = broken + 1
         console.print("{stage} has no contract.md")
@@ -136,20 +142,28 @@ func ends_a_file(path: String): Boolean {
 }
 
 func exists_beside(stage: String, path: String): Boolean {
-    var in_the_stage = File("{root}/{stage}/{path}")
+    var in_the_stage_path: Path? = "{root}/{stage}/{path}"
+    crash in_the_stage_path
+    var in_the_stage = File(in_the_stage_path)
     if in_the_stage.exists() {
         return true
     }
-    var in_the_compiler = File("{root}/{path}")
+    var in_the_compiler_path: Path? = "{root}/{path}"
+    crash in_the_compiler_path
+    var in_the_compiler = File(in_the_compiler_path)
     if in_the_compiler.exists() {
         return true
     }
-    var folder_in_the_stage = Directory("{root}/{stage}/{path}")
+    var folder_in_the_stage_path: Path? = "{root}/{stage}/{path}"
+    crash folder_in_the_stage_path
+    var folder_in_the_stage = Directory(folder_in_the_stage_path)
     var entries_in_the_stage = folder_in_the_stage.entries()
     if entries_in_the_stage {
         return true
     }
-    var folder_in_the_compiler = Directory("{root}/{path}")
+    var folder_in_the_compiler_path: Path? = "{root}/{path}"
+    crash folder_in_the_compiler_path
+    var folder_in_the_compiler = Directory(folder_in_the_compiler_path)
     var entries_in_the_compiler = folder_in_the_compiler.entries()
     if entries_in_the_compiler {
         return true

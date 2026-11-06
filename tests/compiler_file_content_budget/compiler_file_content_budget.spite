@@ -9,7 +9,9 @@ var waiting = [
 # ../../specs/style.md#the-file-content-budget
 func CompilerFileContentBudget() {
     load "../../../spite_standard_library/windows"
-    var file = File(path_of_the_list)
+    var list_path: Path? = path_of_the_list
+    crash list_path
+    var file = File(list_path)
     var text = file.read_as_string()
     crash text
     var listed = listed_paths(text)
@@ -59,7 +61,9 @@ func judge_what_waits_here(listed: List<String>) {
             console.print("{path} waits here but not on the compiler's waiting list: take it off here too")
         }
         var folder = folder_of(path)
-        var file = File("{folder}{path}")
+        var file_path: Path? = "{folder}{path}"
+        crash file_path
+        var file = File(file_path)
         if not file.exists() {
             broken = broken + 1
             console.print("{path} waits here but is gone: take it off both lists")

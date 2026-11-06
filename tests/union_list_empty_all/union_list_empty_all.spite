@@ -4,7 +4,9 @@ var build = Build()
 
 func UnionListEmptyAll() {
     load "../../../spite_standard_library/windows"
-    var tree = Directory("{build.program}/tree")
+    var tree_path: Path? = "{build.program}/tree"
+    crash tree_path
+    var tree = Directory(tree_path)
     var entries = tree.entries()
     crash entries
     entries.remove_where_directories()

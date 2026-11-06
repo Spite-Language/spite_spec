@@ -17,7 +17,9 @@ func ForeignSymbolsResolvedWhenTheLibraryOpens() {
 }
 
 func ask(role: String): String {
-    var written = File(touched_path)
+    var written_path: Path? = touched_path
+    crash written_path
+    var written = File(written_path)
     crash written.write_string("untouched")
     var path = program.executable_path()
     crash path

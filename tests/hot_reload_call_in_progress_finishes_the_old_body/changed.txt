@@ -13,10 +13,14 @@ func which(): String {
 }
 
 func write_the_new_file() {
-    var changed = File("{build.program}/changed.txt")
+    var changed_path: Path? = "{build.program}/changed.txt"
+    crash changed_path
+    var changed = File(changed_path)
     var text = changed.read_as_string()
     crash text
-    var file = File("{build.program}/greeter.spite")
+    var file_path: Path? = "{build.program}/greeter.spite"
+    crash file_path
+    var file = File(file_path)
     var written = file.write_string(text)
     if not written {
         console.print("greeter.spite could not be written")

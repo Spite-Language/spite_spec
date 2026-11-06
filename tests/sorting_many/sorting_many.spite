@@ -23,7 +23,9 @@ func SortingMany() {
     index = 0
     while index < _file_count {
         var scrambled = index * 37 % _file_count
-        var file = File("{folder.path}/file_{scrambled}.txt")
+        var file_path: Path? = "{folder.path}/file_{scrambled}.txt"
+        crash file_path
+        var file = File(file_path)
         crash file.write_string("")
         index = index + 1
     }

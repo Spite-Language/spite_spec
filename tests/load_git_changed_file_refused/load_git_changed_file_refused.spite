@@ -17,7 +17,9 @@ func LoadGitChangedFileRefused() {
     var fetched = first.contains("fetched")
     console.print("first compile fetched:", fetched)
     find_the_copy(commit)
-    var widget = File("{copy_path}/kit/widget.spite")
+    var widget_path: Path? = "{copy_path}/kit/widget.spite"
+    crash widget_path
+    var widget = File(widget_path)
     var original = widget.read_as_string()
     crash original
     crash widget.write_string("{original}\n\nfunc tripled(): Integer \{\n    return size * 3\n}\n")
@@ -25,7 +27,9 @@ func LoadGitChangedFileRefused() {
     var changed_text = shown(changed, commit)
     console.print(changed_text)
     crash widget.write_string(original)
-    var added = File("{copy_path}/kit/extra.spite")
+    var added_path: Path? = "{copy_path}/kit/extra.spite"
+    crash added_path
+    var added = File(added_path)
     crash added.write_string("func Extra() \{\n}\n")
     var added_errors = compile("{root}/app")
     var added_text = shown(added_errors, commit)
@@ -49,12 +53,16 @@ func reset() {
 }
 
 func make_directory(path: String) {
-    var made = Directory(path)
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
     crash made.create()
 }
 
 func write_file(path: String, text: String) {
-    var file = File(path)
+    var file_path: Path? = path
+    crash file_path
+    var file = File(file_path)
     crash file.write_string(text)
 }
 
@@ -136,7 +144,9 @@ func make_widget_repository(text: String): String {
 }
 
 func find_the_copy(commit: String) {
-    var git_folder = Directory("{root}/app/.spite/git")
+    var git_path: Path? = "{root}/app/.spite/git"
+    crash git_path
+    var git_folder = Directory(git_path)
     var entries = git_folder.entries()
     crash entries
     var index = 0

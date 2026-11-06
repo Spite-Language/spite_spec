@@ -1,5 +1,5 @@
 a/b/c a/b a/b/c.txt a/b/c
-an empty path is . and so is a lone dot .
+a lone dot is .
 written keeps the text as it came: a\b\c.txt
 parent of a one-piece path: .
 extension of .gitignore  name .gitignore

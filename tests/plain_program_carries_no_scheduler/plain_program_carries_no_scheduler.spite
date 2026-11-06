@@ -20,7 +20,9 @@ func functions_starting_with(prefix: String): Integer {
     var path = program.executable_path()
     crash path
     var low_path = path.replace(".exe", ".low_ir.txt")
-    var written = File(low_path).read_as_string()
+    var written_path: Path? = low_path
+    crash written_path
+    var written = File(written_path).read_as_string()
     crash written
     var lines = written.split("\n")
     var found = 0

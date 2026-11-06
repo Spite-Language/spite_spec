@@ -7,7 +7,9 @@ func DirectoryEntryNotHidden() {
     var mine = Entry()
     var shown = mine.shown()
     console.print("my entry", shown)
-    var tree = Directory("{build.program}/tree")
+    var tree_path: Path? = "{build.program}/tree"
+    crash tree_path
+    var tree = Directory(tree_path)
     var entries = tree.entries()
     crash entries
     var index = 0

@@ -31,7 +31,9 @@ func report_environment() {
 func where_it_runs() {
     var folder = program.working_directory()
     crash folder
-    var source = File("{folder}/tests/program_edges/program_edges.spite")
+    var source_path: Path? = "{folder}/tests/program_edges/program_edges.spite"
+    crash source_path
+    var source = File(source_path)
     var found = source.exists()
     console.print("the working directory holds the test:", found)
     var executable = program.executable_path()

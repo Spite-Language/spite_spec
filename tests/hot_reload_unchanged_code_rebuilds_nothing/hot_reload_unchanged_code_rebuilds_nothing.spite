@@ -10,7 +10,9 @@ func HotReloadUnchangedCodeRebuildsNothing() {
     var first = greeter.which()
     console.print(first)
     var text = "func which(): String \{\n    return \"old\"\n}\n"
-    var file = File("{build.program}/greeter.spite")
+    var file_path: Path? = "{build.program}/greeter.spite"
+    crash file_path
+    var file = File(file_path)
     crash file.write_string(text)
     var three_seconds = Duration(3, 'seconds')
     program.sleep(three_seconds)

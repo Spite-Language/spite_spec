@@ -1,0 +1,48 @@
+var console = Console()
+
+func PathRefuses() {
+    load "../../../spite_standard_library/windows"
+    literals_need_no_narrowing()
+    refused_text()
+    narrowed_text()
+    joined_paths_need_no_narrowing()
+}
+
+func literals_need_no_narrowing() {
+    var file = File("no_such_file.txt")
+    var there = file.exists()
+    var named: Path = "levels/forest.txt"
+    console.print("a literal is a path", named, there)
+}
+
+func refused_text() {
+    var nothing = ""
+    var empty: Path? = nothing
+    var empty_is_refused = not empty
+    console.print("empty text is refused", empty_is_refused)
+    var bytes = Buffer(3)
+    bytes.append(97)
+    bytes.append(0)
+    bytes.append(98)
+    var cut = bytes.read_as_string()
+    crash cut
+    var with_a_zero: Path? = cut
+    var zero_is_refused = not with_a_zero
+    console.print("a zero byte is refused", zero_is_refused)
+}
+
+func narrowed_text() {
+    var folder = "levels"
+    var path: Path? = "{folder}/forest.txt"
+    crash path
+    var file = File(path)
+    console.print("a computed path, narrowed", file.path)
+}
+
+func joined_paths_need_no_narrowing() {
+    var base: Path = "folder"
+    var inside: Path = "file.txt"
+    var together = base.joined(inside)
+    var file = File(together)
+    console.print("joined", together, file.path)
+}

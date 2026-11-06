@@ -8,7 +8,9 @@ func PinnedCopyLayout() {
     var widget = Widgets.Widget("gadget", 3)
     var described = widget.describe()
     console.print(described)
-    var git = Directory("{build.program}/.spite/git")
+    var git_path: Path? = "{build.program}/.spite/git"
+    crash git_path
+    var git = Directory(git_path)
     var entries = git.entries()
     crash entries
     var index = 0
@@ -24,9 +26,15 @@ func PinnedCopyLayout() {
 
 func show_copy(folder: Directory) {
     fallback folder.folder_name.starts_with("spite_spec_")
-    var record = File("{folder.path}/26e6476.files")
-    var copy = Directory("{folder.path}/26e6476")
-    var repository = Directory("{folder.path}/26e6476/.git")
+    var record_path: Path? = "{folder.path}/26e6476.files"
+    crash record_path
+    var record = File(record_path)
+    var copy_path: Path? = "{folder.path}/26e6476"
+    crash copy_path
+    var copy = Directory(copy_path)
+    var repository_path: Path? = "{folder.path}/26e6476/.git"
+    crash repository_path
+    var repository = Directory(repository_path)
     var has_record = record.exists()
     var has_copy = copy.exists()
     var has_git = repository.exists()

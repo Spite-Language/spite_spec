@@ -1,0 +1,1 @@
+conformance/conversion_answers_another_class/meters.spite:7: error: the conversion 'Meters' answers 'Integer?', but a conversion always answers its class's '?', whether or not it can fail: write ': Meters?' and answer null for a value it cannot convert (in Meters)

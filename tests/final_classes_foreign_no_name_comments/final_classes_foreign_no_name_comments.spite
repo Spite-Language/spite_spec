@@ -8,7 +8,9 @@ func FinalClassesForeignNoNameComments() {
     load "../../../spite_standard_library/windows"
     var sum = fixture.add_numbers(_two, _three)
     console.print("the call answered", sum)
-    var printed = File("{build.program}/.spite/final_classes_foreign_no_name_comments/dynamic_library.spite")
+    var printed_path: Path? = "{build.program}/.spite/final_classes_foreign_no_name_comments/dynamic_library.spite"
+    crash printed_path
+    var printed = File(printed_path)
     var text = printed.read_as_string()
     crash text
     var has_its_functions = text.contains("func open_library")

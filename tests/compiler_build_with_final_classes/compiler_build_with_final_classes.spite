@@ -8,7 +8,9 @@ func CompilerBuildWithFinalClasses() {
     var here = program.working_directory()
     crash here
     var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
-    var executable = File("{folder}/.spite/build/final_with_build.exe")
+    var executable_path: Path? = "{folder}/.spite/build/final_with_build.exe"
+    crash executable_path
+    var executable = File(executable_path)
     if executable.exists() {
         crash executable.remove()
     }
@@ -18,15 +20,21 @@ func CompilerBuildWithFinalClasses() {
     var code = building.run()
     crash code
     var is_built = executable.exists()
-    var marker = File("{folder}/../written_classes/.final-classes")
+    var marker_path: Path? = "{folder}/../written_classes/.final-classes"
+    crash marker_path
+    var marker = File(marker_path)
     var is_marked = marker.exists()
-    var badge = File("{folder}/../written_classes/badge.spite")
+    var badge_path: Path? = "{folder}/../written_classes/badge.spite"
+    crash badge_path
+    var badge = File(badge_path)
     var is_written = badge.exists()
     console.print("exit", code, "executable", is_built, "folder marked", is_marked, "badge written", is_written)
 }
 
 func write_the_program() {
-    var made = Directory(folder)
+    var made_path: Path? = folder
+    crash made_path
+    var made = Directory(made_path)
     if not made.exists() {
         crash made.create()
     }
@@ -39,9 +47,13 @@ func write_the_program() {
     lines.append("    console.print(badge.name)")
     lines.append("}")
     lines.append("")
-    var entry = File("{folder}/final_with_build.spite")
+    var entry_path: Path? = "{folder}/final_with_build.spite"
+    crash entry_path
+    var entry = File(entry_path)
     var joined = lines.join("\n")
     crash entry.write_string(joined)
-    var badge = File("{folder}/badge.spite")
+    var badge_path_text: Path? = "{folder}/badge.spite"
+    crash badge_path_text
+    var badge = File(badge_path_text)
     crash badge.write_string("var name = \"gold\"\n")
 }

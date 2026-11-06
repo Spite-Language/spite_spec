@@ -54,7 +54,9 @@ func run_app() {
 }
 
 func show_layout(commit: String) {
-    var git_folder = Directory("{root}/app/.spite/git")
+    var git_path: Path? = "{root}/app/.spite/git"
+    crash git_path
+    var git_folder = Directory(git_path)
     var entries = git_folder.entries()
     crash entries
     var index = 0
@@ -71,7 +73,9 @@ func show_layout(commit: String) {
 func show_copy(folder: Directory, commit: String) {
     fallback folder.folder_name.starts_with("repo_")
     var base = folder.path
-    var record = File("{base}/{commit}.files")
+    var record_path: Path? = "{base}/{commit}.files"
+    crash record_path
+    var record = File(record_path)
     var text = record.read_as_string()
     crash text
     var lines = text.split("\n")
@@ -80,9 +84,13 @@ func show_copy(folder: Directory, commit: String) {
     var starts = full.starts_with(commit)
     var length = full.length()
     console.print("the record starts with the full commit:", starts, length, "digits")
-    var widget = File("{base}/{commit}/kit/widget.spite")
+    var widget_path: Path? = "{base}/{commit}/kit/widget.spite"
+    crash widget_path
+    var widget = File(widget_path)
     var has_widget = widget.exists()
-    var repository = Directory("{base}/{commit}/.git")
+    var repository_path: Path? = "{base}/{commit}/.git"
+    crash repository_path
+    var repository = Directory(repository_path)
     var has_git = repository.exists()
     console.print("the copy holds kit/widget.spite:", has_widget, "and a .git folder:", has_git)
 }
@@ -95,12 +103,16 @@ func reset() {
 }
 
 func make_directory(path: String) {
-    var made = Directory(path)
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
     crash made.create()
 }
 
 func write_file(path: String, text: String) {
-    var file = File(path)
+    var file_path: Path? = path
+    crash file_path
+    var file = File(file_path)
     crash file.write_string(text)
 }
 

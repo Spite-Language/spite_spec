@@ -60,7 +60,9 @@ func bounded_by_maximum(amount: Integer): Integer {
 }
 
 func print_report() {
-    var report = File("{build.program}/.spite/reports/range_attribute_count_division.md").read_as_string()
+    var report_path: Path? = "{build.program}/.spite/reports/range_attribute_count_division.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
     crash report
     var lines = report.split("\n")
     var index = 0

@@ -4,9 +4,13 @@ var build = Build()
 
 func FinalClassesPlatformFunctions() {
     load "../../../spite_standard_library/windows"
-    var file = File("{build.program}/monster.txt")
+    var file_path: Path? = "{build.program}/monster.txt"
+    crash file_path
+    var file = File(file_path)
     var found = file.exists()
-    var printed = File("{build.program}/.spite/final_platform/file.spite")
+    var printed_path: Path? = "{build.program}/.spite/final_platform/file.spite"
+    crash printed_path
+    var printed = File(printed_path)
     var text = printed.read_as_string()
     crash text
     var from_windows = text.contains("ucrtbase.dll")

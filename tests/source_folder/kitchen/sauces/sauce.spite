@@ -1,6 +1,8 @@
 func notes(): String {
     var folder = class.source_folder()
-    var text = File("{folder}/sauce.txt").read_as_string()
+    var text_path: Path? = "{folder}/sauce.txt"
+    crash text_path
+    var text = File(text_path).read_as_string()
     crash text
     return text.trim()
 }

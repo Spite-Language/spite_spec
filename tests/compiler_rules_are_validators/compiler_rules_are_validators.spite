@@ -15,7 +15,9 @@ var waiting = {
 # ../../../spite_compiler/ARCHITECTURE.md#validators
 func CompilerRulesAreValidators() {
     load "../../../spite_standard_library/windows"
-    var top = Directory(root)
+    var top_path: Path? = root
+    crash top_path
+    var top = Directory(top_path)
     read_a_folder(top, "")
     if broken == 0 {
         console.print("every check of the compiler is a rule of validators/")

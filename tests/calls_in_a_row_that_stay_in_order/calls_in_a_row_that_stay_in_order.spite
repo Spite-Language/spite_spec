@@ -13,7 +13,9 @@ func CallsInARowThatStayInOrder() {
     var path = program.executable_path()
     crash path
     var low_path = path.replace(".exe", ".low_ir.txt")
-    var text = File(low_path).read_as_string()
+    var text_path: Path? = low_path
+    crash text_path
+    var text = File(text_path).read_as_string()
     crash text
     written = text
     var heavy_pair_starts = starts_in("heavy_pair")

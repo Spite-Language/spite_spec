@@ -23,7 +23,9 @@ func HotReloadWaitsForAStoppedCall() {
 }
 
 func write_worker(word: String) {
-    var file = File("{build.program}/worker.spite")
+    var file_path: Path? = "{build.program}/worker.spite"
+    crash file_path
+    var file = File(file_path)
     var text = "var console = Console()\nvar program = Program()\nvar finished = false\nvar _wait_milliseconds = 300\n\nfunc speak() \{\n    var pause = Duration(_wait_milliseconds, 'milliseconds')\n    program.sleep(pause)\n    var heard = said()\n    console.print(\"the stopped call, run to its end:\", heard)\n    finished = true\n}\n\nfunc said(): String \{\n    return \"{word}\"\n}\n"
     var written = file.write_string(text)
     if not written {

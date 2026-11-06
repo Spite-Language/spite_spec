@@ -6,15 +6,21 @@ var _most_waits = 600
 
 func HotReloadIgnoresTheSpiteFolder() {
     load "../../../spite_standard_library/windows"
-    var stray = File("{build.program}/.spite/stray.spite")
+    var stray_path: Path? = "{build.program}/.spite/stray.spite"
+    crash stray_path
+    var stray = File(stray_path)
     crash stray.write_string("this is not a program\n")
     var three_seconds = Duration(3, 'seconds')
     program.sleep(three_seconds)
     console.print("stray file written and waited for")
-    var changed = File("{build.program}/changed.txt")
+    var changed_path: Path? = "{build.program}/changed.txt"
+    crash changed_path
+    var changed = File(changed_path)
     var text = changed.read_as_string()
     crash text
-    var file = File("{build.program}/greeter.spite")
+    var file_path: Path? = "{build.program}/greeter.spite"
+    crash file_path
+    var file = File(file_path)
     crash file.write_string(text)
     var fifty_milliseconds = Duration(50, 'milliseconds')
     var now = greeter.which()

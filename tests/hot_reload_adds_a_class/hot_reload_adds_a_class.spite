@@ -22,9 +22,13 @@ func HotReloadAddsAClass() {
 }
 
 func write_over(target: String, source: String) {
-    var changed = File("{build.program}/{source}")
+    var changed_path: Path? = "{build.program}/{source}"
+    crash changed_path
+    var changed = File(changed_path)
     var text = changed.read_as_string()
     crash text
-    var file = File("{build.program}/{target}")
+    var file_path: Path? = "{build.program}/{target}"
+    crash file_path
+    var file = File(file_path)
     crash file.write_string(text)
 }

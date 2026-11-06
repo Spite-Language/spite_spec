@@ -19,10 +19,14 @@ func HotReloadKeepsLoadOrder() {
 }
 
 func write_over(root: String) {
-    var changed = File("{build.program}/{root}/creatures/changed.txt")
+    var changed_path: Path? = "{build.program}/{root}/creatures/changed.txt"
+    crash changed_path
+    var changed = File(changed_path)
     var text = changed.read_as_string()
     crash text
-    var file = File("{build.program}/{root}/creatures/monster.spite")
+    var file_path: Path? = "{build.program}/{root}/creatures/monster.spite"
+    crash file_path
+    var file = File(file_path)
     crash file.write_string(text)
 }
 

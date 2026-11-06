@@ -18,7 +18,9 @@ func LoadGitFileUrl() {
     var line = fetched.contains("fetched {url}@{first} into ")
     console.print("fetched the url:", line)
     find_the_copy(first)
-    var bare = Directory("{copy_folder}/repository")
+    var bare_path: Path? = "{copy_folder}/repository"
+    crash bare_path
+    var bare = Directory(bare_path)
     var has_bare = bare.exists()
     console.print("a bare clone is kept beside the copies:", has_bare)
     write_file("{root}/repo/kit/hub.spite", "func Hub() \{\n    load \"../../repo@{first}/kit\"\n}\n")
@@ -65,12 +67,16 @@ func reset() {
 }
 
 func make_directory(path: String) {
-    var made = Directory(path)
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
     crash made.create()
 }
 
 func write_file(path: String, text: String) {
-    var file = File(path)
+    var file_path: Path? = path
+    crash file_path
+    var file = File(file_path)
     crash file.write_string(text)
 }
 
@@ -155,7 +161,9 @@ func make_widget_repository(text: String): String {
 }
 
 func find_the_copy(commit: String) {
-    var git_folder = Directory("{root}/app/.spite/git")
+    var git_path: Path? = "{root}/app/.spite/git"
+    crash git_path
+    var git_folder = Directory(git_path)
     var entries = git_folder.entries()
     crash entries
     var index = 0

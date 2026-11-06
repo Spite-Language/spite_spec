@@ -120,7 +120,7 @@ func collect_the_finished(): Boolean {
 func finish_one(child: Child) {
     var code = child.exit_code()
     child.close()
-    var file = File(child.output_path)
+    var file = file_at(child.output_path)
     var printed = file.read_as_string()
     var text = ""
     if printed {
@@ -144,8 +144,20 @@ func make_the_working_folder() {
     make_a_folder(outputs_folder)
 }
 
+func file_at(text: String): File {
+    var path: Path? = text
+    crash path
+    return File(path)
+}
+
+func folder_at(text: String): Directory {
+    var path: Path? = text
+    crash path
+    return Directory(path)
+}
+
 func make_a_folder(path: String) {
-    var folder = Directory(path)
+    var folder = folder_at(path)
     if not folder.exists() {
         crash folder.create()
     }
@@ -198,7 +210,7 @@ func add_named(named: List<String>, pattern: String) {
 }
 
 func last_failures(): List<String> {
-    var file = File(failures_file)
+    var file = file_at(failures_file)
     var text = file.read_as_string()
     var found = List<String>()
     if not text {
@@ -223,7 +235,7 @@ func keep_the_failures() {
         crash folder.create()
     }
     var joined = failed_folders.join("\n")
-    var file = File(failures_file)
+    var file = file_at(failures_file)
     crash file.write_string(joined)
 }
 
@@ -236,7 +248,7 @@ func every_folder(): List<String> {
 
 func keep_folders_in(parent: String) {
     parent_folder = parent
-    var directory = Directory(parent)
+    var directory = folder_at(parent)
     var entries = directory.entries()
     crash entries
     entries.each(keep_folder)
@@ -294,7 +306,7 @@ func run_test(folder: String) {
     fallback built
     var executable = executable_of(folder)
     var input = "<nul"
-    var input_file = File("{folder}/input.txt")
+    var input_file = file_at("{folder}/input.txt")
     if input_file.exists() {
         input = "<{folder}/input.txt"
     }
@@ -307,7 +319,7 @@ func run_test(folder: String) {
         fail(folder, "it answered {answer}, and {wanted} was expected")
         return
     }
-    var output_file = File("{folder}/expected_output.txt")
+    var output_file = file_at("{folder}/expected_output.txt")
     if output_file.exists() {
         var expected_output = optional_text(folder, "expected_output.txt")
         var printed = running.read_output_as_string()
@@ -323,7 +335,7 @@ func run_test(folder: String) {
 }
 
 func source_is_unchanged(folder: String, copy: String): Boolean {
-    var asked = File("{folder}/source_unchanged.txt")
+    var asked = file_at("{folder}/source_unchanged.txt")
     if not asked.exists() {
         return true
     }
@@ -353,7 +365,7 @@ func absolute_working(): String {
 }
 
 func optional_text(folder: String, name: String): String {
-    var file = File("{folder}/{name}")
+    var file = file_at("{folder}/{name}")
     var text = file.read_as_string()
     fallback text
     return cleaned(text)
@@ -439,7 +451,7 @@ func source_is_as_expected(folder: String, copy: String): Boolean {
 }
 
 func source_matches(folder: String, copy: String, written_name: String, expected_name: String): Boolean {
-    var asked = File("{folder}/{expected_name}")
+    var asked = file_at("{folder}/{expected_name}")
     if not asked.exists() {
         return true
     }
@@ -453,7 +465,7 @@ func source_matches(folder: String, copy: String, written_name: String, expected
 }
 
 func exact_text(folder: String, name: String): String {
-    var file = File("{folder}/{name}")
+    var file = file_at("{folder}/{name}")
     var text = file.read_as_string()
     fallback text
     return text.replace("\r", "")
@@ -485,7 +497,7 @@ func without_formatting(errors: String): String {
 }
 
 func copy_of(folder: String): String? {
-    var directory = Directory(folder)
+    var directory = folder_at(folder)
     var name = directory.folder_name
     var copies = copies_folder
     if folder.starts_with("conformance/") {
@@ -544,7 +556,7 @@ func in_the_folder(output: String, copy: String, folder: String): String {
 }
 
 func expected_text(folder: String, name: String): String? {
-    var file = File("{folder}/{name}")
+    var file = file_at("{folder}/{name}")
     var text = file.read_as_string()
     if not text {
         fail(folder, "it has no {name}")
@@ -554,7 +566,7 @@ func expected_text(folder: String, name: String): String? {
 }
 
 func executable_of(folder: String): String {
-    var directory = Directory(folder)
+    var directory = folder_at(folder)
     var name = directory.folder_name
     var windows_folder = folder.replace("/", "\\")
     return "{windows_folder}\\.spite\\build\\{name}.exe"
