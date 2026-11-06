@@ -1,0 +1,115 @@
+var console = Console()
+var program = Program()
+var finished = false
+var counter = 0
+var name = "before"
+var slot: Integer? = 5
+var waits_made = 0
+var _pause_milliseconds = 3
+var _first = 10
+var _second = 20
+var _third = 3
+var _slot_value = 5
+var _starting_counter = 1
+var _bumped = 100
+
+func run() {
+    in_a_text()
+    in_a_sum()
+    in_a_condition()
+    in_an_and_or()
+    in_two_blocks_with_one_name()
+    in_a_comparison_with_a_nullable()
+    finished = true
+}
+
+func in_a_text() {
+    var text = "{name} then {rename_after()} then {name}"
+    console.print("a text keeps its written order:", text)
+}
+
+func in_a_sum() {
+    counter = _starting_counter
+    var sum = counter + bump_after()
+    console.print("the left operand was read before the wait:", sum)
+}
+
+func in_a_condition() {
+    waits_made = 0
+    var passes = 0
+    while tick() < _third {
+        passes = passes + 1
+    }
+    console.print("a while whose condition waits waits on every pass:", passes, "passes,", waits_made, "waits")
+}
+
+func in_an_and_or() {
+    waits_made = 0
+    var never = false
+    var always = true
+    if never and waits_true() {
+        console.print("this line is never printed")
+    }
+    if always or waits_true() {
+        console.print("the right side of or is not computed when the left side decides")
+    }
+    if always and waits_true() {
+        console.print("the right side of and is computed when the left side lets it:", waits_made, "wait")
+    }
+}
+
+func in_two_blocks_with_one_name() {
+    var first_branch = true
+    var second_branch = true
+    if first_branch {
+        var held = _first
+        wait_a_bit()
+        console.print("first block still holds", held)
+    }
+    if second_branch {
+        var held = _second
+        wait_a_bit()
+        console.print("second block still holds", held)
+    }
+}
+
+func in_a_comparison_with_a_nullable() {
+    slot = _slot_value
+    var same = slot == clear_slot_after()
+    console.print("the nullable left side was kept across the wait:", same)
+}
+
+func rename_after(): Integer {
+    name = "after"
+    wait_a_bit()
+    return _first
+}
+
+func bump_after(): Integer {
+    counter = _bumped
+    wait_a_bit()
+    return _first
+}
+
+func tick(): Integer {
+    waits_made = waits_made + 1
+    wait_a_bit()
+    return waits_made
+}
+
+func waits_true(): Boolean {
+    waits_made = waits_made + 1
+    wait_a_bit()
+    return true
+}
+
+func clear_slot_after(): Integer {
+    slot = null
+    wait_a_bit()
+    return _slot_value
+}
+
+func wait_a_bit() {
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+}

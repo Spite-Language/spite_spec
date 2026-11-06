@@ -1,0 +1,3 @@
+the stopped call, run to its end: old
+spite: rebuilt Worker
+the next call, after the reload: new

@@ -1,0 +1,16 @@
+var console = Console()
+var program = Program()
+var finished = false
+var _wait_milliseconds = 300
+
+func speak() {
+    var pause = Duration(_wait_milliseconds, 'milliseconds')
+    program.sleep(pause)
+    var heard = said()
+    console.print("the stopped call, run to its end:", heard)
+    finished = true
+}
+
+func said(): String {
+    return "new"
+}

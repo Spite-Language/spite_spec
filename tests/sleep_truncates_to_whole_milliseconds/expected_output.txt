@@ -1,0 +1,2 @@
+under one millisecond is truncated to no wait: true
+a millisecond and a bit waits at least the whole millisecond: true

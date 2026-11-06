@@ -1,0 +1,5 @@
+var _chirps = 100
+
+func nap(): Integer {
+    return _chirps
+}

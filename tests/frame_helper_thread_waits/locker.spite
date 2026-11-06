@@ -1,0 +1,10 @@
+var taken = false
+var _lock_path = ".spite/frame_helper_thread_waits.lock"
+
+func take() {
+    var guard = File(_lock_path)
+    var held = guard.lock()
+    crash held
+    held.unlock()
+    taken = true
+}

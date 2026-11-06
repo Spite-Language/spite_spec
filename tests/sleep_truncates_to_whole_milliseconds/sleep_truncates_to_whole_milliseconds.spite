@@ -1,0 +1,33 @@
+var console = Console()
+var clock = Clock()
+var program = Program()
+var _passes = 100
+var _just_under_a_millisecond = 999
+var _just_over_a_millisecond = 1999
+var _longest_for_no_wait: Long = 40
+var _shortest_for_one_millisecond_each: Long = 100
+
+func SleepTruncatesToWholeMilliseconds() {
+    load "../../../spite_standard_library/windows"
+    var just_under = Duration(_just_under_a_millisecond, 'microseconds')
+    var just_over = Duration(_just_over_a_millisecond, 'microseconds')
+    var under_taken = sleep_many_times(just_under)
+    var over_taken = sleep_many_times(just_over)
+    console.print("under one millisecond is truncated to no wait:", under_taken < _longest_for_no_wait)
+    console.print(
+        "a millisecond and a bit waits at least the whole millisecond:",
+        over_taken >= _shortest_for_one_millisecond_each,
+    )
+}
+
+func sleep_many_times(time: Duration): Long {
+    var started = clock.elapsed()
+    var pass = 0
+    while pass < _passes {
+        program.sleep(time)
+        pass = pass + 1
+    }
+    var finished = clock.elapsed()
+    var taken = finished - started
+    return taken.total('milliseconds')
+}

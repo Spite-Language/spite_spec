@@ -1,0 +1,10 @@
+go begins
+back in the entry, before any loop
+go ends
+the call started outside any loop ran on in the frames
+go begins
+go ends
+a loop that sleeps through a condition started its call: true
+go begins
+go ends
+a sleep only inside a constructor started nothing: true

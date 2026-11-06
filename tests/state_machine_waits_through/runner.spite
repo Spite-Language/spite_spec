@@ -1,0 +1,66 @@
+type Napping {
+    nap(): Integer
+}
+
+var console = Console()
+var program = Program()
+var finished = false
+var napper = Napper()
+var snorer = Snorer()
+var chirper = Chirper()
+var _pause_milliseconds = 3
+var _passes = 3
+var _start = 4
+
+func run() {
+    through_a_constructor()
+    through_a_function_value()
+    through_a_type()
+    in_a_loop_and_a_branch()
+    finished = true
+}
+
+func through_a_constructor() {
+    var made = Slowpoke()
+    console.print("the constructor waited and the object is whole:", made.ready)
+}
+
+func through_a_function_value() {
+    var change: Spite.Function<Integer, Integer> = napper.nap_and_double
+    var answer = change(_start)
+    console.print("a function value that waits answered", answer)
+}
+
+func through_a_type() {
+    var sleepers = List<Napping>()
+    sleepers.append(snorer)
+    sleepers.append(chirper)
+    var index = 0
+    var total = 0
+    while index < sleepers.count() {
+        var slept = sleepers[index].nap()
+        total = total + slept
+        index = index + 1
+    }
+    console.print("a type's function that waits for one class, and one that does not:", total)
+}
+
+func in_a_loop_and_a_branch() {
+    var pass = 0
+    var seen = ""
+    while pass < _passes {
+        if pass == 1 {
+            wait_a_bit()
+            seen = "{seen}w"
+        } else {
+            seen = "{seen}n"
+        }
+        pass = pass + 1
+    }
+    console.print("a wait in a branch of a loop resumed in place:", seen)
+}
+
+func wait_a_bit() {
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+}

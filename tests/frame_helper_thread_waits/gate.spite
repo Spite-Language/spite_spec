@@ -1,0 +1,40 @@
+var server = Tcp.Server()
+var peer: Tcp.Connection? = null
+var client = Tcp.Client()
+var accepted = false
+var line = ""
+
+func listen(port: Integer): Boolean {
+    var local_host: IpAddress? = "127.0.0.1"
+    crash local_host
+    return server.listen_at(local_host, port)
+}
+
+func connect(port: Integer): Boolean {
+    var local_host: IpAddress? = "127.0.0.1"
+    crash local_host
+    return client.connect(local_host, port)
+}
+
+func send(text: String): Boolean {
+    return client.write_line(text)
+}
+
+func accept() {
+    peer = server.accept()
+    accepted = true
+}
+
+func hear() {
+    crash peer
+    var heard = peer.read_line()
+    crash heard
+    line = heard
+}
+
+func close() {
+    client.close()
+    crash peer
+    peer.close()
+    server.close()
+}

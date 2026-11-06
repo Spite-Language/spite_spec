@@ -1,0 +1,20 @@
+var console = Console()
+var program = Program()
+var done = false
+var started = false
+var _thirty = 30
+
+func go() {
+    fallback not started
+    started = true
+    console.print("go begins")
+    var pause = Duration(_thirty, 'milliseconds')
+    program.sleep(pause)
+    console.print("go ends")
+    done = true
+}
+
+func reset() {
+    done = false
+    started = false
+}

@@ -1,0 +1,9 @@
+var program = Program()
+var ready = false
+var _pause_milliseconds = 3
+
+func Slowpoke() {
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+    ready = true
+}

@@ -1,0 +1,5 @@
+the constructor waited and the object is whole: true
+a function value that waits answered 8
+a type's function that waits for one class, and one that does not: 107
+a wait in a branch of a loop resumed in place: nwn
+the frame went on while the runner waited: true

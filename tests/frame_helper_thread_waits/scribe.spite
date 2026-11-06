@@ -1,0 +1,11 @@
+var console = Console()
+var finished = false
+var _note_path = ".spite/frame_helper_thread_waits.txt"
+
+func copy_a_line() {
+    var typed = console.read_line()
+    crash typed
+    var note = File(_note_path)
+    crash note.write_string(typed)
+    finished = true
+}

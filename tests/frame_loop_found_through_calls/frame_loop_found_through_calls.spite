@@ -1,0 +1,66 @@
+var console = Console()
+var program = Program()
+var waiter = Waiter()
+var frames = 0
+
+func FrameLoopFoundThroughCalls() {
+    load "../../../spite_standard_library/windows"
+    update_everything()
+    console.print("back in the entry, before any loop")
+    finish_the_first_call()
+    through_two_levels_and_a_condition()
+    sleeping_only_in_a_constructor()
+}
+
+func finish_the_first_call() {
+    while not waiter.done {
+        var ignored = rest_for_a_frame()
+        if ignored {
+            console.print("never printed")
+        }
+    }
+    console.print("the call started outside any loop ran on in the frames")
+}
+
+func through_two_levels_and_a_condition() {
+    waiter.reset()
+    frames = 0
+    while not waiter.done {
+        frames = frames + 1
+        step()
+        if rest_for_a_frame() {
+            console.print("a sleep reached through a condition ended a frame")
+        }
+    }
+    console.print("a loop that sleeps through a condition started its call:", frames > 1)
+}
+
+func step() {
+    update_everything()
+}
+
+func update_everything() {
+    waiter.go()
+}
+
+func rest_for_a_frame(): Boolean {
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
+    return false
+}
+
+func sleeping_only_in_a_constructor() {
+    waiter.reset()
+    frames = 0
+    while not waiter.done {
+        frames = frames + 1
+        if frames == 1 {
+            waiter.go()
+        }
+        var sleeper = Sleeper()
+        if not sleeper.slept {
+            console.print("never printed")
+        }
+    }
+    console.print("a sleep only inside a constructor started nothing:", frames == 1)
+}

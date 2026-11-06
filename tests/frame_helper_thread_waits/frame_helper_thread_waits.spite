@@ -1,0 +1,98 @@
+var console = Console()
+var program = Program()
+var locker = Locker()
+var gate = Gate()
+var scribe = Scribe()
+var frames = 0
+var _frames_held = 20
+var _port = 47321
+var _lock_path = ".spite/frame_helper_thread_waits.lock"
+var _note_path = ".spite/frame_helper_thread_waits.txt"
+
+func FrameHelperThreadWaits() {
+    load "../../../spite_standard_library/windows"
+    waits_for_a_file_lock()
+    waits_for_a_client_to_connect()
+    waits_for_a_client_to_send()
+    reads_a_console_line_and_writes_a_file()
+}
+
+func waits_for_a_file_lock() {
+    var guard = File(_lock_path)
+    var held = guard.lock()
+    crash held
+    frames = 0
+    var released = false
+    while not locker.taken {
+        frames = frames + 1
+        if frames == 1 {
+            locker.take()
+        }
+        if frames == _frames_held {
+            held.unlock()
+            released = true
+        }
+        wait_a_frame()
+    }
+    console.print("the frame went on while a started call waited for a file lock:", released, frames >= _frames_held)
+    crash guard.remove()
+}
+
+func waits_for_a_client_to_connect() {
+    var listening = gate.listen(_port)
+    crash listening
+    frames = 0
+    var connected = false
+    while not gate.accepted {
+        frames = frames + 1
+        if frames == 1 {
+            gate.accept()
+        }
+        if frames == _frames_held {
+            crash gate.connect(_port)
+            connected = true
+        }
+        wait_a_frame()
+    }
+    console.print("the frame went on while a started call waited to accept:", connected, frames >= _frames_held)
+}
+
+func waits_for_a_client_to_send() {
+    frames = 0
+    var sent = false
+    while gate.line.is_empty() {
+        frames = frames + 1
+        if frames == 1 {
+            gate.hear()
+        }
+        if frames == _frames_held {
+            crash gate.send("hello from the client")
+            sent = true
+        }
+        wait_a_frame()
+    }
+    console.print("the frame went on while a started call waited for a line:", sent, frames >= _frames_held)
+    console.print("the line that came:", gate.line)
+    gate.close()
+}
+
+func reads_a_console_line_and_writes_a_file() {
+    frames = 0
+    while not scribe.finished {
+        frames = frames + 1
+        if frames == 1 {
+            scribe.copy_a_line()
+        }
+        wait_a_frame()
+    }
+    var note = File(_note_path)
+    var text = note.read_as_string()
+    crash text
+    console.print("a started call read the console and wrote the file:", text)
+    crash note.remove()
+}
+
+func wait_a_frame() {
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
+}

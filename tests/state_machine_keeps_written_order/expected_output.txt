@@ -1,0 +1,9 @@
+a text keeps its written order: before then 10 then after
+the left operand was read before the wait: 11
+a while whose condition waits waits on every pass: 2 passes, 3 waits
+the right side of or is not computed when the left side decides
+the right side of and is computed when the left side lets it: 1 wait
+first block still holds 10
+second block still holds 20
+the nullable left side was kept across the wait: true
+the frame went on while the machine waited: true

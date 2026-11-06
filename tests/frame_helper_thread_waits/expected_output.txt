@@ -1,0 +1,5 @@
+the frame went on while a started call waited for a file lock: true true
+the frame went on while a started call waited to accept: true true
+the frame went on while a started call waited for a line: true true
+the line that came: hello from the client
+a started call read the console and wrote the file: typed into the console

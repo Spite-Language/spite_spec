@@ -1,0 +1,32 @@
+var console = Console()
+var build = Build()
+var program = Program()
+var worker = Worker()
+var frames = 0
+var _reload_seconds = 5
+
+func HotReloadWaitsForAStoppedCall() {
+    load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not worker.finished {
+        frames = frames + 1
+        if frames == 1 {
+            worker.speak()
+            write_worker("new")
+        }
+        program.sleep(one_millisecond)
+    }
+    var reload_time = Duration(_reload_seconds, 'seconds')
+    program.sleep(reload_time)
+    var now = worker.said()
+    console.print("the next call, after the reload:", now)
+}
+
+func write_worker(word: String) {
+    var file = File("{build.program}/worker.spite")
+    var text = "var console = Console()\nvar program = Program()\nvar finished = false\nvar _wait_milliseconds = 300\n\nfunc speak() \{\n    var pause = Duration(_wait_milliseconds, 'milliseconds')\n    program.sleep(pause)\n    var heard = said()\n    console.print(\"the stopped call, run to its end:\", heard)\n    finished = true\n}\n\nfunc said(): String \{\n    return \"{word}\"\n}\n"
+    var written = file.write_string(text)
+    if not written {
+        console.print("worker.spite could not be written")
+    }
+}
