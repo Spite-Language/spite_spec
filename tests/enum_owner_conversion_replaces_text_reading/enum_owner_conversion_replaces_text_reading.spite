@@ -1,0 +1,39 @@
+enum Course {
+    'soup'
+    'main'
+    'dessert'
+}
+
+var console = Console()
+
+func EnumOwnerConversionReplacesTextReading() {
+    load "../../../spite_standard_library/windows"
+    var spelled = "starter"
+    var starter: Course? = spelled
+    crash starter
+    var plain = "main"
+    var named: Course? = plain
+    console.print(starter, named)
+    var number = 2
+    var counted: Course? = number
+    crash counted
+    var float_score = 0.5
+    var scored: Course? = float_score
+    crash scored
+    console.print(counted, scored)
+    var inside = Menu()
+    var chosen = inside.pick("starter")
+    console.print(chosen)
+}
+
+func Course(from: String): Course? {
+    if from == "starter" {
+        return 'soup'
+    }
+    return null
+}
+
+func Course(from: Float): Course? {
+    fallback from > 0.0
+    return 'dessert'
+}
