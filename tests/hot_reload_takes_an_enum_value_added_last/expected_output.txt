@@ -1,0 +1,6 @@
+mood angry
+spite> mood angry
+spite> spite: rebuilt Gauge
+rebuilt Gauge
+spite> mood angry and happy
+spite>

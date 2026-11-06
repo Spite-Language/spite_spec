@@ -1,0 +1,12 @@
+enum Mood {
+    'calm'
+    'angry'
+    'happy'
+}
+
+var mood: Mood = 'angry'
+
+func describe(): String {
+    var other: Mood = 'happy'
+    return "mood {mood} and {other}"
+}
