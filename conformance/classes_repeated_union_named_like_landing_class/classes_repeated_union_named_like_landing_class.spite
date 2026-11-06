@@ -1,0 +1,11 @@
+var console = Console()
+
+func ClassesRepeatedUnionNamedLikeLandingClass() {
+    load "../../../spite_standard_library/windows"
+    var first = Bunda.First()
+    var second = Bunda.Second()
+    var cat = Bunda.Cat()
+    var one = first.take(cat)
+    var two = second.take(cat)
+    console.print(one, two)
+}

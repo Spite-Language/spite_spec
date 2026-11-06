@@ -1,0 +1,10 @@
+var console = Console()
+
+func ClassesPrefixWholeWord() {
+    load "../../../spite_standard_library/windows"
+    var block = Backend.HighBlock()
+    var value = Backend.HighValue()
+    var taller = Backend.Higher()
+    var road = Backend.Highway()
+    console.print(block.size, value.size, taller.size, road.size)
+}

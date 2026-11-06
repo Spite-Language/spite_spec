@@ -1,0 +1,3 @@
+conformance/classes_repeated_union_outer_copy/classes_repeated_union_outer_copy.spite:1: fixed: the union 'Snack' repeats in 2 classes of this namespace, so it lives here, in its entry class (in ClassesRepeatedUnionOuterCopy)
+conformance/classes_repeated_union_outer_copy/bunda/cheese.spite:1: fixed: the union 'Snack' repeats in 2 classes of this namespace; moved it to its entry class 'ClassesRepeatedUnionOuterCopy', and this class names it 'ClassesRepeatedUnionOuterCopy.Snack' (in Bunda.Cheese)
+conformance/classes_repeated_union_outer_copy/outsider.spite:1: fixed: the union 'Snack' repeats in 2 classes of this namespace; moved it to its entry class 'ClassesRepeatedUnionOuterCopy', and this class names it 'ClassesRepeatedUnionOuterCopy.Snack' (in Outsider)

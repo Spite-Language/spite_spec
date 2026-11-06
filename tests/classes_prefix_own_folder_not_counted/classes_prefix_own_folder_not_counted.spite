@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassesPrefixOwnFolderNotCounted() {
+    load "../../../spite_standard_library/windows"
+    var entry = Backend.Backend()
+    var block = Backend.BackendBlock()
+    var value = Backend.BackendValue()
+    console.print(entry.size, block.size, value.size)
+}

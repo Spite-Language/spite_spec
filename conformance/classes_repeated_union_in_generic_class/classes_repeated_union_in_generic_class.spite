@@ -1,0 +1,11 @@
+var console = Console()
+var box = Bunda.Box<Integer>()
+
+func ClassesRepeatedUnionInGenericClass() {
+    load "../../../spite_standard_library/windows"
+    var plate = Bunda.Plate()
+    var cat = Bunda.Cat()
+    box.put(cat)
+    var taken = plate.take(cat)
+    console.print(taken)
+}

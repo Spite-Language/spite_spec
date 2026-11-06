@@ -1,0 +1,7 @@
+var console = Console()
+
+func ClassesHidesLibraryClass() {
+    load "../../../spite_standard_library/windows"
+    var connection = Game.Tcp.Connection()
+    console.print(connection.note)
+}

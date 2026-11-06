@@ -1,0 +1,10 @@
+var console = Console()
+
+func ClassesUnionAndTypeInClassNotHidden() {
+    load "../../../spite_standard_library/windows"
+    var owner = Owner()
+    var plain_pet = Pet()
+    var plain_tag = Tag()
+    var described = owner.describe()
+    console.print(described, plain_pet.size, plain_tag.size)
+}

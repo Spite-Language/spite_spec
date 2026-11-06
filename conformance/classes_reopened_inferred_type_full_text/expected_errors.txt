@@ -1,0 +1,1 @@
+conformance/classes_reopened_inferred_type_full_text/second/game/hero.spite:1: error: 'level' is an Integer where the class first declares it, and this reopening makes it a String: a reopening replaces an attribute's default, never its type, so give the new attribute a name of its own

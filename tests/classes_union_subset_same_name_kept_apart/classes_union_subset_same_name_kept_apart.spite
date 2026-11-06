@@ -1,0 +1,13 @@
+var console = Console()
+
+func ClassesUnionSubsetSameNameKeptApart() {
+    load "../../../spite_standard_library/windows"
+    var full = Full()
+    var subset = Subset()
+    var cat = Cat()
+    var dog = Dog()
+    var from_full = full.take(cat)
+    var dog_from_full = full.take(dog)
+    var from_subset = subset.take(cat)
+    console.print(from_full, dog_from_full, from_subset)
+}

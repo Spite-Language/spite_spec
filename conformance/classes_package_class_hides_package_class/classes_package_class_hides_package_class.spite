@@ -1,0 +1,9 @@
+var console = Console()
+
+func ClassesPackageClassHidesPackageClass() {
+    load "../../../spite_standard_library/windows"
+    load "first"
+    load "second"
+    var plugin = Physics.Plugin()
+    console.print(plugin.name)
+}

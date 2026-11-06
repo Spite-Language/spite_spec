@@ -1,0 +1,11 @@
+var console = Console()
+
+func ClassesRepeatedUnionOuterCopy() {
+    load "../../../spite_standard_library/windows"
+    var cheese = Bunda.Cheese()
+    var outsider = Outsider()
+    var cat = Cat()
+    var inside = cheese.take(cat)
+    var outside = outsider.take(cat)
+    console.print(inside, outside)
+}

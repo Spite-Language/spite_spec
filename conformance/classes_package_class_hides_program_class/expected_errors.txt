@@ -1,0 +1,1 @@
+conformance/classes_package_class_hides_program_class/package/physics/plugin.spite: error: the class 'Physics.Plugin' hides the class 'Plugin' (conformance/classes_package_class_hides_program_class/plugin.spite): inside 'Physics' the name 'Plugin' would mean this class, so give one of them a clearer name

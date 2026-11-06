@@ -1,0 +1,3 @@
+conformance/classes_repeated_union_in_generic_class/bunda/bunda.spite:1: fixed: the union 'Snack' repeats in 2 classes of this namespace, so it lives here, in its entry class (in Bunda.Bunda)
+conformance/classes_repeated_union_in_generic_class/bunda/box.spite:3: fixed: the union 'Snack' repeats in 2 classes of this namespace; moved it to its entry class 'Bunda.Bunda', and this class names it 'Bunda.Snack' (in Bunda.Box)
+conformance/classes_repeated_union_in_generic_class/bunda/plate.spite:1: fixed: the union 'Snack' repeats in 2 classes of this namespace; moved it to its entry class 'Bunda.Bunda', and this class names it 'Bunda.Snack' (in Bunda.Plate)

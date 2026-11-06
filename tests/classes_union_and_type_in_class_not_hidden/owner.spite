@@ -1,0 +1,18 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Tag {
+    size: Integer
+}
+
+var favourite: Pet = Cat()
+var sized: Tag = Dog()
+
+func describe(): String {
+    switch favourite {
+        Cat: return "cat sized {sized.size}"
+        Dog: return "dog sized {sized.size}"
+    }
+}

@@ -1,0 +1,17 @@
+generic $content_type
+
+union Snack {
+    Cat
+    Dog
+}
+
+var content = $content_type()
+var snacks = List<Snack>()
+
+func put(snack: Snack) {
+    snacks.append(snack)
+}
+
+func held(): $content_type {
+    return content
+}

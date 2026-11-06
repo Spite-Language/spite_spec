@@ -1,0 +1,11 @@
+union Bunda {
+    Cat
+    Dog
+}
+
+func take(snack: Bunda): String {
+    switch snack {
+        Cat: return "cat"
+        Dog: return "dog"
+    }
+}

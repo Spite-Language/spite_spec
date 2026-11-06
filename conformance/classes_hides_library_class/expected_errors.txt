@@ -1,0 +1,1 @@
+conformance/classes_hides_library_class/game/tcp/connection.spite: error: the class 'Game.Tcp.Connection' hides the class 'Tcp.Connection' (conformance/classes_hides_library_class/../../../spite_standard_library/common/tcp/connection.spite): inside 'Game.Tcp' the name 'Tcp.Connection' would mean this class, so give one of them a clearer name

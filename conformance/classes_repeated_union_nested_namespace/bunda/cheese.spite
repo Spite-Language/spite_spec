@@ -1,0 +1,10 @@
+union Snack {
+    Cat
+    Dog
+}
+
+var kept = List<Snack>()
+
+func take(snack: Snack) {
+    kept.append(snack)
+}

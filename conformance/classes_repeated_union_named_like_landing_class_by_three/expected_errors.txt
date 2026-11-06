@@ -1,0 +1,1 @@
+conformance/classes_repeated_union_named_like_landing_class_by_three/bunda/first.spite:1: error: 'union Bunda' is declared with the same content by 'Bunda.First', 'Bunda.Second' and 'Bunda.Third', and it moves to their namespace's entry class 'Bunda.Bunda', where the name 'Bunda' already means a class: a dotted name means one thing, so rename it (in Bunda.First)
