@@ -1,0 +1,8 @@
+var console = Console()
+
+func FloatLog2OtherSpelling() {
+    load "../../../spite_standard_library/windows"
+    var side = 2.0
+    var answer = side.log2()
+    console.print(answer)
+}

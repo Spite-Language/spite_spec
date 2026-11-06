@@ -1,0 +1,8 @@
+var console = Console()
+
+func TextLessThanByName() {
+    load "../../../spite_standard_library/windows"
+    var word = "tea"
+    var before = word.less_than("urn")
+    console.print(before)
+}

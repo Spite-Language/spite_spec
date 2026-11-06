@@ -1,0 +1,8 @@
+var console = Console()
+
+func TextEqualsByName() {
+    load "../../../spite_standard_library/windows"
+    var word = "tea"
+    var same = word.equals("tea")
+    console.print(same)
+}

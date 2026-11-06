@@ -1,0 +1,88 @@
+var console = Console()
+var _two_fifty_eight = 258
+
+func BufferMembers() {
+    load "../../../spite_standard_library/windows"
+    emptiness_and_truncation()
+    copies()
+    both_orders()
+    runs_of_the_same_buffer()
+}
+
+func filled(): Buffer {
+    var bytes = Buffer(0)
+    var value = 1
+    while value <= 6 {
+        var held: Byte = value
+        bytes.append(held)
+        value = value + 1
+    }
+    return bytes
+}
+
+func listing(bytes: Buffer): String {
+    var parts = List<String>()
+    var index = 0
+    while index < bytes.count() {
+        var held = bytes[index]
+        crash held
+        var shown = held.to_string()
+        parts.append(shown)
+        index = index + 1
+    }
+    return parts.join(",")
+}
+
+func emptiness_and_truncation() {
+    var bytes = Buffer(0)
+    var empty_at_first = bytes.is_empty()
+    bytes = filled()
+    var empty_after = bytes.is_empty()
+    console.print("empty at first", empty_at_first, "after filling", empty_after)
+    bytes.truncate(4)
+    var four = listing(bytes)
+    bytes.truncate(10)
+    var still_four = listing(bytes)
+    bytes.truncate(-1)
+    var after_negative = listing(bytes)
+    console.print("truncate(4)", four, "truncate(10)", still_four, "truncate(-1)", after_negative)
+    bytes.clear()
+    var cleared = bytes.count()
+    var empty_again = bytes.is_empty()
+    var held = Byte.Largest()
+    bytes.append(held)
+    var after_append = bytes.count()
+    console.print("clear", cleared, empty_again, "then append", after_append)
+}
+
+func copies() {
+    var original = filled()
+    var copied = original.copy()
+    copied[0] = 99
+    copied.append(7)
+    var original_text = listing(original)
+    var copied_text = listing(copied)
+    console.print("original", original_text, "copy", copied_text)
+}
+
+func both_orders() {
+    var bytes = Buffer(0)
+    bytes.append_integer_big_endian(_two_fifty_eight)
+    bytes.append_integer_little_endian(_two_fifty_eight)
+    var listed = listing(bytes)
+    var big = bytes.read_integer_big_endian_at(0)
+    var little = bytes.read_integer_little_endian_at(4)
+    var crossed = bytes.read_integer_little_endian_at(0)
+    crash big
+    crash little
+    crash crossed
+    console.print("one buffer, both orders:", listed)
+    console.print("big", big, "little", little, "big bytes read little", crossed)
+}
+
+func runs_of_the_same_buffer() {
+    var bytes = filled()
+    bytes.append_buffer(bytes, 1, 3)
+    var grown = listing(bytes)
+    console.print("a run of itself appended:", grown)
+}

@@ -1,0 +1,1 @@
+conformance/fused_multiply_add_missing/fused_multiply_add_missing.spite:6: error: a Float has no attribute or function 'fused_multiply_add' (in FusedMultiplyAddMissing.FusedMultiplyAddMissing)

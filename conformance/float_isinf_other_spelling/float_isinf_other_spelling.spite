@@ -1,0 +1,8 @@
+var console = Console()
+
+func FloatIsinfOtherSpelling() {
+    load "../../../spite_standard_library/windows"
+    var side = 2.0
+    var answer = side.isinf()
+    console.print(answer)
+}

@@ -1,0 +1,1 @@
+conformance/text_less_than_by_name/text_less_than_by_name.spite:6: error: 'less_than' is what '<' calls: write 'word < "urn"' (in TextLessThanByName.TextLessThanByName)

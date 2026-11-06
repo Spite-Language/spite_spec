@@ -1,0 +1,12 @@
+var console = Console()
+
+func BufferTakeWrittenPastTheRoom() {
+    load "../../../spite_standard_library/windows"
+    var bytes = Buffer(8)
+    bytes.append(1)
+    bytes.take_written(8)
+    var filled = bytes.count()
+    console.print("up to the room", filled)
+    bytes.take_written(9)
+    console.print("never printed")
+}

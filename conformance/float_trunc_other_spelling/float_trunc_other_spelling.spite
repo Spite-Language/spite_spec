@@ -1,0 +1,8 @@
+var console = Console()
+
+func FloatTruncOtherSpelling() {
+    load "../../../spite_standard_library/windows"
+    var side = 2.0
+    var answer = side.trunc()
+    console.print(answer)
+}

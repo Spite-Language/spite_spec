@@ -1,0 +1,1 @@
+conformance/buffer_read_without_order/buffer_read_without_order.spite:6: error: a Buffer has no attribute or function 'read_integer_at' (in BufferReadWithoutOrder.BufferReadWithoutOrder)

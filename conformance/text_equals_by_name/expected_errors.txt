@@ -1,0 +1,1 @@
+conformance/text_equals_by_name/text_equals_by_name.spite:6: error: 'equals' is what '==' calls: write 'word == "tea"', or 'word != "tea"' for 'not word.equals("tea")' (in TextEqualsByName.TextEqualsByName)

@@ -1,0 +1,7 @@
+empty at first true after filling false
+truncate(4) 1,2,3,4 truncate(10) 1,2,3,4 truncate(-1) 1,2,3,4
+clear 0 true then append 1
+original 1,2,3,4,5,6 copy 99,2,3,4,5,6,7
+one buffer, both orders: 0,0,1,2,2,1,0,0
+big 258 little 258 big bytes read little 33619968
+a run of itself appended: 1,2,3,4,5,6,2,3,4

@@ -1,0 +1,1 @@
+conformance/float_isinf_other_spelling/float_isinf_other_spelling.spite:6: error: Float has no function 'isinf': Spite spells it 'is_infinite', since no name is abbreviated (in FloatIsinfOtherSpelling.FloatIsinfOtherSpelling)

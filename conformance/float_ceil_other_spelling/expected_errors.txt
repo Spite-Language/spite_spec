@@ -1,0 +1,1 @@
+conformance/float_ceil_other_spelling/float_ceil_other_spelling.spite:6: error: Float has no function 'ceil': Spite spells it 'ceiling', since no name is abbreviated (in FloatCeilOtherSpelling.FloatCeilOtherSpelling)

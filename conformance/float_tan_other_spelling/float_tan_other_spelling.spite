@@ -1,0 +1,8 @@
+var console = Console()
+
+func FloatTanOtherSpelling() {
+    load "../../../spite_standard_library/windows"
+    var side = 2.0
+    var answer = side.tan()
+    console.print(answer)
+}

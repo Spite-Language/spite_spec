@@ -1,0 +1,1 @@
+conformance/text_sum_by_name/text_sum_by_name.spite:6: error: 'sum' is what '+' calls: write 'word + "pot"' (in TextSumByName.TextSumByName)

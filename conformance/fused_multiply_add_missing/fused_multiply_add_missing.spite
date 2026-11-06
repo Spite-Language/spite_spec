@@ -1,0 +1,8 @@
+var console = Console()
+
+func FusedMultiplyAddMissing() {
+    load "../../../spite_standard_library/windows"
+    var base = 2.0
+    var fused = base.fused_multiply_add(3.0, 4.0)
+    console.print(fused)
+}

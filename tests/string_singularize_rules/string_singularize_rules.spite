@@ -1,0 +1,33 @@
+var console = Console()
+var words = [
+    "wolves"
+    "knives"
+    "analyses"
+    "media"
+    "indices"
+    "matrices"
+    "vertices"
+    "mice"
+    "oxen"
+    "octopi"
+    "quizzes"
+    "statuses"
+    "boxes"
+    "enemies"
+    "people"
+    "quests"
+    "parties"
+    "lives"
+]
+
+func StringSingularizeRules() {
+    load "../../../spite_standard_library/windows"
+    var index = 0
+    while index < words.count() {
+        var word = words[index]
+        var singular = word.singularize()
+        var again = singular.pluralize()
+        console.print(word, singular, again)
+        index = index + 1
+    }
+}

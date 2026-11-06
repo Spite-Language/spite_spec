@@ -1,0 +1,1 @@
+conformance/float_pow_other_spelling/float_pow_other_spelling.spite:6: error: Float has no function 'pow': Spite spells it 'power', since no name is abbreviated (in FloatPowOtherSpelling.FloatPowOtherSpelling)

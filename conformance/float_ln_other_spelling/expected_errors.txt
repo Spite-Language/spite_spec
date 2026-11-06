@@ -1,0 +1,1 @@
+conformance/float_ln_other_spelling/float_ln_other_spelling.spite:6: error: Float has no function 'ln': Spite spells it 'logarithm', since no name is abbreviated (in FloatLnOtherSpelling.FloatLnOtherSpelling)

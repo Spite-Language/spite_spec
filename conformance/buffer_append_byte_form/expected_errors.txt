@@ -1,0 +1,1 @@
+conformance/buffer_append_byte_form/buffer_append_byte_form.spite:6: error: a Buffer has no attribute or function 'append_byte' (in BufferAppendByteForm.BufferAppendByteForm)

@@ -1,0 +1,1 @@
+conformance/float_atan_other_spelling/float_atan_other_spelling.spite:6: error: Float has no function 'atan': Spite spells it 'arc_tangent', since no name is abbreviated (in FloatAtanOtherSpelling.FloatAtanOtherSpelling)

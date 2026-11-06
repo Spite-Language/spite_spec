@@ -1,0 +1,11 @@
+var console = Console()
+
+func BufferTakeWrittenNegative() {
+    load "../../../spite_standard_library/windows"
+    var bytes = Buffer(8)
+    bytes.append(1)
+    var kept = bytes.count()
+    console.print("before", kept)
+    bytes.take_written(-1)
+    console.print("never printed")
+}

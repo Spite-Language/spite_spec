@@ -1,0 +1,11 @@
+var console = Console()
+
+func BufferAppendRunPastTheEnd() {
+    load "../../../spite_standard_library/windows"
+    var source = Buffer(4)
+    source.append(1)
+    source.append(2)
+    var copied = Buffer(0)
+    copied.append_buffer(source, 1, 2)
+    console.print("never printed")
+}

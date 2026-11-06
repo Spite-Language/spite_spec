@@ -1,0 +1,78 @@
+var console = Console()
+var irregular_words = [
+    "person"
+    "man"
+    "woman"
+    "child"
+    "sex"
+    "move"
+    "zombie"
+    "foot"
+    "tooth"
+    "goose"
+    "cactus"
+    "fungus"
+    "nucleus"
+    "radius"
+    "stimulus"
+    "syllabus"
+    "alumnus"
+    "criterion"
+    "phenomenon"
+    "appendix"
+    "leaf"
+    "loaf"
+    "thief"
+    "hoof"
+    "hero"
+    "potato"
+    "echo"
+    "veto"
+    "torpedo"
+]
+var uncountable_words = [
+    "data"
+    "equipment"
+    "health"
+    "information"
+    "rice"
+    "money"
+    "species"
+    "series"
+    "fish"
+    "sheep"
+    "jeans"
+    "police"
+    "deer"
+    "moose"
+    "aircraft"
+    "news"
+    "furniture"
+    "luggage"
+    "advice"
+    "software"
+    "hardware"
+    "knowledge"
+]
+
+func StringIrregularsAndUncountables() {
+    load "../../../spite_standard_library/windows"
+    var index = 0
+    while index < irregular_words.count() {
+        var word = irregular_words[index]
+        var plural = word.pluralize()
+        var back = plural.singularize()
+        var same = back == word
+        console.print(word, plural, back, same)
+        index = index + 1
+    }
+    var count = 0
+    while count < uncountable_words.count() {
+        var word = uncountable_words[count]
+        var plural = word.pluralize()
+        var singular = word.singularize()
+        var unchanged = plural == word and singular == word
+        console.print(word, "never changes", unchanged)
+        count = count + 1
+    }
+}

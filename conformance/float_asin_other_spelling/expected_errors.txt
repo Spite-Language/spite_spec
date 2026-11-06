@@ -1,0 +1,1 @@
+conformance/float_asin_other_spelling/float_asin_other_spelling.spite:6: error: Float has no function 'asin': Spite spells it 'arc_sine', since no name is abbreviated (in FloatAsinOtherSpelling.FloatAsinOtherSpelling)

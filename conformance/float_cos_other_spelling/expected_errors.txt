@@ -1,0 +1,1 @@
+conformance/float_cos_other_spelling/float_cos_other_spelling.spite:6: error: Float has no function 'cos': Spite spells it 'cosine', since no name is abbreviated (in FloatCosOtherSpelling.FloatCosOtherSpelling)

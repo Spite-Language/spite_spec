@@ -1,0 +1,8 @@
+var console = Console()
+
+func FloatFabsOtherSpelling() {
+    load "../../../spite_standard_library/windows"
+    var side = 2.0
+    var answer = side.fabs()
+    console.print(answer)
+}

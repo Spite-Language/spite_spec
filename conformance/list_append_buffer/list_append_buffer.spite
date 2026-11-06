@@ -1,0 +1,9 @@
+var console = Console()
+
+func ListAppendBuffer() {
+    load "../../../spite_standard_library/windows"
+    var numbers = [1, 2, 3]
+    var other = Buffer(0)
+    numbers.append_buffer(other, 0, 0)
+    console.print(numbers)
+}

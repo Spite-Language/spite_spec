@@ -1,0 +1,1 @@
+conformance/float_fabs_other_spelling/float_fabs_other_spelling.spite:6: error: Float has no function 'fabs': Spite spells it 'absolute', since no name is abbreviated (in FloatFabsOtherSpelling.FloatFabsOtherSpelling)

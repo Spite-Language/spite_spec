@@ -1,0 +1,1 @@
+conformance/buffer_old_position_first_form/buffer_old_position_first_form.spite:6: error: a Buffer has no attribute or function 'read_integer' (in BufferOldPositionFirstForm.BufferOldPositionFirstForm)

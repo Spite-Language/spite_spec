@@ -1,0 +1,9 @@
+var console = Console()
+
+func BufferReadByteForm() {
+    load "../../../spite_standard_library/windows"
+    var bytes = Buffer(8)
+    bytes.append(7)
+    var held = bytes.read_byte_at(0)
+    console.print(held)
+}

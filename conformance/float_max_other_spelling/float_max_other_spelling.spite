@@ -1,0 +1,8 @@
+var console = Console()
+
+func FloatMaxOtherSpelling() {
+    load "../../../spite_standard_library/windows"
+    var side = 2.0
+    var answer = side.max(side)
+    console.print(answer)
+}

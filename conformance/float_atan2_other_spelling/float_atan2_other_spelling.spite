@@ -1,0 +1,8 @@
+var console = Console()
+
+func FloatAtan2OtherSpelling() {
+    load "../../../spite_standard_library/windows"
+    var side = 2.0
+    var answer = side.atan2(side)
+    console.print(answer)
+}
