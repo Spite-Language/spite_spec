@@ -1,0 +1,1 @@
+spite: 'left / parts' divided by zero, at tests/divisor_proof_ends_on_the_next_pass/divisor_proof_ends_on_the_next_pass.spite:16 in DivisorProofEndsOnTheNextPass.share

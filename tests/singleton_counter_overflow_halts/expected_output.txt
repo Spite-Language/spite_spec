@@ -1,0 +1,2 @@
+hits 127
+spite: 'hits + 1' does not fit in a Tiny (127 + 1), at tests/singleton_counter_overflow_halts/counter.spite:6 in Counter.bump

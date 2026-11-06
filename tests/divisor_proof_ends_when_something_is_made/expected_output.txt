@@ -1,0 +1,2 @@
+1
+spite: 'total / counts.parts' divided by zero, at tests/divisor_proof_ends_when_something_is_made/divisor_proof_ends_when_something_is_made.spite:15 in DivisorProofEndsWhenSomethingIsMade.share

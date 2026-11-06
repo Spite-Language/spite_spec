@@ -1,0 +1,7 @@
+singleton
+
+var hits: Tiny = 125
+
+func bump() {
+    hits = hits + 1
+}

@@ -1,0 +1,5 @@
+var parts = 0
+
+func Cut(starting_parts: Integer) {
+    parts = starting_parts
+}

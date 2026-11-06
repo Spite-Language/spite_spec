@@ -1,0 +1,20 @@
+var console = Console()
+
+func DivisorProofEndsByLocalWrite() {
+    load "../../../spite_standard_library/windows"
+    var first = Cut(4)
+    var second = Cut(0)
+    var chosen = first
+    var shared = share(100, chosen, second)
+    console.print(shared)
+    console.print("never printed")
+}
+
+func share(total: Integer, start: Cut, other: Cut): Integer {
+    var chosen = start
+    if chosen.parts != 0 {
+        chosen = other
+        return total / chosen.parts
+    }
+    return 0
+}

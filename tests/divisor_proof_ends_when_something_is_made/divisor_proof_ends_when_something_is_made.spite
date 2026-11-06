@@ -1,0 +1,18 @@
+var console = Console()
+var counts = Counts()
+
+func DivisorProofEndsWhenSomethingIsMade() {
+    load "../../../spite_standard_library/windows"
+    var shared = share(100)
+    console.print(shared)
+    console.print("never printed")
+}
+
+func share(total: Integer): Integer {
+    if counts.parts != 0 {
+        var made = Reset()
+        console.print(made.marker)
+        return total / counts.parts
+    }
+    return 0
+}

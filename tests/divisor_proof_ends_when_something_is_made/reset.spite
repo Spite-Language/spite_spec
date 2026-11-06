@@ -1,0 +1,6 @@
+var counts = Counts()
+var marker = 1
+
+func Reset() {
+    counts.parts = 0
+}

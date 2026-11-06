@@ -1,0 +1,21 @@
+var console = Console()
+var parts = 4
+
+func DivisorProofEndsOnTheNextPass() {
+    load "../../../spite_standard_library/windows"
+    var shared = share(100)
+    console.print(shared)
+    console.print("never printed")
+}
+
+func share(total: Integer): Integer {
+    fallback parts != 0
+    var left = total
+    var pass = 0
+    while pass < 2 {
+        left = left / parts
+        parts = 0
+        pass = pass + 1
+    }
+    return left
+}
