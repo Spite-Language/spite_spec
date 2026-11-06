@@ -1,0 +1,11 @@
+func allocate(): Integer {
+    return 1
+}
+
+func make(): Integer {
+    return 2
+}
+
+func release(): Integer {
+    return 3
+}
