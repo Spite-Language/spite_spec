@@ -364,6 +364,9 @@ The design:
   `"type"` is the class of the value, empty for `help`, `attributes` and `functions`, and `Nothing` for a call
   that returns nothing. Every message the console loop prints as a complaint is `"ok":false` on the wire.
   JSON escapes are `\"`, `\\`, `\n`, `\r`, `\t` and `\u00XX` for any other control character.
+- **A connection that cannot be written to is dropped.** When writing an answer fails (the client went away), the loop
+  closes the connection and forgets it, as it does one it finds closed when it reads, and the program goes on; the next
+  command waits for a new connection (`tests/repl_port_build`).
 - **`exit`** answers `{"ok":true,"value":"","type":""}`, closes the connection and calls `program.exit(0)`,
   which flushes what the program printed. It is handed over like any command, and the program ends at the next
   wait or pass of a loop it reaches after the one that answered it, so what the command before `exit` changed

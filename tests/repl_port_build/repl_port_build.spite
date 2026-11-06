@@ -1,0 +1,29 @@
+var console = Console()
+var program = Program()
+var _port = 47327
+var greeting = "hello"
+var turns = 0
+
+func ReplPortBuild() {
+    load "../../../spite_standard_library/windows"
+    var client = Tcp.Client()
+    crash client.connect_locally(_port)
+    crash client.write_line("greeting")
+    wait_a_little()
+    var answer = client.read_line()
+    crash answer
+    console.print(answer)
+    crash client.write_line("exit")
+    wait_a_little()
+    client.close()
+}
+
+func wait_a_little() {
+    var waited = Duration(50, 'milliseconds')
+    var count = 0
+    while count < 20 {
+        program.sleep(waited)
+        count = count + 1
+    }
+    turns = turns + count
+}
