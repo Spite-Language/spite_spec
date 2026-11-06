@@ -1,0 +1,7 @@
+func scale(size: Integer, times: Integer): Integer {
+    return size * times
+}
+
+func joined(first: String, second: String): String {
+    return "{first}{second}"
+}

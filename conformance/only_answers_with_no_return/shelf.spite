@@ -1,0 +1,5 @@
+var heights = List<Integer>()
+
+func append(height: Integer) {
+    heights.append(height)
+}

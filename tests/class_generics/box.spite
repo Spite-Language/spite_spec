@@ -10,6 +10,6 @@ func empty() {
     items = List<$held_type>()
 }
 
-func count(): Integer {
+func size(): Integer {
     return items.count()
 }

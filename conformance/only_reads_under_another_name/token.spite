@@ -1,0 +1,5 @@
+var owner = Owner()
+
+func get_holder(): String {
+    return owner.name
+}

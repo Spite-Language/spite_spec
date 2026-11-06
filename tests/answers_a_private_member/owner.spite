@@ -1,0 +1,5 @@
+var name = "ann"
+
+func fits(size: Integer): Boolean {
+    return size < 3
+}

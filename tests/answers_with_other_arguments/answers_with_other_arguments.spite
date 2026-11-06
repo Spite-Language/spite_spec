@@ -1,0 +1,9 @@
+var console = Console()
+
+func AnswersWithOtherArguments() {
+    load "../../../spite_standard_library/windows"
+    var shelf = Shelf()
+    var doubled = shelf.scale(2)
+    var swapped = shelf.joined("a", "b")
+    console.print(doubled, swapped)
+}

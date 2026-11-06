@@ -1,0 +1,1 @@
+conformance/only_reads_under_another_name/token.spite:3: error: 'get_holder' only reads 'owner.name', an attribute of another object: remove it, and write 'token.owner.name' where it is called (in Token.get_holder)

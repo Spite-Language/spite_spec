@@ -1,0 +1,5 @@
+var rack = Rack()
+
+func fits(size: Integer): Boolean {
+    return rack.fits(size)
+}

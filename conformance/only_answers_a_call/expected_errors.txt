@@ -1,0 +1,1 @@
+conformance/only_answers_a_call/shelf.spite:3: error: 'fits' only answers 'rack.fits': remove it, and write 'shelf.rack.fits' where it is called (in Shelf.fits)

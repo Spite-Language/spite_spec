@@ -1,0 +1,5 @@
+var names = List<String>()
+
+func is_atomic(key: String): Boolean {
+    return names.contains(key)
+}

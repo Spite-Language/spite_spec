@@ -1,7 +1,15 @@
 generic $component_type
 
-var values = List<$component_type>()
+var _values = List<$component_type>()
+
+func append(value: $component_type) {
+    _values.append(value)
+}
+
+func count(): Integer {
+    return _values.count()
+}
 
 func clear() {
-    values.clear()
+    _values.clear()
 }

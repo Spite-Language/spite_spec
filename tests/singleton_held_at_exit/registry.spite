@@ -4,12 +4,12 @@ type Counted {
     total: Spite.Function<Integer>
 }
 
-var tallies = List<Counted>()
+var _tallies = List<Counted>()
 
 func record(tally: Counted) {
-    tallies.append(tally)
+    _tallies.append(tally)
 }
 
 func count(): Integer {
-    return tallies.count()
+    return _tallies.count()
 }

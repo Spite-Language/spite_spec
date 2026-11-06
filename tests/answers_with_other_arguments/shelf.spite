@@ -1,0 +1,9 @@
+var rack = Rack()
+
+func scale(size: Integer): Integer {
+    return rack.scale(size, 2)
+}
+
+func joined(first: String, second: String): String {
+    return rack.joined(second, first)
+}

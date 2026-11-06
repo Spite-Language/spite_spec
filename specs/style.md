@@ -332,6 +332,27 @@ within the budget is an error until it leaves the list, and `tests/compiler_file
 growing. It is a literal inside the compiler, with no flag, setting or file that adds to it, and it goes when the last
 of those files is split.
 
+### A function that only answers a member
+
+A function whose whole body answers a member of the same name from an attribute a caller can reach is a compile error,
+and so is a `get_` function reading another object's attribute through such an attribute, under any name, so that renaming
+does not get around it (D1883, `conformance/only_answers_a_getter`, `conformance/only_answers_a_call`,
+`conformance/only_answers_with_no_return`, `conformance/only_reads_under_another_name`,
+`conformance/only_answers_a_private_with_a_getter`):
+
+    function.spite:3: error: 'get_source_file' only answers 'declaration.source_file': remove it, and write 'function.declaration.source_file' where it is called (in Spite.Function.get_source_file)
+    token.spite:3: error: 'get_holder' only reads 'owner.name', an attribute of another object: remove it, and write 'token.owner.name' where it is called (in Token.get_holder)
+
+- **The whole body** is one statement: `return` of the member, or the call alone, with or without `return`. A `get_`
+  function answers what follows `get_`.
+- **A caller can reach** an attribute that is public, or private with a getter in the same file, which the error names by its public name.
+- **Allowed**, since a caller has no other way in or the name adds something: an attribute private with no getter (`Tcp.Client`,
+  `Dictionary.count`, `Program.exit`; `tests/answers_a_private_member`); a differently named question (`is_atomic` over
+  `atomic_singletons.contains(key)`; `tests/answers_a_differently_named_question`); a call that passes anything other
+  than the function's own parameters in their order (`tests/answers_with_other_arguments`).
+
+The rule reads one file's tree, like every rule over the syntax tree, so it runs on every file a program loads, used or not.
+
 ### Comments
 
 **A comment is one line, and it is nothing but a link to a markdown section**:

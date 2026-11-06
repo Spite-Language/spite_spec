@@ -1,0 +1,9 @@
+var console = Console()
+
+func OnlyAnswersWithNoReturn() {
+    load "../../../spite_standard_library/windows"
+    var shelf = Shelf()
+    shelf.append(2)
+    var counted = shelf.heights.count()
+    console.print(counted)
+}

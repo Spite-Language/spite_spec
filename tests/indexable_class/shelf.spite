@@ -1,17 +1,17 @@
-var heights = List<Integer>()
+var _heights = List<Integer>()
 
 func put(height: Integer) {
-    heights.append(height)
+    _heights.append(height)
 }
 
 func count(): Integer {
-    return heights.count()
+    return _heights.count()
 }
 
 func get_at(index: Integer): Integer? {
-    return heights[index]
+    return _heights[index]
 }
 
 func set_at(index: Integer, height: Integer) {
-    heights[index] = height
+    _heights[index] = height
 }

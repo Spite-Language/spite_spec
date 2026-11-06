@@ -1,0 +1,1 @@
+conformance/only_answers_a_getter/token.spite:3: error: 'get_name' only answers 'owner.name': remove it, and write 'token.owner.name' where it is called (in Token.get_name)

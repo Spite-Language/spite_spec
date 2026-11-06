@@ -1,5 +1,5 @@
-var settings = OtherSettings()
+var _settings = OtherSettings()
 
 func limit(): Integer {
-    return settings.limit
+    return _settings.limit
 }

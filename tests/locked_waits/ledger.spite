@@ -1,19 +1,19 @@
 singleton
 
 var program = Program()
-var entries = List<String>()
+var _entries = List<String>()
 
 func record(name: String) {
     var five_milliseconds = Duration(5, 'milliseconds')
-    entries.append("{name} starts")
+    _entries.append("{name} starts")
     program.sleep(five_milliseconds)
-    entries.append("{name} ends")
+    _entries.append("{name} ends")
 }
 
 func count(): Integer {
-    return entries.count()
+    return _entries.count()
 }
 
 func shown(): String {
-    return entries.join(", ")
+    return _entries.join(", ")
 }

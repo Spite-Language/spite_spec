@@ -21,7 +21,7 @@ func ClassGenerics() {
     var box = Box<String>()
     box.add("hat")
     var held = box.class.generics["held_type"]
-    var box_count = box.count()
+    var box_count = box.size()
     console.print("held", held.name, box_count)
     var items = box.class.attributes["items"]
     crash items
@@ -32,7 +32,7 @@ func ClassGenerics() {
     crash empty
     var answers_nothing = empty.returns == Nothing
     console.print("empty returns", empty.returns, answers_nothing)
-    var counted = box.class.functions["count"]
+    var counted = box.class.functions["size"]
     crash counted
     console.print("count returns", counted.returns)
     var plain = console.class.generics
