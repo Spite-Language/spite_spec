@@ -1,0 +1,16 @@
+var console = Console()
+var _port = 47341
+var _waiting = true
+var _spins = 0
+
+func ReplPortCheckPointInASpinLoop() {
+    load "../../../spite_standard_library/windows"
+    var client = Tcp.Client()
+    crash client.connect_locally(_port)
+    crash client.write_line("exit")
+    console.print("spinning")
+    while _waiting {
+        _spins = _spins + 1
+    }
+    console.print("never reached")
+}
