@@ -1,0 +1,13 @@
+var console = Console()
+
+func WalkHoleAnyWord() {
+    load "../../../spite_standard_library/windows"
+    var all = Runner<Mover>()
+    all.run_everything(1)
+    var after_all = all.read_steps()
+    console.print("after every phase", after_all)
+    var one = Runner<Mover>()
+    one.run_one(1)
+    var after_one = one.read_steps()
+    console.print("after render only", after_one)
+}

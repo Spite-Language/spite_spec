@@ -1,0 +1,8 @@
+made health 10
+made name troll
+mixed 0 health 99 10
+mixed 1 name boulder troll
+relayed name troll
+relayed health 10
+nothing walked for a missing monster
+done

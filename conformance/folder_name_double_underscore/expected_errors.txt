@@ -1,0 +1,1 @@
+conformance/folder_name_double_underscore/kit__x: error: the folder 'kit__x' is not named in snake_case: every folder is lowercase words joined by '_', so rename it 'kit_x'

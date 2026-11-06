@@ -1,0 +1,3 @@
+var hit_points = 12
+var name = "troll"
+var speed = 1.5

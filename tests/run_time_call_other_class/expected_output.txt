@@ -1,0 +1,3 @@
+start
+a rock true
+spite: call() runs 'take_one', declared by 'OtherTargets', on an instance of another class: a call runs a declaration on an instance of its own class

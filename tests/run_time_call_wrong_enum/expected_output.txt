@@ -1,0 +1,4 @@
+start
+made
+took glad
+spite: call() gives 'EnumTargets.take_one' an argument 'mood' that is not an EnumTargets.Mood, the type it takes

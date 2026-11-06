@@ -1,0 +1,1 @@
+conformance/package_needs_program_build_function/engine/finder.spite:4: error: a Build has no attribute or function 'base_folder' (in Finder.where_from)

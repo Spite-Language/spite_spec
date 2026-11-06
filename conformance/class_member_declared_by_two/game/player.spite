@@ -1,0 +1,6 @@
+enum Job {
+    'knight'
+    'magician'
+}
+
+var job: Job = 'knight'

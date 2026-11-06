@@ -1,0 +1,7 @@
+func say_each(_times: Integer): String {
+    return "moved"
+}
+
+func shout_each(_times: Integer): String {
+    return "drawn"
+}

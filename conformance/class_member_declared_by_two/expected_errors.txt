@@ -1,0 +1,1 @@
+conformance/class_member_declared_by_two/game/world.spite:1: error: 'Job' is declared by the classes 'Game.Player' and 'Game.Priest' and belongs to each: outside them, name it through the class meant, 'Player.Job' or 'Priest.Job' (in Game.World.)

@@ -1,0 +1,3 @@
+Resting.Sleeper rest waits true
+Resting.Sleeper rested 1
+Resting.Stiller rest waits false

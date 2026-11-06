@@ -1,0 +1,14 @@
+var items = List<String>()
+var label = ""
+
+func Bag(starting_label: String) {
+    label = starting_label
+}
+
+func fill() {
+    items.append("rope")
+}
+
+func get_attribute(attribute: Spite.AttributeDeclaration): attribute.class {
+    return attributes[attribute]
+}

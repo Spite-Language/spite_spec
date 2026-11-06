@@ -1,0 +1,5 @@
+var size = 3
+
+func get_attribute(attribute: Spite.AttributeDeclaration): attribute.class {
+    return this.attributes[attribute]
+}

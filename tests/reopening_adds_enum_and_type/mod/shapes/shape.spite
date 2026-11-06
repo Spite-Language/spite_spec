@@ -1,0 +1,18 @@
+enum Colour {
+    'red'
+    'blue'
+}
+
+type Sided {
+    sides: Integer
+}
+
+var colour: Colour = 'red'
+
+func paint(wanted: Colour) {
+    colour = wanted
+}
+
+func count_sides(other: Sided): Integer {
+    return other.sides + sides
+}

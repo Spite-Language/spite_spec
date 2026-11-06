@@ -1,0 +1,2 @@
+start
+spite: 'SizedMaker' takes arguments to be made, so a class known only at run time cannot make one: call the class by its name with its arguments

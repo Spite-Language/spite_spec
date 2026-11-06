@@ -1,0 +1,4 @@
+start
+made
+took fine
+spite: call() gives 'StringTargets.take_one' an argument 'word' that is not a String, the type it takes

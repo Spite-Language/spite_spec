@@ -1,0 +1,13 @@
+var console = Console()
+
+func WalkClassNamespaceClasses() {
+    load "../../../spite_standard_library/windows"
+    crash Gear.Axle.namespace
+    Gear.Axle.namespace.classes.each(note)
+}
+
+func note(sibling: Spite.Class) {
+    var fresh = sibling()
+    var shown = fresh.to_debug()
+    console.print(sibling.name_with_namespaces, shown)
+}

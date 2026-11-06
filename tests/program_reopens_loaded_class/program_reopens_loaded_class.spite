@@ -1,0 +1,10 @@
+var console = Console()
+
+func ProgramReopensLoadedClass() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    var widget = Widgets.Widget("gadget", 3)
+    var described = widget.describe()
+    var shouted = widget.shout()
+    console.print(described, shouted)
+}

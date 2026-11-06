@@ -1,0 +1,9 @@
+var console = Console()
+
+func GenericConstraintForeignType() {
+    load "../../../spite_standard_library/windows"
+    var shelf = Shelf<String>()
+    shelf.add("tea")
+    var total = shelf.total()
+    console.print(total)
+}

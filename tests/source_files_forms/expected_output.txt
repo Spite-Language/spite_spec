@@ -1,0 +1,3 @@
+counts 1 1 1
+path ends with /source_files_forms/monster.spite: true backslash: false exists: true
+10

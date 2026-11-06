@@ -1,0 +1,21 @@
+var console = Console()
+
+func CodegenDefaultsAndInference() {
+    load "../../../spite_standard_library/windows"
+    var dictionary_tally = Tally<Dictionary<String, Integer>>()
+    var list_tally = Tally<List<Integer>>()
+    var dictionary_size = dictionary_tally.size()
+    var list_size = list_tally.size()
+    console.print("defaults", dictionary_size, list_size)
+    var book = Dictionary<String, Integer>()
+    book["one"] = 1
+    var keyed = Keyed(book)
+    var keyed_size = keyed.size()
+    console.print("keyed", keyed_size)
+    var doubler = Doubler()
+    var lazy_number = Lazy(doubler.double)
+    var lazy_text = Lazy(doubler.label)
+    var number = lazy_number.run(4)
+    var text = lazy_text.run(4)
+    console.print("lazy", number, text)
+}

@@ -1,0 +1,1 @@
+conformance/unknown_type_dotted_answer/unknown_type_dotted_answer.spite:9: error: unknown type 'Server.Component.Gem' (in UnknownTypeDottedAnswer.find_gem)

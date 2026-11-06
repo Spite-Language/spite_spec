@@ -1,0 +1,13 @@
+var console = Console()
+
+func ClassAsValueTypeArgument() {
+    load "../../../spite_standard_library/windows"
+    var health = Health()
+    var strong = health.strong()
+    keep(Health)
+    console.print(strong)
+}
+
+func keep(held: Anything) {
+    console.print(held)
+}

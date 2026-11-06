@@ -1,0 +1,15 @@
+generic $system_type
+
+var system = $system_type()
+
+func run_one(amount: Integer) {
+    run_render_all(amount)
+}
+
+func run_phase_all(phase: Spite.FunctionDeclaration, amount: Integer) {
+    system.phase_all(amount)
+}
+
+func read_steps(): Integer {
+    return system.steps
+}

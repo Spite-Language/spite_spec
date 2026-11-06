@@ -1,0 +1,3 @@
+hit_points HitPoints Integer 12
+name Name String troll
+speed Speed Float 1.5

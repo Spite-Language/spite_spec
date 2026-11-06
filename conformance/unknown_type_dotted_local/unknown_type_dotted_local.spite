@@ -1,0 +1,7 @@
+var console = Console()
+
+func UnknownTypeDottedLocal() {
+    load "../../../spite_standard_library/windows"
+    var gem: Server.Component.Gem? = null
+    console.print(gem)
+}

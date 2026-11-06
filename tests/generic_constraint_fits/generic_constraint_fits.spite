@@ -1,0 +1,42 @@
+enum Mood {
+    'glad'
+    'sad'
+}
+
+type Printable {
+    to_string(): String
+}
+
+type Counted {
+    count(): Integer
+}
+
+var console = Console()
+
+func GenericConstraintFits() {
+    load "../../../spite_standard_library/windows"
+    var moods = Tray<Mood>()
+    moods.add('sad')
+    var shapes = Tray<Printable>()
+    var book = Book("Dune")
+    shapes.add(book)
+    var mood_text = moods.describe()
+    var shape_text = shapes.describe()
+    console.print(mood_text)
+    console.print(shape_text)
+    var lists = Measure<List<String>>()
+    var words = List<String>()
+    words.append("a")
+    words.append("b")
+    lists.add(words)
+    var tables = Measure<Dictionary<String, Integer>>()
+    var table = Dictionary<String, Integer>()
+    table["one"] = 1
+    tables.add(table)
+    var counted_shapes = Measure<Counted>()
+    counted_shapes.add(words)
+    var list_total = lists.total()
+    var table_total = tables.total()
+    var shape_total = counted_shapes.total()
+    console.print(list_total, table_total, shape_total)
+}

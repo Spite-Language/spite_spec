@@ -1,0 +1,5 @@
+var size = 2
+
+func measure(): Integer {
+    return size
+}

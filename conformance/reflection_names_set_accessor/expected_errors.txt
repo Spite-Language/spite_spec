@@ -1,0 +1,1 @@
+conformance/reflection_names_set_accessor/table.spite:3: error: the function 'set_attributes' is read as 'attributes', a name reflection gives every object: 'value.attributes' lists its attributes, and JsonReader, JsonWriter and every attribute walk read through it, and one of its own would hide it. Name it something else, like 'set_table_attributes' (in Table)

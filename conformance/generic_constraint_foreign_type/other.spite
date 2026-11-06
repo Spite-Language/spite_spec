@@ -1,0 +1,5 @@
+type Printable {
+    to_string(): String
+}
+
+var name = "other"

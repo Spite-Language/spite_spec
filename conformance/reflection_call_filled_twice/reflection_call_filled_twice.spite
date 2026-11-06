@@ -1,0 +1,11 @@
+func ReflectionCallFilledTwice() {
+    load "../../../spite_standard_library/windows"
+    var troll = Monster()
+    var hurt = Monster.functions["hurt"]
+    crash hurt
+    var call = Spite.Call(hurt, troll)
+    call.arguments["amount"] = 3
+    call.arguments["amount"] = 4
+    call.arguments["velocity"] = 1
+    call.call()
+}

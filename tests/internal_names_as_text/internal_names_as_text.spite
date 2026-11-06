@@ -1,0 +1,10 @@
+var console = Console()
+
+func InternalNamesAsText() {
+    load "../../../spite_standard_library/windows"
+    var text = "Spite.Internal.Memory is only text here"
+    console.print(text)
+    var atomic = Atomic()
+    var total = atomic.total()
+    console.print("my own Atomic", total)
+}

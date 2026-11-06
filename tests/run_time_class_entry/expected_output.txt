@@ -1,0 +1,2 @@
+start
+spite: 'RunTimeClassEntry' is the program's entry class, made once when the program starts, so a class known only at run time cannot make another

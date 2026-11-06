@@ -1,0 +1,15 @@
+var name = ""
+var quantity = 0
+var flavour = "plain"
+
+func Widget(starting_name: String) {
+    name = starting_name
+}
+
+func describe(): String {
+    return "program {name}"
+}
+
+func shout(): String {
+    return "{name}! ({flavour})"
+}

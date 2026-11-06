@@ -1,0 +1,1 @@
+conformance/load_in_switch/load_in_switch.spite:12: error: a 'load' inside an 'if', a 'while' or a 'switch' is not built yet: write it on its own line in the function (in LoadInSwitch)

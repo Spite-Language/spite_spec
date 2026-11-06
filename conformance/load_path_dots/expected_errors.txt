@@ -1,0 +1,1 @@
+conformance/load_path_dots/load_path_dots.spite:5: error: the folder 'Render_Vulkan' is not named in snake_case: every folder is lowercase words joined by '_', so rename it 'render_vulkan'

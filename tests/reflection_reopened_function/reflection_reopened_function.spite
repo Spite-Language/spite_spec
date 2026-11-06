@@ -1,0 +1,15 @@
+var console = Console()
+
+func ReflectionReopenedFunction() {
+    load "../../../spite_standard_library/windows"
+    var gadget = Gadget()
+    var lamp = Lamp()
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var described = classes[index]
+        console.print(described.name, "is singleton", described.is_singleton)
+        index = index + 1
+    }
+    console.print(gadget.size, lamp.glow)
+}

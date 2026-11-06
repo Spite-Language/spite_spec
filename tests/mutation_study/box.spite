@@ -1,0 +1,9 @@
+var size = 0
+
+func grow() {
+    size = size + 1
+}
+
+func peek(): Integer {
+    return size
+}

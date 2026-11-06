@@ -1,0 +1,5 @@
+var size = 1
+
+func set_attributes(value: Integer) {
+    size = value
+}

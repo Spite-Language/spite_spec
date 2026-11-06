@@ -1,0 +1,16 @@
+enum Mood {
+    'glad'
+    'sad'
+}
+
+var console = Console()
+
+func LoadInSwitch() {
+    load "../../../spite_standard_library/windows"
+    var mood: Mood = 'glad'
+    switch mood {
+        'glad': load "extras"
+        'sad': console.print("sad")
+    }
+    console.print("never built")
+}

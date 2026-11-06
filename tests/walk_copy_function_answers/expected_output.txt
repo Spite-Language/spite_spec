@@ -1,0 +1,5 @@
+say_each returns String literal moved resumable false
+moved
+shout_each returns String literal drawn resumable false
+drawn
+declared say_each returns String literal moved resumable false

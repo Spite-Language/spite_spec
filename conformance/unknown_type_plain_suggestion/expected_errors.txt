@@ -1,0 +1,1 @@
+conformance/unknown_type_plain_suggestion/unknown_type_plain_suggestion.spite:9: error: unknown type 'Eye': did you mean 'Component.Eye'? (in UnknownTypePlainSuggestion.look_at)

@@ -1,0 +1,2 @@
+steps 10
+the called instance is printed: true an instance nobody called: false

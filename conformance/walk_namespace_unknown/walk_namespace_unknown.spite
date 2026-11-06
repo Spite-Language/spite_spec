@@ -1,0 +1,10 @@
+var console = Console()
+
+func WalkNamespaceUnknown() {
+    load "../../../spite_standard_library/windows"
+    Missing.classes.each(visit)
+}
+
+func visit(part: Spite.Class) {
+    console.print(part.name)
+}

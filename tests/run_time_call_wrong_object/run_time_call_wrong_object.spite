@@ -1,0 +1,33 @@
+var console = Console()
+
+func RunTimeCallWrongObject() {
+    load "../../../spite_standard_library/windows"
+    console.print("start")
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var found = classes[index]
+        if found.name.ends_with("Targets") {
+            run_targets(found)
+        }
+        index = index + 1
+    }
+}
+
+func run_targets(found: Spite.Class) {
+    var instance = found()
+    var declaration = found.functions["take_one"]
+    crash declaration
+    var stranger = Stranger()
+    var heavy = stranger.heavy()
+    console.print("a stranger", heavy)
+    var box = Box()
+    var big = box.big()
+    console.print("a box", big)
+    var right = Spite.Call(declaration, instance)
+    right.arguments["box"] = box
+    right.call()
+    var wrong = Spite.Call(declaration, instance)
+    wrong.arguments["box"] = stranger
+    wrong.call()
+}

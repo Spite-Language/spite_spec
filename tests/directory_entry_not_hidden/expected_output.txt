@@ -1,0 +1,3 @@
+my entry mine
+folder inner
+file readme.txt

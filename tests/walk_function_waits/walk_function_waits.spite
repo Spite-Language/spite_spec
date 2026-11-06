@@ -1,0 +1,16 @@
+var console = Console()
+
+func WalkFunctionWaits() {
+    load "../../../spite_standard_library/windows"
+    Resting.classes.each(visit)
+}
+
+func visit(part: Spite.Class) {
+    var rests = part.function_waits("rest")
+    console.print(part.name_with_namespaces, "rest waits", rests)
+    if part.function_waits("rest") {
+        var made = part()
+        made.rest()
+        console.print(part.name_with_namespaces, "rested", made.naps)
+    }
+}

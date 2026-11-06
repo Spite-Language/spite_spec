@@ -1,0 +1,8 @@
+var program = Program()
+var naps = 0
+
+func rest() {
+    var pause = Duration(1, 'milliseconds')
+    program.sleep(pause)
+    naps = naps + 1
+}

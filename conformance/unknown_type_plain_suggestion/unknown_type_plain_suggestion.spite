@@ -1,0 +1,11 @@
+var console = Console()
+
+func UnknownTypePlainSuggestion() {
+    load "../../../spite_standard_library/windows"
+    var eye = Component.Eye()
+    look_at(eye)
+}
+
+func look_at(looking: Eye) {
+    console.print(looking.look())
+}

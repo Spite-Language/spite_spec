@@ -1,0 +1,22 @@
+var console = Console()
+
+var build = Build()
+
+func DirectoryEntryNotHidden() {
+    load "../../../spite_standard_library/windows"
+    var mine = Entry()
+    var shown = mine.shown()
+    console.print("my entry", shown)
+    var tree = Directory("{build.program}/tree")
+    var entries = tree.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var found = entries[index]
+        switch found {
+            Directory: console.print("folder", found.folder_name)
+            File: console.print("file", found.file_name)
+        }
+        index = index + 1
+    }
+}

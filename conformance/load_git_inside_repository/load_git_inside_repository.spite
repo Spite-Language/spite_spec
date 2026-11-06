@@ -1,0 +1,4 @@
+func LoadGitInsideRepository() {
+    load "../../../spite_standard_library/windows"
+    load "../../tests@26e6476/namespaces_load/package"
+}

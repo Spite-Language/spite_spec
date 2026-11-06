@@ -1,0 +1,11 @@
+written_box mutated true
+changed_box mutated true
+passed_box mutated true
+deep_box mutated true
+read_box mutated false
+renamed_box mutated false
+grown_list mutated true
+counted_list mutated false
+recursive_box mutated true
+times mutated false
+item_list mutated true

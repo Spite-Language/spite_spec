@@ -1,0 +1,5 @@
+var build = Build()
+
+func where_from(): String {
+    return build.base_folder()
+}

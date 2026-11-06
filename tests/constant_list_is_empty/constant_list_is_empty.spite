@@ -1,0 +1,19 @@
+var console = Console()
+
+func ConstantListIsEmpty() {
+    load "../../../spite_standard_library/windows"
+    Gear.classes.each(check)
+}
+
+func check(part: Spite.Class) {
+    if Gear.classes.is_empty() {
+        never_declared()
+    } else {
+        console.print(part.name_with_namespaces, "Gear has classes")
+    }
+    if Gear.namespaces.is_empty() {
+        console.print(part.name_with_namespaces, "Gear holds no folders")
+    } else {
+        never_declared_either()
+    }
+}

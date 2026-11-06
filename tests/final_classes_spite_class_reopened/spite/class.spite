@@ -1,0 +1,3 @@
+func get_is_singleton(): Boolean {
+    return true
+}

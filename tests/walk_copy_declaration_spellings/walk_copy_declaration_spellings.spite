@@ -1,0 +1,16 @@
+var console = Console()
+
+func WalkCopyDeclarationSpellings() {
+    load "../../../spite_standard_library/windows"
+    var troll = Troll()
+    troll.attributes.each(describe)
+}
+
+func describe(attribute: Spite.Attribute) {
+    console.print(
+        attribute.declaration.name,
+        attribute.declaration.pascal_case_name,
+        attribute.declaration.class,
+        attribute.value,
+    )
+}

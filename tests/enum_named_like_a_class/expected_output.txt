@@ -1,0 +1,2 @@
+inside Palette, Shade is the enum with 2 values light
+outside Palette, Shade is the class 4

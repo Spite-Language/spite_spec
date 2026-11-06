@@ -1,0 +1,14 @@
+var console = Console()
+
+func ReflectionNarrowingFallback() {
+    load "../../../spite_standard_library/windows"
+    var walker = Walker()
+    var walkers = Caller<Walker>()
+    var walked = walkers.call(walker)
+    console.print(walked, walker.steps)
+    var rock = Rock()
+    var rocks = Caller<Rock>()
+    var rocked = rocks.call(rock)
+    var heavy = rock.heavy()
+    console.print("rock answers", rocked, heavy)
+}

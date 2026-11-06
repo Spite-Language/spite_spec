@@ -1,0 +1,5 @@
+var stillness = 5
+
+func hold(): Integer {
+    return stillness
+}

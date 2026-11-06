@@ -1,0 +1,13 @@
+var console = Console()
+
+func WalkCopyFunctionAnswers() {
+    load "../../../spite_standard_library/windows"
+    var all = Runner<Mover>()
+    all.run_all(2)
+    var declared = Mover.functions["say_each"]
+    crash declared
+    var returns = declared.returns
+    var literal = declared.returned_literal
+    var resumable = declared.is_resumable
+    console.print("declared", declared.name, "returns", returns, "literal", literal, "resumable", resumable)
+}

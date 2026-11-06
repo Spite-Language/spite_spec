@@ -1,0 +1,5 @@
+generic $item_type
+
+func files(): Integer {
+    return $item_type.source_files.count()
+}

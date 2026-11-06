@@ -1,0 +1,4 @@
+start
+made
+took 3
+spite: call() gives 'NumberTargets.take_one' an argument 'count' that is not an Integer, the type it takes

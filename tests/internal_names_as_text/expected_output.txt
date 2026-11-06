@@ -1,0 +1,2 @@
+Spite.Internal.Memory is only text here
+my own Atomic 3

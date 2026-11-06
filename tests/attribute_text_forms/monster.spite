@@ -1,0 +1,6 @@
+var hit_points = 12
+var name = "troll"
+
+func summary(): String {
+    return "{name} {hit_points}"
+}

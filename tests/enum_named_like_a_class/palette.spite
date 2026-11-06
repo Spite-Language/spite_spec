@@ -1,0 +1,12 @@
+enum Shade {
+    'light'
+    'dark'
+}
+
+var console = Console()
+var current: Shade = 'light'
+
+func report() {
+    var kinds = Shade.values.count()
+    console.print("inside Palette, Shade is the enum with", kinds, "values", current)
+}

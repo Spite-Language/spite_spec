@@ -1,0 +1,9 @@
+var console = Console()
+
+func QuietTargets() {
+    console.print("made")
+}
+
+func take_one() {
+    console.print("took")
+}

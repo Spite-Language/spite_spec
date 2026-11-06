@@ -1,0 +1,9 @@
+var console = Console()
+
+func PackageNeedsProgramBuildFunction() {
+    load "../../../spite_standard_library/windows"
+    load "engine"
+    var finder = Finder()
+    var folder = finder.where_from()
+    console.print("the engine looks in", folder)
+}

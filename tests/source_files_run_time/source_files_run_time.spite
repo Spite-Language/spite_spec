@@ -1,0 +1,25 @@
+var console = Console()
+
+func SourceFilesRunTime() {
+    load "../../../spite_standard_library/windows"
+    var kind: Spite.Class = Monster
+    var swapped: Spite.Class = Monster
+    var files = kind.source_files
+    var count = files.count()
+    var first = files[0]
+    crash first
+    var ends = first.path.ends_with("/source_files_run_time/monster.spite")
+    var there = first.exists()
+    var troll = Monster()
+    var alive = troll.alive()
+    console.print(
+        "a class held in a variable has",
+        count,
+        "file; path ends with the class's file:",
+        ends,
+        "exists:",
+        there,
+        alive,
+        swapped.name,
+    )
+}

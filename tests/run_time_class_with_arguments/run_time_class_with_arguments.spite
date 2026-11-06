@@ -1,0 +1,20 @@
+var console = Console()
+
+func RunTimeClassWithArguments() {
+    load "../../../spite_standard_library/windows"
+    console.print("start")
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var found = classes[index]
+        if found.name.ends_with("Maker") {
+            make_one(found)
+        }
+        index = index + 1
+    }
+}
+
+func make_one(found: Spite.Class) {
+    var made = found()
+    console.print("made", made.class.name)
+}

@@ -1,0 +1,17 @@
+generic $system_type
+
+var console = Console()
+var system = $system_type()
+
+func run_all(times: Integer) {
+    run_phases_each(times)
+}
+
+func run_phase_each(phase: Spite.FunctionDeclaration, times: Integer) {
+    var returns = phase.returns
+    var literal = phase.returned_literal
+    var resumable = phase.is_resumable
+    console.print(phase.name, "returns", returns, "literal", literal, "resumable", resumable)
+    var answer = system.phase_each(times)
+    console.print(answer)
+}

@@ -1,0 +1,8 @@
+singleton
+
+var uses = 0
+
+func use(): Integer {
+    uses = uses + 1
+    return uses
+}

@@ -1,0 +1,5 @@
+var sides = 3
+
+func corners(): Integer {
+    return sides
+}

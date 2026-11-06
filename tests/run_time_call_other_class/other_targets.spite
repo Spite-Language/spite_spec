@@ -1,0 +1,9 @@
+var console = Console()
+
+func OtherTargets() {
+    console.print("made")
+}
+
+func take_one() {
+    console.print("took")
+}

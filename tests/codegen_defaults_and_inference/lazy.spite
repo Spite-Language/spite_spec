@@ -1,0 +1,12 @@
+generic $result_type
+
+var compute: Spite.Function<Integer, $result_type>? = null
+
+func Lazy(new_compute: Spite.Function<Integer, $result_type>) {
+    compute = new_compute
+}
+
+func run(input: Integer): $result_type {
+    fallback compute
+    return compute(input)
+}

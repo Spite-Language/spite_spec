@@ -1,0 +1,7 @@
+generic $table_type
+
+var table = $table_type()
+
+func size(): Integer {
+    return table.count()
+}

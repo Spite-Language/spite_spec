@@ -1,0 +1,5 @@
+var lone = Lone()
+
+func ping(): Integer {
+    return lone.use()
+}

@@ -1,0 +1,15 @@
+var console = Console()
+
+func MutationStudy() {
+    load "../../../spite_standard_library/windows"
+    Probe.functions.each(show_function)
+}
+
+func show_function(function: Spite.FunctionDeclaration) {
+    function.arguments.each(show_argument)
+}
+
+func show_argument(argument: Spite.Argument) {
+    var mutated = argument.is_mutated
+    console.print(argument.name, "mutated", mutated)
+}

@@ -1,0 +1,22 @@
+generic $system_type
+
+var console = Console()
+var system = $system_type()
+
+func run_everything(amount: Integer) {
+    run_phases_all(amount)
+}
+
+func run_one(amount: Integer) {
+    run_render_all(amount)
+}
+
+func run_phase_all(phase: Spite.FunctionDeclaration, amount: Integer) {
+    var taken = phase.argument_count()
+    console.print(phase.index, phase.name, "hole", phase.hole, "takes", taken)
+    system.phase_all(amount)
+}
+
+func read_steps(): Integer {
+    return system.steps
+}

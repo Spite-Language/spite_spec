@@ -1,0 +1,10 @@
+type Shaped {
+    floor: Spite.Internal.Memory
+}
+
+var console = Console()
+
+func InternalTypeMember() {
+    load "../../../spite_standard_library/windows"
+    console.print("never built")
+}

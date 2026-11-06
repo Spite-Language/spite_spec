@@ -1,0 +1,1 @@
+conformance/load_git_absolute_folder/load_git_absolute_folder.spite:3: error: 'load "../..@26e6476//core"' names the folder '/core', which is not inside the repository

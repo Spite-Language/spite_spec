@@ -1,0 +1,6 @@
+start
+made
+a stranger true
+named plain
+took plain
+spite: call() gives 'ShapeTargets.take_one' an argument 'named' that is not a Named, the type it takes

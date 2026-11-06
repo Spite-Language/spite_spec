@@ -1,0 +1,51 @@
+var console = Console()
+
+func write_attribute(written_box: Box) {
+    written_box.size = 5
+}
+
+func call_changer(changed_box: Box) {
+    changed_box.grow()
+}
+
+func pass_on(passed_box: Box) {
+    write_attribute(passed_box)
+}
+
+func pass_deep(deep_box: Box) {
+    pass_on(deep_box)
+}
+
+func read_only(read_box: Box): Integer {
+    return read_box.peek()
+}
+
+func read_after_new(renamed_box: Box): Integer {
+    var seen = renamed_box.peek()
+    renamed_box = Box()
+    return seen
+}
+
+func grow_list(grown_list: List<Integer>) {
+    grown_list.append(1)
+}
+
+func read_list(counted_list: List<Integer>): Integer {
+    return counted_list.count()
+}
+
+func recurse(recursive_box: Box, times: Integer) {
+    if times > 0 {
+        recurse(recursive_box, times - 1)
+    } else {
+        recursive_box.grow()
+    }
+}
+
+func write_item(item_list: List<Integer>) {
+    item_list[0] = 3
+}
+
+func show_argument(argument: Spite.Argument) {
+    console.print(argument.name, "mutated", argument.is_mutated)
+}

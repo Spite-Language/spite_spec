@@ -1,0 +1,1 @@
+conformance/walk_namespace_unknown/walk_namespace_unknown.spite:5: error: 'Missing' is not a local, an attribute or a function of 'WalkNamespaceUnknown' (in WalkNamespaceUnknown.WalkNamespaceUnknown)

@@ -1,0 +1,28 @@
+var console = Console()
+
+var build = Build()
+
+func FinalClassesReplacement() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    load "mod"
+    var monster = Creatures.Monster("rat")
+    var described = monster.describe()
+    console.print(described)
+    var printed = File("{build.program}/.spite/final_replacement/creatures/monster.spite")
+    var text = printed.read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("func describe") {
+            var comment = lines[index - 1]
+            crash comment
+            var from_mod = comment.ends_with("mod/creatures/monster.spite")
+            var from_package = comment.ends_with("package/creatures/monster.spite")
+            console.print("describe comes from the mod:", from_mod, "from the package:", from_package)
+        }
+        index = index + 1
+    }
+}

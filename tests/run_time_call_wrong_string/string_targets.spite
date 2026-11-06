@@ -1,0 +1,9 @@
+var console = Console()
+
+func StringTargets() {
+    console.print("made")
+}
+
+func take_one(word: String) {
+    console.print("took", word)
+}

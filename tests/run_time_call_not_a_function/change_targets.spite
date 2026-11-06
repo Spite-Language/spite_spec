@@ -1,0 +1,10 @@
+var console = Console()
+
+func ChangeTargets() {
+    console.print("made")
+}
+
+func take_one(change: Spite.Function<Integer, Integer>, start: Integer) {
+    var done = change(start)
+    console.print("took", done)
+}

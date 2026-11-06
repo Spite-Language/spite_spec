@@ -1,0 +1,19 @@
+var console = Console()
+
+func ClassInstancesScope() {
+    load "../../../spite_standard_library/windows"
+    load "vendor"
+    var crate = Crate<Float>()
+    var sprocket = Gear.Sprocket()
+    var names = Spite.Class.instances.map_names()
+    var joined = names.join(",")
+    console.print(joined)
+    var has_crate = names.contains("Crate")
+    var has_console = names.contains("Console")
+    var has_sprocket = names.contains("Sprocket")
+    console.print("generic listed", has_crate)
+    console.print("library listed", has_console)
+    console.print("package listed", has_sprocket)
+    var empty = crate.is_empty()
+    console.print(empty, sprocket.teeth)
+}

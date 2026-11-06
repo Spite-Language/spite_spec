@@ -1,0 +1,5 @@
+var crate = Crate()
+
+func bump() {
+    crate.size = crate.size + 1
+}

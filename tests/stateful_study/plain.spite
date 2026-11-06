@@ -1,0 +1,13 @@
+var label = ""
+
+func Plain(starting_label: String) {
+    label = starting_label
+}
+
+func show(): String {
+    return label
+}
+
+func drop() {
+    label = ""
+}

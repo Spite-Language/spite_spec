@@ -1,0 +1,15 @@
+var console = Console()
+
+func ListOfClassesIsConstant() {
+    load "../../../spite_standard_library/windows"
+    var parts = [Part.Alpha, Part.Inner.Beta]
+    parts.each(visit)
+    var count = parts.count()
+    console.print("classes in the list:", count)
+}
+
+func visit(part: Spite.Class) {
+    var fresh = part()
+    var shown = fresh.to_debug()
+    console.print(part.name_with_namespaces, shown)
+}

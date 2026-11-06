@@ -1,0 +1,3 @@
+gadget x3
+a copy of spite_spec: record true files true git folder false
+a file beside the copies: fetching.lock

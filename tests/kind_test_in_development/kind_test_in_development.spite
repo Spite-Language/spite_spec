@@ -1,0 +1,12 @@
+var console = Console()
+
+func KindTestInDevelopment() {
+    load "../../../spite_standard_library/windows"
+    var text = Kind<String>()
+    var list = Kind<List<Integer>>()
+    var flag = Kind<Boolean>()
+    var text_name = text.name()
+    var list_name = list.name()
+    var flag_name = flag.name()
+    console.print(text_name, list_name, flag_name)
+}

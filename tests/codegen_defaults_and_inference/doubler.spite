@@ -1,0 +1,9 @@
+var factor = 2
+
+func double(input: Integer): Integer {
+    return input * factor
+}
+
+func label(input: Integer): String {
+    return "number {input}"
+}

@@ -1,0 +1,1 @@
+conformance/reflection_names_get_class/table.spite:3: error: the function 'get_class' is read as 'class', a name reflection gives every object: 'value.class' is its class, and one of its own would hide it. Name it something else, like 'get_table_class' (in Table)

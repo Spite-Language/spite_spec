@@ -1,0 +1,17 @@
+var console = Console()
+
+var build = Build()
+
+func UnionListEmptyAll() {
+    load "../../../spite_standard_library/windows"
+    var tree = Directory("{build.program}/tree")
+    var entries = tree.entries()
+    crash entries
+    entries.remove_where_directories()
+    entries.remove_where_files()
+    var left = entries.count()
+    var all_files = entries.all_files()
+    var any_folder = entries.any_directories()
+    var file_count = entries.count_files()
+    console.print("left", left, "all files", all_files, "any folder", any_folder, "files", file_count)
+}

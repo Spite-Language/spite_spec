@@ -1,0 +1,5 @@
+var size = 3
+
+func big(): Boolean {
+    return size > 2
+}

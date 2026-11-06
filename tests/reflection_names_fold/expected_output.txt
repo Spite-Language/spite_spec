@@ -1,0 +1,13 @@
+1 2
+Alpha Part.Inner.Beta
+Alpha Part.Alpha
+Beta Part.Inner.Beta
+Inner Part.Inner
+Inner Part.Inner
+1 1 2
+1 1
+Alpha
+Alpha
+Alpha
+Part Part 1 1 Alpha
+Part.Inner Part.Inner 2 1 Beta

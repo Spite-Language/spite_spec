@@ -1,0 +1,8 @@
+var console = Console()
+
+func CodegenNamedCallSite() {
+    load "../../../spite_standard_library/windows"
+    var box = Box<held_type: Integer>()
+    var size = box.size()
+    console.print(size)
+}

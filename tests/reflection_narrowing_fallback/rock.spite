@@ -1,0 +1,5 @@
+var weight = 3
+
+func heavy(): Integer {
+    return weight
+}

@@ -1,0 +1,1 @@
+conformance/reflection_names_functions_attribute/table.spite:1: error: the attribute 'functions' has a name reflection gives every object: 'value.functions' lists its functions, and one of its own would hide it. Name it something else, like 'table_functions' (in Table)

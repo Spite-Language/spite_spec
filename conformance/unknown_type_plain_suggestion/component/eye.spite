@@ -1,0 +1,5 @@
+var sight = 3
+
+func look(): Integer {
+    return sight
+}

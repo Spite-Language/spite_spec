@@ -1,0 +1,29 @@
+var console = Console()
+
+func SourceFilesForms() {
+    load "../../../spite_standard_library/windows"
+    var by_name = Monster.source_files
+    var named_count = by_name.count()
+    var held = Holder<Monster>()
+    var held_count = held.files()
+    var troll = Monster()
+    var by_value = troll.class.source_files
+    var value_count = by_value.count()
+    console.print("counts", named_count, held_count, value_count)
+    by_name.each(show_file)
+    console.print(troll.health)
+}
+
+func show_file(file: File) {
+    var is_slash_path = file.path.ends_with("/source_files_forms/monster.spite")
+    var has_backslash = file.path.contains("\\")
+    var is_there = file.exists()
+    console.print(
+        "path ends with /source_files_forms/monster.spite:",
+        is_slash_path,
+        "backslash:",
+        has_backslash,
+        "exists:",
+        is_there,
+    )
+}

@@ -1,0 +1,1 @@
+conformance/template_declaration_spelling/template_declaration_spelling.spite:9: error: 'attribute: Spite.AttributeDeclaration<Monster>' names its class, but a template's class comes from its body: write 'attribute: Spite.AttributeDeclaration' and read it as 'value[attribute]' on a value of 'Monster' (in TemplateDeclarationSpelling.show_attribute)

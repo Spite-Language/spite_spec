@@ -1,0 +1,37 @@
+var console = Console()
+
+func TemplateReceiverForms() {
+    load "../../../spite_standard_library/windows"
+    var troll = Monster()
+    show_made_attributes()
+    show_mixed_attributes(troll)
+    relay_name(troll)
+    relay_health(troll)
+    console.print("nothing walked for a missing monster")
+    var missing: Monster? = null
+    show_maybe_attributes(missing)
+    console.print("done")
+}
+
+func show_made_attribute(attribute: Spite.AttributeDeclaration) {
+    var made = Monster()
+    console.print("made", attribute.name, made[attribute])
+}
+
+func show_mixed_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
+    var rock = Rock()
+    console.print("mixed", attribute.index, attribute.name, rock[attribute], monster[attribute])
+}
+
+func relay_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
+    echo_attribute(attribute, monster)
+}
+
+func echo_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
+    console.print("relayed", attribute.name, monster[attribute])
+}
+
+func show_maybe_attribute(attribute: Spite.AttributeDeclaration, monster: Monster?) {
+    crash monster
+    console.print("maybe", attribute.name, monster[attribute])
+}

@@ -1,0 +1,13 @@
+var console = Console()
+
+func ReopeningAddsEnumAndType() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    load "mod"
+    var shape = Shapes.Shape()
+    shape.paint('blue')
+    var other = Shapes.Shape()
+    var total = shape.count_sides(other)
+    var corners = shape.corners()
+    console.print(shape.colour, corners, total)
+}

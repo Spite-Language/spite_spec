@@ -1,0 +1,11 @@
+generic $item_type: GenericConstraintFits.Counted
+
+var items = List<$item_type>()
+
+func add(item: $item_type) {
+    items.append(item)
+}
+
+func total(): Integer {
+    return items.sum_count()
+}

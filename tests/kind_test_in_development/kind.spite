@@ -1,0 +1,13 @@
+generic $kind_type
+
+func name(): String {
+    if $kind_type == String {
+        return "text"
+    } else if $kind_type == Integer {
+        return "a whole number"
+    } else if $kind_type == List {
+        return "a list"
+    } else {
+        return "something else"
+    }
+}

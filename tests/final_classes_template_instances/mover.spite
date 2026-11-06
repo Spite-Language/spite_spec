@@ -1,0 +1,9 @@
+var steps = 0
+
+func update_all(amount: Integer) {
+    steps = steps + amount
+}
+
+func render_all(amount: Integer) {
+    steps = steps + amount * 10
+}

@@ -1,0 +1,17 @@
+var console = Console()
+
+var build = Build()
+
+func FinalClassesTemplateInstances() {
+    load "../../../spite_standard_library/windows"
+    var one = Runner<Mover>()
+    one.run_one(1)
+    var steps = one.read_steps()
+    console.print("steps", steps)
+    var printed = File("{build.program}/.spite/final_template_instances/instantiated/runner_mover.spite")
+    var text = printed.read_as_string()
+    crash text
+    var has_render = text.contains("run_render_all(amount: Integer)")
+    var has_update = text.contains("run_update_all")
+    console.print("the called instance is printed:", has_render, "an instance nobody called:", has_update)
+}

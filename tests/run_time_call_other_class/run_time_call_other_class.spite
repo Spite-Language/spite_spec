@@ -1,0 +1,25 @@
+var console = Console()
+
+func RunTimeCallOtherClass() {
+    load "../../../spite_standard_library/windows"
+    console.print("start")
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var found = classes[index]
+        if found.name.ends_with("Targets") {
+            run_targets(found)
+        }
+        index = index + 1
+    }
+}
+
+func run_targets(found: Spite.Class) {
+    var declaration = found.functions["take_one"]
+    crash declaration
+    var rock = Rock()
+    var heavy = rock.heavy()
+    console.print("a rock", heavy)
+    var wrong = Spite.Call(declaration, rock)
+    wrong.call()
+}

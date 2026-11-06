@@ -1,0 +1,11 @@
+var console = Console()
+
+func UnknownTypeDottedAnswer() {
+    load "../../../spite_standard_library/windows"
+    var shown = find_gem()
+    console.print(shown)
+}
+
+func find_gem(): Server.Component.Gem {
+    return Server.Component.Gem()
+}

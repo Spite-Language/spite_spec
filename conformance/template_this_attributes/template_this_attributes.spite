@@ -1,0 +1,8 @@
+var console = Console()
+
+func TemplateThisAttributes() {
+    load "../../../spite_standard_library/windows"
+    var bag = Bag()
+    var size = bag.size
+    console.print(size)
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func EnumNamedLikeAClass() {
+    load "../../../spite_standard_library/windows"
+    var palette = Palette()
+    palette.report()
+    var shade = Shade()
+    var strength = shade.strength()
+    console.print("outside Palette, Shade is the class", strength)
+}

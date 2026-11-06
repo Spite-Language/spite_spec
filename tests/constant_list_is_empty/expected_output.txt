@@ -1,0 +1,4 @@
+Gear.Axle Gear has classes
+Gear.Axle Gear holds no folders
+Gear.Wheel Gear has classes
+Gear.Wheel Gear holds no folders

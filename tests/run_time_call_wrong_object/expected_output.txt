@@ -1,0 +1,6 @@
+start
+made
+a stranger true
+a box true
+took 3
+spite: call() gives 'ObjectTargets.take_one' an argument 'box' that is not a Box, the type it takes

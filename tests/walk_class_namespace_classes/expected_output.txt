@@ -1,0 +1,2 @@
+Gear.Axle Axle { teeth: 1 }
+Gear.Wheel Wheel { size: 2 }

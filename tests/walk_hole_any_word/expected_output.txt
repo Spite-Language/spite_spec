@@ -1,0 +1,6 @@
+0 update_all hole update takes 1
+1 render_all hole render takes 1
+2 sum_all hole sum takes 1
+after every phase 111
+1 render_all hole render takes 1
+after render only 10

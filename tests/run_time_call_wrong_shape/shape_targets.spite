@@ -1,0 +1,13 @@
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func ShapeTargets() {
+    console.print("made")
+}
+
+func take_one(named: Named) {
+    console.print("took", named.name)
+}

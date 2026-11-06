@@ -1,0 +1,1 @@
+conformance/reflection_call_unknown_argument/reflection_call_unknown_argument.spite:9: error: 'hurt' has no argument 'speed', so 'call.arguments["speed"]' fills nothing (in ReflectionCallUnknownArgument.ReflectionCallUnknownArgument)

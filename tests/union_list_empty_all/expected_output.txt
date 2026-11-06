@@ -1,0 +1,1 @@
+left 0 all files true any folder false files 0

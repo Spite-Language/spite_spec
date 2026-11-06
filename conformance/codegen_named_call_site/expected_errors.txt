@@ -1,0 +1,1 @@
+conformance/codegen_named_call_site/codegen_named_call_site.spite:5: error: ':' is left over after the end of the statement: a statement is one line

@@ -1,0 +1,15 @@
+var console = Console()
+
+func GeneratedGetterIndependent() {
+    load "../../../spite_standard_library/windows"
+    var bag = Bag("kit")
+    bag.fill()
+    var taken = bag.items
+    taken.append("lamp")
+    var taken_count = taken.count()
+    var kept = bag.items
+    var kept_count = kept.count()
+    console.print("the copy holds", taken_count, "and the bag still holds", kept_count)
+    var name = bag.label
+    console.print(name)
+}

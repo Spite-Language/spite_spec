@@ -1,0 +1,13 @@
+generic $key_type
+generic $value_type
+
+var entries: Dictionary<$key_type, $value_type>? = null
+
+func Keyed(new_entries: Dictionary<$key_type, $value_type>) {
+    entries = new_entries
+}
+
+func size(): Integer {
+    fallback entries
+    return entries.count()
+}

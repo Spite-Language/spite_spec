@@ -1,0 +1,5 @@
+var points = 5
+
+func strong(): Boolean {
+    return points > 3
+}

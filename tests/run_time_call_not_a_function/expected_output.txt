@@ -1,0 +1,3 @@
+start
+made
+spite: call() gives 'ChangeTargets.take_one' an argument 'change' that is not a Spite.Function: a function value is passed to a call known only at run time as the function bound to its object, 'object.functions["name"]'

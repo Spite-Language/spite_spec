@@ -1,0 +1,4 @@
+Gadget is singleton true
+Lamp is singleton true
+ReflectionReopenedFunction is singleton true
+3 1

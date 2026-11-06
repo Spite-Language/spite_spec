@@ -1,0 +1,14 @@
+enum Mood {
+    'glad'
+    'sad'
+}
+
+var console = Console()
+
+func EnumTargets() {
+    console.print("made")
+}
+
+func take_one(mood: Mood) {
+    console.print("took", mood)
+}

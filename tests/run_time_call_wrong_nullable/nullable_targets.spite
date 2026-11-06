@@ -1,0 +1,9 @@
+var console = Console()
+
+func NullableTargets() {
+    console.print("made")
+}
+
+func take_one(count: Integer?) {
+    console.print("took", count)
+}

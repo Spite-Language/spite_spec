@@ -1,0 +1,5 @@
+ClassInstancesScope,Sprocket
+generic listed false
+library listed false
+package listed true
+true 12

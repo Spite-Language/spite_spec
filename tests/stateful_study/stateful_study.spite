@@ -1,0 +1,10 @@
+var console = Console()
+
+func StatefulStudy() {
+    load "../../../spite_standard_library/windows"
+    console.print("counter", Counter.is_stateful)
+    console.print("plain", Plain.is_stateful)
+    console.print("wrapper", Wrapper.is_stateful)
+    console.print("binder", Binder.is_stateful)
+    console.print("crate", Crate.is_stateful)
+}

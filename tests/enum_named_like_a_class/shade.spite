@@ -1,0 +1,5 @@
+var tint = 4
+
+func strength(): Integer {
+    return tint
+}

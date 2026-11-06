@@ -1,0 +1,14 @@
+var console = Console()
+
+var build = Build()
+
+func FinalClassesPlatformFunctions() {
+    load "../../../spite_standard_library/windows"
+    var file = File("{build.program}/monster.txt")
+    var found = file.exists()
+    var printed = File("{build.program}/.spite/final_platform/file.spite")
+    var text = printed.read_as_string()
+    crash text
+    var from_windows = text.contains("ucrtbase.dll")
+    console.print("exists:", found, "the printed File holds the platform's calls:", from_windows)
+}

@@ -1,0 +1,34 @@
+var console = Console()
+
+var build = Build()
+
+func PinnedCopyLayout() {
+    load "../../../spite_standard_library/windows"
+    load "../..@26e6476/tests/namespaces_load/package"
+    var widget = Widgets.Widget("gadget", 3)
+    var described = widget.describe()
+    console.print(described)
+    var git = Directory("{build.program}/.spite/git")
+    var entries = git.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var found = entries[index]
+        switch found {
+            Directory: show_copy(found)
+            File: console.print("a file beside the copies:", found.file_name)
+        }
+        index = index + 1
+    }
+}
+
+func show_copy(folder: Directory) {
+    fallback folder.folder_name.starts_with("spite_spec_")
+    var record = File("{folder.path}/26e6476.files")
+    var copy = Directory("{folder.path}/26e6476")
+    var repository = Directory("{folder.path}/26e6476/.git")
+    var has_record = record.exists()
+    var has_copy = copy.exists()
+    var has_git = repository.exists()
+    console.print("a copy of spite_spec: record", has_record, "files", has_copy, "git folder", has_git)
+}

@@ -1,0 +1,9 @@
+var size = 0
+
+func SizedMaker(wanted: Integer) {
+    size = wanted
+}
+
+func area(): Integer {
+    return size
+}

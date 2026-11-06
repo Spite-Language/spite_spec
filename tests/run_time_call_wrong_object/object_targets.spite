@@ -1,0 +1,9 @@
+var console = Console()
+
+func ObjectTargets() {
+    console.print("made")
+}
+
+func take_one(box: Box) {
+    console.print("took", box.size)
+}

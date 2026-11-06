@@ -1,0 +1,1 @@
+conformance/load_git_inside_repository/load_git_inside_repository.spite:3: error: 'load "../../tests@26e6476/namespaces_load/package"' names '../../tests', which is the folder 'tests' inside a repository: name the repository's own folder, and the folder inside it after the commit
