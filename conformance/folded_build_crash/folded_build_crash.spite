@@ -5,9 +5,6 @@ func FoldedBuildCrash() {
     load "../../../spite_standard_library/windows"
     console.print("before the crash")
     serve()
-    var health = Health()
-    var label_check = Check<Label>()
-    label_check.holds(health)
 }
 
 func serve() {

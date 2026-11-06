@@ -1,5 +1,0 @@
-generic $wanted_type
-
-func holds(health: Health) {
-    crash health == $wanted_type
-}

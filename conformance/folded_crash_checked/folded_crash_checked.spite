@@ -1,0 +1,8 @@
+var console = Console()
+
+func FoldedCrashChecked() {
+    load "../../../spite_standard_library/windows"
+    console.print("before the crash")
+    crash 1 == 2
+    console.print("never printed")
+}

@@ -1,0 +1,7 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var given = 0
+var mood: Mood = 'calm'

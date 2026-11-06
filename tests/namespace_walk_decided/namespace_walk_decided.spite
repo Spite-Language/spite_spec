@@ -1,0 +1,54 @@
+var console = Console()
+var stage = Stages.First.First()
+var first = Proofs.One.Proof()
+var second = Proofs.Two.Proof()
+var rule = Rules.One.Validator()
+
+func NamespaceWalkDecided() {
+    load "../../../spite_standard_library/windows"
+    rule.check_it()
+    console.print(stage.runs, first.runs, second.runs, rule.runs)
+    Spite.Namespace.instances.each(check_a_namespace)
+    console.print("the layout holds")
+}
+
+func check_a_namespace(namespace: Spite.Namespace) {
+    var path = namespace.name_with_namespaces
+    var names = namespace.classes.map_names()
+    var depth = path.split(".").count()
+    if depth == 2 and path.starts_with("Stages.") {
+        var has_the_entry = names.contains(namespace.name)
+        crash has_the_entry
+    }
+    check_a_rule_folder(namespace, path, depth)
+    check_a_proof_folder(namespace, path, names, depth)
+    check_a_named_folder(path, names, depth)
+}
+
+func check_a_rule_folder(namespace: Spite.Namespace, path: String, depth: Integer) {
+    fallback path.starts_with("Rules.") and depth == 2
+    namespace.classes.each(check_a_validator)
+}
+
+func check_a_validator(validator: Spite.Class) {
+    fallback validator.name == "Validator"
+    var checks = validator.functions.count_name_starts_with("check")
+    var has_a_check = checks > 0
+    crash has_a_check
+}
+
+func check_a_proof_folder(namespace: Spite.Namespace, path: String, names: List<String>, depth: Integer) {
+    fallback depth == 2 and path.starts_with("Proofs.")
+    var has_a_proof = names.contains("Proof")
+    crash has_a_proof
+    var is_named_for_its_folder = names.contains(namespace.name)
+    crash not is_named_for_its_folder
+}
+
+func check_a_named_folder(path: String, names: List<String>, depth: Integer) {
+    fallback path.starts_with("Rules.")
+    if depth == 2 {
+        var has_a_validator = names.contains("Validator")
+        crash has_a_validator
+    }
+}

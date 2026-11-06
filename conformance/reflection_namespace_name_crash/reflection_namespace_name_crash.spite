@@ -1,0 +1,10 @@
+var console = Console()
+var alpha = Part.Alpha()
+var beta = Part.Beta()
+
+func ReflectionNamespaceNameCrash() {
+    load "../../../spite_standard_library/windows"
+    console.print(alpha.first_value, beta.second_value)
+    crash Part.name_with_namespaces == "Other"
+    console.print("never printed")
+}

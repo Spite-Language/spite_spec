@@ -1,0 +1,5 @@
+generic $held_type
+
+func held_name(): String {
+    return $held_type.name
+}

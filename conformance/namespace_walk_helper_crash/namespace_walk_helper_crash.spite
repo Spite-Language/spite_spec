@@ -1,0 +1,38 @@
+var console = Console()
+var first = Proofs.First.Proof()
+var second = Proofs.Second.Study()
+var rule = Rules.One.Validator()
+
+func NamespaceWalkHelperCrash() {
+    load "../../../spite_standard_library/windows"
+    rule.check_it()
+    console.print(first.runs, second.runs, rule.runs)
+    Spite.Namespace.instances.each(check_a_namespace)
+    console.print("never printed")
+}
+
+func check_a_namespace(namespace: Spite.Namespace) {
+    var path = namespace.name_with_namespaces
+    var names = namespace.classes.map_names()
+    var depth = path.split(".").count()
+    check_a_rule_folder(namespace, path, depth)
+    check_a_proof_folder(path, names, depth)
+}
+
+func check_a_rule_folder(namespace: Spite.Namespace, path: String, depth: Integer) {
+    fallback path.starts_with("Rules.") and depth == 2
+    namespace.classes.each(check_a_validator)
+}
+
+func check_a_validator(validator: Spite.Class) {
+    fallback validator.name == "Validator"
+    var checks = validator.functions.count_name_starts_with("check")
+    var has_a_check = checks > 0
+    crash has_a_check
+}
+
+func check_a_proof_folder(path: String, names: List<String>, depth: Integer) {
+    fallback depth == 2 and path.starts_with("Proofs.")
+    var has_a_proof = names.contains("Proof")
+    crash has_a_proof
+}

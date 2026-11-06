@@ -1,0 +1,66 @@
+var console = Console()
+var alpha = Part.Alpha()
+var beta = Part.Inner.Beta()
+var kept_classes = List<Spite.Class>()
+var kept_namespaces = List<Spite.Namespace>()
+
+func ReflectionNamesFold() {
+    load "../../../spite_standard_library/windows"
+    console.print(alpha.first_value, beta.second_value)
+    kept_classes.append(Part.Alpha)
+    kept_classes.append(Part.Inner.Beta)
+    kept_namespaces.append(Part)
+    kept_namespaces.append(Part.Inner)
+    var class_name = Part.Alpha.name
+    var class_path = Part.Inner.Beta.name_with_namespaces
+    console.print(class_name, class_path)
+    show_a_kept_class(0)
+    show_a_kept_class(1)
+    var namespace_name = Part.Inner.name
+    var namespace_path = Part.Inner.name_with_namespaces
+    console.print(namespace_name, namespace_path)
+    show_a_kept_namespace(1)
+    var class_count = Part.classes.count()
+    var inner_count = Part.namespaces.count()
+    var every_count = Spite.Namespace.instances.count()
+    console.print(class_count, inner_count, every_count)
+    show_the_counts()
+    var names = Part.classes.map_names()
+    var joined = names.join(",")
+    console.print(joined)
+    var shelf = Shelf<Part.Alpha>()
+    var held = shelf.held_name()
+    console.print(held)
+    Spite.Namespace.instances.each(show_a_namespace)
+}
+
+func show_a_kept_class(index: Integer) {
+    var kept = kept_classes[index]
+    crash kept
+    console.print(kept.name, kept.name_with_namespaces)
+}
+
+func show_a_kept_namespace(index: Integer) {
+    var kept = kept_namespaces[index]
+    crash kept
+    console.print(kept.name, kept.name_with_namespaces)
+}
+
+func show_the_counts() {
+    var kept = kept_namespaces[0]
+    var class_count = kept.classes.count()
+    var inner_count = kept.namespaces.count()
+    console.print(class_count, inner_count)
+    var names = kept.classes.map_names()
+    var joined = names.join(",")
+    console.print(joined)
+}
+
+func show_a_namespace(namespace: Spite.Namespace) {
+    var path = namespace.name_with_namespaces
+    var depth = path.split(".").count()
+    var count = namespace.classes.count()
+    var names = namespace.classes.map_names()
+    var joined = names.join(",")
+    console.print(namespace, path, depth, count, joined)
+}

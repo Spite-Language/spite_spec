@@ -1,0 +1,95 @@
+var console = Console()
+var alpha = Part.Alpha()
+var beta = Part.Beta()
+var mixer = Mixer()
+var settings = Settings()
+
+func FoldedCrashNotDecided() {
+    load "../../../spite_standard_library/windows"
+    mixer.blend()
+    console.print(alpha.first_value, beta.second_value, mixer.level)
+    Spite.Namespace.instances.each(check_a_folder)
+    var given = settings.given
+    under_a_condition(given)
+    in_a_loop(given)
+    after_a_fallback(given)
+    after_a_return(given)
+    in_a_case()
+    beside_a_condition(given)
+    if Mixer.function_waits("blend") {
+        called_only_from_a_dropped_branch()
+    }
+    var slot = Slot<Integer>()
+    var label = slot.label()
+    console.print(label)
+    written_after_a_change()
+    console.print("every crash here is left to the run")
+}
+
+func never_called() {
+    crash 1 == 2
+    crash Part.name == "Other"
+}
+
+func called_only_from_a_dropped_branch() {
+    crash 1 == 2
+}
+
+func check_a_folder(namespace: Spite.Namespace) {
+    if namespace.name == "Never" {
+        crash 1 == 2
+    }
+    if namespace.name != "Part" {
+        crash Part.name == "Other"
+    }
+}
+
+func under_a_condition(given: Integer) {
+    if given > 1000 {
+        crash 1 == 2
+        console.print("not compiled")
+    }
+    if given > 1000 {
+        crash Part.classes.count() == 7
+    }
+}
+
+func in_a_loop(given: Integer) {
+    var index = 1000
+    while index < given {
+        crash Part.name == "Other"
+        index = index + 1
+    }
+}
+
+func after_a_fallback(given: Integer) {
+    fallback given > 1000
+    crash 1 == 2
+}
+
+func after_a_return(given: Integer) {
+    if given < 1000 {
+        console.print("leaving early")
+        return
+    }
+    crash Part.name == "Other"
+}
+
+func in_a_case() {
+    switch settings.mood {
+        'calm': console.print("another case")
+        'angry': crash 1 == 2
+    }
+}
+
+func beside_a_condition(given: Integer) {
+    crash given < 1000 or 1 == 2
+}
+
+func written_after_a_change() {
+    var names = Part.classes.map_names()
+    names.append("Gamma")
+    crash names.contains("Gamma")
+    var count = names.count()
+    console.print(count)
+}

@@ -1,0 +1,6 @@
+1 2 1
+leaving early
+another case
+a slot
+3
+every crash here is left to the run

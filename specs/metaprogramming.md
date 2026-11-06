@@ -291,7 +291,10 @@ A walk is a call on a list of reflection objects, under [reflection.md's rules f
 - **A walk over a constant list is unrolled**, one call per element in the list's order (declaration order for
   attributes and arguments, the order made for functions, an enum's order for its values, dotted-name order for
   classes and namespaces), and the function it calls is compiled once per element. A walk over an empty list calls
-  nothing.
+  nothing. `Spite.Namespace.instances` and a known namespace's `.classes` and `.namespaces` are such lists, walked in the order they list.
+- **Inside a copy of a walk, a call of a function of the class with a constant argument is compiled once for that
+  argument**, up to eight calls deep, so a check split into functions decides as one written in one function does (`tests/namespace_walk_decided`,
+  `conformance/namespace_walk_helper_crash`). A `fallback` a copy folds false records no trace line: no fallback failed at run time.
 - **A question on a constant folds**: `.is_resumable`, `.is_mutated`, `.is_stateful`, `.is_fixed_size`,
   `.is_singleton`, the kind questions, `.count()` of a constant list, `[]` with a literal name, and `==` between
   constant classes. An attribute set from one of a codegen type's yes-or-no questions needs no written type: `var
@@ -435,7 +438,8 @@ run-time value for live reload to change. To change one, change the call site.
 **A `fallback` or `crash` on such a condition folds the same way.** When the condition of a `fallback` or `crash`
 asks only what is decided while compiling (`$slot_type == Entity` or any other test of a codegen type,
 a question asked of a reflection constant (`$T.functions["run_each"]`, `.is_resumable`, `.is_mutated`,
-`.is_fixed_size`, `.arguments.count()`, of a codegen type or of a walked member's class), `argument.class == $row_type`,
+`.is_fixed_size`, `.arguments.count()`, of a codegen type or of a walked member's class), a name, a count or a list of
+names over one ([reflection.md](reflection.md#known-while-compiling)), a comparison of two written numbers, `argument.class == $row_type`,
 a class test the value's type already answers (`item == $wanted_type`), a field of
 [`Build`](https://github.com/Spite-Language/spite_documentation/blob/master/programs.md#compile-time-settings-build), and `not`, `and` and `or` over them), it is decided
 for each instance, with no test at run time: when it holds,
@@ -452,10 +456,15 @@ decided while compiling and is false would halt every time its function runs, so
 compiler can prove, and it is reported while compiling, at the `crash`, naming the instance: `'crash
 $slot_type.is_fixed_size' always halts in Slot<List<String>>: its condition is decided while compiling and is
 false, so the program would stop here every time this function runs: call it only where the condition holds, or
-change what the condition asks` (`diagnostics/folded_crash`, and `diagnostics/folded_build_crash` for a `Build`
-field and a class test). Only a function the program reaches counts (the
+change what the condition asks`; in a copy a walk made for a class or a namespace it says `always halts over Proofs.Second`, the item it stands for (`conformance/namespace_walk_crash`) (`diagnostics/folded_crash`, and `diagnostics/folded_build_crash` for a `Build`
+field and a class test, and `--check` refuses it the same way, `conformance/folded_crash_checked`). Only a function the program reaches counts (the
 same reach tree shaking keeps in a production build, worked out for an inspectable build too, where nothing is
-shaken), so an instance whose function nobody calls compiles (`conformance/stage6/folded_crash_uncalled`). This
+shaken), so an instance whose function nobody calls compiles (`conformance/stage6/folded_crash_uncalled`), a function only the
+prompt of a `--repl` build could call compiles, and so does a function only a branch dropped by a late answer calls (`tests/folded_crash_not_decided`).
+**Only a `crash` the function reaches every time it runs counts**: one in a branch that never runs is not compiled, and
+one under an `if`, a `while` or a `switch` case not decided while compiling, or after a `return`, `fallback` or `crash` under one, is
+left to the run, where it halts with its report like any other; what follows it in its block is not compiled
+(`tests/folded_crash_not_decided`, in every build: `_development`, `_hot_reload`). A reload compile of a `--hot-reload` program is judged the same way. This
 is how a library turns its rules into compile errors: a `crash $system_type.functions["update_each"]` in the
 function that runs a system fails the build for the class that breaks the rule, not the run. The sides of an `and`
 are checked one at a time, as two `crash` lines would be, so in `crash $system_type.functions["update_each"] and

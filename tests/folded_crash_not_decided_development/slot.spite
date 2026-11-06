@@ -1,0 +1,9 @@
+generic $slot_type
+
+func fits() {
+    crash $slot_type.name == "Never"
+}
+
+func label(): String {
+    return "a slot"
+}

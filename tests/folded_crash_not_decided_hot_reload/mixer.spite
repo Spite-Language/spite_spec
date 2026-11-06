@@ -1,0 +1,5 @@
+var level = 0
+
+func blend() {
+    level = level + 1
+}

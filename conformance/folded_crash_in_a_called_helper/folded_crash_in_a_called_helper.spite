@@ -1,0 +1,16 @@
+var console = Console()
+var given = Gauge()
+
+func FoldedCrashInACalledHelper() {
+    load "../../../spite_standard_library/windows"
+    var size = given.count
+    if size > 100000000 {
+        helper()
+    }
+    console.print("printed")
+}
+
+func helper() {
+    crash 2 < 1
+    console.print("never printed")
+}

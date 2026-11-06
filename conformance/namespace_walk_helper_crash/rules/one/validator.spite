@@ -1,0 +1,5 @@
+var runs = 0
+
+func check_it() {
+    runs = runs + 1
+}
