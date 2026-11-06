@@ -1,6 +1,6 @@
 var detail = 0
 var clock = Clock()
 
-func now(): Instant {
+func time_now(): Instant {
     return clock.now()
 }

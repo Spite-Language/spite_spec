@@ -6,5 +6,5 @@ func JsonKeysSingletonAttribute() {
     writer.keys = {MeshRecord.attributes["clock"]: "time"}
     var record = MeshRecord()
     var text = writer.write(record)
-    console.print(text, record.now())
+    console.print(text, record.time_now())
 }

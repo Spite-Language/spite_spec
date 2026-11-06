@@ -1,5 +1,5 @@
 var below = Level2()
 
-func of(row: Integer): Layout {
+func of_level_3(row: Integer): Layout {
     return below.of(row)
 }
