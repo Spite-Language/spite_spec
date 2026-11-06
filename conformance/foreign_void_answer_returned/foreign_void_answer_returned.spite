@@ -1,0 +1,12 @@
+var console = Console()
+var windows = DynamicLibrary("fixture.dll", 'windows', "fixture.h")
+
+func ForeignVoidAnswerReturned() {
+    load "../../../spite_standard_library/windows"
+    var answer = forgotten()
+    console.print(answer)
+}
+
+func forgotten(): Long {
+    return windows.quiet_forget_as_long(2)
+}

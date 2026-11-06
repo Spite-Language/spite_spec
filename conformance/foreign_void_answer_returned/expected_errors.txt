@@ -1,0 +1,1 @@
+conformance/foreign_void_answer_returned/foreign_void_answer_returned.spite:11: error: 'QuietForget' answers nothing, since 'fixture.h' declares it 'void', so it has no answer to read: call it on a line of its own (in ForeignVoidAnswerReturned.forgotten)

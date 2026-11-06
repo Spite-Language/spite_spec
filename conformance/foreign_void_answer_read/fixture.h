@@ -1,0 +1,1 @@
+void Forget(int value);

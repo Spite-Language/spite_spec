@@ -225,8 +225,8 @@ attributes are all numbers` (`diagnostics/foreign_call_mistakes`); a `type` with
 
 **Argument widths.** With a header, a call goes through the
 header's prototype (`__typeof__(&Symbol)`), so C checks the argument count and converts each argument to its
-parameter's type; integer-to-pointer conversion is allowed, because a handle is a `Long`, and a `void` function's
-call reads as `0`. Without one, integer-like arguments widen to `int64_t` or `uint64_t` and `Float`/`Double` pass
+parameter's type; integer-to-pointer conversion is allowed, because a handle is a `Long`, and reading the answer of a `void` function
+is a compile error. Without one, integer-like arguments widen to `int64_t` or `uint64_t` and `Float`/`Double` pass
 as themselves ([the table on the page](https://github.com/Spite-Language/spite_documentation/blob/master/foreign_libraries.md#argument-widths)). A `Double` where C wants `float`, and Apple ARM's stack
 arguments past the eighth, which it packs at their own width, need the header.
 
