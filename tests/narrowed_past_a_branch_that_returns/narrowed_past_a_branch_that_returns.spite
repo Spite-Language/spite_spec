@@ -1,0 +1,162 @@
+var console = Console()
+
+func NarrowedPastABranchThatReturns() {
+    load "../../../spite_standard_library/windows"
+    var rack_a_write = filled_rack()
+    past_a_write(rack_a_write, rack_a_write)
+    var rack_a_write_to_an_earlier_attribute = filled_rack()
+    past_a_write_to_an_earlier_attribute(rack_a_write_to_an_earlier_attribute, rack_a_write_to_an_earlier_attribute)
+    var rack_a_call = filled_rack()
+    past_a_call(rack_a_call, rack_a_call)
+    var rack_a_call_on_an_earlier_attribute = filled_rack()
+    past_a_call_on_an_earlier_attribute(rack_a_call_on_an_earlier_attribute, rack_a_call_on_an_earlier_attribute)
+    var rack_an_else = filled_rack()
+    past_an_else(rack_an_else, rack_an_else)
+    var rack_a_loop_branch = filled_rack()
+    past_a_loop_branch(rack_a_loop_branch, rack_a_loop_branch)
+    var rack_a_loop_body = filled_rack()
+    past_a_loop_body(rack_a_loop_body, rack_a_loop_body)
+    var rack_a_nested_branch = filled_rack()
+    past_a_nested_branch(rack_a_nested_branch, rack_a_nested_branch)
+}
+
+func past_a_write(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    if rack.shelf.item.number > 90 {
+        alias.shelf.item = null
+        return
+    }
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}
+
+func past_a_write_to_an_earlier_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    if rack.shelf.item.number > 90 {
+        var empty = Shelf()
+        alias.shelf = empty
+        return
+    }
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}
+
+func past_a_call(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    if rack.shelf.item.number > 90 {
+        forget(alias)
+        return
+    }
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}
+
+func past_a_call_on_an_earlier_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    if rack.shelf.item.number > 90 {
+        replace(alias)
+        return
+    }
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}
+
+func past_an_else(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    if rack.shelf.item.number < 90 {
+        console.print("small")
+    } else {
+        alias.shelf.item = null
+        return
+    }
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}
+
+func past_a_loop_branch(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var passes = 0
+    while passes < 2 {
+        if passes == 5 {
+            alias.shelf.item = null
+            return
+        }
+        console.print(rack.shelf.item.number)
+        passes = passes + 1
+    }
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}
+
+func past_a_loop_body(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    while rack.shelf.item.number > 90 {
+        alias.shelf.item = null
+        return
+    }
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}
+
+func past_a_nested_branch(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    if rack.shelf.item.number > 90 {
+        if alias.shelf.item {
+            alias.shelf.item = null
+            return
+        }
+        return
+    }
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}
+
+func filled_rack(): Rack {
+    var rack = Rack()
+    var first = Item()
+    var filled = Shelf()
+    filled.item = first
+    rack.shelf = filled
+    return rack
+}
+
+func replace(alias: Rack) {
+    var empty = Shelf()
+    alias.shelf = empty
+}
+
+func forget(alias: Rack) {
+    alias.shelf.item = null
+}

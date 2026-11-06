@@ -1,0 +1,1 @@
+conformance/narrowed_past_a_branch_write_around_a_loop/narrowed_past_a_branch_write_around_a_loop.spite:19: error: this write through another object inside this loop may change 'item', which undoes what was proven about 'rack.shelf.item' before the loop, and the next pass would read it unproven: prove it inside the loop instead (in NarrowedPastABranchWriteAroundALoop.show)
