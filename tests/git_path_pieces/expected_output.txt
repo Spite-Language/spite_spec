@@ -1,0 +1,19 @@
+github.com/example/engine a3f2c91 true
+github.com/example/engine@a3f2c91
+../engine 6c7dca9 core/render
+../engine@6c7dca9/core/render
+ssh://git@example.com/engine true
+computed github.com/example/engine a3f2c91
+refused true 
+refused true github.com/example/engine
+refused true @a3f2c91
+refused true engine@a3f2c91
+refused true github.com/example/engine@main
+refused true github.com/example/engine@a3f2c9
+refused true github.com/example/engine@A3F2C91
+refused true github.com/example/engine@a3f2c91/../tools
+refused true github.com/example/engine@a3f2c91//tools
+refused true github.com/example/engine@a3f2c91/C:/tools
+local true false false
+hosted false true false
+fetched false true true

@@ -1,0 +1,75 @@
+var console = Console()
+
+func GitPathPieces() {
+    load "../../../spite_standard_library/windows"
+    literals()
+    a_folder_inside()
+    the_last_at_sign_splits()
+    computed_text()
+    refused_text()
+    where_the_repository_is()
+}
+
+func literals() {
+    var pinned: GitPath = "github.com/example/engine@a3f2c91"
+    var repository = pinned.repository
+    var commit = pinned.commit
+    var folder = pinned.folder
+    var folder_is_empty = folder.is_empty()
+    console.print(repository, commit, folder_is_empty)
+    console.print(pinned)
+}
+
+func a_folder_inside() {
+    var pinned: GitPath = "../engine@6c7dca9/core/render"
+    var repository = pinned.repository
+    var commit = pinned.commit
+    var folder = pinned.folder
+    console.print(repository, commit, folder)
+    console.print(pinned)
+}
+
+func the_last_at_sign_splits() {
+    var pinned: GitPath = "ssh://git@example.com/engine@a3f2c91"
+    var repository = pinned.repository
+    console.print(repository, pinned.is_a_url)
+}
+
+func computed_text() {
+    var commit = "a3f2c91"
+    var pinned: GitPath? = "github.com/example/engine@{commit}"
+    crash pinned
+    var repository = pinned.repository
+    console.print("computed", repository, pinned.commit)
+}
+
+func refused_text() {
+    var texts = [
+        ""
+        "github.com/example/engine"
+        "@a3f2c91"
+        "engine@a3f2c91"
+        "github.com/example/engine@main"
+        "github.com/example/engine@a3f2c9"
+        "github.com/example/engine@A3F2C91"
+        "github.com/example/engine@a3f2c91/../tools"
+        "github.com/example/engine@a3f2c91//tools"
+        "github.com/example/engine@a3f2c91/C:/tools"
+    ]
+    texts.each(show_a_refusal)
+}
+
+func show_a_refusal(text: String) {
+    var read: GitPath? = text
+    var refused = not read
+    console.print("refused", refused, text)
+}
+
+func where_the_repository_is() {
+    var local: GitPath = "../engine@a3f2c91"
+    var hosted: GitPath = "github.com/example/engine@a3f2c91"
+    var fetched: GitPath = "https://example.com/engine.git@a3f2c91"
+    console.print("local", local.is_local, local.is_remote, local.is_a_url)
+    console.print("hosted", hosted.is_local, hosted.is_remote, hosted.is_a_url)
+    console.print("fetched", fetched.is_local, fetched.is_remote, fetched.is_a_url)
+}
