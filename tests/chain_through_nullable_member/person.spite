@@ -1,0 +1,5 @@
+var age = 0
+
+func Person(starting: Integer) {
+    age = starting
+}

@@ -1,0 +1,5 @@
+var lead: Person? = null
+
+func Team(starting: Person?) {
+    lead = starting
+}

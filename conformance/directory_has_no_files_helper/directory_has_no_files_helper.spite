@@ -1,0 +1,10 @@
+var console = Console()
+
+func DirectoryHasNoFilesHelper() {
+    load "../../../spite_standard_library/windows"
+    var folder = Directory("tests")
+    var entries = folder.entries()
+    crash entries
+    var only = entries.files()
+    console.print(only.count())
+}

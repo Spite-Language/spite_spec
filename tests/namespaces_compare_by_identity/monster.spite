@@ -1,0 +1,5 @@
+var health = 3
+
+func hurt() {
+    health = health - 1
+}

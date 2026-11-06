@@ -1,0 +1,13 @@
+var console = Console()
+
+func MemoryRoomGrows() {
+    load "../../../spite_standard_library/windows"
+    var numbers = List<Integer>()
+    var index = 0
+    while index < 10000 {
+        numbers.append(index)
+        index = index + 1
+    }
+    var count = numbers.count()
+    console.print("appended", count)
+}

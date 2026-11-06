@@ -1,0 +1,15 @@
+var console = Console()
+
+func ChainThroughNullableMember() {
+    load "../../../spite_standard_library/windows"
+    var teams = List<Team>()
+    var ann = Person(34)
+    var ann_team = Team(ann)
+    teams.append(ann_team)
+    var empty_team = Team(null)
+    teams.append(empty_team)
+    var fused = teams.map_leads().count()
+    var leads = teams.map_leads()
+    var stepped = leads.count()
+    console.print(fused, stepped, ann.age)
+}
