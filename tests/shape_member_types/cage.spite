@@ -1,0 +1,6 @@
+var pet: ShapeMemberTypes.Pet = Cat()
+var on_open: Spite.Function<Integer, Integer> = double
+
+func double(number: Integer): Integer {
+    return number + number
+}

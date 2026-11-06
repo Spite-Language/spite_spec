@@ -1,0 +1,24 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Kept {
+    pet: Pet
+    on_open: Spite.Function<Integer, Integer>
+}
+
+var console = Console()
+
+func ShapeMemberTypes() {
+    load "../../../spite_standard_library/windows"
+    var cage = Cage()
+    show(cage)
+}
+
+func show(thing: Kept) {
+    var name = thing.pet.name
+    var opener = thing.on_open
+    var doubled = opener(21)
+    console.print(name, doubled)
+}

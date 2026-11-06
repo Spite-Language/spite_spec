@@ -1,0 +1,5 @@
+var name = "cat"
+
+func speak(): String {
+    return name
+}
