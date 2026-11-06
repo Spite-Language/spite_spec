@@ -1,0 +1,32 @@
+enum Job {
+    'knight'
+    'mage'
+}
+
+var console = Console()
+
+func LiteralConversionEnumOwner() {
+    load "../../../spite_standard_library/windows"
+    var by_score: Job = 2.5
+    var by_word: Job = "wizard"
+    var by_negative: Job = -1
+    console.print(by_score, by_word, by_negative)
+}
+
+func Job(from: Float): Job? {
+    fallback from >= 0.0
+    if from > 2.0 {
+        return 'mage'
+    }
+    return 'knight'
+}
+
+func Job(from: String): Job? {
+    fallback from == "wizard"
+    return 'mage'
+}
+
+func Job(from: Integer): Job? {
+    fallback from < 0
+    return 'knight'
+}

@@ -1,0 +1,10 @@
+var tally = Tally()
+var number = 0
+
+func Counted(from: String): Counted? {
+    fallback not from.is_empty()
+    tally.total = tally.total + 1
+    var made = Counted()
+    made.number = tally.total
+    return made
+}

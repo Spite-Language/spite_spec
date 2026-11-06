@@ -38,19 +38,25 @@ func StringMethods() {
     crash letters.count() == 3
     var letters_count = letters.count()
     console.print(letters_count, letters[1])
-    var forty_two: Integer? = "42"
-    var seven: Long? = "7"
-    var two_and_a_half: Float? = "2.5"
-    var one_and_a_quarter: Double? = "1.25"
+    var forty_two_text = "42"
+    var forty_two: Integer? = forty_two_text
+    var seven_text = "7"
+    var seven: Long? = seven_text
+    var two_and_a_half_text = "2.5"
+    var two_and_a_half: Float? = two_and_a_half_text
+    var one_and_a_quarter_text = "1.25"
+    var one_and_a_quarter: Double? = one_and_a_quarter_text
     crash forty_two and seven and two_and_a_half and one_and_a_quarter
     console.print(forty_two + 1, seven, two_and_a_half, one_and_a_quarter)
-    var oops_number: Integer? = "oops"
+    var oops_number_text = "oops"
+    var oops_number: Integer? = oops_number_text
     if oops_number {
         console.print("oops is", oops_number)
     } else {
         console.print("oops is not a number")
     }
-    var number: Integer? = "12"
+    var number_text = "12"
+    var number: Integer? = number_text
     crash number
     console.print(number * 2)
     var joined_length = "x{1}".length()

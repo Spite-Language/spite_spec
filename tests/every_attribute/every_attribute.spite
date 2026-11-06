@@ -15,9 +15,11 @@ func EveryAttribute() {
     var defaults = Recipe()
     describer.reset_attributes(recipe, defaults)
     console.print(recipe.title, recipe.servings, recipe.course)
-    var named: Recipe.Course? = "dessert"
+    var named_text = "dessert"
+    var named: Recipe.Course? = named_text
     crash named
-    var unknown: Recipe.Course? = "brunch"
+    var unknown_text = "brunch"
+    var unknown: Recipe.Course? = unknown_text
     if not unknown {
         console.print(named, "and no course named brunch")
     }

@@ -8,10 +8,12 @@ func Presets() {
     again.amount = 1
     var fresh = Meters.Marathon()
     console.print("each call is fresh", fresh.amount)
-    var walked: Meters? = "1200"
+    var walked_text = "1200"
+    var walked: Meters? = walked_text
     crash walked
     console.print("walked", walked.amount)
-    var nowhere: Meters? = "far"
+    var nowhere_text = "far"
+    var nowhere: Meters? = nowhere_text
     var is_missing = not nowhere
     console.print("not a number", is_missing)
     var largest = Integer.Largest()

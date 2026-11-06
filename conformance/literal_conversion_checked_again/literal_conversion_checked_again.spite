@@ -1,0 +1,8 @@
+var console = Console()
+
+func LiteralConversionCheckedAgain() {
+    load "../../../spite_standard_library/windows"
+    var held: Color? = "#ffffff"
+    crash held
+    console.print(held)
+}

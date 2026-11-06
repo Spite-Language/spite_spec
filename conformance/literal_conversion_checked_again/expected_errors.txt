@@ -1,0 +1,1 @@
+conformance/literal_conversion_checked_again/literal_conversion_checked_again.spite:6: fixed: 'held' was already narrowed by the proof that every value it can hold is present; removed this check (in LiteralConversionCheckedAgain.LiteralConversionCheckedAgain)

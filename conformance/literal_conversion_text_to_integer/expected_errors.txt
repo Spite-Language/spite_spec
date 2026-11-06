@@ -1,0 +1,1 @@
+conformance/literal_conversion_text_to_integer/literal_conversion_text_to_integer.spite:5: error: the literal "twelve" does not convert: 'Integer(from: String)' answers null for it (in LiteralConversionTextToInteger.LiteralConversionTextToInteger)

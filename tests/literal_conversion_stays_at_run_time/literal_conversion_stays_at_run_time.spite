@@ -1,0 +1,37 @@
+enum Mode {
+    'on'
+    'off'
+}
+
+var console = Console()
+var allowed = "on"
+
+func LiteralConversionStaysAtRunTime() {
+    load "../../../spite_standard_library/windows"
+    var loud: Loud? = "hello"
+    crash loud
+    console.print(loud.word)
+    var counted: Counted? = "one"
+    crash counted
+    var again: Counted? = "two"
+    crash again
+    console.print(counted.number, again.number)
+    var host: IpAddress? = "localhost"
+    if host {
+        console.print("resolved")
+    } else {
+        console.print("not resolved")
+    }
+    var endless: Endless? = "loop"
+    crash endless
+    console.print(endless.turns)
+    allowed = "off"
+    var mode: Mode? = "on"
+    var refused = not mode
+    console.print(refused)
+}
+
+func Mode(from: String): Mode? {
+    fallback from == allowed
+    return 'on'
+}

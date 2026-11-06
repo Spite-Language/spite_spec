@@ -1,0 +1,20 @@
+union Job {
+    Miner
+    Smith
+}
+
+var console = Console()
+
+func LiteralConversionUnion() {
+    load "../../../spite_standard_library/windows"
+    var job: Job = "nobody"
+    var found = job.title()
+    console.print(found)
+}
+
+func Job(from: String): Job? {
+    if from == "miner" {
+        return Miner()
+    }
+    return null
+}

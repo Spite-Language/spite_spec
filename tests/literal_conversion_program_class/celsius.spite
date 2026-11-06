@@ -1,0 +1,8 @@
+var degrees = 0.0
+
+func Celsius(from: Float): Celsius? {
+    fallback from >= -273.15
+    var made = Celsius()
+    made.degrees = from
+    return made
+}

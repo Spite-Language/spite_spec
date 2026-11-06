@@ -14,9 +14,12 @@ func TextToNumber() {
     decimal("-1.5e2")
     decimal("1e")
     decimal("nan")
-    var wide: Long? = "9000000000"
-    var small: Byte? = "300"
-    var unsigned: UnsignedInteger? = "-1"
+    var wide_text = "9000000000"
+    var wide: Long? = wide_text
+    var small_text = "300"
+    var small: Byte? = small_text
+    var unsigned_text = "-1"
+    var unsigned: UnsignedInteger? = unsigned_text
     crash wide
     console.print("long", wide)
     if small {
@@ -29,8 +32,10 @@ func TextToNumber() {
     } else {
         console.print("-1 is not an UnsignedInteger")
     }
-    var typed: Integer? = "12"
-    var mistyped: Integer? = "twelve"
+    var typed_text = "12"
+    var typed: Integer? = typed_text
+    var mistyped_text = "twelve"
+    var mistyped: Integer? = mistyped_text
     crash typed
     console.print("typed", typed, not mistyped)
     read_setting("width=640")

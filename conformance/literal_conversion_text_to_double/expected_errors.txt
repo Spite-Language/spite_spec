@@ -1,0 +1,1 @@
+conformance/literal_conversion_text_to_double/literal_conversion_text_to_double.spite:5: error: the literal "1e" does not convert: 'Double(from: String)' answers null for it (in LiteralConversionTextToDouble.LiteralConversionTextToDouble)

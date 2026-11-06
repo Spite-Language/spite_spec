@@ -7,13 +7,16 @@ var console = Console()
 
 func CastThroughConversions() {
     load "../../../spite_standard_library/windows"
-    var paint: Color? = "#ff8000"
+    var paint_text = "#ff8000"
+    var paint: Color? = paint_text
     crash paint
     console.print("assigned", paint)
-    var address: IpAddress? = "10.0.0.1"
+    var address_text = "10.0.0.1"
+    var address: IpAddress? = address_text
     crash address
     console.print("declared", address)
-    var missing: IpAddress? = "not an address"
+    var missing_text = "not an address"
+    var missing: IpAddress? = missing_text
     var is_missing = not missing
     console.print("not an address", is_missing)
     var told = told_address("::1")
@@ -32,7 +35,8 @@ func CastThroughConversions() {
     var read_mood: Mood? = 0
     crash read_mood
     console.print("mood read", read_mood)
-    var counted: Integer? = "42"
+    var counted_text = "42"
+    var counted: Integer? = counted_text
     crash counted
     console.print("counted", counted)
 }

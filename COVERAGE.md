@@ -131,6 +131,9 @@ Rules: 148. Covered before: 90. Covered now: 144.
 | Calling `Float.from_integer()` is an error | conformance/cast_by_name | covered |
 | Calling a conversion by name where the place wants its class is an error (D1730) | conformance/conversion_by_name_argument, conversion_by_name_return, conversion_by_name_typed | added |
 | Calling a conversion by name where nothing wants its class is an error (D1730) | conformance/conversion_by_name_untyped, conversion_by_name_enum | added |
+| A literal that converts goes where a plain `T` is wanted, in every build (D1874, D1888) | tests/literal_conversion_numbers, _classes, _enum, _enum_owner, _union, _program_class, _in_development, _in_hot_reload, _in_repl, _is_proven_present, _parsing_is_gone | added |
+| A literal that does not convert is a compile error naming it and the conversion, in every build and in a branch not taken (D1874, D1889) | conformance/literal_conversion_* | added |
+| A conversion only a run can answer stays a `T?`, and a local or interpolated text is not a literal (D1888, D1890) | tests/literal_conversion_stays_at_run_time, _near_misses; conformance/literal_conversion_side_effect_is_not_folded, _local_is_not_a_literal, _interpolated_is_not_a_literal | added |
 | `type` and `singleton` are reserved and never a name, a parameter, a local or a member (D1782) | conformance/type_as_name, conformance/singleton_as_name, conformance/type_as_member | added |
 | Bitwise functions of the whole numbers, their widths and counts | tests/bitwise_functions | covered |
 | `<<` and `>>` are errors naming the function | conformance/old_shift | covered |

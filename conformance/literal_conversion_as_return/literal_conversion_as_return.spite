@@ -1,0 +1,11 @@
+var console = Console()
+
+func LiteralConversionAsReturn() {
+    load "../../../spite_standard_library/windows"
+    var paint = made()
+    console.print(paint)
+}
+
+func made(): Color {
+    return "no colour"
+}

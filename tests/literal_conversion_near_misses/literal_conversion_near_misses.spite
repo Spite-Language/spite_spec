@@ -1,0 +1,24 @@
+var console = Console()
+
+func LiteralConversionNearMisses() {
+    load "../../../spite_standard_library/windows"
+    var kept = "twelve"
+    var from_local: Integer? = kept
+    var missing = not from_local
+    var count = 3
+    var interpolated: Integer? = "{count}x"
+    var other_missing = not interpolated
+    console.print(missing, other_missing)
+    var good_local = "42"
+    var read: Integer? = good_local
+    crash read
+    console.print(read)
+    var plain: Integer = 7
+    var cast: Long = plain
+    console.print(cast)
+}
+
+func never_reached() {
+    var unused: Integer? = "twelve"
+    console.print(unused)
+}

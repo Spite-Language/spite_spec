@@ -1,0 +1,1 @@
+conformance/literal_conversion_as_attribute/literal_conversion_as_attribute.spite:2: error: the literal "no colour" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionAsAttribute._attribute_defaults)

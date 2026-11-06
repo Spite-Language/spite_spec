@@ -2,22 +2,32 @@ var console = Console()
 
 func TextToEachNumber() {
     load "../../../spite_standard_library/windows"
-    var tiny: Tiny? = "-128"
+    var tiny_text = "-128"
+    var tiny: Tiny? = tiny_text
     crash tiny
-    var short: Short? = "32767"
+    var short_text = "32767"
+    var short: Short? = short_text
     crash short
-    var unsigned_short: UnsignedShort? = "65535"
+    var unsigned_short_text = "65535"
+    var unsigned_short: UnsignedShort? = unsigned_short_text
     crash unsigned_short
-    var unsigned_long: UnsignedLong? = "18446744073709551615"
+    var unsigned_long_text = "18446744073709551615"
+    var unsigned_long: UnsignedLong? = unsigned_long_text
     crash unsigned_long
-    var decimal: Float? = "2.5"
+    var decimal_text = "2.5"
+    var decimal: Float? = decimal_text
     crash decimal
-    var wide: Double? = "0.1"
+    var wide_text = "0.1"
+    var wide: Double? = wide_text
     crash wide
     console.print(tiny, short, unsigned_short, unsigned_long, decimal, wide)
-    var too_small: Tiny? = "128"
-    var too_long: Short? = "40000"
-    var negative: UnsignedShort? = "-1"
-    var too_wide: UnsignedLong? = "18446744073709551616"
+    var too_small_text = "128"
+    var too_small: Tiny? = too_small_text
+    var too_long_text = "40000"
+    var too_long: Short? = too_long_text
+    var negative_text = "-1"
+    var negative: UnsignedShort? = negative_text
+    var too_wide_text = "18446744073709551616"
+    var too_wide: UnsignedLong? = too_wide_text
     console.print(not too_small, not too_long, not negative, not too_wide)
 }

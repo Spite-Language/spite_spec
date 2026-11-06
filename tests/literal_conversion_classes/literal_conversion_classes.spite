@@ -1,0 +1,17 @@
+var console = Console()
+
+func LiteralConversionClasses() {
+    load "../../../spite_standard_library/windows"
+    var paint: Color = "#ff8000"
+    var named: Color = "rgb(0, 0, 255)"
+    var address: IpAddress = "127.0.0.1"
+    var wide_address: IpAddress = "::1"
+    var day: Date = "2026-11-06"
+    var moment: DateTime = "2026-11-06T12:30:00"
+    var hour: Time = "12:30:00"
+    var length: Duration = "PT1H30M"
+    var span: Period = "P1Y2M"
+    var shown = paint.to_rgb_string()
+    console.print(shown, named, address, wide_address)
+    console.print(day, moment, hour, length, span)
+}

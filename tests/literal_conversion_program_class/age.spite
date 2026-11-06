@@ -1,0 +1,17 @@
+var years = 0
+
+func Age(from: Integer): Age? {
+    fallback from >= 0
+    var made = Age()
+    made.years = from
+    return made
+}
+
+func Age(from: String): Age? {
+    fallback from.length() == 2
+    var read: Integer? = from
+    fallback read
+    var made = Age()
+    made.years = read
+    return made
+}

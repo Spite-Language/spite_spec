@@ -1,0 +1,10 @@
+var console = Console()
+
+func LiteralConversionAsArgument() {
+    load "../../../spite_standard_library/windows"
+    show("no colour")
+}
+
+func show(paint: Color) {
+    console.print(paint)
+}

@@ -1,0 +1,1 @@
+conformance/literal_conversion_in_a_branch_not_taken/literal_conversion_in_a_branch_not_taken.spite:7: error: the literal "twelve" does not convert: 'Integer(from: String)' answers null for it (in LiteralConversionInABranchNotTaken.LiteralConversionInABranchNotTaken)

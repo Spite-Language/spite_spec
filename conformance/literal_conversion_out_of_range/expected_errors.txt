@@ -1,0 +1,1 @@
+conformance/literal_conversion_out_of_range/literal_conversion_out_of_range.spite:5: error: the literal "300" does not convert: 'Byte(from: String)' answers null for it (in LiteralConversionOutOfRange.LiteralConversionOutOfRange)

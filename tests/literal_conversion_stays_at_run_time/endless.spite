@@ -1,0 +1,13 @@
+var turns = 0
+var _laps: Long = 3000000
+
+func Endless(from: String): Endless? {
+    fallback not from.is_empty()
+    var made = Endless()
+    var count: Long = 0
+    while count < _laps {
+        count = count + 1
+    }
+    made.turns = from.length()
+    return made
+}

@@ -1,0 +1,1 @@
+conformance/literal_conversion_enum_owner/literal_conversion_enum_owner.spite:10: error: the literal -2.5 does not convert: 'Job(from: Float)' answers null for it (in LiteralConversionEnumOwner.LiteralConversionEnumOwner)

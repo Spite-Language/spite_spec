@@ -1,0 +1,1 @@
+conformance/literal_conversion_duration/literal_conversion_duration.spite:5: error: the literal "soon" does not convert: 'Duration(from: String)' answers null for it (in LiteralConversionDuration.LiteralConversionDuration)

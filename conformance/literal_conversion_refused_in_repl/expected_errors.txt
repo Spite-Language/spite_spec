@@ -1,0 +1,1 @@
+conformance/literal_conversion_refused_in_repl/literal_conversion_refused_in_repl.spite:5: error: the literal "no colour" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionRefusedInRepl.LiteralConversionRefusedInRepl)

@@ -2,21 +2,35 @@ var console = Console()
 
 func StringSmallNumbers() {
     load "../../../spite_standard_library/windows"
-    var tiny_top: Tiny? = "127"
-    var tiny_over: Tiny? = "128"
-    var tiny_bottom: Tiny? = "-128"
-    var short_over: Short? = "32768"
-    var short_top: Short? = " 32767 "
+    var tiny_top_text = "127"
+    var tiny_top: Tiny? = tiny_top_text
+    var tiny_over_text = "128"
+    var tiny_over: Tiny? = tiny_over_text
+    var tiny_bottom_text = "-128"
+    var tiny_bottom: Tiny? = tiny_bottom_text
+    var short_over_text = "32768"
+    var short_over: Short? = short_over_text
+    var short_top_text = " 32767 "
+    var short_top: Short? = short_top_text
     console.print(tiny_top, tiny_over, tiny_bottom, short_over, short_top)
-    var unsigned_short_top: UnsignedShort? = "65535"
-    var unsigned_short_negative: UnsignedShort? = "-1"
-    var byte_top: Byte? = "255"
-    var unsigned_long_top: UnsignedLong? = "18446744073709551615"
-    var unsigned_long_over: UnsignedLong? = "18446744073709551616"
+    var unsigned_short_top_text = "65535"
+    var unsigned_short_top: UnsignedShort? = unsigned_short_top_text
+    var unsigned_short_negative_text = "-1"
+    var unsigned_short_negative: UnsignedShort? = unsigned_short_negative_text
+    var byte_top_text = "255"
+    var byte_top: Byte? = byte_top_text
+    var unsigned_long_top_text = "18446744073709551615"
+    var unsigned_long_top: UnsignedLong? = unsigned_long_top_text
+    var unsigned_long_over_text = "18446744073709551616"
+    var unsigned_long_over: UnsignedLong? = unsigned_long_over_text
     console.print(unsigned_short_top, unsigned_short_negative, byte_top, unsigned_long_top, unsigned_long_over)
-    var half: Float? = ".5"
-    var spaced: Float? = " 2 "
-    var signed: Double? = "+1.5e1"
-    var no_digits: Double? = "."
+    var half_text = ".5"
+    var half: Float? = half_text
+    var spaced_text = " 2 "
+    var spaced: Float? = spaced_text
+    var signed_text = "+1.5e1"
+    var signed: Double? = signed_text
+    var no_digits_text = "."
+    var no_digits: Double? = no_digits_text
     console.print(half, spaced, signed, no_digits)
 }

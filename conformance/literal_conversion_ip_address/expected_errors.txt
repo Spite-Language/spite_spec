@@ -1,0 +1,1 @@
+conformance/literal_conversion_ip_address/literal_conversion_ip_address.spite:5: error: the literal "not a host!" does not convert: 'IpAddress(from: String)' answers null for it (in LiteralConversionIpAddress.LiteralConversionIpAddress)

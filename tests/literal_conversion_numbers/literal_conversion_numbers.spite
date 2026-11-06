@@ -1,0 +1,18 @@
+var console = Console()
+
+func LiteralConversionNumbers() {
+    load "../../../spite_standard_library/windows"
+    var count: Integer = "42"
+    var spaced: Integer = " -12 "
+    var wide: Long = "9000000000"
+    var small: Byte = "200"
+    var below: Tiny = "-100"
+    var middle: Short = "-30000"
+    var above: UnsignedShort = "60000"
+    var unsigned: UnsignedInteger = "4000000000"
+    var top: UnsignedLong = "18446744073709551615"
+    var half: Float = "2.5"
+    var exact: Double = "-1.5e2"
+    console.print(count, spaced, wide, small, below, middle, above)
+    console.print(unsigned, top, half, exact)
+}

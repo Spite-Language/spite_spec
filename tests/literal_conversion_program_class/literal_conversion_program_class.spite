@@ -1,0 +1,14 @@
+var console = Console()
+
+func LiteralConversionProgramClass() {
+    load "../../../spite_standard_library/windows"
+    var age: Age = 30
+    var old: Age = "99"
+    var cold: Celsius = -4.5
+    var shown = show(age)
+    console.print(shown, old.years, cold.degrees)
+}
+
+func show(age: Age): Integer {
+    return age.years
+}

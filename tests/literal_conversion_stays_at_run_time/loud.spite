@@ -1,0 +1,10 @@
+var console = Console()
+var word = ""
+
+func Loud(from: String): Loud? {
+    console.print("read while running")
+    fallback not from.is_empty()
+    var made = Loud()
+    made.word = from
+    return made
+}

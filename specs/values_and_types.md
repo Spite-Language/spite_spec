@@ -122,7 +122,22 @@ of the casts above applies, the compiler calls the wanted class's conversion fro
 `var address: IpAddress? = text`, `var paint: Color? = "#ff8000"` and `var age: Integer? = "42"` each read their text
 through it. The cast answers what the conversion answers: a conversion that answers the wanted class goes straight
 in, and one that answers `T?` goes where a `T?` is wanted and is narrowed like any other `T?` where a plain `T` is (the
-usual `this value may be null` error). An enum value goes where an `Integer` is wanted as its number, text where an
+usual `this value may be null` error). **A literal is the exception, in every build** (D1874, D1888): literal text
+with no hole, or a literal number with its sign, written at the place it meets the class, has its conversion worked
+out while compiling. If the conversion answers a value, the literal goes where a plain `T` is wanted with nothing
+written (`var paint: Color = "#ff8000"`, `tests/literal_conversion_classes`, `_numbers`, `_enum`, `_enum_owner`,
+`_union`, `_program_class`), and a `T?` holding it is proven present, so checking it is the "already narrowed" error
+of [failure.md](failure.md) (`tests/literal_conversion_is_proven_present`, `conformance/literal_conversion_checked_again`).
+If it answers `null`, that is a compile error, wherever the literal stands, a branch no run takes included (D1889):
+`the literal "chartreuse-ish" does not convert: 'Color(from: String)' answers null for it`
+(`conformance/literal_conversion_color` and its like). A conversion the compiler cannot finish while compiling stays
+the run-time `T?` it declares and is narrowed as usual: one that calls the system, reads or writes a singleton or the
+object it is called on, prints, runs past its budget, or would halt on this literal
+(`tests/literal_conversion_stays_at_run_time`, `conformance/literal_conversion_side_effect_is_not_folded`). So
+`var host: IpAddress = "127.0.0.1"` needs no narrowing while `"localhost"`, a name only a run can resolve, does. A
+local holding a literal is not a literal (D1890), and neither is interpolated or joined text
+(`tests/literal_conversion_near_misses`, `conformance/literal_conversion_local_is_not_a_literal`,
+`conformance/literal_conversion_interpolated_is_not_a_literal`). An enum value goes where an `Integer` is wanted as its number, text where an
 enum is wanted by the enum's values, and a whole number where an enum is wanted by its numbers, with nothing
 declared. A conversion is never called by name (D1730): writing the call where the place wants the class is
 "'IpAddress(text)' is what writing 'text' here already does: the compiler casts a value to the class its place
@@ -161,7 +176,10 @@ reads it with nothing declared; a class may declare its own conversion for its e
 (`func Course(from: String): Course?` in `Recipe`, D1776), which is used instead. A conversion is never called by
 name (`text.to_recipe_course()` is "a conversion is never called by name: the compiler applies it where a value meets
 the class it makes, so cast by assignment: 'var converted: Recipe.Course? = value'", `conformance/written_conversion`),
-and `var course: Recipe.Course = name` is an error: `text is not a Course until it is read as one, and text that
+and `var course: Recipe.Course = name` for a `name` that is not a literal is an error (a literal is read where it is
+written, `var course: Recipe.Course = "soup"`, and one that names no value is `the literal "knee" does not convert:
+Part has no value of that name`, `conformance/literal_conversion_enum_name`; a whole number the same way,
+`conformance/literal_conversion_enum_number`): `text is not a Course until it is read as one, and text that
 names none of its values has none to give: declare the value 'Course?', which reads the text and is null when it
 names none of its values, and narrow it` (`diagnostics/enum_from_text`).
 
@@ -190,8 +208,8 @@ with every numeric type; so does `String` conversion both ways: text is read as 
 class's conversion from text, `func Integer(from: String): Integer?` and its like in every number class (D1776),
 each answering a `T?` that is `null` when the text is not a number the type can hold
 ([standard_library.md](https://github.com/Spite-Language/spite_documentation/blob/master/standard_library.md#string)
-has what each accepts). Assigning a `String` to a `T?` of a number calls it; assigning it to a plain number is an
-error, since text that is not a number would have nothing to give: `text is not an Integer until it is read as one,
+has what each accepts). Assigning a `String` to a `T?` of a number calls it; assigning anything but a literal to a
+plain number is an error (a literal is read while compiling, as [casting](#casting) says), since text that is not a number would have nothing to give: `text is not an Integer until it is read as one,
 and text that is not a number has none to give: declare the value 'Integer?', which reads the text through
 'Integer(from: String)' and is null when the text is not a number that fits, and narrow it`. The
 same goes for the compiler's own readings of text: an integer literal too large for a `Long` is a compile error,

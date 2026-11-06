@@ -1,0 +1,1 @@
+conformance/literal_conversion_as_return/literal_conversion_as_return.spite:10: error: the literal "no colour" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionAsReturn.made)

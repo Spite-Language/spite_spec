@@ -1,0 +1,8 @@
+var console = Console()
+
+func LiteralConversionInHotReload() {
+    load "../../../spite_standard_library/windows"
+    var count: Integer = "42"
+    var paint: Color = "#ff8000"
+    console.print(count, paint)
+}

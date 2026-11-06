@@ -263,7 +263,9 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   - an attribute of a program class whose default and every assignment the built program makes cannot be null
     (`tests/proven_present_attribute`);
   - the answer of a program function every `return` of which cannot be null, at every call of it
-    (`tests/proven_present_answer`).
+    (`tests/proven_present_answer`);
+  - a literal whose conversion answers a value while compiling (D1874, D1888,
+    [values_and_types.md](values_and_types.md#casting), `tests/literal_conversion_is_proven_present`).
 
   A value cannot be null when its type is not a `T?` or when it is itself one of these, so a local holding a proven
   answer is proven too. A proven `Boolean?` is a condition, and a proven `Spite.Class` or function value is called,

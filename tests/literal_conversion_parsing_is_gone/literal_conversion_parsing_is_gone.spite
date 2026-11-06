@@ -1,0 +1,23 @@
+enum Part {
+    'head'
+    'tail'
+}
+
+var console = Console()
+
+func LiteralConversionParsingIsGone() {
+    load "../../../spite_standard_library/windows"
+    var count: Integer = "42"
+    var half: Float = "2.5"
+    var exact: Double = "0.125"
+    var part: Part = "tail"
+    console.print(count, half, exact, part)
+    var map = File("tests/literal_conversion_parsing_is_gone/.spite/build/literal_conversion_parsing_is_gone.functions")
+    var listed = map.read_as_string()
+    crash listed
+    var reads_integer = listed.contains("Integer_from_String")
+    var reads_long = listed.contains("Long_from_String")
+    var reads_float = listed.contains("Float_from_String")
+    var reads_double = listed.contains("Double_from_String")
+    console.print(reads_integer, reads_long, reads_float, reads_double)
+}
