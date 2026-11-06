@@ -1,0 +1,20 @@
+var console = Console()
+var name = ""
+var pet: Pet? = null
+
+func Owner(new_name: String) {
+    name = new_name
+}
+
+func pet_name(): String {
+    fallback pet
+    return pet.name
+}
+
+func release() {
+    pet = null
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

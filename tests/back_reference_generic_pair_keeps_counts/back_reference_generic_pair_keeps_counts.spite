@@ -1,0 +1,16 @@
+var console = Console()
+
+func BackReferenceGenericPairKeepsCounts() {
+    load "../../../spite_standard_library/windows"
+    link()
+    console.print("linked pair is out of reach")
+}
+
+func link() {
+    var parent = Parent<Integer>(1)
+    var child = Child<Integer>(2)
+    child.parent = parent
+    parent.children.append(child)
+    crash child.parent
+    console.print(child.value, parent.value, child.parent.value)
+}

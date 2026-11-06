@@ -1,0 +1,13 @@
+generic $item_type
+
+var console = Console()
+var value: $item_type = null
+var children = List<Child<$item_type>>()
+
+func Parent(new_value: $item_type) {
+    value = new_value
+}
+
+func drop() {
+    console.print("parent freed")
+}

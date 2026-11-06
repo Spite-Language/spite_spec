@@ -1,0 +1,1 @@
+conformance/unproven_null_attribute/unproven_null_attribute.spite:10: error: this value may be null (it is an Item?), so 'label' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in UnprovenNullAttribute.show)

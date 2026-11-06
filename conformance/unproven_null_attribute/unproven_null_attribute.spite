@@ -1,0 +1,11 @@
+var console = Console()
+var held: Item? = null
+
+func UnprovenNullAttribute() {
+    load "../../../spite_standard_library/windows"
+    show()
+}
+
+func show() {
+    console.print(held.label)
+}

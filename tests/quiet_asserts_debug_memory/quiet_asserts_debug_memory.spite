@@ -1,0 +1,18 @@
+var console = Console()
+var names = ["ada", "bo"]
+var greeted = 0
+
+func QuietAssertsDebugMemory() {
+    load "../../../spite_standard_library/windows"
+    var index = 0
+    while index < 1000 {
+        greet(index % 4)
+        index = index + 1
+    }
+    console.print("greeted", greeted, "of", index)
+}
+
+func greet(index: Integer) {
+    fallback index < names.count()
+    greeted = greeted + 1
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func UnprovenNullableParameter() {
+    load "../../../spite_standard_library/windows"
+    show(null)
+}
+
+func show(item: Item?) {
+    console.print(item.label)
+}

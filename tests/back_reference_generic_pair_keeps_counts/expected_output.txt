@@ -1,0 +1,8 @@
+2 1 1
+linked pair is out of reach
+spite: --debug-memory: 4 allocation(s) leaked
+  Buffer: 1 leaked object(s)
+  Parent_of_Integer: 1 leaked object(s)
+  Child_of_Integer: 1 leaked object(s)
+  List_of_Child_of_Integer: 1 leaked object(s)
+allocations: 28 frees: 24

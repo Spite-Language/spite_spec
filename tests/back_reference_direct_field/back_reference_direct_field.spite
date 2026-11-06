@@ -1,0 +1,17 @@
+var console = Console()
+
+func BackReferenceDirectField() {
+    load "../../../spite_standard_library/windows"
+    var owner = Owner("rovers")
+    adopt(owner)
+    var adopted = owner.pet_name()
+    console.print("adopted", adopted)
+    owner.release()
+    console.print("released")
+}
+
+func adopt(owner: Owner) {
+    var pet = Pet("rex")
+    owner.pet = pet
+    pet.owner = owner
+}
