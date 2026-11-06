@@ -1,0 +1,41 @@
+a request that asks to upgrade, in any case: true
+the answer has 4 lines
+HTTP/1.1 101 Switching Protocols
+upgrade: websocket
+connection: Upgrade
+sec-websocket-accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+no upgrade header: false another protocol: false
+wrong version: HTTP/1.1 426 Upgrade Required refused true sec-websocket-version: 13
+no key: HTTP/1.1 400 Bad Request refused true 
+key of the wrong length: HTTP/1.1 400 Bad Request refused true 
+key that is not base64: HTTP/1.1 400 Bad Request refused true 
+connection without upgrade: HTTP/1.1 400 Bad Request refused true 
+a POST: HTTP/1.1 400 Bad Request refused true 
+HTTP/1.0: HTTP/1.1 400 Bad Request refused true 
+a masked text frame is the message hello true
+a short message goes out in one frame, unmasked: 129 4 101 99 104 111
+a message of 300 bytes has its length in 16 bits: 130 126 1 44
+a message of 70000 bytes has its length in 64 bits: 130 127 0 0 0 0 0 1 17 112
+pieces are one message: fragmented
+a binary message is not text: false 98 105 110 null
+the message after a ping: after the ping and the pong: 138 13 are you there
+a pong is kept in last_pong: unasked
+a ping goes out as 137 11
+reserved bit set: receive is null true code 1002 closed true the peer is told 136 2 3 234
+unknown opcode: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a client frame without a mask: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a length written in more bytes than it needs: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a 64-bit length that would fit in 16 bits: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a 64-bit length with the top bit set: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a control frame of more than 125 bytes: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a control frame in pieces: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a continuation with no message: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a new message before the last ended: receive is null true code 1002 closed true the peer is told 136 2 3 234
+a message past largest_message: true code 1009 told 136 2 3 241
+text that is not UTF-8: true code 1007 told 136 2 3 239
+a close with a code and a reason: true code 1000 reason bye! answered 136 2 3 232
+a close with no code: true code 1005 answered 136 0
+a close of one byte: true code 1002 answered 136 2 3 234
+a close code that may not be sent (1005): true code 1002 answered 136 2 3 234
+close() sends 1000: 136 2 3 232 the connection is not closed until the peer answers: false
+a connection let go while open sends 1001: 136 2 3 233

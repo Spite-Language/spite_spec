@@ -1,0 +1,6 @@
+never connected: closed true write false
+reads null null null
+bytes that are not UTF-8 read as text: null and the end was seen: true
+after close(): closed true write false reads null null
+the peer sees the end: null closed true
+a write to a peer that closed fails: true and the connection is closed: true

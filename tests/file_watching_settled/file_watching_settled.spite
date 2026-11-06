@@ -1,0 +1,52 @@
+var console = Console()
+var clock = Clock()
+var _ninety_milliseconds = 90
+var _fifty_milliseconds = 50
+
+func FileWatchingSettled() {
+    load "../../../spite_standard_library/windows"
+    var folder = Directory(".spite/file_watching_settled")
+    crash folder.create()
+    var note = File("{folder.path}/note.txt")
+    if note.exists() {
+        crash note.remove()
+    }
+    var watcher = FileSystemWatcher()
+    var watching = watcher.watch_for_changes(folder)
+    console.print("watching the folder", watching)
+    nothing_changed(watcher)
+    settled_after_a_write(watcher, note)
+    waiting_for_a_change(watcher, note)
+}
+
+func nothing_changed(watcher: FileSystemWatcher) {
+    var started = clock.elapsed()
+    var changed = watcher.settled_changes()
+    var took = clock.elapsed() - started
+    var limit = Duration(_fifty_milliseconds, 'milliseconds')
+    var quick = took < limit
+    var count = changed.count()
+    console.print("with nothing changed settled_changes answers at once:", quick, "paths", count)
+}
+
+func settled_after_a_write(watcher: FileSystemWatcher, note: File) {
+    crash note.write_string("first")
+    var written = clock.elapsed()
+    var changed = watcher.settled_changes()
+    var took = clock.elapsed() - written
+    var quiet = Duration(_ninety_milliseconds, 'milliseconds')
+    var waited = took >= quiet
+    var saw_note = changed.contains(note.path)
+    var count = changed.count()
+    console.print("settled_changes waited out the quiet time:", waited, "saw the note", saw_note, "paths", count)
+}
+
+func waiting_for_a_change(watcher: FileSystemWatcher, note: File) {
+    crash note.append_string(", second")
+    watcher.wait_for_changes()
+    var changed = watcher.changes()
+    var saw_note = changed.contains(note.path)
+    var count = changed.count()
+    console.print("after wait_for_changes, changes() has the note:", saw_note, "paths", count)
+    crash note.remove()
+}

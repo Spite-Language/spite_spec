@@ -1,0 +1,21 @@
+var console = Console()
+var http = Http.Server()
+var sockets = WebSocket.Server(http)
+var _port = 47933
+
+func WebSocketAcceptPlainRequest() {
+    load "../../../spite_standard_library/windows"
+    crash http.listen_locally(_port)
+    var client = Tcp.Client()
+    crash client.connect_locally(_port)
+    var text = "GET /plain HTTP/1.1\r\nhost: 127.0.0.1\r\n\r\n"
+    var bytes = text.to_buffer()
+    crash client.write_buffer(bytes)
+    var request = http.next_request()
+    crash request
+    var asks = sockets.asks_to_upgrade(request)
+    console.print("asks to upgrade", asks)
+    var connection = sockets.accept(request)
+    crash connection
+    console.print("never printed")
+}

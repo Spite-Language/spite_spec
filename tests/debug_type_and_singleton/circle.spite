@@ -1,0 +1,9 @@
+var radius = 0
+
+func Circle(starting_radius: Integer) {
+    radius = starting_radius
+}
+
+func area(): Integer {
+    return radius * radius * 3
+}

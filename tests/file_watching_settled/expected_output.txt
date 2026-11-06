@@ -1,0 +1,4 @@
+watching the folder true
+with nothing changed settled_changes answers at once: true paths 0
+settled_changes waited out the quiet time: true saw the note true paths 1
+after wait_for_changes, changes() has the note: true paths 1

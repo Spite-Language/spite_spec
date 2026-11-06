@@ -1,0 +1,2 @@
+server: idle_limit PT5S largest_body 1048576 largest_waiting 64
+client: largest_body 16777216 largest_idle 8

@@ -1,0 +1,6 @@
+var ledger = Ledger()
+var label = "kept"
+
+func speak() {
+    ledger.record()
+}

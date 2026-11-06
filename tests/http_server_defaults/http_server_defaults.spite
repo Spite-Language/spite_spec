@@ -1,0 +1,16 @@
+var console = Console()
+
+func HttpServerDefaults() {
+    load "../../../spite_standard_library/windows"
+    var server = Http.Server()
+    var client = Http.Client()
+    console.print(
+        "server: idle_limit",
+        server.idle_limit,
+        "largest_body",
+        server.largest_body,
+        "largest_waiting",
+        server.largest_waiting,
+    )
+    console.print("client: largest_body", client.largest_body, "largest_idle", client.largest_idle)
+}

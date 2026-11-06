@@ -1,0 +1,16 @@
+var console = Console()
+var random = SecureRandom()
+
+func SecureRandomNegativeCount() {
+    load "../../../spite_standard_library/windows"
+    var eight = random.random_buffer(8)
+    crash eight
+    var size = eight.count()
+    var empty = random.random_buffer(0)
+    crash empty
+    var zero_size = empty.count()
+    console.print("eight bytes", size, "zero bytes", zero_size)
+    var broken = random.random_buffer(-1)
+    crash broken
+    console.print("never printed")
+}

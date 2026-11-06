@@ -1,0 +1,464 @@
+var console = Console()
+var http = Http.Server()
+var sockets = WebSocket.Server(http)
+var _port = 47931
+var _sample_key = "dGhlIHNhbXBsZSBub25jZQ=="
+var _medium_size = 300
+var _large_size = 70000
+var _final_text = 129
+var _final_binary = 130
+var _final_close = 136
+var _final_ping = 137
+var _final_pong = 138
+var _reserved_bit_text = 193
+var _unknown_opcode = 131
+var _continuation = 128
+var clients = List<Tcp.Client>()
+var _unmasked_bytes: List<Integer> = [129, 5, 104, 101, 108, 108, 111]
+var _long_form_bytes: List<Integer> = [129, 254, 0, 5, 0, 0, 0, 0, 104, 101, 108, 108, 111]
+var _longest_bytes: List<Integer> = [129, 255, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0]
+var _top_bytes: List<Integer> = [129, 255, 128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+var _large_ping_bytes: List<Integer> = [137, 254, 0, 200, 0, 0, 0, 0]
+var _open_ping_bytes: List<Integer> = [9, 128, 0, 0, 0, 0]
+var _orphan_bytes: List<Integer> = [128, 128, 0, 0, 0, 0]
+var _sizes_bytes: List<Integer> = [130, 139, 0, 0, 0, 0]
+var _invalid_bytes: List<Integer> = [129, 130, 0, 0, 0, 0, 255, 254]
+var _good_bytes: List<Integer> = [136, 134, 0, 0, 0, 0, 3, 232, 98, 121, 101, 33]
+var _bare_bytes: List<Integer> = [136, 128, 0, 0, 0, 0]
+var _half_bytes: List<Integer> = [136, 129, 0, 0, 0, 0, 3]
+var _reserved_bytes: List<Integer> = [136, 130, 0, 0, 0, 0, 3, 237]
+
+func WebSocketServerSide() {
+    load "../../../spite_standard_library/windows"
+    crash http.listen_locally(_port)
+    handshake()
+    refusals()
+    messages()
+    pings_and_pongs()
+    protocol_errors()
+    limits()
+    closing()
+    http.close()
+}
+
+func upgrade_request(version: String, key: String, extra: String): String {
+    var head = "GET /chat HTTP/1.1\r\nhost: 127.0.0.1\r\nupgrade: WebSocket\r\nconnection: keep-alive, Upgrade\r\n"
+    return "{head}sec-websocket-version: {version}\r\nsec-websocket-key: {key}\r\n{extra}\r\n"
+}
+
+func connect_raw(request: String): Tcp.Client {
+    var client = Tcp.Client()
+    crash client.connect_locally(_port)
+    var bytes = request.to_buffer()
+    crash client.write_buffer(bytes)
+    return client
+}
+
+func open(): WebSocket.Connection {
+    var made_101 = upgrade_request("13", _sample_key, "")
+    var client = connect_raw(made_101)
+    var request = http.next_request()
+    crash request
+    var connection = sockets.accept(request)
+    crash connection
+    var head = read_head(client)
+    var status = head[0]
+    crash status
+    keep_client(client)
+    return connection
+}
+
+func keep_client(client: Tcp.Client) {
+    clients.append(client)
+}
+
+func last_client(): Tcp.Client {
+    var client = clients.last()
+    crash client
+    return client
+}
+
+func read_head(client: Tcp.Client): List<String> {
+    var lines = List<String>()
+    var ended = false
+    while not ended {
+        var line = client.read_line()
+        crash line
+        var trimmed = line.trim()
+        if trimmed.is_empty() {
+            ended = true
+        } else {
+            lines.append(trimmed)
+        }
+    }
+    return lines
+}
+
+func read_bytes(client: Tcp.Client, wanted: Integer): Buffer {
+    var received = Buffer(0)
+    while received.count() < wanted and not client.closed {
+        var more = client.read_as_buffer()
+        if more {
+            var more_count = more.count()
+            received.append_buffer(more, 0, more_count)
+        }
+    }
+    return received
+}
+
+func listing(bytes: Buffer): String {
+    var parts = List<String>()
+    var index = 0
+    while index < bytes.count() {
+        var held = bytes[index]
+        crash held
+        var shown = held.to_string()
+        parts.append(shown)
+        index = index + 1
+    }
+    return parts.join(" ")
+}
+
+func frame(first: Integer, payload: String): Buffer {
+    var bytes = payload.to_buffer()
+    var size = bytes.count()
+    var made = Buffer(0)
+    var opening: Byte = first
+    made.append(opening)
+    var second: Byte = size + 128
+    made.append(second)
+    var zero: Byte = 0
+    made.append(zero)
+    made.append(zero)
+    made.append(zero)
+    made.append(zero)
+    made.append_buffer(bytes, 0, size)
+    return made
+}
+
+func send(client: Tcp.Client, bytes: Buffer) {
+    crash client.write_buffer(bytes)
+}
+
+func handshake() {
+    var offered = "sec-websocket-protocol: chat\r\nsec-websocket-extensions: permessage-deflate\r\n"
+    var made_102 = upgrade_request("13", _sample_key, offered)
+    var client = connect_raw(made_102)
+    var request = http.next_request()
+    crash request
+    var asks = sockets.asks_to_upgrade(request)
+    var connection = sockets.accept(request)
+    crash connection
+    var head = read_head(client)
+    var count = head.count()
+    console.print("a request that asks to upgrade, in any case:", asks)
+    console.print("the answer has", count, "lines")
+    var index = 0
+    while index < head.count() {
+        console.print(head[index])
+        index = index + 1
+    }
+    keep_client(client)
+    var plain = connect_raw("GET /plain HTTP/1.1\r\nhost: 127.0.0.1\r\n\r\n")
+    var plain_request = http.next_request()
+    crash plain_request
+    var plain_asks = sockets.asks_to_upgrade(plain_request)
+    var other = connect_raw("GET /other HTTP/1.1\r\nhost: 127.0.0.1\r\nupgrade: h2c\r\n\r\n")
+    var other_request = http.next_request()
+    crash other_request
+    var other_asks = sockets.asks_to_upgrade(other_request)
+    console.print("no upgrade header:", plain_asks, "another protocol:", other_asks)
+    plain.close()
+    other.close()
+}
+
+func refuse(label: String, request_text: String) {
+    var client = connect_raw(request_text)
+    var request = http.next_request()
+    crash request
+    var connection = sockets.accept(request)
+    var accepted = connection
+    var head = read_head(client)
+    var status = head[0]
+    crash status
+    var versions = List<String>()
+    var index = 0
+    while index < head.count() {
+        if head[index].starts_with("sec-websocket-version") {
+            versions.append(head[index])
+        }
+        index = index + 1
+    }
+    var shown = versions.join(",")
+    var refused = not accepted
+    console.print(label, status, "refused", refused, shown)
+    client.close()
+}
+
+func refusals() {
+    var made_103 = upgrade_request("8", _sample_key, "")
+    refuse("wrong version:", made_103)
+    refuse(
+        "no key:",
+        "GET /chat HTTP/1.1\r\nhost: 127.0.0.1\r\nupgrade: websocket\r\nconnection: Upgrade\r\nsec-websocket-version: 13\r\n\r\n",
+    )
+    var made_104 = upgrade_request("13", "c2hvcnQ=", "")
+    refuse("key of the wrong length:", made_104)
+    var made_105 = upgrade_request("13", "not base64 at all!", "")
+    refuse("key that is not base64:", made_105)
+    refuse(
+        "connection without upgrade:",
+        "GET /chat HTTP/1.1\r\nhost: 127.0.0.1\r\nupgrade: websocket\r\nconnection: keep-alive\r\nsec-websocket-version: 13\r\nsec-websocket-key: dGhlIHNhbXBsZSBub25jZQ==\r\n\r\n",
+    )
+    refuse(
+        "a POST:",
+        "POST /chat HTTP/1.1\r\nhost: 127.0.0.1\r\nupgrade: websocket\r\nconnection: Upgrade\r\nsec-websocket-version: 13\r\nsec-websocket-key: dGhlIHNhbXBsZSBub25jZQ==\r\ncontent-length: 0\r\n\r\n",
+    )
+    refuse(
+        "HTTP/1.0:",
+        "GET /chat HTTP/1.0\r\nhost: 127.0.0.1\r\nupgrade: websocket\r\nconnection: Upgrade\r\nsec-websocket-version: 13\r\nsec-websocket-key: dGhlIHNhbXBsZSBub25jZQ==\r\n\r\n",
+    )
+}
+
+func messages() {
+    var connection = open()
+    var client = last_client()
+    var made_106 = frame(_final_text, "hello")
+    send(client, made_106)
+    var hello = connection.receive()
+    crash hello
+    var text = hello.read_as_string()
+    crash text
+    var shown_301 = hello.is_text()
+    console.print("a masked text frame is the message", text, shown_301)
+    crash connection.send_string("echo")
+    var short = read_bytes(client, 6)
+    var short_text = listing(short)
+    console.print("a short message goes out in one frame, unmasked:", short_text)
+    var medium = filled(_medium_size)
+    crash connection.send_buffer(medium)
+    var medium_head = read_bytes(client, 4 + _medium_size)
+    var medium_four = medium_head.read_buffer_at(0, 4)
+    crash medium_four
+    var medium_head_text = listing(medium_four)
+    console.print("a message of 300 bytes has its length in 16 bits:", medium_head_text)
+    var large = filled(_large_size)
+    crash connection.send_buffer(large)
+    var large_frame = read_bytes(client, 10 + _large_size)
+    var large_head = large_frame.read_buffer_at(0, 10)
+    crash large_head
+    var large_head_text = listing(large_head)
+    console.print("a message of 70000 bytes has its length in 64 bits:", large_head_text)
+    var made_107 = frame(1, "frag")
+    send(client, made_107)
+    var made_108 = frame(_continuation, "mented")
+    send(client, made_108)
+    var whole = connection.receive()
+    crash whole
+    var whole_text = whole.read_as_string()
+    crash whole_text
+    console.print("pieces are one message:", whole_text)
+    var made_109 = frame(_final_binary, "bin")
+    send(client, made_109)
+    var binary = connection.receive()
+    crash binary
+    var binary_bytes = binary.read_as_buffer()
+    var binary_text = listing(binary_bytes)
+    var shown_1 = binary.read_as_string()
+    var shown_302 = binary.is_text()
+    console.print("a binary message is not text:", shown_302, binary_text, shown_1)
+}
+
+func filled(size: Integer): Buffer {
+    var bytes = Buffer(0)
+    var index = 0
+    while index < size {
+        var value: Byte = index % 10
+        bytes.append(value)
+        index = index + 1
+    }
+    return bytes
+}
+
+func pings_and_pongs() {
+    var connection = open()
+    var client = last_client()
+    var made_110 = frame(_final_ping, "are you there")
+    send(client, made_110)
+    var made_111 = frame(_final_text, "after the ping")
+    send(client, made_111)
+    var message = connection.receive()
+    crash message
+    var text = message.read_as_string()
+    crash text
+    var pong_frame = read_bytes(client, 15)
+    var pong_head = pong_frame.read_buffer_at(0, 2)
+    var pong_body = pong_frame.read_buffer_at(2, 13)
+    crash pong_head
+    crash pong_body
+    var pong_head_text = listing(pong_head)
+    var pong_text = pong_body.read_as_string()
+    crash pong_text
+    console.print("the message after a ping:", text, "and the pong:", pong_head_text, pong_text)
+    var made_112 = frame(_final_pong, "unasked")
+    send(client, made_112)
+    var made_113 = frame(_final_text, "next")
+    send(client, made_113)
+    var next = connection.receive()
+    crash next
+    crash connection.last_pong
+    var kept_text = connection.last_pong.read_as_string()
+    console.print("a pong is kept in last_pong:", kept_text)
+    var question = "still there".to_buffer()
+    crash connection.send_ping(question)
+    var ping_frame = read_bytes(client, 13)
+    var ping_head = ping_frame.read_buffer_at(0, 2)
+    crash ping_head
+    var ping_head_text = listing(ping_head)
+    console.print("a ping goes out as", ping_head_text)
+}
+
+func violate(label: String, bytes: Buffer) {
+    var connection = open()
+    var client = last_client()
+    send(client, bytes)
+    var message = connection.receive()
+    var closer = read_bytes(client, 4)
+    var closing_text = listing(closer)
+    var missing = not message
+    console.print(
+        label,
+        "receive is null",
+        missing,
+        "code",
+        connection.close_code,
+        "closed",
+        connection.closed,
+        "the peer is told",
+        closing_text,
+    )
+}
+
+func bytes_of(values: List<Integer>): Buffer {
+    var made = Buffer(0)
+    var index = 0
+    while index < values.count() {
+        var value: Byte = values[index]
+        made.append(value)
+        index = index + 1
+    }
+    return made
+}
+
+func protocol_errors() {
+    var made_114 = frame(_reserved_bit_text, "x")
+    violate("reserved bit set:", made_114)
+    var made_115 = frame(_unknown_opcode, "x")
+    violate("unknown opcode:", made_115)
+    var unmasked = bytes_of(_unmasked_bytes)
+    violate("a client frame without a mask:", unmasked)
+    var long_form = bytes_of(_long_form_bytes)
+    violate("a length written in more bytes than it needs:", long_form)
+    var longest = bytes_of(_longest_bytes)
+    violate("a 64-bit length that would fit in 16 bits:", longest)
+    var top = bytes_of(_top_bytes)
+    violate("a 64-bit length with the top bit set:", top)
+    var large_ping = bytes_of(_large_ping_bytes)
+    violate("a control frame of more than 125 bytes:", large_ping)
+    var open_ping = bytes_of(_open_ping_bytes)
+    violate("a control frame in pieces:", open_ping)
+    var orphan = bytes_of(_orphan_bytes)
+    violate("a continuation with no message:", orphan)
+    var started = frame(1, "start")
+    var again = frame(_final_text, "again")
+    var again_size = again.count()
+    started.append_buffer(again, 0, again_size)
+    violate("a new message before the last ended:", started)
+}
+
+func limits() {
+    var connection = open()
+    var client = last_client()
+    connection.largest_message = 10
+    var sizes = bytes_of(_sizes_bytes)
+    send(client, sizes)
+    var message = connection.receive()
+    var closer = read_bytes(client, 4)
+    var closing_text = listing(closer)
+    var missing = not message
+    console.print("a message past largest_message:", missing, "code", connection.close_code, "told", closing_text)
+    var utf = open()
+    var utf_client = last_client()
+    var invalid = bytes_of(_invalid_bytes)
+    send(utf_client, invalid)
+    var utf_message = utf.receive()
+    var utf_closing = read_bytes(utf_client, 4)
+    var utf_none = not utf_message
+    var utf_text = listing(utf_closing)
+    console.print("text that is not UTF-8:", utf_none, "code", utf.close_code, "told", utf_text)
+}
+
+func closing() {
+    var connection = open()
+    var client = last_client()
+    var good = bytes_of(_good_bytes)
+    send(client, good)
+    var message = connection.receive()
+    var reply = read_bytes(client, 4)
+    var reply_text = listing(reply)
+    var missing = not message
+    console.print(
+        "a close with a code and a reason:",
+        missing,
+        "code",
+        connection.close_code,
+        "reason",
+        connection.close_reason,
+        "answered",
+        reply_text,
+    )
+    var empty = open()
+    var empty_client = last_client()
+    var bare = bytes_of(_bare_bytes)
+    send(empty_client, bare)
+    var empty_message = empty.receive()
+    var empty_reply = read_bytes(empty_client, 2)
+    var empty_text = listing(empty_reply)
+    var empty_none = not empty_message
+    console.print("a close with no code:", empty_none, "code", empty.close_code, "answered", empty_text)
+    var one = open()
+    var one_client = last_client()
+    var half = bytes_of(_half_bytes)
+    send(one_client, half)
+    var one_message = one.receive()
+    var one_reply = read_bytes(one_client, 4)
+    var one_text = listing(one_reply)
+    var one_none = not one_message
+    console.print("a close of one byte:", one_none, "code", one.close_code, "answered", one_text)
+    var bad = open()
+    var bad_client = last_client()
+    var reserved = bytes_of(_reserved_bytes)
+    send(bad_client, reserved)
+    var bad_message = bad.receive()
+    var bad_reply = read_bytes(bad_client, 4)
+    var bad_text = listing(bad_reply)
+    var bad_none = not bad_message
+    console.print("a close code that may not be sent (1005):", bad_none, "code", bad.close_code, "answered", bad_text)
+    var ours = open()
+    var our_client = last_client()
+    ours.close()
+    var our_close = read_bytes(our_client, 4)
+    var our_text = listing(our_close)
+    console.print("close() sends 1000:", our_text, "the connection is not closed until the peer answers:", ours.closed)
+    var dropped_client = leave_open()
+    var dropped_close = read_bytes(dropped_client, 4)
+    var dropped_text = listing(dropped_close)
+    console.print("a connection let go while open sends 1001:", dropped_text)
+}
+
+func leave_open(): Tcp.Client {
+    var connection = open()
+    var is_open = not connection.closed
+    crash is_open
+    return last_client()
+}

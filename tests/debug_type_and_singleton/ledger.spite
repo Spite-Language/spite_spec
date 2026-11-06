@@ -1,0 +1,7 @@
+singleton
+
+var entries = 3
+
+func record() {
+    entries = entries + 1
+}

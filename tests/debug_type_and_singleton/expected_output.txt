@@ -1,0 +1,3 @@
+Circle { radius: 2 }
+shown above
+Holder { ledger: Ledger { entries: 4 }, label: "kept" }

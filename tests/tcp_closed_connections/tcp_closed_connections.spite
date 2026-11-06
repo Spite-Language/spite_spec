@@ -1,0 +1,104 @@
+var console = Console()
+var program = Program()
+var server = Tcp.Server()
+var _port = 47331
+var _most_writes = 100
+
+func TcpClosedConnections() {
+    load "../../../spite_standard_library/windows"
+    never_connected()
+    not_text()
+    after_close()
+    failed_write()
+}
+
+func never_connected() {
+    var client = Tcp.Client()
+    var closed = client.closed
+    var sent = client.write_string("hello")
+    var line = client.read_line()
+    var text = client.read_as_string()
+    var bytes = client.read_as_buffer()
+    console.print("never connected: closed", closed, "write", sent)
+    var shown_1 = answer(line)
+    var shown_2 = answer(text)
+    var shown_3 = buffer_answer(bytes)
+    console.print("reads", shown_1, shown_2, shown_3)
+}
+
+func answer(text: String?): String {
+    if text {
+        return "text"
+    }
+    return "null"
+}
+
+func buffer_answer(held: Buffer?): String {
+    if held {
+        return "bytes"
+    }
+    return "null"
+}
+
+func connect(): Tcp.Client {
+    var address: IpAddress? = "127.0.0.1"
+    crash address
+    crash server.listen_at(address, _port)
+    var client = Tcp.Client()
+    crash client.connect(address, _port)
+    return client
+}
+
+func not_text() {
+    var client = connect()
+    var peer = server.accept()
+    crash peer
+    var broken = Buffer(0)
+    var invalid = Byte.Largest()
+    broken.append(invalid)
+    crash peer.write_buffer(broken)
+    peer.close()
+    var refused = client.read_as_string()
+    var refused_text = answer(refused)
+    var ended = client.closed
+    console.print("bytes that are not UTF-8 read as text:", refused_text, "and the end was seen:", ended)
+    client.close()
+    server.close()
+}
+
+func after_close() {
+    var client = connect()
+    var peer = server.accept()
+    crash peer
+    client.close()
+    var closed = client.closed
+    var sent = client.write_string("too late")
+    var line = client.read_line()
+    var text = client.read_as_string()
+    var shown_5 = answer(line)
+    var shown_6 = answer(text)
+    console.print("after close(): closed", closed, "write", sent, "reads", shown_5, shown_6)
+    var seen = peer.read_as_string()
+    var shown_7 = answer(seen)
+    console.print("the peer sees the end:", shown_7, "closed", peer.closed)
+    peer.close()
+    server.close()
+}
+
+func failed_write() {
+    var client = connect()
+    var peer = server.accept()
+    crash peer
+    peer.close()
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    var writes = 0
+    var failed = false
+    while writes < _most_writes and not failed {
+        program.sleep(twenty_milliseconds)
+        var sent = client.write_string("anyone there")
+        failed = not sent
+        writes = writes + 1
+    }
+    console.print("a write to a peer that closed fails:", failed, "and the connection is closed:", client.closed)
+    server.close()
+}

@@ -1,0 +1,21 @@
+type Shape {
+    area(): Integer
+}
+
+var console = Console()
+
+func DebugTypeAndSingleton() {
+    load "../../../spite_standard_library/windows"
+    var circle = Circle(2)
+    var shown = describe(circle)
+    console.print(shown)
+    var holder = Holder()
+    holder.speak()
+    var holder_text = holder.to_debug()
+    console.print(holder_text)
+}
+
+func describe(shape: Shape): String {
+    console.debug(shape)
+    return "shown above"
+}

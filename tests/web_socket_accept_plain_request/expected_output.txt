@@ -1,0 +1,3 @@
+asks to upgrade false
+spite: the program stopped at tests/web_socket_accept_plain_request/../../../spite_standard_library/common/web_socket/server.spite:17 in WebSocket.Server.accept, site a1fa4134
+spite.frame	tests/web_socket_accept_plain_request/web_socket_accept_plain_request.spite:18	WebSocketAcceptPlainRequest	WebSocketAcceptPlainRequest

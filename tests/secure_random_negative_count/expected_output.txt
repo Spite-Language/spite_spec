@@ -1,0 +1,3 @@
+eight bytes 8 zero bytes 0
+spite: the program stopped at tests/secure_random_negative_count/../../../spite_standard_library/common/secure_random.spite:4 in SecureRandom.random_buffer, site ddc4345d (count=-1)
+spite.frame	tests/secure_random_negative_count/secure_random_negative_count.spite:13	SecureRandomNegativeCount	SecureRandomNegativeCount
