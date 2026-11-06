@@ -1,0 +1,18 @@
+var kept: Shelf? = null
+var console = Console()
+
+func NarrowedPastAWriteToAnObjectHandedOn() {
+    load "../../../spite_standard_library/windows"
+    var first = Item()
+    run(first)
+}
+
+func run(first: Item) {
+    var fresh = Shelf()
+    fresh.item = first
+    kept = fresh
+    crash kept
+    fallback kept.item
+    fresh.item = null
+    console.print(kept.item.number)
+}

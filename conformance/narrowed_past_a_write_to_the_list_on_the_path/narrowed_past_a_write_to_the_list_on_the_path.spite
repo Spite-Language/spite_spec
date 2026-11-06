@@ -1,0 +1,19 @@
+var console = Console()
+
+func NarrowedPastAWriteToTheListOnThePath() {
+    load "../../../spite_standard_library/windows"
+    var rack = Stack()
+    var filled = Shelf()
+    var first = Item()
+    filled.item = first
+    rack.shelves.append(filled)
+    show(rack, rack)
+}
+
+func show(rack: Stack, alias: Stack) {
+    fallback rack.shelves[0]
+    fallback rack.shelves[0].item
+    var other = List<Shelf>()
+    alias.shelves = other
+    console.print(rack.shelves[0].item.number)
+}

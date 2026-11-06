@@ -1,0 +1,25 @@
+var shelves = List<Shelf>()
+var console = Console()
+
+func NarrowedPastACallWritingAnObjectHandedOn() {
+    load "../../../spite_standard_library/windows"
+    var first = Item()
+    var other = Shelf()
+    other.item = first
+    var box = Box()
+    box.held = other
+    show(box)
+}
+
+func show(box: Box) {
+    fallback box.held
+    fallback box.held.item
+    place()
+    console.print(box.held.item.number)
+}
+
+func place() {
+    var fresh = Shelf()
+    shelves.append(fresh)
+    fresh.item = null
+}

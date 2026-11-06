@@ -1,0 +1,152 @@
+var kept: Shelf? = null
+var console = Console()
+
+func NarrowedPastFillingANewObject() {
+    load "../../../spite_standard_library/windows"
+    var first = Item()
+    first.number = 7
+    no_handing_on(first)
+    filled_before_it_is_handed_on(first)
+    filled_while_another_is_proven(first)
+    a_call_makes_and_fills_one(first)
+    made_in_each_pass(first)
+    a_new_object_on_the_way(first)
+    a_present_value_at_the_end_of_the_way(first)
+    another_class_on_the_way(first)
+}
+
+func no_handing_on(first: Item) {
+    var fresh = Shelf()
+    fresh.item = first
+    fallback fresh.item
+    console.print(fresh.item.number)
+}
+
+func filled_before_it_is_handed_on(first: Item) {
+    var fresh = Shelf()
+    fresh.item = null
+    fresh.item = first
+    kept = fresh
+    crash kept
+    fallback kept.item
+    console.print(kept.item.number)
+}
+
+func filled_while_another_is_proven(first: Item) {
+    var other = Shelf()
+    other.item = first
+    kept = other
+    crash kept
+    fallback kept.item
+    var fresh = Shelf()
+    fresh.item = null
+    var box = Box()
+    box.held = fresh
+    console.print(kept.item.number)
+    if box.held {
+        console.print("held")
+    }
+}
+
+func a_call_makes_and_fills_one(first: Item) {
+    var other = Shelf()
+    other.item = first
+    kept = other
+    crash kept
+    fallback kept.item
+    var made = make()
+    console.print(kept.item.number)
+    if made.item {
+        console.print("never")
+    } else {
+        console.print("empty")
+    }
+}
+
+func make(): Shelf {
+    var fresh = Shelf()
+    fresh.item = null
+    return fresh
+}
+
+func made_in_each_pass(first: Item) {
+    var other = Shelf()
+    other.item = first
+    kept = other
+    crash kept
+    fallback kept.item
+    var shelves = List<Shelf>()
+    var passes = 0
+    while passes < 2 {
+        var fresh = Shelf()
+        fresh.item = null
+        shelves.append(fresh)
+        passes = passes + 1
+    }
+    var counted = shelves.count()
+    console.print(kept.item.number, counted)
+}
+
+func a_new_object_on_the_way(first: Item) {
+    var filled = Shelf()
+    filled.item = first
+    var rack = Rack()
+    rack.shelf = filled
+    fallback rack.shelf.item
+    var empty = Shelf()
+    var other = Rack()
+    other.shelf = empty
+    console.print(rack.shelf.item.number)
+    if other.shelf.item {
+        console.print("never")
+    } else {
+        console.print("empty")
+    }
+}
+
+func a_present_value_at_the_end_of_the_way(first: Item) {
+    var filled = Shelf()
+    filled.item = first
+    var rack = Rack()
+    rack.shelf = filled
+    show_the_present(rack, rack)
+}
+
+func show_the_present(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var other = Item()
+    other.number = 2
+    alias.shelf.item = other
+    console.print(rack.shelf.item.number)
+}
+
+func another_class_on_the_way(first: Item) {
+    var filled = Shelf()
+    filled.item = first
+    var rack = Rack()
+    rack.shelf = filled
+    show_another(rack)
+}
+
+func show_another(rack: Rack) {
+    fallback rack.shelf.item
+    var cupboard = fill_a_cupboard()
+    console.print(rack.shelf.item.number, cupboard.note)
+}
+
+func fill_a_cupboard(): Cupboard {
+    var cupboard = Cupboard()
+    var empty = Shelf()
+    cupboard.shelf = empty
+    cupboard.note = 3
+    keep_shelf(cupboard)
+    return cupboard
+}
+
+func keep_shelf(cupboard: Cupboard) {
+    var empty = Shelf()
+    cupboard.shelf = empty
+    if cupboard.shelf.item {
+        console.print("never")
+    }
+}

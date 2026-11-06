@@ -1,0 +1,20 @@
+var console = Console()
+
+func NarrowedPastABranchWriteToAnEarlierAttribute() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    var first = Item()
+    var filled = Shelf()
+    filled.item = first
+    rack.shelf = filled
+    show(rack, rack)
+}
+
+func show(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var empty = Shelf()
+    if alias.shelf.item {
+        alias.shelf = empty
+    }
+    console.print(rack.shelf.item.number)
+}

@@ -1,0 +1,25 @@
+var kept: Shelf? = null
+var console = Console()
+
+func NarrowedPastALoopWriteToAnObjectHandedOnLater() {
+    load "../../../spite_standard_library/windows"
+    var first = Item()
+    run(first)
+}
+
+func run(first: Item) {
+    var fresh = Shelf()
+    fresh.item = first
+    var other = Shelf()
+    other.item = first
+    kept = other
+    crash kept
+    fallback kept.item
+    var passes = 0
+    while passes < 2 {
+        fresh.item = null
+        console.print(kept.item.number)
+        kept = fresh
+        passes = passes + 1
+    }
+}

@@ -1,0 +1,2 @@
+var shelf = Shelf()
+var note = 0
