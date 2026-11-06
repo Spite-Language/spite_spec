@@ -1,0 +1,8 @@
+var console = Console()
+
+func TcpConnectionPrivateLine() {
+    load "../../../spite_standard_library/windows"
+    var client = Tcp.Client()
+    var line = client._read_line_now()
+    console.print(line)
+}
