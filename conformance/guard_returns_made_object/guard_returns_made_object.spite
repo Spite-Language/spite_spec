@@ -7,7 +7,9 @@ func GuardReturnsMadeObject() {
 }
 
 func check(wanted: Boolean): Mark {
-    fallback not wanted
+    if wanted {
+        return Mark()
+    }
     var other = Mark()
     other.sides = 2
     return other

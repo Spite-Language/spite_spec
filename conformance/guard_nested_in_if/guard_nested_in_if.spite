@@ -8,7 +8,9 @@ func GuardNestedInIf() {
 
 func check(first: Boolean, second: Boolean): String {
     if first {
-        fallback not second
+        if second {
+            return ""
+        }
     }
     return "other"
 }
