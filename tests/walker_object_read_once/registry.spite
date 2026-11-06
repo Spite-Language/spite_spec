@@ -1,0 +1,7 @@
+var found = 0
+var names = List<String>()
+
+func add(part: Spite.Class) {
+    found = found + 1
+    names.append(part.name)
+}

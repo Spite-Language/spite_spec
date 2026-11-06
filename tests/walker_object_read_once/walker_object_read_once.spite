@@ -1,0 +1,10 @@
+var console = Console()
+var holder = Holder()
+
+func WalkerObjectReadOnce() {
+    load "../../../spite_standard_library/windows"
+    Part.classes.each(holder.registry.add)
+    var found = holder.registry_found()
+    var reads = holder.reads
+    console.print("registry read", reads, "times, found", found)
+}

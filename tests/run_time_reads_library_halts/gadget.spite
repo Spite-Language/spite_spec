@@ -1,0 +1,5 @@
+var power = 1
+
+func boost() {
+    power = power + 1
+}

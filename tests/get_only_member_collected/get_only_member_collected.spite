@@ -1,0 +1,10 @@
+var console = Console()
+
+func GetOnlyMemberCollected() {
+    load "../../../spite_standard_library/windows"
+    var monsters = [Monster(3), Monster(5)]
+    var doubled = monsters.map_doubled_counts()
+    var joined = doubled.join(", ")
+    var total = monsters.sum_doubled_count()
+    console.print(joined, total)
+}

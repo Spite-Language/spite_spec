@@ -1,0 +1,5 @@
+var size = 1
+
+func grow() {
+    size = size + 1
+}

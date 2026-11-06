@@ -1,0 +1,1 @@
+conformance/get_only_member_collected_singular/get_only_member_collected_singular.spite:6: error: 'map_doubled_count' answers every 'doubled_count', so it is written in the plural: 'map_doubled_counts' (in GetOnlyMemberCollectedSingular.GetOnlyMemberCollectedSingular)

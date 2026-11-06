@@ -1,0 +1,9 @@
+var console = Console()
+
+func MemberTemplateOverNumbers() {
+    load "../../../spite_standard_library/windows"
+    var items = [1, 2]
+    var names = items.map_names()
+    var count = names.count()
+    console.print(count)
+}

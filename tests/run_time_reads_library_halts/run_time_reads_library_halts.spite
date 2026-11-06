@@ -1,0 +1,20 @@
+var console = Console()
+var kept = List<Spite.Class>()
+
+func RunTimeReadsLibraryHalts() {
+    load "../../../spite_standard_library/windows"
+    kept.append(Gadget)
+    kept.append(Http.Response)
+    kept.each(describe)
+}
+
+func describe(kind: Spite.Class) {
+    console.print("class", kind.name)
+    kind.functions.each(show)
+}
+
+func show(function: Spite.FunctionDeclaration) {
+    var reads = function.reads
+    var count = reads.count()
+    console.print(function.name, count)
+}

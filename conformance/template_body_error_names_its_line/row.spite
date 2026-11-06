@@ -1,0 +1,12 @@
+generic $row_type
+
+var doubled = List<Integer>()
+
+func double_attribute(attribute: Spite.AttributeDeclaration, value: $row_type) {
+    var twice = value.attributes[attribute] * 2
+    doubled.append(twice)
+}
+
+func double(value: $row_type) {
+    double_attributes(value)
+}

@@ -1,0 +1,21 @@
+var steps = 0
+
+func update_each() {
+    steps = steps + 1
+}
+
+func render_each() {
+    steps = steps + 10
+}
+
+func sum_each() {
+    steps = steps + 100
+}
+
+func sum_all() {
+    steps = steps + 1000
+}
+
+func phase_each() {
+    steps = steps + 10000
+}

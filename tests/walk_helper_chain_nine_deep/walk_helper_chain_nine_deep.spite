@@ -1,0 +1,48 @@
+var console = Console()
+
+func WalkHelperChainNineDeep() {
+    load "../../../spite_standard_library/windows"
+    Part.classes.each(walk)
+    console.print("end")
+}
+
+func walk(part: Spite.Class) {
+    helper_1(part)
+}
+
+func helper_1(part: Spite.Class) {
+    helper_2(part)
+}
+
+func helper_2(part: Spite.Class) {
+    helper_3(part)
+}
+
+func helper_3(part: Spite.Class) {
+    helper_4(part)
+}
+
+func helper_4(part: Spite.Class) {
+    helper_5(part)
+}
+
+func helper_5(part: Spite.Class) {
+    helper_6(part)
+}
+
+func helper_6(part: Spite.Class) {
+    helper_7(part)
+}
+
+func helper_7(part: Spite.Class) {
+    helper_8(part)
+}
+
+func helper_8(part: Spite.Class) {
+    helper_9(part)
+}
+
+func helper_9(part: Spite.Class) {
+    var named = part.name == "Axle"
+    crash named
+}

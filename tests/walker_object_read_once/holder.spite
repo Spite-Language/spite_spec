@@ -1,0 +1,11 @@
+var reads = 0
+var _registry = Registry()
+
+func get_registry(): Registry {
+    reads = reads + 1
+    return _registry
+}
+
+func registry_found(): Integer {
+    return _registry.names.count()
+}

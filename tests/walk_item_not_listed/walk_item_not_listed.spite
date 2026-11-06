@@ -1,0 +1,33 @@
+var console = Console()
+var wanted = "second"
+
+func WalkItemNotListed() {
+    load "../../../spite_standard_library/windows"
+    wanted = "first"
+    var walked = Worker.functions.filter(is_wanted)
+    var other = Gear.functions["bite"]
+    crash other
+    walked.append(other)
+    console.print("walking")
+    walked.each(run)
+    console.print("never printed")
+}
+
+func is_wanted(function: Spite.FunctionDeclaration): Boolean {
+    return function.name == wanted
+}
+
+func run(function: Spite.FunctionDeclaration) {
+    console.print("running", function.name)
+    function.arguments.each(fill)
+}
+
+func fill(argument: Spite.Argument) {
+    var made = fresh(argument)
+    var shown = made.to_debug()
+    console.print(argument.name, shown)
+}
+
+func fresh(argument: Spite.Argument): argument.class {
+    return argument.class()
+}

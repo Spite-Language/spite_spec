@@ -1,0 +1,10 @@
+var console = Console()
+
+func TemplateBodyErrorNamesItsLine() {
+    load "../../../spite_standard_library/windows"
+    var rows = Row<RowView>()
+    var view = RowView()
+    rows.double(view)
+    var count = rows.doubled.count()
+    console.print(count)
+}

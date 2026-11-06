@@ -1,0 +1,9 @@
+var done = 0
+
+func first(item: Gear) {
+    done = done + item.teeth
+}
+
+func second(item: Gear) {
+    done = done + item.teeth + 1
+}

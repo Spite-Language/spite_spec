@@ -1,0 +1,9 @@
+var count = 0
+
+func Monster(starting_count: Integer) {
+    count = starting_count
+}
+
+func get_doubled_count(): Integer {
+    return count * 2
+}

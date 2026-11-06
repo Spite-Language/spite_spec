@@ -1,0 +1,1 @@
+conformance/member_template_over_numbers/member_template_over_numbers.spite:6: error: a List<Integer> has no attribute or function 'map_names' (in MemberTemplateOverNumbers.MemberTemplateOverNumbers)

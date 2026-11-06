@@ -1,0 +1,1 @@
+conformance/walk_helper_chain_eight_deep/walk_helper_chain_eight_deep.spite:43: error: 'crash named' always halts over Part.Wheel: its condition is decided while compiling and is false, so the program would stop here every time this function runs: call it only where the condition holds, or change what the condition asks (in WalkHelperChainEightDeep.helper_8)

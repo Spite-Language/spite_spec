@@ -1,0 +1,1 @@
+conformance/template_body_error_names_its_line/row.spite:6: error: this operator on a 'String' needs it to define 'multiply(other)' (in Row.double_label)

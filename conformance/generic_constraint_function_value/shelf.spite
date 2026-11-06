@@ -1,0 +1,3 @@
+generic $item_type: GenericConstraintFunctionValue.Labelled
+
+var count = 0

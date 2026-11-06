@@ -1,0 +1,17 @@
+var console = Console()
+var kept = List<Spite.Class>()
+
+func RunTimeReturnedLiteralHalts() {
+    load "../../../spite_standard_library/windows"
+    kept.append(Gadget)
+    kept.each(describe)
+}
+
+func describe(kind: Spite.Class) {
+    kind.functions.each(show)
+}
+
+func show(function: Spite.FunctionDeclaration) {
+    var literal = function.returned_literal
+    console.print(function.name, literal)
+}

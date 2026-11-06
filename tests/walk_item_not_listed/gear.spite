@@ -1,0 +1,5 @@
+var teeth = 3
+
+func bite(item: Gear) {
+    teeth = teeth + item.teeth
+}

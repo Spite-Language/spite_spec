@@ -1,0 +1,21 @@
+generic $system_type
+
+var system = $system_type()
+var console = Console()
+
+func run() {
+    run_phases_each()
+    note_phases_each()
+}
+
+func run_phase_each(phase: Spite.FunctionDeclaration) {
+    system.phase_each()
+    var pattern = $system_type.argument_count("<phase>_all")
+    console.print("call first:", phase.name, phase.index, pattern)
+}
+
+func note_phase_each(phase: Spite.FunctionDeclaration) {
+    var pattern = $system_type.argument_count("<phase>_all")
+    system.phase_each()
+    console.print("pattern first:", phase.name, phase.index, pattern)
+}

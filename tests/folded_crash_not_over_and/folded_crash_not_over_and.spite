@@ -1,0 +1,19 @@
+var console = Console()
+var settings = Settings()
+
+func FoldedCrashNotOverAnd() {
+    load "../../../spite_standard_library/windows"
+    var given = settings.given
+    checked_as_a_whole(given)
+    console.print("the crash under not is left to the run")
+    halting_as_a_whole(given)
+    console.print("not reached")
+}
+
+func checked_as_a_whole(given: Integer) {
+    crash not (given > 1000 and 1 == 2)
+}
+
+func halting_as_a_whole(given: Integer) {
+    crash not (given < 1000 and 1 == 1)
+}

@@ -1,0 +1,9 @@
+var console = Console()
+
+func MemberTemplateOverLists() {
+    load "../../../spite_standard_library/windows"
+    var items = List<List<Monster>>()
+    var names = items.map_names()
+    var count = names.count()
+    console.print(count)
+}

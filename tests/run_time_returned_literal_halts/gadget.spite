@@ -1,0 +1,9 @@
+var power = 1
+
+func greeting(): String {
+    return "grr"
+}
+
+func strength(): Integer {
+    return power
+}

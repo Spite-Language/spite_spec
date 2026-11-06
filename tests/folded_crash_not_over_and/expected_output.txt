@@ -1,0 +1,4 @@
+the crash under not is left to the run
+spite: the program stopped at tests/folded_crash_not_over_and/folded_crash_not_over_and.spite:18 in FoldedCrashNotOverAnd.halting_as_a_whole, site 6189dc2a (given=5)
+spite.frame	tests/folded_crash_not_over_and/folded_crash_not_over_and.spite:18	FoldedCrashNotOverAnd	halting_as_a_whole
+spite.frame	tests/folded_crash_not_over_and/folded_crash_not_over_and.spite:9	FoldedCrashNotOverAnd	FoldedCrashNotOverAnd
