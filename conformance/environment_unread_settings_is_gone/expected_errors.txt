@@ -1,0 +1,1 @@
+conformance/environment_unread_settings_is_gone/environment_unread_settings_is_gone.spite:6: error: an Environment has no attribute or function 'unread_settings' (in EnvironmentUnreadSettingsIsGone.EnvironmentUnreadSettingsIsGone)

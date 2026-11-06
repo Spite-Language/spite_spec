@@ -1,0 +1,25 @@
+var program = Program()
+var done = false
+
+func go() {
+    var thirty_milliseconds = Duration(30, 'milliseconds')
+    program.sleep(thirty_milliseconds)
+    done = true
+}
+
+func go_for(milliseconds: Integer) {
+    var wait = Duration(milliseconds, 'milliseconds')
+    program.sleep(wait)
+    done = true
+}
+
+func read(): Integer {
+    var thirty_milliseconds = Duration(30, 'milliseconds')
+    program.sleep(thirty_milliseconds)
+    done = true
+    return 1
+}
+
+func reset() {
+    done = false
+}

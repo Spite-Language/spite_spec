@@ -1,0 +1,6 @@
+flag over variable: exit 0: region flag workers 1
+variable over file: exit 0: region variable workers 1
+flag over file: exit 0: region flag workers 3
+file over default, spaces trimmed: exit 0: region from the file workers 2
+a variable naming no setting: exit 0: region default workers 1
+a malformed variable: exit 1: error: the setting Environment.workers was given 'many', which is not an Integer, a whole number: write --workers=4 on the command line, or WORKERS=4 in the environment or a .env file

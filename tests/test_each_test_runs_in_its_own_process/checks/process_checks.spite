@@ -1,0 +1,32 @@
+var console = Console()
+var program = Program()
+var counter = Checks.Counter()
+
+func test_changes_a_singleton() {
+    counter.bump()
+    crash counter.value == 1
+}
+
+func test_sees_the_singleton_fresh() {
+    crash counter.value == 0
+}
+
+func test_prints_the_name_it_was_chosen_by() {
+    var chosen = program.environment("SPITE_TEST")
+    console.print("chosen as", chosen)
+}
+
+func test_prints_trimmed_lines_and_no_blank_ones() {
+    console.print("")
+    console.print("    indented once")
+    console.print("kept   ")
+    console.print("   ")
+}
+
+func test_returns_a_value(): Integer {
+    return 5
+}
+
+func testing_is_not_a_test() {
+    crash counter.value == 99
+}

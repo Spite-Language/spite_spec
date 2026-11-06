@@ -1,0 +1,4 @@
+found by file name: kernel32.dll
+first by file name: kernel32.dll
+a handle is the attribute, not a symbol: true
+attributes and functions are reflection: true

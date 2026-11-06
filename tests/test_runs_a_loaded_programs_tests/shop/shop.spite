@@ -1,0 +1,5 @@
+var console = Console()
+
+func Shop() {
+    console.print("the shop opened for business")
+}

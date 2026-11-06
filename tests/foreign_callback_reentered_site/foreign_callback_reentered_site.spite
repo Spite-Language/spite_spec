@@ -1,0 +1,14 @@
+var console = Console()
+var library = DynamicLibrary("tests/foreign_callback_reentered_site/fixture.dll", 'identity', "")
+
+func ForeignCallbackReenteredSite() {
+    load "../../../spite_standard_library/windows"
+    var total = count_down(4)
+    console.print("the same call site reached again from inside its own callback:", total)
+}
+
+func count_down(value: Integer): Integer {
+    fallback value > 0
+    var below = library.call_with(value - 1, count_down)
+    return below + value
+}

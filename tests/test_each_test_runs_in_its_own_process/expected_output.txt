@@ -1,0 +1,9 @@
+pass Checks.ProcessChecks.test_changes_a_singleton
+pass Checks.ProcessChecks.test_sees_the_singleton_fresh
+pass Checks.ProcessChecks.test_prints_the_name_it_was_chosen_by
+    chosen as Checks.ProcessChecks.test_prints_the_name_it_was_chosen_by
+pass Checks.ProcessChecks.test_prints_trimmed_lines_and_no_blank_ones
+    indented once
+    kept
+pass Checks.ProcessChecks.test_returns_a_value
+5 tests, 5 passed, 0 failed

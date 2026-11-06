@@ -1,0 +1,12 @@
+var program = Program()
+var total = 0
+
+func add_after_waiting() {
+    total = total + waited()
+}
+
+func waited(): Integer {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    program.sleep(twenty_milliseconds)
+    return 1
+}

@@ -1,0 +1,5 @@
+var console = Console()
+
+func test_hits_a_nail() {
+    console.print("hit")
+}

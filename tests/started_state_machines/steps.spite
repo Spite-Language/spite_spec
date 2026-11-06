@@ -1,0 +1,125 @@
+union Task {
+    Quick
+    Slow
+}
+
+var console = Console()
+var program = Program()
+var finished = false
+var flag = false
+var calls = 0
+
+func run() {
+    flag = ticked() == 1
+    sibling_names()
+    loops_that_wait()
+    short_circuits()
+    nullable_compare()
+    constructor_that_waits()
+    union_that_waits()
+    function_value_that_waits()
+    expression_order()
+    finished = true
+}
+
+func sibling_names() {
+    calls = 0
+    var total = 0
+    if flag {
+        var seen = ticked()
+        tick()
+        total = total + seen
+    }
+    if flag {
+        var seen = ticked()
+        tick()
+        total = total + seen
+    }
+    console.print("sibling blocks keep their own names:", total)
+}
+
+func loops_that_wait() {
+    calls = 0
+    var passes = 0
+    while ticked() < 4 {
+        tick()
+        passes = passes + 1
+    }
+    console.print("a loop whose condition waits ran", passes, "passes after", calls, "waits")
+    calls = 0
+    var sum = 0
+    var inner = 0
+    while inner < 3 {
+        if ticked() > 1 {
+            sum = sum + ticked()
+        }
+        inner = inner + 1
+    }
+    console.print("a wait in a branch inside a loop:", sum)
+}
+
+func short_circuits() {
+    calls = 0
+    var first = ticked() == 5
+    var second = ticked() == 2
+    if first and ticked() == 5 {
+        console.print("never")
+    }
+    if second or ticked() == 6 {
+        console.print("the right side of 'or' did not wait:", calls, "waits so far")
+    }
+    if second {
+        console.print("the first branch")
+    } else if ticked() == 7 {
+        console.print("never")
+    }
+    console.print("later conditions did not wait:", calls, "waits so far")
+}
+
+func nullable_compare() {
+    calls = 0
+    var maybe: Integer? = ticked()
+    var equal = maybe == ticked() - 1
+    var unequal = maybe != ticked()
+    console.print("a nullable compared with a waiting call:", equal, unequal)
+}
+
+func constructor_that_waits() {
+    var sleepy = Sleepy()
+    console.print("a constructor that waits made its object:", sleepy.stored)
+}
+
+func union_that_waits() {
+    var task: Task = Quick()
+    var slow_task: Task = Slow()
+    var quick_answer = task.work()
+    var slow_answer = slow_task.work()
+    console.print("a union function that waits:", quick_answer, slow_answer)
+}
+
+func function_value_that_waits() {
+    calls = 0
+    var counted = apply(ticked)
+    console.print("a function value that waits:", counted)
+}
+
+func apply(change: Spite.Function<Integer>): Integer {
+    return change()
+}
+
+func expression_order() {
+    calls = 0
+    var total = ticked() * 10 + ticked()
+    console.print("waits in an expression run left to right:", total)
+}
+
+func tick() {
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
+}
+
+func ticked(): Integer {
+    tick()
+    calls = calls + 1
+    return calls
+}

@@ -1,0 +1,14 @@
+type PointPair {
+    down: Integer
+    across: Integer
+}
+
+var console = Console()
+var windows = DynamicLibrary("tests/foreign_struct_field_order_is_not_checked/fixture.dll", 'windows', "fixture.h")
+
+func ForeignStructFieldOrderIsNotChecked() {
+    load "../../../spite_standard_library/windows"
+    var spot: PointPair = Spot()
+    windows.move_point(spot)
+    console.print("C moved the first field by 10 and the second by 20:", spot.down, spot.across)
+}

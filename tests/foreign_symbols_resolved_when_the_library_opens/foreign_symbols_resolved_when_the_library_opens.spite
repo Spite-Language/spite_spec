@@ -1,0 +1,34 @@
+var console = Console()
+var environment = Environment()
+var program = Program()
+var touched_path = ".spite/foreign_symbols_resolved_touched.txt"
+
+func ForeignSymbolsResolvedWhenTheLibraryOpens() {
+    load "../../../spite_standard_library/windows"
+    if environment.role == "missing_second" {
+        var touching = Touching()
+        touching.touch_then_ask_for_another()
+        return
+    }
+    var folder = Directory(".spite")
+    crash folder.create()
+    var missing_second = ask("missing_second")
+    console.print("a second symbol the library lacks:", missing_second)
+}
+
+func ask(role: String): String {
+    var written = File(touched_path)
+    crash written.write_string("untouched")
+    var path = program.executable_path()
+    crash path
+    var child = Process(path, ["--role={role}"])
+    child.with_errors = true
+    var code = child.run()
+    crash code
+    var output = child.read_output_as_string()
+    crash output
+    var trimmed = output.trim()
+    var left = written.read_as_string()
+    crash left
+    return "exit {code}, file {left}, said: {trimmed}"
+}

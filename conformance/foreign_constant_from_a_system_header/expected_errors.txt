@@ -1,0 +1,1 @@
+conformance/foreign_constant_from_a_system_header/foreign_constant_from_a_system_header.spite:6: error: 'rand_max' is a constant of the header 'stdlib.h', which is not a file the compiler can read: name the header by its path from the folder the compiler runs in (in ForeignConstantFromASystemHeader.ForeignConstantFromASystemHeader)

@@ -1,0 +1,62 @@
+enum Mode {
+    'quiet'
+    'loud'
+}
+
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_argument_kinds/fixture.dll", 'identity', "")
+var windows = DynamicLibrary("tests/foreign_argument_kinds/fixture.dll", 'windows', "fixture.h")
+
+func ForeignArgumentKinds() {
+    load "../../../spite_standard_library/windows"
+    buffer_is_filled_by_c()
+    boolean_and_enum_arguments()
+    floats_without_a_header()
+    widths_with_a_header()
+}
+
+func buffer_is_filled_by_c() {
+    var bytes = Buffer(8)
+    var index = 0
+    while index < 4 {
+        bytes.append(0)
+        index = index + 1
+    }
+    var count = bytes.count()
+    var filled = plain.fill_bytes(bytes, count)
+    var first = bytes[0]
+    var last = bytes[3]
+    crash first
+    crash last
+    console.print("C filled", filled, "bytes:", first, last)
+}
+
+func boolean_and_enum_arguments() {
+    var yes = true
+    var no = false
+    var loud: Mode = 'loud'
+    var chosen_yes = plain.choose(yes)
+    var chosen_no = plain.choose(no)
+    var loudness = plain.mode_number(loud)
+    console.print("Boolean arguments", chosen_yes, chosen_no, "enum argument", loudness)
+}
+
+func floats_without_a_header() {
+    var narrow: Float = 2.5
+    var wide: Double = 2.5
+    var from_float = plain.whole_of_float(narrow)
+    var from_double = plain.whole_of_double(wide)
+    console.print("a Float and a Double each pass as themselves:", from_float, from_double)
+}
+
+func widths_with_a_header() {
+    var tiny: Tiny = -1
+    var small: Short = -2
+    var byte: Byte = Byte.Largest()
+    var port: UnsignedShort = UnsignedShort.Largest()
+    var big: UnsignedInteger = UnsignedInteger.Largest()
+    var huge: UnsignedLong = 5
+    var added = windows.widths_added_as_long(tiny, small, byte, port, big, huge)
+    windows.forget(1)
+    console.print("each width reaches its C type:", added)
+}

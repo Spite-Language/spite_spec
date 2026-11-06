@@ -1,0 +1,1 @@
+a second symbol the library lacks: exit 1, file untouched, said: spite: the foreign function 'absent_symbol' is not in its library in Touching._attribute_defaults at line 1

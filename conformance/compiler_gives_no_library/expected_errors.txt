@@ -1,0 +1,1 @@
+conformance/compiler_gives_no_library/compiler_gives_no_library.spite:1: error: unknown type 'Console' (in CompilerGivesNoLibrary.)

@@ -1,0 +1,7 @@
+func diagonal_sum_with(other: Matrix4): Float {
+    return column_0_row_0 + other.column_0_row_0 + column_1_row_1 + other.column_1_row_1
+}
+
+func stretch_first_column(factor: Float) {
+    column_0_row_0 = column_0_row_0 * factor
+}

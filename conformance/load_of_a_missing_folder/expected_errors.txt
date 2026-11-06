@@ -1,0 +1,1 @@
+conformance/load_of_a_missing_folder/load_of_a_missing_folder.spite:3: error: the folder 'conformance/load_of_a_missing_folder/nowhere_at_all' does not exist

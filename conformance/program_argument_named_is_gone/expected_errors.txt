@@ -1,0 +1,1 @@
+conformance/program_argument_named_is_gone/program_argument_named_is_gone.spite:6: error: a Program has no attribute or function 'argument_named' (in ProgramArgumentNamedIsGone.ProgramArgumentNamedIsGone)

@@ -1,0 +1,49 @@
+var console = Console()
+var environment = Environment()
+var program = Program()
+
+func EnvironmentSourceOrder() {
+    load "../../../spite_standard_library/windows"
+    if environment.role == "child" {
+        be_the_child()
+        return
+    }
+    var folder = Directory(".spite/environment_source_order")
+    crash folder.create()
+    var settings = File(".spite/environment_source_order/.env")
+    crash settings.write_string("REGION = from the file\n")
+    var flag_over_variable = ask(["--role=child", "--region=flag"], "REGION", "variable")
+    console.print("flag over variable:", flag_over_variable)
+    var variable_over_file = ask(["--role=child", "--dotenv-file=read"], "REGION", "variable")
+    console.print("variable over file:", variable_over_file)
+    var flag_over_file = ask(["--role=child", "--region=flag", "--dotenv-file=read"], "WORKERS", "3")
+    console.print("flag over file:", flag_over_file)
+    var file_over_default = ask(["--role=child", "--dotenv-file=read"], "WORKERS", "2")
+    console.print("file over default, spaces trimmed:", file_over_default)
+    var stray = ask(["--role=child"], "COLOUR", "red")
+    console.print("a variable naming no setting:", stray)
+    var malformed = ask(["--role=child"], "WORKERS", "many")
+    console.print("a malformed variable:", malformed)
+}
+
+func be_the_child() {
+    if environment.dotenv_file == "read" {
+        var loaded = environment.load_from_file(".spite/environment_source_order/.env")
+        crash loaded
+    }
+    console.print("region", environment.region, "workers", environment.workers)
+}
+
+func ask(arguments: List<String>, name: String, value: String): String {
+    var path = program.executable_path()
+    crash path
+    var child = Process(path, arguments)
+    child.environment_variables[name] = value
+    child.with_errors = true
+    var code = child.run()
+    crash code
+    var output = child.read_output_as_string()
+    crash output
+    var trimmed = output.trim()
+    return "exit {code}: {trimmed}"
+}

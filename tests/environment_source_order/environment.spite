@@ -1,0 +1,4 @@
+var role = ""
+var region = "default"
+var workers = 1
+var dotenv_file = ""

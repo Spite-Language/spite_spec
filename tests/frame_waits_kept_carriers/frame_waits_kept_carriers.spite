@@ -1,0 +1,54 @@
+var console = Console()
+var program = Program()
+var gate = BooleanGate()
+var note = TextNote()
+var ring = MoodRing()
+var maker = FreshMaker()
+var running = RunningTotal()
+var build = Build()
+var frames = 0
+
+func FrameWaitsKeptCarriers() {
+    load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
+    while frames < 3 {
+        frames = frames + 1
+        gate.flip_later()
+        note.relabel_later()
+        ring.change_later()
+        maker.count_in_a_new_object()
+        running.add_after_waiting()
+        program.sleep(one_millisecond)
+    }
+    var settled = 0
+    while settled < 40 {
+        settled = settled + 1
+        program.sleep(one_millisecond)
+    }
+    console.print("a Boolean carried over a wait:", gate.open)
+    console.print("text carried over a wait:", note.label)
+    console.print("an enum value carried over a wait:", ring.mood)
+    console.print("a value written into an object the call made:", maker.made)
+    console.print("a statement that reads, waits and writes one attribute:", running.total)
+    print_report()
+}
+
+func print_report() {
+    var report = File("{build.program}/.spite/reports/frame_waits_kept_carriers.md").read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    var printing = false
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("## ") {
+            printing = line.starts_with("## Waits that hold the frame")
+            if printing {
+                console.print(line)
+            }
+        } else if printing and line.starts_with("- [") {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}

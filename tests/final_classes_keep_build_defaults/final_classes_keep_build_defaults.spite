@@ -1,0 +1,20 @@
+var console = Console()
+var build = Build()
+
+func FinalClassesKeepBuildDefaults() {
+    load "../../../spite_standard_library/windows"
+    console.print("this build folded serve to", build.serve)
+    var printed = File("{build.program}/.spite/final_classes_build_defaults/build.spite")
+    var text = printed.read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains("serve") {
+            var trimmed = line.trim()
+            console.print("printed:", trimmed)
+        }
+        index = index + 1
+    }
+}

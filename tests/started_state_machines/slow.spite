@@ -1,0 +1,7 @@
+var program = Program()
+
+func work(): Integer {
+    var two_milliseconds = Duration(2, 'milliseconds')
+    program.sleep(two_milliseconds)
+    return 2
+}

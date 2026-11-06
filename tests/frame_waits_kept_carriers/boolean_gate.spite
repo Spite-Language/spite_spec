@@ -1,0 +1,9 @@
+var program = Program()
+var open = false
+
+func flip_later() {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    var seen = open
+    program.sleep(twenty_milliseconds)
+    open = not seen
+}

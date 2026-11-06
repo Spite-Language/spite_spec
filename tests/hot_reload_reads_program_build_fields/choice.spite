@@ -1,0 +1,8 @@
+var build = Build()
+
+func answer(): String {
+    if build.serve {
+        return "serving"
+    }
+    return "not serving"
+}

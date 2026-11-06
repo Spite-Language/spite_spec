@@ -1,0 +1,17 @@
+var console = Console()
+var program = Program()
+var steps = Steps()
+var frames = 0
+
+func StartedStateMachines() {
+    load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not steps.finished {
+        frames = frames + 1
+        if frames == 1 {
+            steps.run()
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("the frame went on while it waited:", frames > 1)
+}

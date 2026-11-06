@@ -1,0 +1,7 @@
+var console = Console()
+var environment = Environment()
+
+func ProgramSettingNamedLikeACompilerOption() {
+    load "../../../spite_standard_library/windows"
+    console.print("optimized", environment.optimized, "check", environment.check)
+}

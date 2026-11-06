@@ -1,0 +1,19 @@
+var console = Console()
+var program = Program()
+var crasher = Crasher()
+var frames = 0
+
+func StartedCallThatCrashes() {
+    load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
+    var passes = 0
+    while passes < 100 {
+        frames = frames + 1
+        if frames == 1 {
+            crasher.go()
+        }
+        passes = passes + 1
+        program.sleep(one_millisecond)
+    }
+    console.print("never printed: the started call halts the program")
+}

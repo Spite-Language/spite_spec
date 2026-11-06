@@ -1,0 +1,14 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var program = Program()
+var mood: Mood = 'calm'
+
+func change_later() {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    var seen = mood
+    program.sleep(twenty_milliseconds)
+    mood = seen
+}

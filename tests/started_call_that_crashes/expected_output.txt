@@ -1,0 +1,2 @@
+spite: the program stopped at tests/started_call_that_crashes/crasher.spite:7 in Crasher.go, site 9152091b (armed=false)
+spite.frame	tests/started_call_that_crashes/crasher.spite:7	Crasher	go

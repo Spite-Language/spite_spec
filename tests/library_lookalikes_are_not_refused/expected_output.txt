@@ -1,0 +1,2 @@
+diagonal sum 4
+stretched 3

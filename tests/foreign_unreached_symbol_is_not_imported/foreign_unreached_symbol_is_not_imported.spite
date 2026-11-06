@@ -1,0 +1,12 @@
+var console = Console()
+var library = DynamicLibrary("tests/foreign_unreached_symbol_is_not_imported/fixture.dll", 'identity', "")
+
+func ForeignUnreachedSymbolIsNotImported() {
+    load "../../../spite_standard_library/windows"
+    var sum = library.add_numbers(2, 3)
+    console.print("the library answered", sum)
+}
+
+func never_called() {
+    library.symbol_the_library_does_not_export()
+}

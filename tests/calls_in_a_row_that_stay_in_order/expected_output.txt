@@ -1,0 +1,14 @@
+1896362.2282822588 3160603.7138037826
+299.98515048508773 499.97525080847964
+blending 3
+blending 5
+1896362.2282822588 3160603.7138037826
+196418 317811
+1000000 1000000
+6 6
+heavy quiet calls overlap: 1
+light calls: 0
+calls that print: 0
+recursive calls: 0
+calls that hold a list: 0
+calls that hold text: 0

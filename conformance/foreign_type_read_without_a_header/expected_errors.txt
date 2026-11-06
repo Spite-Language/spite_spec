@@ -1,0 +1,1 @@
+conformance/foreign_type_read_without_a_header/foreign_type_read_without_a_header.spite:6: error: 'Point' is a constant, and a constant comes from the library's header: name it as DynamicLibrary's third argument (in ForeignTypeReadWithoutAHeader.ForeignTypeReadWithoutAHeader)

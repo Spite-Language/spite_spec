@@ -1,0 +1,8 @@
+var console = Console()
+var environment = Environment()
+
+func EnvironmentUnreadSettingsIsGone() {
+    load "../../../spite_standard_library/windows"
+    var unread = environment.unread_settings()
+    console.print(unread)
+}

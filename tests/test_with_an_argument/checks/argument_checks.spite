@@ -1,0 +1,5 @@
+var items = 0
+
+func test_takes_an_argument(count: Integer) {
+    crash count == 1
+}

@@ -1,0 +1,141 @@
+var console = Console()
+var program = Program()
+var written = ""
+
+func CallsInARowThatStayInOrder() {
+    load "../../../spite_standard_library/windows"
+    heavy_pair()
+    light_pair()
+    printing_pair()
+    recursive_pair()
+    list_pair()
+    text_pair()
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var text = File(low_path).read_as_string()
+    crash text
+    written = text
+    var heavy_pair_starts = starts_in("heavy_pair")
+    console.print("heavy quiet calls overlap:", heavy_pair_starts)
+    var light_pair_starts = starts_in("light_pair")
+    console.print("light calls:", light_pair_starts)
+    var printing_pair_starts = starts_in("printing_pair")
+    console.print("calls that print:", printing_pair_starts)
+    var recursive_pair_starts = starts_in("recursive_pair")
+    console.print("recursive calls:", recursive_pair_starts)
+    var list_pair_starts = starts_in("list_pair")
+    console.print("calls that hold a list:", list_pair_starts)
+    var text_pair_starts = starts_in("text_pair")
+    console.print("calls that hold text:", text_pair_starts)
+}
+
+func heavy_pair() {
+    var left = blend(3)
+    var right = blend(5)
+    console.print(left, right)
+}
+
+func light_pair() {
+    var left = tiny(3)
+    var right = tiny(5)
+    console.print(left, right)
+}
+
+func printing_pair() {
+    var left = blend_loudly(3)
+    var right = blend_loudly(5)
+    console.print(left, right)
+}
+
+func recursive_pair() {
+    var left = slow_fibonacci(27)
+    var right = slow_fibonacci(28)
+    console.print(left, right)
+}
+
+func list_pair() {
+    var left = listed(3)
+    var right = listed(5)
+    console.print(left, right)
+}
+
+func text_pair() {
+    var left = spelled(3)
+    var right = spelled(5)
+    console.print(left, right)
+}
+
+func blend(seed: Integer): Double {
+    var total: Double = 0.0
+    var step: Double = seed
+    var index = 0
+    while index < 1_000_000 {
+        total = total * 0.999999 + step
+        index = index + 1
+    }
+    return total
+}
+
+func tiny(seed: Integer): Double {
+    var total: Double = 0.0
+    var step: Double = seed
+    var index = 0
+    while index < 100 {
+        total = total * 0.999999 + step
+        index = index + 1
+    }
+    return total
+}
+
+func blend_loudly(seed: Integer): Double {
+    console.print("blending", seed)
+    return blend(seed)
+}
+
+func slow_fibonacci(number: Integer): Integer {
+    if number < 2 {
+        return number
+    }
+    var earlier = slow_fibonacci(number - 1)
+    var before = slow_fibonacci(number - 2)
+    return earlier + before
+}
+
+func listed(seed: Integer): Integer {
+    var items = List<Integer>()
+    var index = 0
+    while index < 1_000_000 {
+        items.append(index + seed)
+        index = index + 1
+    }
+    return items.count()
+}
+
+func spelled(seed: Integer): Integer {
+    var line = ""
+    var index = 0
+    while index < 1_000_000 {
+        line = "seed {seed}"
+        index = index + 1
+    }
+    return line.length()
+}
+
+func starts_in(function_name: String): Integer {
+    var lines = written.split("\n")
+    var prefix = "function CallsInARowThatStayInOrder.{function_name}:"
+    var inside = false
+    var started = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with(prefix)
+        } else if inside and line.contains("address of _parallel_") {
+            started = started + 1
+        }
+        index = index + 1
+    }
+    return started
+}

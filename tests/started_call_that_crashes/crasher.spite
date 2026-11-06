@@ -1,0 +1,8 @@
+var program = Program()
+var armed = false
+
+func go() {
+    var thirty_milliseconds = Duration(30, 'milliseconds')
+    program.sleep(thirty_milliseconds)
+    crash armed
+}

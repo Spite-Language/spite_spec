@@ -1,0 +1,11 @@
+var console = Console()
+
+func LibraryLookalikesAreNotRefused() {
+    load "../../../spite_standard_library/windows"
+    var left = Matrix4<Float>()
+    var right = Matrix4<Float>()
+    var diagonal = left.diagonal_sum_with(right)
+    console.print("diagonal sum", diagonal)
+    left.stretch_first_column(3.0)
+    console.print("stretched", left.column_0_row_0)
+}

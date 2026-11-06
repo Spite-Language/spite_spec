@@ -1,0 +1,9 @@
+var program = Program()
+var label = "start"
+
+func relabel_later() {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    var seen = label
+    program.sleep(twenty_milliseconds)
+    label = "{seen}!"
+}

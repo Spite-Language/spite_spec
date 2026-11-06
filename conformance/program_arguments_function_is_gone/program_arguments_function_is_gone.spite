@@ -1,0 +1,8 @@
+var console = Console()
+var program = Program()
+
+func ProgramArgumentsFunctionIsGone() {
+    load "../../../spite_standard_library/windows"
+    var given = program.arguments()
+    console.print(given)
+}

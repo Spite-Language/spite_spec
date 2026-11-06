@@ -1,0 +1,3 @@
+the plain sum 45
+scheduler functions: 0
+functions run on another thread: 0

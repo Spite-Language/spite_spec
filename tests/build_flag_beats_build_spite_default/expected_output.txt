@@ -1,0 +1,1 @@
+optimized false hot_reload true

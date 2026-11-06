@@ -1,0 +1,5 @@
+var items = 0
+
+func test_not_walked_by_the_tools_run() {
+    crash items == 1
+}

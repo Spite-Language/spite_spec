@@ -1,0 +1,23 @@
+var console = Console()
+var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
+var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
+var libraries = List<DynamicLibrary>()
+
+func ForeignLibraryMembersAreNotSymbols() {
+    load "../../../spite_standard_library/windows"
+    libraries.append(c_runtime)
+    libraries.append(kernel)
+    var found = libraries.find_by_file_name("kernel32.dll")
+    crash found
+    console.print("found by file name:", found.file_name)
+    var sorted = libraries.sort_by_file_name()
+    var first = sorted[0]
+    crash first
+    console.print("first by file name:", first.file_name)
+    var opened = c_runtime.handle != 0
+    console.print("a handle is the attribute, not a symbol:", opened)
+    var attribute_count = c_runtime.attributes.count()
+    var function_count = c_runtime.functions.count()
+    var is_listed = attribute_count > 0 and function_count > 0
+    console.print("attributes and functions are reflection:", is_listed)
+}

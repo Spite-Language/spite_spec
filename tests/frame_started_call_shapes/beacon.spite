@@ -1,0 +1,10 @@
+singleton
+
+var program = Program()
+var blinked = false
+
+func blink() {
+    var thirty_milliseconds = Duration(30, 'milliseconds')
+    program.sleep(thirty_milliseconds)
+    blinked = true
+}

@@ -1,0 +1,1 @@
+error: '--' is not a separator: every value on the command line is a named setting, given as --name=value

@@ -1,0 +1,2 @@
+var optimized = true
+var hot_reload = true

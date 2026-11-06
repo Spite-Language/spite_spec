@@ -1,0 +1,7 @@
+a receiver reached through attributes is started: true
+an item read by a number is started: true
+a call with an argument is started: false
+a call whose answer is used is started: false
+a call on a singleton is started: false
+a call on the loop's own object is started: false
+a frame loop sleeping three calls down started its call: true

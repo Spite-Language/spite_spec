@@ -1,0 +1,11 @@
+var program = Program()
+var made = 0
+
+func count_in_a_new_object() {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    var fresh = Ledger()
+    var seen = fresh.entries
+    program.sleep(twenty_milliseconds)
+    fresh.entries = seen + 1
+    made = made + fresh.entries
+}

@@ -1,0 +1,4 @@
+C filled 4 bytes: 1 10
+Boolean arguments 10 20 enum argument 100
+a Float and a Double each pass as themselves: 10 10
+each width reaches its C type: 4295033087

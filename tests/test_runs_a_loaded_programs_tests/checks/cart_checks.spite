@@ -1,0 +1,7 @@
+var cart = Cart()
+
+func test_cart_adds_prices() {
+    cart.add(30)
+    cart.add(12)
+    crash cart.total == 42
+}

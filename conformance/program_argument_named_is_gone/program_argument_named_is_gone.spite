@@ -1,0 +1,8 @@
+var console = Console()
+var program = Program()
+
+func ProgramArgumentNamedIsGone() {
+    load "../../../spite_standard_library/windows"
+    var level = program.argument_named("level")
+    console.print(level)
+}

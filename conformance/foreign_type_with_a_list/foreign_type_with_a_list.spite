@@ -1,0 +1,14 @@
+type Labelled {
+    count: Integer
+    values: List<Integer>
+}
+
+var console = Console()
+var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
+
+func ForeignTypeWithAList() {
+    load "../../../spite_standard_library/windows"
+    var labelled: Labelled = Tray()
+    var sum = c_runtime.strlen(labelled)
+    console.print(sum)
+}

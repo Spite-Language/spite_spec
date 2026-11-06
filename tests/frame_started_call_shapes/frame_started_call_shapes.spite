@@ -1,0 +1,137 @@
+var console = Console()
+var program = Program()
+var holder = Holder()
+var waiter = Waiter()
+var waiters = List<Waiter>()
+var beacon = Beacon()
+var frames = 0
+
+func FrameStartedCallShapes() {
+    load "../../../spite_standard_library/windows"
+    waiters.append(waiter)
+    started_through_a_path()
+    started_through_a_literal_index()
+    waits_in_place_with_an_argument()
+    waits_in_place_with_its_answer_used()
+    waits_in_place_on_a_singleton()
+    waits_in_place_on_the_loops_own_object()
+    sleeping_through_a_chain_of_calls()
+}
+
+func started_through_a_path() {
+    holder.inner.waiter.reset()
+    frames = 0
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not holder.inner.waiter.done {
+        frames = frames + 1
+        if frames == 1 {
+            holder.inner.waiter.go()
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("a receiver reached through attributes is started:", frames > 1)
+}
+
+func started_through_a_literal_index() {
+    waiter.reset()
+    frames = 0
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not waiter.done {
+        frames = frames + 1
+        if frames == 1 {
+            crash waiters[0]
+            waiters[0].go()
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("an item read by a number is started:", frames > 1)
+}
+
+func waits_in_place_with_an_argument() {
+    waiter.reset()
+    frames = 0
+    var one_millisecond = Duration(1, 'milliseconds')
+    var thirty = 30
+    while not waiter.done {
+        frames = frames + 1
+        if frames == 1 {
+            waiter.go_for(thirty)
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("a call with an argument is started:", frames > 1)
+}
+
+func waits_in_place_with_its_answer_used() {
+    waiter.reset()
+    frames = 0
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not waiter.done {
+        frames = frames + 1
+        if frames == 1 {
+            var answered = waiter.read()
+            crash answered == 1
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("a call whose answer is used is started:", frames > 1)
+}
+
+func waits_in_place_on_a_singleton() {
+    frames = 0
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not beacon.blinked {
+        frames = frames + 1
+        if frames == 1 {
+            beacon.blink()
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("a call on a singleton is started:", frames > 1)
+}
+
+func waits_in_place_on_the_loops_own_object() {
+    waiter.reset()
+    frames = 0
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not waiter.done {
+        frames = frames + 1
+        if frames == 1 {
+            wait_here()
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("a call on the loop's own object is started:", frames > 1)
+}
+
+func wait_here() {
+    waiter.done = true
+    var thirty_milliseconds = Duration(30, 'milliseconds')
+    program.sleep(thirty_milliseconds)
+}
+
+func sleeping_through_a_chain_of_calls() {
+    waiter.reset()
+    frames = 0
+    while not waiter.done {
+        frames = frames + 1
+        if frames == 1 {
+            waiter.go()
+        }
+        next_frame()
+    }
+    console.print("a frame loop sleeping three calls down started its call:", frames > 1)
+}
+
+func next_frame() {
+    pace()
+}
+
+func pace() {
+    pause()
+}
+
+func pause() {
+    var one_millisecond = Duration(1, 'milliseconds')
+    program.sleep(one_millisecond)
+}

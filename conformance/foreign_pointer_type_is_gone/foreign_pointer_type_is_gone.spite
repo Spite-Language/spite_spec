@@ -1,0 +1,7 @@
+var console = Console()
+
+func ForeignPointerTypeIsGone() {
+    load "../../../spite_standard_library/windows"
+    var address: Pointer? = null
+    console.print(address)
+}

@@ -1,0 +1,5 @@
+var console = Console()
+
+func CompilerGivesNoLibrary() {
+    console.print("no load line names the standard library")
+}

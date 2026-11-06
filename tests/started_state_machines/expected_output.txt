@@ -1,0 +1,12 @@
+sibling blocks keep their own names: 3
+a loop whose condition waits ran 3 passes after 4 waits
+a wait in a branch inside a loop: 8
+the right side of 'or' did not wait: 2 waits so far
+the first branch
+later conditions did not wait: 2 waits so far
+a nullable compared with a waiting call: true true
+a constructor that waits made its object: 1
+a union function that waits: 1 2
+a function value that waits: 1
+waits in an expression run left to right: 12
+the frame went on while it waited: true

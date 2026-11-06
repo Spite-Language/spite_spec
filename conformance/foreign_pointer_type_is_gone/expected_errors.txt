@@ -1,0 +1,1 @@
+conformance/foreign_pointer_type_is_gone/foreign_pointer_type_is_gone.spite:5: error: unknown type 'Pointer' (in ForeignPointerTypeIsGone.ForeignPointerTypeIsGone)

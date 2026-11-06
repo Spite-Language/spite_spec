@@ -1,0 +1,2 @@
+low_ir false high_ir false
+optimization_report left empty true

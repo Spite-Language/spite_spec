@@ -1,0 +1,36 @@
+var console = Console()
+var program = Program()
+
+func PlainProgramCarriesNoScheduler() {
+    load "../../../spite_standard_library/windows"
+    var total = 0
+    var index = 0
+    while index < 10 {
+        total = total + index
+        index = index + 1
+    }
+    console.print("the plain sum", total)
+    var scheduler_functions = functions_starting_with("function _scheduler_")
+    var started_functions = functions_starting_with("function _parallel_")
+    console.print("scheduler functions:", scheduler_functions)
+    console.print("functions run on another thread:", started_functions)
+}
+
+func functions_starting_with(prefix: String): Integer {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var written = File(low_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var found = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with(prefix) {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
