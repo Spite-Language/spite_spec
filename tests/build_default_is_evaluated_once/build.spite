@@ -1,0 +1,8 @@
+var tickets_given = 0
+var first_ticket: Integer = take_ticket()
+var second_ticket: Integer = take_ticket()
+
+func take_ticket(): Integer {
+    tickets_given = tickets_given + 1
+    return tickets_given
+}

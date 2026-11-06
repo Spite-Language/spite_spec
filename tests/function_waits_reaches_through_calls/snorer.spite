@@ -1,0 +1,9 @@
+var program = Program()
+var _pause_milliseconds = 1
+var _snores = 7
+
+func nap(): Integer {
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+    return _snores
+}

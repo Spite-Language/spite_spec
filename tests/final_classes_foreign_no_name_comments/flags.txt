@@ -1,0 +1,1 @@
+--final-classes=.spite/final_classes_foreign_no_name_comments

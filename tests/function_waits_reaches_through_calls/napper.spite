@@ -1,0 +1,9 @@
+var program = Program()
+var _pause_milliseconds = 3
+var _twice = 2
+
+func nap_and_double(value: Integer): Integer {
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+    return value * _twice
+}

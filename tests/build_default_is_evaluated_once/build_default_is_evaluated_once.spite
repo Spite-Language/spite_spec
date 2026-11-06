@@ -1,0 +1,8 @@
+var build = Build()
+var console = Console()
+
+func BuildDefaultIsEvaluatedOnce() {
+    load "../../../spite_standard_library/windows"
+    console.print("tickets", build.first_ticket, build.second_ticket)
+    console.print("read again", build.first_ticket, build.second_ticket)
+}

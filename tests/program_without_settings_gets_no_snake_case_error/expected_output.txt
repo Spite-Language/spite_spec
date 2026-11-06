@@ -1,0 +1,1 @@
+error: '--worker-count' names no setting of Environment: declare it in environment.spite, like 'var worker_count = ""', and the program reads it as Environment().worker_count

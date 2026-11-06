@@ -1,0 +1,18 @@
+var console = Console()
+var build = Build()
+var fixture = DynamicLibrary("tests/final_classes_foreign_no_name_comments/fixture.dll", 'identity', "")
+var _two = 2
+var _three = 3
+
+func FinalClassesForeignNoNameComments() {
+    load "../../../spite_standard_library/windows"
+    var sum = fixture.add_numbers(_two, _three)
+    console.print("the call answered", sum)
+    var printed = File("{build.program}/.spite/final_classes_foreign_no_name_comments/dynamic_library.spite")
+    var text = printed.read_as_string()
+    crash text
+    var has_its_functions = text.contains("func open_library")
+    var has_a_comment = text.contains("resolved")
+    console.print("the class was printed with its own functions:", has_its_functions)
+    console.print("a resolved name is written as a comment:", has_a_comment)
+}

@@ -12,5 +12,5 @@ func speak() {
 }
 
 func said(): String {
-    return "new"
+    return "old"
 }

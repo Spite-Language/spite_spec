@@ -1,0 +1,7 @@
+the probe ran: true
+sleeps itself: true
+calls a function that waits, by name: true
+makes an object whose constructor waits: true
+asks a type for a function one of its classes waits in: true
+calls a function value of a signature that waits: true
+only adds up: false

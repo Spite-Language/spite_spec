@@ -1,0 +1,20 @@
+var console = Console()
+var probe = Probe()
+
+func FunctionWaitsReachesThroughCalls() {
+    load "../../../spite_standard_library/windows"
+    var made = probe.run()
+    console.print("the probe ran:", made)
+    var sleeps_itself = Probe.function_waits("sleeps_itself")
+    console.print("sleeps itself:", sleeps_itself)
+    var calls_it_by_name = Probe.function_waits("calls_it_by_name")
+    console.print("calls a function that waits, by name:", calls_it_by_name)
+    var makes_a_slowpoke = Probe.function_waits("makes_a_slowpoke")
+    console.print("makes an object whose constructor waits:", makes_a_slowpoke)
+    var asks_a_napping = Probe.function_waits("asks_a_napping")
+    console.print("asks a type for a function one of its classes waits in:", asks_a_napping)
+    var calls_a_value = Probe.function_waits("calls_a_value")
+    console.print("calls a function value of a signature that waits:", calls_a_value)
+    var adds_up = Probe.function_waits("adds_up")
+    console.print("only adds up:", adds_up)
+}

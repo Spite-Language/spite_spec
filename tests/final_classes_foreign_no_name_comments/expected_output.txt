@@ -1,0 +1,3 @@
+the call answered 5
+the class was printed with its own functions: true
+a resolved name is written as a comment: false

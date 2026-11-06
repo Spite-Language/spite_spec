@@ -1,0 +1,3 @@
+hello
+the built program has functions: true
+functions that are a scheduler, collector, interpreter or registry: 0

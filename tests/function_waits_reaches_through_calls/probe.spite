@@ -1,0 +1,59 @@
+type Napping {
+    nap(): Integer
+}
+
+var program = Program()
+var snorer = Snorer()
+var napper = Napper()
+var _pause_milliseconds = 1
+var _four = 4
+
+func run(): Boolean {
+    var sleepers = a_list()
+    var slept = asks_a_napping(sleepers)
+    var doubled = makes_a_value()
+    var made = makes_a_slowpoke()
+    calls_it_by_name()
+    var value_doubled = calls_a_value(napper.nap_and_double)
+    var added = adds_up(slept, doubled)
+    return made and added > value_doubled
+}
+
+func a_list(): List<Napping> {
+    var sleepers = List<Napping>()
+    sleepers.append(snorer)
+    return sleepers
+}
+
+func makes_a_value(): Integer {
+    var change: Spite.Function<Integer, Integer> = napper.nap_and_double
+    return change(_four)
+}
+
+func sleeps_itself() {
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+}
+
+func calls_it_by_name() {
+    sleeps_itself()
+}
+
+func makes_a_slowpoke(): Boolean {
+    var made = Slowpoke()
+    return made.ready
+}
+
+func asks_a_napping(sleepers: List<Napping>): Integer {
+    var first = sleepers[0]
+    crash first
+    return first.nap()
+}
+
+func calls_a_value(change: Spite.Function<Integer, Integer>): Integer {
+    return change(_four)
+}
+
+func adds_up(left: Integer, right: Integer): Integer {
+    return left + right
+}
