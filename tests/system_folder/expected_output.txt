@@ -1,6 +1,6 @@
-found System.DrinkPotion
-found System.ReportHealth
-found Ui.System.ShowNames
+found DrinkPotion
+found ReportHealth
+found ShowNames
 ann drinks tonic and has 15
 bob drinks tonic and has 25
 2 patients with 40 health

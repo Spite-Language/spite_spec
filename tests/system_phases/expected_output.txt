@@ -1,5 +1,5 @@
-placed System.Announce in render
-placed System.DrinkPotion in update
+placed Announce in render
+placed DrinkPotion in update
 ann drinks tonic and has 15
 bob drinks tonic and has 25
 2 patients with 40 health

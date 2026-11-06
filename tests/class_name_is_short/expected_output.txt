@@ -1,0 +1,11 @@
+1 2 3
+Alpha Part.Inner.Gamma
+Alpha Part.Alpha Alpha
+Beta Part.Beta Beta
+Gamma Part.Inner.Gamma Gamma
+Alpha Part.Alpha Alpha
+Beta Part.Beta Beta
+Gamma Part.Inner.Gamma Gamma
+Beta Part.Beta
+Alpha!
+Beta!

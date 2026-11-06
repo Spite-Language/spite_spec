@@ -163,7 +163,7 @@ parameter type of its own:
 
 - `Namespace.classes.each(walker)`, `walker(part: Spite.Class)`, makes one copy of `walker` for each class of the folder
   (in the order of the dotted names), in which `part` is the class: a type (`Runner<part>()`), a constant for
-  `part.name`, `part.has_function(...)` and `part.function_waits(...)` folded, and the class object where a value is
+  `part.name` (the short name, `part.name_with_namespaces` the dotted one), `part.has_function(...)` and `part.function_waits(...)` folded, and the class object where a value is
   wanted. `class.namespace.classes` and `Spite.Namespace.instances` are the other lists to walk.
 - `Enum.values.each(walker)` calls `walker` once for each value, in the enum's order; `$t.values`, with `$t` bound to an
   enum, is the constant list of its values.

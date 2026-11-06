@@ -1,5 +1,5 @@
-found System.Move
-found System.Rest
+found Move
+found Rest
 starting update
 move ticks 1
 finished update

@@ -45,7 +45,7 @@ generic 'value_type', so 'argument.class.generics["value_type"]' names nothing: 
 **Every member is a get-only attribute named for what it answers**, read without `()`: a question is `is_...`, a
 collection is plural. A question that takes something is a collection indexed or filtered instead
 (`Monster.functions["alive"]`, `hurt.arguments[1].is_mutated`). What acts rather than answers stays a function:
-`call_function()`, a `Spite.Call`'s `call()`, and a list's own `count()`. A name is a `String`, constant text the compiler writes once, so passing it around allocates nothing.
+`call_function()`, a `Spite.Call`'s `call()`, and a list's own `count()`. A name is a `String`, constant text the compiler writes once, so passing it around allocates nothing. A class's `.name` is its short name however the class was reached, named in the code, through a walk over a written path or a namespace parameter, or kept in a list (`Alpha`), and `.name_with_namespaces` is the dotted one (`Part.Alpha`; `tests/class_name_is_short`, D1884).
 
 **Every member is a getter with no setter**: the data sits in private fields and `get_name()` and the rest answer
 it, so `described.name = ...` is "'name' is read-only". **A name starting with `_` is private** (everywhere but
