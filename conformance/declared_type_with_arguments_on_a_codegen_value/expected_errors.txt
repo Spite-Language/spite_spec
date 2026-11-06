@@ -1,0 +1,1 @@
+conformance/declared_type_with_arguments_on_a_codegen_value/box.spite:9: error: '$held' is not a generic class, so it takes no type in '<>': write '$held' alone

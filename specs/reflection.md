@@ -151,7 +151,7 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   (`conformance/generic_named_wrong_count`, `conformance/generic_named_without_arguments`,
   `conformance/generic_named_on_a_plain_name`, `conformance/generic_named_on_an_enum`). A declared type refuses them
   in the same words wherever it is read, an attribute, a local, a parameter, an answer, a list's element or a generic
-  argument, when it names an enum, a union, a `type` or a number class: `var phase: Phase<Integer> = 'idle'` is
+  argument, when it names an enum, a union, a `type`, a number class or a codegen value (`$held<Integer>`, `conformance/declared_type_with_arguments_on_a_codegen_value`): `var phase: Phase<Integer> = 'idle'` is
   "'Phase' is not a generic class, so it takes no type in '<>': write 'Phase' alone"
   (`conformance/declared_type_with_arguments_on_an_enum`, `_on_a_union`, `_on_a_type`, `_in_a_list`, `_on_an_answer`,
   `_on_an_attribute`, `_on_a_number`).

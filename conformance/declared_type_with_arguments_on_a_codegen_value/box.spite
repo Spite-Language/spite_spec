@@ -1,0 +1,12 @@
+generic $held
+var values = List<$held>()
+
+func Box(starting: $held) {
+    values.append(starting)
+}
+
+func read(): $held<Integer> {
+    var found = values[0]
+    crash found
+    return found
+}

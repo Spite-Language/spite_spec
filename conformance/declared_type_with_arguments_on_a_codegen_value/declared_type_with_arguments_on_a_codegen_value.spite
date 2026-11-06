@@ -1,0 +1,8 @@
+var console = Console()
+
+func DeclaredTypeWithArgumentsOnACodegenValue() {
+    load "../../../spite_standard_library/windows"
+    var box = Box<Integer>(1)
+    var read = box.read()
+    console.print(read)
+}
