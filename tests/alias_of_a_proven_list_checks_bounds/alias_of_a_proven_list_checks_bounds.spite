@@ -1,0 +1,15 @@
+var console = Console()
+var names = ["ada", "bo", "cy", "di"]
+
+func AliasOfAProvenListChecksBounds() {
+    load "../../../spite_standard_library/windows"
+    scan()
+}
+
+func scan() {
+    crash names[0]
+    var held = names
+    held.clear()
+    var shout = names[0].upper_case()
+    console.print(shout)
+}

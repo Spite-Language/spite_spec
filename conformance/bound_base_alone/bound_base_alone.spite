@@ -1,0 +1,16 @@
+var console = Console()
+var names = ["ada", "bo", "cy", "di"]
+
+func BoundBaseAlone() {
+    load "../../../spite_standard_library/windows"
+    scan()
+}
+
+func scan() {
+    var base = 0
+    while base < names.count() {
+        var pair = names[base + 1].upper_case()
+        console.print(pair)
+        base = base + 2
+    }
+}

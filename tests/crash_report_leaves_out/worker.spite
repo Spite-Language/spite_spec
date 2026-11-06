@@ -1,0 +1,6 @@
+var console = Console()
+var size = 2
+
+func run() {
+    console.print("running")
+}

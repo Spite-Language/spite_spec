@@ -1,0 +1,12 @@
+var console = Console()
+
+func CrashReportExpressionParts() {
+    load "../../../spite_standard_library/windows"
+    check(3, "ab")
+}
+
+func check(depth: Integer, text: String) {
+    var flag = depth > 100
+    console.print("checking", text)
+    crash not flag and depth * 2 > 10 and text.length() == 3
+}

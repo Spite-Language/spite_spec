@@ -1,0 +1,4 @@
+checking ab
+spite: the program stopped at tests/crash_report_expression_parts/crash_report_expression_parts.spite:11 in CrashReportExpressionParts.check, site 48451f17 (flag=false, depth=3, text=ab)
+spite.frame	tests/crash_report_expression_parts/crash_report_expression_parts.spite:11	CrashReportExpressionParts	check
+spite.frame	tests/crash_report_expression_parts/crash_report_expression_parts.spite:5	CrashReportExpressionParts	CrashReportExpressionParts

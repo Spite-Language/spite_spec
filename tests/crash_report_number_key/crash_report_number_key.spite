@@ -1,0 +1,16 @@
+var console = Console()
+
+func CrashReportNumberKey() {
+    load "../../../spite_standard_library/windows"
+    check()
+}
+
+func check() {
+    var ages = Dictionary<String, Integer>()
+    var numbers = Dictionary<Integer, String>()
+    var seven = 7
+    var first_count = ages.count()
+    var second_count = numbers.count()
+    console.print(first_count, second_count)
+    crash numbers[seven]
+}

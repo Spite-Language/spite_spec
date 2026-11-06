@@ -1,0 +1,26 @@
+var console = Console()
+
+func CrashReportManyValues() {
+    load "../../../spite_standard_library/windows"
+    check()
+}
+
+func check() {
+    var value_one = 1
+    var value_two = 2
+    var value_three = 3
+    var value_four = 4
+    var value_five = 5
+    var value_six = 6
+    var value_seven = 7
+    var value_eight = 8
+    var value_nine = 9
+    var value_ten = 10
+    var value_eleven = 11
+    var value_twelve = 12
+    var value_thirteen = 13
+    var value_fourteen = 14
+    var total = value_one + value_two + value_three + value_four + value_five + value_six + value_seven + value_eight + value_nine + value_ten + value_eleven + value_twelve + value_thirteen + value_fourteen
+    console.print(total)
+    crash total < 0
+}

@@ -1,0 +1,15 @@
+var console = Console()
+
+func CrashReportLeavesOut() {
+    load "../../../spite_standard_library/windows"
+    check(3)
+}
+
+func check(depth: Integer) {
+    var worker = Worker()
+    var action = worker.run
+    var label = "kept"
+    action()
+    console.print(label, worker.size)
+    crash depth > 5
+}

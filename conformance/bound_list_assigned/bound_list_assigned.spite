@@ -1,0 +1,17 @@
+var console = Console()
+var names = ["ada", "bo", "cy", "di"]
+
+func BoundListAssigned() {
+    load "../../../spite_standard_library/windows"
+    scan()
+}
+
+func scan() {
+    var index = 0
+    while index < names.count() {
+        names = ["x"]
+        var shout = names[index].upper_case()
+        console.print(shout)
+        index = index + 1
+    }
+}
