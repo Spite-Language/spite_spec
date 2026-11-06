@@ -1,0 +1,48 @@
+var console = Console()
+var program = Program()
+
+func ClassTestCarriesNoCodeForTheClass() {
+    load "../../../spite_standard_library/windows"
+    var held = List<Anything>()
+    var coin = Coin()
+    held.append(coin)
+    held.append(3)
+    var index = 0
+    while index < held.count() {
+        var text = described(held[index])
+        console.print(text)
+        index = index + 1
+    }
+    var haunting = lines_naming("Ghost")
+    var shining = lines_naming("shine")
+    console.print("lines naming Ghost:", haunting, "shine:", shining)
+}
+
+func described(item: Anything): String {
+    if item.class == Ghost {
+        return "a ghost"
+    }
+    if item.class == Coin {
+        return item.shine()
+    }
+    return "something else"
+}
+
+func lines_naming(word: String): Integer {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var written = File(low_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var found = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains(word) {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}

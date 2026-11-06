@@ -1,0 +1,3 @@
+a coin worth 1
+something else
+lines naming Ghost: 0 shine: 1
