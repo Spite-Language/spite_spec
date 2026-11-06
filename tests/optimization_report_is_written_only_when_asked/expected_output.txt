@@ -1,0 +1,6 @@
+asked for nothing
+exit code 0
+report written false
+asked for --optimization-report=report.md with --check
+exit code 0
+report written true
