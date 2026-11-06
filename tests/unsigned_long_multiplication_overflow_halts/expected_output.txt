@@ -1,0 +1,2 @@
+18446744073709551615
+spite: 'large * 2' does not fit in an UnsignedLong (18446744073709551615 * 2), at tests/unsigned_long_multiplication_overflow_halts/unsigned_long_multiplication_overflow_halts.spite:7 in UnsignedLongMultiplicationOverflowHalts.UnsignedLongMultiplicationOverflowHalts
