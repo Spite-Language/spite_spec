@@ -1,0 +1,52 @@
+var console = Console()
+var program = Program()
+var folder = ".spite/optimized_false"
+
+func CompilerOptimizedFalseFlag() {
+    load "../../../spite_standard_library/windows"
+    write_the_program()
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var no_arguments = List<String>()
+    var from_build_file = run_with(compiler, no_arguments)
+    console.print("build.spite says true, no flag:", from_build_file)
+    var off = ["--optimized=false"]
+    var switched_off = run_with(compiler, off)
+    console.print("--optimized=false:", switched_off)
+    var on = ["--optimized"]
+    var switched_on = run_with(compiler, on)
+    console.print("--optimized:", switched_on)
+}
+
+func run_with(compiler: String, arguments: List<String>): String {
+    var running = Process(compiler, arguments)
+    running.working_directory = folder
+    var code = running.run()
+    crash code
+    var printed = running.read_output_as_string()
+    crash printed
+    var trimmed = printed.trim()
+    return "{trimmed} (exit {code})"
+}
+
+func write_the_program() {
+    var made = Directory(folder)
+    if not made.exists() {
+        crash made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("var build = Build()")
+    lines.append("")
+    lines.append("func OptimizedFalse() \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append("    console.print(build.optimized)")
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/optimized_false.spite")
+    var joined = lines.join("\n")
+    crash entry.write_string(joined)
+    var settings = File("{folder}/build.spite")
+    crash settings.write_string("var optimized = true\n")
+}

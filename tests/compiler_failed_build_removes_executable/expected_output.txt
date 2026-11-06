@@ -1,0 +1,4 @@
+a good build 0 executable true
+a build with an error 1 executable false
+a good build again 0 executable true
+a program that cannot be read 1 executable false

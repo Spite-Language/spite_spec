@@ -1,0 +1,5 @@
+built 0 true
+said formatted true
+checked 0 executable kept true
+trailing spaces left false
+checked again 0 executable written false

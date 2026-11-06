@@ -1,0 +1,55 @@
+var console = Console()
+var program = Program()
+var folder = ".spite/removed"
+
+func CompilerFailedBuildRemovesExecutable() {
+    load "../../../spite_standard_library/windows"
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var executable = File("{folder}/.spite/build/removed.exe")
+    write_the_program("    console.print(\"first\")")
+    var good = build(compiler)
+    var after_good = executable.exists()
+    console.print("a good build", good, "executable", after_good)
+    write_the_program("    console.print(missing_name)")
+    var failed = build(compiler)
+    var after_failed = executable.exists()
+    console.print("a build with an error", failed, "executable", after_failed)
+    write_the_program("    console.print(\"second\")")
+    var again = build(compiler)
+    var after_again = executable.exists()
+    console.print("a good build again", again, "executable", after_again)
+    write_the_program("    console.print(\"never closed)")
+    var unreadable = build(compiler)
+    var after_unreadable = executable.exists()
+    console.print("a program that cannot be read", unreadable, "executable", after_unreadable)
+}
+
+func build(compiler: String): Integer {
+    var arguments = ["--build"]
+    var building = Process(compiler, arguments)
+    building.working_directory = folder
+    building.keeps_errors_apart = true
+    var code = building.run()
+    crash code
+    return code
+}
+
+func write_the_program(statement: String) {
+    var made = Directory(folder)
+    if not made.exists() {
+        crash made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("")
+    lines.append("func Removed() \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append(statement)
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/removed.spite")
+    var joined = lines.join("\n")
+    crash entry.write_string(joined)
+}

@@ -1,0 +1,47 @@
+var console = Console()
+var program = Program()
+var folder = ".spite/final_with_build"
+
+func CompilerBuildWithFinalClasses() {
+    load "../../../spite_standard_library/windows"
+    write_the_program()
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var executable = File("{folder}/.spite/build/final_with_build.exe")
+    if executable.exists() {
+        crash executable.remove()
+    }
+    var arguments = ["--build", "--final-classes=../written_classes"]
+    var building = Process(compiler, arguments)
+    building.working_directory = folder
+    var code = building.run()
+    crash code
+    var is_built = executable.exists()
+    var marker = File("{folder}/../written_classes/.final-classes")
+    var is_marked = marker.exists()
+    var badge = File("{folder}/../written_classes/badge.spite")
+    var is_written = badge.exists()
+    console.print("exit", code, "executable", is_built, "folder marked", is_marked, "badge written", is_written)
+}
+
+func write_the_program() {
+    var made = Directory(folder)
+    if not made.exists() {
+        crash made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("")
+    lines.append("func FinalWithBuild() \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append("    var badge = Badge()")
+    lines.append("    console.print(badge.name)")
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/final_with_build.spite")
+    var joined = lines.join("\n")
+    crash entry.write_string(joined)
+    var badge = File("{folder}/badge.spite")
+    crash badge.write_string("var name = \"gold\"\n")
+}

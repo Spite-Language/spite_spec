@@ -1,0 +1,2 @@
+a plain run: unused function kept false (exit 0)
+--hot-reload: unused function kept true (exit 0)

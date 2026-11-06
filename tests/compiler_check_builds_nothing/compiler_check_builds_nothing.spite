@@ -1,0 +1,63 @@
+var console = Console()
+var program = Program()
+var folder = ".spite/checked"
+
+func CompilerCheckBuildsNothing() {
+    load "../../../spite_standard_library/windows"
+    write_the_program("    console.print(\"checked\")")
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var built_arguments = ["--build"]
+    var building = Process(compiler, built_arguments)
+    building.working_directory = folder
+    var built_code = building.run()
+    crash built_code
+    var executable = File("{folder}/.spite/build/checked.exe")
+    var kept_before = executable.exists()
+    console.print("built", built_code, kept_before)
+    write_the_program("    console.print(\"checked\")   ")
+    var checked_arguments = ["--check"]
+    var checking = Process(compiler, checked_arguments)
+    checking.working_directory = folder
+    checking.keeps_errors_apart = true
+    var checked_code = checking.run()
+    crash checked_code
+    var errors = checking.read_errors_as_string()
+    crash errors
+    var said_formatted = errors.starts_with("formatted ")
+    console.print("said formatted", said_formatted)
+    var kept_after = executable.exists()
+    console.print("checked", checked_code, "executable kept", kept_after)
+    var entry = File("{folder}/checked.spite")
+    var text = entry.read_as_string()
+    crash text
+    var trailing = text.contains("   \n")
+    console.print("trailing spaces left", trailing)
+    var removed = executable.remove()
+    crash removed
+    var again = Process(compiler, checked_arguments)
+    again.working_directory = folder
+    var again_code = again.run()
+    crash again_code
+    var written = executable.exists()
+    console.print("checked again", again_code, "executable written", written)
+}
+
+func write_the_program(statement: String) {
+    var made = Directory(folder)
+    if not made.exists() {
+        crash made.create()
+    }
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("")
+    lines.append("func Checked() \{")
+    lines.append("    load \"../../../spite_standard_library/windows\"")
+    lines.append(statement)
+    lines.append("}")
+    lines.append("")
+    var entry = File("{folder}/checked.spite")
+    var joined = lines.join("\n")
+    crash entry.write_string(joined)
+}

@@ -1,0 +1,3 @@
+build.spite says true, no flag: true (exit 0)
+--optimized=false: false (exit 0)
+--optimized: true (exit 0)
