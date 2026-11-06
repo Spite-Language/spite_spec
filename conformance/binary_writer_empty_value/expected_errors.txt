@@ -1,0 +1,1 @@
+conformance/binary_writer_empty_value/binary_writer_empty_value.spite:7: error: this value may be null (it is a Point?), but a Point is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in BinaryWriterEmptyValue.BinaryWriterEmptyValue)

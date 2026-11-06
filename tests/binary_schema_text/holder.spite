@@ -1,0 +1,16 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var name = ""
+var mood: Mood = 'calm'
+var scores = Dictionary<String, Integer>()
+var _cache = 0
+var console = Console()
+
+func describe(): String {
+    var count = scores.count()
+    console.print("holder", name, mood, count, _cache)
+    return name
+}

@@ -1,0 +1,11 @@
+var tiny: Tiny = -2
+var byte: Byte = 200
+var short: Short = 258
+var unsigned_short: UnsignedShort = 43981
+var integer = 16909060
+var unsigned_integer: UnsignedInteger = 2712847316
+var long: Long = 72623859790382856
+var unsigned_long: UnsignedLong = 72623859790382856
+var float: Float = 1.0
+var double: Double = 1.0
+var flag = true

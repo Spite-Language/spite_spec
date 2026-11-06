@@ -1,0 +1,8 @@
+Vector2 fixed size
+Vector3 fixed size
+Vector4 fixed size
+Matrix3 fixed size
+Matrix4 fixed size
+Vector3 bytes 12
+Matrix4 bytes 64 true
+Quaternion bytes 32 0.5 0.5 0.5 0.5

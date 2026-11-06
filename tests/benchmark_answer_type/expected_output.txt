@@ -1,0 +1,2 @@
+answer types Long Integer String
+answers 500500 10 something

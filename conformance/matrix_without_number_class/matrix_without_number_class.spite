@@ -1,0 +1,7 @@
+var console = Console()
+
+func MatrixWithoutNumberClass() {
+    load "../../../spite_standard_library/windows"
+    var matrix = Matrix4()
+    console.print(matrix)
+}

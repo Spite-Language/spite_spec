@@ -1,0 +1,4 @@
+var wide: Double = 0.0
+var narrow: Float = 0.0
+var wide_below: Double = 0.0
+var narrow_above: Float = 0.0

@@ -1,0 +1,127 @@
+var console = Console()
+var _long_text_length = 130
+var _all_bits = 255
+
+func BinaryTextAndCounts() {
+    load "../../../spite_standard_library/windows"
+    short_and_long_texts()
+    list_counts()
+    counts_too_large()
+    presence_bytes()
+}
+
+func short_and_long_texts() {
+    var writer = BinaryWriter<Note>()
+    var note = Note()
+    note.text = "abc"
+    var short_bytes = writer.write(note)
+    var short_head = head(short_bytes, 5)
+    console.print("three letters:", short_head)
+    note.text = "é"
+    var accented_bytes = writer.write(note)
+    var accented_head = head(accented_bytes, 5)
+    console.print("one accented letter is two UTF-8 bytes:", accented_head)
+    var letters = ""
+    var length = 0
+    while length < _long_text_length {
+        letters = "{letters}x"
+        length = length + 1
+    }
+    note.text = letters
+    var long_bytes = writer.write(note)
+    var long_head = head(long_bytes, 5)
+    var long_count = long_bytes.count()
+    console.print("130 letters:", long_head, "of", long_count, "bytes")
+    var reader = BinaryReader<Note>()
+    var back = reader.read(long_bytes)
+    crash back
+    var back_length = back.text.length()
+    console.print("read back", back_length)
+}
+
+func list_counts() {
+    var writer = BinaryWriter<Row>()
+    var row = Row()
+    var index = 0
+    while index < _long_text_length {
+        row.cells.append(index)
+        index = index + 1
+    }
+    var bytes = writer.write(row)
+    var first = head(bytes, 7)
+    var total = bytes.count()
+    console.print("130 cells:", first, "of", total, "bytes")
+    var reader = BinaryReader<Row>()
+    var back = reader.read(bytes)
+    crash back
+    var cells = back.cells.count()
+    console.print("read back", cells)
+}
+
+func counts_too_large() {
+    var reader = BinaryReader<Row>()
+    var largest = Buffer(0)
+    largest.append(_all_bits)
+    largest.append(_all_bits)
+    largest.append(_all_bits)
+    largest.append(_all_bits)
+    largest.append(7)
+    var too_short = reader.read(largest)
+    if too_short {
+        console.print("a count of 2147483647 with no bytes behind it was read")
+    } else {
+        console.print("a count of 2147483647 with no bytes behind it is refused")
+    }
+}
+
+func presence_bytes() {
+    var reader = BinaryReader<Maybe>()
+    var absent = Buffer(0)
+    absent.append(0)
+    var present = Buffer(0)
+    present.append(1)
+    present.append(7)
+    present.append(0)
+    present.append(0)
+    present.append(0)
+    var odd = Buffer(0)
+    odd.append(2)
+    odd.append(7)
+    odd.append(0)
+    odd.append(0)
+    odd.append(0)
+    var read_absent = reader.read(absent)
+    var read_present = reader.read(present)
+    var read_odd = reader.read(odd)
+    crash read_absent
+    crash read_present
+    var absent_value = read_absent.value
+    var present_value = read_present.value
+    console.print("presence 0:", absent_value, "presence 1:", present_value)
+    if read_odd {
+        console.print("presence 2 was read")
+    } else {
+        console.print("presence 2 is refused")
+    }
+    var writer = BinaryWriter<Maybe>()
+    var maybe = Maybe()
+    var empty_bytes = writer.write(maybe)
+    maybe.value = 7
+    var full_bytes = writer.write(maybe)
+    var empty_head = head(empty_bytes, 8)
+    var full_head = head(full_bytes, 8)
+    console.print("written empty:", empty_head, "written 7:", full_head)
+}
+
+func head(bytes: Buffer, wanted: Integer): String {
+    var parts = List<String>()
+    var index = 0
+    while index < wanted and index < bytes.count() {
+        var held = bytes[index]
+        crash held
+        var shown = held.to_string()
+        parts.append(shown)
+        index = index + 1
+    }
+    return parts.join(" ")
+}

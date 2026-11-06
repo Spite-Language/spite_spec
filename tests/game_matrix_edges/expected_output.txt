@@ -1,0 +1,7 @@
+Matrix4 changed is the identity false after set_identity true
+Matrix3 changed is the identity false after set_identity true
+Quaternion (1, 2, 3, 4) after set_identity (0, 0, 0, 1)
+rotation alone turns (1, 0, 0) to (0, 1, 0)
+a zero scale part has no rotation (0, 0, 0, 1)
+a zero scale part has no normal matrix
+the identity has one [1 0 0; 0 1 0; 0 0 1]

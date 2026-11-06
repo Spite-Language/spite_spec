@@ -1,0 +1,12 @@
+var console = Console()
+var clock = Clock()
+
+func ClockBenchmarkMethod() {
+    load "../../../spite_standard_library/windows"
+    var measured = clock.benchmark(work)
+    console.print(measured)
+}
+
+func work(): Integer {
+    return 1
+}

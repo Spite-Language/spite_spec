@@ -1,0 +1,23 @@
+var console = Console()
+
+func BinaryEnumWidth() {
+    load "../../../spite_standard_library/windows"
+    var narrow = Narrow()
+    var narrow_writer = BinaryWriter<Narrow>()
+    var narrow_bytes = narrow_writer.write(narrow)
+    var narrow_count = narrow_bytes.count()
+    var narrow_first = narrow_bytes[0]
+    console.print("two values: bytes", narrow_count, "first", narrow_first)
+    var wide = Wide()
+    wide.level = 'level_256'
+    var wide_writer = BinaryWriter<Wide>()
+    var wide_bytes = wide_writer.write(wide)
+    var wide_count = wide_bytes.count()
+    var low = wide_bytes[0]
+    var high = wide_bytes[1]
+    console.print("257 values: bytes", wide_count, "low", low, "high", high)
+    var reader = BinaryReader<Wide>()
+    var back = reader.read(wide_bytes)
+    crash back
+    console.print("read back", back.level)
+}

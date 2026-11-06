@@ -1,0 +1,8 @@
+generic $component_type
+
+func describe(): String {
+    if $component_type.is_fixed_size {
+        return "fixed size"
+    }
+    return "grows"
+}

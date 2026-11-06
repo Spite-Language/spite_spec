@@ -1,0 +1,3 @@
+var level = Level(0)
+var weight = Weight(0.0)
+var plain = Empty()

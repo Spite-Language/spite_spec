@@ -1,0 +1,35 @@
+var console = Console()
+
+func GameVectorEdges() {
+    load "../../../spite_standard_library/windows"
+    interpolation()
+    not_a_number_parts()
+}
+
+func interpolation() {
+    var start = Vector3(0.0, 10.0, -4.0)
+    var target = Vector3(4.0, 20.0, 4.0)
+    var at_start = start.linear_interpolate(target, 0.0)
+    var at_target = start.linear_interpolate(target, 1.0)
+    var beyond = start.linear_interpolate(target, 2.0)
+    var before = start.linear_interpolate(target, -1.0)
+    console.print("at 0", at_start, "at 1", at_target)
+    console.print("at 2", beyond, "at -1", before)
+    var flat_start = Vector2(1.0, 2.0)
+    var flat_target = Vector2(3.0, 6.0)
+    var flat_beyond = flat_start.linear_interpolate(flat_target, 1.5)
+    console.print("Vector2 at 1.5", flat_beyond)
+    var four_start = Vector4(0.0, 0.0, 0.0, 0.0)
+    var four_target = Vector4(2.0, 4.0, 6.0, 8.0)
+    var four_before = four_start.linear_interpolate(four_target, -0.5)
+    console.print("Vector4 at -0.5", four_before)
+}
+
+func not_a_number_parts() {
+    var gap = Float.NotANumber()
+    var with_gap = Vector3(gap, 5.0, 5.0)
+    var plain = Vector3(1.0, 2.0, 9.0)
+    var lower = with_gap.minimum(plain)
+    var upper = plain.maximum(with_gap)
+    console.print("minimum", lower, "maximum", upper)
+}

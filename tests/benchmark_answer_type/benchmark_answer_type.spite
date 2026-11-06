@@ -1,0 +1,34 @@
+var console = Console()
+
+func BenchmarkAnswerType() {
+    load "../../../spite_standard_library/windows"
+    var longs = Benchmark(sum_to_a_thousand)
+    var integers = Benchmark(count_to_ten)
+    var words = Benchmark(say_something)
+    var long_type = longs.class.generics["answer_type"]
+    var integer_type = integers.class.generics["answer_type"]
+    var word_type = words.class.generics["answer_type"]
+    var long_name = long_type.name
+    var integer_name = integer_type.name
+    var word_name = word_type.name
+    console.print("answer types", long_name, integer_name, word_name)
+    console.print("answers", longs.answer, integers.answer, words.answer)
+}
+
+func sum_to_a_thousand(): Long {
+    var total: Long = 0
+    var index = 0
+    while index < 1000 {
+        index = index + 1
+        total = total + index
+    }
+    return total
+}
+
+func count_to_ten(): Integer {
+    return 10
+}
+
+func say_something(): String {
+    return "something"
+}

@@ -1,0 +1,9 @@
+set to 2 and -1, they read back 2 -1
+interpolation does not clamp either 1 -0.5 4 -2
+out of range, written as #ff0080 rgb(255, 0, 128)
+below range, written as #00000000 rgba(0, 0, 0, 0)
+equal colours true one step apart in one channel false
+alpha stays 0.5 0.5 0.5
+rgb(300, -5, 0) is held as 1 0 and written rgb(255, 0, 0)
+hue 450 is hue 90 true hue 840 is hue 120 true
+hue -270deg is hue 90 true

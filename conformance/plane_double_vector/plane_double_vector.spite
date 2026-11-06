@@ -1,0 +1,10 @@
+var console = Console()
+
+func PlaneDoubleVector() {
+    load "../../../spite_standard_library/windows"
+    var plane = Plane()
+    var point = Vector3(0.0, 0.0, 0.0)
+    var wide = Vector3<Double>(1.0, 2.0, 3.0)
+    plane.set_point_normal(point, wide)
+    console.print(plane)
+}

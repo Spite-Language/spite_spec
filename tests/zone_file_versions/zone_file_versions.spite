@@ -1,0 +1,85 @@
+var console = Console()
+var zones = TimeZones()
+var _header_length = 44
+var _newline = 10
+var _version_position = 4
+var _version_three = 51
+var _version_four = 52
+var _moments: List<Long> = [1205045999, 1205046000, 1710053999, 1710054000]
+
+func ZoneFileVersions() {
+    load "../../../spite_standard_library/windows"
+    var file = File("tests/zone_file_versions/eastern.tzif")
+    var data = file.read_as_buffer()
+    crash data
+    var second_version = data.copy()
+    show("version 2", second_version)
+    var third_version = data.copy()
+    third_version[_version_position] = _version_three
+    show("version 3", third_version)
+    var fourth_version = data.copy()
+    fourth_version[_version_position] = _version_four
+    show("version 4", fourth_version)
+    var first_version = first_block_only(data)
+    show("version 1", first_version)
+    var footer_start = footer_start_of(data)
+    var good_footer = with_footer(data, footer_start, "EST5EDT,M3.2.0,M11.1.0")
+    show("footer with rules", good_footer)
+    var no_rule_footer = with_footer(data, footer_start, "EST5EDT")
+    show("footer naming daylight time with no rules", no_rule_footer)
+    var standard_footer = with_footer(data, footer_start, "EST5")
+    show("footer of standard time only", standard_footer)
+}
+
+func first_block_only(data: Buffer): Buffer {
+    var universal_count = data.read_integer_big_endian_at(20)
+    var standard_count = data.read_integer_big_endian_at(24)
+    var leap_count = data.read_integer_big_endian_at(28)
+    var time_count = data.read_integer_big_endian_at(32)
+    var type_count = data.read_integer_big_endian_at(36)
+    var character_count = data.read_integer_big_endian_at(40)
+    crash universal_count and standard_count and leap_count and time_count and type_count and character_count
+    var block = time_count * 5 + type_count * 6 + character_count + leap_count * 8 + standard_count + universal_count
+    var length = _header_length + block
+    var first = data.read_buffer_at(0, length)
+    crash first
+    first[_version_position] = 0
+    return first
+}
+
+func footer_start_of(data: Buffer): Integer {
+    var position = data.count() - 2
+    while data[position] != _newline {
+        position = position - 1
+    }
+    return position + 1
+}
+
+func with_footer(data: Buffer, footer_start: Integer, footer: String): Buffer {
+    var rebuilt = Buffer(0)
+    rebuilt.append_buffer(data, 0, footer_start)
+    var text = "{footer}\n"
+    var bytes = text.to_buffer()
+    var length = bytes.count()
+    rebuilt.append_buffer(bytes, 0, length)
+    return rebuilt
+}
+
+func show(name: String, data: Buffer) {
+    var zone = zones.read_tzif("Test/Eastern", data)
+    if not zone {
+        console.print(name, "is refused")
+        return
+    }
+    var shown = List<String>()
+    var index = 0
+    while index < _moments.count() {
+        var since_1970 = Duration(_moments[index], 'seconds')
+        var moment = Instant(since_1970)
+        var local = moment.to_string_in(zone)
+        shown.append(local)
+        index = index + 1
+    }
+    var joined = shown.join(" ")
+    console.print(name, "reads:", joined)
+}

@@ -1,0 +1,1 @@
+conformance/instant_plus_period/instant_plus_period.spite:6: error: a Period cannot be used where a Duration is needed: a value is cast to the class a place wants through that class's conversion, and Duration declares no 'Duration(from: Period)' (in InstantPlusPeriod.InstantPlusPeriod)

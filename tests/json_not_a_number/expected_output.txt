@@ -1,0 +1,2 @@
+spite: the program stopped at tests/json_not_a_number/../../../spite_standard_library/common/json_writer.spite:115 in JsonWriter_of_Double.written_decimal, site fce94c28 (shown=nan, path=Order.price)
+spite.frame	tests/json_not_a_number/json_not_a_number.spite:8	JsonNotANumber	JsonNotANumber

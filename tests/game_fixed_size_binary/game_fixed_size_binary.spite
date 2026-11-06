@@ -1,0 +1,53 @@
+var console = Console()
+
+func GameFixedSizeBinary() {
+    load "../../../spite_standard_library/windows"
+    fixed_sizes()
+    round_trips()
+}
+
+func fixed_sizes() {
+    var vectors2 = Store<Vector2<Float>>()
+    var vectors3 = Store<Vector3<Double>>()
+    var vectors4 = Store<Vector4<Float>>()
+    var matrices3 = Store<Matrix3<Float>>()
+    var matrices4 = Store<Matrix4<Double>>()
+    var vectors2_text = vectors2.describe()
+    var vectors3_text = vectors3.describe()
+    var vectors4_text = vectors4.describe()
+    var matrices3_text = matrices3.describe()
+    var matrices4_text = matrices4.describe()
+    console.print("Vector2", vectors2_text)
+    console.print("Vector3", vectors3_text)
+    console.print("Vector4", vectors4_text)
+    console.print("Matrix3", matrices3_text)
+    console.print("Matrix4", matrices4_text)
+}
+
+func round_trips() {
+    var vector_writer = BinaryWriter<Vector3<Float>>()
+    var point = Vector3(1.5, -2.0, 4.25)
+    var vector_bytes = vector_writer.write(point)
+    var vector_size = vector_bytes.count()
+    console.print("Vector3 bytes", vector_size)
+    var matrix_writer = BinaryWriter<Matrix4<Float>>()
+    var matrix_reader = BinaryReader<Matrix4<Float>>()
+    var matrix = Matrix4<Float>()
+    var offset = Vector3(3.0, 4.0, 5.0)
+    matrix.translation = offset
+    var matrix_bytes = matrix_writer.write(matrix)
+    var matrix_size = matrix_bytes.count()
+    var matrix_back = matrix_reader.read(matrix_bytes)
+    crash matrix_back
+    var same = matrix_back == matrix
+    console.print("Matrix4 bytes", matrix_size, same)
+    var turn_writer = BinaryWriter<Quaternion<Double>>()
+    var turn_reader = BinaryReader<Quaternion<Double>>()
+    var turn = Quaternion<Double>()
+    turn.set_parts(0.5, 0.5, 0.5, 0.5)
+    var turn_bytes = turn_writer.write(turn)
+    var turn_size = turn_bytes.count()
+    var turn_back = turn_reader.read(turn_bytes)
+    crash turn_back
+    console.print("Quaternion bytes", turn_size, turn_back.x, turn_back.y, turn_back.z, turn_back.w)
+}

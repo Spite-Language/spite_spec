@@ -1,0 +1,13 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func JsonReaderTypeAttribute() {
+    load "../../../spite_standard_library/windows"
+    var reader = JsonReader<Holder>()
+    var holder = reader.read("\{}")
+    console.print(holder)
+}

@@ -1,1 +1,1 @@
-conformance/time_duration_days/time_duration_days.spite:5: error: 'days' is not a value of ... (in TimeDurationDays.TimeDurationDays)
+conformance/time_duration_days/time_duration_days.spite:5: error: 'days' is not a value of the enum 'Unit', whose values are 'nanoseconds', 'microseconds', 'milliseconds', 'seconds', 'minutes', 'hours' (in TimeDurationDays.TimeDurationDays)

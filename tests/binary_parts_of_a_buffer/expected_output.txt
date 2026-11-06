@@ -1,0 +1,3 @@
+point 8 bytes, name 4 bytes, together 12
+read 7 9 tea
+reading the whole buffer as a Point fails: bytes are left over

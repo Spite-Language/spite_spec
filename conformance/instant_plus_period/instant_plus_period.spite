@@ -1,0 +1,8 @@
+var console = Console()
+
+func InstantPlusPeriod() {
+    load "../../../spite_standard_library/windows"
+    var instant = Instant(Duration(0, 'seconds'))
+    var later = instant + Period(1, 'days')
+    console.print(later)
+}

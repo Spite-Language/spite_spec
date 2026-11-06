@@ -1,0 +1,25 @@
+var console = Console()
+
+func TimeAnnotations() {
+    load "../../../spite_standard_library/windows"
+    show_instant("2024-03-10T03:00:00-04:00[America/New_York]")
+    show_instant("2024-03-10T03:00:00-04:00[!America/New_York]")
+    show_instant("2024-03-10T03:00:00-05:00[!America/New_York]")
+    show_instant("2024-03-10T03:00:00-04:00[u-ca=iso8601][America/New_York]")
+    show_instant("2024-03-10T03:00:00-04:00[America/New_York][u-ca=iso8601]")
+    show_instant("2024-03-10T07:00:00Z[u-ca=iso8601]")
+    show_instant("2024-03-10T07:00:00Z[!u-ca=iso8601]")
+    show_instant("2024-03-10T07:00:00Z[u-ca=hebrew]")
+    show_instant("2024-03-10T07:00:00Z[!u-ca=hebrew]")
+    show_instant("2024-03-10T07:00:00Z[x=y]")
+    show_instant("2024-03-10T07:00:00Z[!x=y]")
+}
+
+func show_instant(text: String) {
+    var read: Instant? = text
+    if read {
+        console.print("'{text}' is read as", read)
+    } else {
+        console.print("'{text}' is refused")
+    }
+}

@@ -1,0 +1,19 @@
+a point on a face is inside true on a corner true just past a face false
+boxes sharing only a face intersect true true boxes apart false
+Plane() is (0, 1, 0; 0) normal (0, 1, 0) above 3 below -2
+set_parts (1, 0, 0; -4) in front 2 behind -3
+a normal of length 3 becomes (0, 1, 0) and the plane is (0, 1, 0; -2)
+normalize scales the distance too: (0, 0, 1; 2)
+left (1, 0, 0; 4) right (-1, 0, 0; 4)
+bottom (0, -1, 0; 2) top (0, 1, 0; 2)
+near (0, 0, -1; -1) far (0, 0, 1; 11)
+inside true past left false right false bottom false top false
+before near false beyond far false
+a box inside is kept true a box past the right side false
+origin (0, 0, 10) direction (0, 0, -2)
+a plane 10 away along a direction of length 2 hit at 5
+a box 9 away hit at 4.5 and point_at 4.5 is (0, 0, 1)
+a ray parallel to the plane no hit
+a ray passing beside the box no hit
+triangle from the front hit at 5 from the back hit at 5
+pointing away no hit parallel no hit

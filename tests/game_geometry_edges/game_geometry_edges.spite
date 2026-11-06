@@ -1,0 +1,192 @@
+var console = Console()
+
+func GameGeometryEdges() {
+    load "../../../spite_standard_library/windows"
+    box_faces()
+    planes()
+    frustum_sides()
+    ray_directions()
+    ray_misses()
+}
+
+func box_faces() {
+    var low = Vector3(0.0, 0.0, 0.0)
+    var high = Vector3(2.0, 2.0, 2.0)
+    var box = AxisAlignedBox(low, high)
+    var on_face = Vector3(2.0, 1.0, 1.0)
+    var on_corner = Vector3(0.0, 0.0, 2.0)
+    var just_outside = Vector3(2.001, 1.0, 1.0)
+    var face_inside = box.contains(on_face)
+    var corner_inside = box.contains(on_corner)
+    var outside = box.contains(just_outside)
+    console.print("a point on a face is inside", face_inside, "on a corner", corner_inside, "just past a face", outside)
+    var touching_low = Vector3(2.0, 0.0, 0.0)
+    var touching_high = Vector3(4.0, 2.0, 2.0)
+    var touching = AxisAlignedBox(touching_low, touching_high)
+    var apart_low = Vector3(2.5, 0.0, 0.0)
+    var apart_high = Vector3(4.0, 2.0, 2.0)
+    var apart = AxisAlignedBox(apart_low, apart_high)
+    var meets = box.intersects(touching)
+    var meets_back = touching.intersects(box)
+    var misses = box.intersects(apart)
+    console.print("boxes sharing only a face intersect", meets, meets_back, "boxes apart", misses)
+}
+
+func planes() {
+    var floor = Plane()
+    var above = Vector3(0.0, 3.0, 0.0)
+    var below = Vector3(5.0, -2.0, 1.0)
+    var above_distance = floor.signed_distance_to(above)
+    var below_distance = floor.signed_distance_to(below)
+    var floor_normal = floor.normal()
+    console.print("Plane() is", floor, "normal", floor_normal, "above", above_distance, "below", below_distance)
+    var made = Plane()
+    made.set_parts(1.0, 0.0, 0.0, -4.0)
+    var front = Vector3(6.0, 0.0, 0.0)
+    var behind = Vector3(1.0, 9.0, 9.0)
+    var front_distance = made.signed_distance_to(front)
+    var behind_distance = made.signed_distance_to(behind)
+    console.print("set_parts", made, "in front", front_distance, "behind", behind_distance)
+    var point = Vector3(0.0, 2.0, 0.0)
+    var long_normal = Vector3(0.0, 3.0, 0.0)
+    var from_point = Plane()
+    from_point.set_point_normal(point, long_normal)
+    var from_point_normal = from_point.normal()
+    console.print("a normal of length 3 becomes", from_point_normal, "and the plane is", from_point)
+    var wide = Plane()
+    wide.set_parts(0.0, 0.0, 4.0, 8.0)
+    wide.normalize()
+    console.print("normalize scales the distance too:", wide)
+}
+
+func frustum_sides() {
+    var projection = Matrix4<Float>()
+    projection.set_orthographic(-4.0, 4.0, -2.0, 2.0, 1.0, 11.0)
+    var frustum = Frustum()
+    frustum.from_view_projection = projection
+    var left_plane = describe(frustum.left)
+    var right_plane = describe(frustum.right)
+    var bottom_plane = describe(frustum.bottom)
+    var top_plane = describe(frustum.top)
+    var near_plane = describe(frustum.near)
+    var far_plane = describe(frustum.far)
+    console.print("left", left_plane, "right", right_plane)
+    console.print("bottom", bottom_plane, "top", top_plane)
+    console.print("near", near_plane, "far", far_plane)
+    var inside = Vector3(0.0, 0.0, -5.0)
+    var past_left = Vector3(-4.5, 0.0, -5.0)
+    var past_right = Vector3(4.5, 0.0, -5.0)
+    var past_bottom = Vector3(0.0, -2.5, -5.0)
+    var past_top = Vector3(0.0, 2.5, -5.0)
+    var before_near = Vector3(0.0, 0.0, -0.5)
+    var beyond_far = Vector3(0.0, 0.0, -11.5)
+    var in_text = frustum.contains_point(inside)
+    var left_text = frustum.contains_point(past_left)
+    var right_text = frustum.contains_point(past_right)
+    var bottom_text = frustum.contains_point(past_bottom)
+    var top_text = frustum.contains_point(past_top)
+    var near_text = frustum.contains_point(before_near)
+    var far_text = frustum.contains_point(beyond_far)
+    console.print(
+        "inside",
+        in_text,
+        "past left",
+        left_text,
+        "right",
+        right_text,
+        "bottom",
+        bottom_text,
+        "top",
+        top_text,
+    )
+    console.print("before near", near_text, "beyond far", far_text)
+    var kept_low = Vector3(-1.0, -1.0, -6.0)
+    var kept_high = Vector3(1.0, 1.0, -4.0)
+    var kept = AxisAlignedBox(kept_low, kept_high)
+    var dropped_low = Vector3(5.0, -1.0, -6.0)
+    var dropped_high = Vector3(7.0, 1.0, -4.0)
+    var dropped = AxisAlignedBox(dropped_low, dropped_high)
+    var kept_answer = frustum.intersects_box(kept)
+    var dropped_answer = frustum.intersects_box(dropped)
+    console.print("a box inside is kept", kept_answer, "a box past the right side", dropped_answer)
+}
+
+func describe(plane: Plane): String {
+    return "({near(plane.normal_x)}, {near(plane.normal_y)}, {near(plane.normal_z)}; {near(plane.distance)})"
+}
+
+func ray_directions() {
+    var origin = Vector3(0.0, 0.0, 10.0)
+    var long_direction = Vector3(0.0, 0.0, -2.0)
+    var ray = Ray(origin, long_direction)
+    var ray_origin = ray.origin()
+    var ray_direction = ray.direction()
+    console.print("origin", ray_origin, "direction", ray_direction)
+    var floor = Plane()
+    var on_floor = Vector3(0.0, 0.0, 0.0)
+    var facing = Vector3(0.0, 0.0, 1.0)
+    floor.set_point_normal(on_floor, facing)
+    var plane_hit = ray.hit_plane(floor)
+    var shown_1 = describe_hit(plane_hit)
+    console.print("a plane 10 away along a direction of length 2", shown_1)
+    var low = Vector3(-1.0, -1.0, -1.0)
+    var high = Vector3(1.0, 1.0, 1.0)
+    var box = AxisAlignedBox(low, high)
+    var box_hit = ray.hit_box(box)
+    var along = ray.point_at(4.5)
+    var shown_2 = describe_hit(box_hit)
+    console.print("a box 9 away", shown_2, "and point_at 4.5 is", along)
+}
+
+func ray_misses() {
+    var origin = Vector3(0.0, 0.0, 5.0)
+    var forward = Vector3(0.0, 0.0, -1.0)
+    var sideways = Vector3(1.0, 0.0, 0.0)
+    var down = Ray(origin, forward)
+    var parallel = Ray(origin, sideways)
+    var floor = Plane()
+    var on_floor = Vector3(0.0, 0.0, 0.0)
+    var facing = Vector3(0.0, 0.0, 1.0)
+    floor.set_point_normal(on_floor, facing)
+    var parallel_hit = parallel.hit_plane(floor)
+    var shown_3 = describe_hit(parallel_hit)
+    console.print("a ray parallel to the plane", shown_3)
+    var low = Vector3(-1.0, -1.0, -1.0)
+    var high = Vector3(1.0, 1.0, 1.0)
+    var box = AxisAlignedBox(low, high)
+    var beside_origin = Vector3(3.0, 0.0, 5.0)
+    var beside = Ray(beside_origin, forward)
+    var beside_hit = beside.hit_box(box)
+    var shown_4 = describe_hit(beside_hit)
+    console.print("a ray passing beside the box", shown_4)
+    var first = Vector3(-1.0, -1.0, 0.0)
+    var second = Vector3(1.0, -1.0, 0.0)
+    var third = Vector3(0.0, 1.0, 0.0)
+    var from_front = down.hit_triangle(first, second, third)
+    var back_origin = Vector3(0.0, 0.0, -5.0)
+    var backward = Vector3(0.0, 0.0, 1.0)
+    var behind_ray = Ray(back_origin, backward)
+    var from_back = behind_ray.hit_triangle(first, second, third)
+    var away_ray = Ray(origin, backward)
+    var pointing_away = away_ray.hit_triangle(first, second, third)
+    var flat_ray = parallel.hit_triangle(first, second, third)
+    var shown_5 = describe_hit(from_front)
+    var shown_6 = describe_hit(from_back)
+    console.print("triangle from the front", shown_5, "from the back", shown_6)
+    var shown_7 = describe_hit(pointing_away)
+    var shown_8 = describe_hit(flat_ray)
+    console.print("pointing away", shown_7, "parallel", shown_8)
+}
+
+func describe_hit(distance: Float?): String {
+    if distance {
+        return "hit at {distance}"
+    }
+    return "no hit"
+}
+
+func near(value: Float): Float {
+    var scaled = value * 10000.0
+    var whole = scaled.round()
+    return whole / 10000.0 + 0.0
+}

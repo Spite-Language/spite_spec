@@ -1,0 +1,40 @@
+var console = Console()
+
+func BinaryNumberLayouts() {
+    load "../../../spite_standard_library/windows"
+    var numbers = Numbers()
+    var writer = BinaryWriter<Numbers>()
+    var bytes = writer.write(numbers)
+    var count = bytes.count()
+    var shown = hexadecimal(bytes)
+    console.print(count, "bytes:")
+    console.print(shown)
+    var reader = BinaryReader<Numbers>()
+    var back = reader.read(bytes)
+    crash back
+    var same = back.integer == numbers.integer and back.long == numbers.long and back.double == numbers.double
+    console.print("read back", same)
+    var sizes = Sizes()
+    var sizes_bytes = BinaryWriter<Sizes>().write(sizes)
+    var sizes_count = sizes_bytes.count()
+    console.print("two Booleans and an empty Float? (one presence byte) are", sizes_count)
+}
+
+func hexadecimal(bytes: Buffer): String {
+    var parts = List<String>()
+    var index = 0
+    while index < bytes.count() {
+        var held = bytes[index]
+        crash held
+        var high = held / 16
+        var low = held - high * 16
+        var digits = "0123456789abcdef"
+        var high_digit = digits.slice(high, high + 1)
+        var low_digit = digits.slice(low, low + 1)
+        crash high_digit
+        crash low_digit
+        parts.append("{high_digit}{low_digit}")
+        index = index + 1
+    }
+    return parts.join(" ")
+}

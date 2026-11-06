@@ -1,0 +1,102 @@
+var console = Console()
+var _sample_year = 2024
+var _sample_nanosecond = 123456789
+var _last_nanosecond = 999999999
+
+func TimeLocalValues() {
+    load "../../../spite_standard_library/windows"
+    date_parts()
+    time_parts()
+    time_order()
+    date_time_parts()
+    periods()
+}
+
+func date_parts() {
+    var date = Date(_sample_year, 3, 10)
+    var year = date.year
+    var month = date.month
+    var day = date.day
+    console.print("year", year, "month", month, "day", day)
+}
+
+func time_parts() {
+    var time = Time(13, 45, 59, _sample_nanosecond)
+    var hour = time.hour
+    var minute = time.minute
+    var second = time.second
+    var nanosecond = time.nanosecond
+    var second_of_day = time.second_of_day
+    console.print("hour", hour, "minute", minute, "second", second, "nanosecond", nanosecond)
+    console.print("second_of_day", second_of_day)
+    var midnight = Time(0, 0, 0, 0)
+    var last = Time(23, 59, 59, _last_nanosecond)
+    var midnight_second = midnight.second_of_day
+    var last_second = last.second_of_day
+    console.print("midnight", midnight_second, "last second", last_second)
+}
+
+func time_order() {
+    var early = Time(9, 0, 0, 0)
+    var late = Time(9, 0, 0, 1)
+    var same = Time(9, 0, 0, 0)
+    var equal = early == same
+    var unequal = early == late
+    var smaller = early < late
+    var larger = early > late
+    var reversed_smaller = late < early
+    var reversed_larger = late > early
+    console.print("equal", equal, "unequal", unequal)
+    console.print(
+        "early < late",
+        smaller,
+        "early > late",
+        larger,
+        "late < early",
+        reversed_smaller,
+        "late > early",
+        reversed_larger,
+    )
+}
+
+func date_time_parts() {
+    var date = Date(_sample_year, 3, 10)
+    var time = Time(13, 45, 0, 0)
+    var stamp = DateTime(date, time)
+    var read_date = stamp.date
+    var read_time = stamp.time
+    console.print("date", read_date, "time", read_time)
+    var later_time = Time(13, 45, 1, 0)
+    var later = DateTime(date, later_time)
+    var next_date = Date(_sample_year, 3, 11)
+    var next_day = DateTime(next_date, time)
+    var smaller = stamp < later
+    var larger = stamp > later
+    var day_smaller = later < next_day
+    var day_larger = next_day > stamp
+    var back_smaller = next_day < stamp
+    console.print("by the second", smaller, larger, "by the day", day_smaller, day_larger, back_smaller)
+}
+
+func periods() {
+    var no_days = Period(0, 'days')
+    var zero_months = Period(0, 'months')
+    var one = Period(1, 'days')
+    var weeks = Period(0, 'weeks')
+    var canceled = Period(1, 'years') + Period(-1, 'years')
+    var days_zero = no_days.is_zero
+    var months_zero = zero_months.is_zero
+    var weeks_zero = weeks.is_zero
+    var one_zero = one.is_zero
+    var canceled_zero = canceled.is_zero
+    console.print("zero days", days_zero, "zero months", months_zero, "zero weeks", weeks_zero)
+    console.print("one day", one_zero, "a year and minus a year", canceled_zero)
+    var start = Date(_sample_year, 1, 30)
+    var month = Period(1, 'months')
+    var day = Period(1, 'days')
+    var both = month + day
+    var at_once = start + both
+    var apart = start + day + month
+    var months_first = start + month + day
+    console.print("a month and a day added once", at_once, "the day first", apart, "the month first", months_first)
+}

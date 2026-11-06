@@ -1,0 +1,10 @@
+three letters: 3 97 98 99
+one accented letter is two UTF-8 bytes: 2 195 169
+130 letters: 130 1 120 120 120 of 132 bytes
+read back 130
+130 cells: 130 1 0 0 0 0 1 of 522 bytes
+read back 130
+a count of 2147483647 with no bytes behind it is refused
+presence 0: null presence 1: 7
+presence 2 is refused
+written empty: 0 written 7: 1 7 0 0 0

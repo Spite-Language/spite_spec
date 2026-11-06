@@ -1,0 +1,16 @@
+var steps = 0
+
+func Level(starting_steps: Integer) {
+    steps = starting_steps
+}
+
+func Level(from: Integer): Level? {
+    fallback from >= 0
+    return Level(from)
+}
+
+func Level(from: String): Level? {
+    var read: Integer? = from
+    fallback read
+    return Level(read + 100)
+}

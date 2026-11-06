@@ -1,0 +1,5 @@
+at 0 (0, 10, -4) at 1 (4, 20, 4)
+at 2 (8, 30, 12) at -1 (-4, 0, -12)
+Vector2 at 1.5 (4, 8)
+Vector4 at -0.5 (-1, -2, -3, -4)
+minimum (nan, 2, 5) maximum (nan, 5, 9)

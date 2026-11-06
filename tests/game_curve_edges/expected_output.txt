@@ -1,0 +1,9 @@
+point_at 1.5 (1.35, 0.2) point_at -0.5 (-0.35, 0.8)
+y_at_x below the start 0.2 above the end 0.8
+x reaches 0.5 3 times; the answer is the one found from the straight guess: 0.5 0.5
+smooth_step 0 1 0.5 smoother_step 0 1
+in_quadratic 0.0625 out_cubic 0.5781 in_sine 0.0761 out_sine 0.3827
+in_exponential is exactly 0 at 0 true and 1 at 1 true
+out_exponential is exactly 0 at 0 true and 1 at 1 true
+in_back at 0.25 -0.0641 out_back at 0.75 1.0641
+in_cubic(2) is 8 in_quadratic(-1) is 1

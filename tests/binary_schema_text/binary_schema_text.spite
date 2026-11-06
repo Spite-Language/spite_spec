@@ -1,0 +1,22 @@
+var console = Console()
+
+var _fnv_hash_of_the_schema_text: Long = -298406944162534412
+
+func BinarySchemaText() {
+    load "../../../spite_standard_library/windows"
+    var writer = BinaryWriter<Holder>()
+    var reader = BinaryReader<Holder>()
+    var written = writer.schema()
+    var read = reader.schema()
+    var holder = Holder()
+    var described = holder.describe()
+    var matches = written == _fnv_hash_of_the_schema_text
+    var agree = written == read
+    console.print(
+        "the schema is the hash of the text of its public attributes:",
+        matches,
+        "reader agrees:",
+        agree,
+        described,
+    )
+}

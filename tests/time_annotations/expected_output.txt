@@ -1,0 +1,11 @@
+'2024-03-10T03:00:00-04:00[America/New_York]' is read as 2024-03-10T07:00:00Z
+'2024-03-10T03:00:00-04:00[!America/New_York]' is read as 2024-03-10T07:00:00Z
+'2024-03-10T03:00:00-05:00[!America/New_York]' is refused
+'2024-03-10T03:00:00-04:00[u-ca=iso8601][America/New_York]' is refused
+'2024-03-10T03:00:00-04:00[America/New_York][u-ca=iso8601]' is read as 2024-03-10T07:00:00Z
+'2024-03-10T07:00:00Z[u-ca=iso8601]' is read as 2024-03-10T07:00:00Z
+'2024-03-10T07:00:00Z[!u-ca=iso8601]' is read as 2024-03-10T07:00:00Z
+'2024-03-10T07:00:00Z[u-ca=hebrew]' is refused
+'2024-03-10T07:00:00Z[!u-ca=hebrew]' is refused
+'2024-03-10T07:00:00Z[x=y]' is refused
+'2024-03-10T07:00:00Z[!x=y]' is refused

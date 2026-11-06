@@ -1,0 +1,81 @@
+var console = Console()
+
+func GameMatrixEdges() {
+    load "../../../spite_standard_library/windows"
+    identities()
+    rotation_alone()
+    zero_scale()
+}
+
+func identities() {
+    var plain = Matrix4<Float>()
+    var matrix = Matrix4<Float>()
+    var offset = Vector3(1.0, 2.0, 3.0)
+    var size = Vector3(2.0, 2.0, 2.0)
+    matrix.translation = offset
+    matrix.scale = size
+    var changed = matrix == plain
+    matrix.set_identity()
+    var reset = matrix == plain
+    console.print("Matrix4 changed is the identity", changed, "after set_identity", reset)
+    var third = Matrix3<Float>()
+    third.column_1_row_0 = 5.0
+    third.column_2_row_2 = 7.0
+    var third_plain = Matrix3<Float>()
+    var third_changed = third == third_plain
+    third.set_identity()
+    var third_reset = third == third_plain
+    console.print("Matrix3 changed is the identity", third_changed, "after set_identity", third_reset)
+    var turn = Quaternion<Float>()
+    turn.set_parts(1.0, 2.0, 3.0, 4.0)
+    var set_text = turn.to_string()
+    turn.set_identity()
+    var reset_text = turn.to_string()
+    console.print("Quaternion", set_text, "after set_identity", reset_text)
+}
+
+func rotation_alone() {
+    var axis = Vector3(0.0, 0.0, 1.0)
+    var quarter = Float.Pi() * 0.5
+    var turn = Quaternion<Float>()
+    turn.set_axis_angle(axis, quarter)
+    var matrix = Matrix4<Float>()
+    matrix.rotation = turn
+    var along = Vector3(1.0, 0.0, 0.0)
+    var turned = matrix.transform_point(along)
+    var turned_text = near_vector(turned)
+    console.print("rotation alone turns (1, 0, 0) to", turned_text)
+}
+
+func zero_scale() {
+    var matrix = Matrix4<Float>()
+    var flat = Vector3(0.0, 1.0, 1.0)
+    matrix.scale = flat
+    var rotation = matrix.rotation_part()
+    var rotation_text = near_quaternion(rotation)
+    console.print("a zero scale part has no rotation", rotation_text)
+    var normals = matrix.normal_matrix()
+    if normals {
+        console.print("normal matrix", normals)
+    } else {
+        console.print("a zero scale part has no normal matrix")
+    }
+    var healthy = Matrix4<Float>()
+    var normal = healthy.normal_matrix()
+    crash normal
+    console.print("the identity has one", normal)
+}
+
+func near(value: Float): Float {
+    var scaled = value * 10000.0
+    var whole = scaled.round()
+    return whole / 10000.0 + 0.0
+}
+
+func near_vector(vector: Vector3<Float>): String {
+    return "({near(vector.x)}, {near(vector.y)}, {near(vector.z)})"
+}
+
+func near_quaternion(rotation: Quaternion<Float>): String {
+    return "({near(rotation.x)}, {near(rotation.y)}, {near(rotation.z)}, {near(rotation.w)})"
+}

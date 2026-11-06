@@ -1,0 +1,2 @@
+spite: the program stopped at tests/json_infinity_in_a_list/../../../spite_standard_library/common/json_writer.spite:115 in JsonWriter_of_Double.written_decimal, site fce94c28 (shown=inf, path=Order.prices[1])
+spite.frame	tests/json_infinity_in_a_list/json_infinity_in_a_list.spite:11	JsonInfinityInAList	JsonInfinityInAList

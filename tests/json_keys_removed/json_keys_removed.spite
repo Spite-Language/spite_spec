@@ -1,0 +1,20 @@
+var console = Console()
+
+func JsonKeysRemoved() {
+    load "../../../spite_standard_library/windows"
+    var detail = MeshRecord.attributes["minimum_level_of_detail"]
+    var writer = JsonWriter<MeshRecord>()
+    writer.keys = {MeshRecord.attributes["minimum_level_of_detail"]: "min_lod"}
+    var record = MeshRecord()
+    record.minimum_level_of_detail = 2
+    var before = writer.write(record)
+    writer.keys.remove_at(detail)
+    var after = writer.write(record)
+    console.print(before, after)
+    var other = JsonWriter<MeshRecord>()
+    other.keys = {MeshRecord.attributes["minimum_level_of_detail"]: "level"}
+    var held = other.keys
+    held.clear()
+    var cleared = other.write(record)
+    console.print(cleared)
+}

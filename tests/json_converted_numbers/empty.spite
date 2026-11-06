@@ -1,0 +1,5 @@
+var value = 0
+
+func Empty() {
+    value = 1
+}

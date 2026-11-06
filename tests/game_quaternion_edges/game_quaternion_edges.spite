@@ -1,0 +1,157 @@
+var console = Console()
+
+func GameQuaternionEdges() {
+    load "../../../spite_standard_library/windows"
+    axis_is_normalized()
+    all_euler_orders()
+    equality()
+    zero_quaternion()
+    shorter_way()
+    small_angles()
+}
+
+func turn_about(axis: Vector3<Float>, angle: Float): Quaternion<Float> {
+    var turn = Quaternion<Float>()
+    turn.set_axis_angle(axis, angle)
+    return turn
+}
+
+func axis_is_normalized() {
+    var long_axis = Vector3(0.0, 0.0, 5.0)
+    var unit_axis = Vector3(0.0, 0.0, 1.0)
+    var quarter = Float.Pi() * 0.5
+    var from_long = turn_about(long_axis, quarter)
+    var from_unit = turn_about(unit_axis, quarter)
+    var along = Vector3(1.0, 0.0, 0.0)
+    var by_long = from_long.rotate(along)
+    var by_unit = from_unit.rotate(along)
+    var long_text = near_vector(by_long)
+    var unit_text = near_vector(by_unit)
+    var length = from_long.length()
+    var length_text = near(length)
+    console.print(
+        "an axis of length 5 turns (1, 0, 0) to",
+        long_text,
+        "like the unit axis",
+        unit_text,
+        "length",
+        length_text,
+    )
+}
+
+func all_euler_orders() {
+    var around_x = Vector3(1.0, 0.0, 0.0)
+    var around_y = Vector3(0.0, 1.0, 0.0)
+    var around_z = Vector3(0.0, 0.0, 1.0)
+    var angles = Vector3(0.3, 0.5, 0.7)
+    var x_turn = turn_about(around_x, angles.x)
+    var y_turn = turn_about(around_y, angles.y)
+    var z_turn = turn_about(around_z, angles.z)
+    var probe = Vector3(1.0, 2.0, 3.0)
+    var xyz = z_turn * y_turn * x_turn
+    var xzy = y_turn * z_turn * x_turn
+    var yxz = z_turn * x_turn * y_turn
+    var yzx = x_turn * z_turn * y_turn
+    var zxy = y_turn * x_turn * z_turn
+    var zyx = x_turn * y_turn * z_turn
+    var made_xyz = Quaternion<Float>()
+    made_xyz.set_euler(angles, 'xyz')
+    check_order("xyz", made_xyz, xyz, probe)
+    var made_xzy = Quaternion<Float>()
+    made_xzy.set_euler(angles, 'xzy')
+    check_order("xzy", made_xzy, xzy, probe)
+    var made_yxz = Quaternion<Float>()
+    made_yxz.set_euler(angles, 'yxz')
+    check_order("yxz", made_yxz, yxz, probe)
+    var made_yzx = Quaternion<Float>()
+    made_yzx.set_euler(angles, 'yzx')
+    check_order("yzx", made_yzx, yzx, probe)
+    var made_zxy = Quaternion<Float>()
+    made_zxy.set_euler(angles, 'zxy')
+    check_order("zxy", made_zxy, zxy, probe)
+    var made_zyx = Quaternion<Float>()
+    made_zyx.set_euler(angles, 'zyx')
+    check_order("zyx", made_zyx, zyx, probe)
+}
+
+func check_order(name: String, made: Quaternion<Float>, composed: Quaternion<Float>, probe: Vector3<Float>) {
+    var by_euler = made.rotate(probe)
+    var by_parts = composed.rotate(probe)
+    var euler_text = near_vector(by_euler)
+    var parts_text = near_vector(by_parts)
+    var same = euler_text == parts_text
+    console.print(name, "turns (1, 2, 3) to", euler_text, "as the single turns applied in that order:", same)
+}
+
+func equality() {
+    var first = Quaternion<Float>()
+    var second = Quaternion<Float>()
+    first.set_parts(0.0, 0.0, 0.6, 0.8)
+    second.set_parts(0.0, 0.0, 0.6, 0.8)
+    var same = first == second
+    second.set_parts(0.0, 0.0, 0.6, 0.7)
+    var different = first == second
+    console.print("equal parts", same, "one part apart", different)
+}
+
+func zero_quaternion() {
+    var nothing = Quaternion<Float>()
+    nothing.set_parts(0.0, 0.0, 0.0, 0.0)
+    var unit = nothing.normalized()
+    var inverse = nothing.inverse()
+    if inverse {
+        console.print("the zero quaternion has an inverse", inverse)
+    } else {
+        console.print("the zero quaternion normalized is", unit, "and it has no inverse")
+    }
+}
+
+func shorter_way() {
+    var around_z = Vector3(0.0, 0.0, 1.0)
+    var degrees = Float.Pi() / 180.0
+    var far = 300.0 * degrees
+    var still = Quaternion<Float>()
+    var target = turn_about(around_z, far)
+    var along = Vector3(1.0, 0.0, 0.0)
+    var spherical = still.spherical_interpolate(target, 0.5)
+    var normalized = still.normalized_interpolate(target, 0.5)
+    var spherical_point = spherical.rotate(along)
+    var normalized_point = normalized.rotate(along)
+    var spherical_text = near_vector(spherical_point)
+    var normalized_text = near_vector(normalized_point)
+    console.print("halfway to 300 degrees goes the short way, to minus 30:", spherical_text, normalized_text)
+    var negated = Quaternion<Float>()
+    negated.set_parts(-target.x, -target.y, -target.z, -target.w)
+    var by_negated = still.spherical_interpolate(negated, 0.5)
+    var negated_point = by_negated.rotate(along)
+    var negated_text = near_vector(negated_point)
+    console.print("the same target written with every sign flipped:", negated_text)
+}
+
+func small_angles() {
+    var around_z = Vector3(0.0, 0.0, 1.0)
+    var degrees = Float.Pi() / 180.0
+    var close = 1.0 * degrees
+    var wider = 20.0 * degrees
+    var still = Quaternion<Float>()
+    var near_target = turn_about(around_z, close)
+    var far_target = turn_about(around_z, wider)
+    var close_spherical = still.spherical_interpolate(near_target, 0.25)
+    var close_normalized = still.normalized_interpolate(near_target, 0.25)
+    var far_spherical = still.spherical_interpolate(far_target, 0.25)
+    var far_normalized = still.normalized_interpolate(far_target, 0.25)
+    var close_same = close_spherical == close_normalized
+    var far_same = far_spherical == far_normalized
+    console.print("one degree apart the spherical one is the normalized one:", close_same)
+    console.print("twenty degrees apart it is not:", far_same)
+}
+
+func near(value: Float): Float {
+    var scaled = value * 10000.0
+    var whole = scaled.round()
+    return whole / 10000.0 + 0.0
+}
+
+func near_vector(vector: Vector3<Float>): String {
+    return "({near(vector.x)}, {near(vector.y)}, {near(vector.z)})"
+}

@@ -1,0 +1,1 @@
+var pet: JsonUnwritableThroughEmptyValue.Pet? = null

@@ -1,0 +1,12 @@
+var console = Console()
+
+func JsonNegativeInfinity() {
+    load "../../../spite_standard_library/windows"
+    var order = Order()
+    var zero: Float = 0.0
+    var one: Float = 1.0
+    order.price = zero - one / zero
+    var writer = JsonWriter<Order>()
+    var text = writer.write(order)
+    console.print("never printed", text)
+}

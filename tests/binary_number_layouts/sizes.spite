@@ -1,0 +1,3 @@
+var flag = true
+var other = false
+var maybe: Float? = null

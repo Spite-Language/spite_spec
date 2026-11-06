@@ -1,0 +1,6 @@
+level 4 weight 2.5 plain 5
+a text is not the level: the first conversion takes an Integer
+4.5 is not an Integer, so it is not the level
+a text is not a Float, so it is not the weight
+a class whose constructor takes nothing: 1
+read as 12

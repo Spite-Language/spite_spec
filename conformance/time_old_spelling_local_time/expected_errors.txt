@@ -1,0 +1,1 @@
+conformance/time_old_spelling_local_time/time_old_spelling_local_time.spite:5: error: 'LocalTime' is spelled 'Time' (in TimeOldSpellingLocalTime.TimeOldSpellingLocalTime)

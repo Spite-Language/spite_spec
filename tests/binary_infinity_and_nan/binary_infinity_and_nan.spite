@@ -1,0 +1,23 @@
+var console = Console()
+
+func BinaryInfinityAndNan() {
+    load "../../../spite_standard_library/windows"
+    var sample = Sample()
+    var wide_infinity = Double.Infinity()
+    sample.wide = wide_infinity
+    sample.narrow = Float.NotANumber()
+    sample.wide_below = 0.0 - wide_infinity
+    sample.narrow_above = Float.Infinity()
+    var writer = BinaryWriter<Sample>()
+    var bytes = writer.write(sample)
+    var reader = BinaryReader<Sample>()
+    var back = reader.read(bytes)
+    crash back
+    var size = bytes.count()
+    var same_wide = back.wide == wide_infinity
+    var narrow_gap = back.narrow != back.narrow
+    var below = back.wide_below < 0.0 and back.wide_below.absolute() == wide_infinity
+    var above = back.narrow_above == Float.Infinity()
+    console.print("bytes", size, "infinity back", same_wide, "not-a-number back", narrow_gap)
+    console.print("negative infinity back", below, "Float infinity back", above)
+}

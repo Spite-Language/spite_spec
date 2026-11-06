@@ -1,0 +1,1 @@
+conformance/vector_whole_name/vector_whole_name.spite:5: error: unknown type 'Vector3i' (in VectorWholeName.VectorWholeName)

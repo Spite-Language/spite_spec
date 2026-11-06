@@ -1,0 +1,31 @@
+var console = Console()
+
+func JsonKeyedNamesOnly() {
+    load "../../../spite_standard_library/windows"
+    var reader = JsonReader<MeshRecord>()
+    reader.keys = {MeshRecord.attributes["minimum_level_of_detail"]: "min_lod"}
+    var by_key = reader.read("\{\"min_lod\": 3}")
+    var by_name = reader.read("\{\"minimum_level_of_detail\": 4}")
+    var by_camel = reader.read("\{\"minimumLevelOfDetail\": 5}")
+    var by_pascal = reader.read("\{\"MinimumLevelOfDetail\": 6}")
+    crash by_key
+    crash by_name
+    crash by_camel
+    crash by_pascal
+    console.print("key", by_key.minimum_level_of_detail, "name", by_name.minimum_level_of_detail)
+    console.print("camelCase", by_camel.minimum_level_of_detail, "PascalCase", by_pascal.minimum_level_of_detail)
+    var other = by_camel.maximum_level_of_detail
+    var camel_other = reader.read("\{\"maximumLevelOfDetail\": 8}")
+    var pascal_other = reader.read("\{\"MaximumLevelOfDetail\": 9}")
+    var exact_other = reader.read("\{\"maximum_level_of_detail\": 10}")
+    crash camel_other
+    crash pascal_other
+    crash exact_other
+    console.print(
+        "an attribute without a key keeps its spellings:",
+        other,
+        camel_other.maximum_level_of_detail,
+        pascal_other.maximum_level_of_detail,
+        exact_other.maximum_level_of_detail,
+    )
+}

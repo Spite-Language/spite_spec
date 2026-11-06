@@ -1,0 +1,40 @@
+var console = Console()
+
+func JsonConvertedNumbers() {
+    load "../../../spite_standard_library/windows"
+    var level_reader = JsonReader<Holder>()
+    var from_integer = level_reader.read("\{\"level\": 4, \"weight\": 2.5, \"plain\": \{\"value\": 5}}")
+    crash from_integer
+    console.print(
+        "level",
+        from_integer.level.steps,
+        "weight",
+        from_integer.weight.kilograms,
+        "plain",
+        from_integer.plain.value,
+    )
+    var text_level = level_reader.read("\{\"level\": \"7\", \"weight\": 2.5, \"plain\": \{\"value\": 5}}")
+    if text_level {
+        console.print("a text was read as the level")
+    } else {
+        console.print("a text is not the level: the first conversion takes an Integer")
+    }
+    var fractional = level_reader.read("\{\"level\": 4.5, \"weight\": 2.5, \"plain\": \{\"value\": 5}}")
+    if fractional {
+        console.print("4.5 was read as the level")
+    } else {
+        console.print("4.5 is not an Integer, so it is not the level")
+    }
+    var odd_weight = level_reader.read("\{\"level\": 4, \"weight\": \"heavy\", \"plain\": \{\"value\": 5}}")
+    if odd_weight {
+        console.print("a text was read as the weight")
+    } else {
+        console.print("a text is not a Float, so it is not the weight")
+    }
+    var empty = Empty()
+    console.print("a class whose constructor takes nothing:", empty.value)
+    var empty_reader = JsonReader<Empty>()
+    var read_empty = empty_reader.read("\{\"value\": 12}")
+    crash read_empty
+    console.print("read as", read_empty.value)
+}

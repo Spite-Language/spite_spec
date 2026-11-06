@@ -1,0 +1,9 @@
+var kilograms = 0.0
+
+func Weight(starting_kilograms: Float) {
+    kilograms = starting_kilograms
+}
+
+func Weight(from: Float): Weight? {
+    return Weight(from)
+}

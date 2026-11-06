@@ -1,0 +1,38 @@
+var console = Console()
+
+func BinaryPartsOfABuffer() {
+    load "../../../spite_standard_library/windows"
+    var point_writer = BinaryWriter<Point>()
+    var name_writer = BinaryWriter<Name>()
+    var point = Point()
+    point.across = 7
+    point.down = 9
+    var name = Name()
+    name.text = "tea"
+    var point_bytes = point_writer.write(point)
+    var name_bytes = name_writer.write(name)
+    var point_size = point_bytes.count()
+    var name_size = name_bytes.count()
+    var both = Buffer(0)
+    both.append_buffer(point_bytes, 0, point_size)
+    both.append_buffer(name_bytes, 0, name_size)
+    var total = both.count()
+    console.print("point", point_size, "bytes, name", name_size, "bytes, together", total)
+    var point_part = both.read_buffer_at(0, point_size)
+    var name_part = both.read_buffer_at(point_size, name_size)
+    crash point_part
+    crash name_part
+    var point_reader = BinaryReader<Point>()
+    var name_reader = BinaryReader<Name>()
+    var read_point = point_reader.read(point_part)
+    var read_name = name_reader.read(name_part)
+    crash read_point
+    crash read_name
+    console.print("read", read_point.across, read_point.down, read_name.text)
+    var whole = point_reader.read(both)
+    if whole {
+        console.print("reading the whole buffer as a Point worked")
+    } else {
+        console.print("reading the whole buffer as a Point fails: bytes are left over")
+    }
+}

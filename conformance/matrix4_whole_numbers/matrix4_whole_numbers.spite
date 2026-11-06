@@ -1,0 +1,7 @@
+var console = Console()
+
+func Matrix4WholeNumbers() {
+    load "../../../spite_standard_library/windows"
+    var matrix = Matrix4<Integer>()
+    console.print(matrix)
+}

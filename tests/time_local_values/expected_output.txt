@@ -1,0 +1,11 @@
+year 2024 month 3 day 10
+hour 13 minute 45 second 59 nanosecond 123456789
+second_of_day 49559
+midnight 0 last second 86399
+equal true unequal false
+early < late true early > late false late < early false late > early true
+date 2024-03-10 time 13:45:00
+by the second true false by the day true true false
+zero days true zero months true zero weeks true
+one day false a year and minus a year true
+a month and a day added once 2024-03-01 the day first 2024-02-29 the month first 2024-03-01

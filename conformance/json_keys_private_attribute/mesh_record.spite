@@ -1,0 +1,6 @@
+var detail = 0
+var _cache = 0
+
+func size(): Integer {
+    return _cache
+}

@@ -1,0 +1,14 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func BinaryReaderUnwritable() {
+    load "../../../spite_standard_library/windows"
+    var reader = BinaryReader<Holder>()
+    var bytes = Buffer(0)
+    var holder = reader.read(bytes)
+    console.print(holder)
+}

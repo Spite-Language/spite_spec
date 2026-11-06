@@ -1,0 +1,6 @@
+enum Size {
+    'small'
+    'large'
+}
+
+var size: Size = 'large'

@@ -1,0 +1,14 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func BinaryWriterFunctionAttribute() {
+    load "../../../spite_standard_library/windows"
+    var writer = BinaryWriter<Holder>()
+    var holder = Holder()
+    var bytes = writer.write(holder)
+    console.print(bytes)
+}

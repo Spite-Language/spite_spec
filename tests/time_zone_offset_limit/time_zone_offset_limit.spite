@@ -1,0 +1,18 @@
+var console = Console()
+var _almost_a_day: Long = 86399
+
+func TimeZoneOffsetLimit() {
+    load "../../../spite_standard_library/windows"
+    var east = Duration(_almost_a_day, 'seconds')
+    var west = Duration(-_almost_a_day, 'seconds')
+    var far_east = TimeZone("East", east)
+    var far_west = TimeZone("West", west)
+    var epoch = Duration(0, 'seconds')
+    var moment = Instant(epoch)
+    var east_text = moment.to_string_in(far_east)
+    var west_text = moment.to_string_in(far_west)
+    console.print("just under a day east", east_text, "west", west_text)
+    var whole_day = Duration(24, 'hours')
+    var too_far = TimeZone("Tomorrow", whole_day)
+    console.print("never printed", too_far.identifier)
+}

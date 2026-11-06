@@ -1,0 +1,81 @@
+var console = Console()
+
+func GameColorEdges() {
+    load "../../../spite_standard_library/windows"
+    channels_are_not_clamped()
+    writing_clamps()
+    equality()
+    alpha_through_the_curves()
+    text_extremes()
+}
+
+func channels_are_not_clamped() {
+    var wild = Color(2.0, -1.0, 0.5, 1.0)
+    var red = wild.red
+    var green = wild.green
+    console.print("set to 2 and -1, they read back", red, green)
+    var plain = Color(0.0, 0.0, 0.0, 1.0)
+    var halfway = plain.linear_interpolate(wild, 0.5)
+    var far = plain.linear_interpolate(wild, 2.0)
+    console.print("interpolation does not clamp either", halfway.red, halfway.green, far.red, far.green)
+}
+
+func writing_clamps() {
+    var wild = Color(2.0, -1.0, 0.5, 3.0)
+    var hexadecimal = wild.to_hexadecimal_string()
+    var rgb = wild.to_rgb_string()
+    console.print("out of range, written as", hexadecimal, rgb)
+    var low = Color(-0.5, 0.0, 0.0, 0.0)
+    var low_hexadecimal = low.to_hexadecimal_string()
+    var low_rgb = low.to_rgb_string()
+    console.print("below range, written as", low_hexadecimal, low_rgb)
+}
+
+func equality() {
+    var first = Color(0.5, 0.5, 0.5, 1.0)
+    var same = Color(0.5, 0.5, 0.5, 1.0)
+    var nudged = Color(0.5000001, 0.5, 0.5, 1.0)
+    var equal = first == same
+    var unequal = first == nudged
+    console.print("equal colours", equal, "one step apart in one channel", unequal)
+}
+
+func alpha_through_the_curves() {
+    var tinted = Color(0.5, 0.25, 0.75, 0.5)
+    var linear = tinted.to_linear()
+    var standard = tinted.to_standard_rgb()
+    var back = linear.to_standard_rgb()
+    var linear_alpha = linear.alpha
+    var standard_alpha = standard.alpha
+    var back_alpha = back.alpha
+    console.print("alpha stays", linear_alpha, standard_alpha, back_alpha)
+}
+
+func text_extremes() {
+    var over: Color? = "rgb(300, -5, 0)"
+    crash over
+    var over_rgb = over.to_rgb_string()
+    var over_red = over.red
+    var over_green = over.green
+    console.print("rgb(300, -5, 0) is held as", over_red, over_green, "and written", over_rgb)
+    var hue_450: Color? = "hsl(450, 100%, 50%)"
+    var hue_90: Color? = "hsl(90, 100%, 50%)"
+    var hue_750: Color? = "hsl(840, 100%, 50%)"
+    var hue_30: Color? = "hsl(120, 100%, 50%)"
+    crash hue_450
+    crash hue_90
+    crash hue_750
+    crash hue_30
+    var text_450 = hue_450.to_hexadecimal_string()
+    var text_90 = hue_90.to_hexadecimal_string()
+    var text_750 = hue_750.to_hexadecimal_string()
+    var text_30 = hue_30.to_hexadecimal_string()
+    var same_450 = text_450 == text_90
+    var same_750 = text_750 == text_30
+    console.print("hue 450 is hue 90", same_450, "hue 840 is hue 120", same_750)
+    var turns: Color? = "hsl(-270deg, 100%, 50%)"
+    crash turns
+    var text_turns = turns.to_hexadecimal_string()
+    var turns_same = text_turns == text_90
+    console.print("hue -270deg is hue 90", turns_same)
+}

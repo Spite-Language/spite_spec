@@ -1,0 +1,4 @@
+43 bytes:
+fe c8 02 01 cd ab 04 03 02 01 d4 c3 b2 a1 08 07 06 05 04 03 02 01 08 07 06 05 04 03 02 01 00 00 80 3f 00 00 00 00 00 00 f0 3f 01
+read back true
+two Booleans and an empty Float? (one presence byte) are 3

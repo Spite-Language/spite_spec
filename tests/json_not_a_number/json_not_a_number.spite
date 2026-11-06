@@ -1,0 +1,10 @@
+var console = Console()
+
+func JsonNotANumber() {
+    load "../../../spite_standard_library/windows"
+    var order = Order()
+    order.price = Double.NotANumber()
+    var writer = JsonWriter<Order>()
+    var text = writer.write(order)
+    console.print("never printed", text)
+}

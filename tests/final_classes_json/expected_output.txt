@@ -1,0 +1,3 @@
+{"item":"tea"}
+the generic class is printed once: generic $value_type
+the JsonWriter<Order> copy is printed as a type: type JsonWriterOrder { true

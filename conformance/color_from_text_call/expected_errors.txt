@@ -1,0 +1,1 @@
+conformance/color_from_text_call/color_from_text_call.spite:5: error: 'Color("#fff")' calls a conversion by name, and the compiler applies a conversion only where a value meets the class it makes: give '"#fff"' a place that wants it, as in 'var converted: Color? = "#fff"' (in ColorFromTextCall.ColorFromTextCall)

@@ -1,0 +1,6 @@
+var detail = 0
+var clock = Clock()
+
+func now(): Instant {
+    return clock.now()
+}

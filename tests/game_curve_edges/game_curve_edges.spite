@@ -1,0 +1,132 @@
+var console = Console()
+var easing = Easing()
+
+func GameCurveEdges() {
+    load "../../../spite_standard_library/windows"
+    unclamped_points()
+    held_between_the_ends()
+    x_going_back()
+    smooth_steps()
+    easing_forms()
+    exact_ends()
+    back_overshoot()
+    extrapolation()
+}
+
+func rising(): CubicBezier {
+    var start = Vector2(0.0, 0.2)
+    var first_handle = Vector2(0.3, 0.2)
+    var second_handle = Vector2(0.7, 0.8)
+    var end = Vector2(1.0, 0.8)
+    return CubicBezier(start, first_handle, second_handle, end)
+}
+
+func unclamped_points() {
+    var curve = rising()
+    var beyond = curve.point_at(1.5)
+    var before = curve.point_at(-0.5)
+    var beyond_text = near_vector(beyond)
+    var before_text = near_vector(before)
+    console.print("point_at 1.5", beyond_text, "point_at -0.5", before_text)
+}
+
+func held_between_the_ends() {
+    var curve = rising()
+    var below = curve.y_at_x(-3.0)
+    var above = curve.y_at_x(5.0)
+    var below_text = near(below)
+    var above_text = near(above)
+    console.print("y_at_x below the start", below_text, "above the end", above_text)
+}
+
+func x_going_back() {
+    var start = Vector2(0.0, 0.0)
+    var first_handle = Vector2(2.0, 0.0)
+    var second_handle = Vector2(-1.0, 1.0)
+    var end = Vector2(1.0, 1.0)
+    var curve = CubicBezier(start, first_handle, second_handle, end)
+    var roots = 0
+    var steps = 0
+    var before = 0.0 - 0.5
+    while steps <= 10000 {
+        var amount: Float = steps
+        amount = amount / 10000.0
+        var point = curve.point_at(amount)
+        var across = point.x - 0.5
+        if before < 0.0 and across >= 0.0 or before > 0.0 and across <= 0.0 {
+            roots = roots + 1
+        }
+        before = across
+        steps = steps + 1
+    }
+    var answer = curve.y_at_x(0.5)
+    var middle = curve.point_at(0.5)
+    var answer_text = near(answer)
+    var middle_text = near(middle.y)
+    console.print(
+        "x reaches 0.5",
+        roots,
+        "times; the answer is the one found from the straight guess:",
+        answer_text,
+        middle_text,
+    )
+}
+
+func smooth_steps() {
+    var low = easing.smooth_step(-1.0)
+    var high = easing.smooth_step(2.0)
+    var smoother_low = easing.smoother_step(-1.0)
+    var smoother_high = easing.smoother_step(2.0)
+    var middle = easing.smooth_step(0.5)
+    console.print("smooth_step", low, high, middle, "smoother_step", smoother_low, smoother_high)
+}
+
+func easing_forms() {
+    var amount = 0.25
+    var in_quadratic_raw = easing.in_quadratic(amount)
+    var in_quadratic = near(in_quadratic_raw)
+    var out_cubic_raw = easing.out_cubic(amount)
+    var out_cubic = near(out_cubic_raw)
+    var in_sine_raw = easing.in_sine(amount)
+    var in_sine = near(in_sine_raw)
+    var out_sine_raw = easing.out_sine(amount)
+    var out_sine = near(out_sine_raw)
+    console.print("in_quadratic", in_quadratic, "out_cubic", out_cubic, "in_sine", in_sine, "out_sine", out_sine)
+}
+
+func exact_ends() {
+    var in_start = easing.in_exponential(0.0)
+    var in_end = easing.in_exponential(1.0)
+    var out_start = easing.out_exponential(0.0)
+    var out_end = easing.out_exponential(1.0)
+    var in_start_exact = in_start == 0.0
+    var in_end_exact = in_end == 1.0
+    var out_start_exact = out_start == 0.0
+    var out_end_exact = out_end == 1.0
+    console.print("in_exponential is exactly 0 at 0", in_start_exact, "and 1 at 1", in_end_exact)
+    console.print("out_exponential is exactly 0 at 0", out_start_exact, "and 1 at 1", out_end_exact)
+}
+
+func back_overshoot() {
+    var in_early_raw = easing.in_back(0.25)
+    var in_early = near(in_early_raw)
+    var out_late_raw = easing.out_back(0.75)
+    var out_late = near(out_late_raw)
+    console.print("in_back at 0.25", in_early, "out_back at 0.75", out_late)
+}
+
+func extrapolation() {
+    var cubed = easing.in_cubic(2.0)
+    var squared = easing.in_quadratic(-1.0)
+    console.print("in_cubic(2) is", cubed, "in_quadratic(-1) is", squared)
+}
+
+func near(value: Float): Float {
+    var scaled = value * 10000.0
+    var whole = scaled.round()
+    return whole / 10000.0 + 0.0
+}
+
+func near_vector(vector: Vector2<Float>): String {
+    return "({near(vector.x)}, {near(vector.y)})"
+}

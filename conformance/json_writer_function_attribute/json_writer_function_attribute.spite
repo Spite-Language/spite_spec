@@ -1,0 +1,14 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func JsonWriterFunctionAttribute() {
+    load "../../../spite_standard_library/windows"
+    var writer = JsonWriter<Holder>()
+    var holder = Holder()
+    var text = writer.write(holder)
+    console.print(text)
+}
