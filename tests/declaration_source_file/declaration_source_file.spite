@@ -15,7 +15,7 @@ func DeclarationSourceFile() {
     var monster = Creatures.Monster()
     var bound = monster.functions["hurt"]
     crash bound
-    show("bound hurt", bound.source_file)
+    show("bound hurt", bound.declaration.source_file)
     var health = monster.attributes["health"]
     crash health
     show("bound health", health.declaration.source_file)

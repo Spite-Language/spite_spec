@@ -104,15 +104,15 @@ func log(printer: Spite.Function<String, Boolean>)
 
 The codegen values are positional and the **last one is the return**; everything before it is an argument, in
 order. `Spite.Function<Boolean>` takes nothing and returns a `Boolean`; `Spite.Function<String, Integer, Boolean>` takes a
-`String` and an `Integer` and returns a `Boolean`. They line up with `Spite.Function`'s own reflection members
+`String` and an `Integer` and returns a `Boolean`. They line up with the reflection members of its `.declaration`
 ([Reflection objects](reflection.md#reflection-objects)): the arguments are `.arguments`, the last is `.returns`. So there is nothing new to learn:
 the type of a function is its reflection, written down.
 
 That is the point of the choice: **the value and its reflection are the same class.** `Weapon.functions[0]` and
 a `pretty_print` passed as an argument are both `Spite.Function` instances, so reflection stops being a mirror
 of the language held alongside it and becomes the language describing itself. That is what "everything is a
-class, including classes" ([Reflection objects](reflection.md#reflection-objects)) has always claimed. A function value carries `.name`, `.arguments` and
-`.returns` because it *is* the reflection object.
+class, including classes" ([Reflection objects](reflection.md#reflection-objects)) has always claimed. A function value carries `.name`, `.arguments`,
+`.returns` and `.declaration` because it *is* the reflection object.
 
 This is the language's first **variadic** generic. `List<T>` and the rest take a fixed count declared by their
 `generic` lines ([Codegen values (`$`)](metaprogramming.md#codegen-values-)); `Spite.Function` is a compiler built-in and takes as many as the signature has.

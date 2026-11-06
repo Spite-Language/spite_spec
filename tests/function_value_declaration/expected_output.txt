@@ -1,0 +1,4 @@
+hurt Nothing 1
+monster.spite
+console monster.spite true true
+health monster.spite false false

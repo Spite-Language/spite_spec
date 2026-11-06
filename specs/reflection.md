@@ -113,9 +113,11 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   members, and a template is written over the declaration with the object as a parameter of its own.
 - **A bound function** is a function value of that instance ([functions_and_operators.md](https://github.com/Spite-Language/spite_documentation/blob/master/functions_and_operators.md#functions-are-values)),
   so a function named on an instance and its reflection are the same object. Calling it always calls. Its `.owner` is
-  the instance it is bound to, and its `.declaration` the `Spite.FunctionDeclaration` it is bound from; its
-  `.name`, `.arguments`, `.returns`, `.is_resumable`, `.returned_literal`, `.reads` and `.writes` are read through
-  the declaration. A class's declarations have no `call_function()`: one runs only on an object, through a bound
+  the instance it is bound to, and its `.declaration` the `Spite.FunctionDeclaration` it is bound from; `.arguments`,
+  `.returns`, `.is_resumable`, `.returned_literal`, `.reads`, `.writes`, `.source_file`, `.argument_count()` and
+  `.name_fits()` are asked of `.declaration`, and asking the function itself is "a Spite.Function has no 'returns' of its own:
+  write 'function.declaration.returns'"; whether an attribute's class is a singleton is `attribute.class.is_singleton`
+  ("Spite.Attribute has no 'is_singleton' of its own: write 'attribute.class.is_singleton'"). A class's declarations have no `call_function()`: one runs only on an object, through a bound
   function or a `Spite.Call` (`tests/function_declarations`). A function value given where a
   `Spite.FunctionDeclaration` is wanted is its declaration.
 - **`Spite.Call(declaration, instance)` builds a call without running it**, the only way to build one: the
@@ -203,11 +205,11 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
   `Spite.Union` or `Spite.Type`), and the `.members` of a constant union (`Shelter.unions["Pet"].members.each(make)` makes
   one copy of `make` for each member class, as a namespace's classes do; `tests/declared_walks`).
 - **A walk copy reads the declaration it stands for.** In a walk over an instance's attributes, `attribute.declaration`
-  is the class's own declaration (`Monster.attributes["health"]`), and `attribute.declaration.name`, `.index`, `.class`
-  and the case spellings fold as `attribute.name` and the rest do. In a template over functions, `.reads`, `.writes`,
+  is the class's own declaration (`Monster.attributes["health"]`), and `attribute.declaration.name`, `.index`, `.class`,
+  `.source_file` and the case spellings fold as `attribute.name` and the rest do, and `attribute.declaration.class.is_singleton` as `attribute.class.is_singleton`. In a template over functions, `.reads`, `.writes`,
   `.returns`, `.is_resumable`, `.returned_literal` and `.source_file` are read from the class's declaration of the
   function the copy stands for, so they answer what `Mover.functions["update_each"]` answers
-  (`tests/walk_copy_declarations`).
+  (`tests/walk_copy_declarations`, `tests/function_value_declaration`).
 - **`Enum.values[n]` answers `Enum?`** like every `[ ]`, also with a literal `n`, so a `crash` narrows it;
   `Enum.values.find_by_name(text)` is the text read as the enum, an `Enum?`.
 - **A function called with a constant for a reflection parameter is compiled once for it**, whether it is the

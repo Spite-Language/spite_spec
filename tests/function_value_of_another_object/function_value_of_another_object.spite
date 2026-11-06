@@ -9,7 +9,7 @@ func FunctionValueOfAnotherObject() {
 }
 
 func run(function: Spite.Function) {
-    var taken = function.arguments.count()
+    var taken = function.declaration.arguments.count()
     console.print(function.name, taken)
     function.call_function()
 }

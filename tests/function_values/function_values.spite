@@ -7,8 +7,8 @@ func FunctionValues() {
     var index = 0
     while index < functions.count() {
         var function = functions[index]
-        var arguments_count = function.arguments.count()
-        console.print(function.name, arguments_count, function.returns)
+        var arguments_count = function.declaration.arguments.count()
+        console.print(function.name, arguments_count, function.declaration.returns)
         if function.name.starts_with("step_") {
             function.call_function()
         }
@@ -18,8 +18,8 @@ func FunctionValues() {
     console.print(joined_log)
     crash robot.functions["describe"]
     var describe = robot.functions["describe"]
-    crash describe.arguments.count() == 2
-    console.print(describe.arguments[0].name, describe.arguments[0].class, describe.arguments[1].class)
+    crash describe.declaration.arguments.count() == 2
+    console.print(describe.declaration.arguments[0].name, describe.declaration.arguments[0].class, describe.declaration.arguments[1].class)
     var log_count = robot.log.count()
     console.print(log_count)
     robot.name = "renamed"

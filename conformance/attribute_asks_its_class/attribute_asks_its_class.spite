@@ -1,0 +1,7 @@
+var console = Console()
+
+func AttributeAsksItsClass() {
+    load "../../../spite_standard_library/windows"
+    var held = Monster.attributes["console"]
+    console.print(held.is_singleton)
+}

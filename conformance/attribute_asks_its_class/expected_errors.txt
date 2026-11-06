@@ -1,0 +1,1 @@
+conformance/attribute_asks_its_class/attribute_asks_its_class.spite:6: error: Spite.AttributeDeclaration has no 'is_singleton' of its own: write 'attribute.class.is_singleton' (in AttributeAsksItsClass.AttributeAsksItsClass)

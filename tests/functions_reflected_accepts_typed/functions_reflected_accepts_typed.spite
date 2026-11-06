@@ -11,6 +11,6 @@ func shouted(text: String): String {
 }
 
 func describe(function: Spite.Function) {
-    var taken = function.arguments.count()
+    var taken = function.declaration.arguments.count()
     console.print(function.name, taken)
 }

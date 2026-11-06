@@ -41,7 +41,7 @@ func remake(thing: Anything) {
 }
 
 func describe_taken(function: Spite.Function) {
-    function.arguments.each(remade)
+    function.declaration.arguments.each(remade)
 }
 
 func remade(taken: Spite.Argument) {

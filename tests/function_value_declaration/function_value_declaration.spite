@@ -1,0 +1,19 @@
+var console = Console()
+
+func FunctionValueDeclaration() {
+    load "../../../spite_standard_library/windows"
+    var monster = Monster()
+    var hurt = monster.hurt
+    var taken = hurt.declaration.arguments.count()
+    console.print(hurt.declaration.name, hurt.declaration.returns, taken)
+    var file = hurt.declaration.source_file.file_name
+    console.print(file)
+    monster.attributes.each(show)
+}
+
+func show(attribute: Spite.Attribute) {
+    var file = attribute.declaration.source_file.file_name
+    var asked = attribute.class.is_singleton
+    var declared = attribute.declaration.class.is_singleton
+    console.print(attribute.name, file, asked, declared)
+}
