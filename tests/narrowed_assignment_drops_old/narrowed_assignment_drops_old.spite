@@ -1,0 +1,10 @@
+var console = Console()
+
+func NarrowedAssignmentDropsOld() {
+    load "../../../spite_standard_library/windows"
+    var current: Token? = Token("first")
+    var replacement = Token("second")
+    console.print("replacing")
+    current = replacement
+    console.print("replaced", current.name)
+}

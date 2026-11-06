@@ -1,0 +1,14 @@
+var console = Console()
+
+func CountAssignedKeepsTheCheck() {
+    load "../../../spite_standard_library/windows"
+    var names = ["ada", "bo", "cy"]
+    var count = names.count()
+    var index = 0
+    while index < count {
+        count = 10
+        var shout = names[index].upper_case()
+        console.print(shout)
+        index = index + 1
+    }
+}

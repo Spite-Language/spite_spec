@@ -1,0 +1,11 @@
+var _width = 0
+var console = Console()
+
+func set_width(value: Integer) {
+    _width = value
+    console.print("width set to", value)
+}
+
+func get_width(): Integer {
+    return _width
+}

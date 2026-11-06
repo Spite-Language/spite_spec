@@ -1,0 +1,6 @@
+var name = ""
+var lead = "ada"
+
+func Team(starting_name: String) {
+    name = starting_name
+}

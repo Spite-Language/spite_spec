@@ -1,0 +1,5 @@
+in an if: yes
+true false true
+passed the fallback
+in an if: no
+false true false

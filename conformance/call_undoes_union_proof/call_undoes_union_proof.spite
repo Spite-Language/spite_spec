@@ -1,0 +1,23 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+var holder = Holder()
+
+func CallUndoesUnionProof() {
+    load "../../../spite_standard_library/windows"
+    holder.pet = Cat()
+    inspect()
+}
+
+func inspect() {
+    crash holder.pet
+    forget()
+    console.print(holder.pet.name)
+}
+
+func forget() {
+    holder.pet = null
+}

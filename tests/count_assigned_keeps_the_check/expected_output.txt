@@ -1,0 +1,4 @@
+ADA
+BO
+CY
+spite: 'names[index]' is outside its list: a bound proves only the top of an index, and this one is below 0 or the list changed, at tests/count_assigned_keeps_the_check/count_assigned_keeps_the_check.spite:10 in CountAssignedKeepsTheCheck.CountAssignedKeepsTheCheck

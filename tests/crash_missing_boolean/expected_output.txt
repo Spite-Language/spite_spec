@@ -1,0 +1,3 @@
+before
+spite: the program stopped at tests/crash_missing_boolean/crash_missing_boolean.spite:8 in CrashMissingBoolean.CrashMissingBoolean, site bc384e1c (first is null)
+spite.frame	tests/crash_missing_boolean/crash_missing_boolean.spite:8	CrashMissingBoolean	CrashMissingBoolean

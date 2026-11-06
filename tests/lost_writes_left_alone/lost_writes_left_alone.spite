@@ -1,0 +1,10 @@
+var console = Console()
+
+func LostWritesLeftAlone() {
+    load "../../../spite_standard_library/windows"
+    var logged = Logged()
+    logged.width = 3
+    var guarded = Guarded()
+    guarded.width = 5
+    console.print("done")
+}

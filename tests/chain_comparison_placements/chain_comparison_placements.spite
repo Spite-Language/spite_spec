@@ -1,0 +1,21 @@
+var console = Console()
+
+func ChainComparisonPlacements() {
+    load "../../../spite_standard_library/windows"
+    var rovers = Team("rovers")
+    placed(rovers)
+    placed(null)
+}
+
+func placed(team: Team?) {
+    if team.lead == "ada" {
+        console.print("in an if: yes")
+    } else {
+        console.print("in an if: no")
+    }
+    var named = team.lead == "ada"
+    var other = team.lead != "ada"
+    console.print(named, other, team.name == "rovers")
+    fallback team.lead == "ada"
+    console.print("passed the fallback")
+}

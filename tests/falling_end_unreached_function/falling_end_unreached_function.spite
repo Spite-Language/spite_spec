@@ -1,0 +1,17 @@
+var console = Console()
+
+func FallingEndUnreachedFunction() {
+    load "../../../spite_standard_library/windows"
+    var shown = show(2)
+    console.print(shown)
+}
+
+func show(value: Integer): String {
+    return "value {value}"
+}
+
+func never_called(value: Integer): String {
+    if value > 0 {
+        return "positive"
+    }
+}

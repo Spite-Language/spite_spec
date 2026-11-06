@@ -1,0 +1,10 @@
+var console = Console()
+
+func CrashMissingBoolean() {
+    load "../../../spite_standard_library/windows"
+    var flags = List<Boolean>()
+    var first = flags.first()
+    console.print("before")
+    crash first
+    console.print("never printed")
+}

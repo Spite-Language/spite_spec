@@ -1,0 +1,13 @@
+var console = Console()
+
+func FallingEndOfNullableAnswer() {
+    load "../../../spite_standard_library/windows"
+    var found = look_for(3)
+    console.print(found)
+}
+
+func look_for(value: Integer): Integer? {
+    if value > 5 {
+        return value
+    }
+}
