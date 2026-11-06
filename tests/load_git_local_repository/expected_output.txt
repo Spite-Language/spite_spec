@@ -1,0 +1,8 @@
+compile exit 0
+first compile fetched: true
+compile exit 0
+second compile fetched: false
+the app printed 8
+the record starts with the full commit: true 40 digits
+the copy holds kit/widget.spite: true and a .git folder: false
+a file beside the copies: fetching.lock

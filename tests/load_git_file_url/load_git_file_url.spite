@@ -1,0 +1,183 @@
+var console = Console()
+var program = Program()
+var root = ".spite/load_git_file_url"
+var copy_folder = ""
+var copy_label = ""
+var copy_path = ""
+
+func LoadGitFileUrl() {
+    load "../../../spite_standard_library/windows"
+    reset()
+    var first = make_widget_repository(
+        "var size = 0\n\nfunc Widget(starting_size: Integer) \{\n    size = starting_size\n}\n\nfunc doubled(): Integer \{\n    return size * 2\n}\n",
+    )
+    var url = "file:///{absolute(root)}/repo"
+    make_directory("{root}/app")
+    write_url_app(url, first)
+    var fetched = compile("{root}/app")
+    var line = fetched.contains("fetched {url}@{first} into ")
+    console.print("fetched the url:", line)
+    find_the_copy(first)
+    var bare = Directory("{copy_folder}/repository")
+    var has_bare = bare.exists()
+    console.print("a bare clone is kept beside the copies:", has_bare)
+    write_file("{root}/repo/kit/hub.spite", "func Hub() \{\n    load \"../../repo@{first}/kit\"\n}\n")
+    git("{root}/repo", ["add", "."])
+    git(
+        "{root}/repo",
+        ["-c", "user.name=spite", "-c", "user.email=spite@example.com", "commit", "--quiet", "-m", "second"],
+    )
+    var second = head("{root}/repo")
+    write_url_app(url, second)
+    var refused = compile("{root}/app")
+    var once = shown(refused, second)
+    var shortened = once.replace(first, "<first>")
+    var lines = shortened.split("\n")
+    lines.each(print_the_error)
+}
+
+func print_the_error(line: String) {
+    fallback line.contains("error")
+    console.print(line)
+}
+
+func write_url_app(url: String, commit: String) {
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("")
+    lines.append("func App() \{")
+    lines.append("    load \"../../../../spite_standard_library/windows\"")
+    lines.append("    load \"{url}@{commit}/kit\"")
+    lines.append("    var widget = Widget(4)")
+    lines.append("    var twice = widget.doubled()")
+    lines.append("    console.print(twice)")
+    lines.append("}")
+    lines.append("")
+    var joined = lines.join("\n")
+    write_file("{root}/app/app.spite", joined)
+}
+
+func reset() {
+    var windows_root = root.replace("/", "\\")
+    var clean = Process("cmd", ["/c", "if exist {windows_root} rmdir /s /q {windows_root}"])
+    crash clean.run()
+    make_directory(root)
+}
+
+func make_directory(path: String) {
+    var made = Directory(path)
+    crash made.create()
+}
+
+func write_file(path: String, text: String) {
+    var file = File(path)
+    crash file.write_string(text)
+}
+
+func git(folder: String, arguments: List<String>) {
+    var process = Process("git", arguments)
+    process.working_directory = folder
+    var code = process.run()
+    crash code
+    crash code == 0
+}
+
+func commit_all(folder: String) {
+    git(folder, ["init", "--quiet"])
+    git(folder, ["add", "."])
+    git(folder, ["-c", "user.name=spite", "-c", "user.email=spite@example.com", "commit", "--quiet", "-m", "first"])
+}
+
+func head(folder: String): String {
+    var process = Process("git", ["rev-parse", "--short=7", "HEAD"])
+    process.working_directory = folder
+    var code = process.run()
+    crash code
+    var output = process.read_output_as_string()
+    crash output
+    return output.trim()
+}
+
+func absolute(path: String): String {
+    var here = program.working_directory()
+    crash here
+    var forward = here.replace("\\", "/")
+    return "{forward}/{path}"
+}
+
+func compile(folder: String): String {
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var process = Process(compiler, ["--build"])
+    process.working_directory = folder
+    process.keeps_errors_apart = true
+    var code = process.run()
+    crash code
+    var errors = process.read_errors_as_string()
+    crash errors
+    console.print("compile exit", code)
+    return errors
+}
+
+func shown(errors: String, commit: String): String {
+    var here = absolute(root)
+    var local = errors.replace("{here}/", "")
+    var without_commit = local.replace(commit, "<commit>")
+    if copy_label.is_empty() {
+        return without_commit
+    }
+    return without_commit.replace(copy_label, "repo_N")
+}
+
+func write_app(commit: String, folder: String) {
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("")
+    lines.append("func App() \{")
+    lines.append("    load \"../../../../spite_standard_library/windows\"")
+    lines.append("    load \"../repo@{commit}{folder}\"")
+    lines.append("    var widget = Widget(4)")
+    lines.append("    var twice = widget.doubled()")
+    lines.append("    console.print(twice)")
+    lines.append("}")
+    lines.append("")
+    var joined = lines.join("\n")
+    write_file("{root}/app/app.spite", joined)
+}
+
+func make_widget_repository(text: String): String {
+    make_directory("{root}/repo")
+    make_directory("{root}/repo/kit")
+    write_file("{root}/repo/kit/widget.spite", text)
+    commit_all("{root}/repo")
+    return head("{root}/repo")
+}
+
+func find_the_copy(commit: String) {
+    var git_folder = Directory("{root}/app/.spite/git")
+    var entries = git_folder.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var found = entries[index]
+        switch found {
+            Directory: note_copy(found, commit)
+            File: console.print("a file beside the copies:", found.file_name)
+        }
+        index = index + 1
+    }
+}
+
+func note_copy(folder: Directory, commit: String) {
+    fallback folder.folder_name.starts_with("repo_")
+    copy_folder = folder.path
+    copy_label = folder.folder_name
+    copy_path = "{folder.path}/{commit}"
+}
+
+func forget_the_copy() {
+    var windows_folder = copy_folder.replace("/", "\\")
+    var clean = Process("cmd", ["/c", "rmdir /s /q {windows_folder}"])
+    crash clean.run()
+}

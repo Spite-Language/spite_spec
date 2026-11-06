@@ -1,0 +1,2 @@
+compile exit 0
+fetched the hub: true and the repository its file pins, beside it: true

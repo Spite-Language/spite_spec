@@ -1,0 +1,7 @@
+compile exit 0
+first compile fetched: true
+a file beside the copies: fetching.lock
+the copy's source was not formatted: true
+compile exit 0
+errors after a cache file appeared in the copy: false
+the app printed 8
