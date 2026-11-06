@@ -1,0 +1,8 @@
+plain rings
+plain dropped
+plain made
+cyclic rings
+cyclic made
+cyclic rings
+cyclic dropped
+cleared made

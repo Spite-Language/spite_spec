@@ -1,0 +1,7 @@
+var name = ""
+var level = 0
+
+func Hero(starting_name: String, starting_level: Integer) {
+    name = starting_name
+    level = starting_level
+}

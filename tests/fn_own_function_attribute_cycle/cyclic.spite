@@ -1,0 +1,19 @@
+var console = Console()
+var handler: Spite.Function<Nothing>? = ring
+
+func fire() {
+    crash handler
+    handler()
+}
+
+func ring() {
+    console.print("cyclic rings")
+}
+
+func clear() {
+    handler = null
+}
+
+func drop() {
+    console.print("cyclic dropped")
+}

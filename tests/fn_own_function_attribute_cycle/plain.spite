@@ -1,0 +1,9 @@
+var console = Console()
+
+func ring() {
+    console.print("plain rings")
+}
+
+func drop() {
+    console.print("plain dropped")
+}

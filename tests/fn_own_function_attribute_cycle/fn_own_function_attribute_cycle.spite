@@ -1,0 +1,27 @@
+var console = Console()
+
+func FnOwnFunctionAttributeCycle() {
+    load "../../../spite_standard_library/windows"
+    make_plain()
+    console.print("plain made")
+    make_cyclic()
+    console.print("cyclic made")
+    make_cleared()
+    console.print("cleared made")
+}
+
+func make_plain() {
+    var plain = Plain()
+    plain.ring()
+}
+
+func make_cyclic() {
+    var cyclic = Cyclic()
+    cyclic.fire()
+}
+
+func make_cleared() {
+    var cleared = Cyclic()
+    cleared.fire()
+    cleared.clear()
+}

@@ -1,0 +1,13 @@
+var balance = 0
+
+func Account(starting_balance: Integer) {
+    balance = starting_balance
+}
+
+func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {
+    attributes[attribute] = value
+}
+
+func get_attribute(attribute: Spite.AttributeDeclaration): attribute.class {
+    return attributes[attribute]
+}

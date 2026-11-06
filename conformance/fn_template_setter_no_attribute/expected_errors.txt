@@ -1,0 +1,1 @@
+conformance/fn_template_setter_no_attribute/fn_template_setter_no_attribute.spite:6: error: an Account has no attribute or function 'ghost' (in FnTemplateSetterNoAttribute.FnTemplateSetterNoAttribute)

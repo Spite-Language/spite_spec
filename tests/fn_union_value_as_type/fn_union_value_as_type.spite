@@ -1,0 +1,28 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Speaker {
+    speak(): String
+}
+
+var console = Console()
+
+func FnUnionValueAsType() {
+    load "../../../spite_standard_library/windows"
+    var cat = Cat()
+    var dog = Dog()
+    var cat_said = hear(cat)
+    var dog_said = hear(dog)
+    console.print(cat_said, dog_said)
+}
+
+func hear(pet: Pet): String {
+    return louder(pet)
+}
+
+func louder(speaker: Speaker): String {
+    var said = speaker.speak()
+    return said.upper_case()
+}
