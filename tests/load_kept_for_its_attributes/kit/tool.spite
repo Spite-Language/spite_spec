@@ -1,0 +1,5 @@
+var size: Integer = made()
+
+func made(): Integer {
+    return 3
+}

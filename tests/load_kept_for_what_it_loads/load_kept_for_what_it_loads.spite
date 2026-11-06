@@ -1,0 +1,8 @@
+var console = Console()
+
+func LoadKeptForWhatItLoads() {
+    load "../../../spite_standard_library/windows"
+    load "pq_a"
+    var made = PqB()
+    console.print(made.number)
+}

@@ -1,0 +1,3 @@
+func PqA() {
+    load "../pq_b"
+}

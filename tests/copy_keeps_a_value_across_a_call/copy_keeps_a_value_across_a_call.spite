@@ -1,0 +1,61 @@
+var console = Console()
+var held: Item? = null
+var shelf = Shelf()
+
+func CopyKeepsAValueAcrossACall() {
+    load "../../../spite_standard_library/windows"
+    held = Item()
+    across_a_call()
+    held = Item()
+    tested_after_the_call()
+    held = Item()
+    in_a_loop()
+    shelf.item = Item()
+    through_a_path()
+}
+
+func across_a_call() {
+    var copy = held
+    fallback copy
+    clear()
+    console.print(copy.number)
+}
+
+func tested_after_the_call() {
+    var copy = held
+    clear()
+    if copy {
+        console.print("still there")
+    }
+}
+
+func in_a_loop() {
+    var copy = held
+    fallback copy
+    var turns = 0
+    while turns < 2 {
+        console.print(copy.number)
+        clear()
+        turns = turns + 1
+    }
+}
+
+func through_a_path() {
+    var copy = shelf.item
+    fallback copy
+    replace_the_shelf()
+    console.print(copy.number)
+    if shelf.item {
+        console.print("a new item")
+    } else {
+        console.print("no item")
+    }
+}
+
+func clear() {
+    held = null
+}
+
+func replace_the_shelf() {
+    shelf = Shelf()
+}

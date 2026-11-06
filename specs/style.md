@@ -258,11 +258,12 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
 - **An `else if` that only returns** is hoisted to a `fallback` above its `if` when both test one number parameter
   against a number and no value passes both (`conformance/guard_in_else_if`). Otherwise it stays an error that says
   which choice is left (`conformance/guard_in_else_if_open`).
-- **Statements after a `return`** go (`conformance/after_return_error`).
+- **Statements after a `return`** go (`conformance/after_return_error`), unless they hold a `load`, which is read whether it runs or not.
 - **A copy made only to narrow** goes, and its uses name what it copied: `fixed: 'watcher' only copied 'tracker' so
   it could be narrowed; narrowed 'tracker' itself and used it directly` (`conformance/copy_to_narrow`,
   `conformance/copy_to_narrow_conditions`, `conformance/copy_to_narrow_not_leaving`, `conformance/namespace_nullable`).
-  Two locals of one name in the function stay the error.
+  Two locals of one name in the function stay the error. A copy whose source a call may write before the copy is read is not one: it compiles as written
+  (`tests/copy_keeps_a_value_across_a_call`).
 - **A local nothing reads whose value does nothing** (a literal, a text with no hole, a name) is removed: `fixed:
   'spare' was never read, and making it does nothing; removed it` (`conformance/unread_plain_local`); and so is one
   only ever assigned such values, with every write (`conformance/written_not_read`). One made or written by a
@@ -272,12 +273,13 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   One written by a call stays the error (`conformance/written_by_a_call`), so does one written through another
   object (`x.score = 1`, which only the types could tell apart), one in a generic class, and a write alone in its block.
 - **A `load` in the entry class of a folder no class outside it names** is removed (`conformance/unneeded_load`). The library's
-  folders and a pinned package's are left, since the compiler itself reads the library, and so are a `load` in another class, one inside an `if` on the build, and a folder holding part of `Program`, `Environment` or `Build`, which the compiler reads with no name.
+  folders and a pinned package's are left, since the compiler itself reads the library, and so are a `load` in another class, one inside an `if` on the build, and a folder holding part of `Program`, `Environment` or `Build`, which the compiler reads with no name. A folder counts with everything it loads, at any depth (`tests/load_kept_for_what_it_loads`), and
+  one inside the program stays when it declares an attribute, since without the `load` its files are judged as the program's own (`tests/load_kept_for_its_attributes`).
 - **A local or parameter with one right spelling** is renamed with every use in its function: camelCase, a doubled
   or trailing `_`, an abbreviation with one expansion, and a read `_name`
   (`conformance/renamed_names`, `conformance/abbreviated_name`, `conformance/abbreviation_two_words`,
   `conformance/read_underscore_name`). A name already taken in the function or its class stays the error
-  (`conformance/renamed_name_taken`), and so does an abbreviation of several meanings (`conformance/abbreviation_several_meanings`).
+  (`conformance/renamed_name_taken`), so does one that would become a word of the language or `from`, one in a function taking a `Spite.AttributeDeclaration` or the like, and so does an abbreviation of several meanings (`conformance/abbreviation_several_meanings`).
 - **A keyword misspelt by one letter** at the start of a line, where nothing else could be written, is corrected when no
   other line-starting keyword is as near: `fixed: 'retrun' was one letter from the keyword 'return' and from no other
   word that starts a line; wrote 'return'` (`conformance/misspelt_keyword`).

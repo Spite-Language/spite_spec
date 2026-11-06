@@ -1,0 +1,8 @@
+var console = Console()
+
+func AfterReturnHoldsALoad() {
+    load "../../../spite_standard_library/windows"
+    console.print("x")
+    return
+    load "kit"
+}

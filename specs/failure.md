@@ -192,7 +192,9 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   watcher`, `if not watcher`, `while watcher`, `fallback watcher and ready`; `diagnostics/copy_to_narrow_conditions`),
   is never assigned again, is not a `var` with a written type in a generic class (there it converts for some
   instance, as `var key: $value_type.key_type? = key_text` does), and whose source is not assigned later in the function either (a snapshot taken
-  before the source changes is not a copy for narrowing). A local holding what a `[]` read answered (`var age =
+  before the source changes is not a copy for narrowing). Nor is a local whose source a call may write between the copy and a read of the
+  local, the one question `narrowings_kept_across_calls` asks of a narrowed attribute: there the copy is what keeps the value, so it is
+  neither refused nor rewritten (`tests/copy_keeps_a_value_across_a_call`). A local holding what a `[]` read answered (`var age =
   ages[name]`, `var cell = grid[row].cells[column]`) is not a copy: it is narrowed instead of reading the key twice.
 - A check on something that cannot be null proves nothing and is an error naming the fix: `fallback tracker`
   written twice, or `crash` on a path an earlier `crash` already narrowed (`diagnostics/check_proves_nothing`).
