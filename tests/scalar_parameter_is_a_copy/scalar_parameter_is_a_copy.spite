@@ -1,0 +1,17 @@
+var console = Console()
+
+func ScalarParameterIsACopy() {
+    load "../../../spite_standard_library/windows"
+    var amount = 5
+    var flag = true
+    var text = "kept"
+    change(amount, flag, text)
+    console.print(amount, flag, text)
+}
+
+func change(amount: Integer, flag: Boolean, text: String) {
+    amount = amount + 10
+    flag = false
+    text = "changed"
+    console.print(amount, flag, text)
+}

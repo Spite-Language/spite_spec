@@ -1,0 +1,21 @@
+var console = Console()
+
+func MemoryLeakSummary() {
+    load "../../../spite_standard_library/windows"
+    make_a_cycle()
+    console.print("the cycle is out of reach")
+}
+
+func make_a_cycle() {
+    var question = Question("why")
+    var answer = Answer("because")
+    question.answer = answer
+    answer.question = question
+    question.marks.append(1)
+    question.ask()
+    var back = answer.question
+    var forth = question.answer
+    crash back
+    crash forth
+    console.print(back.text, forth.text)
+}

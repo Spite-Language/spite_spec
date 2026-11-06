@@ -1,0 +1,10 @@
+var console = Console()
+
+func EnumNullableMemberNotCandidate() {
+    load "../../../spite_standard_library/windows"
+    var posts = List<Post>()
+    var first = Post("hello")
+    posts.append(first)
+    var shown = posts.filter_published()
+    console.print(shown.count())
+}

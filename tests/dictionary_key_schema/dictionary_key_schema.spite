@@ -1,0 +1,20 @@
+enum Color {
+    'red'
+}
+
+var console = Console()
+
+func DictionaryKeySchema() {
+    load "../../../spite_standard_library/windows"
+    var text_writer = BinaryWriter<Dictionary<String, Integer>>()
+    var number_writer = BinaryWriter<Dictionary<Integer, Integer>>()
+    var color_writer = BinaryWriter<Dictionary<Color, Integer>>()
+    var again_writer = BinaryWriter<Dictionary<String, Integer>>()
+    var text_schema = text_writer.schema()
+    var number_schema = number_writer.schema()
+    var color_schema = color_writer.schema()
+    var again_schema = again_writer.schema()
+    console.print("text keys differ from number keys: {text_schema != number_schema}")
+    console.print("text keys differ from enum keys: {text_schema != color_schema}")
+    console.print("same key type, same schema: {text_schema == again_schema}")
+}

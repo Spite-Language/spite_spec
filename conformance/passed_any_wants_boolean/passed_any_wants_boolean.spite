@@ -1,0 +1,12 @@
+var console = Console()
+
+func PassedAnyWantsBoolean() {
+    load "../../../spite_standard_library/windows"
+    var names = ["Ada", "Bo"]
+    var found = names.any(measure)
+    console.print(names.count())
+}
+
+func measure(name: String): Integer {
+    return name.length()
+}

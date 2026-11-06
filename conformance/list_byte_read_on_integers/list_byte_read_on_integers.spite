@@ -1,0 +1,9 @@
+var console = Console()
+
+func ListByteReadOnIntegers() {
+    load "../../../spite_standard_library/windows"
+    var numbers = List<Integer>()
+    numbers.append(1)
+    var number = numbers.read_integer_little_endian_at(0)
+    console.print(number)
+}

@@ -1,0 +1,1 @@
+conformance/enum_each_value_refused/enum_each_value_refused.spite:8: error: a List<Post> has no attribute or function 'each_published' (in EnumEachValueRefused.EnumEachValueRefused)

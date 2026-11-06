@@ -1,0 +1,3 @@
+text keys differ from number keys: true
+text keys differ from enum keys: true
+same key type, same schema: true

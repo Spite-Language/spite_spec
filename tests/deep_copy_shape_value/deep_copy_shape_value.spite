@@ -1,0 +1,19 @@
+type Counted {
+    total(): Integer
+}
+
+var console = Console()
+
+func DeepCopyShapeValue() {
+    load "../../../spite_standard_library/windows"
+    var box = Box(3)
+    var copied = copy_of(box)
+    box.count = 9
+    var original_count = box.total()
+    var copied_count = copied.total()
+    console.print(original_count, copied_count)
+}
+
+func copy_of(counted: Counted): Counted {
+    return counted.deep_copy()
+}

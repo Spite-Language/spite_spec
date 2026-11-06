@@ -1,0 +1,18 @@
+var console = Console()
+
+func DictionaryLiteralLayout() {
+    load "../../../spite_standard_library/windows"
+    var prices = {
+        "tea": 3,
+        "cake": 5,
+        "bread": 2,
+    }
+    var names = {
+        7: "seven"
+        2: "two"
+    }
+    var keys = prices.keys().join(",")
+    var number_keys = names.keys().join(",")
+    var count = prices.count()
+    console.print(keys, count, number_keys)
+}

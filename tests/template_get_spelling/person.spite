@@ -1,0 +1,13 @@
+var years = 0
+
+func Person(starting_years: Integer) {
+    years = starting_years
+}
+
+func get_age(): Integer {
+    return years
+}
+
+func is_adult(): Boolean {
+    return years >= 18
+}

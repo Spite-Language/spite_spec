@@ -1,0 +1,23 @@
+var console = Console()
+var numbers = List<Integer>()
+
+func ListRemoveWhereChangesTheList() {
+    load "../../../spite_standard_library/windows"
+    numbers.append(1)
+    numbers.append(2)
+    numbers.append(3)
+    numbers.append(4)
+    numbers.remove_where(is_odd_and_grows)
+    var text = numbers.join(",")
+    console.print(text)
+}
+
+func is_odd_and_grows(number: Integer): Boolean {
+    if number == 1 {
+        numbers.append(10)
+    }
+    if number == 2 {
+        numbers.remove_at(4)
+    }
+    return number % 2 == 1
+}

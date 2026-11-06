@@ -1,0 +1,2 @@
+var name = "x"
+var parent: Weak<Parent>? = null

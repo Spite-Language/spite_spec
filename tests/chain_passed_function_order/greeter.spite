@@ -1,0 +1,10 @@
+var console = Console()
+var greeting = ""
+
+func Greeter(starting_greeting: String) {
+    greeting = starting_greeting
+}
+
+func greet(person: Person) {
+    console.print("{greeting}, {person.name}")
+}

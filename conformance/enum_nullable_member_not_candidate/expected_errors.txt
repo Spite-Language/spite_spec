@@ -1,0 +1,1 @@
+conformance/enum_nullable_member_not_candidate/enum_nullable_member_not_candidate.spite:8: error: 'Post' has no attribute or zero argument function 'published' for 'filter_published', and no enum of its members lists 'published' (in EnumNullableMemberNotCandidate.EnumNullableMemberNotCandidate)

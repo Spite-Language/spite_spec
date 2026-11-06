@@ -1,0 +1,31 @@
+var console = Console()
+
+func ChainPassedFunctionOrder() {
+    load "../../../spite_standard_library/windows"
+    var people = List<Person>()
+    var ada = Person("Ada", 36)
+    people.append(ada)
+    var bo = Person("Bo", 12)
+    people.append(bo)
+    var cy = Person("Cy", 50)
+    people.append(cy)
+    var greeter = Greeter("hello")
+    people.filter_is_adult().each(greeter.greet)
+    var elders = people.filter(is_old)
+    var elder_count = elders.count_is_adult()
+    var elder_total = people.filter(is_old).sum_age()
+    console.print(elder_count, elder_total)
+    var names = ["Ada", "Bo", "Grace"]
+    var seen = List<String>()
+    names.filter(is_short).each(seen.append)
+    var seen_text = seen.join(",")
+    console.print(seen_text)
+}
+
+func is_old(person: Person): Boolean {
+    return person.age > 30
+}
+
+func is_short(name: String): Boolean {
+    return name.length() < 4
+}

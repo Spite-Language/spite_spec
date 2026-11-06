@@ -1,0 +1,17 @@
+var console = Console()
+
+func DictionaryTypesDiffer() {
+    load "../../../spite_standard_library/windows"
+    var scores = Dictionary<Integer, Integer>()
+    scores[1] = 2
+    var total = sum_of(scores)
+    console.print(total)
+}
+
+func sum_of(scores: Dictionary<String, Integer>): Integer {
+    return scores.sum(identity)
+}
+
+func identity(score: Integer): Integer {
+    return score
+}

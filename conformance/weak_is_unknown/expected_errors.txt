@@ -1,0 +1,1 @@
+conformance/weak_is_unknown/child.spite:2: error: unknown type 'Weak' (in Child.)

@@ -1,0 +1,8 @@
+var console = Console()
+
+func MemoryNotNamedMemoryAttribute() {
+    load "../../../spite_standard_library/windows"
+    var monster = Monster(3)
+    var place = monster.memory
+    console.print(place)
+}

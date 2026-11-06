@@ -1,0 +1,13 @@
+var console = Console()
+var text = ""
+var marks = List<Integer>()
+var answer: Answer? = null
+
+func Question(starting_text: String) {
+    text = starting_text
+}
+
+func ask() {
+    var count = marks.count()
+    console.print("asking", text, count)
+}

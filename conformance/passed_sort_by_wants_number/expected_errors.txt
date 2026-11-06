@@ -1,0 +1,1 @@
+conformance/passed_sort_by_wants_number/passed_sort_by_wants_number.spite:6: error: 'sort_by(is_short)': 'is_short' is a Boolean, but 'sort_by' needs it to return Integer (in PassedSortByWantsNumber.PassedSortByWantsNumber)

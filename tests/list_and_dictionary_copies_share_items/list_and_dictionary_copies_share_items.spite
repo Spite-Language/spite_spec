@@ -1,0 +1,24 @@
+var console = Console()
+
+func ListAndDictionaryCopiesShareItems() {
+    load "../../../spite_standard_library/windows"
+    var list = List<Counter>()
+    var counter = Counter()
+    list.append(counter)
+    var list_copy = list.copy()
+    counter.total = 4
+    var list_item = list_copy[0]
+    crash list_item
+    console.print("list copy sees", list_item.total)
+    list_copy.append(counter)
+    var original_count = list.count()
+    var copy_count = list_copy.count()
+    console.print(original_count, copy_count)
+    var bag = Dictionary<String, Counter>()
+    bag["main"] = counter
+    var bag_copy = bag.copy()
+    counter.total = 8
+    var bag_item = bag_copy["main"]
+    crash bag_item
+    console.print("dictionary copy sees", bag_item.total)
+}

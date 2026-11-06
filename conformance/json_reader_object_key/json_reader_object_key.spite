@@ -1,0 +1,8 @@
+var console = Console()
+
+func JsonReaderObjectKey() {
+    load "../../../spite_standard_library/windows"
+    var reader = JsonReader<Dictionary<Player, Integer>>()
+    var scores = reader.read("a")
+    console.print(scores)
+}

@@ -1,0 +1,1 @@
+conformance/list_heap_written_type/list_heap_written_type.spite:5: error: unknown type 'Heap' (in ListHeapWrittenType.ListHeapWrittenType)

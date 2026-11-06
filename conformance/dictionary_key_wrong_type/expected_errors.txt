@@ -1,0 +1,1 @@
+conformance/dictionary_key_wrong_type/dictionary_key_wrong_type.spite:6: error: a Boolean cannot be used where an Integer is needed: a value is cast to the class a place wants through that class's conversion, and Integer declares no 'Integer(from: Boolean)' (in DictionaryKeyWrongType.DictionaryKeyWrongType)

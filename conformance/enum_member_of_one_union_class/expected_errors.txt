@@ -1,0 +1,1 @@
+conformance/enum_member_of_one_union_class/enum_member_of_one_union_class.spite:15: error: a List<EnumMemberOfOneUnionClass.Pet> has no attribute or function 'count_calm' (in EnumMemberOfOneUnionClass.EnumMemberOfOneUnionClass)

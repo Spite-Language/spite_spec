@@ -1,0 +1,13 @@
+var console = Console()
+
+func DictionaryValueSharesObject() {
+    load "../../../spite_standard_library/windows"
+    var bag = Dictionary<String, Counter>()
+    var counter = Counter()
+    bag["main"] = counter
+    counter.total = 5
+    var held = bag["main"]
+    crash held
+    held.total = held.total + 1
+    console.print(counter.total, held.total)
+}

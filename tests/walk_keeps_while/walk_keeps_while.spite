@@ -1,0 +1,30 @@
+var console = Console()
+
+func WalkKeepsWhile() {
+    load "../../../spite_standard_library/windows"
+    var names = ["Ada", "Bo", "Grace"]
+    var index = 0
+    while index < names.count() {
+        var name = names[index]
+        show(name, index)
+        index = index + 1
+    }
+    var lengths = List<Integer>()
+    index = 0
+    while index < names.count() {
+        var name = names[index]
+        var length = measure(name)
+        lengths.append(length)
+        index = index + 1
+    }
+    var text = lengths.join(",")
+    console.print(text)
+}
+
+func show(name: String, depth: Integer) {
+    console.print(depth, name)
+}
+
+func measure(name: String): Integer {
+    return name.length()
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func JsonWriterObjectKey() {
+    load "../../../spite_standard_library/windows"
+    var scores = Dictionary<Player, Integer>()
+    var ada = Player()
+    scores[ada] = 3
+    var writer = JsonWriter<Dictionary<Player, Integer>>()
+    var text = writer.write(scores)
+    console.print(text)
+}

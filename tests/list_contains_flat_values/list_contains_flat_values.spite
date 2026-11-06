@@ -1,0 +1,22 @@
+enum Color {
+    'red'
+    'green'
+    'blue'
+}
+
+var console = Console()
+
+func ListContainsFlatValues() {
+    load "../../../spite_standard_library/windows"
+    var flags = [true, false]
+    var has_true = flags.contains(true)
+    var false_place = flags.index_of(false)
+    var colors = List<Color>()
+    colors.append('red')
+    colors.append('blue')
+    var has_blue = colors.contains('blue')
+    var has_green = colors.contains('green')
+    var blue_place = colors.index_of('blue')
+    var green_place = colors.index_of('green')
+    console.print(has_true, false_place, has_blue, has_green, blue_place, green_place)
+}

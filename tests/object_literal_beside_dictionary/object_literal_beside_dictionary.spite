@@ -1,0 +1,13 @@
+var console = Console()
+
+func ObjectLiteralBesideDictionary() {
+    load "../../../spite_standard_library/windows"
+    var point = {x: 1, y: 2}
+    var scores = {"x": 1, "y": 2}
+    var across = point.x
+    var down = point.y
+    var score_count = scores.count()
+    var score = scores["y"]
+    crash score
+    console.print(across, down, score_count, score)
+}

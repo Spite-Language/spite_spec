@@ -1,0 +1,10 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var barks = 0
+
+func bark() {
+    barks = barks + 1
+}

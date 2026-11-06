@@ -1,0 +1,17 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func EnumMemberOfOneUnionClass() {
+    load "../../../spite_standard_library/windows"
+    var pets = List<Pet>()
+    var cat = Cat()
+    pets.append(cat)
+    var dog = Dog()
+    pets.append(dog)
+    var calm = pets.count_calm()
+    console.print(calm)
+}

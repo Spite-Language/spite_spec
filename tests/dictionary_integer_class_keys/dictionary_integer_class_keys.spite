@@ -1,0 +1,55 @@
+var console = Console()
+var _low_tiny: Tiny = -5
+var _high_tiny: Tiny = 100
+var _high_byte: Byte = 200
+var _low_byte: Byte = 7
+var _low_short: Short = -30000
+var _mid_short: Short = 300
+var _high_unsigned_short: UnsignedShort = 60000
+var _mid_unsigned_short: UnsignedShort = 300
+var _high_unsigned_integer: UnsignedInteger = 4000000000
+var _one_unsigned_integer: UnsignedInteger = 1
+var _high_unsigned_long: UnsignedLong = 10000000000
+var _one_unsigned_long: UnsignedLong = 1
+
+func DictionaryIntegerClassKeys() {
+    load "../../../spite_standard_library/windows"
+    var tinies = Dictionary<Tiny, String>()
+    tinies[_low_tiny] = "minus five"
+    tinies[_high_tiny] = "hundred"
+    var bytes = Dictionary<Byte, String>()
+    bytes[_high_byte] = "two hundred"
+    bytes[_low_byte] = "seven"
+    var shorts = Dictionary<Short, String>()
+    shorts[_low_short] = "far below"
+    shorts[_mid_short] = "three hundred"
+    var unsigned_shorts = Dictionary<UnsignedShort, String>()
+    unsigned_shorts[_high_unsigned_short] = "far above"
+    unsigned_shorts[_mid_unsigned_short] = "three hundred"
+    var unsigned_integers = Dictionary<UnsignedInteger, String>()
+    unsigned_integers[_high_unsigned_integer] = "four billion"
+    unsigned_integers[_one_unsigned_integer] = "one"
+    var unsigned_longs = Dictionary<UnsignedLong, String>()
+    unsigned_longs[_high_unsigned_long] = "ten billion"
+    unsigned_longs[_one_unsigned_long] = "one"
+    var tiny_text = tinies.values().join(",")
+    var byte_text = bytes.values().join(",")
+    var short_text = shorts.values().join(",")
+    var unsigned_short_text = unsigned_shorts.values().join(",")
+    var unsigned_integer_text = unsigned_integers.values().join(",")
+    var unsigned_long_text = unsigned_longs.values().join(",")
+    console.print(tiny_text, byte_text, short_text)
+    console.print(unsigned_short_text, unsigned_integer_text, unsigned_long_text)
+    var found_tiny = tinies[_low_tiny]
+    var found_byte = bytes[_high_byte]
+    var found_short = shorts[_low_short]
+    var found_unsigned_short = unsigned_shorts[_high_unsigned_short]
+    var found_unsigned_integer = unsigned_integers[_high_unsigned_integer]
+    var found_unsigned_long = unsigned_longs[_high_unsigned_long]
+    console.print(found_tiny, found_byte, found_short)
+    console.print(found_unsigned_short, found_unsigned_integer, found_unsigned_long)
+    tinies[_low_tiny] = "replaced"
+    var tiny_count = tinies.count()
+    var replaced = tinies[_low_tiny]
+    console.print(tiny_count, replaced)
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func ListByteWriteOnIntegers() {
+    load "../../../spite_standard_library/windows"
+    var numbers = List<Integer>()
+    numbers.append(1)
+    numbers.write_integer_big_endian_at(0, 7)
+    var count = numbers.count()
+    console.print(count)
+}

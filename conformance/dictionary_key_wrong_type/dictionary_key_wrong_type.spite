@@ -1,0 +1,9 @@
+var console = Console()
+
+func DictionaryKeyWrongType() {
+    load "../../../spite_standard_library/windows"
+    var names = Dictionary<Integer, String>()
+    names[true] = "yes"
+    var size = names.count()
+    console.print(size)
+}

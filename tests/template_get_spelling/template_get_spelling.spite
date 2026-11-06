@@ -1,0 +1,20 @@
+var console = Console()
+
+func TemplateGetSpelling() {
+    load "../../../spite_standard_library/windows"
+    var people = List<Person>()
+    var ada = Person(36)
+    people.append(ada)
+    var bo = Person(12)
+    people.append(bo)
+    var short_way = people.map_ages()
+    var long_way = people.map_get_ages()
+    var short_text = short_way.join(",")
+    var long_text = long_way.join(",")
+    console.print(short_text, long_text)
+    var short_total = people.sum_age()
+    var long_total = people.sum_get_age()
+    console.print(short_total, long_total)
+    var adults = people.count_is_adult()
+    console.print(adults)
+}

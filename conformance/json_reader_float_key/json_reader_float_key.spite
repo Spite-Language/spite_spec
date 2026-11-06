@@ -1,0 +1,8 @@
+var console = Console()
+
+func JsonReaderFloatKey() {
+    load "../../../spite_standard_library/windows"
+    var reader = JsonReader<Dictionary<Float, String>>()
+    var weights = reader.read("a")
+    console.print(weights)
+}

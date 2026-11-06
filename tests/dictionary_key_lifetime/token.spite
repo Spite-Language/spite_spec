@@ -1,0 +1,12 @@
+var console = Console()
+var name = ""
+
+func Token(starting_name: String) {
+    name = starting_name
+}
+
+func drop() {
+    if name == "first" {
+        console.print("dropped", name)
+    }
+}

@@ -1,0 +1,1 @@
+conformance/memory_not_named_instances/memory_not_named_instances.spite:6: error: 'Monster' is a class, not a value: write 'Monster()' to make one, and give it a name with 'var ... = '; for the class itself, pass it where a 'Spite.Class' is wanted (in MemoryNotNamedInstances.MemoryNotNamedInstances)

@@ -1,0 +1,6 @@
+var text = ""
+var question: Question? = null
+
+func Answer(starting_text: String) {
+    text = starting_text
+}

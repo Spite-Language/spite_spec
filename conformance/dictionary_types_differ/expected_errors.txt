@@ -1,0 +1,1 @@
+conformance/dictionary_types_differ/dictionary_types_differ.spite:7: error: a Dictionary<Integer, Integer> cannot be used where a Dictionary<String, Integer> is needed (in DictionaryTypesDiffer.DictionaryTypesDiffer)

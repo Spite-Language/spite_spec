@@ -1,0 +1,10 @@
+var console = Console()
+
+func EnumSumValueRefused() {
+    load "../../../spite_standard_library/windows"
+    var posts = List<Post>()
+    var first = Post("hello", 'published')
+    posts.append(first)
+    var total = posts.sum_published()
+    console.print(posts.count())
+}

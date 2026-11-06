@@ -1,0 +1,7 @@
+var console = Console()
+
+func DropReturnsNothing() {
+    load "../../../spite_standard_library/windows"
+    var thing = Thing()
+    console.print(thing.name)
+}

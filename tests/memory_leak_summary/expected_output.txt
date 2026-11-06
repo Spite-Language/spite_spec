@@ -1,0 +1,10 @@
+asking why 1
+why because
+the cycle is out of reach
+spite: --debug-memory: 6 allocation(s) leaked
+  String: 2 leaked object(s)
+  Buffer: 1 leaked object(s)
+  Question: 1 leaked object(s)
+  Answer: 1 leaked object(s)
+  List_of_Integer: 1 leaked object(s)
+allocations: 36 frees: 30

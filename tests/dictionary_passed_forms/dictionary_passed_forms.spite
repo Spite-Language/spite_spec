@@ -1,0 +1,32 @@
+var console = Console()
+
+func DictionaryPassedForms() {
+    load "../../../spite_standard_library/windows"
+    var team = Dictionary<String, String>()
+    team["lead"] = "Ada"
+    team["second"] = "Barbara"
+    team["third"] = "Bo"
+    var short_names = team.filter(is_short)
+    var short_text = short_names.join(",")
+    var short_count = team.values().count(is_short)
+    var any_short = team.values().any(is_short)
+    var all_short = team.values().all(is_short)
+    var found = team.values().find(is_long)
+    crash found
+    var by_length = team.values().sort_by(measure)
+    var sorted_text = by_length.join(",")
+    var total = team.sum(measure)
+    console.print(short_text, short_count, any_short, all_short, found, sorted_text, total)
+}
+
+func is_short(name: String): Boolean {
+    return name.length() < 4
+}
+
+func is_long(name: String): Boolean {
+    return name.length() > 5
+}
+
+func measure(name: String): Integer {
+    return name.length()
+}

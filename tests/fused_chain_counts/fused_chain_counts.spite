@@ -1,0 +1,26 @@
+var console = Console()
+var teams = List<Team>()
+
+func FusedChainCounts() {
+    load "../../../spite_standard_library/windows"
+    var ann = Person("ann", 34, false)
+    var ann_team = Team(4, true, ann)
+    teams.append(ann_team)
+    var dee = Person("dee", 71, true)
+    var dee_team = Team(5, true, dee)
+    teams.append(dee_team)
+    var total = 0
+    var round = 0
+    while round < 1000 {
+        var size = teams.filter_active().sum_size()
+        var counted = teams.filter_active().map_leads().count_retired()
+        var adult = teams.map_leads().filter_is_adult().any_retired()
+        var ages = teams.map_leads().filter_is_adult().sum_age()
+        total = total + size + counted + ages
+        if adult {
+            total = total + 1
+        }
+        round = round + 1
+    }
+    console.print(total, ann.name, dee.name)
+}

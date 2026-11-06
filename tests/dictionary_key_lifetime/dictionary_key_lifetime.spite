@@ -1,0 +1,23 @@
+var console = Console()
+
+func DictionaryKeyLifetime() {
+    load "../../../spite_standard_library/windows"
+    var table = Dictionary<Token, String>()
+    fill(table)
+    var filled = table.count()
+    console.print("filled", filled)
+    var other = Token("other")
+    var spare = Token("spare")
+    console.print("made", other.name, spare.name)
+    var keys = table.keys()
+    var kept = keys.first()
+    crash kept
+    console.print("the key still reads as", kept.name)
+    table.remove_at(kept)
+    console.print("removed")
+}
+
+func fill(table: Dictionary<Token, String>) {
+    var key = Token("first")
+    table[key] = "value"
+}

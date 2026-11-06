@@ -1,0 +1,5 @@
+var name = "x"
+
+func drop(): Integer {
+    return 1
+}
