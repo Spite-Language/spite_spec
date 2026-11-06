@@ -1,0 +1,20 @@
+var console = Console()
+
+func TextCopies() {
+    load "../../../spite_standard_library/windows"
+    var text = "kept"
+    var shallow = text.copy()
+    var deep = text.deep_copy()
+    console.print(shallow, deep, shallow == text, deep == text)
+    shallow.append_code(33)
+    deep.append_code(63)
+    console.print(text, shallow, deep)
+    var person = "person"
+    var people = person.pluralize()
+    var again = people.deep_copy()
+    var one = again.singularize()
+    console.print(again, one)
+    var long_text = "a text longer than the room a short text keeps inside itself, so the copy has to make room"
+    var long_copy = long_text.copy()
+    console.print(long_copy == long_text, long_copy.length())
+}
