@@ -290,8 +290,8 @@ It is an error and not a fix: where to split a file is a design choice the compi
 within it by cleaning up, not by being cut in two at the number: state grouped into an object, concerns named, each
 in a file of its own.
 
-Until the files over it are split, the compiler holds a waiting list of them: nine of its own and
-`tests/text_escapes`, each named by its program's folder and its path inside it. A file on the list that comes back
+Until the files over it are split, the compiler holds a waiting list of them: five of its own, each named by its
+program's folder and its path inside it. A file on the list that comes back
 within the budget is an error until it leaves the list, and `tests/compiler_file_content_budget` keeps the list from
 growing. It is a literal inside the compiler, with no flag, setting or file that adds to it, and it goes when the last
 of those files is split.
