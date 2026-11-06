@@ -1,0 +1,31 @@
+var console = Console()
+var program = Program()
+var build = Build()
+var greeter = Greeter()
+var _most_waits = 600
+
+func HotReloadCompilesWithTheFlagsItWasBuiltWith() {
+    load "../../../spite_standard_library/windows"
+    greeter.check(-1)
+    console.print("checked before the reload")
+    write_greeter()
+    var fifty_milliseconds = Duration(50, 'milliseconds')
+    var now = greeter.which()
+    var waited = 0
+    while now == "old" and waited < _most_waits {
+        program.sleep(fifty_milliseconds)
+        now = greeter.which()
+        waited = waited + 1
+    }
+    console.print("which:", now)
+    greeter.check(-1)
+    console.print("checked after the reload")
+}
+
+func write_greeter() {
+    var changed = File("{build.program}/changed.txt")
+    var text = changed.read_as_string()
+    crash text
+    var file = File("{build.program}/greeter.spite")
+    crash file.write_string(text)
+}

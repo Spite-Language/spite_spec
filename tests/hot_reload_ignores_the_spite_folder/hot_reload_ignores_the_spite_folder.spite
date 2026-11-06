@@ -1,0 +1,28 @@
+var console = Console()
+var program = Program()
+var build = Build()
+var greeter = Greeter()
+var _most_waits = 600
+
+func HotReloadIgnoresTheSpiteFolder() {
+    load "../../../spite_standard_library/windows"
+    var stray = File("{build.program}/.spite/stray.spite")
+    crash stray.write_string("this is not a program\n")
+    var three_seconds = Duration(3, 'seconds')
+    program.sleep(three_seconds)
+    console.print("stray file written and waited for")
+    var changed = File("{build.program}/changed.txt")
+    var text = changed.read_as_string()
+    crash text
+    var file = File("{build.program}/greeter.spite")
+    crash file.write_string(text)
+    var fifty_milliseconds = Duration(50, 'milliseconds')
+    var now = greeter.which()
+    var waited = 0
+    while now == "old" and waited < _most_waits {
+        program.sleep(fifty_milliseconds)
+        now = greeter.which()
+        waited = waited + 1
+    }
+    console.print("which:", now)
+}

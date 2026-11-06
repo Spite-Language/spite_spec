@@ -1,0 +1,21 @@
+var console = Console()
+var program = Program()
+var build = Build()
+var reload = Reload()
+var greeter = Greeter()
+var _most_waits = 200
+
+func HotReloadUnchangedCodeRebuildsNothing() {
+    load "../../../spite_standard_library/windows"
+    var first = greeter.which()
+    console.print(first)
+    var text = "func which(): String \{\n    return \"old\"\n}\n"
+    var file = File("{build.program}/greeter.spite")
+    crash file.write_string(text)
+    var three_seconds = Duration(3, 'seconds')
+    program.sleep(three_seconds)
+    var generation = reload.generation()
+    console.print("generation", generation)
+    var now = greeter.which()
+    console.print(now)
+}

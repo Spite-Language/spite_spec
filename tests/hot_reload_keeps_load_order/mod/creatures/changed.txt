@@ -1,0 +1,6 @@
+var health = 99
+var armor = 5
+
+func taunt(): String {
+    return "{roar()} and taunts you"
+}

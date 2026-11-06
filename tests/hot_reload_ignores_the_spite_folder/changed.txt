@@ -1,0 +1,3 @@
+func which(): String {
+    return "new"
+}

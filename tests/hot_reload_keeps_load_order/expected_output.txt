@@ -1,0 +1,4 @@
+a modded rat with 5 armor
+spite: rebuilt Creatures.Monster
+the replacement removed: a wild rat
+rat roars and taunts you 99 5

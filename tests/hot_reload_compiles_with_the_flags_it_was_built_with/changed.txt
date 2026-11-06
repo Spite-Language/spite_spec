@@ -1,0 +1,10 @@
+var console = Console()
+
+func which(): String {
+    return "new"
+}
+
+func check(index: Integer) {
+    fallback index >= 0
+    console.print("checked", index)
+}

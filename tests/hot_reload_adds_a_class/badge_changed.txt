@@ -1,0 +1,5 @@
+var title = ""
+
+func Badge(starting_title: String) {
+    title = starting_title
+}

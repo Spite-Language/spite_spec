@@ -1,0 +1,30 @@
+var console = Console()
+var program = Program()
+var build = Build()
+var greeter = Greeter()
+var _most_waits = 600
+
+func HotReloadAddsAClass() {
+    load "../../../spite_standard_library/windows"
+    var first = greeter.which()
+    console.print(first)
+    write_over("badge.spite", "badge_changed.txt")
+    write_over("greeter.spite", "changed.txt")
+    var fifty_milliseconds = Duration(50, 'milliseconds')
+    var now = greeter.which()
+    var waited = 0
+    while now == first and waited < _most_waits {
+        program.sleep(fifty_milliseconds)
+        now = greeter.which()
+        waited = waited + 1
+    }
+    console.print("which:", now)
+}
+
+func write_over(target: String, source: String) {
+    var changed = File("{build.program}/{source}")
+    var text = changed.read_as_string()
+    crash text
+    var file = File("{build.program}/{target}")
+    crash file.write_string(text)
+}

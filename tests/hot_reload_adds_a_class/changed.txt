@@ -1,0 +1,4 @@
+func which(): String {
+    var badge = Badge("gold")
+    return badge.title
+}

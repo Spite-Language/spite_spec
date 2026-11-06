@@ -1,0 +1,19 @@
+var console = Console()
+var program = Program()
+var greeter = Greeter()
+var _most_waits = 600
+
+func HotReloadCallInProgressFinishesTheOldBody() {
+    load "../../../spite_standard_library/windows"
+    greeter.slow()
+    var fifty_milliseconds = Duration(50, 'milliseconds')
+    var now = greeter.which()
+    var waited = 0
+    while now == "old" and waited < _most_waits {
+        program.sleep(fifty_milliseconds)
+        now = greeter.which()
+        waited = waited + 1
+    }
+    console.print("which:", now)
+    greeter.slow()
+}

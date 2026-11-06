@@ -1,0 +1,6 @@
+spite.fallback	8f6132c3	tests/hot_reload_compiles_with_the_flags_it_was_built_with/greeter.spite:8	Greeter	check	returned=nothing
+checked before the reload
+spite: rebuilt Greeter
+which: new
+spite.fallback	8f6132c3	tests/hot_reload_compiles_with_the_flags_it_was_built_with/greeter.spite:8	Greeter	check	returned=nothing
+checked after the reload

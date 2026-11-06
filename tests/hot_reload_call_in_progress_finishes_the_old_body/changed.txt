@@ -1,0 +1,24 @@
+var console = Console()
+var program = Program()
+var build = Build()
+
+func slow() {
+    console.print("new body")
+    var a_moment = Duration(1, 'milliseconds')
+    program.sleep(a_moment)
+}
+
+func which(): String {
+    return "new"
+}
+
+func write_the_new_file() {
+    var changed = File("{build.program}/changed.txt")
+    var text = changed.read_as_string()
+    crash text
+    var file = File("{build.program}/greeter.spite")
+    var written = file.write_string(text)
+    if not written {
+        console.print("greeter.spite could not be written")
+    }
+}
