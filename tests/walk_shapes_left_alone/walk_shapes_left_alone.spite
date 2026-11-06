@@ -1,0 +1,136 @@
+var console = Console()
+var items = List<Item>()
+
+func WalkShapesLeftAlone() {
+    load "../../../spite_standard_library/windows"
+    var apple = Item("apple", 3, true)
+    items.append(apple)
+    var pear = Item("pear", 5, false)
+    items.append(pear)
+    var answer = walk()
+    console.print(answer, apple.name, apple.price, apple.in_stock)
+}
+
+func is_cheap(item: Item): Boolean {
+    return item.price < 4
+}
+
+func price_of(item: Item): Integer {
+    return item.price
+}
+
+var names = List<String>()
+
+func walk(): String {
+    var first = counter_read_after()
+    var second = counter_starts_at_one()
+    var third = result_is_an_attribute()
+    var fourth = total_starts_above_zero()
+    var fifth = result_mentioned_before()
+    var sixth = integers_summed()
+    var seventh = two_arguments()
+    var eighth = presence_test()
+    return "{first} {second} {third} {fourth} {fifth} {sixth} {seventh} {eighth}"
+}
+
+func counter_read_after(): Integer {
+    var result = List<String>()
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        result.append(item.name)
+        index = index + 1
+    }
+    return index + result.count()
+}
+
+func counter_starts_at_one(): Integer {
+    var result = List<String>()
+    var index = 1
+    while index < items.count() {
+        var item = items[index]
+        result.append(item.name)
+        index = index + 1
+    }
+    return result.count()
+}
+
+func result_is_an_attribute(): Integer {
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        names.append(item.name)
+        index = index + 1
+    }
+    return names.count()
+}
+
+func total_starts_above_zero(): Integer {
+    var total = 5
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        total = total + item.price
+        index = index + 1
+    }
+    return total
+}
+
+func result_mentioned_before(): Integer {
+    var result = List<String>()
+    result.append("first")
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        result.append(item.name)
+        index = index + 1
+    }
+    return result.count()
+}
+
+func integers_summed(): Integer {
+    var numbers = List<Integer>()
+    numbers.append(4)
+    numbers.append(6)
+    var total = 0
+    var index = 0
+    while index < numbers.count() {
+        total = total + numbers[index]
+        index = index + 1
+    }
+    return total
+}
+
+func two_arguments(): Integer {
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        mention(item, "seen")
+        index = index + 1
+    }
+    return index
+}
+
+func mention(item: Item, label: String) {
+    console.print(label, item.name)
+}
+
+func first_word(item: Item): String? {
+    if item.in_stock {
+        return item.name
+    }
+    return null
+}
+
+func presence_test(): Integer {
+    var result = List<Item>()
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        if first_word(item) {
+            result.append(item)
+        }
+        index = index + 1
+    }
+    return result.count()
+}
