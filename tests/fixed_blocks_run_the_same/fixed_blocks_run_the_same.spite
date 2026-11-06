@@ -1,0 +1,118 @@
+union Creature {
+    Monster
+    Ghost
+}
+
+var console = Console()
+var tracker: Tracker? = null
+var unread_label = "unused"
+var only_written = 1
+
+func FixedBlocksRunTheSame() {
+    load "../../../spite_standard_library/windows"
+    only_written = 2
+    tracker = Tracker()
+    known_fact(4)
+    class_tests()
+    terminal("named")
+    terminal_of_null()
+    copied()
+    var answer = decided()
+    console.print(answer)
+    var stopped = after_a_return(2)
+    console.print(stopped)
+    hoisted(5)
+    hoisted(-1)
+    hoisted(2)
+    var itemCount = 3
+    var max_len = 4
+    var _counted = 5
+    var total = 1
+    total = 2
+    console.print(itemCount + max_len + _counted)
+}
+
+func first_of(numbers: List<Integer>): Integer? {
+    return numbers.first()
+}
+
+func known_fact(number: Integer) {
+    var numbers = [number]
+    var first = first_of(numbers)
+    if first {
+        console.print("present")
+        if first {
+            console.print(first)
+        } else {
+            console.print("never")
+        }
+    }
+    console.print("after the known fact")
+}
+
+func class_tests() {
+    var creature: Creature = Monster()
+    if creature.class == Monster {
+        console.print("tested")
+        if creature.class == Monster {
+            console.print("a monster")
+        }
+    }
+    var monster = Monster()
+    if monster.class == Ghost {
+        console.print("never a ghost")
+    } else {
+        console.print("not a ghost")
+    }
+    console.print(monster.health)
+}
+
+func name_of(given: String): String? {
+    if given == "none" {
+        return null
+    }
+    return given
+}
+
+func terminal(given: String) {
+    var maybe_name = name_of(given)
+    if maybe_name {
+        console.print(maybe_name)
+    }
+}
+
+func terminal_of_null() {
+    var maybe_name = name_of("none")
+    if maybe_name {
+        console.print("never {maybe_name}")
+    }
+}
+
+func copied() {
+    var watcher = tracker
+    fallback watcher
+    watcher.note_a_drop()
+    console.print(watcher.drops)
+}
+
+func decided(): Integer? {
+    if tracker {
+        fallback 1 > 2
+        console.print("never decided")
+    }
+    return 7
+}
+
+func after_a_return(value: Integer): Integer {
+    return value * 2
+    console.print("never after")
+}
+
+func hoisted(value: Integer) {
+    if value > 3 {
+        console.print("big")
+    } else if value < 0 {
+        return
+    }
+    console.print(value)
+}

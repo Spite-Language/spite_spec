@@ -1,0 +1,4 @@
+conformance/renamed_names/renamed_names.spite:13: fixed: the parameter 'firstValue' was not written in snake_case, lowercase words joined by underscores; renamed it 'first_value' (in RenamedNames.shown)
+conformance/renamed_names/renamed_names.spite:5: fixed: the variable 'itemCount' was not written in snake_case, lowercase words joined by underscores; renamed it 'item_count' (in RenamedNames.RenamedNames)
+conformance/renamed_names/renamed_names.spite:6: fixed: the variable 'total__price' joined its words with more than one underscore or ended with one; renamed it 'total_price' (in RenamedNames.RenamedNames)
+conformance/renamed_names/renamed_names.spite:7: fixed: the variable 'trailing_' joined its words with more than one underscore or ended with one; renamed it 'trailing' (in RenamedNames.RenamedNames)

@@ -1,1 +1,1 @@
-conformance/attribute_only_written/attribute_only_written.spite:2: error: the attribute 'score' is never read: remove it (in AttributeOnlyWritten.)
+conformance/attribute_only_written/attribute_only_written.spite:2: fixed: the attribute 'score' was never read, and nothing written to it does anything; removed it and every write (in AttributeOnlyWritten.)

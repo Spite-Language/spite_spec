@@ -1,1 +1,3 @@
-conformance/known_fact_class_never/known_fact_class_never.spite:28: error: 'monster' is a Monster here, so it is never Ghost and this test is decided while compiling: remove it (in KnownFactClassNever.KnownFactClassNever)
+conformance/known_fact_class_never/known_fact_class_never.spite:28: fixed: 'monster' was a Monster here, so it was never Ghost and this test was decided while compiling; removed it (in KnownFactClassNever.KnownFactClassNever)
+conformance/known_fact_class_never/known_fact_class_never.spite:31: fixed: 'creature' was already a Monster, narrowed by 'if creature.class == Monster' on line 29; removed the 'if' and kept the code it runs (in KnownFactClassNever.KnownFactClassNever)
+conformance/known_fact_class_never/known_fact_class_never.spite:27: error: 'monster' is never read: remove it (in KnownFactClassNever.KnownFactClassNever)

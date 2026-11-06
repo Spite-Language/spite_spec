@@ -1,0 +1,4 @@
+conformance/misspelt_keyword/misspelt_keyword.spite:4: fixed: 'laod' was one letter from the keyword 'load' and from no other word that starts a line; wrote 'load' (in MisspeltKeyword)
+conformance/misspelt_keyword/misspelt_keyword.spite:5: fixed: 'vra' was one letter from the keyword 'var' and from no other word that starts a line; wrote 'var' (in MisspeltKeyword)
+conformance/misspelt_keyword/misspelt_keyword.spite:9: fixed: 'fucn' was one letter from the keyword 'func' and from no other word that starts a line; wrote 'func' (in MisspeltKeyword)
+conformance/misspelt_keyword/misspelt_keyword.spite:10: fixed: 'retrun' was one letter from the keyword 'return' and from no other word that starts a line; wrote 'return' (in MisspeltKeyword)

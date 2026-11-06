@@ -1,0 +1,8 @@
+var console = Console()
+
+func RenamedNameTaken() {
+    load "../../../spite_standard_library/windows"
+    var itemCount = 3
+    var item_count = 4
+    console.print(itemCount + item_count)
+}

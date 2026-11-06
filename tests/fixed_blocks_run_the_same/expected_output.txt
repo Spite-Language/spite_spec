@@ -1,0 +1,15 @@
+present
+4
+after the known fact
+tested
+a monster
+not a ghost
+3
+named
+1
+null
+4
+big
+5
+2
+12

@@ -1,1 +1,1 @@
-conformance/terminal_if/terminal_if.spite:14: error: this 'if' is the last thing the function does and has no 'else', so it only checks that 'maybe_name' is there: write 'fallback maybe_name' and let the rest of the function run unindented (in TerminalIf.announce)
+conformance/terminal_if/terminal_if.spite:14: fixed: this 'if' was the last thing the function did and had no 'else', so it only checked that 'maybe_name' was there; wrote 'fallback maybe_name' and moved the code it ran left (in TerminalIf.announce)

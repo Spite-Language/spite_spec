@@ -1,0 +1,2 @@
+conformance/unread_plain_attribute/unread_plain_attribute.spite:2: fixed: the attribute 'spare' was never read, and making it does nothing; removed it (in UnreadPlainAttribute.)
+conformance/unread_plain_attribute/unread_plain_attribute.spite:3: fixed: the attribute 'label' was never read, and making it does nothing; removed it (in UnreadPlainAttribute.)

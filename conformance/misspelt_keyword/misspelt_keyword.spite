@@ -1,0 +1,11 @@
+var console = Console()
+
+func MisspeltKeyword() {
+    laod "../../../spite_standard_library/windows"
+    vra number = shown()
+    console.print(number)
+}
+
+fucn shown(): Integer {
+    retrun 3
+}

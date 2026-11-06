@@ -1,1 +1,1 @@
-conformance/after_return_error/after_return_error.spite:11: error: this statement comes after a 'return', so it never runs: remove it (in AfterReturnError.double)
+conformance/after_return_error/after_return_error.spite:11: fixed: this statement came after a 'return', so it never ran; removed it and whatever followed it (in AfterReturnError.double)

@@ -1,1 +1,3 @@
-conformance/unused_attributes/unused_attributes.spite:3: error: the attribute 'forgotten' is never read: remove it (in UnusedAttributes.)
+conformance/unused_attributes/unused_attributes.spite:3: fixed: the attribute 'forgotten' was never read, and making it does nothing; removed it (in UnusedAttributes.)
+conformance/unused_attributes/unused_attributes.spite:5: fixed: the attribute '_kept_for_later' was never read, and making it does nothing; removed it (in UnusedAttributes.)
+conformance/unused_attributes/mover.spite:1: error: the attribute 'world' is never read: remove it (in Mover.)

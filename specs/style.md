@@ -6,15 +6,15 @@ is the bug.
 
 ## Unused is an error
 
-A local variable or parameter that is never read is a compile error. An unread local never assigned whose value
-does nothing is removed instead ([the compiler fixes what has one fix](#the-compiler-fixes-what-has-one-fix)).
+A local variable or parameter that is never read is a compile error. An unread local whose value and every write
+do nothing is removed instead, and a read `_name` is renamed `name` ([the compiler fixes what has one fix](#the-compiler-fixes-what-has-one-fix)).
 **Only a read counts**: a local or parameter that is only ever assigned is unused,
 `'total' is never read: remove it`; a read in the new value, `label = "{label} of things"`, is a read
 (`diagnostics/written_not_read`). **Only a parameter may be `_name`**: a signature can need a parameter
 its body ignores, and `_name` says so: `the parameter 'amount' is never read: remove it, or name it '_amount'
 if the signature needs it`; a local has no such reason, so an unread local is an error whatever its name, and
-the message only says to remove it. A `_name` that *is* read is also an error: `'_counted' is read, so it must
-not start with an underscore: only a parameter the body ignores is named that way` (`diagnostics/unused_names`).
+the message only says to remove it. A `_name` that *is* read is renamed `name`: `'_counted' was read, so it must
+not start with an underscore: only a parameter the body ignores is named that way; renamed it 'counted'` (`conformance/unused_names`). The same words as an error are what it gets when that name is taken.
 A declaration whose own statement already failed is not reported as unread as well.
 **A function nobody calls is not reported**, private or public: its callers may be code
 the compiler cannot see, tree shaking removes it from a production build, and the reads inside it still count.
@@ -93,7 +93,7 @@ What counts as a read, and the exceptions:
 The compiler is the linter and the formatter. Style is arbitrary and there is only one way: the compiler rewrites
 source files to the one style automatically instead of complaining. Formatting on
 every compile is documented in [Command line](compiler.md#command-line); the naming/abbreviation
-lints that cannot be auto-fixed are their own subsection below.
+lints are their own subsection below.
 
 ### One call per line, and nothing said twice
 
@@ -236,18 +236,51 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   value that cannot be null, a check already narrowed or proven, the same check on the next line, a divisor
   proven again, a check decided while compiling that holds) is removed when it is a line of its own outside a
   generic class and a walk: `fixed: 'tracker' was already narrowed by 'fallback tracker' on line 8; removed this
-  check` (`conformance/check_proves_nothing`). Written as an `if` or a `while` it stays the
-  error.
+  check` (`conformance/check_proves_nothing`).
+- **An `if` on what is already known**: a value already narrowed or proven present, and a class test the value's
+  type answers, becomes the code it runs (its `else` goes), or its `else`, or goes when written `if not x` or when
+  the class test is never true: `fixed: 'number' was already narrowed by 'if number' on line 18; removed the 'if' and
+  kept the code it runs` (`conformance/known_fact_inside_its_if`, `conformance/proven_present_answer_checked`,
+  `conformance/known_fact_class_again`, `conformance/known_fact_class_never`). A `while` on a proven value stays the
+  error, since the only rewrite is a loop that never ends, and so does a class test that is only part of a condition.
 - **An `if` or `while` decided while compiling** ([failure.md](failure.md#nothing-fails-silently-the-rule)): an `if`
   always true becomes its body, one always false becomes its `else` or goes (an `else if` becomes the `if`), and a
   `while` always false goes (`conformance/decided_if_true`, `conformance/decided_if_false`,
-  `conformance/decided_else_if`, `conformance/decided_while`). A `while` always true stays the error, since the
-  only rewrite is a loop that never ends, and so does a `fallback` that folds false. An `if` whose kept code
+  `conformance/decided_else_if`, `conformance/decided_while`). A `fallback` that folds false goes with the code after
+  it in its block, and a `return` of what it answered takes its place unless it ended the function's own body
+  (`conformance/decided_assert_false`); when the answer is built with more than a number or `false` it stays the error. A `while` always true stays the error, since the
+  only rewrite is a loop that never ends. An `if` whose kept code
   declares a name the rest of the function also mentions stays the error too, since moving it left would change
   what that name means (`conformance/decided_if_shadow`, `conformance/decided_if_later_name`).
+- **A last `if` that only checks a value is there** becomes `fallback` and the code it ran, moved left (`conformance/terminal_if`):
+  `fixed: this 'if' was the last thing the function did and had no 'else', so it only checked that 'maybe_name' was
+  there; wrote 'fallback maybe_name' and moved the code it ran left`. A constructor's stays the error, since a constructor takes no `fallback`.
+- **An `else if` that only returns** is hoisted to a `fallback` above its `if` when both test one number parameter
+  against a number and no value passes both (`conformance/guard_in_else_if`). Otherwise it stays an error that says
+  which choice is left (`conformance/guard_in_else_if_open`).
+- **Statements after a `return`** go (`conformance/after_return_error`).
+- **A copy made only to narrow** goes, and its uses name what it copied: `fixed: 'watcher' only copied 'tracker' so
+  it could be narrowed; narrowed 'tracker' itself and used it directly` (`conformance/copy_to_narrow`,
+  `conformance/copy_to_narrow_conditions`, `conformance/copy_to_narrow_not_leaving`, `conformance/namespace_nullable`).
+  Two locals of one name in the function stay the error.
 - **A local nothing reads whose value does nothing** (a literal, a text with no hole, a name) is removed: `fixed:
-  'spare' was never read, and making it does nothing; removed it` (`conformance/unread_plain_local`). One made by a
-  call stays the error, since removing it would drop the call.
+  'spare' was never read, and making it does nothing; removed it` (`conformance/unread_plain_local`); and so is one
+  only ever assigned such values, with every write (`conformance/written_not_read`). One made or written by a
+  call stays the error, since removing it would drop the call, and so does a write alone in its block.
+- **An attribute nothing reads** goes the same way, with every write in its class, when its value and all of those do nothing
+  (`conformance/unread_plain_attribute`, `conformance/private_attribute_unread`, `conformance/attribute_only_written`).
+  One written by a call stays the error (`conformance/written_by_a_call`), so does one written through another
+  object (`x.score = 1`, which only the types could tell apart), one in a generic class, and a write alone in its block.
+- **A `load` in the entry class of a folder no class outside it names** is removed (`conformance/unneeded_load`). The library's
+  folders and a pinned package's are left, since the compiler itself reads the library, and so are a `load` in another class, one inside an `if` on the build, and a folder holding part of `Program`, `Environment` or `Build`, which the compiler reads with no name.
+- **A local or parameter with one right spelling** is renamed with every use in its function: camelCase, a doubled
+  or trailing `_`, an abbreviation with one expansion, and a read `_name`
+  (`conformance/renamed_names`, `conformance/abbreviated_name`, `conformance/abbreviation_two_words`,
+  `conformance/read_underscore_name`). A name already taken in the function or its class stays the error
+  (`conformance/renamed_name_taken`), and so does an abbreviation of several meanings (`conformance/abbreviation_several_meanings`).
+- **A keyword misspelt by one letter** at the start of a line, where nothing else could be written, is corrected when no
+  other line-starting keyword is as near: `fixed: 'retrun' was one letter from the keyword 'return' and from no other
+  word that starts a line; wrote 'return'` (`conformance/misspelt_keyword`).
 - **A `union` or a `type` two classes of a root declare with one name and content** moves to the entry class of the
   lowest namespace holding every copy, and every use is rewritten: `fixed: the union 'Snack' repeats in 2 classes of this
   namespace; moved it to its entry class 'Bunda.Bunda', and this class names it 'Bunda.Snack'`
@@ -255,7 +288,7 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   `conformance/repeated_union_rewrites`). It reaches several files in one run, is found once every class is read,
   before a name is resolved, and restarts the compile like those above.
 
-The checks, decided conditions and locals above are found while or after the program is built, when the build already holds the mistake. The compiler
+The checks, blocks, copies, unread locals and attributes above are found while or after the program is built, when the build already holds the mistake. The compiler
 gathers every such fix of the run, writes them once the proofs end (or before it tells the first error), and then
 runs itself again, once, with the same flags, folder and environment and answers what that run answers (D1833).
 The program built is always the files as they are written. Each `fixed:` line names the line the mistake was on
@@ -333,12 +366,15 @@ func Game() {
   case, while a link costs a few tokens only where there is something to say. Absence becomes free and
   trustworthy.
 
-### Naming and abbreviations: compile errors, not auto-fixed
+### Naming and abbreviations
 
-A naming or abbreviation problem cannot be silently rewritten (renaming a symbol can change what a program
-means to a reader who searches for its old name), so these are compile **errors** with `file:line:column` and
-a suggested fix, from a linter that runs on the parsed AST of every class file, before codegen.
-There is no `--no-lint`: the compiler already **is** the linter.
+A local or a parameter misnamed with one right spelling is renamed, with every use in its function, and the rename is a `fixed:` line
+([the compiler fixes what has one fix](#the-compiler-fixes-what-has-one-fix)). Every other naming or abbreviation problem is a compile
+**error** with `file:line:column`, from a linter that runs on the parsed AST of every class file, before codegen: an attribute, a
+function, a value or a type (a rename across files is not made yet), a name whose right spelling is taken, and an abbreviation that
+could mean several words (`'temp_file' abbreviates 'temp', which could mean 'temporary' or 'temperature': write the word you mean. Spite
+has no abbreviations outside its own keywords`, `conformance/abbreviation_several_meanings`). There is no `--no-lint`: the compiler
+already **is** the linter.
 
 The compiler has no warnings at all: it either reformats your code or gives an
 error, and nothing is left to the moron's taste. The `--development`-only "skipped class" notice
@@ -426,6 +462,9 @@ error, and nothing is left to the moron's taste. The `--development`-only "skipp
   | `sep` | `separator` | | `fmt` | `format` |
   | `avg` | `average` | | `proc` | `process` |
   | `tbl` | `table` | | `lang` | `language` |
+
+  A word of several meanings is refused whatever it stands for here, naming them all: `temp`, `res`, `dir`/`dirs`, `init`, `ext`, `desc`,
+  `pos`, `cur`/`curr`, `auth`, `proc`, `ver`, `sep`, `conf`, `req`, `prev`, `val`, `doc`/`docs`, `spec`, `calc`, `arr`, `cb`, `int`, `opt`, `lst` and `fmt`. Every other word of these tables has one expansion, so a local or a parameter holding it is renamed.
 
   Plurals of abbreviations are refused the same way: `nums`, `vals`, `msgs`, `strs`, `ptrs`, `bufs`, `elems`,
   `objs`, `dirs`, `exprs`, `stmts`, `errs`, `cmds`, `funcs`/`fns`, `vars`, `btns`, `imgs`, `evts` and `idxs`

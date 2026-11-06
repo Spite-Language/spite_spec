@@ -1,0 +1,12 @@
+var console = Console()
+var score = 0
+
+func WrittenByACall() {
+    load "../../../spite_standard_library/windows"
+    score = made()
+    console.print("scored")
+}
+
+func made(): Integer {
+    return 5
+}

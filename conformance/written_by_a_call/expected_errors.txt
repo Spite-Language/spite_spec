@@ -1,0 +1,1 @@
+conformance/written_by_a_call/written_by_a_call.spite:2: error: the attribute 'score' is never read: remove it (in WrittenByACall.)

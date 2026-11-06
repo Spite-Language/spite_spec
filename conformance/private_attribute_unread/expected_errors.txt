@@ -1,1 +1,1 @@
-conformance/private_attribute_unread/private_attribute_unread.spite:2: error: the attribute '_secret' is never read: remove it (in PrivateAttributeUnread.)
+conformance/private_attribute_unread/private_attribute_unread.spite:2: fixed: the attribute '_secret' was never read, and making it does nothing; removed it (in PrivateAttributeUnread.)

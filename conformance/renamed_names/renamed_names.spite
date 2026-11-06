@@ -1,0 +1,15 @@
+var console = Console()
+
+func RenamedNames() {
+    load "../../../spite_standard_library/windows"
+    var itemCount = 3
+    var total__price = 4
+    var trailing_ = 5
+    console.print("{itemCount} {total__price}")
+    console.print(trailing_)
+    shown(6)
+}
+
+func shown(firstValue: Integer) {
+    console.print(firstValue)
+}

@@ -185,8 +185,9 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   `class.namespace.namespace` says nothing about `other_class.namespace`.
 - A local holding a copy is its own path, so narrowing it says nothing about the path it copied
   (`diagnostics/namespace_nullable`). A local that only copies a name or a path so it can be narrowed is
-  itself an error: "'watcher' only copies 'tracker' so it can be narrowed: narrow
-  'tracker' itself ('fallback tracker') and use it directly" (`diagnostics/copy_to_narrow`). Its scope: a `var` whose
+  itself a mistake with one fix, so the compiler drops it and uses the source ([style.md](style.md#the-compiler-fixes-what-has-one-fix)); it
+  stays the error "'watcher' only copies 'tracker' so it can be narrowed: narrow
+  'tracker' itself ('fallback tracker') and use it directly" in a generic class, a walk and a library file. Its scope: a `var` whose
   value is a bare name or member path of a `T?` type, which is then narrowed by any condition that tests it (`if
   watcher`, `if not watcher`, `while watcher`, `fallback watcher and ready`; `diagnostics/copy_to_narrow_conditions`),
   is never assigned again, is not a `var` with a written type in a generic class (there it converts for some
@@ -197,8 +198,8 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   written twice, or `crash` on a path an earlier `crash` already narrowed (`diagnostics/check_proves_nothing`).
   A `crash` or `fallback` line of the kinds below in a program's own file is removed instead
   ([the compiler fixes what has one fix](style.md#the-compiler-fixes-what-has-one-fix), D1833), printing its
-  message in the past with "removed this check" or "removed it"; the errors below are what an `if` or `while`,
-  a generic class, a walk and a library file still get.
+  message in the past with "removed this check" or "removed it"; an `if` of those kinds becomes the code it runs
+  (style.md); the errors below are what a `while`, a generic class, a walk and a library file still get.
   For a `[]` read the message names what proved it, so the
   line can simply go: `crash codes[index]` inside `while index < codes.count()` is "'codes[index]' is already
   proven by the loop condition 'index < codes.count()', so this 'crash' proves nothing: remove it"; a count or
@@ -238,7 +239,7 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
     'running' local they set to false or the loop's real exit test" and "'fallback 1 > 2' ... is always false here, so
     the function always answers nothing from here: remove it with the code after it" (`conformance/decided_if_true`,
     `conformance/decided_if_false`, `conformance/decided_while`, `conformance/spinning_loop`,
-    `conformance/decided_assert_false`). In a program's own file the compiler fixes the first three instead
+    `conformance/decided_assert_false`). In a program's own file the compiler fixes all but `while` true instead
     ([style.md](style.md#the-compiler-fixes-what-has-one-fix)): an `if` always true becomes its body, one always
     false becomes its `else` (an `else if` becoming the `if`) or goes, and a `while` always false goes, each with a
     `fixed:` line in the past tense: "'if 2 > 1' was decided while compiling and was always true here, so it told
@@ -536,8 +537,9 @@ func is_open(): Boolean {
 }
 ```
 
-**Nothing follows a `return` in its block.** A statement after one never runs, so it is an error at its line:
-"this statement comes after a 'return', so it never runs: remove it" (`conformance/after_return_error`).
+**Nothing follows a `return` in its block.** A statement after one never runs, so the compiler removes it from a
+program's own file: "this statement came after a 'return', so it never ran; removed it and whatever followed it"
+(`conformance/after_return_error`). In a library file it stays the error "this statement comes after a 'return', so it never runs: remove it".
 
 **Every path of a function that declares a result ends in a `return`.** A path that reaches the end of the function's body is a
 compile error at the line of the function's closing `}`, and the message names the path, one step per branch it
