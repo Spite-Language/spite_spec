@@ -187,7 +187,9 @@ package/engine/physics/physics.spite     ->  Engine.Physics.Physics()   (no file
   or parameter named `load` is "'load' is a keyword and cannot name a function: give it a name that says what it
   loads, like 'load_texture'" (`variable` or `parameter` in place of `function`; `diagnostics/load_function`).
   Compile time only: the line compiles to nothing.
-- `load` takes a literal string, so the compiler always knows every bundle; anything else (a variable, an
+- `load` takes a `Path` or a `GitPath` (D1873), written as literal text: an `@` makes it a `GitPath`, and `load ""` is
+  "'load \"\"' names no folder: write the folder's path, like 'load \"engine\"'" (`conformance/load_empty`). The compiler
+  always knows every bundle; anything else (a variable, an
   expression) is "a program's 'load' names its folder with text, like 'load "engine"': the compiler reads every
   loaded folder before it compiles, so the folder cannot be computed". The text is a path relative to the folder
   of the file it is written in, never an absolute one: a path starting with `/` or `\`, or with a drive letter

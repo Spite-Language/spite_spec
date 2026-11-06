@@ -1,0 +1,1 @@
+conformance/load_empty/load_empty.spite:3: error: 'load ""' names no folder: write the folder's path, like 'load "engine"'

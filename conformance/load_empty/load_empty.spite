@@ -1,0 +1,4 @@
+func LoadEmpty() {
+    load "../../../spite_standard_library/windows"
+    load ""
+}
