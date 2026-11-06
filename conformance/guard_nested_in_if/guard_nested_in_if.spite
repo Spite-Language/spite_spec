@@ -1,0 +1,14 @@
+var console = Console()
+
+func GuardNestedInIf() {
+    load "../../../spite_standard_library/windows"
+    var shown = check(true, true)
+    console.print(shown)
+}
+
+func check(first: Boolean, second: Boolean): String {
+    if first {
+        fallback not second
+    }
+    return "other"
+}

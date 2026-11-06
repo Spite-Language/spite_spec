@@ -1,0 +1,1 @@
+conformance/guard_holding_a_comment/guard_holding_a_comment.spite:10: error: this 'if' only returns '""', which is what 'fallback' returns when its condition fails: write 'fallback not wanted' and let the rest run unindented (in GuardHoldingAComment.check)

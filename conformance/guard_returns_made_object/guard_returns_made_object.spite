@@ -1,0 +1,14 @@
+var console = Console()
+
+func GuardReturnsMadeObject() {
+    load "../../../spite_standard_library/windows"
+    var shown = check(true)
+    console.print(shown.sides)
+}
+
+func check(wanted: Boolean): Mark {
+    fallback not wanted
+    var other = Mark()
+    other.sides = 2
+    return other
+}

@@ -1,0 +1,14 @@
+generic $item_type
+
+var item: $item_type = null
+
+func Holder(new_item: $item_type) {
+    item = new_item
+}
+
+func watch(tracker: Tracker?) {
+    fallback tracker
+    if tracker {
+        tracker.report()
+    }
+}

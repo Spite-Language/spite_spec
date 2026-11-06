@@ -1,0 +1,15 @@
+singleton
+
+var position = List<Position>()
+var velocity = List<Velocity>()
+
+func spawn(left: Float, across: Float) {
+    var placed = Position(left)
+    position.append(placed)
+    var moving = Velocity(across)
+    velocity.append(moving)
+}
+
+func size(): Integer {
+    return position.count()
+}

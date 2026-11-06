@@ -1,0 +1,10 @@
+var console = Console()
+
+func ProvenPresentInGenericClass() {
+    load "../../../spite_standard_library/windows"
+    var tracker = Tracker()
+    var holder = Holder<Integer>(3)
+    holder.watch(tracker)
+    var kept = holder.item
+    console.print(kept)
+}

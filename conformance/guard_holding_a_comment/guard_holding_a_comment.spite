@@ -1,0 +1,15 @@
+var console = Console()
+
+func GuardHoldingAComment() {
+    load "../../../spite_standard_library/windows"
+    var shown = check(true)
+    console.print(shown)
+}
+
+func check(wanted: Boolean): String {
+    if wanted {
+        # nothing to say here
+        return ""
+    }
+    return "other"
+}

@@ -1,0 +1,1 @@
+conformance/proven_present_in_generic_class/holder.spite:11: error: 'tracker' is already narrowed by 'fallback tracker' on line 10: remove this check (in Holder.watch)
