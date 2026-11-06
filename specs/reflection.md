@@ -197,7 +197,7 @@ output ([packages.md](https://github.com/Spite-Language/spite_documentation/blob
 - **`each(function)` over a constant list is unrolled** when the function is one of the class's own, takes one
   parameter, and every element fits it: one call per element, and no list. This holds for the attributes of a class,
   the classes of a namespace (`Shop.Tools.classes.each(make)` makes one copy of `make` for each class, in which the
-  parameter is the class), the namespaces of `Spite.Namespace.instances` and a known namespace's `.namespaces` (a walker taking a `Spite.Namespace`), the values of an enum (`Phase.values.each(run)` calls `run` once for each value, when
+  parameter is the class), the namespaces of `Spite.Namespace.instances` and a known namespace's `.namespaces` (a walker taking a `Spite.Namespace`), a list literal that only names classes or only names namespaces (`[Part, Part.Inner].each(check)`, or a `var` holding one that nothing writes to; `tests/known_list_walk`, `conformance/known_list_walk_crash`, D1885), the values of an enum (`Phase.values.each(run)` calls `run` once for each value, when
   `run` takes that enum), the known functions and arguments of [Walks](metaprogramming.md#walks), the `.enums`,
   `.unions` and `.types` of a constant class (one call per declaration, each given its constant `Spite.Enum`,
   `Spite.Union` or `Spite.Type`), and the `.members` of a constant union (`Shelter.unions["Pet"].members.each(make)` makes

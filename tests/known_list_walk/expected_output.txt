@@ -1,0 +1,10 @@
+1 2 3
+Part
+Other
+Part.Inner
+Alpha
+Beta
+3
+Part
+Other
+Inner

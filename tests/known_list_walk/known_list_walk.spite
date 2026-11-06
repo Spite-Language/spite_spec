@@ -1,0 +1,34 @@
+var console = Console()
+var alpha = Part.Alpha()
+var beta = Other.Beta()
+var gamma = Part.Inner.Gamma()
+
+func KnownListWalk() {
+    load "../../../spite_standard_library/windows"
+    console.print(alpha.first, beta.second, gamma.third)
+    var namespaces = [Part, Other, Part.Inner]
+    namespaces.each(check_a_namespace)
+    var classes = [Part.Alpha, Other.Beta]
+    classes.each(check_a_class)
+    var count = namespaces.count()
+    console.print(count)
+    var written_to = [Part, Other]
+    written_to.append(Part.Inner)
+    written_to.each(show_a_namespace)
+}
+
+func check_a_namespace(namespace: Spite.Namespace) {
+    var names = namespace.classes.map_names()
+    crash not names.is_empty()
+    console.print(namespace.name_with_namespaces)
+}
+
+func check_a_class(item: Spite.Class) {
+    var named = item.name
+    crash named.ends_with("a")
+    console.print(named)
+}
+
+func show_a_namespace(namespace: Spite.Namespace) {
+    console.print(namespace.name)
+}

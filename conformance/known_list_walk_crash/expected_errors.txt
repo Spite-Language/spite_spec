@@ -1,0 +1,1 @@
+conformance/known_list_walk_crash/known_list_walk_crash.spite:15: error: 'crash has_the_alpha' always halts over Other: its condition is decided while compiling and is false, so the program would stop here every time this function runs: call it only where the condition holds, or change what the condition asks (in KnownListWalkCrash.check_a_stage)
