@@ -1,0 +1,9 @@
+singleton
+
+var console = Console()
+
+func start() {
+    var text = "early"
+    var shouted = text.shout_with_helper()
+    console.print(shouted)
+}

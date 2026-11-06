@@ -1,0 +1,12 @@
+singleton
+
+var console = Console()
+
+func start() {
+}
+
+func drop() {
+    var entry = "stopped"
+    var shouted = entry.shout_with_helper()
+    console.print("reporter dropping", shouted)
+}

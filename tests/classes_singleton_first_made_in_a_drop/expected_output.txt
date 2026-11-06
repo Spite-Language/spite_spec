@@ -1,0 +1,4 @@
+reporter started
+done
+reporter dropping
+archive dropped with stopped

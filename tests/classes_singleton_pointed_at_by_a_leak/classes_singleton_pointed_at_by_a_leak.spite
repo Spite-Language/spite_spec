@@ -1,0 +1,11 @@
+var console = Console()
+
+func ClassesSingletonPointedAtByALeak() {
+    load "../../../spite_standard_library/windows"
+    var first = Node()
+    var second = Node()
+    first.join(second)
+    second.join(first)
+    var joined = first.has_partner()
+    console.print("cycle made", joined)
+}

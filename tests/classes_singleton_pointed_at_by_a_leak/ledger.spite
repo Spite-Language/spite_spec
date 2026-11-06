@@ -1,0 +1,7 @@
+singleton
+
+var entries = List<String>()
+
+func note(entry: String) {
+    entries.append(entry)
+}

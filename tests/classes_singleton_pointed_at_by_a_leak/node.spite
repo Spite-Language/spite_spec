@@ -1,0 +1,14 @@
+var ledger = Ledger()
+var partner: Node? = null
+
+func join(other: Node) {
+    partner = other
+    ledger.note("joined")
+}
+
+func has_partner(): Boolean {
+    if partner {
+        return true
+    }
+    return false
+}

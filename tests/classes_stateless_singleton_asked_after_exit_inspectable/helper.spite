@@ -1,0 +1,5 @@
+singleton
+
+func shout(text: String): String {
+    return "{text}!"
+}

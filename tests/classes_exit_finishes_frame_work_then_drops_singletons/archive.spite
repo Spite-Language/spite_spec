@@ -1,0 +1,13 @@
+singleton
+
+var console = Console()
+var notes = List<String>()
+
+func note(entry: String) {
+    notes.append(entry)
+}
+
+func drop() {
+    var joined = notes.join(", ")
+    console.print("the archive is destroyed holding", joined)
+}

@@ -1,0 +1,11 @@
+var console = Console()
+var program = Program()
+var archive = Archive()
+var _closing_milliseconds: Long = 200
+
+func close() {
+    var closing = Duration(_closing_milliseconds, 'milliseconds')
+    program.sleep(closing)
+    console.print("the closing work finished")
+    archive.note("closed")
+}

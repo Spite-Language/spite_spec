@@ -1,0 +1,8 @@
+var console = Console()
+var reporter = Reporter()
+
+func ClassesSingletonFirstMadeInADrop() {
+    load "../../../spite_standard_library/windows"
+    reporter.start()
+    console.print("done")
+}

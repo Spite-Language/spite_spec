@@ -1,0 +1,10 @@
+var console = Console()
+var reporter = Reporter()
+var other = Other()
+
+func ClassesStatelessSingletonAskedAfterExit() {
+    load "../../../spite_standard_library/windows"
+    reporter.start()
+    other.start()
+    console.print("done")
+}

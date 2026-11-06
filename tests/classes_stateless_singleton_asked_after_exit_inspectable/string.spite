@@ -1,0 +1,4 @@
+func shout_with_helper(): String {
+    var helper = Helper()
+    return helper.shout(this)
+}

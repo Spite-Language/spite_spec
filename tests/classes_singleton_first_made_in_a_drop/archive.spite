@@ -1,0 +1,13 @@
+singleton
+
+var console = Console()
+var stored = List<String>()
+
+func store(entry: String) {
+    stored.append(entry)
+}
+
+func drop() {
+    var joined = stored.join(", ")
+    console.print("archive dropped with", joined)
+}
