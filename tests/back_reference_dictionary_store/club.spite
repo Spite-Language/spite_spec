@@ -1,0 +1,11 @@
+var console = Console()
+var name = ""
+var members = Dictionary<String, Member>()
+
+func Club(new_name: String) {
+    name = new_name
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

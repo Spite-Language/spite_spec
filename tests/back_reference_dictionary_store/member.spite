@@ -1,0 +1,11 @@
+var console = Console()
+var name = ""
+var club: Club? = null
+
+func Member(new_name: String) {
+    name = new_name
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

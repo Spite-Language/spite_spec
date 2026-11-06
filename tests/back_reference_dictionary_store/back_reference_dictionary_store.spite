@@ -1,0 +1,16 @@
+var console = Console()
+
+func BackReferenceDictionaryStore() {
+    load "../../../spite_standard_library/windows"
+    make_a_club()
+    console.print("the club is gone")
+}
+
+func make_a_club() {
+    var club = Club("chess")
+    var member = Member("ada")
+    member.club = club
+    club.members["ada"] = member
+    crash member.club
+    console.print(member.name, "belongs to", member.club.name)
+}
