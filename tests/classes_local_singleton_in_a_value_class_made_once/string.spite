@@ -1,0 +1,4 @@
+func say_loudly() {
+    var noisy = Noisy()
+    noisy.speak(this)
+}

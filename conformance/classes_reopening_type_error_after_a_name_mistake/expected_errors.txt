@@ -1,0 +1,1 @@
+conformance/classes_reopening_type_error_after_a_name_mistake/classes_reopening_type_error_after_a_name_mistake.spite:8: error: unknown type 'Mystery' (in ClassesReopeningTypeErrorAfterANameMistake.ClassesReopeningTypeErrorAfterANameMistake)

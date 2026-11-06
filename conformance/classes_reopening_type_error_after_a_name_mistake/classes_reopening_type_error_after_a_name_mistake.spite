@@ -1,0 +1,10 @@
+var console = Console()
+
+func ClassesReopeningTypeErrorAfterANameMistake() {
+    load "../../../spite_standard_library/windows"
+    load "first"
+    load "second"
+    var hero = Game.Hero()
+    var mystery = Mystery()
+    console.print(hero.level, mystery)
+}

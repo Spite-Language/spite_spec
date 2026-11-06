@@ -1,0 +1,10 @@
+union Pet {
+    Cat
+    Dog
+}
+
+func names_of(pets: List<Pet>): String {
+    var names = pets.map_names()
+    var joined = names.join("+")
+    return "first {joined}"
+}

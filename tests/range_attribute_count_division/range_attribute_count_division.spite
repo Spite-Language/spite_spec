@@ -1,0 +1,78 @@
+var console = Console()
+var build = Build()
+var attribute_total = 0
+var many = List<Integer>()
+var _thousand = 1000
+var _hundred = 100
+
+func RangeAttributeCountDivision() {
+    load "../../../spite_standard_library/windows"
+    many.append(3)
+    var first = read_attribute(5)
+    var second = read_count(4)
+    var third = read_length("hello")
+    var fourth = divided_by_constant(_thousand)
+    var fifth = divided_by_larger(_hundred, _thousand)
+    var sixth = bounded_by_minimum(5)
+    var seventh = bounded_by_maximum(5)
+    console.print(first, second, third, fourth, fifth, sixth, seventh)
+    print_report()
+}
+
+func read_attribute(amount: Integer): Integer {
+    var kept_attribute = attribute_total * attribute_total
+    return kept_attribute + amount
+}
+
+func read_count(amount: Integer): Integer {
+    var items = many.count()
+    var small_count = items + 1
+    return small_count + amount
+}
+
+func read_length(text: String): Integer {
+    var size = text.length()
+    var small_length = size + 1
+    return small_length + size
+}
+
+func divided_by_constant(amount: Integer): Integer {
+    var half = amount / 2
+    return half + half
+}
+
+func divided_by_larger(amount: Integer, other: Integer): Integer {
+    fallback amount < 1000
+    fallback amount > 0
+    var parts = amount / other
+    return parts + parts
+}
+
+func bounded_by_minimum(amount: Integer): Integer {
+    var smaller = amount.minimum(100)
+    var unbounded = amount + 1
+    return smaller + 1 + unbounded
+}
+
+func bounded_by_maximum(amount: Integer): Integer {
+    var larger = amount.maximum(100)
+    return larger - 1
+}
+
+func print_report() {
+    var report = File("{build.program}/.spite/reports/range_attribute_count_division.md").read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var is_kept = line.starts_with("- [") and line.contains("keeps its overflow check")
+        if is_kept and line.contains("range_attribute_count_division.spite") {
+            var parts = line.split("): ")
+            var last = parts.last()
+            crash last
+            console.print(last)
+        }
+        index = index + 1
+    }
+}

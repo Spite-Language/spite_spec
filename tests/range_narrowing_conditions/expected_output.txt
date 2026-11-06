@@ -1,0 +1,5 @@
+10 10 10 1 10 0 10 25 1
+`amount + amount` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647 and 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+`amount + amount` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647 and 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+`amount * amount` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647 and 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+`amount + amount` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647 and 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer

@@ -1,0 +1,1 @@
+--optimization-report=.spite/reports/range_attribute_count_division.md 

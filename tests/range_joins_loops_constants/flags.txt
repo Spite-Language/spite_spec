@@ -1,0 +1,1 @@
+--optimization-report=.spite/reports/range_joins_loops_constants.md 

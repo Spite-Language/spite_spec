@@ -1,0 +1,92 @@
+enum Mode {
+    'small'
+    'large'
+}
+
+var console = Console()
+var build = Build()
+
+func RangeJoinsLoopsConstants() {
+    load "../../../spite_standard_library/windows"
+    var one = joined_in_if(true)
+    var two = joined_in_switch('small')
+    var three = joined_wide(true, 5)
+    var four = loop_widens(3)
+    var five = constants()
+    var values = List<Integer>()
+    values.append(4)
+    var six = long_total(values)
+    console.print(one, two, three, four, five, six)
+    print_report()
+}
+
+func joined_in_if(flag: Boolean): Integer {
+    var held = 0
+    if flag {
+        held = 10
+    } else {
+        held = 20
+    }
+    return held + held
+}
+
+func joined_in_switch(mode: Mode): Integer {
+    var held = 0
+    switch mode {
+        'small': held = 10
+        'large': held = 20
+    }
+    return held * 2
+}
+
+func joined_wide(flag: Boolean, amount: Integer): Integer {
+    var held = 0
+    if flag {
+        held = amount
+    }
+    return held + held
+}
+
+func loop_widens(rounds: Integer): Integer {
+    var growing = 1
+    var counter = 0
+    while counter < rounds {
+        growing = growing + growing
+        counter = counter + 1
+    }
+    return growing
+}
+
+func constants(): Integer {
+    var first = 100
+    var second = 1000
+    return first * second
+}
+
+func long_total(values: List<Integer>): Long {
+    var total: Long = 0
+    var index = 0
+    while index < values.count() {
+        total = total + values[index]
+        index = index + 1
+    }
+    return total
+}
+
+func print_report() {
+    var report = File("{build.program}/.spite/reports/range_joins_loops_constants.md").read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var is_kept = line.starts_with("- [") and line.contains("keeps its overflow check")
+        if is_kept and line.contains("range_joins_loops_constants.spite") {
+            var parts = line.split("): ")
+            var last = parts.last()
+            crash last
+            console.print(last)
+        }
+        index = index + 1
+    }
+}

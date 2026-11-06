@@ -1,0 +1,11 @@
+singleton
+
+var console = Console()
+
+func Noisy() {
+    console.print("noisy made")
+}
+
+func speak(text: String) {
+    console.print(text)
+}

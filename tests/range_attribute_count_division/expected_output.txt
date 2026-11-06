@@ -1,0 +1,9 @@
+5 6 11 1000 0 12 99
+`attribute_total * attribute_total` keeps its overflow check: 'attribute_total' runs from -2147483648 to 2147483647 and 'attribute_total' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+`kept_attribute + amount` keeps its overflow check: 'kept_attribute' runs from -2147483648 to 2147483647 and 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+`items + 1` keeps its overflow check: 'items' runs from 0 to 2147483647, so the answer may not fit in an Integer
+`small_count + amount` keeps its overflow check: 'small_count' runs from 1 to 2147483647 and 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+`size + 1` keeps its overflow check: 'size' runs from 0 to 2147483647, so the answer may not fit in an Integer
+`small_length + size` keeps its overflow check: 'small_length' runs from 1 to 2147483647 and 'size' runs from 0 to 2147483647, so the answer may not fit in an Integer
+`amount + 1` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+`smaller + 1 + unbounded` keeps its overflow check: 'smaller + 1' runs from -2147483647 to 101 and 'unbounded' runs from -2147483647 to 2147483647, so the answer may not fit in an Integer

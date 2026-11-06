@@ -1,0 +1,10 @@
+var console = Console()
+
+func ClassesInlineSingletonInAnUncalledFunction() {
+    load "../../../spite_standard_library/windows"
+    console.print("only this runs")
+}
+
+func never_called() {
+    Console().print("never reached")
+}

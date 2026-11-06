@@ -1,0 +1,3 @@
+20 20 10 8 100000 4
+`held + held` keeps its overflow check: 'held' runs from -2147483648 to 2147483647 and 'held' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+`growing + growing` keeps its overflow check: 'growing' runs from -2147483648 to 2147483647 and 'growing' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer

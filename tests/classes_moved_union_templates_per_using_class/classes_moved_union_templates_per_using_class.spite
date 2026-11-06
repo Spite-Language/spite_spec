@@ -1,0 +1,15 @@
+var console = Console()
+var first = First()
+var second = Second()
+
+func ClassesMovedUnionTemplatesPerUsingClass() {
+    load "../../../spite_standard_library/windows"
+    var pets = List<Pet>()
+    var cat = Cat()
+    var dog = Dog()
+    pets.append(cat)
+    pets.append(dog)
+    var from_first = first.names_of(pets)
+    var from_second = second.names_of(pets)
+    console.print(from_first, from_second)
+}

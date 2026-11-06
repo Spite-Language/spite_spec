@@ -1,0 +1,101 @@
+var console = Console()
+var build = Build()
+
+func RangeNarrowingConditions() {
+    load "../../../spite_standard_library/windows"
+    var one = in_if(5)
+    var two = flipped(5)
+    var three = after_fallback(5)
+    var four = right_of_and(5)
+    var five = after_leaving_if(5)
+    var six = equals_pins(5)
+    var seven = or_narrows_nothing(5)
+    var eight = not_equal_narrows_nothing(5)
+    var nine = else_narrows_nothing(5)
+    console.print(one, two, three, four, five, six, seven, eight, nine)
+    print_report()
+}
+
+func in_if(amount: Integer): Integer {
+    if amount <= 100 and amount >= 0 {
+        return amount + amount
+    }
+    return 0
+}
+
+func flipped(amount: Integer): Integer {
+    if 100 >= amount and 0 <= amount {
+        return amount * 2
+    }
+    return 0
+}
+
+func after_fallback(amount: Integer): Integer {
+    fallback amount <= 100
+    fallback amount >= 0
+    return amount + amount
+}
+
+func right_of_and(amount: Integer): Integer {
+    if amount >= 0 and amount + amount < 100 {
+        return 1
+    }
+    return 0
+}
+
+func after_leaving_if(amount: Integer): Integer {
+    if amount > 100 {
+        return 1
+    }
+    if amount < 0 {
+        return 1
+    }
+    return amount + amount
+}
+
+func equals_pins(amount: Integer): Integer {
+    if amount == 7 {
+        return amount * amount
+    }
+    return 0
+}
+
+func or_narrows_nothing(amount: Integer): Integer {
+    if amount < 10 or amount > 100 {
+        return amount + amount
+    }
+    return 0
+}
+
+func not_equal_narrows_nothing(amount: Integer): Integer {
+    if amount != 7 {
+        return amount * amount
+    }
+    return 0
+}
+
+func else_narrows_nothing(amount: Integer): Integer {
+    if amount < 100 {
+        return 1
+    } else {
+        return amount + amount
+    }
+}
+
+func print_report() {
+    var report = File("{build.program}/.spite/reports/range_narrowing_conditions.md").read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var is_kept = line.starts_with("- [") and line.contains("keeps its overflow check")
+        if is_kept and line.contains("range_narrowing_conditions.spite") {
+            var parts = line.split("): ")
+            var last = parts.last()
+            crash last
+            console.print(last)
+        }
+        index = index + 1
+    }
+}
