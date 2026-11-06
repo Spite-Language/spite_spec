@@ -1,0 +1,11 @@
+var console = Console()
+
+func DefaultUnreadUsesASingletonFirst() {
+    load "../../../spite_standard_library/windows"
+    console.print("start")
+    var given = Reader(null)
+    console.print("given")
+    var holder = Holder(given)
+    var empty = holder.reader.is_empty()
+    console.print("end", empty)
+}

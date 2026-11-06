@@ -1,0 +1,9 @@
+var seen: Counter? = null
+
+func Reader(given: Counter?) {
+    seen = given
+}
+
+func is_empty(): Boolean {
+    return not seen
+}

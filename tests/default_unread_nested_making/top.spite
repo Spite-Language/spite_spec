@@ -1,0 +1,8 @@
+var no_leaf = Leaf()
+var no_seen = Seen(no_leaf)
+var no_middle = Middle(no_seen)
+var context = Context(no_middle)
+
+func Top(given: Context) {
+    context = given
+}

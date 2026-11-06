@@ -1,0 +1,5 @@
+var value = 0
+
+func Keeper(starting: Integer) {
+    value = starting
+}

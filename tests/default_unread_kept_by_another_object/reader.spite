@@ -1,0 +1,9 @@
+var seen: Registering? = null
+
+func Reader(given: Registering?) {
+    seen = given
+}
+
+func is_empty(): Boolean {
+    return not seen
+}

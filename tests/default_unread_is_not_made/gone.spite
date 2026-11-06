@@ -1,0 +1,9 @@
+var no_part = Part(0)
+var no_maker = Maker(no_part)
+var context = Context(0, no_maker)
+var kept = List<String>()
+
+func Gone(given: Context) {
+    context = given
+    kept.append("kept")
+}

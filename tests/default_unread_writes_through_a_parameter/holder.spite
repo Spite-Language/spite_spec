@@ -1,0 +1,7 @@
+var shared = Part(5)
+var no_writer = Writer(shared)
+var reader = Reader(no_writer)
+
+func Holder(given: Reader) {
+    reader = given
+}

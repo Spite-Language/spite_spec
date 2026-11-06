@@ -1,0 +1,14 @@
+var console = Console()
+
+func DefaultUnreadReadOnlyWhereNothingReaches() {
+    load "../../../spite_standard_library/windows"
+    var total = 0
+    var round = 0
+    var given = Context(1)
+    while round < 1000 {
+        var holder = Holder(given)
+        total = total + holder.context.value
+        round = round + 1
+    }
+    console.print(total)
+}

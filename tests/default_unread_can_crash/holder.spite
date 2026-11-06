@@ -1,0 +1,6 @@
+var no_part = Risky(0)
+var part: Risky = no_part
+
+func Holder(given: Risky) {
+    part = given
+}

@@ -1,0 +1,5 @@
+var part = Part(0)
+
+func Keeper(given: Part) {
+    part = given
+}

@@ -1,0 +1,9 @@
+var value = 0
+
+func Context(starting: Integer) {
+    value = starting
+}
+
+func to_string(): String {
+    return "context {value}"
+}

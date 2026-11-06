@@ -1,0 +1,7 @@
+var no_leaf = QuietLeaf()
+var no_middle = QuietMiddle(no_leaf)
+var context = QuietContext(no_middle)
+
+func QuietTop(given: QuietContext) {
+    context = given
+}

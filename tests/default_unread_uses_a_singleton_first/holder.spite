@@ -1,0 +1,8 @@
+var console = Console()
+var no_part = Part(2)
+var reader = Reader(no_part)
+
+func Holder(given: Reader) {
+    console.print("constructor")
+    reader = given
+}

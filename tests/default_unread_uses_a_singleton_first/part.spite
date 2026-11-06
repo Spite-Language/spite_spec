@@ -1,0 +1,10 @@
+var value = 0
+var settings = Settings()
+
+func Part(starting: Integer) {
+    value = starting
+}
+
+func limit(): Integer {
+    return settings.limit + value
+}

@@ -1,0 +1,9 @@
+var seen: Writer? = null
+
+func Reader(given: Writer?) {
+    seen = given
+}
+
+func is_empty(): Boolean {
+    return not seen
+}

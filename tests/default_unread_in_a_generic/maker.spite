@@ -1,0 +1,7 @@
+generic $held_type
+
+var seen = List<$held_type>()
+
+func Maker(given: List<$held_type>) {
+    seen = given
+}

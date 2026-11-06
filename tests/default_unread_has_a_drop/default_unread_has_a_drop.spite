@@ -1,0 +1,9 @@
+var console = Console()
+
+func DefaultUnreadHasADrop() {
+    load "../../../spite_standard_library/windows"
+    var given = Part("given")
+    console.print("start")
+    var holder = Holder(given)
+    console.print("end", holder.part.name, holder.other.name)
+}

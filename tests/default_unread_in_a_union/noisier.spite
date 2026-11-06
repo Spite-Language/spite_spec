@@ -1,0 +1,6 @@
+var no_loud = Loud()
+var figure: DefaultUnreadInAUnion.Figure = no_loud
+
+func Noisier(given: DefaultUnreadInAUnion.Figure) {
+    figure = given
+}

@@ -1,0 +1,13 @@
+var no_part = Part(0)
+var no_maker = Maker(no_part)
+var context = Context(0, no_maker)
+var kept = List<Integer>()
+
+func Stays(given: Context) {
+    context = given
+    kept.append(1)
+}
+
+func read_it(): Integer {
+    return no_maker.part.value
+}

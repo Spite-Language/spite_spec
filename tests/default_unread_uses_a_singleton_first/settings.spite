@@ -1,0 +1,8 @@
+singleton
+
+var console = Console()
+var limit = 2
+
+func Settings() {
+    console.print("settings made")
+}

@@ -1,0 +1,6 @@
+var no_context = Context(5)
+var context: Context = no_context
+
+func Holder(given: Context) {
+    context = given
+}

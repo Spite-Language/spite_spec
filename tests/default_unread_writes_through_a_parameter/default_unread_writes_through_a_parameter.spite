@@ -1,0 +1,11 @@
+var console = Console()
+
+func DefaultUnreadWritesThroughAParameter() {
+    load "../../../spite_standard_library/windows"
+    var part = Part(1)
+    var writer = Writer(part)
+    var given = Reader(writer)
+    var holder = Holder(given)
+    var empty = holder.reader.is_empty()
+    console.print(holder.shared.value, part.value, empty)
+}

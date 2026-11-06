@@ -1,0 +1,6 @@
+var no_square = Square(6)
+var figure: DefaultUnreadInAUnion.Figure = no_square
+
+func Holder(given: DefaultUnreadInAUnion.Figure) {
+    figure = given
+}

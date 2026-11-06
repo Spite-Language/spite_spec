@@ -1,0 +1,10 @@
+var console = Console()
+var seen = 0
+
+func Show(holder: Holder) {
+    seen = holder.keeper.value
+}
+
+func say() {
+    console.print("seen", seen)
+}

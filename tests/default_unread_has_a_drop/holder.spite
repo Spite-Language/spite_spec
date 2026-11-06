@@ -1,0 +1,9 @@
+var no_first = Part("first")
+var no_second = Part("second")
+var part: Part = no_first
+var other: Part = no_second
+
+func Holder(given: Part) {
+    part = given
+    other = given
+}

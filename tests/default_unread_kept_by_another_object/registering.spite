@@ -1,0 +1,5 @@
+var registry = Registry()
+
+func Registering(given: Part) {
+    registry.parts.append(given)
+}

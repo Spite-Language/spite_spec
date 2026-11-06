@@ -1,0 +1,5 @@
+var kept: Leaf? = null
+
+func Seen(given: Leaf?) {
+    kept = given
+}

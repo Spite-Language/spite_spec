@@ -1,0 +1,9 @@
+generic $held_type
+
+var no_printer = Printer<$held_type>()
+var no_items: List<$held_type> = no_printer.made
+var items: List<$held_type> = no_items
+
+func LoudHolder(given: List<$held_type>) {
+    items = given
+}

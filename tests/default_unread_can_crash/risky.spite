@@ -1,0 +1,6 @@
+var value = 0
+
+func Risky(starting: Integer) {
+    crash starting > 0
+    value = starting
+}

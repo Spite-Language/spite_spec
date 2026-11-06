@@ -1,0 +1,18 @@
+var console = Console()
+
+func DefaultUnreadInAGeneric() {
+    load "../../../spite_standard_library/windows"
+    var numbers = List<Integer>()
+    numbers.append(4)
+    var words = List<String>()
+    var first = Holder<Integer>(numbers)
+    var second = Holder<String>(words)
+    var first_count = first.items.count()
+    var second_count = second.items.count()
+    console.print(first_count, second_count)
+    var third = LoudHolder<Integer>(numbers)
+    var fourth = LoudHolder<String>(words)
+    var third_count = third.items.count()
+    var fourth_count = fourth.items.count()
+    console.print(third_count, fourth_count)
+}

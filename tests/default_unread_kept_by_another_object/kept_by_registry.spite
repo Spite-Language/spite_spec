@@ -1,0 +1,7 @@
+var no_part = Part(8)
+var no_registering = Registering(no_part)
+var seen = Reader(no_registering)
+
+func KeptByRegistry(given: Reader) {
+    seen = given
+}

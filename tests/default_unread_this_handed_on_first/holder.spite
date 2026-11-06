@@ -1,0 +1,8 @@
+var no_start = Keeper(5)
+var keeper: Keeper = no_start
+
+func Holder(given: Keeper) {
+    var shown = Show(this)
+    shown.say()
+    keeper = given
+}

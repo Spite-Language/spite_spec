@@ -1,0 +1,7 @@
+var no_part = Part(7)
+var keeper = Keeper(no_part)
+var part = Part(0)
+
+func KeptByHolder(given: Part) {
+    part = given
+}

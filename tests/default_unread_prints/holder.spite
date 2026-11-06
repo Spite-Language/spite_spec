@@ -1,0 +1,7 @@
+var no_noisy = Noisy("first")
+var no_other = Noisy("second")
+var context = Context(no_noisy, no_other)
+
+func Holder(given: Context) {
+    context = given
+}

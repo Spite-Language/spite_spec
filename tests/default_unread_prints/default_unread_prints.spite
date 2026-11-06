@@ -1,0 +1,12 @@
+var console = Console()
+
+func DefaultUnreadPrints() {
+    load "../../../spite_standard_library/windows"
+    var given = Context(null, null)
+    console.print("start")
+    var first = Holder(given)
+    var second = Holder(given)
+    var first_count = first.context.count()
+    var second_count = second.context.count()
+    console.print("end", first_count, second_count)
+}

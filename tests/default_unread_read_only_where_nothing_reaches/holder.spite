@@ -1,0 +1,10 @@
+var no_part = Part(4)
+var context = Context(0)
+
+func Holder(given: Context) {
+    context = given
+}
+
+func never_called(): Integer {
+    return no_part.value
+}

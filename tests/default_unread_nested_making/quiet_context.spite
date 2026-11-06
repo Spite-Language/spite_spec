@@ -1,0 +1,12 @@
+var kept: QuietMiddle? = null
+
+func QuietContext(given: QuietMiddle?) {
+    kept = given
+}
+
+func holds(): Boolean {
+    if kept {
+        return true
+    }
+    return false
+}

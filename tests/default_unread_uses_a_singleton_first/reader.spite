@@ -1,0 +1,9 @@
+var seen: Part? = null
+
+func Reader(given: Part?) {
+    seen = given
+}
+
+func is_empty(): Boolean {
+    return not seen
+}

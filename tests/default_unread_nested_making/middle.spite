@@ -1,0 +1,10 @@
+var no_leaf = Leaf()
+var seen = Seen(no_leaf)
+
+func Middle(given: Seen) {
+    seen = given
+}
+
+func leaf(): Leaf? {
+    return seen.kept
+}

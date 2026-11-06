@@ -8,6 +8,8 @@ func DefaultReplacedIsNotBuilt() {
     console.print("the top holds nothing", empty)
     var kept = top.kept_total()
     console.print("kept", kept)
+    var kept_in_the_middle = top.middle.kept_total()
+    console.print("kept in the middle", kept_in_the_middle)
     top.replace_the_kept()
     var replaced = top.kept_total()
     console.print("replaced", replaced)

@@ -1,0 +1,8 @@
+generic $held_type
+
+var console = Console()
+var made = List<$held_type>()
+
+func Printer() {
+    console.print("printer made")
+}

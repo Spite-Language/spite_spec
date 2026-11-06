@@ -1,0 +1,8 @@
+var console = Console()
+
+func DefaultUnreadThisHandedOnFirst() {
+    load "../../../spite_standard_library/windows"
+    var given = Keeper(1)
+    var holder = Holder(given)
+    console.print("after", holder.keeper.value)
+}

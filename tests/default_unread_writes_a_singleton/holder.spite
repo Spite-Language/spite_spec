@@ -1,0 +1,6 @@
+var no_counter = Counter()
+var reader = Reader(no_counter)
+
+func Holder(given: Reader) {
+    reader = given
+}

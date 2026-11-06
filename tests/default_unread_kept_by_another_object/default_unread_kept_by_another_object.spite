@@ -1,0 +1,16 @@
+var console = Console()
+var registry = Registry()
+
+func DefaultUnreadKeptByAnotherObject() {
+    load "../../../spite_standard_library/windows"
+    var part = Part(1)
+    var first = KeptByHolder(part)
+    console.print(first.keeper.part.value, first.part.value)
+    var given = Reader(null)
+    var second = KeptByRegistry(given)
+    var known = registry.parts.count()
+    var last = registry.parts.last()
+    crash last
+    var empty = second.seen.is_empty()
+    console.print(empty, known, last.value)
+}

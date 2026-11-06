@@ -1,0 +1,12 @@
+var kept: Middle? = null
+
+func Context(given: Middle?) {
+    kept = given
+}
+
+func holds(): Boolean {
+    if kept {
+        return true
+    }
+    return false
+}

@@ -1,0 +1,14 @@
+var left: Noisy? = null
+var right: Noisy? = null
+
+func Context(given_left: Noisy?, given_right: Noisy?) {
+    left = given_left
+    right = given_right
+}
+
+func count(): Integer {
+    if left or right {
+        return 1
+    }
+    return 0
+}

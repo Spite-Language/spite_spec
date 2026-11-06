@@ -1,0 +1,8 @@
+singleton
+
+var console = Console()
+var count = 0
+
+func Tally() {
+    console.print("tally made")
+}

@@ -1,0 +1,6 @@
+var no_leaf = QuietLeaf()
+var kept: QuietLeaf = no_leaf
+
+func QuietMiddle(given: QuietLeaf) {
+    kept = given
+}

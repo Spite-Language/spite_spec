@@ -1,0 +1,6 @@
+var no_part = Part(4)
+var kept: Part = no_part
+
+func Holder(given: Part) {
+    kept = given
+}

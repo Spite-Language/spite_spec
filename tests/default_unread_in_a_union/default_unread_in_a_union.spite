@@ -1,0 +1,27 @@
+union Figure {
+    Circle
+    Square
+    Loud
+}
+
+var console = Console()
+
+func DefaultUnreadInAUnion() {
+    load "../../../spite_standard_library/windows"
+    var given = Circle(2)
+    var holder = Holder(given)
+    var replaced = holder.figure
+    if replaced.class == Circle {
+        console.print("circle", replaced.radius)
+    }
+    var other = Other()
+    var stays = other.figure
+    if stays.class == Square {
+        console.print("square", stays.side)
+    }
+    var noisier = Noisier(given)
+    var last = noisier.figure
+    if last.class == Circle {
+        console.print("circle", last.radius)
+    }
+}

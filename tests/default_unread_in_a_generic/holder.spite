@@ -1,0 +1,9 @@
+generic $held_type
+
+var no_items = List<$held_type>()
+var no_maker = Maker<$held_type>(no_items)
+var items: List<$held_type> = no_maker.seen
+
+func Holder(given: List<$held_type>) {
+    items = given
+}

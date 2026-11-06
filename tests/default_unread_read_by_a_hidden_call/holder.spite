@@ -1,0 +1,12 @@
+var console = Console()
+var no_part = Part(7)
+var wrapper = Wrapper(no_part)
+
+func Holder(given: Wrapper) {
+    show_it()
+    wrapper = given
+}
+
+func show_it() {
+    console.print("before", wrapper.part.value)
+}

@@ -1,0 +1,9 @@
+var console = Console()
+
+func DefaultUnreadReadByAHiddenCall() {
+    load "../../../spite_standard_library/windows"
+    var part = Part(1)
+    var given = Wrapper(part)
+    var holder = Holder(given)
+    console.print("after", holder.wrapper.part.value)
+}

@@ -1,0 +1,11 @@
+var value = 0
+var maker: Maker? = null
+
+func Context(starting: Integer, given: Maker?) {
+    value = starting
+    maker = given
+}
+
+func is_empty(): Boolean {
+    return not maker
+}

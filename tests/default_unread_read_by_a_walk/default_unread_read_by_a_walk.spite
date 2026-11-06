@@ -1,0 +1,17 @@
+var console = Console()
+
+func DefaultUnreadReadByAWalk() {
+    load "../../../spite_standard_library/windows"
+    var context = Context(1)
+    var holder = Holder(context)
+    var reflected = holder.attributes.values()
+    reflected.each(show)
+}
+
+func show(attribute: Spite.Attribute) {
+    var shown = "none"
+    if attribute.value {
+        shown = attribute.value.to_string()
+    }
+    console.print(attribute.name, shown)
+}
