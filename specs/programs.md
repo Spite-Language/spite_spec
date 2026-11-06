@@ -17,6 +17,11 @@ a program reads its run-time settings through Environment() (declared in its env
 command line beside the compiler's flags), and what its build decided through Build(), anywhere`
 (`diagnostics/entry_constructor_arguments`).
 
+**The entry class declares no `generic` line**: a generic class has no one object, and the entry class is the one that
+runs. The error names the first `generic` line and the fix: `'Kal' is the entry class and declares 'generic $item_type',
+but a generic class has no one object and the entry class is the one that runs: remove its 'generic' lines, and write
+what needs them in a class the entry class makes` (`conformance/entry_class_generic`, D1868).
+
 ```gdscript kal.spite
 var console = Console()
 var environment = Environment()

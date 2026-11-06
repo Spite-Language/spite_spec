@@ -1,0 +1,5 @@
+generic $item_type
+
+func EntryClassGeneric() {
+    load "../../../spite_standard_library/windows"
+}

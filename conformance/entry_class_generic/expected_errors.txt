@@ -1,0 +1,1 @@
+conformance/entry_class_generic/entry_class_generic.spite:1: error: 'EntryClassGeneric' is the entry class and declares 'generic $item_type', but a generic class has no one object and the entry class is the one that runs: remove its 'generic' lines, and write what needs them in a class the entry class makes (in EntryClassGeneric)
