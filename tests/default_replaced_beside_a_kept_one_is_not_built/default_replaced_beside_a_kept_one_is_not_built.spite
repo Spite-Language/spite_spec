@@ -1,0 +1,69 @@
+var console = Console()
+var program = Program()
+
+func DefaultReplacedBesideAKeptOneIsNotBuilt() {
+    load "../../../spite_standard_library/windows"
+    var given = Inner(1)
+    var top = Top(given)
+    var value = top.viewed()
+    console.print("viewed", value, top.shared.value)
+    var kept = top.kept_total()
+    console.print("kept", kept)
+    top.replace_the_kept()
+    var replaced = top.kept_total()
+    console.print("replaced", replaced)
+    var path = program.executable_path()
+    crash path
+    var length = path.length()
+    var stem = path.slice(0, length - 4)
+    crash stem
+    var map = File("{stem}.functions")
+    var text = map.read_as_string()
+    crash text
+    var lines = text.split("\n")
+    say_how_much_is_left(lines, "Top")
+}
+
+func say_how_much_is_left(lines: List<String>, class_name: String) {
+    var whole = size_of(lines, "\t{class_name}._attribute_defaults")
+    var left = size_of(lines, "\t{class_name}.{class_name}$defaults")
+    var is_trimmed = left > 0 and left < whole
+    console.print(class_name, "makes less than its whole defaults", is_trimmed)
+}
+
+func size_of(lines: List<String>, ending: String): Integer {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var trimmed = line.replace("\r", "")
+        if trimmed.ends_with(ending) {
+            return size_of_a_line(trimmed)
+        }
+        index = index + 1
+    }
+    return 0
+}
+
+func size_of_a_line(line: String): Integer {
+    var columns = line.split("\t")
+    var start = columns[0]
+    crash start
+    var end = columns[1]
+    crash end
+    return number_of(end) - number_of(start)
+}
+
+func number_of(hexadecimal: String): Integer {
+    var digits = "0123456789abcdef"
+    var total = 0
+    var index = 0
+    while index < hexadecimal.length() {
+        var digit = hexadecimal.slice(index, index + 1)
+        crash digit
+        var value = digits.index_of(digit)
+        crash value
+        total = total * 16 + value
+        index = index + 1
+    }
+    return total
+}

@@ -1,0 +1,6 @@
+var counter = Counter()
+var wrapper = Wrapper(counter)
+
+func Holder(given: Wrapper) {
+    wrapper = given
+}

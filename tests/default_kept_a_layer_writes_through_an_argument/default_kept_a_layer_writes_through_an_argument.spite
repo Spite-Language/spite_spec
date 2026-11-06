@@ -1,0 +1,9 @@
+var console = Console()
+
+func DefaultKeptALayerWritesThroughAnArgument() {
+    load "../../../spite_standard_library/windows"
+    var first = Counter()
+    var given = Outer(first)
+    var holder = Holder(given)
+    console.print(holder.counter.touched, holder.outer.wrapper.held.touched)
+}

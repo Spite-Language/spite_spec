@@ -1,0 +1,6 @@
+var spare = Counter()
+var wrapper = Wrapper(spare)
+
+func Outer(given: Counter) {
+    wrapper = Wrapper(given)
+}

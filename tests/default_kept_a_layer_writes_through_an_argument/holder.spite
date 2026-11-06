@@ -1,0 +1,6 @@
+var counter = Counter()
+var outer = Outer(counter)
+
+func Holder(given: Outer) {
+    outer = given
+}

@@ -1,0 +1,5 @@
+var held = Inner(0)
+
+func Viewer(given: Inner) {
+    held = given
+}
