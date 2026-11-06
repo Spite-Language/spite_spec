@@ -1,0 +1,1 @@
+conformance/while_and_written_around_an_inner_loop/while_and_written_around_an_inner_loop.spite:59: error: assigning to 'rack.item' inside this loop undoes a narrowing made before the loop, and the next pass would read it unproven: narrow it inside the loop instead (in WhileAndWrittenAroundAnInnerLoop.show)

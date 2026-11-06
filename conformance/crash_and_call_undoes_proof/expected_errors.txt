@@ -1,0 +1,1 @@
+conformance/crash_and_call_undoes_proof/crash_and_call_undoes_proof.spite:53: error: 'rack.item' was proven before line 52, where a call here, which reaches 'CrashAndCallUndoesProof.cleared', may assign 'item' again, so this read would use what the call left there, unproven: prove 'rack.item' again after that line (in CrashAndCallUndoesProof.show)

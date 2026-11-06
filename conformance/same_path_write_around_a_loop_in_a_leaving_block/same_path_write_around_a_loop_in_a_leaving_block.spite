@@ -1,0 +1,64 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+var held: Item? = null
+
+func SamePathWriteAroundALoopInALeavingBlock() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    var first = Item()
+    var filled = Shelf()
+    filled.item = first
+    rack.shelf = filled
+    rack.item = first
+    held = first
+    var other: Item? = first
+    touch(rack)
+    show(rack, rack, first, other, 1)
+}
+
+func light_of(code: Integer): Light {
+    if code > 0 {
+        return 'red'
+    }
+    return 'green'
+}
+
+func touch(rack: Rack) {
+    if rack.item {
+        console.print(rack.item.number)
+        var seen = rack.item.read_it()
+        console.print(seen)
+    }
+    if rack.shelf.item {
+        console.print(rack.shelf.item.number)
+    }
+    console.print(rack.turns)
+}
+
+func clear(rack: Rack) {
+    rack.item = null
+    rack.shelf.item = null
+}
+
+func cleared(rack: Rack): Boolean {
+    rack.item = null
+    rack.shelf.item = null
+    return true
+}
+
+func show(rack: Rack, _alias: Rack, _first: Item, _given: Item?, code: Integer) {
+    fallback rack.shelf.item
+    var turns = 0
+    if code > 90 {
+        while turns < 2 {
+            console.print(rack.shelf.item.number)
+            rack.shelf.item = null
+            turns = turns + 1
+        }
+        return
+    }
+}

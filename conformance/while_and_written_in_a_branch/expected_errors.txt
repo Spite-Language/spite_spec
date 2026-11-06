@@ -1,0 +1,1 @@
+conformance/while_and_written_in_a_branch/while_and_written_in_a_branch.spite:60: error: this value may be null (it is an Item?), so 'number' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in WhileAndWrittenInABranch.show)

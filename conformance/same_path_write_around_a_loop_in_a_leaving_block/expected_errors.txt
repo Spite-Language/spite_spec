@@ -1,0 +1,1 @@
+conformance/same_path_write_around_a_loop_in_a_leaving_block/same_path_write_around_a_loop_in_a_leaving_block.spite:59: error: assigning to 'rack.shelf.item' inside this loop undoes a narrowing made before the loop, and the next pass would read it unproven: narrow it inside the loop instead (in SamePathWriteAroundALoopInALeavingBlock.show)

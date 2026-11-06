@@ -1,0 +1,5 @@
+var number = 1
+
+func Item(starting_number: Integer) {
+    number = starting_number
+}

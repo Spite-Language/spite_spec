@@ -1,0 +1,1 @@
+conformance/same_path_write_before_a_loop_that_may_stay/same_path_write_before_a_loop_that_may_stay.spite:62: error: this value may be null (it is an Item?), so 'number' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in SamePathWriteBeforeALoopThatMayStay.show)

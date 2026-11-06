@@ -1,0 +1,1 @@
+conformance/same_path_write_in_both_branches/same_path_write_in_both_branches.spite:61: error: this value may be null (it is an Item?), so 'number' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in SamePathWriteInBothBranches.show)

@@ -1,0 +1,225 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+var held: Item? = null
+var _leaves = 90
+
+func NarrowedPastASamePathWriteThatReturns() {
+    load "../../../spite_standard_library/windows"
+    var passes = 1
+    var leaving = 91
+    run_all(passes)
+    run_all(leaving)
+}
+
+func filled(): Rack {
+    var rack = Rack()
+    var first = Item(7)
+    var shelf = Shelf()
+    shelf.item = first
+    rack.shelf = shelf
+    return rack
+}
+
+func run_all(code: Integer) {
+    var first_rack = filled()
+    same_path(first_rack, code)
+    var second_rack = filled()
+    both_inner_branches(second_rack, code)
+    var third_rack = filled()
+    earlier_link(third_rack, code)
+    var fourth_rack = filled()
+    inner_block(fourth_rack, code)
+    var fifth_rack = filled()
+    in_a_loop(fifth_rack, code)
+    var sixth_rack = filled()
+    read_then_written_in_a_loop(sixth_rack, code)
+    var seventh_rack = filled()
+    body_that_leaves(seventh_rack)
+    var eighth_rack = filled()
+    alias_in_a_body_that_leaves(eighth_rack, eighth_rack)
+    var ninth_rack = filled()
+    in_a_switch(ninth_rack, code)
+    var first = Item(8)
+    a_local(first, code)
+    a_local_in_a_loop(first, code)
+    held = first
+    own_attribute(code)
+    a_list_item(first, code)
+    var tenth_rack = filled()
+    halts_in_the_branch(tenth_rack)
+}
+
+func same_path(rack: Rack, code: Integer) {
+    fallback rack.shelf.item
+    if code > _leaves {
+        rack.shelf.item = null
+        return
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func both_inner_branches(rack: Rack, code: Integer) {
+    fallback rack.shelf.item
+    if code > _leaves {
+        rack.shelf.item = null
+        if code > 95 {
+            return
+        } else {
+            return
+        }
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func earlier_link(rack: Rack, code: Integer) {
+    fallback rack.shelf.item
+    if code > _leaves {
+        var empty = Shelf()
+        rack.shelf = empty
+        return
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func inner_block(rack: Rack, code: Integer) {
+    fallback rack.shelf.item
+    if code > _leaves {
+        {
+            rack.shelf.item = null
+            return
+        }
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func in_a_loop(rack: Rack, code: Integer) {
+    fallback rack.shelf.item
+    var turns = 0
+    while turns < 2 {
+        if code > _leaves {
+            rack.shelf.item = null
+            return
+        }
+        console.print(rack.shelf.item.number)
+        turns = turns + 1
+    }
+}
+
+func read_then_written_in_a_loop(rack: Rack, code: Integer) {
+    fallback rack.shelf.item
+    var turns = 0
+    while turns < 2 {
+        console.print(rack.shelf.item.number)
+        if code > _leaves {
+            rack.shelf.item = null
+            return
+        }
+        turns = turns + 1
+    }
+}
+
+func body_that_leaves(rack: Rack) {
+    fallback rack.shelf.item
+    var turns = 0
+    while turns < 2 {
+        console.print(rack.shelf.item.number)
+        rack.shelf.item = null
+        return
+    }
+}
+
+func alias_in_a_body_that_leaves(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var turns = 0
+    while turns < 2 {
+        console.print(rack.shelf.item.number)
+        alias.shelf.item = null
+        return
+    }
+}
+
+func light_of(code: Integer): Light {
+    if code > _leaves {
+        return 'red'
+    }
+    return 'green'
+}
+
+func in_a_switch(rack: Rack, code: Integer) {
+    fallback rack.shelf.item
+    var light = light_of(code)
+    switch light {
+        'red': if code > 95 {
+            rack.shelf.item = null
+            return
+        } else {
+            rack.shelf.item = null
+            return
+        }
+        'green': console.print(code)
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func a_local(given: Item?, code: Integer) {
+    var local = given
+    fallback local
+    if code > _leaves {
+        local = null
+        console.print(code)
+        return
+    }
+    console.print(local.number)
+}
+
+func a_local_in_a_loop(given: Item?, code: Integer) {
+    var local = given
+    fallback local
+    var turns = 0
+    while turns < 2 {
+        console.print(local.number)
+        if code > _leaves {
+            local = null
+            console.print(code)
+            return
+        }
+        turns = turns + 1
+    }
+}
+
+func own_attribute(code: Integer) {
+    fallback held
+    if code > _leaves {
+        held = null
+        return
+    }
+    console.print(held.number)
+}
+
+func a_list_item(first: Item, code: Integer) {
+    var things = List<Item?>()
+    things.append(first)
+    fallback things[0]
+    if code > _leaves {
+        things[0] = null
+        return
+    }
+    console.print(things[0].number)
+}
+
+func halts_in_the_branch(rack: Rack) {
+    fallback rack.shelf.item
+    var turns = 0
+    while turns < 1 {
+        if rack.shelf.item.number > _leaves {
+            rack.shelf.item = null
+            crash
+        }
+        console.print(rack.shelf.item.number)
+        turns = turns + 1
+    }
+}

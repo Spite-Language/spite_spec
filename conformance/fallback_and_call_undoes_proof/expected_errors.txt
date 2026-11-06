@@ -1,0 +1,1 @@
+conformance/fallback_and_call_undoes_proof/fallback_and_call_undoes_proof.spite:53: error: 'rack.item' was proven before line 52, where 'cleared(...)' may assign 'item' again, so this read would use what the call left there, unproven: prove 'rack.item' again after that line (in FallbackAndCallUndoesProof.show)

@@ -1,0 +1,1 @@
+conformance/while_and_local_written_in_the_body/while_and_local_written_in_the_body.spite:58: error: this value may be null (it is an Item?), so 'number' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in WhileAndLocalWrittenInTheBody.show)

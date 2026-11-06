@@ -1,0 +1,1 @@
+conformance/while_and_write_through_another_object/while_and_write_through_another_object.spite:55: error: 'rack.item' was proven before line 54, where a write through another object may assign 'item' again, so this read would use what that write left there, unproven: prove 'rack.item' again after that line (in WhileAndWriteThroughAnotherObject.show)

@@ -1,0 +1,1 @@
+conformance/while_or_proves_nothing/while_or_proves_nothing.spite:56: error: this value may be null (it is an Item?), so 'number' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in WhileOrProvesNothing.show)

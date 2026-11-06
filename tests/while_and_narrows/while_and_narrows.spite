@@ -1,0 +1,99 @@
+var console = Console()
+var filled: Item? = null
+
+func WhileAndNarrows() {
+    load "../../../spite_standard_library/windows"
+    var last = Item(2)
+    var first = Item(1)
+    first.next = last
+    counted(first)
+    counted_second(first)
+    walked(first)
+    both_links(first)
+    var rack = Rack()
+    rack.item = first
+    filled = last
+    retested(rack)
+    filled_by_the_condition(rack)
+    var shelved = Shelf()
+    shelved.item = first
+    rack.shelf = shelved
+    through_a_longer_path(rack)
+    listed(first)
+}
+
+func counted(given: Item?) {
+    var turns = 0
+    while given and turns < 2 {
+        console.print(given.number)
+        turns = turns + 1
+    }
+}
+
+func counted_second(given: Item?) {
+    var turns = 0
+    while turns < 2 and given {
+        console.print(given.number)
+        turns = turns + 1
+    }
+}
+
+func walked(first: Item) {
+    var turns = 0
+    var current: Item? = first
+    while current and turns < 5 {
+        console.print(current.number)
+        current = current.next
+        turns = turns + 1
+    }
+}
+
+func both_links(given: Item?) {
+    var turns = 0
+    while given and given.next and turns < 2 {
+        console.print(given.next.number)
+        turns = turns + 1
+    }
+}
+
+func retested(rack: Rack) {
+    var turns = 0
+    while rack.item and turns < 5 {
+        console.print(rack.item.number)
+        rack.item = rack.item.next
+        turns = turns + 1
+    }
+}
+
+func refill(rack: Rack): Boolean {
+    rack.refills = rack.refills + 1
+    rack.item = filled
+    return rack.refills < 3
+}
+
+func filled_by_the_condition(rack: Rack) {
+    while refill(rack) and rack.item {
+        console.print(rack.item.number)
+        rack.item = null
+    }
+}
+
+func through_a_longer_path(rack: Rack) {
+    var turns = 0
+    while rack.shelf.item and turns < 2 {
+        console.print(rack.shelf.item.number)
+        turns = turns + 1
+    }
+}
+
+func listed(first: Item) {
+    var things = List<Item?>()
+    things.append(first)
+    things.append(null)
+    var at = 0
+    while at < things.count() and things[at] {
+        console.print(things[at].number)
+        at = at + 1
+    }
+    console.print(at)
+}

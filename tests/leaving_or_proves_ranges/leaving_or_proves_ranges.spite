@@ -1,0 +1,85 @@
+var console = Console()
+var build = Build()
+var _too_big = 3000000
+
+func LeavingOrProvesRanges() {
+    load "../../../spite_standard_library/windows"
+    var small = 50
+    var guarded = both_sides_left(small)
+    var turned = both_sides_turned(small)
+    var counted = in_a_loop(small)
+    var only_top = only_one_side(small)
+    var fell = falls_through(small)
+    var either = in_the_branch(small)
+    var both = an_and_that_leaves(small)
+    console.print(guarded, turned, counted, only_top, fell, either, both)
+    print_report()
+    var halted = falls_through(_too_big)
+    console.print("never printed", halted)
+}
+
+func both_sides_left(amount: Integer): Integer {
+    if amount > 100 or amount < 0 {
+        return 1
+    }
+    return amount * 1000
+}
+
+func both_sides_turned(amount: Integer): Integer {
+    if not (amount <= 100 and amount >= 0) {
+        return 1
+    }
+    return amount * 1000 + 1
+}
+
+func in_a_loop(amount: Integer): Integer {
+    var total = 0
+    var turns = 0
+    while not (amount > 100 or amount < 0) and turns < 2 {
+        total = amount * 1000
+        turns = turns + 1
+    }
+    return total
+}
+
+func only_one_side(amount: Integer): Integer {
+    if amount > 100 or amount > 90 {
+        return 1
+    }
+    return amount * 1000
+}
+
+func falls_through(amount: Integer): Integer {
+    if amount > 100 or amount < 0 {
+        console.print("outside")
+    }
+    return amount * 1000
+}
+
+func in_the_branch(amount: Integer): Integer {
+    if amount > 100 or amount < 0 {
+        return amount * 1000
+    }
+    return 0
+}
+
+func an_and_that_leaves(amount: Integer): Integer {
+    if amount > 100 and amount < 0 {
+        return 1
+    }
+    return amount * 1000
+}
+
+func print_report() {
+    var report = File("{build.program}/.spite/reports/leaving_or_proves_ranges.md").read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains("keeps its overflow check") and line.contains("leaving_or_proves_ranges.spite") {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}

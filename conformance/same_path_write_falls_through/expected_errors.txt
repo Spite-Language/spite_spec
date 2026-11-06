@@ -1,0 +1,1 @@
+conformance/same_path_write_falls_through/same_path_write_falls_through.spite:58: error: this value may be null (it is an Item?), so 'number' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in SamePathWriteFallsThrough.show)

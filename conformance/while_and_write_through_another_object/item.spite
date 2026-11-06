@@ -1,0 +1,9 @@
+var number = 1
+var next: Item? = null
+
+func read_it(): Integer {
+    if next {
+        return next.number
+    }
+    return number
+}
