@@ -1,7 +1,7 @@
 var console = Console()
 var path_of_the_list = "../spite_compiler/validators/abstract_syntax_tree/file_content_budget/waiting_list.spite"
 var broken = 0
-var waiting = ["spite_compiler/high_intermediary_representation/building/values.spite"]
+var waiting = List<String>()
 
 # ../../specs/style.md#the-file-content-budget
 func CompilerFileContentBudget() {
