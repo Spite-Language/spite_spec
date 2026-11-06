@@ -10,9 +10,9 @@ func LoadGitTwoCommitsDeclareDifferently() {
     reset()
     make_directory("{root}/repo")
     make_directory("{root}/repo/kit")
-    write_file("{root}/repo/kit/circle.spite", "var radius = 1\n\nfunc area(): Integer \{\n    return radius * 3\n}\n")
-    write_file("{root}/repo/kit/square.spite", "var side = 1\n\nfunc area(): Integer \{\n    return side * side\n}\n")
-    write_file("{root}/repo/kit/triangle.spite", "var base = 1\n\nfunc area(): Integer \{\n    return base * 2\n}\n")
+    write_file("{root}/repo/kit/circle.spite", "var radius = 1\n\nfunc shape_area(): Integer \{\n    return radius * 3\n}\n")
+    write_file("{root}/repo/kit/square.spite", "var side = 1\n\nfunc shape_area(): Integer \{\n    return side * side\n}\n")
+    write_file("{root}/repo/kit/triangle.spite", "var base = 1\n\nfunc shape_area(): Integer \{\n    return base * 2\n}\n")
     write_pet(false, false)
     commit_all("{root}/repo")
     var first = head("{root}/repo")
@@ -35,7 +35,7 @@ func write_pet(more_moods: Boolean, more_shapes: Boolean) {
     if more_shapes {
         shapes = "{shapes}    Triangle\n"
     }
-    var text = "enum Mood \{\n{moods}}\n\nunion Shape \{\n{shapes}}\n\nvar mood: Mood = 'glad'\nvar shape: Shape = Circle(1)\n\nfunc show(): Mood \{\n    return mood\n}\n\nfunc area(): Integer \{\n    return shape.area()\n}\n"
+    var text = "enum Mood \{\n{moods}}\n\nunion Shape \{\n{shapes}}\n\nvar mood: Mood = 'glad'\nvar shape: Shape = Circle(1)\n\nfunc show(): Mood \{\n    return mood\n}\n\nfunc shape_area(): Integer \{\n    return shape.area()\n}\n"
     write_file("{root}/repo/kit/pet.spite", text)
 }
 
@@ -57,7 +57,7 @@ func try_pair(first: String, second: String) {
     lines.append("    load \"../repo@{first}/kit\"")
     lines.append("    load \"../repo@{second}/kit\"")
     lines.append("    var pet = Pet()")
-    lines.append("    var area = pet.area()")
+    lines.append("    var area = pet.shape_area()")
     lines.append("    console.print(area)")
     lines.append("}")
     lines.append("")
