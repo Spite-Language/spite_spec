@@ -1,0 +1,1 @@
+conformance/type_declared_with_commas/type_declared_with_commas.spite:2: error: ',' is left over after the end of the statement: a statement is one line

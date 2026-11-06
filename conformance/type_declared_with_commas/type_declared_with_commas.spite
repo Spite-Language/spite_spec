@@ -1,0 +1,11 @@
+type Tag {
+    label: String,
+    weight: Integer
+}
+
+var console = Console()
+
+func TypeDeclaredWithCommas() {
+    load "../../../spite_standard_library/windows"
+    console.print("tagged")
+}

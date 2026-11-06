@@ -1,0 +1,1 @@
+conformance/union_declared_with_commas/union_declared_with_commas.spite:2: error: the entries of an enum or a union are one per line, not separated by commas: delete the ','
