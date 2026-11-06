@@ -1,0 +1,36 @@
+var console = Console()
+var program = Program()
+var fixture = DynamicLibrary("tests/foreign_call_without_callbacks_carries_no_trampoline/fixture.dll", 'identity', "")
+var _two = 2
+var _three = 3
+
+func ForeignCallWithoutCallbacksCarriesNoTrampoline() {
+    load "../../../spite_standard_library/windows"
+    var sum = fixture.add_numbers(_two, _three)
+    console.print("the foreign call answered", sum)
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var written = File(low_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var foreign_symbols = 0
+    var trampolines = 0
+    var callback_classes = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains("address of 'add_numbers'") {
+            foreign_symbols = foreign_symbols + 1
+        }
+        if line.starts_with("function _called_from_c_") {
+            trampolines = trampolines + 1
+        }
+        if line.starts_with("function ForeignCallback.") {
+            callback_classes = callback_classes + 1
+        }
+        index = index + 1
+    }
+    console.print("the called symbol is looked up in the build:", foreign_symbols > 0)
+    console.print("trampolines:", trampolines, "callback class functions:", callback_classes)
+}

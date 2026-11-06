@@ -1,0 +1,13 @@
+var console = Console()
+var hits = Hits()
+var fixture = DynamicLibrary("tests/foreign_callbacks_count_references_atomically/fixture.dll", 'identity', "")
+var _threads = 4
+var _calls = 2000
+
+func ForeignCallbacksCountReferencesAtomically() {
+    load "../../../spite_standard_library/windows"
+    var ledger = Ledger("ledger")
+    var reporting = ForeignCallback(ledger.report, 'context_first')
+    fixture.report_from_threads(_threads, _calls, reporting.address, reporting.context)
+    console.print("no call was lost:", hits.total)
+}

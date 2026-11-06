@@ -1,0 +1,14 @@
+var name = ""
+var hits = Hits()
+
+func Ledger(starting_name: String) {
+    name = starting_name
+}
+
+func report(value: Integer) {
+    var label = name
+    var again = label
+    if again == name {
+        hits.hit(value)
+    }
+}

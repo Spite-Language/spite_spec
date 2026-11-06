@@ -1,0 +1,16 @@
+var plain = DynamicLibrary("tests/foreign_callback_attribute_is_never_unread/fixture.dll", 'identity', "")
+var clicks = Clicks()
+var clicking = ForeignCallback(clicks.idle, 'no_context')
+var _count = 4
+
+func ForeignCallbackAttributeIsNeverUnread() {
+    load "../../../spite_standard_library/windows"
+    hand_over()
+    plain.click(_count)
+}
+
+func hand_over() {
+    var made = ForeignCallback(clicks.clicked, 'no_context')
+    plain.keep_click(made.address)
+    clicking = made
+}

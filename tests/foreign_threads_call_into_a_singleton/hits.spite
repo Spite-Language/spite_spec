@@ -1,0 +1,7 @@
+singleton
+
+var total = 0
+
+func hit(count: Integer) {
+    total = total + count
+}

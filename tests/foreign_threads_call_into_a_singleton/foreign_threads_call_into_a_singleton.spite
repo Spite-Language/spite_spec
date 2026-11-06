@@ -1,0 +1,12 @@
+var console = Console()
+var fixture = DynamicLibrary("tests/foreign_threads_call_into_a_singleton/fixture.dll", 'identity', "")
+var hits = Hits()
+var counting = ForeignCallback(hits.hit, 'no_context')
+var _threads = 4
+var _calls = 5000
+
+func ForeignThreadsCallIntoASingleton() {
+    load "../../../spite_standard_library/windows"
+    fixture.hit_from_threads(_threads, _calls, counting.address)
+    console.print("no call was lost:", hits.total)
+}

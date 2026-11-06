@@ -1,0 +1,1 @@
+conformance/foreign_type_name_reads_as_a_constant/foreign_type_name_reads_as_a_constant.spite:6: error: 'PointPair' is read as the constant 'POINTPAIR', and the header 'fixture.h' has no '#define POINTPAIR' (in ForeignTypeNameReadsAsAConstant.ForeignTypeNameReadsAsAConstant)

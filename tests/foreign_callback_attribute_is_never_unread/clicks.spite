@@ -1,0 +1,11 @@
+singleton
+
+var console = Console()
+
+func clicked(count: Integer) {
+    console.print("clicked", count)
+}
+
+func idle(count: Integer) {
+    console.print("idle", count)
+}

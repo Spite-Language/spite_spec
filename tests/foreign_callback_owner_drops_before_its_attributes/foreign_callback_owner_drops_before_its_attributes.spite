@@ -1,0 +1,18 @@
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_callback_owner_drops_before_its_attributes/fixture.dll", 'identity', "")
+var _first = 1
+var _second = 2
+
+func ForeignCallbackOwnerDropsBeforeItsAttributes() {
+    load "../../../spite_standard_library/windows"
+    make_and_lose_a_speaker()
+    console.print("the owner is gone")
+    plain.click(_second)
+    console.print("C called nothing after the owner unregistered")
+}
+
+func make_and_lose_a_speaker() {
+    var speaker = Speaker()
+    plain.click(_first)
+    console.print("speaker made, clicked", speaker.heard)
+}

@@ -1,0 +1,16 @@
+var console = Console()
+var fixture = DynamicLibrary("tests/foreign_com_table_from_another_thread/fixture.dll", 'identity', "")
+var voices = Voices()
+var starting = ForeignCallback(voices.started, 'no_context')
+var ending = ForeignCallback(voices.ended, 'no_context')
+var _first_voice = 7
+var _second_voice = 9
+
+func ForeignComTableFromAnotherThread() {
+    load "../../../spite_standard_library/windows"
+    fixture.keep_table(starting.address, ending.address)
+    fixture.play_on_a_thread(_first_voice)
+    fixture.play_on_a_thread(_second_voice)
+    console.print("the table's entries were called:", voices.started_count, voices.ended_count)
+    console.print("the second entry got its buffer:", voices.last_buffer)
+}

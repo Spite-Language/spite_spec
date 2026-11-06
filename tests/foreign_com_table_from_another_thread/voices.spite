@@ -1,0 +1,14 @@
+singleton
+
+var started_count = 0
+var ended_count = 0
+var last_buffer: Long = 0
+
+func started(_voice: Integer) {
+    started_count = started_count + 1
+}
+
+func ended(_voice: Integer, buffer: Long) {
+    ended_count = ended_count + 1
+    last_buffer = buffer
+}

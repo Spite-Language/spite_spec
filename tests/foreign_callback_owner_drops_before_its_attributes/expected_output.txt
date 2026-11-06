@@ -1,0 +1,7 @@
+clicked 1
+speaker made, clicked 1
+drop begins
+clicked 9
+drop ends
+the owner is gone
+C called nothing after the owner unregistered

@@ -1,0 +1,17 @@
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_callback_owner_drops_before_its_attributes/fixture.dll", 'identity', "")
+var clicks = Clicks()
+var clicking = ForeignCallback(clicks.clicked, 'no_context')
+var heard = 1
+var _last = 9
+
+func Speaker() {
+    plain.keep_click(clicking.address)
+}
+
+func drop() {
+    console.print("drop begins")
+    plain.click(_last)
+    plain.forget_click()
+    console.print("drop ends")
+}

@@ -1,0 +1,3 @@
+the foreign call answered 5
+the called symbol is looked up in the build: true
+trampolines: 0 callback class functions: 0

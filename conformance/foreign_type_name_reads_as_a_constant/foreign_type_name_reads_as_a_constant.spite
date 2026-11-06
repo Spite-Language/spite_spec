@@ -1,0 +1,8 @@
+var console = Console()
+var windows = DynamicLibrary("fixture.dll", 'windows', "fixture.h")
+
+func ForeignTypeNameReadsAsAConstant() {
+    load "../../../spite_standard_library/windows"
+    var point_type = windows.PointPair
+    console.print("the type read:", point_type)
+}
