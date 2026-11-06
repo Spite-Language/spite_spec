@@ -1,0 +1,18 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func LeftOverAfterSwitch() {
+    load "../../../spite_standard_library/common"
+    show('red')
+}
+
+func show(light: Light) {
+    switch light {
+        'red': console.print("stop")
+        'green': console.print("go")
+    } console.print("done")
+}

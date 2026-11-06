@@ -1,0 +1,17 @@
+var console = Console()
+
+func CaseTwoStatementsNullable() {
+    load "../../../spite_standard_library/windows"
+    var name: String? = "ada"
+    greet(name)
+}
+
+func greet(name: String?) {
+    switch name {
+        String: {
+            console.print("hello")
+            console.print(name)
+        }
+        Null: console.print("nobody")
+    }
+}

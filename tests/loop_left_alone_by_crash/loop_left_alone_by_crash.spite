@@ -1,0 +1,16 @@
+var console = Console()
+
+func LoopLeftAloneByCrash() {
+    load "../../../spite_standard_library/windows"
+    console.print("before")
+    wait_for_trouble(5)
+}
+
+func wait_for_trouble(limit: Integer) {
+    var running = true
+    while running {
+        if limit > 2 {
+            crash
+        }
+    }
+}

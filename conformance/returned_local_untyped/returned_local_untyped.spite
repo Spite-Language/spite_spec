@@ -1,0 +1,12 @@
+var console = Console()
+
+func ReturnedLocalUntyped() {
+    load "../../../spite_standard_library/common"
+    var answer = double(4)
+    console.print(answer)
+}
+
+func double(amount: Integer): Integer {
+    var result = amount * 2
+    return result
+}

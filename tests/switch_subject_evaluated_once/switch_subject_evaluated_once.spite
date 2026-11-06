@@ -1,0 +1,23 @@
+enum Light {
+    'red'
+    'amber'
+    'green'
+}
+
+var console = Console()
+var calls = 0
+
+func SwitchSubjectEvaluatedOnce() {
+    load "../../../spite_standard_library/windows"
+    switch next_light() {
+        'red': console.print("red")
+        'amber': console.print("amber")
+        'green': console.print("green")
+    }
+    console.print("calls", calls)
+}
+
+func next_light(): Light {
+    calls = calls + 1
+    return 'green'
+}

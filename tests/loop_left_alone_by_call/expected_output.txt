@@ -1,0 +1,4 @@
+before
+spite: the program stopped at tests/loop_left_alone_by_call/loop_left_alone_by_call.spite:16 in LoopLeftAloneByCall.step, site 3be0facd (steps=3)
+spite.frame	tests/loop_left_alone_by_call/loop_left_alone_by_call.spite:16	LoopLeftAloneByCall	step
+spite.frame	tests/loop_left_alone_by_call/loop_left_alone_by_call.spite:9	LoopLeftAloneByCall	LoopLeftAloneByCall

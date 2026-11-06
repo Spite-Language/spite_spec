@@ -1,0 +1,16 @@
+var console = Console()
+
+func CaseTwoStatementsBoolean() {
+    load "../../../spite_standard_library/windows"
+    show(3)
+}
+
+func show(count: Integer) {
+    switch count > 2 {
+        true: {
+            console.print("many")
+            console.print("indeed")
+        }
+        false: console.print("few")
+    }
+}

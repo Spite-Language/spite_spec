@@ -1,0 +1,10 @@
+var console = Console()
+
+func WhileConditionAlwaysTrue() {
+    load "../../../spite_standard_library/common"
+    var counted = 0
+    while 1 == 1 {
+        counted = counted + 1
+    }
+    console.print(counted)
+}

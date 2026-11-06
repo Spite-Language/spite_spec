@@ -1,0 +1,1 @@
+conformance/enum_switch_name_as_case/enum_switch_name_as_case.spite:15: error: this switch over 'light' has no case for 'red': a switch over an enum covers every value, so a value added later cannot be forgotten; add the cases (in EnumSwitchNameAsCase.show)

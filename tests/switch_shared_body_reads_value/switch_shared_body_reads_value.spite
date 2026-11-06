@@ -1,0 +1,22 @@
+enum Light {
+    'red'
+    'amber'
+    'green'
+}
+
+var console = Console()
+
+func SwitchSharedBodyReadsValue() {
+    load "../../../spite_standard_library/windows"
+    show('red')
+    show('amber')
+    show('green')
+}
+
+func show(light: Light) {
+    switch light {
+        'red': console.print("not green", light)
+        'amber': console.print("not green", light)
+        'green': console.print("green")
+    }
+}

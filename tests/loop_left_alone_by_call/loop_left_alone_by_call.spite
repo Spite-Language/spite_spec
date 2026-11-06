@@ -1,0 +1,18 @@
+var console = Console()
+var steps = 0
+
+func LoopLeftAloneByCall() {
+    load "../../../spite_standard_library/windows"
+    console.print("before")
+    var running = true
+    while running {
+        step()
+    }
+}
+
+func step() {
+    steps = steps + 1
+    if steps == 3 {
+        crash
+    }
+}

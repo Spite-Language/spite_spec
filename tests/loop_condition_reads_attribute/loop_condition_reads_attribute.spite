@@ -1,0 +1,11 @@
+var console = Console()
+var limit = 3
+var total = 0
+
+func LoopConditionReadsAttribute() {
+    load "../../../spite_standard_library/windows"
+    while limit > 5 {
+        total = total + 1
+    }
+    console.print(total)
+}

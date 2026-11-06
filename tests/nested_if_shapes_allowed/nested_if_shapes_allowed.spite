@@ -1,0 +1,89 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func NestedIfShapesAllowed() {
+    load "../../../spite_standard_library/windows"
+    var first = lone_if_inside_branch(5, true)
+    var second = switch_inside_branch('red', true)
+    var third = other_statement_beside_inner_if(5, 6)
+    var fourth = inner_if_with_else(5, 6)
+    var fifth = outer_if_with_else(5, 6)
+    var sixth = inner_else_if(5, 6)
+    console.print(first, second, third, fourth, fifth, sixth)
+}
+
+func lone_if_inside_branch(amount: Integer, wide: Boolean): Integer {
+    var result = 0
+    if wide {
+        if amount > 2 {
+            result = 1
+        }
+    } else {
+        result = 2
+    }
+    return result
+}
+
+func switch_inside_branch(light: Light, wide: Boolean): Integer {
+    var result = 0
+    if wide {
+        switch light {
+            'red': result = 1
+            'green': result = 2
+        }
+    } else {
+        result = 3
+    }
+    return result
+}
+
+func other_statement_beside_inner_if(amount: Integer, other: Integer): Integer {
+    var result = 0
+    if amount > 2 {
+        result = 1
+        if other > 2 {
+            result = 4
+        }
+    }
+    return result
+}
+
+func inner_if_with_else(amount: Integer, other: Integer): Integer {
+    var result = 0
+    if amount > 2 {
+        if other > 9 {
+            result = 4
+        } else {
+            result = 5
+        }
+    }
+    return result
+}
+
+func outer_if_with_else(amount: Integer, other: Integer): Integer {
+    var result = 0
+    if amount > 9 {
+        result = 3
+    } else {
+        if other > 2 {
+            result = 6
+        }
+    }
+    return result
+}
+
+func inner_else_if(amount: Integer, other: Integer): Integer {
+    var result = 0
+    if amount > 2 {
+        if other > 9 {
+            result = 4
+        } else if other > 5 {
+            result = 7
+        }
+    }
+    return result
+}

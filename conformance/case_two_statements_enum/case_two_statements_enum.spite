@@ -1,0 +1,21 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func CaseTwoStatementsEnum() {
+    load "../../../spite_standard_library/windows"
+    show('red')
+}
+
+func show(light: Light) {
+    switch light {
+        'red': {
+            console.print("stop")
+            console.print("wait")
+        }
+        'green': console.print("go")
+    }
+}

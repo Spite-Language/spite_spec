@@ -1,0 +1,27 @@
+var console = Console()
+
+func LoopLeftAloneByReturn() {
+    load "../../../spite_standard_library/windows"
+    var first = leave_by_return(5)
+    var second = leave_by_fallback(5)
+    console.print(first, second)
+}
+
+func leave_by_return(limit: Integer): Integer {
+    var running = true
+    while running {
+        if limit > 2 {
+            return limit
+        }
+    }
+    return 0
+}
+
+func leave_by_fallback(limit: Integer): Integer {
+    var running = true
+    while running {
+        fallback limit < 2
+        return limit
+    }
+    return 0
+}

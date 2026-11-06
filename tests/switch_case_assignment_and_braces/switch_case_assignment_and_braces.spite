@@ -1,0 +1,30 @@
+enum Light {
+    'red'
+    'amber'
+    'green'
+}
+
+var console = Console()
+var seconds = 0
+
+func SwitchCaseAssignmentAndBraces() {
+    load "../../../spite_standard_library/windows"
+    wait_for('red')
+    console.print(seconds)
+    wait_for('amber')
+    console.print(seconds)
+    wait_for('green')
+    console.print(seconds)
+}
+
+func wait_for(light: Light) {
+    switch light {
+        'red': seconds = 30
+        'amber': {
+            seconds = 5
+        }
+        'green': {
+            console.print("go")
+        }
+    }
+}

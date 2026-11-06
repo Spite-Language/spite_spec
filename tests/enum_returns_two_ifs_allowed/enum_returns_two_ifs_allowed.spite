@@ -1,0 +1,60 @@
+enum Light {
+    'red'
+    'amber'
+    'green'
+}
+
+var console = Console()
+var current: Light = 'amber'
+
+func EnumReturnsTwoIfsAllowed() {
+    load "../../../spite_standard_library/windows"
+    var first = two_ifs('amber')
+    var second = call_subject()
+    var third = block_of_two('green')
+    console.print(first, second, third)
+}
+
+func two_ifs(light: Light): Integer {
+    if light == 'red' {
+        return 30
+    }
+    if light == 'amber' {
+        return 5
+    }
+    return 20
+}
+
+func light_now(): Light {
+    return current
+}
+
+func call_subject(): Integer {
+    if light_now() == 'red' {
+        return 30
+    }
+    if light_now() == 'amber' {
+        return 5
+    }
+    if light_now() == 'green' {
+        return 20
+    }
+    return 0
+}
+
+func block_of_two(light: Light): Integer {
+    var result = 0
+    if light == 'red' {
+        result = 30
+        return result
+    }
+    if light == 'amber' {
+        result = 5
+        return result
+    }
+    if light == 'green' {
+        result = 20
+        return result
+    }
+    return result
+}

@@ -1,0 +1,4 @@
+before
+spite: the program stopped at tests/loop_left_alone_by_crash/loop_left_alone_by_crash.spite:13 in LoopLeftAloneByCrash.wait_for_trouble, site 4c7d8b0a (limit=5, running=true)
+spite.frame	tests/loop_left_alone_by_crash/loop_left_alone_by_crash.spite:13	LoopLeftAloneByCrash	wait_for_trouble
+spite.frame	tests/loop_left_alone_by_crash/loop_left_alone_by_crash.spite:6	LoopLeftAloneByCrash	LoopLeftAloneByCrash

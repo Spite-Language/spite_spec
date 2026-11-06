@@ -1,1 +1,1 @@
-conformance/control_switch_class_case_on_enum/control_switch_class_case_on_enum.spite:18: error: ...'Light'... (in ControlSwitchClassCaseOnEnum.kind_of)
+conformance/control_switch_class_case_on_enum/control_switch_class_case_on_enum.spite:18: error: 'Light' is a class, and a case of a switch over a ControlSwitchClassCaseOnEnum.Light is one of its values, like 'red', never a class (in ControlSwitchClassCaseOnEnum.kind_of)

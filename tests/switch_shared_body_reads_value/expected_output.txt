@@ -1,0 +1,3 @@
+not green red
+not green amber
+green

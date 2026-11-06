@@ -1,0 +1,1 @@
+conformance/rest_case_in_enum_switch/rest_case_in_enum_switch.spite:14: error: '_:' answers for what the switch does not name, so a value added later slips past it: name every value with a case of its own (cases may share a one-line body), or choose among values with no closed set with an 'if' (in RestCaseInEnumSwitch.show)

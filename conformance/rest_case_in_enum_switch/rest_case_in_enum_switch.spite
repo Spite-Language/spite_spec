@@ -1,0 +1,18 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var console = Console()
+
+func RestCaseInEnumSwitch() {
+    load "../../../spite_standard_library/windows"
+    show('red')
+}
+
+func show(light: Light) {
+    switch light {
+        'red': console.print("stop")
+        _: console.print("go")
+    }
+}
