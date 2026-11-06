@@ -1,0 +1,6 @@
+greeter.old()
+reload
+greeter.farewell()
+greeter.greeting()
+reload
+exit

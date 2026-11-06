@@ -1,0 +1,16 @@
+var console = Console()
+var build = Build()
+var greeter = Greeter()
+
+func HotReloadRefusesAFileThatDoesNotCompile() {
+    load "../../../spite_standard_library/windows"
+    var said = greeter.greeting()
+    console.print(said)
+    var folder = build.program.replace("/", "\\")
+    var no_arguments = List<String>()
+    var copying = Process("copy /y {folder}\\changed.txt {folder}\\greeter.spite", no_arguments)
+    var copied = copying.run()
+    if copied != 0 {
+        console.print("greeter.spite could not be written")
+    }
+}

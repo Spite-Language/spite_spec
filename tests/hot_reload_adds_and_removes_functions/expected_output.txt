@@ -1,0 +1,10 @@
+hello
+spite> old
+spite> spite: rebuilt Greeter
+removed Greeter.old
+rebuilt Greeter
+removed Greeter.old
+spite> farewell
+spite> hello
+spite> unchanged
+spite>

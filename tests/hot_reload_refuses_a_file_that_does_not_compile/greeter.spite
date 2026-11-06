@@ -1,0 +1,7 @@
+func greeting(): String {
+    return "hello"
+}
+
+func old(): String {
+    return "old"
+}

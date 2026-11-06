@@ -1,0 +1,19 @@
+var console = Console()
+var build = Build()
+
+func HotReloadChangesAnAttributeDefault() {
+    load "../../../spite_standard_library/windows"
+    console.print("started")
+    var folder = build.program.replace("/", "\\")
+    var no_arguments = List<String>()
+    var copying = Process("copy /y {folder}\\changed.txt {folder}\\counter.spite", no_arguments)
+    var copied = copying.run()
+    if copied != 0 {
+        console.print("counter.spite could not be written")
+    }
+}
+
+func fresh_step(): Integer {
+    var counter = Counter()
+    return counter.step
+}

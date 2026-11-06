@@ -1,0 +1,7 @@
+func greeting(): String {
+    return missing_name
+}
+
+func old(): String {
+    return "old"
+}
