@@ -1,0 +1,3 @@
+spite: the program stopped at tests/crash_report_short_circuit/crash_report_short_circuit.spite:10 in CrashReportShortCircuit.check, site 57032936 (ready=false, size=4)
+spite.frame	tests/crash_report_short_circuit/crash_report_short_circuit.spite:10	CrashReportShortCircuit	check
+spite.frame	tests/crash_report_short_circuit/crash_report_short_circuit.spite:5	CrashReportShortCircuit	CrashReportShortCircuit

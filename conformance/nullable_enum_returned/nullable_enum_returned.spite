@@ -1,0 +1,18 @@
+enum Level {
+    'low'
+    'high'
+}
+
+var console = Console()
+
+func NullableEnumReturned() {
+    load "../../../spite_standard_library/windows"
+    var chosen = choose()
+    console.print(chosen)
+}
+
+func choose(): Level {
+    var levels = List<Level>()
+    levels.append('low')
+    return levels.first()
+}

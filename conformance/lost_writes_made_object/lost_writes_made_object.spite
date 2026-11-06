@@ -1,0 +1,8 @@
+var console = Console()
+
+func LostWritesMadeObject() {
+    load "../../../spite_standard_library/windows"
+    var made = Layout()
+    made.width = 1
+    console.print("made")
+}

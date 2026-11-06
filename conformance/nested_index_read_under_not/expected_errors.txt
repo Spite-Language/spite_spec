@@ -1,0 +1,1 @@
+conformance/nested_index_read_under_not/nested_index_read_under_not.spite:13: error: 'rows[index]' is read inside the index of 'flags': compute it first into a named 'var' and pass the name (in NestedIndexReadUnderNot.show)

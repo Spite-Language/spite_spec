@@ -1,0 +1,51 @@
+var console = Console()
+var layouts = List<Layout>()
+
+func MemoryReplacedNameOnly() {
+    load "../../../spite_standard_library/windows"
+    var first = Layout(1)
+    layouts.append(first)
+    assign_then_read()
+    assign_twice()
+    assign_from_a_function()
+}
+
+func assign_then_read() {
+    var layout = layouts[0]
+    crash layout
+    var made = Layout(2)
+    layout = made
+    var local_width = layout.width
+    var held = layouts[0]
+    crash held
+    var held_width = held.width
+    console.print("the local is", local_width, "the list still holds", held_width)
+}
+
+func assign_twice() {
+    var layout = layouts[0]
+    crash layout
+    var second = Layout(3)
+    var third = Layout(4)
+    layout = second
+    layout = third
+    var last_width = layout.width
+    console.print("assigned twice, the last is", last_width)
+}
+
+func assign_from_a_function() {
+    var layout = pick(true)
+    var other = Layout(5)
+    layout = other
+    var chosen_width = layout.width
+    console.print("a function that may answer something else", chosen_width)
+}
+
+func pick(wanted: Boolean): Layout {
+    if wanted {
+        return Layout(6)
+    }
+    var kept = layouts[0]
+    crash kept
+    return kept
+}

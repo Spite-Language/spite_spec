@@ -1,0 +1,5 @@
+var below = Level4()
+
+func of(row: Integer): Layout {
+    return below.of(row)
+}

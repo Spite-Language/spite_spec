@@ -1,0 +1,3 @@
+spite: the program stopped at tests/crash_bare_report/crash_bare_report.spite:14 in CrashBareReport.sort_out, site d6230e6c (kind=3, label=kind 3)
+spite.frame	tests/crash_bare_report/crash_bare_report.spite:14	CrashBareReport	sort_out
+spite.frame	tests/crash_bare_report/crash_bare_report.spite:5	CrashBareReport	CrashBareReport

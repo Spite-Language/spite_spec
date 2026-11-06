@@ -1,0 +1,12 @@
+var console = Console()
+
+func CrashReportCutUtf8() {
+    load "../../../spite_standard_library/windows"
+    show("a")
+}
+
+func show(letter: String) {
+    var heading = "{letter}éééééééééééééééééééééééééééééééééééééééé end"
+    crash heading.length() < 10
+    console.print("never printed")
+}

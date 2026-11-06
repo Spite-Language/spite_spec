@@ -1,0 +1,12 @@
+var console = Console()
+var top = Level5()
+
+func MemoryReplacedDepth5() {
+    load "../../../spite_standard_library/windows"
+    var first = Layout()
+    top.below.below.below.below.values.append(first)
+    var found = top.of(0)
+    console.print(found.width)
+    var wider = Layout()
+    found = wider
+}

@@ -1,0 +1,20 @@
+var console = Console()
+var items = List<String>()
+
+func ProofUndoneByClear() {
+    load "../../../spite_standard_library/windows"
+    items.append("apple")
+    items.append("fig")
+    shrink_then_read()
+}
+
+func shrink_then_read() {
+    crash items[0]
+    items.clear()
+    var first = items[0].upper_case()
+    console.print(first)
+}
+
+func is_short(item: String): Boolean {
+    return item.length() < 4
+}

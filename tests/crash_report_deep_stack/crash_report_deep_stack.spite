@@ -1,0 +1,15 @@
+var console = Console()
+
+func CrashReportDeepStack() {
+    load "../../../spite_standard_library/windows"
+    descend(20)
+}
+
+func descend(depth: Integer) {
+    if depth == 0 {
+        crash depth > 0
+    }
+    var next = depth - 1
+    descend(next)
+    console.print("never printed")
+}

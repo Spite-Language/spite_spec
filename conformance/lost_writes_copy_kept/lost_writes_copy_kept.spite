@@ -1,0 +1,9 @@
+var console = Console()
+
+func LostWritesCopyKept() {
+    load "../../../spite_standard_library/windows"
+    var original = Layout()
+    var kept = original.copy()
+    kept.width = 4
+    console.print(original.width)
+}

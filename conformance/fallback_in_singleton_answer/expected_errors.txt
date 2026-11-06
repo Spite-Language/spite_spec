@@ -1,0 +1,1 @@
+conformance/fallback_in_singleton_answer/counter.spite:4: error: 'fallback' returns what the answer type builds with no arguments, and a Registry has none (it is a singleton, never built by a call): make the result 'Registry?' so the fallback returns null, or write 'crash wanted' if this is a developer mistake (in Counter.pick)

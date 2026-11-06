@@ -1,0 +1,9 @@
+var console = Console()
+
+func FallbackInSingletonAnswer() {
+    load "../../../spite_standard_library/windows"
+    var counter = Counter()
+    var shared = counter.pick(true)
+    var total = shared.total
+    console.print(total)
+}

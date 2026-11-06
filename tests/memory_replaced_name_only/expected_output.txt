@@ -1,0 +1,3 @@
+the local is 2 the list still holds 1
+assigned twice, the last is 4
+a function that may answer something else 5

@@ -1,0 +1,6 @@
+var registry = Registry()
+
+func pick(wanted: Boolean): Registry {
+    fallback wanted
+    return registry
+}

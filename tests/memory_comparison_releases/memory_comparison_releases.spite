@@ -1,0 +1,17 @@
+var console = Console()
+
+func MemoryComparisonReleases() {
+    load "../../../spite_standard_library/windows"
+    var kept = List<Shape>()
+    var square = Shape()
+    kept.append(square)
+    var index = 0
+    var same = 0
+    while index < 100 {
+        if kept[index % 1] == square {
+            same = same + 1
+        }
+        index = index + 1
+    }
+    console.print("same", same)
+}

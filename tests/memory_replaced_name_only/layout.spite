@@ -1,0 +1,5 @@
+var width = 0
+
+func Layout(starting_width: Integer) {
+    width = starting_width
+}

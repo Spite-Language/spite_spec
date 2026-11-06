@@ -1,0 +1,1 @@
+conformance/increment_is_refused/increment_is_refused.spite:6: error: Spite has no '++': write 'count = count + 1'

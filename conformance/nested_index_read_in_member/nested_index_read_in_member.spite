@@ -1,0 +1,13 @@
+var console = Console()
+var names = ["ada", "bo"]
+var rows = [1, 0]
+
+func NestedIndexReadInMember() {
+    load "../../../spite_standard_library/windows"
+    show(0)
+}
+
+func show(index: Integer) {
+    crash names[rows[index]]
+    console.print(names[0])
+}

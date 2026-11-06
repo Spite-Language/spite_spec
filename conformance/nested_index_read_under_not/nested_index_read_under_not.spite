@@ -1,0 +1,16 @@
+var console = Console()
+var values = [10, 20]
+var rows = [1, 0]
+
+func NestedIndexReadUnderNot() {
+    load "../../../spite_standard_library/windows"
+    show(0)
+}
+
+func show(index: Integer) {
+    var flags = [true, false]
+    crash flags[index]
+    if not flags[rows[index]] {
+        console.print(values[0])
+    }
+}

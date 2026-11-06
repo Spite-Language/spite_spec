@@ -1,0 +1,15 @@
+var console = Console()
+
+func CrashBareReport() {
+    load "../../../spite_standard_library/windows"
+    sort_out(3)
+}
+
+func sort_out(kind: Integer) {
+    var label = "kind {kind}"
+    if kind == 1 {
+        console.print(label)
+        return
+    }
+    crash
+}

@@ -1,0 +1,25 @@
+enum Mode {
+    'keep'
+    'replace'
+}
+
+var console = Console()
+var layouts = [Layout()]
+
+func MemoryReplacedSwitchBranch() {
+    load "../../../spite_standard_library/windows"
+    replace_by('replace')
+    var count = layouts.count()
+    console.print(count)
+}
+
+func replace_by(mode: Mode) {
+    crash layouts[0]
+    var layout = layouts[0]
+    console.print(layout.width)
+    var made = Layout()
+    switch mode {
+        'keep': console.print("kept")
+        'replace': layout = made
+    }
+}

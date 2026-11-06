@@ -1,0 +1,8 @@
+var console = Console()
+
+func IncrementIsRefused() {
+    load "../../../spite_standard_library/windows"
+    var index = 0
+    index++
+    console.print(index)
+}

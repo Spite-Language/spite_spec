@@ -1,0 +1,9 @@
+var console = Console()
+
+func NullableNumberStored() {
+    load "../../../spite_standard_library/windows"
+    var numbers = [3]
+    var maybe = numbers.first()
+    var held: Integer = maybe
+    console.print(held)
+}

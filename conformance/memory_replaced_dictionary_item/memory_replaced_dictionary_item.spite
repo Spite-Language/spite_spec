@@ -1,0 +1,19 @@
+var console = Console()
+var layouts = Dictionary<String, Layout>()
+
+func MemoryReplacedDictionaryItem() {
+    load "../../../spite_standard_library/windows"
+    var first = Layout()
+    layouts["main"] = first
+    replace_main()
+    var count = layouts.count()
+    console.print(count)
+}
+
+func replace_main() {
+    var layout = layouts["main"]
+    crash layout
+    console.print(layout.width)
+    var made = Layout()
+    layout = made
+}

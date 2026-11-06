@@ -1,0 +1,12 @@
+var console = Console()
+
+func CrashReportShortCircuit() {
+    load "../../../spite_standard_library/windows"
+    check(false, 4)
+}
+
+func check(ready: Boolean, size: Integer) {
+    var items = [1, 2]
+    crash ready and items.count() > size
+    console.print("never printed")
+}
