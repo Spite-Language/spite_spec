@@ -1,0 +1,15 @@
+var console = Console()
+var seen = ["x"]
+
+func ChainLibraryFunctionSteps() {
+    load "../../../spite_standard_library/windows"
+    var names = ["x", "y"]
+    names.filter(seen.contains).each(remember)
+    var after_chain = seen.join(",")
+    console.print("chain:", after_chain)
+}
+
+func remember(name: String) {
+    seen.append("y")
+    console.print("remembered", name)
+}

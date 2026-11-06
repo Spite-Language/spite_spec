@@ -1,0 +1,7 @@
+generic $item_type
+
+func name(): String {
+    if $item_type == Health {
+        return "health"
+    }
+}

@@ -1,0 +1,7 @@
+var console = Console()
+var number = 7
+var clerks = List<Clerk>()
+
+func drop() {
+    console.print("desk freed")
+}

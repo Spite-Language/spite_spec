@@ -1,0 +1,10 @@
+var console = Console()
+
+func GenericInstanceDecidedEnd() {
+    load "../../../spite_standard_library/windows"
+    var health_marker = Marker<Health>()
+    var health_name = health_marker.name()
+    var health = Health()
+    var amount = health.total()
+    console.print(health_name, amount)
+}

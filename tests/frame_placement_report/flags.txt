@@ -1,0 +1,1 @@
+--optimization-report=.spite/reports/frame_placement_report.md

@@ -1,0 +1,16 @@
+var console = Console()
+var values = List<Integer>()
+
+func BoundBaseAtMost65Limit() {
+    load "../../../spite_standard_library/windows"
+    var filled = 0
+    while filled < 80 {
+        values.append(filled)
+        filled = filled + 1
+    }
+    var base = 0
+    while base + 65 <= values.count() {
+        console.print(values[base + 64] + 1)
+        base = base + 1
+    }
+}

@@ -1,0 +1,14 @@
+generic $row_type
+
+var console = Console()
+
+func fill(index: Integer) {
+    var row: $row_type = null
+    fill_attributes(row, index)
+    console.print("tag", row.tag.id, "across", row.point.across)
+}
+
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, index: Integer) {
+    crash Store<attribute.class>().values[index]
+    row.attributes[attribute] = Store<attribute.class>().values[index]
+}

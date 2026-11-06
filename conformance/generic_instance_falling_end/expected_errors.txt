@@ -1,0 +1,1 @@
+conformance/generic_instance_falling_end/marker.spite:7: error: 'name' answers a String, but it reaches its end without a 'return', so a caller would get a String nobody wrote: end it with 'return <value>', or with 'crash' if it cannot get there (in Marker.name)

@@ -1,0 +1,30 @@
+var console = Console()
+var positions = Column<Position>()
+var velocities = Column<Velocity>()
+var drifting = Runner<System.Drift>()
+var moving = Runner<System.Move>()
+
+func PluralOtherBodyRuns() {
+    load "../../../spite_standard_library/windows"
+    var entity = 0
+    while entity < 4 {
+        spawn(entity)
+        entity = entity + 1
+    }
+    velocities.remove(1)
+    var tick = 0
+    while tick < 2 {
+        drifting.run(4)
+        moving.run(4)
+        tick = tick + 1
+    }
+    console.print("drifted", drifting.system.slowed, "moved", moving.system.moved)
+    console.print("arguments built by the template", drifting.built, moving.built)
+}
+
+func spawn(entity: Integer) {
+    var position = Position(10.0 * entity)
+    positions.insert(entity, position)
+    var velocity = Velocity(4.0 + entity)
+    velocities.insert(entity, velocity)
+}

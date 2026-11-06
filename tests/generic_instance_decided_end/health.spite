@@ -1,0 +1,5 @@
+var amount = 10
+
+func total(): Integer {
+    return amount
+}

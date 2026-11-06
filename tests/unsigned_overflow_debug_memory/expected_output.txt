@@ -1,0 +1,2 @@
+0
+spite: 'left - 1' does not fit in an UnsignedInteger (0 - 1), at tests/unsigned_overflow_debug_memory/unsigned_overflow_debug_memory.spite:8 in UnsignedOverflowDebugMemory.UnsignedOverflowDebugMemory

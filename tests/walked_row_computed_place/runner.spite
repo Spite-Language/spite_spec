@@ -1,0 +1,12 @@
+generic $row_type
+
+func run(mover: Mover, matcher: Matcher) {
+    var row: $row_type = null
+    fill_attributes(row, matcher)
+    mover.update_each(row)
+}
+
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, matcher: Matcher) {
+    crash matcher.rows[attribute.index]
+    row.attributes[attribute] = Column<attribute.class>().at(attribute.index + 1)
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func GenericInstanceFallingEnd() {
+    load "../../../spite_standard_library/windows"
+    var health_marker = Marker<Health>()
+    var label_marker = Marker<Label>()
+    var health_name = health_marker.name()
+    var label_name = label_marker.name()
+    console.print(health_name, label_name)
+}

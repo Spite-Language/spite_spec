@@ -1,0 +1,35 @@
+var console = Console()
+var values = List<Integer>()
+
+func BoundBaseLimits() {
+    load "../../../spite_standard_library/windows"
+    var filled = 0
+    while filled < 70 {
+        values.append(filled)
+        filled = filled + 1
+    }
+    var far = far_sum()
+    console.print(far)
+    var wide = wide_sum()
+    console.print(wide)
+}
+
+func far_sum(): Integer {
+    var total = 0
+    var base = 0
+    while base + 63 < values.count() {
+        total = total + values[base] + values[base + 63]
+        base = base + 1
+    }
+    return total
+}
+
+func wide_sum(): Integer {
+    var total = 0
+    var base = 0
+    while base + 64 <= values.count() {
+        total = total + values[base] + values[base + 63]
+        base = base + 1
+    }
+    return total
+}

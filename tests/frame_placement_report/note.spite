@@ -1,0 +1,10 @@
+var title = ""
+var lines = List<String>()
+
+func Note(starting_title: String) {
+    title = starting_title
+}
+
+func add(line: String) {
+    lines.append(line)
+}

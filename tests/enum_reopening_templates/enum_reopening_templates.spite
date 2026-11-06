@@ -1,0 +1,15 @@
+var console = Console()
+
+func EnumReopeningTemplates() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    var posts = List<Post>()
+    var first = Post("hello", 'published')
+    posts.append(first)
+    var second = Post("plans", 'draft')
+    posts.append(second)
+    var published = posts.filter_published()
+    var count = published.count()
+    var drafts = posts.count_draft()
+    console.print("published", count, "drafts", drafts)
+}

@@ -1,0 +1,14 @@
+var console = Console()
+var names = ["ada", "bo"]
+var greeted = 0
+
+func count_up() {
+    greeted = greeted + 1
+}
+
+func greet(index: Integer) {
+    count_up()
+    count_up()
+    fallback index < names.count()
+    console.print("hello", names[index], greeted)
+}

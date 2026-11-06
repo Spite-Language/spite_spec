@@ -1,0 +1,27 @@
+type Moving {
+    position: Position
+    velocity: Velocity
+}
+
+var console = Console()
+var positions = Column<Position>()
+var velocities = Column<Velocity>()
+var runner = Runner<Moving>()
+var mover = Mover()
+
+func WalkedRowMatcherIndex() {
+    load "../../../spite_standard_library/windows"
+    var spawned = 0
+    while spawned < 3 {
+        var position = Position(10.0 * spawned)
+        positions.values.append(position)
+        var velocity = Velocity(1.0 + spawned)
+        velocities.values.append(velocity)
+        spawned = spawned + 1
+    }
+    var matcher = Matcher()
+    matcher.rows.append(2)
+    matcher.rows.append(1)
+    runner.run(mover, matcher)
+    console.print("moved", mover.moved, "rows")
+}

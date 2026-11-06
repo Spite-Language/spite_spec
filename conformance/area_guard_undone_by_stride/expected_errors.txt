@@ -1,0 +1,1 @@
+conformance/area_guard_undone_by_stride/area_guard_undone_by_stride.spite:21: error: this value may be null (it is an Integer?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in AreaGuardUndoneByStride.show)

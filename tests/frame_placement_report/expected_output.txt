@@ -1,0 +1,4 @@
+total 86
+- [tests/frame_placement_report/frame_placement_report.spite:17](../../tests/frame_placement_report/frame_placement_report.spite#L17): `handed` (`Pair`) is made on the heap: line 18 lets it go: `total = total + hand_on(handed)`
+- [tests/frame_placement_report/frame_placement_report.spite:53](../../tests/frame_placement_report/frame_placement_report.spite#L53): `made` (`Note`) is made on the heap: line 55 lets it go: `return made`
+- [tests/frame_placement_report/frame_placement_report.spite:59](../../tests/frame_placement_report/frame_placement_report.spite#L59): `pair` (`Pair`) is made on the heap: line 60 lets it go: `kept.append(pair)`

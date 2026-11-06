@@ -1,0 +1,84 @@
+var console = Console()
+var build = Build()
+var kept = List<Pair>()
+
+func FramePlacementReport() {
+    load "../../../spite_standard_library/windows"
+    var total = 0
+    total = total + read_only()
+    total = total + compared()
+    total = total + reassigned()
+    var fresh = fresh_answer(4)
+    total = total + fresh.left + fresh.right
+    total = total + with_text()
+    var returned = returned_note()
+    total = total + returned.lines.count()
+    total = total + stored()
+    var handed = Pair(8, 9)
+    total = total + hand_on(handed)
+    console.print("total", total)
+    print_section()
+}
+
+func read_only(): Integer {
+    var pair = Pair(1, 2)
+    pair.left = pair.left + pair.right
+    return pair.left
+}
+
+func compared(): Integer {
+    var first = Pair(1, 2)
+    var second = Pair(1, 2)
+    fallback first != second
+    return first.left + first.right + second.left + second.right
+}
+
+func reassigned(): Integer {
+    var pair = Pair(1, 2)
+    pair = Pair(3, 4)
+    return pair.left + pair.right
+}
+
+func fresh_answer(value: Integer): Pair {
+    return Pair(value, value + 1)
+}
+
+func with_text(): Integer {
+    var note = Note("a title that is longer than fifteen bytes")
+    note.add("a line")
+    return note.title.length() + note.lines.count()
+}
+
+func returned_note(): Note {
+    var made = Note("another title that is longer than fifteen bytes")
+    made.add("a line")
+    return made
+}
+
+func stored(): Integer {
+    var pair = Pair(5, 6)
+    kept.append(pair)
+    return kept.count()
+}
+
+func hand_on(pair: Pair): Integer {
+    kept.append(pair)
+    return pair.left + pair.right
+}
+
+func print_section() {
+    var report = File("{build.program}/.spite/reports/frame_placement_report.md").read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var inside = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("## ") {
+            inside = line.starts_with("## Objects not in the frame")
+        } else if inside and line.starts_with("- [") {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}

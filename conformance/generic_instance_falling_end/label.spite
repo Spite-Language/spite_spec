@@ -1,0 +1,5 @@
+var text = "note"
+
+func total(): Integer {
+    return text.length()
+}

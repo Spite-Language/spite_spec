@@ -1,0 +1,7 @@
+var console = Console()
+var names = ["ada", "bo"]
+
+func greet(index: Integer) {
+    fallback index < names.count()
+    console.print("hello", names[index])
+}
