@@ -1,0 +1,1 @@
+conformance/a_repeated_if_past_a_harmless_call_goes/a_repeated_if_past_a_harmless_call_goes.spite:16: fixed: 'rack.shelf.item' was already narrowed by 'fallback rack.shelf.item' on line 14; removed the 'if' and kept the code it runs (in ARepeatedIfPastAHarmlessCallGoes.show)

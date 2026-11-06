@@ -289,6 +289,7 @@ func run_test(folder: String) {
         fail(folder, "it did not compile: {errors}")
         return
     }
+    fallback source_is_unchanged(folder, copy)
     var built = build_moved_back(copy, folder)
     fallback built
     var executable = executable_of(folder)
@@ -319,6 +320,23 @@ func run_test(folder: String) {
         }
     }
     passed = passed + 1
+}
+
+func source_is_unchanged(folder: String, copy: String): Boolean {
+    var asked = File("{folder}/source_unchanged.txt")
+    if not asked.exists() {
+        return true
+    }
+    var parts = folder.split("/")
+    var name = parts.last()
+    crash name
+    var written = optional_text(folder, "{name}.spite")
+    var compiled = optional_text(copy, "{name}.spite")
+    if written == compiled {
+        return true
+    }
+    fail(folder, "compiling it changed its source, and it must not")
+    return false
 }
 
 func compiling_in(copy: String): String {

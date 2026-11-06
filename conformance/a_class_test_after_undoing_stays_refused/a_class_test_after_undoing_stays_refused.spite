@@ -1,0 +1,21 @@
+var console = Console()
+
+func AClassTestAfterUndoingStaysRefused() {
+    load "../../../spite_standard_library/windows"
+    var holder = Holder()
+    var circle = Circle()
+    holder.figure = circle
+    show(holder, holder)
+}
+
+func show(holder: Holder, alias: Holder) {
+    fallback holder.figure
+    fallback holder.figure.class == Circle
+    var square = Square()
+    alias.figure = square
+    if holder.figure.class == Circle {
+        console.print("a circle")
+    } else {
+        console.print("not a circle")
+    }
+}

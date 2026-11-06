@@ -1,0 +1,324 @@
+var kept: Shelf? = null
+var console = Console()
+
+func ACheckAfterUndoingStays() {
+    load "../../../spite_standard_library/windows"
+    console.print("fallback_after_an_earlier_attribute")
+    var rack_0 = filled_rack()
+    fallback_after_an_earlier_attribute(rack_0, rack_0)
+    console.print("fallback_after_the_last_attribute")
+    var rack_1 = filled_rack()
+    fallback_after_the_last_attribute(rack_1, rack_1)
+    console.print("fallback_after_a_call_on_an_earlier_attribute")
+    var rack_2 = filled_rack()
+    fallback_after_a_call_on_an_earlier_attribute(rack_2, rack_2)
+    console.print("fallback_after_a_call_on_the_last_attribute")
+    var rack_3 = filled_rack()
+    fallback_after_a_call_on_the_last_attribute(rack_3, rack_3)
+    console.print("fallback_keeps_a_present_value")
+    var rack_4 = filled_rack()
+    fallback_keeps_a_present_value(rack_4, rack_4)
+    console.print("fallback_after_a_new_object_handed_on")
+    var item_6 = Item()
+    fallback_after_a_new_object_handed_on(item_6)
+    console.print("if_after_an_earlier_attribute")
+    var rack_7 = filled_rack()
+    if_after_an_earlier_attribute(rack_7, rack_7)
+    console.print("if_after_the_last_attribute")
+    var rack_9 = filled_rack()
+    if_after_the_last_attribute(rack_9, rack_9)
+    console.print("if_after_a_call_on_an_earlier_attribute")
+    var rack_11 = filled_rack()
+    if_after_a_call_on_an_earlier_attribute(rack_11, rack_11)
+    console.print("if_after_a_call_on_the_last_attribute")
+    var rack_13 = filled_rack()
+    if_after_a_call_on_the_last_attribute(rack_13, rack_13)
+    console.print("if_keeps_a_present_value")
+    var rack_15 = filled_rack()
+    if_keeps_a_present_value(rack_15, rack_15)
+    console.print("if_after_a_new_object_handed_on")
+    var item_17 = Item()
+    if_after_a_new_object_handed_on(item_17)
+    console.print("if_not_after_an_earlier_attribute")
+    var rack_19 = filled_rack()
+    if_not_after_an_earlier_attribute(rack_19, rack_19)
+    console.print("if_not_after_the_last_attribute")
+    var rack_21 = filled_rack()
+    if_not_after_the_last_attribute(rack_21, rack_21)
+    console.print("if_not_after_a_call_on_an_earlier_attribute")
+    var rack_23 = filled_rack()
+    if_not_after_a_call_on_an_earlier_attribute(rack_23, rack_23)
+    console.print("if_not_after_a_call_on_the_last_attribute")
+    var rack_25 = filled_rack()
+    if_not_after_a_call_on_the_last_attribute(rack_25, rack_25)
+    console.print("if_not_keeps_a_present_value")
+    var rack_27 = filled_rack()
+    if_not_keeps_a_present_value(rack_27, rack_27)
+    console.print("if_not_after_a_new_object_handed_on")
+    var item_29 = Item()
+    if_not_after_a_new_object_handed_on(item_29)
+    console.print("a_link_checked_again")
+    var linked = filled_rack()
+    a_link_checked_again(linked, linked)
+    console.print("a_check_inside_a_loop")
+    var looped = filled_rack()
+    a_check_inside_a_loop(looped, looped)
+    console.print("a_class_test_after_checking_again")
+    var holder = Holder()
+    var circle = Circle()
+    holder.figure = circle
+    a_class_test_after_checking_again(holder, holder)
+    console.print("a_copy_keeps_its_value")
+    var copied = filled_rack()
+    a_copy_keeps_its_value(copied, copied)
+}
+
+func fallback_after_an_earlier_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var empty = Shelf()
+    alias.shelf = empty
+    fallback rack.shelf.item
+    console.print(rack.shelf.item.number)
+}
+
+func fallback_after_the_last_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    alias.shelf.item = null
+    fallback rack.shelf.item
+    console.print(rack.shelf.item.number)
+}
+
+func fallback_after_a_call_on_an_earlier_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    replace(alias)
+    fallback rack.shelf.item
+    console.print(rack.shelf.item.number)
+}
+
+func fallback_after_a_call_on_the_last_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    forget(alias)
+    fallback rack.shelf.item
+    console.print(rack.shelf.item.number)
+}
+
+func fallback_keeps_a_present_value(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var other = Shelf()
+    var item = Item()
+    item.number = 5
+    other.item = item
+    alias.shelf = other
+    fallback rack.shelf.item
+    console.print(rack.shelf.item.number)
+}
+
+func fallback_after_a_new_object_handed_on(first: Item) {
+    var fresh = Shelf()
+    fresh.item = first
+    kept = fresh
+    crash kept
+    fallback kept.item
+    fresh.item = null
+    fallback kept.item
+    console.print(kept.item.number)
+}
+
+func if_after_an_earlier_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var empty = Shelf()
+    alias.shelf = empty
+    if rack.shelf.item {
+        console.print(rack.shelf.item.number)
+    } else {
+        console.print("skipped")
+    }
+}
+
+func if_after_the_last_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    alias.shelf.item = null
+    if rack.shelf.item {
+        console.print(rack.shelf.item.number)
+    } else {
+        console.print("skipped")
+    }
+}
+
+func if_after_a_call_on_an_earlier_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    replace(alias)
+    if rack.shelf.item {
+        console.print(rack.shelf.item.number)
+    } else {
+        console.print("skipped")
+    }
+}
+
+func if_after_a_call_on_the_last_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    forget(alias)
+    if rack.shelf.item {
+        console.print(rack.shelf.item.number)
+    } else {
+        console.print("skipped")
+    }
+}
+
+func if_keeps_a_present_value(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var other = Shelf()
+    var item = Item()
+    item.number = 5
+    other.item = item
+    alias.shelf = other
+    if rack.shelf.item {
+        console.print(rack.shelf.item.number)
+    } else {
+        console.print("skipped")
+    }
+}
+
+func if_after_a_new_object_handed_on(first: Item) {
+    var fresh = Shelf()
+    fresh.item = first
+    kept = fresh
+    crash kept
+    fallback kept.item
+    fresh.item = null
+    if kept.item {
+        console.print(kept.item.number)
+    } else {
+        console.print("skipped")
+    }
+}
+
+func if_not_after_an_earlier_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var empty = Shelf()
+    alias.shelf = empty
+    if not rack.shelf.item {
+        console.print("skipped")
+        return
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func if_not_after_the_last_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    alias.shelf.item = null
+    if not rack.shelf.item {
+        console.print("skipped")
+        return
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func if_not_after_a_call_on_an_earlier_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    replace(alias)
+    if not rack.shelf.item {
+        console.print("skipped")
+        return
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func if_not_after_a_call_on_the_last_attribute(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    forget(alias)
+    if not rack.shelf.item {
+        console.print("skipped")
+        return
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func if_not_keeps_a_present_value(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var other = Shelf()
+    var item = Item()
+    item.number = 5
+    other.item = item
+    alias.shelf = other
+    if not rack.shelf.item {
+        console.print("skipped")
+        return
+    }
+    console.print(rack.shelf.item.number)
+}
+
+func if_not_after_a_new_object_handed_on(first: Item) {
+    var fresh = Shelf()
+    fresh.item = first
+    kept = fresh
+    crash kept
+    fallback kept.item
+    fresh.item = null
+    if not kept.item {
+        console.print("skipped")
+        return
+    }
+    console.print(kept.item.number)
+}
+
+func a_class_test_after_checking_again(holder: Holder, alias: Holder) {
+    fallback holder.figure
+    fallback holder.figure.class == Circle
+    var square = Square()
+    alias.figure = square
+    fallback holder.figure
+    if holder.figure.class == Circle {
+        console.print("a circle")
+    } else {
+        console.print("not a circle")
+    }
+}
+
+func a_link_checked_again(rack: Rack, alias: Rack) {
+    fallback rack.held
+    fallback rack.held.item
+    alias.held = null
+    fallback rack.held
+    fallback rack.held.item
+    console.print(rack.held.item.number)
+}
+
+func a_check_inside_a_loop(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var empty = Shelf()
+    var passes = 0
+    while passes < 2 {
+        fallback rack.shelf.item
+        console.print(rack.shelf.item.number)
+        alias.shelf = empty
+        passes = passes + 1
+    }
+}
+
+func a_copy_keeps_its_value(rack: Rack, alias: Rack) {
+    var held = rack.shelf.item
+    fallback held
+    var empty = Shelf()
+    alias.shelf = empty
+    console.print(held.number)
+}
+
+func filled_rack(): Rack {
+    var rack = Rack()
+    var first = Item()
+    var filled = Shelf()
+    filled.item = first
+    rack.shelf = filled
+    rack.held = filled
+    return rack
+}
+
+func replace(alias: Rack) {
+    var empty = Shelf()
+    alias.shelf = empty
+}
+
+func forget(alias: Rack) {
+    alias.shelf.item = null
+}

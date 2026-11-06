@@ -1,0 +1,4 @@
+before
+spite: the program stopped at tests/a_crash_after_a_new_object_handed_on_stays/a_crash_after_a_new_object_handed_on_stays.spite:19 in ACrashAfterANewObjectHandedOnStays.run, site 890517a5 (kept.item is null)
+spite.frame	tests/a_crash_after_a_new_object_handed_on_stays/a_crash_after_a_new_object_handed_on_stays.spite:19	ACrashAfterANewObjectHandedOnStays	run
+spite.frame	tests/a_crash_after_a_new_object_handed_on_stays/a_crash_after_a_new_object_handed_on_stays.spite:7	ACrashAfterANewObjectHandedOnStays	ACrashAfterANewObjectHandedOnStays

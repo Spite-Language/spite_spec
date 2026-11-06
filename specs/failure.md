@@ -198,6 +198,8 @@ made.kind == "make"` reads `made.kind` on a plain `made`.
   ages[name]`, `var cell = grid[row].cells[column]`) is not a copy: it is narrowed instead of reading the key twice.
 - A check on something that cannot be null proves nothing and is an error naming the fix: `fallback tracker`
   written twice, or `crash` on a path an earlier `crash` already narrowed (`diagnostics/check_proves_nothing`).
+  A check after a write or a call that undoes the proof ([below](#nothing-fails-silently-the-rule)) proves something again: `fallback`, `crash` and `if` stay in the file, test the value at run time and narrow it
+  again (`tests/a_check_after_undoing_stays`, `tests/a_crash_after_an_earlier_attribute_stays`). With nothing that undoes it between, it is the repeat this rule refuses (`conformance/a_repeated_fallback_past_a_harmless_call_goes`).
   A `crash` or `fallback` line of the kinds below in a program's own file is removed instead
   ([the compiler fixes what has one fix](style.md#the-compiler-fixes-what-has-one-fix), D1833), printing its
   message in the past with "removed this check" or "removed it"; an `if` of those kinds becomes the code it runs

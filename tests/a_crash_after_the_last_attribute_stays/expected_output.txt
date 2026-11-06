@@ -1,0 +1,4 @@
+before
+spite: the program stopped at tests/a_crash_after_the_last_attribute_stays/a_crash_after_the_last_attribute_stays.spite:18 in ACrashAfterTheLastAttributeStays.show, site 948c75dc (rack.shelf.item is null)
+spite.frame	tests/a_crash_after_the_last_attribute_stays/a_crash_after_the_last_attribute_stays.spite:18	ACrashAfterTheLastAttributeStays	show
+spite.frame	tests/a_crash_after_the_last_attribute_stays/a_crash_after_the_last_attribute_stays.spite:10	ACrashAfterTheLastAttributeStays	ACrashAfterTheLastAttributeStays

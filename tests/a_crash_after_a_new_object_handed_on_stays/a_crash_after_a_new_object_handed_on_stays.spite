@@ -1,0 +1,21 @@
+var kept: Shelf? = null
+var console = Console()
+
+func ACrashAfterANewObjectHandedOnStays() {
+    load "../../../spite_standard_library/windows"
+    var first = Item()
+    run(first)
+    console.print("never")
+}
+
+func run(first: Item) {
+    var fresh = Shelf()
+    fresh.item = first
+    kept = fresh
+    crash kept
+    fallback kept.item
+    fresh.item = null
+    console.print("before")
+    crash kept.item
+    console.print(kept.item.number)
+}

@@ -1,0 +1,25 @@
+var console = Console()
+
+func ARepeatedFallbackPastAPresentValueGoes() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    var first = Item()
+    var filled = Shelf()
+    filled.item = first
+    rack.shelf = filled
+    show(rack, rack)
+}
+
+func show(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    var other = Item()
+    other.number = 2
+    alias.shelf.item = other
+    fallback rack.shelf.item
+    console.print(rack.shelf.item.number)
+    if alias.shelf.item {
+        console.print("there")
+    } else {
+        console.print("gone")
+    }
+}

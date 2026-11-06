@@ -1,0 +1,6 @@
+union Figure {
+    Circle
+    Square
+}
+
+var figure: Figure? = null

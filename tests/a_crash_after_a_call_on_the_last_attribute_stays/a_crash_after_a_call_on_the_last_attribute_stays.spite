@@ -1,0 +1,24 @@
+var console = Console()
+
+func ACrashAfterACallOnTheLastAttributeStays() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    var first = Item()
+    var filled = Shelf()
+    filled.item = first
+    rack.shelf = filled
+    show(rack, rack)
+    console.print("never")
+}
+
+func show(rack: Rack, alias: Rack) {
+    fallback rack.shelf.item
+    forget(alias)
+    console.print("before")
+    crash rack.shelf.item
+    console.print(rack.shelf.item.number)
+}
+
+func forget(alias: Rack) {
+    alias.shelf.item = null
+}

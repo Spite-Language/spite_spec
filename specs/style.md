@@ -237,6 +237,7 @@ library or of a pinned package, which the compiler never rewrites. The fixes so 
   proven again, a check decided while compiling that holds) is removed when it is a line of its own outside a
   generic class and a walk: `fixed: 'tracker' was already narrowed by 'fallback tracker' on line 8; removed this
   check` (`conformance/check_proves_nothing`).
+- **A check after a write or a call that undoes its proof is never one of these**: it stays in the file (`tests/a_check_after_undoing_stays`).
 - **An `if` on what is already known**: a value already narrowed or proven present, and a class test the value's
   type answers, becomes the code it runs (its `else` goes), or its `else`, or goes when written `if not x` or when
   the class test is never true: `fixed: 'number' was already narrowed by 'if number' on line 18; removed the 'if' and

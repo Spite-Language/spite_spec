@@ -1,0 +1,1 @@
+conformance/a_repeated_crash_past_nothing_between_goes/a_repeated_crash_past_nothing_between_goes.spite:15: fixed: 'rack.shelf.item' was already narrowed by 'fallback rack.shelf.item' on line 14; removed this check (in ARepeatedCrashPastNothingBetweenGoes.show)
