@@ -1,1 +1,0 @@
-conformance/allocator_after_use/allocator_after_use.spite:9: error: 'spark' was already used, so its allocator can no longer change: an object's allocator is set on the line right after it is made. To move it, copy it and set the copy's: 'var moved = spark.copy()' and then 'moved.memory.allocator = ...' (in AllocatorAfterUse.AllocatorAfterUse)

@@ -1,1 +1,0 @@
-conformance/allocator_reads/allocator_reads.spite:8: error: only an object has an allocator of its own, and this is a value of type Integer, which the compiler places itself (in AllocatorReads.AllocatorReads)

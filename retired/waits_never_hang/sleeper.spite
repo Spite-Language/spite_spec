@@ -1,8 +1,0 @@
-var program = Program()
-var slept = 0
-
-func Sleeper(milliseconds: Integer) {
-    var pause = Duration(milliseconds, 'milliseconds')
-    program.sleep(pause)
-    slept = milliseconds
-}

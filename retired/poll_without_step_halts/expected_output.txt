@@ -1,3 +1,0 @@
-spite: the program stopped polling a Concurrent that nothing steps between two reads (unfinished_polls_with_no_frame_stepped=1000000)
-spite.frame	tests/poll_without_step_halts/poll_without_step_halts.spite:4	PollWithoutStepHalts	PollWithoutStepHalts
-spite.frame	tests/poll_without_step_halts/poll_without_step_halts.spite:8	PollWithoutStepHalts	PollWithoutStepHalts

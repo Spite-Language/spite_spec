@@ -1,7 +1,0 @@
-var program = Program()
-
-func nap(milliseconds: Integer): Integer {
-    var pause = Duration(milliseconds, 'milliseconds')
-    program.sleep(pause)
-    return milliseconds
-}

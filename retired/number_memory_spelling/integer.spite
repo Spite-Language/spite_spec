@@ -1,2 +1,0 @@
-var heap = Memory.Heap()
-var _memory = heap.allocate(4)

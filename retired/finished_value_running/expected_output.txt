@@ -1,2 +1,0 @@
-no value while it runs
-joined 20 and then finished_value answers 20

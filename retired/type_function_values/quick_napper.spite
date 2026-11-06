@@ -1,3 +1,0 @@
-func nap(milliseconds: Integer): Integer {
-    return milliseconds + 1
-}

@@ -1,3 +1,0 @@
-the pool read forest
-folded: bytes_of false advance false start false finish_if_done false locate_then_start true
-at run time: bytes_of false advance false start false finish_if_done false locate_then_start true

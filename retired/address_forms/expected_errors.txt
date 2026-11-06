@@ -1,1 +1,0 @@
-conformance/address_forms/address_forms.spite:9: error: a File reads bytes into a Buffer, not into memory at an address: 'read_bytes_at(position, count)' answers a 'Buffer?' of up to 'count' bytes from 'position', and 'read_bytes()' the whole file (in AddressForms.AddressForms)
