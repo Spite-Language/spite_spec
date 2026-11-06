@@ -1,0 +1,5 @@
+var touched = false
+
+func bump() {
+    touched = true
+}

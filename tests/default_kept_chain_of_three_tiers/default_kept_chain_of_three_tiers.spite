@@ -1,0 +1,13 @@
+var console = Console()
+
+func DefaultKeptChainOfThreeTiers() {
+    load "../../../spite_standard_library/windows"
+    var other = Counter()
+    var keeper = Keeper(other)
+    var outer = Outer(keeper)
+    var top = Top(outer)
+    var writer = Writer(top)
+    var holder = Holder(keeper, outer, top, writer)
+    console.print(holder.counter.touched)
+    console.print(holder.keeper.held.touched, holder.writer.kept.outer.keeper.held.touched)
+}

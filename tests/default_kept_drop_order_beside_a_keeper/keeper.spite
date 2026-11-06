@@ -1,0 +1,9 @@
+var held: Part? = null
+
+func Keeper(given: Part) {
+    held = given
+}
+
+func holds_one(): Boolean {
+    return not not held
+}

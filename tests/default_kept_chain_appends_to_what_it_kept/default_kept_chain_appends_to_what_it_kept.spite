@@ -1,0 +1,15 @@
+var console = Console()
+
+func DefaultKeptChainAppendsToWhatItKept() {
+    load "../../../spite_standard_library/windows"
+    var other = Counter()
+    var keeper = Keeper(other)
+    var writer = Writer(keeper)
+    var holder = Holder(keeper, writer)
+    var kept_count = holder.counter.numbers.count()
+    console.print(kept_count)
+    var given_count = holder.writer.kept.held.numbers.count()
+    console.print(given_count)
+    var spare_count = holder.writer.spare.numbers.count()
+    console.print(spare_count)
+}

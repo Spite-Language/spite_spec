@@ -1,0 +1,5 @@
+var box = Box()
+
+func Keeper(given: Counter) {
+    box.held = given
+}

@@ -1,0 +1,5 @@
+var held = Counter()
+
+func Keeper(given: Counter) {
+    held = given
+}

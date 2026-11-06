@@ -1,0 +1,9 @@
+var console = Console()
+var slot = Slot()
+var keeper = Keeper(slot.part)
+
+func Holder(given: Part) {
+    var emptied = slot.emptied_for(given)
+    console.print("between", emptied)
+    keeper = Keeper(given)
+}

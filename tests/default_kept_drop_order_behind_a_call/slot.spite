@@ -1,0 +1,6 @@
+var part = Part("default")
+
+func emptied_for(given: Part): Boolean {
+    part = given
+    return true
+}

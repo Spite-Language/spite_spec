@@ -1,0 +1,6 @@
+var seen = false
+
+func Inner(given: Keeper) {
+    given.held.touched = true
+    seen = given.held.touched
+}

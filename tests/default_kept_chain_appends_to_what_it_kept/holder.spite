@@ -1,0 +1,8 @@
+var counter = Counter()
+var keeper = Keeper(counter)
+var writer = Writer(keeper)
+
+func Holder(given_keeper: Keeper, given_writer: Writer) {
+    keeper = given_keeper
+    writer = given_writer
+}

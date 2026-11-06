@@ -1,0 +1,7 @@
+var spare = Counter()
+var keeping = Keeper(spare)
+var outer = Outer(keeping)
+
+func Top(given: Outer) {
+    outer = given
+}

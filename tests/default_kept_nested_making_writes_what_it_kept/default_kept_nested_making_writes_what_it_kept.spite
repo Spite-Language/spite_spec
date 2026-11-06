@@ -1,0 +1,11 @@
+var console = Console()
+
+func DefaultKeptNestedMakingWritesWhatItKept() {
+    load "../../../spite_standard_library/windows"
+    var other = Counter()
+    var keeper = Keeper(other)
+    var writer = Writer(keeper)
+    var holder = Holder(keeper, writer)
+    console.print(holder.counter.touched)
+    console.print(holder.keeper.held.touched, holder.writer.kept.held.touched, holder.writer.inner.seen)
+}

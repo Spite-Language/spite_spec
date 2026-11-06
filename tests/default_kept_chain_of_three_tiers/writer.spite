@@ -1,0 +1,9 @@
+var spare = Counter()
+var keeping = Keeper(spare)
+var outer = Outer(keeping)
+var kept = Top(outer)
+
+func Writer(given: Top) {
+    given.outer.keeper.held.touched = true
+    kept = given
+}

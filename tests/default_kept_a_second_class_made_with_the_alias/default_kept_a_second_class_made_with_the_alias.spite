@@ -1,0 +1,12 @@
+var console = Console()
+
+func DefaultKeptASecondClassMadeWithTheAlias() {
+    load "../../../spite_standard_library/windows"
+    var other = Counter()
+    var keeper = Keeper(other)
+    var second = Second(keeper)
+    var writer = Writer(second)
+    var holder = Holder(keeper, second, writer)
+    console.print(holder.counter.touched)
+    console.print(holder.keeper.held.touched, holder.writer.kept.keeper.held.touched)
+}

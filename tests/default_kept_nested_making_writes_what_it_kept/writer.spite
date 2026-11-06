@@ -1,0 +1,8 @@
+var spare = Counter()
+var kept = Keeper(spare)
+var inner = Inner(kept)
+
+func Writer(given: Keeper) {
+    inner = Inner(given)
+    kept = given
+}

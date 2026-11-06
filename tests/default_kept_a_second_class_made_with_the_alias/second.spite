@@ -1,0 +1,6 @@
+var spare = Counter()
+var keeper = Keeper(spare)
+
+func Second(given: Keeper) {
+    keeper = given
+}

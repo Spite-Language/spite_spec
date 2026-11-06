@@ -1,0 +1,10 @@
+var console = Console()
+
+func DefaultKeptDropOrderBehindACall() {
+    load "../../../spite_standard_library/windows"
+    var given = Part("given")
+    console.print("start")
+    var holder = Holder(given)
+    var holds = holder.keeper.holds_one()
+    console.print("end", holder.slot.part.name, holds)
+}

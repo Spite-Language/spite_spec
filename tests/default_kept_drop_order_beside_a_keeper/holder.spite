@@ -1,0 +1,9 @@
+var console = Console()
+var part = Part("default")
+var keeper = Keeper(part)
+
+func Holder(given: Part) {
+    part = given
+    console.print("between")
+    keeper = Keeper(given)
+}

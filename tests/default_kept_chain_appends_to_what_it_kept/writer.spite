@@ -1,0 +1,8 @@
+var spare = Counter()
+var kept = Keeper(spare)
+
+func Writer(given: Keeper) {
+    var numbers = given.held.numbers
+    numbers.append(1)
+    kept = given
+}

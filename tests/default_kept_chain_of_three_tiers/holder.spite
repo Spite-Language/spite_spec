@@ -1,0 +1,12 @@
+var counter = Counter()
+var keeper = Keeper(counter)
+var outer = Outer(keeper)
+var top = Top(outer)
+var writer = Writer(top)
+
+func Holder(given_keeper: Keeper, given_outer: Outer, given_top: Top, given_writer: Writer) {
+    keeper = given_keeper
+    outer = given_outer
+    top = given_top
+    writer = given_writer
+}

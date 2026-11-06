@@ -1,0 +1,9 @@
+var spare = Counter()
+var keeping = Keeper(spare)
+var kept = Second(keeping)
+
+func Writer(given: Second) {
+    var held = given.keeper.held
+    held.touched = true
+    kept = given
+}

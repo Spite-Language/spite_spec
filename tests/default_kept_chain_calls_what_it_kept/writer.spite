@@ -1,0 +1,7 @@
+var spare = Counter()
+var kept = Keeper(spare)
+
+func Writer(given: Keeper) {
+    given.held.bump()
+    kept = given
+}

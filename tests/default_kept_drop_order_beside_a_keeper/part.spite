@@ -1,0 +1,10 @@
+var console = Console()
+var name = ""
+
+func Part(starting: String) {
+    name = starting
+}
+
+func drop() {
+    console.print("dropped", name)
+}
