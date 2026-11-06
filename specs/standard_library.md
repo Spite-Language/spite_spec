@@ -262,9 +262,8 @@ In detail:
   declares its own is shown by it wherever it appears. A `List` is `[a, b]`, a `Dictionary` is `{"key": value}`,
   text is quoted with `\"`, `\\` and `\n` escaped, an enum value is written the way Spite writes it
   (`'calm'`), a number and a `Boolean` as they print, and an absent `T?` is `null`. A `Spite.Class` is its name.
-- **Private attributes are left out.** The walk is `value.attributes.each(debug_attribute)` run from
-  `Spite.DebugInstance` ([reflection.md](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#a-class-and-an-instance-of-it)), and a walk sees every
-  attribute, private ones included, so `Spite.DebugInstance` skips each one whose name starts with `_`: it is the
+- **Private attributes are left out.** The compiler writes `to_debug()` for a class that declares none, and that
+  function skips each attribute whose name starts with `_`: it is the
   class's own business. The test is on a name known while compiling, so it folds, and a private attribute costs
   nothing in the text. The JSON and binary writers and readers skip them the same way, and attributes holding a
   singleton too ([json.md](https://github.com/Spite-Language/spite_documentation/blob/master/json.md#what-each-type-becomes)); `to_debug()` shows those.
@@ -272,10 +271,8 @@ In detail:
   back at `first` shows `Node { value: 1, next: Node { value: 2, next: Node {...} } }`. Each class keeps the
   objects it is in the middle of showing, compared with `==` (identity, unless the class defines `equals`), and
   a tree of distinct objects is shown whole however deep it goes.
-- **It is Spite, and it costs nothing unused.** `Spite.Debug<$value_type>` turns any
-  value into its text, and `Spite.DebugInstance<$value_type>` walks a class
-  instance. The generator's whole part is that asking a class for a `to_debug()` it does not declare answers one
-  that calls them, created only when something asks, so a program that never debugs a class compiles nothing for
+- **The compiler writes it, and it costs nothing unused.** Asking a class for a `to_debug()` it does not declare
+  answers one the compiler writes, created only when something asks, so a program that never debugs a class compiles nothing for
   it. A `type` or union that does not require `to_debug()` still answers it, dispatched to the class the value is.
 - **The REPL keeps its own display** (`Player { name: hero, ... }`: text unquoted, nested objects as `Name {...}`,
   lists as `List<String>(...)`), which it builds from `Spite.Attribute`'s `.value` through `value.to_string()`,
@@ -558,7 +555,7 @@ called, like `+`, or explicit Spite.
 |---|---|
 | `String`, `List<T>`, `Dictionary<Key, Value>`, number to text | over `Buffer`. The syntax stays the compiler's (`[]`, list literals, `List<T>()`), mapped onto these classes' functions; the member templates are Spite ([collections.md](collections.md#standard-library-metaprogramming)) |
 | `File`, `Directory`, `Process`, `Program`, `Console.read_line`, `Clock`, `IpAddress`, `Tcp`, `Udp`, `FileSystemWatcher`, the time-zone database | written once; each operating system's folder reopens the class with the few functions that call its own library (`ucrtbase.dll`/`kernel32.dll`, `libc.so.6`, `libSystem.dylib`) through `DynamicLibrary` |
-| printing, `to_debug()`, JSON and bytes | `Console`, `Spite.Debug<T>`, `Spite.DebugInstance<T>`, `JsonWriter<T>`, `JsonReader<T>`, `BinaryWriter<T>` and `BinaryReader<T>` ([json.md](https://github.com/Spite-Language/spite_documentation/blob/master/json.md)) |
+| printing, `to_debug()`, JSON and bytes | `Console`, `JsonWriter<T>`, `JsonReader<T>`, `BinaryWriter<T>` and `BinaryReader<T>` ([json.md](https://github.com/Spite-Language/spite_documentation/blob/master/json.md)) |
 
 **What is the compiler's**:
 

@@ -73,7 +73,6 @@ Zlib
 Benchmark<Integer>
 BinaryReader<Integer>
 BinaryWriter<Integer>
-Spite.Debug<Integer>
 Dictionary<String, Integer>
 JsonReader<Integer>
 JsonWriter<Integer>

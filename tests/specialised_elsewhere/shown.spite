@@ -1,0 +1,5 @@
+generic $value_type
+
+func text(value: $value_type): String {
+    return value.to_debug()
+}

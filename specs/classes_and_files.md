@@ -236,7 +236,7 @@ var heap = Memory.Heap()
   the compiler treats as a value (`String` and the numbers) and
   `List` and `Dictionary`, since an attribute there would be carried by every list; and a generic singleton whose
   codegen values come from the function's own codegen or template (`Query<argument.class>()`,
-  `Debug<$value_type.element_type>()` inside a codegen `if`) stays a local, since no attribute can name that type.
+  `Query<$value_type.element_type>()` inside a codegen `if`) stays a local, since no attribute can name that type.
   The singleton is then made when the object that binds it is, not when the function first runs.
 - **A singleton is always bound to a variable before it is used.** A singleton's constructor call may
   only be the whole value of a `var`; a member read or call on it, passing it (`greet(Console())`, which

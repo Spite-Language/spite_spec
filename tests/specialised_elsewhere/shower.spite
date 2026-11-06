@@ -12,7 +12,7 @@ func show_all(value: $value_type) {
 func show(attribute: Spite.AttributeDeclaration) {
     var value = _values.last()
     crash value
-    var debug = Spite.Debug<attribute.class>()
+    var debug = Shown<attribute.class>()
     var shown = debug.text(value.attributes[attribute])
     console.print(attribute.name, shown)
 }

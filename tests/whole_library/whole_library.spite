@@ -81,8 +81,6 @@ func WholeLibrary() {
     classes.append(binary_reader.class)
     var binary_writer = BinaryWriter<Integer>()
     classes.append(binary_writer.class)
-    var debug = Spite.Debug<Integer>()
-    classes.append(debug.class)
     var dictionary = Dictionary<String, Integer>()
     classes.append(dictionary.class)
     var json_reader = JsonReader<Integer>()
