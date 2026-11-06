@@ -1,0 +1,7 @@
+var first: Node? = null
+var second: Node? = null
+
+func Pair(given_first: Node, given_second: Node) {
+    first = given_first
+    second = given_second
+}

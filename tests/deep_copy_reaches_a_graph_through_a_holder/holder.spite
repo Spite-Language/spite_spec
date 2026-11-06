@@ -1,0 +1,5 @@
+var pair: Pair? = null
+
+func Holder(given: Pair) {
+    pair = given
+}

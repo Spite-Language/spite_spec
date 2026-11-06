@@ -1,0 +1,35 @@
+var console = Console()
+
+func DeepCopyReachesAGraphThroughAHolder() {
+    load "../../../spite_standard_library/windows"
+    var root = Node("root")
+    var child = Node("child")
+    root.children.append(child)
+    child.parent = root
+    var child_first = Group()
+    child_first.nodes.append(child)
+    child_first.nodes.append(root)
+    var copied = child_first.deep_copy()
+    show("child first", copied.nodes[0], copied.nodes[1], root)
+    var root_first = Group()
+    root_first.nodes.append(root)
+    root_first.nodes.append(child)
+    var again = root_first.deep_copy()
+    show("root first", again.nodes[1], again.nodes[0], root)
+    var pair = Pair(child, root)
+    var paired = pair.deep_copy()
+    show("two attributes", paired.first, paired.second, root)
+    var holder = Holder(pair)
+    var held = holder.deep_copy()
+    crash held.pair
+    show("one class further", held.pair.first, held.pair.second, root)
+}
+
+func show(label: String, child_copy: Node?, root_copy: Node?, original: Node) {
+    crash child_copy
+    crash root_copy
+    var holds_the_copy = child_copy.parent == root_copy
+    var holds_the_original = child_copy.parent == original
+    var one_child = root_copy.children[0] == child_copy
+    console.print(label, holds_the_copy, holds_the_original, one_child)
+}

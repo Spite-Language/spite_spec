@@ -1,0 +1,4 @@
+child first true false true
+root first true false true
+two attributes true false true
+one class further true false true
