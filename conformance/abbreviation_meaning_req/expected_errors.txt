@@ -1,0 +1,1 @@
+conformance/abbreviation_meaning_req/abbreviation_meaning_req.spite:5: error: 'req' abbreviates 'req', which could mean 'request' or 'required': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningReq.AbbreviationMeaningReq)

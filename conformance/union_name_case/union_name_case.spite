@@ -1,0 +1,10 @@
+var console = Console()
+
+union pet {
+    Dog
+}
+
+func UnionNameCase() {
+    load "../../../spite_standard_library/windows"
+    console.print("x")
+}

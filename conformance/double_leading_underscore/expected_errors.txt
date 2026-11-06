@@ -1,0 +1,1 @@
+conformance/double_leading_underscore/double_leading_underscore.spite:2: error: the attribute '__strike' must be written in snake_case: lowercase words joined by underscores (in DoubleLeadingUnderscore)

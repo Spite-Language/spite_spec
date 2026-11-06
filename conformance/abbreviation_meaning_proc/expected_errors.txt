@@ -1,0 +1,1 @@
+conformance/abbreviation_meaning_proc/abbreviation_meaning_proc.spite:5: error: 'proc' abbreviates 'proc', which could mean 'process' or 'procedure': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningProc.AbbreviationMeaningProc)

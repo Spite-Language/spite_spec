@@ -1,0 +1,11 @@
+var console = Console()
+var label = "ann"
+
+func UncalledPrivateFunctionReads() {
+    load "../../../spite_standard_library/windows"
+    console.print("done")
+}
+
+func _unused() {
+    console.print(label)
+}

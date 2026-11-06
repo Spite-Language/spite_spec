@@ -1,0 +1,7 @@
+var console = Console()
+
+func AbbreviationMeaningPrev() {
+    load "../../../spite_standard_library/windows"
+    var prev = 1
+    console.print(prev)
+}

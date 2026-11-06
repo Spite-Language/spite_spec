@@ -1,0 +1,10 @@
+var console = Console()
+
+func KnownClassTestInACondition() {
+    load "../../../spite_standard_library/windows"
+    var monster = Monster()
+    var ready = true
+    if monster.class == Monster and ready {
+        console.print(monster.health)
+    }
+}

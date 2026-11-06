@@ -1,0 +1,12 @@
+var console = Console()
+
+func DecidedAssertFalseEndsTheBody() {
+    load "../../../spite_standard_library/windows"
+    check()
+    console.print("x")
+}
+
+func check() {
+    console.print("a")
+    fallback 1 > 2
+}

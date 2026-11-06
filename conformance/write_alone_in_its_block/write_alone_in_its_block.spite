@@ -1,0 +1,11 @@
+var console = Console()
+
+func WriteAloneInItsBlock() {
+    load "../../../spite_standard_library/windows"
+    var total = 0
+    var flag = true
+    if flag {
+        total = 1
+    }
+    console.print(flag)
+}

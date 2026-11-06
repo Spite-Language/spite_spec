@@ -1,0 +1,14 @@
+var console = Console()
+
+func KnownFactIfNot() {
+    load "../../../spite_standard_library/windows"
+    var counts = List<Integer>()
+    counts.append(3)
+    var number = counts.first()
+    crash number
+    if not number {
+        console.print("none")
+    } else {
+        console.print("some", number)
+    }
+}

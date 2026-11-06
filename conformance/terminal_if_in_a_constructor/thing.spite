@@ -1,0 +1,12 @@
+var size = 1
+
+func Thing() {
+    var maybe = value()
+    if maybe {
+        size = maybe
+    }
+}
+
+func value(): Integer? {
+    return null
+}

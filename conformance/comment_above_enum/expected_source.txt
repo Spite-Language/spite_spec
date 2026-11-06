@@ -1,0 +1,14 @@
+# notes.md#top
+
+enum Kind {
+    'small'
+    'large'
+}
+
+var console = Console()
+
+func CommentAboveEnum() {
+    load "../../../spite_standard_library/windows"
+    var kind: Kind = 'small'
+    console.print(kind)
+}

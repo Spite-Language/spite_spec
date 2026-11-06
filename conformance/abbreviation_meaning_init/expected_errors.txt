@@ -1,0 +1,1 @@
+conformance/abbreviation_meaning_init/abbreviation_meaning_init.spite:5: error: 'init' abbreviates 'init', which could mean 'initialize' or 'initial': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningInit.AbbreviationMeaningInit)

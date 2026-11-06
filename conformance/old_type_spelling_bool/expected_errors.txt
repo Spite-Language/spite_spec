@@ -1,0 +1,1 @@
+conformance/old_type_spelling_bool/old_type_spelling_bool.spite:5: error: 'Bool' is spelled 'Boolean' (in OldTypeSpellingBool.OldTypeSpellingBool)

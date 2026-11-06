@@ -1,0 +1,1 @@
+conformance/type_name_case/type_name_case.spite:3: error: a type is named in PascalCase, and found 'shape'

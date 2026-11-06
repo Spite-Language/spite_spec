@@ -1,0 +1,1 @@
+conformance/terminal_if_in_a_constructor/thing.spite:5: error: this 'if' is the last thing the function does and has no 'else', so it only checks that 'maybe' is there: write 'fallback maybe' and let the rest of the function run unindented (in Thing.Thing)

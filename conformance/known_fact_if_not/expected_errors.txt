@@ -1,0 +1,1 @@
+conformance/known_fact_if_not/known_fact_if_not.spite:9: fixed: 'number' was already narrowed by 'crash number' on line 8; removed it and kept its 'else' (in KnownFactIfNot.KnownFactIfNot)

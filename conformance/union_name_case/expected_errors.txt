@@ -1,0 +1,1 @@
+conformance/union_name_case/union_name_case.spite:3: error: a union is named in PascalCase, and found 'pet'

@@ -1,0 +1,1 @@
+conformance/while_always_true_stays_error/while_always_true_stays_error.spite:5: error: 'while true' is decided while compiling and is always true here: a loop ends by its condition, so loop 'while' what its leaving paths change, a 'running' local they set to false or the loop's real exit test (in WhileAlwaysTrueStaysError.WhileAlwaysTrueStaysError)

@@ -1,0 +1,1 @@
+conformance/attribute_written_through_another_object/scorer.spite:1: error: the attribute 'score' is never read: remove it (in Scorer.)

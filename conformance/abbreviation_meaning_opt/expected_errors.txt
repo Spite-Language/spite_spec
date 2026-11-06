@@ -1,0 +1,1 @@
+conformance/abbreviation_meaning_opt/abbreviation_meaning_opt.spite:5: error: 'opt' abbreviates 'opt', which could mean 'option' or 'optional': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningOpt.AbbreviationMeaningOpt)

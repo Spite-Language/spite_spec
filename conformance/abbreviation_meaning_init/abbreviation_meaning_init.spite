@@ -1,0 +1,7 @@
+var console = Console()
+
+func AbbreviationMeaningInit() {
+    load "../../../spite_standard_library/windows"
+    var init = 1
+    console.print(init)
+}

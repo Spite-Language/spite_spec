@@ -1,0 +1,10 @@
+var console = Console()
+
+type shape {
+    func area(): Integer
+}
+
+func TypeNameCase() {
+    load "../../../spite_standard_library/windows"
+    console.print("x")
+}
