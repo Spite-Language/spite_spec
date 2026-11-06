@@ -1,1 +1,1 @@
-var step = 5
+var step = 25

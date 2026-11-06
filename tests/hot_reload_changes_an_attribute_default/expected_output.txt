@@ -1,5 +1,6 @@
 started
-spite> 5
-spite> unchanged
-spite> 5
+spite> 1
+spite> spite: rebuilt Counter
+rebuilt Counter
+spite> 25
 spite>

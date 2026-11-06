@@ -1,9 +1,0 @@
-var console = Console()
-var thing_1 = Thing1()
-var thing_2 = Thing2()
-var thing_3 = Thing3()
-
-func ProbeF() {
-    load "../../../spite_standard_library/windows"
-    console.print(thing_1.broken, thing_2.broken, thing_3.broken)
-}
