@@ -38,7 +38,7 @@ parameters are the author's free choice and the ordinary rule applies.
 
 **An attribute nothing reads is an error too.** The message names the attribute and the fix, `the attribute 'world'
 is never read: remove it`, and no spelling keeps an unread attribute (`diagnostics/unused_attributes`,
-`conformance/stage6/attribute_uses`). **A compile-time walk counts only when it reads the attribute's value**:
+`conformance/stage6/attribute_uses`); one whose value and writes do nothing is removed instead ([the compiler fixes what has one fix](#the-compiler-fixes-what-has-one-fix)). **A compile-time walk counts only when it reads the attribute's value**:
 `x.attributes[attribute]` read in a template, and so the JSON and binary writers and
 `to_debug()`, and the REPL's display. `attribute.name` and `attribute.class` are the attribute's description, not
 its value, so an engine's scheduling markers, such as `var world = Resource.World()` that only a classify walk
@@ -53,7 +53,7 @@ What counts as a read, and the exceptions:
   build. A class object's `.attributes` (`Mover.attributes`: names and types) does not count.
 - **A read is a read of one class's attribute.** In compiled code a read counts for the class whose attribute it
   reads, as the compiler typed it: `tag.label` reads `Tag.label`, so a `label` of the entry that nothing reads is
-  `the attribute 'label' is never read: remove it` however many other classes read a `label` of their own
+  unread, and removed when plain, however many other classes read a `label` of their own
   (`conformance/attribute_read_in_another_class`).
 - **Writing is not reading.** An attribute that is only assigned, from inside or outside, is unused, the same
   rule as for locals.
