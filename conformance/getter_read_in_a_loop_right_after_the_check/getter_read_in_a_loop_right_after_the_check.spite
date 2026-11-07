@@ -1,0 +1,18 @@
+var console = Console()
+var thing = Thing()
+
+func GetterReadInALoopRightAfterTheCheck() {
+    load "../../../spite_standard_library/windows"
+    look()
+}
+
+func look() {
+    var turn = 0
+    fallback thing.plain
+    while turn < 2 {
+        var seen = thing.plain.side
+        console.print(seen)
+        thing.clear()
+        turn = turn + 1
+    }
+}

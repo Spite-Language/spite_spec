@@ -1,0 +1,1 @@
+conformance/getter_read_in_a_loop_right_after_the_check/getter_read_in_a_loop_right_after_the_check.spite:15: error: 'clear(...)' inside this loop may assign 'store', which 'get_plain' reads, which undoes what was proven about 'thing.plain' before the loop, and the next pass would read it unproven: prove it inside the loop instead (in GetterReadInALoopRightAfterTheCheck.look)

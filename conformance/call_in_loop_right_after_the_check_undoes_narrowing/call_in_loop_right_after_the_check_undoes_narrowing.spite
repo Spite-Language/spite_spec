@@ -1,0 +1,18 @@
+var console = Console()
+var keeper = Keeper()
+
+func CallInLoopRightAfterTheCheckUndoesNarrowing() {
+    load "../../../spite_standard_library/windows"
+    run()
+}
+
+func run() {
+    var passes = 0
+    keeper.target = Monster()
+    fallback keeper.target
+    while passes < 2 {
+        console.print(keeper.target.name)
+        keeper.forget()
+        passes = passes + 1
+    }
+}

@@ -1,0 +1,5 @@
+var store: Round? = Round()
+
+func clear() {
+    store = null
+}

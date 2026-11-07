@@ -1,0 +1,16 @@
+var console = Console()
+var target: Monster? = null
+
+func watch() {
+    var passes = 0
+    fallback target
+    while passes < 2 {
+        console.print(target.name)
+        forget()
+        passes = passes + 1
+    }
+}
+
+func forget() {
+    target = null
+}

@@ -1,0 +1,7 @@
+var keeper = Keeper()
+
+func OwnCallInLoopRightAfterTheCheckUndoesNarrowing() {
+    load "../../../spite_standard_library/windows"
+    keeper.target = Monster()
+    keeper.watch()
+}

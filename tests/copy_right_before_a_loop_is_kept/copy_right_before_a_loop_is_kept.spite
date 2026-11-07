@@ -1,0 +1,15 @@
+var console = Console()
+var thing = Thing()
+
+func CopyRightBeforeALoopIsKept() {
+    load "../../../spite_standard_library/windows"
+    var turn = 0
+    var held = thing.store
+    while turn < 3 {
+        if held {
+            console.print(held.side)
+        }
+        thing.clear()
+        turn = turn + 1
+    }
+}
