@@ -1,0 +1,19 @@
+var console = Console()
+
+func SpiteNamespaceLeavesOutTheMachinery() {
+    load "../../../spite_standard_library/windows"
+    var described = Spite.Class
+    crash described.namespace
+    var classes = described.namespace.classes
+    var listed = List<String>()
+    var index = 0
+    while index < classes.count() {
+        var held = classes[index]
+        listed.append(held.name)
+        index = index + 1
+    }
+    var holds_the_class = listed.contains("Class")
+    var holds_the_fault = listed.contains("Fault")
+    var holds_the_settings = listed.contains("Settings")
+    console.print(holds_the_class, holds_the_fault, holds_the_settings)
+}
