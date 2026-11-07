@@ -9,11 +9,9 @@ func CompilerFolderLayoutBroken() {
     remove_the_old_copy()
     make_a_folder(".spite")
     make_a_folder(copy)
-    make_a_folder("{copy}/spite_spec")
     copy_a_folder("../spite_compiler", compiler_copy)
     copy_a_folder("../spite_standard_library", "{copy}/spite_standard_library")
     copy_a_folder("../spite_documentation", "{copy}/spite_documentation")
-    copy_a_folder("specs", "{copy}/spite_spec/specs")
     var printer_folder = "{compiler_copy}/printers/folder_without_printer"
     write_a_folder(printer_folder, "helper")
     var wanted = wanted_error("crash has_a_printer", "Printers.FolderWithoutPrinter")
