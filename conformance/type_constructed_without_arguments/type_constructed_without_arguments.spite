@@ -1,0 +1,11 @@
+type Tag {
+    label: String
+}
+
+var console = Console()
+
+func TypeConstructedWithoutArguments() {
+    load "../../../spite_standard_library/windows"
+    var tag: Tag = Tag()
+    console.print(tag.label)
+}

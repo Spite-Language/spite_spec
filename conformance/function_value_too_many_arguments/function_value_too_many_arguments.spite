@@ -1,0 +1,11 @@
+var console = Console()
+
+func FunctionValueTooManyArguments() {
+    load "../../../spite_standard_library/windows"
+    var change = shout
+    change("a", "b")
+}
+
+func shout(text: String) {
+    console.print(text)
+}

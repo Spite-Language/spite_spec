@@ -1,0 +1,8 @@
+var console = Console()
+
+func IndexingGetAtTakesNothing() {
+    load "../../../spite_standard_library/windows"
+    var thing = Thing()
+    var read = thing[0]
+    console.print(read)
+}

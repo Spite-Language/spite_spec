@@ -1,0 +1,1 @@
+conformance/operator_sum_takes_nothing/operator_sum_takes_nothing.spite:5: error: this operator on a 'Thing' needs it to define 'sum(other)', and its 'sum' takes 0 arguments (in OperatorSumTakesNothing.OperatorSumTakesNothing)

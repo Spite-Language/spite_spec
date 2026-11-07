@@ -1,0 +1,11 @@
+type Tag {
+    label: String
+}
+
+var console = Console()
+
+func TypeConstructed() {
+    load "../../../spite_standard_library/windows"
+    var tag: Tag = Tag("favourite")
+    console.print(tag.label)
+}

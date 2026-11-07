@@ -1,0 +1,3 @@
+func sum(): Thing {
+    return this
+}

@@ -1,0 +1,1 @@
+conformance/union_constructed/union_constructed.spite:10: error: 'Mixed' is a union, so it makes no object: make an object of one of its members (in UnionConstructed.UnionConstructed)

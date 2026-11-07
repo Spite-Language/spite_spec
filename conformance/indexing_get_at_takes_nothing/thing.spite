@@ -1,0 +1,5 @@
+var value = 0
+
+func get_at(): Integer? {
+    return value
+}

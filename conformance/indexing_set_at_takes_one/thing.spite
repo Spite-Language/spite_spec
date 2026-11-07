@@ -1,0 +1,6 @@
+var value = 0
+
+func set_at(number: Integer) {
+    value = number
+    fallback value == 1
+}

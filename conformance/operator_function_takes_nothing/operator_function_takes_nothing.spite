@@ -1,0 +1,9 @@
+var console = Console()
+
+func OperatorFunctionTakesNothing() {
+    load "../../../spite_standard_library/windows"
+    var thing = Thing()
+    var other = Thing()
+    var smaller = thing < other
+    console.print(smaller)
+}

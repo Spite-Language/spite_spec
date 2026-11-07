@@ -1,0 +1,12 @@
+union Mixed {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func UnionConstructed() {
+    load "../../../spite_standard_library/windows"
+    var mixed: Mixed = Mixed("favourite")
+    console.print(mixed.class)
+}

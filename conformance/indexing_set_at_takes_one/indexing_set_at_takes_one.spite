@@ -1,0 +1,5 @@
+func IndexingSetAtTakesOne() {
+    load "../../../spite_standard_library/windows"
+    var thing = Thing()
+    thing[0] = 2
+}

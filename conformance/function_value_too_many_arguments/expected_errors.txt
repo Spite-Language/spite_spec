@@ -1,0 +1,1 @@
+conformance/function_value_too_many_arguments/function_value_too_many_arguments.spite:6: error: 'change' takes 1 arguments, and 2 are given (in FunctionValueTooManyArguments.FunctionValueTooManyArguments)

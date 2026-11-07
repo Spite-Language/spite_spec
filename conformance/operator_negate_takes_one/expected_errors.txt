@@ -1,0 +1,1 @@
+conformance/operator_negate_takes_one/operator_negate_takes_one.spite:4: error: '-' on a 'Thing' needs it to define 'negate()', and its 'negate' takes 1 arguments (in OperatorNegateTakesOne.OperatorNegateTakesOne)

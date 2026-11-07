@@ -1,0 +1,3 @@
+func negate(other: Thing): Thing {
+    return other
+}

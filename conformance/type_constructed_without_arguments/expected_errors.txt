@@ -1,0 +1,1 @@
+conformance/type_constructed_without_arguments/type_constructed_without_arguments.spite:9: error: 'Tag' is a type, so it makes no object: it says what a value must have; make an object of a class that fits it (in TypeConstructedWithoutArguments.TypeConstructedWithoutArguments)

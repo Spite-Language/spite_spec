@@ -1,0 +1,1 @@
+conformance/operator_function_takes_two/operator_function_takes_two.spite:7: error: this operator on a 'Thing' needs it to define 'less_than(other)', and its 'less_than' takes 2 arguments (in OperatorFunctionTakesTwo.OperatorFunctionTakesTwo)
