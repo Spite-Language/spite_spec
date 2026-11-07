@@ -1,0 +1,6 @@
+var turns = 0
+
+func next(): Counter {
+    turns = turns + 1
+    return this
+}
