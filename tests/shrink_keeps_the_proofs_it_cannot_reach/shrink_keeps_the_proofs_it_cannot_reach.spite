@@ -1,0 +1,67 @@
+var console = Console()
+var items = ["a", "b"]
+var spare = [1]
+var greetings = 0
+
+func ShrinkKeepsTheProofsItCannotReach() {
+    load "../../../spite_standard_library/windows"
+    crash items[0]
+    greet()
+    console.print(items[0])
+    grow()
+    console.print(items[0])
+    empty_spare()
+    console.print(items[0])
+    empty_a_local()
+    console.print(items[0])
+    crash spare.is_empty()
+    console.print(items[0])
+    var again = shrink_and_prove_again()
+    console.print(again)
+    leave_after_shrinking()
+    console.print(greetings)
+}
+
+func greet() {
+    greetings = greetings + 1
+}
+
+func grow() {
+    items.append("c")
+}
+
+func empty_spare() {
+    spare.clear()
+}
+
+func empty_a_local() {
+    var words = ["x", "y"]
+    words.append("z")
+    words.clear()
+    var left = words.count()
+    console.print(left)
+}
+
+func shrink_and_prove_again(): String {
+    crash items[0]
+    fallback items.remove_first() != "z"
+    crash items[0]
+    trim_nothing()
+    if items[0] {
+        return items[0]
+    }
+    return "none"
+}
+
+func trim_nothing() {
+    spare.append(1)
+}
+
+func leave_after_shrinking() {
+    crash items[0]
+    if items.count() > 100 {
+        items.clear()
+        return
+    }
+    console.print(items[0])
+}

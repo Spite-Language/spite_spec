@@ -1,0 +1,1 @@
+conformance/shrink_undoes_proof_of_a_dictionary/shrink_undoes_proof_of_a_dictionary.spite:9: error: 'ages["a"]' was proven before line 8, where 'forget(...)' may shrink what it reads, so this read may fall outside it: prove 'ages["a"]' again after that line (in ShrinkUndoesProofOfADictionary.ShrinkUndoesProofOfADictionary)

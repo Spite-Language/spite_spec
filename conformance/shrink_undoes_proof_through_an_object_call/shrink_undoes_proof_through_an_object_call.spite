@@ -1,0 +1,10 @@
+var console = Console()
+
+func ShrinkUndoesProofThroughAnObjectCall() {
+    load "../../../spite_standard_library/windows"
+    var clearer = Clearer()
+    crash clearer.names[0]
+    clearer.shrink()
+    var read = clearer.names[0]
+    console.print(read)
+}

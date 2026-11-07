@@ -1,0 +1,1 @@
+conformance/shrink_undoes_proof_through_an_object_call/shrink_undoes_proof_through_an_object_call.spite:8: error: 'clearer.names[0]' was proven before line 7, where 'shrink(...)' may shrink what it reads, so this read may fall outside it: prove 'clearer.names[0]' again after that line (in ShrinkUndoesProofThroughAnObjectCall.ShrinkUndoesProofThroughAnObjectCall)

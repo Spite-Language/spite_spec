@@ -1,0 +1,1 @@
+conformance/shrink_undoes_proof_of_a_local/shrink_undoes_proof_of_a_local.spite:8: error: 'names[0]' was proven before line 7, where 'empty(...)' may shrink what it reads, so this read may fall outside it: prove 'names[0]' again after that line (in ShrinkUndoesProofOfALocal.ShrinkUndoesProofOfALocal)

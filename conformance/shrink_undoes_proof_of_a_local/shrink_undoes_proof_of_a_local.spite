@@ -1,0 +1,14 @@
+var console = Console()
+
+func ShrinkUndoesProofOfALocal() {
+    load "../../../spite_standard_library/windows"
+    var names = ["a"]
+    crash names[0]
+    empty(names)
+    var read = names[0]
+    console.print(read)
+}
+
+func empty(list: List<String>) {
+    list.clear()
+}

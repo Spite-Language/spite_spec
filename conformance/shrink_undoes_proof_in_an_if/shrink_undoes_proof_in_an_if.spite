@@ -1,0 +1,16 @@
+var console = Console()
+var items = ["a", "b"]
+
+func ShrinkUndoesProofInAnIf() {
+    load "../../../spite_standard_library/windows"
+    work()
+}
+
+func work() {
+    crash items[0]
+    if items.remove_first() {
+        console.print("gone")
+    }
+    var read = items[0]
+    console.print(read)
+}

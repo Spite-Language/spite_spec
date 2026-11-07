@@ -1,0 +1,22 @@
+var console = Console()
+var items = ["a", "b"]
+
+func ShrinkUndoesProofThroughAPassedFunction() {
+    load "../../../spite_standard_library/windows"
+    work()
+}
+
+func work() {
+    crash items[0]
+    run(trim)
+    var read = items[0]
+    console.print(read)
+}
+
+func trim() {
+    items.clear()
+}
+
+func run(action: Spite.Function<Nothing>) {
+    action()
+}

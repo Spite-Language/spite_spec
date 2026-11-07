@@ -1,0 +1,18 @@
+var console = Console()
+var items = ["a", "b"]
+
+func ShrinkUndoesProofThroughACall() {
+    load "../../../spite_standard_library/windows"
+    work()
+}
+
+func work() {
+    crash items[0]
+    trim()
+    var read = items[0]
+    console.print(read)
+}
+
+func trim() {
+    items.clear()
+}

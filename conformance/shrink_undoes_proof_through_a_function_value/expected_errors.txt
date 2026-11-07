@@ -1,0 +1,1 @@
+conformance/shrink_undoes_proof_through_a_function_value/shrink_undoes_proof_through_a_function_value.spite:13: error: 'items[0]' was proven before line 12, where a call through a function value may shrink what it reads, so this read may fall outside it: prove 'items[0]' again after that line (in ShrinkUndoesProofThroughAFunctionValue.work)

@@ -1,0 +1,21 @@
+var console = Console()
+var items = ["a", "b"]
+
+func ShrinkUndoesProofInALoop() {
+    load "../../../spite_standard_library/windows"
+    work()
+}
+
+func work() {
+    crash items[0]
+    var turns = 0
+    while turns < 2 {
+        console.print(items[0])
+        trim()
+        turns = turns + 1
+    }
+}
+
+func trim() {
+    items.clear()
+}

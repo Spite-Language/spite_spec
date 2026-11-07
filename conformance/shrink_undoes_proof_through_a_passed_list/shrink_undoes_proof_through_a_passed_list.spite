@@ -1,0 +1,18 @@
+var console = Console()
+var items = ["a", "b"]
+
+func ShrinkUndoesProofThroughAPassedList() {
+    load "../../../spite_standard_library/windows"
+    work()
+}
+
+func work() {
+    crash items[0]
+    empty(items)
+    var read = items[0]
+    console.print(read)
+}
+
+func empty(list: List<String>) {
+    list.clear()
+}

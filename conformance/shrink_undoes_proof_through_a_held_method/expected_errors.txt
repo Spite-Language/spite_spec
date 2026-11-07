@@ -1,0 +1,1 @@
+conformance/shrink_undoes_proof_through_a_held_method/shrink_undoes_proof_through_a_held_method.spite:9: error: 'clearer.names[0]' was proven before line 8, where a call through a function value may shrink what it reads, so this read may fall outside it: prove 'clearer.names[0]' again after that line (in ShrinkUndoesProofThroughAHeldMethod.ShrinkUndoesProofThroughAHeldMethod)

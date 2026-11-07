@@ -1,0 +1,46 @@
+var console = Console()
+var items = ["a"]
+var others = ["b"]
+
+func CheckingAfterAShrinkTestsAgain() {
+    load "../../../spite_standard_library/windows"
+    falling_back()
+    console.print("fell back")
+    testing()
+    items.append("c")
+    stopping()
+}
+
+func falling_back() {
+    crash items[0]
+    trim()
+    fallback items[0]
+    console.print("not reached")
+}
+
+func testing() {
+    crash others[0]
+    clear_others()
+    if others[0] {
+        console.print("not reached")
+    } else {
+        console.print("tested")
+    }
+}
+
+func stopping() {
+    crash items[0]
+    trim()
+    items.append("d")
+    crash items[0]
+    var read = items[0]
+    console.print(read)
+}
+
+func trim() {
+    items.clear()
+}
+
+func clear_others() {
+    others.clear()
+}

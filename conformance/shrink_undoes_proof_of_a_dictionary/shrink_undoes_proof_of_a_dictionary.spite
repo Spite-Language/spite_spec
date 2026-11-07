@@ -1,0 +1,15 @@
+var console = Console()
+var ages = Dictionary<String, Integer>()
+
+func ShrinkUndoesProofOfADictionary() {
+    load "../../../spite_standard_library/windows"
+    ages["a"] = 1
+    crash ages["a"]
+    forget()
+    var read = ages["a"]
+    console.print(read)
+}
+
+func forget() {
+    ages.clear()
+}
