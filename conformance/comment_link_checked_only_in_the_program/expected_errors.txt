@@ -1,0 +1,1 @@
+conformance/comment_link_checked_only_in_the_program/comment_link_checked_only_in_the_program.spite:4: error: this comment links to 'nowhere/missing.md', which does not exist (the path is relative to the folder of the file the comment is in, like load) (in CommentLinkCheckedOnlyInTheProgram)

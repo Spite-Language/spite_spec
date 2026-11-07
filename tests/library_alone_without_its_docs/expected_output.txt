@@ -1,0 +1,2 @@
+--check compiles the library without its docs true
+--build compiles the library without its docs true

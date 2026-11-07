@@ -1,0 +1,4 @@
+# nowhere/missing.md#anything
+func greeting(): String {
+    return "hello"
+}

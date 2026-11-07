@@ -1,0 +1,101 @@
+var console = Console()
+var program = Program()
+var copy = ".spite/library_alone"
+var program_copy = ".spite/library_alone/alone"
+
+# ../../../spite_documentation/style.md#comments-are-links
+func LibraryAloneWithoutItsDocs() {
+    load "../../../spite_standard_library/windows"
+    remove_a_folder(copy)
+    make_a_folder(".spite")
+    make_a_folder(copy)
+    copy_a_folder("../spite_standard_library", "{copy}/spite_standard_library")
+    make_a_folder(program_copy)
+    write_the_program()
+    compile("--check")
+    compile("--build")
+    remove_a_folder(copy)
+}
+
+func remove_a_folder(folder: String) {
+    var old_path: Path? = folder
+    crash old_path
+    var old = Directory(old_path)
+    fallback old.exists()
+    var no_arguments = List<String>()
+    var windows_copy = folder.replace("/", "\\")
+    var removing = Process("rmdir /s /q \"{windows_copy}\"", no_arguments)
+    var code = removing.run()
+    crash code == 0
+}
+
+func make_a_folder(path: String) {
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
+    fallback not made.exists()
+    crash made.create()
+}
+
+func copy_a_folder(from: String, to: String) {
+    make_a_folder(to)
+    var folder_path: Path? = from
+    crash folder_path
+    var folder = Directory(folder_path)
+    var entries = folder.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var entry = entries[index]
+        switch entry {
+            Directory: copy_a_subfolder(entry, to)
+            File: copy_a_file(entry, to)
+        }
+        index = index + 1
+    }
+}
+
+func copy_a_subfolder(folder: Directory, to: String) {
+    var name = folder.folder_name
+    fallback not name.starts_with(".")
+    copy_a_folder(folder.path, "{to}/{name}")
+}
+
+func copy_a_file(file: File, to: String) {
+    var name = file.file_name
+    fallback name.ends_with(".spite")
+    var text = file.read_as_string()
+    crash text
+    var written_path: Path? = "{to}/{name}"
+    crash written_path
+    var written = File(written_path)
+    crash written.write_string(text)
+}
+
+func write_the_program() {
+    var file_path: Path? = "{program_copy}/alone.spite"
+    crash file_path
+    var file = File(file_path)
+    var opening = "var console = Console()\n\nfunc Alone() \{\n"
+    var body = "    load \"../spite_standard_library/windows\"\n    console.print(\"compiled\")\n}\n"
+    crash file.write_string("{opening}{body}")
+}
+
+func compile(flag: String) {
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var arguments = [flag]
+    var compiling = Process(compiler, arguments)
+    compiling.working_directory = program_copy
+    compiling.with_errors = true
+    var code = compiling.run()
+    crash code
+    var printed = compiling.read_output_as_string()
+    crash printed
+    var compiled = code == 0
+    console.print(flag, "compiles the library without its docs", compiled)
+    if not compiled {
+        console.print(printed)
+    }
+}

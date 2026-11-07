@@ -1,0 +1,10 @@
+var console = Console()
+var helper = Tools.Helper()
+
+# nowhere/missing.md#anything
+func CommentLinkCheckedOnlyInTheProgram() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    var greeting = helper.greeting()
+    console.print(greeting)
+}
