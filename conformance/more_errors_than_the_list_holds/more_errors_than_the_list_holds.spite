@@ -1,0 +1,30 @@
+func MoreErrorsThanTheListHolds() {
+    load "../../../spite_standard_library/windows"
+    var seed = 1
+    var alpha = seed + 1
+    var bravo = seed + 1
+    var charlie = seed + 1
+    var delta = seed + 1
+    var echo = seed + 1
+    var foxtrot = seed + 1
+    var golf = seed + 1
+    var hotel = seed + 1
+    var india = seed + 1
+    var juliet = seed + 1
+    var kilo = seed + 1
+    var lima = seed + 1
+    var mike = seed + 1
+    var november = seed + 1
+    var oscar = seed + 1
+    var papa = seed + 1
+    var quebec = seed + 1
+    var romeo = seed + 1
+    var sierra = seed + 1
+    var tango = seed + 1
+    var uniform = seed + 1
+    var victor = seed + 1
+    var whiskey = seed + 1
+    var xray = seed + 1
+    var yankee = seed + 1
+    var zulu = seed + 1
+}

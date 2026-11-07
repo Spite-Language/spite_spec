@@ -321,7 +321,7 @@ the program's exit code.
 
 ## How many errors are listed
 
-Every error is `<path>:<line>: error:
+A failure stops its own check and the rest go on; a stage whose input is broken does not run ([the compiler's docs](https://github.com/Spite-Language/spite_documentation/blob/master/compiler.md#how-many-errors-are-listed)). Every error is `<path>:<line>: error:
 <message> (in <Class>.<function>)`, each listed once; an error among a class's attributes and types ends
 `(in <Class>.)`, and one in a function, its signature included, names that function (`conformance/unknown_type_in_function`, `conformance/unknown_type_in_answer`). The errors in files under the program's own folder come first,
 at most 25, followed by `and N more in the program` when there were more. Then come the errors in the packages it

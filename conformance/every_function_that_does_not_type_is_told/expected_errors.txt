@@ -1,0 +1,2 @@
+conformance/every_function_that_does_not_type_is_told/every_function_that_does_not_type_is_told.spite:12: error: an Integer has no attribute or function 'missing' (in EveryFunctionThatDoesNotTypeIsTold.first)
+conformance/every_function_that_does_not_type_is_told/every_function_that_does_not_type_is_told.spite:21: error: an Integer has no attribute or function 'absent' (in EveryFunctionThatDoesNotTypeIsTold.third)

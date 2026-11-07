@@ -1,1 +1,2 @@
 conformance/after_return_holds_a_load_in_a_loop/after_return_holds_a_load_in_a_loop.spite:7: error: this statement comes after a 'return', so it never runs: remove it (in AfterReturnHoldsALoadInALoop.AfterReturnHoldsALoadInALoop)
+conformance/after_return_holds_a_load_in_a_loop/after_return_holds_a_load_in_a_loop.spite:8: error: a 'load' inside an 'if', a 'while' or a 'switch' is not built yet: write it on its own line in the function (in AfterReturnHoldsALoadInALoop)

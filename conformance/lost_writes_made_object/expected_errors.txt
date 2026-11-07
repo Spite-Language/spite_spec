@@ -1,1 +1,2 @@
 conformance/lost_writes_made_object/lost_writes_made_object.spite:6: error: 'made.width' is written here and 'made' is never read after it: 'made' is a 'Layout' only this function holds, so the write is lost when it is let go. Use what was written, return 'made', keep it in an attribute or a list, or drop the write (in LostWritesMadeObject.LostWritesMadeObject)
+conformance/lost_writes_made_object/layout.spite:1: error: the attribute 'width' is never read: remove it (in Layout.)

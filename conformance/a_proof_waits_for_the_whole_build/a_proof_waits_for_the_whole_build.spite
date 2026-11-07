@@ -1,0 +1,10 @@
+var console = Console()
+
+func AProofWaitsForTheWholeBuild() {
+    load "../../../spite_standard_library/windows"
+    var holder = Holder()
+    var found = holder.present()
+    console.print(found.lives)
+    var pet = holder.nullable_union()
+    console.print(pet.class.name)
+}

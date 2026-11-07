@@ -1,0 +1,15 @@
+union Pet {
+    Cat
+    Dog
+}
+
+func present(): Cat? {
+    return Cat()
+}
+
+func nullable_union(): Pet? {
+    var pets = List<Pet>()
+    pets.append(Cat())
+    pets.append(Dog())
+    return pets.first()
+}

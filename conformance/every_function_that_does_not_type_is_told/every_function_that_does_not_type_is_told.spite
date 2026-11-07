@@ -1,0 +1,22 @@
+var console = Console()
+
+func EveryFunctionThatDoesNotTypeIsTold() {
+    load "../../../spite_standard_library/windows"
+    first()
+    second()
+    third()
+}
+
+func first() {
+    var total = 3
+    console.print(total.missing)
+}
+
+func second() {
+    console.print("fine")
+}
+
+func third() {
+    var count = 3
+    console.print(count.absent)
+}

@@ -1,0 +1,1 @@
+conformance/a_proof_waits_for_the_whole_build/a_proof_waits_for_the_whole_build.spite:9: error: this value may be null (it is a Holder.Pet?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in AProofWaitsForTheWholeBuild.AProofWaitsForTheWholeBuild)

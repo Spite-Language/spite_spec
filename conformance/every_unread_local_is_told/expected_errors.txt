@@ -1,0 +1,2 @@
+conformance/every_unread_local_is_told/every_unread_local_is_told.spite:9: error: 'other' is never read: remove it (in EveryUnreadLocalIsTold.first)
+conformance/every_unread_local_is_told/every_unread_local_is_told.spite:14: error: 'more' is never read: remove it (in EveryUnreadLocalIsTold.second)

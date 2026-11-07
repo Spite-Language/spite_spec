@@ -1,0 +1,2 @@
+conformance/a_file_that_does_not_parse_stops_only_itself/broken.spite:3: error: a parameter is declared 'name: Type', and found ':'
+conformance/a_file_that_does_not_parse_stops_only_itself/other.spite:5: error: the variable 'i' is a single letter: give it a name that says what it holds (in Other.grown)

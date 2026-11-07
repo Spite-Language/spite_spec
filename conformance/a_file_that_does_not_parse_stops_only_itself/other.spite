@@ -1,0 +1,7 @@
+var size = 2
+var this_one = 3
+
+func grown(): Integer {
+    var i = size
+    return i
+}

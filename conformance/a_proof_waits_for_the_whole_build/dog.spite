@@ -1,0 +1,5 @@
+var barks = 3
+
+func loud(): Integer {
+    return barks
+}

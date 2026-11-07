@@ -1,0 +1,9 @@
+var console = Console()
+
+func AFileThatDoesNotParseStopsOnlyItself() {
+    load "../../../spite_standard_library/windows"
+    var broken = Broken()
+    var other = Other()
+    console.print(broken.size)
+    console.print(other.size)
+}

@@ -1,1 +1,2 @@
 conformance/fn_variadic_value_is_a_call/fn_variadic_value_is_a_call.spite:6: error: 'first.upper_case()' is called inside an argument of 'greet': compute it first into a named 'var' and pass the name (in FnVariadicValueIsACall.FnVariadicValueIsACall)
+conformance/fn_variadic_value_is_a_call/fn_variadic_value_is_a_call.spite:10: error: 'people.count()' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name (in FnVariadicValueIsACall.greet)

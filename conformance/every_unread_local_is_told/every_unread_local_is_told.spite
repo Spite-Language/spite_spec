@@ -1,0 +1,15 @@
+func EveryUnreadLocalIsTold() {
+    load "../../../spite_standard_library/windows"
+    first()
+    second()
+}
+
+func first() {
+    var total = 3
+    var other = total + 1
+}
+
+func second() {
+    var count = 3
+    var more = count + 1
+}

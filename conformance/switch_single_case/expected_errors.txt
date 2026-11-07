@@ -1,1 +1,3 @@
 conformance/switch_single_case/switch_single_case.spite:19: error: this switch only asks what 'creature' is: write 'return creature.class == Fish' (in SwitchSingleCase.is_fish)
+conformance/switch_single_case/switch_single_case.spite:26: error: a switch with one case and '_:' is an if: write 'if creature.class == Fish { ... }', returning early, and then what '_:' does (in SwitchSingleCase.fins_of)
+conformance/switch_single_case/switch_single_case.spite:33: error: '_:' answers for what the switch does not name, so a value added later slips past it: name every value with a case of its own (cases may share a one-line body), or choose among values with no closed set with an 'if' (in SwitchSingleCase.allowed)

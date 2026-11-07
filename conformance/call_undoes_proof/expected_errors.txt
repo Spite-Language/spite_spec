@@ -1,1 +1,3 @@
 conformance/call_undoes_proof/call_undoes_proof.spite:21: error: this value may be null (it is a Monster?), so 'name' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in CallUndoesProof.forgetting)
+conformance/call_undoes_proof/monster.spite:2: error: the attribute 'loot' is never read: remove it (in Monster.)
+conformance/call_undoes_proof/call_undoes_proof.spite:50: error: 'forget_target(...)' inside this loop may change 'target', which undoes what was proven about 'this.target' before the loop, and the next pass would read it unproven: prove it inside the loop instead (in CallUndoesProof.looping)
