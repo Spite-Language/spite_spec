@@ -21,12 +21,8 @@ var file_endings = [".spite", ".md", ".sh"]
 func CompilerContractsAreTrue() {
     load "../../../spite_standard_library/windows"
     var flags = declared_flags()
-    var index = 0
-    while index < stages.count() {
-        var stage = stages[index]
-        judge_a_stage(stage, flags)
-        index = index + 1
-    }
+    stages.each(judge_a_stage)
+    judge_the_contracts_under(root, "", flags)
     if broken == 0 {
         console.print("every stage of the compiler has its entry and a contract that names only what is there")
     }
@@ -57,7 +53,7 @@ func declared_flags(): List<String> {
     return flags
 }
 
-func judge_a_stage(stage: String, flags: List<String>) {
+func judge_a_stage(stage: String) {
     var entry_path: Path? = "{root}/{stage}/{stage}.spite"
     crash entry_path
     var entry = File(entry_path)
@@ -71,15 +67,46 @@ func judge_a_stage(stage: String, flags: List<String>) {
     if not contract.exists() {
         broken = broken + 1
         console.print("{stage} has no contract.md")
-        return
     }
-    var text = contract.read_as_string()
+}
+
+func judge_the_contracts_under(folder_path: String, below_the_root: String, flags: List<String>) {
+    var written_path: Path? = folder_path
+    crash written_path
+    var folder = Directory(written_path)
+    var entries = folder.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var entry = entries[index]
+        switch entry {
+            Directory: judge_a_folder(entry, below_the_root, flags)
+            File: judge_a_file(entry, below_the_root, flags)
+        }
+        index = index + 1
+    }
+}
+
+func judge_a_folder(folder: Directory, below_the_root: String, flags: List<String>) {
+    var name = folder.folder_name
+    fallback not name.starts_with(".")
+    var below = "{below_the_root}{name}/"
+    judge_the_contracts_under(folder.path, below, flags)
+}
+
+func judge_a_file(file: File, below_the_root: String, flags: List<String>) {
+    fallback file.file_name == "contract.md"
+    var text = file.read_as_string()
     crash text
     var lines = text.split("\n")
+    var below_length = below_the_root.length()
+    var last_before_the_slash = below_length - 1
+    var folder = below_the_root.slice(0, last_before_the_slash)
+    crash folder
     var index = 0
     while index < lines.count() {
         var line = lines[index]
-        judge_a_line(stage, line, flags)
+        judge_a_line(folder, line, flags)
         index = index + 1
     }
 }
