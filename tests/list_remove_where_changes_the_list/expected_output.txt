@@ -1,2 +1,2 @@
 2,4
-allocations: 19 frees: 19
+allocations: 21 frees: 21

@@ -7,4 +7,4 @@ spite: --debug-memory: 6 allocation(s) leaked
   Question: 1 leaked object(s)
   Answer: 1 leaked object(s)
   List_of_Integer: 1 leaked object(s)
-allocations: 36 frees: 30
+allocations: 38 frees: 32

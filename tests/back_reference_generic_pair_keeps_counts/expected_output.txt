@@ -5,4 +5,4 @@ spite: --debug-memory: 4 allocation(s) leaked
   Parent_of_Integer: 1 leaked object(s)
   Child_of_Integer: 1 leaked object(s)
   List_of_Child_of_Integer: 1 leaked object(s)
-allocations: 28 frees: 24
+allocations: 30 frees: 26
