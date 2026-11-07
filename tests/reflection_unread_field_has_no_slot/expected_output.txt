@@ -1,0 +1,3 @@
+roar monster.spite
+keeps what it reads true true
+keeps what it does not false false
