@@ -1,0 +1,9 @@
+var console = Console()
+
+func ControlSwitchBooleanMissingFalse() {
+    load "../../../spite_standard_library/windows"
+    var count = 3
+    switch count > 2 {
+        true: console.print("many")
+    }
+}

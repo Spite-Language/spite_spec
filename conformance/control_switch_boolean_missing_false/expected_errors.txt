@@ -1,0 +1,1 @@
+conformance/control_switch_boolean_missing_false/control_switch_boolean_missing_false.spite:6: error: this switch over 'count > 2' has no case for false: a switch over a Boolean covers true and false, so neither can be forgotten; add the cases, or write an 'if' (in ControlSwitchBooleanMissingFalse.ControlSwitchBooleanMissingFalse)
