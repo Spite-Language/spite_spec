@@ -13,7 +13,7 @@ func ClassTestCarriesNoCodeForTheClass() {
         console.print(text)
         index = index + 1
     }
-    var haunting = lines_naming("Ghost")
+    var haunting = lines_naming("Ghost.")
     var shining = lines_naming("shine")
     console.print("lines naming Ghost:", haunting, "shine:", shining)
 }

@@ -15,18 +15,19 @@ reopen its classes, and `load "spite"` is an error ([packages.md](https://github
 Their members are the tables of [The `Spite` classes](https://github.com/Spite-Language/spite_documentation/blob/master/reflection.md#the-spite-classes).
 
 **A reflection object is made whole.** Each `Spite` class takes in its constructor every field the compiler always
-knows that is not a collection, and the compiler makes every reflection object through that constructor; its
-collections (`.attributes`, `.functions`, `.generics`, `.classes`, ...) start empty and are filled right after,
-since they can name the object itself. None of those fields is nullable: an attribute's `.declaration`, `.class`
+knows, collections and facts included, and the compiler makes every reflection object through that constructor; an
+object that lives in a slot is put there first, so a collection can name the object itself. None of those fields is
+nullable: an attribute's `.declaration`, `.class`
 and `.owner`, a function's `.declaration` and `.owner`, a declaration's `.source_file`, the `.owner` of an enum, a
 union and a type. A function that answers nothing `.returns` `Nothing`, as an argument or an attribute whose type is
-not a class (a function type, a `type`) has `.class` `Nothing`. A field a program never reads is the compiler's to
-leave out (tree shaking, spite_compiler#73): it is never `null` for it. Only what can really be absent is nullable,
+not a class (a function type, a `type`) has `.class` `Nothing`. A field a program never reads has no slot, no write
+and no constructor argument. Only what can really be absent is nullable,
 each for its reason: `Spite.Class.namespace` and `Spite.Namespace.parent`, since the chain of namespaces ends and
 there is no root object; and a bound attribute's `.value`, which is `null` when the instance's field is. A
 declaration's `.returned_literal` exists only for a function whose body is one `return` of a text literal, and
-reading it of another halts naming it. The private function values behind `call_function()` and a built call
-stay nullable too: one exists only where the compiler has an object to bind and the program can call it.
+reading it of another halts naming it. The private function a built call runs stays nullable too: it exists only
+where the compiler can make a stand-in, not for the entry class, a singleton, a class it stores itself or a library
+class.
 
 **A class's `.generics` is a `Dictionary<String, Spite.Class>`**: every `generic` line of the class bound to the class
 it was given, in `generic`-line order, keyed by its name without the `$` (`numbers.class.generics["element_type"]` of a
