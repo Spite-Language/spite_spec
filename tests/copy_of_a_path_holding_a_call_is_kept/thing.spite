@@ -1,0 +1,10 @@
+var held: Round? = Round()
+var turns = 0
+
+func pop(): Thing {
+    turns = turns + 1
+    if turns > 1 {
+        held = null
+    }
+    return this
+}

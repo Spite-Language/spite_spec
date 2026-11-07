@@ -1,0 +1,10 @@
+var console = Console()
+var thing = Thing()
+
+func CallPathAfterWhileDoesNotNarrow() {
+    load "../../../spite_standard_library/windows"
+    while thing.pop().held {
+        var seen = thing.pop().held.side
+        console.print(seen)
+    }
+}

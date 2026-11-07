@@ -1,0 +1,16 @@
+var console = Console()
+var thing = Thing()
+
+func CopyOfAPathHoldingACallIsKept() {
+    load "../../../spite_standard_library/windows"
+    var held = thing.pop().held
+    if held {
+        console.print("held", held.side, thing.turns)
+    }
+    var again = thing.pop().held
+    if again {
+        console.print("held again", again.side)
+    } else {
+        console.print("the second call answered nothing", thing.turns)
+    }
+}

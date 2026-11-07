@@ -1,0 +1,1 @@
+conformance/call_path_after_if_does_not_narrow/call_path_after_if_does_not_narrow.spite:7: error: this value may be null (it is a Round?), so 'side' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in CallPathAfterIfDoesNotNarrow.CallPathAfterIfDoesNotNarrow)

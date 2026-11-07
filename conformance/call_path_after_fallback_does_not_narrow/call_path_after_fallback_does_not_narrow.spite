@@ -1,0 +1,13 @@
+var console = Console()
+var thing = Thing()
+
+func CallPathAfterFallbackDoesNotNarrow() {
+    load "../../../spite_standard_library/windows"
+    look()
+}
+
+func look() {
+    fallback thing.pop().held
+    var seen = thing.pop().held.side
+    console.print(seen)
+}
