@@ -1,0 +1,12 @@
+var console = Console()
+var thing = Thing()
+
+func CopyOfAGetterBeforeAChangeIsKept() {
+    load "../../../spite_standard_library/windows"
+    var plain = thing.plain
+    thing.clear()
+    if plain {
+        console.print("kept", plain.side)
+    }
+    console.print("done")
+}
