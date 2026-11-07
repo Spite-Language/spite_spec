@@ -16,5 +16,6 @@ func TextCopies() {
     console.print(again, one)
     var long_text = "a text longer than the room a short text keeps inside itself, so the copy has to make room"
     var long_copy = long_text.copy()
-    console.print(long_copy == long_text, long_copy.length())
+    var size = long_copy.length()
+    console.print(long_copy == long_text, size)
 }
