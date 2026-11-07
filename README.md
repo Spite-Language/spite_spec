@@ -3,7 +3,26 @@
 The tests of the new Spite compiler, kept out of the compiler's own repository so that they ship as a
 repository of their own, with the tests up to date, instead of mixed in with the compiler.
 
-The compiler is [spite_compiler](https://github.com/Spite-Language/spite_compiler). This repository holds the programs it is run on, and [`specs/`](specs/README.md), the rules those programs check, written out as Markdown.
+The compiler is [spite_compiler](https://github.com/Spite-Language/spite_compiler). This repository holds the programs it is run on, and those programs are the specification of Spite: a rule is
+stated by the program that fails when it breaks, not by prose.
+
+## Where a rule lives
+
+- **A behaviour** (what a program prints, answers or halts with) is a `tests/<name>` program.
+- **A refusal** (a program the compiler must reject) is a `conformance/<name>` program, with the exact words of
+  its error in `expected_errors.txt`. One fault per program, since a compile reports its first error.
+- **How to write Spite**, the rules and limits a person needs and what an error means, is taught by
+  [spite_documentation](https://github.com/Spite-Language/spite_documentation/blob/master/README.md), one page per
+  part of the language; its titled code blocks run as tests too.
+- **What an agent needs to write Spite** is in the documentation's
+  [skill](https://github.com/Spite-Language/spite_documentation/blob/master/skills/spite/SKILL.md) (`SKILL.md`,
+  `reference.md`).
+- **Why** a rule is what it is, is its row in
+  [DECISIONS.md](https://github.com/Spite-Language/mortaros_spite/blob/master/DECISIONS.md).
+
+A change to a rule changes its program here and its docs page, the skill included, in the same push. Where a page
+and a program disagree, the program decides and the page is the bug. There is no Markdown specification here any
+more: it was retired once every rule it stated had its program or its docs page (spite_compiler#24).
 
 ## The shape
 
