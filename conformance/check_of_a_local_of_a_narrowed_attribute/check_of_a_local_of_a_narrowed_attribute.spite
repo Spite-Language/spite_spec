@@ -1,0 +1,12 @@
+var console = Console()
+var thing = Thing()
+
+func CheckOfALocalOfANarrowedAttribute() {
+    load "../../../spite_standard_library/windows"
+    crash thing.store
+    var held = thing.store
+    if held {
+        console.print(held.side)
+    }
+    thing.clear()
+}

@@ -1,0 +1,13 @@
+var console = Console()
+var thing = Thing()
+
+func AFixOnANarrowingTakenBackIsNotWritten() {
+    load "../../../spite_standard_library/windows"
+    crash thing.plain
+    console.print(thing.plain.side)
+    thing.clear()
+    var after = thing.plain
+    if not after {
+        console.print("cleared")
+    }
+}

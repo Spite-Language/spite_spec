@@ -1,0 +1,9 @@
+var store: Round? = Round()
+
+func get_plain(): Round? {
+    return store
+}
+
+func clear() {
+    store = null
+}

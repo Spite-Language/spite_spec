@@ -1,0 +1,13 @@
+var console = Console()
+var thing = Thing()
+
+func ALocalOfANarrowedAttributeAfterACallThatClearsIt() {
+    load "../../../spite_standard_library/windows"
+    crash thing.store
+    console.print(thing.store.side)
+    thing.clear()
+    var after = thing.store
+    if not after {
+        console.print("cleared")
+    }
+}
