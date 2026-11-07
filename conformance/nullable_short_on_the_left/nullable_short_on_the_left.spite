@@ -6,7 +6,7 @@ func NullableShortOnTheLeft() {
     load "../../../spite_standard_library/windows"
     seen.append(kept)
     kept = seen.count()
-    var total: Integer = 5
+    var total: Short = 5
     var pair = maybe()
     var answer = pair + total
     console.print(answer)
