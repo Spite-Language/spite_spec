@@ -1,0 +1,23 @@
+var console = Console()
+var thing = Thing()
+
+func ClassOfACallRunsTheCall() {
+    load "../../../spite_standard_library/windows"
+    var same = thing.pop().class == Thing
+    console.print("compared", same, thing.turns)
+    var named = thing.pop().class.name
+    console.print("named", named, thing.turns)
+    var number_name = thing.number().class.name
+    console.print("a number", number_name, thing.turns)
+    var listed = thing.number().attributes.count()
+    console.print("a number's attributes", listed, thing.turns)
+    var light_name = thing.light().class.name
+    console.print("an enum", light_name, thing.turns)
+    var skipped = thing.turns > 99 and thing.pop().class == Thing
+    console.print("skipped", skipped, thing.turns)
+    var side = 0
+    if thing.held {
+        side = thing.held.side
+    }
+    console.print(side)
+}

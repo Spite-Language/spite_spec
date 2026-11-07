@@ -1,0 +1,7 @@
+compared true 1
+named Thing 2
+a number Integer 3
+a number's attributes 0 4
+an enum Light 5
+skipped false 5
+7

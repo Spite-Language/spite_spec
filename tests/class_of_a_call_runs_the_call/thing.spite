@@ -1,0 +1,25 @@
+enum Light {
+    'red'
+    'green'
+}
+
+var held: Round? = Round()
+var turns = 0
+
+func pop(): Thing {
+    turns = turns + 1
+    if turns > 99 {
+        held = null
+    }
+    return this
+}
+
+func number(): Integer {
+    turns = turns + 1
+    return turns
+}
+
+func light(): Light {
+    turns = turns + 1
+    return 'red'
+}
