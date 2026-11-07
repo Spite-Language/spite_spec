@@ -1,2 +1,4 @@
 --check refuses true at the line of the crash true
 --build refuses true at the line of the crash true
+--check refuses true at the line of the crash true
+--check refuses true at the line of the crash true

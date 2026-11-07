@@ -14,20 +14,36 @@ func CompilerFolderLayoutBroken() {
     copy_a_folder("../spite_standard_library", "{copy}/spite_standard_library")
     copy_a_folder("../spite_documentation", "{copy}/spite_documentation")
     copy_a_folder("specs", "{copy}/spite_spec/specs")
-    write_a_printer_folder_without_a_printer()
-    var wanted = wanted_error()
+    var printer_folder = "{compiler_copy}/printers/folder_without_printer"
+    write_a_folder(printer_folder, "helper")
+    var wanted = wanted_error("crash has_a_printer", "Printers.FolderWithoutPrinter")
     judge_a_refusal("--check", wanted)
     judge_a_refusal("--build", wanted)
+    remove_a_folder(printer_folder)
+    var low_pass_folder = "{compiler_copy}/low_optimization_passes/pass_without_entry"
+    write_a_folder(low_pass_folder, "pass")
+    var wanted_entry = wanted_error("crash holds_its_entry", "LowOptimizationPasses.PassWithoutEntry")
+    judge_a_refusal("--check", wanted_entry)
+    remove_a_folder(low_pass_folder)
+    var rule_folder = "{compiler_copy}/validators/command_line/rule_with_a_helper"
+    write_a_folder(rule_folder, "validator")
+    write_a_file(rule_folder, "helper")
+    var wanted_alone = wanted_error("crash holds_only_its_rule", "Validators.CommandLine.RuleWithAHelper.Helper")
+    judge_a_refusal("--check", wanted_alone)
     remove_the_old_copy()
 }
 
 func remove_the_old_copy() {
-    var old_path: Path? = copy
+    remove_a_folder(copy)
+}
+
+func remove_a_folder(folder: String) {
+    var old_path: Path? = folder
     crash old_path
     var old = Directory(old_path)
     fallback old.exists()
     var no_arguments = List<String>()
-    var windows_copy = copy.replace("/", "\\")
+    var windows_copy = folder.replace("/", "\\")
     var removing = Process("rmdir /s /q \"{windows_copy}\"", no_arguments)
     var code = removing.run()
     crash code == 0
@@ -76,19 +92,22 @@ func copy_a_file(file: File, to: String) {
     crash written.write_string(text)
 }
 
-func write_a_printer_folder_without_a_printer() {
-    var folder = "{compiler_copy}/printers/folder_without_printer"
+func write_a_folder(folder: String, file_name: String) {
     var made_path_text: Path? = folder
     crash made_path_text
     var made = Directory(made_path_text)
     crash made.create()
-    var helper_path: Path? = "{folder}/helper.spite"
-    crash helper_path
-    var helper = File(helper_path)
-    crash helper.write_string("func answer(): Integer \{\n    return 1\n}\n")
+    write_a_file(folder, file_name)
 }
 
-func wanted_error(): String {
+func write_a_file(folder: String, file_name: String) {
+    var file_path: Path? = "{folder}/{file_name}.spite"
+    crash file_path
+    var file = File(file_path)
+    crash file.write_string("func check_an_answer(): Integer \{\n    return 1\n}\n")
+}
+
+func wanted_error(line_wanted: String, folder_shown: String): String {
     var layout_path: Path? = "{compiler_copy}/folder_layout/folder_layout.spite"
     crash layout_path
     var layout = File(layout_path)
@@ -98,13 +117,13 @@ func wanted_error(): String {
     var index = 0
     while index < lines.count() {
         var line = lines[index]
-        if line.trim() == "crash has_a_printer" {
+        if line.trim() == line_wanted {
             var number = index + 1
-            return "folder_layout/folder_layout.spite:{number}: error: 'crash has_a_printer' always halts over Printers.FolderWithoutPrinter: its condition is decided while compiling and is false"
+            return "folder_layout/folder_layout.spite:{number}: error: '{line_wanted}' always halts over {folder_shown}: its condition is decided while compiling and is false"
         }
         index = index + 1
     }
-    console.print("the layout check has no 'crash has_a_printer'")
+    console.print("the layout check has no '{line_wanted}'")
     return ""
 }
 
