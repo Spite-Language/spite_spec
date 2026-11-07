@@ -1,0 +1,10 @@
+var console = Console()
+var reloader = Spite.HotReload()
+
+func HotReloadLibraryIsBuiltWithoutTheFlag() {
+    load "../../../spite_standard_library/windows"
+    var starting = [reloader.start]
+    var checking = [reloader.check_point]
+    var count = starting.count() + checking.count()
+    console.print(count)
+}

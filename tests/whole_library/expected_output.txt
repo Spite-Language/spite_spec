@@ -50,6 +50,7 @@ Spite.Call
 Spite.Class
 Spite.Function
 Spite.FunctionDeclaration
+Spite.HotReload
 Spite.Namespace
 String
 Tcp.Client

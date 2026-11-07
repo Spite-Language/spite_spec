@@ -55,6 +55,7 @@ func WholeLibrary() {
     classes.append(Spite.Class)
     classes.append(Spite.Function)
     classes.append(Spite.FunctionDeclaration)
+    classes.append(Spite.HotReload)
     classes.append(Spite.Namespace)
     classes.append(String)
     classes.append(Tcp.Client)
