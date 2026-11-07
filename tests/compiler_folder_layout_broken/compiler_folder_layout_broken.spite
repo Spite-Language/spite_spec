@@ -28,7 +28,7 @@ func CompilerFolderLayoutBroken() {
     var rule_folder = "{compiler_copy}/validators/command_line/rule_with_a_helper"
     write_a_folder(rule_folder, "validator")
     write_a_file(rule_folder, "helper")
-    var wanted_alone = wanted_error("crash holds_only_its_rule", "Validators.CommandLine.RuleWithAHelper.Helper")
+    var wanted_alone = wanted_error("crash is_the_rule", "Validators.CommandLine.RuleWithAHelper.Helper")
     judge_a_refusal("--check", wanted_alone)
     remove_the_old_copy()
 }
