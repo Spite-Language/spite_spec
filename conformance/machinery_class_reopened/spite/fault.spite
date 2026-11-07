@@ -1,0 +1,5 @@
+var console = Console()
+
+func report(_code: Long, _address: Long, _detail: Long, _accessed: Long, _frame: Long) {
+    console.print("the program's own fault report")
+}

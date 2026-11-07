@@ -1,0 +1,1 @@
+conformance/machinery_class_reopened/spite/fault.spite: error: 'Spite' holds the standard library's own classes, so a file in a 'spite' folder may only reopen one of them: 'Spite.Fault' is not one, and a new class of your own belongs in a namespace of your own
