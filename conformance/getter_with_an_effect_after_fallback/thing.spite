@@ -1,0 +1,10 @@
+var store: Round? = Round()
+var turns = 0
+
+func get_reading(): Round? {
+    turns = turns + 1
+    if turns > 1 {
+        store = null
+    }
+    return store
+}

@@ -1,0 +1,1 @@
+conformance/getter_read_after_a_write_that_changes_it/getter_read_after_a_write_that_changes_it.spite:8: error: 'thing.plain' was proven before line 7, where this write may assign 'store', which 'get_plain' reads, so this read would call it again unproven: prove 'thing.plain' again after that line (in GetterReadAfterAWriteThatChangesIt.GetterReadAfterAWriteThatChangesIt)

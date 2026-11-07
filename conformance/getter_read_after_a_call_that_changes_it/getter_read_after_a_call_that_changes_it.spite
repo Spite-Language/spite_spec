@@ -1,0 +1,12 @@
+var console = Console()
+var thing = Thing()
+
+func GetterReadAfterACallThatChangesIt() {
+    load "../../../spite_standard_library/windows"
+    if thing.plain {
+        thing.clear()
+        var seen = thing.plain.side
+        console.print(seen)
+    }
+    console.print("done")
+}

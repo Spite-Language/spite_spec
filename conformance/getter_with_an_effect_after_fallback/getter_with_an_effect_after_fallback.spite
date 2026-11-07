@@ -1,0 +1,13 @@
+var console = Console()
+var thing = Thing()
+
+func GetterWithAnEffectAfterFallback() {
+    load "../../../spite_standard_library/windows"
+    look()
+}
+
+func look() {
+    fallback thing.reading
+    var seen = thing.reading.side
+    console.print(seen)
+}

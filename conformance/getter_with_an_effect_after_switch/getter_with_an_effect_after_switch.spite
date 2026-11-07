@@ -1,0 +1,16 @@
+var console = Console()
+var thing = Thing()
+
+func GetterWithAnEffectAfterSwitch() {
+    load "../../../spite_standard_library/windows"
+    switch thing.reading {
+        Round: console.print("round")
+        Null: console.print("none")
+    }
+    var seen = 0
+    switch thing.reading {
+        Round: seen = thing.reading.side
+        Null: console.print("none")
+    }
+    console.print(seen)
+}

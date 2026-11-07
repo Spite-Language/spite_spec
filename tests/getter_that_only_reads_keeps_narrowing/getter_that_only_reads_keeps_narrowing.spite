@@ -1,0 +1,35 @@
+var console = Console()
+var thing = Thing()
+
+func GetterThatOnlyReadsKeepsNarrowing() {
+    load "../../../spite_standard_library/windows"
+    if thing.plain {
+        console.print("if", thing.plain.side)
+    }
+    var turn = 0
+    while thing.plain and turn < 1 {
+        console.print("while", thing.plain.side)
+        turn = turn + 1
+    }
+    switch thing.plain {
+        Round: console.print("switch", thing.plain.side)
+        Null: console.print("none")
+    }
+    crash thing.plain
+    console.print("crash", thing.plain.side)
+    look()
+    empty()
+}
+
+func look() {
+    fallback thing.plain
+    console.print("fallback", thing.plain.side)
+}
+
+func empty() {
+    thing.clear()
+    var after = thing.plain
+    if not after {
+        console.print("cleared")
+    }
+}

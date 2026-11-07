@@ -1,0 +1,16 @@
+var console = Console()
+var thing = Thing()
+
+func CopyOfAGetterWithAnEffectIsKept() {
+    load "../../../spite_standard_library/windows"
+    var reading = thing.reading
+    if reading {
+        console.print("held", reading.side, thing.turns)
+    }
+    var again = thing.reading
+    if again {
+        console.print("held again", again.side)
+    } else {
+        console.print("the second call answered nothing", thing.turns)
+    }
+}

@@ -1,0 +1,6 @@
+if 7
+while 7
+switch 7
+crash 7
+fallback 7
+cleared
