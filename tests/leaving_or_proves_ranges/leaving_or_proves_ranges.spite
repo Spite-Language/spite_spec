@@ -71,7 +71,9 @@ func an_and_that_leaves(amount: Integer): Integer {
 }
 
 func print_report() {
-    var report = File("{build.program}/.spite/reports/leaving_or_proves_ranges.md").read_as_string()
+    var report_path: Path? = "{build.program}/.spite/reports/leaving_or_proves_ranges.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
     crash report
     var lines = report.split("\n")
     var index = 0
