@@ -1,0 +1,19 @@
+var console = Console()
+var kept = 1
+var seen = List<Integer>()
+
+func NullableFloatAddedToADouble() {
+    load "../../../spite_standard_library/windows"
+    seen.append(kept)
+    kept = seen.count()
+    var total: Double = 5
+    var pair = maybe()
+    var answer = total + pair
+    console.print(answer)
+}
+
+func maybe(): Float? {
+    fallback kept == seen.count()
+    var one: Float = 1
+    return one
+}

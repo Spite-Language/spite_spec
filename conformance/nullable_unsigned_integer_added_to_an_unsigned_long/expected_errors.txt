@@ -1,0 +1,1 @@
+conformance/nullable_unsigned_integer_added_to_an_unsigned_long/nullable_unsigned_integer_added_to_an_unsigned_long.spite:11: error: this value may be null (it is an UnsignedInteger?), but an UnsignedLong is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableUnsignedIntegerAddedToAnUnsignedLong.NullableUnsignedIntegerAddedToAnUnsignedLong)

@@ -1,0 +1,1 @@
+conformance/nullable_short_subtracted/nullable_short_subtracted.spite:11: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortSubtracted.NullableShortSubtracted)

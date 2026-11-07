@@ -1,0 +1,1 @@
+conformance/nullable_short_passed/nullable_short_passed.spite:12: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortPassed.NullableShortPassed)

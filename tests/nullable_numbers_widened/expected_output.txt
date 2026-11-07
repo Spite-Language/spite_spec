@@ -1,0 +1,9 @@
+null
+false
+true
+3
+3
+0.5
+null
+8
+5

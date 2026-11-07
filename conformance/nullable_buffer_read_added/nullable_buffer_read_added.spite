@@ -1,0 +1,10 @@
+var console = Console()
+
+func NullableBufferReadAdded() {
+    load "../../../spite_standard_library/windows"
+    var bytes = Buffer(2)
+    var pair = bytes.read_short_little_endian_at(100)
+    var total = 5
+    total = total + pair
+    console.print(total)
+}

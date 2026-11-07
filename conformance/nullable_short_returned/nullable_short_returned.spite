@@ -1,0 +1,24 @@
+var console = Console()
+var kept = 1
+var seen = List<Integer>()
+
+func NullableShortReturned() {
+    load "../../../spite_standard_library/windows"
+    seen.append(kept)
+    kept = seen.count()
+    var total: Integer = 5
+    var pair = maybe()
+    console.print(total, pair)
+    var answered = answers()
+    console.print(answered)
+}
+
+func maybe(): Short? {
+    fallback kept == seen.count()
+    var one: Short = 1
+    return one
+}
+
+func answers(): Integer {
+    return maybe()
+}

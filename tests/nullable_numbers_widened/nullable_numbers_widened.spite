@@ -1,0 +1,56 @@
+var console = Console()
+var kept = 1
+var seen = List<Integer>()
+
+func NullableNumbersWidened() {
+    load "../../../spite_standard_library/windows"
+    seen.append(kept)
+    kept = seen.count()
+    var pair = maybe()
+    var wide: Integer? = pair
+    console.print(wide)
+    var total = 5
+    console.print(total == pair)
+    console.print(total != pair)
+    var there = present()
+    var wider: Integer? = there
+    console.print(wider)
+    var longer: Long? = wider
+    console.print(longer)
+    var decimal = half()
+    var doubled: Double? = decimal
+    console.print(doubled)
+    var absent_decimal = no_half()
+    var doubled_absent: Double? = absent_decimal
+    console.print(doubled_absent)
+    crash there
+    total = total + there
+    console.print(total)
+    var turned = -there
+    total = total + turned
+    console.print(total)
+}
+
+func maybe(): Short? {
+    fallback kept == seen.count() + kept
+    var one: Short = 1
+    return one
+}
+
+func present(): Short? {
+    fallback kept == seen.count()
+    var one: Short = 3
+    return one
+}
+
+func half(): Float? {
+    fallback kept == seen.count()
+    var one: Float = 0.5
+    return one
+}
+
+func no_half(): Float? {
+    fallback kept == seen.count() + kept
+    var one: Float = 0.5
+    return one
+}

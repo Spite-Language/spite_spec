@@ -1,0 +1,1 @@
+conformance/nullable_buffer_read_added/nullable_buffer_read_added.spite:8: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableBufferReadAdded.NullableBufferReadAdded)
