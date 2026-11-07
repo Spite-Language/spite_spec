@@ -1,7 +1,7 @@
 # Corpus
 
 Every program of the first repository (`spite_language`, branch `next`): its `conformance/<stage>/<name>/` programs,
-its `diagnostics/<name>/` programs, its `examples/` and the titled code blocks of its `docs/` and `specs/` pages (a
+its `diagnostics/<name>/` programs, its `examples/` and the titled code blocks of its documentation and specification pages (a
 folder of blocks is one program), and where SpiteSpec tests the same behaviour.
 
 - **covered**: a SpiteSpec program already tests it (the path given);

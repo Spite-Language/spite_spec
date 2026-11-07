@@ -13,7 +13,7 @@ func restore() {
     save_greeter_from("hello.txt")
 }
 
-# ../../specs/repl.md#--repl-portport
+# ../../../spite_documentation/repl.md#remote---repl-port
 func save_greeter_from(name: String) {
     var folder = build.program.replace("/", "\\")
     var no_arguments = List<String>()

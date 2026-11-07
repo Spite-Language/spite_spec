@@ -2417,7 +2417,7 @@ var words = [
     "word number 1200 of a long list literal, which is one statement"
 ]
 
-# ../../specs/style.md#the-file-content-budget
+# ../../../spite_documentation/style.md#the-file-content-budget
 func FileContentBudget() {
     load "../../../spite_standard_library/common"
     var name = name_of('shade_0007')
