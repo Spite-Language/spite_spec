@@ -326,10 +326,7 @@ It is an error and not a fix: where to split a file is a design choice the compi
 within it by cleaning up, not by being cut in two at the number: state grouped into an object, concerns named, each
 in a file of its own.
 
-The compiler holds a waiting list of files still over it, each named by its program's folder and its path inside it.
-It is empty now, since the last of them were split. A file on the list that comes back
-within the budget is an error until it leaves the list, and `tests/compiler_file_content_budget` keeps the list from
-growing. It is a literal inside the compiler, with no flag, setting or file that adds to it.
+Nothing excuses a file: there is no list, flag or setting that lifts the budget.
 
 ### A function that only answers a member
 
