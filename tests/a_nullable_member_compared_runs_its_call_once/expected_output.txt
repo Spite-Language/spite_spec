@@ -1,0 +1,5 @@
+true 1
+false 2
+an if 1
+a while 1
+false 0

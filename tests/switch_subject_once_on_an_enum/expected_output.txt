@@ -1,0 +1,6 @@
+green
+through a call 1
+green
+through two calls 2
+green
+through a getter 1

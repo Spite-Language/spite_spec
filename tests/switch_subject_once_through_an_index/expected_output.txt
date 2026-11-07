@@ -1,0 +1,8 @@
+stick
+a chain ending in an index 1
+stick
+an index holding a call 1
+stick
+an index that runs a function of its own 1
+read again
+what a case reads again is its own 2

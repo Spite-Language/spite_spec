@@ -1,0 +1,4 @@
+stick
+through a call 1
+stick
+through a getter 1

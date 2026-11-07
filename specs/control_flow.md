@@ -122,8 +122,12 @@ every switch until it has a case.
 - A value named twice is "this switch has two cases for 'red': keep one"; a value outside the enum is the usual
   "'blue' is not a value of this enum"; a class as a case of such a switch, a name or a call as a case, a value
   case in a switch over a union, and a value case over a `T?` (narrow it first) are errors saying so.
-- The subject is evaluated once, into a temporary; the cases are tested in order as an `if`/`else if` chain on
-  it. Nothing is added at run time beyond those tests.
+- The subject is evaluated once, into a temporary, whatever it holds: a call, a chain through a call, an index, a
+  getter (`tests/switch_subject_once_on_an_enum` and its siblings). A subject that only reads names needs no
+  temporary. The cases are tested in order as an `if`/`else if` chain on it. Nothing is added at run time beyond
+  those tests.
+- A subject holding a call narrows nothing in its cases, since writing it again calls again: hold it in a `var` and
+  switch on the name (`conformance/switch_subject_holding_a_call_does_not_narrow`).
 - A `switch` whose every case ends by leaving the function leaves too, so after `if not found { switch ... }`
   whose cases all return, `found` is narrowed ([failure.md](https://github.com/Spite-Language/spite_documentation/blob/master/failure.md#an-if-that-leaves-proves-the-rest)).
 

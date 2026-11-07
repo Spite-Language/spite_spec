@@ -1,0 +1,12 @@
+var shade: SwitchSubjectOnceOnAnEnum.Shade = 'green'
+var calls = 0
+
+func pop(): Popped {
+    calls = calls + 1
+    return this
+}
+
+func get_reading(): SwitchSubjectOnceOnAnEnum.Shade {
+    calls = calls + 1
+    return shade
+}

@@ -1,0 +1,5 @@
+var round: Round? = null
+
+func pop(): Popped {
+    return this
+}

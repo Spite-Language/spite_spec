@@ -1,0 +1,25 @@
+union Kind {
+    Round
+    Square
+    Stick
+}
+
+var console = Console()
+var thing = Popped()
+
+func SwitchSubjectOnceOnAUnion() {
+    load "../../../spite_standard_library/windows"
+    switch thing.pop().kind {
+        Round: console.print("round")
+        Square: console.print("square")
+        Stick: console.print("stick")
+    }
+    console.print("through a call", thing.calls)
+    thing.calls = 0
+    switch thing.reading {
+        Round: console.print("round")
+        Square: console.print("square")
+        Stick: console.print("stick")
+    }
+    console.print("through a getter", thing.calls)
+}

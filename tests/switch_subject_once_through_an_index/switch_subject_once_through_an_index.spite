@@ -1,0 +1,49 @@
+union Kind {
+    Round
+    Square
+    Stick
+}
+
+var console = Console()
+var thing = Popped()
+
+func SwitchSubjectOnceThroughAnIndex() {
+    load "../../../spite_standard_library/windows"
+    switch thing.pop().kinds[0] {
+        Round: console.print("round")
+        Square: console.print("square")
+        Stick: console.print("stick")
+        Null: console.print("none")
+    }
+    console.print("a chain ending in an index", thing.calls)
+    thing.calls = 0
+    switch thing.kinds[thing.first()] {
+        Round: console.print("round")
+        Square: console.print("square")
+        Stick: console.print("stick")
+        Null: console.print("none")
+    }
+    console.print("an index holding a call", thing.calls)
+    thing.calls = 0
+    switch thing[0] {
+        Round: console.print("round")
+        Square: console.print("square")
+        Stick: console.print("stick")
+        Null: console.print("none")
+    }
+    console.print("an index that runs a function of its own", thing.calls)
+    thing.calls = 0
+    switch thing[0] {
+        Null: console.print("none")
+        Stick: read_again()
+        Round: console.print("round")
+        Square: console.print("square")
+    }
+    console.print("what a case reads again is its own", thing.calls)
+}
+
+func read_again() {
+    var held = thing[0]
+    crash held
+    console.print("read again")
+}

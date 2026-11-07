@@ -1,0 +1,32 @@
+enum Shade {
+    'red'
+    'blue'
+    'green'
+}
+
+var console = Console()
+var thing = Popped()
+
+func SwitchSubjectOnceOnAnEnum() {
+    load "../../../spite_standard_library/windows"
+    switch thing.pop().shade {
+        'red': console.print("red")
+        'blue': console.print("blue")
+        'green': console.print("green")
+    }
+    console.print("through a call", thing.calls)
+    thing.calls = 0
+    switch thing.pop().pop().shade {
+        'red': console.print("red")
+        'blue': console.print("blue")
+        'green': console.print("green")
+    }
+    console.print("through two calls", thing.calls)
+    thing.calls = 0
+    switch thing.reading {
+        'red': console.print("red")
+        'blue': console.print("blue")
+        'green': console.print("green")
+    }
+    console.print("through a getter", thing.calls)
+}

@@ -1,0 +1,9 @@
+var round: Round? = Round()
+var nothing: Round? = null
+var kind: SwitchSubjectOnceOnANullable.Kind? = Stick()
+var calls = 0
+
+func pop(): Popped {
+    calls = calls + 1
+    return this
+}

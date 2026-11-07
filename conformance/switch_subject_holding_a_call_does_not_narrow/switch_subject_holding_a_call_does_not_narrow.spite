@@ -1,0 +1,12 @@
+var console = Console()
+var thing = Popped()
+var side = 0
+
+func SwitchSubjectHoldingACallDoesNotNarrow() {
+    load "../../../spite_standard_library/windows"
+    switch thing.pop().round {
+        Null: console.print("none")
+        Round: side = thing.pop().round.side
+    }
+    console.print(side)
+}

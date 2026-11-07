@@ -1,0 +1,25 @@
+var console = Console()
+var thing = Popped()
+
+func ANullableMemberComparedRunsItsCallOnce() {
+    load "../../../spite_standard_library/windows"
+    var there = thing.pop().held == 3
+    console.print(there, thing.calls)
+    thing.calls = 0
+    var other = thing.pop().missing == thing.pop().held
+    console.print(other, thing.calls)
+    thing.calls = 0
+    if thing.pop().held == 9 {
+        console.print("nine")
+    }
+    console.print("an if", thing.calls)
+    thing.calls = 0
+    while thing.pop().held == 9 {
+        console.print("nine")
+    }
+    console.print("a while", thing.calls)
+    thing.flag = false
+    thing.calls = 0
+    var short = thing.flag and thing.pop().held == 3
+    console.print(short, thing.calls)
+}

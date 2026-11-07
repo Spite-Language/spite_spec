@@ -1,0 +1,22 @@
+var kinds = List<SwitchSubjectOnceThroughAnIndex.Kind>()
+var calls = 0
+
+func Popped() {
+    var stick = Stick()
+    kinds.append(stick)
+}
+
+func pop(): Popped {
+    calls = calls + 1
+    return this
+}
+
+func first(): Integer {
+    calls = calls + 1
+    return 0
+}
+
+func get_at(index: Integer): SwitchSubjectOnceThroughAnIndex.Kind? {
+    calls = calls + 1
+    return kinds[index]
+}

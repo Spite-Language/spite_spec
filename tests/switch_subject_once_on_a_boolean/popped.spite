@@ -1,0 +1,12 @@
+var flag = false
+var calls = 0
+
+func pop(): Popped {
+    calls = calls + 1
+    return this
+}
+
+func next(): Integer {
+    calls = calls + 1
+    return 7
+}

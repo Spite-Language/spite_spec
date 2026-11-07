@@ -1,0 +1,9 @@
+var held: Integer? = 3
+var missing: Integer? = null
+var flag = true
+var calls = 0
+
+func pop(): Popped {
+    calls = calls + 1
+    return this
+}

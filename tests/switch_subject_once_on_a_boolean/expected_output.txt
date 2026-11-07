@@ -1,0 +1,8 @@
+no
+a member 1
+yes
+a negation 1
+no
+a comparison 1
+yes
+a text with a hole 1

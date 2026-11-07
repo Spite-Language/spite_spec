@@ -1,0 +1,29 @@
+union Kind {
+    Round
+    Stick
+}
+
+var console = Console()
+var thing = Popped()
+
+func SwitchSubjectOnceOnANullable() {
+    load "../../../spite_standard_library/windows"
+    switch thing.pop().round {
+        Null: console.print("none")
+        Round: console.print("round")
+    }
+    console.print("a class or null", thing.calls)
+    thing.calls = 0
+    switch thing.pop().nothing {
+        Round: console.print("round")
+        Null: console.print("none")
+    }
+    console.print("the null case last", thing.calls)
+    thing.calls = 0
+    switch thing.pop().kind {
+        Round: console.print("round")
+        Stick: console.print("stick")
+        Null: console.print("none")
+    }
+    console.print("a union or null", thing.calls)
+}

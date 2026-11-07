@@ -1,0 +1,29 @@
+var console = Console()
+var thing = Popped()
+
+func SwitchSubjectOnceOnABoolean() {
+    load "../../../spite_standard_library/windows"
+    switch thing.pop().flag {
+        true: console.print("yes")
+        false: console.print("no")
+    }
+    console.print("a member", thing.calls)
+    thing.calls = 0
+    switch not thing.pop().flag {
+        false: console.print("no")
+        true: console.print("yes")
+    }
+    console.print("a negation", thing.calls)
+    thing.calls = 0
+    switch thing.next() + 1 == 3 {
+        true: console.print("yes")
+        false: console.print("no")
+    }
+    console.print("a comparison", thing.calls)
+    thing.calls = 0
+    switch "seen {thing.next()}" == "seen 7" {
+        true: console.print("yes")
+        false: console.print("no")
+    }
+    console.print("a text with a hole", thing.calls)
+}
