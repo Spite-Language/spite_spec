@@ -1,0 +1,3 @@
+func scaled(factor: Integer): Integer {
+    return factor * 3
+}
