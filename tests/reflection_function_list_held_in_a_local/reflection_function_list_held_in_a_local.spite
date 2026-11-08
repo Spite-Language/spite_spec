@@ -7,9 +7,17 @@ func ReflectionFunctionListHeldInALocal() {
     console.print("equals", has_equals)
     var has_flying = listed.contains("fly")
     console.print("fly", has_flying)
-    var asked = "absolute"
-    var has_asked = listed.contains(asked)
-    console.print("absolute", has_asked)
     var count = listed.count()
     console.print("more than ten", count > 10)
+    var looked_up = Integer.functions
+    var asked = "absolute"
+    var has_asked = looked_up.contains(asked)
+    console.print("absolute", has_asked)
+    var passed = Integer.functions
+    var counted = counted_functions(passed)
+    console.print("counted alike", counted == count)
+}
+
+func counted_functions(listed: Dictionary<String, Spite.FunctionDeclaration>): Integer {
+    return listed.count()
 }
