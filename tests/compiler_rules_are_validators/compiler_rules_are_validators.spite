@@ -5,11 +5,6 @@ var _lines_from_an_error_to_its_exit = 3
 var waiting = {
     "abstract_syntax_tree/parser/parser.spite": "the parser's mistakes decided by syntax (spite_compiler#385, batch 3)"
     "validators/abstract_syntax_tree/syntax/validator.spite": "syntax deciding what the parser read (spite_compiler#385, batch 3)"
-    "high_intermediary_representation/building/reads.spite": "the read rules in their own folders (spite_compiler#385, batch 7)"
-    "high_intermediary_representation/building/assignments.spite": "the assignment rules in their own folders (spite_compiler#385, batch 7)"
-    "high_intermediary_representation/building/collections.spite": "the collection rules in their own folders (spite_compiler#385, batch 7)"
-    "high_intermediary_representation/building/walked_lists.spite": "the walked list rules in their own folders (spite_compiler#385, batch 7)"
-    "high_intermediary_representation/building/dropping_walks.spite": "the dropping walk rule deciding in its folder (spite_compiler#385, batch 7)"
     "high_intermediary_representation/building/templates.spite": "the template rules in their own folders (spite_compiler#385, batch 8)"
     "high_intermediary_representation/building/questions.spite": "the question rules in their own folders (spite_compiler#385, batch 8)"
     "high_intermediary_representation/building/template_walks.spite": "the template walk rule in its own folder (spite_compiler#385, batch 8)"
