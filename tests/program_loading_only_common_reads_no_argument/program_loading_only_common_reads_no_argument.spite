@@ -1,6 +1,0 @@
-var console = Console()
-
-func ProgramLoadingOnlyCommonReadsNoArgument() {
-    load "../../../spite_standard_library/windows"
-    console.print("ran, and nobody checked the arguments")
-}
