@@ -1,0 +1,8 @@
+var console = Console()
+var library = DynamicLibrary("fixture.dll", 'identity', "fixture.h")
+
+func ForeignConstantWrittenInHexadecimal() {
+    load "../../../spite_standard_library/windows"
+    var mask = library.fixture_mask
+    console.print(mask)
+}

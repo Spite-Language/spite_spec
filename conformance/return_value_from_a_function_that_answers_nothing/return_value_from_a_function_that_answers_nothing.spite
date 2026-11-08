@@ -1,0 +1,11 @@
+var console = Console()
+
+func ReturnValueFromAFunctionThatAnswersNothing() {
+    load "../../../spite_standard_library/windows"
+    greet()
+}
+
+func greet() {
+    console.print("hello")
+    return "hello"
+}

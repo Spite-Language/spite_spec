@@ -1,0 +1,1 @@
+#define FIXTURE_MASK 0x10

@@ -1,0 +1,1 @@
+conformance/foreign_constant_written_in_hexadecimal/foreign_constant_written_in_hexadecimal.spite:6: error: 'fixture_mask' is '0x10' in the header 'fixture.h', which is not a whole number written in decimal: only such a constant can be read (in ForeignConstantWrittenInHexadecimal.ForeignConstantWrittenInHexadecimal)
