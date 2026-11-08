@@ -1,0 +1,42 @@
+var console = Console()
+var program = Program()
+var build = Build()
+var _most_waits = 600
+
+func HotReloadTakesASaveToAReopenedPackage() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    load "mod"
+    var monster = Creatures.Monster("rat")
+    var description = monster.describe()
+    console.print(description)
+    write_over("package")
+    wait_for_the_new_roar(monster)
+    description = monster.describe()
+    console.print("the package now says:", description)
+    var taunt = monster.taunt()
+    console.print(taunt, monster.health, monster.armor)
+}
+
+func write_over(root: String) {
+    var changed_path: Path? = "{build.program}/{root}/creatures/changed.txt"
+    crash changed_path
+    var changed = File(changed_path)
+    var text = changed.read_as_string()
+    crash text
+    var file_path: Path? = "{build.program}/{root}/creatures/monster.spite"
+    crash file_path
+    var file = File(file_path)
+    crash file.write_string(text)
+}
+
+func wait_for_the_new_roar(monster: Creatures.Monster) {
+    var fifty_milliseconds = Duration(50, 'milliseconds')
+    var now = monster.describe()
+    var waited = 0
+    while now != "a rat growls" and waited < _most_waits {
+        program.sleep(fifty_milliseconds)
+        now = monster.describe()
+        waited = waited + 1
+    }
+}

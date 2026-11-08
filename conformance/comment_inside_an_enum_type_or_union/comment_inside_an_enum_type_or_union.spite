@@ -1,0 +1,26 @@
+enum Kind {
+    # notes.md#kinds
+    'small'
+    'large'
+}
+
+union Shape {
+    # notes.md#kinds
+    Circle
+    Square
+}
+
+type Labeled {
+    # notes.md#kinds
+    label: String
+}
+
+var console = Console()
+
+func CommentInsideAnEnumTypeOrUnion() {
+    load "../../../spite_standard_library/windows"
+    var kind: Kind = 'small'
+    var shaped: Labeled = {label: "a literal"}
+    var shape: Shape = Circle()
+    console.print(kind, shaped.label, shape)
+}

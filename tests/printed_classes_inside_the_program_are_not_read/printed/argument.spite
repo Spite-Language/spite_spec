@@ -1,0 +1,5 @@
+var _class = 0
+
+func get_class(): Integer {
+    return _class
+}

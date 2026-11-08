@@ -1,0 +1,4 @@
+a rat roars
+spite: rebuilt Creatures.Monster
+the package now says: a rat growls
+rat growls and taunts you 99 5

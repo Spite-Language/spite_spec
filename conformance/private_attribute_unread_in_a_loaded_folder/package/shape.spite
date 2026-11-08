@@ -1,0 +1,6 @@
+var _secret = 1
+var _hidden = 5
+
+func size(): Integer {
+    return _hidden
+}

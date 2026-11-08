@@ -1,0 +1,1 @@
+conformance/private_attribute_unread_in_a_loaded_folder/package/shape.spite:1: error: the attribute '_secret' is never read: remove it (in Shape.)

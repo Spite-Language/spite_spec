@@ -939,7 +939,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/repl.md#repl_world | covered | tests/interactive_singletons |  |
 | docs/repl.md#repl_radio | covered | tests/classes_singleton_per_arguments |  |
 | docs/repl.md#hot_counter | ported | tests/hot_counter |  |
-| docs/repl.md#live_party | ported | tests/live_party |  |
+| docs/repl.md#live_party | ported | tests/live_party | the block is gone from spite_documentation's repl.md (74d9068): a reload no longer moves live objects to new attributes but refuses the change, which tests/hot_reload_refuses_new_attributes holds; tests/live_party stays as the plain program |
 | docs/repl.md#recooking | ported | tests/recooking | needs the Reload singleton (not in the new library); fails: the library has no `Reload` singleton (`reload` of a `--hot-reload` build) |
 | docs/standard_library.md#string_members | covered | tests/string_methods |  |
 | docs/standard_library.md#file_tasks | covered | tests/file_text_basics |  |
