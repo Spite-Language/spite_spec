@@ -14,7 +14,8 @@ func cleared_count(rack: Rack): Integer {
 
 func show(rack: Rack, alias: Rack) {
     fallback rack.item
-    rack.item.number = cleared_count(alias)
+    var held = rack.item
+    held.number = cleared_count(alias)
     console.print("stored")
     rack.item = Item()
     var sum = rack.item.number + cleared_count(alias)
