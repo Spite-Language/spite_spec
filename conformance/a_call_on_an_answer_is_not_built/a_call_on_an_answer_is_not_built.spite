@@ -1,0 +1,11 @@
+var console = Console()
+
+func ACallOnAnAnswerIsNotBuilt() {
+    load "../../../spite_standard_library/windows"
+    var made = answer()()
+    console.print(made)
+}
+
+func answer(): Integer {
+    return 2
+}
