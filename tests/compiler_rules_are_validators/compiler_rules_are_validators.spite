@@ -3,8 +3,6 @@ var root = "../spite_compiler"
 var broken = 0
 var _lines_from_an_error_to_its_exit = 3
 var waiting = {
-    "abstract_syntax_tree/lexer/lexer.spite": "the lexer's mistakes decided by spelling (spite_compiler#385, batch 2)"
-    "validators/abstract_syntax_tree/spelling/validator.spite": "spelling deciding what the lexer read (spite_compiler#385, batch 2)"
     "abstract_syntax_tree/parser/parser.spite": "the parser's mistakes decided by syntax (spite_compiler#385, batch 3)"
     "validators/abstract_syntax_tree/syntax/validator.spite": "syntax deciding what the parser read (spite_compiler#385, batch 3)"
     "command_line/connect.spite": "the --connect rules in validators/command_line (spite_compiler#385, batch 1)"
