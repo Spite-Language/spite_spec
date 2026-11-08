@@ -11,7 +11,7 @@ map_names(): List<String>
 find_by_name(value: String): Monster?
 sum_health(): Integer
 sort_by_health(): List<Monster>
-map_healths(): List<Integer>
+map_health(): List<Integer>
 find_by_health(value: Integer): Monster?
 filter_is_weak(): List<Monster>
 count_is_weak(): Integer
