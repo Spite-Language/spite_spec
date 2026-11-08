@@ -1,0 +1,20 @@
+var console = Console()
+var position = 0
+var boxes = [Box(), Box(), Box()]
+var _assigned = 7
+
+func AssignmentValueBeforeAnIndexedObject() {
+    load "../../../spite_standard_library/windows"
+    crash boxes[position]
+    boxes[position].amount = moved()
+    var first = boxes[0]
+    var second = boxes[1]
+    crash first
+    crash second
+    console.print(first.amount, second.amount)
+}
+
+func moved(): Integer {
+    position = 1
+    return _assigned
+}

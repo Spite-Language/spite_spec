@@ -1,0 +1,6 @@
+var target: Part? = null
+
+func made(): Integer {
+    target = null
+    return 1
+}

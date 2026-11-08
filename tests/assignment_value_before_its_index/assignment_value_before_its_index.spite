@@ -1,0 +1,16 @@
+var console = Console()
+var position = 0
+var items = [0, 0, 0]
+var _assigned = 7
+
+func AssignmentValueBeforeItsIndex() {
+    load "../../../spite_standard_library/windows"
+    items[position] = moved()
+    var shown = items.join(" ")
+    console.print(shown)
+}
+
+func moved(): Integer {
+    position = 1
+    return _assigned
+}

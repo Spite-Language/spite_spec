@@ -1,0 +1,14 @@
+var console = Console()
+var keeper = Keeper()
+
+func AssignmentValueTakesBackTheTargetProof() {
+    load "../../../spite_standard_library/windows"
+    keeper.target = Part()
+    crash keeper.target
+    keeper.target.body = keeper.made()
+    if keeper.target {
+        console.print("kept", keeper.target.body)
+    } else {
+        console.print("gone")
+    }
+}

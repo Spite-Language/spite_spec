@@ -1,0 +1,41 @@
+var console = Console()
+var program = Program()
+var finished = false
+var position = 0
+var items = [0, 0, 0]
+var box = Box()
+var _pause_milliseconds = 3
+var _assigned = 7
+
+func run() {
+    into_an_index()
+    into_a_replaced_object()
+    finished = true
+}
+
+func into_an_index() {
+    position = 0
+    items[position] = moved_after_a_wait()
+    var shown = items.join(" ")
+    console.print("an index moved by the value:", shown)
+}
+
+func into_a_replaced_object() {
+    var old = box
+    box.amount = replaced_after_a_wait()
+    console.print("an object replaced by the value:", box.amount, old.amount)
+}
+
+func moved_after_a_wait(): Integer {
+    position = 1
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+    return _assigned
+}
+
+func replaced_after_a_wait(): Integer {
+    box = Box()
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+    return _assigned
+}
