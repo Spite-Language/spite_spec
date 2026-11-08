@@ -1,0 +1,73 @@
+var console = Console()
+var environment = Environment()
+var program = Program()
+var written = ""
+var _start_near_the_largest_integer = 2147483000
+
+func ACheckedOperationKeepsItsCheckBesideIt() {
+    load "../../../spite_standard_library/windows"
+    var given = environment.given
+    var quotient = 1000 / given
+    var rest = 1000 % given
+    console.print(quotient, rest)
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var text_path: Path? = low_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    written = text
+    var checks = checks_in("ACheckedOperationKeepsItsCheckBesideIt.ACheckedOperationKeepsItsCheckBesideIt")
+    console.print("checks:", checks > 0)
+    var apart = checks_apart_from_their_operation()
+    console.print("checks apart from their operation:", apart)
+    var large = summed(_start_near_the_largest_integer, given * 50)
+    console.print("never printed", large)
+}
+
+func summed(start: Integer, step: Integer): Integer {
+    var total = start
+    var index = 0
+    while index < 10 {
+        total = total + step
+        index = index + 1
+    }
+    return total
+}
+
+func checks_in(function_name: String): Integer {
+    var lines = written.split("\n")
+    var prefix = "function {function_name}:"
+    var inside = false
+    var found = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with(prefix)
+        } else if inside and line.contains("check that it fits") {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
+
+func checks_apart_from_their_operation(): Integer {
+    var lines = written.split("\n")
+    var apart = 0
+    var index = 1
+    while index < lines.count() {
+        var line = lines[index]
+        var before = lines[index - 1]
+        crash before
+        var follows = before.contains(" add r") or before.contains(" subtract r") or before.contains(" multiply r")
+        follows = follows or before.contains(" divide r") or before.contains(" remainder r")
+        if line.contains("check that it fits") and not follows {
+            apart = apart + 1
+        }
+        index = index + 1
+    }
+    return apart
+}
