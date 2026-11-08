@@ -5,9 +5,6 @@ var _lines_from_an_error_to_its_exit = 3
 var waiting = {
     "abstract_syntax_tree/parser/parser.spite": "the parser's mistakes decided by syntax (spite_compiler#385, batch 3)"
     "validators/abstract_syntax_tree/syntax/validator.spite": "syntax deciding what the parser read (spite_compiler#385, batch 3)"
-    "high_intermediary_representation/building/values.spite": "the values rules in their own folders (spite_compiler#385, batch 4)"
-    "high_intermediary_representation/building/fitting.spite": "the fitting rules in their own folders (spite_compiler#385, batch 4)"
-    "high_intermediary_representation/building/constraints.spite": "the fitting rules in their own folders (spite_compiler#385, batch 4)"
     "high_intermediary_representation/building/operators.spite": "the operator rules in their own folders (spite_compiler#385, batch 5)"
     "high_intermediary_representation/building/literals.spite": "the literal rules in their own folders (spite_compiler#385, batch 5)"
     "high_intermediary_representation/building/endings.spite": "the missing return rule in its own folder (spite_compiler#385, batch 5)"
