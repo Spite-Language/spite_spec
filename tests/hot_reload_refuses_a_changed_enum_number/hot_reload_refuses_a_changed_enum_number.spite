@@ -1,0 +1,16 @@
+var console = Console()
+var build = Build()
+var palette = Palette()
+
+func HotReloadRefusesAChangedEnumNumber() {
+    load "../../../spite_standard_library/windows"
+    var number = palette.shade_number()
+    console.print(number)
+    var folder = build.program.replace("/", "\\")
+    var no_arguments = List<String>()
+    var copying = Process("copy /y {folder}\\changed.txt {folder}\\palette.spite", no_arguments)
+    var copied = copying.run()
+    if copied != 0 {
+        console.print("palette.spite could not be written")
+    }
+}

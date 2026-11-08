@@ -1,0 +1,6 @@
+1
+spite> 1
+spite> spite: error: the reload was refused, and the program keeps all of its code: the reload changes Palette.Shade's 'red' from 1 to 5, and every value the program holds keeps the number it was made with: start the program again, or give 'red' its number 1 back
+error: the reload was refused, and the program keeps all of its code: the reload changes Palette.Shade's 'red' from 1 to 5, and every value the program holds keeps the number it was made with: start the program again, or give 'red' its number 1 back
+spite> 1
+spite>

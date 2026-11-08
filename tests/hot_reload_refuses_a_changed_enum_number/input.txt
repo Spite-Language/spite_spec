@@ -1,0 +1,4 @@
+palette.shade_number()
+reload
+palette.shade_number()
+exit

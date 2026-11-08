@@ -1,0 +1,10 @@
+enum Shade {
+    'red' = 1
+    'blue' = 2
+}
+
+var shade: Shade = 'red'
+
+func shade_number(): Integer {
+    return shade
+}
