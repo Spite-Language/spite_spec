@@ -1,0 +1,1 @@
+conformance/union_member_or_attribute/union_member_or_attribute.spite:15: error: 'count_wheels' could keep the 'Wheel' members of 'Part' or ask each member its 'wheels': a member class and an attribute every member has share that name, so rename one of them (in UnionMemberOrAttribute.UnionMemberOrAttribute)

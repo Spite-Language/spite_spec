@@ -1,0 +1,2 @@
+hello
+spite: a class known only at run time makes an object only of a class that is not a singleton, a generic class, an enum or a union

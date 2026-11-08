@@ -1,0 +1,15 @@
+var console = Console()
+
+func TemplateListInBody() {
+    load "../../../spite_standard_library/windows"
+    var troll = Monster()
+    show_first_attributes(troll)
+}
+
+func show_first_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
+    var listed = List<Monster>()
+    listed.append(monster)
+    var first = listed[0]
+    crash first
+    console.print("listed", attribute.name, first[attribute])
+}

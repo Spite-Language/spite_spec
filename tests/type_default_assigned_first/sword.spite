@@ -1,0 +1,5 @@
+var power = 7
+
+func strike(): Integer {
+    return power
+}

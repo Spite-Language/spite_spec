@@ -1,0 +1,13 @@
+type Weapon {
+    strike: Spite.Function<Integer>
+}
+
+var console = Console()
+
+func TypeDefaultAssignedFirst() {
+    load "../../../spite_standard_library/windows"
+    var sword = Sword()
+    var holder = Holder<Weapon>(sword)
+    var hit = holder.swing()
+    console.print("hit for", hit, "count", holder.count)
+}

@@ -1,0 +1,11 @@
+func collect_member(member: Spite.AttributeDeclaration): List<member.class> {
+    var collected = List<member.class>()
+    var index = 0
+    while index < count() {
+        var item = get_at(index)
+        crash item
+        collected.append(item.attributes[member])
+        index = index + 1
+    }
+    return collected
+}

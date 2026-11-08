@@ -1,0 +1,17 @@
+union Part {
+    Wheel
+    Axle
+}
+
+var console = Console()
+
+func UnionMemberOrAttribute() {
+    load "../../../spite_standard_library/windows"
+    var things = List<Part>()
+    var wheel = Wheel()
+    var axle = Axle()
+    things.append(wheel)
+    things.append(axle)
+    var counted = things.count_wheels()
+    console.print(counted)
+}

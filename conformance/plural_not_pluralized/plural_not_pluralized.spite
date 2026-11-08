@@ -1,0 +1,11 @@
+var console = Console()
+
+func PluralNotPluralized() {
+    load "../../../spite_standard_library/windows"
+    var crowd = List<Member>()
+    var member = Member()
+    crowd.append(member)
+    var listed = crowd.map_persons()
+    var counted = listed.count()
+    console.print(counted)
+}

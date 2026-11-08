@@ -1,0 +1,1 @@
+conformance/plural_not_pluralized/plural_not_pluralized.spite:8: error: 'map_persons' answers every 'person', so it is written in the plural: 'map_people' (in PluralNotPluralized.PluralNotPluralized)

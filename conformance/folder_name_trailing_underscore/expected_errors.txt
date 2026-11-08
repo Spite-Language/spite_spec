@@ -1,0 +1,1 @@
+conformance/folder_name_trailing_underscore/kit_: error: the folder 'kit_' is not named in snake_case: every folder is lowercase words joined by '_', so rename it 'kit'

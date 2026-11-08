@@ -1,0 +1,1 @@
+conformance/folder_name_only_digits/22: error: the folder '22' is not named in snake_case: every folder is lowercase words joined by '_', so give it a name that starts with a lowercase letter

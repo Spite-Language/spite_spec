@@ -1,0 +1,7 @@
+singleton
+
+var console = Console()
+
+func greet() {
+    console.print("hello")
+}

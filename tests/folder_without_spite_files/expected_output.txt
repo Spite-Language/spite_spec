@@ -1,0 +1,1 @@
+folders without a .spite file are never read
