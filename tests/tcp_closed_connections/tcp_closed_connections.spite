@@ -3,6 +3,9 @@ var program = Program()
 var server = Tcp.Server()
 var _port = 47331
 var _most_writes = 100
+var _euro_first_byte = 226
+var _euro_second_byte = 130
+var _euro_third_byte = 172
 
 func TcpClosedConnections() {
     load "../../../spite_standard_library/windows"
@@ -57,11 +60,31 @@ func not_text() {
     var invalid = Byte.Largest()
     broken.append(invalid)
     crash peer.write_buffer(broken)
-    peer.close()
     var refused = client.read_as_string()
     var refused_text = answer(refused)
+    var open = not client.closed
+    console.print("bytes that are not UTF-8 read as text:", refused_text, "and the peer is still open:", open)
+    var cut = Buffer(0)
+    cut.append(invalid)
+    cut.append(_euro_first_byte)
+    cut.append(_euro_second_byte)
+    crash peer.write_buffer(cut)
+    var cut_refused = client.read_as_string()
+    var cut_text = answer(cut_refused)
+    console.print("a cut character after bytes that are not UTF-8 is not waited for:", cut_text)
+    var euro = Buffer(0)
+    euro.append(_euro_first_byte)
+    euro.append(_euro_second_byte)
+    euro.append(_euro_third_byte)
+    crash peer.write_buffer(euro)
+    var euro_text = client.read_as_string()
+    crash euro_text
+    console.print("a whole character reads:", euro_text)
+    peer.close()
+    var after_end = client.read_as_string()
+    var after_end_text = answer(after_end)
     var ended = client.closed
-    console.print("bytes that are not UTF-8 read as text:", refused_text, "and the end was seen:", ended)
+    console.print("after the peer closes:", after_end_text, "and the end was seen:", ended)
     client.close()
     server.close()
 }

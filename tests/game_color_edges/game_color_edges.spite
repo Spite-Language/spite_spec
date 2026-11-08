@@ -29,6 +29,11 @@ func writing_clamps() {
     var low_hexadecimal = low.to_hexadecimal_string()
     var low_rgb = low.to_rgb_string()
     console.print("below range, written as", low_hexadecimal, low_rgb)
+    var negative_alpha = Color(0.0, 0.0, 0.0, -2.0)
+    var negative_rgb = negative_alpha.to_rgb_string()
+    var negative_hsl = negative_alpha.to_hsl_string()
+    var wild_hsl = wild.to_hsl_string()
+    console.print("alpha below range, written as", negative_rgb, negative_hsl, "and out of range as", wild_hsl)
 }
 
 func equality() {

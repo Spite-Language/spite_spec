@@ -13,6 +13,13 @@ func BinaryCountPastEnd() {
     too_many.append(5)
     too_many.append_integer_little_endian(9)
     var read_too_many = reader.read(too_many)
+    var too_large = Buffer(0)
+    too_large.append(128)
+    too_large.append(128)
+    too_large.append(128)
+    too_large.append(128)
+    too_large.append(8)
+    var read_too_large = reader.read(too_large)
     var text_reader = BinaryReader<Label>()
     var cut_text = Buffer(0)
     cut_text.append(4)
@@ -23,5 +30,5 @@ func BinaryCountPastEnd() {
     whole_text.append(65)
     var read_whole = text_reader.read(whole_text)
     crash read_whole
-    console.print(items, not read_too_many, not read_cut, read_whole.text)
+    console.print(items, not read_too_many, not read_too_large, not read_cut, read_whole.text)
 }

@@ -12,16 +12,19 @@ func fixed_sizes() {
     var vectors4 = Store<Vector4<Float>>()
     var matrices3 = Store<Matrix3<Float>>()
     var matrices4 = Store<Matrix4<Double>>()
+    var rotations = Store<Quaternion<Float>>()
     var vectors2_text = vectors2.describe()
     var vectors3_text = vectors3.describe()
     var vectors4_text = vectors4.describe()
     var matrices3_text = matrices3.describe()
     var matrices4_text = matrices4.describe()
+    var rotations_text = rotations.describe()
     console.print("Vector2", vectors2_text)
     console.print("Vector3", vectors3_text)
     console.print("Vector4", vectors4_text)
     console.print("Matrix3", matrices3_text)
     console.print("Matrix4", matrices4_text)
+    console.print("Quaternion", rotations_text)
 }
 
 func round_trips() {
