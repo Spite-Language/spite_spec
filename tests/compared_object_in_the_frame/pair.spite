@@ -1,0 +1,11 @@
+var left = 0
+var right = 0
+
+func Pair(new_left: Integer, new_right: Integer) {
+    left = new_left
+    right = new_right
+}
+
+func total(): Integer {
+    return left + right
+}

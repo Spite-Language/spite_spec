@@ -1,0 +1,26 @@
+var console = Console()
+
+func ComparedObjectInTheFrame() {
+    load "../../../spite_standard_library/windows"
+    var before = Pair(3, 4)
+    var same = 0
+    var itself = 0
+    var different = 0
+    var index = 0
+    while index < 1000 {
+        var pair = Pair(index, index + 1)
+        if pair == before {
+            same = same + 1
+        }
+        var held = pair
+        if held == pair {
+            itself = itself + 1
+        }
+        if pair != before {
+            different = different + 1
+        }
+        index = index + 1
+    }
+    var total = before.total()
+    console.print(same, itself, different, total)
+}
