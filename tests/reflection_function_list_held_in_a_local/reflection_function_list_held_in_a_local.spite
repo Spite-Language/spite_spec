@@ -1,0 +1,15 @@
+var console = Console()
+
+func ReflectionFunctionListHeldInALocal() {
+    load "../../../spite_standard_library/windows"
+    var listed = Integer.functions
+    var has_equals = listed.contains("equals")
+    console.print("equals", has_equals)
+    var has_flying = listed.contains("fly")
+    console.print("fly", has_flying)
+    var asked = "absolute"
+    var has_asked = listed.contains(asked)
+    console.print("absolute", has_asked)
+    var count = listed.count()
+    console.print("more than ten", count > 10)
+}

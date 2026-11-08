@@ -1,0 +1,4 @@
+equals true
+fly false
+absolute true
+more than ten true
