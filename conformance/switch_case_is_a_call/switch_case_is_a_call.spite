@@ -1,0 +1,17 @@
+var console = Console()
+
+func SwitchCaseIsACall() {
+    load "../../../spite_standard_library/windows"
+    say(true)
+}
+
+func say(flag: Boolean) {
+    switch flag {
+        agreed(): console.print("yes")
+        false: console.print("no")
+    }
+}
+
+func agreed(): Boolean {
+    return true
+}

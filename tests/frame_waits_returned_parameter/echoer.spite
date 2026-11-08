@@ -1,0 +1,15 @@
+var program = Program()
+var said = List<String>()
+var last = ""
+
+func run() {
+    var echoed = echo("hello")
+    said.append(echoed)
+    last = "{echoed}!"
+}
+
+func echo(word: String): String {
+    var twenty_milliseconds = Duration(20, 'milliseconds')
+    program.sleep(twenty_milliseconds)
+    return word
+}

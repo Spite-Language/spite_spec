@@ -1,0 +1,1 @@
+a struct named through a pointer typedef measures the same: 11 22

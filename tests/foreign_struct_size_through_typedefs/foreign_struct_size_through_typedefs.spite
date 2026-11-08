@@ -1,0 +1,14 @@
+type PointPair {
+    down: Integer
+    across: Integer
+}
+
+var console = Console()
+var windows = DynamicLibrary("tests/foreign_struct_size_through_typedefs/fixture.dll", 'windows', "fixture.h")
+
+func ForeignStructSizeThroughTypedefs() {
+    load "../../../spite_standard_library/windows"
+    var spot: PointPair = {down: 1, across: 2}
+    windows.move_point(spot)
+    console.print("a struct named through a pointer typedef measures the same:", spot.down, spot.across)
+}

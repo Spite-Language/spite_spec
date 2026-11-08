@@ -1,0 +1,5 @@
+generic $wanted_type
+
+func holds(item: Anything): Boolean {
+    return item.class == $wanted_type
+}

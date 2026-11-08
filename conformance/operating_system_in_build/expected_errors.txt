@@ -1,0 +1,1 @@
+conformance/operating_system_in_build/build.spite:1: error: 'Build.operating_system' cannot be declared by a program: it is the system doing the compiling, which the compiler supplies. To write the program for another system, give --target-operating-system=linux (or windows, or mac)

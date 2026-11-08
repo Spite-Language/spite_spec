@@ -1,0 +1,4 @@
+func doubled(): Integer {
+    var absolute = this * 2
+    return absolute + 1
+}

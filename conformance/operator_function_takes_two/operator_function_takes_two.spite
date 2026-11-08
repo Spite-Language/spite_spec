@@ -4,6 +4,6 @@ func OperatorFunctionTakesTwo() {
     load "../../../spite_standard_library/windows"
     var thing = Thing()
     var other = Thing()
-    var smaller = thing < other
-    console.print(smaller)
+    var both = thing + other
+    console.print(both.value)
 }

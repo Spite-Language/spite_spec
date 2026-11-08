@@ -1,0 +1,14 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func CodegenClassTestOnAUnion() {
+    load "../../../spite_standard_library/windows"
+    var checker = Checker<Pet>()
+    var cat = Cat()
+    var held = checker.holds(cat)
+    console.print(held)
+}

@@ -1,1 +1,1 @@
-conformance/operator_function_takes_nothing/operator_function_takes_nothing.spite:7: error: this operator on a 'Thing' needs it to define 'less_than(other)', and its 'less_than' takes 0 arguments (in OperatorFunctionTakesNothing.OperatorFunctionTakesNothing)
+conformance/operator_function_takes_nothing/operator_function_takes_nothing.spite:7: error: this operator on a 'Thing' needs it to define 'sum(other)', and its 'sum' takes 0 arguments (in OperatorFunctionTakesNothing.OperatorFunctionTakesNothing)

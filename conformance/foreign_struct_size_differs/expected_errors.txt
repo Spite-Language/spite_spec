@@ -1,0 +1,1 @@
+conformance/foreign_struct_size_differs/foreign_struct_size_differs.spite:13: error: 'MovePoint' takes a 'POINT_PAIR', which 'fixture.h' declares as 8 bytes, but a PointPair is 12 bytes as a C struct: give 'PointPair' the fields of 'POINT_PAIR', in its order and at its widths (in ForeignStructSizeDiffers.ForeignStructSizeDiffers)

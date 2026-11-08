@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReopeningTakesOtherValues() {
+    load "../../../spite_standard_library/windows"
+    var left = Matrix4<Float>()
+    var target = Matrix4<Float>()
+    target.set_from_text(left, "four")
+    console.print(target.column_0_row_0)
+}

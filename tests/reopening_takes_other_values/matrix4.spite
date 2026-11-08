@@ -1,0 +1,3 @@
+func set_from_text(left: Matrix4, label: String) {
+    column_0_row_0 = left.column_0_row_0 + label.length()
+}

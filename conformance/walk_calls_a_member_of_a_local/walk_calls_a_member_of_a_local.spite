@@ -1,0 +1,10 @@
+func WalkCallsAMemberOfALocal() {
+    load "../../../spite_standard_library/windows"
+    var names = ["ada", "alan"]
+    var greeter = Greeter()
+    var index = 0
+    while index < names.count() {
+        greeter.greet(names[index])
+        index = index + 1
+    }
+}

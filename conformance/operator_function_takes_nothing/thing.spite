@@ -1,5 +1,5 @@
 var value = 0
 
-func less_than(): Boolean {
-    return value == 1
+func sum(): Thing {
+    return this
 }

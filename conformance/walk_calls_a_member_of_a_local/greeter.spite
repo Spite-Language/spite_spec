@@ -1,0 +1,5 @@
+var console = Console()
+
+func greet(name: String) {
+    console.print("hello", name)
+}

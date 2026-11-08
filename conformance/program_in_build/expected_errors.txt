@@ -1,0 +1,1 @@
+conformance/program_in_build/build.spite:1: error: 'Build.program' cannot be declared by a program: the program is the folder the compiler runs in, 'cd folder' then 'spite', and Build.program is set from it

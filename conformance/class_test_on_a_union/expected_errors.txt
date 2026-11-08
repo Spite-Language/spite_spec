@@ -1,0 +1,1 @@
+conformance/class_test_on_a_union/class_test_on_a_union.spite:11: error: 'Pet' is a union, so it cannot be used as a value: 'cat.class' is always one class, so the test could never be true: test for one of the classes it holds (in ClassTestOnAUnion.ClassTestOnAUnion)

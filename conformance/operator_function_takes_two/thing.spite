@@ -1,5 +1,5 @@
 var value = 0
 
-func less_than(first: Thing, second: Thing): Boolean {
-    return first.value == second.value
+func sum(first: Thing, second: Thing): Thing {
+    return first
 }

@@ -1,0 +1,3 @@
+func shouted_name(): String {
+    return "{name}!"
+}

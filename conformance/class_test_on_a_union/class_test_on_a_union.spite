@@ -1,0 +1,13 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func ClassTestOnAUnion() {
+    load "../../../spite_standard_library/windows"
+    var cat: Anything = Cat()
+    var held = cat.class == Pet
+    console.print(held)
+}

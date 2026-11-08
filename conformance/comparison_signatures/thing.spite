@@ -1,0 +1,13 @@
+var size = 3
+
+func to_debug(): Integer {
+    return size
+}
+
+func less_than(other: Integer): Boolean {
+    return size < other
+}
+
+func greater_than(other: Thing): Integer {
+    return size - other.size
+}

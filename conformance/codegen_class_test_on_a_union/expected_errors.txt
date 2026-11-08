@@ -1,0 +1,1 @@
+conformance/codegen_class_test_on_a_union/checker.spite:4: error: '$wanted_type' is a type here, bound to 'Pet', a union, so it cannot be used as a value: 'item.class' is always one class, so the test could never be true: test for one of the classes it holds (in Checker.holds)

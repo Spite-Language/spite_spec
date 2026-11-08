@@ -1,0 +1,43 @@
+var console = Console()
+var program = Program()
+var echoer = Echoer()
+var frames = 0
+var build = Build()
+var _most_frames = 5000
+
+func FrameWaitsReturnedParameter() {
+    load "../../../spite_standard_library/windows"
+    var one_millisecond = Duration(1, 'milliseconds')
+    while frames < _most_frames and echoer.last.is_empty() {
+        frames = frames + 1
+        if frames == 1 {
+            echoer.run()
+        }
+        program.sleep(one_millisecond)
+    }
+    var count = echoer.said.count()
+    console.print("a call whose answer is its literal argument was started:", echoer.last, count, frames > 1)
+    print_report()
+}
+
+func print_report() {
+    var report_path: Path? = "{build.program}/.spite/reports/frame_waits_returned_parameter.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    var printing = false
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("## ") {
+            printing = line.starts_with("## Waits that hold the frame")
+            if printing {
+                console.print(line)
+            }
+        } else if printing and line.starts_with("- [") {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}
