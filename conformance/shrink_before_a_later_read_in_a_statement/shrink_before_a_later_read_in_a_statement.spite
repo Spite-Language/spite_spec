@@ -1,0 +1,21 @@
+var console = Console()
+
+func ShrinkBeforeALaterReadInAStatement() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    rack.item = Item()
+    show(rack, rack)
+}
+
+func trimmed(rack: Rack): Integer {
+    rack.values.clear()
+    return 0
+}
+
+func show(rack: Rack, alias: Rack) {
+    fallback rack.item
+    console.print(rack.item.number)
+    crash rack.values[1]
+    var read = trimmed(alias) + rack.values[1]
+    console.print(read)
+}

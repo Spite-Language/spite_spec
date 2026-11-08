@@ -1,0 +1,32 @@
+var console = Console()
+
+func WriteInAThenKeepsTheElseProven() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    rack.item = Item()
+    show(rack, rack)
+}
+
+func clear(rack: Rack) {
+    rack.item = null
+}
+
+func show(rack: Rack, alias: Rack) {
+    fallback rack.item
+    if rack.item.number > 1 {
+        rack.item = null
+    } else {
+        console.print(rack.item.number)
+    }
+    fallback rack.item
+    if rack.item.number > 1 {
+        clear(alias)
+    } else {
+        console.print(rack.item.number)
+    }
+    if rack.item {
+        console.print("kept")
+    } else {
+        console.print("gone")
+    }
+}

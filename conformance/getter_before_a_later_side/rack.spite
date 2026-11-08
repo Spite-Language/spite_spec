@@ -1,0 +1,6 @@
+var item: Item? = null
+
+func get_writing(): Integer {
+    item = null
+    return 0
+}

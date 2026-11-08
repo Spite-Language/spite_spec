@@ -1,0 +1,18 @@
+var console = Console()
+
+func GetterBeforeALaterReadInAnArgument() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    rack.item = Item()
+    show(rack, rack)
+}
+
+func add(left: Integer, right: Integer): Integer {
+    return left + right
+}
+
+func show(rack: Rack, alias: Rack) {
+    fallback rack.item
+    var sum = add(alias.writing, rack.item.number)
+    console.print(sum)
+}

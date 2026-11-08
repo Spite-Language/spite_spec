@@ -1,0 +1,14 @@
+var console = Console()
+
+func GetterBeforeALaterSide() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    rack.item = Item()
+    show(rack, rack)
+}
+
+func show(rack: Rack, alias: Rack) {
+    if rack.item and alias.writing == 0 and rack.item.number > 0 {
+        console.print("both")
+    }
+}

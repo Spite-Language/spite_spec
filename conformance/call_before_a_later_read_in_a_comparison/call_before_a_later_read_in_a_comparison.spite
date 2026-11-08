@@ -1,0 +1,19 @@
+var console = Console()
+
+func CallBeforeALaterReadInAComparison() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    rack.item = Item()
+    show(rack, rack)
+}
+
+func cleared_count(rack: Rack): Integer {
+    rack.item = null
+    return 0
+}
+
+func show(rack: Rack, alias: Rack) {
+    fallback rack.item
+    var same = cleared_count(alias) == rack.item.number
+    console.print(same)
+}

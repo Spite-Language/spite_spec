@@ -1,0 +1,1 @@
+conformance/getter_in_a_crash_before_a_later_read/getter_in_a_crash_before_a_later_read.spite:12: error: 'rack.item' was proven before line 11, where a call here, which reaches 'Rack.get_writing', may assign 'item' again, so this read would use what the call left there, unproven: prove 'rack.item' again after that line (in GetterInACrashBeforeALaterRead.show)

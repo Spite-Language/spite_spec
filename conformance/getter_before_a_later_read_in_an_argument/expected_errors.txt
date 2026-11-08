@@ -1,0 +1,1 @@
+conformance/getter_before_a_later_read_in_an_argument/getter_before_a_later_read_in_an_argument.spite:16: error: 'rack.item' was proven before line 16, where 'get_writing(...)' may assign 'item' again, so this read would use what the call left there, unproven: prove 'rack.item' again after that line (in GetterBeforeALaterReadInAnArgument.show)

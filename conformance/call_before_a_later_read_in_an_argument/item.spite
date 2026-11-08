@@ -1,0 +1,5 @@
+var number = 1
+
+func add(more: Integer): Integer {
+    return number + more
+}

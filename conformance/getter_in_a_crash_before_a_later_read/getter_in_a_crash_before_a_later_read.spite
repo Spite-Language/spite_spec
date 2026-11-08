@@ -1,0 +1,13 @@
+var console = Console()
+
+func GetterInACrashBeforeALaterRead() {
+    load "../../../spite_standard_library/windows"
+    var rack = Rack()
+    rack.item = Item()
+    show(rack, rack)
+}
+
+func show(rack: Rack, alias: Rack) {
+    crash rack.item and alias.writing == 0
+    console.print(rack.item.number)
+}
