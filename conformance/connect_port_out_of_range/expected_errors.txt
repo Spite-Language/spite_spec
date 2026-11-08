@@ -1,0 +1,1 @@
+error: --connect takes a port number from 1 to 65535: spite --connect=4000
