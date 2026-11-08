@@ -12,6 +12,7 @@ var waiting = {
     "validators/high_intermediary_representation/lost_write/validator.spite": "its checks deciding on the site the proof found (spite_compiler#385, batch 10)"
     "validators/high_intermediary_representation/present_value/validator.spite": "its checks deciding on the site the proof found (spite_compiler#385, batch 10)"
     "validators/high_intermediary_representation/kept_narrowing/validator.spite": "its checks deciding on the site the proof found (spite_compiler#385, batch 10)"
+    "validators/high_intermediary_representation/typing/validator.spite": "its shared words moving to the rules that decide them, so it holds no check of its own (spite_compiler#385, batch 13)"
 }
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
