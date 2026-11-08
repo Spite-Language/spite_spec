@@ -1,0 +1,14 @@
+var width = 3
+var books = List<String>()
+
+func Shelf(first_book: String) {
+    books.append(first_book)
+}
+
+func shallow_twin(): Shelf {
+    return copy()
+}
+
+func deep_twin(): Shelf {
+    return deep_copy()
+}

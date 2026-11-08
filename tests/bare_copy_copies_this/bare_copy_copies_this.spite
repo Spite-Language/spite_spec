@@ -1,0 +1,13 @@
+var console = Console()
+
+func BareCopyCopiesThis() {
+    load "../../../spite_standard_library/windows"
+    var shelf = Shelf("first")
+    var shallow = shelf.shallow_twin()
+    var deep = shelf.deep_twin()
+    shelf.width = 4
+    shelf.books.append("second")
+    console.print("shelf {shelf.width} {shelf.books.count()}")
+    console.print("shallow {shallow.width} {shallow.books.count()}")
+    console.print("deep {deep.width} {deep.books.count()}")
+}

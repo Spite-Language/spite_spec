@@ -1,0 +1,3 @@
+shelf 4 2
+shallow 3 2
+deep 3 1
