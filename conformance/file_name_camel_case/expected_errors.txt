@@ -1,0 +1,1 @@
+conformance/file_name_camel_case/toolHelper.spite: fixed: 'toolHelper.spite' was not named in snake_case, every file is lowercase words joined by '_'; renamed it 'tool_helper.spite'

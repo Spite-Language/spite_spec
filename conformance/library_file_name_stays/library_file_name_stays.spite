@@ -1,0 +1,8 @@
+var console = Console()
+
+func LibraryFileNameStays() {
+    load "../../../spite_standard_library/windows"
+    load "spite_standard_library/linux"
+    var shelf = BigShelf()
+    console.print(shelf.size)
+}

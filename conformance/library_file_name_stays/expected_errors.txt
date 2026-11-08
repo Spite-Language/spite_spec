@@ -1,0 +1,1 @@
+conformance/library_file_name_stays/spite_standard_library/linux/BigShelf.spite: error: 'BigShelf.spite' is not named in snake_case: every file is lowercase words joined by '_', so rename it 'big_shelf.spite'

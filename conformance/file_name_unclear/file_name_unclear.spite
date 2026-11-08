@@ -1,0 +1,7 @@
+var console = Console()
+
+func FileNameUnclear() {
+    load "../../../spite_standard_library/windows"
+    var helper = HTTPHelper()
+    console.print(helper.name)
+}

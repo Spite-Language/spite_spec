@@ -1,1 +1,2 @@
-conformance/load_folder_name/Engine-Plugin: error: the folder 'Engine-Plugin' is not named in snake_case: every folder is lowercase words joined by '_', so rename it 'engine_plugin'
+conformance/load_folder_name/load_folder_name.spite:5: fixed: 'load "Engine-Plugin"' named the folder 'Engine-Plugin', which is renamed 'engine_plugin'; changed it to 'load "engine_plugin"' (in LoadFolderName.LoadFolderName)
+conformance/load_folder_name/Engine-Plugin: fixed: the folder 'Engine-Plugin' was not named in snake_case, every folder is lowercase words joined by '_'; renamed it 'engine_plugin'
