@@ -1,0 +1,13 @@
+var console = Console()
+
+func DictionaryFunctionKey() {
+    load "../../../spite_standard_library/windows"
+    var counts = Dictionary<Spite.Function<Integer, Integer>, Integer>()
+    counts[doubled] = 3
+    var total = counts.count()
+    console.print(total)
+}
+
+func doubled(value: Integer): Integer {
+    return value * 2
+}

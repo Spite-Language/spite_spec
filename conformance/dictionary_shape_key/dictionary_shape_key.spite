@@ -1,0 +1,12 @@
+var console = Console()
+
+type Named {
+    name(): String
+}
+
+func DictionaryShapeKey() {
+    load "../../../spite_standard_library/windows"
+    var counts = Dictionary<Named, Integer>()
+    var total = counts.count()
+    console.print(total)
+}

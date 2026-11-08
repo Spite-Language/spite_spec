@@ -1,0 +1,1 @@
+conformance/dictionary_shape_key/dictionary_shape_key.spite:9: error: a Dictionary cannot be keyed by 'Named': a key is a number, a Boolean, a String, an enum value or an object of a class (in DictionaryShapeKey.DictionaryShapeKey)
