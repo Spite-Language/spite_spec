@@ -1,0 +1,1 @@
+conformance/nullable_fits_no_type_null_cannot_answer/nullable_fits_no_type_null_cannot_answer.spite:14: error: this value may be null (it is a Rock?), but a Singer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableFitsNoTypeNullCannotAnswer.perform)

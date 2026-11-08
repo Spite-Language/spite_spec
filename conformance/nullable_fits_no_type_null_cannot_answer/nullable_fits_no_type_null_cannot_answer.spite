@@ -1,0 +1,17 @@
+type Singer {
+    sing: Spite.Function<String>
+}
+
+var console = Console()
+
+func NullableFitsNoTypeNullCannotAnswer() {
+    load "../../../spite_standard_library/windows"
+    var rock = Rock()
+    perform(rock)
+}
+
+func perform(maybe: Rock?) {
+    var singer: Singer = maybe
+    var sung = singer.sing()
+    console.print(sung)
+}

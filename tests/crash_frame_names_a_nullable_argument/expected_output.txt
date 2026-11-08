@@ -1,0 +1,3 @@
+spite: the program stopped at tests/crash_frame_names_a_nullable_argument/shelf.spite:11 in Shelf_of_String_maybe.describe, site 7bc0a119 (first is null)
+spite.frame	tests/crash_frame_names_a_nullable_argument/shelf.spite:11	Shelf<String?>	describe
+spite.frame	tests/crash_frame_names_a_nullable_argument/crash_frame_names_a_nullable_argument.spite:8	CrashFrameNamesANullableArgument	CrashFrameNamesANullableArgument

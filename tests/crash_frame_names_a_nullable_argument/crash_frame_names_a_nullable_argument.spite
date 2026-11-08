@@ -1,0 +1,10 @@
+var console = Console()
+
+func CrashFrameNamesANullableArgument() {
+    load "../../../spite_standard_library/windows"
+    var names = Shelf<String?>()
+    var nothing: String? = null
+    names.add(nothing)
+    var text = names.describe()
+    console.print(text)
+}

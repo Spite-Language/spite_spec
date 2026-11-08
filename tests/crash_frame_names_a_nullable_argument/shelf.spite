@@ -1,0 +1,13 @@
+generic $item_type
+
+var items = List<$item_type>()
+
+func add(item: $item_type) {
+    items.append(item)
+}
+
+func describe(): String {
+    var first = items.first()
+    crash first
+    return "held"
+}
