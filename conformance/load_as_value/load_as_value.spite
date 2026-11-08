@@ -1,4 +1,4 @@
 func LoadAsValue() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var loaded = load "level"
 }

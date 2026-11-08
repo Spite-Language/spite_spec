@@ -8,7 +8,7 @@ var total = 0
 
 # ../../../spite_documentation/style.md#the-file-content-budget
 func FileContentBudget() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     nested(1)
     fill_part_1()
     fill_part_2()

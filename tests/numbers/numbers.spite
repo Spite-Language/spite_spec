@@ -2,7 +2,7 @@ var _bigger_value = 2000
 var _whole_and_bigger_sum = 3000
 
 func Numbers(): Integer {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var holder = Holder()
     holder.small = 5
     holder.large = 9

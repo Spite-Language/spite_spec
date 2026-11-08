@@ -5,7 +5,7 @@ type Addable {
 var console = Console()
 
 func FnDirectSumThroughType() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var first = Money(1)
     var second = Money(2)
     var total = added(first, second)

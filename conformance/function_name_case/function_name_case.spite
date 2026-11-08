@@ -1,5 +1,5 @@
 func FunctionNameCase() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     calcTotal()
 }
 

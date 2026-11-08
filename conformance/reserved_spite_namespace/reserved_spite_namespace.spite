@@ -1,4 +1,4 @@
 func ReservedSpiteNamespace() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     load "spite"
 }

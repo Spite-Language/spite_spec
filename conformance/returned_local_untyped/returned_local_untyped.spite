@@ -1,7 +1,7 @@
 var console = Console()
 
 func ReturnedLocalUntyped() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var answer = double(4)
     console.print(answer)
 }

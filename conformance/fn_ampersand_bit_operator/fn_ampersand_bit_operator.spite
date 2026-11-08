@@ -2,7 +2,7 @@ var console = Console()
 var _flags_number = 12
 
 func FnAmpersandBitOperator() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var flags = _flags_number
     var masked = flags & 4
     console.print(masked)

@@ -1,7 +1,7 @@
 var console = Console()
 
 func OldLet() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     let total = 1
     console.print(total)
 }

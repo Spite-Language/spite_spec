@@ -1,5 +1,5 @@
 func AbbreviatedName() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var item_cnt = 1
     var total = item_cnt + 1
 }

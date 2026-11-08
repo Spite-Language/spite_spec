@@ -6,7 +6,7 @@ union Amount {
 var console = Console()
 
 func FnDirectSumThroughUnion() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var first = Money(1)
     var second = Money(2)
     var total = added(first, second)

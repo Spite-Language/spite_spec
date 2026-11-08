@@ -1,4 +1,4 @@
 func CommentInsideFunction() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     # notes.md#a-real-heading
 }

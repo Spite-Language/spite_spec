@@ -48,7 +48,7 @@ A program names the standard library in its first line, because there is no laun
 compiler does not go looking for a library:
 
     func ExitCode(): Integer {
-        load "../../../spite_standard_library/common"
+        load "../../../spite_standard_library/windows"
         ...
 
 The path is relative to the folder of the program that holds the load. The repositories sit side by side

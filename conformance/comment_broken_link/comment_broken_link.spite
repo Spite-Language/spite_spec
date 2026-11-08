@@ -1,4 +1,4 @@
 # notes.md#a-heading-that-does-not-exist
 func CommentBrokenLink() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
 }

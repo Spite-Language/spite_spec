@@ -1,5 +1,5 @@
 func TwoNames(): Integer {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var maker = Maker()
     return shared(maker)
 }

@@ -4,7 +4,7 @@ var holder = Holder<Monster>()
 var names: List<String> = null
 
 func NullDefaults() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var count: Integer = null
     var held = holder.value()
     var name_count = names.count()

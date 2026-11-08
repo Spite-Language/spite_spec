@@ -1,5 +1,5 @@
 func ToStringSignature(): Integer {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var thing = Thing()
     return thing.size
 }

@@ -3,7 +3,7 @@ var _first_number = 6
 var _second_number = 2
 
 func FnDirectRemainder() {
-    load "../../../spite_standard_library/common"
+    load "../../../spite_standard_library/windows"
     var first = _first_number
     var second = _second_number
     var result = first.remainder(second)
