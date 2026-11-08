@@ -1,0 +1,1 @@
+conformance/null_without_a_type/null_without_a_type.spite:5: error: 'null' has no type here: it is written only where a type that may be null is expected, like 'var target: Monster? = null' (in NullWithoutAType.NullWithoutAType)

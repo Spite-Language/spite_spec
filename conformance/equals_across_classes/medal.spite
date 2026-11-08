@@ -1,0 +1,9 @@
+var label = ""
+
+func Medal(starting_label: String) {
+    label = starting_label
+}
+
+func equals(other: Medal): Boolean {
+    return label == other.label
+}

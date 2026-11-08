@@ -1,0 +1,10 @@
+var console = Console()
+
+func EqualsAcrossClasses() {
+    load "../../../spite_standard_library/windows"
+    var badge = Badge("gold")
+    var medal = Medal("gold")
+    if badge == medal {
+        console.print("same")
+    }
+}

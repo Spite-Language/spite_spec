@@ -1,0 +1,1 @@
+conformance/condition_not_a_boolean/condition_not_a_boolean.spite:6: error: a condition is a Boolean, and this is a String: compare it with something, like 'count > 0' or 'name != ""' (in ConditionNotABoolean.ConditionNotABoolean)

@@ -1,0 +1,9 @@
+var console = Console()
+
+func ConditionNotABoolean() {
+    load "../../../spite_standard_library/windows"
+    var name = "Ada"
+    if name {
+        console.print("named")
+    }
+}

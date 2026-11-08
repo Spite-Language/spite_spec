@@ -1,0 +1,1 @@
+conformance/equals_across_classes/equals_across_classes.spite:7: error: a Badge cannot be used where a Medal is needed (in EqualsAcrossClasses.EqualsAcrossClasses)
