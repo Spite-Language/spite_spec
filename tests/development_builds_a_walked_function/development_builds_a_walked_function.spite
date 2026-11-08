@@ -1,0 +1,17 @@
+var console = Console()
+var lamp = Lamp()
+
+func DevelopmentBuildsAWalkedFunction() {
+    load "../../../spite_standard_library/windows"
+    Lamp.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    if attribute.class == Boolean {
+        shown(attribute.name, lamp.attributes[attribute])
+    }
+}
+
+func shown(name: String, value: Boolean) {
+    console.print(name, value)
+}
