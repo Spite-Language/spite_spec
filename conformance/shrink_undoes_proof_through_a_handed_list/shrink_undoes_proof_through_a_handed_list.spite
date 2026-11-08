@@ -1,0 +1,21 @@
+var console = Console()
+var items = ["a", "b"]
+var shelf = Shelf()
+
+func ShrinkUndoesProofThroughAHandedList() {
+    load "../../../spite_standard_library/windows"
+    work()
+    var left = shelf.items.count()
+    console.print(left)
+    var kept = items.count()
+    console.print(kept)
+}
+
+func work() {
+    var mine = ["a", "b"]
+    shelf.items = mine
+    crash shelf.items[0]
+    mine.clear()
+    var first = shelf.items[0]
+    console.print(first)
+}

@@ -1,0 +1,32 @@
+var console = Console()
+var items = ["a", "b"]
+var shelf = Shelf()
+
+func ShrinkThroughANewLocalKeepsTheProof() {
+    load "../../../spite_standard_library/windows"
+    work()
+    var left = shelf.items.count()
+    console.print(left)
+    var kept = items.count()
+    console.print(kept)
+}
+
+func work() {
+    crash items[0]
+    var mine = List<String>()
+    mine.append("x")
+    mine.clear()
+    var made = ["y"]
+    made.clear()
+    var copied = items.copy()
+    copied.clear()
+    var first = items[0]
+    console.print(first)
+    var counted = items.count()
+    var index = 0
+    while index < counted {
+        var item = items[index]
+        console.print(item)
+        index = index + 1
+    }
+}

@@ -1,0 +1,5 @@
+var items = ["a", "b"]
+
+func renew() {
+    items = List<String>()
+}

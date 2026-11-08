@@ -1,0 +1,27 @@
+var console = Console()
+var items = ["a", "b"]
+var shelf = Shelf()
+
+func ShrinkUndoesAKeptCountInALoop() {
+    load "../../../spite_standard_library/windows"
+    work()
+    var left = shelf.items.count()
+    console.print(left)
+    var kept = items.count()
+    console.print(kept)
+}
+
+func work() {
+    var total = items.count()
+    var index = 0
+    while index < total {
+        var shouted = items[index].upper_case()
+        console.print(shouted)
+        trim()
+        index = index + 1
+    }
+}
+
+func trim() {
+    items.clear()
+}

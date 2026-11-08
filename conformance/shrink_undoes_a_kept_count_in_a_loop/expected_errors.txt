@@ -1,0 +1,1 @@
+conformance/shrink_undoes_a_kept_count_in_a_loop/shrink_undoes_a_kept_count_in_a_loop.spite:20: error: 'trim(...)' inside this loop may shrink what it reads, which undoes what was proven about 'items[index]' before the loop, and the next pass would read it unproven: prove it inside the loop instead (in ShrinkUndoesAKeptCountInALoop.work)

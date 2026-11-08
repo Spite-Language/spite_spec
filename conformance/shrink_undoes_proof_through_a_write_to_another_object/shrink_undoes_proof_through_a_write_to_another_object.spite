@@ -1,0 +1,20 @@
+var console = Console()
+var items = ["a", "b"]
+var shelf = Shelf()
+
+func ShrinkUndoesProofThroughAWriteToAnotherObject() {
+    load "../../../spite_standard_library/windows"
+    work()
+    var left = shelf.items.count()
+    console.print(left)
+    var kept = items.count()
+    console.print(kept)
+}
+
+func work() {
+    crash shelf.items[0]
+    var other = shelf
+    other.items = List<String>()
+    var first = shelf.items[0]
+    console.print(first)
+}

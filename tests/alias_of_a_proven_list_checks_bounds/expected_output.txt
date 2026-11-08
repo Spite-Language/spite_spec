@@ -1,1 +1,0 @@
-spite: 'names[0]' is outside its list: a bound proves only the top of an index, and this one is below 0 or the list changed, at tests/alias_of_a_proven_list_checks_bounds/alias_of_a_proven_list_checks_bounds.spite:13 in AliasOfAProvenListChecksBounds.scan

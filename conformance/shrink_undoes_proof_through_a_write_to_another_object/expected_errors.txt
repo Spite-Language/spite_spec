@@ -1,0 +1,1 @@
+conformance/shrink_undoes_proof_through_a_write_to_another_object/shrink_undoes_proof_through_a_write_to_another_object.spite:18: error: 'shelf.items[0]' was proven before line 17, where a write through another object may shrink what it reads, so this read may fall outside it: prove 'shelf.items[0]' again after that line (in ShrinkUndoesProofThroughAWriteToAnotherObject.work)

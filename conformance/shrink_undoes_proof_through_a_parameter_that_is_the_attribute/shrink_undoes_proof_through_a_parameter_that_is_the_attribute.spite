@@ -1,0 +1,23 @@
+var console = Console()
+var items = ["a", "b"]
+var shelf = Shelf()
+
+func ShrinkUndoesProofThroughAParameterThatIsTheAttribute() {
+    load "../../../spite_standard_library/windows"
+    work()
+    var left = shelf.items.count()
+    console.print(left)
+    var kept = items.count()
+    console.print(kept)
+}
+
+func work() {
+    run(items)
+}
+
+func run(given: List<String>) {
+    crash items[0]
+    given.clear()
+    var first = items[0]
+    console.print(first)
+}

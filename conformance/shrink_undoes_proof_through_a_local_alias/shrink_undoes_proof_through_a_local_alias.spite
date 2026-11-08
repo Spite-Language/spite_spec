@@ -1,0 +1,20 @@
+var console = Console()
+var items = ["a", "b"]
+var shelf = Shelf()
+
+func ShrinkUndoesProofThroughALocalAlias() {
+    load "../../../spite_standard_library/windows"
+    work()
+    var left = shelf.items.count()
+    console.print(left)
+    var kept = items.count()
+    console.print(kept)
+}
+
+func work() {
+    crash items[0]
+    var alias = items
+    alias.clear()
+    var first = items[0]
+    console.print(first)
+}

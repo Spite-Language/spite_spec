@@ -1,0 +1,1 @@
+conformance/shrink_undoes_proof_through_a_parameter_that_is_the_attribute/shrink_undoes_proof_through_a_parameter_that_is_the_attribute.spite:21: error: 'items[0]' was proven before line 20, where 'clear(...)' may shrink what it reads, so this read may fall outside it: prove 'items[0]' again after that line (in ShrinkUndoesProofThroughAParameterThatIsTheAttribute.run)
