@@ -5,7 +5,6 @@ var _lines_from_an_error_to_its_exit = 3
 var waiting = {
     "abstract_syntax_tree/parser/parser.spite": "the parser's mistakes decided by syntax (spite_compiler#385, batch 3)"
     "validators/abstract_syntax_tree/syntax/validator.spite": "syntax deciding what the parser read (spite_compiler#385, batch 3)"
-    "validators/high_intermediary_representation/typing/validator.spite": "its shared words moving to the rules that decide them, so it holds no check of its own (spite_compiler#385, batch 13)"
 }
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
