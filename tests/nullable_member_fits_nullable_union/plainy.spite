@@ -1,0 +1,5 @@
+var path = ""
+
+func Plainy(starting_path: String) {
+    path = starting_path
+}

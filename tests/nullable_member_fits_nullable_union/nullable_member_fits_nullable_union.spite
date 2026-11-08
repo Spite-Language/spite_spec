@@ -1,0 +1,61 @@
+union Place {
+    Plainy
+    Gitty
+}
+
+var console = Console()
+var last: Place? = null
+var remembered: Gitty? = null
+
+func NullableMemberFitsNullableUnion() {
+    load "../../../spite_standard_library/windows"
+    var found = place_of("git:spite")
+    describe(found)
+    var lost = place_of("git:")
+    describe(lost)
+    var plain: Place? = Plainy("notes")
+    describe(plain)
+    var kept: Place? = plain
+    var git = repository_of("git:compiler")
+    kept = git
+    describe(kept)
+    var missing = repository_of("elsewhere")
+    kept = missing
+    describe(kept)
+    last = git
+    describe(last)
+    describe(git)
+    describe(missing)
+    var nothing_yet = remembered_place()
+    describe(nothing_yet)
+    remembered = git
+    var remembered_now = remembered_place()
+    describe(remembered_now)
+}
+
+func place_of(text: String): Place? {
+    return repository_of(text)
+}
+
+func remembered_place(): Place? {
+    return remembered
+}
+
+func repository_of(text: String): Gitty? {
+    fallback text.starts_with("git:") and text != "git:"
+    var length = text.length()
+    var address = text.slice(4, length)
+    crash address
+    return Gitty(address)
+}
+
+func describe(place: Place?) {
+    if not place {
+        console.print("nowhere")
+        return
+    }
+    switch place {
+        Plainy: console.print("plain", place.path)
+        Gitty: console.print("git", place.address)
+    }
+}
