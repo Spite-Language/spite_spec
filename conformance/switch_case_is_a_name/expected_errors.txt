@@ -1,1 +1,0 @@
-conformance/switch_case_is_a_name/switch_case_is_a_name.spite:17: error: 'stop_light' is a name, and a case of a switch over a SwitchCaseIsAName.Light is one of its values written out, like 'red': to choose by what 'stop_light' holds, compare with an 'if' (in SwitchCaseIsAName.seconds_for)

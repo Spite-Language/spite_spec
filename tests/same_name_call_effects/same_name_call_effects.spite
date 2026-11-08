@@ -7,10 +7,6 @@ func SameNameCallEffects() {
     load "../../../spite_standard_library/windows"
     var tick = Tick()
     ticks.append(tick)
-    var index = 0
-    while index < ticks.count() {
-        timers.advance(ticks[index])
-        index = index + 1
-    }
+    ticks.each(timers.advance)
     console.print(timers.total, stock.count, timers.last)
 }

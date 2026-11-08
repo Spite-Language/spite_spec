@@ -4,7 +4,7 @@ visitor with 0 tags 3
 1 9
 # Optimisation report
 ## Lists that hold references
-- [tests/optimization_report/optimization_report.spite:2](../../tests/optimization_report/optimization_report.spite#L2): `List<Badge>` keeps a reference to each item: its attribute 'tags' is a List<String>, which cannot be laid inline
+- [tests/optimization_report/optimization_report.spite:2](../../tests/optimization_report/optimization_report.spite#L2): `List<Badge>` keeps a reference to each item: its attribute 'title' is a String, which cannot be laid inline
 - [tests/optimization_report/optimization_report.spite:3](../../tests/optimization_report/optimization_report.spite#L3): `List<Spot>` keeps a reference to each item: 'Spot' is made only of numbers and enum values and would fit inline, but a list holds its items inline only when every append is given an object made for it and its items are only read
 ## Lists not in the frame
 - [tests/optimization_report/optimization_report.spite:10](../../tests/optimization_report/optimization_report.spite#L10): `names` is made on the heap: line 13 appends to it in a loop, so how many items it holds is not known while compiling

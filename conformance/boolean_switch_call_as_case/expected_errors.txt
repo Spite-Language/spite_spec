@@ -1,0 +1,1 @@
+conformance/boolean_switch_call_as_case/boolean_switch_call_as_case.spite:10: error: 'agreed()' is a call, and a case of a switch over a Boolean is one of its values written out, like true: to choose by what 'agreed()' holds, compare with an 'if' (in BooleanSwitchCallAsCase.say)

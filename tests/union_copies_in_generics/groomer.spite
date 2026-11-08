@@ -25,10 +25,5 @@ func find_named(named: Dictionary<String, Client>, name: String): String {
 }
 
 func each_pet(pets: List<Client>, act: Spite.Function<Client, Nothing>) {
-    var index = 0
-    while index < pets.count() {
-        var pet = pets[index]
-        act(pet)
-        index = index + 1
-    }
+    pets.each(act)
 }

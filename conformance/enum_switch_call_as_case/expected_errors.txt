@@ -1,1 +1,1 @@
-conformance/enum_switch_call_as_case/enum_switch_call_as_case.spite:22: error: this switch over 'light' has no case for 'red', 'green': a switch over an enum covers every value, so a value added later cannot be forgotten; add the cases (in EnumSwitchCallAsCase.show)
+conformance/enum_switch_call_as_case/enum_switch_call_as_case.spite:23: error: 'stop()' is a call, and a case of a switch over an EnumSwitchCallAsCase.Light is one of its values written out, like 'red': to choose by what 'stop()' holds, compare with an 'if' (in EnumSwitchCallAsCase.show)
