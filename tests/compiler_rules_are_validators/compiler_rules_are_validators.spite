@@ -1,25 +1,46 @@
 var console = Console()
 var root = "../spite_compiler"
 var broken = 0
+var _lines_from_an_error_to_its_exit = 3
 var waiting = {
-    "abstract_syntax_tree/lexer/lexer.spite": "the spelling rule, after spite_compiler#25"
-    "abstract_syntax_tree/parser/parser.spite": "the syntax rule, after spite_compiler#25"
-    "validators/abstract_syntax_tree/spelling/validator.spite": "the spelling rule, after spite_compiler#25"
-    "validators/abstract_syntax_tree/syntax/validator.spite": "the syntax rule, after spite_compiler#25"
-    "high_intermediary_representation/building/values.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/operators.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/literals.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/fitting.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/collections.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/reads.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/walked_lists.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/arguments.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/calls.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/templates.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/questions.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/assignments.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/known_calls.spite": "the typing rules, after spite_compiler#25"
-    "high_intermediary_representation/building/template_walks.spite": "the typing rules, after spite_compiler#25"
+    "abstract_syntax_tree/lexer/lexer.spite": "the lexer's mistakes decided by spelling (spite_compiler#385, batch 2)"
+    "validators/abstract_syntax_tree/spelling/validator.spite": "spelling deciding what the lexer read (spite_compiler#385, batch 2)"
+    "abstract_syntax_tree/parser/parser.spite": "the parser's mistakes decided by syntax (spite_compiler#385, batch 3)"
+    "validators/abstract_syntax_tree/syntax/validator.spite": "syntax deciding what the parser read (spite_compiler#385, batch 3)"
+    "command_line/connect.spite": "the --connect rules in validators/command_line (spite_compiler#385, batch 1)"
+    "command_line/settings.spite": "the handed flags rule in validators/command_line (spite_compiler#385, batch 1)"
+    "validators/command_line/known_flag/validator.spite": "check_the_type_of deciding on the attribute's class (spite_compiler#385, batch 1)"
+    "mapping/pinned_copy.spite": "the git_load rules as checks of the measured facts (spite_compiler#385, batch 1)"
+    "symbols/symbol_table.spite": "the git_load rules as checks of the measured facts (spite_compiler#385, batch 1)"
+    "high_intermediary_representation/building/values.spite": "the values rules in their own folders (spite_compiler#385, batch 4)"
+    "high_intermediary_representation/building/fitting.spite": "the fitting rules in their own folders (spite_compiler#385, batch 4)"
+    "high_intermediary_representation/building/constraints.spite": "the fitting rules in their own folders (spite_compiler#385, batch 4)"
+    "high_intermediary_representation/building/operators.spite": "the operator rules in their own folders (spite_compiler#385, batch 5)"
+    "high_intermediary_representation/building/literals.spite": "the literal rules in their own folders (spite_compiler#385, batch 5)"
+    "high_intermediary_representation/building/endings.spite": "the missing return rule in its own folder (spite_compiler#385, batch 5)"
+    "high_intermediary_representation/building/calls.spite": "the call rules in their own folders (spite_compiler#385, batch 6)"
+    "high_intermediary_representation/building/arguments.spite": "the argument rules in their own folders (spite_compiler#385, batch 6)"
+    "high_intermediary_representation/building/known_calls.spite": "the known call rules in their own folders (spite_compiler#385, batch 6)"
+    "high_intermediary_representation/building/reads.spite": "the read rules in their own folders (spite_compiler#385, batch 7)"
+    "high_intermediary_representation/building/assignments.spite": "the assignment rules in their own folders (spite_compiler#385, batch 7)"
+    "high_intermediary_representation/building/collections.spite": "the collection rules in their own folders (spite_compiler#385, batch 7)"
+    "high_intermediary_representation/building/walked_lists.spite": "the walked list rules in their own folders (spite_compiler#385, batch 7)"
+    "high_intermediary_representation/building/dropping_walks.spite": "the dropping walk rule deciding in its folder (spite_compiler#385, batch 7)"
+    "high_intermediary_representation/building/templates.spite": "the template rules in their own folders (spite_compiler#385, batch 8)"
+    "high_intermediary_representation/building/questions.spite": "the question rules in their own folders (spite_compiler#385, batch 8)"
+    "high_intermediary_representation/building/template_walks.spite": "the template walk rule in its own folder (spite_compiler#385, batch 8)"
+    "high_intermediary_representation/building/foreign_constants.spite": "the foreign header rules deciding in their folder (spite_compiler#385, batch 9)"
+    "high_intermediary_representation/building/statements.spite": "the return rules in their own folder (spite_compiler#385, batch 9)"
+    "proofs/proven_checks/proof.spite": "a proven_check rule of its own instead of typing (spite_compiler#385, batch 10)"
+    "validators/high_intermediary_representation/read_attribute/validator.spite": "check deciding on the site the proof found (spite_compiler#385, batch 10)"
+    "validators/high_intermediary_representation/lost_write/validator.spite": "its checks deciding on the site the proof found (spite_compiler#385, batch 10)"
+    "validators/high_intermediary_representation/present_value/validator.spite": "its checks deciding on the site the proof found (spite_compiler#385, batch 10)"
+    "validators/high_intermediary_representation/kept_narrowing/validator.spite": "its checks deciding on the site the proof found (spite_compiler#385, batch 10)"
+    "validators/high_intermediary_representation/buildable/validator.spite": "a crash named for the fault (spite_compiler#385, batch 11)"
+    "validators/high_intermediary_representation/known_intrinsic/validator.spite": "a crash named for the fault (spite_compiler#385, batch 11)"
+    "validators/high_intermediary_representation/embedded_parts/validator.spite": "a crash named for the fault (spite_compiler#385, batch 11)"
+    "validators/low_intermediary_representation/handed_calls/validator.spite": "a crash named for the fault (spite_compiler#385, batch 11)"
+    "validators/low_intermediary_representation/written_functions/validator.spite": "a crash named for the fault (spite_compiler#385, batch 11)"
 }
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
@@ -66,12 +87,23 @@ func judge(path: String, name: String, text: String) {
     var problems = List<String>()
     var lines = text.split("\n")
     var is_a_rule = path.starts_with("validators/")
-    var may_refuse = is_a_rule or path.starts_with("proofs/")
+    var may_define_refusals = is_a_rule or path.starts_with("proofs/")
     if is_a_rule and name == "validator.spite" and not defines_a_check(lines) {
         problems.append("defines no 'check' or 'check_...', so it only words what its caller decided")
     }
-    if not may_refuse {
+    if is_a_rule {
+        note_the_checks_that_test_nothing(lines, problems)
+        note_the_faults_of_the_compiler(lines, problems)
+    }
+    if not may_define_refusals {
         note_the_refusals(lines, problems)
+    }
+    if not is_a_rule {
+        note_the_refusals_called(lines, problems)
+        note_the_words_handed_to_stop(lines, problems)
+    }
+    if not is_a_rule and not path.starts_with("diagnostics/") {
+        note_the_errors_that_exit(lines, problems)
     }
     var reason = waiting[path]
     if reason and problems.is_empty() {
@@ -105,14 +137,126 @@ func note_the_refusals(lines: List<String>, problems: List<String>) {
     while index < lines.count() {
         var line = lines[index]
         if line.starts_with("func refuse") {
-            var opening = line.index_of("(")
-            crash opening
-            var declared = line.slice(5, opening)
-            crash declared
+            var declared = declared_name(line)
             problems.append("defines '{declared}' outside validators/: hand what it judges to a rule there")
         }
         if line.contains("Diagnostics.Failure()") {
             problems.append("builds a Diagnostics.Failure outside validators/: hand what it judges to a rule there")
+        }
+        index = index + 1
+    }
+}
+
+func declared_name(line: String): String {
+    var opening = line.index_of("(")
+    crash opening
+    var declared = line.slice(5, opening)
+    crash declared
+    return declared
+}
+
+func note_the_refusals_called(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if calls_outside_a_text(line, ".refuse") {
+            var called = line.trim()
+            problems.append("calls a refusal outside validators/, so it decides what a rule should: '{called}'")
+        }
+        index = index + 1
+    }
+}
+
+func note_the_words_handed_to_stop(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if calls_outside_a_text(line, ".stop(") and not line.contains(".stop()") {
+            var called = line.trim()
+            problems.append("hands its own words to a stop outside validators/: '{called}'")
+        }
+        index = index + 1
+    }
+}
+
+func calls_outside_a_text(line: String, called: String): Boolean {
+    var at = line.index_of(called)
+    fallback at
+    var before = line.slice(0, at)
+    crash before
+    return not before.contains("\"")
+}
+
+func note_the_errors_that_exit(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var statement = line.trim()
+        if statement.starts_with("console.error(") and exits_soon_after(lines, index) {
+            problems.append(
+                "prints an error and exits outside validators/ and diagnostics/: hand what it judges to a rule",
+            )
+        }
+        index = index + 1
+    }
+}
+
+func exits_soon_after(lines: List<String>, error_index: Integer): Boolean {
+    var index = error_index + 1
+    while index < lines.count() and index <= error_index + _lines_from_an_error_to_its_exit {
+        var line = lines[index]
+        if line.contains(".exit(") and not line.contains("\"") {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}
+
+func note_the_checks_that_test_nothing(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("func check") and refuses_untested(lines, index) {
+            var declared = declared_name(line)
+            problems.append(
+                "'{declared}' tests nothing before it refuses, so its caller decided: give it the facts to test",
+            )
+        }
+        index = index + 1
+    }
+}
+
+func refuses_untested(lines: List<String>, header_index: Integer): Boolean {
+    var refuses = false
+    var index = header_index + 1
+    while index < lines.count() and lines[index] != "}" {
+        var line = lines[index]
+        var statement = line.trim()
+        fallback not is_a_test(statement)
+        if line.contains("stop") or line.contains("refuse") {
+            refuses = true
+        }
+        index = index + 1
+    }
+    return refuses
+}
+
+func is_a_test(statement: String): Boolean {
+    if statement.starts_with("if ") or statement.starts_with("} else") {
+        return true
+    }
+    return statement.starts_with("fallback ") or statement.starts_with("while ") or statement.starts_with("switch ")
+}
+
+func note_the_faults_of_the_compiler(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains("fault of the compiler") {
+            problems.append(
+                "words a fault of the compiler: no program reaches it, so it is a crash named for the fault",
+            )
         }
         index = index + 1
     }
