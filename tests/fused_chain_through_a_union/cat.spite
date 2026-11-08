@@ -1,0 +1,5 @@
+var calm = true
+
+func Cat(new_calm: Boolean) {
+    calm = new_calm
+}

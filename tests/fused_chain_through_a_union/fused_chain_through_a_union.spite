@@ -1,0 +1,19 @@
+var console = Console()
+var teams = List<Team>()
+
+func FusedChainThroughAUnion() {
+    load "../../../spite_standard_library/windows"
+    var cat = Cat(true)
+    var cat_team = Team(cat)
+    teams.append(cat_team)
+    var dog = Dog(false)
+    var dog_team = Team(dog)
+    teams.append(dog_team)
+    var calm_cat = Cat(true)
+    var calm_cat_team = Team(calm_cat)
+    teams.append(calm_cat_team)
+    var fused = teams.map_mascots().count_calm()
+    var mascots = teams.map_mascots()
+    var stepped = mascots.count_calm()
+    console.print(fused, stepped)
+}

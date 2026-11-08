@@ -1,0 +1,10 @@
+union Mascot {
+    Cat
+    Dog
+}
+
+var mascot: Mascot = Cat(true)
+
+func Team(new_mascot: Mascot) {
+    mascot = new_mascot
+}

@@ -1,0 +1,16 @@
+var console = Console()
+var teams = List<Team>()
+
+func FusedChainEnumValue() {
+    load "../../../spite_standard_library/windows"
+    var first = Team(true, 'red')
+    teams.append(first)
+    var second = Team(true, 'blue')
+    teams.append(second)
+    var third = Team(false, 'red')
+    teams.append(third)
+    var fused = teams.filter_active().count_red()
+    var active = teams.filter_active()
+    var stepped = active.count_red()
+    console.print(fused, stepped)
+}

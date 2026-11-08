@@ -1,0 +1,12 @@
+enum Color {
+    'red'
+    'blue'
+}
+
+var active = true
+var color: Color = 'red'
+
+func Team(new_active: Boolean, new_color: Color) {
+    active = new_active
+    color = new_color
+}

@@ -1,0 +1,5 @@
+var calm = false
+
+func Dog(new_calm: Boolean) {
+    calm = new_calm
+}
