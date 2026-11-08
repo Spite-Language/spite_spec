@@ -1,1 +1,1 @@
-spelling_minus_assign.spite:6: error: Spite has no '-=': write 'count = count - value'
+conformance/spelling_minus_assign/spelling_minus_assign.spite:6: error: Spite has no '-=': write 'count = count - value'

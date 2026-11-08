@@ -1,1 +1,1 @@
-spelling_escape_at_line_end.spite:6: error: this text never closes: a text is written on one line, and a line break inside it is written as a backslash and n
+conformance/spelling_escape_at_line_end/spelling_escape_at_line_end.spite:6: error: this text never closes: a text is written on one line, and a line break inside it is written as a backslash and n

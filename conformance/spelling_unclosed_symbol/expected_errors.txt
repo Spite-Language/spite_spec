@@ -1,1 +1,1 @@
-spelling_unclosed_symbol.spite:6: error: this symbol is never closed: write its closing "'"
+conformance/spelling_unclosed_symbol/spelling_unclosed_symbol.spite:6: error: this symbol is never closed: write its closing "'"

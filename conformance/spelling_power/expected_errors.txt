@@ -1,1 +1,1 @@
-spelling_power.spite:6: error: Spite has no '**': write 'base.power(exponent)'
+conformance/spelling_power/spelling_power.spite:6: error: Spite has no '**': write 'base.power(exponent)'

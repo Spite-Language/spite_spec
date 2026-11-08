@@ -1,1 +1,1 @@
-semicolon_is_refused.spite:5: error: ';' is not something Spite reads: a statement is one line
+conformance/semicolon_is_refused/semicolon_is_refused.spite:5: error: ';' is not something Spite reads: a statement is one line

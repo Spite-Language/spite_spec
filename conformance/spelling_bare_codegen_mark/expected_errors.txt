@@ -1,1 +1,1 @@
-spelling_bare_codegen_mark.spite:6: error: '$' is written before a name, as in '$name': what is replaced at code generation is a hole, never a value
+conformance/spelling_bare_codegen_mark/spelling_bare_codegen_mark.spite:6: error: '$' is written before a name, as in '$name': what is replaced at code generation is a hole, never a value
