@@ -1,0 +1,1 @@
+spelling_arrow.spite:6: error: Spite has no '->': there are no lambdas, so pass a function by name

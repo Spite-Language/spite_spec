@@ -1,0 +1,8 @@
+var console = Console()
+
+func SpellingEscapeAtLineEnd() {
+    load "../../../spite_standard_library/windows"
+    var cost = 3
+    var words = "abc\
+    console.print(cost)
+}

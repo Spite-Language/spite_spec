@@ -1,0 +1,8 @@
+var console = Console()
+
+func SpellingDecrement() {
+    load "../../../spite_standard_library/windows"
+    var cost = 3
+    cost--
+    console.print(cost)
+}

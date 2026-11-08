@@ -1,0 +1,1 @@
+spelling_unknown_mark.spite:6: error: '@' is not something Spite reads: write it in words
