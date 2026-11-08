@@ -22,5 +22,9 @@ func CommentInsideAnEnumTypeOrUnion() {
     var kind: Kind = 'small'
     var shaped: Labeled = {label: "a literal"}
     var shape: Shape = Circle()
-    console.print(kind, shaped.label, shape)
+    console.print(kind, shaped.label)
+    switch shape {
+        Circle: console.print("a circle")
+        Square: console.print("a square")
+    }
 }
