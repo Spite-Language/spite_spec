@@ -1,0 +1,21 @@
+generic $item_type: Debuggable
+
+type Debuggable {
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+var items = List<$item_type>()
+
+func add(item: $item_type) {
+    items.append(item)
+}
+
+func show() {
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        console.debug(item)
+        index = index + 1
+    }
+}

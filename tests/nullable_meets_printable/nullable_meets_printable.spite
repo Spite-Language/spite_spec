@@ -1,0 +1,32 @@
+var console = Console()
+
+func NullableMeetsPrintable() {
+    load "../../../spite_standard_library/windows"
+    var nothing: String? = null
+    var name: String? = "Ada"
+    var names = Shelf<String?>()
+    names.add(nothing)
+    names.add(name)
+    names.show()
+    var no_count: Integer? = null
+    var counts = Shelf<Integer?>()
+    counts.add(no_count)
+    counts.add(3)
+    counts.show()
+    var no_tag: Tag? = null
+    var blue = Tag("blue")
+    var tags = Shelf<Tag?>()
+    tags.add(no_tag)
+    tags.add(blue)
+    tags.show()
+    var debugged = Crate<Tag?>()
+    debugged.add(no_tag)
+    debugged.add(blue)
+    debugged.show()
+    var debugged_names = Crate<String?>()
+    debugged_names.add(nothing)
+    debugged_names.add(name)
+    debugged_names.show()
+    console.print(nothing, no_count, no_tag)
+    console.debug(nothing, no_count, no_tag)
+}

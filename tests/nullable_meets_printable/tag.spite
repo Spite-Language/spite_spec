@@ -1,0 +1,9 @@
+var color = ""
+
+func Tag(starting_color: String) {
+    color = starting_color
+}
+
+func to_string(): String {
+    return "a {color} tag"
+}

@@ -1,0 +1,12 @@
+null
+Ada
+null
+3
+null
+a blue tag
+null
+Tag { color: "blue" }
+null
+"Ada"
+null null null
+null null null
