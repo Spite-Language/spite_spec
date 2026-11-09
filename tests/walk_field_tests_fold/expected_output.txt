@@ -1,0 +1,9 @@
+1 a 1 1
+x is something else
+found x
+numbers is a list of numbers
+words is a list of text
+label is something else
+x holds one value
+numbers holds numbers
+tests left to the run: 0

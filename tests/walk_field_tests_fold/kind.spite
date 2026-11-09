@@ -1,0 +1,11 @@
+generic $kind_type
+
+func name(): String {
+    if $kind_type == List<Integer> {
+        return "numbers"
+    } else if $kind_type == List<String> {
+        return "words"
+    } else {
+        return "one value"
+    }
+}

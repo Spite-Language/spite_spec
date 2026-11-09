@@ -1,0 +1,66 @@
+var console = Console()
+var program = Program()
+var shape = Shape()
+
+func WalkFieldTestsFold() {
+    load "../../../spite_standard_library/windows"
+    shape.numbers.append(3)
+    shape.words.append("w")
+    var number_count = shape.numbers.count()
+    var word_count = shape.words.count()
+    console.print(shape.x, shape.label, number_count, word_count)
+    Shape.attributes.each(describe)
+    shape.attributes.each(show_field)
+    var tests = tests_left_to_the_run()
+    console.print("tests left to the run:", tests)
+}
+
+func describe(attribute: Spite.AttributeDeclaration) {
+    if attribute.class == List<Integer> {
+        console.print(attribute.name, "is a list of numbers")
+    } else if attribute.class == List<String> {
+        console.print(attribute.name, "is a list of text")
+    } else {
+        console.print(attribute.name, "is something else")
+    }
+    if attribute.name == "x" {
+        console.print("found x")
+    }
+}
+
+func show_field(field: Spite.Attribute) {
+    var kind = Kind<field.class>()
+    var kind_name = kind.name()
+    if field.name != "label" and field.class != List<String> {
+        console.print(field.name, "holds", kind_name)
+    }
+}
+
+func tests_left_to_the_run(): Integer {
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var inside = false
+    var found = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.contains(".describe_over_") or line.contains(".show_field_over_") or line.contains("Kind_of_")
+        }
+        var parts = line.split(" | ")
+        var statement = parts[0]
+        crash statement
+        var trimmed = statement.trim()
+        if inside and trimmed.starts_with("if ") {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
