@@ -1,0 +1,35 @@
+var console = Console()
+var build = Build()
+var program = Program()
+var reload = Reload()
+var environment = Environment()
+var _most_waits = 600
+
+func HotReloadReadsTheSettingsAgain() {
+    load "../../../spite_standard_library/windows"
+    var fifty_milliseconds = Duration(50, 'milliseconds')
+    var first = environment.greeting
+    console.print(first, environment.volume)
+    write_environment("goodbye", 9)
+    var waited = 0
+    var now = environment.greeting
+    while now == first and waited < _most_waits {
+        program.sleep(fifty_milliseconds)
+        now = environment.greeting
+        waited = waited + 1
+    }
+    console.print(now, environment.volume)
+    var generation = reload.generation()
+    console.print("generation {generation}")
+}
+
+func write_environment(word: String, volume: Integer) {
+    var file_path: Path? = "{build.program}/environment.spite"
+    crash file_path
+    var file = File(file_path)
+    var text = "var greeting = \"{word}\"\nvar volume = {volume}\n"
+    var written = file.write_string(text)
+    if not written {
+        console.print("environment.spite could not be written")
+    }
+}

@@ -1,0 +1,2 @@
+var greeting = "hello"
+var volume = 3
