@@ -2,9 +2,6 @@ union Pet = {
     Cat
 }
 
-class Cat {
-}
-
 var console = Console()
 
 func UnionDeclaredWithEquals() {
