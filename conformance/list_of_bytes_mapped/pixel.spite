@@ -1,0 +1,5 @@
+var red: Byte = 0
+
+func Pixel(starting_red: Byte) {
+    red = starting_red
+}

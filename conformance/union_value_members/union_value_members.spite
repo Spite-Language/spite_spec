@@ -1,6 +1,6 @@
 union Message {
     String
-    List<Byte>
+    List<Integer>
     Integer
 }
 

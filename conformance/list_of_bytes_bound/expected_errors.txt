@@ -1,0 +1,1 @@
+conformance/list_of_bytes_bound/list_of_bytes_bound.spite:6: error: 'Box<Byte>' binds '$held_type' to Byte, so its List<$held_type> would be a List<Byte>, and there is no List<Byte>: bytes are a Buffer, the one class that holds them and reads the numbers in them: keep the bytes in a 'Buffer(0)' instead (in ListOfBytesBound.ListOfBytesBound)

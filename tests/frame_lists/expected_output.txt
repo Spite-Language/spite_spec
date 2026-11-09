@@ -1,5 +1,5 @@
 largest 24
-3 200 5000000003
+3 -100 5000000003
 passed 6
 grown 3
 counted 4

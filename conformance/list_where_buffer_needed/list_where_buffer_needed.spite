@@ -2,8 +2,8 @@ var console = Console()
 
 func ListWhereBufferNeeded() {
     load "../../../spite_standard_library/windows"
-    var bytes = List<Byte>()
-    var size = measured(bytes)
+    var numbers = List<Integer>()
+    var size = measured(numbers)
     console.print(size)
 }
 

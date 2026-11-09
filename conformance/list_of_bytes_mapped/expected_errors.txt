@@ -1,0 +1,1 @@
+conformance/list_of_bytes_mapped/list_of_bytes_mapped.spite:9: error: 'map_reds' would answer a List<Byte>, and there is no List<Byte>: bytes are a Buffer, the one class that holds them and reads the numbers in them: walk the list and append each byte to a 'Buffer(0)' (in ListOfBytesMapped.ListOfBytesMapped)

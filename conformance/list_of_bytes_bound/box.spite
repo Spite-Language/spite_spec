@@ -1,0 +1,11 @@
+generic $held_type
+
+var items = List<$held_type>()
+
+func add(item: $held_type) {
+    items.append(item)
+}
+
+func size(): Integer {
+    return items.count()
+}

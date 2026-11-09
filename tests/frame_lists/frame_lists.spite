@@ -1,5 +1,5 @@
 var console = Console()
-var _large_byte: Byte = 200
+var _negative_tiny: Tiny = -100
 var _beyond_integer: Long = 5000000000
 
 func FrameLists() {
@@ -12,14 +12,14 @@ func FrameLists() {
         round = round + 1
     }
     console.print("largest", total)
-    var bytes: List<Byte> = [7, _large_byte, 13]
+    var tinies: List<Tiny> = [7, _negative_tiny, 13]
     var big: List<Long> = [_beyond_integer, 2, 3]
-    var byte_count = bytes.count()
-    crash bytes[1]
+    var tiny_count = tinies.count()
+    crash tinies[1]
     crash big[0]
     crash big[2]
     var sum = big[0] + big[2]
-    console.print(byte_count, bytes[1], sum)
+    console.print(tiny_count, tinies[1], sum)
     var passed = [1, 2, 3]
     var summed = sum_of(passed)
     console.print("passed", summed)

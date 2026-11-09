@@ -1,0 +1,10 @@
+var console = Console()
+var _first_byte: Byte = 7
+
+func ListOfBytesBound() {
+    load "../../../spite_standard_library/windows"
+    var box = Box<Byte>()
+    box.add(_first_byte)
+    var count = box.size()
+    console.print(count)
+}
