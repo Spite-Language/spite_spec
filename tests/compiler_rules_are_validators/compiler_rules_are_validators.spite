@@ -2,10 +2,23 @@ var console = Console()
 var root = "../spite_compiler"
 var broken = 0
 var _lines_from_an_error_to_its_exit = 3
-var waiting = {
-    "abstract_syntax_tree/parser/parser.spite": "the parser's mistakes decided by syntax (spite_compiler#385, batch 3)"
-    "validators/abstract_syntax_tree/syntax/validator.spite": "syntax deciding what the parser read (spite_compiler#385, batch 3)"
-}
+var printer_validator = [
+    "enum Mistake \{"
+    "    'unclosed_brace'"
+    "}"
+    ""
+    "func check(path: String, line: Integer, mistake: Mistake) \{"
+    "    if mistake == 'unclosed_brace' \{"
+    "        refuse(path, line, \"this brace is never closed\")"
+    "    }"
+    "}"
+]
+var printer_caller = [
+    "func read_a_brace(line: Integer) \{"
+    "    var rule = Validators.AbstractSyntaxTree.Printer.Validator()"
+    "    rule.check(path, line, 'unclosed_brace')"
+    "}"
+]
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
 func CompilerRulesAreValidators() {
@@ -17,6 +30,28 @@ func CompilerRulesAreValidators() {
     if broken == 0 {
         console.print("every check of the compiler is a rule of validators/")
     }
+    refuse_the_printer_samples()
+}
+
+# ../../../spite_compiler/AGENTS.md#rules
+func refuse_the_printer_samples() {
+    var validator_text = printer_validator.join("\n")
+    var caller_text = printer_caller.join("\n")
+    var validator_path = "validators/abstract_syntax_tree/printer/validator.spite"
+    var caller_path = "abstract_syntax_tree/printer.spite"
+    var validator_problems = problems_of(validator_path, "validator.spite", validator_text)
+    var caller_problems = problems_of(caller_path, "printer.spite", caller_text)
+    if validator_problems.count() == 2 and caller_problems.count() == 1 {
+        console.print("a validator handed the kind of its mistake is refused, and so is its caller")
+        return
+    }
+    console.print("the printer samples were not refused as they should be:")
+    validator_problems.each(print_a_sample_problem)
+    caller_problems.each(print_a_sample_problem)
+}
+
+func print_a_sample_problem(problem: String) {
+    console.print("    {problem}")
 }
 
 func read_a_folder(folder: Directory, relative: String) {
@@ -48,6 +83,17 @@ func read_a_file(file: File, relative: String) {
 }
 
 func judge(path: String, name: String, text: String) {
+    var problems = problems_of(path, name, text)
+    var index = 0
+    while index < problems.count() {
+        var problem = problems[index]
+        broken = broken + 1
+        console.print("{path} {problem}")
+        index = index + 1
+    }
+}
+
+func problems_of(path: String, name: String, text: String): List<String> {
     var problems = List<String>()
     var lines = text.split("\n")
     var is_a_rule = path.starts_with("validators/")
@@ -58,6 +104,7 @@ func judge(path: String, name: String, text: String) {
     if is_a_rule {
         note_the_checks_that_test_nothing(lines, problems)
         note_the_faults_of_the_compiler(lines, problems)
+        note_the_kinds_handed_in(lines, problems)
     }
     if not may_define_refusals {
         note_the_refusals(lines, problems)
@@ -65,23 +112,12 @@ func judge(path: String, name: String, text: String) {
     if not is_a_rule {
         note_the_refusals_called(lines, problems)
         note_the_words_handed_to_stop(lines, problems)
+        note_the_kinds_handed_out(lines, problems)
     }
     if not is_a_rule and not path.starts_with("diagnostics/") {
         note_the_errors_that_exit(lines, problems)
     }
-    var reason = waiting[path]
-    if reason and problems.is_empty() {
-        broken = broken + 1
-        console.print("{path} waits for {reason} on the list, but it breaks no rule now: take it off the list")
-    }
-    fallback not reason
-    var index = 0
-    while index < problems.count() {
-        var problem = problems[index]
-        broken = broken + 1
-        console.print("{path} {problem}")
-        index = index + 1
-    }
+    return problems
 }
 
 func defines_a_check(lines: List<String>): Boolean {
@@ -224,4 +260,112 @@ func note_the_faults_of_the_compiler(lines: List<String>, problems: List<String>
         }
         index = index + 1
     }
+}
+
+# ../../../spite_compiler/AGENTS.md#rules
+func note_the_kinds_handed_in(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("enum Mistake") {
+            problems.append("lists the kinds of mistake its callers pick from, so a caller decides and it only prints")
+        }
+        var is_an_entry = line.starts_with("func check") or line.starts_with("func refuse")
+        if is_an_entry and takes_a_mistake(lines, index) {
+            var declared = declared_name(line)
+            problems.append(
+                "'{declared}' is handed the kind of its mistake, so its caller decided: hand it what was written",
+            )
+        }
+        index = index + 1
+    }
+}
+
+func takes_a_mistake(lines: List<String>, header_index: Integer): Boolean {
+    var index = header_index
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains("Mistake") or line.contains("mistake:") {
+            return true
+        }
+        fallback not line.ends_with("\{")
+        index = index + 1
+    }
+    return false
+}
+
+# ../../../spite_compiler/AGENTS.md#rules
+func note_the_kinds_handed_out(lines: List<String>, problems: List<String>) {
+    var rules = List<String>()
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var statement = line.trim()
+        var bound = rule_bound_by(statement)
+        if not bound.is_empty() {
+            rules.append(bound)
+        }
+        var called = rule_called_by(statement, rules)
+        if not called.is_empty() and hands_a_kind(lines, index, called) {
+            problems.append(
+                "names the kind of mistake for the rule '{called}': hand it what was written and let it decide",
+            )
+        }
+        index = index + 1
+    }
+}
+
+func rule_bound_by(statement: String): String {
+    fallback statement.starts_with("var ") and statement.ends_with(".Validator()")
+    fallback statement.contains(" = Validators.")
+    var equals = statement.index_of(" = ")
+    crash equals
+    var bound = statement.slice(4, equals)
+    crash bound
+    return bound
+}
+
+func rule_called_by(statement: String, rules: List<String>): String {
+    var index = 0
+    while index < rules.count() {
+        var rule = rules[index]
+        if statement.starts_with("{rule}.check") or statement.contains(" {rule}.check") {
+            return rule
+        }
+        index = index + 1
+    }
+    return ""
+}
+
+func hands_a_kind(lines: List<String>, call_index: Integer, rule: String): Boolean {
+    var line = lines[call_index]
+    crash line
+    var at = line.index_of("{rule}.check")
+    crash at
+    var length = line.length()
+    var arguments = line.slice(at, length)
+    crash arguments
+    if names_a_symbol(arguments) {
+        return true
+    }
+    fallback arguments.ends_with("(")
+    var index = call_index + 1
+    while index < lines.count() {
+        var following = lines[index]
+        var argument = following.trim()
+        fallback not argument.starts_with(")")
+        if argument.starts_with("'") {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}
+
+func names_a_symbol(arguments: String): Boolean {
+    var quote = arguments.index_of("'")
+    fallback quote
+    var before = arguments.slice(0, quote)
+    crash before
+    return not before.contains("\"")
 }
