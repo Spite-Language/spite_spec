@@ -1,0 +1,50 @@
+var console = Console()
+var program = Program()
+
+func ReflectionDictionaryNameReads() {
+    load "../../../spite_standard_library/windows"
+    var spun = Gear.Axle.functions["spun"]
+    var turns = Gear.Axle.attributes["turns"]
+    if spun and turns {
+        console.print(spun.name, turns.name)
+    }
+    var read = reads_in("ReflectionDictionaryNameReads.ReflectionDictionaryNameReads")
+    console.print("reads for present names:", read)
+    look_for_a_missing_function()
+    var absent_reads = reads_in("ReflectionDictionaryNameReads.look_for_a_missing_function")
+    console.print("reads for an absent name:", absent_reads)
+}
+
+func look_for_a_missing_function() {
+    if not Gear.Axle.functions["rolled"] {
+        console.print("no rolled")
+    }
+}
+
+func reads_in(function_key: String): Integer {
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var inside = false
+    var read = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with("function {function_key}(")
+        }
+        if inside and line.contains("get_functions(") {
+            read = read + 1
+        }
+        if inside and line.contains("get_attributes(") {
+            read = read + 1
+        }
+        index = index + 1
+    }
+    return read
+}

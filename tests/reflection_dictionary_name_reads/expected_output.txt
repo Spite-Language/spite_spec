@@ -1,0 +1,4 @@
+spun turns
+reads for present names: 2
+no rolled
+reads for an absent name: 0
