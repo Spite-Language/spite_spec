@@ -1,0 +1,7 @@
+var part = Part(7)
+var reader = Reader(part)
+
+func Holder(given: Part) {
+    reader = Reader(given)
+    part = given
+}
