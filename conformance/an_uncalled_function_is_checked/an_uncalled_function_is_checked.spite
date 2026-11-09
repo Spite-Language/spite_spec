@@ -1,0 +1,10 @@
+var console = Console()
+
+func AnUncalledFunctionIsChecked() {
+    load "../../../spite_standard_library/windows"
+    console.print("built")
+}
+
+func never_called(): Integer {
+    return missing_function(2)
+}

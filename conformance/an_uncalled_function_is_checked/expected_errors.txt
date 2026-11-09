@@ -1,0 +1,1 @@
+conformance/an_uncalled_function_is_checked/an_uncalled_function_is_checked.spite:9: error: this class has no function 'missing_function' (in AnUncalledFunctionIsChecked.never_called)
