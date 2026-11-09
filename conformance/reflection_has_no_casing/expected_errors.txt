@@ -1,0 +1,1 @@
+conformance/reflection_has_no_casing/reflection_has_no_casing.spite:11: error: a Spite.AttributeDeclaration has no attribute or function 'pascal_case_name' (in ReflectionHasNoCasing.show)
