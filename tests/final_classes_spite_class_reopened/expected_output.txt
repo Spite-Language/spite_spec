@@ -1,2 +1,2 @@
-Gadget is singleton: true 3
+Gadget is a gadget: true 3
 the function printed in Spite.Class comes from the library: false

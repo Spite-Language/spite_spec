@@ -1,0 +1,1 @@
+conformance/reflection_reopened_function/spite/class.spite:1: error: 'get_is_singleton' is a reflection function of Spite.Class, and reflection functions cannot be replaced: a reopening may add functions of its own, so give this one a name the reflection class does not have (in Spite.Class.get_is_singleton)

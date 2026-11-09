@@ -6,7 +6,8 @@ func FinalClassesSpiteClassReopened() {
     load "../../../spite_standard_library/windows"
     var gadget = Gadget()
     var gadget_class = gadget.class
-    console.print("Gadget is singleton:", gadget_class.is_singleton, gadget.size)
+    var is_a_gadget = gadget_class.is_a_gadget()
+    console.print("Gadget is a gadget:", is_a_gadget, gadget.size)
     var printed_path: Path? = "{build.program}/.spite/final_spite_class/spite/class.spite"
     crash printed_path
     var printed = File(printed_path)
@@ -16,7 +17,7 @@ func FinalClassesSpiteClassReopened() {
     var index = 0
     while index < lines.count() {
         var line = lines[index]
-        if line.starts_with("func get_is_singleton") {
+        if line.starts_with("func is_a_gadget") {
             var comment = lines[index - 1]
             crash comment
             var from_library = comment.contains("spite_standard_library")

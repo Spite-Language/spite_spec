@@ -1,0 +1,9 @@
+var console = Console()
+
+func SpiteClassReopeningDeclaresIsSingleton() {
+    load "../../../spite_standard_library/windows"
+    var gadget = Gadget()
+    var gadget_class = gadget.class
+    var answered = gadget_class.is_singleton
+    console.print("Gadget answers", answered, gadget.size)
+}

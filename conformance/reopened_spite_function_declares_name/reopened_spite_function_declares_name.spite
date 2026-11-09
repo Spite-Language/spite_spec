@@ -1,0 +1,10 @@
+var console = Console()
+
+func ReopenedSpiteFunctionDeclaresName() {
+    load "../../../spite_standard_library/windows"
+    var greeter = Greeter()
+    var said = greeter.greet()
+    var found = greeter.functions["greet"]
+    crash found
+    console.print(said, found.name)
+}

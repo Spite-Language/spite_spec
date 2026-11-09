@@ -1,0 +1,1 @@
+conformance/reopened_spite_function_declares_name/spite/function.spite:1: error: 'name' is a reflection function of Spite.Function, and reflection functions cannot be replaced: a reopening may add functions of its own, so give this one a name the reflection class does not have (in Spite.Function.name)
