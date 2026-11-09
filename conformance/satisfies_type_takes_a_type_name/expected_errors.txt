@@ -1,0 +1,1 @@
+conformance/satisfies_type_takes_a_type_name/satisfies_type_takes_a_type_name.spite:6: error: 'Integer.satisfies_type(wanted)' is answered while compiling, so it takes the name of a type, a union or a class written in the code, like 'Integer.satisfies_type(Number)', and 'wanted' is not one (in SatisfiesTypeTakesATypeName.SatisfiesTypeTakesATypeName)

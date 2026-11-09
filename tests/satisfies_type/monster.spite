@@ -1,0 +1,4 @@
+var name = "troll"
+var health = 10
+var speed = 2.5
+var hungry = true

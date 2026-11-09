@@ -1,0 +1,8 @@
+var console = Console()
+
+func SatisfiesTypeTakesATypeName() {
+    load "../../../spite_standard_library/windows"
+    var wanted = "Number"
+    var answer = Integer.satisfies_type(wanted)
+    console.print(answer)
+}

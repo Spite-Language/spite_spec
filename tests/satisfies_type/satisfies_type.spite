@@ -1,0 +1,85 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+var program = Program()
+
+func SatisfiesType() {
+    load "../../../spite_standard_library/windows"
+    var integer_is_a_number = Integer.satisfies_type(Number)
+    var byte_is_a_number = Byte.satisfies_type(Number)
+    var double_is_a_number = Double.satisfies_type(Number)
+    var text_is_a_number = String.satisfies_type(Number)
+    var truth_is_a_number = Boolean.satisfies_type(Number)
+    var monster_is_a_number = Monster.satisfies_type(Number)
+    console.print("numbers:", integer_is_a_number, byte_is_a_number, double_is_a_number)
+    console.print("not numbers:", text_is_a_number, truth_is_a_number, monster_is_a_number)
+    var monster_is_named = Monster.satisfies_type(Named)
+    var cat_is_named = Cat.satisfies_type(Named)
+    console.print("named:", monster_is_named, cat_is_named)
+    var cat_is_a_pet = Cat.satisfies_type(Pet)
+    var monster_is_a_pet = Monster.satisfies_type(Pet)
+    console.print("pets:", cat_is_a_pet, monster_is_a_pet)
+    var monster_is_itself = Monster.satisfies_type(Monster)
+    var cat_is_a_monster = Cat.satisfies_type(Monster)
+    var cat_is_anything = Cat.satisfies_type(Anything)
+    console.print("classes:", monster_is_itself, cat_is_a_monster, cat_is_anything)
+    Monster.attributes.each(describe)
+    var monster = Monster()
+    monster.health = 12
+    monster.attributes.each(grow)
+    console.print(monster.name, monster.health, monster.speed, monster.hungry)
+    var left = calls_left_to_the_run()
+    console.print("satisfies_type calls left to the run:", left)
+}
+
+func describe(attribute: Spite.AttributeDeclaration) {
+    if attribute.class.satisfies_type(Number) {
+        console.print(attribute.name, "is a number")
+    } else {
+        console.print(attribute.name, "is not a number")
+    }
+}
+
+func grow(attribute: Spite.Attribute) {
+    if attribute.class.satisfies_type(Number) {
+        attribute.value = attribute.value * 2
+    }
+}
+
+func calls_left_to_the_run(): Integer {
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var asked = "satisfies_type"
+    var called = ".{asked}("
+    var inside = false
+    var found = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.contains(".describe_over_") or line.contains(".grow_over_")
+        }
+        var parts = line.split(" | ")
+        var statement = parts[0]
+        crash statement
+        var trimmed = statement.trim()
+        if line.contains(called) or inside and trimmed.starts_with("if ") {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}

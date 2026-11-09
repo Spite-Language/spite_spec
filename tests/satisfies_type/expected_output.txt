@@ -1,0 +1,11 @@
+numbers: true true true
+not numbers: false false false
+named: true false
+pets: true false
+classes: true false true
+name is not a number
+health is a number
+speed is a number
+hungry is not a number
+troll 24 5 true
+satisfies_type calls left to the run: 0
