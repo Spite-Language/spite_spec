@@ -1,0 +1,8 @@
+var early: Integer = hundred * 3
+var grown: Integer = size + 1
+var hundred = 100
+var size = 7
+
+func grow() {
+    size = size + 1
+}

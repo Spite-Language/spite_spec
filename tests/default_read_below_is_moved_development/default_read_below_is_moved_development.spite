@@ -1,0 +1,14 @@
+var console = Console()
+var early: Integer = _hundred * 3
+var through_a_function: Integer = doubled()
+var _hundred = 100
+var _ten = 10
+
+func DefaultReadBelowIsMovedDevelopment() {
+    load "../../../spite_standard_library/windows"
+    console.print(early, through_a_function)
+}
+
+func doubled(): Integer {
+    return _ten * 2
+}

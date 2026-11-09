@@ -1,0 +1,9 @@
+var console = Console()
+
+func DefaultReadsAReopenedAttribute() {
+    load "../../../spite_standard_library/windows"
+    load "package"
+    load "mod"
+    var gear = Gears.Gear()
+    console.print(gear.total, gear.extra)
+}
