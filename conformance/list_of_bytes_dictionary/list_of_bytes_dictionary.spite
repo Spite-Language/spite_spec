@@ -5,6 +5,7 @@ func ListOfBytesDictionary() {
     load "../../../spite_standard_library/windows"
     var names = Dictionary<Byte, String>()
     names[_first_byte] = "seven"
-    var count = names.count()
+    var keys = names.keys()
+    var count = keys.count()
     console.print(count)
 }
