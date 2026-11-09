@@ -1,1 +1,2 @@
 conformance/type_mistakes/type_mistakes.spite:8: error: a String cannot be used where a Pet is needed: a value is cast to the class a place wants through that class's conversion, and Pet declares no 'Pet(from: String)' (in TypeMistakes.TypeMistakes)
+conformance/type_mistakes/type_mistakes.spite:22: error: a String cannot be used where a Pet is needed: a value is cast to the class a place wants through that class's conversion, and Pet declares no 'Pet(from: String)' (in TypeMistakes.give_back)
