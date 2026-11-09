@@ -1,0 +1,12 @@
+var console = Console()
+
+func SeveralSpellingMistakesAreListedTogether() {
+    load "../../../spite_standard_library/windows"
+    var count = 0
+    count++
+    var flags = 3 & 1
+    /* it's
+    a block */
+    var big = 1e5
+    console.print(count)
+}

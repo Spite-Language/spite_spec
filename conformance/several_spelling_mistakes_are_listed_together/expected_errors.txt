@@ -1,0 +1,4 @@
+conformance/several_spelling_mistakes_are_listed_together/several_spelling_mistakes_are_listed_together.spite:6: error: Spite has no '++': write 'count = count + 1'
+conformance/several_spelling_mistakes_are_listed_together/several_spelling_mistakes_are_listed_together.spite:7: error: Spite has no '&': bits are functions on the whole numbers, 'bits_and(mask)', and 'and' joins conditions
+conformance/several_spelling_mistakes_are_listed_together/several_spelling_mistakes_are_listed_together.spite:8: error: Spite has no '/* */': a comment is one line starting with '#' and holding a link to a heading
+conformance/several_spelling_mistakes_are_listed_together/several_spelling_mistakes_are_listed_together.spite:10: error: Spite writes no exponent in a number: write '1e5' as 100_000, its digits in full, separated by '_' where that helps reading, as in 1_000_000

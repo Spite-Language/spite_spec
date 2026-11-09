@@ -10,7 +10,8 @@ stated by the program that fails when it breaks, not by prose.
 
 - **A behaviour** (what a program prints, answers or halts with) is a `tests/<name>` program.
 - **A refusal** (a program the compiler must reject) is a `conformance/<name>` program, with the exact words of
-  its error in `expected_errors.txt`. One fault per program, since a compile reports its first error.
+  its error in `expected_errors.txt`. One fault per program, so its words are the rule's; a program about how several
+  mistakes are listed together (`several_syntax_mistakes_are_listed_together`) holds several on purpose.
 - **How to write Spite**, the rules and limits a person needs and what an error means, is taught by
   [spite_documentation](https://github.com/Spite-Language/spite_documentation/blob/master/README.md), one page per
   part of the language; its titled code blocks run as tests too.
