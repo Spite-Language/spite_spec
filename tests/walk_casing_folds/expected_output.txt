@@ -1,0 +1,6 @@
+buyPrice BuyPrice 30
+sellPriceEach SellPriceEach 7.5
+buy_price BuyPrice
+sell_price_each SellPriceEach
+a walk calls camel_case false pascal_case false snake_case false
+a walk holds the cased names true true true

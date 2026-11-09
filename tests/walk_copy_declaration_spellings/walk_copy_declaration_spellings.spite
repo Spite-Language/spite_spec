@@ -7,9 +7,10 @@ func WalkCopyDeclarationSpellings() {
 }
 
 func describe(attribute: Spite.Attribute) {
+    var pascal = attribute.declaration.name.pascal_case()
     console.print(
         attribute.declaration.name,
-        attribute.declaration.pascal_case_name,
+        pascal,
         attribute.declaration.class,
         attribute.value,
     )

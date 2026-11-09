@@ -43,7 +43,7 @@ func bump(attribute: Spite.Attribute) {
 }
 
 func add_line(attribute: Spite.Attribute) {
-    lines.append("{attribute.pascal_case_name}: {attribute.value}")
+    lines.append("{attribute.name.pascal_case()}: {attribute.value}")
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {

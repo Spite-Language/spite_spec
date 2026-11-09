@@ -6,5 +6,5 @@ func AttributeTextForms() {
 }
 
 func describe(attribute: Spite.AttributeDeclaration) {
-    console.print("{attribute.class} {attribute.pascal_case_name}")
+    console.print("{attribute.class} {attribute.name.pascal_case()}")
 }
