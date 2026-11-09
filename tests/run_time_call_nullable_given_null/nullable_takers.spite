@@ -1,0 +1,29 @@
+var console = Console()
+
+func NullableTakers() {
+    console.print("made")
+}
+
+func take_count(count: Integer?) {
+    if count {
+        console.print("count", count)
+    } else {
+        console.print("no count")
+    }
+}
+
+func take_badge(badge: Badge?) {
+    if badge {
+        console.print("badge", badge.label)
+    } else {
+        console.print("no badge")
+    }
+}
+
+func take_word(word: String?) {
+    if word {
+        console.print("word", word)
+    } else {
+        console.print("no word")
+    }
+}

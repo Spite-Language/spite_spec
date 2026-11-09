@@ -1,0 +1,7 @@
+made
+no count
+count 3
+no badge
+badge gold
+no word
+word hello

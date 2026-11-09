@@ -1,0 +1,41 @@
+func RunTimeCallNullableGivenNull() {
+    load "../../../spite_standard_library/windows"
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var found = classes[index]
+        if found.name.ends_with("Takers") {
+            run_takers(found)
+        }
+        index = index + 1
+    }
+}
+
+func run_takers(found: Spite.Class) {
+    var instance = found()
+    var counting = found.functions["take_count"]
+    crash counting
+    var no_count = Spite.Call(counting, instance)
+    no_count.arguments["count"] = null
+    no_count.call()
+    var some_count = Spite.Call(counting, instance)
+    some_count.arguments["count"] = 3
+    some_count.call()
+    var badging = found.functions["take_badge"]
+    crash badging
+    var no_badge = Spite.Call(badging, instance)
+    no_badge.arguments["badge"] = null
+    no_badge.call()
+    var badge = Badge()
+    var some_badge = Spite.Call(badging, instance)
+    some_badge.arguments["badge"] = badge
+    some_badge.call()
+    var naming = found.functions["take_word"]
+    crash naming
+    var no_word = Spite.Call(naming, instance)
+    no_word.arguments["word"] = null
+    no_word.call()
+    var some_word = Spite.Call(naming, instance)
+    some_word.arguments["word"] = "hello"
+    some_word.call()
+}

@@ -1,0 +1,4 @@
+start
+made
+took 3
+spite: call() gives 'PlainCounters.take_count' an argument 'count' that is not an Integer, the type it takes

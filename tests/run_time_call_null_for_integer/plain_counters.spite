@@ -1,0 +1,9 @@
+var console = Console()
+
+func PlainCounters() {
+    console.print("made")
+}
+
+func take_count(count: Integer) {
+    console.print("took", count)
+}

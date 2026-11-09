@@ -1,0 +1,27 @@
+var console = Console()
+
+func RunTimeCallNullForInteger() {
+    load "../../../spite_standard_library/windows"
+    console.print("start")
+    var classes = Spite.Class.instances
+    var index = 0
+    while index < classes.count() {
+        var found = classes[index]
+        if found.name.ends_with("Counters") {
+            run_counters(found)
+        }
+        index = index + 1
+    }
+}
+
+func run_counters(found: Spite.Class) {
+    var instance = found()
+    var declaration = found.functions["take_count"]
+    crash declaration
+    var right = Spite.Call(declaration, instance)
+    right.arguments["count"] = 3
+    right.call()
+    var wrong = Spite.Call(declaration, instance)
+    wrong.arguments["count"] = null
+    wrong.call()
+}
