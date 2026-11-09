@@ -8,6 +8,7 @@ var _hundred = 100
 func RangeAttributeCountDivision() {
     load "../../../spite_standard_library/windows"
     many.append(3)
+    attribute_total = 0
     var first = read_attribute(5)
     var second = read_count(4)
     var third = read_length("hello")

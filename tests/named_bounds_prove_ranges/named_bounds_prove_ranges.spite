@@ -1,0 +1,53 @@
+var console = Console()
+var build = Build()
+var _hundred = 100
+var _thousand = 1000
+var limit = 1000
+var _too_big = 3000000
+
+func NamedBoundsProveRanges() {
+    load "../../../spite_standard_library/windows"
+    var small = 50
+    var clamped = under_a_named_minimum(small)
+    var guarded = after_a_named_fallback(small)
+    var kept = after_a_written_bound(small)
+    console.print(clamped, guarded, kept)
+    print_report()
+    limit = _too_big
+    var halted = after_a_written_bound(_too_big - 1)
+    console.print("never printed", halted)
+}
+
+func under_a_named_minimum(amount: Integer): Integer {
+    var floor = amount.maximum(0)
+    var bounded = floor.minimum(_hundred)
+    return bounded * 1000
+}
+
+func after_a_named_fallback(amount: Integer): Integer? {
+    fallback amount < _thousand
+    fallback amount > 0
+    return amount * 1000
+}
+
+func after_a_written_bound(amount: Integer): Integer? {
+    fallback amount < limit
+    fallback amount > 0
+    return amount * 1000
+}
+
+func print_report() {
+    var report_path: Path? = "{build.program}/.spite/reports/named_bounds_prove_ranges.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains("keeps its overflow check") and line.contains("named_bounds_prove_ranges.spite") {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}
