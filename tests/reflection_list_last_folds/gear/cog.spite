@@ -1,0 +1,5 @@
+var teeth = 3
+
+func counted(): Integer {
+    return teeth
+}

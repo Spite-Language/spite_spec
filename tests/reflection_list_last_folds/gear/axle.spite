@@ -1,0 +1,5 @@
+var turns = 1
+
+func spun(): Integer {
+    return turns
+}

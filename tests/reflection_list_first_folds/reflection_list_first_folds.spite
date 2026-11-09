@@ -1,0 +1,42 @@
+var console = Console()
+var program = Program()
+
+func ReflectionListFirstFolds() {
+    load "../../../spite_standard_library/windows"
+    var part = Gear.classes.first()
+    var below = Gear.namespaces.first()
+    console.print(part.name, below.name)
+    var parts = Gear.classes
+    var kept = parts.first()
+    console.print(kept.name_with_namespaces)
+    var built = lists_built_in("ReflectionListFirstFolds.ReflectionListFirstFolds")
+    console.print("lists built:", built)
+}
+
+func lists_built_in(function_key: String): Integer {
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var inside = false
+    var built = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with("function {function_key}(")
+        }
+        if inside and line.contains("get_classes(") {
+            built = built + 1
+        }
+        if inside and line.contains("get_namespaces(") {
+            built = built + 1
+        }
+        index = index + 1
+    }
+    return built
+}
