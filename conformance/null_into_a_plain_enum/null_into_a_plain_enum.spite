@@ -1,0 +1,19 @@
+enum Mood {
+    'calm'
+    'angry'
+}
+
+var console = Console()
+var mood: Mood = 'calm'
+
+func NullIntoAPlainEnum() {
+    load "../../../spite_standard_library/windows"
+    mood = null
+    console.print(mood)
+    var next = calmed()
+    console.print(next)
+}
+
+func calmed(): Mood {
+    return null
+}

@@ -1,0 +1,16 @@
+var console = Console()
+
+func NullIntoAPlainString() {
+    load "../../../spite_standard_library/windows"
+    var held = "kept"
+    held = null
+    console.print(held)
+    keep()
+}
+
+func keep() {
+    var names = List<String>()
+    names.append(null)
+    var count = names.count()
+    console.print(count)
+}

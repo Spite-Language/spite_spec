@@ -1,0 +1,32 @@
+type Sized {
+    size: Integer
+}
+
+var console = Console()
+
+func NullIntoAPlainTypeOfAttributes() {
+    load "../../../spite_standard_library/windows"
+    var found = largest()
+    console.print(found.size)
+    weigh()
+    measure_nothing()
+}
+
+func largest(): Sized {
+    return null
+}
+
+func weigh() {
+    var sizes = List<Sized>()
+    sizes.append(null)
+    var count = sizes.count()
+    console.print(count)
+}
+
+func measure_nothing() {
+    measure(null)
+}
+
+func measure(sized: Sized) {
+    console.print(sized.size)
+}

@@ -1,0 +1,12 @@
+type Placed {
+    position: Position
+}
+
+var world = World()
+var runner = Runner<Placed>()
+
+func NullIntoAWalkedRow() {
+    load "../../../spite_standard_library/windows"
+    world.spawn(1.0)
+    runner.run()
+}

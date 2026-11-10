@@ -1,0 +1,19 @@
+generic $row_type
+
+var console = Console()
+var world = World()
+
+func run() {
+    var index = 0
+    while index < world.size() {
+        var row: $row_type = null
+        fill_attributes(row, index)
+        console.print(row.position.left)
+        index = index + 1
+    }
+}
+
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, index: Integer) {
+    crash world.attributes[attribute][index]
+    row.attributes[attribute] = world.attributes[attribute][index]
+}

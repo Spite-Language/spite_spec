@@ -1,0 +1,14 @@
+var console = Console()
+
+func NullIntoAPlainClass() {
+    load "../../../spite_standard_library/windows"
+    var box = opened()
+    console.print(box.content)
+    var other = Box()
+    other = null
+    console.print(other.content)
+}
+
+func opened(): Box {
+    return null
+}

@@ -1,0 +1,1 @@
+conformance/null_into_a_walked_row/runner.spite:9: error: the variable 'row' is declared '$row_type', not '$row_type?', so '= null' would make a default $row_type rather than nothing: write 'var row: $row_type? = null' for none yet, narrowed before use, or 'var row = $row_type()' for a default (in Runner.run)

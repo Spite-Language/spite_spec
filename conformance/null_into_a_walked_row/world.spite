@@ -1,0 +1,12 @@
+singleton
+
+var position = List<Position>()
+
+func spawn(left: Float) {
+    var placed = Position(left)
+    position.append(placed)
+}
+
+func size(): Integer {
+    return position.count()
+}
