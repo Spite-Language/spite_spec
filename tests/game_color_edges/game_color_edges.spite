@@ -58,7 +58,6 @@ func alpha_through_the_curves() {
 
 func text_extremes() {
     var over: Color? = "rgb(300, -5, 0)"
-    crash over
     var over_rgb = over.to_rgb_string()
     var over_red = over.red
     var over_green = over.green
@@ -67,10 +66,6 @@ func text_extremes() {
     var hue_90: Color? = "hsl(90, 100%, 50%)"
     var hue_750: Color? = "hsl(840, 100%, 50%)"
     var hue_30: Color? = "hsl(120, 100%, 50%)"
-    crash hue_450
-    crash hue_90
-    crash hue_750
-    crash hue_30
     var text_450 = hue_450.to_hexadecimal_string()
     var text_90 = hue_90.to_hexadecimal_string()
     var text_750 = hue_750.to_hexadecimal_string()
@@ -79,7 +74,6 @@ func text_extremes() {
     var same_750 = text_750 == text_30
     console.print("hue 450 is hue 90", same_450, "hue 840 is hue 120", same_750)
     var turns: Color? = "hsl(-270deg, 100%, 50%)"
-    crash turns
     var text_turns = turns.to_hexadecimal_string()
     var turns_same = text_turns == text_90
     console.print("hue -270deg is hue 90", turns_same)

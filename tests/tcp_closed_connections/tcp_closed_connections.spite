@@ -45,7 +45,6 @@ func buffer_answer(held: Buffer?): String {
 
 func connect(): Tcp.Client {
     var address: IpAddress? = "127.0.0.1"
-    crash address
     crash server.listen_at(address, _port)
     var client = Tcp.Client()
     crash client.connect(address, _port)
