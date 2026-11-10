@@ -6,7 +6,7 @@ func run(mover: Mover, entity_count: Integer) {
     var entity = 0
     while entity < entity_count {
         matcher.clear()
-        var row: $row_type = null
+        var row = $row_type()
         find_attributes(row, entity)
         if not matcher.missing {
             mover.update_each(row)
@@ -19,7 +19,7 @@ func run_passed(mover: Mover, entity_count: Integer) {
     var entity = 0
     while entity < entity_count {
         matcher.clear()
-        var row: $row_type = null
+        var row = $row_type()
         find_attributes(row, entity)
         if not matcher.missing {
             pass_attributes(row, matcher.rows)

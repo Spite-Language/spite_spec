@@ -5,7 +5,7 @@ var world = World()
 func run(mover: Mover) {
     var index = 0
     while index < world.size() {
-        var row: $row_type = null
+        var row = $row_type()
         fill_attributes(row, index)
         mover.update_each(row)
         index = index + 1

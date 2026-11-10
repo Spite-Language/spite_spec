@@ -3,7 +3,7 @@ generic $row_type
 var console = Console()
 
 func fill(index: Integer) {
-    var row: $row_type = null
+    var row = $row_type()
     fill_attributes(row, index)
     console.print("tag", row.tag.id, "across", row.point.across)
 }

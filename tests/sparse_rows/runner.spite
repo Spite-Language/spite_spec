@@ -7,7 +7,7 @@ func run(mover: Mover) {
     var entity = 0
     while entity < world.entity_count {
         missing = false
-        var row: $row_type = null
+        var row = $row_type()
         fill_attributes(row, entity)
         if not missing {
             mover.update_each(row)

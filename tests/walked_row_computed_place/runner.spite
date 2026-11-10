@@ -1,7 +1,7 @@
 generic $row_type
 
 func run(mover: Mover, matcher: Matcher) {
-    var row: $row_type = null
+    var row = $row_type()
     fill_attributes(row, matcher)
     mover.update_each(row)
 }

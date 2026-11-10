@@ -10,7 +10,7 @@ func run(first: Integer, end: Integer) {
         found.clear()
         found.append(entity)
         found.append(entity)
-        var row: $row_type = null
+        var row = $row_type()
         fill_attributes(row, found)
         system.update_each(row)
         entity = entity + 1

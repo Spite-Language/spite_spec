@@ -19,12 +19,11 @@ func run_phase_each(phase: Spite.FunctionDeclaration, system: $system_type, enti
 
 func streamed_argument(argument: Spite.Argument, entity: Integer): argument.class {
     if argument.class == $row_type {
-        var row: $row_type = null
+        var row = $row_type()
         fill_attributes(row, entity)
         return row
     }
-    var other: argument.class = null
-    return other
+    return argument.class()
 }
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {

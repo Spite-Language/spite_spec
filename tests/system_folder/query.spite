@@ -17,7 +17,7 @@ func refresh() {
 
 func take(entity: Integer) {
     matched = true
-    var row: $row_type = null
+    var row = $row_type()
     fill_attributes(row, entity)
     fallback matched
     rows.append(row)
