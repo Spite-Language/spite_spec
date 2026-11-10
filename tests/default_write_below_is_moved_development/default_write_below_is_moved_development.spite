@@ -1,0 +1,25 @@
+var console = Console()
+var started: Boolean = start()
+var counted: Integer = counted_twice()
+var _ready = false
+var _calls = 0
+
+func DefaultWriteBelowIsMovedDevelopment() {
+    load "../../../spite_standard_library/windows"
+    console.print(started, _ready, counted, _calls)
+}
+
+func start(): Boolean {
+    _ready = true
+    return true
+}
+
+func counted_twice(): Integer {
+    bump()
+    bump()
+    return _calls
+}
+
+func bump() {
+    _calls = _calls + 1
+}

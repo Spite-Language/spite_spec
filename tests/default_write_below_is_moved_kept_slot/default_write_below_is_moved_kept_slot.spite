@@ -1,0 +1,16 @@
+type Readied {
+    ready: Boolean
+}
+
+var console = Console()
+
+func DefaultWriteBelowIsMovedKeptSlot() {
+    load "../../../spite_standard_library/windows"
+    var box = Box()
+    console.print(box.started, box.ready)
+    show(box)
+}
+
+func show(readied: Readied) {
+    console.print(readied.ready)
+}

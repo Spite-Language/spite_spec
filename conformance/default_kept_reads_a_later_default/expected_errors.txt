@@ -1,1 +1,1 @@
-conformance/default_kept_reads_a_later_default/holder.spite:2: fixed: 'part' was declared below 'reader', whose default reads it; moved it above, since a default may only read attributes already given a value (in Holder.)
+conformance/default_kept_reads_a_later_default/holder.spite:2: fixed: 'part' was declared below 'reader', whose default reads it; moved it above, since a default may only read or write attributes already given a value (in Holder.)

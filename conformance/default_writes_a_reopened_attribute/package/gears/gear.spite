@@ -1,0 +1,6 @@
+var total: Integer = prepared()
+
+func prepared(): Integer {
+    extra = 5
+    return 1
+}

@@ -1,0 +1,7 @@
+var started: Boolean = start()
+var ready = false
+
+func start(): Boolean {
+    ready = true
+    return true
+}

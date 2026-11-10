@@ -1,0 +1,12 @@
+var console = Console()
+var _count: Integer = reset()
+
+func DefaultWritesItsOwnAttribute() {
+    load "../../../spite_standard_library/windows"
+    console.print(_count)
+}
+
+func reset(): Integer {
+    _count = 5
+    return 1
+}

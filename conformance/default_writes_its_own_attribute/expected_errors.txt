@@ -1,0 +1,1 @@
+conformance/default_writes_its_own_attribute/default_writes_its_own_attribute.spite:2: error: the default of '_count' writes '_count' itself: a default may only read or write attributes already given a value, directly or through the functions it calls, and '_count' has none until its default is done: give it a default that does not write it (in DefaultWritesItsOwnAttribute)
