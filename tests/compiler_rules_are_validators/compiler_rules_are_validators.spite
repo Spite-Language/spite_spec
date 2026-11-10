@@ -2,6 +2,7 @@ var console = Console()
 var root = "../spite_compiler"
 var broken = 0
 var _lines_from_an_error_to_its_exit = 3
+var _problems_of_the_deciding_validator = 3
 var printer_validator = [
     "enum Mistake \{"
     "    'unclosed_brace'"
@@ -19,6 +20,101 @@ var printer_caller = [
     "    rule.check(path, line, 'unclosed_brace')"
     "}"
 ]
+var deciding_validator = [
+    "func check(path: String, written: Boolean) \{"
+    "    fallback not written"
+    "    var directory = Directory(path)"
+    "    problem.is_fix = true"
+    "    refuse(path)"
+    "}"
+]
+var wording_caller = [
+    "func read_an_index(context: Context) \{"
+    "    var rule = Validators.HighIntermediaryRepresentation.NotIndexed.Validator()"
+    "    rule.check(context, \"indexing\", \"get_at(index)\")"
+    "}"
+]
+var deciding_fixer = [
+    "func fixed(table: Symbols.SymbolTable) \{"
+    "    fallback holds_only_files_to_fix(table)"
+    "    rename(table)"
+    "}"
+    ""
+    "func holds_only_files_to_fix(table: Symbols.SymbolTable): Boolean \{"
+    "    return table.walks.is_empty()"
+    "}"
+]
+var system_calls = [
+    "Directory("
+    "File("
+    "Process("
+    ".working_directory("
+    ".read_as_string("
+    ".write_string("
+    ".write_buffer("
+]
+var rewrites = ["is_fix = true", ".found_later(", ".replaced_later(", ".cut_later(", ".removed_later(", ".moved_later("]
+var waiting_for_407 = [
+    "validators/abstract_syntax_tree/comments/validator.spite"
+    "validators/command_line/handed_flags/validator.spite check"
+    "validators/command_line/known_flag/validator.spite check_one"
+    "validators/command_line/known_flag/validator.spite check_the_value"
+    "validators/high_intermediary_representation/every_rule.spite check_an_evaluation"
+    "validators/high_intermediary_representation/argument_count/validator.spite check_a_call"
+    "validators/high_intermediary_representation/argument_count/validator.spite check_a_value_call"
+    "validators/high_intermediary_representation/compile_time_fact/validator.spite check_a_paradox"
+    "validators/high_intermediary_representation/cut_operand/validator.spite check"
+    "validators/high_intermediary_representation/division_by_zero/validator.spite check"
+    "validators/high_intermediary_representation/dropped_answer/validator.spite check"
+    "validators/high_intermediary_representation/dropped_answer/validator.spite check_a_walk"
+    "validators/high_intermediary_representation/foreign/validator.spite check_a_void_answer_read"
+    "validators/high_intermediary_representation/guard_assert/validator.spite check_a_default"
+    "validators/high_intermediary_representation/key_maps/validator.spite check_one_map"
+    "validators/high_intermediary_representation/lost_write/validator.spite check_a_replaced_item"
+    "validators/high_intermediary_representation/lost_write/validator.spite check_a_replaced_answer"
+    "validators/high_intermediary_representation/lost_write/validator.spite check_a_lost_write"
+    "validators/high_intermediary_representation/member_fit/validator.spite check"
+    "validators/high_intermediary_representation/operator_call/validator.spite check_a_name"
+    "validators/high_intermediary_representation/passed_function/validator.spite check_a_passed_value"
+    "validators/high_intermediary_representation/passed_function/validator.spite check"
+    "validators/high_intermediary_representation/present_value/validator.spite check"
+    "validators/high_intermediary_representation/read_attribute/validator.spite check"
+    "validators/high_intermediary_representation/recursive_default/validator.spite check"
+    "validators/high_intermediary_representation/shape_fit/validator.spite check_an_enum_member"
+    "validators/high_intermediary_representation/shape_fit/validator.spite check_an_attribute_type"
+    "validators/high_intermediary_representation/shape_fit/validator.spite check_an_argument_type"
+    "validators/high_intermediary_representation/shape_fit/validator.spite check_an_answer_type"
+    "validators/high_intermediary_representation/switch_cover/validator.spite check_the_rest"
+    "validators/high_intermediary_representation/switch_cover/validator.spite check_a_case_kind"
+    "validators/high_intermediary_representation/switch_cover/validator.spite check_a_rest_case"
+    "validators/high_intermediary_representation/switch_cover/validator.spite check"
+    "validators/high_intermediary_representation/template_member/validator.spite check_a_member_and_a_value"
+    "validators/high_intermediary_representation/vector_fit/validator.spite check_an_item"
+    "validators/high_intermediary_representation/walked_kind/validator.spite check_the_first_attribute"
+    "validators/name_resolution/template_range/validator.spite check_an_attribute_owner"
+    "validators/name_resolution/template_range/validator.spite check_a_function_owner"
+    "fixes/abstract_syntax_tree/after_return/fix.spite"
+    "fixes/abstract_syntax_tree/declaration_order/fix.spite"
+    "fixes/abstract_syntax_tree/default_guard/disjoint.spite"
+    "fixes/abstract_syntax_tree/default_guard/fix.spite"
+    "fixes/abstract_syntax_tree/local_names/fix.spite"
+    "fixes/abstract_syntax_tree/misplaced_comment/fix.spite"
+    "fixes/abstract_syntax_tree/type_member_form/fix.spite"
+    "fixes/after_building/every_fix.spite"
+    "fixes/after_building/copy_to_narrow/fix.spite"
+    "fixes/after_building/decided_condition/fix.spite"
+    "fixes/after_building/default_order/fix.spite"
+    "fixes/after_building/known_if/fix.spite"
+    "fixes/after_building/proven_check/fix.spite"
+    "fixes/after_building/terminal_if/fix.spite"
+    "fixes/after_building/unread_attribute/fix.spite"
+    "fixes/after_building/unread_plain_local/fix.spite"
+    "fixes/symbols/platform_load/fix.spite"
+    "fixes/symbols/repeated_declaration/fix.spite"
+    "fixes/symbols/unneeded_load/fix.spite"
+    "fixes/tokens/misspelt_keyword/fix.spite"
+]
+var met_waiting = List<String>()
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
 func CompilerRulesAreValidators() {
@@ -27,10 +123,52 @@ func CompilerRulesAreValidators() {
     crash top_path
     var top = Directory(top_path)
     read_a_folder(top, "")
+    waiting_for_407.each(note_a_stale_wait)
     if broken == 0 {
         console.print("every check of the compiler is a rule of validators/")
     }
     refuse_the_printer_samples()
+    refuse_the_deciding_samples()
+}
+
+# ../../../spite_compiler/ARCHITECTURE.md#validators
+func note_a_stale_wait(waiting: String) {
+    fallback not met_waiting.contains(waiting)
+    broken = broken + 1
+    console.print("'{waiting}' waits for #407 but breaks no rule now: take it off the list")
+}
+
+func is_waiting(waiting: String): Boolean {
+    fallback waiting_for_407.contains(waiting)
+    if not met_waiting.contains(waiting) {
+        met_waiting.append(waiting)
+    }
+    return true
+}
+
+# ../../../spite_compiler/ARCHITECTURE.md#validators
+func refuse_the_deciding_samples() {
+    var validator_text = deciding_validator.join("\n")
+    var caller_text = wording_caller.join("\n")
+    var fixer_text = deciding_fixer.join("\n")
+    var validator_path = "validators/command_line/sample/validator.spite"
+    var caller_path = "abstract_syntax_tree/sample.spite"
+    var fixer_path = "fixes/symbols/sample/fix.spite"
+    var validator_problems = problems_of(validator_path, "validator.spite", validator_text)
+    var caller_problems = problems_of(caller_path, "sample.spite", caller_text)
+    var fixer_problems = problems_of(fixer_path, "fix.spite", fixer_text)
+    var validator_is_refused = validator_problems.count() == _problems_of_the_deciding_validator
+    var caller_is_refused = caller_problems.count() == 1
+    if validator_is_refused and caller_is_refused and fixer_problems.count() == 2 {
+        console.print(
+            "a rule handed a Boolean or words, doing IO or rewriting is refused, and so is a fixer that decides",
+        )
+        return
+    }
+    console.print("the deciding samples were not refused as they should be:")
+    validator_problems.each(print_a_sample_problem)
+    caller_problems.each(print_a_sample_problem)
+    fixer_problems.each(print_a_sample_problem)
 }
 
 # ../../../spite_compiler/AGENTS.md#rules
@@ -105,6 +243,9 @@ func problems_of(path: String, name: String, text: String): List<String> {
         note_the_checks_that_test_nothing(lines, problems)
         note_the_faults_of_the_compiler(lines, problems)
         note_the_kinds_handed_in(lines, problems)
+        note_the_booleans_handed_in(path, lines, problems)
+        note_the_system_calls(path, lines, problems)
+        note_the_rewrites(lines, problems)
     }
     if not may_define_refusals {
         note_the_refusals(lines, problems)
@@ -113,6 +254,10 @@ func problems_of(path: String, name: String, text: String): List<String> {
         note_the_refusals_called(lines, problems)
         note_the_words_handed_to_stop(lines, problems)
         note_the_kinds_handed_out(lines, problems)
+    }
+    var segments = path.split("/")
+    if path.starts_with("fixes/") and segments.count() > 2 {
+        note_the_decisions(path, name, lines, problems)
     }
     if not is_a_rule and not path.starts_with("diagnostics/") {
         note_the_errors_that_exit(lines, problems)
@@ -311,6 +456,9 @@ func note_the_kinds_handed_out(lines: List<String>, problems: List<String>) {
                 "names the kind of mistake for the rule '{called}': hand it what was written and let it decide",
             )
         }
+        if not called.is_empty() and hands_words(lines, index, called) {
+            problems.append("hands its own words to the rule '{called}': hand it what was written and let it word them")
+        }
         index = index + 1
     }
 }
@@ -368,4 +516,160 @@ func names_a_symbol(arguments: String): Boolean {
     var before = arguments.slice(0, quote)
     crash before
     return not before.contains("\"")
+}
+
+func hands_words(lines: List<String>, call_index: Integer, rule: String): Boolean {
+    var line = lines[call_index]
+    crash line
+    var at = line.index_of("{rule}.check")
+    crash at
+    var length = line.length()
+    var arguments = line.slice(at, length)
+    crash arguments
+    if arguments.contains("\"") {
+        return true
+    }
+    fallback arguments.ends_with("(")
+    var index = call_index + 1
+    while index < lines.count() {
+        var following = lines[index]
+        var argument = following.trim()
+        fallback not argument.starts_with(")")
+        if argument.starts_with("\"") {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}
+
+# ../../../spite_compiler/AGENTS.md#rules
+func note_the_booleans_handed_in(path: String, lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("func check") and takes_a_boolean(lines, index) {
+            var declared = declared_name(line)
+            if not is_waiting("{path} {declared}") {
+                problems.append(
+                    "'{declared}' is handed a Boolean its caller decided: hand it the state the Boolean is computed from",
+                )
+            }
+        }
+        index = index + 1
+    }
+}
+
+func takes_a_boolean(lines: List<String>, header_index: Integer): Boolean {
+    var index = header_index
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains(": Boolean,") or line.contains(": Boolean)") {
+            return true
+        }
+        fallback not line.ends_with("\{")
+        index = index + 1
+    }
+    return false
+}
+
+# ../../../spite_compiler/AGENTS.md#rules
+func note_the_system_calls(path: String, lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if calls_the_system(line) and not is_waiting(path) {
+            var called = line.trim()
+            problems.append("does IO in a validator: the step reads or writes and hands it what it found: '{called}'")
+        }
+        index = index + 1
+    }
+}
+
+func calls_the_system(line: String): Boolean {
+    var index = 0
+    while index < system_calls.count() {
+        var called = system_calls[index]
+        if calls_outside_a_text(line, called) and starts_a_call(line, called) {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}
+
+func starts_a_call(line: String, called: String): Boolean {
+    var at = line.index_of(called)
+    fallback at
+    if at == 0 or called.starts_with(".") {
+        return true
+    }
+    var before = line[at - 1]
+    crash before
+    var name_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_."
+    return not name_characters.contains(before)
+}
+
+# ../../../spite_compiler/AGENTS.md#rules
+func note_the_rewrites(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if rewrites_a_program(line) {
+            var written = line.trim()
+            problems.append(
+                "rewrites in a validator: it answers that a fix can be done, and its fixer rewrites: '{written}'",
+            )
+        }
+        index = index + 1
+    }
+}
+
+func rewrites_a_program(line: String): Boolean {
+    var index = 0
+    while index < rewrites.count() {
+        var rewrite = rewrites[index]
+        if calls_outside_a_text(line, rewrite) {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}
+
+# ../../../spite_compiler/AGENTS.md#rules
+func note_the_decisions(path: String, name: String, lines: List<String>, problems: List<String>) {
+    var found = List<String>()
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("func ") and answers_a_boolean(lines, index) {
+            var declared = declared_name(line)
+            found.append(
+                "the fixer decides with '{declared}': its validator answers whether the fix can be done, and the fixer only rewrites",
+            )
+        }
+        index = index + 1
+    }
+    var text = lines.join("\n")
+    if name == "fix.spite" and not text.contains("is_fixable()") {
+        found.append(
+            "no validator's answer tells this fixer the fix can be done: ask its rule, and fix what it answers fixable",
+        )
+    }
+    fallback not found.is_empty()
+    fallback not is_waiting(path)
+    found.each(problems.append)
+}
+
+func answers_a_boolean(lines: List<String>, header_index: Integer): Boolean {
+    var index = header_index
+    while index < lines.count() {
+        var line = lines[index]
+        if line.ends_with("\{") {
+            return line.ends_with("): Boolean \{")
+        }
+        index = index + 1
+    }
+    return false
 }
