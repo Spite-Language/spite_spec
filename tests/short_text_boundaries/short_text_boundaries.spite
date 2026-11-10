@@ -1,0 +1,51 @@
+var console = Console()
+var program = Program()
+var kept = List<String>()
+var keys = Dictionary<String, Integer>()
+var _exclamation = 33
+
+func ShortTextBoundaries() {
+    load "../../../spite_standard_library/windows"
+    var piece = "abc"
+    var before_kept = program.live_allocations()
+    var stored = "{piece}def"
+    kept.append(stored)
+    var after_kept = program.live_allocations()
+    console.print("stored in a list:", kept[0], after_kept - before_kept)
+    var answered = labelled(piece)
+    console.print("answered:", answered)
+    var before_buffer = program.live_allocations()
+    var handed = "{piece}ghi"
+    var bytes = handed.to_buffer()
+    var first = bytes[0]
+    var count = bytes.count()
+    bytes.append(_exclamation)
+    var appended_count = bytes.count()
+    var after_buffer = program.live_allocations()
+    if first {
+        console.print("handed out as a Buffer:", first, count, appended_count, handed, after_buffer - before_buffer)
+    }
+    var keyed = "{piece}1"
+    keys[keyed] = 1
+    var again = "{piece}1"
+    var found = keys[again]
+    var key_count = keys.count()
+    if found {
+        console.print("a stored key found by another text:", found, key_count)
+    }
+    var shown = "{piece}!"
+    console.print(shown)
+    console.debug(shown)
+    var grown = piece
+    var index = 0
+    while index < 20 {
+        grown = "{grown}{index % 10}"
+        index = index + 1
+    }
+    var grown_length = grown.length()
+    console.print("grown past the room:", grown, grown_length)
+}
+
+func labelled(piece: String): String {
+    return "<{piece}>"
+}

@@ -1,0 +1,7 @@
+stored in a list: abcdef 1
+answered: <abc>
+handed out as a Buffer: 97 6 7 abcghi 1
+a stored key found by another text: 1 1
+abc!
+"abc!"
+grown past the room: abc01234567890123456789 23

@@ -1,0 +1,76 @@
+var console = Console()
+var program = Program()
+var counts = Dictionary<String, Integer>()
+var _rounds = 1000
+
+func ShortTextAllocations() {
+    load "../../../spite_standard_library/windows"
+    counts["abc1"] = 1
+    counts["abc2"] = 2
+    var piece = "abc"
+    var digit = 7
+    var before_nine = program.live_allocations()
+    var nine = "{piece}defghi"
+    var nine_length = nine.length()
+    var after_nine = program.live_allocations()
+    var before_fifteen = program.live_allocations()
+    var fifteen = "{piece}defghijklmno"
+    var fifteen_length = fifteen.length()
+    var after_fifteen = program.live_allocations()
+    var before_sixteen = program.live_allocations()
+    var sixteen = "{piece}defghijklmnop"
+    var sixteen_length = sixteen.length()
+    var after_sixteen = program.live_allocations()
+    console.print("9, 15 and 16 bytes:", nine_length, fifteen_length, sixteen_length)
+    console.print(
+        "allocations:",
+        after_nine - before_nine,
+        after_fifteen - before_fifteen,
+        after_sixteen - before_sixteen,
+    )
+    var before_room = program.live_allocations()
+    var room = "{piece}defghijklmnopqrstuvwxyz0123456789ABCDEFGHIJK"
+    var room_length = room.length()
+    var after_room = program.live_allocations()
+    var before_longer = program.live_allocations()
+    var longer = "{piece}defghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKL"
+    var longer_length = longer.length()
+    var after_longer = program.live_allocations()
+    console.print("47 and 48 bytes:", room_length, longer_length)
+    console.print("allocations:", after_room - before_room, after_longer - before_longer)
+    var before_written = program.live_allocations()
+    var written = "gold"
+    var written_length = written.length()
+    var numbered = "id{digit}"
+    var numbered_length = numbered.length()
+    var after_written = program.live_allocations()
+    console.print("written and numbered:", written_length, numbered_length, after_written - before_written)
+    var before_joined = program.live_allocations()
+    var ending = "xyz"
+    var joined = piece + ending
+    var same = joined == "abcxyz"
+    var ordered = joined < "abd"
+    var starts = joined.starts_with("abcx")
+    var after_joined = program.live_allocations()
+    console.print("joined and compared:", same, ordered, starts, after_joined - before_joined)
+    var before_key = program.live_allocations()
+    var key = "{piece}{digit - 5}"
+    var found = counts[key]
+    var after_key = program.live_allocations()
+    if found {
+        console.print("looked up:", found, after_key - before_key)
+    }
+    var total = 0
+    var made: Long = 0
+    var index = 0
+    while index < _rounds {
+        var before_pass = program.live_allocations()
+        var tag = "id{index % 10}"
+        var tag_length = tag.length()
+        var after_pass = program.live_allocations()
+        total = total + tag_length
+        made = made + after_pass - before_pass
+        index = index + 1
+    }
+    console.print("a thousand texts:", total, made)
+}

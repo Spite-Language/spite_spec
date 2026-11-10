@@ -1,0 +1,8 @@
+9, 15 and 16 bytes: 9 15 16
+allocations: 0 0 0
+47 and 48 bytes: 47 48
+allocations: 0 1
+written and numbered: 4 3 0
+joined and compared: true true true 1
+looked up: 2 0
+a thousand texts: 3000 0
