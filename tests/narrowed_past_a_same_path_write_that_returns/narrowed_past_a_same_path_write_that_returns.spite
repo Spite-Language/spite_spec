@@ -1,8 +1,3 @@
-enum Light {
-    'red'
-    'green'
-}
-
 var console = Console()
 var held: Item? = null
 var _leaves = 90
@@ -41,8 +36,6 @@ func run_all(code: Integer) {
     body_that_leaves(seventh_rack)
     var eighth_rack = filled()
     alias_in_a_body_that_leaves(eighth_rack, eighth_rack)
-    var ninth_rack = filled()
-    in_a_switch(ninth_rack, code)
     var first = Item(8)
     a_local(first, code)
     a_local_in_a_loop(first, code)
@@ -140,29 +133,6 @@ func alias_in_a_body_that_leaves(rack: Rack, alias: Rack) {
         alias.shelf.item = null
         return
     }
-}
-
-func light_of(code: Integer): Light {
-    if code > _leaves {
-        return 'red'
-    }
-    return 'green'
-}
-
-func in_a_switch(rack: Rack, code: Integer) {
-    fallback rack.shelf.item
-    var light = light_of(code)
-    switch light {
-        'red': if code > 95 {
-            rack.shelf.item = null
-            return
-        } else {
-            rack.shelf.item = null
-            return
-        }
-        'green': console.print(code)
-    }
-    console.print(rack.shelf.item.number)
 }
 
 func a_local(given: Item?, code: Integer) {

@@ -1,0 +1,1 @@
+conformance/case_opens_a_multi_line_while/case_opens_a_multi_line_while.spite:11: error: the 'while' this case opens spans several lines: a case is one line, so move the 'while' into a function named for what it does and call it here (in CaseOpensAMultiLineWhile.count_down)

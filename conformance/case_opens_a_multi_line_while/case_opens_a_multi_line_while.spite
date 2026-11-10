@@ -1,0 +1,16 @@
+var console = Console()
+var total = 0
+
+func CaseOpensAMultiLineWhile() {
+    load "../../../spite_standard_library/windows"
+    count_down(true)
+}
+
+func count_down(going: Boolean) {
+    switch going {
+        true: while total < 3 {
+            total = total + 1
+        }
+        false: console.print("stopped")
+    }
+}

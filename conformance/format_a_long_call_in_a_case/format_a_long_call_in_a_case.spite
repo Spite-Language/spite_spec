@@ -1,0 +1,18 @@
+enum Shade {
+    'light'
+    'dark'
+}
+
+var console = Console()
+
+func FormatALongCallInACase() {
+    load "../../../spite_standard_library/windows"
+    show('dark')
+}
+
+func show(shade: Shade) {
+    switch shade {
+        'light': console.print("light")
+        'dark': console.print("a rather long first text to print", "a rather long second text to print", "a rather long third text to print")
+    }
+}

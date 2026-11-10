@@ -1,0 +1,31 @@
+enum Shade {
+    'light'
+    'dark'
+}
+
+var console = Console()
+var total = 0
+
+func CaseOpensAMultiLineIf() {
+    load "../../../spite_standard_library/windows"
+    show('dark')
+}
+
+func show(shade: Shade) {
+    var ready = total == 0
+    switch shade {
+        'light': console.print("light")
+        'dark': if ready {
+            first()
+            second()
+        }
+    }
+}
+
+func first() {
+    total = total + 1
+}
+
+func second() {
+    total = total + 2
+}

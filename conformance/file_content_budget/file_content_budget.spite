@@ -23,9 +23,7 @@ func FileContentBudget() {
 
 func name_of(shade: Shade): String {
     switch shade {
-        'light': if total == 0 {
-    total = total + 1
-}
+        'light': total = total + 1
         'dark': return "dark"
     }
     return "light"
@@ -46,6 +44,7 @@ func nested(amount: Integer) {
 }
 
 func fill_part_1() {
+    total = total + 1
     total = total + 1
     total = total + 1
     total = total + 1
