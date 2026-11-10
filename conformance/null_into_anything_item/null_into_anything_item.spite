@@ -1,0 +1,17 @@
+var console = Console()
+
+func NullIntoAnythingItem() {
+    load "../../../spite_standard_library/windows"
+    var items = List<Anything>()
+    items.append(null)
+    var count = items.count()
+    console.print(count)
+    keep()
+}
+
+func keep() {
+    var held = Dictionary<String, Anything>()
+    held["count"] = null
+    var count = held.count()
+    console.print(count)
+}

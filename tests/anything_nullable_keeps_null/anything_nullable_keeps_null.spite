@@ -1,0 +1,25 @@
+var console = Console()
+
+func AnythingNullableKeepsNull() {
+    load "../../../spite_standard_library/windows"
+    var items = List<Anything?>()
+    items.append(null)
+    items.append(3)
+    var first = items[0]
+    if first {
+        console.print("first present")
+    } else {
+        console.print("first null")
+    }
+    var second = items[1]
+    crash second
+    console.print(second.class.name)
+    var held = Dictionary<String, Anything?>()
+    held["count"] = null
+    var count = held["count"]
+    if count {
+        console.print("count present")
+    } else {
+        console.print("count null")
+    }
+}

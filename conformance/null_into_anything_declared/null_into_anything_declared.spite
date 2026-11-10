@@ -1,0 +1,8 @@
+var console = Console()
+var kept: Anything = null
+
+func NullIntoAnythingDeclared() {
+    load "../../../spite_standard_library/windows"
+    var held: Anything = null
+    console.print(held.class.name, kept.class.name)
+}

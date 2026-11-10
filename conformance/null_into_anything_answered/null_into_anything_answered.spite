@@ -1,0 +1,11 @@
+var console = Console()
+
+func NullIntoAnythingAnswered() {
+    load "../../../spite_standard_library/windows"
+    var held = nothing()
+    console.print(held.class.name)
+}
+
+func nothing(): Anything {
+    return null
+}
