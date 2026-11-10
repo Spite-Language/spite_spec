@@ -3,29 +3,29 @@ var console = Console()
 func StringCasing() {
     load "../../../spite_standard_library/windows"
     var samples = [
-        "total_count",
-        "TotalCount",
-        "totalCount",
-        "HTTPHelper",
-        "userID",
-        "XMLHttpRequest",
-        "Vector2D",
-        "vector_2d",
-        "version2Beta",
-        "_private",
-        "kit__x",
-        "trailing_",
-        "tool-helper",
-        "tool.helper",
-        "tool helper",
-        "ID",
-        "",
-        "__",
-        "2kit",
-        "Kit2Go",
-        "café_au_lait",
-        "ABC",
-        "a_b_c",
+        "total_count"
+        "TotalCount"
+        "totalCount"
+        "HTTPHelper"
+        "userID"
+        "XMLHttpRequest"
+        "Vector2D"
+        "vector_2d"
+        "version2Beta"
+        "_private"
+        "kit__x"
+        "trailing_"
+        "tool-helper"
+        "tool.helper"
+        "tool helper"
+        "ID"
+        ""
+        "__"
+        "2kit"
+        "Kit2Go"
+        "café_au_lait"
+        "ABC"
+        "a_b_c"
     ]
     var index = 0
     while index < samples.count() {
