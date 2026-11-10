@@ -1,2 +1,2 @@
 no call was lost: 8000
-allocations: 30 frees: 30
+allocations: 29 frees: 29

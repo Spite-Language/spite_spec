@@ -1,2 +1,2 @@
 placed tallies: 504500
-allocations: 17 frees: 17
+allocations: 16 frees: 16

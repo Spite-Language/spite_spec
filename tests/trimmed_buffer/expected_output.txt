@@ -1,2 +1,2 @@
 total 290
-allocations: 17 frees: 17
+allocations: 16 frees: 16
