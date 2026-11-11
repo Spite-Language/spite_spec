@@ -54,22 +54,6 @@ var system_calls = [
     ".write_buffer("
 ]
 var rewrites = ["is_fix = true", ".found_later(", ".replaced_later(", ".cut_later(", ".removed_later(", ".moved_later("]
-var waiting_for_407 = [
-    "validators/high_intermediary_representation/read_attribute/validator.spite check"
-    "fixes/after_building/every_fix.spite"
-    "fixes/after_building/copy_to_narrow/fix.spite"
-    "fixes/after_building/decided_condition/fix.spite"
-    "fixes/after_building/default_order/fix.spite"
-    "fixes/after_building/known_if/fix.spite"
-    "fixes/after_building/proven_check/fix.spite"
-    "fixes/after_building/terminal_if/fix.spite"
-    "fixes/after_building/unread_attribute/fix.spite"
-    "fixes/after_building/unread_plain_local/fix.spite"
-    "fixes/symbols/platform_load/fix.spite"
-    "fixes/symbols/repeated_declaration/fix.spite"
-    "fixes/symbols/unneeded_load/fix.spite"
-]
-var met_waiting = List<String>()
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
 func CompilerRulesAreValidators() {
@@ -78,27 +62,11 @@ func CompilerRulesAreValidators() {
     crash top_path
     var top = Directory(top_path)
     read_a_folder(top, "")
-    waiting_for_407.each(note_a_stale_wait)
     if broken == 0 {
         console.print("every check of the compiler is a rule of validators/")
     }
     refuse_the_printer_samples()
     refuse_the_deciding_samples()
-}
-
-# ../../../spite_compiler/ARCHITECTURE.md#validators
-func note_a_stale_wait(waiting: String) {
-    fallback not met_waiting.contains(waiting)
-    broken = broken + 1
-    console.print("'{waiting}' waits for #407 but breaks no rule now: take it off the list")
-}
-
-func is_waiting(waiting: String): Boolean {
-    fallback waiting_for_407.contains(waiting)
-    if not met_waiting.contains(waiting) {
-        met_waiting.append(waiting)
-    }
-    return true
 }
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
@@ -198,8 +166,8 @@ func problems_of(path: String, name: String, text: String): List<String> {
         note_the_checks_that_test_nothing(lines, problems)
         note_the_faults_of_the_compiler(lines, problems)
         note_the_kinds_handed_in(lines, problems)
-        note_the_booleans_handed_in(path, lines, problems)
-        note_the_system_calls(path, lines, problems)
+        note_the_booleans_handed_in(lines, problems)
+        note_the_system_calls(lines, problems)
         note_the_rewrites(lines, problems)
     }
     if not may_define_refusals {
@@ -212,7 +180,7 @@ func problems_of(path: String, name: String, text: String): List<String> {
     }
     var segments = path.split("/")
     if path.starts_with("fixes/") and segments.count() > 2 {
-        note_the_decisions(path, name, lines, problems)
+        note_the_decisions(name, lines, problems)
     }
     if not is_a_rule and not path.starts_with("diagnostics/") {
         note_the_errors_that_exit(lines, problems)
@@ -499,17 +467,15 @@ func hands_words(lines: List<String>, call_index: Integer, rule: String): Boolea
 }
 
 # ../../../spite_compiler/AGENTS.md#rules
-func note_the_booleans_handed_in(path: String, lines: List<String>, problems: List<String>) {
+func note_the_booleans_handed_in(lines: List<String>, problems: List<String>) {
     var index = 0
     while index < lines.count() {
         var line = lines[index]
         if line.starts_with("func check") and takes_a_boolean(lines, index) {
             var declared = declared_name(line)
-            if not is_waiting("{path} {declared}") {
-                problems.append(
-                    "'{declared}' is handed a Boolean its caller decided: hand it the state the Boolean is computed from",
-                )
-            }
+            problems.append(
+                "'{declared}' is handed a Boolean its caller decided: hand it the state the Boolean is computed from",
+            )
         }
         index = index + 1
     }
@@ -529,11 +495,11 @@ func takes_a_boolean(lines: List<String>, header_index: Integer): Boolean {
 }
 
 # ../../../spite_compiler/AGENTS.md#rules
-func note_the_system_calls(path: String, lines: List<String>, problems: List<String>) {
+func note_the_system_calls(lines: List<String>, problems: List<String>) {
     var index = 0
     while index < lines.count() {
         var line = lines[index]
-        if calls_the_system(line) and not is_waiting(path) {
+        if calls_the_system(line) {
             var called = line.trim()
             problems.append("does IO in a validator: the step reads or writes and hands it what it found: '{called}'")
         }
@@ -593,14 +559,13 @@ func rewrites_a_program(line: String): Boolean {
 }
 
 # ../../../spite_compiler/AGENTS.md#rules
-func note_the_decisions(path: String, name: String, lines: List<String>, problems: List<String>) {
-    var found = List<String>()
+func note_the_decisions(name: String, lines: List<String>, problems: List<String>) {
     var index = 0
     while index < lines.count() {
         var line = lines[index]
         if line.starts_with("func ") and answers_a_boolean(lines, index) {
             var declared = declared_name(line)
-            found.append(
+            problems.append(
                 "the fixer decides with '{declared}': its validator answers whether the fix can be done, and the fixer only rewrites",
             )
         }
@@ -608,13 +573,10 @@ func note_the_decisions(path: String, name: String, lines: List<String>, problem
     }
     var text = lines.join("\n")
     if name == "fix.spite" and not text.contains("is_fixable()") {
-        found.append(
+        problems.append(
             "no validator's answer tells this fixer the fix can be done: ask its rule, and fix what it answers fixable",
         )
     }
-    fallback not found.is_empty()
-    fallback not is_waiting(path)
-    found.each(problems.append)
 }
 
 func answers_a_boolean(lines: List<String>, header_index: Integer): Boolean {
