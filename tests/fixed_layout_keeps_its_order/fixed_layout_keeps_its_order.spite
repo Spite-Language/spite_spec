@@ -1,0 +1,13 @@
+var console = Console()
+
+# ../../../spite_documentation/classes_and_files.md#a-class-of-a-fixed-layout-keeps-its-order
+func FixedLayoutKeepsItsOrder() {
+    load "../../../spite_standard_library/windows"
+    var declarations = Spite.Argument.attributes.values()
+    var index = 0
+    while index < declarations.count() {
+        var described = declarations[index]
+        console.print(described.index, described.name, described.class)
+        index = index + 1
+    }
+}

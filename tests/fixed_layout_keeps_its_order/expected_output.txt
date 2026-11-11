@@ -1,0 +1,5 @@
+0 _name String
+1 _class Class
+2 _index Integer
+3 _is_mutated Boolean
+4 _has_facts Boolean
