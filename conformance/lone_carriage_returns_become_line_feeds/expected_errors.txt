@@ -1,0 +1,1 @@
+conformance/lone_carriage_returns_become_line_feeds/lone_carriage_returns_become_line_feeds.spite: fixed: a line ended with '\r', and a Spite file ends every line with '\n' alone; wrote '\n' at the end of every line (in LoneCarriageReturnsBecomeLineFeeds)

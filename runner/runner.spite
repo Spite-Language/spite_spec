@@ -468,7 +468,7 @@ func exact_text(folder: String, name: String): String {
     var file = file_at("{folder}/{name}")
     var text = file.read_as_string()
     fallback text
-    return text.replace("\r", "")
+    return text
 }
 
 func only_formatting(wanted: String): Boolean {
