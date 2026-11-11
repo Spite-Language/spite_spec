@@ -1,4 +1,4 @@
-conformance/call_as_argument/token.spite:2: fixed: the attribute 'text' was never read, and nothing written to it does anything; removed it and every write (in Token.)
+conformance/call_as_argument/token.spite:1: fixed: the attribute 'text' was never read, and nothing written to it does anything; removed it and every write (in Token.)
 conformance/call_as_argument/call_as_argument.spite:13: error: 'count_words(source)' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name (in CallAsArgument.rejected)
 conformance/call_as_argument/call_as_argument.spite:14: error: 'count_words(source)' is called inside an argument of 'counts.append': compute it first into a named 'var' and pass the name (in CallAsArgument.rejected)
 conformance/call_as_argument/call_as_argument.spite:15: error: 'source.upper_case()' is called inside an argument of 'Text': compute it first into a named 'var' and pass the name (in CallAsArgument.rejected)

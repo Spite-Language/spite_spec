@@ -1,0 +1,7 @@
+var console = Console()
+
+func DefaultTheConstructorReplacesIsRemoved() {
+    load "../../../spite_standard_library/windows"
+    var holder = Holder(3)
+    console.print(holder.values.count(), holder.label, holder.made.name)
+}

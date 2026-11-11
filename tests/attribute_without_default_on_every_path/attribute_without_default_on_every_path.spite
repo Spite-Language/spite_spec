@@ -1,0 +1,10 @@
+var console = Console()
+
+func AttributeWithoutDefaultOnEveryPath() {
+    load "../../../spite_standard_library/windows"
+    var rex = Pet("rex")
+    var tom = Pet("tom")
+    var first = Hunt(rex, tom, true)
+    var second = Hunt(rex, tom, false)
+    console.print(first.target.name, second.target.name, first.score)
+}

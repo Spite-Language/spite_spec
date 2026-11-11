@@ -1,6 +1,6 @@
 generic $item_type
 
-var item: $item_type = null
+var item: $item_type
 
 func Holder(new_item: $item_type) {
     item = new_item

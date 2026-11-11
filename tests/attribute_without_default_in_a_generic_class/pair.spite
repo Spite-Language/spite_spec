@@ -1,6 +1,6 @@
 generic $left_type
 
-var left: $left_type = null
+var left: $left_type
 
 func Pair(new_left: $left_type) {
     left = new_left

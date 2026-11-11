@@ -1,0 +1,5 @@
+var name: String
+
+func Pet(given_name: String) {
+    name = given_name
+}

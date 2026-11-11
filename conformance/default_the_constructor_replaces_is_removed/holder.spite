@@ -1,0 +1,10 @@
+var values = List<Integer>()
+var label = "none"
+var made = Noisy("default")
+
+func Holder(start: Integer) {
+    values = List<Integer>()
+    label = "made"
+    made = Noisy("given")
+    values.append(start)
+}

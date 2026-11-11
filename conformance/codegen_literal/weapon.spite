@@ -1,7 +1,7 @@
 generic $damage_type
 generic $is_magic
 
-var damage: $damage_type = null
+var damage: $damage_type
 
 func Weapon(new_damage: $damage_type) {
     damage = new_damage

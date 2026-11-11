@@ -1,0 +1,15 @@
+type Weapon {
+    strike: Spite.Function<Integer>
+}
+
+var console = Console()
+var weapon: Weapon = null
+
+func NullAttributeTheConstructorAssigns() {
+    load "../../../spite_standard_library/windows"
+    weapon = Sword()
+    var pet = Pet()
+    var hunt = Hunt(pet)
+    var hit = weapon.strike()
+    console.print(hunt.target.name, hit)
+}

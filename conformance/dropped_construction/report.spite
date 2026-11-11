@@ -1,5 +1,5 @@
 var console = Console()
-var text = ""
+var text: String
 
 func Report(starting_text: String) {
     text = starting_text

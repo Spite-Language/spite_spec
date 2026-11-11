@@ -1,8 +1,8 @@
 var console = Console()
 
-func NullAttributeLeftToTheConstructor() {
+func AttributeWithoutDefaultReturnsFirst() {
     load "../../../spite_standard_library/windows"
     var pet = Pet()
-    var hunt = Hunt(pet)
+    var hunt = Hunt(pet, true)
     console.print(hunt.target.name)
 }

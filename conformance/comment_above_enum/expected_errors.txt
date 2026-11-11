@@ -1,2 +1,2 @@
 conformance/comment_above_enum/comment_above_enum.spite:3: fixed: a comment above an enum belongs to its class; moved it to the top of the file (in CommentAboveEnum)
-conformance/comment_above_enum/comment_above_enum.spite:4: fixed: an enum came after a variable here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables, the constructor, conversions, presets, then functions (in CommentAboveEnum)
+conformance/comment_above_enum/comment_above_enum.spite:4: fixed: an enum came after a variable here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables with a default, variables without one, the constructor, conversions, presets, then functions (in CommentAboveEnum)

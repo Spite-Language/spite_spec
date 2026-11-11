@@ -1,7 +1,7 @@
 generic $damage_type
 
-var damage: $damage_type = null
-var is_magic = false
+var is_magic: Boolean
+var damage: $damage_type
 
 func Weapon(new_damage: $damage_type, magic: Boolean) {
     damage = new_damage

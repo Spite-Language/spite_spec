@@ -1,7 +1,7 @@
 generic $component_type
 
 var registry = Registry()
-var key = ""
+var key: String
 
 func Column(starting_key: String) {
     key = starting_key

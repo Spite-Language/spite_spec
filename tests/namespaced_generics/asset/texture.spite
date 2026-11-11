@@ -1,4 +1,4 @@
-var name = ""
+var name: String
 
 func Texture(new_name: String) {
     name = new_name

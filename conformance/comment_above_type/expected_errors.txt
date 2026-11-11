@@ -1,2 +1,2 @@
 conformance/comment_above_type/comment_above_type.spite:3: fixed: a comment above a type belongs to its class; moved it to the top of the file (in CommentAboveType)
-conformance/comment_above_type/comment_above_type.spite:4: fixed: a type came after a variable here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables, the constructor, conversions, presets, then functions (in CommentAboveType)
+conformance/comment_above_type/comment_above_type.spite:4: fixed: a type came after a variable here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables with a default, variables without one, the constructor, conversions, presets, then functions (in CommentAboveType)

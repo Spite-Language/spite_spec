@@ -1,2 +1,2 @@
-conformance/union_after_type/union_after_type.spite:5: fixed: a union came after a type here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables, the constructor, conversions, presets, then functions (in UnionAfterType)
+conformance/union_after_type/union_after_type.spite:5: fixed: a union came after a type here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables with a default, variables without one, the constructor, conversions, presets, then functions (in UnionAfterType)
 conformance/union_after_type/dog.spite:1: fixed: the attribute 'name' was never read, and making it does nothing; removed it (in Dog.)

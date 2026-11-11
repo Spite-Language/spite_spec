@@ -1,0 +1,8 @@
+var console = Console()
+
+func AttributeWithoutDefaultNeverGiven() {
+    load "../../../spite_standard_library/windows"
+    var pet = Pet()
+    var hunt = Hunt(pet)
+    console.print(hunt.target.name)
+}

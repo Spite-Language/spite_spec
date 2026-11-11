@@ -1,0 +1,1 @@
+conformance/attribute_without_default_never_given/hunt.spite:1: error: the attribute 'target' has no default, so the constructor gives it its value, but the constructor never gives it one: give it a value on every path of the constructor, or write a default (in Hunt)

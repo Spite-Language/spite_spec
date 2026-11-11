@@ -1,0 +1,6 @@
+var target: Pet
+var given_name: String
+
+func Hunt(given: Pet) {
+    given_name = given.name
+}

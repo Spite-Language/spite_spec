@@ -1,0 +1,6 @@
+var target: Pet
+var score = 0
+
+func Hunt(given: Pet) {
+    target = given
+}

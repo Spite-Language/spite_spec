@@ -1,0 +1,5 @@
+var target: Pet
+
+func Hunt(new_target: Pet) {
+    target = new_target
+}

@@ -1,6 +1,6 @@
 generics $held_type
 
-var held: $held_type = null
+var held: $held_type
 
 func Box(new_held: $held_type) {
     held = new_held

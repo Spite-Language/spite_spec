@@ -1,7 +1,7 @@
 generic $item_type
 
-var label = ""
 var items = List<$item_type>()
+var label: String
 
 func Pack(new_label: String) {
     label = new_label

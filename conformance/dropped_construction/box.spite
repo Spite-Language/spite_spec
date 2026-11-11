@@ -1,6 +1,6 @@
 generic $content_type
 
-var content: $content_type = null
+var content: $content_type
 
 func Box(starting_content: $content_type) {
     content = starting_content

@@ -1,6 +1,6 @@
 generic $item_type: GenericConstraints.Printable
 
-var item: $item_type = null
+var item: $item_type
 
 func Label(new_item: $item_type) {
     item = new_item

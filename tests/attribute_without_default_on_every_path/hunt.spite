@@ -1,0 +1,10 @@
+var score = 0
+var target: Pet
+
+func Hunt(first: Pet, second: Pet, is_first: Boolean) {
+    if is_first {
+        target = first
+    } else {
+        target = second
+    }
+}

@@ -1,4 +1,4 @@
-var target: Pet = null
+var target: Pet
 
 func Hunt(new_target: Pet) {
     target = new_target

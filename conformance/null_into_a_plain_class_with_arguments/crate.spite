@@ -1,4 +1,4 @@
-var weight = 0
+var weight: Integer
 
 func Crate(starting_weight: Integer) {
     weight = starting_weight

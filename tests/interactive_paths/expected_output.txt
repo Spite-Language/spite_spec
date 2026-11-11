@@ -5,7 +5,7 @@ player: Player = Player {...}
 monsters: List<Monster> = List<Monster>(2)
 target: Monster? = null
 turn: Integer = 1
-spite> Player { name: hero, health: 10, speed: 1.5, alive: true, job: squire, weapon: Weapon {...}, log: List<String>(0) }
+spite> Player { health: 10, speed: 1.5, alive: true, job: squire, weapon: Weapon {...}, log: List<String>(0), name: hero }
 spite> Weapon { label: stick, damage: 2 }
 spite> 2
 spite> hero
@@ -23,14 +23,14 @@ spite> false
 spite> 2.25
 spite> knight
 spite> 'king' is not a Job, or player.job cannot be assigned
-spite> Player { name: sir hero, health: 10, speed: 2.25, alive: false, job: knight, weapon: Weapon {...}, log: List<String>(0) }
+spite> Player { health: 10, speed: 2.25, alive: false, job: knight, weapon: Weapon {...}, log: List<String>(0), name: sir hero }
 spite> 10
 spite> 12
 spite> 12
 spite> List<String>(1)
 spite> refused -4
 spite> type mismatch: player.weapon is a Weapon, and 3 is not one
-spite> no attribute 'missing' in player: name, health, speed, alive, job, weapon, log
+spite> no attribute 'missing' in player: health, speed, alive, job, weapon, log, name
 spite> turn is an Integer, which has no attributes
 spite> weakest(): Monster
 add(left: Integer, right: Integer): Integer

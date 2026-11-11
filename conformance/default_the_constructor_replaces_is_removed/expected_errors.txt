@@ -1,0 +1,3 @@
+conformance/default_the_constructor_replaces_is_removed/holder.spite:1: fixed: the default of 'values' was made and then replaced by the constructor on every path; removed it, 'var values: List<Integer>' (in Holder)
+conformance/default_the_constructor_replaces_is_removed/holder.spite:2: fixed: the default of 'label' was made and then replaced by the constructor on every path; removed it, 'var label: String' (in Holder)
+conformance/default_the_constructor_replaces_is_removed/holder.spite:3: fixed: a variable came after a variable without a default here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables with a default, variables without one, the constructor, conversions, presets, then functions (in Holder)

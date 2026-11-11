@@ -1,0 +1,8 @@
+var target: Pet
+
+func Hunt(given: Pet, is_kept: Boolean) {
+    if not is_kept {
+        return
+    }
+    target = given
+}

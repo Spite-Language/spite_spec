@@ -1,5 +1,5 @@
 var console = Console()
-var other: Console = null
+var other: Console = console
 
 func ClassesInlineSingletonAssigned() {
     load "../../../spite_standard_library/windows"

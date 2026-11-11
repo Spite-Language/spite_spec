@@ -1,6 +1,6 @@
 generic $item_type
 
-var items = List<$item_type>()
+var items: List<$item_type>
 
 func Bag(new_items: List<$item_type>) {
     items = new_items

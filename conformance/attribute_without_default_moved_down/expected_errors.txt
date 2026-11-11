@@ -1,0 +1,1 @@
+conformance/attribute_without_default_moved_down/hunt.spite:2: fixed: a variable came after a variable without a default here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables with a default, variables without one, the constructor, conversions, presets, then functions (in Hunt)
