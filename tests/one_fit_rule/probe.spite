@@ -1,0 +1,27 @@
+generic $item_type
+
+func compared(): String {
+    var named_by_satisfies = $item_type.satisfies_type(OneFitRule.Named)
+    var named_by_comparison = false
+    if $item_type == OneFitRule.Named {
+        named_by_comparison = true
+    }
+    var shown_by_satisfies = $item_type.satisfies_type(OneFitRule.Shown)
+    var shown_by_comparison = false
+    if $item_type == OneFitRule.Shown {
+        shown_by_comparison = true
+    }
+    return "named {named_by_satisfies} {named_by_comparison}, shown {shown_by_satisfies} {shown_by_comparison}"
+}
+
+func matched(): String {
+    var named_by_comparison = false
+    if $item_type == OneFitRule.Named {
+        named_by_comparison = true
+    }
+    var shown_by_comparison = false
+    if $item_type == OneFitRule.Shown {
+        shown_by_comparison = true
+    }
+    return "named {named_by_comparison}, shown {shown_by_comparison}"
+}

@@ -1,0 +1,17 @@
+type Job {
+    finish: Spite.Function<Nothing>
+}
+
+var console = Console()
+
+func GenericConstraintHeldFunctionMayBeNull() {
+    load "../../../spite_standard_library/windows"
+    var runner = Runner<Task>()
+    var task = Task()
+    runner.add(task)
+    if not task.finish {
+        console.print("nothing to finish")
+    }
+    var count = runner.jobs.count()
+    console.print(count)
+}

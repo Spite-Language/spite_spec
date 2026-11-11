@@ -1,0 +1,68 @@
+type Named {
+    name: String
+}
+
+type Shown {
+    to_string: Spite.Function<String>
+}
+
+type Counted {
+    amount: Shown
+}
+
+var console = Console()
+
+func OneFitRule() {
+    load "../../../spite_standard_library/windows"
+    var pet = Pet()
+    var mistyped = Mistyped()
+    var tally = Tally()
+    console.print("attributes:", pet.name, mistyped.name, tally.amount)
+    var pet_probe = Probe<Pet>()
+    var pet_answer = pet_probe.compared()
+    console.print("Pet:", pet_answer)
+    var mistyped_probe = Probe<Mistyped>()
+    var mistyped_answer = mistyped_probe.compared()
+    console.print("Mistyped:", mistyped_answer)
+    var labelled_probe = Probe<Labelled>()
+    var labelled_answer = labelled_probe.compared()
+    console.print("Labelled:", labelled_answer)
+    var number_probe = Probe<Integer>()
+    var number_answer = number_probe.compared()
+    console.print("Integer:", number_answer)
+    var sky_probe = Probe<Weather.Sky>()
+    var sky_answer = sky_probe.matched()
+    console.print("Weather.Sky:", sky_answer)
+    var maybe_probe = Probe<String?>()
+    var maybe_answer = maybe_probe.matched()
+    console.print("String?:", maybe_answer)
+    var number_is_shown = Integer.satisfies_type(Shown)
+    var shown: Shown = 5
+    var shown_text = shown.to_string()
+    console.print("Integer is Shown:", number_is_shown, shown_text)
+    var tally_is_counted = Tally.satisfies_type(Counted)
+    var counted: Counted = tally
+    var counted_text = counted.amount.to_string()
+    console.print("Tally is Counted:", tally_is_counted, counted_text)
+    var purse = Purse()
+    var cents = purse.amount.cents
+    var purse_counted: Counted = purse
+    var purse_text = purse_counted.amount.to_string()
+    console.print("Purse is Counted:", cents, purse_text)
+    var fixed_is_a_number = Fixed.satisfies_type(Number)
+    var score_is_a_number = Score.satisfies_type(Number)
+    var integer_is_a_number = Integer.satisfies_type(Number)
+    var text_is_a_number = String.satisfies_type(Number)
+    console.print("numbers:", fixed_is_a_number, score_is_a_number, integer_is_a_number, text_is_a_number)
+    var price = Fixed(7)
+    var tax = Fixed(2)
+    var total = price + tax
+    var halves = price / tax
+    var left = price % tax
+    var is_dearer = price > tax
+    console.print("Fixed maths:", total, halves, left, is_dearer)
+    var weather = Weather()
+    var sky: Shown = weather.sky
+    var sky_text = sky.to_string()
+    console.print("sky:", sky_text)
+}

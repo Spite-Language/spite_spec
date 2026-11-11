@@ -1,0 +1,1 @@
+var finish: Spite.Function<Nothing>? = null

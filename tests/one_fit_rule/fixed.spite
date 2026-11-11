@@ -1,0 +1,48 @@
+var units = 0
+
+func Fixed(starting_units: Integer) {
+    units = starting_units
+}
+
+func sum(other: Fixed): Fixed {
+    var total = units + other.units
+    return Fixed(total)
+}
+
+func subtract(other: Fixed): Fixed {
+    var difference = units - other.units
+    return Fixed(difference)
+}
+
+func multiply(other: Fixed): Fixed {
+    var product = units * other.units
+    return Fixed(product)
+}
+
+func divide(other: Fixed): Fixed {
+    crash other.units != 0
+    var quotient = units / other.units
+    return Fixed(quotient)
+}
+
+func remainder(other: Fixed): Fixed {
+    crash other.units != 0
+    var left = units % other.units
+    return Fixed(left)
+}
+
+func equals(other: Fixed): Boolean {
+    return units == other.units
+}
+
+func less_than(other: Fixed): Boolean {
+    return units < other.units
+}
+
+func greater_than(other: Fixed): Boolean {
+    return units > other.units
+}
+
+func to_string(): String {
+    return "{units} units"
+}

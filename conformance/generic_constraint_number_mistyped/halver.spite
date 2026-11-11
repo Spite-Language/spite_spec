@@ -1,0 +1,7 @@
+generic $amount_type: GenericConstraintNumberMistyped.Halving
+
+var amounts = List<$amount_type>()
+
+func add(amount: $amount_type) {
+    amounts.append(amount)
+}

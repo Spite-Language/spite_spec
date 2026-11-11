@@ -1,0 +1,38 @@
+var points = 0
+
+func sum(other: Score): Score {
+    var total = Score()
+    total.points = points + other.points
+    return total
+}
+
+func subtract(other: Score): Score {
+    var difference = Score()
+    difference.points = points - other.points
+    return difference
+}
+
+func multiply(other: Score): Score {
+    var product = Score()
+    product.points = points * other.points
+    return product
+}
+
+func divide(other: Score): Score {
+    crash other.points != 0
+    var quotient = Score()
+    quotient.points = points / other.points
+    return quotient
+}
+
+func equals(other: Score): Boolean {
+    return points == other.points
+}
+
+func less_than(other: Score): Boolean {
+    return points < other.points
+}
+
+func greater_than(other: Score): Boolean {
+    return points > other.points
+}

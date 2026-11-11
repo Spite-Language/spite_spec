@@ -1,0 +1,13 @@
+attributes: rex 7 3
+Pet: named true true, shown false false
+Mistyped: named false false, shown false false
+Labelled: named false false, shown false false
+Integer: named false false, shown true true
+Weather.Sky: named false, shown true
+String?: named false, shown true
+Integer is Shown: true 5
+Tally is Counted: true 3
+Purse is Counted: 4 4 cents
+numbers: true false true false
+Fixed maths: 9 units 3 units 1 units true
+sky: clear

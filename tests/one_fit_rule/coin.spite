@@ -1,0 +1,5 @@
+var cents = 4
+
+func to_string(): String {
+    return "{cents} cents"
+}

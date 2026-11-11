@@ -1,0 +1,19 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func GenericConstraintUnionMember() {
+    load "../../../spite_standard_library/windows"
+    var shelf = Shelf<Pet>()
+    var cat = Cat()
+    shelf.add(cat)
+    var count = shelf.items.count()
+    console.print(cat.name, count)
+}

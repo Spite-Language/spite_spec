@@ -1,0 +1,21 @@
+type Named {
+    name: String
+}
+
+type Keeper {
+    pet: Named
+}
+
+var console = Console()
+
+func ShapeAttributeMayBeNull() {
+    load "../../../spite_standard_library/windows"
+    var cat = Cat()
+    console.print(cat.name)
+    var owner = Owner()
+    if owner.pet {
+        console.print("has a pet")
+    }
+    var keeper: Keeper = owner
+    console.print(keeper.pet.name)
+}

@@ -1,0 +1,7 @@
+generic $job_type: GenericConstraintHeldFunctionMayBeNull.Job
+
+var jobs = List<$job_type>()
+
+func add(job: $job_type) {
+    jobs.append(job)
+}
