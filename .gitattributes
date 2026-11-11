@@ -1,0 +1,3 @@
+* text=auto eol=lf
+conformance/crlf_line_breaks_become_line_feeds/crlf_line_breaks_become_line_feeds.spite -text
+conformance/lone_carriage_returns_become_line_feeds/lone_carriage_returns_become_line_feeds.spite -text
