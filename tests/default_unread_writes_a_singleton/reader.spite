@@ -1,4 +1,4 @@
-var seen: Counter? = null
+var seen: Counter?
 
 func Reader(given: Counter?) {
     seen = given

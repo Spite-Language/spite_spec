@@ -1,9 +1,9 @@
 generic $first_type
 generic $second_type
 
-var function: Spite.Function<$first_type, $second_type, Nothing>? = null
 var first = $first_type()
 var second = $second_type()
+var function: Spite.Function<$first_type, $second_type, Nothing>?
 
 func Each(new_function: Spite.Function<$first_type, $second_type, Nothing>) {
     function = new_function

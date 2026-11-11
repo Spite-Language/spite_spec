@@ -1,4 +1,4 @@
-var kept: Middle? = null
+var kept: Middle?
 
 func Context(given: Middle?) {
     kept = given

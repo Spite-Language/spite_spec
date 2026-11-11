@@ -1,4 +1,4 @@
-var parent: Parent? = null
+var parent: Parent?
 var name: String
 
 func Child(new_name: String, new_parent: Parent) {

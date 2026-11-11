@@ -1,5 +1,5 @@
-var component: Anything? = null
 var positions = Column<Position>()
+var component: Anything?
 var entity: Integer
 
 func AddComponent(new_entity: Integer, new_component: Anything) {

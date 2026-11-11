@@ -1,5 +1,5 @@
-var left: Noisy? = null
-var right: Noisy? = null
+var left: Noisy?
+var right: Noisy?
 
 func Context(given_left: Noisy?, given_right: Noisy?) {
     left = given_left

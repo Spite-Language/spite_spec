@@ -1,5 +1,5 @@
-var left: TreeBasics.TreeNode? = null
-var right: TreeBasics.TreeNode? = null
+var left: TreeBasics.TreeNode?
+var right: TreeBasics.TreeNode?
 
 func Branch(left_node: TreeBasics.TreeNode, right_node: TreeBasics.TreeNode) {
     left = left_node

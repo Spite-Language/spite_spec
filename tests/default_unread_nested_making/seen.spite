@@ -1,4 +1,4 @@
-var kept: Leaf? = null
+var kept: Leaf?
 
 func Seen(given: Leaf?) {
     kept = given

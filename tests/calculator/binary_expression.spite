@@ -1,5 +1,5 @@
-var left: Calculator.Expression? = null
-var right: Calculator.Expression? = null
+var left: Calculator.Expression?
+var right: Calculator.Expression?
 var operator: Token.TokenKind
 
 func BinaryExpression(

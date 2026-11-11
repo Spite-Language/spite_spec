@@ -3,7 +3,7 @@ enum Stage {
     'published'
 }
 
-var stage: Stage? = null
+var stage: Stage?
 var title: String
 
 func Post(new_title: String) {

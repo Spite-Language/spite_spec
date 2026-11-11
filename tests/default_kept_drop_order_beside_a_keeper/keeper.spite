@@ -1,4 +1,4 @@
-var held: Part? = null
+var held: Part?
 
 func Keeper(given: Part) {
     held = given

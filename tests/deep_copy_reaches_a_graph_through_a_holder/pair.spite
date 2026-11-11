@@ -1,5 +1,5 @@
-var first: Node? = null
-var second: Node? = null
+var first: Node?
+var second: Node?
 
 func Pair(given_first: Node, given_second: Node) {
     first = given_first

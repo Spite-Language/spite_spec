@@ -1,7 +1,7 @@
 generic $key_type
 generic $value_type
 
-var entries: Dictionary<$key_type, $value_type>? = null
+var entries: Dictionary<$key_type, $value_type>?
 
 func Keyed(new_entries: Dictionary<$key_type, $value_type>) {
     entries = new_entries

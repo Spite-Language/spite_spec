@@ -1,4 +1,4 @@
-var units = 0
+var units: Integer
 
 func Fixed(starting_units: Integer) {
     units = starting_units

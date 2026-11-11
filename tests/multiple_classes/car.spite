@@ -1,5 +1,5 @@
 var console = Console()
-var engine: Engine? = null
+var engine: Engine?
 var name: String
 
 func Car(starting_name: String, starting_engine: Engine) {

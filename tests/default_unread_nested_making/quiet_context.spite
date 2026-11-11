@@ -1,4 +1,4 @@
-var kept: QuietMiddle? = null
+var kept: QuietMiddle?
 
 func QuietContext(given: QuietMiddle?) {
     kept = given
