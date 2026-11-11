@@ -1,4 +1,4 @@
-var amount: Integer
+var amount = 0
 
 func Meters(starting_amount: Integer) {
     amount = starting_amount

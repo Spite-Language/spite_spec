@@ -1,1 +1,2 @@
+conformance/attribute_without_default_returns_first/hunt.spite:4: error: this 'if' only leaves the constructor, and a constructor is setup, not logic: take already resolved values, or write 'crash is_kept' when this is a bug (in Hunt.Hunt)
 conformance/attribute_without_default_returns_first/hunt.spite:1: error: the attribute 'target' has no default, so the constructor gives it its value, but the 'return' at line 5 leaves before it has one: give it a value on every path of the constructor, or write a default (in Hunt)

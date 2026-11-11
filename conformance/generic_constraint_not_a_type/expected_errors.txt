@@ -1,1 +1,2 @@
 conformance/generic_constraint_not_a_type/tally.spite:1: error: '$count_type' is constrained by 'Integer', which is not a 'type': a constraint names a 'type' the class given must fit, like 'generic $count_type: Printable' (in Tally.)
+conformance/generic_constraint_not_a_type/tally.spite:3: error: the attribute 'count' has no default, so the constructor gives it its value, but the class has no constructor in this file to give it one: give it a value on every path of the constructor, or write a default (in Tally)

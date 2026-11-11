@@ -1,4 +1,4 @@
-var title = ""
+var title: String
 
 func Badge(starting_title: String) {
     title = starting_title

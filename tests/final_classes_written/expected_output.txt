@@ -1,7 +1,7 @@
 gold
 marked true
 # ../../badge.spite
-var name = ""
+var name: String
 
 # ../../badge.spite
 func Badge(starting_name: String) {

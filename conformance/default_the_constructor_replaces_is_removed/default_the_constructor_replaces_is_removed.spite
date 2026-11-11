@@ -3,5 +3,6 @@ var console = Console()
 func DefaultTheConstructorReplacesIsRemoved() {
     load "../../../spite_standard_library/windows"
     var holder = Holder(3)
-    console.print(holder.values.count(), holder.label, holder.made.name)
+    var count = holder.values.count()
+    console.print(count, holder.label, holder.made.name)
 }
