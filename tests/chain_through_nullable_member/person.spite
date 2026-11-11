@@ -1,4 +1,4 @@
-var age = 0
+var age: Integer
 
 func Person(starting: Integer) {
     age = starting

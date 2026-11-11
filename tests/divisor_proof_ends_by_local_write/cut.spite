@@ -1,4 +1,4 @@
-var parts = 0
+var parts: Integer
 
 func Cut(starting_parts: Integer) {
     parts = starting_parts

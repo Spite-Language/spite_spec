@@ -1,5 +1,5 @@
-var order = 0
 var width = 0.0
+var order: Integer
 
 func Layout(new_order: Integer) {
     order = new_order

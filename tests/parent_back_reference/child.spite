@@ -1,5 +1,5 @@
-var name = ""
 var parent: Parent? = null
+var name: String
 
 func Child(new_name: String, new_parent: Parent) {
     name = new_name

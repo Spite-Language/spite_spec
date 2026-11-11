@@ -1,4 +1,4 @@
-var held_value = 0
+var held_value: Integer
 
 func Leaf(starting_value: Integer) {
     held_value = starting_value

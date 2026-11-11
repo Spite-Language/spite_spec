@@ -17,7 +17,7 @@ var quests = List<String>()
 var guild = "none yet"
 var stamina = 100
 var luck = 5
-var serial = 0
+var serial: Integer
 
 func Player(starting_serial: Integer) {
     serial = starting_serial

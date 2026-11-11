@@ -1,9 +1,9 @@
-var small: Byte = 0
-var large: Byte = 0
-var negative: Tiny = 0
-var positive: Tiny = 0
-var whole: Integer = 0
-var bigger: Integer = 0
+var small: Byte
+var large: Byte
+var negative: Tiny
+var positive: Tiny
+var whole: Integer
+var bigger: Integer
 
 func Holder() {
     small = 0

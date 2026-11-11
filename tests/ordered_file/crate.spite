@@ -1,4 +1,4 @@
-var count = 0
+var count: Integer
 
 func Crate(new_count: Integer) {
     count = new_count

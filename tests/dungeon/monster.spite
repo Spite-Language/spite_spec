@@ -1,5 +1,5 @@
-var name = "Monster"
-var health = 10
+var name: String
+var health: Integer
 
 func Monster(new_name: String, new_health: Integer) {
     name = new_name

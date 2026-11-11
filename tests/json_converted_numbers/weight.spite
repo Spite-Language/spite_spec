@@ -1,4 +1,4 @@
-var kilograms = 0.0
+var kilograms: Float
 
 func Weight(starting_kilograms: Float) {
     kilograms = starting_kilograms

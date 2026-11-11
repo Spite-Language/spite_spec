@@ -1,5 +1,5 @@
-var name = ""
-var size = 0
+var name: String
+var size: Integer
 
 func Planet(starting_name: String, starting_size: Integer) {
     name = starting_name

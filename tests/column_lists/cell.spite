@@ -1,6 +1,6 @@
-var weight = 0
-var small: Byte = 0
 var big: Long = 0
+var weight: Integer
+var small: Byte
 
 func Cell(starting_weight: Integer, starting_small: Integer) {
     weight = starting_weight

@@ -1,5 +1,5 @@
-var marks = false
 var board = Board()
+var marks: Boolean
 
 func Marker(starting: Boolean) {
     marks = starting

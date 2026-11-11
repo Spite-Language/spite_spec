@@ -1,6 +1,6 @@
 var counter = HitCounter()
 var settings = Settings()
-var rounds = 0
+var rounds: Integer
 
 func Worker(starting_rounds: Integer) {
     rounds = starting_rounds

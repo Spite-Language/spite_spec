@@ -1,5 +1,5 @@
-var name = ""
 var log = List<String>()
+var name: String
 
 func Robot(starting_name: String) {
     name = starting_name

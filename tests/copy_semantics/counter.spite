@@ -1,4 +1,4 @@
-var count = 0
+var count: Integer
 
 func Counter(starting_count: Integer) {
     count = starting_count

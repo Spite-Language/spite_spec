@@ -1,10 +1,10 @@
-var name = ""
 var health = 10
 var scores = List<Integer>()
 var bag = Dictionary<String, Integer>()
 var partner: Player? = null
 var mood: DebugValues.Mood = 'calm'
 var weather: DebugValues.Weather = 'sunny'
+var name: String
 
 func Player(starting_name: String) {
     name = starting_name

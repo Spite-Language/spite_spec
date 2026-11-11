@@ -1,8 +1,8 @@
 singleton
 
 var console = Console()
-var number = 0
 var sent = List<String>()
+var number: Integer
 
 func Channel(channel_number: Integer) {
     number = channel_number

@@ -1,4 +1,4 @@
-var grams = 0
+var grams: Integer
 
 func Weight(starting_grams: Integer) {
     grams = starting_grams

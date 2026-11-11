@@ -1,5 +1,5 @@
-var amount = 0
 var _marathon_meters = 42195
+var amount: Integer
 
 func Meters(starting_amount: Integer) {
     amount = starting_amount

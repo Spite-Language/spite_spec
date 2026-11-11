@@ -1,5 +1,5 @@
-var person = ""
-var people = ""
+var person: String
+var people: String
 
 func Crowd(new_person: String, new_people: String) {
     person = new_person

@@ -1,4 +1,4 @@
-var ending = ""
+var ending: String
 
 func Shouter(starting_ending: String) {
     ending = starting_ending

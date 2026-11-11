@@ -1,5 +1,5 @@
 var console = Console()
-var name = ""
+var name: String
 
 func Part(starting: String) {
     name = starting

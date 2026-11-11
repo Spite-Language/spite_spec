@@ -1,4 +1,4 @@
-var path = ""
+var path: String
 
 func Plainy(starting_path: String) {
     path = starting_path

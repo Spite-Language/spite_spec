@@ -1,4 +1,4 @@
-var points = 0
+var points: Integer
 
 func Health(starting_points: Integer) {
     points = starting_points

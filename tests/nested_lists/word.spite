@@ -1,4 +1,4 @@
-var length = 0
+var length: Integer
 
 func Word(starting_length: Integer) {
     length = starting_length

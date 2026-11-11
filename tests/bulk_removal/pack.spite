@@ -1,5 +1,5 @@
-var owner = ""
 var tags = List<String>()
+var owner: String
 
 func Pack(new_owner: String) {
     owner = new_owner

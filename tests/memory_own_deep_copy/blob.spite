@@ -1,5 +1,5 @@
 var console = Console()
-var size = 0
+var size: Integer
 
 func Blob(new_size: Integer) {
     size = new_size

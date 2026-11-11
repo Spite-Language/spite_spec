@@ -1,5 +1,5 @@
 var greeter = Greeter()
-var name = ""
+var name: String
 
 func Room(new_name: String) {
     name = new_name

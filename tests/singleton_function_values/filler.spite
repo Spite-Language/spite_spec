@@ -1,5 +1,5 @@
 var rows = Row<Health>()
-var first = 0
+var first: Integer
 
 func Filler(starting_first: Integer) {
     first = starting_first

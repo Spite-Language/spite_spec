@@ -1,4 +1,4 @@
-var words = 0
+var words: Integer
 
 func Letter(seed: Integer) {
     words = seed * 7 % 1000

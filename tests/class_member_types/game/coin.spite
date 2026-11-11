@@ -1,4 +1,4 @@
-var amount = 0
+var amount: Integer
 
 func Coin(starting_amount: Integer) {
     amount = starting_amount

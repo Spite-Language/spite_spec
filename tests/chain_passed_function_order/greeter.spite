@@ -1,5 +1,5 @@
 var console = Console()
-var greeting = ""
+var greeting: String
 
 func Greeter(starting_greeting: String) {
     greeting = starting_greeting

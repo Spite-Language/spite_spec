@@ -1,5 +1,5 @@
-var title = ""
 var lines = List<String>()
+var title: String
 
 func Note(starting_title: String) {
     title = starting_title

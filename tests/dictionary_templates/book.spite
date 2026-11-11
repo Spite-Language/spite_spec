@@ -1,7 +1,7 @@
 var console = Console()
-var title = ""
-var pages = 0
-var borrowed = false
+var title: String
+var pages: Integer
+var borrowed: Boolean
 
 func Book(starting_title: String, starting_pages: Integer, starting_borrowed: Boolean) {
     title = starting_title

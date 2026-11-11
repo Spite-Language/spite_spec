@@ -1,5 +1,5 @@
 var ledger = Ledger()
-var count = 0
+var count: Integer
 
 func Poster(new_count: Integer) {
     count = new_count

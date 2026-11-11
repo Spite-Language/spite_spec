@@ -1,6 +1,6 @@
-var step = 0
 var points = List<Point>()
 var _points_made = 20000
+var step: Integer
 
 func Maker(new_step: Integer) {
     step = new_step

@@ -1,6 +1,6 @@
-var name = ""
 var ran = 0
 var active = true
+var name: String
 
 func Stage(starting_name: String) {
     name = starting_name

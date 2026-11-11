@@ -1,4 +1,4 @@
-var index = 0
+var index: Integer
 
 func Slot(starting_index: Integer) {
     index = starting_index

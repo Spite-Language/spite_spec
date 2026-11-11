@@ -1,5 +1,5 @@
-var name = ""
 var next: DeepCopyUnionCycles.Link? = null
+var name: String
 
 func Ring(new_name: String) {
     name = new_name

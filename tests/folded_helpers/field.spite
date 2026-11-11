@@ -1,6 +1,6 @@
 generic $value_type
 
-var name = ""
+var name: String
 
 func Field(new_name: String) {
     name = new_name

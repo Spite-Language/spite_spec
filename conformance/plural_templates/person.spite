@@ -1,6 +1,6 @@
-var name = ""
 var data = 0
 var datum = 0
+var name: String
 
 func Person(new_name: String) {
     name = new_name

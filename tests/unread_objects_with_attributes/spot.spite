@@ -1,5 +1,5 @@
-var across = 7
-var down = 9
+var across: Integer
+var down: Integer
 
 func Spot(starting_across: Integer, starting_down: Integer) {
     across = starting_across

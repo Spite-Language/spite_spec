@@ -1,4 +1,4 @@
-var jobs = 0
+var jobs: Integer
 
 func Busy(starting_jobs: Integer) {
     jobs = starting_jobs

@@ -1,5 +1,5 @@
 var console = Console()
-var limit = 0.0
+var limit: Float
 
 func Visitor(starting_limit: Double) {
     limit = starting_limit

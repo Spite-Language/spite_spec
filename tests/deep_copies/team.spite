@@ -1,7 +1,7 @@
-var name = ""
 var members = List<Member>()
 var scores = Dictionary<String, Integer>()
 var captain: Member? = null
+var name: String
 
 func Team(starting_name: String) {
     name = starting_name

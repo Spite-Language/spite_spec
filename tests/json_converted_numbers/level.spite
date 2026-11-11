@@ -1,4 +1,4 @@
-var steps = 0
+var steps: Integer
 
 func Level(starting_steps: Integer) {
     steps = starting_steps

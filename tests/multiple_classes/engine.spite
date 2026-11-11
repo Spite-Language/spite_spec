@@ -1,5 +1,5 @@
-var horsepower = 0
 var speed = 0
+var horsepower: Integer
 
 func Engine(starting_horsepower: Integer) {
     horsepower = starting_horsepower

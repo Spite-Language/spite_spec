@@ -1,5 +1,5 @@
 var console = Console()
-var label = ""
+var label: String
 
 func Resource(new_label: String) {
     label = new_label

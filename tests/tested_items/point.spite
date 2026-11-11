@@ -1,5 +1,5 @@
-var x = 0
 var owner: Point? = null
+var x: Integer
 
 func Point(starting_x: Integer) {
     x = starting_x

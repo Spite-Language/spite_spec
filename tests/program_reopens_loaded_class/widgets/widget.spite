@@ -1,6 +1,6 @@
-var name = ""
 var quantity = 0
 var flavour = "plain"
+var name: String
 
 func Widget(starting_name: String) {
     name = starting_name

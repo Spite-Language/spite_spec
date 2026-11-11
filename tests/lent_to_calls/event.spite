@@ -5,9 +5,9 @@ enum Kind {
     'wheel_turned'
 }
 
-var kind: Kind = 'pointer_moved'
-var left = 0
-var top = 0
+var kind: Kind
+var left: Integer
+var top: Integer
 
 func Event(new_kind: Kind, new_left: Integer, new_top: Integer) {
     kind = new_kind

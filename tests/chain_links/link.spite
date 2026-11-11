@@ -1,5 +1,5 @@
-var value = 0
 var next: Link? = null
+var value: Integer
 
 func Link(new_value: Integer, new_next: Link?) {
     value = new_value

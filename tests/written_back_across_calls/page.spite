@@ -1,4 +1,4 @@
-var words = 0
+var words: Integer
 
 func Page(starting_words: Integer) {
     words = starting_words

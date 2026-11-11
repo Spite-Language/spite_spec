@@ -6,7 +6,6 @@ var mana = 10
 var attack = 9
 var defense = 3
 var speed = 2
-var x = 0
 var y = 0
 var level = 1
 var experience_given = 25
@@ -20,7 +19,8 @@ var loot = List<String>()
 var spawn_zone = "meadow"
 var resist_fire = 0
 var resist_ice = 0
-var serial = 0
+var x: Integer
+var serial: Integer
 
 func Monster(starting_serial: Integer) {
     serial = starting_serial

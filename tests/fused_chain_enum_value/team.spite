@@ -3,8 +3,8 @@ enum Color {
     'blue'
 }
 
-var active = true
-var color: Color = 'red'
+var active: Boolean
+var color: Color
 
 func Team(new_active: Boolean, new_color: Color) {
     active = new_active

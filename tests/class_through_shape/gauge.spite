@@ -1,4 +1,4 @@
-var label = "gauge"
+var label: String
 
 func Gauge(new_label: String) {
     label = new_label

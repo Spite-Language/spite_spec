@@ -1,4 +1,4 @@
-var calm = false
+var calm: Boolean
 
 func Dog(new_calm: Boolean) {
     calm = new_calm

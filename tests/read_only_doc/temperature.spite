@@ -1,4 +1,4 @@
-var _celsius = 0.0
+var _celsius: Float
 
 func Temperature(starting_celsius: Float) {
     _celsius = starting_celsius

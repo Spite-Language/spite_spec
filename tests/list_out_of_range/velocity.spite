@@ -1,4 +1,4 @@
-var across = 0.0
+var across: Float
 
 func Velocity(new_across: Float) {
     across = new_across

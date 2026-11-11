@@ -1,6 +1,6 @@
-var value: Long = 0
 var before: Link? = null
 var _pull_rounds = 200
+var value: Long
 
 func Link(seed: Integer) {
     value = seed

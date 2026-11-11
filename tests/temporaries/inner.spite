@@ -1,4 +1,4 @@
-var label_text = ""
+var label_text: String
 
 func Inner(starting_label: String) {
     label_text = starting_label

@@ -1,5 +1,5 @@
-var radius = 0
 var name = "circle"
+var radius: Integer
 
 func Circle(starting_radius: Integer) {
     radius = starting_radius

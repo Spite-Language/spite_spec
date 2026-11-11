@@ -1,6 +1,6 @@
 var console = Console()
-var name = ""
 var pet: Pet? = null
+var name: String
 
 func Owner(new_name: String) {
     name = new_name

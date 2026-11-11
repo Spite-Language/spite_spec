@@ -1,4 +1,4 @@
-var metal = ""
+var metal: String
 
 func Badge(starting_metal: String) {
     metal = starting_metal

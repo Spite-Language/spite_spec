@@ -1,5 +1,5 @@
-var across = 0
-var along = 0
+var across: Integer
+var along: Integer
 
 func Position(new_across: Integer, new_along: Integer) {
     across = new_across

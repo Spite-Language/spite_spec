@@ -1,4 +1,4 @@
-var text = ""
+var text: String
 
 func Badge(new_text: String) {
     text = new_text

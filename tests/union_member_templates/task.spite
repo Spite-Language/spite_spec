@@ -1,5 +1,5 @@
-var title = ""
-var is_done = false
+var title: String
+var is_done: Boolean
 
 func Task(new_title: String, new_done: Boolean) {
     title = new_title

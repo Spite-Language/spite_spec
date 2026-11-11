@@ -1,5 +1,5 @@
-var name = ""
 var level = 1
+var name: String
 
 func Hero(starting_name: String) {
     name = starting_name

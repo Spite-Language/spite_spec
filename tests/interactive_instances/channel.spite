@@ -1,6 +1,6 @@
 singleton
 
-var number = 0
+var number: Integer
 
 func Channel(starting_number: Integer) {
     number = starting_number

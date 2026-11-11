@@ -1,4 +1,4 @@
-var name = ""
+var name: String
 
 func Monster(new_name: String) {
     name = new_name

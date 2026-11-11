@@ -1,5 +1,5 @@
 var console = Console()
-var seen = 0
+var seen: Integer
 
 func Show(holder: Holder) {
     seen = holder.keeper.value

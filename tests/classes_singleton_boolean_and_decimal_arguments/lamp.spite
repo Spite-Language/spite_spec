@@ -1,7 +1,7 @@
 singleton
 
 var console = Console()
-var lit = false
+var lit: Boolean
 
 func Lamp(starting_lit: Boolean) {
     lit = starting_lit

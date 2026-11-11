@@ -1,8 +1,8 @@
-var source = ""
 var tokens = List<Token>()
 var token_start = -1
 var buffer_is_number = false
 var _lowercase_z_code = 122
+var source: String
 
 func Lexer(starting_source: String) {
     source = starting_source

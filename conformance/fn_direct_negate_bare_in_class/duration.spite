@@ -1,4 +1,4 @@
-var seconds = 0
+var seconds: Integer
 
 func Duration(starting_seconds: Integer) {
     seconds = starting_seconds

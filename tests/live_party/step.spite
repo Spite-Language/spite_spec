@@ -1,4 +1,4 @@
-var distance = 0.0
+var distance: Float
 
 func Step(new_distance: Float) {
     distance = new_distance

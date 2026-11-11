@@ -1,6 +1,6 @@
-var name = ""
-var age = 0
-var retired = false
+var name: String
+var age: Integer
+var retired: Boolean
 
 func Person(starting_name: String, starting_age: Integer, starting_retired: Boolean) {
     name = starting_name

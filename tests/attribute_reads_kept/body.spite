@@ -1,7 +1,7 @@
-var position_x = 0.0
-var position_y = 0.0
-var velocity_x = 0.0
-var velocity_y = 0.0
+var position_x: Float
+var position_y: Float
+var velocity_x: Float
+var velocity_y: Float
 
 func Body(seed: Integer) {
     position_x = seed % 10

@@ -1,4 +1,4 @@
-var label = ""
+var label: String
 
 func Widget(new_label: String) {
     label = new_label

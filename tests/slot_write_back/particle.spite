@@ -1,5 +1,5 @@
 var left = 0
-var speed = 1
+var speed: Integer
 
 func Particle(starting_speed: Integer) {
     speed = starting_speed

@@ -1,4 +1,4 @@
-var red: Byte = 0
+var red: Byte
 
 func Pixel(starting_red: Byte) {
     red = starting_red

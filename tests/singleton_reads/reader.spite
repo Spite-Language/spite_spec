@@ -1,5 +1,5 @@
 var transforms = Column<Transform>()
-var rows = 0
+var rows: Integer
 
 func Reader(new_rows: Integer) {
     rows = new_rows

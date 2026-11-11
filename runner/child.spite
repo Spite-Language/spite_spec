@@ -1,6 +1,4 @@
 var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
-var folder = ""
-var output_path = ""
 var job: Long = 0
 var process: Long = 0
 var started: Long = 0
@@ -11,6 +9,8 @@ var kills_on_close = 8192
 var extended_limits = 9
 var starts_suspended = 4
 var finished_waiting = 0
+var folder: String
+var output_path: String
 
 func Child(starting_folder: String, starting_output_path: String) {
     folder = starting_folder

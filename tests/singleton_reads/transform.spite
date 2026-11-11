@@ -1,4 +1,4 @@
-var across = 0
+var across: Integer
 
 func Transform(new_across: Integer) {
     across = new_across

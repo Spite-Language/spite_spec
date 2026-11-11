@@ -1,7 +1,7 @@
-var name = ""
 var parent: Branch? = null
 var branches = List<Branch>()
 var console = Console()
+var name: String
 
 func Branch(starting_name: String) {
     name = starting_name

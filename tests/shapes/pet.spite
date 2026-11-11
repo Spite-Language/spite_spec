@@ -1,6 +1,6 @@
-var name = ""
-var size = 0
-var kind = ""
+var name: String
+var size: Integer
+var kind: String
 
 func Pet(starting_name: String, starting_size: Integer, starting_kind: String) {
     name = starting_name

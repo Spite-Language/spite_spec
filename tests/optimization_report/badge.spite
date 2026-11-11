@@ -1,5 +1,5 @@
-var title = ""
 var tags = List<String>()
+var title: String
 
 func Badge(new_title: String) {
     title = new_title

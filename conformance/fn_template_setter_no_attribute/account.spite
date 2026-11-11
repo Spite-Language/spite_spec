@@ -1,4 +1,4 @@
-var balance = 0
+var balance: Integer
 
 func Account(starting_balance: Integer) {
     balance = starting_balance

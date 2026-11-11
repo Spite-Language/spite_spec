@@ -1,4 +1,4 @@
-var side = 0
+var side: Integer
 
 func Square(starting: Integer) {
     side = starting

@@ -1,5 +1,5 @@
 var console = Console()
-var name = ""
+var name: String
 
 func Lamp(new_name: String) {
     name = new_name

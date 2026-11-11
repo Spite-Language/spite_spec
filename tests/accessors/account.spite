@@ -1,6 +1,6 @@
-var owner = ""
 var balance = 0
 var history = List<String>()
+var owner: String
 
 func Account(starting_owner: String) {
     owner = starting_owner

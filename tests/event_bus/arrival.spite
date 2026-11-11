@@ -1,4 +1,4 @@
-var name = ""
+var name: String
 
 func Arrival(arriving: String) {
     name = arriving

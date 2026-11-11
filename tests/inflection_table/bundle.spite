@@ -1,4 +1,4 @@
-var sheaf = ""
+var sheaf: String
 
 func Bundle(grain: String) {
     sheaf = grain

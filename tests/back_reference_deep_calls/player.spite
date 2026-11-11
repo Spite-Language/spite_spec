@@ -1,6 +1,6 @@
-var name = ""
 var team: Team? = null
 var console = Console()
+var name: String
 
 func Player(new_name: String) {
     name = new_name

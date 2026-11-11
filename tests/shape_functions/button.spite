@@ -1,5 +1,5 @@
-var label = ""
 var width = 1
+var label: String
 
 func Button(starting_label: String) {
     label = starting_label

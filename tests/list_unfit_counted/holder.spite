@@ -1,5 +1,5 @@
-var name = ""
 var scores = List<Integer>()
+var name: String
 
 func Holder(new_name: String) {
     name = new_name

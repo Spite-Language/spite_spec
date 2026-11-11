@@ -1,6 +1,6 @@
-var operator: Token.TokenKind = 'plus'
 var left: Calculator.Expression? = null
 var right: Calculator.Expression? = null
+var operator: Token.TokenKind
 
 func BinaryExpression(
     starting_operator: Token.TokenKind,

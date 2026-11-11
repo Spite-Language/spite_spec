@@ -3,8 +3,8 @@ enum Size {
     'large'
 }
 
-var id = 0
 var size: Size = 'small'
+var id: Integer
 
 func Requested(new_id: Integer) {
     id = new_id

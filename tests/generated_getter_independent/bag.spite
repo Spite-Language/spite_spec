@@ -1,5 +1,5 @@
 var items = List<String>()
-var label = ""
+var label: String
 
 func Bag(starting_label: String) {
     label = starting_label

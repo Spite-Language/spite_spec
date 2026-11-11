@@ -1,5 +1,5 @@
-var value = 0
 var inner = Inner(1)
+var value: Integer
 
 func Part(starting: Integer) {
     value = starting

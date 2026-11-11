@@ -1,5 +1,5 @@
-var across = 0
-var down = 0
+var across: Integer
+var down: Integer
 
 func Displacement(starting_across: Integer, starting_down: Integer) {
     across = starting_across

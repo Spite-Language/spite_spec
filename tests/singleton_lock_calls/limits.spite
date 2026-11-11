@@ -1,4 +1,4 @@
-var most = 0
+var most: Integer
 
 func Limits(starting_most: Integer) {
     most = starting_most

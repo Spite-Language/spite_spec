@@ -1,5 +1,5 @@
-var label = ""
-var rows = 0
+var label: String
+var rows: Integer
 
 func Panel(starting_label: String, starting_rows: Integer) {
     label = starting_label

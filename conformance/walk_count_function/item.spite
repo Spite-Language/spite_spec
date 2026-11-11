@@ -1,6 +1,6 @@
-var name = "apple"
-var price = 3
-var in_stock = true
+var name: String
+var price: Integer
+var in_stock: Boolean
 
 func Item(item_name: String, item_price: Integer, stocked: Boolean) {
     name = item_name

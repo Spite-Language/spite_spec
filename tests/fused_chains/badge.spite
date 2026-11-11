@@ -1,4 +1,4 @@
-var level = 0
+var level: Integer
 
 func Badge(starting_level: Integer) {
     level = starting_level

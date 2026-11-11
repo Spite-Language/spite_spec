@@ -1,5 +1,5 @@
 var console = Console()
-var volume = 0
+var volume: Integer
 
 func Loud() {
     volume = 11

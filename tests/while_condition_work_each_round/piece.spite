@@ -1,4 +1,4 @@
-var kept = 0
+var kept: Integer
 
 func Piece(starting: Integer) {
     kept = starting

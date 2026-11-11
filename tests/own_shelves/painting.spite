@@ -1,4 +1,4 @@
-var width = 0
+var width: Integer
 
 func Painting(seed: Integer) {
     width = seed * 11 % 1000

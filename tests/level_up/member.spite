@@ -1,5 +1,5 @@
-var name = "unnamed"
 var level = 1
+var name: String
 
 func Member(new_name: String) {
     name = new_name

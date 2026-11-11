@@ -1,6 +1,6 @@
 var registry = Registry()
 var rules = Rules()
-var first = 0
+var first: Integer
 
 func Loader(starting_first: Integer) {
     first = starting_first

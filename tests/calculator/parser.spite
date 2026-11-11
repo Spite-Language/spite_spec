@@ -1,5 +1,5 @@
-var tokens = List<Token>()
-var position = 0
+var tokens: List<Token>
+var position: Integer
 
 func Parser(starting_tokens: List<Token>) {
     tokens = starting_tokens

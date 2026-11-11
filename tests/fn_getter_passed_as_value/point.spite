@@ -1,4 +1,4 @@
-var _x = 0
+var _x: Integer
 
 func Point(starting_x: Integer) {
     _x = starting_x

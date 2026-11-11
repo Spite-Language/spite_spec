@@ -1,5 +1,5 @@
-var left = 0
-var right = 0
+var left: Integer
+var right: Integer
 
 func Pair(new_left: Integer, new_right: Integer) {
     left = new_left

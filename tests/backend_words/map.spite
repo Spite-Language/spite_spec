@@ -1,12 +1,12 @@
-var interface = "map"
 var near = 1
-var pascal = 0
 var cdecl = ""
 var default = "default"
 var volatile = ["wind", "rain"]
 var unix = true
 var linux = 4
 var errno = 5
+var interface: String
+var pascal: Integer
 
 func Map(extern: String, typedef: Integer) {
     interface = extern

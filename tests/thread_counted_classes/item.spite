@@ -1,4 +1,4 @@
-var weight = 0
+var weight: Integer
 
 func Item(starting_weight: Integer) {
     weight = starting_weight

@@ -1,8 +1,8 @@
 generic $system_type
 generic $row_type
 
-var first = 0
-var end = 0
+var first: Integer
+var end: Integer
 
 func Runner(new_first: Integer, new_end: Integer) {
     first = new_first

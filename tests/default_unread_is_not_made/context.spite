@@ -1,5 +1,5 @@
-var value = 0
 var maker: Maker? = null
+var value: Integer
 
 func Context(starting: Integer, given: Maker?) {
     value = starting

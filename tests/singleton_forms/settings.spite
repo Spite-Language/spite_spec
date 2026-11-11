@@ -1,7 +1,7 @@
 singleton
 
-var step = 0
-var label = ""
+var step: Integer
+var label: String
 
 func Settings() {
     step = 2

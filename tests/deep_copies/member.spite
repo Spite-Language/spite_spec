@@ -1,5 +1,5 @@
-var name = ""
-var level = 0
+var name: String
+var level: Integer
 
 func Member(starting_name: String, starting_level: Integer) {
     name = starting_name

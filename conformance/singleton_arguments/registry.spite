@@ -1,6 +1,6 @@
 singleton
 
-var name = ""
+var name: String
 
 func Registry(starting_name: String) {
     name = starting_name

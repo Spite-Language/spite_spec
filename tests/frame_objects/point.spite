@@ -1,5 +1,5 @@
-var x: Float = 0.0
-var y: Float = 0.0
+var x: Float
+var y: Float
 
 func Point(starting_x: Float, starting_y: Float) {
     x = starting_x

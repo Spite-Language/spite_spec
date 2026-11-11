@@ -1,5 +1,5 @@
-var value = 0
 var settings = Settings()
+var value: Integer
 
 func Part(starting: Integer) {
     value = starting

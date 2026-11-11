@@ -1,6 +1,6 @@
 var total = 0
-var step = 0
 var _last_seed = 4095
+var step: Integer
 
 func Counter(seed: Integer) {
     step = 1

@@ -1,4 +1,4 @@
-var text = ""
+var text: String
 
 func Token(new_text: String) {
     text = new_text

@@ -1,4 +1,4 @@
-var color = ""
+var color: String
 
 func Tag(starting_color: String) {
     color = starting_color

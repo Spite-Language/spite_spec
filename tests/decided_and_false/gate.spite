@@ -1,6 +1,6 @@
 var console = Console()
-var is_open = false
-var is_forced = false
+var is_open: Boolean
+var is_forced: Boolean
 
 func Gate(open: Boolean, forced: Boolean) {
     is_open = open

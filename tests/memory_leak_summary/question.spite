@@ -1,7 +1,7 @@
 var console = Console()
-var text = ""
 var marks = List<Integer>()
 var answer: Answer? = null
+var text: String
 
 func Question(starting_text: String) {
     text = starting_text

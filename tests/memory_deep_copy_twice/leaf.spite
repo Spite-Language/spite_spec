@@ -1,4 +1,4 @@
-var weight = 0
+var weight: Integer
 
 func Leaf(new_weight: Integer) {
     weight = new_weight

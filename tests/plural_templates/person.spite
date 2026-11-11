@@ -1,6 +1,6 @@
-var name = ""
-var health = 0
-var child = ""
+var name: String
+var health: Integer
+var child: String
 
 func Person(new_name: String, new_health: Integer, new_child: String) {
     name = new_name

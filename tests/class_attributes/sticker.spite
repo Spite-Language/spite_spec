@@ -1,6 +1,6 @@
-var label = "untitled"
-var amount = 3
-var ready = false
+var label: String
+var amount: Integer
+var ready: Boolean
 
 func Sticker(new_label: String) {
     label = new_label

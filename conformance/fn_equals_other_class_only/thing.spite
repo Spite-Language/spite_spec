@@ -1,4 +1,4 @@
-var number = 0
+var number: Integer
 
 func Thing(starting_number: Integer) {
     number = starting_number

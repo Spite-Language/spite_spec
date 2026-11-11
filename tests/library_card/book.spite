@@ -4,9 +4,9 @@ enum Shelf {
     'childrens'
 }
 
-var title = ""
-var shelf: Shelf = 'fiction'
 var borrowed_by: String? = null
+var title: String
+var shelf: Shelf
 
 func Book(starting_title: String, starting_shelf: Shelf) {
     title = starting_title

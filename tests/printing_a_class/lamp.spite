@@ -1,5 +1,5 @@
-var room = ""
 var lit = false
+var room: String
 
 func Lamp(starting_room: String) {
     room = starting_room

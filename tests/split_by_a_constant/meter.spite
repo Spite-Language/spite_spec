@@ -1,5 +1,5 @@
-var is_squared = false
 var total: Long = 0
+var is_squared: Boolean
 
 func Meter(squares: Boolean) {
     is_squared = squares

@@ -11,8 +11,8 @@ enum TokenKind {
     'equals'
 }
 
-var kind: TokenKind = 'end'
-var text = ""
+var kind: TokenKind
+var text: String
 
 func Token(starting_kind: TokenKind, starting_text: String) {
     kind = starting_kind

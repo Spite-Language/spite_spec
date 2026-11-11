@@ -3,13 +3,13 @@ enum Job {
     'knight'
 }
 
-var name = ""
 var health = 10
 var speed = 1.5
 var alive = true
 var job: Job = 'squire'
 var weapon = Weapon()
 var log = List<String>()
+var name: String
 
 func Player(starting_name: String) {
     name = starting_name

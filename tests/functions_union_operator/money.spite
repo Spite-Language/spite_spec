@@ -1,4 +1,4 @@
-var cents = 0
+var cents: Integer
 
 func Money(amount: Integer) {
     cents = amount

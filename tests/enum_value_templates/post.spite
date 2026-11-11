@@ -4,8 +4,8 @@ enum Stage {
     'archived'
 }
 
-var title = ""
-var stage: Stage = 'draft'
+var title: String
+var stage: Stage
 
 func Post(new_title: String, new_stage: Stage) {
     title = new_title

@@ -3,7 +3,7 @@ enum State {
     'full'
 }
 
-var state: State = 'hungry'
+var state: State
 
 func Pet(starting_state: State) {
     state = starting_state

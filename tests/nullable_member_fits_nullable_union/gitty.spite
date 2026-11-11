@@ -1,4 +1,4 @@
-var address = ""
+var address: String
 
 func Gitty(starting_address: String) {
     address = starting_address

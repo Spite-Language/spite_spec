@@ -1,7 +1,7 @@
 singleton
 
 var console = Console()
-var ratio = 0.0
+var ratio: Float
 
 func Gauge(starting_ratio: Float) {
     ratio = starting_ratio

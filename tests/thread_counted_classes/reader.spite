@@ -1,5 +1,5 @@
 var shelf = Shelf()
-var rounds = 0
+var rounds: Integer
 
 func Reader(starting_shelf: Shelf, starting_rounds: Integer) {
     shelf = starting_shelf

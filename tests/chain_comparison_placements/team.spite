@@ -1,5 +1,5 @@
-var name = ""
 var lead = "ada"
+var name: String
 
 func Team(starting_name: String) {
     name = starting_name

@@ -1,4 +1,4 @@
-var text = ""
+var text: String
 
 func Label(starting_text: String) {
     text = starting_text

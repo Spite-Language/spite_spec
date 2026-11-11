@@ -1,5 +1,5 @@
 var console = Console()
-var sound = "woof"
+var sound: String
 
 func Dog() {
     sound = "WOOF, from its constructor"

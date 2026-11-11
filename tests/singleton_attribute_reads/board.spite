@@ -1,4 +1,4 @@
-var size = 0
+var size: Integer
 
 func Board(new_size: Integer) {
     size = new_size

@@ -1,5 +1,5 @@
-var name = ""
 var hits = 0
+var name: String
 
 func Column(column_name: String) {
     name = column_name

@@ -1,6 +1,6 @@
-var health = 0
-var weapon = "sword"
-var power = 0
+var health: Integer
+var weapon: String
+var power: Integer
 
 func Player(starting_health: Integer) {
     health = starting_health

@@ -1,5 +1,5 @@
-var name = ""
-var age = 0
+var name: String
+var age: Integer
 
 func Person(starting_name: String, starting_age: Integer) {
     name = starting_name

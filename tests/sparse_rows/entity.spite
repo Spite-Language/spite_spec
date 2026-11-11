@@ -1,4 +1,4 @@
-var id = 0
+var id: Integer
 
 func Entity(new_id: Integer) {
     id = new_id

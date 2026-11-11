@@ -1,7 +1,7 @@
-var name = ""
 var children = List<Child>()
 var console = Console()
 var registry = Registry()
+var name: String
 
 func Parent(new_name: String) {
     name = new_name

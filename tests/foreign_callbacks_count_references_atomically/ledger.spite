@@ -1,5 +1,5 @@
-var name = ""
 var hits = Hits()
+var name: String
 
 func Ledger(starting_name: String) {
     name = starting_name

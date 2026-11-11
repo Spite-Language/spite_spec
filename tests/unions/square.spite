@@ -1,5 +1,5 @@
-var side = 0
 var name = "square"
+var side: Integer
 
 func Square(starting_side: Integer) {
     side = starting_side

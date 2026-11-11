@@ -1,5 +1,5 @@
-var value = 0
 var next: Node? = null
+var value: Integer
 
 func Node(starting_value: Integer) {
     value = starting_value

@@ -1,6 +1,6 @@
 var total: Long = 0
-var step = 0
 var _bump_rounds = 200
+var step: Integer
 
 func Counter(seed: Integer) {
     step = seed % 5 + 1

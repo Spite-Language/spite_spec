@@ -1,5 +1,5 @@
-var kind = ""
-var text = ""
+var kind: String
+var text: String
 
 func Token(starting_kind: String, starting_text: String) {
     kind = starting_kind

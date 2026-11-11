@@ -1,5 +1,5 @@
-var name = ""
-var stars = 0
+var name: String
+var stars: Integer
 
 func Repository(starting_name: String, starting_stars: Integer) {
     name = starting_name

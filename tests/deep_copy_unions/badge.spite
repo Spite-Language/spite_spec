@@ -1,5 +1,5 @@
-var label = ""
-var points = 0
+var label: String
+var points: Integer
 
 func Badge(new_label: String, new_points: Integer) {
     label = new_label

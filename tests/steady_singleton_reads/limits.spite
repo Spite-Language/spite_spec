@@ -1,9 +1,9 @@
 singleton
 
 var limit = 7
-var step = 0
 var total = 0
 var twice = 0
+var step: Integer
 
 func Limits() {
     step = 3

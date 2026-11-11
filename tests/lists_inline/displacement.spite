@@ -1,5 +1,5 @@
-var x_component = 0.0
-var y_component = 0.0
+var x_component: Float
+var y_component: Float
 
 func Displacement(new_x: Float, new_y: Float) {
     x_component = new_x

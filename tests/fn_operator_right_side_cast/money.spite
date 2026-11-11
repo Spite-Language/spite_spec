@@ -1,4 +1,4 @@
-var amount = 0.0
+var amount: Float
 
 func Money(starting_amount: Float) {
     amount = starting_amount

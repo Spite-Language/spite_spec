@@ -1,4 +1,4 @@
-var level = 0
+var level: Integer
 
 func Tag(new_level: Integer) {
     level = new_level
