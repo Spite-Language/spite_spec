@@ -1,0 +1,6 @@
+kept: 1000 true
+written: ab! ab!
+grown: gold gold
+searched: true false true 0
+edges: true true true true
+allocations: 96 frees: 96

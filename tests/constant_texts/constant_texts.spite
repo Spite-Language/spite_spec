@@ -1,0 +1,58 @@
+var console = Console()
+var program = Program()
+var kept = List<String>()
+var _rounds = 1000
+var _seven = 7
+var _one = 1
+var _bang = 33
+
+func ConstantTexts() {
+    load "../../../spite_standard_library/windows"
+    var before_kept = program.live_allocations()
+    var index = 0
+    while index < _rounds {
+        kept.append("gold")
+        index = index + 1
+    }
+    var after_kept = program.live_allocations()
+    var kept_texts = after_kept - before_kept
+    var kept_count = kept.count()
+    var few = kept_texts < 10
+    console.print("kept:", kept_count, few)
+    var first = written_copy()
+    var second = written_copy()
+    console.print("written:", first, second)
+    var first_grown = grown()
+    var second_grown = grown()
+    console.print("grown:", first_grown, second_grown)
+    var key = "load r12 r7 in x"
+    var before_search = program.live_allocations()
+    var found = names_any(key, _seven)
+    var missing = names_any(key, _one)
+    var direct = key.split(" ").contains("in")
+    var after_search = program.live_allocations()
+    var made = after_search - before_search
+    console.print("searched:", found, missing, direct, made)
+    var empty_piece = ",a,,b,".split(",").contains("")
+    var last_piece = ",a,,b".split(",").contains("b")
+    var whole = "abc".split(",").contains("abc")
+    var characters = "abc".split("").contains("b")
+    console.print("edges:", empty_piece, last_piece, whole, characters)
+}
+
+func written_copy(): String {
+    var made = "ab"
+    made.append_code(_bang)
+    return made
+}
+
+func grown(): String {
+    var text = "go"
+    text = "{text}ld"
+    return text
+}
+
+func names_any(key: String, register: Integer): Boolean {
+    var words = key.split(" ")
+    return words.contains("r{register}")
+}
