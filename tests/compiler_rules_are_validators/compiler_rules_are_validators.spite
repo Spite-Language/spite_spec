@@ -3,6 +3,7 @@ var root = "../spite_compiler"
 var broken = 0
 var _lines_from_an_error_to_its_exit = 3
 var _problems_of_the_deciding_validator = 3
+var _problems_of_the_stopping_validator = 3
 var printer_validator = [
     "enum Mistake \{"
     "    'unclosed_brace'"
@@ -44,6 +45,18 @@ var deciding_fixer = [
     "    return table.walks.is_empty()"
     "}"
 ]
+var stopping_validator = [
+    "func check(file: AbstractSyntaxTree.Shapes.SourceFile) \{"
+    "    fallback file.declarations.is_empty()"
+    "    var problem = Diagnostics.Problem(file.path, 1, \"this file declares nothing\")"
+    "    var failure = Diagnostics.Failure()"
+    "    failure.stop(problem)"
+    "}"
+    ""
+    "func check_a_line(answer: Validators.Answer) \{"
+    "    answer.tell()"
+    "}"
+]
 var system_calls = [
     "Directory("
     "File("
@@ -53,6 +66,7 @@ var system_calls = [
     ".write_string("
     ".write_buffer("
 ]
+var stops = ["Diagnostics.Failure(", ".stop(", ".stop_at(", ".stop_inside(", ".stop_every(", ".tell("]
 var rewrites = ["is_fix = true", ".found_later(", ".replaced_later(", ".cut_later(", ".removed_later(", ".moved_later("]
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
@@ -67,6 +81,19 @@ func CompilerRulesAreValidators() {
     }
     refuse_the_printer_samples()
     refuse_the_deciding_samples()
+    refuse_the_stopping_sample()
+}
+
+# ../../../spite_compiler/ARCHITECTURE.md#validators
+func refuse_the_stopping_sample() {
+    var text = stopping_validator.join("\n")
+    var problems = problems_of("validators/abstract_syntax_tree/sample/validator.spite", "validator.spite", text)
+    if problems.count() == _problems_of_the_stopping_validator {
+        console.print("a rule that stops in place is refused: it answers, and the step or entry that called it tells")
+        return
+    }
+    console.print("the stopping sample was not refused as it should be:")
+    problems.each(print_a_sample_problem)
 }
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
@@ -169,6 +196,10 @@ func problems_of(path: String, name: String, text: String): List<String> {
         note_the_booleans_handed_in(lines, problems)
         note_the_system_calls(lines, problems)
         note_the_rewrites(lines, problems)
+    }
+    var is_an_entry = name == "every_rule.spite" or path == "validators/answer.spite"
+    if is_a_rule and not is_an_entry {
+        note_the_stops_in_place(lines, problems)
     }
     if not may_define_refusals {
         note_the_refusals(lines, problems)
@@ -529,6 +560,33 @@ func starts_a_call(line: String, called: String): Boolean {
     crash before
     var name_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_."
     return not name_characters.contains(before)
+}
+
+# ../../../spite_compiler/ARCHITECTURE.md#validators
+func note_the_stops_in_place(lines: List<String>, problems: List<String>) {
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if stops_in_place(line) {
+            var written = line.trim()
+            problems.append(
+                "stops in place: a rule answers a Validators.Answer, and the step or entry that called it tells it: '{written}'",
+            )
+        }
+        index = index + 1
+    }
+}
+
+func stops_in_place(line: String): Boolean {
+    var index = 0
+    while index < stops.count() {
+        var stop = stops[index]
+        if calls_outside_a_text(line, stop) {
+            return true
+        }
+        index = index + 1
+    }
+    return false
 }
 
 # ../../../spite_compiler/AGENTS.md#rules

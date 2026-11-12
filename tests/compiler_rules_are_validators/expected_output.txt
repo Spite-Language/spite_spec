@@ -1,3 +1,4 @@
 every check of the compiler is a rule of validators/
 a validator handed the kind of its mistake is refused, and so is its caller
 a rule handed a Boolean or words, doing IO or rewriting is refused, and so is a fixer that decides
+a rule that stops in place is refused: it answers, and the step or entry that called it tells
