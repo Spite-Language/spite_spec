@@ -1,0 +1,13 @@
+var picked = true
+
+func shift(jobs: List<Job>) {
+    var index = 0
+    while index < jobs.count() {
+        var job = jobs[index]
+        if picked {
+            var worker = Worker(job)
+            jobs[index] = worker.shifted()
+        }
+        index = index + 1
+    }
+}

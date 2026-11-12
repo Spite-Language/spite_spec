@@ -1,0 +1,22 @@
+var total: Long = 0
+var notes = List<Integer>()
+var _rounds = 200
+var seed: Integer
+var cost: Integer
+
+func Job(starting_seed: Integer, starting_cost: Integer) {
+    seed = starting_seed
+    cost = starting_cost
+}
+
+func grind() {
+    var round = 0
+    while round < _rounds {
+        var step = 0
+        while step < cost {
+            total = total + (seed + round + step) % 7
+            step = step + 1
+        }
+        round = round + 1
+    }
+}

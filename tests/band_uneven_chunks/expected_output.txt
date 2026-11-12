@@ -1,0 +1,3 @@
+ground once: 322499983 digest: 977347643
+ground four times: 1289999932 digest: 909390551
+shifted: 1398777493 digest: 297326616

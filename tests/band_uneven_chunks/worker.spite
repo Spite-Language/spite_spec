@@ -1,0 +1,29 @@
+var job = Job(0, 0)
+var seen = List<Integer>()
+var _rounds = 50
+
+func Worker(starting_job: Job) {
+    job = starting_job
+}
+
+func shifted(): Job {
+    var round = 0
+    while round < _rounds {
+        var step = 0
+        while step < job.cost {
+            seen.append((round + step) * job.seed % 13)
+            step = step + 1
+        }
+        round = round + 1
+    }
+    seen.each(note)
+    job.notes.append(job.seed % 5)
+    job.total = job.total + job.notes.count()
+    return job
+}
+
+func note(value: Integer) {
+    if value > 6 {
+        job.total = job.total + value
+    }
+}

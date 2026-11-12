@@ -1,0 +1,51 @@
+var console = Console()
+var _job_count = 20000
+var _heavy_every = 16
+var _heavy_cost = 400
+var _light_cost = 2
+var _ticks = 3
+var _digest_base = 31
+var _digest_modulus = 1000000007
+
+func BandUnevenChunks() {
+    load "../../../spite_standard_library/windows"
+    var jobs = List<Job>()
+    var index = 0
+    while index < _job_count {
+        var cost = _light_cost
+        if index < _job_count / _heavy_every {
+            cost = _heavy_cost
+        }
+        var job = Job(index, cost)
+        jobs.append(job)
+        index = index + 1
+    }
+    jobs.each_grind()
+    var once = jobs.sum_total()
+    var once_digest = digest_of(jobs)
+    console.print("ground once:", once, "digest:", once_digest)
+    var tick = 0
+    while tick < _ticks {
+        jobs.each_grind()
+        tick = tick + 1
+    }
+    var four_times = jobs.sum_total()
+    var four_times_digest = digest_of(jobs)
+    console.print("ground four times:", four_times, "digest:", four_times_digest)
+    var shifter = Shifter()
+    shifter.shift(jobs)
+    var shifted = jobs.sum_total()
+    var shifted_digest = digest_of(jobs)
+    console.print("shifted:", shifted, "digest:", shifted_digest)
+}
+
+func digest_of(jobs: List<Job>): Long {
+    var digest: Long = 0
+    var index = 0
+    while index < jobs.count() {
+        var job = jobs[index]
+        digest = (digest * _digest_base + job.total % _digest_modulus) % _digest_modulus
+        index = index + 1
+    }
+    return digest
+}
