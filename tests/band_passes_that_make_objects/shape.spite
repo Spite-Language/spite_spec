@@ -1,0 +1,26 @@
+var total = 0
+var weight_sum = 0
+var corners = List<Corner>()
+var _corner_count = 40
+var seed: Integer
+var weights: Weights
+
+func Shape(starting_seed: Integer, starting_weights: Weights) {
+    seed = starting_seed
+    weights = starting_weights
+}
+
+func settle() {
+    var made = List<Corner>()
+    var step = 0
+    while step < _corner_count {
+        var weight = weights.weight_at(step)
+        var corner = Corner(step * seed % 97, weight)
+        made.append(corner)
+        step = step + 1
+    }
+    var sum = made.sum_weighed()
+    corners = made
+    total = total + sum % 1000
+    weight_sum = sum
+}

@@ -1,0 +1,37 @@
+var console = Console()
+var _shape_count = 6000
+
+func BandPositionsOfAList() {
+    load "../../../spite_standard_library/windows"
+    var shapes = List<Shape>()
+    var index = 0
+    while index < _shape_count {
+        var shape = Shape(index)
+        shapes.append(shape)
+        index = index + 1
+    }
+    var driver = Driver()
+    driver.reshape(shapes)
+    var reshaped = shapes.sum_total()
+    var first = shapes.first()
+    crash first
+    var first_parts = first.parts.count()
+    console.print("reshaped:", reshaped, "first parts:", first_parts)
+    var twice = shapes.last()
+    crash twice
+    shapes.append(twice)
+    driver.reshape(shapes)
+    var held_twice = shapes.sum_total()
+    console.print("one shape held twice:", held_twice)
+    var shared_parts = List<Integer>()
+    var joined = Shape(7)
+    joined.parts = shared_parts
+    var joined_too = Shape(8)
+    joined_too.parts = shared_parts
+    shapes.append(joined)
+    shapes.append(joined_too)
+    driver.reshape(shapes)
+    var parts_shared = shapes.sum_total()
+    var shared_count = shared_parts.count()
+    console.print("two shapes sharing parts:", parts_shared, "shared parts:", shared_count)
+}

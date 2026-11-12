@@ -1,0 +1,26 @@
+var shape = Shape(0)
+var seen = List<Integer>()
+var _rounds = 200
+
+func Worker(starting_shape: Shape) {
+    shape = starting_shape
+}
+
+func transformed(): Shape {
+    var round = 0
+    while round < _rounds {
+        seen.append(round * shape.seed % 13)
+        round = round + 1
+    }
+    seen.each(note)
+    shape.parts.append(shape.seed % 5)
+    var kept = shape.parts.count()
+    shape.total = shape.total + kept
+    return shape
+}
+
+func note(value: Integer) {
+    if value > 6 {
+        shape.total = shape.total + value
+    }
+}

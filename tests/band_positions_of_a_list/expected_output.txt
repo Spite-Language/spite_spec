@@ -1,0 +1,3 @@
+reshaped: 4846187 first parts: 1
+one shape held twice: 9701895
+two shapes sharing parts: 14564478 shared parts: 2

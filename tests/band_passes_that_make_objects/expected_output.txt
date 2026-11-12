@@ -1,0 +1,5 @@
+settled: 10106966
+first weight: 0 first corners: 40
+last weight: 7825 last corners: 40
+one shape held twice: 20213932
+three more rounds: 50534830 round: 3

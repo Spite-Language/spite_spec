@@ -1,0 +1,16 @@
+var table = List<Integer>()
+var _table_size = 40
+
+func Weights() {
+    var index = 0
+    while index < _table_size {
+        table.append(index % 7 + 1)
+        index = index + 1
+    }
+}
+
+func weight_at(index: Integer): Integer {
+    var weight = table[index]
+    crash weight
+    return weight
+}
