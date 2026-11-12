@@ -1,2 +1,2 @@
 described: 30 1752
-allocations: 16 frees: 16
+allocations: 11 frees: 11

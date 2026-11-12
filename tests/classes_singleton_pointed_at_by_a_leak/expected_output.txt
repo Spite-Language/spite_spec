@@ -1,4 +1,4 @@
 cycle made true
 spite: --debug-memory: 2 allocation(s) leaked
   Node: 2 leaked object(s)
-allocations: 21 frees: 19
+allocations: 13 frees: 11

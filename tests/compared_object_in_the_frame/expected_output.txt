@@ -1,2 +1,2 @@
 0 1000 1000 7
-allocations: 18 frees: 18
+allocations: 14 frees: 14

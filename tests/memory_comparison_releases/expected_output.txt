@@ -1,2 +1,2 @@
 same 100
-allocations: 17 frees: 17
+allocations: 12 frees: 12

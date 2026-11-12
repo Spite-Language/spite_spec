@@ -1,2 +1,2 @@
 joined: 389
-allocations: 69 frees: 69
+allocations: 64 frees: 64

@@ -1,2 +1,2 @@
 116000 ann dee
-allocations: 22 frees: 22
+allocations: 16 frees: 16
