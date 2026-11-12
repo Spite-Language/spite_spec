@@ -1,0 +1,56 @@
+var _most_kept = 1000
+var made = List<Label>()
+
+func made_from(stem: String) {
+    var first = "{stem}$band_split"
+    note(first)
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    note("part")
+    var total = made.count()
+    if total > _most_kept {
+        made.clear()
+    }
+}
+
+func note(name: String) {
+    var label = Label(name)
+    made.append(label)
+}

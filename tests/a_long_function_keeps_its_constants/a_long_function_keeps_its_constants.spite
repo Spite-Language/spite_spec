@@ -1,0 +1,14 @@
+var console = Console()
+var labels = Labels()
+
+func ALongFunctionKeepsItsConstants() {
+    load "../../../spite_standard_library/windows"
+    labels.made_from("stem")
+    labels.made_from("other stem")
+    var count = labels.made.count()
+    var first = labels.made[0]
+    var last = labels.made[count - 1]
+    crash first
+    crash last
+    console.print(count, first.name, last.name)
+}

@@ -1,0 +1,5 @@
+var name: String
+
+func Label(given: String) {
+    name = given
+}
