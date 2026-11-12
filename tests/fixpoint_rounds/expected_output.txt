@@ -1,0 +1,16 @@
+rounds: 40
+settled: true
+first distance: 150
+distance total: 3040
+reach total: 780
+last visited: node 39
+pending: 741
+remembered for: 39
+capped rounds: 5
+capped settled: false
+first distance: 1000000
+distance total: 47
+reach total: 780
+last visited: node 39
+pending: 180
+remembered for: 39

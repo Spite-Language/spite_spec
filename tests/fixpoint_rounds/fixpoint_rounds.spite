@@ -1,0 +1,104 @@
+var console = Console()
+var nodes = List<Node>()
+var changed = false
+var visiting = ""
+var pending = List<String>()
+var remembered_for = -1
+var remembered_weight = 0
+var _node_count = 40
+var _far = 1000000
+var _weight_spread = 7
+var _most_rounds = 100
+var _capped_rounds = 5
+
+func FixpointRounds() {
+    load "../../../spite_standard_library/windows"
+    var index = 0
+    while index < _node_count {
+        var node = Node(index)
+        nodes.append(node)
+        index = index + 1
+    }
+    var rounds = settle(_most_rounds)
+    console.print("rounds:", rounds)
+    console.print("settled:", not changed)
+    show()
+    nodes.each(start_again)
+    pending = List<String>()
+    var capped = settle(_capped_rounds)
+    console.print("capped rounds:", capped)
+    console.print("capped settled:", not changed)
+    show()
+}
+
+func settle(limit: Integer): Integer {
+    var round = 0
+    changed = true
+    while changed and round < limit {
+        changed = false
+        nodes.each(spread)
+        round = round + 1
+    }
+    return round
+}
+
+func spread(node: Node) {
+    visiting = node.name
+    var weight = weight_of(node.position)
+    if node.position > 0 {
+        var before = nodes[node.position - 1]
+        crash before
+        var reached = before.reach + 1
+        if reached > node.reach {
+            node.reach = reached
+            changed = true
+        }
+    }
+    var after_position = node.position + 1
+    fallback after_position < nodes.count()
+    var after = nodes[after_position]
+    if after.distance == _far {
+        pending.append(node.name)
+        return
+    }
+    var through = after.distance + weight
+    if through < node.distance {
+        node.distance = through
+        changed = true
+    }
+}
+
+func weight_of(position: Integer): Integer {
+    if remembered_for != position {
+        remembered_for = position
+        remembered_weight = position % _weight_spread + 1
+    }
+    return remembered_weight
+}
+
+func start_again(node: Node) {
+    node.start()
+}
+
+func show() {
+    var total = 0
+    var reach_total = 0
+    var index = 0
+    while index < nodes.count() {
+        var node = nodes[index]
+        if node.distance != _far {
+            total = total + node.distance
+        }
+        reach_total = reach_total + node.reach
+        index = index + 1
+    }
+    var first = nodes.first()
+    crash first
+    console.print("first distance:", first.distance)
+    console.print("distance total:", total)
+    console.print("reach total:", reach_total)
+    console.print("last visited:", visiting)
+    var pending_count = pending.count()
+    console.print("pending:", pending_count)
+    console.print("remembered for:", remembered_for)
+}
