@@ -1,0 +1,113 @@
+var console = Console()
+var clock = Clock()
+var small_count = 1000
+var large_count = 100000
+var asked_count = 200000
+var asked_spread = 2
+var slowest_factor = 5
+var allowed_milliseconds = 250
+var repeated_count = 40
+var kinds = 30
+
+func ListsUsedAsSets() {
+    load "../../../spite_standard_library/windows"
+    var small = filled(small_count)
+    var large = filled(large_count)
+    var started = clock.elapsed()
+    var small_found = asked(small, small_count)
+    var between = clock.elapsed()
+    var large_found = asked(large, large_count)
+    var ended = clock.elapsed()
+    var small_taken = between - started
+    var large_taken = ended - between
+    var small_milliseconds = small_taken.total('milliseconds')
+    var large_milliseconds = large_taken.total('milliseconds')
+    var allowed = small_milliseconds * slowest_factor + allowed_milliseconds
+    var answers_at_once = large_milliseconds <= allowed
+    console.print(small_found, large_found, answers_at_once)
+    keeps_first_places()
+    stops_being_a_set()
+}
+
+func filled(count: Integer): List<String> {
+    var items = List<String>()
+    var index = 0
+    while index < count {
+        var item = "item {index}"
+        if not items.contains(item) {
+            items.append(item)
+        }
+        index = index + 1
+    }
+    return items
+}
+
+func asked(items: List<String>, count: Integer): Integer {
+    var spread = count * asked_spread
+    var found = 0
+    var index = 0
+    while index < asked_count {
+        var wanted = index % spread
+        var item = "item {wanted}"
+        if items.contains(item) {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
+
+func keeps_first_places() {
+    var names = List<String>()
+    var index = 0
+    while index < repeated_count {
+        var kind = index % kinds
+        names.append("name {kind}")
+        index = index + 1
+    }
+    var first = names.index_of("name 5")
+    crash first
+    var searched = place_of(names, "name 7")
+    var missing = place_of(names, "name 99")
+    var has_last = names.contains("name 29")
+    var counted = names.count()
+    console.print(first, searched, missing, has_last, counted)
+}
+
+func place_of(names: List<String>, wanted: String): Integer {
+    var index = 0
+    while index < names.count() {
+        var known = names[index]
+        if known == wanted {
+            return index
+        }
+        index = index + 1
+    }
+    return -1
+}
+
+func stops_being_a_set() {
+    var names = List<String>()
+    var index = 0
+    while index < repeated_count {
+        var name = "name {index}"
+        if not names.contains(name) {
+            names.append(name)
+        }
+        index = index + 1
+    }
+    forget_the_first(names)
+    names[0] = "renamed"
+    names.insert(0, "inserted")
+    var has_first = names.contains("name 0")
+    var has_second = names.contains("name 1")
+    var has_renamed = names.contains("renamed")
+    var place = names.index_of("name 20")
+    crash place
+    var counted = names.count()
+    console.print(has_first, has_second, has_renamed, place, counted)
+}
+
+func forget_the_first(names: List<String>) {
+    names.remove_at(0)
+}
