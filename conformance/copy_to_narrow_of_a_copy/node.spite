@@ -1,0 +1,2 @@
+var name = "node"
+var inner: Node? = null

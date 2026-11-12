@@ -1,0 +1,15 @@
+var console = Console()
+
+func CopyToNarrowOfAKeptCopy() {
+    load "../../../spite_standard_library/windows"
+    var top = Node()
+    kept(top)
+}
+
+func kept(call: Node) {
+    var receiver = call.inner
+    fallback receiver
+    call.clear()
+    fallback receiver.inner
+    console.print(receiver.inner.name)
+}

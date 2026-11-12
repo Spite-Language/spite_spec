@@ -1,0 +1,6 @@
+var name = "node"
+var inner: Node? = null
+
+func clear() {
+    inner = null
+}

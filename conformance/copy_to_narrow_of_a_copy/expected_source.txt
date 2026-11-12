@@ -1,0 +1,24 @@
+var console = Console()
+
+func CopyToNarrowOfACopy() {
+    load "../../../spite_standard_library/windows"
+    var top = Node()
+    search_of(top)
+    chained(top)
+}
+
+func search_of(call: Node) {
+    crash call.inner
+    if call.inner.name == "split" {
+        crash call.inner.inner
+        console.print(call.inner.inner.name)
+    }
+    console.print(call.inner.name)
+}
+
+func chained(call: Node) {
+    fallback call.inner
+    fallback call.inner.inner
+    fallback call.inner.inner.inner
+    console.print("{call.inner.name} {call.inner.inner.name} {call.inner.inner.inner.name}")
+}
