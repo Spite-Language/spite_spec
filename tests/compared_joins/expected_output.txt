@@ -1,0 +1,13 @@
+equals: true false false true false
+pieces: true true true false
+numbers: true false false true false true false
+contains: true false true true false
+starts: true false true
+words: true true false false true
+word edges: true true true false
+first
+second
+third
+ordered: true
+long: 100
+allocations: 94 frees: 94

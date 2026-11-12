@@ -1,0 +1,87 @@
+var console = Console()
+var _rounds = 100
+var _seven = 7
+var _twelve = 12
+var _negative = -45
+var _zero = 0
+var _large: Long = 9000000000
+
+func ComparedJoins() {
+    load "../../../spite_standard_library/windows"
+    var key = "r7"
+    var empty = ""
+    var name = "gold"
+    var matched = "r7" == "r{_seven}"
+    var longer = key == "r{_twelve}"
+    var other_digit = "r1" == "r{_seven}"
+    var joined_left = "r{_seven}" == key
+    var differs = key != "r{_seven}"
+    console.print("equals:", matched, longer, other_digit, joined_left, differs)
+    var empty_pieces = "{empty}r{empty}{_seven}{empty}" == "r7"
+    var all_empty = empty == "{empty}{empty}"
+    var texts = "{name}-{name}" == "gold-gold"
+    var shorter_text = "{name}-{name}" == "gold-gol"
+    console.print("pieces:", empty_pieces, all_empty, texts, shorter_text)
+    var negative = "x-45" == "x{_negative}"
+    var unsigned = "x45" == "x{_negative}"
+    var negative_digit = "x-46" == "x{_negative}"
+    var zero = "n0" == "n{_zero}"
+    var no_digit = "n" == "n{_zero}"
+    var large = "big9000000000" == "big{_large}"
+    var large_differs = "big9000000001" == "big{_large}"
+    console.print("numbers:", negative, unsigned, negative_digit, zero, no_digit, large, large_differs)
+    var line = "load r12 r7 in x"
+    var inside = line.contains("r{_seven} ")
+    var not_inside = line.contains("r{_twelve}x")
+    var empty_inside = line.contains("{empty}{empty}")
+    var empty_in_empty = empty.contains("{empty}{empty}")
+    var past_the_end = "ab".contains("b{_seven}")
+    console.print("contains:", inside, not_inside, empty_inside, empty_in_empty, past_the_end)
+    var starts = "r7 more".starts_with("r{_seven}")
+    var too_short = "r".starts_with("r{_seven}")
+    var empty_start = "r7".starts_with("{empty}{empty}")
+    console.print("starts:", starts, too_short, empty_start)
+    var seven_word = line.split(" ").contains("r{_seven}")
+    var twelve_word = line.split(" ").contains("r{_twelve}")
+    var negative_word = line.split(" ").contains("r{_negative}")
+    var part_word = line.split(" ").contains("r{_zero}")
+    var signed_word = "load r-45 x".split(" ").contains("r{_negative}")
+    var empty_word = ",a,,b,".split(",").contains("{empty}{empty}")
+    var last_word = "a,r7".split(",").contains("r{_seven}")
+    var character = "a7c".split("").contains("{empty}{_seven}")
+    var two_characters = "a7c".split("").contains("a{_seven}")
+    console.print("words:", seven_word, twelve_word, negative_word, part_word, signed_word)
+    console.print("word edges:", empty_word, last_word, character, two_characters)
+    var ordered = first_word() == "{second_word()}{third_word()}"
+    console.print("ordered:", ordered)
+    var found = long_matches()
+    console.print("long:", found)
+}
+
+func first_word(): String {
+    console.print("first")
+    return "ab"
+}
+
+func second_word(): String {
+    console.print("second")
+    return "a"
+}
+
+func third_word(): String {
+    console.print("third")
+    return "b"
+}
+
+func long_matches(): Integer {
+    var long_key = "a rather long key that does not fit the room inside its string r7"
+    var found = 0
+    var index = 0
+    while index < _rounds {
+        if long_key == "a rather long key that does not fit the room inside its string r{_seven}" {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
