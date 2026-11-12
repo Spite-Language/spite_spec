@@ -1,0 +1,42 @@
+var console = Console()
+var _element_count = 2000
+var _name_count = 4000
+var _number_count = 1000
+var _searches = 40000
+
+func SetSearchedInBands() {
+    load "../../../spite_standard_library/windows"
+    var names = List<String>()
+    var index = 0
+    while index < _name_count {
+        var name = "name{index}"
+        names.append(name)
+        index = index + 1
+    }
+    var counters = List<Counter>()
+    index = 0
+    while index < _element_count {
+        var counter = Counter(index)
+        counter.names = names
+        counters.append(counter)
+        index = index + 1
+    }
+    counters.each_bump()
+    var found = counters.sum_total()
+    console.print("found in bands:", found)
+    var numbers = List<Integer>()
+    index = 0
+    while index < _number_count {
+        numbers.append(index * 3)
+        index = index + 1
+    }
+    var hits = 0
+    index = 0
+    while index < _searches {
+        if numbers.contains(index % _number_count) {
+            hits = hits + 1
+        }
+        index = index + 1
+    }
+    console.print("found alone:", hits)
+}

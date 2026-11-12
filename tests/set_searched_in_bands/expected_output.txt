@@ -1,0 +1,2 @@
+found in bands: 1200000
+found alone: 13360

@@ -1,0 +1,20 @@
+var total: Long = 0
+var _bump_rounds = 200
+var _name_kinds = 5000
+var names = List<String>()
+var step: Integer
+
+func Counter(seed: Integer) {
+    step = seed % 5 + 1
+}
+
+func bump() {
+    var round = 0
+    while round < _bump_rounds {
+        var sought = "name{round % _name_kinds}"
+        if names.contains(sought) {
+            total = total + step
+        }
+        round = round + 1
+    }
+}
