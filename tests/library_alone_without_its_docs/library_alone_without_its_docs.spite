@@ -77,7 +77,7 @@ func write_the_program() {
     crash file_path
     var file = File(file_path)
     var opening = "var console = Console()\n\nfunc Alone() \{\n"
-    var body = "    load \"../spite_standard_library/windows\"\n    console.print(\"compiled\")\n}\n"
+    var body = "    console.print(\"compiled\")\n}\n"
     crash file.write_string("{opening}{body}")
 }
 
@@ -85,7 +85,7 @@ func compile(flag: String) {
     var here = program.working_directory()
     crash here
     var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
-    var arguments = [flag]
+    var arguments = [flag, "--standard-library=../spite_standard_library"]
     var compiling = Process(compiler, arguments)
     compiling.working_directory = program_copy
     compiling.with_errors = true

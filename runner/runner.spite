@@ -6,7 +6,7 @@ union Entry {
 var console = Console()
 var program = Program()
 var compiler = "..\\spite_compiler\\.spite\\spite.exe"
-var library = "..\\spite_standard_library"
+var library = "../spite_standard_library"
 var passed = 0
 var failed = 0
 var found_folders = List<String>()
@@ -362,7 +362,8 @@ func compiling_in(copy: String, flags: String): String {
 
 func library_flag(working: String, flags: String): String {
     fallback not flags.contains("--standard-library")
-    return " \"--standard-library={working}\\{library}\""
+    var forward = working.replace("\\", "/")
+    return " \"--standard-library={forward}/{library}\""
 }
 
 func absolute_working(): String {
