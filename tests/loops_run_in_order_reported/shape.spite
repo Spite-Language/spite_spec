@@ -1,0 +1,6 @@
+var total = 0
+var seed: Integer
+
+func Shape(starting_seed: Integer) {
+    seed = starting_seed
+}

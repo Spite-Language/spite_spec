@@ -1,0 +1,41 @@
+var console = Console()
+var build = Build()
+var _shape_count = 100
+
+func LoopsRunInOrderReported() {
+    load "../../../spite_standard_library/windows"
+    var shapes = List<Shape>()
+    var index = 0
+    while index < _shape_count {
+        var shape = Shape(index)
+        shapes.append(shape)
+        index = index + 1
+    }
+    var driver = Driver()
+    driver.reshape(shapes)
+    driver.reshape_with_a_fallback(shapes)
+    driver.reshape_into_a_tally(shapes)
+    var reshaped = shapes.sum_total()
+    var tallied = driver.tally.count()
+    console.print("reshaped:", reshaped, "tallied:", tallied)
+    print_report()
+}
+
+func print_report() {
+    var report_path: Path? = "{build.program}/.spite/reports/optimization_report.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var is_ours = line.starts_with("- [") and line.contains("loops_run_in_order_reported/driver.spite")
+        if line.starts_with("## Loops run in order") {
+            console.print(line)
+        } else if is_ours and line.contains("runs in order") {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}

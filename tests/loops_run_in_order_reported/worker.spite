@@ -1,0 +1,43 @@
+var shape = Shape(0)
+var seen = List<Integer>()
+var _rounds = 200
+
+func Worker(starting_shape: Shape) {
+    shape = starting_shape
+}
+
+func transformed(): Shape {
+    var round = 0
+    while round < _rounds {
+        seen.append(round * shape.seed % 13)
+        round = round + 1
+    }
+    shape.total = shape.total + seen.count()
+    return shape
+}
+
+func checked(): Shape {
+    var round = 0
+    while round < _rounds {
+        note_a_value(round * shape.seed % 13)
+        round = round + 1
+    }
+    shape.total = shape.total + seen.count()
+    return shape
+}
+
+func note_a_value(value: Integer) {
+    fallback value < 12
+    seen.append(value)
+}
+
+func tallied(tally: List<Integer>): Shape {
+    var round = 0
+    while round < _rounds {
+        seen.append(round * shape.seed % 13)
+        round = round + 1
+    }
+    tally.append(shape.seed)
+    shape.total = shape.total + seen.count()
+    return shape
+}
