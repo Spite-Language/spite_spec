@@ -1,7 +1,0 @@
-func Tool() {
-    load "../../../../spite_standard_library/common"
-}
-
-func named(): String {
-    return "tool"
-}

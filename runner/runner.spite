@@ -6,6 +6,7 @@ union Entry {
 var console = Console()
 var program = Program()
 var compiler = "..\\spite_compiler\\.spite\\spite.exe"
+var library = "..\\spite_standard_library"
 var passed = 0
 var failed = 0
 var found_folders = List<String>()
@@ -291,7 +292,7 @@ func run_test(folder: String) {
     fallback copy
     var flags = optional_text(folder, "flags.txt")
     var no_arguments = List<String>()
-    var compiling = compiling_in(copy)
+    var compiling = compiling_in(copy, flags)
     var compile = Process("{compiling} {flags} --build 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     if compiled != 0 {
@@ -351,11 +352,17 @@ func source_is_unchanged(folder: String, copy: String): Boolean {
     return false
 }
 
-func compiling_in(copy: String): String {
+func compiling_in(copy: String, flags: String): String {
     var working = absolute_working()
     var windows_copy = copy.replace("/", "\\")
     var windows_compiler = compiler.replace("/", "\\")
-    return "cd /d \"{working}\\{windows_copy}\" && \"{working}\\{windows_compiler}\""
+    var library_given = library_flag(working, flags)
+    return "cd /d \"{working}\\{windows_copy}\" && \"{working}\\{windows_compiler}\"{library_given}"
+}
+
+func library_flag(working: String, flags: String): String {
+    fallback not flags.contains("--standard-library")
+    return " \"--standard-library={working}\\{library}\""
 }
 
 func absolute_working(): String {
@@ -378,7 +385,7 @@ func run_conformance(folder: String) {
     fallback copy
     var flags = built_only(folder)
     var no_arguments = List<String>()
-    var compiling = compiling_in(copy)
+    var compiling = compiling_in(copy, flags)
     var compile = Process("{compiling} {flags} 2>&1 1>nul", no_arguments)
     var compiled = compile.run()
     var only_formats = only_formatting(wanted)
@@ -414,7 +421,7 @@ func built_only(folder: String): String {
 
 func check_formatted_once(folder: String, copy: String, flags: String) {
     var no_arguments = List<String>()
-    var compiling = compiling_in(copy)
+    var compiling = compiling_in(copy, flags)
     var again = Process("{compiling} {flags} 2>&1 1>nul", no_arguments)
     var compiled = again.run()
     var output = again.read_output_as_string()

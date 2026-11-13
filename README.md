@@ -45,17 +45,10 @@ write the same words, and a conformance test that fails is a part of the port st
 
 ## The format
 
-A program names the standard library in its first line, because there is no launcher any more and the
-compiler does not go looking for a library:
-
-    func ExitCode(): Integer {
-        load "../../../spite_standard_library/windows"
-        ...
-
-The path is relative to the folder of the program that holds the load. The repositories sit side by side
-under one folder, as `gh repo clone` names them (`spite_compiler`, `spite_standard_library`, `spite_spec`), so
-`../../../spite_standard_library` is the library from any `tests/<name>` or `conformance/<name>`, with no link to
-make.
+A program has the standard library with no `load` line. The repositories sit side by side under one folder, as
+`gh repo clone` names them (`spite_compiler`, `spite_standard_library`, `spite_spec`), and the runner gives the
+compiler `--standard-library=../spite_standard_library` (from this folder), so the library tested is the clone
+beside this one; a test whose `flags.txt` names `--standard-library` keeps its own.
 
 ## Running them
 

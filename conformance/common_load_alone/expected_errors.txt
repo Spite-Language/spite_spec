@@ -1,1 +1,0 @@
-conformance/common_load_alone/helpers/tool.spite:2: error: 'load "../../../../spite_standard_library/common"' loads the library's 'common' folder alone, and a program loads its system's folder, which loads 'common' itself: write 'load "../../../../spite_standard_library/windows"'

@@ -1,1 +1,0 @@
-conformance/common_load_alone_is_fixed/common_load_alone_is_fixed.spite:4: fixed: 'load "../../../spite_standard_library/common"' loaded the library's 'common' folder alone; changed it to 'load "../../../spite_standard_library/windows"', the system's folder, which loads 'common' itself (in CommonLoadAloneIsFixed.CommonLoadAloneIsFixed)

@@ -1,8 +1,0 @@
-var console = Console()
-
-func CommonLoadAlone() {
-    load "helpers"
-    var tool = Tool()
-    var name = tool.named()
-    console.print(name)
-}
