@@ -1,0 +1,3 @@
+gold! gold!
+## Text literals made on each evaluation (1)
+- [tests/text_literals_all_made_when_a_text_is_shared/text_literals_all_made_when_a_text_is_shared.spite:14](../../tests/text_literals_all_made_when_a_text_is_shared/text_literals_all_made_when_a_text_is_shared.spite#L14): every text literal is made on each evaluation: `loud` is written in place, but it starts from a text something else may hold

@@ -1,0 +1,4 @@
+ABC A ABC 2
+## Text literals made on each evaluation (2)
+- [tests/text_literals_made_on_each_evaluation/text_literals_made_on_each_evaluation.spite:17](../../tests/text_literals_made_on_each_evaluation/text_literals_made_on_each_evaluation.spite#L17): `""` is made on each evaluation: it starts `made`, which is written in place, so each evaluation makes a text of its own
+- [tests/text_literals_made_on_each_evaluation/text_literals_made_on_each_evaluation.spite:28](../../tests/text_literals_made_on_each_evaluation/text_literals_made_on_each_evaluation.spite#L28): `""` is made on each evaluation: `empty_text()` answers it, and that answer starts `greeting`, which is written in place, so each evaluation makes a text of its own

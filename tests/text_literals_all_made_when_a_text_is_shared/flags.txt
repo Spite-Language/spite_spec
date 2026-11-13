@@ -1,0 +1,1 @@
+--optimization-report=.spite/reports/text_literals_all_made_when_a_text_is_shared.md

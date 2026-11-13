@@ -1,0 +1,37 @@
+var console = Console()
+var build = Build()
+var _exclamation_mark = 33
+
+func TextLiteralsAllMadeWhenATextIsShared() {
+    load "../../../spite_standard_library/windows"
+    var name = "gold"
+    var loud = shouted(name)
+    console.print(name, loud)
+    print_the_literals()
+}
+
+func shouted(name: String): String {
+    var loud = name
+    loud.append_code(_exclamation_mark)
+    return loud
+}
+
+func print_the_literals() {
+    var report_path: Path? = "{build.program}/.spite/reports/text_literals_all_made_when_a_text_is_shared.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var is_in_the_section = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("## ") {
+            is_in_the_section = line.starts_with("## Text literals")
+        }
+        if is_in_the_section and not line.is_empty() {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}

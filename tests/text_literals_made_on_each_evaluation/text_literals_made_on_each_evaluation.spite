@@ -1,0 +1,68 @@
+var console = Console()
+var build = Build()
+var _letter_a = 65
+var _letters_spelled = 3
+
+func TextLiteralsMadeOnEachEvaluation() {
+    load "../../../spite_standard_library/windows"
+    var letters = spelled(_letters_spelled)
+    var greeting = greeting_of(letters)
+    var words = ["gold", "lead", "gold"]
+    var golds = counted_golds(words)
+    console.print(letters, greeting, golds)
+    print_the_literals()
+}
+
+func spelled(count: Integer): String {
+    var made = ""
+    var index = 0
+    while index < count {
+        var code = _letter_a + index
+        made.append_code(code)
+        index = index + 1
+    }
+    return made
+}
+
+func empty_text(): String {
+    return ""
+}
+
+func greeting_of(letters: String): String {
+    var greeting = empty_text()
+    greeting.append_code(_letter_a)
+    return "{greeting} {letters}"
+}
+
+func counted_golds(words: List<String>): Integer {
+    var found = 0
+    var index = 0
+    while index < words.count() {
+        var word = words[index]
+        if word == "gold" {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
+
+func print_the_literals() {
+    var report_path: Path? = "{build.program}/.spite/reports/text_literals_made_on_each_evaluation.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var is_in_the_section = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("## ") {
+            is_in_the_section = line.starts_with("## Text literals")
+        }
+        if is_in_the_section and not line.is_empty() {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}
