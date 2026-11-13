@@ -1,0 +1,5 @@
+var console = Console()
+
+func StandardLibraryFlagNamesNoFolder() {
+    console.print("compiled")
+}

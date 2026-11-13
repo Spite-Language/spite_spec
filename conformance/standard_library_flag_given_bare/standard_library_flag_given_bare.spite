@@ -1,0 +1,5 @@
+var console = Console()
+
+func StandardLibraryFlagGivenBare() {
+    console.print("compiled")
+}

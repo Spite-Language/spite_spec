@@ -1,0 +1,5 @@
+var name: String
+
+func Tool() {
+    name = "tool"
+}

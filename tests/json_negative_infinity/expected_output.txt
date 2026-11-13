@@ -1,2 +1,2 @@
-spite: the program stopped at tests/json_negative_infinity/../../../spite_standard_library/common/json_writer.spite:115 in JsonWriter_of_Float.written_decimal, site f40a13be (shown=-inf, path=Order.price)
+spite: the program stopped at spite_standard_library://common/json_writer.spite:115 in JsonWriter_of_Float.written_decimal, site f40a13be (shown=-inf, path=Order.price)
 spite.frame	tests/json_negative_infinity/json_negative_infinity.spite:10	JsonNegativeInfinity	JsonNegativeInfinity

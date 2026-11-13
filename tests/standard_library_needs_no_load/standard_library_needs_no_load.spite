@@ -1,0 +1,9 @@
+var console = Console()
+var build = Build()
+
+func StandardLibraryNeedsNoLoad() {
+    var names = ["list", "dictionary"]
+    var count = names.count()
+    console.print("no load line, and the library is here:", count)
+    console.print("for", build.target_operating_system)
+}

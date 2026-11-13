@@ -1,5 +1,5 @@
 greeting grr
-spite: the program stopped at tests/run_time_returned_literal_halts/../../../spite_standard_library/common/spite/function_declaration.spite:75 in Spite.FunctionDeclaration.get_returned_literal, site 84a42a11 (_returned_literal is null)
+spite: the program stopped at spite_standard_library://common/spite/function_declaration.spite:75 in Spite.FunctionDeclaration.get_returned_literal, site 84a42a11 (_returned_literal is null)
 spite.frame	tests/run_time_returned_literal_halts/run_time_returned_literal_halts.spite:15	RunTimeReturnedLiteralHalts	show
 spite.frame	tests/run_time_returned_literal_halts/run_time_returned_literal_halts.spite:11	RunTimeReturnedLiteralHalts	describe
 spite.frame	tests/run_time_returned_literal_halts/run_time_returned_literal_halts.spite:7	RunTimeReturnedLiteralHalts	RunTimeReturnedLiteralHalts

@@ -1,0 +1,1 @@
+error: '--standard-library=nowhere' names no folder: give the folder that holds the standard library, with its 'common' and 'windows' folders, or leave the flag out to use the library installed with the compiler

@@ -1,0 +1,7 @@
+var console = Console()
+
+func CommonLoadIsRemoved() {
+    load "helpers"
+    var tool = Tool()
+    console.print(tool.name)
+}

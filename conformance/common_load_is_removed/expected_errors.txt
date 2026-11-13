@@ -1,0 +1,1 @@
+conformance/common_load_is_removed/helpers/tool.spite:4: fixed: 'load "../../../../spite_standard_library/common"' loaded the standard library, which every program has without a load; removed it (in Tool.Tool)

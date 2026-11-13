@@ -1,1 +1,1 @@
-conformance/member_template_over_nullable_items/../../../spite_standard_library/common/list.spite:484: error: this value may be null (it is a Monster?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in List.map_names)
+spite_standard_library://common/list.spite:484: error: this value may be null (it is a Monster?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in List.map_names)

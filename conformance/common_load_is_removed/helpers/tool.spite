@@ -1,0 +1,6 @@
+var name: String
+
+func Tool() {
+    load "../../../../spite_standard_library/common"
+    name = "tool"
+}

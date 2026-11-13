@@ -1,0 +1,1 @@
+compiled with ../../../spite_standard_library
