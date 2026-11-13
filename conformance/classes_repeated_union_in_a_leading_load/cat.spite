@@ -1,3 +1,0 @@
-func name(): String {
-    return "cat"
-}

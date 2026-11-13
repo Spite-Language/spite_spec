@@ -1,1 +1,0 @@
-conformance/classes_repeated_union_in_a_leading_load/pack/first.spite:1: error: 'union Pet' is declared with the same content by 'First' and 'Second', in files the compiler does not write: move it to their namespace's entry class 'Pack' by hand, where a class of the namespace names it through that class (in First)
