@@ -1,0 +1,166 @@
+var console = Console()
+var program = Program()
+var kept = List<String>()
+var written = ""
+var _rounds = 1000
+var _bang = 33
+var _two = 2
+
+func DataConstantsAreNeverCountedInTheLowIr() {
+    load "../../../spite_standard_library/windows"
+    var key = "load r12 r7 in x"
+    var found = 0
+    var index = 0
+    while index < _rounds {
+        var holds = holds_a_word(key, index)
+        if holds {
+            found = found + 1
+        }
+        var picked = picked_name(index)
+        kept.append(picked)
+        var label = label_of(index)
+        kept.append(label)
+        index = index + 1
+    }
+    var copied = written_copy()
+    console.print("found:", found, "written:", copied)
+    read_the_low_ir()
+    var constants = constants_in_this_class()
+    var counted = counted_constants()
+    console.print("constants:", constants > 0, "counted:", counted)
+}
+
+func holds_a_word(key: String, register: Integer): Boolean {
+    var words = key.split(" ")
+    return words.contains("r{register}")
+}
+
+func picked_name(index: Integer): String {
+    var name = "left"
+    if index % _two == 0 {
+        name = "right"
+    }
+    return name
+}
+
+func label_of(index: Integer): String {
+    if index % _two == 0 {
+        return "even"
+    }
+    return "odd"
+}
+
+func written_copy(): String {
+    var text = "ab"
+    text.append_code(_bang)
+    return text
+}
+
+func read_the_low_ir() {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var text_path: Path? = low_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    written = text
+}
+
+func constants_in_this_class(): Integer {
+    var lines = written.split("\n")
+    var found = 0
+    var inside = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with("function DataConstantsAreNeverCountedInTheLowIr.")
+        } else if inside and line.contains(" = address of data ") {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
+
+func counted_constants(): Integer {
+    var lines = written.split("\n")
+    var counted = 0
+    var start = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            counted = counted + counted_in(lines, start, index)
+            start = index
+        }
+        index = index + 1
+    }
+    counted = counted + counted_in(lines, start, index)
+    return counted
+}
+
+func counted_in(lines: List<String>, start: Integer, end: Integer): Integer {
+    var heading = lines[start]
+    crash heading
+    fallback heading.starts_with("function DataConstantsAreNeverCountedInTheLowIr.")
+    var constants = List<String>()
+    var others = List<String>()
+    var index = start + 1
+    while index < end {
+        var line = lines[index]
+        crash line
+        var defined = defined_register(line)
+        var is_an_address = line.contains(" = address of data ")
+        if is_an_address {
+            constants.append(defined)
+        } else if not defined.is_empty() {
+            others.append(defined)
+        }
+        index = index + 1
+    }
+    var counted = 0
+    var constant_index = 0
+    while constant_index < constants.count() {
+        var constant = constants[constant_index]
+        if not others.contains(constant) {
+            counted = counted + updates_of(lines, start, end, constant)
+        }
+        constant_index = constant_index + 1
+    }
+    return counted
+}
+
+func defined_register(line: String): String {
+    var trimmed = line.trim()
+    fallback trimmed.starts_with("r")
+    var equals = trimmed.index_of(" = ")
+    fallback equals
+    var named = trimmed.slice(0, equals)
+    crash named
+    var comma = named.index_of(",")
+    if comma {
+        var first = named.slice(0, comma)
+        crash first
+        return first
+    }
+    return named
+}
+
+func updates_of(lines: List<String>, start: Integer, end: Integer, register: String): Integer {
+    var retained = "retain {register} |"
+    var counted_at = " at {register} + 8"
+    var found = 0
+    var index = start + 1
+    while index < end {
+        var line = lines[index]
+        crash line
+        var trimmed = line.trim()
+        if trimmed.starts_with(retained) or line.contains(counted_at) {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}

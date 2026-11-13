@@ -1,0 +1,4 @@
+found: 2 kept: 2000 true
+after letting go: right odd
+written: ab! ab!
+allocations: 33 frees: 33

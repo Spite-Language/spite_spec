@@ -1,0 +1,2 @@
+found: 2 written: ab!
+constants: true counted: 0

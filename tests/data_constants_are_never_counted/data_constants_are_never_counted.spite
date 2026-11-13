@@ -1,0 +1,63 @@
+var console = Console()
+var program = Program()
+var kept = List<String>()
+var _rounds = 1000
+var _bang = 33
+var _two = 2
+
+func DataConstantsAreNeverCounted() {
+    load "../../../spite_standard_library/windows"
+    var before = program.live_allocations()
+    var key = "load r12 r7 in x"
+    var found = 0
+    var index = 0
+    while index < _rounds {
+        var holds = holds_a_word(key, index)
+        if holds {
+            found = found + 1
+        }
+        var picked = picked_name(index)
+        kept.append(picked)
+        var label = label_of(index)
+        kept.append(label)
+        index = index + 1
+    }
+    var after = program.live_allocations()
+    var made = after - before
+    var few = made < 10
+    var kept_count = kept.count()
+    console.print("found:", found, "kept:", kept_count, few)
+    kept.clear()
+    var first = picked_name(0)
+    var second = label_of(1)
+    console.print("after letting go:", first, second)
+    var copied = written_copy()
+    var copied_again = written_copy()
+    console.print("written:", copied, copied_again)
+}
+
+func holds_a_word(key: String, register: Integer): Boolean {
+    var words = key.split(" ")
+    return words.contains("r{register}")
+}
+
+func picked_name(index: Integer): String {
+    var name = "left"
+    if index % _two == 0 {
+        name = "right"
+    }
+    return name
+}
+
+func label_of(index: Integer): String {
+    if index % _two == 0 {
+        return "even"
+    }
+    return "odd"
+}
+
+func written_copy(): String {
+    var text = "ab"
+    text.append_code(_bang)
+    return text
+}
