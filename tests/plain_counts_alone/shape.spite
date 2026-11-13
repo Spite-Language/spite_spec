@@ -1,0 +1,13 @@
+var total = 0
+var seed: Integer
+
+func Shape(starting_seed: Integer) {
+    seed = starting_seed
+}
+
+func paired(): Integer {
+    var pair = List<Shape>()
+    pair.append(this)
+    pair.append(this)
+    return pair.sum_seed()
+}

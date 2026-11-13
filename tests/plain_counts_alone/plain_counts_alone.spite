@@ -1,0 +1,62 @@
+var console = Console()
+var program = Program()
+var _shape_count = 6000
+
+func PlainCountsAlone() {
+    load "../../../spite_standard_library/windows"
+    var shapes = List<Shape>()
+    var index = 0
+    while index < _shape_count {
+        var shape = Shape(index)
+        shapes.append(shape)
+        index = index + 1
+    }
+    var driver = Driver()
+    driver.reshape(shapes)
+    driver.reshape(shapes)
+    var reshaped = shapes.sum_total()
+    console.print("reshaped:", reshaped)
+    var gathered = driver.gathered(shapes)
+    console.print("gathered:", gathered)
+    var alone_counts = atomic_counts_in("function Driver.gathered", "is_atomic=true")
+    console.print("locked retains in Driver.gathered:", alone_counts)
+    var shared_counts = atomic_counts_in("function Shape.paired", "is_atomic=true")
+    console.print("Shape.paired keeps locked retains:", shared_counts > 0)
+    var copied = has_a_copy("_free_by_class")
+    console.print("the release of any class has a copy for the code run alone:", copied)
+}
+
+func has_a_copy(key: String): Boolean {
+    var path = program.executable_path()
+    crash path
+    var map_path = path.replace(".exe", ".functions")
+    var written_path: Path? = map_path
+    crash written_path
+    var written = File(written_path).read_as_string()
+    crash written
+    return written.contains("\t{key}$alone\n")
+}
+
+func atomic_counts_in(heading: String, mark: String): Integer {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var written_path: Path? = low_path
+    crash written_path
+    var written = File(written_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var in_the_function = false
+    var counted = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            in_the_function = line.starts_with(heading)
+        } else if in_the_function and line.contains(mark) {
+            counted = counted + 1
+        }
+        index = index + 1
+    }
+    return counted
+}

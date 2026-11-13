@@ -1,0 +1,5 @@
+var value: Integer
+
+func Tally(starting_value: Integer) {
+    value = starting_value
+}

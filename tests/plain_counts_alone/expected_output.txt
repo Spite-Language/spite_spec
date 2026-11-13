@@ -1,0 +1,5 @@
+reshaped: 81668374
+gathered: 40828204
+locked retains in Driver.gathered: 0
+Shape.paired keeps locked retains: true
+the release of any class has a copy for the code run alone: true

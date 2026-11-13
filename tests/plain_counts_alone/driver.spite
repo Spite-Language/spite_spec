@@ -1,0 +1,28 @@
+var picked = true
+
+func reshape(shapes: List<Shape>) {
+    var index = 0
+    while index < shapes.count() {
+        var shape = shapes[index]
+        if picked {
+            var worker = Worker(shape)
+            shapes[index] = worker.transformed()
+        }
+        index = index + 1
+    }
+}
+
+func gathered(shapes: List<Shape>): Integer {
+    var even = List<Shape>()
+    var index = 0
+    while index < shapes.count() {
+        var shape = shapes[index]
+        if shape.seed % 2 == 0 {
+            even.append(shape)
+        }
+        index = index + 1
+    }
+    var first = even[0]
+    crash first
+    return even.sum_total() + first.paired()
+}
