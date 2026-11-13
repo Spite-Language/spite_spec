@@ -18,10 +18,40 @@ func PreloadSameBytesFromTwoFolders() {
         var right = second[index]
         crash left
         crash right
-        same = left == right
+        same = left == right or names_the_folder(first, second, index)
         index = index + 1
     }
-    console.print("the same bytes from two folders:", same)
+    console.print("the same bytes from two folders, but for where the source sits:", same)
+    var holds_a_disk_path = holds_anywhere(first, "app/assets")
+    var holds_a_volume_path = holds_anywhere(first, "assets://levels/first.txt")
+    console.print("the files are stored by their volume path:", holds_a_volume_path, "and never by the disk's:", not holds_a_disk_path)
+}
+
+func holds_anywhere(bytes: Buffer, text: String): Boolean {
+    var start = 0
+    var found = false
+    while start < bytes.count() and not found {
+        found = holds_at(bytes, start, text)
+        start = start + 1
+    }
+    return found
+}
+
+func names_the_folder(first: Buffer, second: Buffer, index: Integer): Boolean {
+    var start = index - 2
+    var found = false
+    while start <= index and not found {
+        found = holds_at(first, start, "one") and holds_at(second, start, "two")
+        start = start + 1
+    }
+    return found
+}
+
+func holds_at(bytes: Buffer, start: Integer, text: String): Boolean {
+    var length = text.length()
+    fallback start >= 0 and start + length <= bytes.count()
+    var piece = bytes.read_string_at(start, length)
+    return piece == text
 }
 
 func write_the_app(folder: String) {
@@ -83,7 +113,7 @@ func write_file(path: String, text: String) {
 func compile(folder: String) {
     var here = program.working_directory()
     crash here
-    var compiler = "{here}\..\spite_compiler\.spite\spite.exe"
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
     var process = Process(compiler, ["--build"])
     process.working_directory = folder
     var code = process.run()

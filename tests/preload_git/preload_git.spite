@@ -27,7 +27,7 @@ func write_app(commit: String) {
     var lines = List<String>()
     lines.append("var console = Console()")
     lines.append("var art = Volume(\"art\")")
-    lines.append("var repo = Volume(\"repo\")")
+    lines.append("var repository = Volume(\"repo\")")
     lines.append("")
     lines.append("func App() \{")
     lines.append("    load \"../../../../spite_standard_library/windows\"")
@@ -38,7 +38,7 @@ func write_app(commit: String) {
     lines.append("    crash one_text")
     lines.append("    var one_text_trimmed = one_text.trim()")
     lines.append("    console.print(one.path, one_text_trimmed)")
-    lines.append("    var two = repo.file(\"art/deeper/two.txt\")")
+    lines.append("    var two = repository.file(\"art/deeper/two.txt\")")
     lines.append("    var two_text = two.read_as_string()")
     lines.append("    crash two_text")
     lines.append("    var two_text_trimmed = two_text.trim()")
@@ -51,7 +51,7 @@ func write_app(commit: String) {
 
 func run_app() {
     var no_arguments = List<String>()
-    var process = Process(".\app.exe", no_arguments)
+    var process = Process(".\\app.exe", no_arguments)
     process.working_directory = "{root}/app/.spite/build"
     var code = process.run()
     crash code
@@ -109,7 +109,7 @@ func head(folder: String): String {
 func compile(folder: String): String {
     var here = program.working_directory()
     crash here
-    var compiler = "{here}\..\spite_compiler\.spite\spite.exe"
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
     var process = Process(compiler, ["--build"])
     process.working_directory = folder
     process.keeps_errors_apart = true

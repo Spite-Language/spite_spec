@@ -1,3 +1,4 @@
 compile exit 0
 compile exit 0
-the same bytes from two folders: true
+the same bytes from two folders, but for where the source sits: true
+the files are stored by their volume path: true and never by the disk's: true

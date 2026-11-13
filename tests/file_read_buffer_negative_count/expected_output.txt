@@ -1,3 +1,3 @@
 four bytes 4
-spite: the program stopped at tests/file_read_buffer_negative_count/../../../spite_standard_library/common/file.spite:90 in File.read_buffer_at, site 2dbc9c3b (position=0, count=-1, path=tests/file_read_buffer_negative_count/file_read_buffer_negative_count.spite)
+spite: the program stopped at tests/file_read_buffer_negative_count/../../../spite_standard_library/common/file.spite:115 in File.read_buffer_at, site 2dbc9c3b (position=0, count=-1, path=tests/file_read_buffer_negative_count/file_read_buffer_negative_count.spite)
 spite.frame	tests/file_read_buffer_negative_count/file_read_buffer_negative_count.spite:10	FileReadBufferNegativeCount	FileReadBufferNegativeCount
