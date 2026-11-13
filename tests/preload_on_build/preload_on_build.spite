@@ -1,0 +1,17 @@
+var build = Build()
+var console = Console()
+var art = Volume("art")
+
+func PreloadOnBuild() {
+    load "../../../spite_standard_library/windows"
+    if build.size == "small" {
+        preload "small/art"
+    } else {
+        preload "large/art"
+    }
+    var picture = art.file("picture.txt")
+    var text = picture.read_as_string()
+    crash text
+    var text_trimmed = text.trim()
+    console.print(text_trimmed, "from", picture.path)
+}

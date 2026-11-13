@@ -1,0 +1,4 @@
+func PreloadAsValue() {
+    load "../../../spite_standard_library/windows"
+    var preloaded = preload "level"
+}

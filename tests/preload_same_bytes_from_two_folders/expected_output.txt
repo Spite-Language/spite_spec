@@ -1,0 +1,3 @@
+compile exit 0
+compile exit 0
+the same bytes from two folders: true

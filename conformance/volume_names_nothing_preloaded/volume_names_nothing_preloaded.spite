@@ -1,0 +1,7 @@
+var art = Volume("art")
+
+func VolumeNamesNothingPreloaded() {
+    load "../../../spite_standard_library/windows"
+    var picture = art.file("picture.txt")
+    crash picture.exists()
+}

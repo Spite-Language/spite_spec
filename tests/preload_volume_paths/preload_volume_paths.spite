@@ -1,0 +1,75 @@
+var console = Console()
+var notes = Volume("notes")
+
+func PreloadVolumePaths() {
+    load "../../../spite_standard_library/windows"
+    preload "notes"
+    var kept = notes.file("kept.txt")
+    var again_path: Path? = kept.path
+    crash again_path
+    var again = File(again_path)
+    var text = again.read_as_string()
+    crash text
+    var text_trimmed = text.trim()
+    console.print(again.path, "reads", text_trimmed)
+    show_the_paths()
+    show_the_writers(kept)
+    show_what_is_missing()
+    var folder = notes.directory("made")
+    var created = folder.create()
+    var folder_found = folder.exists()
+    console.print("create:", created, folder_found)
+    var running = Process("cmd", ["/c", "echo never"])
+    var volume_folder: Path? = "notes://"
+    running.working_directory = volume_folder
+    var ran = running.run()
+    console.print("a process in a volume's folder:", ran)
+}
+
+func show_the_paths() {
+    var place: Path? = "notes://sub/../kept.txt"
+    console.print(place, place.is_rooted, place.is_on_a_volume, place.parent, place.name)
+    var root = place.parent
+    console.print("the root's parent:", root.parent)
+    var plain: Path? = "notes/kept.txt"
+    console.print(plain, plain.is_on_a_volume)
+}
+
+func show_what_is_missing() {
+    var name = "nowhere"
+    var computed: Path? = "{name}://kept.txt"
+    crash computed
+    var missing = File(computed)
+    var missing_text = missing.read_as_string()
+    var missing_found = missing.exists()
+    console.print("a volume nothing preloads:", missing_found, missing_text)
+    var absent = notes.file("absent.txt")
+    var absent_count = absent.byte_count()
+    var absent_found = absent.exists()
+    console.print("a file the volume lacks:", absent_found, absent_count)
+}
+
+func show_the_writers(kept: File) {
+    var written = kept.write_string("other")
+    var appended = kept.append_string("more")
+    console.print("write:", written, "append:", appended)
+    var bytes = Buffer(0)
+    var buffer_written = kept.write_buffer(bytes)
+    var buffer_appended = kept.append_buffer(bytes)
+    console.print("write a buffer:", buffer_written, "append a buffer:", buffer_appended)
+    var removed = kept.remove()
+    var locked = kept.lock()
+    var lock_held = false
+    if locked {
+        lock_held = true
+    }
+    var last = kept.last_written()
+    console.print("remove:", removed, "lock held:", lock_held, "last written:", last)
+    var elsewhere: Path? = "moved.txt"
+    var moved = kept.move_to(elsewhere)
+    console.print("move:", moved, kept.path)
+    var still = kept.read_as_string()
+    crash still
+    var still_trimmed = still.trim()
+    console.print("still reads", still_trimmed)
+}

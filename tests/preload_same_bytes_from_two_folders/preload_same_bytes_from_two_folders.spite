@@ -1,0 +1,92 @@
+var console = Console()
+var program = Program()
+var root = ".spite/preload_same_bytes_from_two_folders"
+
+func PreloadSameBytesFromTwoFolders() {
+    load "../../../spite_standard_library/windows"
+    reset()
+    write_the_app("{root}/one/app")
+    write_the_app("{root}/two/app")
+    compile("{root}/one/app")
+    compile("{root}/two/app")
+    var first = executable_of("{root}/one/app")
+    var second = executable_of("{root}/two/app")
+    var same = first.count() == second.count()
+    var index = 0
+    while same and index < first.count() {
+        var left = first[index]
+        var right = second[index]
+        crash left
+        crash right
+        same = left == right
+        index = index + 1
+    }
+    console.print("the same bytes from two folders:", same)
+}
+
+func write_the_app(folder: String) {
+    make_directory(folder)
+    make_directory("{folder}/assets")
+    make_directory("{folder}/assets/levels")
+    write_file("{folder}/assets/notes.txt", "notes\n")
+    write_file("{folder}/assets/levels/first.txt", "the first level\n")
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("var assets = Volume(\"assets\")")
+    lines.append("")
+    lines.append("func App() \{")
+    lines.append("    load \"../../../../../spite_standard_library/windows\"")
+    lines.append("    preload \"assets\"")
+    lines.append("    var level = assets.file(\"levels/first.txt\")")
+    lines.append("    var text = level.read_as_string()")
+    lines.append("    crash text")
+    lines.append("    var text_trimmed = text.trim()")
+    lines.append("    console.print(text_trimmed)")
+    lines.append("}")
+    lines.append("")
+    var joined = lines.join("\n")
+    write_file("{folder}/app.spite", joined)
+}
+
+func executable_of(folder: String): Buffer {
+    var built: Path? = "{folder}/.spite/build/app.exe"
+    crash built
+    var file = File(built)
+    var bytes = file.read_as_buffer()
+    crash bytes
+    return bytes
+}
+
+func reset() {
+    var windows_root = root.replace("/", "\\")
+    var clean = Process("cmd", ["/c", "if exist {windows_root} rmdir /s /q {windows_root}"])
+    crash clean.run()
+    make_directory(root)
+    make_directory("{root}/one")
+    make_directory("{root}/two")
+}
+
+func make_directory(path: String) {
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
+    crash made.create()
+}
+
+func write_file(path: String, text: String) {
+    var file_path: Path? = path
+    crash file_path
+    var file = File(file_path)
+    crash file.write_string(text)
+}
+
+func compile(folder: String) {
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\..\spite_compiler\.spite\spite.exe"
+    var process = Process(compiler, ["--build"])
+    process.working_directory = folder
+    var code = process.run()
+    crash code
+    console.print("compile exit", code)
+}

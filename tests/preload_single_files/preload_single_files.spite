@@ -1,0 +1,25 @@
+var console = Console()
+var bunda = Volume("bunda")
+
+func PreloadSingleFiles() {
+    load "../../../spite_standard_library/windows"
+    preload "bunda/cu.spite"
+    preload "bunda/other.txt"
+    var root = bunda.directory("")
+    var entries = root.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var entry = entries[index]
+        console.print(entry.path)
+        index = index + 1
+    }
+    var cu = bunda.file("cu.spite")
+    var text = cu.read_as_string()
+    crash text
+    var text_trimmed = text.trim()
+    console.print(text_trimmed)
+    var skipped = bunda.file("skipped.txt")
+    var skipped_found = skipped.exists()
+    console.print("skipped.txt is on the volume:", skipped_found)
+}

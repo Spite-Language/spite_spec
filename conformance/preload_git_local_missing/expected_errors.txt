@@ -1,0 +1,1 @@
+conformance/preload_git_local_missing/preload_git_local_missing.spite:5: error: 'preload "../no_such_repository@0123456"' names the repository '../no_such_repository', and there is no folder '../no_such_repository'

@@ -1,0 +1,4 @@
+bunda://cu.spite
+bunda://other.txt
+this is not a class: preload carries it as it is
+skipped.txt is on the volume: false

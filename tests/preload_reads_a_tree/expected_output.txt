@@ -1,0 +1,10 @@
+assets://
+folder levels
+folder deep
+file last.txt: the deepest level
+file first.txt: the first level
+file second.txt: a level beside
+file notes.txt: notes on the volume
+the same tree as on the disk: true
+assets://levels/deep/last.txt the deepest level
+assets://levels/deep true deep

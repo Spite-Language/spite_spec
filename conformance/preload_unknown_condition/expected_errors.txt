@@ -1,0 +1,1 @@
+conformance/preload_unknown_condition/preload_unknown_condition.spite:6: error: this 'if' holds a 'preload', so the compiler decides it, and it cannot decide this condition: around a 'preload' a condition reads only Build fields (through 'var build = Build()' beside the attributes), text, whole numbers, true and false, joined by ==, !=, and, or and not

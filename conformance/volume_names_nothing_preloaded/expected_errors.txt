@@ -1,0 +1,1 @@
+conformance/volume_names_nothing_preloaded/volume_names_nothing_preloaded.spite:1: error: 'Volume("art")' names a volume nothing preloads: a volume is the last folder of what a 'preload' names, like 'preload "assets/art"' (in VolumeNamesNothingPreloaded._attribute_defaults)

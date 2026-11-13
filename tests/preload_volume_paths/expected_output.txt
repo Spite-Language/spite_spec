@@ -1,0 +1,13 @@
+notes://kept.txt reads written once
+notes://kept.txt true true notes:// kept.txt
+the root's parent: notes://
+notes/kept.txt false
+write: false append: false
+write a buffer: false append a buffer: null
+remove: false lock held: false last written: null
+move: false notes://kept.txt
+still reads written once
+a volume nothing preloads: false null
+a file the volume lacks: false null
+create: false false
+a process in a volume's folder: null

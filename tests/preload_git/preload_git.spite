@@ -1,0 +1,122 @@
+var console = Console()
+var program = Program()
+var root = ".spite/preload_git"
+
+func PreloadGit() {
+    load "../../../spite_standard_library/windows"
+    reset()
+    make_directory("{root}/repo")
+    make_directory("{root}/repo/art")
+    make_directory("{root}/repo/art/deeper")
+    write_file("{root}/repo/art/one.txt", "the first picture\n")
+    write_file("{root}/repo/art/deeper/two.txt", "the second picture\n")
+    commit_all("{root}/repo")
+    var commit = head("{root}/repo")
+    make_directory("{root}/app")
+    write_app(commit)
+    var first = compile("{root}/app")
+    var fetched = first.contains("fetched ../repo@{commit} into ")
+    console.print("first compile fetched:", fetched)
+    var second = compile("{root}/app")
+    var again = second.contains("fetched")
+    console.print("second compile fetched:", again)
+    run_app()
+}
+
+func write_app(commit: String) {
+    var lines = List<String>()
+    lines.append("var console = Console()")
+    lines.append("var art = Volume(\"art\")")
+    lines.append("var repo = Volume(\"repo\")")
+    lines.append("")
+    lines.append("func App() \{")
+    lines.append("    load \"../../../../spite_standard_library/windows\"")
+    lines.append("    preload \"../repo@{commit}/art\"")
+    lines.append("    preload \"../repo@{commit}\"")
+    lines.append("    var one = art.file(\"one.txt\")")
+    lines.append("    var one_text = one.read_as_string()")
+    lines.append("    crash one_text")
+    lines.append("    var one_text_trimmed = one_text.trim()")
+    lines.append("    console.print(one.path, one_text_trimmed)")
+    lines.append("    var two = repo.file(\"art/deeper/two.txt\")")
+    lines.append("    var two_text = two.read_as_string()")
+    lines.append("    crash two_text")
+    lines.append("    var two_text_trimmed = two_text.trim()")
+    lines.append("    console.print(two.path, two_text_trimmed)")
+    lines.append("}")
+    lines.append("")
+    var joined = lines.join("\n")
+    write_file("{root}/app/app.spite", joined)
+}
+
+func run_app() {
+    var no_arguments = List<String>()
+    var process = Process(".\app.exe", no_arguments)
+    process.working_directory = "{root}/app/.spite/build"
+    var code = process.run()
+    crash code
+    var output = process.read_output_as_string()
+    crash output
+    var output_trimmed = output.trim()
+    console.print(output_trimmed)
+}
+
+func reset() {
+    var windows_root = root.replace("/", "\\")
+    var clean = Process("cmd", ["/c", "if exist {windows_root} rmdir /s /q {windows_root}"])
+    crash clean.run()
+    make_directory(root)
+}
+
+func make_directory(path: String) {
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
+    crash made.create()
+}
+
+func write_file(path: String, text: String) {
+    var file_path: Path? = path
+    crash file_path
+    var file = File(file_path)
+    crash file.write_string(text)
+}
+
+func git(folder: String, arguments: List<String>) {
+    var process = Process("git", arguments)
+    process.working_directory = folder
+    var code = process.run()
+    crash code
+    crash code == 0
+}
+
+func commit_all(folder: String) {
+    git(folder, ["init", "--quiet"])
+    git(folder, ["add", "."])
+    git(folder, ["-c", "user.name=spite", "-c", "user.email=spite@example.com", "commit", "--quiet", "-m", "first"])
+}
+
+func head(folder: String): String {
+    var process = Process("git", ["rev-parse", "--short=7", "HEAD"])
+    process.working_directory = folder
+    var code = process.run()
+    crash code
+    var output = process.read_output_as_string()
+    crash output
+    return output.trim()
+}
+
+func compile(folder: String): String {
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\..\spite_compiler\.spite\spite.exe"
+    var process = Process(compiler, ["--build"])
+    process.working_directory = folder
+    process.keeps_errors_apart = true
+    var code = process.run()
+    crash code
+    var errors = process.read_errors_as_string()
+    crash errors
+    console.print("compile exit", code)
+    return errors
+}

@@ -1,0 +1,1 @@
+conformance/preload_function/preload_function.spite:8: error: 'preload' is a keyword and cannot name a function: give it a name that says what it preloads, like 'preload_textures'

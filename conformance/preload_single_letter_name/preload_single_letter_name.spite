@@ -1,0 +1,8 @@
+var drive = Volume("d")
+
+func PreloadSingleLetterName() {
+    load "../../../spite_standard_library/windows"
+    preload "d"
+    var picture = drive.file("picture.txt")
+    crash picture.exists()
+}

@@ -1,0 +1,4 @@
+bytes: 256 counted: 256
+each byte in its place: true
+from 250: 6 bytes, the last 255
+a read is a copy, the volume still holds 0

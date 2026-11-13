@@ -1,0 +1,1 @@
+conformance/preload_as_value/preload_as_value.spite:3: error: 'preload' is a statement on a line of its own, like 'preload "folder"': it is not a function, and it has no value

@@ -1,0 +1,56 @@
+var console = Console()
+var assets = Volume("assets")
+
+func PreloadReadsATree() {
+    load "../../../spite_standard_library/windows"
+    preload "assets"
+    var root = assets.directory("")
+    console.print(root.path)
+    var on_the_volume = List<String>()
+    walk(root, on_the_volume)
+    var on_the_disk = List<String>()
+    var disk_root = Directory("tests/preload_reads_a_tree/assets")
+    walk(disk_root, on_the_disk)
+    var index = 0
+    while index < on_the_volume.count() {
+        var line = on_the_volume[index]
+        console.print(line)
+        index = index + 1
+    }
+    var same = on_the_volume.join("|") == on_the_disk.join("|")
+    console.print("the same tree as on the disk:", same)
+    var deep = assets.file("levels/deep/last.txt")
+    var text = deep.read_as_string()
+    crash text
+    var text_trimmed = text.trim()
+    console.print(deep.path, text_trimmed)
+    var folder = assets.directory("levels/deep")
+    var folder_found = folder.exists()
+    console.print(folder.path, folder_found, folder.folder_name)
+}
+
+func walk(directory: Directory, lines: List<String>) {
+    var entries = directory.entries()
+    crash entries
+    var index = 0
+    while index < entries.count() {
+        var entry = entries[index]
+        switch entry {
+            Directory: walk_into(entry, lines)
+            File: note_a_file(entry, lines)
+        }
+        index = index + 1
+    }
+}
+
+func walk_into(folder: Directory, lines: List<String>) {
+    lines.append("folder {folder.folder_name}")
+    walk(folder, lines)
+}
+
+func note_a_file(file: File, lines: List<String>) {
+    var content = file.read_as_string()
+    crash content
+    var trimmed = content.trim()
+    lines.append("file {file.file_name}: {trimmed}")
+}

@@ -1,0 +1,9 @@
+var art = Volume("art")
+
+func VolumeLiteralPathNamesNothing() {
+    load "../../../spite_standard_library/windows"
+    preload "art"
+    var picture = art.file("picture.txt")
+    var other = File("nope://picture.txt")
+    crash picture.exists() and other.exists()
+}

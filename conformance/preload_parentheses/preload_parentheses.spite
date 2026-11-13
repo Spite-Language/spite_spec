@@ -1,0 +1,4 @@
+func PreloadParentheses() {
+    load "../../../spite_standard_library/windows"
+    preload("textures")
+}

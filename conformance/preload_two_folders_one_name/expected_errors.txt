@@ -1,0 +1,1 @@
+conformance/preload_two_folders_one_name/preload_two_folders_one_name.spite:6: error: 'conformance/preload_two_folders_one_name/small/art' and 'conformance/preload_two_folders_one_name/large/art' both make the volume 'art', and a volume comes from one folder: rename one of them

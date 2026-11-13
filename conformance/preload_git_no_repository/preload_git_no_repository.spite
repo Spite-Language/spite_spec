@@ -1,0 +1,4 @@
+func PreloadGitNoRepository() {
+    load "../../../spite_standard_library/windows"
+    preload "art@a3f2c91"
+}

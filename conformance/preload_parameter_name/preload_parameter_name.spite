@@ -1,0 +1,10 @@
+var console = Console()
+
+func PreloadParameterName() {
+    load "../../../spite_standard_library/windows"
+    show(3)
+}
+
+func show(preload: Integer) {
+    console.print(preload)
+}

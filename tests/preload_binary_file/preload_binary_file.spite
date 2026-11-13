@@ -1,0 +1,38 @@
+var console = Console()
+var data = Volume("data")
+var _every_byte = 256
+var _from = 250
+var _wanted = 10
+
+func PreloadBinaryFile() {
+    load "../../../spite_standard_library/windows"
+    preload "data/bytes.bin"
+    var file = data.file("bytes.bin")
+    var bytes = file.read_as_buffer()
+    crash bytes
+    var bytes_counted = bytes.count()
+    var file_byte_total = file.byte_count()
+    console.print("bytes:", bytes_counted, "counted:", file_byte_total)
+    var in_order = true
+    var index = 0
+    while index < _every_byte {
+        var read = bytes[index]
+        crash read
+        var expected: Byte? = index
+        in_order = in_order and read == expected
+        index = index + 1
+    }
+    console.print("each byte in its place:", in_order)
+    var tail = file.read_buffer_at(_from, _wanted)
+    crash tail
+    var last = tail[tail.count() - 1]
+    crash last
+    var tail_counted = tail.count()
+    console.print("from 250:", tail_counted, "bytes, the last", last)
+    bytes[0] = 7
+    var again = file.read_as_buffer()
+    crash again
+    var first = again[0]
+    crash first
+    console.print("a read is a copy, the volume still holds", first)
+}

@@ -1,0 +1,4 @@
+func PreloadOfAMissingFolder() {
+    load "../../../spite_standard_library/windows"
+    preload "nowhere_at_all"
+}

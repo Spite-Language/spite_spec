@@ -1,0 +1,6 @@
+compile exit 0
+first compile fetched: true
+compile exit 0
+second compile fetched: false
+art://one.txt the first picture
+repo://art/deeper/two.txt the second picture

@@ -1,0 +1,4 @@
+func PreloadGitWithoutCommit() {
+    load "../../../spite_standard_library/windows"
+    preload "github.com/example/art"
+}

@@ -1,0 +1,1 @@
+conformance/preload_git_no_repository/preload_git_no_repository.spite:3: error: 'preload "art@a3f2c91"' names no repository: 'art' is neither a URL nor a path starting with ./, ../, / or a drive letter: write 'preload "github.com/example/engine@a3f2c91"' or 'preload "../engine@a3f2c91"'

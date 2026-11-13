@@ -1,0 +1,1 @@
+conformance/preload_in_switch/preload_in_switch.spite:12: error: a 'preload' inside an 'if', a 'while' or a 'switch' is not built yet: write it on its own line in the function (in PreloadInSwitch)

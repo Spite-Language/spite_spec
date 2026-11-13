@@ -1,0 +1,1 @@
+conformance/preload_git_without_commit/preload_git_without_commit.spite:3: error: 'preload "github.com/example/art"' names a repository without its commit, and a preload from a repository is pinned: write its commit after the repository, like 'preload "github.com/example/art@a3f2c91"'
