@@ -1,0 +1,13 @@
+var picked = true
+
+func reshape(shapes: List<Shape>) {
+    var index = 0
+    while index < shapes.count() {
+        var shape = shapes[index]
+        if picked {
+            var worker = Worker(shape)
+            shapes[index] = worker.transformed()
+        }
+        index = index + 1
+    }
+}

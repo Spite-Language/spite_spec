@@ -1,0 +1,32 @@
+var shape = Shape(0)
+var _rounds = 200
+
+func Worker(starting_shape: Shape) {
+    shape = starting_shape
+}
+
+func transformed(): Shape {
+    var sum = tallied(shape.seed)
+    shape.total = shape.total + sum
+    return shape
+}
+
+func tallied(seed: Integer): Integer {
+    var tallies = List<Tally>()
+    var round = 0
+    while round < _rounds {
+        var tally = Tally(round * seed % 13)
+        tallies.append(tally)
+        round = round + 1
+    }
+    var kept = List<Tally>()
+    var place = 0
+    while place < tallies.count() {
+        var tally = tallies[place]
+        if tally.value > 6 {
+            kept.append(tally)
+        }
+        place = place + 1
+    }
+    return kept.sum_value()
+}

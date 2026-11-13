@@ -1,0 +1,2 @@
+reshaped: 9680374
+locked counts in Worker.tallied: 0
