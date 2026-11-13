@@ -1,0 +1,1 @@
+conformance/standard_library_load_alone_in_a_constructor/helpers/tool.spite:4: fixed: 'load "../../../../spite_standard_library/windows"' loaded the standard library, which every program has without a load; removed it, and the constructor it was alone in, since a class without one is made from its defaults (in Tool.Tool)
