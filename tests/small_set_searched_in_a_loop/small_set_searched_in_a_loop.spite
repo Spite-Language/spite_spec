@@ -1,0 +1,134 @@
+var console = Console()
+var clock = Clock()
+var searches = 3000000
+var asked_kinds = 8
+var slowest_percent = 125
+var whole_percent = 100
+var allowed_milliseconds = 20
+
+func SmallSetSearchedInALoop() {
+    load "../../../spite_standard_library/windows"
+    var started = clock.elapsed()
+    var set_found = searched_in_sets()
+    var between = clock.elapsed()
+    var plain_found = searched_plainly()
+    var ended = clock.elapsed()
+    var set_taken = between - started
+    var plain_taken = ended - between
+    var set_milliseconds = set_taken.total('milliseconds')
+    var plain_milliseconds = plain_taken.total('milliseconds')
+    var allowed = plain_milliseconds * slowest_percent / whole_percent + allowed_milliseconds
+    var costs_no_more = set_milliseconds <= allowed
+    console.print(set_found, plain_found, costs_no_more)
+}
+
+func searched_in_sets(): Integer {
+    var found = 0
+    var index = 0
+    while index < searches {
+        var word = asked(index)
+        if is_listed(word) {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
+
+func searched_plainly(): Integer {
+    var found = 0
+    var index = 0
+    while index < searches {
+        var word = asked(index)
+        if is_listed_plainly(word, index) {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}
+
+func asked(index: Integer): String {
+    var kind = index % asked_kinds
+    if kind == 0 {
+        return "sheep"
+    }
+    if kind == 1 {
+        return "cactus"
+    }
+    if kind == 2 {
+        return "knowledge"
+    }
+    if kind == 3 {
+        return "word"
+    }
+    if kind == 4 {
+        return "data"
+    }
+    if kind == 5 {
+        return "money"
+    }
+    if kind == 6 {
+        return "aircrafts"
+    }
+    return "news"
+}
+
+func is_listed(word: String): Boolean {
+    var words = [
+        "data"
+        "equipment"
+        "health"
+        "information"
+        "rice"
+        "money"
+        "species"
+        "series"
+        "fish"
+        "sheep"
+        "jeans"
+        "police"
+        "deer"
+        "moose"
+        "aircraft"
+        "news"
+        "furniture"
+        "luggage"
+        "advice"
+        "software"
+        "hardware"
+        "knowledge"
+    ]
+    return words.contains(word)
+}
+
+func is_listed_plainly(word: String, index: Integer): Boolean {
+    var words = [
+        "data"
+        "equipment"
+        "health"
+        "information"
+        "rice"
+        "money"
+        "species"
+        "series"
+        "fish"
+        "sheep"
+        "jeans"
+        "police"
+        "deer"
+        "moose"
+        "aircraft"
+        "news"
+        "furniture"
+        "luggage"
+        "advice"
+        "software"
+        "hardware"
+        "knowledge"
+    ]
+    if index < 0 {
+        words[0] = word
+    }
+    return words.contains(word)
+}
