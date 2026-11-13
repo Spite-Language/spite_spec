@@ -22,3 +22,4 @@ visitor with 0 tags 3
 ## Loops run in order
 - [tests/optimization_report/optimization_report.spite:42](../../tests/optimization_report/optimization_report.spite#L42): a loop over the positions of a `List<Badge>` runs in order: it holds the conversion `into_shape`
 - [tests/optimization_report/optimization_report.spite:76](../../tests/optimization_report/optimization_report.spite#L76): a loop over the positions of a `List<String>` runs in order: it reads a `String` it does not own, which could be another pass's element
+## Singletons other threads reach

@@ -1,0 +1,25 @@
+var console = Console()
+var _element_count = 20000
+
+func BandFallbacksReplayed() {
+    load "../../../spite_standard_library/windows"
+    var weights = Weights()
+    var shapes = List<Shape>()
+    var index = 0
+    while index < _element_count {
+        var shape = Shape(index, weights)
+        shapes.append(shape)
+        index = index + 1
+    }
+    shapes.each_settle()
+    var settled = shapes.sum_total()
+    console.print("settled:", settled)
+    var round = 0
+    while round < 3 {
+        shapes.each_settle()
+        round = round + 1
+    }
+    var rounds = shapes.sum_total()
+    console.print("three more rounds:", rounds)
+    crash rounds == 0
+}

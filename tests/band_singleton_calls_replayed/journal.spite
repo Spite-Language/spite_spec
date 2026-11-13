@@ -1,0 +1,29 @@
+singleton
+
+var console = Console()
+var lines = List<String>()
+var notes = 0
+
+func note(line: String) {
+    notes = notes + 1
+    if lines.is_empty() {
+        lines.append(line)
+        return
+    }
+    var last = lines.last()
+    crash last
+    if last != line {
+        lines.append(line)
+    }
+}
+
+func report() {
+    var count = lines.count()
+    console.print("notes:", notes, "kept:", count)
+    var index = count - 6
+    while index < count {
+        var line = lines[index]
+        console.print(line)
+        index = index + 1
+    }
+}

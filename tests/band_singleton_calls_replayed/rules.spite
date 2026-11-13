@@ -1,0 +1,14 @@
+singleton
+
+var _kind_count = 7
+var names = List<String>()
+var kinds: Integer
+
+func Rules() {
+    names.append("seven")
+    kinds = names.count() * _kind_count
+}
+
+func kind_of(seed: Integer): Integer {
+    return seed % kinds
+}

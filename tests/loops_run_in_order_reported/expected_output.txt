@@ -1,4 +1,3 @@
 reshaped: 58589 tallied: 100
-## Loops run in order (3)
-- [tests/loops_run_in_order_reported/driver.spite:18](../../tests/loops_run_in_order_reported/driver.spite#L18): a loop over the positions of a `List<Shape>` runs in order: `Worker.note_a_value` takes a `fallback`, which writes the fallback ring under its lock
+## Loops run in order (2)
 - [tests/loops_run_in_order_reported/driver.spite:30](../../tests/loops_run_in_order_reported/driver.spite#L30): a loop over the positions of a `List<Shape>` runs in order: it writes into a `Buffer` it does not own (in `Buffer._reserve`, reached from `Worker.tallied`)

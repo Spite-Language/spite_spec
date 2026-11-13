@@ -1,0 +1,11 @@
+var place: Integer
+var weight: Integer
+
+func Corner(starting_place: Integer, starting_weight: Integer) {
+    place = starting_place
+    weight = starting_weight
+}
+
+func weighed(): Integer {
+    return place * weight
+}

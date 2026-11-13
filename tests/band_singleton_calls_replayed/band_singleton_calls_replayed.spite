@@ -1,0 +1,38 @@
+var console = Console()
+var build = Build()
+var journal = Journal()
+var _element_count = 20000
+
+func BandSingletonCallsReplayed() {
+    load "../../../spite_standard_library/windows"
+    var weights = Weights()
+    var shapes = List<Shape>()
+    var index = 0
+    while index < _element_count {
+        var shape = Shape(index, weights)
+        shapes.append(shape)
+        index = index + 1
+    }
+    shapes.each_settle()
+    var settled = shapes.sum_total()
+    console.print("settled:", settled)
+    journal.report()
+    print_report()
+}
+
+func print_report() {
+    var report_path: Path? = "{build.program}/.spite/reports/optimization_report.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var is_ours = line.starts_with("- [") and (line.contains("`Journal`") or line.contains("`Rules`"))
+        if line.starts_with("## Singletons other threads reach") or is_ours {
+            console.print(line)
+        }
+        index = index + 1
+    }
+}

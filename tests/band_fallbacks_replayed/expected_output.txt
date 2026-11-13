@@ -1,0 +1,37 @@
+settled: 10163325
+three more rounds: 40653300
+spite: the program stopped at tests/band_fallbacks_replayed/band_fallbacks_replayed.spite:24 in BandFallbacksReplayed.BandFallbacksReplayed, site 59eb85b8 (rounds=40653300, index=20000, settled=10163325, round=3, _element_count=20000)
+spite.fallback	earlier=21784
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.fallback	490439c1	tests/band_fallbacks_replayed/shape.spite:28	Shape	noted_kind	returned=null
+spite.fallback	094c239b	tests/band_fallbacks_replayed/shape.spite:29	Shape	noted_kind	returned=null
+spite.fallback	54f5c811	tests/band_fallbacks_replayed/shape.spite:30	Shape	noted_kind	returned=null	repeated=2
+spite.frame	tests/band_fallbacks_replayed/band_fallbacks_replayed.spite:24	BandFallbacksReplayed	BandFallbacksReplayed

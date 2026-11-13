@@ -1,0 +1,11 @@
+settled: 10106966
+notes: 20000 kept: 8572
+just past seven
+the rest
+a multiple of seven
+just past seven
+the rest
+a multiple of seven
+## Singletons other threads reach (2)
+- [tests/band_singleton_calls_replayed/journal.spite:1](../../tests/band_singleton_calls_replayed/journal.spite#L1): `Journal` takes no lock: nothing another thread runs touches what changes in it; a band writes down its calls that only change it and makes them in order after the join
+- [tests/band_singleton_calls_replayed/rules.spite:1](../../tests/band_singleton_calls_replayed/rules.spite#L1): `Rules` takes no lock: nothing another thread runs touches what changes in it
