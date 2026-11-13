@@ -34,7 +34,6 @@ func write_the_program() {
     lines.append("var console = Console()")
     lines.append("")
     lines.append("func Here() \{")
-    lines.append("    load \"../../../spite_standard_library/windows\"")
     lines.append("    console.print(\"here\")")
     lines.append("}")
     lines.append("")

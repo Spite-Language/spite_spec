@@ -36,7 +36,6 @@ func write_the_program() {
     lines.append("var environment = Environment()")
     lines.append("")
     lines.append("func Relayed(): Integer \{")
-    lines.append("    load \"../../../spite_standard_library/windows\"")
     lines.append("    console.print(\"volume\", environment.volume)")
     lines.append("    var line = console.read_line()")
     lines.append("    console.print(line)")

@@ -50,7 +50,6 @@ func write_the_program() {
     lines.append("var build = Build()")
     lines.append("")
     lines.append("func Volumed() \{")
-    lines.append("    load \"../../../spite_standard_library/windows\"")
     lines.append("    console.print(\"volume\", build.volume)")
     lines.append("}")
     lines.append("")

@@ -2,13 +2,13 @@ compile exit 0
 first compile fetched: true
 a file beside the copies: fetching.lock
 compile exit 1
-app/app.spite:5: error: '.spite/git/repo_N/<commit>/kit/widget.spite' is not what the commit <commit> of ../repo holds: a checkout is read-only, so a pinned commit never changes. Delete the folder '.spite/git/repo_N/<commit>' to fetch it again
+app/app.spite:4: error: '.spite/git/repo_N/<commit>/kit/widget.spite' is not what the commit <commit> of ../repo holds: a checkout is read-only, so a pinned commit never changes. Delete the folder '.spite/git/repo_N/<commit>' to fetch it again
 
 compile exit 1
-app/app.spite:5: error: '.spite/git/repo_N/<commit>/kit/extra.spite' is not what the commit <commit> of ../repo holds: a checkout is read-only, so a pinned commit never changes. Delete the folder '.spite/git/repo_N/<commit>' to fetch it again
+app/app.spite:4: error: '.spite/git/repo_N/<commit>/kit/extra.spite' is not what the commit <commit> of ../repo holds: a checkout is read-only, so a pinned commit never changes. Delete the folder '.spite/git/repo_N/<commit>' to fetch it again
 
 compile exit 1
-app/app.spite:5: error: '.spite/git/repo_N/<commit>/kit/widget.spite' is not what the commit <commit> of ../repo holds: a checkout is read-only, so a pinned commit never changes. Delete the folder '.spite/git/repo_N/<commit>' to fetch it again
+app/app.spite:4: error: '.spite/git/repo_N/<commit>/kit/widget.spite' is not what the commit <commit> of ../repo holds: a checkout is read-only, so a pinned commit never changes. Delete the folder '.spite/git/repo_N/<commit>' to fetch it again
 
 compile exit 0
 deleting the copy fetched it again: true

@@ -45,7 +45,6 @@ func write_the_program() {
     lines.append("var console = Console()")
     lines.append("")
     lines.append("func CallersFolder() \{")
-    lines.append("    load \"../../../spite_standard_library/windows\"")
     lines.append("    var note = File(\"note.txt\")")
     lines.append("    crash note.write_string(\"written\")")
     lines.append("    console.print(\"wrote note.txt\")")

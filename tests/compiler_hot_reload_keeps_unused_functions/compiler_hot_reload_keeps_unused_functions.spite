@@ -41,7 +41,6 @@ func write_the_program() {
     lines.append("var program = Program()")
     lines.append("")
     lines.append("func HotReloadKeeps() \{")
-    lines.append("    load \"../../../spite_standard_library/windows\"")
     lines.append("    var path = program.executable_path()")
     lines.append("    crash path")
     lines.append("    var length = path.length()")

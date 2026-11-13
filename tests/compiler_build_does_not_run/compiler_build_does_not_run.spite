@@ -64,7 +64,6 @@ func write_the_program() {
     lines.append("var console = Console()")
     lines.append("")
     lines.append("func BuiltOnly() \{")
-    lines.append("    load \"../../../spite_standard_library/windows\"")
     lines.append("    var marker = File(\"ran.txt\")")
     lines.append("    crash marker.write_string(\"ran\")")
     lines.append("    console.print(\"ran\")")

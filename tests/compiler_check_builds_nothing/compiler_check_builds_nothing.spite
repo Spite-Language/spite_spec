@@ -59,7 +59,6 @@ func write_the_program(statement: String) {
     lines.append("var console = Console()")
     lines.append("")
     lines.append("func Checked() \{")
-    lines.append("    load \"../../../spite_standard_library/windows\"")
     lines.append(statement)
     lines.append("}")
     lines.append("")

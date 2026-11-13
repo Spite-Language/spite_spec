@@ -30,7 +30,6 @@ func write_app(commit: String) {
     lines.append("var console = Console()")
     lines.append("")
     lines.append("func App() \{")
-    lines.append("    load \"../../../../spite_standard_library/windows\"")
     lines.append("    load \"../repo@{commit}/kit\"")
     lines.append("    var widget = Widget(4)")
     lines.append("    var twice = widget.doubled()")
