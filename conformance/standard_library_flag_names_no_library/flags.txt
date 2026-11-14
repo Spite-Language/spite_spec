@@ -1,1 +1,1 @@
---standard-library=assets
+--standard-library-path=assets

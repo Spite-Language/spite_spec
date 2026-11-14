@@ -361,9 +361,9 @@ func compiling_in(copy: String, flags: String): String {
 }
 
 func library_flag(working: String, flags: String): String {
-    fallback not flags.contains("--standard-library")
+    fallback not flags.contains("--standard-library-path")
     var forward = working.replace("\\", "/")
-    return " \"--standard-library={forward}/{library}\""
+    return " \"--standard-library-path={forward}/{library}\""
 }
 
 func absolute_working(): String {

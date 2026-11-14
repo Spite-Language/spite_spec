@@ -2,5 +2,5 @@ var console = Console()
 var build = Build()
 
 func StandardLibraryFlagNamesTheLibrary() {
-    console.print("compiled with", build.standard_library)
+    console.print("compiled with", build.standard_library_path)
 }

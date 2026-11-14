@@ -1,1 +1,1 @@
-error: '--standard-library=assets' names a folder that is not a standard library: a standard library holds a 'common' folder and one for each system, and it has no 'common' folder
+error: '--standard-library-path=assets' names a folder that is not a standard library: a standard library holds a 'common' folder and one for each system, and it has no 'common' folder

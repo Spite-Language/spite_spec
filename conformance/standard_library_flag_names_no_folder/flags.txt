@@ -1,1 +1,1 @@
---standard-library=nowhere
+--standard-library-path=nowhere

@@ -47,8 +47,8 @@ write the same words, and a conformance test that fails is a part of the port st
 
 A program has the standard library with no `load` line. The repositories sit side by side under one folder, as
 `gh repo clone` names them (`spite_compiler`, `spite_standard_library`, `spite_spec`), and the runner gives the
-compiler `--standard-library=../spite_standard_library` (from this folder), so the library tested is the clone
-beside this one; a test whose `flags.txt` names `--standard-library` keeps its own.
+compiler `--standard-library-path=../spite_standard_library` (from this folder), so the library tested is the clone
+beside this one; a test whose `flags.txt` names `--standard-library-path` keeps its own.
 
 ## Running them
 

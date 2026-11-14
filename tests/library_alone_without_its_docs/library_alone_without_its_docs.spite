@@ -85,7 +85,7 @@ func compile(flag: String) {
     var here = program.working_directory()
     crash here
     var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
-    var arguments = [flag, "--standard-library=../spite_standard_library"]
+    var arguments = [flag, "--standard-library-path=../spite_standard_library"]
     var compiling = Process(compiler, arguments)
     compiling.working_directory = program_copy
     compiling.with_errors = true

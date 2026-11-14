@@ -1,1 +1,1 @@
---standard-library=../../../spite_standard_library
+--standard-library-path=../../../spite_standard_library
