@@ -1,0 +1,4 @@
+var items = List<Anything?>()
+var sizes = List<Integer?>()
+var flags = List<Boolean?>()
+var ages = Dictionary<String, Integer?>()

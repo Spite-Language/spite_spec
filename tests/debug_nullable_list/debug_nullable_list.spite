@@ -1,0 +1,27 @@
+var console = Console()
+
+func DebugNullableList() {
+    load "../../../spite_standard_library/windows"
+    var holder = Holder()
+    holder.items.append(null)
+    holder.items.append("kept")
+    holder.sizes.append(null)
+    holder.sizes.append(4)
+    holder.flags.append(null)
+    holder.flags.append(false)
+    holder.flags.append(true)
+    holder.ages["ada"] = null
+    holder.ages["bo"] = 9
+    var shown = holder.to_debug()
+    console.print(shown)
+    var copied = holder.deep_copy()
+    console.debug(copied)
+    var words = List<String?>()
+    words.append(null)
+    words.append("a")
+    console.debug(words)
+    var joined = holder.sizes.join(", ")
+    console.print(joined)
+    var words_joined = words.join("|")
+    console.print(words_joined)
+}

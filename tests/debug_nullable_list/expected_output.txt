@@ -1,0 +1,5 @@
+Holder { items: [null, "kept"], sizes: [null, 4], flags: [null, false, true], ages: {"ada": null, "bo": 9} }
+Holder { items: [null, "kept"], sizes: [null, 4], flags: [null, false, true], ages: {"ada": null, "bo": 9} }
+[null, "a"]
+null, 4
+null|a
