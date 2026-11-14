@@ -1,0 +1,2 @@
+conformance/a_number_outside_a_test_crash/checks/counting.spite:2: error: the number 1001 does not say what it means: declare a private attribute that names it, like 'var _what_it_means = 1001', and write the name here (in Counting.test_a_thousand_and_one_is_counted)
+conformance/a_number_outside_a_test_crash/checks/counting.spite:10: error: the number 1001 does not say what it means: declare a private attribute that names it, like 'var _what_it_means = 1001', and write the name here (in Counting.counted_boxes)

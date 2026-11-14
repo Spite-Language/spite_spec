@@ -1,0 +1,6 @@
+func test_a_thousand_and_one_is_counted() {
+    var thousand = 1000
+    var counted = thousand + 1
+    crash counted == 1001
+    crash counted > 999 and counted != 1002
+}

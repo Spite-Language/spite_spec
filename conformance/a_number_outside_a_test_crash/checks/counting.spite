@@ -1,0 +1,12 @@
+func test_a_thousand_and_one_is_counted() {
+    var wanted = 1001
+    var counted = counted_boxes()
+    crash counted == wanted
+}
+
+func counted_boxes(): Integer {
+    var thousand = 1000
+    var counted = thousand + 1
+    crash counted == 1001
+    return counted
+}
