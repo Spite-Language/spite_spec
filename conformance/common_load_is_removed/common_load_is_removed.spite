@@ -1,6 +1,7 @@
 var console = Console()
 
 func CommonLoadIsRemoved() {
+    console.print("the helper loads after a statement")
     load "helpers"
     var tool = Tool()
     console.print(tool.name)
