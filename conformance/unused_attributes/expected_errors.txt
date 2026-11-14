@@ -1,3 +1,6 @@
+conformance/unused_attributes/unused_attributes.spite:4: fixed: the default of 'written' was made and then replaced by the constructor on every path; removed it, 'var written: String' (in UnusedAttributes)
+conformance/unused_attributes/unused_attributes.spite:5: fixed: a variable came after a variable without a default here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables with a default, variables without one, the constructor, conversions, presets, then functions (in UnusedAttributes)
+conformance/unused_attributes/unused_attributes.spite:6: fixed: a variable came after a variable without a default here; moved it up, since a file is ordered: the singleton line, generic lines, enums, unions, types, variables with a default, variables without one, the constructor, conversions, presets, then functions (in UnusedAttributes)
 conformance/unused_attributes/unused_attributes.spite:3: fixed: the attribute 'forgotten' was never read, and making it does nothing; removed it (in UnusedAttributes.)
-conformance/unused_attributes/unused_attributes.spite:5: fixed: the attribute '_kept_for_later' was never read, and making it does nothing; removed it (in UnusedAttributes.)
+conformance/unused_attributes/unused_attributes.spite:4: fixed: the attribute '_kept_for_later' was never read, and making it does nothing; removed it (in UnusedAttributes.)
 conformance/unused_attributes/mover.spite:1: error: the attribute 'world' is never read: remove it (in Mover.)

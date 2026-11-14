@@ -1,7 +1,6 @@
 var secret: Secret? = null
 
 func ClassesPrivateNameWrittenThroughACheck() {
-    load "../../../spite_standard_library/windows"
     secret = Secret()
     crash secret
     secret._hidden = 2

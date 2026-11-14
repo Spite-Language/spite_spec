@@ -1,1 +1,1 @@
-# notes.md#notesvar console = Console()func LoneCarriageReturnsBecomeLineFeeds() {    load "../../../spite_standard_library/windows"    console.print("a file written with carriage returns alone")    show()}# notes.md#notesfunc show() {    console.print("a text\tkeeps its escapes")}
+# notes.md#notesvar console = Console()func LoneCarriageReturnsBecomeLineFeeds() {    console.print("a file written with carriage returns alone")    show()}# notes.md#notesfunc show() {    console.print("a text\tkeeps its escapes")}

@@ -1,1 +1,2 @@
+conformance/attribute_only_written/attribute_only_written.spite:2: fixed: the default of 'score' was made and then replaced by the constructor on every path; removed it, 'var score: Integer' (in AttributeOnlyWritten)
 conformance/attribute_only_written/attribute_only_written.spite:2: fixed: the attribute 'score' was never read, and nothing written to it does anything; removed it and every write (in AttributeOnlyWritten.)

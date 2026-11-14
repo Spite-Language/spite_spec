@@ -3,7 +3,6 @@ var target: Target? = null
 var kind = 3
 
 func BranchUndoesProof() {
-    load "../../../spite_standard_library/windows"
     target = Target()
     var text = describe()
     console.print(text)

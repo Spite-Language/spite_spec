@@ -7,7 +7,6 @@ var console = Console()
 var mood: Mood = 'calm'
 
 func NullIntoAPlainEnum() {
-    load "../../../spite_standard_library/windows"
     mood = null
     console.print(mood)
     var next = calmed()

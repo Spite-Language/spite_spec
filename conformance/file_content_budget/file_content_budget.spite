@@ -8,7 +8,6 @@ var total = 0
 
 # ../../../spite_documentation/style.md#the-file-content-budget
 func FileContentBudget() {
-    load "../../../spite_standard_library/windows"
     nested(1)
     fill_part_1()
     fill_part_2()
@@ -17,6 +16,7 @@ func FileContentBudget() {
     fill_part_5()
     fill_part_6()
     console.print(total)
+    console.print("filled")
     var name = name_of('dark')
     console.print(name)
 }
