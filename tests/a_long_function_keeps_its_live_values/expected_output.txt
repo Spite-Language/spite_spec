@@ -1,0 +1,3 @@
+stem$band_split part false
+other stem$band_split part false
+262 stem$band_split part

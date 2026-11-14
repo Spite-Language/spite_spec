@@ -1,0 +1,542 @@
+var console = Console()
+var _most_kept = 100000
+var made = List<Label>()
+
+func made_from(stem: String) {
+    var first = "{stem}$band_split"
+    var length = stem.length()
+    note(first)
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    var is_long = length > _most_kept
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    if made.count() > _most_kept {
+        made.clear()
+    }
+    note("part")
+    var last = made[made.count() - 1]
+    crash last
+    console.print(first, last.name, is_long)
+    var total = made.count()
+    if total > _most_kept {
+        made.clear()
+    }
+}
+
+func note(name: String) {
+    var label = Label(name)
+    made.append(label)
+}
