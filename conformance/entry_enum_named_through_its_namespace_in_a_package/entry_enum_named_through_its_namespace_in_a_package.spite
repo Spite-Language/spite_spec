@@ -1,0 +1,21 @@
+var console = Console()
+
+func EntryEnumNamedThroughItsNamespaceInAPackage() {
+    load "../../../spite_standard_library/windows"
+    load "../../conformance/entry_enum_named_through_its_namespace_in_a_package/.packages/fw"
+    var keeper = Other.Keeper()
+    console.print(keeper.shade)
+    var named = keeper.kind_name()
+    console.print(named)
+    var counted = keeper.kinds()
+    console.print(counted)
+    var picked: Fw.Fw.Shade = 'light'
+    console.print(picked)
+    var painted = paint()
+    console.print(painted)
+}
+
+func paint(): String {
+    var painter = Fw.Painter()
+    return "{painter.shade} {painter.kind}"
+}

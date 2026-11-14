@@ -1,0 +1,4 @@
+enum Shade {
+    'dark'
+    'light'
+}

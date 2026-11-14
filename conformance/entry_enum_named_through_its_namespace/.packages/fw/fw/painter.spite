@@ -1,2 +1,2 @@
 var shade: Fw.Shade = 'light'
-var kind: Gpu.DataKind = 'storage'
+var kind: Gpu.Gpu.DataKind = 'storage'
