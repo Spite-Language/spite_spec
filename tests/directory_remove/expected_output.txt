@@ -1,0 +1,4 @@
+remove an empty folder true still there false
+remove a folder with something inside false still there true
+remove everything true still there false file still there false
+remove a missing folder false false

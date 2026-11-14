@@ -1,0 +1,16 @@
+var console = Console()
+
+func Matrix4SetAt() {
+    load "../../../spite_standard_library/windows"
+    var matrix = Matrix4<Float>()
+    matrix.set_at(3, 0, 5.0)
+    matrix.set_at(3, 1, 6.0)
+    matrix.set_at(3, 2, 7.0)
+    matrix.set_at(0, 1, 2.0)
+    console.print(matrix)
+    console.print("column 3 row 0", matrix.column_3_row_0, "column 0 row 1", matrix.column_0_row_1)
+    var offset = matrix.translation_part()
+    console.print("translation", offset)
+    matrix.set_at(4, 0, 1.0)
+    console.print("never printed")
+}

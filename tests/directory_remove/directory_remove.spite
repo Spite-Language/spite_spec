@@ -1,0 +1,27 @@
+var console = Console()
+
+func DirectoryRemove() {
+    load "../../../spite_standard_library/windows"
+    var tree = Directory("tests/directory_remove/.spite/tree")
+    crash tree.create()
+    var inner = Directory("tests/directory_remove/.spite/tree/inner")
+    crash inner.create()
+    var file = File("tests/directory_remove/.spite/tree/inner/note.txt")
+    crash file.write_string("hello")
+    var empty = Directory("tests/directory_remove/.spite/tree/empty")
+    crash empty.create()
+    var removed_empty = empty.remove()
+    var empty_left = empty.exists()
+    console.print("remove an empty folder", removed_empty, "still there", empty_left)
+    var removed_full = tree.remove()
+    var full_left = tree.exists()
+    console.print("remove a folder with something inside", removed_full, "still there", full_left)
+    var removed_all = tree.remove_all()
+    var all_left = tree.exists()
+    var file_left = file.exists()
+    console.print("remove everything", removed_all, "still there", all_left, "file still there", file_left)
+    var missing = Directory("tests/directory_remove/.spite/missing")
+    var removed_missing = missing.remove()
+    var removed_all_missing = missing.remove_all()
+    console.print("remove a missing folder", removed_missing, removed_all_missing)
+}
