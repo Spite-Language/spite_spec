@@ -1,11 +1,12 @@
 var console = Console()
+var _bright = 200
 
 func BinaryBufferAttribute() {
     load "../../../spite_standard_library/windows"
     var texture = Texture()
     texture.name = "grass"
     texture.pixels.append(10)
-    texture.pixels.append(200)
+    texture.pixels.append(_bright)
     texture.pixels.append(0)
     texture.width = 3
     var writer = BinaryWriter<Texture>()
