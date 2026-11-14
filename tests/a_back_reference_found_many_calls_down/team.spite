@@ -1,0 +1,16 @@
+var players = List<Player>()
+var console = Console()
+var name: String
+
+func Team(new_name: String) {
+    name = new_name
+}
+
+func sign(player: Player) {
+    players.append(player)
+    player.play_for(this)
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

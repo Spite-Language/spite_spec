@@ -1,0 +1,303 @@
+var team: Team? = null
+var console = Console()
+var name: String
+
+func Player(new_name: String) {
+    name = new_name
+}
+
+func play_for(new_team: Team) {
+    hand_on_at_one(new_team)
+}
+
+func hand_on_at_one(new_team: Team) {
+    hand_on_at_two(new_team)
+}
+
+func hand_on_at_two(new_team: Team) {
+    hand_on_at_three(new_team)
+}
+
+func hand_on_at_three(new_team: Team) {
+    hand_on_at_four(new_team)
+}
+
+func hand_on_at_four(new_team: Team) {
+    hand_on_at_five(new_team)
+}
+
+func hand_on_at_five(new_team: Team) {
+    hand_on_at_six(new_team)
+}
+
+func hand_on_at_six(new_team: Team) {
+    hand_on_at_seven(new_team)
+}
+
+func hand_on_at_seven(new_team: Team) {
+    hand_on_at_eight(new_team)
+}
+
+func hand_on_at_eight(new_team: Team) {
+    hand_on_at_nine(new_team)
+}
+
+func hand_on_at_nine(new_team: Team) {
+    hand_on_at_ten(new_team)
+}
+
+func hand_on_at_ten(new_team: Team) {
+    hand_on_at_eleven(new_team)
+}
+
+func hand_on_at_eleven(new_team: Team) {
+    hand_on_at_twelve(new_team)
+}
+
+func hand_on_at_twelve(new_team: Team) {
+    hand_on_at_thirteen(new_team)
+}
+
+func hand_on_at_thirteen(new_team: Team) {
+    hand_on_at_fourteen(new_team)
+}
+
+func hand_on_at_fourteen(new_team: Team) {
+    hand_on_at_fifteen(new_team)
+}
+
+func hand_on_at_fifteen(new_team: Team) {
+    hand_on_at_sixteen(new_team)
+}
+
+func hand_on_at_sixteen(new_team: Team) {
+    hand_on_at_seventeen(new_team)
+}
+
+func hand_on_at_seventeen(new_team: Team) {
+    hand_on_at_eighteen(new_team)
+}
+
+func hand_on_at_eighteen(new_team: Team) {
+    hand_on_at_nineteen(new_team)
+}
+
+func hand_on_at_nineteen(new_team: Team) {
+    hand_on_at_twenty(new_team)
+}
+
+func hand_on_at_twenty(new_team: Team) {
+    hand_on_at_twenty_one(new_team)
+}
+
+func hand_on_at_twenty_one(new_team: Team) {
+    hand_on_at_twenty_two(new_team)
+}
+
+func hand_on_at_twenty_two(new_team: Team) {
+    hand_on_at_twenty_three(new_team)
+}
+
+func hand_on_at_twenty_three(new_team: Team) {
+    hand_on_at_twenty_four(new_team)
+}
+
+func hand_on_at_twenty_four(new_team: Team) {
+    hand_on_at_twenty_five(new_team)
+}
+
+func hand_on_at_twenty_five(new_team: Team) {
+    hand_on_at_twenty_six(new_team)
+}
+
+func hand_on_at_twenty_six(new_team: Team) {
+    hand_on_at_twenty_seven(new_team)
+}
+
+func hand_on_at_twenty_seven(new_team: Team) {
+    hand_on_at_twenty_eight(new_team)
+}
+
+func hand_on_at_twenty_eight(new_team: Team) {
+    hand_on_at_twenty_nine(new_team)
+}
+
+func hand_on_at_twenty_nine(new_team: Team) {
+    hand_on_at_thirty(new_team)
+}
+
+func hand_on_at_thirty(new_team: Team) {
+    hand_on_at_thirty_one(new_team)
+}
+
+func hand_on_at_thirty_one(new_team: Team) {
+    hand_on_at_thirty_two(new_team)
+}
+
+func hand_on_at_thirty_two(new_team: Team) {
+    hand_on_at_thirty_three(new_team)
+}
+
+func hand_on_at_thirty_three(new_team: Team) {
+    hand_on_at_thirty_four(new_team)
+}
+
+func hand_on_at_thirty_four(new_team: Team) {
+    hand_on_at_thirty_five(new_team)
+}
+
+func hand_on_at_thirty_five(new_team: Team) {
+    hand_on_at_thirty_six(new_team)
+}
+
+func hand_on_at_thirty_six(new_team: Team) {
+    hand_on_at_thirty_seven(new_team)
+}
+
+func hand_on_at_thirty_seven(new_team: Team) {
+    hand_on_at_thirty_eight(new_team)
+}
+
+func hand_on_at_thirty_eight(new_team: Team) {
+    hand_on_at_thirty_nine(new_team)
+}
+
+func hand_on_at_thirty_nine(new_team: Team) {
+    hand_on_at_forty(new_team)
+}
+
+func hand_on_at_forty(new_team: Team) {
+    hand_on_at_forty_one(new_team)
+}
+
+func hand_on_at_forty_one(new_team: Team) {
+    hand_on_at_forty_two(new_team)
+}
+
+func hand_on_at_forty_two(new_team: Team) {
+    hand_on_at_forty_three(new_team)
+}
+
+func hand_on_at_forty_three(new_team: Team) {
+    hand_on_at_forty_four(new_team)
+}
+
+func hand_on_at_forty_four(new_team: Team) {
+    hand_on_at_forty_five(new_team)
+}
+
+func hand_on_at_forty_five(new_team: Team) {
+    hand_on_at_forty_six(new_team)
+}
+
+func hand_on_at_forty_six(new_team: Team) {
+    hand_on_at_forty_seven(new_team)
+}
+
+func hand_on_at_forty_seven(new_team: Team) {
+    hand_on_at_forty_eight(new_team)
+}
+
+func hand_on_at_forty_eight(new_team: Team) {
+    hand_on_at_forty_nine(new_team)
+}
+
+func hand_on_at_forty_nine(new_team: Team) {
+    hand_on_at_fifty(new_team)
+}
+
+func hand_on_at_fifty(new_team: Team) {
+    hand_on_at_fifty_one(new_team)
+}
+
+func hand_on_at_fifty_one(new_team: Team) {
+    hand_on_at_fifty_two(new_team)
+}
+
+func hand_on_at_fifty_two(new_team: Team) {
+    hand_on_at_fifty_three(new_team)
+}
+
+func hand_on_at_fifty_three(new_team: Team) {
+    hand_on_at_fifty_four(new_team)
+}
+
+func hand_on_at_fifty_four(new_team: Team) {
+    hand_on_at_fifty_five(new_team)
+}
+
+func hand_on_at_fifty_five(new_team: Team) {
+    hand_on_at_fifty_six(new_team)
+}
+
+func hand_on_at_fifty_six(new_team: Team) {
+    hand_on_at_fifty_seven(new_team)
+}
+
+func hand_on_at_fifty_seven(new_team: Team) {
+    hand_on_at_fifty_eight(new_team)
+}
+
+func hand_on_at_fifty_eight(new_team: Team) {
+    hand_on_at_fifty_nine(new_team)
+}
+
+func hand_on_at_fifty_nine(new_team: Team) {
+    hand_on_at_sixty(new_team)
+}
+
+func hand_on_at_sixty(new_team: Team) {
+    hand_on_at_sixty_one(new_team)
+}
+
+func hand_on_at_sixty_one(new_team: Team) {
+    hand_on_at_sixty_two(new_team)
+}
+
+func hand_on_at_sixty_two(new_team: Team) {
+    hand_on_at_sixty_three(new_team)
+}
+
+func hand_on_at_sixty_three(new_team: Team) {
+    hand_on_at_sixty_four(new_team)
+}
+
+func hand_on_at_sixty_four(new_team: Team) {
+    hand_on_at_sixty_five(new_team)
+}
+
+func hand_on_at_sixty_five(new_team: Team) {
+    hand_on_at_sixty_six(new_team)
+}
+
+func hand_on_at_sixty_six(new_team: Team) {
+    hand_on_at_sixty_seven(new_team)
+}
+
+func hand_on_at_sixty_seven(new_team: Team) {
+    hand_on_at_sixty_eight(new_team)
+}
+
+func hand_on_at_sixty_eight(new_team: Team) {
+    hand_on_at_sixty_nine(new_team)
+}
+
+func hand_on_at_sixty_nine(new_team: Team) {
+    hand_on_at_seventy(new_team)
+}
+
+func hand_on_at_seventy(new_team: Team) {
+    hand_on_at_seventy_one(new_team)
+}
+
+func hand_on_at_seventy_one(new_team: Team) {
+    hand_on_at_seventy_two(new_team)
+}
+
+func hand_on_at_seventy_two(new_team: Team) {
+    team = new_team
+}
+
+func drop() {
+    console.print(name, "is freed")
+}
