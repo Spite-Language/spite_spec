@@ -1,0 +1,45 @@
+enum Rarity {
+    'common'
+    'rare'
+}
+
+var console = Console()
+
+func JsxComponentTakesPropsAsParameters() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var parts = List<Anything?>()
+    var inside = Label()
+    inside.content = "inside"
+    parts.append(inside)
+    return <View title="armory">
+        <weapon grade={1}/>
+        <sword name="Axe" grade="3" rarity='rare' tint="#ff8000" weight={2} shiny/>
+        <framed title="box" children={parts}/>
+    </View>
+}
+
+func render_weapon(grade: Integer): Anything? {
+    var shown = Label()
+    shown.content = "grade {grade}"
+    return shown
+}
+
+func render_sword(name: String, grade: Integer, rarity: Rarity, tint: Color, weight: Float, shiny: Boolean): Anything? {
+    var shown = Label()
+    var colour = tint.to_hexadecimal_string()
+    shown.content = "{name} grade {grade} {rarity} {colour} weight {weight} shiny {shiny}"
+    return shown
+}
+
+func render_framed(title: String, children: List<Anything?>): Anything? {
+    var frame = View()
+    frame.title = title
+    frame.append_children(children)
+    return frame
+}

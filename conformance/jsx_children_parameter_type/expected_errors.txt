@@ -1,0 +1,1 @@
+conformance/jsx_children_parameter_type/jsx_children_parameter_type.spite:12: error: '<framed>' hands its children to 'render_framed' as a List<Anything?>, and its parameter 'children' is a List<Label>: declare it 'children: List<Anything?>'

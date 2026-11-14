@@ -1,0 +1,24 @@
+var console = Console()
+
+func JsxListChildOfAFunctionTag() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var parts = List<Anything?>()
+    return <View title="parts">
+        <framed title="box">
+            {parts}
+        </framed>
+    </View>
+}
+
+func render_framed(title: String, children: List<Anything?>): Anything? {
+    var frame = View()
+    frame.title = title
+    frame.append_children(children)
+    return frame
+}

@@ -1,0 +1,1 @@
+View 'armory' padding 0 wrap false start [Label 'grade 1', Label 'Axe grade 3 rare #ff8000 weight 2 shiny true', View 'box' padding 0 wrap false start [Label 'inside']]
