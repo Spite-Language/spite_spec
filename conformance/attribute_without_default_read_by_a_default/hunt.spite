@@ -1,0 +1,10 @@
+var label: String = described()
+var target: Pet
+
+func Hunt(given: Pet) {
+    target = given
+}
+
+func described(): String {
+    return target.name
+}

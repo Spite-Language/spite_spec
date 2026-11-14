@@ -1,0 +1,1 @@
+conformance/attribute_without_default_read_in_a_call/hunt.spite:2: error: the attribute 'target' has no default, so the constructor gives it its value, but line 5 calls 'described', which uses it, before it has one: give it its value before anything reads it, or write a default (in Hunt)

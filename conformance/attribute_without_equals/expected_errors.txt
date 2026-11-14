@@ -1,0 +1,1 @@
+conformance/attribute_without_equals/attribute_without_equals.spite:2: error: an attribute is written with '=' and its default, or with its type and no default when the constructor gives it its value, as in 'var name: String'

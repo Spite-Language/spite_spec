@@ -1,0 +1,1 @@
+conformance/attribute_without_default_read_by_a_default/hunt.spite:1: error: the default of 'label' reads 'target', which has no default: the defaults run before the constructor gives 'target' its value, so give 'label' a default that does not read 'target' and set it in the constructor (in Hunt)

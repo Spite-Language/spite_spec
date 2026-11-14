@@ -1,0 +1,13 @@
+var label: String
+var shout: String
+var target: Pet
+
+func Hunt(given: Pet) {
+    target = given
+    label = target.name
+    shout = described()
+}
+
+func described(): String {
+    return "{target.name}!"
+}

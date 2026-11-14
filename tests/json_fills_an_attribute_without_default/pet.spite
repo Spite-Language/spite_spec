@@ -1,0 +1,6 @@
+var age = 0
+var name: String
+
+func Pet() {
+    name = "unnamed"
+}

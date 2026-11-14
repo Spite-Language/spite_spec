@@ -1,0 +1,7 @@
+var name: String
+var size: String
+
+func Widget(starting_name: String, starting_size: String) {
+    name = starting_name
+    size = starting_size
+}

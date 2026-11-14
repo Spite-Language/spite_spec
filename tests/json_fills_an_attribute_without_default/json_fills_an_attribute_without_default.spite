@@ -1,0 +1,14 @@
+var console = Console()
+
+func JsonFillsAnAttributeWithoutDefault() {
+    load "../../../spite_standard_library/windows"
+    show("\{\"age\": 3}")
+    show("\{\"age\": 4, \"name\": \"tom\"}")
+}
+
+func show(text: String) {
+    var json = JsonReader<Pet>()
+    var pet = json.read(text)
+    fallback pet
+    console.print(pet.age, pet.name)
+}
