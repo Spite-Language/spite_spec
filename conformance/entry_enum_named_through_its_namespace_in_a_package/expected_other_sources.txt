@@ -1,0 +1,1 @@
+.packages/fw/fw/painter.spite
