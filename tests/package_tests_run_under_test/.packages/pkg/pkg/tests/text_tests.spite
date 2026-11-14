@@ -1,0 +1,9 @@
+func test_split_keeps_empty_pieces() {
+    var pieces = "a,,b".split(",")
+    crash pieces.count() == 3
+}
+
+func test_trim_removes_the_spaces() {
+    var trimmed = "  spite  ".trim()
+    crash trimmed == "spite"
+}

@@ -1,0 +1,9 @@
+var words = List<String>()
+
+func SetupTests() {
+    words.append("ready")
+}
+
+func test_starts_from_its_setup() {
+    crash words.count() == 1
+}
