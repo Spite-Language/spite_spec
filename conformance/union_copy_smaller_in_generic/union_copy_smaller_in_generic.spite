@@ -7,9 +7,9 @@ var console = Console()
 
 func UnionCopySmallerInGeneric() {
     load "../../../spite_standard_library/windows"
-    var pets = Dictionary<String, Pet>()
+    var pets = List<Pet>()
     var cat = Cat()
-    pets["tom"] = cat
+    pets.append(cat)
     var vet = Vet()
     var seen = vet.see_all(pets)
     console.print(seen)
