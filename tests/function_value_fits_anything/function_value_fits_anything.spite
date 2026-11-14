@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionValueFitsAnything() {
-    load "../../../spite_standard_library/windows"
     var button = Button()
     button.on_press = shout
     show(button)

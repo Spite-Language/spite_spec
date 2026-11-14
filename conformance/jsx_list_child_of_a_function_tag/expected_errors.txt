@@ -1,1 +1,1 @@
-conformance/jsx_list_child_of_a_function_tag/jsx_list_child_of_a_function_tag.spite:14: error: '{parts}' is a list, and '<framed>' takes its children one by one into 'children': hand the list as 'children={parts}' with no nested children instead
+conformance/jsx_list_child_of_a_function_tag/jsx_list_child_of_a_function_tag.spite:13: error: '{parts}' is a list, and '<framed>' takes its children one by one into 'children': hand the list as 'children={parts}' with no nested children instead

@@ -6,7 +6,6 @@ enum Rarity {
 var console = Console()
 
 func JsxComponentTakesPropsAsParameters() {
-    load "../../../spite_standard_library/windows"
     var made = built()
     var shown = made.describe()
     console.print(shown)

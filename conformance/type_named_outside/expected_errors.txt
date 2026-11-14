@@ -1,1 +1,1 @@
-conformance/type_named_outside/type_named_outside.spite:12: error: 'Speaker' is declared by the class 'Choir' and belongs to it: outside that class, name it through the class, 'Choir.Speaker' (in TypeNamedOutside.)
+conformance/type_named_outside/type_named_outside.spite:11: error: 'Speaker' is declared by the class 'Choir' and belongs to it: outside that class, name it through the class, 'Choir.Speaker' (in TypeNamedOutside.)

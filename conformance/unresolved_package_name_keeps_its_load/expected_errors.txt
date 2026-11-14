@@ -1,1 +1,1 @@
-conformance/unresolved_package_name_keeps_its_load/unresolved_package_name_keeps_its_load.spite:6: error: unknown type 'Pkg.Missing' (in UnresolvedPackageNameKeepsItsLoad.UnresolvedPackageNameKeepsItsLoad)
+conformance/unresolved_package_name_keeps_its_load/unresolved_package_name_keeps_its_load.spite:5: error: unknown type 'Pkg.Missing' (in UnresolvedPackageNameKeepsItsLoad.UnresolvedPackageNameKeepsItsLoad)

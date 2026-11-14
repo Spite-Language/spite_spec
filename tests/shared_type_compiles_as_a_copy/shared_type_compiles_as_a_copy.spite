@@ -7,7 +7,6 @@ var program = Program()
 var written = ""
 
 func SharedTypeCompilesAsACopy() {
-    load "../../../spite_standard_library/windows"
     var button = Framework.Button()
     var label = Framework.Label()
     var shared = shown(button)

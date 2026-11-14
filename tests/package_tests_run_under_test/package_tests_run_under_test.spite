@@ -1,5 +1,4 @@
 func PackageTestsRunUnderTest() {
-    load "../../../spite_standard_library/windows"
     load "../../tests/package_tests_run_under_test/.packages/pkg"
     var tester = Test(Pkg.Tests)
     tester.run()

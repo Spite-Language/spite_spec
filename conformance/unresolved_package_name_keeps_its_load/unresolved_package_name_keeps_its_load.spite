@@ -1,7 +1,6 @@
 var console = Console()
 
 func UnresolvedPackageNameKeepsItsLoad() {
-    load "../../../spite_standard_library/windows"
     load "../../conformance/unresolved_package_name_keeps_its_load/.packages/pkg"
     var made = Pkg.Missing()
     console.print(made.class)

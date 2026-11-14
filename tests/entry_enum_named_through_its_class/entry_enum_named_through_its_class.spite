@@ -1,7 +1,6 @@
 var console = Console()
 
 func EntryEnumNamedThroughItsClass() {
-    load "../../../spite_standard_library/windows"
     load "../../tests/entry_enum_named_through_its_class/.packages/fw"
     var keeper = Other.Keeper()
     console.print(keeper.shade)

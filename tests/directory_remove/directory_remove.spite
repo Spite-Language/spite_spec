@@ -1,7 +1,6 @@
 var console = Console()
 
 func DirectoryRemove() {
-    load "../../../spite_standard_library/windows"
     var tree = Directory("tests/directory_remove/.spite/tree")
     crash tree.create()
     var inner = Directory("tests/directory_remove/.spite/tree/inner")

@@ -1,1 +1,1 @@
-conformance/union_named_bare_outside/union_named_bare_outside.spite:7: error: 'Pet' is declared by the class 'Zoo.Shelter' and belongs to it: outside that class, name it through the class, 'Zoo.Shelter.Pet' (in UnionNamedBareOutside.UnionNamedBareOutside)
+conformance/union_named_bare_outside/union_named_bare_outside.spite:6: error: 'Pet' is declared by the class 'Zoo.Shelter' and belongs to it: outside that class, name it through the class, 'Zoo.Shelter.Pet' (in UnionNamedBareOutside.UnionNamedBareOutside)

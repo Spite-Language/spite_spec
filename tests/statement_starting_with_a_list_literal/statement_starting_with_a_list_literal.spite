@@ -2,7 +2,6 @@ var console = Console()
 var seen = List<Integer>()
 
 func StatementStartingWithAListLiteral() {
-    load "../../../spite_standard_library/windows"
     seen.append(1)
     [2, 3].each(seen.append)
     var total = seen.count()

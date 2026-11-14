@@ -1,1 +1,1 @@
-conformance/jsx_children_set_and_held/jsx_children_set_and_held.spite:13: error: '<framed>' sets 'children' and holds children: hand them to 'render_framed' one way, as nested tags or as 'children={list}'
+conformance/jsx_children_set_and_held/jsx_children_set_and_held.spite:12: error: '<framed>' sets 'children' and holds children: hand them to 'render_framed' one way, as nested tags or as 'children={list}'

@@ -1,7 +1,6 @@
 var console = Console()
 
 func NamespaceArgumentFolds() {
-    load "../../../spite_standard_library/windows"
     var window = Window()
     window.register_namespace(Theme)
     var registered = window.shown.join(", ")

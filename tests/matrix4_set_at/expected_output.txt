@@ -2,4 +2,4 @@
 column 3 row 0 5 column 0 row 1 2
 translation (5, 6, 7)
 spite: the program stopped at ...
-spite.frame	tests/matrix4_set_at/matrix4_set_at.spite:14	Matrix4SetAt	Matrix4SetAt
+spite.frame	tests/matrix4_set_at/matrix4_set_at.spite:13	Matrix4SetAt	Matrix4SetAt
