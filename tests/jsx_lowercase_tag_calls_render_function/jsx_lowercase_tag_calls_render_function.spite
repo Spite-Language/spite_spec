@@ -25,14 +25,9 @@ func render_health_bar(filled: Integer, missing: Integer): Anything? {
     return bar
 }
 
-func render_framed(title: String, children: List<Anything>): Anything? {
+func render_framed(title: String, children: List<Anything?>): Anything? {
     var frame = View()
     frame.title = title
-    var index = 0
-    while index < children.count() {
-        var child = children[index]
-        frame.append_child(child)
-        index = index + 1
-    }
+    frame.append_children(children)
     return frame
 }

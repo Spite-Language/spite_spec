@@ -1,1 +1,1 @@
-conformance/jsx_children_without_parameter/jsx_children_without_parameter.spite:12: error: '<health_bar>' holds children, and 'render_health_bar' has no parameter 'children: List<Anything>' to take them
+conformance/jsx_children_without_parameter/jsx_children_without_parameter.spite:12: error: '<health_bar>' holds children, and 'render_health_bar' has no parameter 'children: List<Anything?>' to take them
