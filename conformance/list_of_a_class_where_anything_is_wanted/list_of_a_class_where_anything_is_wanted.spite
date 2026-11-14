@@ -1,0 +1,11 @@
+var console = Console()
+
+func ListOfAClassWhereAnythingIsWanted() {
+    var healths = List<Health>()
+    var counted = shown(healths)
+    console.print(counted)
+}
+
+func shown(items: List<Anything>): Integer {
+    return items.count()
+}

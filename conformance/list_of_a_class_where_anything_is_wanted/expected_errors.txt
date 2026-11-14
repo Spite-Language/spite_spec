@@ -1,0 +1,1 @@
+conformance/list_of_a_class_where_anything_is_wanted/list_of_a_class_where_anything_is_wanted.spite:5: error: a List<Health> cannot be used where a List<Anything> is needed (in ListOfAClassWhereAnythingIsWanted.ListOfAClassWhereAnythingIsWanted)

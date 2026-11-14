@@ -1,0 +1,3 @@
+func healed(): Boolean {
+    return true
+}
