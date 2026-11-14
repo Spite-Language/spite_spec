@@ -1,0 +1,6 @@
+var found = 0
+var seed: Integer
+
+func Job(starting_seed: Integer) {
+    seed = starting_seed
+}

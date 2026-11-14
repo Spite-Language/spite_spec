@@ -1,0 +1,28 @@
+var job = Job(0)
+var seen = List<String>()
+var _kinds = 40
+var _rounds = 400
+
+func Seeker(starting_job: Job) {
+    job = starting_job
+}
+
+func sought(): Job {
+    var round = 0
+    while round < _rounds {
+        var name = "name{round * job.seed % _kinds}"
+        if noted(name) {
+            job.found = job.found + 1
+        }
+        round = round + 1
+    }
+    return job
+}
+
+func noted(name: String): Boolean {
+    if seen.contains(name) {
+        return true
+    }
+    seen.append(name)
+    return false
+}

@@ -1,0 +1,13 @@
+var picked = true
+
+func seek(jobs: List<Job>, names: List<String>) {
+    var index = 0
+    while index < jobs.count() {
+        var job = jobs[index]
+        if picked {
+            var seeker = Seeker(job, names)
+            jobs[index] = seeker.sought()
+        }
+        index = index + 1
+    }
+}

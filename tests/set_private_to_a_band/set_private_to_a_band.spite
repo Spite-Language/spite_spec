@@ -1,0 +1,44 @@
+var console = Console()
+var program = Program()
+var _job_count = 3000
+
+func SetPrivateToABand() {
+    load "../../../spite_standard_library/windows"
+    var jobs = List<Job>()
+    var index = 0
+    while index < _job_count {
+        var job = Job(index)
+        jobs.append(job)
+        index = index + 1
+    }
+    var driver = Driver()
+    driver.seek(jobs)
+    var found = jobs.sum_found()
+    console.print("found in bands:", found)
+    var plain = plain_searches_in("function Seeker.noted")
+    console.print("plain searches in Seeker.noted:", plain)
+}
+
+func plain_searches_in(heading: String): Integer {
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var written_path: Path? = high_path
+    crash written_path
+    var written = File(written_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var in_the_function = false
+    var counted = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            in_the_function = line.starts_with(heading)
+        } else if in_the_function and line.contains("List_of_String.contains(") {
+            counted = counted + 1
+        }
+        index = index + 1
+    }
+    return counted
+}
