@@ -1,0 +1,11 @@
+var console = Console()
+var build = Build()
+
+func APackageDeclaresItsBuildFields() {
+    load "../../../spite_standard_library/windows"
+    load "assets"
+    var reader = Reader()
+    var shown = reader.describe()
+    console.print(shown)
+    console.print("program reads", build.assets_cooked, build.assets_folder, build.assets_label)
+}

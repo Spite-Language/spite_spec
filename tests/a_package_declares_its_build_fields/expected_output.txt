@@ -1,0 +1,2 @@
+package reads cooked assets from cooked
+program reads true cooked the package's label

@@ -1,0 +1,3 @@
+var assets_cooked = false
+var assets_folder = "raw"
+var assets_label = "the package's label"

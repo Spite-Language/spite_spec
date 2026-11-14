@@ -1,0 +1,8 @@
+var build = Build()
+
+func describe(): String {
+    if build.assets_cooked {
+        return "package reads cooked assets from {build.assets_folder}"
+    }
+    return "package reads raw assets from {build.assets_folder}"
+}
