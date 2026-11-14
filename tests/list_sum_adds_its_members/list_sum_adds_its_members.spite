@@ -1,0 +1,21 @@
+var console = Console()
+
+func ListSumAddsItsMembers() {
+    var counts = [3, 4, 5]
+    var total = counts.sum()
+    crash total
+    var weights = [1.5, 2.5]
+    var weight = weights.sum()
+    crash weight
+    var words = ["ab", "cd"]
+    var joined = words.sum()
+    crash joined
+    var first = Step(1, 2)
+    var second = Step(3, 4)
+    var path = [first, second]
+    var walked = path.sum()
+    crash walked
+    var empty = List<Integer>()
+    var nothing = empty.sum()
+    console.print(total, weight, joined, walked.across, walked.down, nothing)
+}

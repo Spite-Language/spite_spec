@@ -2,7 +2,7 @@ var console = Console()
 
 func PassedSumWantsNumber() {
     var names = ["Ada", "Bo"]
-    var total = names.sum(shout)
+    var total = names.sum_by(shout)
     console.print(names.count())
 }
 

@@ -57,7 +57,7 @@ func remove_velocities() {
     weights.append(1.5)
     weights.append(4.0)
     weights.remove_where(is_light)
-    var heavy = weights.sum(identity)
+    var heavy = weights.sum_by(identity)
     var moving = velocities.count()
     console.print("moving", moving, labels, "heavy", heavy)
 }

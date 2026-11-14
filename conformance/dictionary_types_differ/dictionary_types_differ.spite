@@ -8,7 +8,7 @@ func DictionaryTypesDiffer() {
 }
 
 func sum_of(scores: Dictionary<String, Integer>): Integer {
-    return scores.sum(identity)
+    return scores.sum_by(identity)
 }
 
 func identity(score: Integer): Integer {

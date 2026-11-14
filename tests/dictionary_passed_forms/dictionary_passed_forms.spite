@@ -14,7 +14,7 @@ func DictionaryPassedForms() {
     crash found
     var by_length = team.values().sort_by(measure)
     var sorted_text = by_length.join(",")
-    var total = team.sum(measure)
+    var total = team.sum_by(measure)
     console.print(short_text, short_count, any_short, all_short, found, sorted_text, total)
 }
 

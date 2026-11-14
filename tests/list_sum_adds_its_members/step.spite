@@ -1,0 +1,13 @@
+var across = 0
+var down = 0
+
+func Step(starting_across: Integer, starting_down: Integer) {
+    across = starting_across
+    down = starting_down
+}
+
+func sum(other: Step): Step {
+    var joined_across = across + other.across
+    var joined_down = down + other.down
+    return Step(joined_across, joined_down)
+}

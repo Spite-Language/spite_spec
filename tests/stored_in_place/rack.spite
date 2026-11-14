@@ -14,7 +14,7 @@ func place(at: Integer, crate: Crate) {
 }
 
 func total(): Integer {
-    return crates.sum(weight_of)
+    return crates.sum_by(weight_of)
 }
 
 func weight_of(crate: Crate): Integer {

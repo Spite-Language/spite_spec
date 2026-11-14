@@ -20,7 +20,7 @@ func NumberKeys() {
     ages.remove_at(3)
     ages.remove_at(1000)
     var keys = ages.keys()
-    var key_total = keys.sum(key_itself)
+    var key_total = keys.sum_by(key_itself)
     var joined_keys = keys.join(",")
     var joined_values = ages.values().join(",")
     console.print(joined_keys, key_total, joined_values)
