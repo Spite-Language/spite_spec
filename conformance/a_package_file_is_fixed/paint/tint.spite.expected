@@ -1,0 +1,5 @@
+var name = "red"
+
+func describe(): String {
+    return "tint {name}"
+}

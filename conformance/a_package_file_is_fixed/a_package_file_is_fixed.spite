@@ -1,0 +1,9 @@
+var console = Console()
+
+func APackageFileIsFixed() {
+    load "../../../spite_standard_library/windows"
+    load "paint"
+    var tint = Tint()
+    var shown = tint.describe()
+    console.print(shown)
+}

@@ -1,0 +1,6 @@
+var name = "red"
+var _mixed = false
+
+func describe(): String {
+    return "tint {name}"
+}
