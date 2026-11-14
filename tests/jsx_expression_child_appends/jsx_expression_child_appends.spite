@@ -8,7 +8,7 @@ func JsxExpressionChildAppends() {
 }
 
 func built(): View {
-    var extras = List<Anything>()
+    var extras = List<Anything?>()
     var first = Label()
     first.content = "from a list"
     extras.append(first)

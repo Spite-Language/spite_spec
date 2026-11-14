@@ -18,11 +18,13 @@ func append_child(child: Anything?) {
     children.append(child)
 }
 
-func append_children(added: List<Anything>) {
+func append_children(added: List<Anything?>) {
     var index = 0
     while index < added.count() {
         var item = added[index]
-        children.append(item)
+        if item {
+            children.append(item)
+        }
         index = index + 1
     }
 }

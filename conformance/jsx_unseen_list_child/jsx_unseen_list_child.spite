@@ -1,0 +1,15 @@
+var console = Console()
+
+func JsxUnseenListChild() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var shelf = Shelf()
+    return <View title="shelf">
+        {shelf.items()}
+    </View>
+}

@@ -28,6 +28,11 @@ func render_health_bar(filled: Integer, missing: Integer): Anything? {
 func render_framed(title: String, children: List<Anything>): Anything? {
     var frame = View()
     frame.title = title
-    frame.append_children(children)
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        frame.append_child(child)
+        index = index + 1
+    }
     return frame
 }
