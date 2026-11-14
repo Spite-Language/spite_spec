@@ -64,7 +64,6 @@ func write_the_app(folder: String) {
     lines.append("var assets = Volume(\"assets\")")
     lines.append("")
     lines.append("func App() \{")
-    lines.append("    load \"../../../../../spite_standard_library/windows\"")
     lines.append("    preload \"assets\"")
     lines.append("    var level = assets.file(\"levels/first.txt\")")
     lines.append("    var text = level.read_as_string()")

@@ -29,7 +29,6 @@ func write_app(commit: String) {
     lines.append("var repository = Volume(\"repo\")")
     lines.append("")
     lines.append("func App() \{")
-    lines.append("    load \"../../../../spite_standard_library/windows\"")
     lines.append("    preload \"../repo@{commit}/art\"")
     lines.append("    preload \"../repo@{commit}\"")
     lines.append("    var one = art.file(\"one.txt\")")
