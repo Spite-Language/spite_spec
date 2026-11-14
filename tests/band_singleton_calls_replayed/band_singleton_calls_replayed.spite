@@ -4,7 +4,6 @@ var journal = Journal()
 var _element_count = 20000
 
 func BandSingletonCallsReplayed() {
-    load "../../../spite_standard_library/windows"
     var weights = Weights()
     var shapes = List<Shape>()
     var index = 0

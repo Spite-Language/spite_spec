@@ -4,7 +4,6 @@ var _job_count = 3000
 var _name_count = 20
 
 func SetSharedBetweenBands() {
-    load "../../../spite_standard_library/windows"
     var jobs = List<Job>()
     var index = 0
     while index < _job_count {
