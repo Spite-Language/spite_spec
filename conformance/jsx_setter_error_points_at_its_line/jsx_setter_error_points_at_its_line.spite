@@ -1,0 +1,18 @@
+var console = Console()
+var padding_text = "twelve"
+
+func JsxSetterErrorPointsAtItsLine() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    return <View title="parts">
+        <View
+            title="an inner view whose title is long enough that its attributes cannot share one line with the tag"
+            padding={padding_text}
+        />
+    </View>
+}

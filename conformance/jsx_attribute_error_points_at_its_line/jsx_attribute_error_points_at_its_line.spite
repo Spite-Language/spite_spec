@@ -1,0 +1,25 @@
+var console = Console()
+var filled_text = "twelve"
+
+func JsxAttributeErrorPointsAtItsLine() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    return <View title="parts">
+        <health_bar
+            title="an inner bar whose title is long enough that its attributes cannot share one line with the tag"
+            filled={filled_text}
+        />
+    </View>
+}
+
+func render_health_bar(title: String, filled: Integer): View {
+    var made = View()
+    made.title = title
+    made.padding = filled
+    return made
+}
