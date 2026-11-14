@@ -6,9 +6,10 @@ union Pet {
 var console = Console()
 
 func UnionCopySmallerInGeneric() {
-    var pets = List<Pet>()
+    load "../../../spite_standard_library/windows"
+    var pets = Dictionary<String, Pet>()
     var cat = Cat()
-    pets.append(cat)
+    pets["tom"] = cat
     var vet = Vet()
     var seen = vet.see_all(pets)
     console.print(seen)

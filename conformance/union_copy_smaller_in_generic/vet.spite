@@ -4,6 +4,6 @@ union Patient {
     Bird
 }
 
-func see_all(patients: List<Patient>): Integer {
+func see_all(patients: Dictionary<String, Patient>): Integer {
     return patients.count()
 }
