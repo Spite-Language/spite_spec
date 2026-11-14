@@ -1,0 +1,9 @@
+var path: String
+
+func Reader(starting_path: String) {
+    path = starting_path
+}
+
+func name(): String {
+    return "reader"
+}

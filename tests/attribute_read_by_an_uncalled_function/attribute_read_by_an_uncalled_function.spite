@@ -1,0 +1,12 @@
+var console = Console()
+
+func AttributeReadByAnUncalledFunction() {
+    load "../../../spite_standard_library/windows"
+    var reader = Reader.Reader("here")
+    var said = reader.name()
+    console.print(said)
+}
+
+func unused(other: Reader.Reader): String {
+    return other.path
+}
