@@ -1,0 +1,88 @@
+var console = Console()
+var program = Program()
+var copy = ".spite/library_volume"
+var program_copy = ".spite/library_volume/inside"
+
+# ../../../spite_documentation/compiler.md#where-the-standard-library-comes-from
+func StandardLibraryFromTheVolume() {
+    remove_a_folder(copy)
+    make_a_folder(".spite")
+    make_a_folder(copy)
+    make_a_folder(program_copy)
+    write_the_program()
+    compile()
+    run_the_program()
+    remove_a_folder(copy)
+}
+
+func remove_a_folder(folder: String) {
+    var old_path: Path? = folder
+    crash old_path
+    var old = Directory(old_path)
+    fallback old.exists()
+    var no_arguments = List<String>()
+    var windows_copy = folder.replace("/", "\\")
+    var removing = Process("rmdir /s /q \"{windows_copy}\"", no_arguments)
+    var code = removing.run()
+    crash code == 0
+}
+
+func make_a_folder(path: String) {
+    var made_path: Path? = path
+    crash made_path
+    var made = Directory(made_path)
+    fallback not made.exists()
+    crash made.create()
+}
+
+func write_the_program() {
+    var file_path: Path? = "{program_copy}/inside.spite"
+    crash file_path
+    var file = File(file_path)
+    var opening = "var console = Console()\nvar build = Build()\n\nfunc Inside() \{\n"
+    var shown = "    console.print(\"library\", build.standard_library_path)\n"
+    var reading = "    var file = File(\"inside.spite\")\n    var bad = file.read_buffer_at(0, -1)\n    crash bad\n"
+    var closing = "    console.print(\"never printed\")\n}\n"
+    crash file.write_string("{opening}{shown}{reading}{closing}")
+}
+
+func compile() {
+    var here = program.working_directory()
+    crash here
+    var compiler = "{here}\\..\\spite_compiler\\.spite\\spite.exe"
+    var arguments = ["--build"]
+    var compiling = Process(compiler, arguments)
+    compiling.working_directory = program_copy
+    compiling.with_errors = true
+    var code = compiling.run()
+    crash code
+    var printed = compiling.read_output_as_string()
+    crash printed
+    var compiled = code == 0
+    console.print("compiled with no flag and no load:", compiled)
+    if not compiled {
+        console.print(printed)
+    }
+}
+
+func run_the_program() {
+    var here = program.working_directory()
+    crash here
+    var no_arguments = List<String>()
+    var built = "{here}\\.spite\\library_volume\\inside\\.spite\\build\\inside.exe"
+    var running = Process(built, no_arguments)
+    running.working_directory = program_copy
+    running.with_errors = true
+    var code = running.run()
+    crash code
+    var printed = running.read_output_as_string()
+    crash printed
+    var lines = printed.split("\n")
+    lines.each(show_a_line)
+}
+
+func show_a_line(line: String) {
+    var trimmed = line.trim()
+    fallback not trimmed.is_empty() and not trimmed.starts_with("spite.frame")
+    console.print(trimmed)
+}

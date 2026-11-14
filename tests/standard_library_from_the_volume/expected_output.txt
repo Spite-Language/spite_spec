@@ -1,0 +1,3 @@
+compiled with no flag and no load: true
+library spite_standard_library://
+spite: the program stopped at spite_standard_library://common/file.spite:115 in File.read_buffer_at, site 2dbc9c3b (position=0, count=-1, path=inside.spite)
