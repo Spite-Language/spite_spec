@@ -1,0 +1,3 @@
+var name = ""
+var pixels = Buffer(0)
+var width = 0

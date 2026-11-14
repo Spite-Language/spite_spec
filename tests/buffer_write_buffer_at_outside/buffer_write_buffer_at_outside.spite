@@ -1,0 +1,14 @@
+var console = Console()
+
+func BufferWriteBufferAtOutside() {
+    load "../../../spite_standard_library/windows"
+    var table = Buffer(0)
+    table.append_string("abcd")
+    var patch = Buffer(0)
+    patch.append_string("XY")
+    table.write_buffer_at(2, patch, 0, 2)
+    var text = table.read_as_string()
+    console.print(text)
+    table.write_buffer_at(3, patch, 0, 2)
+    console.print("never printed")
+}

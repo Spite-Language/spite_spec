@@ -1,0 +1,4 @@
+bytes written 14
+grass 3 pixels 3 same bytes true
+a cut buffer is null
+empty pixels 0

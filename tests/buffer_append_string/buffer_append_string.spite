@@ -1,0 +1,20 @@
+var console = Console()
+
+func BufferAppendString() {
+    load "../../../spite_standard_library/windows"
+    var bytes = Buffer(0)
+    bytes.append(1)
+    bytes.append_string("é!")
+    bytes.append_string("")
+    var count = bytes.count()
+    console.print("count", count)
+    var index = 0
+    while index < count {
+        var held = bytes[index]
+        crash held
+        console.print(index, held)
+        index = index + 1
+    }
+    var text = bytes.read_string_at(1, 3)
+    console.print(text)
+}

@@ -1,0 +1,31 @@
+var console = Console()
+
+func BufferWriteBufferAt() {
+    load "../../../spite_standard_library/windows"
+    var table = Buffer(0)
+    table.append_string("abcdefgh")
+    var patch = Buffer(0)
+    patch.append_string("XYZ")
+    table.write_buffer_at(2, patch, 0, 3)
+    show("patched", table)
+    table.write_buffer_at(7, patch, 2, 1)
+    show("last byte", table)
+    table.write_buffer_at(0, patch, 1, 0)
+    show("nothing written", table)
+    var count = table.count()
+    console.print("count stays", count)
+    var moved = Buffer(0)
+    moved.append_string("123456")
+    moved.write_buffer_at(2, moved, 0, 4)
+    show("moved up within itself", moved)
+    var moved_down = Buffer(0)
+    moved_down.append_string("123456")
+    moved_down.write_buffer_at(0, moved_down, 2, 4)
+    show("moved down within itself", moved_down)
+}
+
+func show(label: String, bytes: Buffer) {
+    var text = bytes.read_as_string()
+    crash text
+    console.print(label, text)
+}

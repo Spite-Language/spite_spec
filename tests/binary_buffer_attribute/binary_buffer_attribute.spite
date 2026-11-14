@@ -1,0 +1,34 @@
+var console = Console()
+
+func BinaryBufferAttribute() {
+    load "../../../spite_standard_library/windows"
+    var texture = Texture()
+    texture.name = "grass"
+    texture.pixels.append(10)
+    texture.pixels.append(200)
+    texture.pixels.append(0)
+    texture.width = 3
+    var writer = BinaryWriter<Texture>()
+    var bytes = writer.write(texture)
+    var written = bytes.count()
+    console.print("bytes written", written)
+    var reader = BinaryReader<Texture>()
+    var back = reader.read(bytes)
+    crash back
+    var pixel_count = back.pixels.count()
+    console.print(back.name, back.width, "pixels", pixel_count, "same bytes", back.pixels == texture.pixels)
+    var cut = bytes.read_buffer_at(0, 8)
+    crash cut
+    var broken = reader.read(cut)
+    if broken {
+        console.print("a cut buffer read")
+    } else {
+        console.print("a cut buffer is null")
+    }
+    var empty = Texture()
+    var empty_bytes = writer.write(empty)
+    var empty_back = reader.read(empty_bytes)
+    crash empty_back
+    var empty_count = empty_back.pixels.count()
+    console.print("empty pixels", empty_count)
+}

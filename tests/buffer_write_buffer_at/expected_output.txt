@@ -1,0 +1,6 @@
+patched abXYZfgh
+last byte abXYZfgZ
+nothing written abXYZfgZ
+count stays 8
+moved up within itself 121234
+moved down within itself 345656

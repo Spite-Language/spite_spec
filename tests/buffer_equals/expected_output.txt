@@ -1,0 +1,3 @@
+same bytes true other bytes false shorter false
+not equal true both empty true itself true
+after a change false

@@ -1,0 +1,3 @@
+abXY
+spite: the program stopped at ...
+spite.frame	tests/buffer_write_buffer_at_outside/buffer_write_buffer_at_outside.spite:12	BufferWriteBufferAtOutside	BufferWriteBufferAtOutside
