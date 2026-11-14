@@ -1,0 +1,1 @@
+View 'outer' padding 0 wrap false start [Label 'first', View 'inner' padding 0 wrap false start [Label 'deep'], Label 'last']

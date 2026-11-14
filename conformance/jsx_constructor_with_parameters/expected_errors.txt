@@ -1,0 +1,1 @@
+conformance/jsx_constructor_with_parameters/jsx_constructor_with_parameters.spite:12: error: 'Sized.Sized' takes 1 arguments, and 0 are given (in JsxConstructorWithParameters.built)

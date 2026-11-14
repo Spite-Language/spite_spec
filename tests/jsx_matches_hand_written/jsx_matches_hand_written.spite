@@ -1,0 +1,74 @@
+var console = Console()
+var program = Program()
+var written = ""
+
+func JsxMatchesHandWritten() {
+    load "../../../spite_standard_library/windows"
+    var tagged = with_tags(5)
+    var tagged_text = tagged.describe()
+    var plain = by_hand(5)
+    var plain_text = plain.describe()
+    console.print(tagged_text == plain_text)
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var text_path: Path? = low_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    written = text
+    var tagged_body = body_of("JsxMatchesHandWritten.with_tags")
+    var plain_body = body_of("JsxMatchesHandWritten.by_hand")
+    var same = tagged_body == plain_body
+    var found = not tagged_body.is_empty()
+    console.print("same output:", same, found)
+}
+
+func with_tags(count: Integer): View {
+    return <View title="same" padding={count}>
+        <Label content="first"/>
+        <Label>{count} items</Label>
+    </View>
+}
+
+func by_hand(count: Integer): View {
+    var view_29 = View()
+    view_29.title = "same"
+    view_29.padding = count
+    var label_30 = Label()
+    label_30.content = "first"
+    view_29.append_child(label_30)
+    var label_31 = Label()
+    label_31.content = "{count} items"
+    view_29.append_child(label_31)
+    return view_29
+}
+
+func body_of(function_name: String): String {
+    var lines = written.split("\n")
+    var prefix = "function {function_name}:"
+    var inside = false
+    var body = List<String>()
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with(prefix)
+        } else if inside {
+            var instruction = instruction_of(line)
+            body.append(instruction)
+        }
+        index = index + 1
+    }
+    return body.join("\n")
+}
+
+func instruction_of(line: String): String {
+    var parts = line.split(" | ")
+    var instruction = parts[0]
+    crash instruction
+    var data = instruction.split(" = address of data ")
+    var target = data[0]
+    crash target
+    return target
+}

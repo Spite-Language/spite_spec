@@ -1,0 +1,1 @@
+conformance/jsx_unknown_lowercase_tag/jsx_unknown_lowercase_tag.spite:12: error: '<health_bar>' calls 'render_health_bar', and this class declares no 'render_health_bar': declare it, or name a class to make an object

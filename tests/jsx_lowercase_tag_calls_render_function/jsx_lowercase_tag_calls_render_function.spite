@@ -1,0 +1,33 @@
+var console = Console()
+
+func JsxLowercaseTagCallsRenderFunction() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var health = 7
+    var missing = 3
+    return <View title="parts">
+        <health_bar missing={missing} filled={health}/>
+        <framed title="box">
+            <Label content="inside"/>
+        </framed>
+    </View>
+}
+
+func render_health_bar(filled: Integer, missing: Integer): Anything? {
+    var whole = filled + missing
+    var bar = Label()
+    bar.content = "{filled} of {whole}"
+    return bar
+}
+
+func render_framed(title: String, children: List<Anything>): Anything? {
+    var frame = View()
+    frame.title = title
+    frame.append_children(children)
+    return frame
+}

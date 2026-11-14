@@ -1,0 +1,11 @@
+var console = Console()
+
+func JsxAsAnArgument() {
+    load "../../../spite_standard_library/windows"
+    var shown = described(<View title="argument"/>)
+    console.print(shown)
+}
+
+func described(view: View): String {
+    return view.describe()
+}

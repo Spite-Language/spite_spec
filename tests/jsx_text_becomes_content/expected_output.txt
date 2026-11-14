@@ -1,0 +1,1 @@
+View 'texts' padding 0 wrap false start [Label 'plain words', Label '3 items', Label 'hello, 3!']

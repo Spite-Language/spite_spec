@@ -1,0 +1,41 @@
+var console = Console()
+var program = Program()
+
+func JsxGeneratedNamesFollowTagAndLine() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var names = ["var view_28_2:", "var label_29:", "var badge_30:", "var view_31:", "var label_32:"]
+    var index = 0
+    while index < names.count() {
+        var name = names[index]
+        var found = text.contains(name)
+        console.print(name, found)
+        index = index + 1
+    }
+}
+
+func built(): View {
+    var view_28 = "taken"
+    return <View title={view_28}>
+        <Label content="one"/>
+        {render_badge()}
+        <View title="inner">
+            <Label content="three"/>
+        </View>
+    </View>
+}
+
+func render_badge(): Anything? {
+    var badge = Label()
+    badge.content = "badge"
+    return badge
+}

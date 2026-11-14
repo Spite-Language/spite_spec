@@ -1,0 +1,20 @@
+var console = Console()
+
+func JsxMissingParameter() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    return <View title="parts">
+        <health_bar filled={1}/>
+    </View>
+}
+
+func render_health_bar(filled: Integer, missing: Integer): Anything? {
+    var bar = Label()
+    bar.content = "{filled} {missing}"
+    return bar
+}

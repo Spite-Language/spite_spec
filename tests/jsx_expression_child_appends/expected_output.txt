@@ -1,0 +1,1 @@
+View 'children' padding 0 wrap false start [Label 'from a list', Label 'single', Label 'badge']

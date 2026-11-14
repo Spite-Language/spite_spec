@@ -1,0 +1,17 @@
+var console = Console()
+
+func JsxTextBecomesContent() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var count = 3
+    return <View title="texts">
+        <Label>plain words</Label>
+        <Label>{count} items</Label>
+        <Label>hello, {count}!</Label>
+    </View>
+}

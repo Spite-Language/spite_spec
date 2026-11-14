@@ -1,0 +1,3 @@
+View 'var' padding 0 wrap false start []
+View 'typed' padding 0 wrap false start [Label 'child']
+View 'in a branch' padding 2 wrap false start []

@@ -1,0 +1,18 @@
+var console = Console()
+var environment = Environment()
+
+func JsxCrashPointsAtTheAttribute() {
+    load "../../../spite_standard_library/windows"
+    var made = built(environment.given)
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(given: Integer): View {
+    return <View title="divided">
+        <View
+            title="an inner view whose title is long enough that its attributes cannot share one line with the tag"
+            padding={12 / given}
+        />
+    </View>
+}

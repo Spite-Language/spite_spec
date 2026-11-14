@@ -1,0 +1,1 @@
+View 'parts' padding 0 wrap false start [Label '7 of 10', View 'box' padding 0 wrap false start [Label 'inside']]

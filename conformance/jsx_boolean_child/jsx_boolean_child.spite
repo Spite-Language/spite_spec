@@ -1,0 +1,15 @@
+var console = Console()
+
+func JsxBooleanChild() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var count = 2
+    return <View title="flag">
+        {count > 1}
+    </View>
+}

@@ -1,0 +1,1 @@
+formatted conformance/jsx_format/jsx_format.spite

@@ -1,0 +1,23 @@
+var console = Console()
+
+func JsxFormat() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var count = 3
+    return <View
+        title="a title long enough that the attributes cannot stay on the line of the tag"
+        padding={count}
+        wrap
+    >
+        <Label content="first"/>
+        <Label>spread over two lines with {count} holes</Label>
+        <View title="nested">
+            <Label content="deep"/>
+        </View>
+    </View>
+}

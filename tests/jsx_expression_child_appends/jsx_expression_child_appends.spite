@@ -1,0 +1,30 @@
+var console = Console()
+
+func JsxExpressionChildAppends() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var extras = List<Anything>()
+    var first = Label()
+    first.content = "from a list"
+    extras.append(first)
+    var single = Label()
+    single.content = "single"
+    return <View title="children">
+        {extras}
+        {single}
+        {render_badge(true)}
+        {render_badge(false)}
+    </View>
+}
+
+func render_badge(shown: Boolean): Anything? {
+    fallback shown
+    var badge = Label()
+    badge.content = "badge"
+    return badge
+}

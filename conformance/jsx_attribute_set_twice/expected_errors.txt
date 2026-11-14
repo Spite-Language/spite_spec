@@ -1,0 +1,1 @@
+conformance/jsx_attribute_set_twice/jsx_attribute_set_twice.spite:11: error: 'title' is set twice on '<View>': keep one

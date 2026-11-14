@@ -1,0 +1,6 @@
+View 'taken' padding 0 wrap false start [Label 'one', Label 'badge', View 'inner' padding 0 wrap false start [Label 'three']]
+var view_28_2: true
+var label_29: true
+var badge_30: true
+var view_31: true
+var label_32: true

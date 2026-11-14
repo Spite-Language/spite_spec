@@ -1,0 +1,12 @@
+var console = Console()
+
+func JsxAttributeSetTwice() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    return <View title="one" title="two"/>
+}

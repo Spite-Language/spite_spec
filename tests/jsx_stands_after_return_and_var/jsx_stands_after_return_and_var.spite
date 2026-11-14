@@ -1,0 +1,23 @@
+var console = Console()
+
+func JsxStandsAfterReturnAndVar() {
+    load "../../../spite_standard_library/windows"
+    var plain = <View title="var"/>
+    var typed: View = <View title="typed">
+        <Label content="child"/>
+    </View>
+    var first = plain.describe()
+    console.print(first)
+    var second = typed.describe()
+    console.print(second)
+    var branch = built(true)
+    var third = branch.describe()
+    console.print(third)
+}
+
+func built(inside: Boolean): View {
+    if inside {
+        return <View title="in a branch" padding={1}/>
+    }
+    return <View title="after"/>
+}

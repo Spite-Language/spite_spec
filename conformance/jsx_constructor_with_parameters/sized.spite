@@ -1,0 +1,5 @@
+var width: Integer
+
+func Sized(starting_width: Integer) {
+    width = starting_width
+}

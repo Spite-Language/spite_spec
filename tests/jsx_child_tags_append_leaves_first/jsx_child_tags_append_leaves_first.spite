@@ -1,0 +1,18 @@
+var console = Console()
+
+func JsxChildTagsAppendLeavesFirst() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    return <View title="outer">
+        <Label content="first"/>
+        <View title="inner">
+            <Label content="deep"/>
+        </View>
+        <Label content="last"/>
+    </View>
+}

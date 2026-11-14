@@ -1,0 +1,13 @@
+var console = Console()
+
+func JsxAttributeAssignsThroughSetter() {
+    load "../../../spite_standard_library/windows"
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var count = 4
+    return <View title="set" padding={count} justify_content='center' wrap/>
+}

@@ -1,0 +1,1 @@
+conformance/jsx_unknown_attribute/jsx_unknown_attribute.spite:11: error: a View has no attribute or function 'colour' (in JsxUnknownAttribute.built)

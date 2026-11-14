@@ -1,0 +1,18 @@
+var console = Console()
+
+func JsxClassTagMakesAnObject() {
+    load "../../../spite_standard_library/windows"
+    var plain = built()
+    var shown = plain.describe()
+    console.print(shown)
+    var badge = dotted()
+    console.print(badge.content)
+}
+
+func built(): View {
+    return <View title="plain"/>
+}
+
+func dotted(): Parts.Badge {
+    return <Parts.Badge content="dotted"/>
+}
