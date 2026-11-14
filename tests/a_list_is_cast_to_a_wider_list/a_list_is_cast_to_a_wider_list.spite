@@ -40,6 +40,11 @@ func AListIsCastToAWiderList() {
     shelves.append(healths)
     var stacked = count_inside(shelves)
     console.print("nested", stacked)
+    var everything = List<Anything>()
+    everything.append(first)
+    everything.append(cat)
+    var present = count_present(everything)
+    console.print("anything into anything?", present)
 }
 
 func show(items: List<Anything>): String {
@@ -92,4 +97,17 @@ func count_inside(shelves: List<List<Anything>>): Integer {
     var shelf = shelves[0]
     crash shelf
     return shelf.count()
+}
+
+func count_present(items: List<Anything?>): Integer {
+    var present = 0
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        if item {
+            present = present + 1
+        }
+        index = index + 1
+    }
+    return present
 }

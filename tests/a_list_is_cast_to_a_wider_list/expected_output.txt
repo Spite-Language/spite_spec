@@ -5,3 +5,4 @@ longs 7
 numbers as anything Integer Integer
 patients 1
 nested 2
+anything into anything? 2
