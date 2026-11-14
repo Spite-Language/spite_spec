@@ -1,0 +1,3 @@
+func make(): Tally {
+    return Tally()
+}

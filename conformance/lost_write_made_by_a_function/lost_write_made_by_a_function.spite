@@ -1,0 +1,15 @@
+var console = Console()
+
+func LostWriteMadeByAFunction() {
+    load "../../../spite_standard_library/windows"
+    var fresh = make()
+    console.print(fresh.count)
+    fresh.count = 2
+    console.print("made")
+}
+
+func make(): Tally {
+    var made = Tally()
+    made.count = 1
+    return made
+}

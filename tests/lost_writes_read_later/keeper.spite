@@ -1,0 +1,5 @@
+var held = Tally()
+
+func handed(): Tally {
+    return held
+}

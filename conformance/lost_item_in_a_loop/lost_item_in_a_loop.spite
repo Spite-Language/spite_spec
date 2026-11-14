@@ -1,0 +1,14 @@
+var console = Console()
+
+func LostItemInALoop() {
+    load "../../../spite_standard_library/windows"
+    var numbers = [4, 5, 6]
+    var first = numbers[0]
+    console.print(first)
+    var round = 0
+    while round < 3 {
+        first = round
+        round = round + 1
+    }
+    console.print(round)
+}

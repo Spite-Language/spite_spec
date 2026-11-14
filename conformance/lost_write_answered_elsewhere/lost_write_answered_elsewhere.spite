@@ -1,0 +1,11 @@
+var console = Console()
+
+func LostWriteAnsweredElsewhere() {
+    load "../../../spite_standard_library/windows"
+    var shown = Tally()
+    console.print(shown.count)
+    var maker = Maker()
+    var made = maker.make()
+    made.count = 4
+    console.print("made")
+}

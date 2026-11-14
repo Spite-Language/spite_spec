@@ -1,0 +1,60 @@
+var console = Console()
+var kept = Tally()
+
+func LostWritesReadLater() {
+    load "../../../spite_standard_library/windows"
+    read_on_the_next_pass()
+    read_after_the_loop()
+    written_through_what_another_keeps()
+    written_after_taking_a_kept_one()
+    written_through_what_a_function_keeps()
+}
+
+func read_on_the_next_pass() {
+    var tally = Tally()
+    var round = 0
+    while round < 3 {
+        if tally.count > 0 {
+            console.print("the next pass reads", tally.count)
+        }
+        tally.count = round
+        round = round + 1
+    }
+}
+
+func read_after_the_loop() {
+    var tally = Tally()
+    var round = 0
+    while round < 3 {
+        tally.count = round
+        round = round + 1
+    }
+    console.print("after the loop", tally.count)
+}
+
+func written_through_what_another_keeps() {
+    var keeper = Keeper()
+    var handed = keeper.handed()
+    handed.count = 7
+    console.print("the keeper holds", keeper.held.count)
+}
+
+func written_after_taking_a_kept_one() {
+    var made = Tally()
+    console.print("a new one holds", made.count)
+    made = kept
+    made.count = 5
+    console.print("the kept one holds", kept.count)
+}
+
+func written_through_what_a_function_keeps() {
+    var fresh = kept_tally()
+    fresh.count = 9
+    console.print("the function kept", kept.count)
+}
+
+func kept_tally(): Tally {
+    var made = Tally()
+    kept = made
+    return made
+}

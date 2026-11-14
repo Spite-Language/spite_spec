@@ -1,0 +1,11 @@
+var console = Console()
+var kept = Tally()
+
+func LostWriteAfterANewObject() {
+    load "../../../spite_standard_library/windows"
+    console.print(kept.count)
+    var made = kept
+    made = Tally()
+    made.count = 4
+    console.print("made")
+}

@@ -1,0 +1,6 @@
+the next pass reads 1
+after the loop 2
+the keeper holds 7
+a new one holds 0
+the kept one holds 5
+the function kept 9

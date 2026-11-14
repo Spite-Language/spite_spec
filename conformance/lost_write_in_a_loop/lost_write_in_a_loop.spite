@@ -1,0 +1,14 @@
+var console = Console()
+
+func LostWriteInALoop() {
+    load "../../../spite_standard_library/windows"
+    var shown = Tally()
+    console.print(shown.count)
+    var tally = Tally()
+    var round = 0
+    while round < 3 {
+        tally.count = round
+        round = round + 1
+    }
+    console.print(round)
+}

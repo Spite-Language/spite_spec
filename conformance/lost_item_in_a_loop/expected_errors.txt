@@ -1,0 +1,1 @@
+conformance/lost_item_in_a_loop/lost_item_in_a_loop.spite:10: error: 'first' was read from 'numbers[0]', so assigning it here changes only 'first', and nothing reads 'first' after: 'numbers' still holds the old item. Write 'numbers[0] = round' to replace the item, or give the new value a 'var' of its own (in LostItemInALoop.LostItemInALoop)
