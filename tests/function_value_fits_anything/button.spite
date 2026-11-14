@@ -1,0 +1,3 @@
+var label = "start"
+var on_press: Spite.Function<Nothing>? = null
+var on_release: Spite.Function<Nothing>? = null

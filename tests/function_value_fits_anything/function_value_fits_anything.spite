@@ -1,0 +1,31 @@
+var console = Console()
+
+func FunctionValueFitsAnything() {
+    load "../../../spite_standard_library/windows"
+    var button = Button()
+    button.on_press = shout
+    show(button)
+    var named: Anything = shout
+    console.print("named", named.class.name, "'{named}'")
+}
+
+func shout() {
+    console.print("pressed")
+}
+
+func show(fresh: Anything) {
+    var attributes = fresh.attributes.values()
+    var index = 0
+    while index < attributes.count() {
+        var attribute = attributes[index]
+        if attribute.value {
+            console.print(attribute.name, attribute.value.class.name, "'{attribute.value}'")
+            if attribute.value.class == Spite.Function {
+                attribute.value.call_function()
+            }
+        } else {
+            console.print(attribute.name, "is null")
+        }
+        index = index + 1
+    }
+}

@@ -1,0 +1,5 @@
+label String 'start'
+on_press Function ''
+pressed
+on_release is null
+named Function 'shout'
