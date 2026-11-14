@@ -3,7 +3,6 @@ var _bell = 7
 var _unit_separator = 31
 
 func JsonControlCharactersWritten() {
-    load "../../../spite_standard_library/windows"
     var note = Note()
     var text = "a"
     text.append_code(_bell)

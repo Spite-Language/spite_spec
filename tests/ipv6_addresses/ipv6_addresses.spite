@@ -9,7 +9,6 @@ var _ipv4_udp_port = 47325
 
 # notes.md#why-nothing-listens-on-every-interface
 func Ipv6Addresses() {
-    load "../../../spite_standard_library/windows"
     var loopback6 = address_of("::1")
     var loopback4 = address_of("127.0.0.1")
     if not ipv6.listen_at(loopback6, _ipv6_tcp_port) {

@@ -1,7 +1,6 @@
 var console = Console()
 
 func BinaryEnumWidth() {
-    load "../../../spite_standard_library/windows"
     var narrow = Narrow()
     var narrow_writer = BinaryWriter<Narrow>()
     var narrow_bytes = narrow_writer.write(narrow)

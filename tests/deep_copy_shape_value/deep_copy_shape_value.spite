@@ -5,7 +5,6 @@ type Counted {
 var console = Console()
 
 func DeepCopyShapeValue() {
-    load "../../../spite_standard_library/windows"
     var box = Box(3)
     var copied = copy_of(box)
     box.count = 9

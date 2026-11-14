@@ -3,7 +3,6 @@ var kept = 1
 var seen = List<Integer>()
 
 func NullableShortOnTheLeft() {
-    load "../../../spite_standard_library/windows"
     seen.append(kept)
     kept = seen.count()
     var total: Short = 5

@@ -1,7 +1,6 @@
 var console = Console()
 
 func UnreachedFunctionReads() {
-    load "../../../spite_standard_library/windows"
     var kind = Lamp(3).class
     var name = kind.name
     console.print(name)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func BitwiseOnDouble() {
-    load "../../../spite_standard_library/windows"
     var ratio: Double = 1.5
     var masked = ratio.bits_and(1)
     console.print(masked)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func BareCopyCopiesThis() {
-    load "../../../spite_standard_library/windows"
     var shelf = Shelf("first")
     var shallow = shelf.shallow_twin()
     var deep = shelf.deep_twin()

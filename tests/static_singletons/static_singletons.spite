@@ -8,7 +8,6 @@ var doubler = Doubler()
 var greeter = Greeter()
 
 func StaticSingletons() {
-    load "../../../spite_standard_library/windows"
     var total = 0
     var index = 0
     while index < 4 {

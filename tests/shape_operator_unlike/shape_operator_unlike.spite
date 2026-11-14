@@ -6,7 +6,6 @@ type Addable {
 var console = Console()
 
 func ShapeOperatorUnlike() {
-    load "../../../spite_standard_library/windows"
     var coin = Coin(2)
     var gem = Gem(5)
     var held = List<Addable>()

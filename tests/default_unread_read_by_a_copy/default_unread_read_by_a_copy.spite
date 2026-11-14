@@ -1,7 +1,6 @@
 var console = Console()
 
 func DefaultUnreadReadByACopy() {
-    load "../../../spite_standard_library/windows"
     var context = Context(1)
     var holder = Holder(context)
     var copied = holder.copy()

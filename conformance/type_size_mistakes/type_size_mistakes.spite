@@ -10,7 +10,6 @@ type Speaker {
 var console = Console()
 
 func TypeSizeMistakes() {
-    load "../../../spite_standard_library/windows"
     var labelled_size = Labelled.size
     var speaker_size = Speaker.size
     console.print(labelled_size, speaker_size)

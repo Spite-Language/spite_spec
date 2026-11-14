@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReopenedVarTypeWritten() {
-    load "../../../spite_standard_library/windows"
     load "first"
     load "second"
     var hero = Game.Hero()

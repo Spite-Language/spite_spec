@@ -1,7 +1,6 @@
 var console = Console()
 
 func PassedReturnsNothing() {
-    load "../../../spite_standard_library/windows"
     var names = ["Ada", "Grace"]
     var kept = names.filter(say_hello)
     var kept_count = kept.count()

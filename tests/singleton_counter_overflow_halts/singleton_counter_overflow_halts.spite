@@ -2,7 +2,6 @@ var console = Console()
 var counter = Counter()
 
 func SingletonCounterOverflowHalts() {
-    load "../../../spite_standard_library/windows"
     counter.bump()
     counter.bump()
     console.print("hits", counter.hits)

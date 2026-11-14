@@ -5,6 +5,5 @@ type Shaped {
 var console = Console()
 
 func InternalTypeMember() {
-    load "../../../spite_standard_library/windows"
     console.print("never built")
 }

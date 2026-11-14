@@ -1,1 +1,1 @@
-conformance/clock_benchmark_method/clock_benchmark_method.spite:6: error: a Clock has no attribute or function 'benchmark' (in ClockBenchmarkMethod.ClockBenchmarkMethod)
+conformance/clock_benchmark_method/clock_benchmark_method.spite:5: error: a Clock has no attribute or function 'benchmark' (in ClockBenchmarkMethod.ClockBenchmarkMethod)

@@ -1,1 +1,1 @@
-conformance/walk_each_function_on_integers/walk_each_function_on_integers.spite:27: error: this 'while' walks every element of 'numbers' only to call 'announce' with each: write 'numbers.each(announce)' (in WalkEachFunctionOnIntegers.walk)
+conformance/walk_each_function_on_integers/walk_each_function_on_integers.spite:26: error: this 'while' walks every element of 'numbers' only to call 'announce' with each: write 'numbers.each(announce)' (in WalkEachFunctionOnIntegers.walk)

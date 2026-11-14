@@ -5,6 +5,5 @@ type Drawable {
 var console = Console()
 
 func ShapeParameterName() {
-    load "../../../spite_standard_library/windows"
     console.print("unreached")
 }

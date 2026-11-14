@@ -5,7 +5,6 @@ var _long_value_length = 5000
 var _buffer_size = 4096
 
 func ProgramEdges() {
-    load "../../../spite_standard_library/windows"
     if environment.role == "child" {
         report_environment()
         return

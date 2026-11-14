@@ -3,7 +3,6 @@ var held: Item? = null
 var shelf = Shelf()
 
 func CopyKeepsAValueAcrossACall() {
-    load "../../../spite_standard_library/windows"
     held = Item()
     across_a_call()
     held = Item()

@@ -1,7 +1,6 @@
 var console = Console()
 
 func ProvenElementByCount() {
-    load "../../../spite_standard_library/windows"
     show_names(1)
 }
 

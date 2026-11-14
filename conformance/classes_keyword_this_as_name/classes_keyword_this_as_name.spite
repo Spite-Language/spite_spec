@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesKeywordThisAsName() {
-    load "../../../spite_standard_library/windows"
     var this = 1
     console.print(this)
 }

@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesRepeatedUnionNestedNamespace() {
-    load "../../../spite_standard_library/windows"
     var cheese = Bunda.Cheese()
     var hot_dog = Bunda.Deep.HotDog()
     var cat = Bunda.Cat()

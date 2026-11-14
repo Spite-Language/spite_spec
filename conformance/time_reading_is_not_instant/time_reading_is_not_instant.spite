@@ -3,7 +3,6 @@ var _meeting_year = 2024
 var _launch_seconds_since_1970: Long = 1710054000
 
 func TimeReadingIsNotInstant() {
-    load "../../../spite_standard_library/windows"
     var meeting_day = Date(_meeting_year, 3, 10)
     var meeting_time = Time(9, 30, 0, 0)
     var meeting = DateTime(meeting_day, meeting_time)

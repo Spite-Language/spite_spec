@@ -1,7 +1,6 @@
 var console = Console()
 
 func DefaultKeptWritesOutput() {
-    load "../../../spite_standard_library/windows"
     console.print("start")
     var given = Noisy("given")
     var holder = Holder(given)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func EnumOwnerTextConversion() {
-    load "../../../spite_standard_library/windows"
     var guild = Guild()
     var word = "novice"
     var promoted = guild.promote(word)

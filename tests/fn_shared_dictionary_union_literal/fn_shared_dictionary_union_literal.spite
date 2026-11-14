@@ -10,7 +10,6 @@ type Loadout {
 var console = Console()
 
 func FnSharedDictionaryUnionLiteral() {
-    load "../../../spite_standard_library/windows"
     var ages = Dictionary<String, Integer>()
     ages["ann"] = 1
     var crate = Crate()

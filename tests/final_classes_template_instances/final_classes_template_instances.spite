@@ -3,7 +3,6 @@ var console = Console()
 var build = Build()
 
 func FinalClassesTemplateInstances() {
-    load "../../../spite_standard_library/windows"
     var one = Runner<Mover>()
     one.run_one(1)
     var steps = one.read_steps()

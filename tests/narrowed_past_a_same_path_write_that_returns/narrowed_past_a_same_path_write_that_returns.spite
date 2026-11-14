@@ -3,7 +3,6 @@ var held: Item? = null
 var _leaves = 90
 
 func NarrowedPastASamePathWriteThatReturns() {
-    load "../../../spite_standard_library/windows"
     var passes = 1
     var leaving = 91
     run_all(passes)

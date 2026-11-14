@@ -1,1 +1,1 @@
-conformance/maths_constant_assigned/maths_constant_assigned.spite:5: error: only a local, an attribute or an index is assigned with '=' (in MathsConstantAssigned.MathsConstantAssigned)
+conformance/maths_constant_assigned/maths_constant_assigned.spite:4: error: only a local, an attribute or an index is assigned with '=' (in MathsConstantAssigned.MathsConstantAssigned)

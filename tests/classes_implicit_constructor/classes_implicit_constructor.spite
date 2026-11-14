@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesImplicitConstructor() {
-    load "../../../spite_standard_library/windows"
     var member = Member()
     console.print(member.name, member.level, member.active)
 }

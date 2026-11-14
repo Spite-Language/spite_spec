@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReopenedSpiteFunction() {
-    load "../../../spite_standard_library/windows"
     var greeter = Greeter()
     var said = greeter.greet()
     var found = greeter.functions["greet"]

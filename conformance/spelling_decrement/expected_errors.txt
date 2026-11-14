@@ -1,1 +1,1 @@
-conformance/spelling_decrement/spelling_decrement.spite:6: error: Spite has no '--': write 'count = count - 1'
+conformance/spelling_decrement/spelling_decrement.spite:5: error: Spite has no '--': write 'count = count - 1'

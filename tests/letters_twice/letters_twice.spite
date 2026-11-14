@@ -4,7 +4,6 @@ var tuesday = ["bat", "cow", "cod", "ape"]
 var groups = List<List<String>>()
 
 func LettersTwice() {
-    load "../../../spite_standard_library/windows"
     group(monday)
     group(tuesday)
 }

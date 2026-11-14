@@ -7,7 +7,6 @@ var _one = 1
 var _bang = 33
 
 func ConstantTexts() {
-    load "../../../spite_standard_library/windows"
     var before_kept = program.live_allocations()
     var index = 0
     while index < _rounds {

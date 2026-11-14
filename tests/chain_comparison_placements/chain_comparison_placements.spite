@@ -1,7 +1,6 @@
 var console = Console()
 
 func ChainComparisonPlacements() {
-    load "../../../spite_standard_library/windows"
     var rovers = Team("rovers")
     placed(rovers)
     placed(null)

@@ -1,1 +1,1 @@
-conformance/passed_find_wants_boolean/passed_find_wants_boolean.spite:6: error: 'find(measure)': 'measure' is an Integer, but 'find' needs it to return Boolean (in PassedFindWantsBoolean.PassedFindWantsBoolean)
+conformance/passed_find_wants_boolean/passed_find_wants_boolean.spite:5: error: 'find(measure)': 'measure' is an Integer, but 'find' needs it to return Boolean (in PassedFindWantsBoolean.PassedFindWantsBoolean)

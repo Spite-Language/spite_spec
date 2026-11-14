@@ -2,7 +2,6 @@ var console = Console()
 var _element_count = 20000
 
 func BandPasses() {
-    load "../../../spite_standard_library/windows"
     var counters = List<Counter>()
     var index = 0
     while index < _element_count {

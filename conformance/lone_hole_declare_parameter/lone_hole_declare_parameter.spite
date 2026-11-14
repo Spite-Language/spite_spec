@@ -1,7 +1,6 @@
 var console = Console()
 
 func LoneHoleDeclareParameter() {
-    load "../../../spite_standard_library/windows"
     show("ada")
 }
 

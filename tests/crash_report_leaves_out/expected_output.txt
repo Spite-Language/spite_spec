@@ -1,5 +1,5 @@
 running
 kept 2
-spite: the program stopped at tests/crash_report_leaves_out/crash_report_leaves_out.spite:14 in CrashReportLeavesOut.check, site b7502554 (depth=3, label=kept)
-spite.frame	tests/crash_report_leaves_out/crash_report_leaves_out.spite:14	CrashReportLeavesOut	check
-spite.frame	tests/crash_report_leaves_out/crash_report_leaves_out.spite:5	CrashReportLeavesOut	CrashReportLeavesOut
+spite: the program stopped at tests/crash_report_leaves_out/crash_report_leaves_out.spite:13 in CrashReportLeavesOut.check, site b7502554 (depth=3, label=kept)
+spite.frame	tests/crash_report_leaves_out/crash_report_leaves_out.spite:13	CrashReportLeavesOut	check
+spite.frame	tests/crash_report_leaves_out/crash_report_leaves_out.spite:4	CrashReportLeavesOut	CrashReportLeavesOut

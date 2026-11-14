@@ -1,7 +1,6 @@
 var console = Console()
 
 func TextToEachNumber() {
-    load "../../../spite_standard_library/windows"
     var tiny_text = "-128"
     var tiny: Tiny? = tiny_text
     crash tiny

@@ -8,7 +8,6 @@ var _version_four = 52
 var _moments: List<Long> = [1205045999, 1205046000, 1710053999, 1710054000]
 
 func ZoneFileVersions() {
-    load "../../../spite_standard_library/windows"
     var file = File("tests/zone_file_versions/eastern.tzif")
     var data = file.read_as_buffer()
     crash data

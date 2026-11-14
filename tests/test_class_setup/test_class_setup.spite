@@ -1,5 +1,4 @@
 func TestClassSetup() {
-    load "../../../spite_standard_library/windows"
     var tester = Test(Bank)
     tester.run()
 }

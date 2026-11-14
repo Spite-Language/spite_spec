@@ -14,7 +14,6 @@ type Counted {
 var console = Console()
 
 func GenericConstraintFits() {
-    load "../../../spite_standard_library/windows"
     var moods = Tray<Mood>()
     moods.add('sad')
     var shapes = Tray<Printable>()

@@ -2,7 +2,6 @@ var plates = 2
 var console = Console()
 
 func ReflectionUnknownClassAnswer() {
-    load "../../../spite_standard_library/windows"
     var made = made_of(Armor)
     console.print(made)
 }

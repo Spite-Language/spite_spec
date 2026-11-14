@@ -1,7 +1,6 @@
 var console = Console()
 
 func EnumQualifiedNames() {
-    load "../../../spite_standard_library/windows"
     var hero = Player()
     var named: Player.Job = 'archer'
     var plain: Player.Job = 'magician'

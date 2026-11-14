@@ -2,7 +2,6 @@ var console = Console()
 var lamp = Lamp()
 
 func TemplateReadsNoParameter() {
-    load "../../../spite_standard_library/windows"
     show_attributes(lamp)
 }
 

@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonRunTimeKeysUnknown() {
-    load "../../../spite_standard_library/windows"
     var crate = Crate()
     console.print(crate.size)
     var keys = Dictionary<Spite.AttributeDeclaration, String>()

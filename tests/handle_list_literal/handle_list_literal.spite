@@ -1,7 +1,6 @@
 var console = Console()
 
 func HandleListLiteral() {
-    load "../../../spite_standard_library/windows"
     var counting = three()
     var waiting = four()
     var values: List<Integer> = [counting, waiting, 5]

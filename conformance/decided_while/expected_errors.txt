@@ -1,1 +1,1 @@
-conformance/decided_while/decided_while.spite:5: fixed: 'while 3 < 1' was decided while compiling and was always false here, so the loop never ran; removed it (in DecidedWhile.DecidedWhile)
+conformance/decided_while/decided_while.spite:4: fixed: 'while 3 < 1' was decided while compiling and was always false here, so the loop never ran; removed it (in DecidedWhile.DecidedWhile)

@@ -4,7 +4,6 @@ var boxes = [Box(), Box(), Box()]
 var _assigned = 7
 
 func AssignmentValueBeforeAnIndexedObject() {
-    load "../../../spite_standard_library/windows"
     crash boxes[position]
     boxes[position].amount = moved()
     var first = boxes[0]

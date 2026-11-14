@@ -6,7 +6,6 @@ union Pet {
 var console = Console()
 
 func EnumValueTemplates() {
-    load "../../../spite_standard_library/windows"
     var posts = List<Post>()
     var first = Post("hello", 'published')
     posts.append(first)

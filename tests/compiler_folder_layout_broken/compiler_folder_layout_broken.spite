@@ -5,7 +5,6 @@ var compiler_copy = ".spite/broken_layout/spite_compiler"
 
 # ../../../spite_compiler/ARCHITECTURE.md#the-folders
 func CompilerFolderLayoutBroken() {
-    load "../../../spite_standard_library/windows"
     remove_the_old_copy()
     make_a_folder(".spite")
     make_a_folder(copy)

@@ -1,1 +1,1 @@
-conformance/time_old_spelling_local_date_time/time_old_spelling_local_date_time.spite:7: error: 'LocalDateTime' is spelled 'DateTime' (in TimeOldSpellingLocalDateTime.TimeOldSpellingLocalDateTime)
+conformance/time_old_spelling_local_date_time/time_old_spelling_local_date_time.spite:6: error: 'LocalDateTime' is spelled 'DateTime' (in TimeOldSpellingLocalDateTime.TimeOldSpellingLocalDateTime)

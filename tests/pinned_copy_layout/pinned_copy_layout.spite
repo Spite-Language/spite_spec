@@ -3,7 +3,6 @@ var console = Console()
 var build = Build()
 
 func PinnedCopyLayout() {
-    load "../../../spite_standard_library/windows"
     load "../..@26e6476/tests/namespaces_load/package"
     var widget = Widgets.Widget("gadget", 3)
     var described = widget.describe()

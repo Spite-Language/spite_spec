@@ -1,1 +1,1 @@
-conformance/preload_empty/preload_empty.spite:3: error: 'preload ""' names no folder: write the folder's path, like 'preload "engine"'
+conformance/preload_empty/preload_empty.spite:2: error: 'preload ""' names no folder: write the folder's path, like 'preload "engine"'

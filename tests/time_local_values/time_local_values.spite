@@ -4,7 +4,6 @@ var _sample_nanosecond = 123456789
 var _last_nanosecond = 999999999
 
 func TimeLocalValues() {
-    load "../../../spite_standard_library/windows"
     date_parts()
     time_parts()
     time_order()

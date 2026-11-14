@@ -1,1 +1,1 @@
-conformance/old_shift_right/old_shift_right.spite:6: error: Spite has no '>>': bits are functions on the whole numbers, write 'value.shifted_right(count)'
+conformance/old_shift_right/old_shift_right.spite:5: error: Spite has no '>>': bits are functions on the whole numbers, write 'value.shifted_right(count)'

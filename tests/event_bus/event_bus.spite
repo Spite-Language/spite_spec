@@ -6,7 +6,6 @@ union Event {
 var console = Console()
 
 func EventBus() {
-    load "../../../spite_standard_library/windows"
     var bus = Bus()
     var counter = Counter()
     bus.subscribe(counter.count_event)

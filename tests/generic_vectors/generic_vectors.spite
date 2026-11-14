@@ -4,7 +4,6 @@ var _cells_down: Long = 40000
 var _large_byte_component: Byte = 200
 
 func GenericVectors() {
-    load "../../../spite_standard_library/windows"
     var tile = Vector3(3, 4, 12)
     var other = Vector3(1, -2, 2)
     var added = tile + other

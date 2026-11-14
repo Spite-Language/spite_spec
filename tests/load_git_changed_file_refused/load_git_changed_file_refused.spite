@@ -6,7 +6,6 @@ var copy_label = ""
 var copy_path = ""
 
 func LoadGitChangedFileRefused() {
-    load "../../../spite_standard_library/windows"
     reset()
     var commit = make_widget_repository(
         "var size = 0\n\nfunc Widget(starting_size: Integer) \{\n    size = starting_size\n}\n\nfunc doubled(): Integer \{\n    return size * 2\n}\n",

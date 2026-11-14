@@ -3,7 +3,6 @@ var console = Console()
 var build = Build()
 
 func FinalClassesReplacement() {
-    load "../../../spite_standard_library/windows"
     load "package"
     load "mod"
     var monster = Creatures.Monster("rat")

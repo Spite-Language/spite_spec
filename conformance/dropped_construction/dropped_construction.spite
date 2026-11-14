@@ -1,7 +1,6 @@
 var console = Console()
 
 func DroppedConstruction() {
-    load "../../../spite_standard_library/windows"
     Report("the door opens")
     Box<Integer>(3)
     var kept = Report("kept")

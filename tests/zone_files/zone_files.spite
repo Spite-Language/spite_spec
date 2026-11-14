@@ -6,7 +6,6 @@ var _half_hour_moments: List<Long> = [1712415599, 1712415600, 1728142199, 172814
 var _daylight_change_year = 2024
 
 func ZoneFiles() {
-    load "../../../spite_standard_library/windows"
     var eastern = read("Test/Eastern", "eastern")
     var sydney = read("Test/Sydney", "sydney")
     var lord_howe = read("Test/Lord_Howe", "lord_howe")

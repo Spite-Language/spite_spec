@@ -8,7 +8,6 @@ var _room_left_in_hash: UnsignedInteger = 294967295
 var _low_byte_mask: UnsignedInteger = 255
 
 func WrappingFunctions() {
-    load "../../../spite_standard_library/windows"
     var hash: UnsignedInteger = _large_hash
     var tripled = hash.wrapping_multiply(3)
     var summed = hash.wrapping_sum(_hash_addition)

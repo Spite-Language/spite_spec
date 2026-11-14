@@ -1,7 +1,6 @@
 var console = Console()
 
 func TemplateListInBody() {
-    load "../../../spite_standard_library/windows"
     var troll = Monster()
     show_first_attributes(troll)
 }

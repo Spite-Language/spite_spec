@@ -19,7 +19,6 @@ union Cargo {
 var console = Console()
 
 func DebugValues() {
-    load "../../../spite_standard_library/windows"
     var hero = Player("hero")
     hero.scores.append(3)
     hero.scores.append(7)

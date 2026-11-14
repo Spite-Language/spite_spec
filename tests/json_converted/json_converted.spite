@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonConverted() {
-    load "../../../spite_standard_library/windows"
     var reader = JsonReader<Release>()
     var release = reader.read("\{\"name\": \"spite\", \"version\": \"2.7\"}")
     crash release

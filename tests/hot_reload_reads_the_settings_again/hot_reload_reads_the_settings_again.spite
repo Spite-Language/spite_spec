@@ -6,7 +6,6 @@ var environment = Environment()
 var _most_waits = 600
 
 func HotReloadReadsTheSettingsAgain() {
-    load "../../../spite_standard_library/windows"
     var fifty_milliseconds = Duration(50, 'milliseconds')
     var first = environment.greeting
     console.print(first, environment.volume)

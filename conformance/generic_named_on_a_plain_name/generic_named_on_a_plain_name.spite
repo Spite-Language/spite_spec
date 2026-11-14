@@ -1,7 +1,6 @@
 var console = Console()
 
 func GenericNamedOnAPlainName() {
-    load "../../../spite_standard_library/windows"
     var held = Console<Float>.name
     console.print(held)
 }

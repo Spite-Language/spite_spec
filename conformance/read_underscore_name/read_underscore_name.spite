@@ -1,5 +1,4 @@
 func ReadUnderscoreName(): Integer {
-    load "../../../spite_standard_library/windows"
     var _counted = 3
     return _counted + 1
 }

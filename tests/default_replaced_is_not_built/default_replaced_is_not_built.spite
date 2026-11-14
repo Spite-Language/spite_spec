@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func DefaultReplacedIsNotBuilt() {
-    load "../../../spite_standard_library/windows"
     var top = Top(null)
     var empty = top.is_empty()
     console.print("the top holds nothing", empty)

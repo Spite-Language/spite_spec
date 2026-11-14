@@ -1,7 +1,6 @@
 var console = Console()
 
 func TimeTextRoundTrips() {
-    load "../../../spite_standard_library/windows"
     instant_round_trip("2024-03-10T07:00:00Z")
     instant_round_trip("2024-03-10T07:00:00.5Z")
     instant_round_trip("1969-12-31T23:59:59.999999999Z")

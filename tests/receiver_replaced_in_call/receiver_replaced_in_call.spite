@@ -1,5 +1,4 @@
 func ReceiverReplacedInCall() {
-    load "../../../spite_standard_library/windows"
     var box = Box()
     box.run()
 }

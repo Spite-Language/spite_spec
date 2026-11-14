@@ -1,7 +1,6 @@
 var console = Console()
 
 func LibraryLookalikesAreNotRefused() {
-    load "../../../spite_standard_library/windows"
     var left = Matrix4<Float>()
     var right = Matrix4<Float>()
     var diagonal = left.diagonal_sum_with(right)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func MemoryDropOrder() {
-    load "../../../spite_standard_library/windows"
     made_and_let_go()
     console.print("after")
 }

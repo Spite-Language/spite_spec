@@ -2,7 +2,6 @@ var console = Console()
 var windows = DynamicLibrary("fixture.dll", 'windows', "fixture.h")
 
 func ForeignVoidAnswerReturned() {
-    load "../../../spite_standard_library/windows"
     var answer = forgotten()
     console.print(answer)
 }

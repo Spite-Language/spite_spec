@@ -7,7 +7,6 @@ type Labeled {
 var console = Console()
 
 func CommentAboveType() {
-    load "../../../spite_standard_library/windows"
     var shaped: Labeled = {label: "a literal"}
     console.print(shaped.label)
 }

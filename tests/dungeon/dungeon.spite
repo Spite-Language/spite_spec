@@ -7,7 +7,6 @@ var tick = 0
 var environment = Environment()
 
 func Dungeon() {
-    load "../../../spite_standard_library/windows"
     var fifty_milliseconds = Duration(50, 'milliseconds')
     var goblin = Monster("Goblin", 30)
     monsters.append(goblin)

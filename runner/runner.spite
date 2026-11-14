@@ -21,7 +21,6 @@ var waiting = List<String>()
 var started_count = 0
 
 func Runner() {
-    load "../../spite_standard_library/windows"
     make_the_working_folder()
     if not environment.one_test.is_empty() {
         run_alone(environment.one_test)

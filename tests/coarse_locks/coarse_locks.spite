@@ -5,7 +5,6 @@ var _rounds_per_counter = 20000
 var _post_count = 500
 
 func CoarseLocks() {
-    load "../../../spite_standard_library/windows"
     var first = Counter(_rounds_per_counter)
     var first_run = first.count_up()
     var second = Counter(_rounds_per_counter)

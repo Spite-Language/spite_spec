@@ -1,1 +1,1 @@
-conformance/renamed_name_taken/renamed_name_taken.spite:5: error: the variable 'itemCount' must be written in snake_case: lowercase words joined by underscores (in RenamedNameTaken.RenamedNameTaken)
+conformance/renamed_name_taken/renamed_name_taken.spite:4: error: the variable 'itemCount' must be written in snake_case: lowercase words joined by underscores (in RenamedNameTaken.RenamedNameTaken)

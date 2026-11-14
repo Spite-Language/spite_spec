@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionsDirectSetAttribute() {
-    load "../../../spite_standard_library/windows"
     var person = Person()
     person.set_attribute('age', 2)
     console.print(person.age)

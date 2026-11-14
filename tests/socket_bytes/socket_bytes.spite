@@ -5,7 +5,6 @@ var _third_byte: Byte = 250
 var _invalid_utf8_byte: Byte = 255
 
 func SocketBytes() {
-    load "../../../spite_standard_library/windows"
     var address: IpAddress? = "127.0.0.1"
     crash address
     crash server.listen_at(address, _port)

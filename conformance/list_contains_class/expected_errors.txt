@@ -1,1 +1,1 @@
-conformance/list_contains_class/list_contains_class.spite:8: error: List has no method 'contains' for a list of 'Tool': it compares with '==', which an object of a class is not compared by: ask with 'any(f)' or 'find_by_<member>' (in ListContainsClass.ListContainsClass)
+conformance/list_contains_class/list_contains_class.spite:7: error: List has no method 'contains' for a list of 'Tool': it compares with '==', which an object of a class is not compared by: ask with 'any(f)' or 'find_by_<member>' (in ListContainsClass.ListContainsClass)

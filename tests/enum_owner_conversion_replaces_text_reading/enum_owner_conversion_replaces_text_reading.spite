@@ -7,7 +7,6 @@ enum Course {
 var console = Console()
 
 func EnumOwnerConversionReplacesTextReading() {
-    load "../../../spite_standard_library/windows"
     var spelled = "starter"
     var starter: Course? = spelled
     crash starter

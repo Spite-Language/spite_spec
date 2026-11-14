@@ -4,7 +4,6 @@ var spare = [1]
 var greetings = 0
 
 func ShrinkKeepsTheProofsItCannotReach() {
-    load "../../../spite_standard_library/windows"
     crash items[0]
     greet()
     console.print(items[0])

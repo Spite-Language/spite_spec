@@ -1,1 +1,1 @@
-conformance/a_repeated_fallback_past_a_present_value_goes/a_repeated_fallback_past_a_present_value_goes.spite:18: fixed: 'rack.shelf.item' was already narrowed by 'fallback rack.shelf.item' on line 14; removed this check (in ARepeatedFallbackPastAPresentValueGoes.show)
+conformance/a_repeated_fallback_past_a_present_value_goes/a_repeated_fallback_past_a_present_value_goes.spite:17: fixed: 'rack.shelf.item' was already narrowed by 'fallback rack.shelf.item' on line 13; removed this check (in ARepeatedFallbackPastAPresentValueGoes.show)

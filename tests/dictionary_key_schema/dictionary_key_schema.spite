@@ -5,7 +5,6 @@ enum Color {
 var console = Console()
 
 func DictionaryKeySchema() {
-    load "../../../spite_standard_library/windows"
     var text_writer = BinaryWriter<Dictionary<String, Integer>>()
     var number_writer = BinaryWriter<Dictionary<Integer, Integer>>()
     var color_writer = BinaryWriter<Dictionary<Color, Integer>>()

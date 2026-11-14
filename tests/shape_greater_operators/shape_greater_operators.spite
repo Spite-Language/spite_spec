@@ -6,7 +6,6 @@ type Comparable {
 var console = Console()
 
 func ShapeGreaterOperators() {
-    load "../../../spite_standard_library/windows"
     var small = Purse(3)
     var large = Purse(8)
     var greater = is_greater(large, small)

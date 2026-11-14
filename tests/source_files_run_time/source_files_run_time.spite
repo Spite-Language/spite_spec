@@ -1,7 +1,6 @@
 var console = Console()
 
 func SourceFilesRunTime() {
-    load "../../../spite_standard_library/windows"
     var kind: Spite.Class = Monster
     var swapped: Spite.Class = Monster
     var files = kind.source_files

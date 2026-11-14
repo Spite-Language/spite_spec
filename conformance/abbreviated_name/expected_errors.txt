@@ -1,2 +1,2 @@
-conformance/abbreviated_name/abbreviated_name.spite:3: fixed: 'item_cnt' abbreviated, and Spite has no abbreviations outside its own keywords; renamed it 'item_count' (in AbbreviatedName.AbbreviatedName)
-conformance/abbreviated_name/abbreviated_name.spite:4: error: 'total' is never read: remove it (in AbbreviatedName.AbbreviatedName)
+conformance/abbreviated_name/abbreviated_name.spite:2: fixed: 'item_cnt' abbreviated, and Spite has no abbreviations outside its own keywords; renamed it 'item_count' (in AbbreviatedName.AbbreviatedName)
+conformance/abbreviated_name/abbreviated_name.spite:3: error: 'total' is never read: remove it (in AbbreviatedName.AbbreviatedName)

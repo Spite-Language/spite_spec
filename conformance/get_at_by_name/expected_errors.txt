@@ -1,1 +1,1 @@
-conformance/get_at_by_name/get_at_by_name.spite:10: error: 'get_at' is what '[]' calls: write 'names[0]' (in GetAtByName.show)
+conformance/get_at_by_name/get_at_by_name.spite:9: error: 'get_at' is what '[]' calls: write 'names[0]' (in GetAtByName.show)

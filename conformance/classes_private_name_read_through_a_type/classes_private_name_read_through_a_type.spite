@@ -5,7 +5,6 @@ type Hider {
 var console = Console()
 
 func ClassesPrivateNameReadThroughAType() {
-    load "../../../spite_standard_library/windows"
     var secret = Secret()
     secret.show()
     var hider: Hider = secret

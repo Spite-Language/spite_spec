@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryDeepCopyKeys() {
-    load "../../../spite_standard_library/windows"
     var ada = Player("ada")
     var teams = Dictionary<Player, Team>()
     var red = Team("red")

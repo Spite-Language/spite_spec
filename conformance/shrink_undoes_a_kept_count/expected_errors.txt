@@ -1,1 +1,1 @@
-conformance/shrink_undoes_a_kept_count/shrink_undoes_a_kept_count.spite:19: error: 'items[index]' was proven before line 16, where 'trim(...)' may shrink what it reads, so this read may fall outside it: prove 'items[index]' again after that line (in ShrinkUndoesAKeptCount.work)
+conformance/shrink_undoes_a_kept_count/shrink_undoes_a_kept_count.spite:18: error: 'items[index]' was proven before line 15, where 'trim(...)' may shrink what it reads, so this read may fall outside it: prove 'items[index]' again after that line (in ShrinkUndoesAKeptCount.work)

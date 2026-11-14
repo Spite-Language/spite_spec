@@ -1,2 +1,2 @@
 30000
-spite: 'first * _two_hundred' does not fit in a Short (300 * 200), at tests/short_multiplication_overflow_halts/short_multiplication_overflow_halts.spite:11 in ShortMultiplicationOverflowHalts.ShortMultiplicationOverflowHalts
+spite: 'first * _two_hundred' does not fit in a Short (300 * 200), at tests/short_multiplication_overflow_halts/short_multiplication_overflow_halts.spite:10 in ShortMultiplicationOverflowHalts.ShortMultiplicationOverflowHalts

@@ -1,1 +1,1 @@
-conformance/unproven_library_nullable/unproven_library_nullable.spite:7: error: this value may be null (it is a String?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in UnprovenLibraryNullable.UnprovenLibraryNullable)
+conformance/unproven_library_nullable/unproven_library_nullable.spite:6: error: this value may be null (it is a String?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in UnprovenLibraryNullable.UnprovenLibraryNullable)

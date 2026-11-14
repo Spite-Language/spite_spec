@@ -9,7 +9,6 @@ var waiting = 7
 var read_count = 8
 
 func CWordsArePlainNames() {
-    load "../../../spite_standard_library/windows"
     var tool = Tool()
     var made = tool.allocate()
     var other = tool.make()

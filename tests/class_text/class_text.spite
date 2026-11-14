@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassText() {
-    load "../../../spite_standard_library/windows"
     var label = Label()
     var lines = List<String>()
     show_attributes(label, lines)

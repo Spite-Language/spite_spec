@@ -7,7 +7,6 @@ var _all_but_sign_mask = 2147483647
 var _largest_byte_value = 255
 
 func DecidedComparisons() {
-    load "../../../spite_standard_library/windows"
     var letters = String()
     var group = 0
     while group < _group_count {

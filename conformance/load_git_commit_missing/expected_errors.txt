@@ -1,1 +1,1 @@
-conformance/load_git_commit_missing/load_git_commit_missing.spite:3: error: 'load "../..@0123456/tests/namespaces_load/package"' pins '0123456', and ../.. has no commit 0123456
+conformance/load_git_commit_missing/load_git_commit_missing.spite:2: error: 'load "../..@0123456/tests/namespaces_load/package"' pins '0123456', and ../.. has no commit 0123456

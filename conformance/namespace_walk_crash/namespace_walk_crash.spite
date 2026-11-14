@@ -3,7 +3,6 @@ var alpha = Passes.Alpha.Pass()
 var beta = Passes.Beta.Helper()
 
 func NamespaceWalkCrash() {
-    load "../../../spite_standard_library/windows"
     console.print(alpha.runs, beta.runs)
     Spite.Namespace.instances.each(check_a_folder)
     console.print("never printed")

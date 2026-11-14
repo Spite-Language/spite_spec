@@ -1,4 +1,3 @@
 func LoadGitCommitMissing() {
-    load "../../../spite_standard_library/windows"
     load "../..@0123456/tests/namespaces_load/package"
 }

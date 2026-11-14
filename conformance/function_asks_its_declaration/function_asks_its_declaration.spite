@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionAsksItsDeclaration() {
-    load "../../../spite_standard_library/windows"
     var monster = Monster()
     var hurt = monster.functions["hurt"]
     crash hurt

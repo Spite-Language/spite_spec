@@ -3,7 +3,6 @@ var build = Build()
 var counter = Counter()
 
 func HotReloadRefusesNewAttributes() {
-    load "../../../spite_standard_library/windows"
     counter.add(2)
     var file_path: Path? = "{build.program}/counter.spite"
     crash file_path

@@ -2,7 +2,6 @@ var console = Console()
 var other = Scorer()
 
 func AttributeWrittenThroughAnotherObject() {
-    load "../../../spite_standard_library/windows"
     other.score = 1
     console.print("x")
 }

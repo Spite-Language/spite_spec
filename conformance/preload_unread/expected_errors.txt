@@ -1,1 +1,1 @@
-conformance/preload_unread/preload_unread.spite:5: error: 'preload "extras"' makes the volume 'extras', and no 'Volume("extras")' reads it: read it through 'var extras = Volume("extras")' beside the attributes, or remove the preload
+conformance/preload_unread/preload_unread.spite:4: error: 'preload "extras"' makes the volume 'extras', and no 'Volume("extras")' reads it: read it through 'var extras = Volume("extras")' beside the attributes, or remove the preload

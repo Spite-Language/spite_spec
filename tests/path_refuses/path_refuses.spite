@@ -1,7 +1,6 @@
 var console = Console()
 
 func PathRefuses() {
-    load "../../../spite_standard_library/windows"
     literals_need_no_narrowing()
     refused_text()
     narrowed_text()

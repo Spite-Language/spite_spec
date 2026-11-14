@@ -7,7 +7,6 @@ type Row {
 var console = Console()
 
 func ShapeAttributes() {
-    load "../../../spite_standard_library/windows"
     var store = Store()
     store.health.amount = 7
     store.alive.dead = true

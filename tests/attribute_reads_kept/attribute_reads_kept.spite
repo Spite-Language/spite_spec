@@ -1,7 +1,6 @@
 var console = Console()
 
 func AttributeReadsKept() {
-    load "../../../spite_standard_library/windows"
     var bodies = List<Body>()
     var index = 0
     while index < 50 {

@@ -1,3 +1,0 @@
-func FlagGivenTwice() {
-    load "../../../spite_standard_library/windows"
-}

@@ -1,1 +1,1 @@
-conformance/matrix4_whole_numbers/matrix4_whole_numbers.spite:5: error: 'Integer' does not fit type 'Element', which 'Matrix4' requires of $number_type: it has no function 'square_root' (in Matrix4WholeNumbers.Matrix4WholeNumbers)
+conformance/matrix4_whole_numbers/matrix4_whole_numbers.spite:4: error: 'Integer' does not fit type 'Element', which 'Matrix4' requires of $number_type: it has no function 'square_root' (in Matrix4WholeNumbers.Matrix4WholeNumbers)

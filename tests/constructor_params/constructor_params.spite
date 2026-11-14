@@ -1,5 +1,4 @@
 func ConstructorParams() {
-    load "../../../spite_standard_library/windows"
     var first = Person("Ada", 30)
     var second = Person("Grace", 40)
     first.introduce()

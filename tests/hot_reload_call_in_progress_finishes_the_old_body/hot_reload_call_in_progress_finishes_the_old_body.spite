@@ -4,7 +4,6 @@ var greeter = Greeter()
 var _most_waits = 600
 
 func HotReloadCallInProgressFinishesTheOldBody() {
-    load "../../../spite_standard_library/windows"
     greeter.slow()
     var fifty_milliseconds = Duration(50, 'milliseconds')
     var now = greeter.which()

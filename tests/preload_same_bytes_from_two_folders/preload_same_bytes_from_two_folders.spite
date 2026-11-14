@@ -3,7 +3,6 @@ var program = Program()
 var root = ".spite/preload_same_bytes_from_two_folders"
 
 func PreloadSameBytesFromTwoFolders() {
-    load "../../../spite_standard_library/windows"
     reset()
     write_the_app("{root}/one/app")
     write_the_app("{root}/two/app")

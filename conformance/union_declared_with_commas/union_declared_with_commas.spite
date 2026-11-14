@@ -6,6 +6,5 @@ union Creature {
 var console = Console()
 
 func UnionDeclaredWithCommas() {
-    load "../../../spite_standard_library/windows"
     console.print("creatures")
 }

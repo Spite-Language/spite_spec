@@ -3,7 +3,6 @@ var _byte_near_the_top: Byte = 250
 var _largest_byte: Byte = 255
 
 func CounterRoom() {
-    load "../../../spite_standard_library/windows"
     var index: Byte = _byte_near_the_top
     while index < _largest_byte {
         index = index + 1

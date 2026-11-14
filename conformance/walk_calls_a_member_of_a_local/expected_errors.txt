@@ -1,1 +1,1 @@
-conformance/walk_calls_a_member_of_a_local/walk_calls_a_member_of_a_local.spite:6: error: this 'while' walks every element of 'names' only to call 'greeter.greet' with each: write 'names.each(greeter.greet)' (in WalkCallsAMemberOfALocal.WalkCallsAMemberOfALocal)
+conformance/walk_calls_a_member_of_a_local/walk_calls_a_member_of_a_local.spite:5: error: this 'while' walks every element of 'names' only to call 'greeter.greet' with each: write 'names.each(greeter.greet)' (in WalkCallsAMemberOfALocal.WalkCallsAMemberOfALocal)

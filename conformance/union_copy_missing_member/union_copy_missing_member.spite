@@ -7,7 +7,6 @@ union Pet {
 var console = Console()
 
 func UnionCopyMissingMember() {
-    load "../../../spite_standard_library/windows"
     var fish = Fish()
     var pet: Pet = fish
     var groomer = Groomer()

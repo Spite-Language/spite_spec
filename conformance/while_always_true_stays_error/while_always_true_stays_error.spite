@@ -1,7 +1,6 @@
 var console = Console()
 
 func WhileAlwaysTrueStaysError() {
-    load "../../../spite_standard_library/windows"
     while true {
         console.print("x")
         return

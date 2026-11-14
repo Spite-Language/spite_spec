@@ -1,7 +1,6 @@
 var console = Console()
 
 func ScalarParameterIsACopy() {
-    load "../../../spite_standard_library/windows"
     var amount = 5
     var flag = true
     var text = "kept"

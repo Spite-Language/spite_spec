@@ -1,7 +1,6 @@
 var console = Console()
 
 func DeepCopyListGraph() {
-    load "../../../spite_standard_library/windows"
     var root = Node("root")
     var child = Node("child")
     root.children.append(child)

@@ -5,7 +5,6 @@ type Job {
 var console = Console()
 
 func GenericConstraintHeldFunctionMayBeNull() {
-    load "../../../spite_standard_library/windows"
     var runner = Runner<Task>()
     var task = Task()
     runner.add(task)

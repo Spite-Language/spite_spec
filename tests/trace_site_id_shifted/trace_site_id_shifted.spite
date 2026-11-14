@@ -2,7 +2,6 @@ var console = Console()
 var greeter = Greeter()
 
 func TraceSiteIdShifted() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 3 {
         greeter.greet(index)

@@ -3,7 +3,6 @@ var program = Program()
 var _most_tries = 250
 
 func FileWatching() {
-    load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/file_watching")
     var inner_path: Path? = "{folder.path}/inner"
     crash inner_path

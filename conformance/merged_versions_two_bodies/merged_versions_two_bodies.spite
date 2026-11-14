@@ -1,7 +1,6 @@
 var console = Console()
 
 func MergedVersionsTwoBodies() {
-    load "../../../spite_standard_library/windows"
     load "../..@b561721/tests/merged_versions/.packages/engine"
     load "../..@f6bb50b/tests/merged_versions/.packages/engine"
     var world = World()

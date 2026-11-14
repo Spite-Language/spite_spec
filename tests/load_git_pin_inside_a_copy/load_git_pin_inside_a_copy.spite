@@ -6,7 +6,6 @@ var copy_label = ""
 var copy_path = ""
 
 func LoadGitPinInsideACopy() {
-    load "../../../spite_standard_library/windows"
     reset()
     make_directory("{root}/gadgets")
     make_directory("{root}/gadgets/gadget_kit")

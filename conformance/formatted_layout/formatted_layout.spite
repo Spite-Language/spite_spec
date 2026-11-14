@@ -4,7 +4,6 @@ var second = 2
 
 var third = 3
 func FormattedLayout() {
-	load "../../../spite_standard_library/windows"
   var total = first+second*third   
     var text = "a  +  b #x"
     if total>3 {

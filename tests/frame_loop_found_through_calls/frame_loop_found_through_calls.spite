@@ -4,7 +4,6 @@ var waiter = Waiter()
 var frames = 0
 
 func FrameLoopFoundThroughCalls() {
-    load "../../../spite_standard_library/windows"
     update_everything()
     console.print("back in the entry, before any loop")
     finish_the_first_call()

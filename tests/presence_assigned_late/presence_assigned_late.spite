@@ -1,7 +1,6 @@
 var shelf = Shelf()
 
 func PresenceAssignedLate() {
-    load "../../../spite_standard_library/windows"
     shelf.show()
     later()
     shelf.show()

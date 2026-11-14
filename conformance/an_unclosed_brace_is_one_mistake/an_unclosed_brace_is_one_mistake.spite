@@ -1,7 +1,6 @@
 var console = Console()
 
 func AnUnclosedBraceIsOneMistake() {
-    load "../../../spite_standard_library/windows"
     var total = 0
     if total == 0 {
         total = 1

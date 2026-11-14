@@ -3,6 +3,5 @@ var console = Console()
 console.print("a file holds no statements")
 
 func FileScopeStatement() {
-    load "../../../spite_standard_library/windows"
     console.print("this one is inside a function")
 }

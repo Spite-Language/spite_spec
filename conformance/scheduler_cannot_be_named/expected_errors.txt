@@ -1,1 +1,1 @@
-conformance/scheduler_cannot_be_named/scheduler_cannot_be_named.spite:3: error: unknown type 'Scheduler' (in SchedulerCannotBeNamed.SchedulerCannotBeNamed)
+conformance/scheduler_cannot_be_named/scheduler_cannot_be_named.spite:2: error: unknown type 'Scheduler' (in SchedulerCannotBeNamed.SchedulerCannotBeNamed)

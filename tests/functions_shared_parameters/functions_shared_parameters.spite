@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionsSharedParameters() {
-    load "../../../spite_standard_library/windows"
     var names = ["ada"]
     var number = 1
     var box = Box()

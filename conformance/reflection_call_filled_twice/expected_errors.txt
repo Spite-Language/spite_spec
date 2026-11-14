@@ -1,1 +1,1 @@
-conformance/reflection_call_filled_twice/reflection_call_filled_twice.spite:8: error: 'call.arguments["amount"]' is already set: a call fills each argument once, before 'call.call()' runs it (in ReflectionCallFilledTwice.ReflectionCallFilledTwice)
+conformance/reflection_call_filled_twice/reflection_call_filled_twice.spite:7: error: 'call.arguments["amount"]' is already set: a call fills each argument once, before 'call.call()' runs it (in ReflectionCallFilledTwice.ReflectionCallFilledTwice)

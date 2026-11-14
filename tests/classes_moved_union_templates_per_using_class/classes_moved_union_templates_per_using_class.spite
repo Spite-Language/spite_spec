@@ -3,7 +3,6 @@ var first = First()
 var second = Second()
 
 func ClassesMovedUnionTemplatesPerUsingClass() {
-    load "../../../spite_standard_library/windows"
     var pets = List<Pet>()
     var cat = Cat()
     var dog = Dog()

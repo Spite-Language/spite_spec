@@ -13,7 +13,6 @@ var _high_unsigned_long: UnsignedLong = 10000000000
 var _one_unsigned_long: UnsignedLong = 1
 
 func DictionaryIntegerClassKeys() {
-    load "../../../spite_standard_library/windows"
     var tinies = Dictionary<Tiny, String>()
     tinies[_low_tiny] = "minus five"
     tinies[_high_tiny] = "hundred"

@@ -10,7 +10,6 @@ type Printable {
 var console = Console()
 
 func ShapeCopies() {
-    load "../../../spite_standard_library/windows"
     var gadget = Gadget(3)
     var first = describe(gadget)
     var second = describe(42)

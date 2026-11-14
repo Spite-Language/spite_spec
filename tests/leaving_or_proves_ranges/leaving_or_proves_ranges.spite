@@ -3,7 +3,6 @@ var build = Build()
 var _too_big = 3000000
 
 func LeavingOrProvesRanges() {
-    load "../../../spite_standard_library/windows"
     var small = 50
     var guarded = both_sides_left(small)
     var turned = both_sides_turned(small)

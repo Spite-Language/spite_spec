@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_desc/abbreviation_meaning_desc.spite:5: error: 'desc' abbreviates 'desc', which could mean 'description' or 'descending': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningDesc.AbbreviationMeaningDesc)
+conformance/abbreviation_meaning_desc/abbreviation_meaning_desc.spite:4: error: 'desc' abbreviates 'desc', which could mean 'description' or 'descending': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningDesc.AbbreviationMeaningDesc)

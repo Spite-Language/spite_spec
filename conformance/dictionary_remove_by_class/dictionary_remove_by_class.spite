@@ -6,7 +6,6 @@ union Pet {
 var console = Console()
 
 func DictionaryRemoveByClass() {
-    load "../../../spite_standard_library/windows"
     var pets = Dictionary<String, Pet>()
     var tom = Cat()
     pets["tom"] = tom

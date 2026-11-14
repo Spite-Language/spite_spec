@@ -4,6 +4,5 @@ var console = Console()
 
 # notes.md#why-this-program-exists
 func CommentLink() {
-    load "../../../spite_standard_library/windows"
     console.print("a comment that links to a section is fine")
 }

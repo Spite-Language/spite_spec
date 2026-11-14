@@ -1,2 +1,2 @@
-conformance/repeated_branch_call_chain/repeated_branch_call_chain.spite:12: error: 'source.slice(0, end)' is computed in every branch: compute it once before the 'if' (in RepeatedBranchCallChain.describe)
-conformance/repeated_branch_call_chain/repeated_branch_call_chain.spite:16: error: 'source.slice(0, end)' is computed in both branches: compute it once before the 'if' (in RepeatedBranchCallChain.describe)
+conformance/repeated_branch_call_chain/repeated_branch_call_chain.spite:11: error: 'source.slice(0, end)' is computed in every branch: compute it once before the 'if' (in RepeatedBranchCallChain.describe)
+conformance/repeated_branch_call_chain/repeated_branch_call_chain.spite:15: error: 'source.slice(0, end)' is computed in both branches: compute it once before the 'if' (in RepeatedBranchCallChain.describe)

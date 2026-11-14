@@ -1,1 +1,1 @@
-conformance/generic_named_written_unknown/generic_named_written_unknown.spite:5: error: 'List<Integer>' has no generic 'value_type', so 'List<Integer>.generics["value_type"]' names nothing: name one of its generics, 'element_type' (in GenericNamedWrittenUnknown.GenericNamedWrittenUnknown)
+conformance/generic_named_written_unknown/generic_named_written_unknown.spite:4: error: 'List<Integer>' has no generic 'value_type', so 'List<Integer>.generics["value_type"]' names nothing: name one of its generics, 'element_type' (in GenericNamedWrittenUnknown.GenericNamedWrittenUnknown)

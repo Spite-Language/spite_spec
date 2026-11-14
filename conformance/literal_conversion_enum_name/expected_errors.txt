@@ -1,1 +1,1 @@
-conformance/literal_conversion_enum_name/literal_conversion_enum_name.spite:10: error: the literal "knee" does not convert: Part has no value of that name (in LiteralConversionEnumName.LiteralConversionEnumName)
+conformance/literal_conversion_enum_name/literal_conversion_enum_name.spite:9: error: the literal "knee" does not convert: Part has no value of that name (in LiteralConversionEnumName.LiteralConversionEnumName)

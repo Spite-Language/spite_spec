@@ -7,7 +7,6 @@ enum Color {
 var console = Console()
 
 func ListContainsFlatValues() {
-    load "../../../spite_standard_library/windows"
     var flags = [true, false]
     var has_true = flags.contains(true)
     var false_place = flags.index_of(false)

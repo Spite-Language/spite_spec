@@ -4,7 +4,6 @@ var program = Program()
 var touched_path = ".spite/foreign_symbols_resolved_touched.txt"
 
 func ForeignSymbolsResolvedWhenTheLibraryOpens() {
-    load "../../../spite_standard_library/windows"
     if environment.role == "missing_second" {
         var touching = Touching()
         touching.touch_then_ask_for_another()

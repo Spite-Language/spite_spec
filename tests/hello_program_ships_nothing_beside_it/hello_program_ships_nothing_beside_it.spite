@@ -16,7 +16,6 @@ var _words = [
 ]
 
 func HelloProgramShipsNothingBesideIt() {
-    load "../../../spite_standard_library/windows"
     console.print("hello")
     var path = program.executable_path()
     crash path

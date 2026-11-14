@@ -1,6 +1,5 @@
 var console = Console()
 
 func UnderscoreFlagBeforeReading() {
-    load "../../../spite_standard_library/windows"
     console.print(missing_name)
 }

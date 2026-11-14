@@ -7,7 +7,6 @@ union Creature {
 var console = Console()
 
 func SwitchRestRefused() {
-    load "../../../spite_standard_library/windows"
     var creature: Creature = Cat()
     describe(creature)
 }

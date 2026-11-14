@@ -1,7 +1,6 @@
 var console = Console()
 
 func FnLibraryOperatorsReflected() {
-    load "../../../spite_standard_library/windows"
     var summing = Integer.functions["sum"]
     crash summing
     var indexing = String.functions["get_at"]

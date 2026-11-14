@@ -2,6 +2,5 @@ var console = Console()
 var build = Build()
 
 func BuildSettingType() {
-    load "../../../spite_standard_library/windows"
     console.print(build.name, build.workers)
 }

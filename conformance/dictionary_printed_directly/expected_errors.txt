@@ -1,1 +1,1 @@
-conformance/dictionary_printed_directly/dictionary_printed_directly.spite:7: error: 'Dictionary<String, Integer>' does not fit type 'Printable': it has no function 'to_string' (in DictionaryPrintedDirectly.DictionaryPrintedDirectly)
+conformance/dictionary_printed_directly/dictionary_printed_directly.spite:6: error: 'Dictionary<String, Integer>' does not fit type 'Printable': it has no function 'to_string' (in DictionaryPrintedDirectly.DictionaryPrintedDirectly)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesValueClassesBindSingletonLocally() {
-    load "../../../spite_standard_library/windows"
     var number = 7
     var numbers = [1, 2, 3]
     var ages = Dictionary<String, Integer>()

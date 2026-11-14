@@ -1,1 +1,1 @@
-conformance/list_reserve_is_gone/list_reserve_is_gone.spite:6: error: a List<String> has no attribute or function 'reserve' (in ListReserveIsGone.ListReserveIsGone)
+conformance/list_reserve_is_gone/list_reserve_is_gone.spite:5: error: a List<String> has no attribute or function 'reserve' (in ListReserveIsGone.ListReserveIsGone)

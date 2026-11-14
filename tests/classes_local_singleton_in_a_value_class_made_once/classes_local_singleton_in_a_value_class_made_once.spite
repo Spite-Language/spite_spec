@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesLocalSingletonInAValueClassMadeOnce() {
-    load "../../../spite_standard_library/windows"
     console.print("start")
     var text = "hello"
     text.say_loudly()

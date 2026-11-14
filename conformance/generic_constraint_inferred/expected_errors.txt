@@ -1,1 +1,1 @@
-conformance/generic_constraint_inferred/generic_constraint_inferred.spite:10: error: 'Pet' does not fit type 'Printable', which 'Label' requires of $item_type: it has no function 'to_string' (in GenericConstraintInferred.GenericConstraintInferred)
+conformance/generic_constraint_inferred/generic_constraint_inferred.spite:9: error: 'Pet' does not fit type 'Printable', which 'Label' requires of $item_type: it has no function 'to_string' (in GenericConstraintInferred.GenericConstraintInferred)

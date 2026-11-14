@@ -1,6 +1,5 @@
 var console = Console()
 
 func NoLintFlag() {
-    load "../../../spite_standard_library/windows"
     console.print("lint stays on")
 }

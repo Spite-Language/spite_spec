@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReadsInARow() {
-    load "../../../spite_standard_library/windows"
     var settings_file = File(".spite/documentation_settings.txt")
     var scores_file = File(".spite/documentation_scores.txt")
     crash settings_file.write_string("volume=7")

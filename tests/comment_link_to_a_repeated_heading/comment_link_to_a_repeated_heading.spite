@@ -3,6 +3,5 @@
 var console = Console()
 
 func CommentLinkToARepeatedHeading() {
-    load "../../../spite_standard_library/windows"
     console.print("linked")
 }

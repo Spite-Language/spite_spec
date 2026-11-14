@@ -1,1 +1,1 @@
-conformance/declared_type_with_arguments_in_a_list/declared_type_with_arguments_in_a_list.spite:10: error: 'Phase' is not a generic class, so it takes no type in '<>': write 'Phase' alone
+conformance/declared_type_with_arguments_in_a_list/declared_type_with_arguments_in_a_list.spite:9: error: 'Phase' is not a generic class, so it takes no type in '<>': write 'Phase' alone

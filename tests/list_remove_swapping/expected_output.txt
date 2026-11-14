@@ -1,4 +1,4 @@
 dbc
 db
 spite: the program stopped at ... in ...remove_swapping...
-spite.frame	tests/list_remove_swapping/list_remove_swapping.spite:12	ListRemoveSwapping	ListRemoveSwapping
+spite.frame	tests/list_remove_swapping/list_remove_swapping.spite:11	ListRemoveSwapping	ListRemoveSwapping

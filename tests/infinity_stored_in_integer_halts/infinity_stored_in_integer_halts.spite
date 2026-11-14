@@ -1,7 +1,6 @@
 var console = Console()
 
 func InfinityStoredInIntegerHalts() {
-    load "../../../spite_standard_library/windows"
     var nobody = 0.0
     var one = 1.0
     var ratio = one / nobody

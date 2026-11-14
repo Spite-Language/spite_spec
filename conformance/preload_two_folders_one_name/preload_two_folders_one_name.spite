@@ -1,7 +1,6 @@
 var art = Volume("art")
 
 func PreloadTwoFoldersOneName() {
-    load "../../../spite_standard_library/windows"
     preload "small/art"
     preload "large/art"
     var picture = art.file("picture.txt")

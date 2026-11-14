@@ -3,7 +3,6 @@ var build = Build()
 var palette = Palette()
 
 func HotReloadReplacesAnEnum() {
-    load "../../../spite_standard_library/windows"
     var count = palette.shade_count()
     console.print(count)
     var file_path: Path? = "{build.program}/palette.spite"

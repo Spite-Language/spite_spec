@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonFloatKey() {
-    load "../../../spite_standard_library/windows"
     var weights = Dictionary<Float, String>()
     weights[0.5] = "half"
     var writer = JsonWriter<Dictionary<Float, String>>()

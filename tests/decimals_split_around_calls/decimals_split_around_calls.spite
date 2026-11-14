@@ -3,7 +3,6 @@ var _steps = 1000
 var _rare = 97
 
 func DecimalsSplitAroundCalls() {
-    load "../../../spite_standard_library/windows"
     var first = 1.5
     var second = 2.25
     var third = 3.125

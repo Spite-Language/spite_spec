@@ -4,7 +4,6 @@ var second = Tally<String>()
 var registry = Registry()
 
 func SingletonHeldAtExit() {
-    load "../../../spite_standard_library/windows"
     first.add(3)
     second.add(4)
     var count = registry.count()

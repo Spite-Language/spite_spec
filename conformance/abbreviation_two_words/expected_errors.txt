@@ -1,1 +1,1 @@
-conformance/abbreviation_two_words/abbreviation_two_words.spite:5: fixed: 'max_len' abbreviated, and Spite has no abbreviations outside its own keywords; renamed it 'maximum_length' (in AbbreviationTwoWords.AbbreviationTwoWords)
+conformance/abbreviation_two_words/abbreviation_two_words.spite:4: fixed: 'max_len' abbreviated, and Spite has no abbreviations outside its own keywords; renamed it 'maximum_length' (in AbbreviationTwoWords.AbbreviationTwoWords)

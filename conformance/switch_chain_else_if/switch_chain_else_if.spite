@@ -6,7 +6,6 @@ enum Light {
 }
 
 func SwitchChainElseIf(): Integer {
-    load "../../../spite_standard_library/windows"
     return seconds_for('green')
 }
 

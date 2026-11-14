@@ -6,7 +6,6 @@ var build = Build()
 var _most_frames = 5000
 
 func FrameWaitsReturnedParameter() {
-    load "../../../spite_standard_library/windows"
     var one_millisecond = Duration(1, 'milliseconds')
     while frames < _most_frames and echoer.last.is_empty() {
         frames = frames + 1

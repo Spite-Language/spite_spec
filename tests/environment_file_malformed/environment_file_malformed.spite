@@ -2,7 +2,6 @@ var console = Console()
 var environment = Environment()
 
 func EnvironmentFileMalformed() {
-    load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/environment_file_malformed")
     crash folder.create()
     var settings = File(".spite/environment_file_malformed/.env")

@@ -1,5 +1,4 @@
 func Objects(): Integer {
-    load "../../../spite_standard_library/windows"
     var counter = Counter()
     counter.count = 5
     counter.bump()

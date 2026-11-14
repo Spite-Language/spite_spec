@@ -7,7 +7,6 @@ union Creature {
 var console = Console()
 
 func SwitchOneException() {
-    load "../../../spite_standard_library/windows"
     var creature: Creature = Cat()
     show(creature)
 }

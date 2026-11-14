@@ -2,6 +2,5 @@ var console = Console()
 var _secret = 1
 
 func PrivateAttributeUnread() {
-    load "../../../spite_standard_library/windows"
     console.print("kept")
 }

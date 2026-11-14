@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesKeywordEnumAsName() {
-    load "../../../spite_standard_library/windows"
     var enum = 1
     console.print(enum)
 }

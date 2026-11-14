@@ -6,7 +6,6 @@ var limit = 1000
 var _too_big = 3000000
 
 func NamedBoundsProveRanges() {
-    load "../../../spite_standard_library/windows"
     var small = 50
     var clamped = under_a_named_minimum(small)
     var guarded = after_a_named_fallback(small)

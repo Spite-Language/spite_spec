@@ -1,7 +1,6 @@
 var console = Console()
 
 func NarrowedPastALoopWriteToAnEarlierAttribute() {
-    load "../../../spite_standard_library/windows"
     var rack = Rack()
     var first = Item()
     var filled = Shelf()

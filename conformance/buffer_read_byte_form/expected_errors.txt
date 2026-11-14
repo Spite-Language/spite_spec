@@ -1,1 +1,1 @@
-conformance/buffer_read_byte_form/buffer_read_byte_form.spite:7: error: a Buffer has no attribute or function 'read_byte_at' (in BufferReadByteForm.BufferReadByteForm)
+conformance/buffer_read_byte_form/buffer_read_byte_form.spite:6: error: a Buffer has no attribute or function 'read_byte_at' (in BufferReadByteForm.BufferReadByteForm)

@@ -1,1 +1,1 @@
-conformance/abbreviation_plural_dirs/abbreviation_plural_dirs.spite:5: error: 'dirs' abbreviates 'dirs', which could mean 'directories' or 'directions': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationPluralDirs.AbbreviationPluralDirs)
+conformance/abbreviation_plural_dirs/abbreviation_plural_dirs.spite:4: error: 'dirs' abbreviates 'dirs', which could mean 'directories' or 'directions': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationPluralDirs.AbbreviationPluralDirs)

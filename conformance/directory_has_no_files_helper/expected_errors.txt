@@ -1,1 +1,1 @@
-conformance/directory_has_no_files_helper/directory_has_no_files_helper.spite:8: error: a List<Directory.Entry> has no attribute or function 'files' (in DirectoryHasNoFilesHelper.DirectoryHasNoFilesHelper)
+conformance/directory_has_no_files_helper/directory_has_no_files_helper.spite:7: error: a List<Directory.Entry> has no attribute or function 'files' (in DirectoryHasNoFilesHelper.DirectoryHasNoFilesHelper)

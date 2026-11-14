@@ -1,2 +1,2 @@
 10000000000
-spite: 'product * first' does not fit in a Long (10000000000 * 5000000000), at tests/long_multiplication_overflow_halts/long_multiplication_overflow_halts.spite:9 in LongMultiplicationOverflowHalts.LongMultiplicationOverflowHalts
+spite: 'product * first' does not fit in a Long (10000000000 * 5000000000), at tests/long_multiplication_overflow_halts/long_multiplication_overflow_halts.spite:8 in LongMultiplicationOverflowHalts.LongMultiplicationOverflowHalts

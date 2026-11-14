@@ -3,7 +3,6 @@ var build = Build()
 var greeter = Greeter()
 
 func HotReloadAddsAndRemovesFunctions() {
-    load "../../../spite_standard_library/windows"
     var said = greeter.greeting()
     console.print(said)
     var folder = build.program.replace("/", "\\")

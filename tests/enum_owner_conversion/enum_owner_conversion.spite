@@ -6,7 +6,6 @@ enum Job {
 var console = Console()
 
 func EnumOwnerConversion() {
-    load "../../../spite_standard_library/windows"
     var score = 2.5
     var job: Job? = score
     crash job

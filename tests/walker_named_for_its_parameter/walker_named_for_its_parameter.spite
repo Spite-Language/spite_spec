@@ -1,7 +1,6 @@
 var console = Console()
 
 func WalkerNamedForItsParameter() {
-    load "../../../spite_standard_library/windows"
     Monster.functions.each(show_function)
     Monster.functions.each(count_function)
 }

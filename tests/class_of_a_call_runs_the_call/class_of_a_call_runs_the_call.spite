@@ -2,7 +2,6 @@ var console = Console()
 var thing = Thing()
 
 func ClassOfACallRunsTheCall() {
-    load "../../../spite_standard_library/windows"
     var same = thing.pop().class == Thing
     console.print("compared", same, thing.turns)
     var named = thing.pop().class.name

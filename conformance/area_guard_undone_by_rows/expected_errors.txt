@@ -1,1 +1,1 @@
-conformance/area_guard_undone_by_rows/area_guard_undone_by_rows.spite:21: error: this value may be null (it is an Integer?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in AreaGuardUndoneByRows.show)
+conformance/area_guard_undone_by_rows/area_guard_undone_by_rows.spite:20: error: this value may be null (it is an Integer?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in AreaGuardUndoneByRows.show)

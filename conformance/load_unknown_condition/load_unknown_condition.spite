@@ -1,7 +1,6 @@
 var program = Program()
 
 func LoadUnknownCondition() {
-    load "../../../spite_standard_library/windows"
     var folder = program.working_directory()
     if folder == "extras" {
         load "extras"

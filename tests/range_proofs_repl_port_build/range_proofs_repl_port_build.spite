@@ -9,7 +9,6 @@ var program = Program()
 var _port = 47331
 
 func RangeProofsReplPortBuild() {
-    load "../../../spite_standard_library/windows"
     var one = joined_in_if(true)
     var two = joined_in_switch('small')
     var three = joined_wide(true, 5)

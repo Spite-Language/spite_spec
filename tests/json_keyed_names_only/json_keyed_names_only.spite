@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonKeyedNamesOnly() {
-    load "../../../spite_standard_library/windows"
     var reader = JsonReader<MeshRecord>()
     reader.keys = {MeshRecord.attributes["minimum_level_of_detail"]: "min_lod"}
     var by_key = reader.read("\{\"min_lod\": 3}")

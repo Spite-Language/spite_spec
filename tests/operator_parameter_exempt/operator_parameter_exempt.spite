@@ -1,7 +1,6 @@
 var console = Console()
 
 func OperatorParameterExempt() {
-    load "../../../spite_standard_library/windows"
     var first = Token()
     var second = Token()
     var same = first == second

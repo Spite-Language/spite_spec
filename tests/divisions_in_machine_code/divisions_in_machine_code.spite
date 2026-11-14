@@ -4,7 +4,6 @@ var _prime_divisor: UnsignedLong = 1000000007
 var _third_of_largest_divisor: UnsignedLong = 6148914691236517205
 
 func DivisionsInMachineCode() {
-    load "../../../spite_standard_library/windows"
     var first_line = console.read_line()
     crash first_line
     var parsed: Long? = first_line.trim()

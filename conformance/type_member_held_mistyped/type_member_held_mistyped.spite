@@ -3,7 +3,6 @@ type Turning {
 }
 
 func TypeMemberHeldMistyped(): Integer {
-    load "../../../spite_standard_library/windows"
     var thing = Holder()
     return change(thing)
 }

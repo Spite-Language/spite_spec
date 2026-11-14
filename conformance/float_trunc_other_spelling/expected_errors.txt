@@ -1,1 +1,1 @@
-conformance/float_trunc_other_spelling/float_trunc_other_spelling.spite:6: error: Float has no function 'trunc': Spite spells it 'truncate', since no name is abbreviated (in FloatTruncOtherSpelling.FloatTruncOtherSpelling)
+conformance/float_trunc_other_spelling/float_trunc_other_spelling.spite:5: error: Float has no function 'trunc': Spite spells it 'truncate', since no name is abbreviated (in FloatTruncOtherSpelling.FloatTruncOtherSpelling)

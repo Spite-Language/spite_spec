@@ -11,7 +11,6 @@ var _half_entity_count = 200
 var _last_entity_index = 399
 
 func LentListElementsParallel() {
-    load "../../../spite_standard_library/windows"
     var entity = 0
     while entity < _entity_count {
         var position = Position()

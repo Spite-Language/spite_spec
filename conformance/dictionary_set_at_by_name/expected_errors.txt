@@ -1,1 +1,1 @@
-conformance/dictionary_set_at_by_name/dictionary_set_at_by_name.spite:6: error: 'set_at' is what '[] =' calls: write 'scores["bo"] = 2' (in DictionarySetAtByName.DictionarySetAtByName)
+conformance/dictionary_set_at_by_name/dictionary_set_at_by_name.spite:5: error: 'set_at' is what '[] =' calls: write 'scores["bo"] = 2' (in DictionarySetAtByName.DictionarySetAtByName)

@@ -21,7 +21,6 @@ var words = [
 ]
 
 func StringSingularizeRules() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < words.count() {
         var word = words[index]

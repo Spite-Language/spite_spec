@@ -1,7 +1,6 @@
 var console = Console()
 
 func FileEdges() {
-    load "../../../spite_standard_library/windows"
     unopenable_paths()
     empty_folder()
     lock_let_go_by_leaving()

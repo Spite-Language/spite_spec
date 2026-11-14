@@ -1,1 +1,1 @@
-conformance/text_greater_than_by_name/text_greater_than_by_name.spite:6: error: 'greater_than' is what '>' calls: write 'word > "urn"' (in TextGreaterThanByName.TextGreaterThanByName)
+conformance/text_greater_than_by_name/text_greater_than_by_name.spite:5: error: 'greater_than' is what '>' calls: write 'word > "urn"' (in TextGreaterThanByName.TextGreaterThanByName)

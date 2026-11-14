@@ -1,5 +1,4 @@
 func TemplateEachAttribute() {
-    load "../../../spite_standard_library/windows"
     var things = List<Thing>()
     things.each_size()
 }

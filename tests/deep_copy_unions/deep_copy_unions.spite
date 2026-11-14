@@ -19,7 +19,6 @@ type Labeled {
 var console = Console()
 
 func DeepCopyUnions() {
-    load "../../../spite_standard_library/windows"
     var shelf = Shelf()
     var crate = Crate("apples")
     crate.weights.append(3)

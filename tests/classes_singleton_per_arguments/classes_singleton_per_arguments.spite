@@ -4,7 +4,6 @@ var second = Channel(2)
 var again = Channel(1)
 
 func ClassesSingletonPerArguments() {
-    load "../../../spite_standard_library/windows"
     first.send("a")
     second.send("b")
     again.send("c")

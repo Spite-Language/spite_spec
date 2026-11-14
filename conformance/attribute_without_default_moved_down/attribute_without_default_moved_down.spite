@@ -1,7 +1,6 @@
 var console = Console()
 
 func AttributeWithoutDefaultMovedDown() {
-    load "../../../spite_standard_library/windows"
     var pet = Pet()
     var hunt = Hunt(pet)
     console.print(hunt.target.name, hunt.score)

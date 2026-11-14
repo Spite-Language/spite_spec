@@ -1,7 +1,6 @@
 var console = Console()
 
 func InlineSingleton() {
-    load "../../../spite_standard_library/windows"
     console.print("built for {Build().target_operating_system}")
     Console().print("printed on the spot")
     greet(Console())

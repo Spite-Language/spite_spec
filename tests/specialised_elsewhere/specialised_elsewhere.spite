@@ -1,5 +1,4 @@
 func SpecialisedElsewhere() {
-    load "../../../spite_standard_library/windows"
     var troll = Monster()
     var shower = Shower<Monster>()
     shower.show_all(troll)

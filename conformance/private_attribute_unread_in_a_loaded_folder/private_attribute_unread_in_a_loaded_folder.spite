@@ -1,7 +1,6 @@
 var console = Console()
 
 func PrivateAttributeUnreadInALoadedFolder() {
-    load "../../../spite_standard_library/windows"
     load "package"
     var shape = Shape()
     var size = shape.size()

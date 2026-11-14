@@ -1,4 +1,3 @@
 func ReflectionClassFunctionCall() {
-    load "../../../spite_standard_library/windows"
     Weapon.debug()
 }

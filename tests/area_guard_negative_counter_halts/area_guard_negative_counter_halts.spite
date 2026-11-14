@@ -2,7 +2,6 @@ var console = Console()
 var cells = List<Integer>()
 
 func AreaGuardNegativeCounterHalts() {
-    load "../../../spite_standard_library/windows"
     var filled = 0
     while filled < 6 {
         cells.append(filled * 10)

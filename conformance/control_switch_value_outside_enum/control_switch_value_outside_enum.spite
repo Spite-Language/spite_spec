@@ -6,7 +6,6 @@ enum Light {
 var console = Console()
 
 func ControlSwitchValueOutsideEnum() {
-    load "../../../spite_standard_library/windows"
     var wait = seconds_for('red')
     console.print(wait)
 }

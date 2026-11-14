@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_arr/abbreviation_meaning_arr.spite:5: error: 'arr' abbreviates 'arr', which could mean 'array' or 'arrival': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningArr.AbbreviationMeaningArr)
+conformance/abbreviation_meaning_arr/abbreviation_meaning_arr.spite:4: error: 'arr' abbreviates 'arr', which could mean 'array' or 'arrival': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningArr.AbbreviationMeaningArr)

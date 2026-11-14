@@ -6,7 +6,6 @@ type Moving {
 var console = Console()
 
 func AttributesOfAType() {
-    load "../../../spite_standard_library/windows"
     var runner = Runner<Moving>()
     var answer = runner.search()
     console.print(answer)

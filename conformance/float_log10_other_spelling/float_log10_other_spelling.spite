@@ -1,7 +1,6 @@
 var console = Console()
 
 func FloatLog10OtherSpelling() {
-    load "../../../spite_standard_library/windows"
     var side = 2.0
     var answer = side.log10()
     console.print(answer)

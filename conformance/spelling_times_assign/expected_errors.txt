@@ -1,1 +1,1 @@
-conformance/spelling_times_assign/spelling_times_assign.spite:6: error: Spite has no '*=': write 'count = count * value'
+conformance/spelling_times_assign/spelling_times_assign.spite:5: error: Spite has no '*=': write 'count = count * value'

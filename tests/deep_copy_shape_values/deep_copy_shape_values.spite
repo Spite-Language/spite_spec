@@ -6,7 +6,6 @@ enum Colour {
 var console = Console()
 
 func DeepCopyShapeValues() {
-    load "../../../spite_standard_library/windows"
     var number = Box()
     number.held = 5
     var copied_number = number.deep_copy()

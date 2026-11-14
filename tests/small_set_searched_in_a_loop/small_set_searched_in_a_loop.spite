@@ -7,7 +7,6 @@ var whole_percent = 100
 var allowed_milliseconds = 20
 
 func SmallSetSearchedInALoop() {
-    load "../../../spite_standard_library/windows"
     var started = clock.elapsed()
     var set_found = searched_in_sets()
     var between = clock.elapsed()

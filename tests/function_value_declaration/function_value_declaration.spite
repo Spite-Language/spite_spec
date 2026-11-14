@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionValueDeclaration() {
-    load "../../../spite_standard_library/windows"
     var monster = Monster()
     var hurt = monster.hurt
     var taken = hurt.declaration.arguments.count()

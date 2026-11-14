@@ -2,7 +2,6 @@ var console = Console()
 var thing = Thing()
 
 func GetterWithAnEffectAfterWhile() {
-    load "../../../spite_standard_library/windows"
     while thing.reading {
         var seen = thing.reading.side
         console.print(seen)

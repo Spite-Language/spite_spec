@@ -2,7 +2,6 @@ var console = Console()
 var names = ["ada", "bo", "cy"]
 
 func CountInNameProves() {
-    load "../../../spite_standard_library/windows"
     show_all()
     show_all_but_last()
 }

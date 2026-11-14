@@ -2,7 +2,6 @@ var console = Console()
 var build = Build()
 
 func ProcessSettings() {
-    load "../../../spite_standard_library/windows"
     var echoed = echoing(["-script=a b", "-plain=x", "two words", "say \"hi\"", "C:\\a b\\"])
     crash echoed.run()
     var echoed_line_text = echoed.read_output_as_string()

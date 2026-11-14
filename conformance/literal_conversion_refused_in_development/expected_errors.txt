@@ -1,1 +1,1 @@
-conformance/literal_conversion_refused_in_development/literal_conversion_refused_in_development.spite:5: error: the literal "no colour" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionRefusedInDevelopment.LiteralConversionRefusedInDevelopment)
+conformance/literal_conversion_refused_in_development/literal_conversion_refused_in_development.spite:4: error: the literal "no colour" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionRefusedInDevelopment.LiteralConversionRefusedInDevelopment)

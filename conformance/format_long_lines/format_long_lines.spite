@@ -1,7 +1,6 @@
 var console = Console()
 
 func FormatLongLines() {
-    load "../../../spite_standard_library/windows"
     var names = ["alphabetical", "bravo", "charlie", "delta", "echo", "foxtrot", "golf", "hotel", "india", "juliet", "kilo"]
     var first_of_the_numbers = names.count()
     var second_of_the_numbers = 2

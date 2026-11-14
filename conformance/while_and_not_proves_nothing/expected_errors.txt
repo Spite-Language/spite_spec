@@ -1,3 +1,3 @@
 conformance/while_and_not_proves_nothing/item.spite:5: fixed: 'read_next' only copied 'next' so it could be narrowed; narrowed 'next' itself and used it directly (in Item.read_it)
 conformance/while_and_not_proves_nothing/while_and_not_proves_nothing.spite:7: fixed: the attribute 'held' was never read, and nothing written to it does anything; removed it and every write (in WhileAndNotProvesNothing.)
-conformance/while_and_not_proves_nothing/while_and_not_proves_nothing.spite:54: error: this value may be null (it is an Item?), so 'number' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in WhileAndNotProvesNothing.show)
+conformance/while_and_not_proves_nothing/while_and_not_proves_nothing.spite:53: error: this value may be null (it is an Item?), so 'number' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in WhileAndNotProvesNothing.show)

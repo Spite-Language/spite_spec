@@ -1,4 +1,4 @@
 105
-spite: the program stopped at tests/crash_report_many_values/crash_report_many_values.spite:25 in CrashReportManyValues.check, site 0e935502 (total=105, value_one=1, value_two=2, value_three=3, value_four=4, value_five=5, value_six=6, value_seven=7, value_eight=8, value_nine=9, value_ten=10, value_eleven=11)
-spite.frame	tests/crash_report_many_values/crash_report_many_values.spite:25	CrashReportManyValues	check
-spite.frame	tests/crash_report_many_values/crash_report_many_values.spite:5	CrashReportManyValues	CrashReportManyValues
+spite: the program stopped at tests/crash_report_many_values/crash_report_many_values.spite:24 in CrashReportManyValues.check, site 0e935502 (total=105, value_one=1, value_two=2, value_three=3, value_four=4, value_five=5, value_six=6, value_seven=7, value_eight=8, value_nine=9, value_ten=10, value_eleven=11)
+spite.frame	tests/crash_report_many_values/crash_report_many_values.spite:24	CrashReportManyValues	check
+spite.frame	tests/crash_report_many_values/crash_report_many_values.spite:4	CrashReportManyValues	CrashReportManyValues

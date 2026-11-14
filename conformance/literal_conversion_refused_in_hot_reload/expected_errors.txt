@@ -1,1 +1,1 @@
-conformance/literal_conversion_refused_in_hot_reload/literal_conversion_refused_in_hot_reload.spite:5: error: the literal "no colour" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionRefusedInHotReload.LiteralConversionRefusedInHotReload)
+conformance/literal_conversion_refused_in_hot_reload/literal_conversion_refused_in_hot_reload.spite:4: error: the literal "no colour" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionRefusedInHotReload.LiteralConversionRefusedInHotReload)

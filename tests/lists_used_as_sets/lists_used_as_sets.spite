@@ -10,7 +10,6 @@ var repeated_count = 40
 var kinds = 30
 
 func ListsUsedAsSets() {
-    load "../../../spite_standard_library/windows"
     var small = filled(small_count)
     var large = filled(large_count)
     var started = clock.elapsed()

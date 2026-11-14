@@ -2,7 +2,6 @@ var console = Console()
 var _back = -4
 
 func FileNegativePosition() {
-    load "../../../spite_standard_library/windows"
     var file = File(".spite/file_negative_position.txt")
     var written = file.write_string("hello")
     console.print(written)

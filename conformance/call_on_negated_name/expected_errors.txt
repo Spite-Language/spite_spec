@@ -1,1 +1,1 @@
-conformance/call_on_negated_name/call_on_negated_name.spite:6: error: '(-offset).absolute(...)' calls a function on a value computed in place: name it first ('var named = -offset') and call 'named.absolute(...)', since only a name calls a function (in CallOnNegatedName.CallOnNegatedName)
+conformance/call_on_negated_name/call_on_negated_name.spite:5: error: '(-offset).absolute(...)' calls a function on a value computed in place: name it first ('var named = -offset') and call 'named.absolute(...)', since only a name calls a function (in CallOnNegatedName.CallOnNegatedName)

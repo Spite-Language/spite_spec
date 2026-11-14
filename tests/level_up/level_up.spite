@@ -1,7 +1,6 @@
 var console = Console()
 
 func LevelUp() {
-    load "../../../spite_standard_library/windows"
     var hero = Member("Aria")
     bump_level(hero)
     console.print("name", hero.name, "level", hero.level)

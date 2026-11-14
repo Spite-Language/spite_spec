@@ -1,2 +1,2 @@
 Integer Integer Integer
-spite: 'length * large' does not fit in an Integer (5 * 2000000000), at tests/count_and_length_are_integers/count_and_length_are_integers.spite:14 in CountAndLengthAreIntegers.CountAndLengthAreIntegers
+spite: 'length * large' does not fit in an Integer (5 * 2000000000), at tests/count_and_length_are_integers/count_and_length_are_integers.spite:13 in CountAndLengthAreIntegers.CountAndLengthAreIntegers

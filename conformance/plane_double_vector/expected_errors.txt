@@ -1,1 +1,1 @@
-conformance/plane_double_vector/plane_double_vector.spite:8: error: a Vector3<Double> cannot be used where a Vector3<Float> is needed (in PlaneDoubleVector.PlaneDoubleVector)
+conformance/plane_double_vector/plane_double_vector.spite:7: error: a Vector3<Double> cannot be used where a Vector3<Float> is needed (in PlaneDoubleVector.PlaneDoubleVector)

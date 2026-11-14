@@ -3,7 +3,6 @@ var _reader_rounds = 200
 var _rounds = 300
 
 func ThreadCountedClasses() {
-    load "../../../spite_standard_library/windows"
     var shelf = Shelf()
     var index = 0
     while index < 1000 {

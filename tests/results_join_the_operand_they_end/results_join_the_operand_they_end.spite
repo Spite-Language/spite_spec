@@ -2,7 +2,6 @@ var console = Console()
 var _wrap = 1000003
 
 func ResultsJoinTheOperandTheyEnd() {
-    load "../../../spite_standard_library/windows"
     var previous = 1
     var current = 1
     var step = 0

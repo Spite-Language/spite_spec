@@ -1,7 +1,6 @@
 var console = Console()
 
 func LocalSingleton() {
-    load "../../../spite_standard_library/windows"
     var build = Build()
     console.print("built for {build.target_operating_system}")
     report()

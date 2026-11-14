@@ -7,7 +7,6 @@ var console = Console()
 var allowed = "on"
 
 func LiteralConversionStaysAtRunTime() {
-    load "../../../spite_standard_library/windows"
     var loud: Loud? = "hello"
     crash loud
     console.print(loud.word)

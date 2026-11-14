@@ -1,1 +1,1 @@
-conformance/read_underscore_name/read_underscore_name.spite:3: fixed: '_counted' was read, so it must not start with an underscore: only a parameter the body ignores is named that way; renamed it 'counted' (in ReadUnderscoreName.ReadUnderscoreName)
+conformance/read_underscore_name/read_underscore_name.spite:2: fixed: '_counted' was read, so it must not start with an underscore: only a parameter the body ignores is named that way; renamed it 'counted' (in ReadUnderscoreName.ReadUnderscoreName)

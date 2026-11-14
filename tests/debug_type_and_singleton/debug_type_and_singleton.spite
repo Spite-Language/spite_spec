@@ -5,7 +5,6 @@ type Shape {
 var console = Console()
 
 func DebugTypeAndSingleton() {
-    load "../../../spite_standard_library/windows"
     var circle = Circle(2)
     var shown = describe(circle)
     console.print(shown)

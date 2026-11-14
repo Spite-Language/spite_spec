@@ -3,7 +3,6 @@ var items = ["a", "b"]
 var shelf = Shelf()
 
 func ShrinkThroughANewLocalKeepsTheProof() {
-    load "../../../spite_standard_library/windows"
     work()
     var left = shelf.items.count()
     console.print(left)

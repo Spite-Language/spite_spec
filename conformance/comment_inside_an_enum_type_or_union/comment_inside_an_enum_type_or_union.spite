@@ -18,7 +18,6 @@ type Labeled {
 var console = Console()
 
 func CommentInsideAnEnumTypeOrUnion() {
-    load "../../../spite_standard_library/windows"
     var kind: Kind = 'small'
     var shaped: Labeled = {label: "a literal"}
     var shape: Shape = Circle()

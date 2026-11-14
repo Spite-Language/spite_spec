@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryPassedForms() {
-    load "../../../spite_standard_library/windows"
     var team = Dictionary<String, String>()
     team["lead"] = "Ada"
     team["second"] = "Barbara"

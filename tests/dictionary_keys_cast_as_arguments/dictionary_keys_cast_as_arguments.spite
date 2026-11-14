@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryKeysCastAsArguments() {
-    load "../../../spite_standard_library/windows"
     var scores = Dictionary<String, Integer>()
     scores[7] = 3
     var by_text = scores["7"]

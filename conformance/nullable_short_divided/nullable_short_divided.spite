@@ -3,7 +3,6 @@ var kept = 1
 var seen = List<Integer>()
 
 func NullableShortDivided() {
-    load "../../../spite_standard_library/windows"
     seen.append(kept)
     kept = seen.count()
     var total: Integer = 5

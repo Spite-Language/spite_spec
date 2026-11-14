@@ -1,7 +1,6 @@
 var console = Console()
 
 func ComputedReceiver() {
-    load "../../../spite_standard_library/windows"
     var start = 3
     var offset = 4
     var furthest = (start + offset).maximum(10)

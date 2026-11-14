@@ -8,7 +8,6 @@ var label = Label()
 var _click_count: Long = 1234567890123456789
 
 func DirectText() {
-    load "../../../spite_standard_library/windows"
     var clicks: Long = _click_count
     var clicks_text: String = clicks
     console.print(clicks_text)

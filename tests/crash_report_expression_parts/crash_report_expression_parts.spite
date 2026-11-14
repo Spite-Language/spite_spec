@@ -1,7 +1,6 @@
 var console = Console()
 
 func CrashReportExpressionParts() {
-    load "../../../spite_standard_library/windows"
     check(3, "ab")
 }
 

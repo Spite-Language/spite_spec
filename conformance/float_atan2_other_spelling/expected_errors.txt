@@ -1,1 +1,1 @@
-conformance/float_atan2_other_spelling/float_atan2_other_spelling.spite:6: error: Float has no function 'atan2': Spite spells it 'arc_tangent_over', since no name is abbreviated (in FloatAtan2OtherSpelling.FloatAtan2OtherSpelling)
+conformance/float_atan2_other_spelling/float_atan2_other_spelling.spite:5: error: Float has no function 'atan2': Spite spells it 'arc_tangent_over', since no name is abbreviated (in FloatAtan2OtherSpelling.FloatAtan2OtherSpelling)

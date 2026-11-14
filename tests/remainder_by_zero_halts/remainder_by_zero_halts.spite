@@ -1,7 +1,6 @@
 var console = Console()
 
 func RemainderByZeroHalts() {
-    load "../../../spite_standard_library/windows"
     var nobody = 0
     var rest = left_over(7, nobody)
     console.print("never printed", rest)

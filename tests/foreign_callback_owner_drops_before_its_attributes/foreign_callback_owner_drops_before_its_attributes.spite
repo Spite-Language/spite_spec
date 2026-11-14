@@ -4,7 +4,6 @@ var _first = 1
 var _second = 2
 
 func ForeignCallbackOwnerDropsBeforeItsAttributes() {
-    load "../../../spite_standard_library/windows"
     make_and_lose_a_speaker()
     console.print("the owner is gone")
     plain.click(_second)

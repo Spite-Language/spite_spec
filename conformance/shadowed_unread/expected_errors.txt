@@ -1,1 +1,1 @@
-conformance/shadowed_unread/shadowed_unread.spite:5: fixed: 'count' was never read, and making it does nothing; removed it (in ShadowedUnread.ShadowedUnread)
+conformance/shadowed_unread/shadowed_unread.spite:4: fixed: 'count' was never read, and making it does nothing; removed it (in ShadowedUnread.ShadowedUnread)

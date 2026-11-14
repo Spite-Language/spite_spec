@@ -5,7 +5,6 @@ var _filled_rows = 400
 var _high_health = 300
 
 func SingletonFunctionValues() {
-    load "../../../spite_standard_library/windows"
     rows.least = _least_health
     var filling = List<Integer>()
     var start = 0

@@ -3,7 +3,6 @@ var _short_limit_milliseconds = 500
 var _long_limit_seconds = 30
 
 func ProcessLimits() {
-    load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/process_limits")
     crash folder.create()
     var script = File(".spite/process_limits/answers_on_both.cmd")

@@ -1,1 +1,1 @@
-conformance/list_get_at_call_refused/list_get_at_call_refused.spite:6: error: 'get_at' is what '[]' calls: write 'names[-1]' (in ListGetAtCallRefused.ListGetAtCallRefused)
+conformance/list_get_at_call_refused/list_get_at_call_refused.spite:5: error: 'get_at' is what '[]' calls: write 'names[-1]' (in ListGetAtCallRefused.ListGetAtCallRefused)

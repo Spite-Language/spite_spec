@@ -1,1 +1,1 @@
-conformance/control_old_for/control_old_for.spite:6: error: Spite has no 'for': Spite has only the 'while' loop. Write 'while', or the member templates 'each_<member>()', 'map_<member>()' and 'filter_<member>()'
+conformance/control_old_for/control_old_for.spite:5: error: Spite has no 'for': Spite has only the 'while' loop. Write 'while', or the member templates 'each_<member>()', 'map_<member>()' and 'filter_<member>()'

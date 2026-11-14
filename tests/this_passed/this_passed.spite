@@ -1,7 +1,6 @@
 var console = Console()
 
 func ThisPassed() {
-    load "../../../spite_standard_library/windows"
     var registry = Registry()
     var first = Member("ada")
     first.join(registry)

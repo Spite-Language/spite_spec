@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReflectionNames() {
-    load "../../../spite_standard_library/windows"
     var table = Table()
     var writer = JsonWriter<Table>()
     var text = writer.write(table)

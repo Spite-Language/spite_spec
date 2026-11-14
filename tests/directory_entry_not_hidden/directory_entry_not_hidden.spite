@@ -3,7 +3,6 @@ var console = Console()
 var build = Build()
 
 func DirectoryEntryNotHidden() {
-    load "../../../spite_standard_library/windows"
     var mine = Entry()
     var shown = mine.shown()
     console.print("my entry", shown)

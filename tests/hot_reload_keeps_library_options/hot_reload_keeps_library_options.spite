@@ -4,7 +4,6 @@ var reload = Reload()
 var written = "tests/hot_reload_keeps_library_options/.spite/build/hot_reload_keeps_library_options.high_ir.txt"
 
 func HotReloadKeepsLibraryOptions() {
-    load "../../../spite_standard_library/windows"
     var swapped = reload.generation()
     console.print("generation", swapped)
     if build.hot_reload {

@@ -2,7 +2,6 @@ var console = Console()
 var notes = Volume("notes")
 
 func PreloadVolumePaths() {
-    load "../../../spite_standard_library/windows"
     preload "notes"
     var kept = notes.file("kept.txt")
     var again_path: Path? = kept.path

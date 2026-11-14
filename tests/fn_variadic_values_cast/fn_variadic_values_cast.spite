@@ -3,7 +3,6 @@ var _whole_a = 3
 var _whole_b = 4
 
 func FnVariadicValuesCast() {
-    load "../../../spite_standard_library/windows"
     var first = _whole_a
     var second = _whole_b
     var total = add_up(first, second, 5)

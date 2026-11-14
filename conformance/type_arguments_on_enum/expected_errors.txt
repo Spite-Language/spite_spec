@@ -1,1 +1,1 @@
-conformance/type_arguments_on_enum/type_arguments_on_enum.spite:10: error: 'Phase' is not a generic class, so it takes no type in '<>': write 'Phase' alone
+conformance/type_arguments_on_enum/type_arguments_on_enum.spite:9: error: 'Phase' is not a generic class, so it takes no type in '<>': write 'Phase' alone

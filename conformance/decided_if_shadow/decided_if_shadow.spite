@@ -1,7 +1,6 @@
 var console = Console()
 
 func DecidedIfShadow() {
-    load "../../../spite_standard_library/windows"
     var shown = "outer"
     console.print(shown)
     if 2 > 1 {

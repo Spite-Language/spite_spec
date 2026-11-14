@@ -1,1 +1,1 @@
-conformance/memory_not_named_heap/memory_not_named_heap.spite:6: error: unknown type 'Memory.Heap' (in MemoryNotNamedHeap.MemoryNotNamedHeap)
+conformance/memory_not_named_heap/memory_not_named_heap.spite:5: error: unknown type 'Memory.Heap' (in MemoryNotNamedHeap.MemoryNotNamedHeap)

@@ -1,5 +1,4 @@
 func OperatorSumTakesNothing() {
-    load "../../../spite_standard_library/windows"
     var thing = Thing()
     var other = Thing()
     var both = thing + other

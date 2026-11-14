@@ -1,7 +1,6 @@
 var console = Console()
 
 func TextEscapes() {
-    load "../../../spite_standard_library/windows"
     var plain = plain_texts()
     var after_a_hole = texts_after_a_hole()
     var in_a_hole = texts_in_a_hole()

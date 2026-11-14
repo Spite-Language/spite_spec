@@ -1,7 +1,6 @@
 var console = Console()
 
 func SpinningLoop() {
-    load "../../../spite_standard_library/windows"
     console.print("waiting")
     var spins = 0
     while true {

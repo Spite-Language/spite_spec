@@ -1,5 +1,4 @@
 func Chains(): Integer {
-    load "../../../spite_standard_library/windows"
     var maker = Maker()
     var other = Other()
     return maker.answer() + other.count()

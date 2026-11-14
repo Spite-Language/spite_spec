@@ -1,7 +1,6 @@
 var console = Console()
 
 func ComputedMember() {
-    load "../../../spite_standard_library/windows"
     var monsters = [Monster(3), Monster(5)]
     var doubled = monsters.map_doubled_health()
     var joined = doubled.join(", ")

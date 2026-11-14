@@ -10,7 +10,6 @@ var moving = Runner<Mover, Moving>()
 var removing = Runner<Remover, Moving>()
 
 func LentListElements() {
-    load "../../../spite_standard_library/windows"
     var entity = 0
     while entity < 3 {
         var position = Position()

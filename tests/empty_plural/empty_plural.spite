@@ -1,7 +1,6 @@
 var console = Console()
 
 func EmptyPlural() {
-    load "../../../spite_standard_library/windows"
     var lines = List<String>()
     var count = Count()
     var marker = Component.Arrived()

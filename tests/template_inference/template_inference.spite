@@ -2,7 +2,6 @@ var console = Console()
 var robot = Robot()
 
 func TemplateInference() {
-    load "../../../spite_standard_library/windows"
     var lamp = Lamp()
     var door = Door()
     door.name = "front"

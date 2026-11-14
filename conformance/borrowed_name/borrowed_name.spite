@@ -1,7 +1,6 @@
 var console = Console()
 
 func BorrowedName() {
-    load "../../../spite_standard_library/windows"
     var none: Long = 0
     console.print(none)
 }

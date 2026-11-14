@@ -4,7 +4,6 @@ var spots = List<Spot>()
 var build = Build()
 
 func OptimizationReport() {
-    load "../../../spite_standard_library/windows"
     keep_badge()
     keep_copies()
     var names = List<String>()

@@ -1,7 +1,6 @@
 var console = Console()
 
 func MemoryOwnDeepCopy() {
-    load "../../../spite_standard_library/windows"
     var holder = Holder()
     var copied = holder.deep_copy()
     console.print(copied.name, copied.blob.size, holder.blob.size)

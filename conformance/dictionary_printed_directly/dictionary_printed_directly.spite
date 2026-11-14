@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryPrintedDirectly() {
-    load "../../../spite_standard_library/windows"
     var ages = Dictionary<String, Integer>()
     ages["ada"] = 36
     console.print(ages)

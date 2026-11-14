@@ -5,7 +5,6 @@ var _largest_unsigned_short: UnsignedShort = 65535
 var _high_nibble_mask: Byte = 240
 
 func BitwiseFunctions() {
-    load "../../../spite_standard_library/windows"
     var eleven = 11
     var six = 6
     console.print("and {eleven.bits_and(six)} or {eleven.bits_or(six)} exclusive or {eleven.bits_exclusive_or(six)}")

@@ -3,7 +3,6 @@ var environment = Environment()
 var build = Build()
 
 func LiveSettings() {
-    load "../../../spite_standard_library/windows"
     var said = greeting()
     console.print(said)
     var counted = twice()

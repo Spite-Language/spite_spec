@@ -1,1 +1,1 @@
-conformance/preload_computed_folder/preload_computed_folder.spite:5: error: a program's 'preload' names its folder or file with text, like 'preload "textures"': the compiler reads every preloaded file before it compiles, so the path cannot be computed (in PreloadComputedFolder)
+conformance/preload_computed_folder/preload_computed_folder.spite:4: error: a program's 'preload' names its folder or file with text, like 'preload "textures"': the compiler reads every preloaded file before it compiles, so the path cannot be computed (in PreloadComputedFolder)

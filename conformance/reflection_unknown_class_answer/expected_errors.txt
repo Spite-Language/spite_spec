@@ -1,1 +1,1 @@
-conformance/reflection_unknown_class_answer/reflection_unknown_class_answer.spite:10: error: 'kind' is not a class known while compiling, so it cannot be a type here (in ReflectionUnknownClassAnswer.made_of)
+conformance/reflection_unknown_class_answer/reflection_unknown_class_answer.spite:9: error: 'kind' is not a class known while compiling, so it cannot be a type here (in ReflectionUnknownClassAnswer.made_of)

@@ -1,1 +1,1 @@
-conformance/control_old_continue/control_old_continue.spite:9: error: Spite has no 'continue': a loop goes on in its own condition
+conformance/control_old_continue/control_old_continue.spite:8: error: Spite has no 'continue': a loop goes on in its own condition

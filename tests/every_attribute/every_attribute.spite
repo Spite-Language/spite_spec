@@ -1,7 +1,6 @@
 var console = Console()
 
 func EveryAttribute() {
-    load "../../../spite_standard_library/windows"
     var recipe = Recipe()
     var describer = Describer<Recipe>()
     var description = describer.describe(recipe)

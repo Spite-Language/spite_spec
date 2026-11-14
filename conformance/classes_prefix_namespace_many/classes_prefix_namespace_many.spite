@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesPrefixNamespaceMany() {
-    load "../../../spite_standard_library/windows"
     var block = Backend.HighBlock()
     console.print(block.size)
 }

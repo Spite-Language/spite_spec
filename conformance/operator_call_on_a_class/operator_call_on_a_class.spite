@@ -1,7 +1,6 @@
 var console = Console()
 
 func OperatorCallOnAClass() {
-    load "../../../spite_standard_library/windows"
     var price = Money(3)
     var tip = Money(2)
     var total = price.sum(tip)

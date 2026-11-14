@@ -2,6 +2,5 @@ var console = Console()
 var target = Build().target_operating_system
 
 func InlineSingletonAttribute() {
-    load "../../../spite_standard_library/windows"
     console.print(target)
 }

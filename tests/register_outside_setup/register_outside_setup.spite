@@ -1,7 +1,6 @@
 var console = Console()
 
 func RegisterOutsideSetup() {
-    load "../../../spite_standard_library/windows"
     var stage = Stage()
     var late = Doubling()
     stage.register(late)

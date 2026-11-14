@@ -1,2 +1,2 @@
 formatted conformance/error_after_a_format_names_the_formatted_line/error_after_a_format_names_the_formatted_line.spite
-conformance/error_after_a_format_names_the_formatted_line/error_after_a_format_names_the_formatted_line.spite:7: error: 'missing_name' is not a local, an attribute or a function of 'ErrorAfterAFormatNamesTheFormattedLine' (in ErrorAfterAFormatNamesTheFormattedLine.ErrorAfterAFormatNamesTheFormattedLine)
+conformance/error_after_a_format_names_the_formatted_line/error_after_a_format_names_the_formatted_line.spite:6: error: 'missing_name' is not a local, an attribute or a function of 'ErrorAfterAFormatNamesTheFormattedLine' (in ErrorAfterAFormatNamesTheFormattedLine.ErrorAfterAFormatNamesTheFormattedLine)

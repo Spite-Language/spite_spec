@@ -1,1 +1,1 @@
-conformance/generic_constraint_union_member/generic_constraint_union_member.spite:14: error: 'Dog' does not fit type 'Named', which 'Shelf' requires of $item_type: it has no function 'name' (in GenericConstraintUnionMember.GenericConstraintUnionMember)
+conformance/generic_constraint_union_member/generic_constraint_union_member.spite:13: error: 'Dog' does not fit type 'Named', which 'Shelf' requires of $item_type: it has no function 'name' (in GenericConstraintUnionMember.GenericConstraintUnionMember)

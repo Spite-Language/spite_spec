@@ -1,7 +1,6 @@
 var console = Console()
 
 func FailingStatementHidesUnreadLocal() {
-    load "../../../spite_standard_library/windows"
     var total = missing_function(3)
     console.print("done")
 }

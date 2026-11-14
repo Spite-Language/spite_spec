@@ -1,7 +1,6 @@
 var console = Console()
 
 func FoldedArgumentCount() {
-    load "../../../spite_standard_library/windows"
     var moving = Runner<System.Move>()
     moving.run()
     var chasing = Runner<System.Chase>()

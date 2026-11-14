@@ -1,4 +1,4 @@
-conformance/inline_singleton/inline_singleton.spite:5: error: 'Build' is a singleton: bind it once beside the attributes, 'var build = Build()', and use 'build.target_operating_system' (in InlineSingleton.InlineSingleton)
-conformance/inline_singleton/inline_singleton.spite:6: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console.print' (in InlineSingleton.InlineSingleton)
-conformance/inline_singleton/inline_singleton.spite:7: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console' (in InlineSingleton.InlineSingleton)
-conformance/inline_singleton/inline_singleton.spite:17: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console' (in InlineSingleton.shared)
+conformance/inline_singleton/inline_singleton.spite:4: error: 'Build' is a singleton: bind it once beside the attributes, 'var build = Build()', and use 'build.target_operating_system' (in InlineSingleton.InlineSingleton)
+conformance/inline_singleton/inline_singleton.spite:5: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console.print' (in InlineSingleton.InlineSingleton)
+conformance/inline_singleton/inline_singleton.spite:6: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console' (in InlineSingleton.InlineSingleton)
+conformance/inline_singleton/inline_singleton.spite:16: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console' (in InlineSingleton.shared)

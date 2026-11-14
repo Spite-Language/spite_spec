@@ -1,7 +1,6 @@
 var console = Console()
 
 func GuardNestedInIf() {
-    load "../../../spite_standard_library/windows"
     var shown = check(true, true)
     console.print(shown)
 }

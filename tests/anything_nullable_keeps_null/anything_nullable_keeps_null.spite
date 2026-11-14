@@ -1,7 +1,6 @@
 var console = Console()
 
 func AnythingNullableKeepsNull() {
-    load "../../../spite_standard_library/windows"
     var items = List<Anything?>()
     items.append(null)
     items.append(3)

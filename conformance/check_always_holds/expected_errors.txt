@@ -1,1 +1,1 @@
-conformance/check_always_holds/check_always_holds.spite:6: fixed: 'crash Point.has_function("length")' was decided while compiling and always held here; removed it (in CheckAlwaysHolds.CheckAlwaysHolds)
+conformance/check_always_holds/check_always_holds.spite:5: fixed: 'crash Point.has_function("length")' was decided while compiling and always held here; removed it (in CheckAlwaysHolds.CheckAlwaysHolds)

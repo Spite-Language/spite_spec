@@ -2,7 +2,6 @@ var console = Console()
 var counter = Counter()
 
 func LoneHole() {
-    load "../../../spite_standard_library/windows"
     counter.label.text = "{counter.click_count.clicks}"
     var shown = "{counter.click_count.clicks}"
     var named = "{counter.label.text}"

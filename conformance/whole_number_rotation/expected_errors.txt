@@ -1,1 +1,1 @@
-conformance/whole_number_rotation/whole_number_rotation.spite:5: error: 'Integer' does not fit type 'Part', which 'Quaternion' requires of $number_type: it has no function 'square_root' (in WholeNumberRotation.WholeNumberRotation)
+conformance/whole_number_rotation/whole_number_rotation.spite:4: error: 'Integer' does not fit type 'Part', which 'Quaternion' requires of $number_type: it has no function 'square_root' (in WholeNumberRotation.WholeNumberRotation)

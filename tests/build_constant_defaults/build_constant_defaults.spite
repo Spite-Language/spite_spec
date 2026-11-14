@@ -2,7 +2,6 @@ var build = Build()
 var console = Console()
 
 func BuildConstantDefaults() {
-    load "../../../spite_standard_library/windows"
     console.print("ratio", build.ratio)
     console.print("offset", build.offset)
     if build.seconds > 60 {

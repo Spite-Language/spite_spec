@@ -6,7 +6,6 @@ union Pet {
 var console = Console()
 
 func JsonReaderFunctionAttribute() {
-    load "../../../spite_standard_library/windows"
     var reader = JsonReader<Holder>()
     var holder = reader.read("\{}")
     console.print(holder)

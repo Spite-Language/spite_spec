@@ -1,7 +1,6 @@
 var console = Console()
 
 func OldTypeUnsignedInt() {
-    load "../../../spite_standard_library/windows"
     var mask: UnsignedInt = 7
     console.print(mask)
 }

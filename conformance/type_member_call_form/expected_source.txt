@@ -7,6 +7,5 @@ type Worker {
 }
 
 func TypeMemberCallForm(): Integer {
-    load "../../../spite_standard_library/windows"
     return 0
 }

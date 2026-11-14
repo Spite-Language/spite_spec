@@ -4,7 +4,6 @@ var _second_factor = 46340
 var build = Build()
 
 func HotReloadProvesRanges() {
-    load "../../../spite_standard_library/windows"
     var total = 0
     var index = 0
     while index < 10 {

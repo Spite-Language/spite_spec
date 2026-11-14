@@ -2,7 +2,6 @@ var console = Console()
 var _first_byte: Byte = 7
 
 func ListOfBytesMapped() {
-    load "../../../spite_standard_library/windows"
     var pixels = List<Pixel>()
     var pixel = Pixel(_first_byte)
     pixels.append(pixel)

@@ -3,7 +3,6 @@ var left = Left()
 var right = Right()
 
 func IdenticalFunctionsFold() {
-    load "../../../spite_standard_library/windows"
     var doubled = left.doubled(21)
     var also_doubled = right.doubled(4)
     var counted = left.counted_down(5)

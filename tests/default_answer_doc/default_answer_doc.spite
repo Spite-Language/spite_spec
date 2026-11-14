@@ -2,7 +2,6 @@ var console = Console()
 var text = ""
 
 func DefaultAnswerDoc() {
-    load "../../../spite_standard_library/windows"
     var bytes = size()
     console.print(bytes)
 }

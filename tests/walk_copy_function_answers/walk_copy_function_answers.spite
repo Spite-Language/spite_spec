@@ -1,7 +1,6 @@
 var console = Console()
 
 func WalkCopyFunctionAnswers() {
-    load "../../../spite_standard_library/windows"
     var all = Runner<Mover>()
     all.run_all(2)
     var declared = Mover.functions["say_each"]

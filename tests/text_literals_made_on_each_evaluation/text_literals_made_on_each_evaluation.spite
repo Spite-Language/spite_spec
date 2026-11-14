@@ -4,7 +4,6 @@ var _letter_a = 65
 var _letters_spelled = 3
 
 func TextLiteralsMadeOnEachEvaluation() {
-    load "../../../spite_standard_library/windows"
     var letters = spelled(_letters_spelled)
     var greeting = greeting_of(letters)
     var words = ["gold", "lead", "gold"]

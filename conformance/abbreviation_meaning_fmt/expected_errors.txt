@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_fmt/abbreviation_meaning_fmt.spite:5: error: 'fmt' abbreviates 'fmt', which could mean 'format' or 'formatter': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningFmt.AbbreviationMeaningFmt)
+conformance/abbreviation_meaning_fmt/abbreviation_meaning_fmt.spite:4: error: 'fmt' abbreviates 'fmt', which could mean 'format' or 'formatter': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningFmt.AbbreviationMeaningFmt)

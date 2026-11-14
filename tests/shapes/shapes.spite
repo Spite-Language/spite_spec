@@ -7,7 +7,6 @@ var console = Console()
 var _mars_radius_kilometers = 3389
 
 func Shapes() {
-    load "../../../spite_standard_library/windows"
     var planet = Planet("mars", _mars_radius_kilometers)
     var pet = Pet("rex", 12, "dog")
     announce(planet)

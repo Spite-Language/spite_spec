@@ -1,1 +1,1 @@
-conformance/classes_private_name_written_no_reader/classes_private_name_written_no_reader.spite:4: error: '_hidden' is private to 'Secret': a name starting with '_' is used only inside its own class (in ClassesPrivateNameWrittenNoReader.ClassesPrivateNameWrittenNoReader)
+conformance/classes_private_name_written_no_reader/classes_private_name_written_no_reader.spite:3: error: '_hidden' is private to 'Secret': a name starting with '_' is used only inside its own class (in ClassesPrivateNameWrittenNoReader.ClassesPrivateNameWrittenNoReader)

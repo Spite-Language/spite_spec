@@ -1,7 +1,6 @@
 var console = Console()
 
 func LiteralConversionNearMisses() {
-    load "../../../spite_standard_library/windows"
     var kept = "twelve"
     var from_local: Integer? = kept
     var missing = not from_local

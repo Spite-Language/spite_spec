@@ -3,6 +3,5 @@ var width: Integer = 3
 var area: Integer = width * width
 
 func AttributeReadByDefault() {
-    load "../../../spite_standard_library/windows"
     console.print(area)
 }

@@ -1,1 +1,1 @@
-conformance/bitwise_on_boolean/bitwise_on_boolean.spite:6: error: a Boolean has no attribute or function 'bits_inverted' (in BitwiseOnBoolean.BitwiseOnBoolean)
+conformance/bitwise_on_boolean/bitwise_on_boolean.spite:5: error: a Boolean has no attribute or function 'bits_inverted' (in BitwiseOnBoolean.BitwiseOnBoolean)

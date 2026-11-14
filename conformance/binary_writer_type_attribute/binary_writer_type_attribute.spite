@@ -6,7 +6,6 @@ union Pet {
 var console = Console()
 
 func BinaryWriterTypeAttribute() {
-    load "../../../spite_standard_library/windows"
     var writer = BinaryWriter<Holder>()
     var holder = Holder()
     var bytes = writer.write(holder)

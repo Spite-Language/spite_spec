@@ -1,1 +1,1 @@
-conformance/case_opens_a_multi_line_if/case_opens_a_multi_line_if.spite:18: error: the 'if' this case opens spans several lines: a case is one line, so move the 'if' into a function named for what it does and call it here (in CaseOpensAMultiLineIf.show)
+conformance/case_opens_a_multi_line_if/case_opens_a_multi_line_if.spite:17: error: the 'if' this case opens spans several lines: a case is one line, so move the 'if' into a function named for what it does and call it here (in CaseOpensAMultiLineIf.show)

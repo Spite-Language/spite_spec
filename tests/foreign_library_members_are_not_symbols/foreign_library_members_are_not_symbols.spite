@@ -4,7 +4,6 @@ var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
 var libraries = List<DynamicLibrary>()
 
 func ForeignLibraryMembersAreNotSymbols() {
-    load "../../../spite_standard_library/windows"
     libraries.append(c_runtime)
     libraries.append(kernel)
     var found = libraries.find_by_file_name("kernel32.dll")

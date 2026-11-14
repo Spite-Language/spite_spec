@@ -2,7 +2,6 @@ var console = Console()
 var keeper = Keeper()
 
 func AssignmentValueTakesBackTheTargetProof() {
-    load "../../../spite_standard_library/windows"
     keeper.target = Part()
     crash keeper.target
     keeper.target.body = keeper.made()

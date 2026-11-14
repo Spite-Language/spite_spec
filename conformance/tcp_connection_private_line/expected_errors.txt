@@ -1,1 +1,1 @@
-conformance/tcp_connection_private_line/tcp_connection_private_line.spite:6: error: '_read_line_now' is private to 'Tcp.Client': a name starting with '_' is used only inside its own class (in TcpConnectionPrivateLine.TcpConnectionPrivateLine)
+conformance/tcp_connection_private_line/tcp_connection_private_line.spite:5: error: '_read_line_now' is private to 'Tcp.Client': a name starting with '_' is used only inside its own class (in TcpConnectionPrivateLine.TcpConnectionPrivateLine)

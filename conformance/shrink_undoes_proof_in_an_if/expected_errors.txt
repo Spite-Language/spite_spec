@@ -1,1 +1,1 @@
-conformance/shrink_undoes_proof_in_an_if/shrink_undoes_proof_in_an_if.spite:14: error: 'items[0]' was proven before line 11, where 'remove_first(...)' may shrink what it reads, so this read may fall outside it: prove 'items[0]' again after that line (in ShrinkUndoesProofInAnIf.work)
+conformance/shrink_undoes_proof_in_an_if/shrink_undoes_proof_in_an_if.spite:13: error: 'items[0]' was proven before line 10, where 'remove_first(...)' may shrink what it reads, so this read may fall outside it: prove 'items[0]' again after that line (in ShrinkUndoesProofInAnIf.work)

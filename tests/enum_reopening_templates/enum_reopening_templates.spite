@@ -1,7 +1,6 @@
 var console = Console()
 
 func EnumReopeningTemplates() {
-    load "../../../spite_standard_library/windows"
     load "package"
     var posts = List<Post>()
     var first = Post("hello", 'published')

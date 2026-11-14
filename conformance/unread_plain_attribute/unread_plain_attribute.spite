@@ -3,6 +3,5 @@ var spare = 3
 var label = "spare"
 
 func UnreadPlainAttribute() {
-    load "../../../spite_standard_library/windows"
     console.print("kept")
 }

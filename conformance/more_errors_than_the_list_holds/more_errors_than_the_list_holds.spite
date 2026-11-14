@@ -1,5 +1,4 @@
 func MoreErrorsThanTheListHolds() {
-    load "../../../spite_standard_library/windows"
     var seed = 1
     var alpha = seed + 1
     var bravo = seed + 1

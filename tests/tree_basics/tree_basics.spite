@@ -6,7 +6,6 @@ union TreeNode {
 var console = Console()
 
 func TreeBasics() {
-    load "../../../spite_standard_library/windows"
     var first_leaf = Leaf(1)
     var second_leaf = Leaf(2)
     var small_branch = Branch(first_leaf, second_leaf)

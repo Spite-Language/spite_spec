@@ -5,7 +5,6 @@ type Weapon {
 var console = Console()
 
 func TypeDefaultAssignedFirst() {
-    load "../../../spite_standard_library/windows"
     var sword = Sword()
     var holder = Holder<Weapon>(sword)
     var hit = holder.swing()

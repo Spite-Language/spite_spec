@@ -1,7 +1,6 @@
 var console = Console()
 
 func RepeatedBranchCallChain() {
-    load "../../../spite_standard_library/windows"
     var source = "spite"
     var end = 2
     var kind = describe(source, end)

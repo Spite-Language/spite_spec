@@ -2,7 +2,6 @@ var console = Console()
 var parts = 4
 
 func DivisorAttributeProven() {
-    load "../../../spite_standard_library/windows"
     var shares = Shares(3)
     var twelve = shares.each_of(12)
     var seven = shares.each_of(-7)

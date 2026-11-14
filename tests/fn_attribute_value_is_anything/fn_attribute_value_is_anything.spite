@@ -1,7 +1,6 @@
 var console = Console()
 
 func FnAttributeValueIsAnything() {
-    load "../../../spite_standard_library/windows"
     var hero = Hero("ada", 3)
     var held = hero.attributes.values()
     var index = 0

@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_calc/abbreviation_meaning_calc.spite:5: error: 'calc' abbreviates 'calc', which could mean 'calculate' or 'calculator': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningCalc.AbbreviationMeaningCalc)
+conformance/abbreviation_meaning_calc/abbreviation_meaning_calc.spite:4: error: 'calc' abbreviates 'calc', which could mean 'calculate' or 'calculator': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningCalc.AbbreviationMeaningCalc)

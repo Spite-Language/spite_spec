@@ -1,7 +1,6 @@
 var console = Console()
 
 func ValuesACopyAndItsSourceShare() {
-    load "../../../spite_standard_library/windows"
     var many = sums(1000)
     var one = sums(1)
     console.print(many, one)

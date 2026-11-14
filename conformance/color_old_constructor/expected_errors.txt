@@ -1,1 +1,1 @@
-conformance/color_old_constructor/color_old_constructor.spite:5: error: 'Color.Color' takes 4 arguments, and 3 are given (in ColorOldConstructor.ColorOldConstructor)
+conformance/color_old_constructor/color_old_constructor.spite:4: error: 'Color.Color' takes 4 arguments, and 3 are given (in ColorOldConstructor.ColorOldConstructor)

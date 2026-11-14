@@ -3,7 +3,6 @@ var _minimal_standard_multiplier: Long = 48271
 var _minimal_standard_modulus: Long = 2147483647
 
 func ProvenRanges() {
-    load "../../../spite_standard_library/windows"
     var values = List<Integer>()
     var index = 0
     while index < 1000 {

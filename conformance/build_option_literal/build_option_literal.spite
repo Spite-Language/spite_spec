@@ -1,6 +1,5 @@
 var console = Console()
 
 func BuildOptionLiteral() {
-    load "../../../spite_standard_library/windows"
     console.print("never built")
 }

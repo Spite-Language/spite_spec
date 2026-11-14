@@ -1,7 +1,6 @@
 var console = Console()
 
 func LoadVariableName() {
-    load "../../../spite_standard_library/windows"
     var load = 3
     console.print(load)
 }

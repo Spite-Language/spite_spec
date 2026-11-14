@@ -6,7 +6,6 @@ enum Shade {
 var console = Console()
 
 func FormatALongCallInACase() {
-    load "../../../spite_standard_library/windows"
     show('dark')
 }
 

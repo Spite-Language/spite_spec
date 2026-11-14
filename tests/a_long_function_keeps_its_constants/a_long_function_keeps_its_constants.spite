@@ -2,7 +2,6 @@ var console = Console()
 var labels = Labels()
 
 func ALongFunctionKeepsItsConstants() {
-    load "../../../spite_standard_library/windows"
     labels.made_from("stem")
     labels.made_from("other stem")
     var count = labels.made.count()

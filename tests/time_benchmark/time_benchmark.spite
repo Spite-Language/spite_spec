@@ -1,7 +1,6 @@
 var console = Console()
 
 func TimeBenchmark() {
-    load "../../../spite_standard_library/windows"
     var timed = Benchmark(sum_to_a_thousand)
     var negative = timed.duration.is_negative
     console.print(timed.answer, negative)

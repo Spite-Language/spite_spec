@@ -7,7 +7,6 @@ enum Part {
 var console = Console()
 
 func EnumReflection() {
-    load "../../../spite_standard_library/windows"
     var tag: Part = 'tail'
     var described = tag.class
     console.print(described, described.name_with_namespaces, described.owner)

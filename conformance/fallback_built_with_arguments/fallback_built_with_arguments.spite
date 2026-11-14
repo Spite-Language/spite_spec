@@ -1,7 +1,6 @@
 var console = Console()
 
 func FallbackBuiltWithArguments() {
-    load "../../../spite_standard_library/windows"
     var found = slot_of("")
     console.print(found.index)
 }

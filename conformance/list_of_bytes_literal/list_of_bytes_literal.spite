@@ -3,7 +3,6 @@ var _first_byte: Byte = 7
 var _second_byte: Byte = 200
 
 func ListOfBytesLiteral() {
-    load "../../../spite_standard_library/windows"
     var bytes = [_first_byte, _second_byte]
     var count = bytes.count()
     console.print(count)

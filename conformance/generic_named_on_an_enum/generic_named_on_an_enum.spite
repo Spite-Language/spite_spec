@@ -1,7 +1,6 @@
 var console = Console()
 
 func GenericNamedOnAnEnum() {
-    load "../../../spite_standard_library/windows"
     var held = Monster.Phase<Float>.name
     console.print(held)
 }

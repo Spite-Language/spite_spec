@@ -1,1 +1,1 @@
-conformance/literal_conversion_enum_number/literal_conversion_enum_number.spite:10: error: the literal 9 does not convert: Part has no value of that number (in LiteralConversionEnumNumber.LiteralConversionEnumNumber)
+conformance/literal_conversion_enum_number/literal_conversion_enum_number.spite:9: error: the literal 9 does not convert: Part has no value of that number (in LiteralConversionEnumNumber.LiteralConversionEnumNumber)

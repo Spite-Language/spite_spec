@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonKey() {
-    load "../../../spite_standard_library/windows"
     var reader = JsonReader<MeshRecord>()
     var mesh = reader.read("\{}")
     crash mesh

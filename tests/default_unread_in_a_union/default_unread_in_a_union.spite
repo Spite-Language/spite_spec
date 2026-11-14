@@ -7,7 +7,6 @@ union Figure {
 var console = Console()
 
 func DefaultUnreadInAUnion() {
-    load "../../../spite_standard_library/windows"
     var given = Circle(2)
     var holder = Holder(given)
     var replaced = holder.figure

@@ -4,7 +4,6 @@ var _cell_count = 3000
 var _last_cell_index = 2999
 
 func ColumnLists() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < _cell_count {
         var cell = Cell(index, index % 7)

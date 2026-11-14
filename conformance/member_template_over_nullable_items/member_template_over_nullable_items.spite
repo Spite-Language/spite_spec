@@ -1,7 +1,6 @@
 var console = Console()
 
 func MemberTemplateOverNullableItems() {
-    load "../../../spite_standard_library/windows"
     var items = List<Monster?>()
     var names = items.map_names()
     var count = names.count()

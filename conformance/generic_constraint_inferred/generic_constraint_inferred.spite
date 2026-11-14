@@ -5,7 +5,6 @@ type Printable {
 var console = Console()
 
 func GenericConstraintInferred() {
-    load "../../../spite_standard_library/windows"
     var labelled_pet = Pet()
     var label = Label(labelled_pet)
     console.print(label.item.name)

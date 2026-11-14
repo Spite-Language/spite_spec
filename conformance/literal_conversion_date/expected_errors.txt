@@ -1,1 +1,1 @@
-conformance/literal_conversion_date/literal_conversion_date.spite:5: error: the literal "2026-13-40" does not convert: 'Date(from: String)' answers null for it (in LiteralConversionDate.LiteralConversionDate)
+conformance/literal_conversion_date/literal_conversion_date.spite:4: error: the literal "2026-13-40" does not convert: 'Date(from: String)' answers null for it (in LiteralConversionDate.LiteralConversionDate)

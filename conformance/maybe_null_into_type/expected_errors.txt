@@ -1,4 +1,4 @@
 conformance/maybe_null_into_type/cat.spite:1: fixed: the attribute 'lives' was never read, and making it does nothing; removed it (in Cat.)
 conformance/maybe_null_into_type/dog.spite:1: fixed: the attribute 'barks' was never read, and making it does nothing; removed it (in Dog.)
-conformance/maybe_null_into_type/maybe_null_into_type.spite:11: error: this value may be null (it is an Anything?), but an Anything is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in MaybeNullIntoType.MaybeNullIntoType)
-conformance/maybe_null_into_type/maybe_null_into_type.spite:17: error: 'box.pet' was proven before line 16, where 'empty(...)' may assign 'pet' again, so this read would use what the call left there, unproven: prove 'box.pet' again after that line (in MaybeNullIntoType.MaybeNullIntoType)
+conformance/maybe_null_into_type/maybe_null_into_type.spite:10: error: this value may be null (it is an Anything?), but an Anything is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in MaybeNullIntoType.MaybeNullIntoType)
+conformance/maybe_null_into_type/maybe_null_into_type.spite:16: error: 'box.pet' was proven before line 15, where 'empty(...)' may assign 'pet' again, so this read would use what the call left there, unproven: prove 'box.pet' again after that line (in MaybeNullIntoType.MaybeNullIntoType)

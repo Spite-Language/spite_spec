@@ -8,7 +8,6 @@ var _euro_second_byte = 130
 var _euro_third_byte = 172
 
 func TcpClosedConnections() {
-    load "../../../spite_standard_library/windows"
     never_connected()
     not_text()
     after_close()

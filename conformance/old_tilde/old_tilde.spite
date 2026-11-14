@@ -1,7 +1,6 @@
 var console = Console()
 
 func OldTilde() {
-    load "../../../spite_standard_library/windows"
     var flags = 3
     var flipped = ~flags
     console.print(flipped)

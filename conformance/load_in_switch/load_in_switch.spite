@@ -6,7 +6,6 @@ enum Mood {
 var console = Console()
 
 func LoadInSwitch() {
-    load "../../../spite_standard_library/windows"
     var mood: Mood = 'glad'
     switch mood {
         'glad': load "extras"

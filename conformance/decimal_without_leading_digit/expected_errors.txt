@@ -1,1 +1,1 @@
-conformance/decimal_without_leading_digit/decimal_without_leading_digit.spite:5: error: expected a value and found '.'
+conformance/decimal_without_leading_digit/decimal_without_leading_digit.spite:4: error: expected a value and found '.'

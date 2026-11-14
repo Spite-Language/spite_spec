@@ -6,7 +6,6 @@ var _past_the_idle_limit_milliseconds: Long = 400
 var _server_port = 47912
 
 func HttpKeepAlive() {
-    load "../../../spite_standard_library/windows"
     var four_hundred_milliseconds = Duration(_past_the_idle_limit_milliseconds, 'milliseconds')
     var idle_limit = Duration(100, 'milliseconds')
     server.idle_limit = idle_limit

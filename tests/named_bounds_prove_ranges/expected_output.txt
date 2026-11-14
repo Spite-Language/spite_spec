@@ -1,3 +1,3 @@
 50000 50000 50000
-- [tests/named_bounds_prove_ranges/named_bounds_prove_ranges.spite:36](../../tests/named_bounds_prove_ranges/named_bounds_prove_ranges.spite#L36): `amount * 1000` keeps its overflow check: 'amount' runs from 1 to 2147483646, so the answer may not fit in an Integer
-spite: 'amount * 1000' does not fit in an Integer (2999999 * 1000), at tests/named_bounds_prove_ranges/named_bounds_prove_ranges.spite:36 in NamedBoundsProveRanges.after_a_written_bound
+- [tests/named_bounds_prove_ranges/named_bounds_prove_ranges.spite:35](../../tests/named_bounds_prove_ranges/named_bounds_prove_ranges.spite#L35): `amount * 1000` keeps its overflow check: 'amount' runs from 1 to 2147483646, so the answer may not fit in an Integer
+spite: 'amount * 1000' does not fit in an Integer (2999999 * 1000), at tests/named_bounds_prove_ranges/named_bounds_prove_ranges.spite:35 in NamedBoundsProveRanges.after_a_written_bound

@@ -1,5 +1,4 @@
 func Branches(): Integer {
-    load "../../../spite_standard_library/windows"
     var total = 0
     var index = 1
     while index <= 10 {

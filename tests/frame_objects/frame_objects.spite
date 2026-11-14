@@ -2,7 +2,6 @@ var console = Console()
 var kept = List<Point>()
 
 func FrameObjects() {
-    load "../../../spite_standard_library/windows"
     var moved = stepped(1000)
     console.print("stepped to", moved)
     var measured = measured_length()

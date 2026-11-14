@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func DefaultUnreadIsNotMade() {
-    load "../../../spite_standard_library/windows"
     var context = Context(1, null)
     var gone = Gone(context)
     var stays = Stays(context)

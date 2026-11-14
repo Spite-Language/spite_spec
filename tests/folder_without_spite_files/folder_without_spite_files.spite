@@ -1,6 +1,5 @@
 var console = Console()
 
 func FolderWithoutSpiteFiles() {
-    load "../../../spite_standard_library/windows"
     console.print("folders without a .spite file are never read")
 }

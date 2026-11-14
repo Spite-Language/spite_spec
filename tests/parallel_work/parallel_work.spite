@@ -3,7 +3,6 @@ var names = List<String>()
 var _large_sum_limit = 3000000
 
 func ParallelWork() {
-    load "../../../spite_standard_library/windows"
     var small = Summer(1000000)
     var large = Summer(_large_sum_limit)
     var small_sum = small.total()

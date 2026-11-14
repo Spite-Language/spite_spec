@@ -21,7 +21,6 @@ var words = [
 ]
 
 func StringPluralizeRules() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     var plurals = List<String>()
     while index < words.count() {

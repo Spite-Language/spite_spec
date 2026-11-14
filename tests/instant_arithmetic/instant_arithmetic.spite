@@ -8,7 +8,6 @@ var _seconds_from_year_one_to_1970: Long = 62135596800
 var _seconds_from_1970_to_year_ten_thousand: Long = 253402300800
 
 func InstantArithmetic() {
-    load "../../../spite_standard_library/windows"
     instants()
     durations()
     far_instants()

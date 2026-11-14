@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_pos/abbreviation_meaning_pos.spite:5: error: 'pos' abbreviates 'pos', which could mean 'position' or 'positive': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningPos.AbbreviationMeaningPos)
+conformance/abbreviation_meaning_pos/abbreviation_meaning_pos.spite:4: error: 'pos' abbreviates 'pos', which could mean 'position' or 'positive': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningPos.AbbreviationMeaningPos)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func DefaultKeptCanCrash() {
-    load "../../../spite_standard_library/windows"
     var given = Risky(1)
     console.print("made the first")
     var holder = Holder(given)

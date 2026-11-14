@@ -1,1 +1,1 @@
-conformance/an_unclosed_brace_is_one_mistake/an_unclosed_brace_is_one_mistake.spite:11: error: expected a value and found 'func'
+conformance/an_unclosed_brace_is_one_mistake/an_unclosed_brace_is_one_mistake.spite:10: error: expected a value and found 'func'

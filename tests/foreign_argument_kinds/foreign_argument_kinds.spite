@@ -8,7 +8,6 @@ var plain = DynamicLibrary("tests/foreign_argument_kinds/fixture.dll", 'identity
 var windows = DynamicLibrary("tests/foreign_argument_kinds/fixture.dll", 'windows', "fixture.h")
 
 func ForeignArgumentKinds() {
-    load "../../../spite_standard_library/windows"
     buffer_is_filled_by_c()
     boolean_and_enum_arguments()
     floats_without_a_header()

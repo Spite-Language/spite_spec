@@ -2,7 +2,6 @@ var console = Console()
 var random = SecureRandom()
 
 func SecureRandomNegativeCount() {
-    load "../../../spite_standard_library/windows"
     var eight = random.random_buffer(8)
     crash eight
     var size = eight.count()

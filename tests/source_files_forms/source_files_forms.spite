@@ -1,7 +1,6 @@
 var console = Console()
 
 func SourceFilesForms() {
-    load "../../../spite_standard_library/windows"
     var by_name = Monster.source_files
     var named_count = by_name.count()
     var held = Holder<Monster>()

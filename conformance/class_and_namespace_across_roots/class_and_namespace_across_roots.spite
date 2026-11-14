@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassAndNamespaceAcrossRoots() {
-    load "../../../spite_standard_library/windows"
     load "one"
     load "two"
     var renderer = Engine.Renderer()

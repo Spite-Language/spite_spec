@@ -1,7 +1,6 @@
 var console = Console()
 
 func LoneHoleReturn() {
-    load "../../../spite_standard_library/windows"
     var text = clicks_text(3)
     console.print(text)
 }

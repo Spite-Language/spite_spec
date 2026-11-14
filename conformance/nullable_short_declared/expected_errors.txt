@@ -1,1 +1,1 @@
-conformance/nullable_short_declared/nullable_short_declared.spite:11: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortDeclared.NullableShortDeclared)
+conformance/nullable_short_declared/nullable_short_declared.spite:10: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortDeclared.NullableShortDeclared)

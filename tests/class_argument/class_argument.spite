@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassArgument() {
-    load "../../../spite_standard_library/windows"
     var entity = Entity()
     var health = Health()
     entity.add_component(health)

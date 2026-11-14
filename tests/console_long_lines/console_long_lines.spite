@@ -1,7 +1,6 @@
 var console = Console()
 
 func ConsoleLongLines() {
-    load "../../../spite_standard_library/windows"
     var long = console.read_line()
     crash long
     var count = long.length()

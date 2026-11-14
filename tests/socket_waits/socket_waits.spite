@@ -3,7 +3,6 @@ var server = Tcp.Server()
 var _port = 47314
 
 func SocketWaits() {
-    load "../../../spite_standard_library/windows"
     var local_host: IpAddress? = "localhost"
     crash local_host
     crash server.listen_at(local_host, _port)

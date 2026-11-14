@@ -8,7 +8,6 @@ var _longest_for_no_wait: Long = 40
 var _shortest_for_one_millisecond_each: Long = 100
 
 func SleepTruncatesToWholeMilliseconds() {
-    load "../../../spite_standard_library/windows"
     var just_under = Duration(_just_under_a_millisecond, 'microseconds')
     var just_over = Duration(_just_over_a_millisecond, 'microseconds')
     var under_taken = sleep_many_times(just_under)

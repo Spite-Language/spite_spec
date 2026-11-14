@@ -1,7 +1,6 @@
 var console = Console()
 
 func ColorFromText() {
-    load "../../../spite_standard_library/windows"
     var white_text = "#ffffff"
     var white: Color? = white_text
     crash white

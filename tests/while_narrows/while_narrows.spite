@@ -1,7 +1,6 @@
 var console = Console()
 
 func WhileNarrows() {
-    load "../../../spite_standard_library/windows"
     var third = Node()
     third.value = 3
     var second = Node()

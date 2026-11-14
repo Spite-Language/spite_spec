@@ -1,5 +1,4 @@
 func EqualsSignature(): Integer {
-    load "../../../spite_standard_library/windows"
     var thing = Thing()
     return thing.size
 }

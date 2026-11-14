@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReflectionHasNoCasing() {
-    load "../../../spite_standard_library/windows"
     var price = Price()
     console.print(price.buy_price)
     price.attributes.each(show)

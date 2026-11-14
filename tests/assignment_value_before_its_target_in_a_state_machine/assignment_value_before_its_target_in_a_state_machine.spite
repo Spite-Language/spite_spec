@@ -4,7 +4,6 @@ var machine = Machine()
 var frames = 0
 
 func AssignmentValueBeforeItsTargetInAStateMachine() {
-    load "../../../spite_standard_library/windows"
     var one_millisecond = Duration(1, 'milliseconds')
     while not machine.finished {
         frames = frames + 1

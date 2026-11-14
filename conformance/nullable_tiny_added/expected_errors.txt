@@ -1,1 +1,1 @@
-conformance/nullable_tiny_added/nullable_tiny_added.spite:11: error: this value may be null (it is a Tiny?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableTinyAdded.NullableTinyAdded)
+conformance/nullable_tiny_added/nullable_tiny_added.spite:10: error: this value may be null (it is a Tiny?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableTinyAdded.NullableTinyAdded)

@@ -1,1 +1,1 @@
-conformance/indexing_set_at_takes_one/indexing_set_at_takes_one.spite:4: error: assigning through an index on a 'Thing' needs it to define 'set_at(index, value)' (in IndexingSetAtTakesOne.IndexingSetAtTakesOne)
+conformance/indexing_set_at_takes_one/indexing_set_at_takes_one.spite:3: error: assigning through an index on a 'Thing' needs it to define 'set_at(index, value)' (in IndexingSetAtTakesOne.IndexingSetAtTakesOne)

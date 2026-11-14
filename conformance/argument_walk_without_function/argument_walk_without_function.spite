@@ -1,5 +1,4 @@
 func ArgumentWalkWithoutFunction() {
-    load "../../../spite_standard_library/windows"
     var runner = Runner<Move>()
     runner.run()
 }

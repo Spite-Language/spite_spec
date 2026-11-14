@@ -1,7 +1,6 @@
 var console = Console()
 
 func AbbreviationMeaningFmt() {
-    load "../../../spite_standard_library/windows"
     var fmt = 1
     console.print(fmt)
 }

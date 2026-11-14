@@ -1,1 +1,1 @@
-conformance/store_through_nullable_attribute/store_through_nullable_attribute.spite:6: error: this value may be null (it is a Box?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in StoreThroughNullableAttribute.StoreThroughNullableAttribute)
+conformance/store_through_nullable_attribute/store_through_nullable_attribute.spite:5: error: this value may be null (it is a Box?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in StoreThroughNullableAttribute.StoreThroughNullableAttribute)

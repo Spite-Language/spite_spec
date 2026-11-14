@@ -1,7 +1,6 @@
 var console = Console()
 
 func GameQuaternionEdges() {
-    load "../../../spite_standard_library/windows"
     axis_is_normalized()
     all_euler_orders()
     equality()

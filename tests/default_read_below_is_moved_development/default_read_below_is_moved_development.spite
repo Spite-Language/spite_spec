@@ -5,7 +5,6 @@ var _hundred = 100
 var _ten = 10
 
 func DefaultReadBelowIsMovedDevelopment() {
-    load "../../../spite_standard_library/windows"
     console.print(early, through_a_function)
 }
 

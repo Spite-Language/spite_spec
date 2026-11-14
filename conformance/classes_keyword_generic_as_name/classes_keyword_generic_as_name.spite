@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesKeywordGenericAsName() {
-    load "../../../spite_standard_library/windows"
     var generic = 1
     console.print(generic)
 }

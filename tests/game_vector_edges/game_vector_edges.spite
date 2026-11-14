@@ -1,7 +1,6 @@
 var console = Console()
 
 func GameVectorEdges() {
-    load "../../../spite_standard_library/windows"
     interpolation()
     not_a_number_parts()
 }

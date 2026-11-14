@@ -1,1 +1,1 @@
-conformance/nullable_short_on_the_left/nullable_short_on_the_left.spite:11: error: this value may be null (it is a Short?), so '+' cannot use it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortOnTheLeft.NullableShortOnTheLeft)
+conformance/nullable_short_on_the_left/nullable_short_on_the_left.spite:10: error: this value may be null (it is a Short?), so '+' cannot use it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortOnTheLeft.NullableShortOnTheLeft)

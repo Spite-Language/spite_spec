@@ -3,7 +3,6 @@ var _atlas_pages = 120
 var _novel_pages = 300
 
 func DictionaryTemplates() {
-    load "../../../spite_standard_library/windows"
     var shelf = Dictionary<String, Book>()
     var atlas = Book("atlas", _atlas_pages, true)
     shelf["atlas"] = atlas

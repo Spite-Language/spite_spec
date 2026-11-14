@@ -6,7 +6,6 @@ enum Phase {
 var console = Console()
 
 func DeclaredTypeWithArgumentsOnAnAnswer() {
-    load "../../../spite_standard_library/windows"
     var held = given()
     console.print(held)
 }

@@ -2,7 +2,6 @@ var console = Console()
 var census = Census()
 
 func SingletonRace() {
-    load "../../../spite_standard_library/windows"
     var first_toucher = Toucher()
     var second_toucher = Toucher()
     var first = first_toucher.touch_many()

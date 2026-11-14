@@ -1,1 +1,1 @@
-conformance/literal_conversion_program_number/literal_conversion_program_number.spite:5: error: the literal -5 does not convert: 'Age(from: Integer)' answers null for it (in LiteralConversionProgramNumber.LiteralConversionProgramNumber)
+conformance/literal_conversion_program_number/literal_conversion_program_number.spite:4: error: the literal -5 does not convert: 'Age(from: Integer)' answers null for it (in LiteralConversionProgramNumber.LiteralConversionProgramNumber)

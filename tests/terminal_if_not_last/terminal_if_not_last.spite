@@ -1,7 +1,6 @@
 var console = Console()
 
 func TerminalIfNotLast() {
-    load "../../../spite_standard_library/windows"
     greet("ada")
     greet("")
     greet_each()

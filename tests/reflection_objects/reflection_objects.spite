@@ -7,7 +7,6 @@ enum Phase {
 var console = Console()
 
 func ReflectionObjects() {
-    load "../../../spite_standard_library/windows"
     var hammer = Shop.Tools.Hammer()
     var till = Shop.Counter.Till()
     till.add(2)

@@ -6,7 +6,6 @@ enum Diet {
 var console = Console()
 
 func EnumWalkerKind() {
-    load "../../../spite_standard_library/windows"
     Diet.values.each(show_value)
 }
 

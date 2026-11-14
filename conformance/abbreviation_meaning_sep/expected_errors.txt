@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_sep/abbreviation_meaning_sep.spite:5: error: 'sep' abbreviates 'sep', which could mean 'separator' or 'separate': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningSep.AbbreviationMeaningSep)
+conformance/abbreviation_meaning_sep/abbreviation_meaning_sep.spite:4: error: 'sep' abbreviates 'sep', which could mean 'separator' or 'separate': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningSep.AbbreviationMeaningSep)

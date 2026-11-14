@@ -2,7 +2,6 @@ var console = Console()
 var server = Tcp.Server()
 
 func TcpServerPrivatePoll() {
-    load "../../../spite_standard_library/windows"
     crash server.listen_locally(47935)
     var peer = server._accept_now()
     console.print(peer)

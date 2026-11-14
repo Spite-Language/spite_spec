@@ -1,7 +1,6 @@
 var console = Console()
 
 func DecimalsBeyondTheirRegisters() {
-    load "../../../spite_standard_library/windows"
     var value_aa = 0.5
     var value_bb = 1.5
     var value_cc = 2.5

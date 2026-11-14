@@ -20,7 +20,6 @@ var console = Console()
 var favourite: Pet = Cat()
 
 func DeclaredWalks() {
-    load "../../../spite_standard_library/windows"
     DeclaredWalks.enums.each(show_enum)
     DeclaredWalks.unions.each(show_union)
     DeclaredWalks.types.each(show_type)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func LiteralConversionInABranchNotTaken() {
-    load "../../../spite_standard_library/windows"
     var count = 3
     if count > 99 {
         var wrong: Integer? = "twelve"

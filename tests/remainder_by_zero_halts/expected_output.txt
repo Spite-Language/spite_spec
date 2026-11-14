@@ -1,1 +1,1 @@
-spite: 'total % parts' divided by zero, at tests/remainder_by_zero_halts/remainder_by_zero_halts.spite:11 in RemainderByZeroHalts.left_over
+spite: 'total % parts' divided by zero, at tests/remainder_by_zero_halts/remainder_by_zero_halts.spite:10 in RemainderByZeroHalts.left_over

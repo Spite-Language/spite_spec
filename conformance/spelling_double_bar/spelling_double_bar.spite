@@ -1,7 +1,6 @@
 var console = Console()
 
 func SpellingDoubleBar() {
-    load "../../../spite_standard_library/windows"
     var cost = 3
     var done = true || false
     console.print(cost)

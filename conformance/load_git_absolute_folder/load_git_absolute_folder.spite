@@ -1,4 +1,3 @@
 func LoadGitAbsoluteFolder() {
-    load "../../../spite_standard_library/windows"
     load "../..@26e6476//core"
 }

@@ -1,7 +1,6 @@
 var console = Console()
 
 func TypeAsMember() {
-    load "../../../spite_standard_library/windows"
     var piece = Piece()
     console.print(piece.type)
 }

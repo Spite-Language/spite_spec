@@ -1,7 +1,6 @@
 var console = Console()
 
 func PrintingAClass() {
-    load "../../../spite_standard_library/windows"
     var lamp = Lamp("hall")
     console.print(lamp)
     console.debug(lamp)

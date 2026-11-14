@@ -1,7 +1,6 @@
 var console = Console()
 
 func OuterValuesInInnerLoops() {
-    load "../../../spite_standard_library/windows"
     var names = List<String>()
     var first = 1
     var second = 2

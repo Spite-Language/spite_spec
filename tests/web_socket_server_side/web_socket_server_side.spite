@@ -29,7 +29,6 @@ var _half_bytes: List<Integer> = [136, 129, 0, 0, 0, 0, 3]
 var _reserved_bytes: List<Integer> = [136, 130, 0, 0, 0, 0, 3, 237]
 
 func WebSocketServerSide() {
-    load "../../../spite_standard_library/windows"
     crash http.listen_locally(_port)
     handshake()
     refusals()

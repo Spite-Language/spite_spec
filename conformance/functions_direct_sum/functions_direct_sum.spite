@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionsDirectSum() {
-    load "../../../spite_standard_library/windows"
     var first = 3
     var total = first.sum(4)
     console.print(total)

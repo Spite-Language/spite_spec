@@ -2,7 +2,6 @@ var console = Console()
 var kept: Spite.Function<Integer, Integer?> = halved
 
 func FunctionValueNullableAnswer() {
-    load "../../../spite_standard_library/windows"
     var local = halved
     var local_even = local(8)
     show("local", local_even)

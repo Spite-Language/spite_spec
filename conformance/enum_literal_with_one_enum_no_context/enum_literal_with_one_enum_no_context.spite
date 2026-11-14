@@ -6,6 +6,5 @@ enum Mood {
 var console = Console()
 
 func EnumLiteralWithOneEnumNoContext() {
-    load "../../../spite_standard_library/windows"
     console.print('calm')
 }

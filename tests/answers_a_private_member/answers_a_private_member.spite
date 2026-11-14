@@ -1,7 +1,6 @@
 var console = Console()
 
 func AnswersAPrivateMember() {
-    load "../../../spite_standard_library/windows"
     var token = Token()
     console.print(token.name)
     var fitted = token.fits(2)

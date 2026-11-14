@@ -2,7 +2,6 @@ var console = Console()
 var settings = Settings()
 
 func FoldedCrashNotOverAnd() {
-    load "../../../spite_standard_library/windows"
     var given = settings.given
     checked_as_a_whole(given)
     console.print("the crash under not is left to the run")

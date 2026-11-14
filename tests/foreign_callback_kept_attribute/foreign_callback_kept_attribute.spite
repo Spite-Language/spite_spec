@@ -3,7 +3,6 @@ var clicks = Clicks()
 var clicking: ForeignCallback? = null
 
 func ForeignCallbackKeptAttribute() {
-    load "../../../spite_standard_library/windows"
     hand_over()
     plain.click(4)
 }

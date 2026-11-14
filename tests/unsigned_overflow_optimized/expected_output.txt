@@ -1,2 +1,2 @@
 0
-spite: 'left - 1' does not fit in an UnsignedInteger (0 - 1), at tests/unsigned_overflow_optimized/unsigned_overflow_optimized.spite:8 in UnsignedOverflowOptimized.UnsignedOverflowOptimized
+spite: 'left - 1' does not fit in an UnsignedInteger (0 - 1), at tests/unsigned_overflow_optimized/unsigned_overflow_optimized.spite:7 in UnsignedOverflowOptimized.UnsignedOverflowOptimized

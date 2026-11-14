@@ -1,7 +1,6 @@
 var console = Console()
 
 func ShrinkUndoesProofThroughAHeldMethod() {
-    load "../../../spite_standard_library/windows"
     var clearer = Clearer()
     var action = clearer.shrink
     crash clearer.names[0]

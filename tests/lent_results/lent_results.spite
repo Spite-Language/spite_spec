@@ -4,7 +4,6 @@ var labels = Column<Label>()
 var scores = Scores()
 
 func LentResults() {
-    load "../../../spite_standard_library/windows"
     var first = Layout(1)
     layouts.insert(4, first)
     var second = Layout(2)

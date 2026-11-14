@@ -1,7 +1,6 @@
 var console = Console()
 
 func RepeatedTwoContentsApart() {
-    load "../../../spite_standard_library/windows"
     var cat = Kennel.Cat()
     var boat = Harbor.Boat()
     var one = Kennel.First()

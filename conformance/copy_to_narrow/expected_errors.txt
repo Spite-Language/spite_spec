@@ -1,1 +1,1 @@
-conformance/copy_to_narrow/copy_to_narrow.spite:9: fixed: 'watcher' only copied 'tracker' so it could be narrowed; narrowed 'tracker' itself and used it directly (in CopyToNarrow.drop)
+conformance/copy_to_narrow/copy_to_narrow.spite:8: fixed: 'watcher' only copied 'tracker' so it could be narrowed; narrowed 'tracker' itself and used it directly (in CopyToNarrow.drop)

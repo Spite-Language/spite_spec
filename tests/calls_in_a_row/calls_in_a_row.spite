@@ -3,7 +3,6 @@ var evens = Evens()
 var odds = Odds()
 
 func CallsInARow() {
-    load "../../../spite_standard_library/windows"
     evens.count()
     odds.count()
     console.print(evens.total, odds.total)

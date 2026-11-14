@@ -3,7 +3,6 @@ var program = Program()
 var choice = Choice()
 
 func BuildFieldFoldsInTheHighIr() {
-    load "../../../spite_standard_library/windows"
     var answered = choice.answer()
     console.print(answered)
     var path = program.executable_path()

@@ -1,1 +1,1 @@
-conformance/members_of_an_enum_value/members_of_an_enum_value.spite:11: error: a MembersOfAnEnumValue.Shade has no attributes or functions to reach with '.' (in MembersOfAnEnumValue.MembersOfAnEnumValue)
+conformance/members_of_an_enum_value/members_of_an_enum_value.spite:10: error: a MembersOfAnEnumValue.Shade has no attributes or functions to reach with '.' (in MembersOfAnEnumValue.MembersOfAnEnumValue)

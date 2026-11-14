@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionsClassFunctionValue() {
-    load "../../../spite_standard_library/windows"
     var check = Monster.is_alive
     var monster = Monster()
     console.print(monster.health)

@@ -4,7 +4,6 @@ var crasher = Crasher()
 var frames = 0
 
 func StartedCallThatCrashes() {
-    load "../../../spite_standard_library/windows"
     var one_millisecond = Duration(1, 'milliseconds')
     var passes = 0
     while passes < 100 {

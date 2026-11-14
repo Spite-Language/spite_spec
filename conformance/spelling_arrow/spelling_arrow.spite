@@ -1,7 +1,6 @@
 var console = Console()
 
 func SpellingArrow() {
-    load "../../../spite_standard_library/windows"
     var cost = 3
     var cost = 3 -> 4
     console.print(cost)

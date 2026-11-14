@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonInfinityInADictionary() {
-    load "../../../spite_standard_library/windows"
     var order = Order()
     var zero: Double = 0.0
     var one: Double = 1.0

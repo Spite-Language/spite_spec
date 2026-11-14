@@ -5,7 +5,6 @@ var _start_of_2020_seconds: Long = 1577836800
 var _slowest_wait_milliseconds: Long = 5000
 
 func ClockReading() {
-    load "../../../spite_standard_library/windows"
     var twenty_milliseconds = Duration(20, 'milliseconds')
     var started = clock.elapsed()
     program.sleep(twenty_milliseconds)

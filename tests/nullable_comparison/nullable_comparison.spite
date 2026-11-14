@@ -1,7 +1,6 @@
 var console = Console()
 
 func NullableComparison() {
-    load "../../../spite_standard_library/windows"
     var present = find("ada")
     var missing = find("")
     var other_missing = find("")

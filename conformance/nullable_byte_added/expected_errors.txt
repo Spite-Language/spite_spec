@@ -1,1 +1,1 @@
-conformance/nullable_byte_added/nullable_byte_added.spite:11: error: this value may be null (it is a Byte?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableByteAdded.NullableByteAdded)
+conformance/nullable_byte_added/nullable_byte_added.spite:10: error: this value may be null (it is a Byte?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableByteAdded.NullableByteAdded)

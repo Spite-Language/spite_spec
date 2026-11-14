@@ -1,6 +1,5 @@
 var console = Console()
 
 func PrintedClassesInsideTheProgramAreNotRead() {
-    load "../../../spite_standard_library/windows"
     console.print("the printed classes are not the program's")
 }

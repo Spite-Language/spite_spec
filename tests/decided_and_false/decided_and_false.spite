@@ -1,7 +1,6 @@
 var console = Console()
 
 func DecidedAndFalse() {
-    load "../../../spite_standard_library/windows"
     var gate = Gate(false, true)
     gate.tell(3)
     console.print("done")

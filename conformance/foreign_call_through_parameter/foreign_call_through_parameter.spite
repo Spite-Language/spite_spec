@@ -2,7 +2,6 @@ var console = Console()
 var library = DynamicLibrary("fixture.dll", 'identity', "")
 
 func ForeignCallThroughParameter() {
-    load "../../../spite_standard_library/windows"
     call_through(library)
 }
 

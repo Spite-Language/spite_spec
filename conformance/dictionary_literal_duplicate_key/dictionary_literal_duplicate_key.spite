@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryLiteralDuplicateKey() {
-    load "../../../spite_standard_library/windows"
     var prices = {"tea": 3, "cake": 5, "tea": 4}
     var count = prices.count()
     console.print(count)

@@ -9,7 +9,6 @@ enum Role {
 var console = Console()
 
 func NumberedEnums() {
-    load "../../../spite_standard_library/windows"
     var role: Role = 'user'
     switch role {
         'admin': console.print("admin")

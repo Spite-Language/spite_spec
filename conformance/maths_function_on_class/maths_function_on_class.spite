@@ -1,7 +1,6 @@
 var console = Console()
 
 func MathsFunctionOnClass() {
-    load "../../../spite_standard_library/windows"
     var root = Float.square_root()
     console.print(root)
 }

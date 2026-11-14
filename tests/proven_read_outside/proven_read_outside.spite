@@ -1,7 +1,6 @@
 var console = Console()
 
 func ProvenReadOutside() {
-    load "../../../spite_standard_library/windows"
     var sizes = [3, 5, 8]
     var total = 0
     var index = -1

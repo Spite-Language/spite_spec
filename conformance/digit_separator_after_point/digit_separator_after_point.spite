@@ -1,7 +1,6 @@
 var console = Console()
 
 func DigitSeparatorAfterPoint() {
-    load "../../../spite_standard_library/windows"
     var amount = 12._5
     console.print(amount)
 }

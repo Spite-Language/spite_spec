@@ -1,2 +1,2 @@
-conformance/known_fact_class_again/known_fact_class_again.spite:30: fixed: 'creature' was already a Monster, narrowed by 'if creature.class == Monster' on line 28; removed the 'if' and kept the code it runs (in KnownFactClassAgain.KnownFactClassAgain)
+conformance/known_fact_class_again/known_fact_class_again.spite:29: fixed: 'creature' was already a Monster, narrowed by 'if creature.class == Monster' on line 27; removed the 'if' and kept the code it runs (in KnownFactClassAgain.KnownFactClassAgain)
 conformance/known_fact_class_again/ghost.spite:1: fixed: the attribute 'faded' was never read, and making it does nothing; removed it (in Ghost.)

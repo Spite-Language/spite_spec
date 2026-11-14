@@ -3,7 +3,6 @@ type Turning {
 }
 
 func TypeMemberAssignedFunction(): Integer {
-    load "../../../spite_standard_library/windows"
     var thing = ByFunction()
     return change(thing)
 }

@@ -3,7 +3,6 @@ var _first_record: Long = 1111
 var _second_record: Long = 2222
 
 func FileAsBuffer() {
-    load "../../../spite_standard_library/windows"
     var store = File(".spite/file_as_buffer_records.bin")
     var record = Buffer(0)
     record.append_long_little_endian(_first_record)

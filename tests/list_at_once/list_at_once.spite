@@ -2,7 +2,6 @@ var console = Console()
 var library = Library()
 
 func ListAtOnce() {
-    load "../../../spite_standard_library/windows"
     var weighed = library.weigh_all()
     console.print("weighed", weighed)
     var counted = library.count_first()

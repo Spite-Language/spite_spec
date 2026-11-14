@@ -3,7 +3,6 @@ var console = Console()
 var build = Build()
 
 func FinalClassesSpiteClassReopened() {
-    load "../../../spite_standard_library/windows"
     var gadget = Gadget()
     var gadget_class = gadget.class
     var is_a_gadget = gadget_class.is_a_gadget()

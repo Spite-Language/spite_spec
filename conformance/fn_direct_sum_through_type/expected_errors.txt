@@ -1,1 +1,1 @@
-conformance/fn_direct_sum_through_type/fn_direct_sum_through_type.spite:16: error: 'sum' is what '+' calls: write 'left + right' (in FnDirectSumThroughType.added)
+conformance/fn_direct_sum_through_type/fn_direct_sum_through_type.spite:15: error: 'sum' is what '+' calls: write 'left + right' (in FnDirectSumThroughType.added)

@@ -1,1 +1,1 @@
-conformance/vector4_cross/vector4_cross.spite:7: error: a Vector4<Float> has no attribute or function 'cross' (in Vector4Cross.Vector4Cross)
+conformance/vector4_cross/vector4_cross.spite:6: error: a Vector4<Float> has no attribute or function 'cross' (in Vector4Cross.Vector4Cross)

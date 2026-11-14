@@ -1,7 +1,6 @@
 var console = Console()
 
 func ControlSwitchBooleanMissingTrue() {
-    load "../../../spite_standard_library/windows"
     var count = 3
     switch count > 2 {
         false: console.print("few")

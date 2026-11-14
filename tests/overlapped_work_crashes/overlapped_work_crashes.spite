@@ -2,7 +2,6 @@ var console = Console()
 var mixer = Mixer()
 
 func OverlappedWorkCrashes() {
-    load "../../../spite_standard_library/windows"
     var left = mixer.checked_blend(3)
     var right = mixer.blend(5)
     console.print("never printed")

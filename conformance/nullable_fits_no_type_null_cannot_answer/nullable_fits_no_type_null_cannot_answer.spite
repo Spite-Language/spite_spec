@@ -5,7 +5,6 @@ type Singer {
 var console = Console()
 
 func NullableFitsNoTypeNullCannotAnswer() {
-    load "../../../spite_standard_library/windows"
     var rock = Rock()
     perform(rock)
 }

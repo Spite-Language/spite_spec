@@ -1,1 +1,1 @@
-conformance/generic_constraint_number_mistyped/generic_constraint_number_mistyped.spite:9: error: 'Double' does not fit type 'Halving': argument 1 of its 'divide' is a Double, but the type needs an Integer (in GenericConstraintNumberMistyped.GenericConstraintNumberMistyped)
+conformance/generic_constraint_number_mistyped/generic_constraint_number_mistyped.spite:8: error: 'Double' does not fit type 'Halving': argument 1 of its 'divide' is a Double, but the type needs an Integer (in GenericConstraintNumberMistyped.GenericConstraintNumberMistyped)

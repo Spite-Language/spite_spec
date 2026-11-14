@@ -1,7 +1,6 @@
 var console = Console()
 
 func Vector2Cross() {
-    load "../../../spite_standard_library/windows"
     var first = Vector2(1.0, 0.0)
     var second = Vector2(0.0, 1.0)
     var crossed = first.cross(second)

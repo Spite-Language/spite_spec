@@ -1,7 +1,6 @@
 var console = Console()
 
 func ControlSwitchNegativeAndText() {
-    load "../../../spite_standard_library/windows"
     var minus = sign_name(-1)
     var zero = sign_name(0)
     var four = sign_name(4)

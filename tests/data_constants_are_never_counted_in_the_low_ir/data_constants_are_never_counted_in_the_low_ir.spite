@@ -7,7 +7,6 @@ var _bang = 33
 var _two = 2
 
 func DataConstantsAreNeverCountedInTheLowIr() {
-    load "../../../spite_standard_library/windows"
     var key = "load r12 r7 in x"
     var found = 0
     var index = 0

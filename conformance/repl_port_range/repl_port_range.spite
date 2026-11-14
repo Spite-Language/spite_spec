@@ -1,6 +1,5 @@
 var console = Console()
 
 func ReplPortRange() {
-    load "../../../spite_standard_library/windows"
     console.print("ran")
 }

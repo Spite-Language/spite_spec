@@ -4,7 +4,6 @@ var kept = Holder("kept")
 var listed = List<Holder>()
 
 func ListUnfitCounted() {
-    load "../../../spite_standard_library/windows"
     var first = Holder("first")
     holders.append(first)
     crash holders[0]

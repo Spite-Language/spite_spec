@@ -6,7 +6,6 @@ var copy_label = ""
 var copy_path = ""
 
 func LoadGitTwoCommitsDeclareDifferently() {
-    load "../../../spite_standard_library/windows"
     reset()
     make_directory("{root}/repo")
     make_directory("{root}/repo/kit")

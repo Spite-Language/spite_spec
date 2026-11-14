@@ -1,7 +1,6 @@
 var console = Console()
 
 func MergedVersions() {
-    load "../../../spite_standard_library/windows"
     load "../..@b561721/tests/merged_versions/.packages/engine"
     load "../..@b561721/tests/merged_versions/.packages/physics"
     var physics = Physics()

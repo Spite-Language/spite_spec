@@ -1,7 +1,6 @@
 var console = Console()
 
 func UnknownTypeInAnswer() {
-    load "../../../spite_standard_library/windows"
     var count = 3
     var half = halved(count)
     console.print(half)

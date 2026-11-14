@@ -1,7 +1,6 @@
 var console = Console()
 
 func SpellingBareCodegenMark() {
-    load "../../../spite_standard_library/windows"
     var cost = 3
     var cost = $ + 1
     console.print(cost)

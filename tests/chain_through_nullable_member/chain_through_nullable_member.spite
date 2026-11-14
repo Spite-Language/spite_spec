@@ -1,7 +1,6 @@
 var console = Console()
 
 func ChainThroughNullableMember() {
-    load "../../../spite_standard_library/windows"
     var teams = List<Team>()
     var ann = Person(34)
     var ann_team = Team(ann)

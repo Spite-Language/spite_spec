@@ -3,7 +3,6 @@ var program = Program()
 var root = ".spite/load_git_local_repository"
 
 func LoadGitLocalRepository() {
-    load "../../../spite_standard_library/windows"
     reset()
     make_directory("{root}/repo")
     make_directory("{root}/repo/kit")

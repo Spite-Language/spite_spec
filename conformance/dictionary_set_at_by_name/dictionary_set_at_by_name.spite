@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionarySetAtByName() {
-    load "../../../spite_standard_library/windows"
     var scores = {"ada": 1}
     scores.set_at("bo", 2)
     console.print(scores.count())

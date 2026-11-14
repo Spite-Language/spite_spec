@@ -1,1 +1,1 @@
-conformance/copy_to_narrow_not_leaving/copy_to_narrow_not_leaving.spite:10: fixed: 'watcher' only copied 'tracker' so it could be narrowed; narrowed 'tracker' itself and used it directly (in CopyToNarrowNotLeaving.report_when_missing)
+conformance/copy_to_narrow_not_leaving/copy_to_narrow_not_leaving.spite:9: fixed: 'watcher' only copied 'tracker' so it could be narrowed; narrowed 'tracker' itself and used it directly (in CopyToNarrowNotLeaving.report_when_missing)

@@ -5,7 +5,6 @@ type Ordered {
 var console = Console()
 
 func OperatorCallOnAType() {
-    load "../../../spite_standard_library/windows"
     var light: Ordered = Weight(2)
     var heavy = Weight(5)
     var lighter = light.less_than(heavy)

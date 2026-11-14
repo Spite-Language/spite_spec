@@ -9,7 +9,6 @@ var keyboards = List<Keyboard>()
 var input = Input()
 
 func LentToCalls() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 2 {
         var mouse = Mouse(index)

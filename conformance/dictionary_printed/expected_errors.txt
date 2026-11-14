@@ -1,1 +1,1 @@
-conformance/dictionary_printed/dictionary_printed.spite:7: error: a Dictionary<String, Integer> has no attribute or function 'to_string' (in DictionaryPrinted.DictionaryPrinted)
+conformance/dictionary_printed/dictionary_printed.spite:6: error: a Dictionary<String, Integer> has no attribute or function 'to_string' (in DictionaryPrinted.DictionaryPrinted)

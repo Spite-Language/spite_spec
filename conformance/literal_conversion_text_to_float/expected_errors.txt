@@ -1,1 +1,1 @@
-conformance/literal_conversion_text_to_float/literal_conversion_text_to_float.spite:5: error: the literal "half" does not convert: 'Float(from: String)' answers null for it (in LiteralConversionTextToFloat.LiteralConversionTextToFloat)
+conformance/literal_conversion_text_to_float/literal_conversion_text_to_float.spite:4: error: the literal "half" does not convert: 'Float(from: String)' answers null for it (in LiteralConversionTextToFloat.LiteralConversionTextToFloat)

@@ -3,7 +3,6 @@ var source = "12 apples"
 var words = List<String>()
 
 func RepeatedBranchCallStaysNarrow() {
-    load "../../../spite_standard_library/windows"
     made_in_both(true)
     assigned_first(true)
     called_after_a_nested_if(true, true)

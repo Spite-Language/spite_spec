@@ -3,7 +3,6 @@ var program = Program()
 var folder = ".spite/here"
 
 func CompilerBuildsItsFolder() {
-    load "../../../spite_standard_library/windows"
     write_the_program()
     var old = File(".spite/here/.spite/build/here.exe")
     if old.exists() {

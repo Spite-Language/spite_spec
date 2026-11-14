@@ -1,1 +1,1 @@
-conformance/unknown_type_dotted_parameter/unknown_type_dotted_parameter.spite:9: error: unknown type 'Server.Component.Gem' (in UnknownTypeDottedParameter.look_at)
+conformance/unknown_type_dotted_parameter/unknown_type_dotted_parameter.spite:8: error: unknown type 'Server.Component.Gem' (in UnknownTypeDottedParameter.look_at)

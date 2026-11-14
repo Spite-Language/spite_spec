@@ -5,7 +5,6 @@ var _threads = 4
 var _calls = 2000
 
 func ForeignCallbacksCountReferencesAtomically() {
-    load "../../../spite_standard_library/windows"
     var ledger = Ledger("ledger")
     var reporting = ForeignCallback(ledger.report, 'context_first')
     fixture.report_from_threads(_threads, _calls, reporting.address, reporting.context)

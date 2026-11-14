@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReflectionCollectionAttributesEmpty() {
-    load "../../../spite_standard_library/windows"
     var numbers = [1, 2, 3]
     var ages = Dictionary<String, Integer>()
     ages["ada"] = 36

@@ -4,7 +4,6 @@ var station = Station()
 var _churned_names = 2000
 
 func ParallelReceivers() {
-    load "../../../spite_standard_library/windows"
     owner.start()
     churn()
     var pumped = owner.finish()

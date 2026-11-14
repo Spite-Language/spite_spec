@@ -1,2 +1,2 @@
-conformance/returned_local/returned_local.spite:14: error: 'whole' is declared only to be returned on the next line: write 'return scaled.round()', since 'return' already makes the value the function's Integer (in ReturnedLocal.rounded)
-conformance/returned_local/returned_local.spite:19: error: 'greeting' is declared only to be returned on the next line: write 'return "hello {name}"', since 'return' already makes the value the function's String (in ReturnedLocal.named)
+conformance/returned_local/returned_local.spite:13: error: 'whole' is declared only to be returned on the next line: write 'return scaled.round()', since 'return' already makes the value the function's Integer (in ReturnedLocal.rounded)
+conformance/returned_local/returned_local.spite:18: error: 'greeting' is declared only to be returned on the next line: write 'return "hello {name}"', since 'return' already makes the value the function's String (in ReturnedLocal.named)

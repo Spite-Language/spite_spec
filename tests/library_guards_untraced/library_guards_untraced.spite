@@ -1,7 +1,6 @@
 var console = Console()
 
 func LibraryGuardsUntraced() {
-    load "../../../spite_standard_library/windows"
     var word = "hello"
     var no_z = word.index_of("z")
     var missing = not no_z

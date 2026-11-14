@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_lst/abbreviation_meaning_lst.spite:5: error: 'lst' abbreviates 'lst', which could mean 'list' or 'last': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningLst.AbbreviationMeaningLst)
+conformance/abbreviation_meaning_lst/abbreviation_meaning_lst.spite:4: error: 'lst' abbreviates 'lst', which could mean 'list' or 'last': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningLst.AbbreviationMeaningLst)

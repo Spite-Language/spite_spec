@@ -1,1 +1,1 @@
-conformance/codegen_literal/codegen_literal.spite:5: error: a codegen value is a type, and 'true' is a value: pass it to the constructor or set an attribute, and the compiler decides the branch where the value is known
+conformance/codegen_literal/codegen_literal.spite:4: error: a codegen value is a type, and 'true' is a value: pass it to the constructor or set an attribute, and the compiler decides the branch where the value is known

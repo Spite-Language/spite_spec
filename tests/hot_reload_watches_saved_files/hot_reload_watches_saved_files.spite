@@ -6,7 +6,6 @@ var greeter = Greeter()
 var _most_waits = 600
 
 func HotReloadWatchesSavedFiles() {
-    load "../../../spite_standard_library/windows"
     var fifty_milliseconds = Duration(50, 'milliseconds')
     var first = greeter.greeting()
     console.print(first)

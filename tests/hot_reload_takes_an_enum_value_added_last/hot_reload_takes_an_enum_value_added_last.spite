@@ -3,7 +3,6 @@ var build = Build()
 var gauge = Gauge()
 
 func HotReloadTakesAnEnumValueAddedLast() {
-    load "../../../spite_standard_library/windows"
     var said = gauge.describe()
     console.print(said)
     var folder = build.program.replace("/", "\\")

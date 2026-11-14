@@ -12,7 +12,6 @@ enum Size {
 var console = Console()
 
 func EnumNumbers() {
-    load "../../../spite_standard_library/windows"
     var role: Role = 'guest'
     var size: Size = 'small'
     console.print(role, size)

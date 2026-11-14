@@ -3,7 +3,6 @@ var build = Build()
 var palette = Palette()
 
 func HotReloadRefusesAChangedEnumNumber() {
-    load "../../../spite_standard_library/windows"
     var number = palette.shade_number()
     console.print(number)
     var folder = build.program.replace("/", "\\")

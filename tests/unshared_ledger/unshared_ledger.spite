@@ -2,7 +2,6 @@ var console = Console()
 var ledger = Ledger()
 
 func UnsharedLedger() {
-    load "../../../spite_standard_library/windows"
     var counter = Counter()
     var counted = counter.run()
     var amounts = [4, 12, 30, 7]

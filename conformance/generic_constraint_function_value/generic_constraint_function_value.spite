@@ -5,7 +5,6 @@ type Labelled {
 var console = Console()
 
 func GenericConstraintFunctionValue() {
-    load "../../../spite_standard_library/windows"
     var shelf = Shelf<Spite.Function<Integer, Integer>>()
     console.print(shelf.count)
 }

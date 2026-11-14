@@ -5,7 +5,6 @@ var mixer = Mixer()
 var settings = Settings()
 
 func FoldedCrashNotDecided() {
-    load "../../../spite_standard_library/windows"
     mixer.blend()
     console.print(alpha.first_value, beta.second_value, mixer.level)
     Spite.Namespace.instances.each(check_a_folder)

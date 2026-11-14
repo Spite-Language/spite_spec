@@ -1,2 +1,2 @@
-conformance/walk_all_member_if_not/walk_all_member_if_not.spite:26: fixed: this 'if' only returned 'false', which is what 'fallback' returns when its condition fails; wrote 'fallback item.in_stock' in its place (in WalkAllMemberIfNot.walk)
-conformance/walk_all_member_if_not/walk_all_member_if_not.spite:24: error: this 'while' walks every element of 'items' only to ask whether every one's 'in_stock' holds: write 'return items.all_in_stock()' (in WalkAllMemberIfNot.walk)
+conformance/walk_all_member_if_not/walk_all_member_if_not.spite:25: fixed: this 'if' only returned 'false', which is what 'fallback' returns when its condition fails; wrote 'fallback item.in_stock' in its place (in WalkAllMemberIfNot.walk)
+conformance/walk_all_member_if_not/walk_all_member_if_not.spite:23: error: this 'while' walks every element of 'items' only to ask whether every one's 'in_stock' holds: write 'return items.all_in_stock()' (in WalkAllMemberIfNot.walk)

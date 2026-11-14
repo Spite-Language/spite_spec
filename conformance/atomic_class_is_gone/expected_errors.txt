@@ -1,1 +1,1 @@
-conformance/atomic_class_is_gone/atomic_class_is_gone.spite:3: error: there is no generic class 'Atomic' here: a class name is looked up in this class's folder, each parent folder, then the whole program (in AtomicClassIsGone.AtomicClassIsGone)
+conformance/atomic_class_is_gone/atomic_class_is_gone.spite:2: error: there is no generic class 'Atomic' here: a class name is looked up in this class's folder, each parent folder, then the whole program (in AtomicClassIsGone.AtomicClassIsGone)

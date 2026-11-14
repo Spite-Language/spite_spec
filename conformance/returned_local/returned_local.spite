@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReturnedLocal() {
-    load "../../../spite_standard_library/windows"
     var whole = rounded(2.6)
     var greeting = named("ada")
     var wide = widened(3)

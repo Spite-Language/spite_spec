@@ -1,7 +1,6 @@
 var console = Console()
 
 func AbbreviationPluralDocs() {
-    load "../../../spite_standard_library/windows"
     var docs = 1
     console.print(docs)
 }

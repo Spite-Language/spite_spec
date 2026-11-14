@@ -2,7 +2,6 @@ var console = Console()
 var build = Build()
 
 func DownCounterRanges() {
-    load "../../../spite_standard_library/windows"
     var total = 0
     var index = 10
     while index > 0 {

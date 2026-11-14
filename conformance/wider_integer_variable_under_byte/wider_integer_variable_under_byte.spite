@@ -2,7 +2,6 @@ var console = Console()
 var _wider_than_byte = 300
 
 func WiderIntegerVariableUnderByte() {
-    load "../../../spite_standard_library/windows"
     var small: Byte = 7
     var sum = small + _wider_than_byte
     console.print(sum)

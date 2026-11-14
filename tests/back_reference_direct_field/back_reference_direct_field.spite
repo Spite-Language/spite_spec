@@ -1,7 +1,6 @@
 var console = Console()
 
 func BackReferenceDirectField() {
-    load "../../../spite_standard_library/windows"
     var owner = Owner("rovers")
     adopt(owner)
     var adopted = owner.pet_name()

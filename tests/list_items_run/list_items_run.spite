@@ -1,7 +1,6 @@
 var console = Console()
 
 func ListItemsRun() {
-    load "../../../spite_standard_library/windows"
     var velocities = List<Velocity>()
     var first = Velocity(1.0, 2.0, "first")
     velocities.append(first)

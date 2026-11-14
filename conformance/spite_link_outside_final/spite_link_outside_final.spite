@@ -3,6 +3,5 @@
 var console = Console()
 
 func SpiteLinkOutsideFinal() {
-    load "../../../spite_standard_library/windows"
     console.print("linked")
 }

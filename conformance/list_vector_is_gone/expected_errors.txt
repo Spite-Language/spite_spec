@@ -1,1 +1,1 @@
-conformance/list_vector_is_gone/list_vector_is_gone.spite:5: error: 'Vector<Integer>' holds plain values, and a List keeps numbers, Boolean and enums flat just as it did, so a list of them has one spelling: write 'List<Integer>' (in ListVectorIsGone.ListVectorIsGone)
+conformance/list_vector_is_gone/list_vector_is_gone.spite:4: error: 'Vector<Integer>' holds plain values, and a List keeps numbers, Boolean and enums flat just as it did, so a list of them has one spelling: write 'List<Integer>' (in ListVectorIsGone.ListVectorIsGone)

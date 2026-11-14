@@ -6,7 +6,6 @@ enum Light {
 var console = Console()
 
 func FallbackEnumResult() {
-    load "../../../spite_standard_library/windows"
     var light = light_of("go")
     console.print(light)
 }

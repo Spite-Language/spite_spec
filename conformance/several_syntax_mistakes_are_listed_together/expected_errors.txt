@@ -1,4 +1,4 @@
-conformance/several_syntax_mistakes_are_listed_together/several_syntax_mistakes_are_listed_together.spite:5: error: every variable has a default value, so write '=' and the value
-conformance/several_syntax_mistakes_are_listed_together/several_syntax_mistakes_are_listed_together.spite:9: error: a parameter is declared 'name: Type', and found ':'
-conformance/several_syntax_mistakes_are_listed_together/several_syntax_mistakes_are_listed_together.spite:14: error: 'assert' is now 'fallback': it returns what the function's answer type builds with no arguments when its condition fails, so write 'fallback' with the same condition
-conformance/several_syntax_mistakes_are_listed_together/several_syntax_mistakes_are_listed_together.spite:19: error: '2' is left over after the end of the statement: a statement is one line
+conformance/several_syntax_mistakes_are_listed_together/several_syntax_mistakes_are_listed_together.spite:4: error: every variable has a default value, so write '=' and the value
+conformance/several_syntax_mistakes_are_listed_together/several_syntax_mistakes_are_listed_together.spite:8: error: a parameter is declared 'name: Type', and found ':'
+conformance/several_syntax_mistakes_are_listed_together/several_syntax_mistakes_are_listed_together.spite:13: error: 'assert' is now 'fallback': it returns what the function's answer type builds with no arguments when its condition fails, so write 'fallback' with the same condition
+conformance/several_syntax_mistakes_are_listed_together/several_syntax_mistakes_are_listed_together.spite:18: error: '2' is left over after the end of the statement: a statement is one line

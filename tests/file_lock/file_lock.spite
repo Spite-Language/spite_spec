@@ -1,7 +1,6 @@
 var console = Console()
 
 func FileLock() {
-    load "../../../spite_standard_library/windows"
     var guard = File(".spite/file_lock.lock")
     if guard.exists() {
         crash guard.remove()

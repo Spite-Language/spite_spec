@@ -2,7 +2,6 @@ var console = Console()
 var _price_steps = 250
 
 func ProvenSum() {
-    load "../../../spite_standard_library/windows"
     var prices = List<Integer>()
     var index = 0
     while index < 1000 {

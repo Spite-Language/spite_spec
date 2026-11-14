@@ -1,1 +1,1 @@
-conformance/decided_if_false/decided_if_false.spite:5: fixed: 'if 1 > 2' was decided while compiling and was always false here, so the code it guarded never ran; removed it and kept its 'else' (in DecidedIfFalse.DecidedIfFalse)
+conformance/decided_if_false/decided_if_false.spite:4: fixed: 'if 1 > 2' was decided while compiling and was always false here, so the code it guarded never ran; removed it and kept its 'else' (in DecidedIfFalse.DecidedIfFalse)

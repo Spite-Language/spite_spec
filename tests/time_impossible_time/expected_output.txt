@@ -1,2 +1,2 @@
 spite: ...
-spite.frame	tests/time_impossible_time/time_impossible_time.spite:5	TimeImpossibleTime	TimeImpossibleTime
+spite.frame	tests/time_impossible_time/time_impossible_time.spite:4	TimeImpossibleTime	TimeImpossibleTime

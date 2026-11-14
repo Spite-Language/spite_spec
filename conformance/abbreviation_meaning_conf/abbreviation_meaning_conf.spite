@@ -1,7 +1,6 @@
 var console = Console()
 
 func AbbreviationMeaningConf() {
-    load "../../../spite_standard_library/windows"
     var conf = 1
     console.print(conf)
 }

@@ -17,7 +17,6 @@ var favourite: Pet = Cat()
 var diet: Diet = 'meat'
 
 func ClassDeclarations() {
-    load "../../../spite_standard_library/windows"
     var enums = ClassDeclarations.enums
     var enum_names = enums.keys().join(" ")
     console.print("enums", enum_names)

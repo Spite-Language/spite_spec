@@ -2,7 +2,6 @@ var console = Console()
 var _sample_year = 2024
 
 func OldTypeSpellings() {
-    load "../../../spite_standard_library/windows"
     var count: Int = 3
     var ready: Bool = true
     var mask: UnsignedInt = 7

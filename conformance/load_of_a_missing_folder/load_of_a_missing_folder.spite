@@ -1,4 +1,3 @@
 func LoadOfAMissingFolder() {
-    load "../../../spite_standard_library/windows"
     load "nowhere_at_all"
 }

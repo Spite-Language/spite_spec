@@ -7,7 +7,6 @@ var _long_key_length = 131
 var _long_key_byte: Byte = 170
 
 func Hashes() {
-    load "../../../spite_standard_library/windows"
     var samples = ["", "abc", "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"]
     var index = 0
     while index < samples.count() {

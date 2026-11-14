@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_dir/abbreviation_meaning_dir.spite:5: error: 'dir' abbreviates 'dir', which could mean 'directory' or 'direction': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningDir.AbbreviationMeaningDir)
+conformance/abbreviation_meaning_dir/abbreviation_meaning_dir.spite:4: error: 'dir' abbreviates 'dir', which could mean 'directory' or 'direction': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningDir.AbbreviationMeaningDir)

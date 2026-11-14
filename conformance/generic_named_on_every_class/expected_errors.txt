@@ -1,1 +1,1 @@
-conformance/generic_named_on_every_class/generic_named_on_every_class.spite:5: error: 'Spite.Class' is not a generic class, so it takes no type in '<>': write 'Spite.Class' alone
+conformance/generic_named_on_every_class/generic_named_on_every_class.spite:4: error: 'Spite.Class' is not a generic class, so it takes no type in '<>': write 'Spite.Class' alone

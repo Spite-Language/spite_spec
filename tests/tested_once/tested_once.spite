@@ -2,7 +2,6 @@ var console = Console()
 var tally = Tally()
 
 func TestedOnce() {
-    load "../../../spite_standard_library/windows"
     var worker = Worker()
     var first = worker.run()
     var index = 0

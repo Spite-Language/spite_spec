@@ -1,7 +1,6 @@
 var console = Console()
 
 func MemoryCountsBuffers() {
-    load "../../../spite_standard_library/windows"
     var total = 0
     var round = 0
     while round < 100 {

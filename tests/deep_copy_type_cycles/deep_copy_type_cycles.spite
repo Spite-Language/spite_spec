@@ -7,7 +7,6 @@ type Linked {
 var console = Console()
 
 func DeepCopyTypeCycles() {
-    load "../../../spite_standard_library/windows"
     var first = Bead("a")
     var second = Bead("b")
     first.next = second

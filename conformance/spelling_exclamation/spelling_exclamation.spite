@@ -1,7 +1,6 @@
 var console = Console()
 
 func SpellingExclamation() {
-    load "../../../spite_standard_library/windows"
     var cost = 3
     var done = !true
     console.print(cost)

@@ -7,7 +7,6 @@ enum Light {
 var console = Console()
 
 func ControlSwitchValueSingleCase() {
-    load "../../../spite_standard_library/windows"
     var stop = is_stop('red')
     console.print(stop)
 }

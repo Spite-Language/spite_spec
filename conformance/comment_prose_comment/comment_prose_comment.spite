@@ -1,4 +1,1 @@
 # this adds two numbers
-func CommentProseComment() {
-    load "../../../spite_standard_library/windows"
-}

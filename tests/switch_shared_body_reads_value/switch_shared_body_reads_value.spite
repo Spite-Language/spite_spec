@@ -7,7 +7,6 @@ enum Light {
 var console = Console()
 
 func SwitchSharedBodyReadsValue() {
-    load "../../../spite_standard_library/windows"
     show('red')
     show('amber')
     show('green')

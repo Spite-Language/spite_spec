@@ -1,1 +1,1 @@
-conformance/area_guard_undone_by_shrinking/area_guard_undone_by_shrinking.spite:21: error: this value may be null (it is an Integer?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in AreaGuardUndoneByShrinking.show)
+conformance/area_guard_undone_by_shrinking/area_guard_undone_by_shrinking.spite:20: error: this value may be null (it is an Integer?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in AreaGuardUndoneByShrinking.show)

@@ -2,7 +2,6 @@ var console = Console()
 var items = List<String>()
 
 func ProofUndoneByRemoveSwapping() {
-    load "../../../spite_standard_library/windows"
     items.append("apple")
     items.append("fig")
     shrink_then_read()

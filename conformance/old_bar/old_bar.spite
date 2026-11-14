@@ -1,7 +1,6 @@
 var console = Console()
 
 func OldBar() {
-    load "../../../spite_standard_library/windows"
     var flags = 3
     var mask = 4
     var mixed = flags | mask

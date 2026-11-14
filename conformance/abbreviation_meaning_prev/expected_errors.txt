@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_prev/abbreviation_meaning_prev.spite:5: error: 'prev' abbreviates 'prev', which could mean 'previous' or 'preview': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningPrev.AbbreviationMeaningPrev)
+conformance/abbreviation_meaning_prev/abbreviation_meaning_prev.spite:4: error: 'prev' abbreviates 'prev', which could mean 'previous' or 'preview': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningPrev.AbbreviationMeaningPrev)

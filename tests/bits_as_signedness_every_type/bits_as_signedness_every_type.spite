@@ -1,7 +1,6 @@
 var console = Console()
 
 func BitsAsSignednessEveryType() {
-    load "../../../spite_standard_library/windows"
     var short: Short = -1
     var long: Long = -2
     var integer: Integer = -1

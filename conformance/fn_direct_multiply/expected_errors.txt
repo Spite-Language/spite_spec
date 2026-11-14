@@ -1,1 +1,1 @@
-conformance/fn_direct_multiply/fn_direct_multiply.spite:9: error: 'multiply' is what '*' calls: write 'first * second' (in FnDirectMultiply.FnDirectMultiply)
+conformance/fn_direct_multiply/fn_direct_multiply.spite:8: error: 'multiply' is what '*' calls: write 'first * second' (in FnDirectMultiply.FnDirectMultiply)

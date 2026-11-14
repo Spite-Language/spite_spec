@@ -2,7 +2,6 @@ var kind = "rook"
 var console = Console()
 
 func FnSingletonAsMember() {
-    load "../../../spite_standard_library/windows"
     var piece = Piece()
     console.print(piece.singleton)
 }

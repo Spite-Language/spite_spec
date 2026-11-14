@@ -1,1 +1,1 @@
-conformance/return_value_from_a_function_that_answers_nothing/return_value_from_a_function_that_answers_nothing.spite:10: error: 'greet' answers nothing, so 'return' takes no value (in ReturnValueFromAFunctionThatAnswersNothing.greet)
+conformance/return_value_from_a_function_that_answers_nothing/return_value_from_a_function_that_answers_nothing.spite:9: error: 'greet' answers nothing, so 'return' takes no value (in ReturnValueFromAFunctionThatAnswersNothing.greet)

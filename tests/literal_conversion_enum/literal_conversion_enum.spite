@@ -6,7 +6,6 @@ enum Part {
 var console = Console()
 
 func LiteralConversionEnum() {
-    load "../../../spite_standard_library/windows"
     var named: Part = "head"
     var numbered: Part = 7
     var maybe: Part? = "tail"

@@ -4,7 +4,6 @@ var worker = Worker()
 var frames = 0
 
 func FrameStartedFallbackReturns() {
-    load "../../../spite_standard_library/windows"
     var one_millisecond = Duration(1, 'milliseconds')
     while not worker.finished {
         frames = frames + 1

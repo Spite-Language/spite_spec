@@ -6,7 +6,6 @@ enum Level {
 var console = Console()
 
 func NullableEnumReturned() {
-    load "../../../spite_standard_library/windows"
     var chosen = choose()
     console.print(chosen)
 }

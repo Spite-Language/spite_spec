@@ -6,7 +6,6 @@ enum Phase {
 var console = Console()
 
 func DeclaredTypeWithArgumentsOnAnEnum() {
-    load "../../../spite_standard_library/windows"
     var phase: Phase<Integer> = 'idle'
     console.print(phase)
 }

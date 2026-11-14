@@ -10,7 +10,6 @@ var runner = Runner<Moving>()
 var mover = Mover()
 
 func WalkedRowComputedPlace() {
-    load "../../../spite_standard_library/windows"
     var spawned = 0
     while spawned < 3 {
         var position = Position(10.0 * spawned)

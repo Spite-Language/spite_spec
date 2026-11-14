@@ -1,5 +1,4 @@
 func ReturnTypeColon() {
-    load "../../../spite_standard_library/windows"
     add_one(1)
 }
 

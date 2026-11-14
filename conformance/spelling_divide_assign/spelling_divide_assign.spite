@@ -1,7 +1,6 @@
 var console = Console()
 
 func SpellingDivideAssign() {
-    load "../../../spite_standard_library/windows"
     var cost = 3
     cost /= 4
     console.print(cost)

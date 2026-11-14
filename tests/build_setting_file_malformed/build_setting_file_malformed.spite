@@ -3,7 +3,6 @@ var program = Program()
 var folder = ".spite/malformed"
 
 func BuildSettingFileMalformed() {
-    load "../../../spite_standard_library/windows"
     write_the_program()
     var settings_path: Path? = "{folder}/.env"
     crash settings_path

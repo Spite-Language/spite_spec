@@ -1,5 +1,4 @@
 func IfOnly(): Integer {
-    load "../../../spite_standard_library/windows"
     var first = 0
     if first == 1 {
         return 1

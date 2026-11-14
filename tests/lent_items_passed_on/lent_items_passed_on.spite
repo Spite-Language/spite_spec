@@ -8,7 +8,6 @@ var mice = List<Mouse>()
 var input = Input()
 
 func LentItemsPassedOn() {
-    load "../../../spite_standard_library/windows"
     var made = Mouse()
     mice.append(made)
     crash mice[0]

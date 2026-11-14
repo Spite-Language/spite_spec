@@ -5,7 +5,6 @@ var _ready = false
 var _calls = 0
 
 func DefaultWriteBelowIsMovedDevelopment() {
-    load "../../../spite_standard_library/windows"
     console.print(started, _ready, counted, _calls)
 }
 

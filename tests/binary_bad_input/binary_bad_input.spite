@@ -2,7 +2,6 @@ var console = Console()
 var reader = BinaryReader<Flag>()
 
 func BinaryBadInput() {
-    load "../../../spite_standard_library/windows"
     var good = Buffer(0)
     good.append(1)
     good.append_integer_little_endian(7)

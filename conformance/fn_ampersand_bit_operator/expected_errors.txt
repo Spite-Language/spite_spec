@@ -1,1 +1,1 @@
-conformance/fn_ampersand_bit_operator/fn_ampersand_bit_operator.spite:7: error: Spite has no '&': bits are functions on the whole numbers, 'bits_and(mask)', and 'and' joins conditions
+conformance/fn_ampersand_bit_operator/fn_ampersand_bit_operator.spite:6: error: Spite has no '&': bits are functions on the whole numbers, 'bits_and(mask)', and 'and' joins conditions

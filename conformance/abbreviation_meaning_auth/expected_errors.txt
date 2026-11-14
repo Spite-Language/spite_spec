@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_auth/abbreviation_meaning_auth.spite:5: error: 'auth' abbreviates 'auth', which could mean 'authentication' or 'authorization': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningAuth.AbbreviationMeaningAuth)
+conformance/abbreviation_meaning_auth/abbreviation_meaning_auth.spite:4: error: 'auth' abbreviates 'auth', which could mean 'authentication' or 'authorization': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningAuth.AbbreviationMeaningAuth)

@@ -6,7 +6,6 @@ union Pet {
 var console = Console()
 
 func EnumMemberOfOneUnionClass() {
-    load "../../../spite_standard_library/windows"
     var pets = List<Pet>()
     var cat = Cat()
     pets.append(cat)

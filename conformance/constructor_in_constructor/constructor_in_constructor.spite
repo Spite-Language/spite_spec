@@ -1,7 +1,6 @@
 var console = Console()
 
 func ConstructorInConstructor() {
-    load "../../../spite_standard_library/windows"
     var label = Label(Font())
     console.print(label.font.size)
 }

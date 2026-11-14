@@ -3,7 +3,6 @@ var program = Program()
 var folder = ".spite/built_only"
 
 func CompilerBuildDoesNotRun() {
-    load "../../../spite_standard_library/windows"
     write_the_program()
     var marker_path: Path? = "{folder}/ran.txt"
     crash marker_path

@@ -1,7 +1,7 @@
 50000 50001 50000 50000 50000 0 50000
-- [tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:49](../../tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite#L49): `amount * 1000` keeps its overflow check: 'amount' runs from -2147483648 to 90, so the answer may not fit in an Integer
-- [tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:56](../../tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite#L56): `amount * 1000` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
-- [tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:61](../../tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite#L61): `amount * 1000` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
-- [tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:70](../../tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite#L70): `amount * 1000` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+- [tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:48](../../tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite#L48): `amount * 1000` keeps its overflow check: 'amount' runs from -2147483648 to 90, so the answer may not fit in an Integer
+- [tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:55](../../tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite#L55): `amount * 1000` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+- [tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:60](../../tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite#L60): `amount * 1000` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
+- [tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:69](../../tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite#L69): `amount * 1000` keeps its overflow check: 'amount' runs from -2147483648 to 2147483647, so the answer may not fit in an Integer
 outside
-spite: 'amount * 1000' does not fit in an Integer (3000000 * 1000), at tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:56 in LeavingOrProvesRanges.falls_through
+spite: 'amount * 1000' does not fit in an Integer (3000000 * 1000), at tests/leaving_or_proves_ranges/leaving_or_proves_ranges.spite:55 in LeavingOrProvesRanges.falls_through

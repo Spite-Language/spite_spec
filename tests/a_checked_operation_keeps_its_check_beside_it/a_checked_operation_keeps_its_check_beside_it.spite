@@ -5,7 +5,6 @@ var written = ""
 var _start_near_the_largest_integer = 2147483000
 
 func ACheckedOperationKeepsItsCheckBesideIt() {
-    load "../../../spite_standard_library/windows"
     var given = environment.given
     var quotient = 1000 / given
     var rest = 1000 % given

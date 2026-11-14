@@ -4,7 +4,6 @@ var beta = Other.Beta()
 var gamma = Part.Inner.Gamma()
 
 func KnownListWalk() {
-    load "../../../spite_standard_library/windows"
     console.print(alpha.first, beta.second, gamma.third)
     var namespaces = [Part, Other, Part.Inner]
     namespaces.each(check_a_namespace)

@@ -2,7 +2,6 @@ var console = Console()
 var _byte_below_the_top: Byte = 254
 
 func ByteLiteralAddition() {
-    load "../../../spite_standard_library/windows"
     var top: Byte = _byte_below_the_top
     var next = top + 1
     console.print(next)

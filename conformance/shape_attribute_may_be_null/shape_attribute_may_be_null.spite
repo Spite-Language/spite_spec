@@ -9,7 +9,6 @@ type Keeper {
 var console = Console()
 
 func ShapeAttributeMayBeNull() {
-    load "../../../spite_standard_library/windows"
     var cat = Cat()
     console.print(cat.name)
     var owner = Owner()

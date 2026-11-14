@@ -3,7 +3,6 @@ var first = Tally.Counter()
 var second = Tally.Counter()
 
 func ReopeningAddsSingleton() {
-    load "../../../spite_standard_library/windows"
     load "package"
     load "mod"
     first.add()

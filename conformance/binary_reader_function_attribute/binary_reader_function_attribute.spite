@@ -6,7 +6,6 @@ union Pet {
 var console = Console()
 
 func BinaryReaderFunctionAttribute() {
-    load "../../../spite_standard_library/windows"
     var reader = BinaryReader<Holder>()
     var bytes = Buffer(0)
     var holder = reader.read(bytes)

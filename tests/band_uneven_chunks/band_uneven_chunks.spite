@@ -8,7 +8,6 @@ var _digest_base = 31
 var _digest_modulus = 1000000007
 
 func BandUnevenChunks() {
-    load "../../../spite_standard_library/windows"
     var jobs = List<Job>()
     var index = 0
     while index < _job_count {

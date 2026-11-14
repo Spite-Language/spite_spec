@@ -5,7 +5,6 @@ union Creature {
 }
 
 func SwitchSameAsRest() {
-    load "../../../spite_standard_library/windows"
     var cat = Cat()
     describe(cat)
 }

@@ -1,5 +1,4 @@
 func EveryUnreadLocalIsTold() {
-    load "../../../spite_standard_library/windows"
     first()
     second()
 }

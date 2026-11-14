@@ -5,7 +5,6 @@ type Halving {
 var console = Console()
 
 func GenericConstraintNumberMistyped() {
-    load "../../../spite_standard_library/windows"
     var halver = Halver<Double>()
     halver.add(2.5)
     var count = halver.amounts.count()

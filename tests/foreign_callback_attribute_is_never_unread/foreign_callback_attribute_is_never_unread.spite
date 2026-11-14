@@ -4,7 +4,6 @@ var clicking = ForeignCallback(clicks.idle, 'no_context')
 var _count = 4
 
 func ForeignCallbackAttributeIsNeverUnread() {
-    load "../../../spite_standard_library/windows"
     hand_over()
     plain.click(_count)
 }

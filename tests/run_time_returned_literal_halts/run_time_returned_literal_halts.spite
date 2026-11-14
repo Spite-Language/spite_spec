@@ -2,7 +2,6 @@ var console = Console()
 var kept = List<Spite.Class>()
 
 func RunTimeReturnedLiteralHalts() {
-    load "../../../spite_standard_library/windows"
     kept.append(Gadget)
     kept.each(describe)
 }

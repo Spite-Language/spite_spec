@@ -9,7 +9,6 @@ var _sample_unsigned_long: UnsignedLong = 9000000000000000000
 var _first_record_value = 1200
 
 func ListByteNumbers() {
-    load "../../../spite_standard_library/windows"
     var bytes = Buffer(0)
     var tiny: Tiny = -5
     bytes.append_tiny(tiny)

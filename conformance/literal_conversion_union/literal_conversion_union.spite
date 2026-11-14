@@ -6,7 +6,6 @@ union Job {
 var console = Console()
 
 func LiteralConversionUnion() {
-    load "../../../spite_standard_library/windows"
     var job: Job = "nobody"
     var found = job.title()
     console.print(found)

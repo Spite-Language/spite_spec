@@ -3,7 +3,6 @@ var tracks = List<Track>()
 var kept = List<Track>()
 
 func HeldItemArguments() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 4 {
         var track = Track(100 + index)

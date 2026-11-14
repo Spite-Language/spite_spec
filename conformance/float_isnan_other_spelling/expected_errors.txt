@@ -1,1 +1,1 @@
-conformance/float_isnan_other_spelling/float_isnan_other_spelling.spite:6: error: Float has no function 'isnan': Spite spells it 'is_not_a_number', since no name is abbreviated (in FloatIsnanOtherSpelling.FloatIsnanOtherSpelling)
+conformance/float_isnan_other_spelling/float_isnan_other_spelling.spite:5: error: Float has no function 'isnan': Spite spells it 'is_not_a_number', since no name is abbreviated (in FloatIsnanOtherSpelling.FloatIsnanOtherSpelling)

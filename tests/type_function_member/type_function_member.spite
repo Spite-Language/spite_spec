@@ -15,7 +15,6 @@ type Turning {
 var console = Console()
 
 func TypeFunctionMember() {
-    load "../../../spite_standard_library/windows"
     var function_worker = ByFunction()
     var held_worker = ByHeld()
     work(function_worker)

@@ -2,6 +2,5 @@ var console = Console()
 var build = Build()
 
 func BuildSpiteOptimizedDefault() {
-    load "../../../spite_standard_library/windows"
     console.print("optimized", build.optimized, "hot_reload", build.hot_reload)
 }

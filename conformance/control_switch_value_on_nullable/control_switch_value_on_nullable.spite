@@ -6,7 +6,6 @@ enum Light {
 var console = Console()
 
 func ControlSwitchValueOnNullable() {
-    load "../../../spite_standard_library/windows"
     var name = name_of('red')
     console.print(name)
 }

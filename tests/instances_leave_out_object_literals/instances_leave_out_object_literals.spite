@@ -1,7 +1,6 @@
 var console = Console()
 
 func InstancesLeaveOutObjectLiterals() {
-    load "../../../spite_standard_library/windows"
     var point = {x: 1, y: 2}
     var rock = Rock()
     var names = Spite.Class.instances.map_names()

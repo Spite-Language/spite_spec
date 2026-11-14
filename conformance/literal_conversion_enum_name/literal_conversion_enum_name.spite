@@ -6,7 +6,6 @@ enum Part {
 var console = Console()
 
 func LiteralConversionEnumName() {
-    load "../../../spite_standard_library/windows"
     var wrong: Part = "knee"
     console.print(wrong)
 }

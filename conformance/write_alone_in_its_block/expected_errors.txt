@@ -1,1 +1,1 @@
-conformance/write_alone_in_its_block/write_alone_in_its_block.spite:5: error: 'total' is never read: remove it (in WriteAloneInItsBlock.WriteAloneInItsBlock)
+conformance/write_alone_in_its_block/write_alone_in_its_block.spite:4: error: 'total' is never read: remove it (in WriteAloneInItsBlock.WriteAloneInItsBlock)

@@ -12,7 +12,6 @@ var _most_rounds = 100
 var _capped_rounds = 5
 
 func FixpointRounds() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < _node_count {
         var node = Node(index)

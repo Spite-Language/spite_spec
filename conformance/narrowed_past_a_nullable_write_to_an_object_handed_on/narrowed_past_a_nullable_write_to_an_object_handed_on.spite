@@ -2,7 +2,6 @@ var kept: Shelf? = null
 var console = Console()
 
 func NarrowedPastANullableWriteToAnObjectHandedOn() {
-    load "../../../spite_standard_library/windows"
     var first = Item()
     run(first)
 }

@@ -1,7 +1,6 @@
 var console = Console()
 
 func CodegenDefaultsAndInference() {
-    load "../../../spite_standard_library/windows"
     var dictionary_tally = Tally<Dictionary<String, Integer>>()
     var list_tally = Tally<List<Integer>>()
     var dictionary_size = dictionary_tally.size()

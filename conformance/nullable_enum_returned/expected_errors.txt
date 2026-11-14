@@ -1,1 +1,1 @@
-conformance/nullable_enum_returned/nullable_enum_returned.spite:17: error: this value may be null (it is a NullableEnumReturned.Level?), but a NullableEnumReturned.Level is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableEnumReturned.choose)
+conformance/nullable_enum_returned/nullable_enum_returned.spite:16: error: this value may be null (it is a NullableEnumReturned.Level?), but a NullableEnumReturned.Level is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableEnumReturned.choose)

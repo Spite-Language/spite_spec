@@ -4,7 +4,6 @@ var _ninety_milliseconds = 90
 var _fifty_milliseconds = 50
 
 func FileWatchingSettled() {
-    load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/file_watching_settled")
     crash folder.create()
     var note_path: Path? = "{folder.path}/note.txt"

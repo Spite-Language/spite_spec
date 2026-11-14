@@ -5,7 +5,6 @@ var greeting = "hello"
 var turns = 0
 
 func ReplPortRefusesAnUnparsableNumber() {
-    load "../../../spite_standard_library/windows"
     var client = Tcp.Client()
     crash client.connect_locally(_port)
     crash client.write_line("turns = 99999999999999999999")

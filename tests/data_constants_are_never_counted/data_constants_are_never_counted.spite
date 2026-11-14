@@ -6,7 +6,6 @@ var _bang = 33
 var _two = 2
 
 func DataConstantsAreNeverCounted() {
-    load "../../../spite_standard_library/windows"
     var before = program.live_allocations()
     var key = "load r12 r7 in x"
     var found = 0

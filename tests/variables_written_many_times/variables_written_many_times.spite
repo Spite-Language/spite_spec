@@ -1,7 +1,6 @@
 var console = Console()
 
 func VariablesWrittenManyTimes() {
-    load "../../../spite_standard_library/windows"
     var line = 3
     var first = line * 7
     line = first + 2

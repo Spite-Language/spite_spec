@@ -1,1 +1,1 @@
-conformance/load_parentheses/load_parentheses.spite:3: error: 'load' is a keyword, not a function: write it without parentheses, 'load "level"'
+conformance/load_parentheses/load_parentheses.spite:2: error: 'load' is a keyword, not a function: write it without parentheses, 'load "level"'

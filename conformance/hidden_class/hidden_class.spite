@@ -1,7 +1,6 @@
 var console = Console()
 
 func HiddenClass() {
-    load "../../../spite_standard_library/windows"
     var plugin = Physics.Plugin()
     console.print(plugin.name)
 }

@@ -3,7 +3,6 @@ var _first: Integer = _second + 1
 var _second: Integer = later()
 
 func DefaultsReadEachOther() {
-    load "../../../spite_standard_library/windows"
     console.print(_first, _second)
 }
 

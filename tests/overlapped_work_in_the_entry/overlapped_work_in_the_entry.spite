@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func OverlappedWorkInTheEntry() {
-    load "../../../spite_standard_library/windows"
     var left = blend(3)
     var right = blend(5)
     console.print(left, right)

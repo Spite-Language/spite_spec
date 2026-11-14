@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryValueSharesObject() {
-    load "../../../spite_standard_library/windows"
     var bag = Dictionary<String, Counter>()
     var counter = Counter()
     bag["main"] = counter

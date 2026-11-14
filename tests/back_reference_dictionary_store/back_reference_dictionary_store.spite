@@ -1,7 +1,6 @@
 var console = Console()
 
 func BackReferenceDictionaryStore() {
-    load "../../../spite_standard_library/windows"
     make_a_club()
     console.print("the club is gone")
 }

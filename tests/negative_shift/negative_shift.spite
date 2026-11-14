@@ -1,7 +1,6 @@
 var console = Console()
 
 func NegativeShift() {
-    load "../../../spite_standard_library/windows"
     var flags: UnsignedShort = 40
     var count = 3
     console.print("shifted {flags.shifted_right(count)}")

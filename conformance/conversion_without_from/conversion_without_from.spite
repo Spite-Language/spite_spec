@@ -1,5 +1,4 @@
 func ConversionWithoutFrom() {
-    load "../../../spite_standard_library/windows"
     var run = Meters(3)
     crash run.amount == 3
 }

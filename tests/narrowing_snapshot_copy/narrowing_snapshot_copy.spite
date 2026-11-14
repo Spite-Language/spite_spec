@@ -2,7 +2,6 @@ var console = Console()
 var tracker: Tracker? = null
 
 func NarrowingSnapshotCopy() {
-    load "../../../spite_standard_library/windows"
     tracker = Tracker()
     report()
 }

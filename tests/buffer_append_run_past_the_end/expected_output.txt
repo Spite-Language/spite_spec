@@ -1,2 +1,2 @@
 spite: the program stopped at spite_standard_library://common/buffer.spite:431 in Buffer.append_buffer, site 50ee37c2 (start=1, wanted=2, item_count=0)
-spite.frame	tests/buffer_append_run_past_the_end/buffer_append_run_past_the_end.spite:9	BufferAppendRunPastTheEnd	BufferAppendRunPastTheEnd
+spite.frame	tests/buffer_append_run_past_the_end/buffer_append_run_past_the_end.spite:8	BufferAppendRunPastTheEnd	BufferAppendRunPastTheEnd

@@ -1,7 +1,6 @@
 var console = Console()
 
 func RenamedToFrom() {
-    load "../../../spite_standard_library/windows"
     var shown = twice(2)
     console.print(shown)
 }

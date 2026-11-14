@@ -1,7 +1,6 @@
 var console = Console()
 
 func DictionaryLiterals() {
-    load "../../../spite_standard_library/windows"
     var prices = {"tea": 3, "cake": 5}
     var names = {7: "seven", 2: "two"}
     var weights: Dictionary<String, Double> = {"flour": 1, "salt": 2}

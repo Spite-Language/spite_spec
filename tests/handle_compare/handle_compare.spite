@@ -1,7 +1,6 @@
 var console = Console()
 
 func HandleCompare() {
-    load "../../../spite_standard_library/windows"
     var first = three()
     var second = three()
     var other = four()

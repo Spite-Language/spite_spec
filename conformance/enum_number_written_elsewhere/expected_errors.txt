@@ -1,1 +1,1 @@
-conformance/enum_number_written_elsewhere/enum_number_written_elsewhere.spite:8: error: '=' is left over after the end of the statement: a statement is one line
+conformance/enum_number_written_elsewhere/enum_number_written_elsewhere.spite:7: error: '=' is left over after the end of the statement: a statement is one line

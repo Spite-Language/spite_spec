@@ -2,7 +2,6 @@ var console = Console()
 var _sample_year = 2024
 
 func TimeOldSpelling() {
-    load "../../../spite_standard_library/windows"
     var day = LocalDate(_sample_year, 1, 1)
     console.print(day)
 }

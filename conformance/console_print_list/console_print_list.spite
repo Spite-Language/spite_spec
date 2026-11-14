@@ -1,7 +1,6 @@
 var console = Console()
 
 func ConsolePrintList() {
-    load "../../../spite_standard_library/windows"
     var sizes = [1, 2, 3]
     console.print(sizes)
 }

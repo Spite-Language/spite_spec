@@ -4,7 +4,6 @@ var sockets = WebSocket.Server(http)
 var _port = 47933
 
 func WebSocketAcceptPlainRequest() {
-    load "../../../spite_standard_library/windows"
     crash http.listen_locally(_port)
     var client = Tcp.Client()
     crash client.connect_locally(_port)

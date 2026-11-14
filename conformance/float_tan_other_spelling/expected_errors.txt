@@ -1,1 +1,1 @@
-conformance/float_tan_other_spelling/float_tan_other_spelling.spite:6: error: Float has no function 'tan': Spite spells it 'tangent', since no name is abbreviated (in FloatTanOtherSpelling.FloatTanOtherSpelling)
+conformance/float_tan_other_spelling/float_tan_other_spelling.spite:5: error: Float has no function 'tan': Spite spells it 'tangent', since no name is abbreviated (in FloatTanOtherSpelling.FloatTanOtherSpelling)

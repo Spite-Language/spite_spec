@@ -1,7 +1,6 @@
 var console = Console()
 
 func StringUncountablesReplaced() {
-    load "../../../spite_standard_library/windows"
     var gold = "gold".pluralize()
     var back = "golds".singularize()
     var sheep = "sheep".pluralize()

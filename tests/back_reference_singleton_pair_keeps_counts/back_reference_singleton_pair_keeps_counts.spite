@@ -2,7 +2,6 @@ var console = Console()
 var clerk = Clerk()
 
 func BackReferenceSingletonPairKeepsCounts() {
-    load "../../../spite_standard_library/windows"
     link()
     console.print("linked pair is out of reach")
 }

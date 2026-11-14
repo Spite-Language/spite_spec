@@ -1,5 +1,4 @@
 func RepeatedNotWritten() {
-    load "../../../spite_standard_library/windows"
     load "vendor/spite_standard_library/linux"
     var first = First()
     var second = Second()

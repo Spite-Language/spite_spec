@@ -1,1 +1,1 @@
-conformance/load_git_local_missing/load_git_local_missing.spite:5: error: 'load "../no_such_repository@0123456"' names the repository '../no_such_repository', and there is no folder '../no_such_repository'
+conformance/load_git_local_missing/load_git_local_missing.spite:4: error: 'load "../no_such_repository@0123456"' names the repository '../no_such_repository', and there is no folder '../no_such_repository'

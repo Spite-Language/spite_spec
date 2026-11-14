@@ -1,7 +1,6 @@
 var console = Console()
 
 func Game() {
-    load "../../../spite_standard_library/windows"
     load "package"
     load "mod"
     var renderer = Engine.Renderer.Renderer()

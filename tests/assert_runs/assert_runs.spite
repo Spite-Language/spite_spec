@@ -1,7 +1,6 @@
 var names = ["ada", "bo"]
 
 func AssertRuns() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 1000 {
         var name = name_at(5)

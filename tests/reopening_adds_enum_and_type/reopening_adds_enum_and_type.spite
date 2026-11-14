@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReopeningAddsEnumAndType() {
-    load "../../../spite_standard_library/windows"
     load "package"
     load "mod"
     var shape = Shapes.Shape()

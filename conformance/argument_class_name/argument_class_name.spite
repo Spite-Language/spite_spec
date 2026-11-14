@@ -1,6 +1,5 @@
 var namer = Namer<Mender>()
 
 func ArgumentClassName() {
-    load "../../../spite_standard_library/windows"
     namer.show()
 }

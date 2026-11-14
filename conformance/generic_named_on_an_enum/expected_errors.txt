@@ -1,1 +1,1 @@
-conformance/generic_named_on_an_enum/generic_named_on_an_enum.spite:5: error: 'Monster.Phase' is not a generic class, so it takes no type in '<>': write 'Monster.Phase' alone
+conformance/generic_named_on_an_enum/generic_named_on_an_enum.spite:4: error: 'Monster.Phase' is not a generic class, so it takes no type in '<>': write 'Monster.Phase' alone

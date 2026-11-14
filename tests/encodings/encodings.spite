@@ -7,7 +7,6 @@ var _second_sample_byte: Byte = 255
 var _third_sample_byte: Byte = 191
 
 func Encodings() {
-    load "../../../spite_standard_library/windows"
     var samples = ["", "f", "fo", "foo", "foob", "fooba", "foobar"]
     samples.each(show_base64)
     var binary = Buffer(0)

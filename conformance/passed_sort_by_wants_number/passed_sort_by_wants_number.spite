@@ -1,7 +1,6 @@
 var console = Console()
 
 func PassedSortByWantsNumber() {
-    load "../../../spite_standard_library/windows"
     var names = ["Ada", "Bo"]
     var sorted = names.sort_by(is_short)
     console.print(names.count())

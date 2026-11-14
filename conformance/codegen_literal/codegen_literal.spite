@@ -1,7 +1,6 @@
 var console = Console()
 
 func CodegenLiteral() {
-    load "../../../spite_standard_library/windows"
     var sword = Weapon<Integer, true>(10)
     console.print(sword.damage)
 }

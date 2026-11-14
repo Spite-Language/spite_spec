@@ -1,7 +1,6 @@
 var console = Console()
 
 func GameMatrixEdges() {
-    load "../../../spite_standard_library/windows"
     identities()
     rotation_alone()
     zero_scale()

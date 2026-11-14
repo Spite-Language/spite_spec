@@ -3,6 +3,5 @@ var build = Build()
 var environment = Environment()
 
 func BuildEnvironmentAttributesUnread() {
-    load "../../../spite_standard_library/windows"
     console.print(build.used, environment.name)
 }

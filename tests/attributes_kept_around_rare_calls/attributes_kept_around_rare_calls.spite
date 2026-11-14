@@ -3,7 +3,6 @@ var program = Program()
 var _later_limit = 50000
 
 func AttributesKeptAroundRareCalls() {
-    load "../../../spite_standard_library/windows"
     var tally = Tally()
     tally.count_up(1000)
     tally.trim(_later_limit)

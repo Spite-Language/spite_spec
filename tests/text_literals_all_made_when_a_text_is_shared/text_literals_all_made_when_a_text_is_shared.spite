@@ -3,7 +3,6 @@ var build = Build()
 var _exclamation_mark = 33
 
 func TextLiteralsAllMadeWhenATextIsShared() {
-    load "../../../spite_standard_library/windows"
     var name = "gold"
     var loud = shouted(name)
     console.print(name, loud)

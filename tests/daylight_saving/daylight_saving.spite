@@ -5,7 +5,6 @@ var _railway_time_seconds_before_1970: Long = 5364662400
 var _sample_year = 2024
 
 func DaylightSaving() {
-    load "../../../spite_standard_library/windows"
     var new_york = zones.find("America/New_York")
     crash new_york
     around_the_change(new_york)

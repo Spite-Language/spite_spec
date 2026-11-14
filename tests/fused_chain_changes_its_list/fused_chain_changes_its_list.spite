@@ -2,7 +2,6 @@ var console = Console()
 var roster = Roster()
 
 func FusedChainChangesItsList() {
-    load "../../../spite_standard_library/windows"
     var red = Team("red", true, 3)
     roster.teams.append(red)
     var blue = Team("blue", false, 5)

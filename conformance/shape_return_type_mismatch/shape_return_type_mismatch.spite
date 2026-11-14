@@ -5,7 +5,6 @@ type Renderable {
 var console = Console()
 
 func ShapeReturnTypeMismatch() {
-    load "../../../spite_standard_library/windows"
     var worded = Worded()
     show(worded)
     var numbered = Numbered()

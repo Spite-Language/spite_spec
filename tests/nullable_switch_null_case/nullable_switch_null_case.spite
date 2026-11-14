@@ -1,7 +1,6 @@
 var console = Console()
 
 func NullableSwitchNullCase() {
-    load "../../../spite_standard_library/windows"
     var found = find(true)
     describe(found)
     var lost = find(false)

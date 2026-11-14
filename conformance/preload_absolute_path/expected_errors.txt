@@ -1,1 +1,1 @@
-conformance/preload_absolute_path/preload_absolute_path.spite:5: error: 'preload "D:/projects/tools/kit"' names an absolute path, and a preload is relative to the folder of the file it is written in: write 'preload "...tools/kit"'
+conformance/preload_absolute_path/preload_absolute_path.spite:4: error: 'preload "D:/projects/tools/kit"' names an absolute path, and a preload is relative to the folder of the file it is written in: write 'preload "...tools/kit"'

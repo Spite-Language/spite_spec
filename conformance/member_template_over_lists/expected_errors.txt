@@ -1,1 +1,1 @@
-conformance/member_template_over_lists/member_template_over_lists.spite:6: error: a List<List<Monster>> has no attribute or function 'map_names' (in MemberTemplateOverLists.MemberTemplateOverLists)
+conformance/member_template_over_lists/member_template_over_lists.spite:5: error: a List<List<Monster>> has no attribute or function 'map_names' (in MemberTemplateOverLists.MemberTemplateOverLists)

@@ -2,7 +2,6 @@ var console = Console()
 var top = Level4()
 
 func MemoryReplacedDepth4() {
-    load "../../../spite_standard_library/windows"
     var first = Layout()
     top.below.below.below.values.append(first)
     var found = top.of_level_4(0)

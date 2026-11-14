@@ -1,1 +1,1 @@
-conformance/nested_index_read_in_member/nested_index_read_in_member.spite:11: error: 'rows[index]' is read inside the index of 'names': compute it first into a named 'var' and pass the name (in NestedIndexReadInMember.show)
+conformance/nested_index_read_in_member/nested_index_read_in_member.spite:10: error: 'rows[index]' is read inside the index of 'names': compute it first into a named 'var' and pass the name (in NestedIndexReadInMember.show)

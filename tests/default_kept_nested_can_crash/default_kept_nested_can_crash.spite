@@ -1,7 +1,6 @@
 var console = Console()
 
 func DefaultKeptNestedCanCrash() {
-    load "../../../spite_standard_library/windows"
     var given = Wrapped(1)
     console.print("made the given")
     var holder = Holder(given)

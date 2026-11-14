@@ -1,7 +1,6 @@
 var console = Console()
 
 func BufferAppendByteForm() {
-    load "../../../spite_standard_library/windows"
     var bytes = Buffer(8)
     bytes.append_byte(7)
     console.print(bytes)

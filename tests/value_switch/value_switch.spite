@@ -9,7 +9,6 @@ var current: Light = 'amber'
 var names = ["ada", "bo", "cy"]
 
 func ValueSwitch() {
-    load "../../../spite_standard_library/windows"
     show_lights()
     show_numbers()
     show_words()

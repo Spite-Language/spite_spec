@@ -3,7 +3,6 @@ var kept_path = "ab/cdefg"
 var asked = 0
 
 func WhileConditionWorkEachRound() {
-    load "../../../spite_standard_library/windows"
     var from_a_length = text_from_a_length()
     console.print("text from a length", from_a_length)
     var known_start = text_from_a_known_start()

@@ -1,5 +1,4 @@
 func AttributeObject() {
-    load "../../../spite_standard_library/windows"
     var world = World()
     var player_bundle = PlayerBundle()
     var player = world.create_entity_from_bundle(player_bundle)

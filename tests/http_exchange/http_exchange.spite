@@ -6,7 +6,6 @@ var _created_status = 201
 var _not_found_status = 404
 
 func HttpExchange() {
-    load "../../../spite_standard_library/windows"
     crash server.listen_locally(_server_port)
     var hello = ask_hello()
     var echoed = ask_echo()

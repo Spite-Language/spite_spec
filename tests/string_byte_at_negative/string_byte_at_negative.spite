@@ -1,7 +1,6 @@
 var console = Console()
 
 func StringByteAtNegative() {
-    load "../../../spite_standard_library/windows"
     var word = "tea"
     var first = word.byte_at(0)
     var last = word.byte_at(2)

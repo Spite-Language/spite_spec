@@ -1,7 +1,6 @@
 var console = Console()
 
 func GitPathPieces() {
-    load "../../../spite_standard_library/windows"
     literals()
     a_folder_inside()
     the_last_at_sign_splits()

@@ -1,7 +1,6 @@
 var console = Console()
 
 func AbbreviationMeaningPos() {
-    load "../../../spite_standard_library/windows"
     var pos = 1
     console.print(pos)
 }

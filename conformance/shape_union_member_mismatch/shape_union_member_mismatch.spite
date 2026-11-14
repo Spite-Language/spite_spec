@@ -10,7 +10,6 @@ type Kept {
 var console = Console()
 
 func ShapeUnionMemberMismatch() {
-    load "../../../spite_standard_library/windows"
     var cage = Cage()
     show(cage)
 }

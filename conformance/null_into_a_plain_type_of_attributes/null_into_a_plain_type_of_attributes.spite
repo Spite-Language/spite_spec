@@ -5,7 +5,6 @@ type Sized {
 var console = Console()
 
 func NullIntoAPlainTypeOfAttributes() {
-    load "../../../spite_standard_library/windows"
     var found = largest()
     console.print(found.size)
     weigh()

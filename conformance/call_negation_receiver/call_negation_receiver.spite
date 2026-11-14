@@ -1,7 +1,6 @@
 var console = Console()
 
 func CallNegationReceiver() {
-    load "../../../spite_standard_library/windows"
     var done = true
     var text = (not done).to_string()
     console.print(text)

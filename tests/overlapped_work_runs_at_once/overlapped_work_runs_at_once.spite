@@ -3,7 +3,6 @@ var program = Program()
 var mixer = Mixer()
 
 func OverlappedWorkRunsAtOnce() {
-    load "../../../spite_standard_library/windows"
     var left = mixer.blend(3)
     var right = mixer.blend(5)
     var middle = mixer.blend(7)

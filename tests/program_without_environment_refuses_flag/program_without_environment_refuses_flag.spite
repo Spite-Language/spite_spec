@@ -1,6 +1,5 @@
 var console = Console()
 
 func ProgramWithoutEnvironmentRefusesFlag() {
-    load "../../../spite_standard_library/windows"
     console.print("the program ran")
 }

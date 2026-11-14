@@ -1,7 +1,6 @@
 var console = Console()
 
 func AttributeNamedAsValue() {
-    load "../../../spite_standard_library/windows"
     var to = Whisper.attributes["to"]
     console.print(to.name, to.index, to.class)
     var from = Whisper.attributes["from"]

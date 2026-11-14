@@ -2,7 +2,6 @@ var console = Console()
 var tally = Tally()
 
 func DefaultUnreadWritesASingleton() {
-    load "../../../spite_standard_library/windows"
     console.print("start")
     var given = Reader(null)
     var first = Holder(given)

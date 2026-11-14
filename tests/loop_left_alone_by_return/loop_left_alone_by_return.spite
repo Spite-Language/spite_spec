@@ -1,7 +1,6 @@
 var console = Console()
 
 func LoopLeftAloneByReturn() {
-    load "../../../spite_standard_library/windows"
     var first = leave_by_return(5)
     var second = leave_by_fallback(5)
     console.print(first, second)

@@ -1,1 +1,1 @@
-conformance/indexing_get_at_takes_nothing/indexing_get_at_takes_nothing.spite:6: error: indexing a 'Thing' needs it to define 'get_at(index)' (in IndexingGetAtTakesNothing.IndexingGetAtTakesNothing)
+conformance/indexing_get_at_takes_nothing/indexing_get_at_takes_nothing.spite:5: error: indexing a 'Thing' needs it to define 'get_at(index)' (in IndexingGetAtTakesNothing.IndexingGetAtTakesNothing)

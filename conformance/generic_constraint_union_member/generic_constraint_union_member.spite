@@ -10,7 +10,6 @@ type Named {
 var console = Console()
 
 func GenericConstraintUnionMember() {
-    load "../../../spite_standard_library/windows"
     var shelf = Shelf<Pet>()
     var cat = Cat()
     shelf.add(cat)

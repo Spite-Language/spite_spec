@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesRepeatedUnionNamedLikeLandingClassByThree() {
-    load "../../../spite_standard_library/windows"
     var first = Bunda.First()
     var second = Bunda.Second()
     var third = Bunda.Third()

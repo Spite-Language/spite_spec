@@ -1,1 +1,1 @@
-conformance/float_acos_other_spelling/float_acos_other_spelling.spite:6: error: Float has no function 'acos': Spite spells it 'arc_cosine', since no name is abbreviated (in FloatAcosOtherSpelling.FloatAcosOtherSpelling)
+conformance/float_acos_other_spelling/float_acos_other_spelling.spite:5: error: Float has no function 'acos': Spite spells it 'arc_cosine', since no name is abbreviated (in FloatAcosOtherSpelling.FloatAcosOtherSpelling)

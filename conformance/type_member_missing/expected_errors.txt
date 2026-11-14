@@ -1,1 +1,1 @@
-conformance/type_member_missing/type_member_missing.spite:8: error: 'Holder' does not fit type 'Turning': it has no function 'turn' (in TypeMemberMissing.TypeMemberMissing)
+conformance/type_member_missing/type_member_missing.spite:7: error: 'Holder' does not fit type 'Turning': it has no function 'turn' (in TypeMemberMissing.TypeMemberMissing)

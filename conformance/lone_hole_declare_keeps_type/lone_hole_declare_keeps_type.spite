@@ -1,7 +1,6 @@
 var console = Console()
 
 func LoneHoleDeclareKeepsType() {
-    load "../../../spite_standard_library/windows"
     var clicks = 3
     var shown: String = "{clicks}"
     console.print(shown)

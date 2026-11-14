@@ -4,4 +4,4 @@
 30
 40
 50
-spite: 'cells[row * stride + column]' is outside its list: a bound proves only the top of an index, and this one is below 0 or the list changed, at tests/area_guard_negative_counter_halts/area_guard_negative_counter_halts.spite:21 in AreaGuardNegativeCounterHalts.show
+spite: 'cells[row * stride + column]' is outside its list: a bound proves only the top of an index, and this one is below 0 or the list changed, at tests/area_guard_negative_counter_halts/area_guard_negative_counter_halts.spite:20 in AreaGuardNegativeCounterHalts.show

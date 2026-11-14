@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonNumberIntoInteger() {
-    load "../../../spite_standard_library/windows"
     var reader = JsonReader<Order>()
     var whole = reader.read("\{\"count\": 3}")
     crash whole

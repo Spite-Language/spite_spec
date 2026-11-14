@@ -1,7 +1,6 @@
 var web = Volume("https")
 
 func PreloadUrlName() {
-    load "../../../spite_standard_library/windows"
     preload "https"
     var page = web.file("index.html")
     crash page.exists()

@@ -5,7 +5,6 @@ type Holding {
 var console = Console()
 
 func DefaultUnreadReadThroughAShape() {
-    load "../../../spite_standard_library/windows"
     var given = Part(1)
     var holder = Holder(given)
     console.print(holder.kept.value)

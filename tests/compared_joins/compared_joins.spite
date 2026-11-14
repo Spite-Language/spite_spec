@@ -7,7 +7,6 @@ var _zero = 0
 var _large: Long = 9000000000
 
 func ComparedJoins() {
-    load "../../../spite_standard_library/windows"
     var key = "r7"
     var empty = ""
     var name = "gold"

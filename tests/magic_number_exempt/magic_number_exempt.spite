@@ -2,7 +2,6 @@ var console = Console()
 var _days_in_400_years = 146097
 
 func MagicNumberExempt() {
-    load "../../../spite_standard_library/windows"
     var days_per_cycle = _days_in_400_years
     var count = 3
     var next = count + 1

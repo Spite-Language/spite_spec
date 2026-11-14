@@ -10,7 +10,6 @@ var headerless = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', 
 var windows = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', "fixture.h")
 
 func ForeignLibrary() {
-    load "../../../spite_standard_library/windows"
     var add_numbers = plain.add_numbers(2, 3)
     var multiply_numbers = camel.multiply_numbers(4, 5)
     var windows_answer_position = headerless.get_answer_position()

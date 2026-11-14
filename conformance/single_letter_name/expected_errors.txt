@@ -1,1 +1,1 @@
-conformance/single_letter_name/single_letter_name.spite:3: error: the variable 'n' is a single letter: give it a name that says what it holds (in SingleLetterName.SingleLetterName)
+conformance/single_letter_name/single_letter_name.spite:2: error: the variable 'n' is a single letter: give it a name that says what it holds (in SingleLetterName.SingleLetterName)

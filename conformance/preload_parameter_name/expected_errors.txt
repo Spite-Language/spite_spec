@@ -1,1 +1,1 @@
-conformance/preload_parameter_name/preload_parameter_name.spite:8: error: 'preload' is a keyword and cannot name a parameter: give it a name that says what it preloads, like 'preload_textures'
+conformance/preload_parameter_name/preload_parameter_name.spite:7: error: 'preload' is a keyword and cannot name a parameter: give it a name that says what it preloads, like 'preload_textures'

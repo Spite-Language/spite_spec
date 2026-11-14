@@ -2,6 +2,5 @@ var console = Console()
 var __strike = 1
 
 func DoubleLeadingUnderscore() {
-    load "../../../spite_standard_library/windows"
     console.print(__strike)
 }

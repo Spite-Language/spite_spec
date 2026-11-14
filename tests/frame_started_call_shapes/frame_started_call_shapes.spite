@@ -7,7 +7,6 @@ var beacon = Beacon()
 var frames = 0
 
 func FrameStartedCallShapes() {
-    load "../../../spite_standard_library/windows"
     waiters.append(waiter)
     started_through_a_path()
     started_through_a_literal_index()

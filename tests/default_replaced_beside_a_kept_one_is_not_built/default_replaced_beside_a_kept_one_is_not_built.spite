@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func DefaultReplacedBesideAKeptOneIsNotBuilt() {
-    load "../../../spite_standard_library/windows"
     var given = Inner(1)
     var top = Top(given)
     var value = top.viewed()

@@ -1,5 +1,4 @@
 func OperatorNegateTakesOne() {
-    load "../../../spite_standard_library/windows"
     var thing = Thing()
     var turned = -thing
     thing = turned

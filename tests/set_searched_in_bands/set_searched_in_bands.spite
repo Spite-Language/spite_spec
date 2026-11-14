@@ -5,7 +5,6 @@ var _number_count = 1000
 var _searches = 40000
 
 func SetSearchedInBands() {
-    load "../../../spite_standard_library/windows"
     var names = List<String>()
     var index = 0
     while index < _name_count {

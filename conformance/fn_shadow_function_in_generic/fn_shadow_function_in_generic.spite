@@ -1,7 +1,6 @@
 var console = Console()
 
 func FnShadowFunctionInGeneric() {
-    load "../../../spite_standard_library/windows"
     var column = Column<Integer>()
     column.add(3)
     var size = column.size()

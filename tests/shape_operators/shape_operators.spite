@@ -8,7 +8,6 @@ type Addable {
 var console = Console()
 
 func ShapeOperators() {
-    load "../../../spite_standard_library/windows"
     var three = Coins(3)
     var four = Coins(4)
     var held = List<Addable>()

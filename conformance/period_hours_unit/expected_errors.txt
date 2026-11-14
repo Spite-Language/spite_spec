@@ -1,1 +1,1 @@
-conformance/period_hours_unit/period_hours_unit.spite:5: error: 'hours' is not a value of the enum 'Unit', whose values are 'days', 'weeks', 'months', 'years' (in PeriodHoursUnit.PeriodHoursUnit)
+conformance/period_hours_unit/period_hours_unit.spite:4: error: 'hours' is not a value of the enum 'Unit', whose values are 'days', 'weeks', 'months', 'years' (in PeriodHoursUnit.PeriodHoursUnit)

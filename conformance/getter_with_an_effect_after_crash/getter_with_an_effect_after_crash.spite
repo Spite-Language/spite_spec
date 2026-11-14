@@ -2,7 +2,6 @@ var console = Console()
 var thing = Thing()
 
 func GetterWithAnEffectAfterCrash() {
-    load "../../../spite_standard_library/windows"
     crash thing.reading
     var seen = thing.reading.side
     console.print(seen)

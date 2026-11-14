@@ -5,7 +5,6 @@ var program_copy = ".spite/library_alone/alone"
 
 # ../../../spite_documentation/style.md#comments-are-links
 func LibraryAloneWithoutItsDocs() {
-    load "../../../spite_standard_library/windows"
     remove_a_folder(copy)
     make_a_folder(".spite")
     make_a_folder(copy)

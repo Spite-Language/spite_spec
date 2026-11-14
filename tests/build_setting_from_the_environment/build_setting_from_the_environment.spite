@@ -3,7 +3,6 @@ var program = Program()
 var folder = ".spite/volumed"
 
 func BuildSettingFromTheEnvironment() {
-    load "../../../spite_standard_library/windows"
     write_the_program()
     var variables = Dictionary<String, String>()
     variables["VOLUME"] = "7"

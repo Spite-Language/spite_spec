@@ -2,6 +2,5 @@ var console = Console()
 var environment = Environment()
 
 func KebabSetting() {
-    load "../../../spite_standard_library/windows"
     console.print("player", environment.player_name, "hard mode", environment.hard_mode)
 }

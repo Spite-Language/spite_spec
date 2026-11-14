@@ -2,7 +2,6 @@ var console = Console()
 var _large_amount = 500
 
 func ControlElseIf() {
-    load "../../../spite_standard_library/windows"
     var small = size_of(1)
     var medium = size_of(50)
     var large = size_of(_large_amount)

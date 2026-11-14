@@ -1,7 +1,6 @@
 var console = Console()
 
 func UnsignedLongAdditionOverflowHalts() {
-    load "../../../spite_standard_library/windows"
     var large = UnsignedLong.Largest()
     console.print(large)
     var more = large + 1

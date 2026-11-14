@@ -1,1 +1,1 @@
-conformance/lone_hole_declare_call/lone_hole_declare_call.spite:6: error: '"{name.upper_case()}"' is a text of one value and nothing else: declare the value directly, 'var shown = name.upper_case()' (in LoneHoleDeclareCall.LoneHoleDeclareCall)
+conformance/lone_hole_declare_call/lone_hole_declare_call.spite:5: error: '"{name.upper_case()}"' is a text of one value and nothing else: declare the value directly, 'var shown = name.upper_case()' (in LoneHoleDeclareCall.LoneHoleDeclareCall)

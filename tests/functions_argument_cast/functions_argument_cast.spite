@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionsArgumentCast() {
-    load "../../../spite_standard_library/windows"
     var whole = 7
     var halved = half(whole)
     console.print(halved)

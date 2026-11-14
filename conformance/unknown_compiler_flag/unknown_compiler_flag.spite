@@ -1,6 +1,5 @@
 var console = Console()
 
 func UnknownCompilerFlag() {
-    load "../../../spite_standard_library/windows"
     console.print("never compiled")
 }

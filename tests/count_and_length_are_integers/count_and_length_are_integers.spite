@@ -2,7 +2,6 @@ var console = Console()
 var _large_amount = 2000000000
 
 func CountAndLengthAreIntegers() {
-    load "../../../spite_standard_library/windows"
     var names = ["ada", "bea"]
     var word = "hello"
     var large = _large_amount

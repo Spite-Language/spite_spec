@@ -3,7 +3,6 @@ var build = Build()
 var diver = Diver()
 
 func HotReloadNamesAFaultPlace() {
-    load "../../../spite_standard_library/windows"
     var reached = diver.dive(1)
     console.print(reached)
 }

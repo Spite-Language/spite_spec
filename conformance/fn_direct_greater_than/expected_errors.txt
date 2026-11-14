@@ -1,1 +1,1 @@
-conformance/fn_direct_greater_than/fn_direct_greater_than.spite:9: error: 'greater_than' is what '>' calls: write 'first > second' (in FnDirectGreaterThan.FnDirectGreaterThan)
+conformance/fn_direct_greater_than/fn_direct_greater_than.spite:8: error: 'greater_than' is what '>' calls: write 'first > second' (in FnDirectGreaterThan.FnDirectGreaterThan)

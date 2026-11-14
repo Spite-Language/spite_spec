@@ -3,7 +3,6 @@ var program = Program()
 var folder = ".spite/callers_folder"
 
 func ProgramRunsInTheCallersFolder() {
-    load "../../../spite_standard_library/windows"
     write_the_program()
     var here = program.working_directory()
     crash here

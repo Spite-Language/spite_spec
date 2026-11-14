@@ -1,7 +1,6 @@
 var console = Console()
 
 func CrashMissingKey() {
-    load "../../../spite_standard_library/windows"
     var scores = Dictionary<String, Integer>()
     scores["ann"] = 0
     show(scores, "ann")

@@ -1,7 +1,6 @@
 var console = Console()
 
 func MemoryNotNamedHeap() {
-    load "../../../spite_standard_library/windows"
     var monster = Monster(3)
     var place = Memory.Heap()
     console.print(monster.health)

@@ -4,7 +4,6 @@ var counts = Dictionary<String, Integer>()
 var _rounds = 1000
 
 func ShortTextAllocations() {
-    load "../../../spite_standard_library/windows"
     counts["abc1"] = 1
     counts["abc2"] = 2
     var piece = "abc"

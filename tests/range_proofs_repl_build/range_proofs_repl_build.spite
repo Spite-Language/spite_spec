@@ -7,7 +7,6 @@ var console = Console()
 var build = Build()
 
 func RangeProofsReplBuild() {
-    load "../../../spite_standard_library/windows"
     var one = joined_in_if(true)
     var two = joined_in_switch('small')
     var three = joined_wide(true, 5)

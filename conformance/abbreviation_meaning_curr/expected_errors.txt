@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_curr/abbreviation_meaning_curr.spite:5: error: 'curr' abbreviates 'curr', which could mean 'current' or 'cursor': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningCurr.AbbreviationMeaningCurr)
+conformance/abbreviation_meaning_curr/abbreviation_meaning_curr.spite:4: error: 'curr' abbreviates 'curr', which could mean 'current' or 'cursor': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningCurr.AbbreviationMeaningCurr)

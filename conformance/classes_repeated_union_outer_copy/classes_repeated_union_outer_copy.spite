@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesRepeatedUnionOuterCopy() {
-    load "../../../spite_standard_library/windows"
     var cheese = Bunda.Cheese()
     var outsider = Outsider()
     var cat = Cat()

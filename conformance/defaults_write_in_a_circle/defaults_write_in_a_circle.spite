@@ -3,7 +3,6 @@ var started: Boolean = start()
 var _ready: Boolean = started
 
 func DefaultsWriteInACircle() {
-    load "../../../spite_standard_library/windows"
     console.print(started, _ready)
 }
 

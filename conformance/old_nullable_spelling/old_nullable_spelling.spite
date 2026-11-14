@@ -1,5 +1,1 @@
 var target: Nullable<Integer> = null
-
-func OldNullableSpelling() {
-    load "../../../spite_standard_library/windows"
-}

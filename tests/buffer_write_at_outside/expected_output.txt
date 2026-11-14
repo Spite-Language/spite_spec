@@ -1,3 +1,3 @@
 77
 spite: the program stopped at ...
-spite.frame	tests/buffer_write_at_outside/buffer_write_at_outside.spite:10	BufferWriteAtOutside	BufferWriteAtOutside
+spite.frame	tests/buffer_write_at_outside/buffer_write_at_outside.spite:9	BufferWriteAtOutside	BufferWriteAtOutside

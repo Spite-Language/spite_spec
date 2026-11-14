@@ -1,7 +1,6 @@
 var console = Console()
 
 func BinaryWriterEmptyValue() {
-    load "../../../spite_standard_library/windows"
     var writer = BinaryWriter<Point>()
     var point: Point? = null
     var bytes = writer.write(point)

@@ -7,7 +7,6 @@ var _sample_year = 2024
 var _summer_moment_seconds: Long = 1720000000
 
 func FixedOffsets() {
-    load "../../../spite_standard_library/windows"
     var since_1970 = Duration(_sample_moment_seconds, 'seconds')
     var moment = Instant(since_1970)
     var universal = zones.utc()

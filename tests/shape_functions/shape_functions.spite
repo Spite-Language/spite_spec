@@ -7,7 +7,6 @@ type Renderable {
 var console = Console()
 
 func ShapeFunctions() {
-    load "../../../spite_standard_library/windows"
     var parts = List<Renderable>()
     var ok_button = Button("ok")
     parts.append(ok_button)

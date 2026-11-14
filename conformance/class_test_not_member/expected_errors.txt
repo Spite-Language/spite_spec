@@ -1,1 +1,1 @@
-conformance/class_test_not_member/class_test_not_member.spite:11: error: 'shape.class' is a 'Shape', which holds only Circle, Square, so it is never a 'Triangle': test for one of those, or add 'Triangle' to the union (in ClassTestNotMember.ClassTestNotMember)
+conformance/class_test_not_member/class_test_not_member.spite:10: error: 'shape.class' is a 'Shape', which holds only Circle, Square, so it is never a 'Triangle': test for one of those, or add 'Triangle' to the union (in ClassTestNotMember.ClassTestNotMember)

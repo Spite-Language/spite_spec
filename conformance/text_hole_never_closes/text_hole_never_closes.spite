@@ -1,6 +1,5 @@
 var console = Console()
 
 func TextHoleNeverCloses() {
-    load "../../../spite_standard_library/windows"
     var name = "ada"
     var shown = "{name

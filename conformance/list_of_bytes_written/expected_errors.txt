@@ -1,1 +1,1 @@
-conformance/list_of_bytes_written/list_of_bytes_written.spite:5: error: there is no List<Byte>: bytes are a Buffer, the one class that holds them and reads the numbers in them: write 'Buffer(0)' and add each byte with 'append(byte)' (in ListOfBytesWritten.ListOfBytesWritten)
+conformance/list_of_bytes_written/list_of_bytes_written.spite:4: error: there is no List<Byte>: bytes are a Buffer, the one class that holds them and reads the numbers in them: write 'Buffer(0)' and add each byte with 'append(byte)' (in ListOfBytesWritten.ListOfBytesWritten)

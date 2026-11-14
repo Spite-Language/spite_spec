@@ -3,7 +3,6 @@ var alpha = Part.Alpha()
 var beta = Part.Beta()
 
 func ReflectionStartsWithCrash() {
-    load "../../../spite_standard_library/windows"
     console.print(alpha.first_value, beta.second_value)
     crash Part.Alpha.name_with_namespaces.starts_with("Other.")
     console.print("never printed")

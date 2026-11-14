@@ -6,7 +6,6 @@ union Link {
 var console = Console()
 
 func DeepCopyUnionCycles() {
-    load "../../../spite_standard_library/windows"
     var first = Ring("a")
     var second = Ring("b")
     first.next = second

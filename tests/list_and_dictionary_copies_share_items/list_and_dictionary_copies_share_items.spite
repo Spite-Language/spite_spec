@@ -1,7 +1,6 @@
 var console = Console()
 
 func ListAndDictionaryCopiesShareItems() {
-    load "../../../spite_standard_library/windows"
     var list = List<Counter>()
     var counter = Counter()
     list.append(counter)

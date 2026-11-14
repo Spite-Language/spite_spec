@@ -2,7 +2,6 @@ var plain = DynamicLibrary("tests/foreign_callback_second_alive/fixture.dll", 'i
 var clicks = Clicks()
 
 func ForeignCallbackSecondAlive() {
-    load "../../../spite_standard_library/windows"
     var first = ForeignCallback(clicks.clicked, 'no_context')
     plain.keep_click(first.address)
     plain.click(1)

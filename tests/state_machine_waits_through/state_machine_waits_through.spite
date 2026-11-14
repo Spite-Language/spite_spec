@@ -4,7 +4,6 @@ var runner = Runner()
 var frames = 0
 
 func StateMachineWaitsThrough() {
-    load "../../../spite_standard_library/windows"
     var one_millisecond = Duration(1, 'milliseconds')
     while not runner.finished {
         frames = frames + 1

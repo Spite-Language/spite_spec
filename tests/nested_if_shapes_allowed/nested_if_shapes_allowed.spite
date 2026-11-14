@@ -6,7 +6,6 @@ enum Light {
 var console = Console()
 
 func NestedIfShapesAllowed() {
-    load "../../../spite_standard_library/windows"
     var first = lone_if_inside_branch(5, true)
     var second = switch_inside_branch('red', true)
     var third = other_statement_beside_inner_if(5, 6)

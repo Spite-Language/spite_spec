@@ -1,2 +1,2 @@
 127
-spite: 'small + 8' does not fit in a Tiny (120 + 8), at tests/tiny_addition_overflow_halts/tiny_addition_overflow_halts.spite:9 in TinyAdditionOverflowHalts.TinyAdditionOverflowHalts
+spite: 'small + 8' does not fit in a Tiny (120 + 8), at tests/tiny_addition_overflow_halts/tiny_addition_overflow_halts.spite:8 in TinyAdditionOverflowHalts.TinyAdditionOverflowHalts

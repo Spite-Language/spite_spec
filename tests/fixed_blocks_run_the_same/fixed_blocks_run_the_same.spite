@@ -9,7 +9,6 @@ var unread_label = "unused"
 var only_written = 1
 
 func FixedBlocksRunTheSame() {
-    load "../../../spite_standard_library/windows"
     only_written = 2
     tracker = Tracker()
     known_fact(4)

@@ -1,1 +1,1 @@
-conformance/decided_class_test_through_a_call_in_a_crash/decided_class_test_through_a_call_in_a_crash.spite:6: error: 'counter.next()' is a Counter here, so this test is decided while compiling: remove it (in DecidedClassTestThroughACallInACrash.DecidedClassTestThroughACallInACrash)
+conformance/decided_class_test_through_a_call_in_a_crash/decided_class_test_through_a_call_in_a_crash.spite:5: error: 'counter.next()' is a Counter here, so this test is decided while compiling: remove it (in DecidedClassTestThroughACallInACrash.DecidedClassTestThroughACallInACrash)

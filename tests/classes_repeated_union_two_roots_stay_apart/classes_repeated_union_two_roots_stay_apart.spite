@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesRepeatedUnionTwoRootsStayApart() {
-    load "../../../spite_standard_library/windows"
     var cat = Cat()
     load "vendor_a/alpha"
     load "vendor_b/beta"

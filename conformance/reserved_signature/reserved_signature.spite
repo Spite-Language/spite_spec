@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReservedSignature() {
-    load "../../../spite_standard_library/windows"
     var thing = Thing()
     var other = Thing()
     var same = thing == other

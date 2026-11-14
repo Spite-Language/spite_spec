@@ -1,1 +1,1 @@
-conformance/known_class_test_in_a_condition/known_class_test_in_a_condition.spite:7: error: 'monster' is a Monster here, so this test is decided while compiling: remove it (in KnownClassTestInACondition.KnownClassTestInACondition)
+conformance/known_class_test_in_a_condition/known_class_test_in_a_condition.spite:6: error: 'monster' is a Monster here, so this test is decided while compiling: remove it (in KnownClassTestInACondition.KnownClassTestInACondition)

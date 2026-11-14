@@ -2,7 +2,6 @@ var console = Console()
 var build = Build()
 
 func ProgramsBuildBareBoolean() {
-    load "../../../spite_standard_library/windows"
     if build.fast_path {
         console.print("fast")
     } else {

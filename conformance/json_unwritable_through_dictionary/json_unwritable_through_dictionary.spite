@@ -6,7 +6,6 @@ union Pet {
 var console = Console()
 
 func JsonUnwritableThroughDictionary() {
-    load "../../../spite_standard_library/windows"
     var writer = JsonWriter<Holder>()
     var holder = Holder()
     var text = writer.write(holder)

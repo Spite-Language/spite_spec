@@ -5,7 +5,6 @@ type Phase {
 var console = Console()
 
 func DeclaredTypeWithArgumentsOnAType() {
-    load "../../../spite_standard_library/windows"
     var filler = Filler()
     show(filler)
 }

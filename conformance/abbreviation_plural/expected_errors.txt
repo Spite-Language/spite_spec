@@ -1,2 +1,2 @@
-conformance/abbreviation_plural/abbreviation_plural.spite:5: fixed: 'nums' abbreviated, and Spite has no abbreviations outside its own keywords; renamed it 'numbers' (in AbbreviationPlural.AbbreviationPlural)
-conformance/abbreviation_plural/abbreviation_plural.spite:6: error: 'numbers.count()' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name (in AbbreviationPlural.AbbreviationPlural)
+conformance/abbreviation_plural/abbreviation_plural.spite:4: fixed: 'nums' abbreviated, and Spite has no abbreviations outside its own keywords; renamed it 'numbers' (in AbbreviationPlural.AbbreviationPlural)
+conformance/abbreviation_plural/abbreviation_plural.spite:5: error: 'numbers.count()' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name (in AbbreviationPlural.AbbreviationPlural)

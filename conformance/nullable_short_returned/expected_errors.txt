@@ -1,1 +1,1 @@
-conformance/nullable_short_returned/nullable_short_returned.spite:23: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortReturned.answers)
+conformance/nullable_short_returned/nullable_short_returned.spite:22: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortReturned.answers)

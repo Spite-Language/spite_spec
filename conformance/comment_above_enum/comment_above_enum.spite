@@ -7,7 +7,6 @@ enum Kind {
 }
 
 func CommentAboveEnum() {
-    load "../../../spite_standard_library/windows"
     var kind: Kind = 'small'
     console.print(kind)
 }

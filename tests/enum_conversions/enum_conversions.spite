@@ -6,7 +6,6 @@ enum Part {
 var console = Console()
 
 func EnumConversions() {
-    load "../../../spite_standard_library/windows"
     var tag: Part = 'wing'
     var name = tag.to_string()
     var length = name.length()

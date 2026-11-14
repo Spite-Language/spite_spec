@@ -3,6 +3,5 @@ var greeting = "one
 two"
 
 func UnclosedText() {
-    load "../../../spite_standard_library/windows"
     console.print(greeting)
 }

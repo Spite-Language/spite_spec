@@ -6,6 +6,5 @@ type Tag {
 var console = Console()
 
 func TypeDeclaredWithCommas() {
-    load "../../../spite_standard_library/windows"
     console.print("tagged")
 }

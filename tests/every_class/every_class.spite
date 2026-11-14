@@ -1,7 +1,6 @@
 var console = Console()
 
 func EveryClass() {
-    load "../../../spite_standard_library/windows"
     var classes = Spite.Class.instances
     var index = 0
     while index < classes.count() {

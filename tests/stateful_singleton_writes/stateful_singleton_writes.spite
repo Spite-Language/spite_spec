@@ -4,7 +4,6 @@ var bumper = Bumper()
 var reader = Reader()
 
 func StatefulSingletonWrites() {
-    load "../../../spite_standard_library/windows"
     bumper.bump(tally)
     var seen = reader.seen(tally)
     console.print("bumped to", seen)

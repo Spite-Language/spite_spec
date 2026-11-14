@@ -1,7 +1,6 @@
 var console = Console()
 
 func ChainComparison() {
-    load "../../../spite_standard_library/windows"
     var made = make("make")
     var nothing_made = make("")
     var first = is_make(made)

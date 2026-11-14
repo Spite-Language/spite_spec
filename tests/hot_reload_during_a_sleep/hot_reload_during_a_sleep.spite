@@ -4,7 +4,6 @@ var program = Program()
 var greeter = Greeter()
 
 func HotReloadDuringASleep() {
-    load "../../../spite_standard_library/windows"
     var first = greeter.greeting()
     console.print(first)
     write_greeter("goodbye")

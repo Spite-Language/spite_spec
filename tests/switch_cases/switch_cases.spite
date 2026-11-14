@@ -7,7 +7,6 @@ union Creature {
 var console = Console()
 
 func SwitchCases() {
-    load "../../../spite_standard_library/windows"
     var dog = Dog()
     describe(dog)
     var fish = Fish()

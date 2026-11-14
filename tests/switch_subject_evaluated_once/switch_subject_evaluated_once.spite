@@ -8,7 +8,6 @@ var console = Console()
 var calls = 0
 
 func SwitchSubjectEvaluatedOnce() {
-    load "../../../spite_standard_library/windows"
     switch next_light() {
         'red': console.print("red")
         'amber': console.print("amber")

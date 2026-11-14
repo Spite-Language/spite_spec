@@ -1,1 +1,1 @@
-conformance/float_sin_other_spelling/float_sin_other_spelling.spite:6: error: Float has no function 'sin': Spite spells it 'sine', since no name is abbreviated (in FloatSinOtherSpelling.FloatSinOtherSpelling)
+conformance/float_sin_other_spelling/float_sin_other_spelling.spite:5: error: Float has no function 'sin': Spite spells it 'sine', since no name is abbreviated (in FloatSinOtherSpelling.FloatSinOtherSpelling)

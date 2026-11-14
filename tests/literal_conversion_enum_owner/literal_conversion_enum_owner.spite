@@ -6,7 +6,6 @@ enum Job {
 var console = Console()
 
 func LiteralConversionEnumOwner() {
-    load "../../../spite_standard_library/windows"
     var by_score: Job = 2.5
     var by_word: Job = "wizard"
     var by_negative: Job = -1

@@ -13,7 +13,6 @@ type Counted {
 var console = Console()
 
 func OneFitRule() {
-    load "../../../spite_standard_library/windows"
     var pet = Pet()
     var mistyped = Mistyped()
     var tally = Tally()

@@ -4,7 +4,6 @@ var _waiting = true
 var _spins = 0
 
 func ReplPortCheckPointInASpinLoop() {
-    load "../../../spite_standard_library/windows"
     var client = Tcp.Client()
     crash client.connect_locally(_port)
     crash client.write_line("exit")

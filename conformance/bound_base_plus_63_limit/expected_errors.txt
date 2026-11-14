@@ -1,1 +1,1 @@
-conformance/bound_base_plus_63_limit/bound_base_plus_63_limit.spite:13: error: this value may be null (it is an Integer?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in BoundBasePlus63Limit.BoundBasePlus63Limit)
+conformance/bound_base_plus_63_limit/bound_base_plus_63_limit.spite:12: error: this value may be null (it is an Integer?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in BoundBasePlus63Limit.BoundBasePlus63Limit)

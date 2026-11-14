@@ -2,7 +2,6 @@ var shelves = List<Shelf>()
 var console = Console()
 
 func NarrowedPastACallWritingAnObjectHandedOn() {
-    load "../../../spite_standard_library/windows"
     var first = Item()
     var other = Shelf()
     other.item = first

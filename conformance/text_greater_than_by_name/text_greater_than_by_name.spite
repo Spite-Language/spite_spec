@@ -1,7 +1,6 @@
 var console = Console()
 
 func TextGreaterThanByName() {
-    load "../../../spite_standard_library/windows"
     var word = "tea"
     var after = word.greater_than("urn")
     console.print(after)

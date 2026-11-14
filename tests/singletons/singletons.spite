@@ -3,7 +3,6 @@ var first = Journal()
 var again = Journal()
 
 func Singletons() {
-    load "../../../spite_standard_library/windows"
     first.record("from the entry")
     var worker = Worker()
     worker.work()

@@ -19,7 +19,6 @@ var file_endings = [".spite", ".md", ".sh"]
 
 # ../../../spite_compiler/ARCHITECTURE.md#the-folders
 func CompilerContractsAreTrue() {
-    load "../../../spite_standard_library/windows"
     var flags = declared_flags()
     stages.each(judge_a_stage)
     judge_the_contracts_under(root, "", flags)

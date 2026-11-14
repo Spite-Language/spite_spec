@@ -1,7 +1,6 @@
 var console = Console()
 
 func BufferReadNegativeCount() {
-    load "../../../spite_standard_library/windows"
     var bytes = Buffer(0)
     bytes.append(10)
     var wanted = -1

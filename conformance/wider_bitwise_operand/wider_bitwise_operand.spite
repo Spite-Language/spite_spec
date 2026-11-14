@@ -4,7 +4,6 @@ var _wide_mask: Long = 4294967311
 var _wider_than_tiny = 300
 
 func WiderBitwiseOperand() {
-    load "../../../spite_standard_library/windows"
     var flags: Byte = _sample_flags
     var mask: Long = _wide_mask
     var kept = flags.bits_and(mask)

@@ -5,7 +5,6 @@ var other_rule = DynamicLibrary("ucrtbase.dll", 'camel_case', "")
 var other_file = DynamicLibrary("kernel32.dll", 'identity', "")
 
 func DynamicLibraryIsOneObject() {
-    load "../../../spite_standard_library/windows"
     var keeper = Keeper()
     var kept = keeper.library
     console.print(first == second, first == kept, first == other_rule, first == other_file)

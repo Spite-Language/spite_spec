@@ -1,7 +1,6 @@
 var console = Console()
 
 func DefaultKeptThisHandedOn() {
-    load "../../../spite_standard_library/windows"
     var given = Part(1)
     var holder = Holder(given)
     console.print(holder.seen, holder.part.value)

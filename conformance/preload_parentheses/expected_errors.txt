@@ -1,1 +1,1 @@
-conformance/preload_parentheses/preload_parentheses.spite:3: error: 'preload' is a keyword, not a function: write it without parentheses, 'preload "textures"'
+conformance/preload_parentheses/preload_parentheses.spite:2: error: 'preload' is a keyword, not a function: write it without parentheses, 'preload "textures"'

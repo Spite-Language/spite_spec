@@ -1,6 +1,5 @@
 var console = Console()
 
 func ClassesRepeatedUnionInFilesNothingUses() {
-    load "../../../spite_standard_library/windows"
     console.print("nothing reads the pair")
 }

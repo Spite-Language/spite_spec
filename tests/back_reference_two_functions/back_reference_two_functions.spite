@@ -1,7 +1,6 @@
 var console = Console()
 
 func BackReferenceTwoFunctions() {
-    load "../../../spite_standard_library/windows"
     make_a_team()
     console.print("the team is gone")
 }

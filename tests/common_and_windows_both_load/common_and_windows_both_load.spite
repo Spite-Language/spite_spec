@@ -1,7 +1,5 @@
 var console = Console()
 
 func CommonAndWindowsBothLoad() {
-    load "../../../spite_standard_library/common"
-    load "../../../spite_standard_library/windows"
     console.print("both loaded")
 }

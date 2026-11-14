@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_spec/abbreviation_meaning_spec.spite:5: error: 'spec' abbreviates 'spec', which could mean 'specification' or 'special': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningSpec.AbbreviationMeaningSpec)
+conformance/abbreviation_meaning_spec/abbreviation_meaning_spec.spite:4: error: 'spec' abbreviates 'spec', which could mean 'specification' or 'special': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningSpec.AbbreviationMeaningSpec)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func SetterParameterExempt() {
-    load "../../../spite_standard_library/windows"
     var person = Person()
     person.age = 5
     console.print(person.age)

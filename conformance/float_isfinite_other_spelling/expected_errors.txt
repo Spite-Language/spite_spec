@@ -1,1 +1,1 @@
-conformance/float_isfinite_other_spelling/float_isfinite_other_spelling.spite:6: error: Float has no function 'isfinite': Spite spells it 'is_finite', since no name is abbreviated (in FloatIsfiniteOtherSpelling.FloatIsfiniteOtherSpelling)
+conformance/float_isfinite_other_spelling/float_isfinite_other_spelling.spite:5: error: Float has no function 'isfinite': Spite spells it 'is_finite', since no name is abbreviated (in FloatIsfiniteOtherSpelling.FloatIsfiniteOtherSpelling)

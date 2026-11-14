@@ -1,7 +1,6 @@
 var console = Console()
 
 func StringCasing() {
-    load "../../../spite_standard_library/windows"
     var samples = [
         "total_count"
         "TotalCount"

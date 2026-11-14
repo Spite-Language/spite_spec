@@ -1,7 +1,6 @@
 var console = Console()
 
 func CallsOutsideArguments() {
-    load "../../../spite_standard_library/windows"
     var source = "spite"
     var first_letter = source.slice(0, 1)
     crash first_letter

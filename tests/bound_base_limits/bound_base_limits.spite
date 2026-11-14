@@ -2,7 +2,6 @@ var console = Console()
 var values = List<Integer>()
 
 func BoundBaseLimits() {
-    load "../../../spite_standard_library/windows"
     var filled = 0
     while filled < 70 {
         values.append(filled)

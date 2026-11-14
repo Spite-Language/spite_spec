@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonKeysMixed() {
-    load "../../../spite_standard_library/windows"
     var writer = JsonWriter<MeshRecord>()
     writer.keys = {MeshRecord.attributes["minimum_level_of_detail"]: "min_lod"}
     var other = JsonWriter<MeshRecord>()

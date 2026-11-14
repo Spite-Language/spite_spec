@@ -1,1 +1,1 @@
-conformance/float_log10_other_spelling/float_log10_other_spelling.spite:6: error: Float has no function 'log10': Spite spells it 'logarithm_base_10', since no name is abbreviated (in FloatLog10OtherSpelling.FloatLog10OtherSpelling)
+conformance/float_log10_other_spelling/float_log10_other_spelling.spite:5: error: Float has no function 'log10': Spite spells it 'logarithm_base_10', since no name is abbreviated (in FloatLog10OtherSpelling.FloatLog10OtherSpelling)

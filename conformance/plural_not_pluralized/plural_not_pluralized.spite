@@ -1,7 +1,6 @@
 var console = Console()
 
 func PluralNotPluralized() {
-    load "../../../spite_standard_library/windows"
     var crowd = List<Member>()
     var member = Member()
     crowd.append(member)

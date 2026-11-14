@@ -6,7 +6,6 @@ enum Shade {
 var console = Console()
 
 func MembersOfAnEnumValue() {
-    load "../../../spite_standard_library/windows"
     var shade: Shade = 'light'
     console.print(shade.brightness)
 }

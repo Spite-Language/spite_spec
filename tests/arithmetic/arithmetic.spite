@@ -2,7 +2,6 @@ var console = Console()
 var _large_addend: Long = 2000000000
 
 func Arithmetic() {
-    load "../../../spite_standard_library/windows"
     var sum = add(3, 4)
     console.print(sum)
     var difference = 10 - 3

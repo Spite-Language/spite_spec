@@ -5,7 +5,6 @@ type Counted {
 var console = Console()
 
 func DefaultReadBelowIsMovedKeptSlot() {
-    load "../../../spite_standard_library/windows"
     var box = Box()
     console.print(box.early, box.grown)
     show(box)

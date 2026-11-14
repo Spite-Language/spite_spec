@@ -1,7 +1,6 @@
 var console = Console()
 
 func Strings() {
-    load "../../../spite_standard_library/windows"
     var name = "world"
     console.print("Hello, {name}!")
     var greeting = greet(name)

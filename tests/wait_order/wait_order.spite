@@ -6,7 +6,6 @@ var current = List<String>()
 var earlier = List<String>()
 
 func WaitOrder() {
-    load "../../../spite_standard_library/windows"
     var sum = sum_in_order()
     var text = text_in_order()
     var passed = arguments_in_order()

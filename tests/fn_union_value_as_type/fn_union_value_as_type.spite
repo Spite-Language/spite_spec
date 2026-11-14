@@ -10,7 +10,6 @@ type Speaker {
 var console = Console()
 
 func FnUnionValueAsType() {
-    load "../../../spite_standard_library/windows"
     var cat = Cat()
     var dog = Dog()
     var cat_said = hear(cat)

@@ -1,7 +1,6 @@
 var console = Console()
 
 func TextBuilding() {
-    load "../../../spite_standard_library/windows"
     var piece = "piece."
     var built = ""
     var index = 0

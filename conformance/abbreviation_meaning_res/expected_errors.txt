@@ -1,1 +1,1 @@
-conformance/abbreviation_meaning_res/abbreviation_meaning_res.spite:5: error: 'res' abbreviates 'res', which could mean 'response', 'result' or 'resource': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningRes.AbbreviationMeaningRes)
+conformance/abbreviation_meaning_res/abbreviation_meaning_res.spite:4: error: 'res' abbreviates 'res', which could mean 'response', 'result' or 'resource': write the word you mean. Spite has no abbreviations outside its own keywords (in AbbreviationMeaningRes.AbbreviationMeaningRes)

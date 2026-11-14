@@ -3,7 +3,6 @@ var build = Build()
 var greeter = Greeter()
 
 func HotReloadAfterAReadLine() {
-    load "../../../spite_standard_library/windows"
     var first = greeter.greeting()
     console.print(first)
     save_the_new_greeter()

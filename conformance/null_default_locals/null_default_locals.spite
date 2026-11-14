@@ -1,7 +1,6 @@
 var console = Console()
 
 func NullDefaultLocals() {
-    load "../../../spite_standard_library/windows"
     var count: Integer = null
     var label: String = null
     console.print(count, label)

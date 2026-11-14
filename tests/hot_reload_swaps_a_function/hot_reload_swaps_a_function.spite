@@ -3,7 +3,6 @@ var build = Build()
 var greeter = Greeter()
 
 func HotReloadSwapsAFunction() {
-    load "../../../spite_standard_library/windows"
     var said = greeter.greeting()
     console.print(said)
     save_greeter_from("goodbye.txt")

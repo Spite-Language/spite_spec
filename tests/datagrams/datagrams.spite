@@ -2,7 +2,6 @@ var console = Console()
 var _server_port = 47811
 
 func Datagrams() {
-    load "../../../spite_standard_library/windows"
     var server = Udp.Server()
     var client = Udp.Client()
     var server_open = server.open_locally(_server_port)

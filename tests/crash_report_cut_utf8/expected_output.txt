@@ -1,3 +1,3 @@
-spite: the program stopped at tests/crash_report_cut_utf8/crash_report_cut_utf8.spite:10 in CrashReportCutUtf8.show, site 51ac7a23 (heading.length()=85, heading=aééééééééééééééééééééééééééééééééééééééé...(85 bytes), letter=a)
-spite.frame	tests/crash_report_cut_utf8/crash_report_cut_utf8.spite:10	CrashReportCutUtf8	show
-spite.frame	tests/crash_report_cut_utf8/crash_report_cut_utf8.spite:5	CrashReportCutUtf8	CrashReportCutUtf8
+spite: the program stopped at tests/crash_report_cut_utf8/crash_report_cut_utf8.spite:9 in CrashReportCutUtf8.show, site 51ac7a23 (heading.length()=85, heading=aééééééééééééééééééééééééééééééééééééééé...(85 bytes), letter=a)
+spite.frame	tests/crash_report_cut_utf8/crash_report_cut_utf8.spite:9	CrashReportCutUtf8	show
+spite.frame	tests/crash_report_cut_utf8/crash_report_cut_utf8.spite:4	CrashReportCutUtf8	CrashReportCutUtf8

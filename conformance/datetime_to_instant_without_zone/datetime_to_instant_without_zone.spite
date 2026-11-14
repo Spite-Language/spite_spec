@@ -1,7 +1,6 @@
 var console = Console()
 
 func DatetimeToInstantWithoutZone() {
-    load "../../../spite_standard_library/windows"
     var stamp = DateTime(Date(2024, 1, 1), Time(9, 30, 0, 0))
     var instant = stamp.to_instant()
     console.print(instant)

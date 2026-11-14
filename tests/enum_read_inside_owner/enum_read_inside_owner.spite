@@ -1,7 +1,6 @@
 var console = Console()
 
 func EnumReadInsideOwner() {
-    load "../../../spite_standard_library/windows"
     var barracks = Barracks()
     var word = "captain"
     var from_text = barracks.read_text(word)

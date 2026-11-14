@@ -1,7 +1,6 @@
 var console = Console()
 
 func ReflectionNameWithHoles() {
-    load "../../../spite_standard_library/windows"
     var ending = "unt"
     var found = Monster.attributes["co{ending}"]
     crash found

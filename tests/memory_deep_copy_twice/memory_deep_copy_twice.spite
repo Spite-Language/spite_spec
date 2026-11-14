@@ -1,7 +1,6 @@
 var console = Console()
 
 func MemoryDeepCopyTwice() {
-    load "../../../spite_standard_library/windows"
     var pair = Pair()
     var leaf = Leaf(3)
     pair.left = leaf

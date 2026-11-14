@@ -20,7 +20,6 @@ var positions = Column<Position>()
 var velocities = Column<Velocity>()
 
 func PlainItems() {
-    load "../../../spite_standard_library/windows"
     numbers.append(3)
     numbers.append(5)
     numbers.each(found.append)

@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func ReflectionListLastFolds() {
-    load "../../../spite_standard_library/windows"
     var part = Gear.classes.last()
     var below = Gear.namespaces.last()
     console.print(part.name, below.name)

@@ -1,1 +1,1 @@
-conformance/spelling_unknown_mark/spelling_unknown_mark.spite:6: error: '@' is not something Spite reads: write it in words
+conformance/spelling_unknown_mark/spelling_unknown_mark.spite:5: error: '@' is not something Spite reads: write it in words

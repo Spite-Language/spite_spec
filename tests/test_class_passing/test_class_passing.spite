@@ -1,5 +1,4 @@
 func TestClassPassing() {
-    load "../../../spite_standard_library/windows"
     var tester = Test(Shop)
     tester.run()
 }

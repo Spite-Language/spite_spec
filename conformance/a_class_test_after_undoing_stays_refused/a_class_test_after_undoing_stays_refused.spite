@@ -1,7 +1,6 @@
 var console = Console()
 
 func AClassTestAfterUndoingStaysRefused() {
-    load "../../../spite_standard_library/windows"
     var holder = Holder()
     var circle = Circle()
     holder.figure = circle

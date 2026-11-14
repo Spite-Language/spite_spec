@@ -7,7 +7,6 @@ var console = Console()
 var _ready = true
 
 func CodegenClassTestValues() {
-    load "../../../spite_standard_library/windows"
     var store = Store()
     store.add("text")
     store.add(_ready)

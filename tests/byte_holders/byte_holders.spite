@@ -8,7 +8,6 @@ var _letter_h_code: Byte = 104
 var _largest_byte: Byte = 255
 
 func ByteHolders() {
-    load "../../../spite_standard_library/windows"
     binary_body()
     split_character()
     datagram_text()

@@ -1,1 +1,1 @@
-conformance/number_names_nothing/number_names_nothing.spite:5: error: unknown type 'Number' (in NumberNamesNothing.NumberNamesNothing)
+conformance/number_names_nothing/number_names_nothing.spite:4: error: unknown type 'Number' (in NumberNamesNothing.NumberNamesNothing)

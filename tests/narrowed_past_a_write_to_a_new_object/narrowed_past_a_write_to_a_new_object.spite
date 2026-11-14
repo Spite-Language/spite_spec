@@ -1,7 +1,6 @@
 var console = Console()
 
 func NarrowedPastAWriteToANewObject() {
-    load "../../../spite_standard_library/windows"
     var shelf = Shelf()
     shelf.item = Item()
     show(shelf)

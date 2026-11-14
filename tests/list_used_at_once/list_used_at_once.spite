@@ -3,7 +3,6 @@ var _first_song_seconds = 185
 var _second_song_seconds = 240
 
 func ListUsedAtOnce() {
-    load "../../../spite_standard_library/windows"
     var playlist = Playlist()
     playlist.add(_first_song_seconds)
     playlist.add(_second_song_seconds)

@@ -1,5 +1,4 @@
 func TestRunsALoadedProgramsTests() {
-    load "../../../spite_standard_library/windows"
     load "shop"
     var tester = Test(Checks)
     tester.run()

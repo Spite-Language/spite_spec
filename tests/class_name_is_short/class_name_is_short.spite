@@ -5,7 +5,6 @@ var gamma = Part.Inner.Gamma()
 var kept = List<Spite.Class>()
 
 func ClassNameIsShort() {
-    load "../../../spite_standard_library/windows"
     console.print(alpha.first, beta.second, gamma.third)
     var named = Part.Alpha.name
     var dotted = Part.Inner.Gamma.name_with_namespaces

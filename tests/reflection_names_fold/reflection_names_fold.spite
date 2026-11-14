@@ -5,7 +5,6 @@ var kept_classes = List<Spite.Class>()
 var kept_namespaces = List<Spite.Namespace>()
 
 func ReflectionNamesFold() {
-    load "../../../spite_standard_library/windows"
     console.print(alpha.first_value, beta.second_value)
     kept_classes.append(Part.Alpha)
     kept_classes.append(Part.Inner.Beta)

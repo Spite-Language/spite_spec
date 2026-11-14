@@ -1,7 +1,6 @@
 var console = Console()
 
 func FailedConstructor() {
-    load "../../../spite_standard_library/windows"
     var textures = Asset.Pak<Asset.Texture>()
     var grass = Asset.Texture()
     var count = textures.keep(grass)

@@ -7,7 +7,6 @@ var console = Console()
 var _sample_long: Long = 9000000000
 
 func StringPlusCasts() {
-    load "../../../spite_standard_library/windows"
     var mood: Mood = 'angry'
     var count = 3
     var ratio = 2.5

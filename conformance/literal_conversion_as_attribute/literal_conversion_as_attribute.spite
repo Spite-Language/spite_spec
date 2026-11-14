@@ -2,6 +2,5 @@ var console = Console()
 var paint: Color = "no colour"
 
 func LiteralConversionAsAttribute() {
-    load "../../../spite_standard_library/windows"
     console.print(paint)
 }

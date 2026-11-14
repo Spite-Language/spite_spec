@@ -1,7 +1,6 @@
 var console = Console()
 
 func UnusedNames() {
-    load "../../../spite_standard_library/windows"
     var forgotten = 1
     var _counted = 3
     console.print(_counted)

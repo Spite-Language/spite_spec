@@ -1,1 +1,1 @@
-conformance/literal_conversion_union/literal_conversion_union.spite:10: error: the literal "nobody" does not convert: 'Job(from: String)' answers null for it (in LiteralConversionUnion.LiteralConversionUnion)
+conformance/literal_conversion_union/literal_conversion_union.spite:9: error: the literal "nobody" does not convert: 'Job(from: String)' answers null for it (in LiteralConversionUnion.LiteralConversionUnion)

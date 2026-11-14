@@ -1,1 +1,1 @@
-spite: 'total / chosen.parts' divided by zero, at tests/divisor_proof_ends_by_local_write/divisor_proof_ends_by_local_write.spite:17 in DivisorProofEndsByLocalWrite.share
+spite: 'total / chosen.parts' divided by zero, at tests/divisor_proof_ends_by_local_write/divisor_proof_ends_by_local_write.spite:16 in DivisorProofEndsByLocalWrite.share

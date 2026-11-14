@@ -1,1 +1,1 @@
-conformance/classes_inline_generic_singleton/classes_inline_generic_singleton.spite:5: error: 'Column' is a singleton: bind it once beside the attributes, 'var column = Column<Health>()', and use 'column.values' (in ClassesInlineGenericSingleton.ClassesInlineGenericSingleton)
+conformance/classes_inline_generic_singleton/classes_inline_generic_singleton.spite:4: error: 'Column' is a singleton: bind it once beside the attributes, 'var column = Column<Health>()', and use 'column.values' (in ClassesInlineGenericSingleton.ClassesInlineGenericSingleton)

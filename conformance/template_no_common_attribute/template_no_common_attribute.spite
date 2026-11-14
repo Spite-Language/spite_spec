@@ -1,7 +1,6 @@
 var console = Console()
 
 func TemplateNoCommonAttribute() {
-    load "../../../spite_standard_library/windows"
     var lamp = Lamp()
     var door = Door()
     copy_attributes(lamp, door)

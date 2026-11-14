@@ -3,7 +3,6 @@ var _far_key: Long = 5000000000
 var _largest_key = 6993
 
 func NumberKeys() {
-    load "../../../spite_standard_library/windows"
     var ages = Dictionary<Integer, String>()
     ages[7] = "seven"
     ages[3] = "three"

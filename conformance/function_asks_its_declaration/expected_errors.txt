@@ -1,1 +1,1 @@
-conformance/function_asks_its_declaration/function_asks_its_declaration.spite:8: error: a Spite.Function has no 'returns' of its own: write 'function.declaration.returns' (in FunctionAsksItsDeclaration.FunctionAsksItsDeclaration)
+conformance/function_asks_its_declaration/function_asks_its_declaration.spite:7: error: a Spite.Function has no 'returns' of its own: write 'function.declaration.returns' (in FunctionAsksItsDeclaration.FunctionAsksItsDeclaration)

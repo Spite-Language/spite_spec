@@ -1,7 +1,6 @@
 var console = Console()
 
 func NamespacesCompareByIdentity() {
-    load "../../../spite_standard_library/windows"
     var monster = Monster()
     var first = monster.class.namespace
     var second = monster.class.namespace

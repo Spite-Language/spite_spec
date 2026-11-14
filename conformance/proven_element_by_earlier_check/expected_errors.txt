@@ -1,1 +1,1 @@
-conformance/proven_element_by_earlier_check/proven_element_by_earlier_check.spite:11: fixed: 'names[position]' was already proven by an earlier check, so this 'crash' proved nothing; removed it (in ProvenElementByEarlierCheck.show_names)
+conformance/proven_element_by_earlier_check/proven_element_by_earlier_check.spite:10: fixed: 'names[position]' was already proven by an earlier check, so this 'crash' proved nothing; removed it (in ProvenElementByEarlierCheck.show_names)

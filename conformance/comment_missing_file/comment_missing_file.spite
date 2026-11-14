@@ -1,4 +1,1 @@
 # nowhere/missing.md#anything
-func CommentMissingFile() {
-    load "../../../spite_standard_library/windows"
-}

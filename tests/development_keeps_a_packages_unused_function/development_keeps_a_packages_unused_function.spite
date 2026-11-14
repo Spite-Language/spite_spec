@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func DevelopmentKeepsAPackagesUnusedFunction() {
-    load "../../../spite_standard_library/windows"
     load "paint"
     var tint = Tint()
     var shown = tint.describe()

@@ -1,1 +1,1 @@
-conformance/failing_statement_hides_unread_local/failing_statement_hides_unread_local.spite:5: error: this class has no function 'missing_function' (in FailingStatementHidesUnreadLocal.FailingStatementHidesUnreadLocal)
+conformance/failing_statement_hides_unread_local/failing_statement_hides_unread_local.spite:4: error: this class has no function 'missing_function' (in FailingStatementHidesUnreadLocal.FailingStatementHidesUnreadLocal)

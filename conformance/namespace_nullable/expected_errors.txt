@@ -1,1 +1,1 @@
-conformance/namespace_nullable/namespace_nullable.spite:9: fixed: 'ns' only copied 'NamespaceNullable.namespace' so it could be narrowed; narrowed 'NamespaceNullable.namespace' itself and used it directly (in NamespaceNullable.probe)
+conformance/namespace_nullable/namespace_nullable.spite:8: fixed: 'ns' only copied 'NamespaceNullable.namespace' so it could be narrowed; narrowed 'NamespaceNullable.namespace' itself and used it directly (in NamespaceNullable.probe)

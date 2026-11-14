@@ -1,7 +1,6 @@
 var console = Console()
 
 func MathsConstantAssigned() {
-    load "../../../spite_standard_library/windows"
     Float.Pi() = 3.0
     Integer.Largest() = 7
     Double.NotANumber() = Double.NotANumber() + 1.0

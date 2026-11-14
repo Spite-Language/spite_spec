@@ -4,7 +4,6 @@ var running = true
 var _pass_limit: Long = 300000000
 
 func BusyLoop() {
-    load "../../../spite_standard_library/windows"
     while running and passes < _pass_limit {
         passes = passes + 1
     }

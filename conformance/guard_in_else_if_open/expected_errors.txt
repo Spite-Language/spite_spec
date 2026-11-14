@@ -1,1 +1,1 @@
-conformance/guard_in_else_if_open/guard_in_else_if_open.spite:11: error: this 'else if' only returns, and the 'if' above it can hold for the same value, so a 'fallback value <= 1' above it could change what runs: decide which test comes first (in GuardInElseIfOpen.checked)
+conformance/guard_in_else_if_open/guard_in_else_if_open.spite:10: error: this 'else if' only returns, and the 'if' above it can hold for the same value, so a 'fallback value <= 1' above it could change what runs: decide which test comes first (in GuardInElseIfOpen.checked)

@@ -3,7 +3,6 @@ var program = Program()
 var shape = Shape()
 
 func WalkFieldTestsFold() {
-    load "../../../spite_standard_library/windows"
     shape.numbers.append(3)
     shape.words.append("w")
     var number_count = shape.numbers.count()

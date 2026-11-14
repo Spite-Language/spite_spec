@@ -3,7 +3,6 @@ var server = Udp.Server()
 var _port = 47316
 
 func UdpWaits() {
-    load "../../../spite_standard_library/windows"
     crash server.open_locally(_port)
     var client = Udp.Client()
     crash client.open()

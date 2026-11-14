@@ -2,7 +2,6 @@ var console = Console()
 var count = 3
 
 func FormatBracesAndCases() {
-    load "../../../spite_standard_library/windows"
     describe(true)
     switch count > 2 {
         true: console.print("many")

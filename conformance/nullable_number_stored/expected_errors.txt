@@ -1,1 +1,1 @@
-conformance/nullable_number_stored/nullable_number_stored.spite:7: error: this value may be null (it is an Integer?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableNumberStored.NullableNumberStored)
+conformance/nullable_number_stored/nullable_number_stored.spite:6: error: this value may be null (it is an Integer?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableNumberStored.NullableNumberStored)

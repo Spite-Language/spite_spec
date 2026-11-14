@@ -2,7 +2,6 @@ var console = Console()
 var program = Program()
 
 func ReflectionUnreadFieldHasNoSlot() {
-    load "../../../spite_standard_library/windows"
     var roar = Monster.functions["roar"]
     crash roar
     var file = roar.source_file

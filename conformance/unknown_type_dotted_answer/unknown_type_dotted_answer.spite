@@ -1,7 +1,6 @@
 var console = Console()
 
 func UnknownTypeDottedAnswer() {
-    load "../../../spite_standard_library/windows"
     var shown = find_gem()
     console.print(shown)
 }

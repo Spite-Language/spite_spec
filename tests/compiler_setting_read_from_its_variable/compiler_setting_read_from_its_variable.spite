@@ -3,7 +3,6 @@ var program = Program()
 var folder = ".spite/optimized_variable"
 
 func CompilerSettingReadFromItsVariable() {
-    load "../../../spite_standard_library/windows"
     write_the_program()
     var no_variables = Dictionary<String, String>()
     console.print("no variable")

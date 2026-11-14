@@ -4,7 +4,6 @@ var ticks = List<Tick>()
 var timers = Timers()
 
 func SameNameCallEffects() {
-    load "../../../spite_standard_library/windows"
     var tick = Tick()
     ticks.append(tick)
     ticks.each(timers.advance)

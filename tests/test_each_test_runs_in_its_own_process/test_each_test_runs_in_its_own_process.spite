@@ -1,5 +1,4 @@
 func TestEachTestRunsInItsOwnProcess() {
-    load "../../../spite_standard_library/windows"
     var tester = Test(Checks)
     tester.run()
 }

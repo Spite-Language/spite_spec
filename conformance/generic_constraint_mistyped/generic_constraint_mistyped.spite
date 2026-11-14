@@ -5,7 +5,6 @@ type Weighed {
 var console = Console()
 
 func GenericConstraintMistyped() {
-    load "../../../spite_standard_library/windows"
     var boxes = Box<Stone>()
     var stone = Stone()
     boxes.add(stone)

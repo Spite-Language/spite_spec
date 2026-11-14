@@ -2,7 +2,6 @@ var kept: Shelf? = null
 var console = Console()
 
 func ACheckAfterUndoingStays() {
-    load "../../../spite_standard_library/windows"
     console.print("fallback_after_an_earlier_attribute")
     var rack_0 = filled_rack()
     fallback_after_an_earlier_attribute(rack_0, rack_0)

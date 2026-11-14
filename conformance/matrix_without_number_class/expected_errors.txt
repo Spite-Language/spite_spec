@@ -1,1 +1,1 @@
-conformance/matrix_without_number_class/matrix_without_number_class.spite:5: error: 'Matrix4' takes 1 codegen value(s), in this order: $number_type. Write them between < and > before the arguments
+conformance/matrix_without_number_class/matrix_without_number_class.spite:4: error: 'Matrix4' takes 1 codegen value(s), in this order: $number_type. Write them between < and > before the arguments

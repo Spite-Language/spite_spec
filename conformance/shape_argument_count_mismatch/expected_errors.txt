@@ -1,1 +1,1 @@
-conformance/shape_argument_count_mismatch/shape_argument_count_mismatch.spite:12: error: 'Worded' does not fit type 'Scaled': its 'scaled' takes 2 argument(s), but the type needs 1 (in ShapeArgumentCountMismatch.ShapeArgumentCountMismatch)
+conformance/shape_argument_count_mismatch/shape_argument_count_mismatch.spite:11: error: 'Worded' does not fit type 'Scaled': its 'scaled' takes 2 argument(s), but the type needs 1 (in ShapeArgumentCountMismatch.ShapeArgumentCountMismatch)

@@ -1,1 +1,1 @@
-conformance/foreign_void_answer_read/foreign_void_answer_read.spite:7: error: 'Forget' answers nothing, since 'fixture.h' declares it 'void', so it has no answer to read: call it on a line of its own (in ForeignVoidAnswerRead.ForeignVoidAnswerRead)
+conformance/foreign_void_answer_read/foreign_void_answer_read.spite:6: error: 'Forget' answers nothing, since 'fixture.h' declares it 'void', so it has no answer to read: call it on a line of its own (in ForeignVoidAnswerRead.ForeignVoidAnswerRead)

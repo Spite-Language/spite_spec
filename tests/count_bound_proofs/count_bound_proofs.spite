@@ -1,7 +1,6 @@
 var console = Console()
 
 func CountBoundProofs() {
-    load "../../../spite_standard_library/windows"
     var line = "exporter,blender,mesh,hero"
     var parts = line.split(",")
     crash parts.count() >= 3

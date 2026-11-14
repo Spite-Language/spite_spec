@@ -6,7 +6,6 @@ var greeter = Greeter()
 var _most_waits = 200
 
 func HotReloadUnchangedCodeRebuildsNothing() {
-    load "../../../spite_standard_library/windows"
     var first = greeter.which()
     console.print(first)
     var text = "func which(): String \{\n    return \"old\"\n}\n"

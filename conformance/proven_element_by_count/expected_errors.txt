@@ -1,1 +1,1 @@
-conformance/proven_element_by_count/proven_element_by_count.spite:11: fixed: 'names[1]' was already proven by 'names.count() == 2', so this 'fallback' proved nothing; removed it (in ProvenElementByCount.show_names)
+conformance/proven_element_by_count/proven_element_by_count.spite:10: fixed: 'names[1]' was already proven by 'names.count() == 2', so this 'fallback' proved nothing; removed it (in ProvenElementByCount.show_names)

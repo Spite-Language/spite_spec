@@ -1,7 +1,6 @@
 var console = Console()
 
 func MovingFiles() {
-    load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/conformance_moving")
     crash folder.create()
     var inner = Directory(".spite/conformance_moving/inner")

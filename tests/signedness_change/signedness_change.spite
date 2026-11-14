@@ -2,7 +2,6 @@ var console = Console()
 var _largest_unsigned_short: UnsignedShort = 65535
 
 func SignednessChange() {
-    load "../../../spite_standard_library/windows"
     var count = 0 - 3
     var minus_one: Long = -1
     var top = UnsignedLong.Largest()

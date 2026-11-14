@@ -2,7 +2,6 @@ var console = Console()
 var parts = 4
 
 func DivisorProofEndsByAttributeWrite() {
-    load "../../../spite_standard_library/windows"
     var shared = share(100)
     console.print(shared)
     console.print("never printed")

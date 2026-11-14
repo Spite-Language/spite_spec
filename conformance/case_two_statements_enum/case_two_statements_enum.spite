@@ -6,7 +6,6 @@ enum Light {
 var console = Console()
 
 func CaseTwoStatementsEnum() {
-    load "../../../spite_standard_library/windows"
     show('red')
 }
 

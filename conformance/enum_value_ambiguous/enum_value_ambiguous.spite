@@ -11,6 +11,5 @@ enum Sea {
 var console = Console()
 
 func EnumValueAmbiguous() {
-    load "../../../spite_standard_library/windows"
     console.print('calm')
 }

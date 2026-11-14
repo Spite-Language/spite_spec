@@ -3,7 +3,6 @@ var _pi_float_bits: UnsignedInteger = 1078530011
 var _one_and_a_half_double_bits: UnsignedLong = 4609434218613702656
 
 func HalfPrecision() {
-    load "../../../spite_standard_library/windows"
     var values = [
         1.0
         -2.0

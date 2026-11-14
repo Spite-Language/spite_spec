@@ -3,7 +3,6 @@ union Pet {
 }
 
 func RepeatedTwoContentsEntry() {
-    load "../../../spite_standard_library/windows"
     var first = Cheese.First()
     var second = Bread.First()
     var cat = Cat()

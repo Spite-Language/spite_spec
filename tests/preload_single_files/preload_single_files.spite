@@ -2,7 +2,6 @@ var console = Console()
 var bunda = Volume("bunda")
 
 func PreloadSingleFiles() {
-    load "../../../spite_standard_library/windows"
     preload "bunda/cu.spite"
     preload "bunda/other.txt"
     var root = bunda.directory("")

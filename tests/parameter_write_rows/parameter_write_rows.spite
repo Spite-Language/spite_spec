@@ -10,7 +10,6 @@ type Moving {
 var console = Console()
 
 func ParameterWriteRows() {
-    load "../../../spite_standard_library/windows"
     var pair = Pair()
     console.print(pair.label, pair.position.left, pair.entity.id)
     var moving = Runner<Mover>()

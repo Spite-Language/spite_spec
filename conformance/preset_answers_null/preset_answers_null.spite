@@ -1,5 +1,4 @@
 func PresetAnswersNull() {
-    load "../../../spite_standard_library/windows"
     var run = Meters.Marathon()
     crash run
 }

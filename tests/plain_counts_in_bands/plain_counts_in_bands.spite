@@ -3,7 +3,6 @@ var program = Program()
 var _shape_count = 6000
 
 func PlainCountsInBands() {
-    load "../../../spite_standard_library/windows"
     var shapes = List<Shape>()
     var index = 0
     while index < _shape_count {

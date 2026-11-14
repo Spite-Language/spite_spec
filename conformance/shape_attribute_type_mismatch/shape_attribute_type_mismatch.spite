@@ -6,7 +6,6 @@ type Named {
 var console = Console()
 
 func ShapeAttributeTypeMismatch() {
-    load "../../../spite_standard_library/windows"
     var box = Box()
     show(box)
     var label = Label()

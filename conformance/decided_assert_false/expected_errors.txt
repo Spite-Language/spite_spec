@@ -1,1 +1,1 @@
-conformance/decided_assert_false/decided_assert_false.spite:10: fixed: 'fallback 1 > 2' was decided while compiling and was always false here, so the function always answered nothing from here; wrote 'return null' in place of it and the code after it (in DecidedAssertFalse.answer)
+conformance/decided_assert_false/decided_assert_false.spite:9: fixed: 'fallback 1 > 2' was decided while compiling and was always false here, so the function always answered nothing from here; wrote 'return null' in place of it and the code after it (in DecidedAssertFalse.answer)

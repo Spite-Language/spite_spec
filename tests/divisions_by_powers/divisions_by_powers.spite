@@ -5,7 +5,6 @@ var _large_guarded_value: Long = 70000
 var _small_guarded_value: Long = 1234
 
 func DivisionsByPowers() {
-    load "../../../spite_standard_library/windows"
     var total: Long = 0
     var index = 0
     while index < _part_count {

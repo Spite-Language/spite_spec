@@ -2,7 +2,6 @@ var console = Console()
 var greeting = "hello"   
 
 func FormatIndentationAndWhitespace() {
-	load "../../../spite_standard_library/windows"
   var count = 2  
   if count > 1 {
 	  console.print(greeting, count)   

@@ -1,5 +1,4 @@
 func RepeatedCapturedName() {
-    load "../../../spite_standard_library/windows"
     var first = Tools.Kit.First()
     var second = Tools.Kit.Second()
     var cat = Cat()

@@ -3,7 +3,6 @@ var alpha = Part.Alpha()
 var beta = Part.Beta()
 
 func ReflectionCountCrash() {
-    load "../../../spite_standard_library/windows"
     console.print(alpha.first_value, beta.second_value)
     crash Part.classes.count() == 3
     console.print("never printed")

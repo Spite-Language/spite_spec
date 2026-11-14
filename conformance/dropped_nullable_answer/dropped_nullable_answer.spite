@@ -2,7 +2,6 @@ var console = Console()
 var names = ["Ada", "Grace"]
 
 func DroppedNullableAnswer() {
-    load "../../../spite_standard_library/windows"
     forget_the_last()
     var left = names.count()
     console.print(left)

@@ -1,1 +1,1 @@
-conformance/list_byte_read_on_integers/list_byte_read_on_integers.spite:7: error: List has no method 'read_integer_little_endian_at': bytes are a Buffer, which has it: make them with 'Buffer()' (in ListByteReadOnIntegers.ListByteReadOnIntegers)
+conformance/list_byte_read_on_integers/list_byte_read_on_integers.spite:6: error: List has no method 'read_integer_little_endian_at': bytes are a Buffer, which has it: make them with 'Buffer()' (in ListByteReadOnIntegers.ListByteReadOnIntegers)

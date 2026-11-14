@@ -1,6 +1,5 @@
 var console = Console()
 
 func ReportNotWritable() {
-    load "../../../spite_standard_library/windows"
     console.print("hi")
 }

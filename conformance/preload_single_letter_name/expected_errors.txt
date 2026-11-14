@@ -1,1 +1,1 @@
-conformance/preload_single_letter_name/preload_single_letter_name.spite:5: error: 'preload "d"' makes the volume 'd', and a single letter cannot name a volume, since 'd://' is a drive on Windows: rename the folder
+conformance/preload_single_letter_name/preload_single_letter_name.spite:4: error: 'preload "d"' makes the volume 'd', and a single letter cannot name a volume, since 'd://' is a drive on Windows: rename the folder

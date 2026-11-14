@@ -1,7 +1,6 @@
 var console = Console()
 
 func AnswersADifferentlyNamedQuestion() {
-    load "../../../spite_standard_library/windows"
     var shelf = Shelf()
     shelf.names.append("ann")
     var is_atomic = shelf.is_atomic("ann")

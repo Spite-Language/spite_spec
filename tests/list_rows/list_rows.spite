@@ -9,7 +9,6 @@ var velocities = List<Velocity>()
 var mover = Mover()
 
 func ListRows() {
-    load "../../../spite_standard_library/windows"
     var entity = 0
     while entity < 6 {
         var position = Position(entity, 10.0 * entity)

@@ -6,7 +6,6 @@ var _threads = 4
 var _calls = 5000
 
 func ForeignThreadsCallIntoASingleton() {
-    load "../../../spite_standard_library/windows"
     fixture.hit_from_threads(_threads, _calls, counting.address)
     console.print("no call was lost:", hits.total)
 }

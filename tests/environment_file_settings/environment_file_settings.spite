@@ -2,7 +2,6 @@ var console = Console()
 var environment = Environment()
 
 func EnvironmentFileSettings() {
-    load "../../../spite_standard_library/windows"
     var folder = Directory(".spite/environment_file_settings")
     crash folder.create()
     var settings = File(".spite/environment_file_settings/.env")

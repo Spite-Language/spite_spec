@@ -1,4 +1,4 @@
 walking
 running first
 item Gear { teeth: 3 }
-spite: 'walked.each' holds an item the compiler did not list for it, at tests/walk_item_not_listed/walk_item_not_listed.spite:12 in WalkItemNotListed.WalkItemNotListed
+spite: 'walked.each' holds an item the compiler did not list for it, at tests/walk_item_not_listed/walk_item_not_listed.spite:11 in WalkItemNotListed.WalkItemNotListed

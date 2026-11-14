@@ -3,7 +3,6 @@ var console = Console()
 var _fnv_hash_of_the_schema_text: Long = -298406944162534412
 
 func BinarySchemaText() {
-    load "../../../spite_standard_library/windows"
     var writer = BinaryWriter<Holder>()
     var reader = BinaryReader<Holder>()
     var written = writer.schema()

@@ -1,1 +1,1 @@
-conformance/shape_attribute_may_be_null/shape_attribute_may_be_null.spite:19: error: 'Owner' does not fit type 'Keeper': attribute 'pet' is a Cat?, but the type needs a ShapeAttributeMayBeNull.Named (in ShapeAttributeMayBeNull.ShapeAttributeMayBeNull)
+conformance/shape_attribute_may_be_null/shape_attribute_may_be_null.spite:18: error: 'Owner' does not fit type 'Keeper': attribute 'pet' is a Cat?, but the type needs a ShapeAttributeMayBeNull.Named (in ShapeAttributeMayBeNull.ShapeAttributeMayBeNull)

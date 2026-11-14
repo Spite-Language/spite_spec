@@ -3,7 +3,6 @@ var ledger = Ledger()
 var _postings = 20000
 
 func UnsharedLocks() {
-    load "../../../spite_standard_library/windows"
     var before = ledger.total()
     var posted = ledger.start_posting(_postings)
     var after = ledger.total()

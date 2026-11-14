@@ -3,7 +3,6 @@ var console = Console()
 var build = Build()
 
 func FinalClassesPlatformFunctions() {
-    load "../../../spite_standard_library/windows"
     var file_path: Path? = "{build.program}/monster.txt"
     crash file_path
     var file = File(file_path)

@@ -2,6 +2,5 @@ var console = Console()
 var build = Build()
 
 func OperatingSystemInBuild() {
-    load "../../../spite_standard_library/windows"
     console.print("compiling on", build.operating_system)
 }

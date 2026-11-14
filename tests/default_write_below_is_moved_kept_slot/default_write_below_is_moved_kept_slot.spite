@@ -5,7 +5,6 @@ type Readied {
 var console = Console()
 
 func DefaultWriteBelowIsMovedKeptSlot() {
-    load "../../../spite_standard_library/windows"
     var box = Box()
     console.print(box.started, box.ready)
     show(box)

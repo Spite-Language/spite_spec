@@ -2,7 +2,6 @@ var kept: Shelf? = null
 var console = Console()
 
 func NarrowedPastFillingANewObject() {
-    load "../../../spite_standard_library/windows"
     var first = Item()
     first.number = 7
     no_handing_on(first)

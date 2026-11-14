@@ -1,7 +1,6 @@
 var console = Console()
 
 func NamespaceObjects() {
-    load "../../../spite_standard_library/windows"
     var gadget = Pack.Widgets.Gadget()
     var second_gadget = Pack.Widgets.Gadget()
     var cog = Pack.Widgets.Cog()

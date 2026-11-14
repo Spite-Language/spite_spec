@@ -1,7 +1,6 @@
 var console = Console()
 
 func FunctionsAnythingParameter() {
-    load "../../../spite_standard_library/windows"
     describe(3)
     describe(true)
     describe("text")

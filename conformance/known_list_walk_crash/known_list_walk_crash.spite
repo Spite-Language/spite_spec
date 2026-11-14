@@ -3,7 +3,6 @@ var alpha = Part.Alpha()
 var beta = Other.Beta()
 
 func KnownListWalkCrash() {
-    load "../../../spite_standard_library/windows"
     console.print(alpha.first, beta.second)
     var stages = [Part, Other]
     stages.each(check_a_stage)

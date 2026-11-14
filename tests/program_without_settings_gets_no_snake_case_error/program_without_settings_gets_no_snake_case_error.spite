@@ -1,6 +1,5 @@
 var console = Console()
 
 func ProgramWithoutSettingsGetsNoSnakeCaseError() {
-    load "../../../spite_standard_library/windows"
     console.print("never printed: the arguments name no setting")
 }

@@ -1,2 +1,2 @@
 0
-spite: 'left - 1' does not fit in an UnsignedShort (0 - 1), at tests/unsigned_short_subtraction_halts/unsigned_short_subtraction_halts.spite:9 in UnsignedShortSubtractionHalts.UnsignedShortSubtractionHalts
+spite: 'left - 1' does not fit in an UnsignedShort (0 - 1), at tests/unsigned_short_subtraction_halts/unsigned_short_subtraction_halts.spite:8 in UnsignedShortSubtractionHalts.UnsignedShortSubtractionHalts

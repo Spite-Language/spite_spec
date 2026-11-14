@@ -5,7 +5,6 @@ var greeter = Greeter()
 var _most_waits = 600
 
 func HotReloadCompilesWithTheFlagsItWasBuiltWith() {
-    load "../../../spite_standard_library/windows"
     greeter.check(-1)
     console.print("checked before the reload")
     write_greeter()

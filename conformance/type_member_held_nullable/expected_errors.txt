@@ -1,1 +1,1 @@
-conformance/type_member_held_nullable/type_member_held_nullable.spite:8: error: 'Holder' does not fit type 'Turning': attribute 'turn' is a Spite.Function<Integer, Integer>?, which may hold no function, and the type needs one (in TypeMemberHeldNullable.TypeMemberHeldNullable)
+conformance/type_member_held_nullable/type_member_held_nullable.spite:7: error: 'Holder' does not fit type 'Turning': attribute 'turn' is a Spite.Function<Integer, Integer>?, which may hold no function, and the type needs one (in TypeMemberHeldNullable.TypeMemberHeldNullable)

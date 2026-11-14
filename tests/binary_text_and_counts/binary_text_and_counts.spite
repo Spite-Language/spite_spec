@@ -3,7 +3,6 @@ var _long_text_length = 130
 var _all_bits = 255
 
 func BinaryTextAndCounts() {
-    load "../../../spite_standard_library/windows"
     short_and_long_texts()
     list_counts()
     counts_too_large()

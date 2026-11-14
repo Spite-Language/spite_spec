@@ -1,1 +1,1 @@
-conformance/fn_direct_subtract/fn_direct_subtract.spite:9: error: 'subtract' is what '-' calls: write 'first - second' (in FnDirectSubtract.FnDirectSubtract)
+conformance/fn_direct_subtract/fn_direct_subtract.spite:8: error: 'subtract' is what '-' calls: write 'first - second' (in FnDirectSubtract.FnDirectSubtract)

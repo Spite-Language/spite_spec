@@ -10,7 +10,6 @@ var third = 3
 
 func FormatDeclarationLayout() {
 
-    load "../../../spite_standard_library/windows"
     var health = Health()
     columns.values.append(health)
 

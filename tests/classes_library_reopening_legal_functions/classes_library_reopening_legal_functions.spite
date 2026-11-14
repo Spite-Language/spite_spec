@@ -1,7 +1,6 @@
 var console = Console()
 
 func ClassesLibraryReopeningLegalFunctions() {
-    load "../../../spite_standard_library/windows"
     var source = Matrix4<Float>()
     source.put_corner(2.0)
     var target = Matrix4<Float>()

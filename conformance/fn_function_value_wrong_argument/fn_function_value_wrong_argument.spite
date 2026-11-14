@@ -1,7 +1,6 @@
 var console = Console()
 
 func FnFunctionValueWrongArgument() {
-    load "../../../spite_standard_library/windows"
     var change = shout
     var badge = Badge()
     var changed = change(badge)

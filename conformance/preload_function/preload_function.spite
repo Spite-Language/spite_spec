@@ -1,7 +1,6 @@
 var loads = 0
 
 func PreloadFunction() {
-    load "../../../spite_standard_library/windows"
     loads = 1
 }
 

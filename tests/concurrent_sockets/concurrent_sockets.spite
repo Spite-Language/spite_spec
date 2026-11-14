@@ -3,7 +3,6 @@ var server = Tcp.Server()
 var _server_port = 47311
 
 func ConcurrentSockets() {
-    load "../../../spite_standard_library/windows"
     crash server.listen_locally(_server_port)
     var ada = Tcp.Client()
     ask(ada, "ada")

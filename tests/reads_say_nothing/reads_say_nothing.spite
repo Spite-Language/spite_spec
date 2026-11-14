@@ -3,7 +3,6 @@ var _letter_h_code: Byte = 104
 var _invalid_utf8_byte: Byte = 255
 
 func ReadsSayNothing() {
-    load "../../../spite_standard_library/windows"
     var echoing = Process("cmd", ["/c", "echo", "ok"])
     var before_text = echoing.read_output_as_string()
     var before_bytes = echoing.read_output_as_buffer()

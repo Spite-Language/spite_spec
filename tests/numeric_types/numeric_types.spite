@@ -7,7 +7,6 @@ var _large_byte: Byte = 250
 var _second_port: UnsignedShort = 4464
 
 func NumericTypes() {
-    load "../../../spite_standard_library/windows"
     var wrapped: Tiny = -100
     var small: Short = _sample_short
     var octet: Byte = 44

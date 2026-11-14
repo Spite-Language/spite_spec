@@ -1,7 +1,6 @@
 var console = Console()
 
 func LoadPathDots() {
-    load "../../../spite_standard_library/windows"
     load "plugins/Render_Vulkan/.."
     console.print("never built")
 }

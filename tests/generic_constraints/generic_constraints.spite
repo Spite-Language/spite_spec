@@ -5,7 +5,6 @@ type Printable {
 var console = Console()
 
 func GenericConstraints() {
-    load "../../../spite_standard_library/windows"
     var books = Shelf<Book>()
     var dune = Book("Dune")
     books.add(dune)

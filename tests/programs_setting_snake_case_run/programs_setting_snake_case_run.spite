@@ -2,6 +2,5 @@ var console = Console()
 var environment = Environment()
 
 func ProgramsSettingSnakeCaseRun() {
-    load "../../../spite_standard_library/windows"
     console.print(environment.workers, environment.worker_count)
 }

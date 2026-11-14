@@ -2,7 +2,6 @@ var console = Console()
 var _base_price = 1250
 
 func ListedSteps() {
-    load "../../../spite_standard_library/windows"
     var checkout = Pipeline()
     checkout.add('discount')
     checkout.add('tax')

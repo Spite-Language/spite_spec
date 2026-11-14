@@ -1,7 +1,6 @@
 var console = Console()
 
 func AndReturnNarrowing() {
-    load "../../../spite_standard_library/windows"
     var made = make("make")
     var other = make("sell")
     var nothing_made = make("")

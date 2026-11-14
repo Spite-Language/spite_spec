@@ -3,4 +3,4 @@ spite: the program stopped at tests/default_kept_nested_can_crash/risky.spite:4 
 spite.frame	tests/default_kept_nested_can_crash/risky.spite:4	Risky	Risky
 spite.frame	tests/default_kept_nested_can_crash/wrapped.spite:4	Wrapped	Wrapped
 spite.frame	tests/default_kept_nested_can_crash/default_kept_nested_can_crash.spite:1	DefaultKeptNestedCanCrash	DefaultKeptNestedCanCrash
-spite.frame	tests/default_kept_nested_can_crash/default_kept_nested_can_crash.spite:7	DefaultKeptNestedCanCrash	DefaultKeptNestedCanCrash
+spite.frame	tests/default_kept_nested_can_crash/default_kept_nested_can_crash.spite:6	DefaultKeptNestedCanCrash	DefaultKeptNestedCanCrash

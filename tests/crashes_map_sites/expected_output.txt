@@ -1,8 +1,8 @@
 7 1 2
-28eddc19	tests/crashes_map_sites/crashes_map_sites.spite	16	27	CrashesMapSites	both	fallback-predicate	right > 0	right:Integer@16:27
-7d48302c	tests/crashes_map_sites/crashes_map_sites.spite	29	5	CrashesMapSites	guarded	crash	value < 10	value:Integer@29:11
-89e3089f	tests/crashes_map_sites/crashes_map_sites.spite	16	14	CrashesMapSites	both	fallback-predicate	left > 0	left:Integer@16:14
-c9e74a3c	tests/crashes_map_sites/crashes_map_sites.spite	24	5	CrashesMapSites	narrowed	fallback-narrowing	found	found:Integer?@24:14
-ee281818	tests/crashes_map_sites/crashes_map_sites.spite	11	5	CrashesMapSites	CrashesMapSites	crash	text	text:String?@11:11
-f3f6fcee	tests/crashes_map_sites/crashes_map_sites.spite	48	13	CrashesMapSites	show	crash	id	id:String?@48:19
+28eddc19	tests/crashes_map_sites/crashes_map_sites.spite	15	27	CrashesMapSites	both	fallback-predicate	right > 0	right:Integer@15:27
+7d48302c	tests/crashes_map_sites/crashes_map_sites.spite	28	5	CrashesMapSites	guarded	crash	value < 10	value:Integer@28:11
+89e3089f	tests/crashes_map_sites/crashes_map_sites.spite	15	14	CrashesMapSites	both	fallback-predicate	left > 0	left:Integer@15:14
+c9e74a3c	tests/crashes_map_sites/crashes_map_sites.spite	23	5	CrashesMapSites	narrowed	fallback-narrowing	found	found:Integer?@23:14
+ee281818	tests/crashes_map_sites/crashes_map_sites.spite	10	5	CrashesMapSites	CrashesMapSites	crash	text	text:String?@10:11
+f3f6fcee	tests/crashes_map_sites/crashes_map_sites.spite	47	13	CrashesMapSites	show	crash	id	id:String?@47:19
 ordered by id true

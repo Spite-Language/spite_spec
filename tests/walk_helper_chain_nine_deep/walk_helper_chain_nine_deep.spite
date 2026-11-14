@@ -1,7 +1,6 @@
 var console = Console()
 
 func WalkHelperChainNineDeep() {
-    load "../../../spite_standard_library/windows"
     Part.classes.each(walk)
     console.print("end")
 }

@@ -1,1 +1,1 @@
-conformance/passed_sum_wants_number/passed_sum_wants_number.spite:6: error: 'sum(shout)': 'shout' is a String, but 'sum' needs it to return Integer (in PassedSumWantsNumber.PassedSumWantsNumber)
+conformance/passed_sum_wants_number/passed_sum_wants_number.spite:5: error: 'sum(shout)': 'shout' is a String, but 'sum' needs it to return Integer (in PassedSumWantsNumber.PassedSumWantsNumber)

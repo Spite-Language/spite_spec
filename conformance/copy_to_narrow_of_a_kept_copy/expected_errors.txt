@@ -1,1 +1,1 @@
-conformance/copy_to_narrow_of_a_kept_copy/copy_to_narrow_of_a_kept_copy.spite:13: fixed: 'source' only copied 'receiver.inner' so it could be narrowed; narrowed 'receiver.inner' itself and used it directly (in CopyToNarrowOfAKeptCopy.kept)
+conformance/copy_to_narrow_of_a_kept_copy/copy_to_narrow_of_a_kept_copy.spite:12: fixed: 'source' only copied 'receiver.inner' so it could be narrowed; narrowed 'receiver.inner' itself and used it directly (in CopyToNarrowOfAKeptCopy.kept)

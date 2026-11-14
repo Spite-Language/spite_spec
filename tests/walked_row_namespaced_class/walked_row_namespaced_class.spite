@@ -7,7 +7,6 @@ var points = Store<Component.Point>()
 var tags = Store<Component.Tag>()
 
 func WalkedRowNamespacedClass() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < 3 {
         var point = Component.Point()

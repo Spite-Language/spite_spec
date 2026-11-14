@@ -1,7 +1,6 @@
 var console = Console()
 
 func NestedIfElse() {
-    load "../../../spite_standard_library/windows"
     var description = describe(3, true)
     var letter = grade(70)
     var flat = allowed(2, false)

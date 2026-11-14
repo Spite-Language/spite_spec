@@ -3,7 +3,6 @@ var box = Box()
 var _assigned = 7
 
 func AssignmentValueBeforeItsObject() {
-    load "../../../spite_standard_library/windows"
     var old = box
     box.amount = replaced()
     console.print("the new box: {box.amount}, the old box: {old.amount}")

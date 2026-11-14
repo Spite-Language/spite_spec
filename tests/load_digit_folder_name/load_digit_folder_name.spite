@@ -1,7 +1,6 @@
 var console = Console()
 
 func LoadDigitFolderName() {
-    load "../../../spite_standard_library/windows"
     load "kit_2"
     var gizmo = Gizmo()
     console.print("gizmo", gizmo.parts)

@@ -1,1 +1,1 @@
-conformance/set_this_by_name/set_this_by_name.spite:6: error: 'set_this' is what writing 'this' calls: write 'count = 4' (in SetThisByName.SetThisByName)
+conformance/set_this_by_name/set_this_by_name.spite:5: error: 'set_this' is what writing 'this' calls: write 'count = 4' (in SetThisByName.SetThisByName)

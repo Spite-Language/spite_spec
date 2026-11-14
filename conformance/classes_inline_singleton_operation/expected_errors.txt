@@ -1,1 +1,1 @@
-conformance/classes_inline_singleton_operation/classes_inline_singleton_operation.spite:5: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console' (in ClassesInlineSingletonOperation.ClassesInlineSingletonOperation)
+conformance/classes_inline_singleton_operation/classes_inline_singleton_operation.spite:4: error: 'Console' is a singleton: bind it once beside the attributes, 'var console = Console()', and use 'console' (in ClassesInlineSingletonOperation.ClassesInlineSingletonOperation)

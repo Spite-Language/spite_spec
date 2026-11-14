@@ -3,7 +3,6 @@ var repositories = List<Repository>()
 var _missing_star_count = 999
 
 func MemberTemplates() {
-    load "../../../spite_standard_library/windows"
     var engine = Repository("engine", 10, true)
     repositories.append(engine)
     var cookie_clicker = Repository("cookie_clicker", 3, false)

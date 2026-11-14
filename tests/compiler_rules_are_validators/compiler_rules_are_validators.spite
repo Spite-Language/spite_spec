@@ -71,7 +71,6 @@ var rewrites = ["is_fix = true", ".found_later(", ".replaced_later(", ".cut_late
 
 # ../../../spite_compiler/ARCHITECTURE.md#validators
 func CompilerRulesAreValidators() {
-    load "../../../spite_standard_library/windows"
     var top_path: Path? = root
     crash top_path
     var top = Directory(top_path)

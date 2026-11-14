@@ -1,1 +1,1 @@
-conformance/preload_variable_name/preload_variable_name.spite:5: error: 'preload' is a keyword and cannot name a variable: give it a name that says what it preloads, like 'preload_textures'
+conformance/preload_variable_name/preload_variable_name.spite:4: error: 'preload' is a keyword and cannot name a variable: give it a name that says what it preloads, like 'preload_textures'

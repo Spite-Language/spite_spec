@@ -2,6 +2,5 @@ var console = Console()
 var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "stdlib.h")
 
 func ForeignConstantFromASystemHeader() {
-    load "../../../spite_standard_library/windows"
     console.print("RAND_MAX from stdlib.h:", c_runtime.rand_max)
 }

@@ -7,7 +7,6 @@ var console = Console()
 var program = Program()
 
 func AttributesKeptThroughUnions() {
-    load "../../../spite_standard_library/windows"
     var circle = Circle()
     var figure: Figure = circle
     var square = Square()

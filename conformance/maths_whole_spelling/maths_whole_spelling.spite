@@ -1,7 +1,6 @@
 var console = Console()
 
 func MathsWholeSpelling() {
-    load "../../../spite_standard_library/windows"
     var count = -3
     var positive = count.abs()
     console.print(positive)

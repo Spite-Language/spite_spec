@@ -2,7 +2,6 @@ var console = Console()
 var environment = Environment()
 
 func ProgramsArgumentsBesideSettings() {
-    load "../../../spite_standard_library/windows"
     console.print(environment.workers)
     if not environment.player_name.is_empty() {
         console.print("given", environment.player_name)

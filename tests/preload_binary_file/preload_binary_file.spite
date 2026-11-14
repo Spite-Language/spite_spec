@@ -5,7 +5,6 @@ var _from = 250
 var _wanted = 10
 
 func PreloadBinaryFile() {
-    load "../../../spite_standard_library/windows"
     preload "data/bytes.bin"
     var file = data.file("bytes.bin")
     var bytes = file.read_as_buffer()

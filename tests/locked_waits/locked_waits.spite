@@ -3,7 +3,6 @@ var ledger = Ledger()
 var program = Program()
 
 func LockedWaits() {
-    load "../../../spite_standard_library/windows"
     var counted_entries = counted()
     var first_done = record_first()
     var second_done = record_second()

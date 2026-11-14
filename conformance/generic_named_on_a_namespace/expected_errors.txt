@@ -1,1 +1,1 @@
-conformance/generic_named_on_a_namespace/generic_named_on_a_namespace.spite:5: error: 'Game' is not a generic class, so it takes no type in '<>': write 'Game' alone
+conformance/generic_named_on_a_namespace/generic_named_on_a_namespace.spite:4: error: 'Game' is not a generic class, so it takes no type in '<>': write 'Game' alone

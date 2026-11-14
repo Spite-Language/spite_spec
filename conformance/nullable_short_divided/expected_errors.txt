@@ -1,1 +1,1 @@
-conformance/nullable_short_divided/nullable_short_divided.spite:11: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortDivided.NullableShortDivided)
+conformance/nullable_short_divided/nullable_short_divided.spite:10: error: this value may be null (it is a Short?), but an Integer is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableShortDivided.NullableShortDivided)

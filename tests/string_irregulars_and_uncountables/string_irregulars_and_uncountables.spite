@@ -56,7 +56,6 @@ var uncountable_words = [
 ]
 
 func StringIrregularsAndUncountables() {
-    load "../../../spite_standard_library/windows"
     var index = 0
     while index < irregular_words.count() {
         var word = irregular_words[index]

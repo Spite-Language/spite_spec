@@ -4,7 +4,6 @@ var second = Proofs.Second.Study()
 var rule = Rules.One.Validator()
 
 func NamespaceWalkHelperCrash() {
-    load "../../../spite_standard_library/windows"
     rule.check_it()
     console.print(first.runs, second.runs, rule.runs)
     Spite.Namespace.instances.each(check_a_namespace)

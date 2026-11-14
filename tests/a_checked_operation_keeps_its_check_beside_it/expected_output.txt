@@ -1,4 +1,4 @@
 333 1
 checks: true
 checks apart from their operation: 0
-spite: 'total + step' does not fit in an Integer (2147483600 + 150), at tests/a_checked_operation_keeps_its_check_beside_it/a_checked_operation_keeps_its_check_beside_it.spite:33 in ACheckedOperationKeepsItsCheckBesideIt.summed
+spite: 'total + step' does not fit in an Integer (2147483600 + 150), at tests/a_checked_operation_keeps_its_check_beside_it/a_checked_operation_keeps_its_check_beside_it.spite:32 in ACheckedOperationKeepsItsCheckBesideIt.summed

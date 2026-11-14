@@ -1,1 +1,1 @@
-conformance/literal_conversion_color/literal_conversion_color.spite:5: error: the literal "chartreuse-ish" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionColor.LiteralConversionColor)
+conformance/literal_conversion_color/literal_conversion_color.spite:4: error: the literal "chartreuse-ish" does not convert: 'Color(from: String)' answers null for it (in LiteralConversionColor.LiteralConversionColor)

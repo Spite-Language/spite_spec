@@ -3,7 +3,6 @@ var build = Build()
 var kept = List<Pair>()
 
 func FramePlacementReport() {
-    load "../../../spite_standard_library/windows"
     var total = 0
     total = total + read_only()
     total = total + compared()

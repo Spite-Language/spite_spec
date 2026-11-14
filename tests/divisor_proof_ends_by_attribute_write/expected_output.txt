@@ -1,1 +1,1 @@
-spite: 'total / parts' divided by zero, at tests/divisor_proof_ends_by_attribute_write/divisor_proof_ends_by_attribute_write.spite:14 in DivisorProofEndsByAttributeWrite.share
+spite: 'total / parts' divided by zero, at tests/divisor_proof_ends_by_attribute_write/divisor_proof_ends_by_attribute_write.spite:13 in DivisorProofEndsByAttributeWrite.share

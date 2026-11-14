@@ -10,7 +10,6 @@ var _lock_path = ".spite/frame_helper_thread_waits.lock"
 var _note_path = ".spite/frame_helper_thread_waits.txt"
 
 func FrameHelperThreadWaits() {
-    load "../../../spite_standard_library/windows"
     waits_for_a_file_lock()
     waits_for_a_client_to_connect()
     waits_for_a_client_to_send()

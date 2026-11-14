@@ -7,7 +7,6 @@ var _first_voice = 7
 var _second_voice = 9
 
 func ForeignComTableFromAnotherThread() {
-    load "../../../spite_standard_library/windows"
     fixture.keep_table(starting.address, ending.address)
     fixture.play_on_a_thread(_first_voice)
     fixture.play_on_a_thread(_second_voice)

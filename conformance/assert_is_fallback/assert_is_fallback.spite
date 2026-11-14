@@ -1,7 +1,6 @@
 var console = Console()
 
 func AssertIsFallback() {
-    load "../../../spite_standard_library/windows"
     var length = length_of("")
     console.print(length)
 }

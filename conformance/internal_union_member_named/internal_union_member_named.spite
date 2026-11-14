@@ -6,7 +6,6 @@ union Held {
 var console = Console()
 
 func InternalUnionMemberNamed() {
-    load "../../../spite_standard_library/windows"
     var held: Held = "text"
     console.print(held)
 }

@@ -1,1 +1,1 @@
-conformance/renamed_to_from/renamed_to_from.spite:9: error: '_from' is read, so it must not start with an underscore: only a parameter the body ignores is named that way (in RenamedToFrom.twice)
+conformance/renamed_to_from/renamed_to_from.spite:8: error: '_from' is read, so it must not start with an underscore: only a parameter the body ignores is named that way (in RenamedToFrom.twice)

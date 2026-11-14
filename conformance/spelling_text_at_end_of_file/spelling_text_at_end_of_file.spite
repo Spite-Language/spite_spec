@@ -1,5 +1,4 @@
 var console = Console()
 
 func SpellingTextAtEndOfFile() {
-    load "../../../spite_standard_library/windows"
     console.print("abc
