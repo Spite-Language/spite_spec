@@ -1,0 +1,23 @@
+var console = Console()
+var kept = List<Item>()
+var _rounds = 5
+
+func AFunctionTakenAsAValueTakesNothing() {
+    load "../../../spite_standard_library/windows"
+    var keeping = keep
+    var index = 0
+    while index < _rounds {
+        var item = Item(index)
+        keeping(item)
+        index = index + 1
+    }
+    var direct = Item(_rounds)
+    keep(direct)
+    var count = kept.count()
+    var total = kept.sum_price()
+    console.print(count, total)
+}
+
+func keep(item: Item) {
+    kept.append(item)
+}

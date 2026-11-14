@@ -1,0 +1,6 @@
+var total = 0
+var is_squared: Boolean
+
+func Meter(starting_is_squared: Boolean) {
+    is_squared = starting_is_squared
+}

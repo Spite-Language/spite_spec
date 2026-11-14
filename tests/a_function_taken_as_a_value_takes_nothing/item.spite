@@ -1,0 +1,5 @@
+var price: Integer
+
+func Item(starting_price: Integer) {
+    price = starting_price
+}
