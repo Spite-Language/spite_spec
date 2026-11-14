@@ -1,0 +1,14 @@
+var console = Console()
+
+func TerminalIfWithAProvenCheck() {
+    load "../../../spite_standard_library/windows"
+    var holder = Holder()
+    holder.inner = "inside"
+    show(holder)
+}
+
+func show(receiver: Holder) {
+    console.print("start")
+    fallback receiver.inner
+    console.print(receiver.inner)
+}
