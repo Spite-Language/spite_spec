@@ -1,0 +1,17 @@
+var console = Console()
+
+func RuneComparedWithText() {
+    var path = "ab/cd"
+    var slash_at = path[2]
+    crash slash_at
+    console.print("present rune", slash_at == "/", slash_at != "/", slash_at == "b")
+    console.print("maybe rune", path[1] == "b", path[9] == "b", path[3] != "/")
+    console.print("text first", "/" == slash_at)
+    var found = 0
+    var cut = path.length() - 1
+    while cut > 0 and path[cut - 1] != "/" {
+        cut = cut - 1
+        found = found + 1
+    }
+    console.print("cut", cut, found)
+}

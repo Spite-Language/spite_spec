@@ -1,0 +1,4 @@
+present rune true false false
+maybe rune true false true
+text first true
+cut 3 1
