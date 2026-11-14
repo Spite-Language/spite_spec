@@ -1,0 +1,5 @@
+var content = ""
+
+func describe(): String {
+    return "Label '{content}'"
+}

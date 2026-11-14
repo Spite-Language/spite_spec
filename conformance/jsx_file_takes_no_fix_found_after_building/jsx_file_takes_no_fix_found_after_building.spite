@@ -1,0 +1,19 @@
+var console = Console()
+
+func JsxFileTakesNoFixFoundAfterBuilding() {
+    load "../../../spite_standard_library/windows"
+    var plain = built()
+    crash plain
+    var shown = plain.describe()
+    console.print(shown)
+    var badge = dotted()
+    console.print(badge.content)
+}
+
+func built(): View {
+    return <View title="plain"/>
+}
+
+func dotted(): Parts.Badge {
+    return <Parts.Badge content="dotted"/>
+}

@@ -1,0 +1,1 @@
+conformance/jsx_file_takes_no_fix_found_after_building/jsx_file_takes_no_fix_found_after_building.spite:6: error: this value cannot be null here (it is a View), so 'crash' on it proves nothing: remove the check (in JsxFileTakesNoFixFoundAfterBuilding.JsxFileTakesNoFixFoundAfterBuilding)
