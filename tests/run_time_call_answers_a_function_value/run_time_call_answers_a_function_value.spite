@@ -1,6 +1,6 @@
 var console = Console()
 
-func RunTimeCallAnswerNotToldApart() {
+func RunTimeCallAnswersAFunctionValue() {
     load "../../../spite_standard_library/windows"
     var picker = Picker()
     var held: Anything = picker
@@ -10,5 +10,6 @@ func RunTimeCallAnswerNotToldApart() {
     console.print("built")
     var answer = call.call()
     crash answer
-    console.print("answered")
+    var answered = answer.class.name
+    console.print(answered)
 }

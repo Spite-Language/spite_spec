@@ -1,2 +1,0 @@
-built
-spite: call() cannot hand back the answer of 'Picker.picked' when the call is known only at run time, since a value of its type is not told apart while the program runs: build the call from a function named in the code, 'Spite.Call(Picker.functions["picked"], instance)'
