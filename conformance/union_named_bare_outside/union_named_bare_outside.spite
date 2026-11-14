@@ -1,0 +1,10 @@
+var console = Console()
+
+func UnionNamedBareOutside() {
+    load "../../../spite_standard_library/windows"
+    var shelter = Zoo.Shelter()
+    var cat = Zoo.Cat()
+    var pet: Pet = cat
+    shelter.take(pet)
+    console.print(shelter.taken)
+}

@@ -1,0 +1,86 @@
+type Drawn {
+    render: Spite.Function<String>
+}
+
+var console = Console()
+var program = Program()
+var written = ""
+
+func SharedTypeCompilesAsACopy() {
+    load "../../../spite_standard_library/windows"
+    var button = Framework.Button()
+    var label = Framework.Label()
+    var shared = shown(button)
+    var copied = shown_by_copy(button)
+    console.print(shared, copied)
+    var shared_label = shown(label)
+    var copied_label = shown_by_copy(label)
+    console.print(shared_label, copied_label)
+    var picked_shared = picked(button, label, false)
+    var picked_copy = picked_by_copy(button, label, false)
+    var picked_shared_text = picked_shared.render()
+    var picked_copy_text = picked_copy.render()
+    console.print(picked_shared_text, picked_copy_text)
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var text_path: Path? = low_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    written = text
+    var shared_body = body_with_stops_alike("SharedTypeCompilesAsACopy.shown")
+    var copied_body = body_with_stops_alike("SharedTypeCompilesAsACopy.shown_by_copy")
+    var picked_body = body_with_stops_alike("SharedTypeCompilesAsACopy.picked")
+    var picked_copy_body = body_with_stops_alike("SharedTypeCompilesAsACopy.picked_by_copy")
+    var shared_found = not shared_body.is_empty()
+    var picked_found = not picked_body.is_empty()
+    console.print("found:", shared_found, picked_found)
+    console.print("same:", shared_body == copied_body, picked_body == picked_copy_body)
+}
+
+func shown(component: Framework.Framework.Component): String {
+    return component.render()
+}
+
+func shown_by_copy(component: Drawn): String {
+    return component.render()
+}
+
+func picked(
+    first: Framework.Framework.Component,
+    second: Framework.Framework.Component,
+    takes_the_first: Boolean,
+): Framework.Framework.Component {
+    if takes_the_first {
+        return first
+    }
+    return second
+}
+
+func picked_by_copy(first: Drawn, second: Drawn, takes_the_first: Boolean): Drawn {
+    if takes_the_first {
+        return first
+    }
+    return second
+}
+
+func body_with_stops_alike(function_name: String): String {
+    var lines = written.split("\n")
+    var header = "function {function_name}:"
+    var body = List<String>()
+    var inside = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with(header)
+        } else if inside and line.contains("stop with data") {
+            body.append("stop with the message of its own line")
+        } else if inside {
+            body.append(line)
+        }
+        index = index + 1
+    }
+    return body.join("\n")
+}

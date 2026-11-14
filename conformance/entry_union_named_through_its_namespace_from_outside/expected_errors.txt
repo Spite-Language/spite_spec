@@ -1,0 +1,1 @@
+conformance/entry_union_named_through_its_namespace_from_outside/other/keeper.spite:1: error: 'Bunda.Pet' reaches 'Pet' through the namespace 'Bunda', which holds only classes and namespaces: 'Pet' is declared by the class 'Bunda.Bunda', so name it through the class, 'Bunda.Bunda.Pet' (in Other.Keeper.)

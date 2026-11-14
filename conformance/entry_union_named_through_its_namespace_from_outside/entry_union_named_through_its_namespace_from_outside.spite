@@ -1,0 +1,9 @@
+var console = Console()
+
+func EntryUnionNamedThroughItsNamespaceFromOutside() {
+    load "../../../spite_standard_library/windows"
+    var cat = Bunda.Cat()
+    var keeper = Other.Keeper()
+    var name = keeper.take(cat)
+    console.print(name)
+}

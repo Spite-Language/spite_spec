@@ -1,0 +1,11 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var taken = List<String>()
+
+func take(pet: Pet) {
+    var name = pet.name()
+    taken.append(name)
+}

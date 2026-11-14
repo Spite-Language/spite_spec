@@ -1,5 +1,0 @@
-func EntryUnionNamedOutside() {
-    var cat = Bunda.Cat()
-    var keeper = Other.Keeper()
-    keeper.take(cat)
-}

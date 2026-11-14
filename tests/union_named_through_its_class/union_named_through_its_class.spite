@@ -1,0 +1,16 @@
+var console = Console()
+
+func UnionNamedThroughItsClass() {
+    load "../../../spite_standard_library/windows"
+    var shelter = Shelter()
+    var cat = Cat()
+    var pet: Shelter.Pet = cat
+    shelter.take(pet)
+    var name = named(pet)
+    var taken = shelter.taken.count()
+    console.print(name, taken)
+}
+
+func named(pet: Shelter.Pet): String {
+    return pet.name()
+}
