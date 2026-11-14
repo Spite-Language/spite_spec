@@ -1,0 +1,21 @@
+var console = Console()
+
+func SwitchWithoutNullEveryCaseReturning() {
+    load "../../../spite_standard_library/windows"
+    var found = find(true)
+    var named = called_out(found)
+    console.print(named)
+}
+
+func find(present: Boolean): Monster? {
+    if present {
+        return Monster()
+    }
+    return null
+}
+
+func called_out(monster: Monster?): String {
+    switch monster {
+        Monster: return monster.name
+    }
+}

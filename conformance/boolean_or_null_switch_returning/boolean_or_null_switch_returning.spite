@@ -1,0 +1,16 @@
+var console = Console()
+
+func BooleanOrNullSwitchReturning() {
+    load "../../../spite_standard_library/windows"
+    var flag: Boolean? = true
+    var shown = named(flag)
+    console.print(shown)
+}
+
+func named(flag: Boolean?): String {
+    switch flag {
+        true: return "yes"
+        false: return "no"
+        Null: return "unknown"
+    }
+}

@@ -1,0 +1,1 @@
+conformance/switch_case_that_does_not_return/switch_case_that_does_not_return.spite:22: error: 'called_out' answers a String, but in the case Null of the 'switch' at line 18 it reaches its end without a 'return', so a caller would get a String nobody wrote: end that path with 'return <value>', or with 'crash' if it cannot happen (in SwitchCaseThatDoesNotReturn.called_out)

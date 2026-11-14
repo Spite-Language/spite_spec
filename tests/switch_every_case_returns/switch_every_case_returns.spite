@@ -1,0 +1,74 @@
+union Kind {
+    Round
+    Stick
+}
+
+var console = Console()
+
+func SwitchEveryCaseReturns() {
+    load "../../../spite_standard_library/windows"
+    var monster = find(true)
+    var nobody = find(false)
+    var first = called_out(monster)
+    var second = called_out(nobody)
+    var third = null_first(monster)
+    var fourth = null_first(nobody)
+    console.print(first, second, third, fourth)
+    var stick: SwitchEveryCaseReturns.Kind? = Stick()
+    var empty: SwitchEveryCaseReturns.Kind? = null
+    var shape = shape_of(stick)
+    var nothing = shape_of(empty)
+    console.print(shape, nothing)
+    var yes = said(true)
+    var no = said(false)
+    console.print(yes, no)
+    var kept = found_or_named("kept", nobody)
+    var named = found_or_named(null, monster)
+    console.print(kept, named)
+}
+
+func find(present: Boolean): Monster? {
+    if present {
+        return Monster()
+    }
+    return null
+}
+
+func called_out(monster: Monster?): String {
+    switch monster {
+        Monster: return "a monster named {monster.name}"
+        Null: return "nobody"
+    }
+}
+
+func null_first(monster: Monster?): String {
+    switch monster {
+        Null: return "nobody"
+        Monster: return monster.name
+    }
+}
+
+func shape_of(kind: Kind?): String {
+    switch kind {
+        Round: return "round"
+        Stick: return "stick"
+        Null: return "none"
+    }
+}
+
+func said(flag: Boolean): String {
+    switch flag {
+        true: return "yes"
+        false: return "no"
+    }
+}
+
+func found_or_named(found: String?, monster: Monster?): String {
+    if not found {
+        switch monster {
+            Monster: return monster.name
+            Null: return "nobody"
+        }
+    }
+    return found
+}
