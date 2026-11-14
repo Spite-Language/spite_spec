@@ -1,0 +1,6 @@
+generic $component_type
+
+func shown(): String {
+    var made = $component_type()
+    return made.render()
+}

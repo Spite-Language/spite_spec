@@ -1,0 +1,9 @@
+var factor = 2
+
+func picked(): Spite.Function<Integer, Integer> {
+    return doubled
+}
+
+func doubled(number: Integer): Integer {
+    return number * factor
+}

@@ -1,0 +1,14 @@
+var console = Console()
+
+func RunTimeCallAnswerNotToldApart() {
+    load "../../../spite_standard_library/windows"
+    var picker = Picker()
+    var held: Anything = picker
+    var declaration = held.class.functions["picked"]
+    crash declaration
+    var call = Spite.Call(declaration, held)
+    console.print("built")
+    var answer = call.call()
+    crash answer
+    console.print("answered")
+}

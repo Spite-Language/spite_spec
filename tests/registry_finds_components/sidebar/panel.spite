@@ -1,0 +1,5 @@
+var width = 4
+
+func render(): String {
+    return "panel {width}"
+}

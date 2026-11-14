@@ -1,0 +1,5 @@
+var label = "press"
+
+func render(): String {
+    return "button {label}"
+}

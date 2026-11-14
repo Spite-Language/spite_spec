@@ -1,0 +1,6 @@
+declared wrap 0
+declared size 1
+declared name 2
+wrap is true
+size is 14
+name is body

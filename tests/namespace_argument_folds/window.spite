@@ -1,0 +1,13 @@
+var shown = List<String>()
+
+func register_namespace(namespace: Spite.Namespace) {
+    namespace.classes.each(register)
+}
+
+func register(component_class: Spite.Class) {
+    if component_class.has_function("render") {
+        var binding = Binding<component_class>()
+        var text = binding.shown()
+        shown.append(text)
+    }
+}

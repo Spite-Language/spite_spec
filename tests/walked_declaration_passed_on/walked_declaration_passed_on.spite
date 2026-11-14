@@ -1,0 +1,27 @@
+var console = Console()
+
+func WalkedDeclarationPassedOn() {
+    load "../../../spite_standard_library/windows"
+    var style = Style()
+    style.size = 14
+    Style.attributes.each(show)
+    show_attributes(style)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    describe(attribute, "declared")
+}
+
+func describe(attribute: Spite.AttributeDeclaration, how: String) {
+    console.print(how, attribute.name, attribute.index)
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, style: Style) {
+    var value = style[attribute]
+    var shown = value.to_string()
+    report(attribute, shown)
+}
+
+func report(attribute: Spite.AttributeDeclaration, shown: String) {
+    console.print(attribute.name, "is", shown)
+}

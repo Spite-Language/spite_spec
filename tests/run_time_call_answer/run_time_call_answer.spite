@@ -1,0 +1,29 @@
+var console = Console()
+
+func RunTimeCallAnswer() {
+    load "../../../spite_standard_library/windows"
+    var card = Card()
+    var held: Anything = card
+    show(held, "render")
+    show(held, "worth")
+    show(held, "touch")
+    console.print("seen", card.seen)
+    var worth = Card.functions["worth"]
+    crash worth
+    var known = Spite.Call(worth, card)
+    var answer = known.call()
+    var doubled = answer * 2
+    console.print("known", doubled)
+}
+
+func show(component: Anything, name: String) {
+    var declaration = component.class.functions[name]
+    crash declaration
+    var call = Spite.Call(declaration, component)
+    var answer = call.call()
+    if answer {
+        console.print(name, "answers", answer)
+    } else {
+        console.print(name, "answers nothing")
+    }
+}

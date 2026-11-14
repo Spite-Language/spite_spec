@@ -1,0 +1,5 @@
+var level = 3
+
+func render(): String {
+    return "slider {level}"
+}

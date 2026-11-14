@@ -1,0 +1,18 @@
+var console = Console()
+
+func RegistryFindsComponents() {
+    load "../../../spite_standard_library/windows"
+    var registry = Registry()
+    registry.find_every_component()
+    var every = registry.shown.join(", ")
+    console.print(every)
+    registry.shown.clear()
+    registry.find_by_namespace()
+    var by_namespace = registry.shown.join(", ")
+    console.print(by_namespace)
+    var panel = Sidebar.Panel()
+    panel.width = 9
+    registry.show(panel)
+    var palette = Theme.Palette()
+    registry.show(palette)
+}

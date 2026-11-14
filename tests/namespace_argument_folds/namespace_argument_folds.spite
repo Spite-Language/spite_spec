@@ -1,0 +1,22 @@
+var console = Console()
+
+func NamespaceArgumentFolds() {
+    load "../../../spite_standard_library/windows"
+    var window = Window()
+    window.register_namespace(Theme)
+    var registered = window.shown.join(", ")
+    console.print(registered)
+    count_classes(Parts)
+    made_by(Parts.Wheel)
+}
+
+func count_classes(namespace: Spite.Namespace) {
+    var count = namespace.classes.count()
+    console.print(namespace.name, "holds", count)
+}
+
+func made_by(part: Spite.Class) {
+    var made = part()
+    var text = made.render()
+    console.print(part.name, "makes", text)
+}

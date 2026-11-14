@@ -1,0 +1,36 @@
+var console = Console()
+var held: Anything? = null
+var shown = List<String>()
+
+func find_every_component() {
+    Spite.Class.instances.each(bind)
+}
+
+func find_by_namespace() {
+    Spite.Namespace.instances.each(walk)
+}
+
+func walk(namespace: Spite.Namespace) {
+    namespace.classes.each(bind)
+}
+
+func bind(part: Spite.Class) {
+    if part.has_function("render") {
+        var binding = Binding<part>()
+        var text = binding.shown()
+        shown.append(text)
+    }
+}
+
+func show(value: Anything) {
+    held = value
+    Spite.Class.instances.each(show_if_it_is)
+}
+
+func show_if_it_is(part: Spite.Class) {
+    fallback held
+    if part.has_function("render") and held.class == part {
+        var text = held.render()
+        console.print(part.name, "shows", text)
+    }
+}
