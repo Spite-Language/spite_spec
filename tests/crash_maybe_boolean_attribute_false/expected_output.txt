@@ -1,0 +1,2 @@
+spite: the program stopped at tests/crash_maybe_boolean_attribute_false/crash_maybe_boolean_attribute_false.spite:7 in CrashMaybeBooleanAttributeFalse.CrashMaybeBooleanAttributeFalse, site 02e92978 (holder.flag=false)
+spite.frame	tests/crash_maybe_boolean_attribute_false/crash_maybe_boolean_attribute_false.spite:7	CrashMaybeBooleanAttributeFalse	CrashMaybeBooleanAttributeFalse

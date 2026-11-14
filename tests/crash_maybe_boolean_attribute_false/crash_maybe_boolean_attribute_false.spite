@@ -1,0 +1,9 @@
+var console = Console()
+
+func CrashMaybeBooleanAttributeFalse() {
+    load "../../../spite_standard_library/windows"
+    var holder = Holder()
+    holder.flag = false
+    crash holder.flag
+    console.print("never printed")
+}

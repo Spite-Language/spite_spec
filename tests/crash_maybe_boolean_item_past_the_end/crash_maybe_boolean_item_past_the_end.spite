@@ -1,0 +1,11 @@
+var console = Console()
+
+func CrashMaybeBooleanItemPastTheEnd() {
+    load "../../../spite_standard_library/windows"
+    var flags = List<Boolean?>()
+    flags.append(false)
+    flags.append(null)
+    var past_the_end = flags.count()
+    crash flags[past_the_end]
+    console.print("never printed")
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func CrashMaybeBooleanKeyAbsent() {
+    load "../../../spite_standard_library/windows"
+    var flags = Dictionary<String, Boolean?>()
+    flags["open"] = false
+    flags["shut"] = null
+    crash flags["ajar"]
+    console.print("never printed")
+}

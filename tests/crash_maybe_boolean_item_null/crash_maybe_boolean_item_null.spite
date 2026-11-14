@@ -1,0 +1,10 @@
+var console = Console()
+
+func CrashMaybeBooleanItemNull() {
+    load "../../../spite_standard_library/windows"
+    var flags = List<Boolean?>()
+    flags.append(false)
+    flags.append(null)
+    crash flags[1]
+    console.print("never printed")
+}

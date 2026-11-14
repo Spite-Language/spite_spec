@@ -1,0 +1,2 @@
+spite: the program stopped at tests/crash_maybe_boolean_key_null/crash_maybe_boolean_key_null.spite:8 in CrashMaybeBooleanKeyNull.CrashMaybeBooleanKeyNull, site 9391d0d9 (flags["shut"] is null)
+spite.frame	tests/crash_maybe_boolean_key_null/crash_maybe_boolean_key_null.spite:8	CrashMaybeBooleanKeyNull	CrashMaybeBooleanKeyNull

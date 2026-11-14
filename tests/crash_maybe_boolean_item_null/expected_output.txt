@@ -1,0 +1,2 @@
+spite: the program stopped at tests/crash_maybe_boolean_item_null/crash_maybe_boolean_item_null.spite:8 in CrashMaybeBooleanItemNull.CrashMaybeBooleanItemNull, site 362a5da3 (flags[1] is null)
+spite.frame	tests/crash_maybe_boolean_item_null/crash_maybe_boolean_item_null.spite:8	CrashMaybeBooleanItemNull	CrashMaybeBooleanItemNull
