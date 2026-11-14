@@ -1,0 +1,11 @@
+var kind: Gpu.DataKind = 'storage'
+
+func name(): String {
+    return "shader"
+}
+
+func staged(): String {
+    var stage: Gpu.Stage = this
+    var owner = Gpu()
+    return owner.stage_name(stage)
+}

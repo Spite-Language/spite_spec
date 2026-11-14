@@ -1,0 +1,18 @@
+enum DataKind {
+    'uniform'
+    'storage'
+}
+
+union Stage {
+    Shader
+    Texture
+}
+
+func first_kind(): String {
+    var kind: DataKind = 'uniform'
+    return kind.to_string()
+}
+
+func stage_name(stage: Stage): String {
+    return stage.name()
+}

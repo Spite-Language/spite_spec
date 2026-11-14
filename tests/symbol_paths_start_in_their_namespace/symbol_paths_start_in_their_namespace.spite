@@ -1,0 +1,12 @@
+var console = Console()
+
+func SymbolPathsStartInTheirNamespace() {
+    var owner = Gpu.Gpu()
+    var shader = Gpu.Shader()
+    var picked: Gpu.Gpu.DataKind = 'storage'
+    var stage: Gpu.Gpu.Stage = shader
+    var staged = owner.stage_name(stage)
+    var kinds = owner.first_kind()
+    var shader_stage = shader.staged()
+    console.print(kinds, shader.kind, picked, staged, shader_stage)
+}
