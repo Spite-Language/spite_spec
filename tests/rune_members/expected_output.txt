@@ -1,0 +1,7 @@
+0 97 a 1
+1 233 é 2
+3 8364 € 3
+6 119070 𝄞 4
+inside a character null past the end null before the start null
+é € 𝄞 a in text: é€
+equal true different false

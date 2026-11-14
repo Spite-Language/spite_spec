@@ -6,7 +6,8 @@ func StringGetAt() {
     while index < word.length() {
         var character = word[index]
         crash character
-        var size = character.length()
+        var written = character.to_string()
+        var size = written.length()
         console.print(index, character, size)
         index = index + size
     }

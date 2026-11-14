@@ -1,0 +1,11 @@
+var console = Console()
+var _largest_unicode = 1114111
+var _lowest_surrogate = 55296
+
+func RuneOutsideUnicode() {
+    load "../../../spite_standard_library/windows"
+    var largest = Rune(_largest_unicode)
+    console.print(largest.unicode)
+    var surrogate = Rune(_lowest_surrogate)
+    console.print("never printed", surrogate)
+}

@@ -2,6 +2,6 @@ var console = Console()
 
 func StringIndexUnproven() {
     var text = "spite"
-    var shouted = text[0].upper_case()
-    console.print(shouted)
+    var shown = text[0].to_string()
+    console.print(shown)
 }

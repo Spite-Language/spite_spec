@@ -1,0 +1,3 @@
+1114111
+spite: the program stopped at ...
+spite.frame	tests/rune_outside_unicode/rune_outside_unicode.spite:9	RuneOutsideUnicode	RuneOutsideUnicode

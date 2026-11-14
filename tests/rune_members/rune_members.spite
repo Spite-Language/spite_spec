@@ -1,0 +1,31 @@
+var console = Console()
+var _e_acute = 233
+var _euro_sign = 8364
+var _musical_g_clef = 119070
+var _letter_a = 97
+
+func RuneMembers() {
+    load "../../../spite_standard_library/windows"
+    var text = "aé€𝄞"
+    var index = 0
+    while index < text.length() {
+        var rune = text[index]
+        crash rune
+        var written = rune.to_string()
+        var width = written.length()
+        console.print(index, rune.unicode, written, width)
+        index = index + width
+    }
+    var middle = text[2]
+    var past_the_end = text[text.length()]
+    var before_the_start = text[-1]
+    console.print("inside a character", middle, "past the end", past_the_end, "before the start", before_the_start)
+    var accent = Rune(_e_acute)
+    var euro = Rune(_euro_sign)
+    var clef = Rune(_musical_g_clef)
+    var letter = Rune(_letter_a)
+    console.print(accent, euro, clef, letter, "in text: {accent}{euro}")
+    var first = text[0]
+    crash first
+    console.print("equal", first == letter, "different", first == accent)
+}
