@@ -4,3 +4,7 @@ var kept: QuietLeaf = no_leaf
 func QuietMiddle(given: QuietLeaf) {
     kept = given
 }
+
+func leaf(): QuietLeaf {
+    return kept
+}
