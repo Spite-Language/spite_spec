@@ -1,1 +1,1 @@
-conformance/jsx_unclosed_tag/jsx_unclosed_tag.spite:13: error: this tag is never closed: close it with '/>', or with a closing tag naming it, as in '<View>' ... '</View>'
+conformance/jsx_unclosed_tag/jsx_unclosed_tag.spite:12: error: this tag is never closed: close it with '/>', or with a closing tag naming it, as in '<View>' ... '</View>'

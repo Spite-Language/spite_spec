@@ -1,1 +1,1 @@
-conformance/jsx_missing_parameter/jsx_missing_parameter.spite:12: error: '<health_bar>' leaves out 'missing', a parameter of 'render_health_bar': set it on the tag, as in 'missing={value}'
+conformance/jsx_missing_parameter/jsx_missing_parameter.spite:11: error: '<health_bar>' leaves out 'missing', a parameter of 'render_health_bar': set it on the tag, as in 'missing={value}'

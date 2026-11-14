@@ -1,1 +1,1 @@
-conformance/jsx_attribute_naming_no_parameter/jsx_attribute_naming_no_parameter.spite:12: error: '<health_bar>' sets 'colour', and 'render_health_bar' has no parameter 'colour': it takes filled
+conformance/jsx_attribute_naming_no_parameter/jsx_attribute_naming_no_parameter.spite:11: error: '<health_bar>' sets 'colour', and 'render_health_bar' has no parameter 'colour': it takes filled

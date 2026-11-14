@@ -1,1 +1,1 @@
-spite: '12 / given' divided by zero, at tests/jsx_crash_points_at_the_attribute/jsx_crash_points_at_the_attribute.spite:15 in JsxCrashPointsAtTheAttribute.built
+spite: '12 / given' divided by zero, at tests/jsx_crash_points_at_the_attribute/jsx_crash_points_at_the_attribute.spite:14 in JsxCrashPointsAtTheAttribute.built

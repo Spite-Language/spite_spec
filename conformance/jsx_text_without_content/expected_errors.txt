@@ -1,1 +1,1 @@
-conformance/jsx_text_without_content/jsx_text_without_content.spite:12: error: a View has no attribute or function 'content' (in JsxTextWithoutContent.built)
+conformance/jsx_text_without_content/jsx_text_without_content.spite:11: error: a View has no attribute or function 'content' (in JsxTextWithoutContent.built)

@@ -3,7 +3,6 @@ var program = Program()
 var written = ""
 
 func JsxMatchesHandWritten() {
-    load "../../../spite_standard_library/windows"
     var tagged = with_tags(5)
     var tagged_text = tagged.describe()
     var plain = by_hand(5)

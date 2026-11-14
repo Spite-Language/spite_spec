@@ -1,1 +1,1 @@
-conformance/jsx_boolean_child/jsx_boolean_child.spite:13: error: '{count > 1}' is a Boolean, and a child is an object, a list of them or null: there is no 'condition && <Tag/>', so answer null from a 'render_' function when there is nothing to show
+conformance/jsx_boolean_child/jsx_boolean_child.spite:12: error: '{count > 1}' is a Boolean, and a child is an object, a list of them or null: there is no 'condition && <Tag/>', so answer null from a 'render_' function when there is nothing to show

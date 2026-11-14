@@ -1,1 +1,1 @@
-conformance/jsx_as_an_argument/jsx_as_an_argument.spite:5: error: a tag stands only after 'return' or 'var name =', which it is built before: build it into a local there and pass the local
+conformance/jsx_as_an_argument/jsx_as_an_argument.spite:4: error: a tag stands only after 'return' or 'var name =', which it is built before: build it into a local there and pass the local

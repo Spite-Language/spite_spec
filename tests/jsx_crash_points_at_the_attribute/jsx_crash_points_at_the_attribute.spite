@@ -2,7 +2,6 @@ var console = Console()
 var environment = Environment()
 
 func JsxCrashPointsAtTheAttribute() {
-    load "../../../spite_standard_library/windows"
     var made = built(environment.given)
     var shown = made.describe()
     console.print(shown)
