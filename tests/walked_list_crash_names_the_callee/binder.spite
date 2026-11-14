@@ -1,0 +1,11 @@
+var pages = List<Anything>()
+
+func append_child(child: Anything?) {
+    fallback child
+    crash child.class == Page
+    pages.append(child)
+}
+
+func append_children(items: List<Anything?>) {
+    items.each(append_child)
+}

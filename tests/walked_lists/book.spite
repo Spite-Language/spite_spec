@@ -1,0 +1,5 @@
+var pages: Integer
+
+func Book(new_pages: Integer) {
+    pages = new_pages
+}

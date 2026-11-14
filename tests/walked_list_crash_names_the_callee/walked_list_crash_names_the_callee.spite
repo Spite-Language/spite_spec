@@ -1,0 +1,10 @@
+func WalkedListCrashNamesTheCallee() {
+    load "../../../spite_standard_library/windows"
+    var binder = Binder()
+    var page = Page(1)
+    var kept: List<Anything?> = [page]
+    binder.append_children(kept)
+    var odd = 3
+    var odd_items: List<Anything?> = [odd]
+    binder.append_children(odd_items)
+}

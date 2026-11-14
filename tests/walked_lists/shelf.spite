@@ -1,0 +1,36 @@
+var books = List<Anything>()
+var counted = 0
+
+func append_child(child: Anything?) {
+    fallback child
+    books.append(child)
+}
+
+func append_children(items: List<Anything?>) {
+    items.each(append_child)
+}
+
+func append_counted(items: List<Anything?>) {
+    items.each(append_child)
+    counted = counted + items.count()
+}
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < books.count() {
+        var book = books[index]
+        var shown = shown_book(book)
+        parts.append(shown)
+        index = index + 1
+    }
+    var inside = parts.join(", ")
+    return "{books.count()} [{inside}] counted {counted}"
+}
+
+func shown_book(book: Anything): String {
+    if book.class == Book {
+        return "Book {book.pages}"
+    }
+    return "something else"
+}

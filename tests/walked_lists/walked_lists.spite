@@ -1,0 +1,33 @@
+var console = Console()
+
+func WalkedLists() {
+    load "../../../spite_standard_library/windows"
+    var round = 0
+    var total = 0
+    while round < 100 {
+        var shelf = built(round)
+        total = total + shelf.books.count()
+        round = round + 1
+    }
+    var last = built(3)
+    var shown = last.describe()
+    console.print(total, shown)
+}
+
+func built(round: Integer): Shelf {
+    var first = Book(round)
+    var second = Book(round + 1)
+    var third = Book(round + 2)
+    var missing: Anything? = null
+    var pages = round % 7
+    var shelf = <Shelf>
+        {first}
+        {missing}
+        {pages}
+    </Shelf>
+    var several: List<Anything?> = [second, third, first]
+    shelf.append_children(several)
+    var kept: List<Anything?> = [third]
+    shelf.append_counted(kept)
+    return shelf
+}

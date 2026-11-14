@@ -1,0 +1,5 @@
+var number: Integer
+
+func Page(new_number: Integer) {
+    number = new_number
+}
