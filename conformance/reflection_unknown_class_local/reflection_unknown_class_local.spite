@@ -1,9 +1,10 @@
 var console = Console()
+var chosen: Spite.Class = Armor
 
 func ReflectionUnknownClassLocal() {
     var armor = Armor()
     console.print(armor.plates)
-    count_of(Armor)
+    count_of(chosen)
 }
 
 func count_of(kind: Spite.Class) {
