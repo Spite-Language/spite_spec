@@ -1,0 +1,6 @@
+var width = 1
+
+func size(given: Integer): Thing {
+    width = given
+    return this
+}

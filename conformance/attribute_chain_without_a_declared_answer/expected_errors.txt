@@ -1,0 +1,1 @@
+conformance/attribute_chain_without_a_declared_answer/attribute_chain_without_a_declared_answer.spite:2: error: the type of 'base' is not written, and its value is not one the compiler reads before the functions: write it, 'var base: Type = ...' (in AttributeChainWithoutADeclaredAnswer)
