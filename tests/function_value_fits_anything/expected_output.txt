@@ -1,5 +1,5 @@
 label String 'start'
-on_press Function ''
+on_press Function 'shout'
 pressed
 on_release is null
 named Function 'shout'
