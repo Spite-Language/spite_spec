@@ -1,0 +1,9 @@
+var console = Console()
+
+func PackageFileNothingNamesIsChecked() {
+    load "../../../spite_standard_library/windows"
+    load "../../conformance/package_file_nothing_names_is_checked/.packages/pkg"
+    var thing = Pkg.Thing()
+    var size = thing.size()
+    console.print(size)
+}

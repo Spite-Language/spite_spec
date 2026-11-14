@@ -1,0 +1,4 @@
+func test_broken() {
+    var count = missing_count()
+    crash count == 1
+}

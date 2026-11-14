@@ -1,0 +1,7 @@
+func size(): Integer {
+    return 1
+}
+
+func unreached(): Integer {
+    return missing_function()
+}

@@ -1,0 +1,2 @@
+conformance/package_file_nothing_names_is_checked/../../conformance/package_file_nothing_names_is_checked/.packages/pkg/pkg/thing.spite:6: error: this class has no function 'missing_function' (in Pkg.Thing.unreached)
+conformance/package_file_nothing_names_is_checked/../../conformance/package_file_nothing_names_is_checked/.packages/pkg/pkg/tests/broken_tests.spite:2: error: this class has no function 'missing_count' (in Pkg.Tests.BrokenTests.test_broken)
