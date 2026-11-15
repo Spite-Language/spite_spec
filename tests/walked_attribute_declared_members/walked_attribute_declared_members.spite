@@ -1,0 +1,20 @@
+var console = Console()
+
+func WalkedAttributeDeclaredMembers() {
+    Price.attributes.each(describe)
+    var price = Price()
+    console.print(price.cost, price.label)
+    price.attributes.each(show)
+}
+
+func describe(attribute: Spite.AttributeDeclaration) {
+    var text = attribute.to_string()
+    var shouted = attribute.name.upper_case()
+    console.print(text, shouted, attribute.index, attribute.class)
+}
+
+func show(attribute: Spite.Attribute) {
+    var text = attribute.to_string()
+    var counted = attribute.name.length()
+    console.print(text, counted, attribute.value)
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func WalkedAttributeStringFunctionValue() {
+    Price.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var measured = attribute.length
+    console.print(measured)
+}

@@ -1,0 +1,5 @@
+cost COST 0 Integer
+label LABEL 1 String
+10 cheap
+cost 4 10
+label 5 cheap

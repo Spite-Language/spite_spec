@@ -1,0 +1,1 @@
+conformance/walked_attribute_getter_call/walked_attribute_getter_call.spite:8: error: 'get_name' is what reading 'name' calls: write 'attribute.name' (in WalkedAttributeGetterCall.show)

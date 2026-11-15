@@ -1,0 +1,10 @@
+var console = Console()
+
+func WalkedAttributeGetterCall() {
+    Price.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var named = attribute.get_name()
+    console.print(named)
+}

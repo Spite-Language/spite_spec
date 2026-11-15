@@ -1,0 +1,1 @@
+conformance/walked_attribute_string_function/walked_attribute_string_function.spite:10: error: a Spite.Attribute has no attribute or function 'length' (in WalkedAttributeStringFunction.show)
