@@ -1,0 +1,31 @@
+var console = Console()
+var fixture = DynamicLibrary("tests/foreign_site_is_the_faulting_threads/fixture.dll", 'identity', "")
+var waiter = Waiter()
+var blocking = ForeignCallback(waiter.block, 'no_context')
+var _rounds = 400000000
+var _kept = 2
+
+func ForeignSiteIsTheFaultingThreads() {
+    console.print("before the fault")
+    fixture.start_later(blocking.address)
+    var turned = turned_over()
+    var depth = descend(turned)
+    console.print(depth)
+}
+
+func turned_over(): Integer {
+    var sum = 0
+    var round = 0
+    while round < _rounds {
+        sum = (sum + round) % _kept
+        round = round + 1
+    }
+    return sum
+}
+
+func descend(depth: Integer): Integer {
+    if depth < 0 {
+        return -1
+    }
+    return descend(depth + 1) + 1
+}
