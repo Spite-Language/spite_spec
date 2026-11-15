@@ -1,0 +1,13 @@
+enum Query {
+    'width'
+    'height'
+}
+
+var measure: Spite.Function<Float, Query, Float>? = null
+
+func height(): Float {
+    if measure {
+        return measure(1.0, 'height')
+    }
+    return 0.0
+}

@@ -1,0 +1,26 @@
+var console = Console()
+var box = Box()
+var leaf = Leaf()
+var runtime = Runtime()
+
+func ValueCallReachesFunctionsTakenLater() {
+    var pane = runtime.pane
+    pane.node = leaf
+    crash pane.node
+    var first = box.height()
+    console.print(first)
+    show(pane.node)
+    hand_over()
+    var second = box.height()
+    console.print(second)
+}
+
+func show(shown: Leaf) {
+    console.print(shown.size)
+}
+
+func hand_over() {
+    box.measure = leaf.measure
+    var forgetting = runtime.forget_the_node
+    forgetting()
+}

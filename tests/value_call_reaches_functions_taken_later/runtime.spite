@@ -1,0 +1,5 @@
+var pane = Pane()
+
+func forget_the_node() {
+    pane.node = null
+}

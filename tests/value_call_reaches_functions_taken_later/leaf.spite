@@ -1,0 +1,5 @@
+var size = 2.0
+
+func measure(width: Float, _query: Box.Query): Float {
+    return width + size
+}
