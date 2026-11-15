@@ -1,0 +1,1 @@
+conformance/reopened_library_attribute_type/volume.spite:1: error: 'name' is a String where the class first declares it, at spite_standard_library://common/volume.spite:3, and this reopening makes it an Integer: a reopening replaces an attribute's default, never its type, so give the new attribute a name of its own

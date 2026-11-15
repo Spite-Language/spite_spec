@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReopenedFunctionAnswer() {
+    load "first"
+    load "second"
+    var hero = Game.Hero()
+    var level = hero.level()
+    console.print(level)
+}

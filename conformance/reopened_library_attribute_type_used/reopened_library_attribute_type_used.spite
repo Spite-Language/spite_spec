@@ -1,0 +1,8 @@
+var console = Console()
+var assets = Volume("assets")
+
+func ReopenedLibraryAttributeTypeUsed() {
+    preload "assets"
+    var held = assets.file("held.txt")
+    console.print(held.path)
+}

@@ -1,0 +1,3 @@
+func level(): String {
+    return "one"
+}
