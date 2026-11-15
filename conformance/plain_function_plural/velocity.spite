@@ -1,0 +1,9 @@
+var across: Float
+
+func Velocity(new_across: Float) {
+    across = new_across
+}
+
+func slow_down() {
+    across = across / 2.0
+}

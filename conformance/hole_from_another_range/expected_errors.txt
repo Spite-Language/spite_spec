@@ -1,0 +1,1 @@
+conformance/hole_from_another_range/runner.spite:23: error: a System.Move has no function 'phase_each': 'phase' came from the '<phase>_all' range, standing for 'update_all' here, so 'phase_each' cannot be filled from it: walk the '<phase>_each' functions from a template of their own (in Runner.place_for_update_all)
