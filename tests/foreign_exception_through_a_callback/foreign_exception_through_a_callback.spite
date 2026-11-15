@@ -1,0 +1,12 @@
+var console = Console()
+var fixture = DynamicLibrary("tests/foreign_exception_through_a_callback/fixture.dll", 'identity', "")
+
+func ForeignExceptionThroughACallback() {
+    console.print("before the throw")
+    var answer = fixture.call_and_catch(throwing)
+    console.print("never printed", answer)
+}
+
+func throwing(count: Integer) {
+    fixture.throw_now(count)
+}
