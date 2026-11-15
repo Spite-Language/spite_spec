@@ -1,0 +1,8 @@
+var _sample: Byte = 200
+var _wide_mask: Long = 4294967311
+
+func low_byte(): Byte {
+    var flags: Byte = _sample
+    var mask: Long = _wide_mask
+    return flags.bits_and(mask)
+}
