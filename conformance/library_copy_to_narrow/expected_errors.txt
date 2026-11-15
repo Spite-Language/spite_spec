@@ -1,0 +1,1 @@
+conformance/library_copy_to_narrow/spite_standard_library/common/holder.spite:4: error: 'held' only copies '_held' so it can be narrowed: narrow '_held' itself ('fallback _held') and use it directly (in SpiteStandardLibrary.Common.Holder.held_count)

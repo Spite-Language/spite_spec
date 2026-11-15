@@ -1,0 +1,2 @@
+conformance/library_local_singleton/spite_standard_library/common/reporter.spite:2: error: 'Build' is a singleton, bound here as a local: bind it once beside the attributes, 'var build = Build()', so every singleton the class uses is at the top of its file (in Reporter.report)
+conformance/library_local_singleton/spite_standard_library/common/reporter.spite:3: error: 'Console' is a singleton, bound here as a local: bind it once beside the attributes, 'var console = Console()', so every singleton the class uses is at the top of its file (in Reporter.report)

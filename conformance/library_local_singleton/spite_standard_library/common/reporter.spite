@@ -1,0 +1,5 @@
+func report() {
+    var build = Build()
+    var console = Console()
+    console.print("built for {build.target_operating_system}")
+}

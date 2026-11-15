@@ -1,0 +1,7 @@
+var console = Console()
+
+func LibraryLocalSingleton() {
+    var reporter = SpiteStandardLibrary.Common.Reporter()
+    reporter.report()
+    console.print("reported")
+}

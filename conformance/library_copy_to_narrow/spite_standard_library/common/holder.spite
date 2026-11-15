@@ -1,0 +1,7 @@
+var _held: List<String>? = null
+
+func held_count(): Integer {
+    var held = _held
+    fallback held
+    return held.count()
+}
