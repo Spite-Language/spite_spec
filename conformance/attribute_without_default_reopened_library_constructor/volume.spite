@@ -1,0 +1,9 @@
+var size: Integer
+
+func Volume(starting_size: Integer) {
+    size = starting_size
+}
+
+func doubled(): Integer {
+    return size + size
+}

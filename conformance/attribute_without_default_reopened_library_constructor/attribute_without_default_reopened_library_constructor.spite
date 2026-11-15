@@ -1,0 +1,5 @@
+var console = Console()
+
+func AttributeWithoutDefaultReopenedLibraryConstructor() {
+    console.print("never runs")
+}
