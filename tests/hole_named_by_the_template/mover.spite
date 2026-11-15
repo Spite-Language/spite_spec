@@ -1,0 +1,21 @@
+var console = Console()
+
+func update_all() {
+    console.print("update all")
+}
+
+func render_all() {
+    console.print("render all")
+}
+
+func update_each() {
+    console.print("update each")
+}
+
+func render_each() {
+    console.print("render each")
+}
+
+func idle_each() {
+    console.print("idle each")
+}

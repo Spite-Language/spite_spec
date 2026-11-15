@@ -1,0 +1,17 @@
+type Runnable {
+    run: Spite.Function<Nothing>
+}
+
+var runners = List<Runnable>()
+var console = Console()
+
+func HoleFromAnotherRangePlacedFirst() {
+    System.classes.each(add_system)
+    runners.each_run()
+}
+
+func add_system(system: Spite.Class) {
+    var runner = Runner<system>()
+    runners.append(runner)
+    console.print("found", system.name)
+}

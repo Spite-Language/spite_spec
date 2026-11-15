@@ -1,0 +1,8 @@
+placing update
+update each
+walked update_all for update
+update all
+placing render
+render each
+walked render_all for render
+render all

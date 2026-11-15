@@ -1,0 +1,17 @@
+var console = Console()
+var mover = Mover()
+
+func HoleNamedByTheTemplate() {
+    run_phases_all()
+}
+
+func run_phase_all(phase: Spite.FunctionDeclaration) {
+    place(phase)
+    console.print("walked", phase.name, "for", phase.hole)
+    mover.phase_all()
+}
+
+func place(phase: Spite.FunctionDeclaration) {
+    console.print("placing", phase.hole)
+    mover.phase_each()
+}

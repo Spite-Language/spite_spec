@@ -1,0 +1,37 @@
+generic $system_type
+
+enum Phase {
+    'update'
+    'render'
+}
+
+var system = $system_type()
+var console = Console()
+
+func run() {
+    run_phases_all()
+}
+
+func run_phase_all(phase: Spite.FunctionDeclaration) {
+    announce(phase, "starting")
+    place(phase)
+    call_system(phase)
+}
+
+func place(phase: Spite.FunctionDeclaration) {
+    announce(phase, "placing")
+    system.phase_each(made_arguments())
+}
+
+func announce(phase: Spite.FunctionDeclaration, word: String) {
+    console.print(word, phase.hole)
+}
+
+func call_system(phase: Spite.FunctionDeclaration) {
+    system.phase_all(made_arguments())
+    announce(phase, "finished")
+}
+
+func made_argument(argument: Spite.Argument): argument.class {
+    return argument.class()
+}
