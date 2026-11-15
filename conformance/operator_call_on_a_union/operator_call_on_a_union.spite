@@ -1,6 +1,6 @@
 union Amount {
     Weight
-    Volume
+    Capacity
 }
 
 var console = Console()

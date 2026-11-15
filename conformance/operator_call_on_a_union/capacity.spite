@@ -1,6 +1,6 @@
 var size: Integer
 
-func Volume(starting_size: Integer) {
+func Capacity(starting_size: Integer) {
     size = starting_size
 }
 
