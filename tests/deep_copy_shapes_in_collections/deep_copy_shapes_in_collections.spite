@@ -1,0 +1,51 @@
+enum Colour {
+    'red'
+    'green'
+}
+
+var console = Console()
+var lonely = Lonely()
+
+func DeepCopyShapesInCollections() {
+    var single = Box()
+    single.held = lonely
+    var copied_single = single.deep_copy()
+    var shown_single = copied_single.describe()
+    console.print("singleton", shown_single)
+    var mixed = List<Box.Described>()
+    mixed.append(5)
+    mixed.append("words")
+    var red: Colour = 'red'
+    mixed.append(red)
+    mixed.append(lonely)
+    var crate = Crate()
+    crate.label = "crate"
+    mixed.append(crate)
+    var copied = mixed.deep_copy()
+    crate.label = "changed"
+    var index = 0
+    while index < copied.count() {
+        var shown = copied[index].to_string()
+        console.print(shown)
+        index = index + 1
+    }
+    var named = Dictionary<String, Box.Described>()
+    named["number"] = 7
+    named["crate"] = crate
+    var copied_named = named.deep_copy()
+    crate.label = "again"
+    var named_number = copied_named["number"]
+    var named_crate = copied_named["crate"]
+    crash named_number
+    crash named_crate
+    var shown_number = named_number.to_string()
+    var shown_crate = named_crate.to_string()
+    console.print(shown_number, shown_crate)
+    var lone: Box.Described = lonely
+    var lone_copy = lone.deep_copy()
+    var lone_shown = lone_copy.to_string()
+    var number: Box.Described = 3
+    var number_copy = number.deep_copy()
+    var number_shown = number_copy.to_string()
+    console.print(lone_shown, number_shown)
+}

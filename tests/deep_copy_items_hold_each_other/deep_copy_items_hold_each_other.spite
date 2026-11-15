@@ -1,0 +1,45 @@
+var console = Console()
+
+func DeepCopyItemsHoldEachOther() {
+    var first = Person("first")
+    var second = Person("second")
+    first.friend = second
+    second.friend = first
+    var people = List<Person>()
+    people.append(first)
+    people.append(second)
+    var copied = people.deep_copy()
+    var copied_first = copied[0]
+    var copied_second = copied[1]
+    crash copied_first.friend
+    crash copied_second.friend
+    var first_holds_second = copied_first.friend == copied_second
+    var second_holds_first = copied_second.friend == copied_first
+    var is_original = copied_first == first
+    var friend_is_original = copied_first.friend == second
+    console.print("list:", first_holds_second, second_holds_first, is_original, friend_is_original)
+    var named = Dictionary<String, Person>()
+    named["first"] = first
+    named["second"] = second
+    var copied_named = named.deep_copy()
+    var named_first = copied_named["first"]
+    var named_second = copied_named["second"]
+    crash named_first
+    crash named_second
+    var named_shares = named_first.friend == named_second
+    var named_back = named_second.friend == named_first
+    console.print("dictionary:", named_shares, named_back)
+    var single = first.deep_copy()
+    var single_friend = single.friend
+    crash single_friend
+    var round = single_friend.friend == single
+    console.print("one item:", round)
+    copied_first.friend = null
+    copied_second.friend = null
+    named_first.friend = null
+    named_second.friend = null
+    single_friend.friend = null
+    single.friend = null
+    first.friend = null
+    second.friend = null
+}

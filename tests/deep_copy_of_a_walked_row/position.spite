@@ -1,0 +1,5 @@
+var left: Float
+
+func Position(new_left: Float) {
+    left = new_left
+}

@@ -1,0 +1,7 @@
+var neighbours = Dictionary<String, Station>()
+var lines = List<Station>()
+var name: String
+
+func Station(new_name: String) {
+    name = new_name
+}

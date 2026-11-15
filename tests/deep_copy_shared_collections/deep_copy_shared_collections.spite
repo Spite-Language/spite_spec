@@ -1,0 +1,54 @@
+var console = Console()
+
+func DeepCopySharedCollections() {
+    var first = Knot("first")
+    var shared = List<Knot>()
+    shared.append(first)
+    first.groups.append(shared)
+    first.by_name["shared"] = shared
+    var copied = first.deep_copy()
+    var from_groups = copied.groups[0]
+    crash from_groups
+    var from_names = copied.by_name["shared"]
+    crash from_names
+    var one_list = from_groups == from_names
+    var is_the_original = from_groups == shared
+    from_groups.append(copied)
+    var names_count = from_names.count()
+    var item = from_names[0]
+    crash item
+    var item_is_the_copy = item == copied
+    console.print("one list:", one_list, is_the_original, names_count, item_is_the_copy)
+    var north = Station("north")
+    var south = Station("south")
+    north.neighbours["south"] = south
+    south.neighbours["north"] = north
+    north.lines.append(south)
+    south.lines.append(north)
+    var copied_north = north.deep_copy()
+    var copied_south = copied_north.neighbours["south"]
+    crash copied_south
+    var back = copied_south.neighbours["north"]
+    crash back
+    var dictionary_round = back == copied_north
+    var listed = copied_north.lines[0]
+    crash listed
+    var list_shares = listed == copied_south
+    var listed_back = copied_south.lines[0]
+    crash listed_back
+    var list_round = listed_back == copied_north
+    var south_is_the_original = copied_south == south
+    console.print("stations:", dictionary_round, list_shares, list_round, south_is_the_original)
+    copied.groups.clear()
+    copied.by_name.clear()
+    first.groups.clear()
+    first.by_name.clear()
+    copied_north.neighbours.clear()
+    copied_north.lines.clear()
+    copied_south.neighbours.clear()
+    copied_south.lines.clear()
+    north.neighbours.clear()
+    north.lines.clear()
+    south.neighbours.clear()
+    south.lines.clear()
+}

@@ -1,0 +1,5 @@
+singleton
+
+func to_string(): String {
+    return "lonely"
+}

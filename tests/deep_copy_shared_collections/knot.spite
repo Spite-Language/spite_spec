@@ -1,0 +1,7 @@
+var groups = List<List<Knot>>()
+var by_name = Dictionary<String, List<Knot>>()
+var name: String
+
+func Knot(new_name: String) {
+    name = new_name
+}

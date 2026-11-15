@@ -1,0 +1,9 @@
+singleton lonely
+5
+words
+red
+lonely
+crate
+7 changed
+lonely 3
+allocations: 105 frees: 105

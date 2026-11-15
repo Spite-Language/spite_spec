@@ -1,0 +1,22 @@
+generic $row_type
+
+var console = Console()
+var world = World()
+
+func run() {
+    var index = 0
+    while index < world.size() {
+        var row = $row_type()
+        fill_attributes(row, index)
+        var copied = row.deep_copy()
+        var shallow = row.copy()
+        row.position.left = 9.0
+        console.print(copied.position.left, shallow.position.left, row.position.left)
+        index = index + 1
+    }
+}
+
+func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, index: Integer) {
+    crash world.attributes[attribute][index]
+    row.attributes[attribute] = world.attributes[attribute][index]
+}

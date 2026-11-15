@@ -1,0 +1,12 @@
+type Placed {
+    position: Position
+}
+
+var world = World()
+var runner = Runner<Placed>()
+
+func DeepCopyOfAWalkedRow() {
+    world.spawn(1.0)
+    world.spawn(2.0)
+    runner.run()
+}
