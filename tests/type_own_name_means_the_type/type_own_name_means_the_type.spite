@@ -1,0 +1,27 @@
+type Component {
+    render: Spite.Function<TypeOwnNameMeansTheType.Component?>
+}
+
+var console = Console()
+
+func TypeOwnNameMeansTheType() {
+    var card = Card()
+    var leaf = Leaf()
+    var panel = Panel()
+    var items = List<Component>()
+    items.append(card)
+    items.append(leaf)
+    items.append(panel)
+    items.each(show)
+}
+
+func show(item: Component) {
+    var names = List<String>()
+    var current: Component? = item
+    while current {
+        names.append(current.class.name)
+        current = current.render()
+    }
+    var line = names.join(" ")
+    console.print(line)
+}
