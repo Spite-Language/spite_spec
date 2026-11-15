@@ -1,0 +1,24 @@
+var console = Console()
+var answerer = Answerer()
+var items = List<Integer>()
+
+func ForeignCallbackKeepsProofs() {
+    items.append(3)
+    items.append(4)
+    var address = answerer.made()
+    crash address != 0
+    var steps = [1]
+    steps.each(forget)
+    show_first()
+}
+
+func forget(_step: Integer) {
+    fallback items.remove_last()
+}
+
+func show_first() {
+    fallback items.count() > 0
+    console.print("kept")
+    var first = items[0]
+    console.print(first)
+}

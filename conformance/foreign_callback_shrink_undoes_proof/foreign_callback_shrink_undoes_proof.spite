@@ -1,0 +1,16 @@
+var console = Console()
+var store = Store()
+
+func ForeignCallbackShrinkUndoesProof() {
+    store.items.append(3)
+    var address = store.made()
+    crash address != 0
+    show_first()
+}
+
+func show_first() {
+    fallback store.items.count() > 0
+    console.print("kept")
+    var first = store.items[0]
+    console.print(first)
+}

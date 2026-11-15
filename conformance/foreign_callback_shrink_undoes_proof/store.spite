@@ -1,0 +1,15 @@
+singleton
+
+var items = List<Integer>()
+var callback: ForeignCallback? = null
+
+func made(): Long {
+    var answering = ForeignCallback(answer, 'no_context')
+    callback = answering
+    return answering.address
+}
+
+func answer(value: Long): Long {
+    fallback items.remove_last()
+    return value
+}

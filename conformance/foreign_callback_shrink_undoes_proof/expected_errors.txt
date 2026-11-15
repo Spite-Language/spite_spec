@@ -1,0 +1,1 @@
+conformance/foreign_callback_shrink_undoes_proof/foreign_callback_shrink_undoes_proof.spite:14: error: 'store.items[0]' was proven before line 13, where 'print(...)' may shrink what it reads, so this read may fall outside it: prove 'store.items[0]' again after that line (in ForeignCallbackShrinkUndoesProof.show_first)
