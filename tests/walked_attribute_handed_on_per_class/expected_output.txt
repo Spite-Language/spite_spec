@@ -1,0 +1,8 @@
+walked cost Integer
+handed on again cost Integer
+walked cost String
+handed on again cost String
+named cost Integer
+handed on again cost Integer
+named cost String
+handed on again cost String

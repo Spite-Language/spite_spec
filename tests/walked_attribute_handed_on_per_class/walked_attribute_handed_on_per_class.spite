@@ -1,0 +1,21 @@
+var console = Console()
+
+func WalkedAttributeHandedOnPerClass() {
+    Price.attributes.each(show)
+    Offer.attributes.each(show)
+    describe(Price.attributes["cost"], "named")
+    describe(Offer.attributes["cost"], "named")
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    describe(attribute, "walked")
+}
+
+func describe(attribute: Spite.AttributeDeclaration, how: String) {
+    console.print(how, attribute.name, attribute.class)
+    label(attribute)
+}
+
+func label(attribute: Spite.AttributeDeclaration) {
+    console.print("handed on again", attribute.name, attribute.class)
+}

@@ -1,0 +1,5 @@
+var cost = "free"
+
+func worth(): String {
+    return cost
+}
