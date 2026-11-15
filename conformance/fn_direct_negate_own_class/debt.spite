@@ -1,0 +1,9 @@
+var seconds: Integer
+
+func Debt(starting_seconds: Integer) {
+    seconds = starting_seconds
+}
+
+func negate(): Debt {
+    return Debt(-seconds)
+}

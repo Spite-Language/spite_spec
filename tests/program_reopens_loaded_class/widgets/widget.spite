@@ -2,8 +2,9 @@ var quantity = 0
 var flavour = "plain"
 var name: String
 
-func Widget(starting_name: String) {
+func Widget(starting_name: String, starting_quantity: Integer) {
     name = starting_name
+    quantity = starting_quantity
 }
 
 func describe(): String {
