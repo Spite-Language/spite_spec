@@ -1,0 +1,10 @@
+var console = Console()
+var fixture = DynamicLibrary("tests/routine_fault_in_a_callback/fixture.dll", 'identity', "")
+var filler = Filler()
+var filling = ForeignCallback(filler.fill, 'no_context')
+
+func RoutineFaultInACallback() {
+    console.print("before the fault")
+    fixture.call_back_broken(filling.address)
+    console.print("never printed")
+}

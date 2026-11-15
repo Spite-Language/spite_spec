@@ -1,0 +1,23 @@
+singleton
+
+var program = Program()
+var console = Console()
+var _links = 100000
+
+func fill() {
+    var chain = filled()
+    var length = chain.length()
+    console.print(length)
+}
+
+func filled(): Link {
+    var pause = Duration(1, 'milliseconds')
+    program.sleep(pause)
+    var head = Link(null, 0)
+    var index = 0
+    while index < _links {
+        head = Link(head, index)
+        index = index + 1
+    }
+    return head
+}

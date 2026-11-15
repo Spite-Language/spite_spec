@@ -1,0 +1,17 @@
+var next: Link?
+var value: Integer
+
+func Link(new_next: Link?, new_value: Integer) {
+    next = new_next
+    value = new_value
+}
+
+func length(): Integer {
+    var count = 1
+    var walked = next
+    while walked {
+        count = count + 1
+        walked = walked.next
+    }
+    return count + value
+}
