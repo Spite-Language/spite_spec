@@ -1,0 +1,1 @@
+conformance/switch_missing_a_member_sharing_a_last_name/switch_missing_a_member_sharing_a_last_name.spite:14: error: this switch over 'Held' has no case for Second.Item: a switch over a union covers every member, so a member added later cannot be forgotten; add the cases (in SwitchMissingAMemberSharingALastName.describe)

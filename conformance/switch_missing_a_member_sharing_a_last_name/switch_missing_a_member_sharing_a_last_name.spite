@@ -1,0 +1,17 @@
+union Held {
+    First.Item
+    Second.Item
+}
+
+var console = Console()
+
+func SwitchMissingAMemberSharingALastName() {
+    var second: Held = Second.Item()
+    describe(second)
+}
+
+func describe(held: Held) {
+    switch held {
+        First.Item: console.print(held.label)
+    }
+}
