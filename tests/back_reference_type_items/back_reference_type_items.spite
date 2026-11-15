@@ -1,0 +1,17 @@
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func BackReferenceTypeItems() {
+    make_a_box()
+    console.print("the box is gone")
+}
+
+func make_a_box() {
+    var box = Box("crate")
+    box.add_item("apple")
+    var count = box.items.count()
+    console.print(box.name, "has", count)
+}

@@ -1,0 +1,13 @@
+var console = Console()
+
+func BackReferenceUnionItems() {
+    make_a_tree()
+    console.print("the tree is gone")
+}
+
+func make_a_tree() {
+    var root = Folder("root")
+    root.add_file("notes")
+    var count = root.entries.count()
+    console.print(root.name, "has", count)
+}

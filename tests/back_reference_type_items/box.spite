@@ -1,0 +1,17 @@
+var items = List<BackReferenceTypeItems.Named>()
+var console = Console()
+var name: String
+
+func Box(new_name: String) {
+    name = new_name
+}
+
+func add_item(item_name: String) {
+    var item = Item(item_name, this)
+    items.append(item)
+    item.describe()
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

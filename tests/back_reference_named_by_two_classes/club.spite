@@ -1,0 +1,12 @@
+var names = List<String>()
+var console = Console()
+
+func Club() {
+    names.append("none")
+}
+
+func recruit(player: Player) {
+    names.append(player.name)
+    var count = names.count()
+    console.print(count)
+}

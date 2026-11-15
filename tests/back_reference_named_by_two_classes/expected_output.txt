@@ -1,0 +1,7 @@
+ada plays for rovers
+rovers is freed
+ada is freed
+2
+bo is freed
+the team is gone
+allocations: 47 frees: 47

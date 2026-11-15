@@ -1,0 +1,17 @@
+var console = Console()
+var folder: Folder?
+var name: String
+
+func Paper(new_name: String, new_folder: Folder) {
+    name = new_name
+    folder = new_folder
+}
+
+func drop() {
+    console.print(name, "is freed")
+}
+
+func describe() {
+    crash folder
+    console.print(name, "is in", folder.name)
+}

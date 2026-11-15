@@ -1,0 +1,6 @@
+apple is in crate
+crate has 1
+crate is freed
+apple is freed
+the box is gone
+allocations: 39 frees: 39

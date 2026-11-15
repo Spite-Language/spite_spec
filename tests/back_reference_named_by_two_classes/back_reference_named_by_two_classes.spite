@@ -1,0 +1,22 @@
+var console = Console()
+
+func BackReferenceNamedByTwoClasses() {
+    make_a_team()
+    use_a_club()
+    console.print("the team is gone")
+}
+
+func make_a_team() {
+    var team = Team("rovers")
+    var player = Player("ada")
+    team.recruit(player)
+    player.play_for(team)
+    crash player.team
+    console.print(player.name, "plays for", player.team.name)
+}
+
+func use_a_club() {
+    var club = Club()
+    var other = Player("bo")
+    club.recruit(other)
+}

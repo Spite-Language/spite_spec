@@ -1,0 +1,17 @@
+var console = Console()
+var box: Box?
+var name: String
+
+func Item(new_name: String, new_box: Box) {
+    name = new_name
+    box = new_box
+}
+
+func drop() {
+    console.print(name, "is freed")
+}
+
+func describe() {
+    crash box
+    console.print(name, "is in", box.name)
+}

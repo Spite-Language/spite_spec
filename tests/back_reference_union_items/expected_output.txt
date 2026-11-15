@@ -1,0 +1,6 @@
+notes is in root
+root has 1
+root is freed
+notes is freed
+the tree is gone
+allocations: 39 frees: 39
