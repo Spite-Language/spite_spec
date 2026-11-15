@@ -1,0 +1,21 @@
+var console = Console()
+
+func TemplateAttributeAsObject() {
+    var tag = Tag()
+    var shown = tag.describe_cost()
+    console.print(shown)
+    Price.attributes.each(show)
+    Offer.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    describe(attribute, "walked")
+}
+
+func describe(attribute: Spite.AttributeDeclaration, how: String) {
+    console.print("{how} {attribute}")
+    var same = attribute == "cost"
+    console.print("equal to its name:", same)
+    var other = attribute
+    console.print("copy", other.name, other.index, other.class)
+}

@@ -1,0 +1,5 @@
+var cost = 10
+
+func worth(): Integer {
+    return cost
+}

@@ -1,0 +1,8 @@
+var label = "fresh"
+var cost = 10
+
+func describe_attribute(attribute: Spite.AttributeDeclaration): String {
+    var other = attribute
+    var same = attribute == "cost"
+    return "{attribute} {other.name} {other.index} {other.class} {same} {attributes[attribute]} {label}"
+}

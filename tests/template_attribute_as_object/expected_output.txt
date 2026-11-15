@@ -1,0 +1,7 @@
+cost cost 1 Integer false 10 fresh
+walked cost
+equal to its name: false
+copy cost 0 Integer
+walked cost
+equal to its name: false
+copy cost 0 String

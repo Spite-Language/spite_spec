@@ -1,0 +1,15 @@
+var console = Console()
+
+func HandedOnAttributeCopyStringFunction() {
+    Price.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    describe(attribute, "declared")
+}
+
+func describe(attribute: Spite.AttributeDeclaration, how: String) {
+    var other = attribute
+    var shouted = other.upper_case()
+    console.print(how, shouted)
+}

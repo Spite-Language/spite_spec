@@ -1,0 +1,1 @@
+conformance/template_attribute_copy_string_function/tag.spite:5: error: a Spite.AttributeDeclaration has no attribute or function 'upper_case' (in Tag.describe_cost)
