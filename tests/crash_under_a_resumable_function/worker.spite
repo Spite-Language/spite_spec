@@ -1,0 +1,14 @@
+var program = Program()
+var done = false
+var count = 0
+
+func work() {
+    var pause = Duration(1, 'milliseconds')
+    program.sleep(pause)
+    checked(count)
+    done = true
+}
+
+func checked(seen: Integer) {
+    crash seen > 0
+}

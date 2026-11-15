@@ -1,0 +1,5 @@
+before the stop
+spite: the program stopped at tests/crash_under_a_resumable_function/worker.spite:13 in Worker.checked, site c07d4333 (seen=0, done=false, count=0)
+spite.frame	tests/crash_under_a_resumable_function/worker.spite:13	Worker	checked
+spite.frame	tests/crash_under_a_resumable_function/worker.spite:8	Worker	work
+spite.frame	tests/crash_under_a_resumable_function/crash_under_a_resumable_function.spite:14	CrashUnderAResumableFunction	CrashUnderAResumableFunction

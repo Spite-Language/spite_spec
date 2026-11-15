@@ -1,0 +1,17 @@
+var console = Console()
+var program = Program()
+var worker = Worker()
+
+func CrashUnderAResumableFunction() {
+    console.print("before the stop")
+    var pause = Duration(1, 'milliseconds')
+    var frames = 0
+    while not worker.done {
+        frames = frames + 1
+        if frames == 1 {
+            worker.work()
+        }
+        program.sleep(pause)
+    }
+    console.print("never printed")
+}
