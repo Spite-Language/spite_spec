@@ -1,2 +1,3 @@
 spite: the program stopped at started_call_that_crashes/crasher.spite:7 in Crasher.go, site 9152091b (armed=false)
 spite.frame	started_call_that_crashes/crasher.spite:7	Crasher	go
+spite.frame	started_call_that_crashes/started_call_that_crashes.spite:15	StartedCallThatCrashes	StartedCallThatCrashes
