@@ -1,0 +1,8 @@
+first ticked 1
+first heard 1
+drop begins
+first ticked 9
+drop ends
+the listener is gone
+C called nothing after the listener unregistered
+allocations: 54 frees: 54

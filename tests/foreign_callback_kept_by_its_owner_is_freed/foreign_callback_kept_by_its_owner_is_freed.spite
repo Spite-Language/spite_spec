@@ -1,0 +1,17 @@
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll", 'identity', "")
+var _first = 1
+var _second = 2
+
+func ForeignCallbackKeptByItsOwnerIsFreed() {
+    listen_and_let_go()
+    console.print("the listener is gone")
+    plain.tick(_second)
+    console.print("C called nothing after the listener unregistered")
+}
+
+func listen_and_let_go() {
+    var listener = Listener("first")
+    plain.tick(_first)
+    console.print(listener.name, "heard", listener.heard)
+}

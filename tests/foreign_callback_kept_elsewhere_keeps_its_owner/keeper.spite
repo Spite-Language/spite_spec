@@ -1,0 +1,7 @@
+var count = 0
+var kept = List<ForeignCallback>()
+
+func keep(callback: ForeignCallback) {
+    kept.append(callback)
+    count = kept.count()
+}

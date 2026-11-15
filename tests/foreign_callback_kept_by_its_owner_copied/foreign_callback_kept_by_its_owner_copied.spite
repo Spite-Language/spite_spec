@@ -1,0 +1,17 @@
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll", 'identity', "")
+var _first = 1
+var _second = 2
+
+func ForeignCallbackKeptByItsOwnerCopied() {
+    var copied = listen_and_copy()
+    console.print("the copy of", copied.name, "is kept")
+    plain.tick(_second)
+    console.print("never printed")
+}
+
+func listen_and_copy(): Listener {
+    var listener = Listener("first")
+    plain.tick(_first)
+    return listener.copy()
+}

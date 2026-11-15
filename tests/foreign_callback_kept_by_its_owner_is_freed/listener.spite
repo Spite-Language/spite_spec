@@ -1,0 +1,25 @@
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll", 'identity', "")
+var heard = 0
+var _ticking: ForeignCallback? = null
+var _last = 9
+var name: String
+
+func Listener(starting_name: String) {
+    name = starting_name
+    var ticking = ForeignCallback(ticked, 'context_last')
+    _ticking = ticking
+    plain.keep_tick(ticking.address, ticking.context)
+}
+
+func ticked(count: Integer) {
+    heard = heard + count
+    console.print(name, "ticked", count)
+}
+
+func drop() {
+    console.print("drop begins")
+    plain.tick(_last)
+    plain.forget_tick()
+    console.print("drop ends")
+}

@@ -1,0 +1,3 @@
+first ticked 1
+the copy of first is kept
+spite: C called 'Listener.ticked' (tests/foreign_callback_kept_by_its_owner_copied/listener.spite:8) after the Listener that keeps its ForeignCallback was freed: a copy of it still holds the ForeignCallback, whose function belongs to the freed one

@@ -1,0 +1,18 @@
+var console = Console()
+var plain = DynamicLibrary("tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll", 'identity', "")
+var _first = 1
+var _second = 2
+
+func ForeignCallbackKeptElsewhereKeepsItsOwner() {
+    var keeper = Keeper()
+    listen_and_hand_over(keeper)
+    console.print("the keeper holds", keeper.count, "callback")
+    plain.tick(_second)
+    plain.forget_tick()
+}
+
+func listen_and_hand_over(keeper: Keeper) {
+    var listener = Listener("first")
+    listener.hand_to(keeper)
+    plain.tick(_first)
+}
