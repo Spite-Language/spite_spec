@@ -1,0 +1,6 @@
+cat 9 dog 3 true false
+dog 3
+Dog
+spite: the program stopped at tests/union_parameter_copied_per_class/union_parameter_copied_per_class.spite:45 in UnionParameterCopiedPerClass.halted, site fd465c93 (first is null)
+spite.frame	tests/union_parameter_copied_per_class/union_parameter_copied_per_class.spite:45	UnionParameterCopiedPerClass	halted
+spite.frame	tests/union_parameter_copied_per_class/union_parameter_copied_per_class.spite:23	UnionParameterCopiedPerClass	UnionParameterCopiedPerClass

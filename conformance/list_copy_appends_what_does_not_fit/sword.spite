@@ -1,0 +1,5 @@
+var edge = 3
+
+func cut(): Integer {
+    return edge
+}

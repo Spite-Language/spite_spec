@@ -1,0 +1,5 @@
+var pet: TypeMemberWrittenWhereTheAttributeHoldsTheType.Named
+
+func CatKeeper(starting_pet: TypeMemberWrittenWhereTheAttributeHoldsTheType.Named) {
+    pet = starting_pet
+}

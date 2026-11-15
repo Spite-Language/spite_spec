@@ -1,0 +1,24 @@
+type Node {
+    next: Node?
+}
+
+var console = Console()
+
+func TypeMemberWrittenInACopyThatFits() {
+    var first = Link("first")
+    var second = Link("second")
+    link(first, second)
+    var linked = first.next
+    crash linked
+    console.print(linked.name)
+    var child = Person("ana")
+    var parent = Person("rui")
+    child.parent = parent
+    var held = child.parent
+    crash held
+    console.print(held.name)
+}
+
+func link(node: Node, other: Node) {
+    node.next = other
+}

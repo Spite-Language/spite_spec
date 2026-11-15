@@ -1,0 +1,7 @@
+var name: String
+var bones: Integer
+
+func Dog(starting_name: String, starting_bones: Integer) {
+    name = starting_name
+    bones = starting_bones
+}

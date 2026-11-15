@@ -1,0 +1,47 @@
+union Pet {
+    Cat
+    Dog
+}
+
+var console = Console()
+
+func UnionParameterCopiedPerClass() {
+    var cat = Cat()
+    var dog = Dog()
+    var first = described(cat)
+    var second = described(dog)
+    var is_a_dog = tested(dog)
+    var is_not_a_dog = tested(cat)
+    console.print(first, second, is_a_dog, is_not_a_dog)
+    var pets = List<Pet>()
+    pets.append(cat)
+    pets.append(dog)
+    var held = pets[1]
+    crash held
+    var third = described(held)
+    console.print(third)
+    var halted_at = halted(dog)
+    console.print(halted_at)
+}
+
+func described(pet: Pet): String {
+    switch pet {
+        Cat: return "cat {pet.lives}"
+        Dog: return "dog {pet.bones}"
+    }
+}
+
+func tested(pet: Pet): Boolean {
+    if pet.class == Dog {
+        return true
+    }
+    return false
+}
+
+func halted(pet: Pet): Integer {
+    console.print(pet.class.name)
+    var listed = List<Integer>()
+    var first = listed[0]
+    crash first
+    return first
+}

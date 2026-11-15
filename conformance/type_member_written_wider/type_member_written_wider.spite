@@ -1,0 +1,36 @@
+type Named {
+    name: String
+}
+
+type Keeper {
+    pet: Named
+}
+
+var console = Console()
+
+func TypeMemberWrittenWider() {
+    var cat = Cat("tom")
+    var dog = Dog("rex", 7)
+    var keepers = List<Keeper>()
+    var cat_keeper = CatKeeper(cat)
+    var dog_keeper = DogKeeper(dog)
+    keepers.append(cat_keeper)
+    keepers.append(dog_keeper)
+    var pets = List<Named>()
+    pets.append(dog)
+    pets.append(cat)
+    var index = 0
+    while index < keepers.count() {
+        var keeper = keepers[index]
+        var pet = pets[index]
+        crash keeper and pet
+        hand_over(keeper, pet)
+        index = index + 1
+    }
+    console.print(cat_keeper.pet.name, cat_keeper.pet.lives)
+    console.print(dog_keeper.pet.name, dog_keeper.pet.bones)
+}
+
+func hand_over(keeper: Keeper, other: Named) {
+    keeper.pet = other
+}

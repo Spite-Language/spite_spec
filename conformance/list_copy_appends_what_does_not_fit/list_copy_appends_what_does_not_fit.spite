@@ -1,0 +1,13 @@
+var console = Console()
+
+func ListCopyAppendsWhatDoesNotFit() {
+    var healths = List<Health>()
+    var counted = stocked(healths)
+    console.print(counted)
+}
+
+func stocked(items: List<Anything>): Integer {
+    var sword = Sword()
+    items.append(sword)
+    return items.count()
+}

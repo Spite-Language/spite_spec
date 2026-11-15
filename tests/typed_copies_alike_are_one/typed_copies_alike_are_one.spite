@@ -1,0 +1,36 @@
+type Named {
+    name: String
+}
+
+var console = Console()
+var program = Program()
+var kept = List<Named>()
+
+func TypedCopiesAlikeAreOne() {
+    var cat = Cat()
+    var dog = Dog()
+    keep(cat)
+    keep(dog)
+    var first = kept[0]
+    var second = kept[1]
+    crash first and second
+    console.print(first.name, second.name)
+    var path = program.executable_path()
+    crash path
+    var map_path = path.replace(".exe", ".functions")
+    var text_path: Path? = map_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var copies = lines.count_where(is_a_copy_of_keep)
+    console.print("copies of keep:", copies)
+}
+
+func keep(named: Named) {
+    kept.append(named)
+}
+
+func is_a_copy_of_keep(line: String): Boolean {
+    return line.ends_with("TypedCopiesAlikeAreOne.keep_typed_Cat") or line.ends_with("TypedCopiesAlikeAreOne.keep_typed_Dog")
+}

@@ -1,0 +1,13 @@
+var console = Console()
+
+func HeldFunctionCalledOnAnObject() {
+    var spinner = Spinner()
+    var before = spinner.spin(1)
+    spinner.spin = faster
+    var after = spinner.spin(1)
+    console.print(before, after)
+}
+
+func faster(number: Integer): Integer {
+    return number + 100
+}

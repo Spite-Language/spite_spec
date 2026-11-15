@@ -1,0 +1,18 @@
+type Node {
+    next: Node?
+}
+
+var console = Console()
+
+func TypeMemberWrittenInACopy() {
+    var first = Link()
+    var second = Chain()
+    link(first, second)
+    var linked = first.next
+    crash linked
+    console.print(linked.class.name)
+}
+
+func link(node: Node, other: Node) {
+    node.next = other
+}

@@ -1,0 +1,10 @@
+var lives = 9
+var name = "cat"
+
+func lived(): Integer {
+    return lives
+}
+
+func sound(): String {
+    return "meow"
+}

@@ -1,0 +1,61 @@
+type Named {
+    name: String
+}
+
+type Sounding {
+    sound: Spite.Function<String>
+}
+
+var console = Console()
+var program = Program()
+var written = ""
+
+func TypeParameterCopiedPerClass() {
+    var cat = Cat()
+    var dog = Dog()
+    renamed(cat, "tom")
+    renamed(dog, "rex")
+    var cat_sound = described(cat)
+    var dog_sound = described(dog)
+    console.print(cat.name, dog.name, cat_sound, dog_sound)
+    var lived = cat.lived()
+    var barked = dog.barked()
+    console.print(lived, barked)
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var text_path: Path? = low_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    written = text
+    var renamed_tests = class_tests_in("TypeParameterCopiedPerClass.renamed")
+    var described_tests = class_tests_in("TypeParameterCopiedPerClass.described")
+    console.print("class tests:", renamed_tests, described_tests)
+}
+
+func renamed(named: Named, name: String) {
+    named.name = name
+}
+
+func described(sounding: Sounding): String {
+    return sounding.sound()
+}
+
+func class_tests_in(function_name: String): Integer {
+    var lines = written.split("\n")
+    var header = "function {function_name}"
+    var inside = false
+    var found = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with(header)
+        } else if inside and line.contains(" at r1 + 0,") {
+            found = found + 1
+        }
+        index = index + 1
+    }
+    return found
+}

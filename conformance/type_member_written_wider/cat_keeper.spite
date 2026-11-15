@@ -1,0 +1,5 @@
+var pet: Cat
+
+func CatKeeper(starting_pet: Cat) {
+    pet = starting_pet
+}

@@ -1,0 +1,10 @@
+var name = "dog"
+var bones = 2
+
+func barked(): Integer {
+    return bones
+}
+
+func sound(): String {
+    return "woof"
+}

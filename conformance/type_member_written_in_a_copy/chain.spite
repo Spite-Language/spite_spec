@@ -1,0 +1,6 @@
+var weight = 2
+var next: Chain? = null
+
+func weighed(): Integer {
+    return weight
+}

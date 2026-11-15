@@ -1,0 +1,6 @@
+var name: String
+var next: Link? = null
+
+func Link(starting_name: String) {
+    name = starting_name
+}

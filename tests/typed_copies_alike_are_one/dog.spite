@@ -1,0 +1,6 @@
+var bones = 2
+var name = "rex"
+
+func barked(): Integer {
+    return bones
+}

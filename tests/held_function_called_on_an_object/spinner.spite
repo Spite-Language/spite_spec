@@ -1,0 +1,5 @@
+var spin: Spite.Function<Integer, Integer> = slow
+
+func slow(number: Integer): Integer {
+    return number + 1
+}

@@ -1,0 +1,27 @@
+type Named {
+    name: String
+}
+
+type Keeper {
+    pet: Named
+}
+
+var console = Console()
+
+func TypeMemberWrittenWhereTheAttributeHoldsTheType() {
+    var cat = Cat("tom")
+    var dog = Dog("rex", 7)
+    var cat_keeper = CatKeeper(cat)
+    var dog_keeper = DogKeeper(dog)
+    hand_over(cat_keeper, dog)
+    hand_over(dog_keeper, cat)
+    console.print(cat_keeper.pet.name, dog_keeper.pet.name)
+    var held = cat_keeper.pet
+    if held.class == Dog {
+        console.print(held.bones)
+    }
+}
+
+func hand_over(keeper: Keeper, other: Named) {
+    keeper.pet = other
+}

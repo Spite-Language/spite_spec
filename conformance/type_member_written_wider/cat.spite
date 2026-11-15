@@ -1,0 +1,6 @@
+var lives = 9
+var name: String
+
+func Cat(starting_name: String) {
+    name = starting_name
+}

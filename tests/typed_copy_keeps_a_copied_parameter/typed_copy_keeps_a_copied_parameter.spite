@@ -1,0 +1,30 @@
+type Node {
+    name: String
+    next: Node?
+}
+
+var console = Console()
+
+func TypedCopyKeepsACopiedParameter() {
+    var first = Link("first")
+    var second = Link("second")
+    var third = Link("third")
+    first.next = second
+    second.next = third
+    var found = last_name(first)
+    console.print(found)
+}
+
+func last_name(node: Node): String {
+    var current = node
+    var going = true
+    while going {
+        var next = current.next
+        if next {
+            current = next
+        } else {
+            going = false
+        }
+    }
+    return current.name
+}

@@ -1,0 +1,6 @@
+var name = "tom"
+var lives = 9
+
+func lived(): Integer {
+    return lives
+}
