@@ -1,0 +1,6 @@
+var _secret = 1
+var level = 2
+
+func reading(): Integer {
+    return _secret + level
+}

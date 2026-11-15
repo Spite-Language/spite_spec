@@ -1,0 +1,11 @@
+var console = Console()
+
+func WalkedAttributeCopyStringFunction() {
+    Price.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var other = attribute
+    var shouted = other.upper_case()
+    console.print(shouted)
+}

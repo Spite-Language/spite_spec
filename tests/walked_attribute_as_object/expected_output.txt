@@ -1,0 +1,22 @@
+reading 3
+declared _secret
+taken _secret
+equal to its name: false
+copy _secret 0 Integer
+members 0 6
+declared level
+taken level
+equal to its name: false
+copy level 1 Integer
+members 0 6
+bound _secret
+taken _secret
+equal to its name: false
+copy _secret 0 Integer
+members 0 8
+bound level
+taken level
+equal to its name: false
+copy level 1 Integer
+members 0 8
+kept 2

@@ -1,0 +1,13 @@
+var console = Console()
+
+func WalkedBoundAttributeCopyIndexed() {
+    var price = Price()
+    console.print(price.cost)
+    price.attributes.each(show)
+}
+
+func show(attribute: Spite.Attribute) {
+    var other = attribute
+    var first = other[0]
+    console.print(first)
+}

@@ -1,0 +1,1 @@
+conformance/walked_attribute_indexed/walked_attribute_indexed.spite:8: error: indexing a 'Spite.AttributeDeclaration' needs it to define 'get_at(index)' (in WalkedAttributeIndexed.show)

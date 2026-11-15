@@ -1,0 +1,10 @@
+var console = Console()
+
+func WalkedAttributeIndexed() {
+    Price.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var first = attribute[0]
+    console.print(first)
+}

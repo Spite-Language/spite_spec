@@ -1,0 +1,1 @@
+conformance/walked_bound_attribute_joined/walked_bound_attribute_joined.spite:11: error: this operator on a 'Spite.Attribute' needs it to define 'sum(other)' (in WalkedBoundAttributeJoined.show)

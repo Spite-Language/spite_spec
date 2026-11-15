@@ -1,0 +1,10 @@
+var console = Console()
+
+func WalkedAttributeOrdered() {
+    Price.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var earlier = attribute < "m"
+    console.print(earlier)
+}

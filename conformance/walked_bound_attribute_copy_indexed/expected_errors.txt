@@ -1,0 +1,1 @@
+conformance/walked_bound_attribute_copy_indexed/walked_bound_attribute_copy_indexed.spite:11: error: indexing a 'Spite.Attribute' needs it to define 'get_at(index)' (in WalkedBoundAttributeCopyIndexed.show)

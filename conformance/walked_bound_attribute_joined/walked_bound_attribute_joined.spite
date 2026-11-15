@@ -1,0 +1,13 @@
+var console = Console()
+
+func WalkedBoundAttributeJoined() {
+    var price = Price()
+    console.print(price.cost)
+    price.attributes.each(show)
+}
+
+func show(attribute: Spite.Attribute) {
+    var suffix = "x"
+    var joined = attribute + suffix
+    console.print(joined)
+}

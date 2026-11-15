@@ -1,0 +1,45 @@
+var console = Console()
+var kept = List<Spite.AttributeDeclaration>()
+
+func WalkedAttributeAsObject() {
+    var gauge = Gauge()
+    var shown = gauge.reading()
+    console.print("reading", shown)
+    Gauge.attributes.each(declared)
+    gauge.attributes.each(bound)
+    var counted = kept.count()
+    console.print("kept", counted)
+}
+
+func declared(attribute: Spite.AttributeDeclaration) {
+    console.print("declared {attribute}")
+    take(attribute)
+    var same = attribute == "level"
+    console.print("equal to its name:", same)
+    var other = attribute
+    console.print("copy", other.name, other.index, other.class)
+    var listed = attribute.attributes
+    var listed_count = listed.count()
+    var functions = attribute.functions
+    var function_count = functions.count()
+    console.print("members", listed_count, function_count)
+    kept.append(attribute)
+}
+
+func bound(attribute: Spite.Attribute) {
+    console.print("bound {attribute}")
+    take(attribute)
+    var same = attribute == "level"
+    console.print("equal to its name:", same)
+    var other = attribute
+    console.print("copy", other.name, other.index, other.class)
+    var listed = attribute.attributes
+    var listed_count = listed.count()
+    var functions = attribute.functions
+    var function_count = functions.count()
+    console.print("members", listed_count, function_count)
+}
+
+func take(text: String) {
+    console.print("taken", text)
+}
