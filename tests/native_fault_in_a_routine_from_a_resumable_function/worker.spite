@@ -1,0 +1,34 @@
+var program = Program()
+var fixture = DynamicLibrary("tests/native_fault_in_a_routine_from_a_resumable_function/fixture.dll", 'identity', "")
+var waiter = Waiter()
+var blocking = ForeignCallback(waiter.block, 'no_context')
+var done = false
+var length = 0
+var _rounds = 400000000
+var _kept = 2
+var _links = 100000
+
+func work() {
+    var pause = Duration(1, 'milliseconds')
+    program.sleep(pause)
+    fixture.start_later(blocking.address)
+    var turned = turned_over()
+    var head = Link(null, turned)
+    var index = 0
+    while index < _links {
+        head = Link(head, index)
+        index = index + 1
+    }
+    length = head.length()
+    done = true
+}
+
+func turned_over(): Integer {
+    var sum = 0
+    var round = 0
+    while round < _rounds {
+        sum = (sum + round) % _kept
+        round = round + 1
+    }
+    return sum
+}

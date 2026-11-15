@@ -1,0 +1,7 @@
+singleton
+
+var fixture = DynamicLibrary("tests/native_fault_in_a_routine_from_a_resumable_function/fixture.dll", 'identity', "")
+
+func block() {
+    fixture.block_forever()
+}

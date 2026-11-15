@@ -1,0 +1,3 @@
+before the fault
+spite.fault	read-violation	-	-	-	address=0x0	code=0xc0000005	at=fixture.dll+0x...
+spite.function
