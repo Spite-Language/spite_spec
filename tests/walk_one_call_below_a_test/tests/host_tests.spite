@@ -1,0 +1,7 @@
+var maker = Maker()
+
+func test_a_host_binds_components() {
+    var page = Page()
+    var host = maker.made(page)
+    crash host.bound == 2
+}

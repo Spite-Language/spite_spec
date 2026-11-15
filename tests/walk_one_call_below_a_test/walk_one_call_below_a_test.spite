@@ -1,0 +1,5 @@
+func WalkOneCallBelowATest() {
+    load "kit"
+    var tester = Test(Tests)
+    tester.run()
+}

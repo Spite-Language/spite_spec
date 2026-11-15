@@ -1,0 +1,19 @@
+generic $root_type
+
+var bound = 0
+var title: String
+var root: $root_type
+
+func Host(new_title: String, new_root: $root_type) {
+    title = new_title
+    root = new_root
+    Spite.Class.instances.each(bind)
+}
+
+func bind(part: Spite.Class) {
+    if part.has_function("render") {
+        var binding = Kit.Binding<part>()
+        binding.mount()
+        bound = bound + binding.mounted
+    }
+}
