@@ -1,0 +1,9 @@
+var console = Console()
+
+func update_each() {
+    console.print("update each")
+}
+
+func phase_each() {
+    console.print("phase each")
+}

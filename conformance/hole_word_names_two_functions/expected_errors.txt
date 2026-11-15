@@ -1,0 +1,1 @@
+conformance/hole_word_names_two_functions/hole_word_names_two_functions.spite:10: error: 'phase_each' names two functions of 'Mover' here: the template fills 'phase' and calls 'update_each', and 'phase_each' is a function of its own: rename that function or the template's parameter 'phase' (in HoleWordNamesTwoFunctions.run_update_each)

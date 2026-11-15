@@ -1,9 +1,7 @@
 call first: update_each 0 0
 call first: render_each 1 0
 call first: sum_each 2 0
-call first: phase_each 3 0
 pattern first: update_each 0 0
 pattern first: render_each 1 0
 pattern first: sum_each 2 0
-pattern first: phase_each 3 0
-80000
+222

@@ -15,7 +15,3 @@ func sum_each() {
 func sum_all() {
     steps = steps + 1000
 }
-
-func phase_each() {
-    steps = steps + 10000
-}
