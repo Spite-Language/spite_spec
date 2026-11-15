@@ -1,0 +1,1 @@
+conformance/reopened_function_parameters/second/game/hero.spite:1: error: 'hit' takes (damage: Integer) where the class first declares it, and this reopening makes it take (damage: String): a reopening replaces a function's body, never what it takes, so give the new function a name of its own

@@ -1,0 +1,5 @@
+var level: Integer
+
+func Hero(starting_level: Integer, bonus: Integer) {
+    level = starting_level + bonus
+}

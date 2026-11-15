@@ -1,0 +1,5 @@
+var console = Console()
+
+func ReopenedLibraryFunctionParameters() {
+    console.print("never runs")
+}

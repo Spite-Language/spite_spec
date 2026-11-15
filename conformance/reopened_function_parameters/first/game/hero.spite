@@ -1,0 +1,3 @@
+func hit(damage: Integer): Integer {
+    return damage
+}

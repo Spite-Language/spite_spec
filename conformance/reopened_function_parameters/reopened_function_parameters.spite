@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReopenedFunctionParameters() {
+    load "first"
+    load "second"
+    var hero = Game.Hero()
+    var hit = hero.hit("strong")
+    console.print(hit)
+}

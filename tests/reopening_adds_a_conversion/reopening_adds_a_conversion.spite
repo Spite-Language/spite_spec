@@ -1,0 +1,10 @@
+var console = Console()
+
+func ReopeningAddsAConversion() {
+    load "first"
+    load "second"
+    var built = Game.Hero(1)
+    console.print(built.level)
+    var converted: Game.Hero? = "3"
+    console.print(converted.level)
+}

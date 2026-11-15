@@ -1,0 +1,11 @@
+var level: Integer
+
+func Hero(starting_level: Integer) {
+    level = starting_level * 2
+}
+
+func Hero(from: String): Hero? {
+    var read: Integer? = from
+    fallback read
+    return Hero(read)
+}

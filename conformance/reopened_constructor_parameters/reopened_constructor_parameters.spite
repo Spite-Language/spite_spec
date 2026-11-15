@@ -1,0 +1,8 @@
+var console = Console()
+
+func ReopenedConstructorParameters() {
+    load "first"
+    load "second"
+    var hero = Game.Hero(1, 2)
+    console.print(hero.level)
+}

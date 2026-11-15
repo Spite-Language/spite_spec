@@ -1,0 +1,1 @@
+conformance/reopened_library_function_parameters/volume.spite:1: error: '_place_of' takes (path: String) where the class first declares it, at spite_standard_library://common/volume.spite:20, and this reopening makes it take (where: String): a reopening replaces a function's body, never what it takes, so give the new function a name of its own
