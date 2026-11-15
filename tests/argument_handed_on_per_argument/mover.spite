@@ -1,0 +1,5 @@
+var console = Console()
+
+func update_each(amount: Integer, label: String) {
+    console.print("update", amount, "'{label}'")
+}

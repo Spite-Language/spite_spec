@@ -1,0 +1,4 @@
+making amount as Integer
+mover 0
+making amount as String
+jumper ''

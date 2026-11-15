@@ -1,0 +1,21 @@
+var console = Console()
+var mover = Mover()
+var jumper = Jumper()
+
+func ArgumentTemplatePerPatternFunction() {
+    run_update_each()
+    hop_update_each()
+}
+
+func run_phase_each(phase: Spite.FunctionDeclaration) {
+    mover.phase_each(made_arguments())
+}
+
+func hop_step_each(step: Spite.FunctionDeclaration) {
+    jumper.step_each(made_arguments())
+}
+
+func made_argument(argument: Spite.Argument): argument.class {
+    console.print("making", argument.name, "as", argument.class)
+    return argument.class()
+}

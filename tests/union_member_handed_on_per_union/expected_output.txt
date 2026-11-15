@@ -1,0 +1,4 @@
+ware 10
+cost Integer
+good free
+cost String

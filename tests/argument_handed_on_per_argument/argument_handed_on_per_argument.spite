@@ -1,0 +1,15 @@
+var console = Console()
+var mover = Mover()
+
+func ArgumentHandedOnPerArgument() {
+    mover.update_each(made_arguments())
+}
+
+func made_argument(argument: Spite.Argument): argument.class {
+    return filled(argument)
+}
+
+func filled(argument: Spite.Argument): argument.class {
+    console.print("filling", argument.name, "as", argument.class)
+    return argument.class()
+}

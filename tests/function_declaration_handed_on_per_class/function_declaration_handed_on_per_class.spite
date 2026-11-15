@@ -1,0 +1,24 @@
+var console = Console()
+var mover = Mover()
+var jumper = Jumper()
+
+func FunctionDeclarationHandedOnPerClass() {
+    run_update_each()
+    hop_update_each()
+    console.print(mover.steps, jumper.height)
+}
+
+func run_phase_each(phase: Spite.FunctionDeclaration) {
+    report(phase)
+    mover.phase_each()
+}
+
+func hop_step_each(step: Spite.FunctionDeclaration) {
+    report(step)
+    jumper.step_each(3)
+}
+
+func report(declaration: Spite.FunctionDeclaration) {
+    var taken = declaration.argument_count()
+    console.print(declaration.name, declaration.index, taken)
+}

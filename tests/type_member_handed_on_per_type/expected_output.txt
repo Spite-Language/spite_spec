@@ -1,0 +1,4 @@
+counted 10
+cost Integer
+worded free
+cost String

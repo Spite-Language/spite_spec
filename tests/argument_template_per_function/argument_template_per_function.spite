@@ -1,0 +1,13 @@
+var console = Console()
+var mover = Mover()
+var jumper = Jumper()
+
+func ArgumentTemplatePerFunction() {
+    mover.update_each(made_arguments())
+    jumper.jump(made_arguments())
+}
+
+func made_argument(argument: Spite.Argument): argument.class {
+    console.print("making", argument.name, "as", argument.class)
+    return argument.class()
+}

@@ -1,0 +1,32 @@
+union Ware {
+    Price
+    Discount
+}
+
+union Good {
+    Offer
+    Bundle
+}
+
+var console = Console()
+
+func UnionMemberHandedOnPerUnion() {
+    var ware: Ware = Price()
+    var good: Good = Offer()
+    show_cost(ware)
+    tell_cost(good)
+}
+
+func show_member(member: Spite.AttributeDeclaration, ware: Ware) {
+    console.print("ware", ware[member])
+    describe(member)
+}
+
+func tell_member(member: Spite.AttributeDeclaration, good: Good) {
+    console.print("good", good[member])
+    describe(member)
+}
+
+func describe(attribute: Spite.AttributeDeclaration) {
+    console.print(attribute.name, attribute.class)
+}

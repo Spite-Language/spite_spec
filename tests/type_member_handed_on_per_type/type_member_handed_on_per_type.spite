@@ -1,0 +1,30 @@
+type Counted {
+    cost: Integer
+}
+
+type Worded {
+    cost: String
+}
+
+var console = Console()
+
+func TypeMemberHandedOnPerType() {
+    var price = Price()
+    var offer = Offer()
+    show_cost(price)
+    tell_cost(offer)
+}
+
+func show_member(member: Spite.AttributeDeclaration, counted: Counted) {
+    console.print("counted", counted[member])
+    describe(member)
+}
+
+func tell_member(member: Spite.AttributeDeclaration, worded: Worded) {
+    console.print("worded", worded[member])
+    describe(member)
+}
+
+func describe(attribute: Spite.AttributeDeclaration) {
+    console.print(attribute.name, attribute.class)
+}

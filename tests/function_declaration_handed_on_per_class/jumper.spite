@@ -1,0 +1,9 @@
+var height = 0
+
+func render_each() {
+    height = height + 10
+}
+
+func update_each(amount: Integer) {
+    height = height + amount
+}
