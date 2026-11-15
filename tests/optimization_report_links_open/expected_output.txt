@@ -1,0 +1,2 @@
+name 0, name 1, name 2
+../../optimization_report_links_open.spite opens

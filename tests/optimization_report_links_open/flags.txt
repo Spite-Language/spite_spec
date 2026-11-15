@@ -1,0 +1,1 @@
+--optimization-report=.spite/reports/optimization_report_links_open.md

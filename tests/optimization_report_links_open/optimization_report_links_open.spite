@@ -1,0 +1,53 @@
+var console = Console()
+var build = Build()
+var opened = List<String>()
+var _names = 3
+
+func OptimizationReportLinksOpen() {
+    var names = List<String>()
+    var index = 0
+    while index < _names {
+        names.append("name {index}")
+        index = index + 1
+    }
+    var joined = names.join(", ")
+    console.print(joined)
+    open_the_links()
+}
+
+func open_the_links() {
+    var reports = "{build.program}/.spite/reports"
+    var report_path: Path? = "{reports}/optimization_report_links_open.md"
+    crash report_path
+    var report = File(report_path).read_as_string()
+    crash report
+    var lines = report.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("- [") {
+            open_a_link(reports, line)
+        }
+        index = index + 1
+    }
+}
+
+func open_a_link(reports: String, line: String) {
+    var after_label = line.split("](").last()
+    crash after_label
+    var link = after_label.split("#L").first()
+    crash link
+    fallback not opened.contains(link)
+    opened.append(link)
+    var target: Path? = "{reports}/{link}"
+    if link.contains(":") {
+        target = link
+    }
+    crash target
+    var file = File(target)
+    if file.exists() {
+        console.print(link, "opens")
+    } else {
+        console.print(link, "opens nothing")
+    }
+}
