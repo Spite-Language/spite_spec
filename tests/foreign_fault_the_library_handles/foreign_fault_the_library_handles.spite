@@ -1,0 +1,8 @@
+var console = Console()
+var fixture = DynamicLibrary("tests/foreign_fault_the_library_handles/fixture.dll", 'identity', "")
+
+func ForeignFaultTheLibraryHandles() {
+    var nowhere: Long = 0
+    var answer = fixture.read_or_answer(nowhere)
+    console.print("the library handled its own fault", answer)
+}
