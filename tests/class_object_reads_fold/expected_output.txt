@@ -1,0 +1,6 @@
+false false
+Monster false false
+Monster 2
+Part true
+reads a class object while it runs false
+reads a namespace object while it runs false

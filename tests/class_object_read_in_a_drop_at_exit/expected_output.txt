@@ -1,0 +1,3 @@
+reporter started
+done false
+spite: a drop() at exit read the Spite.Class of Monster after it was let go: reflection objects are let go at exit, newest first, after the singletons made after them

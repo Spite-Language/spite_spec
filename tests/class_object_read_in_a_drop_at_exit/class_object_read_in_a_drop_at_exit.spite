@@ -1,0 +1,8 @@
+var console = Console()
+var reporter = Reporter()
+
+func ClassObjectReadInADropAtExit() {
+    reporter.start()
+    var alone = Monster.is_list
+    console.print("done", alone)
+}

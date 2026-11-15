@@ -1,0 +1,12 @@
+singleton
+
+var console = Console()
+
+func start() {
+    console.print("reporter started")
+}
+
+func drop() {
+    var listed = Monster.is_list
+    console.print("reporter dropping", listed)
+}

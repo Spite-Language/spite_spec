@@ -1,0 +1,48 @@
+var console = Console()
+var program = Program()
+
+func ClassObjectReadsFold() {
+    var alone = Monster.is_singleton
+    var listed = Monster.is_list
+    console.print(alone, listed)
+    var described: Spite.Class = Monster
+    console.print(described.name, described.is_enum, described.is_optional)
+    var monster = Monster()
+    monster.hit()
+    var its = monster.class
+    console.print(its.name_with_namespaces, monster.health)
+    crash Part.Crate.namespace
+    console.print(Part.Crate.namespace.name, Part.Crate.is_fixed_size)
+    show_what_still_reads()
+}
+
+func show_what_still_reads() {
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var reads_a_class = function_holds("ClassObjectReadsFold.ClassObjectReadsFold(", "Spite.Class.get_", text)
+    var reads_a_namespace = function_holds("ClassObjectReadsFold.ClassObjectReadsFold(", "Spite.Namespace.get_", text)
+    console.print("reads a class object while it runs", reads_a_class)
+    console.print("reads a namespace object while it runs", reads_a_namespace)
+}
+
+func function_holds(function_key: String, wanted: String, text: String): Boolean {
+    var lines = text.split("\n")
+    var inside = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with("function {function_key}")
+        }
+        if inside and line.contains(wanted) {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}
