@@ -1,2 +1,2 @@
-spite: the program stopped at tests/crash_maybe_boolean_key_false/crash_maybe_boolean_key_false.spite:8 in CrashMaybeBooleanKeyFalse.CrashMaybeBooleanKeyFalse, site f73f0a72 (flags["open"]=false)
-spite.frame	tests/crash_maybe_boolean_key_false/crash_maybe_boolean_key_false.spite:8	CrashMaybeBooleanKeyFalse	CrashMaybeBooleanKeyFalse
+spite: the program stopped at tests/crash_maybe_boolean_key_false/crash_maybe_boolean_key_false.spite:7 in CrashMaybeBooleanKeyFalse.CrashMaybeBooleanKeyFalse, site f73f0a72 (flags["open"]=false)
+spite.frame	tests/crash_maybe_boolean_key_false/crash_maybe_boolean_key_false.spite:7	CrashMaybeBooleanKeyFalse	CrashMaybeBooleanKeyFalse

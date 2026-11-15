@@ -6,7 +6,6 @@ union Kind {
 var console = Console()
 
 func SwitchEveryCaseReturns() {
-    load "../../../spite_standard_library/windows"
     var monster = find(true)
     var nobody = find(false)
     var first = called_out(monster)

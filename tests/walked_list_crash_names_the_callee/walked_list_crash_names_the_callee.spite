@@ -1,5 +1,4 @@
 func WalkedListCrashNamesTheCallee() {
-    load "../../../spite_standard_library/windows"
     var binder = Binder()
     var page = Page(1)
     var kept: List<Anything?> = [page]

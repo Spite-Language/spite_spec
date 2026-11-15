@@ -2,7 +2,6 @@ var console = Console()
 var padding_text = "twelve"
 
 func JsxSetterErrorPointsAtItsLine() {
-    load "../../../spite_standard_library/windows"
     var made = built()
     var shown = made.describe()
     console.print(shown)

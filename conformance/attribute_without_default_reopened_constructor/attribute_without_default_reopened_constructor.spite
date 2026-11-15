@@ -1,7 +1,6 @@
 var console = Console()
 
 func AttributeWithoutDefaultReopenedConstructor() {
-    load "../../../spite_standard_library/windows"
     load "package"
     var widget = Widgets.Widget("gadget")
     var length = widget.size.length()

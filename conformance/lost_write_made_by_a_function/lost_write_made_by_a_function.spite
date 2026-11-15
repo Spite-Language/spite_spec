@@ -1,7 +1,6 @@
 var console = Console()
 
 func LostWriteMadeByAFunction() {
-    load "../../../spite_standard_library/windows"
     var fresh = make()
     console.print(fresh.count)
     fresh.count = 2

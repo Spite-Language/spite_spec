@@ -1,1 +1,1 @@
-conformance/boolean_or_null_switch_returning/boolean_or_null_switch_returning.spite:11: error: this value may be null (it is a Boolean?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in BooleanOrNullSwitchReturning.named)
+conformance/boolean_or_null_switch_returning/boolean_or_null_switch_returning.spite:10: error: this value may be null (it is a Boolean?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in BooleanOrNullSwitchReturning.named)

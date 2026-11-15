@@ -1,2 +1,2 @@
-spite: the program stopped at tests/crash_maybe_boolean_item_past_the_end/crash_maybe_boolean_item_past_the_end.spite:9 in CrashMaybeBooleanItemPastTheEnd.CrashMaybeBooleanItemPastTheEnd, site b32740d2 (flags[past_the_end] is missing: index 2, count 2)
-spite.frame	tests/crash_maybe_boolean_item_past_the_end/crash_maybe_boolean_item_past_the_end.spite:9	CrashMaybeBooleanItemPastTheEnd	CrashMaybeBooleanItemPastTheEnd
+spite: the program stopped at tests/crash_maybe_boolean_item_past_the_end/crash_maybe_boolean_item_past_the_end.spite:8 in CrashMaybeBooleanItemPastTheEnd.CrashMaybeBooleanItemPastTheEnd, site b32740d2 (flags[past_the_end] is missing: index 2, count 2)
+spite.frame	tests/crash_maybe_boolean_item_past_the_end/crash_maybe_boolean_item_past_the_end.spite:8	CrashMaybeBooleanItemPastTheEnd	CrashMaybeBooleanItemPastTheEnd

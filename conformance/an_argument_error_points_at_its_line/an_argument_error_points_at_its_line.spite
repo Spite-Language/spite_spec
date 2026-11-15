@@ -3,7 +3,6 @@ var first_rather_long_named_number_for_the_sum = 1
 var second_rather_long_named_text_for_the_sum = "two"
 
 func AnArgumentErrorPointsAtItsLine() {
-    load "../../../spite_standard_library/windows"
     var total = sum_of_two_rather_long_named_numbers(
         first_rather_long_named_number_for_the_sum,
         second_rather_long_named_text_for_the_sum,

@@ -1,2 +1,2 @@
-spite: the program stopped at tests/crash_maybe_boolean_key_absent/crash_maybe_boolean_key_absent.spite:8 in CrashMaybeBooleanKeyAbsent.CrashMaybeBooleanKeyAbsent, site 36cb7f8a (flags["ajar"] is missing: key "ajar")
-spite.frame	tests/crash_maybe_boolean_key_absent/crash_maybe_boolean_key_absent.spite:8	CrashMaybeBooleanKeyAbsent	CrashMaybeBooleanKeyAbsent
+spite: the program stopped at tests/crash_maybe_boolean_key_absent/crash_maybe_boolean_key_absent.spite:7 in CrashMaybeBooleanKeyAbsent.CrashMaybeBooleanKeyAbsent, site 36cb7f8a (flags["ajar"] is missing: key "ajar")
+spite.frame	tests/crash_maybe_boolean_key_absent/crash_maybe_boolean_key_absent.spite:7	CrashMaybeBooleanKeyAbsent	CrashMaybeBooleanKeyAbsent

@@ -3,7 +3,6 @@ var library = DynamicLibrary("ucrtbase.dll", 'identity', "")
 var _ten = 10
 
 func ASplitCopyKeepsItsOwnInstructions() {
-    load "../../../spite_standard_library/windows"
     var plain = Meter(false)
     var squared = Meter(true)
     var start = library.labs(-1)

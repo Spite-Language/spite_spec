@@ -1,4 +1,4 @@
 spite: the program stopped at tests/walked_list_crash_names_the_callee/binder.spite:5 in Binder.append_child, site be00ac95
 spite.frame	tests/walked_list_crash_names_the_callee/binder.spite:5	Binder	append_child
 spite.frame	tests/walked_list_crash_names_the_callee/binder.spite:10	Binder	append_children
-spite.frame	tests/walked_list_crash_names_the_callee/walked_list_crash_names_the_callee.spite:9	WalkedListCrashNamesTheCallee	WalkedListCrashNamesTheCallee
+spite.frame	tests/walked_list_crash_names_the_callee/walked_list_crash_names_the_callee.spite:8	WalkedListCrashNamesTheCallee	WalkedListCrashNamesTheCallee

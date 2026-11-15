@@ -1,7 +1,6 @@
 var console = Console()
 
 func JsonFillsAnAttributeWithoutDefault() {
-    load "../../../spite_standard_library/windows"
     show("\{\"age\": 3}")
     show("\{\"age\": 4, \"name\": \"tom\"}")
 }

@@ -1,7 +1,6 @@
 var console = Console()
 
 func SwitchCaseThatDoesNotReturn() {
-    load "../../../spite_standard_library/windows"
     var found = find(true)
     var named = called_out(found)
     console.print(named)
