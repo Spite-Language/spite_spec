@@ -1,0 +1,46 @@
+var console = Console()
+var program = Program()
+
+func HighIrShowsWhatAProofDid() {
+    var path = "abc/def/g"
+    var cut = 7
+    var before = path[cut - 1]
+    var times = 3
+    var tripled = cut * times
+    var count = 4
+    var share = tripled / count
+    var steps = 0
+    while steps < count {
+        steps = steps + 1
+    }
+    console.print(before, tripled, share, steps)
+    print_the_operations()
+}
+
+func print_the_operations() {
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var inside = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with("function HighIrShowsWhatAProofDid.HighIrShowsWhatAProofDid(")
+        }
+        var parts = line.split(" | ")
+        var shown = parts[0]
+        crash shown
+        var is_an_operation = shown.contains(" folded from ") or shown.contains(", proven to fit") or shown.contains(", divisor proven")
+        if inside and is_an_operation {
+            var trimmed = shown.trim()
+            console.print(trimmed)
+        }
+        index = index + 1
+    }
+}

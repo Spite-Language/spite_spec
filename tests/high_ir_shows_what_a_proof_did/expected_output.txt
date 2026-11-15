@@ -1,0 +1,5 @@
+f 21 5 4
+var before: Rune? = String.get_at(path; (6 folded from cut subtract 1))
+var tripled: Integer = (21 folded from cut multiply times)
+var share: Integer = (tripled divide count, divisor proven)
+steps = (steps add 1, proven to fit)
