@@ -1,0 +1,9 @@
+var red: Float
+
+func Paint(starting_red: Float) {
+    red = starting_red
+}
+
+func name(): String {
+    return "paint"
+}

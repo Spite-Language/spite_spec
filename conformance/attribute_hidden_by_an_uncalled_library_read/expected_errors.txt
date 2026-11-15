@@ -1,0 +1,1 @@
+conformance/attribute_hidden_by_an_uncalled_library_read/paint/paint.spite:1: error: the attribute 'red' is never read: remove it (in Paint.)
