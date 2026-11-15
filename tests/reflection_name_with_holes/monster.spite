@@ -3,3 +3,7 @@ var count: Integer
 func Monster(starting_count: Integer) {
     count = starting_count
 }
+
+func counted(): Integer {
+    return count
+}
