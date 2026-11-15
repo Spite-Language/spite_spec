@@ -1,0 +1,9 @@
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func show(thing: Named) {
+    console.print(thing.name)
+}

@@ -1,0 +1,17 @@
+union Placed {
+    Box
+    Named
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func UnionMemberType() {
+    var tag = Tag()
+    var named: Named = tag
+    var placed: Placed = named
+    console.print(placed.class.name)
+}

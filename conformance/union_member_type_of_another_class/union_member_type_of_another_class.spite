@@ -1,0 +1,19 @@
+union Outer {
+    Box
+    Inner
+}
+
+union Inner {
+    Box
+    Shelf.Named
+}
+
+var console = Console()
+
+func UnionMemberTypeOfAnotherClass() {
+    var box = Box()
+    var outer: Outer = box
+    console.print(outer.class.name)
+    var shelf = Shelf()
+    shelf.show(box)
+}
