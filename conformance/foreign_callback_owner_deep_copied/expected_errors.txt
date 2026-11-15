@@ -1,0 +1,1 @@
+conformance/foreign_callback_owner_deep_copied/foreign_callback_owner_deep_copied.spite:5: error: a deep copy of Listener would copy the C registration in '_ticking': C was given only the one it holds, so make another Listener instead of copying this one (in ForeignCallbackOwnerDeepCopied.ForeignCallbackOwnerDeepCopied)

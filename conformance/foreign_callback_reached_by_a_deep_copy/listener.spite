@@ -1,0 +1,13 @@
+var console = Console()
+var _ticking: ForeignCallback? = null
+var name: String
+
+func Listener(starting_name: String) {
+    name = starting_name
+    var ticking = ForeignCallback(ticked, 'context_last')
+    _ticking = ticking
+}
+
+func ticked(count: Integer) {
+    console.print(name, "ticked", count)
+}

@@ -1,0 +1,6 @@
+var listeners = List<Listener>()
+
+func Desktop() {
+    var listener = Listener("first")
+    listeners.append(listener)
+}

@@ -1,0 +1,7 @@
+var console = Console()
+
+func ForeignCallbackOwnerCopied() {
+    var listener = Listener("first")
+    var copied = listener.copy()
+    console.print(copied.name)
+}

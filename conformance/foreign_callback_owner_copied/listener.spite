@@ -1,5 +1,4 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll", 'identity', "")
 var _ticking: ForeignCallback? = null
 var name: String
 
@@ -7,7 +6,6 @@ func Listener(starting_name: String) {
     name = starting_name
     var ticking = ForeignCallback(ticked, 'context_last')
     _ticking = ticking
-    plain.keep_tick(ticking.address, ticking.context)
 }
 
 func ticked(count: Integer) {

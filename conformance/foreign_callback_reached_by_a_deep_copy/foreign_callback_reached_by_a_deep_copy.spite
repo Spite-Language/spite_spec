@@ -1,0 +1,9 @@
+var console = Console()
+
+func ForeignCallbackReachedByADeepCopy() {
+    var desktop = Desktop()
+    var copied = desktop.copy()
+    console.print(copied.listeners.count())
+    var deep = desktop.deep_copy()
+    console.print(deep.listeners.count())
+}

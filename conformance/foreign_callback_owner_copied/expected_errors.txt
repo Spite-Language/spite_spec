@@ -1,0 +1,1 @@
+conformance/foreign_callback_owner_copied/foreign_callback_owner_copied.spite:5: error: a copy of Listener would share the C registration in '_ticking': C calls back the one object that registered it, so make another Listener instead of copying this one (in ForeignCallbackOwnerCopied.ForeignCallbackOwnerCopied)

@@ -1,0 +1,1 @@
+conformance/foreign_callback_reached_by_a_deep_copy/foreign_callback_reached_by_a_deep_copy.spite:7: error: a deep copy of Desktop would copy the C registration in 'Listener._ticking', which it reaches through 'listeners': C was given only the one it holds, so make another Desktop instead of copying this one (in ForeignCallbackReachedByADeepCopy.ForeignCallbackReachedByADeepCopy)
