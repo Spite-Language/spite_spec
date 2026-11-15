@@ -1,0 +1,24 @@
+var holder: BackReferenceTypeAttribute.Holding? = null
+var console = Console()
+var name: String
+
+func Paper(new_name: String) {
+    name = new_name
+}
+
+func drop() {
+    console.print(name, "is freed")
+}
+
+func describe() {
+    crash holder
+    console.print(name, "is on", holder.label)
+}
+
+func tell() {
+    if holder {
+        console.print(name, "still has a holder")
+    } else {
+        console.print(name, "lost its holder")
+    }
+}

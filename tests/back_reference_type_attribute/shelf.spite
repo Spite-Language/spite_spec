@@ -1,0 +1,17 @@
+var files = List<Paper>()
+var console = Console()
+var label: String
+
+func Shelf(new_label: String) {
+    label = new_label
+}
+
+func put(paper: Paper) {
+    files.append(paper)
+    paper.holder = this
+    paper.describe()
+}
+
+func drop() {
+    console.print(label, "is freed")
+}

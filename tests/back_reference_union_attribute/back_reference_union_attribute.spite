@@ -1,0 +1,29 @@
+var console = Console()
+
+func BackReferenceUnionAttribute() {
+    make_a_drive()
+    use_a_shelf()
+    var kept = keep_a_paper()
+    kept.tell()
+    console.print("the drive and the shelves are gone")
+}
+
+func make_a_drive() {
+    var drive = Drive("disk")
+    drive.add_file("notes")
+    var count = drive.files.count()
+    console.print(drive.name, "has", count)
+}
+
+func use_a_shelf() {
+    var shelf = Shelf("shelf")
+    var paper = Paper("loose")
+    shelf.put(paper)
+}
+
+func keep_a_paper(): Paper {
+    var shelf = Shelf("old shelf")
+    var paper = Paper("kept")
+    shelf.put(paper)
+    return paper
+}

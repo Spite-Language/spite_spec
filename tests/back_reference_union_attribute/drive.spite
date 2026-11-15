@@ -1,0 +1,18 @@
+var files = List<Paper>()
+var console = Console()
+var name: String
+
+func Drive(new_name: String) {
+    name = new_name
+}
+
+func add_file(paper_name: String) {
+    var paper = Paper(paper_name)
+    files.append(paper)
+    paper.holder = this
+    paper.describe()
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

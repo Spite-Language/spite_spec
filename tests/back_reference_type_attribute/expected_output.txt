@@ -1,0 +1,13 @@
+notes is on disk
+disk has 1
+disk is freed
+notes is freed
+loose is on shelf
+shelf is freed
+loose is freed
+kept is on old shelf
+old shelf is freed
+kept lost its holder
+the drive and the shelves are gone
+kept is freed
+allocations: 91 frees: 91
