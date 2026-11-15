@@ -1,0 +1,22 @@
+var console = Console()
+var names = List<String>()
+
+func ClassInstancesBeside() {
+    load "../class_instances_beside/side"
+    Spite.Class.instances.each(note)
+    Spite.Namespace.instances.each(walk)
+    var front = Front()
+    var shown = front.render()
+    crash not shown
+    var joined = names.join(" ")
+    console.print(joined)
+}
+
+func note(part: Spite.Class) {
+    names.append(part.name_with_namespaces)
+}
+
+func walk(space: Spite.Namespace) {
+    names.append(space.name)
+    space.classes.each(note)
+}
