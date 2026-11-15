@@ -1,0 +1,9 @@
+var job: Spite.Function<Integer>
+
+func Chore(starting_job: Spite.Function<Integer>) {
+    job = starting_job
+}
+
+func name(): String {
+    return "chore"
+}

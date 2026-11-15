@@ -1,0 +1,22 @@
+type Counting {
+    total: Integer
+}
+
+var console = Console()
+
+func AttributeHiddenByAnUncalledCall() {
+    var tally = Tally.Tally(3)
+    var said = tally.name()
+    var basket = Basket<Tally.Tally>(tally)
+    var shown = basket.shown()
+    console.print(said, shown)
+}
+
+func by_a_function(callback: Spite.Function<Integer>, names: List<String>): Boolean {
+    var answer = callback()
+    return answer > names.count()
+}
+
+func by_a_shape(counting: Counting, names: List<String>): Boolean {
+    return counting.total > names.count()
+}

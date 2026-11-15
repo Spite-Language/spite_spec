@@ -1,0 +1,18 @@
+generic $item_type
+
+var items = List<$item_type>()
+var held: $item_type
+
+func Basket(starting_held: $item_type) {
+    held = starting_held
+    items.append(held)
+}
+
+func shown(): Integer {
+    fallback $item_type != Tally.Tally
+    return items.count()
+}
+
+func size(): Integer {
+    return items.count()
+}
