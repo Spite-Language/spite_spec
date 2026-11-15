@@ -1,0 +1,3 @@
+health 10 Monster
+name troll 0
+health troll

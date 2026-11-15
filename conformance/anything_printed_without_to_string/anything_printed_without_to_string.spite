@@ -1,0 +1,9 @@
+var console = Console()
+
+func AnythingPrintedWithoutToString() {
+    var gauge = Gauge()
+    var found = gauge.attributes["level"]
+    crash found
+    console.print(found.value)
+    console.print(found.owner)
+}

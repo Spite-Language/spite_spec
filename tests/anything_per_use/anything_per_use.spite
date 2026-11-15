@@ -1,0 +1,16 @@
+var console = Console()
+
+func AnythingPerUse() {
+    var gauge = Gauge()
+    var found = gauge.attributes["level"]
+    crash found
+    console.print(found.value)
+    var named = gauge.attributes["label"]
+    crash named
+    console.print(named.name, named.value)
+    var owner = found.owner
+    console.print(owner.class)
+    var number = 4
+    var kept = Holder(number)
+    console.print(kept.held)
+}

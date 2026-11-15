@@ -1,0 +1,9 @@
+var console = Console()
+
+func DeclarationOfAnotherClass() {
+    var health = Monster.attributes["health"]
+    var rat = Rat()
+    var bound = rat.attributes[health]
+    var troll = Monster()
+    console.print(bound.name, troll.health)
+}

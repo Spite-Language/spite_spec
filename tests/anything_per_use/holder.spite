@@ -1,0 +1,9 @@
+var _held: Anything?
+
+func Holder(starting_held: Anything?) {
+    _held = starting_held
+}
+
+func get_held(): Anything? {
+    return _held
+}

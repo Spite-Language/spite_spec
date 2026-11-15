@@ -1,0 +1,16 @@
+var console = Console()
+
+func InstanceIndexedByADeclaration() {
+    var troll = Monster()
+    var health = Monster.attributes["health"]
+    var bound = troll.attributes[health]
+    console.print(bound.name, bound.value, bound.owner.class)
+    var name_declaration = Monster.attributes["name"]
+    var named = troll.attributes[name_declaration]
+    console.print(named.name, named.value, named.declaration.index)
+    var declaration = Monster.attributes["health"]
+    var other = Monster.attributes["name"]
+    var by_name = troll.attributes[other.name]
+    crash by_name
+    console.print(declaration.name, by_name.value)
+}

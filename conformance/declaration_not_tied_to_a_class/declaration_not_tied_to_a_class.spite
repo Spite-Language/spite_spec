@@ -1,0 +1,13 @@
+var console = Console()
+
+func DeclarationNotTiedToAClass() {
+    var troll = Monster()
+    var picked = Monster.attributes["health"]
+    var index = 0
+    while index < troll.health {
+        picked = Monster.attributes["name"]
+        index = index + 1
+    }
+    var bound = troll.attributes[picked]
+    console.print(bound.name)
+}

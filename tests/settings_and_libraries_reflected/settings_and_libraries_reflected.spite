@@ -22,5 +22,8 @@ func SettingsAndLibrariesReflected() {
 
 func text_of(attribute: Spite.Attribute): String {
     fallback attribute.value
-    return attribute.value.to_string()
+    if attribute.value.class == Boolean {
+        return attribute.value.to_string()
+    }
+    return ""
 }

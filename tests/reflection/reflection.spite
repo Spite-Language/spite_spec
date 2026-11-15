@@ -23,10 +23,13 @@ func console_class_name(): String {
 }
 
 func show(attribute: Spite.Attribute) {
-    console.print(attribute.name, attribute.class, "{text_of(attribute)}|")
+    var text = text_of(attribute)
+    console.print(attribute.name, attribute.class, text)
 }
 
 func text_of(attribute: Spite.Attribute): String {
-    fallback attribute.value
-    return attribute.value.to_string()
+    if attribute.value {
+        return "{attribute.value}|"
+    }
+    return "|"
 }
