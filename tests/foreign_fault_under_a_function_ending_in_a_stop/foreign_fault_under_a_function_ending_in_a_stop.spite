@@ -1,0 +1,10 @@
+var console = Console()
+var fixture = DynamicLibrary("tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll", 'identity', "")
+var adder = Adder()
+var adding = ForeignCallback(adder.add_one, 'no_context')
+
+func ForeignFaultUnderAFunctionEndingInAStop() {
+    console.print("before the fault")
+    var answer = fixture.call_back_guarded(adding.address)
+    console.print("never printed", answer)
+}
