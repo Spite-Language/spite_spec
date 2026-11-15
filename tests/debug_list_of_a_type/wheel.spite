@@ -1,0 +1,5 @@
+var turns = 0
+
+func mount() {
+    turns = turns + 1
+}

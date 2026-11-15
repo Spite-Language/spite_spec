@@ -1,0 +1,3 @@
+func made(page: Page): Kit.Host<Page> {
+    return Kit.Host("tree", page)
+}

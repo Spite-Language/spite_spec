@@ -1,0 +1,19 @@
+type Driver {
+    mount: Spite.Function<Nothing>
+}
+
+var console = Console()
+
+func DebugListOfAType() {
+    var drivers = List<Driver>()
+    var holder = Holder()
+    var wheel = Wheel()
+    drivers.append(holder)
+    drivers.append(wheel)
+    wheel.mount()
+    console.debug(drivers)
+    var first = drivers[0]
+    crash first
+    var shown = first.to_debug()
+    console.print(shown)
+}

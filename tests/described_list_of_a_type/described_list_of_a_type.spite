@@ -1,0 +1,5 @@
+func DescribedListOfAType() {
+    load "kit"
+    var tester = Test(Tests)
+    tester.run()
+}

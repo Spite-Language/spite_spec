@@ -1,0 +1,5 @@
+var mounted = 0
+
+func mount() {
+    mounted = mounted + 1
+}

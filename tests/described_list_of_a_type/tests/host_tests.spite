@@ -1,0 +1,8 @@
+var maker = Maker()
+
+func test_a_host_binds_components() {
+    var page = Page()
+    var host = maker.made(page)
+    var bound = host.drivers.count()
+    crash bound == 1
+}
