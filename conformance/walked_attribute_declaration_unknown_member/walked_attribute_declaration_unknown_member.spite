@@ -1,0 +1,9 @@
+var console = Console()
+
+func WalkedAttributeDeclarationUnknownMember() {
+    Price.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    console.print(attribute.made_up_member)
+}

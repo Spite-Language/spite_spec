@@ -1,0 +1,1 @@
+conformance/walked_attribute_unknown_member/walked_attribute_unknown_member.spite:10: error: a Spite.Attribute has no attribute or function 'made_up' (in WalkedAttributeUnknownMember.show)
