@@ -1,0 +1,16 @@
+var console = Console()
+
+func AttributeWrittenAtRunTimeMisfit() {
+    var meter = Meter()
+    var gadget = Gadget()
+    console.print("power", gadget.power)
+    write_whole(meter, gadget)
+    console.print("whole", meter.whole)
+}
+
+func write_whole(held: Anything, given: Anything) {
+    var attributes = held.attributes
+    var whole = attributes["whole"]
+    crash whole
+    whole.value = given
+}

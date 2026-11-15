@@ -1,0 +1,4 @@
+go shared
+none plain
+spare cleared
+allocations: ... frees: ...

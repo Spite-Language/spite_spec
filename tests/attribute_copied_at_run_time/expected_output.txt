@@ -1,0 +1,8 @@
+go 3 shiny kept
+spare extra
+pressed
+same part shared
+spare now empty
+on_press now empty
+spare cleared
+on_press cleared

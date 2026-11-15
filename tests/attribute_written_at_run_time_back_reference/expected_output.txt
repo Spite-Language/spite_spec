@@ -1,0 +1,5 @@
+grace now names ada
+...is freed
+...is freed
+the family is gone
+allocations: ... frees: ...
