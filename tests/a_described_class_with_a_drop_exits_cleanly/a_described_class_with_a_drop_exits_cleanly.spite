@@ -1,0 +1,4 @@
+func ADescribedClassWithADropExitsCleanly() {
+    var tester = Test(Tests)
+    tester.run()
+}

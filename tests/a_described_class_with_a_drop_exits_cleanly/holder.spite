@@ -1,0 +1,6 @@
+var block: Block? = null
+
+func hold() {
+    var made = Block()
+    block = made
+}

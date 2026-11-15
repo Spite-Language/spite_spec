@@ -1,0 +1,6 @@
+var holder = Holder()
+
+func test_a_holder_holds() {
+    holder.hold()
+    crash holder.block
+}

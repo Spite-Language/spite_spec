@@ -1,0 +1,12 @@
+var console = Console()
+var marker: Long
+
+func Block() {
+    marker = 5
+}
+
+func drop() {
+    if marker != 5 {
+        console.print("dropped a block its constructor never ran on")
+    }
+}
