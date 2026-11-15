@@ -1,0 +1,12 @@
+var console = Console()
+var total = 0
+
+func TypeArgumentReadsAParameter() {
+    Spite.Class.instances.each(take)
+    console.print(total)
+}
+
+func take(part: Spite.Class) {
+    var box = Box<part>()
+    total = total + box.count
+}
