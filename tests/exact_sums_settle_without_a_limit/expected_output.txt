@@ -1,0 +1,1 @@
+sum 67840 drift 1 halves 50000

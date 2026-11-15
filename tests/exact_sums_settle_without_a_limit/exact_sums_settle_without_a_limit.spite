@@ -1,0 +1,48 @@
+var console = Console()
+var _filled = 4096
+var _steps = 64
+var _turns = 100000
+
+func ExactSumsSettleWithoutALimit() {
+    var values = List<Float>()
+    var index = 0
+    while index < _filled {
+        var step: Float = index % _steps
+        values.append(step * 0.25)
+        index = index + 1
+    }
+    var total = scaled_sum(values, 3.0)
+    var drift = drifted(0.5)
+    var counted = counted_halves(_turns)
+    console.print("sum", total, "drift", drift, "halves", counted)
+}
+
+func scaled_sum(values: List<Float>, shift: Float): Float {
+    var total: Float = 0.0
+    var index = 0
+    while index < values.count() {
+        total = total + (values[index] + shift) * 1.5 + 0.25
+        index = index + 1
+    }
+    return total
+}
+
+func drifted(step: Double): Double {
+    var drift: Double = 0.0
+    var turns = 0
+    while turns < _turns {
+        drift = drift * 0.5 + step
+        turns = turns + 1
+    }
+    return drift
+}
+
+func counted_halves(turns: Integer): Double {
+    var half: Double = 0.0
+    var count: Long = 0
+    while count < turns {
+        half = half + 0.5
+        count = count + 1
+    }
+    return half
+}
