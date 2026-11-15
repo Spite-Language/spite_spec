@@ -1,0 +1,15 @@
+var cost: Integer
+
+func Price(starting_cost: Integer) {
+    cost = starting_cost
+}
+
+func Price(from: String): Price? {
+    var read: Integer? = from
+    fallback read
+    return Price(read)
+}
+
+func equals(other: Price): Boolean {
+    return cost == other.cost
+}

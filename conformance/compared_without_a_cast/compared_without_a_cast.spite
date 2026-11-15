@@ -1,0 +1,17 @@
+var console = Console()
+var _starting_cost = 10
+
+func ComparedWithoutACast() {
+    var price = Price(_starting_cost)
+    console.print("cost", price.cost)
+    if price == "cost" {
+        console.print("equal")
+    }
+    differs(price)
+}
+
+func differs(price: Price) {
+    if price != "cost" {
+        console.print("different")
+    }
+}

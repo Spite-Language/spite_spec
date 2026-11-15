@@ -1,0 +1,9 @@
+var label: String
+
+func Tag(starting_label: String) {
+    label = starting_label
+}
+
+func to_string(): String {
+    return label
+}

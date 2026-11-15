@@ -1,0 +1,5 @@
+var cost: Integer
+
+func Price(starting_cost: Integer) {
+    cost = starting_cost
+}

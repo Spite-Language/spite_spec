@@ -1,0 +1,3 @@
+cast price true false false true
+tag as text true false false
+attribute as text true false
