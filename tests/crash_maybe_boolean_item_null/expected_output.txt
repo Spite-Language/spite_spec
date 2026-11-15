@@ -1,2 +1,2 @@
-spite: the program stopped at tests/crash_maybe_boolean_item_null/crash_maybe_boolean_item_null.spite:7 in CrashMaybeBooleanItemNull.CrashMaybeBooleanItemNull, site 362a5da3 (flags[1] is null)
-spite.frame	tests/crash_maybe_boolean_item_null/crash_maybe_boolean_item_null.spite:7	CrashMaybeBooleanItemNull	CrashMaybeBooleanItemNull
+spite: the program stopped at crash_maybe_boolean_item_null/crash_maybe_boolean_item_null.spite:7 in CrashMaybeBooleanItemNull.CrashMaybeBooleanItemNull, site 362a5da3 (flags[1] is null)
+spite.frame	crash_maybe_boolean_item_null/crash_maybe_boolean_item_null.spite:7	CrashMaybeBooleanItemNull	CrashMaybeBooleanItemNull

@@ -1,4 +1,4 @@
-spite: the program stopped at tests/crash_report_deep_stack/crash_report_deep_stack.spite:9 in CrashReportDeepStack.descend, site bd743e4a (depth=0)
-spite.frame	tests/crash_report_deep_stack/crash_report_deep_stack.spite:9	CrashReportDeepStack	descend
-spite.frame	tests/crash_report_deep_stack/crash_report_deep_stack.spite:12	CrashReportDeepStack	descend	repeated=20
-spite.frame	tests/crash_report_deep_stack/crash_report_deep_stack.spite:4	CrashReportDeepStack	CrashReportDeepStack
+spite: the program stopped at crash_report_deep_stack/crash_report_deep_stack.spite:9 in CrashReportDeepStack.descend, site bd743e4a (depth=0)
+spite.frame	crash_report_deep_stack/crash_report_deep_stack.spite:9	CrashReportDeepStack	descend
+spite.frame	crash_report_deep_stack/crash_report_deep_stack.spite:12	CrashReportDeepStack	descend	repeated=20
+spite.frame	crash_report_deep_stack/crash_report_deep_stack.spite:4	CrashReportDeepStack	CrashReportDeepStack

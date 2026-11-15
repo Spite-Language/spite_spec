@@ -1,0 +1,13 @@
+var count = 2
+var labels = Dictionary<String, String>()
+
+func label_of(name: String): String? {
+    var found = labels[name]
+    fallback found
+    return found
+}
+
+func take(wanted: Integer) {
+    crash wanted <= count
+    count = count - wanted
+}

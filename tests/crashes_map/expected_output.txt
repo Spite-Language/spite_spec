@@ -1,4 +1,4 @@
 true
 true
-tests/crashes_map/crashes_map.spite	17	5	CrashesMap	positive	fallback-predicate	value > 0	value:Integer@17:14
-tests/crashes_map/crashes_map.spite	33	13	CrashesMap	show	crash	site	site:String?@33:19
+crashes_map/crashes_map.spite	17	5	CrashesMap	positive	fallback-predicate	value > 0	value:Integer@17:14
+crashes_map/crashes_map.spite	33	13	CrashesMap	show	crash	site	site:String?@33:19

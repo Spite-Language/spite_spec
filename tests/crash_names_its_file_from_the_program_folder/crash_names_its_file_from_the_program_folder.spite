@@ -1,0 +1,10 @@
+var console = Console()
+var shelf = Parts.Shelf()
+
+func CrashNamesItsFileFromTheProgramFolder() {
+    console.print("before")
+    var missing = shelf.label_of("tea")
+    console.print(missing)
+    shelf.take(3)
+    console.print("not reached")
+}
