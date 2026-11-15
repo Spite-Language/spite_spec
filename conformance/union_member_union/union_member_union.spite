@@ -1,0 +1,17 @@
+union Outer {
+    Box
+    Inner
+}
+
+union Inner {
+    Box
+    Tag
+}
+
+var console = Console()
+
+func UnionMemberUnion() {
+    var tag = Tag()
+    var outer: Outer = tag
+    console.print(outer.class.name)
+}

@@ -1,0 +1,5 @@
+var width = 1
+
+func grow() {
+    width = width + 1
+}

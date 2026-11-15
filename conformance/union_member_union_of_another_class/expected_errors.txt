@@ -1,0 +1,1 @@
+conformance/union_member_union_of_another_class/union_member_union_of_another_class.spite:3: error: 'Shelf.Stored' cannot be a member of union 'Placed': a union lists classes directly, and 'Shelf.Stored' is a union; list the classes of 'Shelf.Stored' in 'Placed' themselves (in UnionMemberUnionOfAnotherClass.)

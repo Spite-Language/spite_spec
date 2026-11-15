@@ -1,0 +1,10 @@
+union Stored {
+    Box
+    Tag
+}
+
+var console = Console()
+
+func show(stored: Stored) {
+    console.print(stored.class.name)
+}

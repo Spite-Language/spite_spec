@@ -1,0 +1,14 @@
+union Placed {
+    Box
+    Shelf.Stored
+}
+
+var console = Console()
+
+func UnionMemberUnionOfAnotherClass() {
+    var box = Box()
+    var placed: Placed = box
+    console.print(placed.class.name)
+    var shelf = Shelf()
+    shelf.show(box)
+}

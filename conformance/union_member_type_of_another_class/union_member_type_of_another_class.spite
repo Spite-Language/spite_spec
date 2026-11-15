@@ -1,9 +1,4 @@
-union Outer {
-    Box
-    Inner
-}
-
-union Inner {
+union Placed {
     Box
     Shelf.Named
 }
@@ -12,8 +7,8 @@ var console = Console()
 
 func UnionMemberTypeOfAnotherClass() {
     var box = Box()
-    var outer: Outer = box
-    console.print(outer.class.name)
+    var placed: Placed = box
+    console.print(placed.class.name)
     var shelf = Shelf()
     shelf.show(box)
 }

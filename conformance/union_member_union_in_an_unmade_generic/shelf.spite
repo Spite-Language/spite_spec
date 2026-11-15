@@ -1,0 +1,21 @@
+generic $item_type
+
+union Inner {
+    Box
+    Tag
+}
+
+union Outer {
+    Box
+    Inner
+}
+
+var held = List<$item_type>()
+
+func add(item: $item_type) {
+    held.append(item)
+}
+
+func describe(outer: Outer): String {
+    return "outer"
+}
