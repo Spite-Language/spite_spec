@@ -1,0 +1,24 @@
+var console = Console()
+
+func JsxNestedTagsTakeAppendChildren() {
+    var round = 0
+    var total = 0
+    while round < 100 {
+        var panel = built()
+        total = total + panel.items.count()
+        round = round + 1
+    }
+    var last = built()
+    var shown = last.describe()
+    console.print(total, shown)
+}
+
+func built(): Panel {
+    return <Panel title="outer">
+        <Note content="first"/>
+        <Panel title="inner">
+            <Note content="second"/>
+        </Panel>
+        <Note>third</Note>
+    </Panel>
+}
