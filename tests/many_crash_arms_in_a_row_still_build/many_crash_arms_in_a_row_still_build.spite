@@ -1,0 +1,117 @@
+enum Kind {
+    'first'
+    'second'
+    'kind_number_one'
+    'kind_number_two'
+    'kind_number_three'
+    'kind_number_four'
+    'kind_number_five'
+    'kind_number_six'
+    'kind_number_seven'
+    'kind_number_eight'
+    'kind_number_nine'
+    'kind_number_ten'
+    'kind_number_eleven'
+    'kind_number_twelve'
+    'kind_number_thirteen'
+    'kind_number_fourteen'
+    'kind_number_fifteen'
+    'kind_number_sixteen'
+    'kind_number_seventeen'
+    'kind_number_eighteen'
+    'kind_number_nineteen'
+    'kind_number_twenty'
+    'kind_number_twenty_one'
+    'kind_number_twenty_two'
+    'kind_number_twenty_three'
+    'kind_number_twenty_four'
+    'kind_number_twenty_five'
+    'kind_number_twenty_six'
+    'kind_number_twenty_seven'
+    'kind_number_twenty_eight'
+    'kind_number_twenty_nine'
+    'kind_number_thirty'
+    'kind_number_thirty_one'
+    'kind_number_thirty_two'
+    'kind_number_thirty_three'
+    'kind_number_thirty_four'
+    'kind_number_thirty_five'
+    'kind_number_thirty_six'
+    'kind_number_thirty_seven'
+    'kind_number_thirty_eight'
+    'kind_number_thirty_nine'
+    'kind_number_forty'
+    'kind_number_forty_one'
+    'kind_number_forty_two'
+    'kind_number_forty_three'
+    'kind_number_forty_four'
+    'kind_number_forty_five'
+}
+
+var console = Console()
+var program = Program()
+
+func ManyCrashArmsInARowStillBuild() {
+    var written = program.environment("CHOSEN_KIND")
+    var index = 0
+    if written {
+        index = written.length()
+    }
+    var kinds = Kind.values
+    var kind = kinds[index]
+    crash kind
+    var rank = rank_of(kind)
+    console.print(rank)
+}
+
+func rank_of(kind: Kind): Integer {
+    switch kind {
+        'first': return 1
+        'second': return 2
+        'kind_number_one': crash
+        'kind_number_two': crash
+        'kind_number_three': crash
+        'kind_number_four': crash
+        'kind_number_five': crash
+        'kind_number_six': crash
+        'kind_number_seven': crash
+        'kind_number_eight': crash
+        'kind_number_nine': crash
+        'kind_number_ten': crash
+        'kind_number_eleven': crash
+        'kind_number_twelve': crash
+        'kind_number_thirteen': crash
+        'kind_number_fourteen': crash
+        'kind_number_fifteen': crash
+        'kind_number_sixteen': crash
+        'kind_number_seventeen': crash
+        'kind_number_eighteen': crash
+        'kind_number_nineteen': crash
+        'kind_number_twenty': crash
+        'kind_number_twenty_one': crash
+        'kind_number_twenty_two': crash
+        'kind_number_twenty_three': crash
+        'kind_number_twenty_four': crash
+        'kind_number_twenty_five': crash
+        'kind_number_twenty_six': crash
+        'kind_number_twenty_seven': crash
+        'kind_number_twenty_eight': crash
+        'kind_number_twenty_nine': crash
+        'kind_number_thirty': crash
+        'kind_number_thirty_one': crash
+        'kind_number_thirty_two': crash
+        'kind_number_thirty_three': crash
+        'kind_number_thirty_four': crash
+        'kind_number_thirty_five': crash
+        'kind_number_thirty_six': crash
+        'kind_number_thirty_seven': crash
+        'kind_number_thirty_eight': crash
+        'kind_number_thirty_nine': crash
+        'kind_number_forty': crash
+        'kind_number_forty_one': crash
+        'kind_number_forty_two': crash
+        'kind_number_forty_three': crash
+        'kind_number_forty_four': crash
+        'kind_number_forty_five': crash
+    }
+}
