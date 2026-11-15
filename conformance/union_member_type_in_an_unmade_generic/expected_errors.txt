@@ -1,0 +1,1 @@
+conformance/union_member_type_in_an_unmade_generic/shelf.spite:5: error: 'Named' cannot be a member of union 'Placed': a union lists classes, and 'Named' is a type, a shape a class fits; list the classes themselves, or type the parameter 'Named' where any class that fits will do, and a function taking one is copied for each class (in Shelf.)

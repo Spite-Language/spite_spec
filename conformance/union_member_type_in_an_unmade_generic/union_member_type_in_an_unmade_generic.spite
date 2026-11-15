@@ -1,0 +1,5 @@
+var console = Console()
+
+func UnionMemberTypeInAnUnmadeGeneric() {
+    console.print("nothing makes a shelf")
+}

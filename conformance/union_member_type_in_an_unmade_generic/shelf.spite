@@ -1,0 +1,23 @@
+generic $item_type
+
+union Placed {
+    Box
+    Named
+}
+
+type Named {
+    name: String
+}
+
+var held = List<$item_type>()
+
+func add(item: $item_type) {
+    held.append(item)
+}
+
+func describe(placed: Placed): String {
+    switch placed {
+        Box: return "box"
+        Named: return placed.name
+    }
+}

@@ -1,0 +1,13 @@
+union Placed {
+    Box
+    Tag
+    Box
+}
+
+var console = Console()
+
+func UnionMemberListedTwiceAtItsLine() {
+    var box = Box()
+    var placed: Placed = box
+    console.print(placed.class.name)
+}

@@ -1,0 +1,12 @@
+union Placed {
+    Box
+    Nowhere
+}
+
+var console = Console()
+
+func UnionUnknownMemberAtItsLine() {
+    var box = Box()
+    var placed: Placed = box
+    console.print(placed.class.name)
+}

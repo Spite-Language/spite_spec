@@ -1,0 +1,1 @@
+conformance/union_unknown_member_at_its_line/union_unknown_member_at_its_line.spite:3: error: unknown type 'Nowhere' (in UnionUnknownMemberAtItsLine.)

@@ -1,0 +1,1 @@
+conformance/union_member_listed_twice_at_its_line/union_member_listed_twice_at_its_line.spite:4: error: 'Placed' lists 'Box' twice: a union names each member once (in UnionMemberListedTwiceAtItsLine)
