@@ -1,0 +1,25 @@
+var console = Console()
+
+func DeclaredAttributeValueHasItsType() {
+    var recipe = Recipe()
+    var servings = Recipe.attributes["servings"]
+    console.print(recipe.attributes[servings].value)
+    var doubled = recipe.attributes[servings].value + recipe.servings
+    console.print(doubled)
+    var title = Recipe.attributes["title"]
+    var named = recipe.attributes[title].value
+    var shouted = named.upper_case()
+    console.print(shouted)
+    var shelf = Shelf()
+    var box = Shelf.attributes["box"]
+    if shelf.attributes[box].value {
+        console.print("a box")
+    } else {
+        console.print("no box")
+    }
+    recipe.servings = 6
+    recipe.show()
+    var label = Label()
+    var walked = label.walk()
+    console.print(walked)
+}

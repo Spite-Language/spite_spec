@@ -1,0 +1,12 @@
+var console = Console()
+var title = "soup"
+var servings = 4
+
+func show() {
+    var declaration = Recipe.attributes["servings"]
+    console.print(attributes[declaration].value)
+    var other = Recipe.attributes["title"]
+    var named = attributes[other].value
+    var letters = named.length()
+    console.print(letters)
+}

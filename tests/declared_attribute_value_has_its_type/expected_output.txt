@@ -1,0 +1,7 @@
+4
+8
+SOUP
+no box
+6
+4
+[text:jar/4][count:2/4][shown:[text:jar/4][count:2/4]/4]

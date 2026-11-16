@@ -1,0 +1,7 @@
+var console = Console()
+
+func DeclaredAttributeValueUnprintable() {
+    var shelf = Shelf()
+    var box = Shelf.attributes["box"]
+    console.print(shelf.attributes[box].value)
+}

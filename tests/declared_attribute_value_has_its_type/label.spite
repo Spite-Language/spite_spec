@@ -1,0 +1,15 @@
+var text = "jar"
+var count = 2
+var shown = ""
+
+func walk(): String {
+    shown = ""
+    Label.attributes.each(gather)
+    return shown
+}
+
+func gather(attribute: Spite.AttributeDeclaration) {
+    var counted = Label.attributes["count"]
+    var more = attributes[counted].value + count
+    shown = "{shown}[{attribute.name}:{attributes[attribute].value}/{more}]"
+}
