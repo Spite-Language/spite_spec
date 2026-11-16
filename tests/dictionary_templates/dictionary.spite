@@ -4,7 +4,7 @@ func highest_member(member: Spite.AttributeDeclaration): member.class {
     var index = 0
     while index < listed.count() {
         var item = listed[index]
-        var value = item.attributes[member]
+        var value = item.attributes[member].value
         if value > highest {
             highest = value
         }

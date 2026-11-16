@@ -8,5 +8,5 @@ func run(mover: Mover, matcher: Matcher) {
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, matcher: Matcher) {
     crash matcher.rows[attribute.index]
-    row.attributes[attribute] = Column<attribute.class>().at(matcher.rows[attribute.index])
+    row.attributes[attribute].value = Column<attribute.class>().at(matcher.rows[attribute.index])
 }

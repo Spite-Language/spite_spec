@@ -15,9 +15,9 @@ func describe_one(attribute: Spite.AttributeDeclaration) {
 }
 
 func reset_attribute(attribute: Spite.AttributeDeclaration, value: $described_type, fresh: $described_type) {
-    value.attributes[attribute] = fresh.attributes[attribute]
+    value.attributes[attribute].value = fresh.attributes[attribute].value
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, value: $described_type): String {
-    return "{attribute.name} = {value.attributes[attribute]}"
+    return "{attribute.name} = {value.attributes[attribute].value}"
 }

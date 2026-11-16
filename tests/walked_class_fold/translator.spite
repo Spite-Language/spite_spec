@@ -9,7 +9,7 @@ func translate(value: $component_type) {
 
 func translate_attribute(attribute: Spite.AttributeDeclaration, value: $component_type) {
     if attribute.class == Entity {
-        var held = value.attributes[attribute]
+        var held = value.attributes[attribute].value
         held.id = held.id + offset
     }
     if attribute.class != Entity {

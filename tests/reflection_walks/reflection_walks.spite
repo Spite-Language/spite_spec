@@ -46,7 +46,7 @@ func add_line(attribute: Spite.Attribute) {
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
-    console.print("template", attribute.name, monster.attributes[attribute])
+    console.print("template", attribute.name, monster.attributes[attribute].value)
 }
 
 func walks_each(function: Spite.FunctionDeclaration): Boolean {

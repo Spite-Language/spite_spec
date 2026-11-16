@@ -13,6 +13,6 @@ func run(mover: Mover) {
 }
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, index: Integer) {
-    crash world.attributes[attribute][index]
-    row.attributes[attribute] = world.attributes[attribute][index]
+    crash world.attributes[attribute].value[index]
+    row.attributes[attribute].value = world.attributes[attribute].value[index]
 }

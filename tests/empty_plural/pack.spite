@@ -5,7 +5,7 @@ func write(value: $value_type, lines: List<String>) {
 }
 
 func write_attribute(attribute: Spite.AttributeDeclaration, value: $value_type, lines: List<String>) {
-    lines.append("{attribute.name}={value.attributes[attribute]}")
+    lines.append("{attribute.name}={value.attributes[attribute].value}")
 }
 
 func read_into(value: $value_type, lines: List<String>) {
@@ -13,5 +13,5 @@ func read_into(value: $value_type, lines: List<String>) {
 }
 
 func read_attribute(attribute: Spite.AttributeDeclaration, value: $value_type, lines: List<String>) {
-    value.attributes[attribute] = lines.count()
+    value.attributes[attribute].value = lines.count()
 }

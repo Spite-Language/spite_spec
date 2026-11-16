@@ -30,5 +30,5 @@ func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entit
     var column = Column<attribute.class>()
     var dense = column.dense_index(entity)
     crash column.values[dense]
-    row.attributes[attribute] = column.values[dense]
+    row.attributes[attribute].value = column.values[dense]
 }

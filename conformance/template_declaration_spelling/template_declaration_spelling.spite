@@ -6,5 +6,5 @@ func TemplateDeclarationSpelling() {
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration<Monster>, monster: Monster) {
-    console.print(attribute.name, monster.attributes[attribute])
+    console.print(attribute.name, monster.attributes[attribute].value)
 }

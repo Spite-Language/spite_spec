@@ -1,0 +1,1 @@
+conformance/walked_attribute_replaced/walked_attribute_replaced.spite:12: error: 'copy.attributes[attribute]' is a Spite.Attribute, and an instance's attributes are never replaced: write its field through it, 'copy.attributes[attribute].value = ...' (in WalkedAttributeReplaced.copied)

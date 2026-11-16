@@ -10,5 +10,5 @@ func fill() {
 }
 
 func get_attribute(attribute: Spite.AttributeDeclaration): attribute.class {
-    return attributes[attribute]
+    return attributes[attribute].value
 }

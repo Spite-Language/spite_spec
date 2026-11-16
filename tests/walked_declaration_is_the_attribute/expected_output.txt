@@ -1,0 +1,7 @@
+cost 7 Price
+label jam Price
+7 jam
+cost 8
+doubled 16
+declared cost Integer
+declared label String

@@ -40,12 +40,12 @@ func double(attribute: Spite.Attribute) {
 
 func reset_attribute(attribute: Spite.AttributeDeclaration, gadget: Gadget) {
     if attribute.class == Integer {
-        gadget.attributes[attribute] = 1
+        gadget.attributes[attribute].value = 1
     }
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, gadget: Gadget) {
     if attribute.class == Integer {
-        console.print("walked", attribute.name, gadget.attributes[attribute])
+        console.print("walked", attribute.name, gadget.attributes[attribute].value)
     }
 }

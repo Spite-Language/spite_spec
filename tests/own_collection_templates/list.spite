@@ -4,7 +4,7 @@ func best_member(member: Spite.AttributeDeclaration): List<$element_type> {
     while index < count() {
         var item = get_at(index)
         crash item
-        if item.attributes[member] > 2 {
+        if item.attributes[member].value > 2 {
             best.append(item)
         }
         index = index + 1
@@ -19,7 +19,7 @@ func average_member(member: Spite.AttributeDeclaration): Float? {
     while index < count() {
         var item = get_at(index)
         crash item
-        total = total + item.attributes[member]
+        total = total + item.attributes[member].value
         index = index + 1
     }
     var item_count = count()
@@ -32,8 +32,8 @@ func largest_member(member: Spite.AttributeDeclaration): member.class {
     while index < count() {
         var item = get_at(index)
         crash item
-        if item.attributes[member] > largest {
-            largest = item.attributes[member]
+        if item.attributes[member].value > largest {
+            largest = item.attributes[member].value
         }
         index = index + 1
     }

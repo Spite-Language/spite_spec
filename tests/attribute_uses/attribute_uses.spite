@@ -15,7 +15,7 @@ func AttributeUses() {
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, shown: Lamp, lines: List<String>) {
-    lines.append("{attribute.name} = {shown.attributes[attribute]}")
+    lines.append("{attribute.name} = {shown.attributes[attribute].value}")
 }
 
 func text_of(attribute: Spite.Attribute): String {

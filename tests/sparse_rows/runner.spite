@@ -18,19 +18,19 @@ func run(mover: Mover) {
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {
     if attribute.class == Entity {
-        row.attributes[attribute] = Entity(entity)
+        row.attributes[attribute].value = Entity(entity)
     } else if attribute.class.fits_vector() and attribute.class != Entity {
         var column = Column<attribute.class>()
         var dense = column.set.dense_index(entity)
         missing = missing or dense < 0
         fallback dense >= 0
         crash column.values[dense]
-        row.attributes[attribute] = column.values[dense]
+        row.attributes[attribute].value = column.values[dense]
     } else {
         var references = ReferenceColumn<attribute.class>()
         var dense = references.set.dense_index(entity)
         missing = missing or dense < 0
         fallback dense >= 0
-        row.attributes[attribute] = references.at(dense)
+        row.attributes[attribute].value = references.at(dense)
     }
 }

@@ -10,5 +10,5 @@ func fill(index: Integer) {
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, index: Integer) {
     crash Store<attribute.class>().values[index]
-    row.attributes[attribute] = Store<attribute.class>().values[index]
+    row.attributes[attribute].value = Store<attribute.class>().values[index]
 }

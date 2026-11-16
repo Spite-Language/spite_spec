@@ -1,0 +1,13 @@
+var console = Console()
+var price = Price()
+var copy = Price()
+
+func WalkedAttributeReplaced() {
+    price.cost = 7
+    Price.attributes.each(copied)
+    console.print(copy.cost, copy.label, price.doubled())
+}
+
+func copied(attribute: Spite.AttributeDeclaration) {
+    copy.attributes[attribute] = price.attributes[attribute]
+}

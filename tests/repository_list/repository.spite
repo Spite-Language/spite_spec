@@ -9,9 +9,9 @@ func Repository(new_name: String, new_stars: Integer, new_active: Boolean) {
 }
 
 func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {
-    attributes[attribute] = value
+    attributes[attribute].value = value
 }
 
 func get_attribute(attribute: Spite.AttributeDeclaration): attribute.class {
-    return attributes[attribute]
+    return attributes[attribute].value
 }

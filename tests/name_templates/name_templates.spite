@@ -9,9 +9,9 @@ func NameTemplates() {
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, label: Label) {
-    console.print(attribute.name, "is", label.attributes[attribute])
+    console.print(attribute.name, "is", label.attributes[attribute].value)
 }
 
 func double_attribute(attribute: Spite.AttributeDeclaration, label: Label) {
-    label.attributes[attribute] = label.attributes[attribute] * 2
+    label.attributes[attribute].value = label.attributes[attribute].value * 2
 }

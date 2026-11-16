@@ -22,5 +22,5 @@ func describe(prefix: String, times: Integer): String {
 }
 
 func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {
-    attributes[attribute] = value
+    attributes[attribute].value = value
 }

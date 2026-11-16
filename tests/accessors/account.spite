@@ -20,6 +20,6 @@ func get_owner(): String {
 }
 
 func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {
-    attributes[attribute] = value
+    attributes[attribute].value = value
     history.append("set {attribute.name}")
 }

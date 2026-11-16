@@ -1,0 +1,1 @@
+conformance/anything_hole_without_to_string/shelf.spite:8: error: 'Crate' reaches this Anything and has no function 'to_string': match the value first against a class or a type that has one (in Shelf.label)

@@ -1,0 +1,12 @@
+var console = Console()
+
+func WalkedFunctionHasNoAttribute() {
+    var price = Price()
+    show_doubled(price)
+    console.print(price.cost, price.label)
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, given: Price) {
+    var bound = given.attributes[attribute]
+    console.print(bound.name)
+}

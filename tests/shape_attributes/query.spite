@@ -9,9 +9,9 @@ func fill(row: $row_type, store: Store) {
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, store: Store) {
     var kind = attribute.class.name
     console.print("filling {attribute.name} with a {kind}")
-    row.attributes[attribute] = store.attributes[attribute]
+    row.attributes[attribute].value = store.attributes[attribute].value
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, row: $row_type): String {
-    return "{attribute.name}: {row.attributes[attribute]}"
+    return "{attribute.name}: {row.attributes[attribute].value}"
 }

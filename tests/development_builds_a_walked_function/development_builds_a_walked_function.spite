@@ -7,7 +7,7 @@ func DevelopmentBuildsAWalkedFunction() {
 
 func show(attribute: Spite.AttributeDeclaration) {
     if attribute.class == Boolean {
-        shown(attribute.name, lamp.attributes[attribute])
+        shown(attribute.name, lamp.attributes[attribute].value)
     }
 }
 

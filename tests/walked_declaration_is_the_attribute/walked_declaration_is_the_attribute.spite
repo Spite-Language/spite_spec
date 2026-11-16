@@ -1,0 +1,36 @@
+var console = Console()
+var price = Price()
+var copy = Price()
+
+func WalkedDeclarationIsTheAttribute() {
+    price.cost = 7
+    price.label = "jam"
+    Price.attributes.each(show)
+    Price.attributes.each(copied)
+    console.print(copy.cost, copy.label)
+    raise_cost(price)
+    show_doubled(price)
+    price.attributes.each(declared)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var bound = price.attributes[attribute]
+    console.print(bound.name, bound.value, bound.owner.class)
+}
+
+func copied(attribute: Spite.AttributeDeclaration) {
+    copy.attributes[attribute].value = price.attributes[attribute].value
+}
+
+func raise_attribute(attribute: Spite.AttributeDeclaration, given: Price) {
+    given.attributes[attribute].value = given.attributes[attribute].value + 1
+    console.print(attribute.name, given[attribute])
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, given: Price) {
+    console.print(attribute.name, given.attributes[attribute].value)
+}
+
+func declared(attribute: Spite.AttributeDeclaration) {
+    console.print("declared", attribute.name, attribute.class)
+}

@@ -3,7 +3,7 @@ func total_member(member: Symbol<$element_type>): Integer {
     var index = 0
     while index < item_count {
         var item = read_item(index)
-        total = total + item.attributes[member]
+        total = total + item.attributes[member].value
         index = index + 1
     }
     return total

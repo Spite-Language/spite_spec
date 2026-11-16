@@ -102,7 +102,7 @@ func fill_attribute(attribute: Spite.AttributeDeclaration, row: Pair, entity: In
     cursor = cursor + 1
     crash points[position]
     var source = points[position]
-    row.attributes[attribute] = picked(source, entity)
+    row.attributes[attribute].value = picked(source, entity)
 }
 
 func picked(source: Point, entity: Integer): Point {

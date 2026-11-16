@@ -13,6 +13,6 @@ func show(attribute: Spite.AttributeDeclaration) {
     var value = _values.last()
     crash value
     var debug = Shown<attribute.class>()
-    var shown = debug.text(value.attributes[attribute])
+    var shown = debug.text(value.attributes[attribute].value)
     console.print(attribute.name, shown)
 }

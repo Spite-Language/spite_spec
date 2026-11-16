@@ -1,0 +1,9 @@
+var _held: Anything
+
+func Shelf(starting_held: Anything) {
+    _held = starting_held
+}
+
+func label(): String {
+    return "holds {_held}"
+}

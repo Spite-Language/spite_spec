@@ -28,8 +28,14 @@ func show(attribute: Spite.Attribute) {
 }
 
 func text_of(attribute: Spite.Attribute): String {
-    if attribute.value {
-        return "{attribute.value}|"
+    if not attribute.value {
+        return "|"
     }
-    return "|"
+    var shown = attribute.value.to_debug()
+    if attribute.value.class == String {
+        shown = attribute.value
+    } else {
+        shown = shown.replace("'", "")
+    }
+    return "{shown}|"
 }

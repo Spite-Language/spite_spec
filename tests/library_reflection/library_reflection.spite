@@ -7,6 +7,6 @@ func LibraryReflection() {
 
 func show_attribute(attribute: Spite.AttributeDeclaration, holder: Holder) {
     var reader = Reader<attribute.class>()
-    var text = reader.name_of(holder.attributes[attribute])
+    var text = reader.name_of(holder.attributes[attribute].value)
     console.print(attribute.name, text)
 }

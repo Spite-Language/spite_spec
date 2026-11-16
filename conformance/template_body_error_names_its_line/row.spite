@@ -3,7 +3,7 @@ generic $row_type
 var doubled = List<Integer>()
 
 func double_attribute(attribute: Spite.AttributeDeclaration, value: $row_type) {
-    var twice = value.attributes[attribute] * 2
+    var twice = value.attributes[attribute].value * 2
     doubled.append(twice)
 }
 

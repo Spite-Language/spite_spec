@@ -17,13 +17,13 @@ func run(mover: Mover, entity_count: Integer) {
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {
     if attribute.class == Entity {
-        row.attributes[attribute] = Entity(entity)
+        row.attributes[attribute].value = Entity(entity)
     } else {
         var column = Column<attribute.class>()
         var dense = column.dense_index(entity)
         missing = missing or dense < 0
         fallback dense >= 0
         crash column.values[dense]
-        row.attributes[attribute] = column.values[dense]
+        row.attributes[attribute].value = column.values[dense]
     }
 }

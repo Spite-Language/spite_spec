@@ -1,0 +1,1 @@
+conformance/walked_function_has_no_attribute/walked_function_has_no_attribute.spite:10: error: 'given.attributes[attribute]' stands for 'doubled', a function of Price, and a function has no Spite.Attribute: read 'given.attributes[attribute].value', which calls it (in WalkedFunctionHasNoAttribute.show_doubled)

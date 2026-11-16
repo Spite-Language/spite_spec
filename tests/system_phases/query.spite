@@ -26,7 +26,7 @@ func take(entity: Integer) {
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, entity: Integer) {
     var store = Store<attribute.class>()
     if store.has(entity) {
-        row.attributes[attribute] = store.of(entity)
+        row.attributes[attribute].value = store.of(entity)
     } else {
         matched = false
     }

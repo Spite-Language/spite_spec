@@ -1,0 +1,6 @@
+var cost = 3
+var label = "tea"
+
+func doubled(): Integer {
+    return cost * 2
+}

@@ -8,15 +8,15 @@ func Person(starting_name: String, starting_age: Integer) {
 }
 
 func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {
-    attributes[attribute] = value
+    attributes[attribute].value = value
 }
 
 func get_attribute(attribute: Spite.AttributeDeclaration): attribute.class {
-    return attributes[attribute]
+    return attributes[attribute].value
 }
 
 func describe_attribute(attribute: Spite.AttributeDeclaration): String {
-    return "{attribute.name} is {attributes[attribute]}"
+    return "{attribute.name} is {attributes[attribute].value}"
 }
 
 func set_name(new_name: String) {

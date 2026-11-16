@@ -1,6 +1,6 @@
 var console = Console()
 
-func ReflectionAttributeToDeclaration() {
+func InstanceWalkOfDeclarations() {
     var monster = Monster()
     console.print(monster.health)
     monster.attributes.each(declared)

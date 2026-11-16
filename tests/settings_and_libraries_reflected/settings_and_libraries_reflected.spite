@@ -21,5 +21,7 @@ func SettingsAndLibrariesReflected() {
 }
 
 func text_of(attribute: Spite.Attribute): String {
-    return "{attribute.name} {attribute.value}"
+    crash attribute.value
+    var shown = attribute.value.to_debug()
+    return "{attribute.name} {shown}"
 }

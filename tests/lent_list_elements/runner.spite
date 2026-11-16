@@ -22,9 +22,9 @@ func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, rows:
         crash rows[attribute.index]
         var stored_row = rows[attribute.index]
         crash Column<attribute.class>().values[stored_row]
-        row.attributes[attribute] = Column<attribute.class>().values[stored_row]
+        row.attributes[attribute].value = Column<attribute.class>().values[stored_row]
     } else {
         crash rows[attribute.index]
-        row.attributes[attribute] = Column<attribute.class>().at(rows[attribute.index])
+        row.attributes[attribute].value = Column<attribute.class>().at(rows[attribute.index])
     }
 }
