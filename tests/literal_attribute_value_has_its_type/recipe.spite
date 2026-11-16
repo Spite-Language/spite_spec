@@ -1,0 +1,9 @@
+var console = Console()
+var title = "soup"
+var servings = 4
+
+func show() {
+    crash attributes["servings"]
+    var more = attributes["servings"].value + servings
+    console.print(more)
+}

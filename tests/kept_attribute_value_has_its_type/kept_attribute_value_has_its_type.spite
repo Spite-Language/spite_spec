@@ -1,0 +1,23 @@
+var console = Console()
+
+func KeptAttributeValueHasItsType() {
+    var recipe = Recipe()
+    var servings = Recipe.attributes["servings"]
+    var bound = recipe.attributes[servings]
+    recipe.servings = 6
+    console.print(bound.value)
+    var doubled = bound.value + recipe.servings
+    console.print(doubled)
+    var named = recipe.attributes["title"]
+    crash named
+    var shouted = named.value.upper_case()
+    console.print(shouted)
+    var shelf = Shelf()
+    var box = shelf.attributes["box"]
+    crash box
+    if box.value {
+        console.print("a box")
+    } else {
+        console.print("no box")
+    }
+}

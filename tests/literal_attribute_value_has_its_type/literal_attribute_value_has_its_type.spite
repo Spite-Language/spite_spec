@@ -1,0 +1,26 @@
+var console = Console()
+
+func LiteralAttributeValueHasItsType() {
+    var recipe = Recipe()
+    crash recipe.attributes["servings"]
+    console.print(recipe.attributes["servings"].value)
+    var doubled = recipe.attributes["servings"].value + recipe.servings
+    console.print(doubled)
+    if recipe.attributes["title"] {
+        var shouted = recipe.attributes["title"].value.upper_case()
+        console.print(shouted)
+    }
+    var shelf = Shelf()
+    crash shelf.attributes["box"]
+    if shelf.attributes["box"].value {
+        console.print("a box")
+    } else {
+        console.print("no box")
+    }
+    if recipe.attributes["missing"] {
+        console.print("found")
+    } else {
+        console.print("missing")
+    }
+    recipe.show()
+}
