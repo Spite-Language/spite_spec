@@ -1,0 +1,7 @@
+var weight: Integer
+var label: Integer
+
+func Tag(given_weight: Integer) {
+    weight = given_weight
+    label = given_weight
+}

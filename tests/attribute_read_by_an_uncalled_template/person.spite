@@ -1,0 +1,5 @@
+var name: String
+
+func Person(given_name: String) {
+    name = given_name
+}

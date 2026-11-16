@@ -1,0 +1,17 @@
+generic $item_type
+
+var items = List<$item_type>()
+
+func add(item: $item_type) {
+    items.append(item)
+}
+
+func size(): Integer {
+    return items.count()
+}
+
+func first_label(): Integer {
+    var first = items.first()
+    crash first
+    return first.label
+}

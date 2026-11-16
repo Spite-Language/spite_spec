@@ -1,0 +1,10 @@
+var console = Console()
+
+func AttributeHiddenByAProgramTemplate() {
+    var shelf = Shelf<Box>()
+    var box = Box(2)
+    shelf.add(box)
+    var tag = Tag(3)
+    var size = shelf.size()
+    console.print(size, tag.weight)
+}

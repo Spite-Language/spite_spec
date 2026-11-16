@@ -1,0 +1,5 @@
+var label: Integer
+
+func Box(given_label: Integer) {
+    label = given_label
+}

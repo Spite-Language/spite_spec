@@ -1,0 +1,5 @@
+var room: Integer
+
+func Crate(given_room: Integer) {
+    room = given_room
+}

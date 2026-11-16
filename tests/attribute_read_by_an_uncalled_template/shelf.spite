@@ -1,0 +1,22 @@
+generic $item_type
+
+var items = List<$item_type>()
+
+func add(item: $item_type) {
+    items.append(item)
+}
+
+func size(): Integer {
+    return items.count()
+}
+
+func first_owner_name(): String {
+    var first = items.first()
+    crash first
+    return "{first.label} {first.owner.name}"
+}
+
+func spare_size(): Integer {
+    var spare = Crate(2)
+    return spare.room
+}

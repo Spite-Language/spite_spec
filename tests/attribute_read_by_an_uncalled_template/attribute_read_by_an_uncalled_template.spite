@@ -1,0 +1,10 @@
+var console = Console()
+
+func AttributeReadByAnUncalledTemplate() {
+    var shelf = Shelf<Box>()
+    var owner = Person("ada")
+    var box = Box("hat", owner)
+    shelf.add(box)
+    var size = shelf.size()
+    console.print(size)
+}

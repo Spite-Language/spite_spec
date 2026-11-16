@@ -1,0 +1,7 @@
+var label: String
+var owner: Person
+
+func Box(given_label: String, given_owner: Person) {
+    label = given_label
+    owner = given_owner
+}
