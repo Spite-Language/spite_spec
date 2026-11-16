@@ -15,12 +15,12 @@ func TemplateInference() {
 }
 
 func copy_attribute(attribute: Spite.AttributeDeclaration, lamp: Lamp, door: Door) {
-    lamp[attribute] = door[attribute]
+    lamp.attributes[attribute].value = door.attributes[attribute].value
 }
 
 func sum_attribute(attribute: Spite.AttributeDeclaration, lamp: Lamp): Integer {
     if attribute.class == Integer {
-        return lamp[attribute]
+        return lamp.attributes[attribute].value
     }
     return 0
 }

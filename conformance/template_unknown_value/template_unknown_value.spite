@@ -10,5 +10,5 @@ func TemplateUnknownValue() {
 func show_attribute(attribute: Spite.AttributeDeclaration) {
     var shown = lamps.first()
     crash shown
-    console.print(attribute.name, shown[attribute])
+    console.print(attribute.name, shown.attributes[attribute].value)
 }

@@ -10,5 +10,5 @@ func show_first_attribute(attribute: Spite.AttributeDeclaration, monster: Monste
     listed.append(monster)
     var first = listed[0]
     crash first
-    console.print("listed", attribute.name, first[attribute])
+    console.print("listed", attribute.name, first.attributes[attribute].value)
 }

@@ -16,7 +16,7 @@ func describe(attribute: Spite.AttributeDeclaration, how: String) {
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, style: Style) {
-    var value = style[attribute]
+    var value = style.attributes[attribute].value
     var shown = value.to_string()
     report(attribute, shown)
 }

@@ -1,0 +1,11 @@
+var console = Console()
+
+func WalkedDeclarationNeedsGetAt() {
+    var troll = Monster()
+    show_health(troll)
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
+    var held = monster.attributes[attribute].value
+    console.print(attribute.name, held, monster[attribute])
+}

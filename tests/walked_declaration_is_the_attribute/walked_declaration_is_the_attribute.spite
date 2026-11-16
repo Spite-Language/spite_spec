@@ -24,7 +24,7 @@ func copied(attribute: Spite.AttributeDeclaration) {
 
 func raise_attribute(attribute: Spite.AttributeDeclaration, given: Price) {
     given.attributes[attribute].value = given.attributes[attribute].value + 1
-    console.print(attribute.name, given[attribute])
+    console.print(attribute.name, given.attributes[attribute].value)
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, given: Price) {

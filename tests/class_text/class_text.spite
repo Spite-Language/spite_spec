@@ -13,5 +13,5 @@ func ClassText() {
 }
 
 func show_attribute(attribute: Spite.AttributeDeclaration, label: Label, lines: List<String>) {
-    lines.append("{attribute.name} is {label[attribute].class}")
+    lines.append("{attribute.name} is {label.attributes[attribute].value.class}")
 }

@@ -8,5 +8,5 @@ func TemplateNoCommonAttribute() {
 }
 
 func copy_attribute(attribute: Spite.AttributeDeclaration, lamp: Lamp, door: Door) {
-    lamp[attribute] = door[attribute]
+    lamp.attributes[attribute].value = door.attributes[attribute].value
 }

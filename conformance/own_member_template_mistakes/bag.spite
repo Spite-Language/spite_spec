@@ -11,7 +11,7 @@ func sum_member(member: Spite.AttributeDeclaration): member.class {
     var index = 0
     while index < items.count() {
         var item = items[index]
-        total = total + item[member]
+        total = total + item.attributes[member].value
         index = index + 1
     }
     return total

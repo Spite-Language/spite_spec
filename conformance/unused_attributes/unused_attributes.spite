@@ -14,5 +14,5 @@ func UnusedAttributes() {
 }
 
 func classify_attribute(attribute: Spite.AttributeDeclaration, classified: Mover, lines: List<String>) {
-    lines.append("{attribute.name} is a {classified[attribute].class}")
+    lines.append("{attribute.name} is a {classified.attributes[attribute].value.class}")
 }

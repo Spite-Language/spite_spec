@@ -14,12 +14,12 @@ func TemplateReceiverForms() {
 
 func show_made_attribute(attribute: Spite.AttributeDeclaration) {
     var made = Monster()
-    console.print("made", attribute.name, made[attribute])
+    console.print("made", attribute.name, made.attributes[attribute].value)
 }
 
 func show_mixed_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
     var rock = Rock()
-    console.print("mixed", attribute.index, attribute.name, rock[attribute], monster[attribute])
+    console.print("mixed", attribute.index, attribute.name, rock.attributes[attribute].value, monster.attributes[attribute].value)
 }
 
 func relay_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
@@ -27,10 +27,10 @@ func relay_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
 }
 
 func echo_attribute(attribute: Spite.AttributeDeclaration, monster: Monster) {
-    console.print("relayed", attribute.name, monster[attribute])
+    console.print("relayed", attribute.name, monster.attributes[attribute].value)
 }
 
 func show_maybe_attribute(attribute: Spite.AttributeDeclaration, monster: Monster?) {
     crash monster
-    console.print("maybe", attribute.name, monster[attribute])
+    console.print("maybe", attribute.name, monster.attributes[attribute].value)
 }
