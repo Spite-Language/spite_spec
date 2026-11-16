@@ -1,0 +1,1 @@
+conformance/nothing_held/nothing_held.spite:4: error: 'held' is declared 'Nothing', the union no value is ever of, so it could never hold anything: remove it, or give it the type of what it holds (in NothingHeld.NothingHeld)

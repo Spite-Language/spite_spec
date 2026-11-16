@@ -1,0 +1,1 @@
+conformance/union_declared_empty/union_declared_empty.spite:1: error: 'union Hollow' lists no members, so no value of it can exist: list the classes it holds; only the language's own 'Anything' and 'Nothing' are declared empty (in UnionDeclaredEmpty)

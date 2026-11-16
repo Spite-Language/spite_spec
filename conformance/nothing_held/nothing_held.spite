@@ -1,0 +1,10 @@
+var console = Console()
+
+func NothingHeld() {
+    var held: Nothing = done()
+    console.print(held)
+}
+
+func done() {
+    console.print("done")
+}

@@ -1,0 +1,2 @@
+conformance/null_class_test_rewritten/null_class_test_rewritten.spite:6: fixed: 'maybe.class == Null' asks whether the value is null, which the narrowing form says and narrows by: wrote 'not maybe' in its place (in NullClassTestRewritten.NullClassTestRewritten)
+conformance/null_class_test_rewritten/null_class_test_rewritten.spite:10: fixed: 'present.class != Null' asks whether the value is null, which the narrowing form says and narrows by: wrote 'present' in its place (in NullClassTestRewritten.NullClassTestRewritten)

@@ -1,0 +1,19 @@
+var console = Console()
+var seen = List<String>()
+
+func NullClassTestRewritten() {
+    var maybe = maybe_text()
+    if maybe.class == Null {
+        console.print("missing")
+    }
+    var present = maybe_text()
+    if present.class != Null {
+        console.print(present)
+    }
+    console.print("done")
+}
+
+func maybe_text(): String? {
+    fallback seen.count() > 0
+    return "here"
+}

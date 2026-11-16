@@ -1,0 +1,8 @@
+union Hollow {
+}
+
+var console = Console()
+
+func UnionDeclaredEmpty() {
+    console.print("never")
+}

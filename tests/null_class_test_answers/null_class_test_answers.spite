@@ -1,0 +1,17 @@
+var console = Console()
+var seen = List<String>()
+
+func NullClassTestAnswers() {
+    var missing = maybe_text()
+    var is_missing = missing.class == Null
+    console.print(is_missing)
+    seen.append("one")
+    var found = maybe_text()
+    var is_found = found.class != Null
+    console.print(is_found)
+}
+
+func maybe_text(): String? {
+    fallback seen.count() > 0
+    return "here"
+}

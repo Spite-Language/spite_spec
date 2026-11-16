@@ -1,0 +1,6 @@
+var console = Console()
+var held: Nothing
+
+func NothingHeldAttribute() {
+    console.print(held)
+}
