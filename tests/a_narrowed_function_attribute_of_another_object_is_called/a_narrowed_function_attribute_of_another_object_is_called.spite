@@ -1,0 +1,51 @@
+var console = Console()
+
+func ANarrowedFunctionAttributeOfAnotherObjectIsCalled() {
+    var panel = Panel()
+    panel.button.on_press = ring
+    panel.button.label = "bell"
+    var spare = Button()
+    spare.on_press = knock
+    panel.spare = spare
+    called_after_a_fallback(panel.button)
+    called_inside_an_if(panel.button)
+    called_through_a_nested_path(panel)
+    called_through_a_nullable_nested_path(panel)
+    read_after_a_fallback(panel.button)
+}
+
+func called_after_a_fallback(button: Button) {
+    fallback button.on_press
+    button.on_press()
+}
+
+func called_inside_an_if(button: Button) {
+    if button.on_press {
+        button.on_press()
+    }
+    console.print("checked")
+}
+
+func called_through_a_nested_path(panel: Panel) {
+    fallback panel.button.on_press
+    panel.button.on_press()
+}
+
+func called_through_a_nullable_nested_path(panel: Panel) {
+    fallback panel.spare
+    fallback panel.spare.on_press
+    panel.spare.on_press()
+}
+
+func read_after_a_fallback(button: Button) {
+    fallback button.label
+    console.print(button.label)
+}
+
+func ring() {
+    console.print("ring")
+}
+
+func knock() {
+    console.print("knock")
+}

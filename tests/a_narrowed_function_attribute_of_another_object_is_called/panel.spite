@@ -1,0 +1,2 @@
+var button = Button()
+var spare: Button? = null

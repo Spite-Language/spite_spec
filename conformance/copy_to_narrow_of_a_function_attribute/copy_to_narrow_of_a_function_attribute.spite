@@ -1,0 +1,27 @@
+var console = Console()
+
+func CopyToNarrowOfAFunctionAttribute() {
+    var button = Button()
+    button.on_press = ring
+    button.label = "bell"
+    press(button)
+    show(button)
+}
+
+func press(button: Button) {
+    var pressing = button.on_press
+    if pressing {
+        pressing()
+    }
+}
+
+func show(button: Button) {
+    var label = button.label
+    if label {
+        console.print(label)
+    }
+}
+
+func ring() {
+    console.print("ring")
+}
