@@ -1,0 +1,5 @@
+var power = 3
+
+func to_string(): String {
+    return "gadget {power}"
+}

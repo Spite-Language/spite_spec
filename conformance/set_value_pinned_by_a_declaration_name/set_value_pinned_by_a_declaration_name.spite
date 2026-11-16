@@ -1,0 +1,18 @@
+var console = Console()
+
+func SetValuePinnedByADeclarationName() {
+    var meter = Meter()
+    var gadget = Gadget()
+    write_one(meter, gadget)
+    console.print(meter.whole, meter.label)
+}
+
+func write_one(held: Meter, given: Anything) {
+    var declaration = Meter.attributes["whole"]
+    var whole = held.attributes[declaration.name]
+    crash whole
+    whole.value = given
+    var label = held.attributes["label"]
+    crash label
+    label.value = given
+}

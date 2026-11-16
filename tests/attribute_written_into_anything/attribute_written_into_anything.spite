@@ -1,0 +1,31 @@
+enum Mood {
+    'calm'
+    'loud'
+}
+
+var console = Console()
+
+func AttributeWrittenIntoAnything() {
+    var thing = Thing()
+    var gadget = Gadget()
+    var text = "written"
+    var whole = 7
+    var flag = true
+    var mood: Mood = 'loud'
+    write_held(thing, gadget)
+    console.print(thing.held)
+    write_held(thing, text)
+    console.print(thing.held)
+    write_held(thing, whole)
+    console.print(thing.held)
+    write_held(thing, flag)
+    console.print(thing.held)
+    write_held(thing, mood)
+    console.print(thing.held)
+}
+
+func write_held(thing: Thing, given: Anything) {
+    var held = thing.attributes["held"]
+    crash held
+    held.value = given
+}

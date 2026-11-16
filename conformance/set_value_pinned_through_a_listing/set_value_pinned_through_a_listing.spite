@@ -1,0 +1,18 @@
+var console = Console()
+
+func SetValuePinnedThroughAListing() {
+    var meter = Meter()
+    var gadget = Gadget()
+    write_one(meter, gadget)
+    console.print(meter.whole, meter.label)
+}
+
+func write_one(held: Anything, given: Anything) {
+    var attributes = held.attributes
+    var whole = attributes["whole"]
+    crash whole
+    whole.value = given
+    var label = attributes["label"]
+    crash label
+    label.value = given
+}
