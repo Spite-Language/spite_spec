@@ -1,4 +1,3 @@
-7 coins
+spite> 7 coins
 3 coins
 true false
-spite> 
