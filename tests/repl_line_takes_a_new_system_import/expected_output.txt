@@ -1,0 +1,4 @@
+spite> started
+Badge { title: "gold", inner: null }
+spite> Badge { title: "gold", inner: null }
+spite>
