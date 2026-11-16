@@ -1,0 +1,30 @@
+var console = Console()
+var player_name = "Hero"
+var monsters = List<Monster>()
+
+func ReplConsole() {
+    var goblin = Monster("Goblin", 30)
+    monsters.append(goblin)
+    var orc = Monster("Orc", 50)
+    monsters.append(orc)
+    var typed = console.read_line()
+    if typed {
+        console.print("read", typed)
+    } else {
+        console.print("the console belongs to the REPL")
+    }
+}
+
+func strongest_health(): Integer {
+    var best = 0
+    var index = 0
+    while index < monsters.count() {
+        var monster = monsters[index]
+        crash monster
+        if monster.health > best {
+            best = monster.health
+        }
+        index = index + 1
+    }
+    return best
+}

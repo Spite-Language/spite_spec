@@ -1,15 +1,14 @@
-ready
-spite> 9
+spite> ready
+9
 spite> 2
-spite> List<String>(3)
-spite> List<Monster>(2)
-spite> List<Monster>(3)
+spite> ["rat", "bat", "ant"]
+spite> [Monster { name: "rat", health: 3 }, Monster { name: "ant", health: 1 }]
+spite> [Monster { name: "ant", health: 1 }, Monster { name: "rat", health: 3 }, Monster { name: "bat", health: 5 }]
 spite> null
-spite> Monster { name: bat, health: 5 }
+spite> Monster { name: "bat", health: 5 }
 spite> true
 spite> spite> false
 spite> 39
 spite> 3
-spite> no function 'filter_name' in monsters: 'functions' lists them
-spite> 
-
+spite> tests/interactive_templates/.spite/build/spite/session.spite:32: error: 'filter_name': the member 'name' of 'Monster' is a String, but 'filter_' needs it to return Boolean (in Spite.Session.run_line)
+spite>

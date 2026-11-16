@@ -12,7 +12,7 @@ func ReplPortRefusesAnUnparsableNumber() {
     var answer = client.read_line()
     crash answer
     console.print(answer)
-    crash client.write_line("exit")
+    crash client.write_line("Program().exit(0)")
     wait_a_little()
     client.close()
 }

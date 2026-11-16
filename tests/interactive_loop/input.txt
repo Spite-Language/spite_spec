@@ -1,8 +1,5 @@
-attributes
 increment()
 increment()
 count
-functions
 doubled()
 missing
-exit

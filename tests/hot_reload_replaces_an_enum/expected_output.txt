@@ -1,5 +1,4 @@
-2
-spite> spite: rebuilt Palette
+spite> 2
 rebuilt Palette
 spite> 3
-spite> 
+spite>

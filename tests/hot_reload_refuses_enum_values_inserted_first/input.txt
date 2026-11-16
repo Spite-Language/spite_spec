@@ -1,4 +1,3 @@
 gauge.describe()
-reload
+load "gauge.spite"
 gauge.describe()
-exit

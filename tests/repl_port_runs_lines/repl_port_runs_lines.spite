@@ -1,0 +1,39 @@
+var console = Console()
+var program = Program()
+var _port = 47353
+var greeting = "hello"
+var client = Tcp.Client()
+var _pauses = 4
+
+func ReplPortRunsLines() {
+    crash client.connect_locally(_port)
+    ask("greeting")
+    ask("var shouted = greeting.upper_case()")
+    ask("shouted")
+    ask("greeting = \"bye\"")
+    ask("greeting")
+    ask("missing_name")
+    ask("if greeting == \"bye\" \{")
+    ask("    console.print(\"inside the block\")")
+    ask("}")
+    crash client.write_line("Program().exit(0)")
+    wait_a_little()
+    console.print("never reached")
+}
+
+func ask(line: String) {
+    crash client.write_line(line)
+    wait_a_little()
+    var answer = client.read_line()
+    crash answer
+    console.print(answer)
+}
+
+func wait_a_little() {
+    var waited = Duration(50, 'milliseconds')
+    var count = 0
+    while count < _pauses {
+        program.sleep(waited)
+        count = count + 1
+    }
+}

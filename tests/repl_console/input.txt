@@ -1,0 +1,22 @@
+player_name
+monsters.count()
+program.player_name = "Aria"
+player_name
+monsters[0].roar()
+var strongest = Monster("Ogre", 70)
+strongest.name
+strongest.health = 75
+strongest.health
+strongest
+func doubled(value: Integer): Integer {
+    return value * 2
+}
+doubled(21)
+var total = 0
+while total < 3 {
+    total = total + 1
+}
+total
+missing_name
+strongest_health()
+console.print("a", 1, true)

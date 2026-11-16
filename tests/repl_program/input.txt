@@ -1,0 +1,21 @@
+monsters.count()
+player_name
+player_name = "Aria"
+player_name
+monsters[1]
+var strongest = monsters[1]
+strongest
+Monster.attributes.count()
+func healthy(): Integer {
+    var total = 0
+    var index = 0
+    while index < monsters.count() {
+        var monster = monsters[index]
+        crash monster
+        total = total + monster.health
+        index = index + 1
+    }
+    return total
+}
+healthy()
+missing_name

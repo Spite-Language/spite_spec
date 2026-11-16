@@ -1,1 +1,1 @@
-{"ok":false,"error":"type mismatch: turns is an Integer, and 99999999999999999999 is not one"}
+{"ok":false,"error":"tests/repl_port_refuses_an_unparsable_number/.spite/build/spite/session.spite:44: error: 99999999999999999999 does not fit in any whole number: a Long holds up to 9223372036854775807, so write a smaller number, or keep it as text (in Spite.Session.run_line)"}

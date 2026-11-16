@@ -1,7 +1,0 @@
-var console = Console()
-var count = 2
-var counter = Counter()
-
-func HotReloadStopsAtBreakpoints() {
-    console.print("ready")
-}

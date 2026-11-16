@@ -1,9 +1,6 @@
 greeter.greeting()
-reload
+load "greeter.spite"
 greeter.greeting()
-reload
 restore()
-reload
+load "greeter.spite"
 greeter.greeting()
-last_reload
-exit

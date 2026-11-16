@@ -1,6 +1,5 @@
-greeter.old()
-reload
+load "greeter.spite"
 greeter.farewell()
 greeter.greeting()
-reload
-exit
+greeter.old()
+load "greeter.spite"

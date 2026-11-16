@@ -1,5 +1,4 @@
 follower = Circle(3)
-follower.radius
+followed_radius()
 program.follower = Circle(4)
 followed_radius()
-exit

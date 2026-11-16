@@ -1,6 +1,4 @@
-ready
-spite> Circle { radius: 3 }
+spite> ready
 spite> 3
-spite> Circle { radius: 4 }
-spite> 4
-spite> 
+spite> spite> 4
+spite>

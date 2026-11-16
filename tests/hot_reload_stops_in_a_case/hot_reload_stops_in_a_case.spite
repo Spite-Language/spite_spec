@@ -1,6 +1,0 @@
-var console = Console()
-var namer = Namer()
-
-func HotReloadStopsInACase() {
-    console.print("ready")
-}

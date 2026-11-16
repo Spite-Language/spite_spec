@@ -1,4 +1,3 @@
-spite> spite: error: the reload was refused, and the program keeps all of its code: the reload changes the attributes of Counter (total is new), and the objects the program holds keep the attributes they were made with: start the program again to take the new attributes
-error: the reload was refused, and the program keeps all of its code: the reload changes the attributes of Counter (total is new), and the objects the program holds keep the attributes they were made with: start the program again to take the new attributes
-spite> 2
-spite> 
+spite> error: the reload was refused, and the program keeps all of its code: the reload changes the attributes of Counter (total is new), and the objects the program holds keep the attributes they were made with: start the program again to take the new attributes
+spite> error: the reload was refused, and the program keeps all of its code: counter.spite changed since the program loaded it, and a line is compiled against the files as the program loaded them: load "counter.spite" takes the change, then type the line again
+spite>

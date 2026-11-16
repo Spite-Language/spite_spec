@@ -1,4 +1,3 @@
 palette.shade_number()
-reload
+load "palette.spite"
 palette.shade_number()
-exit

@@ -1,5 +1,5 @@
-started
-spite> 5
+spite> started
+5
 spite> HELLO
 spite> true
-spite> 
+spite>

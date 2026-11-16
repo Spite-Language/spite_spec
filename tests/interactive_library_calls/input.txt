@@ -1,4 +1,3 @@
 label.length()
 label.upper_case()
 label.starts_with("he")
-exit

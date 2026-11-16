@@ -11,4 +11,3 @@ monsters.all_is_weak()
 monsters.sum_health()
 monsters.count()
 monsters.filter_name()
-exit

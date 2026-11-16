@@ -1,2 +1,11 @@
-player Hero age 20
+spite> player Hero age 20
 monster count 2
+2
+spite> Hero
+spite> spite> Aria
+spite> Monster { name: "Orc", health: 50 }
+spite> spite> Monster { name: "Orc", health: 50 }
+spite> 2
+spite> ...> ...> ...> ...> ...> ...> ...> ...> ...> ...> spite> 80
+spite> tests/repl_program/.spite/build/spite/session.spite:73: error: 'missing_name' is not a local, an attribute or a function of 'Spite.Session' (in Spite.Session.run_line)
+spite>

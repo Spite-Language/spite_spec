@@ -1,2 +1,1 @@
-42 #ff8000
-spite> 
+spite> 42 #ff8000

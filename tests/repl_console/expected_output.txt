@@ -1,0 +1,14 @@
+spite> the console belongs to the REPL
+Hero
+spite> 2
+spite> spite> Aria
+spite> tests/repl_console/.spite/build/spite/session.spite:44: error: 'monsters[0]' may be missing, since every '[ ]' answers a 'T?' (this one is a Monster?), so 'roar' cannot be called on it yet: narrow it first with 'crash monsters[0]', 'fallback monsters[0]' or 'if monsters[0] { }', or prove the count first, 'crash monsters.count() > 0' (in Spite.Session.run_line)
+spite> spite> Ogre
+spite> spite> 75
+spite> Monster { name: "Ogre", health: 75 }
+spite> ...> ...> spite> 42
+spite> spite> ...> ...> spite> 3
+spite> tests/repl_console/.spite/build/spite/session.spite:74: error: 'missing_name' is not a local, an attribute or a function of 'Spite.Session' (in Spite.Session.run_line)
+spite> 50
+spite> a 1 true
+spite>

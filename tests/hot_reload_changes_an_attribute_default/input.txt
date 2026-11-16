@@ -1,4 +1,3 @@
 fresh_step()
-reload
+load "counter.spite"
 fresh_step()
-exit
