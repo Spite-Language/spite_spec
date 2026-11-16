@@ -1,2 +1,2 @@
 before the throw
-spite.fault	fault	-	-	-	code=0xe06d7363	at=...+0x...	foreign=throw_now	library=tests/foreign_exception_through_a_callback/fixture.dll	from=tests/foreign_exception_through_a_callback/foreign_exception_through_a_callback.spite:11
+spite.fault	fault	-	-	-	code=0xe06d7363	at=...+0x...	foreign=throw_now	library=tests/foreign_exception_through_a_callback/fixture.dll	from=foreign_exception_through_a_callback/foreign_exception_through_a_callback.spite:11

@@ -1,2 +1,2 @@
 before the fault
-spite.fault	read-violation	-	-	-	address=0x0	code=0xc0000005	at=fixture.dll+0x...	foreign=call_back_broken	library=tests/routine_fault_in_a_callback/fixture.dll	from=tests/routine_fault_in_a_callback/routine_fault_in_a_callback.spite:8
+spite.fault	read-violation	-	-	-	address=0x0	code=0xc0000005	at=fixture.dll+0x...	foreign=call_back_broken	library=tests/routine_fault_in_a_callback/fixture.dll	from=routine_fault_in_a_callback/routine_fault_in_a_callback.spite:8
