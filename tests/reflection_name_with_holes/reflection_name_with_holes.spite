@@ -7,4 +7,6 @@ func ReflectionNameWithHoles() {
     console.print("found", found.name)
     var missing = Monster.attributes["zz{ending}"]
     console.print("missing", missing)
+    var monster = Monster(2)
+    console.print("count", monster.count)
 }
