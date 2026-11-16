@@ -13,5 +13,5 @@ func NativeFaultInARoutineFromAResumableFunction() {
         }
         program.sleep(pause)
     }
-    console.print("never printed")
+    console.print("never printed: {worker.length}")
 }
