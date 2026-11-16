@@ -1,0 +1,31 @@
+enum Shade {
+    'light'
+    'dark'
+}
+
+var low_boolean = false
+var high_boolean = true
+var low_byte = Byte.Smallest()
+var high_byte = Byte.Largest()
+var low_short = Short.Smallest()
+var high_short = Short.Largest()
+var low_unsigned_short = UnsignedShort.Smallest()
+var high_unsigned_short = UnsignedShort.Largest()
+var low_integer = Integer.Smallest()
+var high_integer = Integer.Largest()
+var low_unsigned_integer = UnsignedInteger.Smallest()
+var high_unsigned_integer = UnsignedInteger.Largest()
+var low_long = Long.Smallest()
+var high_long = Long.Largest()
+var low_unsigned_long = UnsignedLong.Smallest()
+var high_unsigned_long = UnsignedLong.Largest()
+var low_float = Float.Smallest()
+var high_float = Float.Largest()
+var low_double = Double.Smallest()
+var high_double = Double.Largest()
+var _first_letter = 97
+var low_rune = Rune(_first_letter)
+var _last_letter = 122
+var high_rune = Rune(_last_letter)
+var low_shade: Shade = 'light'
+var high_shade: Shade = 'dark'
