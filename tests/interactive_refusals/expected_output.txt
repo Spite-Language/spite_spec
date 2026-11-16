@@ -1,4 +1,5 @@
 spite> ready
 []
+spite> values._swap(): error: '_swap' is private to 'Values': a name starting with '_' is used only inside its own class
 spite> spite> a "quoted" show
 spite>

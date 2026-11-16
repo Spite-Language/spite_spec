@@ -3,7 +3,7 @@ hero
 spite> 2
 spite> 2
 spite> spite> 7
-spite> tests/interactive_paths/.spite/build/spite/session.spite:68: error: the literal "seven" does not convert: 'Integer(from: String)' answers null for it (in Spite.Session.run_line)
+spite> turn = "seven": error: the literal "seven" does not convert: 'Integer(from: String)' answers null for it
 spite> spite> 'knight'
 spite> 5
 spite> hello you, too

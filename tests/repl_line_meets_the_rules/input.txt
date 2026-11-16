@@ -1,0 +1,14 @@
+counter._reset()
+counter._steps
+console.print(counter.shown())
+if counter.count > 0 {
+    console.print(counter.shown())
+}
+counter.count
+var shown = counter.shown()
+console.print(shown)
+func doubled(n: Integer): Integer {
+    return n + n
+}
+counter.clear()
+counter.count

@@ -1,5 +1,5 @@
 spite> started
 spite> spite> 3
 spite> 6
-spite> tests/interactive_loop/.spite/build/spite/session.spite:48: error: 'missing' is not a local, an attribute or a function of 'Spite.Session' (in Spite.Session.run_line)
+spite> missing: error: 'missing' is not a local, an attribute or a function of 'Spite.Session'
 spite>

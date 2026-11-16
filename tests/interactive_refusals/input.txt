@@ -1,3 +1,4 @@
 scores.keys()
+values._swap()
 title = "a \"quoted\" show"
 title

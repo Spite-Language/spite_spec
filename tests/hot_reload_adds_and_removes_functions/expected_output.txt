@@ -3,6 +3,6 @@ rebuilt Greeter
 removed Greeter.old
 spite> farewell
 spite> hello
-spite> tests/hot_reload_adds_and_removes_functions/.spite/build/spite/session.spite:40: error: a Greeter has no attribute or function 'old' (in Spite.Session.run_line)
+spite> greeter.old(): error: a Greeter has no attribute or function 'old'
 spite> unchanged
 spite>

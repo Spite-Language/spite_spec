@@ -1,6 +1,6 @@
 spite> entities 2
 2
-spite> tests/interactive_singletons/.spite/build/spite/session.spite:32: error: this value may be null (it is a Position?), so 'across' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in Spite.Session.run_line)
+spite> World().position_of(1).across: error: this value may be null (it is a Position?), so 'across' cannot be read from it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value'
 spite> spite> 50
 spite> Position { across: 3, along: 4 }
 spite>

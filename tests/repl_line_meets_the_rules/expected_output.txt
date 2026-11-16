@@ -1,0 +1,10 @@
+spite> ready 1
+counter._reset(): error: '_reset' is private to 'Counter': a name starting with '_' is used only inside its own class
+spite> counter._steps: error: '_steps' is private to 'Counter': a name starting with '_' is used only inside its own class
+spite> console.print(counter.shown()): error: 'counter.shown()' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name
+spite> ...> ...> console.print(counter.shown()): error: 'counter.shown()' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name
+spite> 1
+spite> spite> 1 counted
+spite> ...> ...> func doubled(n: Integer): Integer {: error: the parameter 'n' is a single letter: give it a name that says what it holds
+spite> spite> 0
+spite>

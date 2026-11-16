@@ -3,7 +3,7 @@
 {"ok":true,"value":"HELLO","type":"String"}
 {"ok":true,"value":"","type":""}
 {"ok":true,"value":"bye","type":"String"}
-{"ok":false,"error":"tests/repl_port_runs_lines/.spite/build/spite/session.spite:61: error: 'missing_name' is not a local, an attribute or a function of 'Spite.Session' (in Spite.Session.run_line)"}
+{"ok":false,"error":"missing_name: error: 'missing_name' is not a local, an attribute or a function of 'Spite.Session'"}
 {"ok":true,"value":"","type":"","continues":true}
 {"ok":true,"value":"","type":"","continues":true}
 inside the block

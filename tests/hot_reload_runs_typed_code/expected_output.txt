@@ -6,5 +6,5 @@ spite> 1
 spite> 2
 spite> 2
 spite> 42
-spite> tests/hot_reload_runs_typed_code/.spite/build/spite/session.spite:40: error: 'missing_name' is not a local, an attribute or a function of 'Spite.Session' (in Spite.Session.run_line)
+spite> missing_name: error: 'missing_name' is not a local, an attribute or a function of 'Spite.Session'
 spite>
