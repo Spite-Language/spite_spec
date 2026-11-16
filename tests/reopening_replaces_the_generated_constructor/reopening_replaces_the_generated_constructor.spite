@@ -1,0 +1,11 @@
+var console = Console()
+
+func ReopeningReplacesTheGeneratedConstructor() {
+    load "first"
+    load "second"
+    var hero = Game.Hero()
+    console.print(hero.level)
+    var read: Game.Hero? = "7"
+    crash read
+    console.print(read.level)
+}

@@ -1,0 +1,10 @@
+var console = Console()
+
+func ReopenedAddedConstructorParameters() {
+    load "first"
+    load "second"
+    var hero = Game.Hero(3)
+    var other = Game.Hero(4)
+    var grown = hero.grow(other)
+    console.print(grown)
+}

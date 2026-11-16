@@ -1,0 +1,5 @@
+var console = Console()
+
+func ReopenedLibraryAddedConstructor() {
+    console.print("never runs")
+}
