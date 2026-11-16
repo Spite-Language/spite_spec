@@ -38,11 +38,8 @@ func ANumberHeldInAnythingShowsItself() {
     }
     var flag = edges.attributes["low_boolean"]
     crash flag
-    crash flag.value
-    if flag.value.class == Boolean {
-        var said = flag.value.to_string()
-        console.print(said, edges.low_boolean)
-    }
+    var said = flag.value.to_string()
+    console.print(said, edges.low_boolean)
 }
 
 func shown(found: Spite.Attribute): String {
