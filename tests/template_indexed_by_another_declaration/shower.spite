@@ -1,0 +1,12 @@
+func show_attribute(attribute: Spite.AttributeDeclaration, value: Recipe): String {
+    var other = Recipe.attributes["servings"]
+    var picked = value.attributes[other]
+    return "{attribute.name}={value.attributes[attribute].value} {picked.name}={picked.value} {value.attributes[other].value}"
+}
+
+func held_attribute(attribute: Spite.AttributeDeclaration, value: Recipe, holder: Holder): String {
+    if holder.box.attributes["label"] {
+        return "{attribute.name} held {value.attributes[attribute].value}"
+    }
+    return "{attribute.name} alone {value.attributes[attribute].value}"
+}

@@ -1,0 +1,21 @@
+var console = Console()
+var recipe = Recipe()
+
+func TemplateIndexedByAnotherDeclaration() {
+    var shower = Shower()
+    var shown = shower.show_title(recipe)
+    console.print(shown)
+    var holder = Holder()
+    var box = Box()
+    holder.box = box
+    var held = shower.held_title(recipe, holder)
+    var empty = Holder()
+    var alone = shower.held_title(recipe, empty)
+    console.print(held, alone)
+    Recipe.attributes.each(compare)
+}
+
+func compare(attribute: Spite.AttributeDeclaration) {
+    var other = Recipe.attributes["servings"]
+    console.print(attribute.name, recipe.attributes[attribute].value, recipe.attributes[other].value)
+}
