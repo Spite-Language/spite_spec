@@ -1,0 +1,6 @@
+type Shown {
+    to_string: Spite.Function<String>
+    to_debug: Spite.Function<String>
+}
+
+var shown: Shown? = null

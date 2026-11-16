@@ -1,0 +1,11 @@
+null
+null
+[null]
+thing null
+Thing { held: null }
+null
+null
+gadget 3
+[gadget 3]
+null
+null
