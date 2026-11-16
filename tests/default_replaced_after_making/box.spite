@@ -1,0 +1,17 @@
+var label = "none"
+var values = List<Integer>()
+
+func total(): Integer {
+    var sum = 0
+    var index = 0
+    while index < values.count() {
+        sum = sum + values[index]
+        index = index + 1
+    }
+    return sum
+}
+
+func describe(): String {
+    var sum = total()
+    return "{label} {sum}"
+}

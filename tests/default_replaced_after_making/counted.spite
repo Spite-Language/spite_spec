@@ -1,0 +1,7 @@
+var values = List<Integer>()
+var first_count = 0
+
+func Counted(start: Integer) {
+    var held = values.count()
+    first_count = held + start
+}

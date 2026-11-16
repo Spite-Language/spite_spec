@@ -1,0 +1,33 @@
+var console = Console()
+
+func DefaultReplacedAfterMaking() {
+    var round = 0
+    var total = 0
+    while round < 100 {
+        var box = Box()
+        box.label = "replaced"
+        var given = List<Integer>()
+        given.append(round)
+        box.values = given
+        total = total + box.total()
+        round = round + 1
+    }
+    var read_first = Box()
+    var before = read_first.values.count()
+    var later = List<Integer>()
+    later.append(before)
+    read_first.values = later
+    var read_text = read_first.describe()
+    var counted = Counted(2)
+    var replacing = List<Integer>()
+    counted.values = replacing
+    var counted_now = counted.values.count()
+    var branched = Box()
+    if total > 0 {
+        total = total + 1
+    }
+    var branch_values = List<Integer>()
+    branched.values = branch_values
+    var branch_text = branched.describe()
+    console.print(total, read_text, counted.first_count, counted_now, branch_text)
+}
