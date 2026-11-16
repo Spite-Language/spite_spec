@@ -1,0 +1,21 @@
+
+func remember_through(writer: Spite.Function<Anything?, Anything?>, value: Anything?) {
+    _value = writer(value)
+}
+
+func remember_count(names: List<String>) {
+    _index = counted(names)
+}
+
+func counted(names: List<String>): Integer {
+    names.append("counted")
+    return names.count()
+}
+
+func remember_a_shout() {
+    _owner = Spite.Shout()
+}
+
+func remember_quietly(value: Anything?) {
+    _value = value
+}

@@ -1,0 +1,27 @@
+var console = Console()
+
+func Written() {
+    var monster = Monster()
+    console.print(monster.health)
+    var attribute = monster.attributes["health"]
+    crash attribute
+    attribute.remember_through(loud, 4)
+    attribute.remember_through(making, 5)
+    var names = List<String>()
+    attribute.remember_count(names)
+    var appended = names.count()
+    console.print(appended)
+    attribute.remember_a_shout()
+    attribute.remember_quietly(6)
+    console.print("done")
+}
+
+func loud(value: Anything?): Anything? {
+    console.print("written")
+    return value
+}
+
+func making(_value: Anything?): Anything? {
+    console.print("made")
+    return Monster()
+}

@@ -1,0 +1,5 @@
+var console = Console()
+
+func Shout() {
+    console.print("shouted")
+}

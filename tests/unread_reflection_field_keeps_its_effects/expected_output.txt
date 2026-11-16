@@ -1,0 +1,9 @@
+the program builds true
+3
+written
+made
+1
+shouted
+done
+every object made is freed true
+exit 0
