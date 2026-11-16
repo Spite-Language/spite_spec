@@ -1,0 +1,67 @@
+var console = Console()
+var seen = List<Integer>()
+
+func ZeroedForEveryNumber() {
+    var tiny: Tiny = maybe_tiny()
+    var byte: Byte = maybe_byte()
+    var short: Short = maybe_short()
+    var unsigned_short: UnsignedShort = maybe_unsigned_short()
+    var integer: Integer = maybe_integer()
+    var unsigned_integer: UnsignedInteger = maybe_unsigned_integer()
+    var long: Long = maybe_long()
+    var unsigned_long: UnsignedLong = maybe_unsigned_long()
+    var float: Float = maybe_float()
+    var double: Double = maybe_double()
+    console.print(tiny, byte, short, unsigned_short, integer)
+    console.print(unsigned_integer, long, unsigned_long, float, double)
+}
+
+func maybe_tiny(): Tiny? {
+    fallback seen.count() > 0
+    return 1
+}
+
+func maybe_byte(): Byte? {
+    fallback seen.count() > 0
+    return 1
+}
+
+func maybe_short(): Short? {
+    fallback seen.count() > 0
+    return 1
+}
+
+func maybe_unsigned_short(): UnsignedShort? {
+    fallback seen.count() > 0
+    return 1
+}
+
+func maybe_integer(): Integer? {
+    fallback seen.count() > 0
+    return 1
+}
+
+func maybe_unsigned_integer(): UnsignedInteger? {
+    fallback seen.count() > 0
+    return 1
+}
+
+func maybe_long(): Long? {
+    fallback seen.count() > 0
+    return 1
+}
+
+func maybe_unsigned_long(): UnsignedLong? {
+    fallback seen.count() > 0
+    return 1
+}
+
+func maybe_float(): Float? {
+    fallback seen.count() > 0
+    return 1.5
+}
+
+func maybe_double(): Double? {
+    fallback seen.count() > 0
+    return 1.5
+}

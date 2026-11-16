@@ -1,0 +1,28 @@
+var console = Console()
+var seen = List<Integer>()
+var stored: Long = 7
+
+func ZeroedOnItsOwnLine() {
+    var bytes = Buffer(2)
+    var missing_short = bytes.read_short_little_endian_at(100)
+    var present_short = bytes.read_short_little_endian_at(0)
+    var zeroed: Integer = missing_short
+    var read: Integer = present_short
+    var kept: Integer? = missing_short
+    console.print(zeroed, read, kept)
+    var far = seen.count() + 100
+    var missing_byte = bytes[far]
+    var small: Byte = missing_byte
+    console.print(small)
+    var reading = decimal_or_null()
+    var real: Double = reading
+    console.print(real)
+    stored = missing_short
+    console.print(stored)
+}
+
+func decimal_or_null(): Float? {
+    fallback seen.count() > 0
+    var one: Float = 1.5
+    return one
+}

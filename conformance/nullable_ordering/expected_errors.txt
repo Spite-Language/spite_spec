@@ -1,1 +1,1 @@
-conformance/nullable_ordering/nullable_ordering.spite:5: error: this value may be null (it is an Integer?), so '>' cannot use it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in NullableOrdering.NullableOrdering)
+conformance/nullable_ordering/nullable_ordering.spite:5: error: this value may be null (it is an Integer?), so '>' cannot use it yet: narrow it first with 'if value { }', 'fallback value' or 'crash value', or write 'var zeroed: Integer = value' on the line above, which is 0 when it is null (in NullableOrdering.NullableOrdering)

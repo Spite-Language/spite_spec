@@ -2,13 +2,13 @@ var console = Console()
 var kept = 1
 var seen = List<Integer>()
 
-func NullableShortDeclared() {
+func NullableShortStoredIsZeroed() {
     seen.append(kept)
     kept = seen.count()
     var total: Integer = 5
     var pair = maybe()
-    var held: Integer = pair
-    console.print(held, total)
+    total = pair
+    console.print(total)
 }
 
 func maybe(): Short? {
