@@ -13,10 +13,10 @@ func DeepCopyItemsHoldEachOther() {
     var copied_second = copied[1]
     crash copied_first.friend
     crash copied_second.friend
-    var first_holds_second = copied_first.friend == copied_second
-    var second_holds_first = copied_second.friend == copied_first
-    var is_original = copied_first == first
-    var friend_is_original = copied_first.friend == second
+    var first_holds_second = copied_first.friend.is_same_instance(copied_second)
+    var second_holds_first = copied_second.friend.is_same_instance(copied_first)
+    var is_original = copied_first.is_same_instance(first)
+    var friend_is_original = copied_first.friend.is_same_instance(second)
     console.print("list:", first_holds_second, second_holds_first, is_original, friend_is_original)
     var named = Dictionary<String, Person>()
     named["first"] = first
@@ -26,13 +26,16 @@ func DeepCopyItemsHoldEachOther() {
     var named_second = copied_named["second"]
     crash named_first
     crash named_second
-    var named_shares = named_first.friend == named_second
-    var named_back = named_second.friend == named_first
+    crash named_first.friend
+    crash named_second.friend
+    var named_shares = named_first.friend.is_same_instance(named_second)
+    var named_back = named_second.friend.is_same_instance(named_first)
     console.print("dictionary:", named_shares, named_back)
     var single = first.deep_copy()
     var single_friend = single.friend
     crash single_friend
-    var round = single_friend.friend == single
+    crash single_friend.friend
+    var round = single_friend.friend.is_same_instance(single)
     console.print("one item:", round)
     copied_first.friend = null
     copied_second.friend = null

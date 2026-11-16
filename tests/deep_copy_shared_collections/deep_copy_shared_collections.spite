@@ -11,13 +11,13 @@ func DeepCopySharedCollections() {
     crash from_groups
     var from_names = copied.by_name["shared"]
     crash from_names
-    var one_list = from_groups == from_names
-    var is_the_original = from_groups == shared
+    var one_list = from_groups.is_same_instance(from_names)
+    var is_the_original = from_groups.is_same_instance(shared)
     from_groups.append(copied)
     var names_count = from_names.count()
     var item = from_names[0]
     crash item
-    var item_is_the_copy = item == copied
+    var item_is_the_copy = item.is_same_instance(copied)
     console.print("one list:", one_list, is_the_original, names_count, item_is_the_copy)
     var north = Station("north")
     var south = Station("south")
@@ -30,14 +30,14 @@ func DeepCopySharedCollections() {
     crash copied_south
     var back = copied_south.neighbours["north"]
     crash back
-    var dictionary_round = back == copied_north
+    var dictionary_round = back.is_same_instance(copied_north)
     var listed = copied_north.lines[0]
     crash listed
-    var list_shares = listed == copied_south
+    var list_shares = listed.is_same_instance(copied_south)
     var listed_back = copied_south.lines[0]
     crash listed_back
-    var list_round = listed_back == copied_north
-    var south_is_the_original = copied_south == south
+    var list_round = listed_back.is_same_instance(copied_north)
+    var south_is_the_original = copied_south.is_same_instance(south)
     console.print("stations:", dictionary_round, list_shares, list_round, south_is_the_original)
     copied.groups.clear()
     copied.by_name.clear()
