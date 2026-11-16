@@ -1,0 +1,5 @@
+var number = 7
+
+func Page(given: Flag) {
+    given.raise()
+}

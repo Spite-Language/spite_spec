@@ -1,0 +1,5 @@
+var raised = false
+
+func raise() {
+    raised = true
+}

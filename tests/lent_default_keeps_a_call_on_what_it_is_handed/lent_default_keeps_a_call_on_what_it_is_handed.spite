@@ -1,0 +1,12 @@
+var console = Console()
+var shelf = Shelf()
+var stack = Stack()
+
+func LentDefaultKeepsACallOnWhatItIsHanded() {
+    shelf.fill()
+    shelf.take(1)
+    console.print(shelf.open.number, shelf.flag.raised)
+    stack.fill()
+    stack.take(0)
+    console.print(stack.top.number + stack.top.count, stack.flag.raised)
+}

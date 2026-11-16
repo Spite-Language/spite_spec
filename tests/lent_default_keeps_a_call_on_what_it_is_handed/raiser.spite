@@ -1,0 +1,5 @@
+var count = 1
+
+func Raiser(given: Flag) {
+    given.raise()
+}

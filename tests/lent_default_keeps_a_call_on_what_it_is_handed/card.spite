@@ -1,0 +1,7 @@
+var number = 3
+var count = 0
+
+func Card(given: Flag) {
+    var raiser = Raiser(given)
+    count = raiser.count
+}

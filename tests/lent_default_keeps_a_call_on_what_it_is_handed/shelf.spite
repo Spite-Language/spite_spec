@@ -1,0 +1,21 @@
+singleton
+
+var pages = List<Page>()
+var flag = Flag()
+var open = Page(flag)
+var at = 0
+
+func fill() {
+    var first = Flag()
+    var second = Flag()
+    var made_first = Page(first)
+    var made_second = Page(second)
+    pages.append(made_first)
+    pages.append(made_second)
+}
+
+func take(index: Integer) {
+    at = index
+    crash pages[at]
+    open = pages[at]
+}

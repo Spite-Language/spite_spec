@@ -1,0 +1,18 @@
+singleton
+
+var cards = List<Card>()
+var flag = Flag()
+var top = Card(flag)
+var at = 0
+
+func fill() {
+    var first = Flag()
+    var made_first = Card(first)
+    cards.append(made_first)
+}
+
+func take(index: Integer) {
+    at = index
+    crash cards[at]
+    top = cards[at]
+}
