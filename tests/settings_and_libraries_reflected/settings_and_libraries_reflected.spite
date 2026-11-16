@@ -7,7 +7,7 @@ func SettingsAndLibrariesReflected() {
     while index < attributes.count() {
         if attributes[index].name == "check" or attributes[index].name == "optimized" {
             var value_text = text_of(attributes[index])
-            console.print(attributes[index].name, value_text)
+            console.print(value_text)
         }
         index = index + 1
     }
@@ -21,9 +21,5 @@ func SettingsAndLibrariesReflected() {
 }
 
 func text_of(attribute: Spite.Attribute): String {
-    fallback attribute.value
-    if attribute.value.class == Boolean {
-        return attribute.value.to_string()
-    }
-    return ""
+    return "{attribute.name} {attribute.value}"
 }
