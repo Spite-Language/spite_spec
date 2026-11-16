@@ -1,2 +1,2 @@
-power 3
+5 true
 spite: set_value() gives 'Meter.whole' a value that is not an Integer and that no conversion of Integer takes, so it cannot be cast the way an assignment would cast it

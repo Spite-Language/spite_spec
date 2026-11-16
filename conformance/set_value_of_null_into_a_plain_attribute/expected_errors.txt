@@ -1,0 +1,1 @@
+conformance/set_value_of_null_into_a_plain_attribute/set_value_of_null_into_a_plain_attribute.spite:13: error: set_value() gives 'Meter.whole' null, and it is not nullable (in SetValueOfNullIntoAPlainAttribute.write_whole)

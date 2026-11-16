@@ -1,0 +1,14 @@
+var console = Console()
+
+func SetValueOfNullIntoAPlainAttribute() {
+    var meter = Meter()
+    write_whole(meter)
+    console.print("whole", meter.whole)
+}
+
+func write_whole(held: Anything) {
+    var attributes = held.attributes
+    var whole = attributes["whole"]
+    crash whole
+    whole.value = null
+}

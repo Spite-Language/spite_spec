@@ -1,0 +1,26 @@
+var console = Console()
+
+func AttributeWrittenAtRunTimeText() {
+    var meter = Meter()
+    var reading = Reading()
+    write_label(meter, reading)
+    console.print(meter.label)
+    var whole = 4
+    write_label(meter, whole)
+    console.print(meter.label)
+    write_ratio(meter, whole)
+    console.print(meter.ratio)
+}
+
+func write_label(held: Anything, given: Anything) {
+    var attributes = held.attributes
+    var label = attributes["label"]
+    crash label
+    label.value = given
+}
+
+func write_ratio(held: Anything, given: Anything) {
+    var ratio = held.attributes["ratio"]
+    crash ratio
+    ratio.value = given
+}

@@ -2,15 +2,18 @@ var console = Console()
 
 func AttributeWrittenAtRunTimeMisfit() {
     var meter = Meter()
-    var gadget = Gadget()
-    console.print("power", gadget.power)
-    write_whole(meter, gadget)
+    var five = 5
+    var yes = true
+    write_named(meter, "whole", five)
+    write_named(meter, "flag", yes)
+    console.print(meter.whole, meter.flag)
+    write_named(meter, "whole", yes)
     console.print("whole", meter.whole)
 }
 
-func write_whole(held: Anything, given: Anything) {
+func write_named(held: Anything, name: String, given: Anything) {
     var attributes = held.attributes
-    var whole = attributes["whole"]
-    crash whole
-    whole.value = given
+    var found = attributes[name]
+    crash found
+    found.value = given
 }

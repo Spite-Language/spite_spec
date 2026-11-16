@@ -2,13 +2,14 @@ var console = Console()
 
 func AttributeWrittenAtRunTimeNull() {
     var meter = Meter()
-    write_whole(meter)
+    var nothing: Integer? = null
+    write_whole(meter, nothing)
     console.print("whole", meter.whole)
 }
 
-func write_whole(held: Anything) {
+func write_whole(held: Anything, given: Anything?) {
     var attributes = held.attributes
     var whole = attributes["whole"]
     crash whole
-    whole.value = null
+    whole.value = given
 }

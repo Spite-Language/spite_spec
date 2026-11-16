@@ -1,0 +1,16 @@
+var console = Console()
+
+func SetValueNoAttributeTakes() {
+    var meter = Meter()
+    var gadget = Gadget()
+    console.print(gadget.power)
+    write_named(meter, "whole", gadget)
+    console.print(meter.whole, meter.flag)
+}
+
+func write_named(held: Anything, name: String, given: Anything) {
+    var attributes = held.attributes
+    var found = attributes[name]
+    crash found
+    found.value = given
+}
