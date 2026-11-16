@@ -1,0 +1,8 @@
+var value_type = "plain"
+var size: Integer
+var item_count: Integer
+
+func Gauge(starting_size: Integer) {
+    size = starting_size
+    item_count = starting_size
+}

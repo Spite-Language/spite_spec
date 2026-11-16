@@ -1,0 +1,2 @@
+conformance/attribute_hidden_by_a_library_template/gauge.spite:1: fixed: the attribute 'value_type' was never read, and making it does nothing; removed it (in Gauge.)
+conformance/attribute_hidden_by_a_library_template/gauge.spite:2: error: the attribute 'item_count' is never read: remove it (in Gauge.)
