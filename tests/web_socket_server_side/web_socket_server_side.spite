@@ -122,9 +122,11 @@ func frame(first: Integer, payload: String): Buffer {
     var bytes = payload.to_buffer()
     var size = bytes.count()
     var made = Buffer(0)
-    var opening: Byte = first
+    var opening: Byte? = first
+    crash opening
     made.append(opening)
-    var second: Byte = size + 128
+    var second: Byte? = size + 128
+    crash second
     made.append(second)
     var zero: Byte = 0
     made.append(zero)
@@ -342,7 +344,8 @@ func bytes_of(values: List<Integer>): Buffer {
     var made = Buffer(0)
     var index = 0
     while index < values.count() {
-        var value: Byte = values[index]
+        var value: Byte? = values[index]
+        crash value
         made.append(value)
         index = index + 1
     }

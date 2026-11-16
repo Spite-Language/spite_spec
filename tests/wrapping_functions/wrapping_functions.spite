@@ -30,6 +30,7 @@ func WrappingFunctions() {
     var hashed = big.wrapping_multiply(_fowler_noll_vo_prime)
     console.print(hashed)
     var fits = hash + _room_left_in_hash
-    var cut: Byte = fits.bits_and(_low_byte_mask)
+    var cut: Byte? = fits.bits_and(_low_byte_mask)
+    crash cut
     console.print(fits, cut)
 }

@@ -4,7 +4,8 @@ var program = Program()
 func AttributesKeptBesideThreads() {
     var left = blend(3)
     var right = blend(5)
-    var whole: Long = left + right
+    var whole: Long? = left + right
+    crash whole
     console.print(whole)
     var meter = Meter()
     meter.step_size = 3

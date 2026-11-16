@@ -12,6 +12,6 @@ func SignednessChange() {
     var small: UnsignedShort = _largest_unsigned_short
     var widened: Integer = small
     console.print(widened)
-    var unsigned_count: UnsignedInteger = count
-    console.print("never printed", unsigned_count)
+    var unsigned_count: UnsignedInteger? = count
+    console.print(unsigned_count)
 }

@@ -1,0 +1,8 @@
+var console = Console()
+var _fraction = 3.75
+
+func DecimalDeclaredMayNotFit() {
+    var real = _fraction
+    var three: Integer = real
+    console.print(three)
+}

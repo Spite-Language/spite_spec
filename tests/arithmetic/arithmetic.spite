@@ -13,7 +13,8 @@ func Arithmetic() {
     var remainder = 17 % 5
     console.print(remainder)
     var value: Double = 3.75
-    var truncated: Integer = value
+    var truncated: Integer? = value
+    crash truncated
     console.print(truncated)
     var count = 0
     console.print(count)

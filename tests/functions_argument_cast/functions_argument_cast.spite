@@ -5,7 +5,9 @@ func FunctionsArgumentCast() {
     var halved = half(whole)
     console.print(halved)
     var precise = 2.75
-    var rounded = whole_part(precise)
+    var cut: Integer? = precise
+    crash cut
+    var rounded = whole_part(cut)
     console.print(rounded)
 }
 

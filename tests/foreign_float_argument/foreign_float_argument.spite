@@ -6,7 +6,9 @@ func ForeignFloatArgument() {
     var from_a_float = windows.scaled(factor, 4)
     var from_a_literal = windows.scaled(2.5, 4)
     var wide: Double = 0.25
-    var from_a_double = windows.scaled(wide, 8)
+    var single: Float? = wide
+    crash single
+    var from_a_double = windows.scaled(single, 8)
     var declared_sum = windows.wide_sum_as_long(-1, 3)
     console.print(from_a_float, from_a_literal, from_a_double, declared_sum)
 }

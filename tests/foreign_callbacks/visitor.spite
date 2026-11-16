@@ -2,7 +2,9 @@ var console = Console()
 var limit: Float
 
 func Visitor(starting_limit: Double) {
-    limit = starting_limit
+    var fitted: Float? = starting_limit
+    crash fitted
+    limit = fitted
 }
 
 func visit(index: Integer, weight: Double): Boolean {

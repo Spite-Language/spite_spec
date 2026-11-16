@@ -43,7 +43,8 @@ func DecimalsBeyondTheirRegisters() {
         step = step + 1
     }
     var sum = value_aa + value_bb + value_cc + value_dd + value_ee + value_ff + value_gg + value_hh + value_ii + value_jj + value_kk + value_ll + value_mm + value_nn + value_oo + value_pp + value_qq + value_rr
-    var whole: Long = sum * 1000000.0
+    var whole: Long? = sum * 1000000.0
+    crash whole
     console.print(whole)
     var small: Float = 0.0
     var count = 0
@@ -51,6 +52,7 @@ func DecimalsBeyondTheirRegisters() {
         small = small + 0.25
         count = count + 1
     }
-    var small_whole: Long = small * 100.0
+    var small_whole: Long? = small * 100.0
+    crash small_whole
     console.print(small_whole)
 }

@@ -1,0 +1,8 @@
+var console = Console()
+
+func NotANumberIntoAnIntegerIsNull() {
+    var nobody = 0.0
+    var ratio = nobody / nobody
+    var whole: Integer? = ratio
+    console.print(whole)
+}

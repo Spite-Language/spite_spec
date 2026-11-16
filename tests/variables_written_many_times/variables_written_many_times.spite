@@ -57,8 +57,10 @@ func VariablesWrittenManyTimes() {
         drift = before * 0.125
         round = round + 1
     }
-    var scaled: Long = scale * 1000.0
-    var drifted: Long = drift * 1000.0
+    var scaled: Long? = scale * 1000.0
+    crash scaled
+    var drifted: Long? = drift * 1000.0
+    crash drifted
     console.print(scaled, drifted)
     var from_twelve = counted_down(12)
     var from_zero = counted_down(0)

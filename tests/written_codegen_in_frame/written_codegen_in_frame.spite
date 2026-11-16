@@ -16,7 +16,9 @@ func WrittenCodegenInFrame() {
     }
     var still = Vector3(0.0, 0.0, 0.0)
     var unmoved = still.normalized()
-    var length: Long = velocity.length() * 1000.0
-    var moved: Long = accumulated.column_3_row_0
+    var length: Long? = velocity.length() * 1000.0
+    crash length
+    var moved: Long? = accumulated.column_3_row_0
+    crash moved
     console.print("length", length, "moved", moved, "zero", unmoved.x)
 }

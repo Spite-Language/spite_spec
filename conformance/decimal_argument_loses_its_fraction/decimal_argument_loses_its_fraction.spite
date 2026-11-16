@@ -1,0 +1,12 @@
+var console = Console()
+var _fraction = 3.75
+
+func DecimalArgumentLosesItsFraction() {
+    var real = _fraction
+    var twice = doubled(real)
+    console.print(twice)
+}
+
+func doubled(count: Integer): Integer {
+    return count + count
+}

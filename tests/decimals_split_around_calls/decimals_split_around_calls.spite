@@ -42,7 +42,8 @@ func DecimalsSplitAroundCalls() {
     var early = first + second + third + fourth + fifth + sixth + seventh
     var late = eighth + ninth + tenth + eleventh + twelfth + thirteenth + fourteenth
     var sum = early + late
-    var whole: Long = sum * 100.0
+    var whole: Long? = sum * 100.0
+    crash whole
     var call_count = calls.count()
     console.print(whole, call_count)
 }

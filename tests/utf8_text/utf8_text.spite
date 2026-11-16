@@ -44,7 +44,8 @@ func of(...values: List<Integer>): Buffer {
     var bytes = Buffer(0)
     var index = 0
     while index < values.count() {
-        var value: Byte = values[index]
+        var value: Byte? = values[index]
+        crash value
         bytes.append(value)
         index = index + 1
     }

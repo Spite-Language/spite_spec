@@ -1,0 +1,12 @@
+var console = Console()
+var _fraction = 3.75
+
+func DecimalReturnedLosesItsFraction() {
+    var real = _fraction
+    var cut = whole(real)
+    console.print(cut)
+}
+
+func whole(real: Float): Integer {
+    return real
+}

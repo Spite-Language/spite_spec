@@ -6,13 +6,17 @@ func CastTowardLeft() {
     var halved = halve(whole)
     var ratio: Double = 2.5
     var stored: Integer = 0
-    stored = ratio
+    var fitted: Integer? = ratio
+    crash fitted
+    stored = fitted
     var widened = measured + whole
     console.print(whole, halved, stored, widened)
 }
 
 func whole_part(value: Float): Integer {
-    return value
+    var fitted: Integer? = value
+    crash fitted
+    return fitted
 }
 
 func halve(value: Float): Float {

@@ -17,7 +17,8 @@ func DivisionsApart() {
     console.print("parts", parts)
     var small = parsed % 1000000000
     var seconds: Integer = small
-    var few: Integer = base
+    var few: Integer? = base
+    crash few
     var backwards = 0 - seconds
     var forward_clock = clock(seconds)
     var backward_clock = clock(backwards)

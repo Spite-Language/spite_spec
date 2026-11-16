@@ -16,7 +16,8 @@ func DivisionsInMachineCode() {
     crash decimal_line
     var decimal: Double? = decimal_line.trim()
     crash decimal
-    var seed: UnsignedLong = parsed
+    var seed: UnsignedLong? = parsed
+    crash seed
     var values = List<UnsignedLong>()
     values.append(seed)
     var unsigned_long_largest = UnsignedLong.Largest()

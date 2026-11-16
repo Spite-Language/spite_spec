@@ -6,9 +6,9 @@ func NarrowingOverflow() {
     var fits: Byte = wide
     console.print(fits)
     var small = shrunk(wide)
-    console.print("never printed", small)
+    console.print(small)
 }
 
-func shrunk(value: Integer): Tiny {
+func shrunk(value: Integer): Tiny? {
     return value
 }

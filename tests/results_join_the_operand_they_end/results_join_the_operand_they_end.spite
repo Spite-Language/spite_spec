@@ -29,6 +29,7 @@ func ResultsJoinTheOperandTheyEnd() {
         weight = halved + 0.75
         count = count + 1
     }
-    var scaled: Long = weight * 1000000.0
+    var scaled: Long? = weight * 1000000.0
+    crash scaled
     console.print(scaled)
 }

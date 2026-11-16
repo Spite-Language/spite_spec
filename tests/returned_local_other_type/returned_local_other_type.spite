@@ -9,11 +9,13 @@ func ReturnedLocalOtherType() {
 }
 
 func widened(small: Integer): Long {
-    var narrowed: Short = small
+    var narrowed: Short? = small
+    crash narrowed
     return narrowed
 }
 
 func rounded(scaled: Float): Long {
-    var whole: Integer = scaled.round()
+    var whole: Integer? = scaled.round()
+    crash whole
     return whole
 }

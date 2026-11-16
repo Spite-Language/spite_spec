@@ -46,7 +46,9 @@ func span(values: List<$number_type>): Long {
         }
         index = index + 1
     }
-    return high - low
+    var fitted: Long? = high - low
+    crash fitted
+    return fitted
 }
 
 func leftover(value: $number_type, divisor: $number_type): $number_type {

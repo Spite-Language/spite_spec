@@ -7,7 +7,8 @@ func AttributesKeptAroundRareCalls() {
     tally.count_up(1000)
     tally.trim(_later_limit)
     var rare_count = tally.rare.count()
-    var weight: Long = tally.weight * 1000.0
+    var weight: Long? = tally.weight * 1000.0
+    crash weight
     console.print(tally.total, tally.largest, weight, tally.trims, rare_count)
     var away = accesses_away_from_calls()
     console.print("attribute accesses in the loop away from its calls:", away)

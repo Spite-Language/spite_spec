@@ -1,0 +1,9 @@
+var console = Console()
+
+func InfinityIntoAnIntegerIsNull() {
+    var nobody = 0.0
+    var one = 1.0
+    var ratio = one / nobody
+    var whole: Integer? = ratio
+    console.print(whole)
+}

@@ -1,0 +1,1 @@
+conformance/decimal_returned_loses_its_fraction/decimal_returned_loses_its_fraction.spite:11: error: this value is a Float, which loses its fraction in an Integer: write 'var converted: Integer? = value' on the line above, and narrow that (in DecimalReturnedLosesItsFraction.whole)

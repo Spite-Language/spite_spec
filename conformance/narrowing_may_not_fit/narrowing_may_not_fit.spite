@@ -1,0 +1,13 @@
+var console = Console()
+var seen = List<Integer>()
+
+func NarrowingMayNotFit() {
+    seen.append(1)
+    var count = seen.count()
+    var twice = doubled(count)
+    console.print(twice)
+}
+
+func doubled(small: Tiny): Tiny {
+    return small + small
+}

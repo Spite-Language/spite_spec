@@ -11,7 +11,8 @@ func HelloExample() {
 }
 
 func add_stuff(first_value: Integer, second_value: Float): Integer {
-    var whole_second_value: Integer = second_value
+    var whole_second_value: Integer? = second_value
+    crash whole_second_value
     return first_value + whole_second_value
 }
 

@@ -27,7 +27,9 @@ func AttributeReadsKept() {
         spread = spread + body.position_x - body.velocity_x
         index = index + 1
     }
-    var height_checksum: Long = height * 1000.0
-    var spread_checksum: Long = spread * 1000.0
+    var height_checksum: Long? = height * 1000.0
+    crash height_checksum
+    var spread_checksum: Long? = spread * 1000.0
+    crash spread_checksum
     console.print("height", height_checksum, "spread", spread_checksum)
 }

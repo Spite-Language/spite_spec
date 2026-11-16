@@ -1,0 +1,45 @@
+var console = Console()
+var _fraction = 3.75
+var _large: Double = 5000000000.5
+var _beyond_a_float: Double = 1000000000000000000000000000000000000000.0
+var _within_a_float: Double = 2.5
+var _narrow = 100
+var _largest_tiny = 127
+var _wide_count = 300
+var _narrow_count = 100
+var seen = List<Integer>()
+
+func NarrowingIntoANullable() {
+    var wide = counted(_wide_count)
+    var narrow = counted(_narrow_count)
+    var cut: Tiny? = wide
+    var kept: Tiny? = narrow
+    console.print(cut, kept)
+    var negative = -wide
+    var unsigned: Byte? = negative
+    console.print(unsigned)
+    var fraction = _fraction
+    var whole: Integer? = fraction
+    var large = _large
+    var too_large: Integer? = large
+    console.print(whole, too_large)
+    var beyond = _beyond_a_float
+    var within = _within_a_float
+    var lost: Float? = beyond
+    var single: Float? = within
+    console.print(lost, single)
+    var proven: Tiny = _narrow
+    console.print(proven)
+    if narrow <= _largest_tiny and narrow >= 0 {
+        var bounded: Tiny = narrow
+        console.print(bounded)
+    }
+}
+
+func counted(wanted: Integer): Integer {
+    seen = List<Integer>()
+    while seen.count() < wanted {
+        seen.append(wanted)
+    }
+    return seen.count()
+}

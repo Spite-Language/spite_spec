@@ -13,16 +13,16 @@ func CastReadsTheRange() {
     var unsigned_long_top = _highest_unsigned_long
     var long_top = signed(_highest_long)
     console.print(long_top)
-    var never = as_a_long(unsigned_long_top)
-    console.print("never printed", never)
-    var cut: Tiny = _past_the_highest_tiny
-    console.print("never printed", cut)
+    var cut_long = as_a_long(unsigned_long_top)
+    console.print(cut_long)
+    var cut: Tiny? = _past_the_highest_tiny
+    console.print(cut)
 }
 
 func signed(value: Long): Long {
     return value
 }
 
-func as_a_long(value: UnsignedLong): Long {
+func as_a_long(value: UnsignedLong): Long? {
     return value
 }
