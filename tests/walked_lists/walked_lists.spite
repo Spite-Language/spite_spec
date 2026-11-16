@@ -19,11 +19,13 @@ func built(round: Integer): Shelf {
     var third = Book(round + 2)
     var missing: Anything? = null
     var pages = round % 7
-    var shelf = <Shelf>
-        {first}
-        {missing}
-        {pages}
-    </Shelf>
+    var shelf = Shelf()
+    var with_first: List<Anything?> = [first]
+    shelf.append_children(with_first)
+    var with_missing: List<Anything?> = [missing]
+    shelf.append_children(with_missing)
+    var with_pages: List<Anything?> = [pages]
+    shelf.append_children(with_pages)
     var several: List<Anything?> = [second, third, first]
     shelf.append_children(several)
     var kept: List<Anything?> = [third]
