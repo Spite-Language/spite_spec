@@ -17,14 +17,12 @@ func AttributeCopiedAtRunTime() {
     source.part.name = "shared"
     console.print("same part", target.part.name)
     clear_every_attribute(target)
-    var spare = target.spare
-    if spare {
+    if target.spare {
         console.print("spare held")
     } else {
         console.print("spare cleared")
     }
-    var press_again = target.on_press
-    if press_again {
+    if target.on_press {
         console.print("on_press held")
     } else {
         console.print("on_press cleared")
@@ -32,10 +30,8 @@ func AttributeCopiedAtRunTime() {
 }
 
 func show_the_spare(target: Button) {
-    var spare = target.spare
-    if spare {
-        console.print("spare", spare.name)
-    }
+    fallback target.spare
+    console.print("spare", target.spare.name)
 }
 
 func press_it(target: Button) {

@@ -13,8 +13,7 @@ func AttributeCopiedAtRunTimeCounts() {
     var other = Box()
     copy_every_attribute(other, target)
     console.print(target.label, target.part.name)
-    var spare = target.spare
-    if spare {
+    if target.spare {
         console.print("spare held")
     } else {
         console.print("spare cleared")
