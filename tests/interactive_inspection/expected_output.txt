@@ -1,5 +1,6 @@
 spite> ready
 Circle { radius: 2 }
+spite> spite> Circle { radius: 4 }
 spite> spite> ["ann", "cat"]
 spite> spite> 9
 spite> spite> null

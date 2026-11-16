@@ -1,4 +1,6 @@
-program.shape
+shape
+spare = Circle(4)
+spare
 names[1] = "cat"
 names
 scores["ann"] = 9
