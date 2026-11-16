@@ -51,7 +51,11 @@ func compare_children() {
     twin.parent = root
     console.print("one parent", child == twin)
     twin.parent = other_root
-    console.print("an equal parent is another parent", child == twin, root == other_root)
+    var stranger = Node("stranger")
+    var orphan = Node("child")
+    orphan.parent = stranger
+    console.print("a parent that differs", child == orphan)
+    console.print("an equal parent compares by value", child == twin, root == other_root)
     root.children.append(child)
     var copied = root.deep_copy()
     var is_the_root = copied.is_same_instance(root)

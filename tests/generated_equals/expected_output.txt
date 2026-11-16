@@ -6,8 +6,9 @@ one label missing false
 both labelled true 1 square
 nothing to compare true
 one parent true
-an equal parent is another parent false true
-a copied tree false false 1
+a parent that differs false
+an equal parent compares by value true true
+a copied tree true false 1
 a copied ring true
 a ring that differs false three
 keys are objects 2 true

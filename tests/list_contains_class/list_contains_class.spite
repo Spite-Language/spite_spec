@@ -1,0 +1,17 @@
+var console = Console()
+
+func ListContainsClass() {
+    var tools = List<Tool>()
+    var hammer = Tool()
+    tools.append(hammer)
+    var has_hammer = tools.contains(hammer)
+    var same_weight = Tool()
+    var has_an_equal_one = tools.contains(same_weight)
+    var light = Tool()
+    light.weight = 1
+    var has_a_light_one = tools.contains(light)
+    var found_at = tools.index_of(same_weight)
+    var light_at = tools.index_of(light)
+    var heavy = hammer.is_heavy()
+    console.print(has_hammer, has_an_equal_one, has_a_light_one, found_at, light_at, heavy)
+}
