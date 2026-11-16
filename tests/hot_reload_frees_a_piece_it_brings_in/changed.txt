@@ -1,0 +1,5 @@
+var badge = Badge()
+
+func which(): String {
+    return badge.to_debug()
+}

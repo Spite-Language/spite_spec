@@ -1,0 +1,4 @@
+old
+spite: rebuilt Greeter, String, Badge
+which: Badge { title: "gold", inner: null }
+allocations: ... frees: ...

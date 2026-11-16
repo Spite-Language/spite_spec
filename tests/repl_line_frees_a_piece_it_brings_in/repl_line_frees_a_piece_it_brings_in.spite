@@ -1,0 +1,5 @@
+var console = Console()
+
+func ReplLineFreesAPieceItBringsIn() {
+    console.print("started")
+}
