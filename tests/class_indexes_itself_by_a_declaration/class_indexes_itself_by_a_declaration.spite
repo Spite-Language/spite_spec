@@ -1,0 +1,14 @@
+var console = Console()
+
+func ClassIndexesItselfByADeclaration() {
+    var recipe = Recipe()
+    var shown = recipe.described()
+    console.print(shown)
+    recipe.servings = 6
+    var found = recipe.by_name()
+    console.print(found)
+    var walked = recipe.walk()
+    console.print(walked)
+    var names = recipe.listed()
+    console.print(names)
+}

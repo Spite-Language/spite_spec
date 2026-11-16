@@ -1,0 +1,7 @@
+var health = 3
+
+func described(): String {
+    var health = Monster.attributes["health"]
+    var found = attributes[health]
+    return found.name
+}

@@ -1,0 +1,4 @@
+servings=4 title=soup Recipe
+title=soup servings=6
+[title:soup/soup][servings:6/soup][shown:[title:soup/soup][servings:6/soup]/soup]
+[title][servings][shown]

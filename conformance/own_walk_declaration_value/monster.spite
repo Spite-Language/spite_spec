@@ -1,0 +1,10 @@
+var health = 10
+
+func described(): String {
+    Monster.attributes.each(show)
+    return "monster {health}"
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var text = attribute.value
+}

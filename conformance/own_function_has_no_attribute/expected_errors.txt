@@ -1,0 +1,1 @@
+conformance/own_function_has_no_attribute/price.spite:14: error: 'attributes[attribute]' stands for 'doubled', a function of Price, and a function has no Spite.Attribute: read 'attributes[attribute].value', which calls it (in Price.show_doubled)

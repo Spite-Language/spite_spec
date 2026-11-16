@@ -1,0 +1,7 @@
+var console = Console()
+
+func OwnWalkDeclarationValue() {
+    var monster = Monster()
+    var shown = monster.described()
+    console.print(shown)
+}

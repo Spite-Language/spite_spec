@@ -1,0 +1,7 @@
+var console = Console()
+
+func OwnIndexNotTiedToAClass() {
+    var troll = Monster()
+    var shown = troll.described()
+    console.print(shown)
+}

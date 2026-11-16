@@ -1,0 +1,1 @@
+conformance/own_index_of_another_class/rat.spite:5: error: 'health' is a declaration of Monster, and 'attributes[health]' indexes this Rat: an instance is indexed only by a declaration of its own class (in Rat.described)

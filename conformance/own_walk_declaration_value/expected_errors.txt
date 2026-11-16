@@ -1,0 +1,1 @@
+conformance/own_walk_declaration_value/monster.spite:9: error: 'attribute.value' reads an attribute of an instance, and 'attribute' describes a declaration: walk the instance's own attributes, 'attributes', or read 'attributes[attribute]' (in Monster.show)

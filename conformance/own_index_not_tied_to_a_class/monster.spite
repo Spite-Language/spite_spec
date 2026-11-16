@@ -1,0 +1,13 @@
+var name = "troll"
+var health = 10
+
+func described(): String {
+    var picked = Monster.attributes["health"]
+    var index = 0
+    while index < health {
+        picked = Monster.attributes["name"]
+        index = index + 1
+    }
+    var found = attributes[picked]
+    return "{name} {found.name}"
+}

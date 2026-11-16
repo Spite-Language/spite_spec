@@ -1,0 +1,42 @@
+var title = "soup"
+var servings = 4
+var shown = ""
+
+func described(): String {
+    var declaration = Recipe.attributes["servings"]
+    var found = attributes[declaration]
+    var other = Recipe.attributes["title"]
+    var named = attributes[other]
+    return "{found.name}={found.value} {named.name}={named.value} {found.owner.class}"
+}
+
+func by_name(): String {
+    var declaration = Recipe.attributes["title"]
+    var found = attributes[declaration.name]
+    crash found
+    var literal = attributes["servings"]
+    crash literal
+    return "{found.name}={found.value} {literal.name}={literal.value}"
+}
+
+func walk(): String {
+    shown = ""
+    Recipe.attributes.each(show)
+    return shown
+}
+
+func listed(): String {
+    shown = ""
+    attributes.each(add_name)
+    return shown
+}
+
+func add_name(attribute: Spite.Attribute) {
+    shown = "{shown}[{attribute.name}]"
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var other = Recipe.attributes["title"]
+    var found = attributes[other]
+    shown = "{shown}[{attribute.name}:{attributes[attribute].value}/{found.value}]"
+}

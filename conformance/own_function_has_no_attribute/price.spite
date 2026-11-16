@@ -1,0 +1,16 @@
+var cost = 3
+var label = "tea"
+
+func doubled(): Integer {
+    return cost * 2
+}
+
+func described(): String {
+    var name = show_doubled()
+    return "{label} {name}"
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration): String {
+    var bound = attributes[attribute]
+    return bound.name
+}
