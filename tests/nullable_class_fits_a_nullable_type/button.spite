@@ -1,0 +1,9 @@
+var caption: String
+
+func Button(starting_caption: String) {
+    caption = starting_caption
+}
+
+func describe(): String {
+    return "button {caption}"
+}

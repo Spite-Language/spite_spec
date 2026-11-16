@@ -1,0 +1,47 @@
+type Component {
+    describe: Spite.Function<String>
+}
+
+type Titled {
+    describe: Spite.Function<String>
+    title: String
+}
+
+var console = Console()
+var kept: Component = Label()
+
+func AMaybeNullClassIntoATypeIsRefused() {
+    var local: Component = maybe(true)
+    show(local)
+    kept = maybe(true)
+    show(kept)
+    var first = maybe(true)
+    var listed: List<Component> = [first]
+    listed.each(show)
+    var rendered = render(true)
+    show(rendered)
+    var titled = titled_of(true)
+    var from_a_type: Component = titled
+    show(from_a_type)
+    var given = maybe(true)
+    show(given)
+}
+
+func maybe(given: Boolean): Label? {
+    fallback given
+    return Label()
+}
+
+func titled_of(given: Boolean): Titled? {
+    fallback given
+    return Label()
+}
+
+func render(given: Boolean): Component {
+    return maybe(given)
+}
+
+func show(component: Component) {
+    var said = component.describe()
+    console.print(said)
+}

@@ -1,0 +1,5 @@
+var title = "a title"
+
+func describe(): String {
+    return "label {title}"
+}

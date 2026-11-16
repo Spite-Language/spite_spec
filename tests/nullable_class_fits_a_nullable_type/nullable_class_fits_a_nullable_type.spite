@@ -1,0 +1,90 @@
+union Piece {
+    Label
+    Button
+}
+
+type Component {
+    describe: Spite.Function<String>
+}
+
+type Written {
+    describe: Spite.Function<String>
+    text: String
+}
+
+var console = Console()
+var kept: Component? = null
+
+func NullableClassFitsANullableType() {
+    var local: Component? = maybe(true)
+    show(local)
+    var missing: Component? = maybe(false)
+    show(missing)
+    kept = maybe(true)
+    show(kept)
+    kept = maybe(false)
+    show(kept)
+    var holder = Holder()
+    holder.held = maybe(true)
+    show(holder.held)
+    var given = maybe(true)
+    show(given)
+    var not_given = maybe(false)
+    show(not_given)
+    var rendered = render(true)
+    show(rendered)
+    var not_rendered = render(false)
+    show(not_rendered)
+    var first = maybe(true)
+    var listed: List<Component?> = [first, null]
+    show_each(listed)
+    var appended = List<Component?>()
+    var second = maybe(false)
+    appended.append(second)
+    appended.append(first)
+    show_each(appended)
+    var piece = piece_of(true)
+    var from_a_union: Component? = piece
+    show(from_a_union)
+    var no_piece = piece_of(false)
+    var from_no_union: Component? = no_piece
+    show(from_no_union)
+    var written = written_of(true)
+    var from_a_type: Component? = written
+    show(from_a_type)
+    var not_written = written_of(false)
+    var from_no_type: Component? = not_written
+    show(from_no_type)
+}
+
+func maybe(given: Boolean): Label? {
+    fallback given
+    return Label("kept")
+}
+
+func written_of(given: Boolean): Written? {
+    fallback given
+    return Label("written")
+}
+
+func render(given: Boolean): Component? {
+    return maybe(given)
+}
+
+func piece_of(given: Boolean): Piece? {
+    fallback given
+    return Button("pressed")
+}
+
+func show(component: Component?) {
+    if not component {
+        console.print("nothing")
+        return
+    }
+    var said = component.describe()
+    console.print(said)
+}
+
+func show_each(components: List<Component?>) {
+    components.each(show)
+}
