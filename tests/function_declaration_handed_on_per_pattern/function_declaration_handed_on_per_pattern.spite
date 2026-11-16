@@ -12,9 +12,9 @@ func run_phase_each(phase: Spite.FunctionDeclaration) {
     mover.phase_each()
 }
 
-func tell_update_kind(kind: Spite.FunctionDeclaration) {
+func tell_kind(kind: Spite.FunctionDeclaration) {
     report(kind)
-    mover.update_kind()
+    mover.kind()
 }
 
 func report(declaration: Spite.FunctionDeclaration) {

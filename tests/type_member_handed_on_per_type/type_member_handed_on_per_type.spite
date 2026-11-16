@@ -16,12 +16,12 @@ func TypeMemberHandedOnPerType() {
 }
 
 func show_member(member: Spite.AttributeDeclaration, counted: Counted) {
-    console.print("counted", counted[member])
+    console.print("counted", counted.attributes[member].value)
     describe(member)
 }
 
 func tell_member(member: Spite.AttributeDeclaration, worded: Worded) {
-    console.print("worded", worded[member])
+    console.print("worded", worded.attributes[member].value)
     describe(member)
 }
 

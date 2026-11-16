@@ -18,12 +18,12 @@ func UnionMemberHandedOnPerUnion() {
 }
 
 func show_member(member: Spite.AttributeDeclaration, ware: Ware) {
-    console.print("ware", ware[member])
+    console.print("ware", ware.attributes[member].value)
     describe(member)
 }
 
 func tell_member(member: Spite.AttributeDeclaration, good: Good) {
-    console.print("good", good[member])
+    console.print("good", good.attributes[member].value)
     describe(member)
 }
 

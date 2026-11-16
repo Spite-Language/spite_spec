@@ -17,6 +17,12 @@ func run() {
 }
 
 func fill_attribute(attribute: Spite.AttributeDeclaration, row: $row_type, index: Integer) {
-    crash world.attributes[attribute][index]
-    row.attributes[attribute] = world.attributes[attribute][index]
+    var column = world.attributes[attribute.name]
+    crash column
+    var listed = column.value
+    if listed.class == List<Position> {
+        var item = listed[index]
+        crash item
+        row.attributes[attribute].value = item
+    }
 }
