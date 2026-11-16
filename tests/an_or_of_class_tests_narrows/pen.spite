@@ -1,0 +1,36 @@
+union Shape {
+    Circle
+    Square
+    Triangle
+}
+
+union Rounded {
+    Circle
+    Square
+}
+
+var console = Console()
+var shapes = List<Shape>()
+
+func Pen() {
+    var circle = Circle(2)
+    var square = Square(3)
+    var triangle = Triangle(4)
+    shapes.append(circle)
+    shapes.append(square)
+    shapes.append(triangle)
+}
+
+func draw() {
+    var index = 0
+    while index < shapes.count() {
+        var picked = shapes[index]
+        if picked.class == Circle or picked.class == Square {
+            var kept: Rounded = picked
+            console.print(kept.class, picked.size)
+        } else {
+            console.print("other", picked.size)
+        }
+        index = index + 1
+    }
+}

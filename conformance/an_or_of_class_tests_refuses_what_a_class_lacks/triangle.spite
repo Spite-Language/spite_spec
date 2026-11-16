@@ -1,0 +1,5 @@
+var size: Integer
+
+func Triangle(starting_size: Integer) {
+    size = starting_size
+}

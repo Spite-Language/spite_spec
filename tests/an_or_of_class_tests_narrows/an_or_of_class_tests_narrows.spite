@@ -1,0 +1,26 @@
+var console = Console()
+
+func AnOrOfClassTestsNarrows() {
+    var badge = Badge("gold")
+    var hero = Hero("ada", badge, 3)
+    var held = hero.attributes.values()
+    var index = 0
+    while index < held.count() {
+        var attribute = held[index]
+        var shown = "skipped"
+        if attribute.value.class == String or attribute.value.class == Badge {
+            shown = attribute.value
+        }
+        console.print(attribute.name, shown)
+        index = index + 1
+    }
+    var number = 4
+    var counted = Holder(number)
+    counted.show()
+    var named = Holder("text")
+    named.show()
+    var flagged = Holder(true)
+    flagged.show()
+    var pen = Pen()
+    pen.draw()
+}

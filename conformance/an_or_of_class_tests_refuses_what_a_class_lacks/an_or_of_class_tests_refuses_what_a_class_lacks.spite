@@ -1,0 +1,7 @@
+func AnOrOfClassTestsRefusesWhatAClassLacks() {
+    var number = 4
+    var counted = Holder(number)
+    counted.show()
+    var pen = Pen()
+    pen.draw()
+}

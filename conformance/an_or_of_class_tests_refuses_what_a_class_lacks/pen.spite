@@ -1,0 +1,24 @@
+union Shape {
+    Circle
+    Square
+    Triangle
+}
+
+union Rounded {
+    Circle
+    Square
+}
+
+var console = Console()
+var picked: Shape
+
+func Pen() {
+    picked = Triangle(4)
+}
+
+func draw() {
+    if picked.class == Circle or picked.class == Triangle {
+        var kept: Rounded = picked
+        console.print(kept.class)
+    }
+}

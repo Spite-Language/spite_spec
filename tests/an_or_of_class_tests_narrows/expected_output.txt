@@ -1,0 +1,9 @@
+name ada
+badge a gold badge
+level skipped
+text or number 4
+text or number text
+neither
+Circle 2
+Square 3
+other 4

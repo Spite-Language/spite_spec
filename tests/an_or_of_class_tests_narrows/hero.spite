@@ -1,0 +1,9 @@
+var name: String
+var badge: Badge
+var level: Integer
+
+func Hero(starting_name: String, starting_badge: Badge, starting_level: Integer) {
+    name = starting_name
+    badge = starting_badge
+    level = starting_level
+}

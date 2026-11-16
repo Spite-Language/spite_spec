@@ -1,0 +1,13 @@
+var console = Console()
+var held: Anything
+
+func Holder(starting_held: Anything) {
+    held = starting_held
+}
+
+func show() {
+    if held.class == Integer or held.class == Holder {
+        var counted: Integer = held
+        console.print(counted)
+    }
+}

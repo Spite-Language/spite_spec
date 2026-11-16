@@ -1,0 +1,15 @@
+var console = Console()
+var held: Anything?
+
+func Holder(starting_held: Anything?) {
+    held = starting_held
+}
+
+func show() {
+    if held.class == String or held.class == Integer {
+        var shown: String = held
+        console.print("text or number", shown)
+    } else {
+        console.print("neither")
+    }
+}

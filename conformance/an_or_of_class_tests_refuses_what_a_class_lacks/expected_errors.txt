@@ -1,0 +1,2 @@
+conformance/an_or_of_class_tests_refuses_what_a_class_lacks/holder.spite:10: error: a Holder cannot be used where an Integer is needed: a value is cast to the class a place wants through that class's conversion, and Integer declares no 'Integer(from: Holder)' (in Holder.show)
+conformance/an_or_of_class_tests_refuses_what_a_class_lacks/pen.spite:21: error: a Triangle cannot be used where a Pen.Rounded is needed: a value is cast to the class a place wants through that class's conversion, and Pen.Rounded declares no 'Rounded(from: Triangle)' (in Pen.draw)
