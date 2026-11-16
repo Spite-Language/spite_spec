@@ -1,0 +1,1 @@
+conformance/jsx_children_without_attribute/jsx_children_without_attribute.spite:11: error: a Label has no attribute or function 'children' (in JsxChildrenWithoutAttribute.built)

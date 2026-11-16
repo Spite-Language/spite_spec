@@ -1,0 +1,25 @@
+type Piece {
+    describe: Spite.Function<String>
+}
+
+var console = Console()
+var children = List<Piece>()
+
+func set_children(given: List<Piece>) {
+    children = given
+    var count = given.count()
+    console.print("set", count)
+}
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var piece = children[index]
+        var shown = piece.describe()
+        parts.append(shown)
+        index = index + 1
+    }
+    var inside = parts.join(", ")
+    return "Stack [{inside}]"
+}

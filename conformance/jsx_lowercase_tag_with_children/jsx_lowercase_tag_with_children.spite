@@ -1,23 +1,21 @@
 var console = Console()
 
-func JsxListChildOfAFunctionTag() {
+func JsxLowercaseTagWithChildren() {
     var made = built()
     var shown = made.describe()
     console.print(shown)
 }
 
 func built(): View {
-    var parts = List<Anything?>()
     return <View title="parts">
         <framed title="box">
-            {parts}
+            <Label content="inside"/>
         </framed>
     </View>
 }
 
-func render_framed(title: String, children: List<Anything?>): Anything? {
+func render_framed(title: String): View {
     var frame = View()
     frame.title = title
-    frame.append_children(children)
     return frame
 }

@@ -1,0 +1,31 @@
+enum Justify {
+    'start'
+    'center'
+}
+
+type Component {
+    describe: Spite.Function<String>
+}
+
+var padding = 0
+var wrap = false
+var title = ""
+var justify_content: Justify = 'start'
+var children = List<Component>()
+
+func set_padding(value: Integer) {
+    padding = value * 2
+}
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown = child.describe()
+        parts.append(shown)
+        index = index + 1
+    }
+    var inside = parts.join(", ")
+    return "View '{title}' padding {padding} wrap {wrap} {justify_content} [{inside}]"
+}

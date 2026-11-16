@@ -11,22 +11,19 @@ func built(): View {
     var missing = 3
     return <View title="parts">
         <health_bar missing={missing} filled={health}/>
-        <framed title="box">
-            <Label content="inside"/>
-        </framed>
+        <framed title="box"/>
     </View>
 }
 
-func render_health_bar(filled: Integer, missing: Integer): Anything? {
+func render_health_bar(filled: Integer, missing: Integer): Label {
     var whole = filled + missing
     var bar = Label()
     bar.content = "{filled} of {whole}"
     return bar
 }
 
-func render_framed(title: String, children: List<Anything?>): Anything? {
-    var frame = View()
-    frame.title = title
-    frame.append_children(children)
-    return frame
+func render_framed(title: String): View {
+    return <View title={title}>
+        <Label content="inside"/>
+    </View>
 }

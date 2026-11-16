@@ -1,0 +1,1 @@
+conformance/jsx_child_of_the_wrong_type/jsx_child_of_the_wrong_type.spite:13: error: 'Integer' does not fit type 'Component': it has no function 'describe' (in JsxChildOfTheWrongType.built)

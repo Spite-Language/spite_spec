@@ -1,11 +1,11 @@
 var console = Console()
 
-func JsxNestedTagsTakeAppendChildren() {
+func JsxNestedTagsSetChildren() {
     var round = 0
     var total = 0
     while round < 100 {
         var panel = built()
-        total = total + panel.items.count()
+        total = total + panel.children.count()
         round = round + 1
     }
     var last = built()

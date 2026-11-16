@@ -33,7 +33,7 @@ func built(): View {
     </View>
 }
 
-func render_badge(): Anything? {
+func render_badge(): Label {
     var badge = Label()
     badge.content = "badge"
     return badge

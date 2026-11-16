@@ -1,0 +1,25 @@
+var title = ""
+var children = List<Anything>()
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown = shown_child(child)
+        parts.append(shown)
+        index = index + 1
+    }
+    var inside = parts.join(", ")
+    return "Panel '{title}' [{inside}]"
+}
+
+func shown_child(child: Anything): String {
+    if child.class == Panel {
+        return child.describe()
+    }
+    if child.class == Note {
+        return "Note '{child.content}'"
+    }
+    return "something else"
+}

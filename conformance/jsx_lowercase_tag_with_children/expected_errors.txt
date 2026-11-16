@@ -1,0 +1,1 @@
+conformance/jsx_lowercase_tag_with_children/jsx_lowercase_tag_with_children.spite:11: error: '<framed>' holds children, and a lowercase tag calls 'render_framed', which takes none: build them inside 'render_framed', or name a class whose 'children' takes them

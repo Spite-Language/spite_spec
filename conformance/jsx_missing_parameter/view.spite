@@ -3,30 +3,18 @@ enum Justify {
     'center'
 }
 
+type Component {
+    describe: Spite.Function<String>
+}
+
 var padding = 0
 var wrap = false
 var title = ""
 var justify_content: Justify = 'start'
-var children = List<Anything>()
+var children = List<Component>()
 
 func set_padding(value: Integer) {
     padding = value * 2
-}
-
-func append_child(child: Anything?) {
-    fallback child
-    children.append(child)
-}
-
-func append_children(added: List<Anything?>) {
-    var index = 0
-    while index < added.count() {
-        var item = added[index]
-        if item {
-            children.append(item)
-        }
-        index = index + 1
-    }
 }
 
 func describe(): String {
@@ -34,20 +22,10 @@ func describe(): String {
     var index = 0
     while index < children.count() {
         var child = children[index]
-        var shown = shown_child(child)
+        var shown = child.describe()
         parts.append(shown)
         index = index + 1
     }
     var inside = parts.join(", ")
     return "View '{title}' padding {padding} wrap {wrap} {justify_content} [{inside}]"
-}
-
-func shown_child(child: Anything): String {
-    if child.class == View {
-        return child.describe()
-    }
-    if child.class == Label {
-        return child.describe()
-    }
-    return "something else"
 }

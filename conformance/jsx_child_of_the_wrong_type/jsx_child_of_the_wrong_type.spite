@@ -1,0 +1,15 @@
+var console = Console()
+
+func JsxChildOfTheWrongType() {
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var count = 2
+    return <View title="parts">
+        <Label content="first"/>
+        {count}
+    </View>
+}

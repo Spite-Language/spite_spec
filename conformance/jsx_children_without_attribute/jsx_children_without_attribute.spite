@@ -1,0 +1,15 @@
+var console = Console()
+
+func JsxChildrenWithoutAttribute() {
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    return <View title="parts">
+        <Label content="outer">
+            <Label content="inner"/>
+        </Label>
+    </View>
+}

@@ -1,0 +1,34 @@
+var console = Console()
+
+func JsxExpressionChildIsOneEntry() {
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+    var handed = listed()
+    var handed_shown = handed.describe()
+    console.print(handed_shown)
+}
+
+func built(): View {
+    var single = Label()
+    single.content = "single"
+    return <View title="children">
+        {single}
+        <Label content="tag"/>
+        {render_badge()}
+    </View>
+}
+
+func listed(): View {
+    var extras = List<View.Component>()
+    var first = Label()
+    first.content = "from a list"
+    extras.append(first)
+    return <View title="handed" children={extras}/>
+}
+
+func render_badge(): Label {
+    var badge = Label()
+    badge.content = "badge"
+    return badge
+}

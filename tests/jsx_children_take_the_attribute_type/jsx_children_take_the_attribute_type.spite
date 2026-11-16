@@ -1,0 +1,30 @@
+var console = Console()
+
+func JsxChildrenTakeTheAttributeType() {
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+    var alone = one_child()
+    var alone_shown = alone.describe()
+    console.print(alone_shown)
+}
+
+func built(): Stack {
+    var stone = Stone()
+    stone.weight = 3
+    return <Stack>
+        <Brick colour="red"/>
+        {stone}
+        <Stack>
+            <Brick colour="blue"/>
+        </Stack>
+    </Stack>
+}
+
+func one_child(): Stack {
+    var stone = Stone()
+    stone.weight = 5
+    return <Stack>
+        {stone}
+    </Stack>
+}

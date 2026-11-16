@@ -12,7 +12,7 @@ func JsxComponentTakesPropsAsParameters() {
 }
 
 func built(): View {
-    var parts = List<Anything?>()
+    var parts = List<View.Component>()
     var inside = Label()
     inside.content = "inside"
     parts.append(inside)
@@ -23,22 +23,22 @@ func built(): View {
     </View>
 }
 
-func render_weapon(grade: Integer): Anything? {
+func render_weapon(grade: Integer): Label {
     var shown = Label()
     shown.content = "grade {grade}"
     return shown
 }
 
-func render_sword(name: String, grade: Integer, rarity: Rarity, tint: Color, weight: Float, shiny: Boolean): Anything? {
+func render_sword(name: String, grade: Integer, rarity: Rarity, tint: Color, weight: Float, shiny: Boolean): Label {
     var shown = Label()
     var colour = tint.to_hexadecimal_string()
     shown.content = "{name} grade {grade} {rarity} {colour} weight {weight} shiny {shiny}"
     return shown
 }
 
-func render_framed(title: String, children: List<Anything?>): Anything? {
+func render_framed(title: String, children: List<View.Component>): View {
     var frame = View()
     frame.title = title
-    frame.append_children(children)
+    frame.children = children
     return frame
 }

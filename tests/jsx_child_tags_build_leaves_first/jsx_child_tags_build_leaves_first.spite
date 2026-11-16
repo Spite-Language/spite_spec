@@ -1,6 +1,6 @@
 var console = Console()
 
-func JsxChildTagsAppendLeavesFirst() {
+func JsxChildTagsBuildLeavesFirst() {
     var made = built()
     var shown = made.describe()
     console.print(shown)

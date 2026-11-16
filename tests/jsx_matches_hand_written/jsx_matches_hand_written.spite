@@ -36,12 +36,9 @@ func by_hand(count: Integer): View {
     view_29.padding = count
     var label_30 = Label()
     label_30.content = "first"
-    var children_30: List<Anything?> = [label_30]
-    view_29.append_children(children_30)
     var label_31 = Label()
     label_31.content = "{count} items"
-    var children_31: List<Anything?> = [label_31]
-    view_29.append_children(children_31)
+    view_29.children = [label_30, label_31]
     return view_29
 }
 

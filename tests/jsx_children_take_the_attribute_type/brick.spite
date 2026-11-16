@@ -1,0 +1,5 @@
+var colour = ""
+
+func describe(): String {
+    return "Brick {colour}"
+}

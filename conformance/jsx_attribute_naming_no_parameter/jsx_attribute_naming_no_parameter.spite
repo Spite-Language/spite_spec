@@ -12,7 +12,7 @@ func built(): View {
     </View>
 }
 
-func render_health_bar(filled: Integer): Anything? {
+func render_health_bar(filled: Integer): Label {
     var bar = Label()
     bar.content = "{filled}"
     return bar

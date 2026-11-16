@@ -7,17 +7,10 @@ func JsxChildrenSetAndHeld() {
 }
 
 func built(): View {
-    var parts = List<Anything?>()
+    var parts = List<View.Component>()
     return <View title="parts">
-        <framed title="box" children={parts}>
+        <View title="box" children={parts}>
             <Label content="inside"/>
-        </framed>
+        </View>
     </View>
-}
-
-func render_framed(title: String, children: List<Anything?>): Anything? {
-    var frame = View()
-    frame.title = title
-    frame.append_children(children)
-    return frame
 }

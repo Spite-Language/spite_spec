@@ -1,0 +1,1 @@
+conformance/jsx_list_child/jsx_list_child.spite:13: error: '{parts}' is a list, and a child is one entry of the children list: hand the whole list as 'children={parts}' on '<View>', with no nested children

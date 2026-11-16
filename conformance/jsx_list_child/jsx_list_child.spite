@@ -1,0 +1,15 @@
+var console = Console()
+
+func JsxListChild() {
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    var parts = List<View.Component>()
+    return <View title="parts">
+        <Label content="first"/>
+        {parts}
+    </View>
+}

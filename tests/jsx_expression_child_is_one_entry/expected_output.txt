@@ -1,0 +1,2 @@
+View 'children' padding 0 wrap false start [Label 'single', Label 'tag', Label 'badge']
+View 'handed' padding 0 wrap false start [Label 'from a list']
