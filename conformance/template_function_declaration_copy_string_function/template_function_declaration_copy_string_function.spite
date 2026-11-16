@@ -1,0 +1,4 @@
+func TemplateFunctionDeclarationCopyStringFunction() {
+    var runner = Runner()
+    runner.run_update_each()
+}

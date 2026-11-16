@@ -1,0 +1,8 @@
+function update_each update_each Nothing true
+update each
+function render_each render_each Nothing false
+render each
+member urgent urgent Integer true 1
+type name name 0 String tom
+union name name 0 String rex
+kept 2

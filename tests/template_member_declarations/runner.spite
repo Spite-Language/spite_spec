@@ -1,0 +1,48 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+var task = Task()
+var kept = List<Spite.FunctionDeclaration>()
+
+func run() {
+    var cat = Cat()
+    show_name(cat)
+    var dog = Dog()
+    pick_name(dog)
+    var kept_count = kept.count()
+    console.print("kept", kept_count)
+}
+
+func run_phase_each(phase: Spite.FunctionDeclaration) {
+    var other = phase
+    var same = phase == "update_each"
+    console.print("function {phase} {other.name} {other.returns} {same}")
+    kept.append(phase)
+    task.phase_each()
+}
+
+func describe_member(member: Spite.AttributeDeclaration) {
+    var other = member
+    var same = member == "urgent"
+    var value = task.attributes[member].value
+    console.print("member {member} {other.name} {other.returns} {same} {value}")
+}
+
+func show_member(member: Spite.AttributeDeclaration, named: Named) {
+    var other = member
+    var value = named.attributes[member].value
+    console.print("type {member} {other.name} {other.index} {other.class} {value}")
+}
+
+func pick_member(member: Spite.AttributeDeclaration, pet: Pet) {
+    var other = member
+    var value = pet.attributes[member].value
+    console.print("union {member} {other.name} {other.index} {other.class} {value}")
+}

@@ -1,0 +1,9 @@
+var console = Console()
+var task = Task()
+
+func run_phase_each(phase: Spite.FunctionDeclaration) {
+    var other = phase
+    var shouted = other.upper_case()
+    console.print(shouted)
+    task.phase_each()
+}

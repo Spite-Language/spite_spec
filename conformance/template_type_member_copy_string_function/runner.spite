@@ -1,0 +1,17 @@
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func run() {
+    var cat = Cat()
+    show_name(cat)
+}
+
+func show_member(member: Spite.AttributeDeclaration, named: Named) {
+    var other = member
+    var shouted = other.upper_case()
+    var value = named.attributes[member].value
+    console.print(shouted, value)
+}

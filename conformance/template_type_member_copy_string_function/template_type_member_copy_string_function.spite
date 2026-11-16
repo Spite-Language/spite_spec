@@ -1,0 +1,4 @@
+func TemplateTypeMemberCopyStringFunction() {
+    var runner = Runner()
+    runner.run()
+}

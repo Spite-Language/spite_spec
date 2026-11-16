@@ -1,0 +1,6 @@
+func TemplateMemberDeclarations() {
+    var runner = Runner()
+    runner.run_phases_each()
+    runner.describe_urgent()
+    runner.run()
+}

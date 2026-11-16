@@ -1,0 +1,13 @@
+var console = Console()
+
+func urgent(): Integer {
+    return 1
+}
+
+func update_each() {
+    console.print("update each")
+}
+
+func render_each() {
+    console.print("render each")
+}

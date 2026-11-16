@@ -1,0 +1,4 @@
+func TemplateFunctionMemberCopyStringFunction() {
+    var runner = Runner()
+    runner.describe_urgent()
+}

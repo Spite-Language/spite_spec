@@ -1,0 +1,9 @@
+var console = Console()
+var task = Task()
+
+func describe_member(member: Spite.AttributeDeclaration) {
+    var other = member
+    var shouted = other.upper_case()
+    var value = task.attributes[member].value
+    console.print(shouted, value)
+}
