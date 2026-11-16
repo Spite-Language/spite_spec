@@ -1,3 +1,7 @@
+func Gadget(starting_name: String) {
+    name = starting_name
+}
+
 func describe(): String {
     return "special {name}"
 }
