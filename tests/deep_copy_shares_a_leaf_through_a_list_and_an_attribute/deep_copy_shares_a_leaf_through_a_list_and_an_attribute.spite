@@ -1,0 +1,26 @@
+var console = Console()
+
+func DeepCopySharesALeafThroughAListAndAnAttribute() {
+    var leaf = Leaf("shared")
+    var basket = Basket(leaf)
+    basket.leaves.append(leaf)
+    basket.leaves.append(leaf)
+    var copied = basket.deep_copy()
+    var first = copied.leaves[0]
+    crash first
+    var second = copied.leaves[1]
+    crash second
+    var held_is_listed = copied.held == first
+    var listed_once = first == second
+    var is_the_original = first == leaf
+    first.name = "changed"
+    console.print("one leaf:", held_is_listed, listed_once, is_the_original, copied.held.name, leaf.name)
+    var list_copy = basket.leaves.deep_copy()
+    var copied_first = list_copy[0]
+    crash copied_first
+    var copied_second = list_copy[1]
+    crash copied_second
+    var list_once = copied_first == copied_second
+    var list_is_the_original = copied_first == leaf
+    console.print("list:", list_once, list_is_the_original, basket.held.name)
+}

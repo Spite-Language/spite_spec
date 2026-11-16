@@ -1,0 +1,33 @@
+union Part {
+    Leaf
+    Twig
+}
+
+var console = Console()
+
+func DeepCopySharesALeafThroughAUnion() {
+    var leaf = Leaf("shared")
+    var pair = Pair(leaf, leaf)
+    var copied = pair.deep_copy()
+    var left = copied.left
+    switch left {
+        Leaf: report(left, copied.right, leaf)
+        Twig: console.print("twig", left.length)
+    }
+    console.print("original:", leaf.name, pair.right.name)
+    var twig = Twig(3)
+    var apart = Pair(twig, leaf)
+    var apart_copy = apart.deep_copy()
+    var apart_left = apart_copy.left
+    switch apart_left {
+        Leaf: console.print("leaf", apart_left.name)
+        Twig: console.print("twig", apart_left.length)
+    }
+}
+
+func report(left: Leaf, right: Leaf, original: Leaf) {
+    var one_leaf = left == right
+    var is_the_original = left == original
+    left.name = "changed"
+    console.print("one leaf:", one_leaf, is_the_original, right.name)
+}

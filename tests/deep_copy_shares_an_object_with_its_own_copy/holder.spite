@@ -1,0 +1,7 @@
+var first: Stamp
+var second: Stamp
+
+func Holder(new_first: Stamp, new_second: Stamp) {
+    first = new_first
+    second = new_second
+}

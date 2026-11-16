@@ -1,0 +1,9 @@
+var console = Console()
+
+func DeepCopySharesAnObjectWithItsOwnCopy() {
+    var stamp = Stamp("red")
+    var holder = Holder(stamp, stamp)
+    var copied = holder.deep_copy()
+    var one_stamp = copied.first == copied.second
+    console.print(one_stamp, copied.first.mark, copied.second.mark)
+}

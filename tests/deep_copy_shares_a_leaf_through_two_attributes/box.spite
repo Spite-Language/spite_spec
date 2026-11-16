@@ -1,0 +1,7 @@
+var left: Leaf
+var right: Leaf
+
+func Box(new_left: Leaf, new_right: Leaf) {
+    left = new_left
+    right = new_right
+}

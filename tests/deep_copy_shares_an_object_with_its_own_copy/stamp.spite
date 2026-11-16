@@ -1,0 +1,9 @@
+var mark: String
+
+func Stamp(new_mark: String) {
+    mark = new_mark
+}
+
+func deep_copy(): Stamp {
+    return Stamp("{mark} copied")
+}

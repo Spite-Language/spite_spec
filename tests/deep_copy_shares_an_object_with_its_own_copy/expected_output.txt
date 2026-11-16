@@ -1,0 +1,2 @@
+true red copied red copied
+allocations: 26 frees: 26

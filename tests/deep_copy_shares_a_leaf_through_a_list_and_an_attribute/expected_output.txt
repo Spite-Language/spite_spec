@@ -1,0 +1,3 @@
+one leaf: true true false changed shared
+list: true false shared
+allocations: 55 frees: 55

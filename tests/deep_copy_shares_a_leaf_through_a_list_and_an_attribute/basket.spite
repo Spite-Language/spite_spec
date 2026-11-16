@@ -1,0 +1,6 @@
+var leaves = List<Leaf>()
+var held: Leaf
+
+func Basket(new_held: Leaf) {
+    held = new_held
+}

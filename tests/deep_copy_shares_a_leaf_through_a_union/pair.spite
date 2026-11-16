@@ -1,0 +1,7 @@
+var left: DeepCopySharesALeafThroughAUnion.Part
+var right: Leaf
+
+func Pair(new_left: DeepCopySharesALeafThroughAUnion.Part, new_right: Leaf) {
+    left = new_left
+    right = new_right
+}

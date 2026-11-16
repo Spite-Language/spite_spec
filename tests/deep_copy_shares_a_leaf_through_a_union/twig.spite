@@ -1,0 +1,5 @@
+var length: Integer
+
+func Twig(new_length: Integer) {
+    length = new_length
+}
