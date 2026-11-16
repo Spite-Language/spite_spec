@@ -1,0 +1,88 @@
+var console = Console()
+
+func GeneratedEquals() {
+    compare_points()
+    compare_shapes()
+    compare_empty()
+    compare_children()
+    compare_rings()
+    key_by_objects()
+}
+
+func compare_points() {
+    var first = Point(1, 2)
+    var same = Point(1, 2)
+    var other = Point(2, 1)
+    console.print("points", first == same, first != same, first == other)
+    same.look()
+    var looked = same.seen()
+    console.print("a private attribute counts", first == same, looked)
+    var itself = first == first
+    console.print("itself", itself, first.horizontal, other.vertical)
+}
+
+func compare_shapes() {
+    var first = Shape()
+    var second = Shape()
+    var corner = Point(0, 0)
+    var copied_corner = Point(0, 0)
+    first.corners.append(corner)
+    second.corners.append(copied_corner)
+    console.print("lists of points", first == second)
+    first.label = "square"
+    console.print("one label missing", first == second)
+    second.label = "square"
+    var corner_count = first.corners.count()
+    console.print("both labelled", first == second, corner_count, second.label)
+}
+
+func compare_empty() {
+    var first = Empty()
+    var second = Empty()
+    console.print("nothing to compare", first == second)
+}
+
+func compare_children() {
+    var root = Node("root")
+    var other_root = Node("root")
+    var child = Node("child")
+    var twin = Node("child")
+    child.parent = root
+    twin.parent = root
+    console.print("one parent", child == twin)
+    twin.parent = other_root
+    console.print("an equal parent is another parent", child == twin, root == other_root)
+    root.children.append(child)
+    var copied = root.deep_copy()
+    var is_the_root = copied.is_same_instance(root)
+    var child_count = copied.children.count()
+    console.print("a copied tree", copied == root, is_the_root, child_count)
+}
+
+func compare_rings() {
+    var first = Ring("one")
+    var second = Ring("two")
+    first.next = second
+    second.next = first
+    var copied = first.deep_copy()
+    console.print("a copied ring", copied == first)
+    var other = Ring("one")
+    var other_second = Ring("three")
+    other.next = other_second
+    other_second.next = other
+    console.print("a ring that differs", other == first, other_second.name)
+    first.next = null
+    other.next = null
+    copied.next = null
+}
+
+func key_by_objects() {
+    var counts = Dictionary<Point, Integer>()
+    var first = Point(5, 5)
+    var equal = Point(5, 5)
+    counts[first] = 1
+    counts[equal] = 2
+    var held = counts.count()
+    var found = counts.contains(first)
+    console.print("keys are objects", held, found)
+}

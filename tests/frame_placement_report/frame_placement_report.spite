@@ -28,7 +28,7 @@ func read_only(): Integer {
 func compared(): Integer {
     var first = Pair(1, 2)
     var second = Pair(1, 2)
-    fallback first != second
+    fallback not first.is_same_instance(second)
     return first.left + first.right + second.left + second.right
 }
 

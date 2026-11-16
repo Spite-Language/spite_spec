@@ -1,0 +1,1 @@
+conformance/is_same_instance_of_another_class/is_same_instance_of_another_class.spite:6: error: 'is_same_instance' asks whether two names hold the very same object, so both are one class, and a 'Crate' is never the same object as a 'Box' (in IsSameInstanceOfAnotherClass.IsSameInstanceOfAnotherClass)

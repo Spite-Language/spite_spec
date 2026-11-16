@@ -8,14 +8,14 @@ func ComparedObjectInTheFrame() {
     var index = 0
     while index < 1000 {
         var pair = Pair(index, index + 1)
-        if pair == before {
+        if pair.is_same_instance(before) {
             same = same + 1
         }
         var held = pair
-        if held == pair {
+        if held.is_same_instance(pair) {
             itself = itself + 1
         }
-        if pair != before {
+        if not pair.is_same_instance(before) {
             different = different + 1
         }
         index = index + 1

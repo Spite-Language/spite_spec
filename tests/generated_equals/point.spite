@@ -1,0 +1,16 @@
+var _seen = 0
+var horizontal: Integer
+var vertical: Integer
+
+func Point(starting_horizontal: Integer, starting_vertical: Integer) {
+    horizontal = starting_horizontal
+    vertical = starting_vertical
+}
+
+func look() {
+    _seen = _seen + 1
+}
+
+func seen(): Integer {
+    return _seen
+}

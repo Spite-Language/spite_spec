@@ -28,5 +28,7 @@ func Operators() {
     var holder = Holder()
     var other_holder = Holder()
     var another_holder = Holder()
-    console.print(holder == holder, same == first, other_holder == holder, holder != another_holder)
+    var other_is_holder = other_holder.is_same_instance(holder)
+    var another_is_not = not holder.is_same_instance(another_holder)
+    console.print(holder == holder, same == first, other_is_holder, another_is_not)
 }

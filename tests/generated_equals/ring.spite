@@ -1,0 +1,6 @@
+var next: Ring? = null
+var name: String
+
+func Ring(starting_name: String) {
+    name = starting_name
+}

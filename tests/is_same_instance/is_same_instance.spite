@@ -1,0 +1,15 @@
+var console = Console()
+
+func IsSameInstance() {
+    var first = Box(1)
+    var equal = Box(1)
+    var kept = first
+    var maybe: Box? = null
+    var same = first.is_same_instance(kept)
+    var other = first.is_same_instance(equal)
+    var missing = first.is_same_instance(maybe)
+    console.print(same, other, missing, first == equal, kept.size)
+    maybe = first
+    var found = first.is_same_instance(maybe)
+    console.print(found)
+}

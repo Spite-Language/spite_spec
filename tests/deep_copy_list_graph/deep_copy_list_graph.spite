@@ -17,9 +17,9 @@ func DeepCopyListGraph() {
     var first_child = copied_root.children.first()
     crash first_child
     var count = copied.count()
-    var shares_the_root = copied_child.parent == copied_root
-    var shares_the_child = first_child == copied_child
-    var is_the_original = copied_root == root
+    var shares_the_root = copied_child.parent.is_same_instance(copied_root)
+    var shares_the_child = first_child.is_same_instance(copied_child)
+    var is_the_original = copied_root.is_same_instance(root)
     console.print(copied_root.name, count, shares_the_root, shares_the_child, is_the_original)
     var named = Dictionary<String, Node>()
     named["root"] = root
@@ -29,7 +29,7 @@ func DeepCopyListGraph() {
     var named_child = copied_named["child"]
     crash named_root
     crash named_child
-    var named_shares = named_child.parent == named_root
-    var named_is_the_original = named_root == root
+    var named_shares = named_root.is_same_instance(named_child.parent)
+    var named_is_the_original = named_root.is_same_instance(root)
     console.print(named_shares, named_is_the_original)
 }

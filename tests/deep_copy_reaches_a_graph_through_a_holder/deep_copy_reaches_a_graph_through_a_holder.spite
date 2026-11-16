@@ -27,8 +27,8 @@ func DeepCopyReachesAGraphThroughAHolder() {
 func show(label: String, child_copy: Node?, root_copy: Node?, original: Node) {
     crash child_copy
     crash root_copy
-    var holds_the_copy = child_copy.parent == root_copy
-    var holds_the_original = child_copy.parent == original
-    var one_child = root_copy.children[0] == child_copy
+    var holds_the_copy = root_copy.is_same_instance(child_copy.parent)
+    var holds_the_original = original.is_same_instance(child_copy.parent)
+    var one_child = child_copy.is_same_instance(root_copy.children[0])
     console.print(label, holds_the_copy, holds_the_original, one_child)
 }

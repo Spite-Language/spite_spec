@@ -1,0 +1,8 @@
+var console = Console()
+
+func IsSameInstanceOfAnotherClass() {
+    var box = Box(1)
+    var crate = Crate(1)
+    var same = box.is_same_instance(crate)
+    console.print(same, box.size, crate.size)
+}

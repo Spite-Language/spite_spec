@@ -1,0 +1,5 @@
+var size: Integer
+
+func Box(starting_size: Integer) {
+    size = starting_size
+}

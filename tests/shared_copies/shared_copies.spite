@@ -35,7 +35,9 @@ func changed() {
 
 func compared() {
     var copies = tags.deep_copy()
-    var same = copies[0] == tags[0]
+    var copied_tag = copies[0]
+    crash copied_tag
+    var same = copied_tag.is_same_instance(tags[0])
     var levels = copies.sum_level()
     console.print("same", same, "levels", levels)
 }

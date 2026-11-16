@@ -1,0 +1,2 @@
+var corners = List<Point>()
+var label: String? = null

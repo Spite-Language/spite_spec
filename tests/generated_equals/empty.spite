@@ -1,0 +1,3 @@
+func named(): String {
+    return "empty"
+}

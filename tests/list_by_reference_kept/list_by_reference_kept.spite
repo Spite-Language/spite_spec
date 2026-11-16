@@ -15,7 +15,7 @@ func ListByReferenceKept() {
     }
     trails.remove_at(0)
     var length = kept.points.count()
-    var same = kept == short
+    var same = kept.is_same_instance(short)
     var count = trails.count()
     console.print(length, same, count)
 }

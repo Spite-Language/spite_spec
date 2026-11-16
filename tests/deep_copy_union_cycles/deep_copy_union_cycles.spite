@@ -34,7 +34,12 @@ func close_the_copy(ring: Ring, copied: Ring) {
 
 func show_the_end(link: Link, copied: Ring) {
     switch link {
-        Ring: console.print("the copy closes its ring at", link.name, link == copied)
+        Ring: show_the_ring(link, copied)
         Tail: console.print("a tail", link.name)
     }
+}
+
+func show_the_ring(link: Ring, copied: Ring) {
+    var closes_at_the_copy = link.is_same_instance(copied)
+    console.print("the copy closes its ring at", link.name, closes_at_the_copy)
 }
