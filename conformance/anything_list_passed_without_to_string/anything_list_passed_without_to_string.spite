@@ -1,0 +1,18 @@
+var console = Console()
+
+func AnythingListPassedWithoutToString() {
+    var crates = List<Anything?>()
+    var crate = Crate()
+    crates.append(crate)
+    var gauges = List<Anything?>()
+    var gauge = Gauge()
+    gauges.append(gauge)
+    print_first(gauges)
+    var held = crates
+    print_first(held)
+}
+
+func print_first(items: List<Anything?>) {
+    var first = items.first()
+    console.print("first {first}")
+}

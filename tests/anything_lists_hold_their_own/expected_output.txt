@@ -1,0 +1,6 @@
+last gauge 7
+item gauge 7
+item gauge 7
+1
+1
+described gauge 7
