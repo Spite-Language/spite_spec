@@ -1,0 +1,5 @@
+var sound = "woof"
+
+func speak(): String {
+    return sound
+}

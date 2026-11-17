@@ -1,0 +1,3 @@
+func meow(): String {
+    return "meow"
+}

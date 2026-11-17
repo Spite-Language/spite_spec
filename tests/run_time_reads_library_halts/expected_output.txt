@@ -1,7 +1,7 @@
 class Gadget
 boost 1
 class Response
-spite: the program stopped at spite_standard_library://common/spite/function_declaration.spite:80 in Spite.FunctionDeclaration.get_reads, site b4704d75 (_has_reach=false)
+spite: the program stopped at spite_standard_library://common/spite/function_declaration.spite:86 in Spite.FunctionDeclaration.get_reads, site b4704d75 (_has_reach=false)
 spite.frame	run_time_reads_library_halts/run_time_reads_library_halts.spite:16	RunTimeReadsLibraryHalts	show
 spite.frame	run_time_reads_library_halts/run_time_reads_library_halts.spite:12	RunTimeReadsLibraryHalts	describe
 spite.frame	run_time_reads_library_halts/run_time_reads_library_halts.spite:7	RunTimeReadsLibraryHalts	RunTimeReadsLibraryHalts

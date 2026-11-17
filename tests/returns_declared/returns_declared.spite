@@ -1,0 +1,35 @@
+var console = Console()
+
+func ReturnsDeclared() {
+    var zoo = Zoo()
+    var functions = zoo.class.functions
+    show(functions["pet"])
+    show(functions["anything"])
+    show(functions["named"])
+    show(functions["never"])
+    show(functions["number"])
+    show(functions["maybe"])
+    show(functions["nothing_written"])
+    var named_value = zoo.named()
+    console.print(named_value.name)
+    var held = zoo.pet
+    console.print("value", held.declaration.returns)
+}
+
+func show(declared: Spite.FunctionDeclaration?) {
+    crash declared
+    var answer = declared.returns
+    var is_nothing = answer == Nothing
+    var is_number = answer == Integer
+    console.print(declared.name, answer, answer.name_with_namespaces, is_nothing, is_number)
+    switch answer {
+        Spite.Class: console.print("  a class", answer.is_optional)
+        Spite.Union: show_union(answer)
+        Spite.Type: console.print("  a type of", answer.owner)
+    }
+}
+
+func show_union(described: Spite.Union) {
+    var count = described.members.count()
+    console.print("  a union of", count, described.owner)
+}

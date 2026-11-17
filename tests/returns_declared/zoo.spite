@@ -1,0 +1,35 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+func pet(): Pet {
+    return Cat()
+}
+
+func anything(): Anything {
+    return 1
+}
+
+func named(): Named {
+    return Dog()
+}
+
+func never(): Nothing {
+    crash
+}
+
+func number(): Integer {
+    return 1
+}
+
+func maybe(): Integer? {
+    return null
+}
+
+func nothing_written() {
+}

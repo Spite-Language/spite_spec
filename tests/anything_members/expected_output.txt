@@ -1,0 +1,5 @@
+members AnythingMembers Cat Dog
+same as instances true
+nothing has 0
+walked AnythingMembers Cat Dog
+walked the same true
