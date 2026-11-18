@@ -9,18 +9,18 @@ func UnreadFillsAreLeftOut() {
     kept.append(Gear)
     var first = kept[0]
     console.print(first.name)
-    var text = high_text()
-    var gear_filled = text.contains("function Spite.Class._fill_Gear(")
-    var wheel_filled = text.contains("function Spite.Class._fill_Wheel(")
+    var text = functions_text()
+    var gear_filled = text.contains("\tSpite.Class._fill_Gear\n")
+    var wheel_filled = text.contains("\tSpite.Class._fill_Wheel\n")
     console.print("Gear filled:", gear_filled)
     console.print("Wheel filled:", wheel_filled)
 }
 
-func high_text(): String {
+func functions_text(): String {
     var path = program.executable_path()
     crash path
-    var high_path = path.replace(".exe", ".high_ir.txt")
-    var text_path: Path? = high_path
+    var functions_path = path.replace(".exe", ".functions")
+    var text_path: Path? = functions_path
     crash text_path
     var text = File(text_path).read_as_string()
     crash text

@@ -1,4 +1,4 @@
 troll 2
-2 false health,name
+2 false
 0
 reads Monster's attributes while it runs false
