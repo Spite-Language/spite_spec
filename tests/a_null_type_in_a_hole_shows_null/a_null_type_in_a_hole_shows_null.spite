@@ -1,0 +1,12 @@
+var console = Console()
+
+func ANullTypeInAHoleShowsNull() {
+    var thing = Thing()
+    console.print("[{thing.held}]")
+    var described = thing.to_string()
+    console.print(described)
+    thing.held = Gadget()
+    console.print("[{thing.held}]")
+    var stocked = thing.to_string()
+    console.print(stocked)
+}
