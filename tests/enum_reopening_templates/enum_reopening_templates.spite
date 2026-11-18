@@ -3,9 +3,9 @@ var console = Console()
 func EnumReopeningTemplates() {
     load "package"
     var posts = List<Post>()
-    var first = Post("hello", 'published')
+    var first = Post('published')
     posts.append(first)
-    var second = Post("plans", 'draft')
+    var second = Post('draft')
     posts.append(second)
     var published = posts.filter_published()
     var count = published.count()

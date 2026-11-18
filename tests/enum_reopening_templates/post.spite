@@ -2,10 +2,8 @@ enum Stage {
     'draft'
 }
 
-var title: String
 var stage: Stage
 
-func Post(starting_title: String, starting_stage: Stage) {
-    title = starting_title
+func Post(starting_stage: Stage) {
     stage = starting_stage
 }
