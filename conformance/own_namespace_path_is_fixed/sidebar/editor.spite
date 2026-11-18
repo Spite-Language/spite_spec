@@ -1,0 +1,16 @@
+func shown(): String {
+    var picker = Sidebar.Picker()
+    var pickers = List<Sidebar.Picker>()
+    pickers.append(picker)
+    var mode: Sidebar.Picker.Mode = 'big'
+    picker.mode = mode
+    var badge = Sidebar.Parts.Badge()
+    var first = first_of(pickers)
+    return "{pickers.count()} {first.mode} {badge.content}"
+}
+
+func first_of(pickers: List<Sidebar.Picker>): Sidebar.Picker {
+    var first = pickers[0]
+    crash first
+    return first
+}

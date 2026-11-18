@@ -1,0 +1,6 @@
+conformance/own_namespace_path_is_fixed/sidebar/editor.spite:2: fixed: 'Sidebar.Picker' is written inside the namespace 'Sidebar', where 'Picker' already names it; wrote 'Picker' (in Editor)
+conformance/own_namespace_path_is_fixed/sidebar/editor.spite:3: fixed: 'Sidebar.Picker' is written inside the namespace 'Sidebar', where 'Picker' already names it; wrote 'Picker' (in Editor)
+conformance/own_namespace_path_is_fixed/sidebar/editor.spite:5: fixed: 'Sidebar.Picker.Mode' is written inside the namespace 'Sidebar', where 'Picker.Mode' already names it; wrote 'Picker.Mode' (in Editor)
+conformance/own_namespace_path_is_fixed/sidebar/editor.spite:7: fixed: 'Sidebar.Parts.Badge' is written inside the namespace 'Sidebar', where 'Parts.Badge' already names it; wrote 'Parts.Badge' (in Editor)
+conformance/own_namespace_path_is_fixed/sidebar/editor.spite:12: fixed: 'Sidebar.Picker' is written inside the namespace 'Sidebar', where 'Picker' already names it; wrote 'Picker' (in Editor)
+conformance/own_namespace_path_is_fixed/sidebar/editor.spite:12: fixed: 'Sidebar.Picker' is written inside the namespace 'Sidebar', where 'Picker' already names it; wrote 'Picker' (in Editor)

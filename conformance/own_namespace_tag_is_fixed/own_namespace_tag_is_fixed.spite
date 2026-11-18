@@ -1,0 +1,11 @@
+var console = Console()
+
+func OwnNamespaceTagIsFixed() {
+    var editor = Sidebar.OutfitEditor()
+    var panel = editor.render()
+    var shown = panel.describe()
+    console.print(shown)
+    var alone = editor.render_alone()
+    var described = alone.describe()
+    console.print(described)
+}

@@ -1,0 +1,1 @@
+sidebar/outfit_editor.spite

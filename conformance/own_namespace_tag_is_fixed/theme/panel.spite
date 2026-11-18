@@ -1,0 +1,19 @@
+type Component {
+    describe: Spite.Function<String>
+}
+
+var title = ""
+var children = List<Component>()
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown = child.describe()
+        parts.append(shown)
+        index = index + 1
+    }
+    var inside = parts.join(", ")
+    return "{title} [{inside}]"
+}

@@ -1,0 +1,12 @@
+enum Picker {
+    'one'
+    'two'
+}
+
+func shown(): String {
+    var kind: Picker = 'two'
+    var picker = Sidebar.Picker()
+    var helper = Game.Helper()
+    var badge = Badge()
+    return "{kind} {picker.content} {helper.content} {badge.content}"
+}

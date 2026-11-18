@@ -1,0 +1,6 @@
+enum Mode {
+    'small'
+    'big'
+}
+
+var mode: Mode = 'small'

@@ -1,0 +1,7 @@
+var console = Console()
+
+func OwnNamespacePathIsFixed() {
+    var editor = Sidebar.Editor()
+    var shown = editor.shown()
+    console.print(shown)
+}

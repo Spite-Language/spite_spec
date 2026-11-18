@@ -1,0 +1,16 @@
+func shown(): String {
+    var picker = Picker()
+    var pickers = List<Picker>()
+    pickers.append(picker)
+    var mode: Picker.Mode = 'big'
+    picker.mode = mode
+    var badge = Parts.Badge()
+    var first = first_of(pickers)
+    return "{pickers.count()} {first.mode} {badge.content}"
+}
+
+func first_of(pickers: List<Picker>): Picker {
+    var first = pickers[0]
+    crash first
+    return first
+}

@@ -1,0 +1,1 @@
+conformance/own_namespace_path_stays_where_the_plain_name_differs/game/sidebar/editor.spite:10: fixed: 'Game.Sidebar.Badge' is written inside the namespace 'Game.Sidebar', where 'Badge' already names it; wrote 'Badge' (in Editor)

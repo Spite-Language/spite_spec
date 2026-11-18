@@ -1,0 +1,7 @@
+var console = Console()
+
+func OwnNamespacePathStaysWhereThePlainNameDiffers() {
+    var editor = Game.Sidebar.Editor()
+    var shown = editor.shown()
+    console.print(shown)
+}
