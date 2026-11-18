@@ -1,0 +1,5 @@
+var console = Console()
+
+func tell(said: Anything) {
+    console.print("told", said)
+}

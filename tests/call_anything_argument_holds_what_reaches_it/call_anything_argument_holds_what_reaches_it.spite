@@ -1,0 +1,18 @@
+var console = Console()
+
+func CallAnythingArgumentHoldsWhatReachesIt() {
+    var odd = Odd()
+    var deeper = odd.deeper()
+    console.print(deeper)
+    var teller = Teller()
+    tell_by("tell", 3, teller)
+    tell_by("tell", "words", teller)
+}
+
+func tell_by(name: String, said: Anything, teller: Teller) {
+    var declaration = Teller.functions[name]
+    crash declaration
+    var call = Spite.Call(declaration, teller)
+    call.arguments["said"] = said
+    call.call()
+}
