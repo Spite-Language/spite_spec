@@ -1,0 +1,48 @@
+var console = Console()
+var _highest = 1000.0
+var _lowest = -1000.0
+var _wide_highest: Double = 100000.0
+var _wide_lowest: Double = -100000.0
+
+func BoundedDecimalNarrowing() {
+    var inside = whole_of(12.75)
+    var negative = whole_of(-12.75)
+    var outside = whole_of(5000.5)
+    var nothing = Double.NotANumber()
+    var missing = whole_of(nothing)
+    console.print(inside, negative, outside, missing)
+    var single = single_of(2.5)
+    var guarded = guarded_whole_of(-0.5)
+    var kept = kept_whole_of(999.9)
+    console.print(single, guarded, kept)
+}
+
+func whole_of(scaled: Double): Integer {
+    if scaled <= 1000.0 and scaled >= -1000.0 {
+        var whole: Integer = scaled
+        return whole
+    }
+    return 0
+}
+
+func single_of(wide: Double): Float {
+    if wide < _wide_highest and wide > _wide_lowest {
+        var single: Float = wide
+        return single
+    }
+    return 0.0
+}
+
+func guarded_whole_of(scaled: Float): Integer {
+    fallback scaled >= _lowest and scaled <= _highest
+    var whole: Integer = scaled
+    return whole
+}
+
+func kept_whole_of(scaled: Float): Integer {
+    fallback scaled < _highest
+    fallback scaled > _lowest
+    var whole: Integer? = scaled
+    fallback whole
+    return whole
+}

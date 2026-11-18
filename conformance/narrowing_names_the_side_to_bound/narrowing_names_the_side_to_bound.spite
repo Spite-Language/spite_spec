@@ -1,0 +1,17 @@
+var console = Console()
+
+func NarrowingNamesTheSideToBound() {
+    var unsigned: UnsignedInteger = 5
+    var signed = 7
+    var first = signed_of(unsigned)
+    var second = unsigned_of(signed)
+    console.print(first, second)
+}
+
+func signed_of(given: UnsignedInteger): Integer {
+    return given
+}
+
+func unsigned_of(given: Integer): UnsignedInteger {
+    return given
+}

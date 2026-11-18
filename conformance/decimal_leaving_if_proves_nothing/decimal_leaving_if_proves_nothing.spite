@@ -1,0 +1,17 @@
+var console = Console()
+var _highest = 1000.0
+var _lowest = -1000.0
+
+func DecimalLeavingIfProvesNothing() {
+    var nothing = Double.NotANumber()
+    var found = whole_of(nothing)
+    console.print(found)
+}
+
+func whole_of(scaled: Double): Integer {
+    if scaled > _highest or scaled < _lowest {
+        return -1
+    }
+    var whole: Integer = scaled
+    return whole
+}
