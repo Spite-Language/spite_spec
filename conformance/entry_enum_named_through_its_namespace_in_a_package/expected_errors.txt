@@ -1,1 +1,1 @@
-conformance/entry_enum_named_through_its_namespace_in_a_package/.packages/fw/fw/painter.spite:2: fixed: 'Gpu.DataKind' reaches 'DataKind' through the namespace 'Fw.Gpu', which holds only classes and namespaces; named it through its class, 'Fw.Gpu.Gpu.DataKind' (in Painter)
+conformance/entry_enum_named_through_its_namespace_in_a_package/.packages/fw/fw/painter.spite:2: fixed: 'Gpu.DataKind' reaches 'DataKind' through the namespace 'Gpu', which holds only classes and namespaces; named it through its class, 'Gpu.Gpu.DataKind' (in Painter)

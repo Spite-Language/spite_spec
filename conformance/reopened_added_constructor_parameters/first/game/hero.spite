@@ -1,5 +1,5 @@
 var level = 1
 
-func grow(by: Game.Hero): Integer {
+func grow(by: Hero): Integer {
     return by.level + level
 }

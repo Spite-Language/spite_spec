@@ -1,7 +1,7 @@
 var label = "x"
 
-func count(filter: Shop.Crate): Integer {
-    var body = Shop.Crate()
+func count(filter: Crate): Integer {
+    var body = Crate()
     body.items = filter.items.copy()
     return body.items.count()
 }

@@ -12,7 +12,7 @@ func Host(new_title: String, new_root: $root_type) {
 
 func bind(part: Spite.Class) {
     if part.has_function("render") {
-        var binding = Kit.Binding<part>()
+        var binding = Binding<part>()
         binding.mount()
         bound = bound + binding.mounted
     }

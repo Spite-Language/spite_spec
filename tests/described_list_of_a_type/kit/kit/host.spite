@@ -1,12 +1,12 @@
 generic $root_type
 
-var drivers = List<Kit.Kit.Driver>()
+var drivers = List<Kit.Driver>()
 var title: String
 var root: $root_type
 
 func Host(new_title: String, new_root: $root_type) {
     title = new_title
     root = new_root
-    var binding = Kit.Binding<Page>()
+    var binding = Binding<Page>()
     drivers.append(binding)
 }

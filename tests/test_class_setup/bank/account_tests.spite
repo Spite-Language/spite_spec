@@ -1,5 +1,5 @@
 var console = Console()
-var account = Bank.Account()
+var account = Account()
 var _balance_after_deposit = 105
 
 func AccountTests() {

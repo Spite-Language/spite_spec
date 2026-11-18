@@ -1,6 +1,6 @@
 var console = Console()
 var program = Program()
-var counter = Checks.Counter()
+var counter = Counter()
 
 func test_changes_a_singleton() {
     counter.bump()
