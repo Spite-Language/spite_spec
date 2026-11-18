@@ -1,0 +1,11 @@
+var console = Console()
+
+func SameBytesInAnotherFolder() {
+    var words = "one two three".split(" ")
+    var first = words.first()
+    crash first
+    console.print(first)
+    var rack = Shelf.Rack()
+    var last = rack.last_of(words)
+    console.print(last)
+}

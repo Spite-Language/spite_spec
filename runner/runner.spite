@@ -14,6 +14,7 @@ var failed_folders = List<String>()
 var failures_file = "runner/.spite/failed.txt"
 var parent_folder = ""
 var copies_folder = ".copies"
+var elsewhere_folder = ".copies_elsewhere/in/another/folder"
 var outputs_folder = ".spite/runner"
 var environment = Environment()
 var running = List<Child>()
@@ -331,7 +332,59 @@ func run_test(folder: String) {
             return
         }
     }
+    fallback builds_the_same_elsewhere(folder, copy, flags)
     passed = passed + 1
+}
+
+func builds_the_same_elsewhere(folder: String, copy: String, flags: String): Boolean {
+    var asked = file_at("{folder}/same_bytes_in_another_folder.txt")
+    if not asked.exists() {
+        return true
+    }
+    var directory = folder_at(folder)
+    var name = directory.folder_name
+    var elsewhere = "{elsewhere_folder}/{name}"
+    fallback mirrored(folder, elsewhere)
+    var no_arguments = List<String>()
+    var compiling = compiling_in(elsewhere, flags)
+    var compile = Process("{compiling} {flags} --build 2>&1 1>nul", no_arguments)
+    var compiled = compile.run()
+    if compiled != 0 {
+        var output = compile.read_output_as_string()
+        crash output
+        fail(folder, "it did not compile in {elsewhere}: {output}")
+        return false
+    }
+    var extensions = List<String>()
+    extensions.append("exe")
+    extensions.append("crashes")
+    extensions.append("functions")
+    var index = 0
+    while index < extensions.count() {
+        var extension = extensions[index]
+        var built_name = "{name}.{extension}"
+        fallback same_bytes(folder, copy, elsewhere, built_name)
+        index = index + 1
+    }
+    return true
+}
+
+func same_bytes(folder: String, copy: String, elsewhere: String, built_name: String): Boolean {
+    var windows_copy = copy.replace("/", "\\")
+    var windows_elsewhere = elsewhere.replace("/", "\\")
+    var first = "{windows_copy}\\.spite\\build\\{built_name}"
+    var second = "{windows_elsewhere}\\.spite\\build\\{built_name}"
+    var no_arguments = List<String>()
+    var comparing = Process("fc /b \"{first}\" \"{second}\" >nul 2>&1", no_arguments)
+    var compared = comparing.run()
+    if compared == 0 {
+        return true
+    }
+    fail(
+        folder,
+        "its {built_name} built in {copy} and in {elsewhere} differ, and a build must not depend on its folder",
+    )
+    return false
 }
 
 func source_is_unchanged(folder: String, copy: String): Boolean {
@@ -511,6 +564,11 @@ func copy_of(folder: String): String? {
         copies = "{copies_folder}_conformance"
     }
     var copy = "{copies}/{name}"
+    fallback mirrored(folder, copy)
+    return copy
+}
+
+func mirrored(folder: String, copy: String): Boolean {
     var windows_folder = folder.replace("/", "\\")
     var windows_copy = copy.replace("/", "\\")
     var no_arguments = List<String>()
@@ -527,9 +585,9 @@ func copy_of(folder: String): String? {
             folder,
             "it could not be copied into {copy}, which the compiler formats instead of the checked-in files: {output}",
         )
-        return null
+        return false
     }
-    return copy
+    return true
 }
 
 func build_moved_back(copy: String, folder: String): Boolean {

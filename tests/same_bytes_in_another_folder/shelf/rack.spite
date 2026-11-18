@@ -1,0 +1,5 @@
+func last_of(words: List<String>): String {
+    var last = words.last()
+    crash last
+    return last
+}

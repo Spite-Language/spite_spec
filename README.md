@@ -36,6 +36,8 @@ change is checked by the tests it touches and not by one long run of everything.
     tests/<name>/input.txt                    what it reads from the console (optional)
     tests/<name>/flags.txt                    the compiler's flags after the folder (optional)
     tests/<name>/arguments.txt                what the program is run with (optional)
+    tests/<name>/same_bytes_in_another_folder.txt   built again in a deeper folder, and its .exe, .crashes and
+                                              .functions must be the same bytes (optional, empty)
     conformance/<name>/<name>.spite           a program that must fail to compile
     conformance/<name>/expected_errors.txt    the errors it must fail with, word for word
 
