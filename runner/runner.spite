@@ -5,6 +5,7 @@ union Entry {
 
 var console = Console()
 var program = Program()
+var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
 var compiler = "..\\spite_compiler\\.spite\\spite.exe"
 var library = "../spite_standard_library"
 var passed = 0
@@ -15,24 +16,26 @@ var failures_file = "runner/.spite/failed.txt"
 var parent_folder = ""
 var copies_folder = ".copies"
 var elsewhere_folder = ".copies_elsewhere/in/another/folder"
-var outputs_folder = ".spite/runner"
+var runners_folder = ".spite/runner"
+var runner_folder = ""
 var environment = Environment()
 var running = List<Child>()
 var waiting = List<String>()
 var started_count = 0
 
 func Runner() {
-    make_the_working_folder()
     if not environment.one_test.is_empty() {
         run_alone(environment.one_test)
         return
     }
+    make_the_runner_folder()
     var named = named_folders()
     if named.is_empty() {
         named = every_folder()
     }
     waiting = named
     run_in_parallel()
+    remove_the_runner_folder()
     keep_the_failures()
     console.print("{passed} passed, {failed} failed")
     if failed > 0 {
@@ -83,7 +86,7 @@ func start_one(folder: String) {
     var executable = program.executable_path()
     crash executable
     started_count = started_count + 1
-    var output_path = "{outputs_folder}/{started_count}.txt"
+    var output_path = "{runner_folder}/{started_count}.txt"
     var windows_output = output_path.replace("/", "\\")
     var command = "cmd /d /s /c \"\"{executable}\" --one-test={folder} >\"{windows_output}\" 2>&1\""
     var child = Child(folder, output_path)
@@ -140,9 +143,20 @@ func finish_one(child: Child) {
     }
 }
 
-func make_the_working_folder() {
+func make_the_runner_folder() {
     make_a_folder(".spite")
-    make_a_folder(outputs_folder)
+    make_a_folder(runners_folder)
+    var process_id = kernel.GetCurrentProcessId()
+    runner_folder = "{runners_folder}/{process_id}"
+    remove_the_runner_folder()
+    make_a_folder(runner_folder)
+}
+
+func remove_the_runner_folder() {
+    var folder = folder_at(runner_folder)
+    if folder.exists() {
+        crash folder.remove_all()
+    }
 }
 
 func file_at(text: String): File {
