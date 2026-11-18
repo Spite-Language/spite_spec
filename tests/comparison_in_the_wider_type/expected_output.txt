@@ -1,0 +1,11 @@
+read byte true true false false
+missing byte false true
+read byte false false true true
+missing byte false true
+byte and integer true true false false true
+integer and long true true false true
+unsigned and negative false false true true
+unsigned zero true true true false
+byte and tiny false false true true
+integer and float true true
+float and double false false true

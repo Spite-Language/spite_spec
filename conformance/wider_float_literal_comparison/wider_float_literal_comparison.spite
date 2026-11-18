@@ -1,7 +1,0 @@
-var console = Console()
-
-func WiderFloatLiteralComparison() {
-    var progress = 0
-    var below = progress > -0.5
-    console.print(below)
-}
