@@ -1,0 +1,59 @@
+var console = Console()
+var _largest = 1000
+var position = 0
+
+func NullableReadKeepsItsBound() {
+    var small = Buffer(8)
+    small.append(0)
+    small.append(0)
+    small.append(0)
+    small.append(5)
+    var large = Buffer(8)
+    large.append(0)
+    large.append(1)
+    large.append(0)
+    large.append(0)
+    var first = in_one_fallback(small)
+    var second = in_a_leaving_if(small)
+    var third = after_a_crash(small)
+    var fourth = inside_an_if(small)
+    console.print(first, second, third, fourth)
+    var fifth = in_one_fallback(large)
+    var sixth = in_a_leaving_if(large)
+    var seventh = after_a_crash(large)
+    var eighth = inside_an_if(large)
+    console.print(fifth, sixth, seventh, eighth)
+    console.print(position)
+}
+
+func in_one_fallback(bytes: Buffer): Integer {
+    var held = bytes.read_unsigned_integer_big_endian_at(0)
+    fallback held and held <= _largest
+    return held
+}
+
+func in_a_leaving_if(bytes: Buffer): Integer {
+    var held = bytes.read_unsigned_integer_big_endian_at(0)
+    if not held or held > _largest {
+        return -1
+    }
+    position = position + 4
+    return held
+}
+
+func after_a_crash(bytes: Buffer): Integer {
+    var held = bytes.read_unsigned_integer_big_endian_at(0)
+    crash held
+    if held > _largest {
+        return -2
+    }
+    return held
+}
+
+func inside_an_if(bytes: Buffer): Integer {
+    var held = bytes.read_unsigned_integer_big_endian_at(0)
+    if held and held <= _largest {
+        return held
+    }
+    return -3
+}
