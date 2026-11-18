@@ -1,0 +1,6 @@
+func EnumReopenedInALoadedFolder() {
+    load "engine"
+    load "mods"
+    var schedule = Schedule()
+    schedule.run_every_phase()
+}

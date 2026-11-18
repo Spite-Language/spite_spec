@@ -1,0 +1,3 @@
+running input
+running update
+running render

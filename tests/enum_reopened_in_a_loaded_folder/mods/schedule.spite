@@ -1,0 +1,5 @@
+enum Phase {
+    'input'
+    'update'
+    'render'
+}

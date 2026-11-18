@@ -1,0 +1,14 @@
+enum Phase {
+    'update'
+    'render'
+}
+
+var console = Console()
+
+func run_every_phase() {
+    Phase.values.each(run_phase)
+}
+
+func run_phase(phase: Phase) {
+    console.print("running", phase)
+}
