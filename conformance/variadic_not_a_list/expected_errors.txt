@@ -1,0 +1,1 @@
+conformance/variadic_not_a_list/variadic_not_a_list.spite:7: error: '...words' receives the arguments as a list: write '...words: List<Type>' with the type of each argument (in VariadicNotAList.shout)

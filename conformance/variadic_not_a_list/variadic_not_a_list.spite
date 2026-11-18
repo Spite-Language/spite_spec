@@ -1,0 +1,9 @@
+var console = Console()
+
+func VariadicNotAList() {
+    shout("a", "b")
+}
+
+func shout(...words: String) {
+    console.print(words)
+}
