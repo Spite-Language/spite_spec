@@ -586,7 +586,7 @@ func mirrored(folder: String, copy: String): Boolean {
     var last_copy = folder_at(copy)
     if last_copy.exists() and not last_copy.remove_all() {
         fail(folder, "its copy from the last run, {copy}, could not be removed, and every run copies it fresh")
-        return null
+        return false
     }
     var windows_folder = folder.replace("/", "\\")
     var windows_copy = copy.replace("/", "\\")
