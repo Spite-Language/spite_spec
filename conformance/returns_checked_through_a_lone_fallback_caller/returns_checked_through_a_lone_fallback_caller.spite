@@ -1,0 +1,50 @@
+var console = Console()
+
+func ReturnsCheckedThroughALoneFallbackCaller() {
+    var copied = copy_of("folder")
+    crash copied
+    var moving = moved_to("folder")
+    crash moving
+    var keeping = kept_in("folder")
+    crash keeping
+    console.print(copied, moving, keeping)
+}
+
+func copy_of(folder: String): String? {
+    var copy = "{folder}/copy"
+    fallback mirrored(folder, copy)
+    return copy
+}
+
+func mirrored(folder: String, copy: String): Boolean {
+    if folder == copy {
+        return null
+    }
+    return true
+}
+
+func moved_to(folder: String): String? {
+    var place = "{folder}/moved"
+    fallback moved(folder, place)
+    return place
+}
+
+func moved(folder: String, place: String): Boolean {
+    if folder == place {
+        return "no"
+    }
+    return true
+}
+
+func kept_in(folder: String): String? {
+    var place = "{folder}/kept"
+    fallback kept(folder, place)
+    return place
+}
+
+func kept(folder: String, place: String): Boolean {
+    if folder == place {
+        console.print(place)
+        return false
+    }
+}
