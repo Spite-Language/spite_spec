@@ -1,0 +1,4 @@
+3
+Gear
+Gear filled: true
+Wheel filled: false

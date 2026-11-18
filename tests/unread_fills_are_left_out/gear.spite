@@ -1,0 +1,5 @@
+var wheel = Wheel()
+
+func turn(): Integer {
+    return wheel.spokes
+}
