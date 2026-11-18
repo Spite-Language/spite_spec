@@ -1,0 +1,15 @@
+func CallTypeArgumentTakesNumbersAndEnums() {
+    var teller = Teller()
+    tell_by("tell", teller.hue, teller)
+    tell_by("tell", 2.5, teller)
+    tell_by("tell", 3, teller)
+    tell_by("tell", teller, teller)
+}
+
+func tell_by(name: String, said: Anything, teller: Teller) {
+    var declaration = Teller.functions[name]
+    crash declaration
+    var call = Spite.Call(declaration, teller)
+    call.arguments["said"] = said
+    call.call()
+}

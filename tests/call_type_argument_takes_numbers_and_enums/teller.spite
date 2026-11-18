@@ -1,0 +1,19 @@
+enum Hue {
+    'red'
+    'blue'
+}
+
+type Shown {
+    to_string: Spite.Function<String>
+}
+
+var console = Console()
+var hue: Hue = 'blue'
+
+func tell(said: Shown) {
+    console.print("told", said)
+}
+
+func to_string(): String {
+    return "a teller"
+}
