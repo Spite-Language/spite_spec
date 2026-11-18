@@ -1,0 +1,17 @@
+var console = Console()
+
+func BackReferenceMadeSideBySide() {
+    ask_and_answer()
+    console.print("the pair is out of reach")
+}
+
+func ask_and_answer() {
+    var question = Question("why")
+    var answer = Answer("because")
+    question.answer = answer
+    answer.question = question
+    var asked = answer.question
+    crash asked
+    var told = question.answer_text()
+    console.print(asked.text, told)
+}

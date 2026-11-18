@@ -1,0 +1,17 @@
+var console = Console()
+
+func BackReferenceMadeSideBySideLeaving() {
+    var answer = answer_alone()
+    var asked = answer.question_text()
+    console.print("the answer still knows", asked)
+}
+
+func answer_alone(): Answer {
+    var question = Question("why")
+    var answer = Answer("because")
+    question.answer = answer
+    answer.question = question
+    var told = question.answer_text()
+    console.print("the question knows", told)
+    return answer
+}

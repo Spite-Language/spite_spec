@@ -1,0 +1,11 @@
+var answer: Answer? = null
+var text: String
+
+func Question(starting_text: String) {
+    text = starting_text
+}
+
+func answer_text(): String {
+    fallback answer
+    return answer.text
+}

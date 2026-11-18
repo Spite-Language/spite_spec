@@ -1,5 +1,4 @@
 var console = Console()
-var marks = List<Integer>()
 var answer: Answer? = null
 var text: String
 
@@ -7,7 +6,11 @@ func Question(starting_text: String) {
     text = starting_text
 }
 
-func ask() {
-    var count = marks.count()
-    console.print("asking", text, count)
+func answer_text(): String {
+    fallback answer
+    return answer.text
+}
+
+func drop() {
+    console.print("question", text, "is freed")
 }
