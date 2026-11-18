@@ -1,0 +1,9 @@
+var chosen: Spite.Class = Monster
+
+func choose(other: Spite.Class) {
+    chosen = other
+}
+
+func chosen_name(): String {
+    return chosen.name
+}

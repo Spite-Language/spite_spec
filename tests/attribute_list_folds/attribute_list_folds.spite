@@ -1,0 +1,41 @@
+var console = Console()
+var program = Program()
+
+func AttributeListFolds() {
+    var monster = Monster()
+    var hit = monster.hit()
+    console.print(hit, monster.health)
+    var count = Monster.attributes.count()
+    var empty = Monster.attributes.is_empty()
+    var names = Monster.attributes.map_names()
+    var joined = names.join(",")
+    console.print(count, empty, joined)
+    var text_count = String.attributes.count()
+    console.print(text_count)
+    var path = program.executable_path()
+    crash path
+    var high_path = path.replace(".exe", ".high_ir.txt")
+    var text_path: Path? = high_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var reads = function_holds("AttributeListFolds.AttributeListFolds(", "Monster; )", text)
+    console.print("reads Monster's attributes while it runs", reads)
+}
+
+func function_holds(function_key: String, wanted: String, text: String): Boolean {
+    var lines = text.split("\n")
+    var inside = false
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            inside = line.starts_with("function {function_key}")
+        }
+        if inside and line.contains("get_attributes(") and line.contains(wanted) {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}

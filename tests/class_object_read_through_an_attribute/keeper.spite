@@ -1,0 +1,9 @@
+var held: Spite.Class = Monster
+
+func held_name(): String {
+    return held.name
+}
+
+func held_alone(): Boolean {
+    return held.is_singleton
+}

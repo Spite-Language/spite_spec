@@ -1,0 +1,7 @@
+var health = 3
+var name = "troll"
+
+func hit(): String {
+    health = health - 1
+    return name
+}

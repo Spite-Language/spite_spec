@@ -1,0 +1,5 @@
+2
+Monster false
+Keeper
+Keeper reads its class object while it runs false
+Chooser reads its class object while it runs true
