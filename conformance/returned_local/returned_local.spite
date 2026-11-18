@@ -1,17 +1,11 @@
 var console = Console()
 
 func ReturnedLocal() {
-    var whole = rounded(2.6)
     var greeting = named("ada")
     var wide = widened(3)
     var found = maybe(true)
     crash found
-    console.print(whole, greeting, wide, found)
-}
-
-func rounded(scaled: Float): Integer {
-    var whole: Integer = scaled.round()
-    return whole
+    console.print(greeting, wide, found)
 }
 
 func named(name: String): String {

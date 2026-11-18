@@ -1,0 +1,11 @@
+var console = Console()
+
+func ReturnedLocalNarrowing() {
+    var whole = rounded(2.6)
+    console.print(whole)
+}
+
+func rounded(scaled: Float): Integer {
+    var whole: Integer = scaled.round()
+    return whole
+}
