@@ -1,0 +1,40 @@
+enum Part {
+    'wing'
+    'tail'
+}
+
+var console = Console()
+var program = Program()
+
+func StaticClassObjects() {
+    var before = program.live_allocations()
+    var owner = Part.owner
+    var named = Part.name
+    var counted = Part.values.count()
+    var described = Gear.name
+    var tag: Part = 'tail'
+    var enumerated = tag.class
+    var declared = enumerated.values
+    var found = declared["tail"]
+    crash found
+    var after = program.live_allocations()
+    var made = after - before
+    console.print(owner, named, counted, described, found.index)
+    console.print("made while reading:", made)
+    var text = functions_text()
+    var gear_filled = text.contains("\tSpite.Class._fill_Gear\n")
+    var part_filled = text.contains("\tSpite.Enum._fill_StaticClassObjects.Part\n")
+    console.print("Gear filled:", gear_filled)
+    console.print("Part filled:", part_filled)
+}
+
+func functions_text(): String {
+    var path = program.executable_path()
+    crash path
+    var functions_path = path.replace(".exe", ".functions")
+    var text_path: Path? = functions_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    return text
+}

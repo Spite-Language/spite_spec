@@ -1,4 +1,4 @@
 3
 Gear
-Gear filled: true
+Gear filled: false
 Wheel filled: false

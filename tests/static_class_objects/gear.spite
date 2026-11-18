@@ -1,0 +1,5 @@
+var teeth = 12
+
+func turn(): Integer {
+    return teeth
+}

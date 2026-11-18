@@ -1,0 +1,4 @@
+StaticClassObjects Part 2 Gear 1
+made while reading: 0
+Gear filled: false
+Part filled: true
