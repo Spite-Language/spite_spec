@@ -1,0 +1,78 @@
+var console = Console()
+var program = Program()
+var _value = 77
+
+func FittedNarrowingCheckIsNotMade() {
+    var crashed_answer = crashed(_value)
+    var fell_answer = fell(_value)
+    var tested_answer = tested(_value)
+    var kept_answer = kept(_value)
+    console.print(crashed_answer, fell_answer, tested_answer, kept_answer)
+    var lines = function_lines()
+    var crash_path = has_a_cold_path(lines, "crashed")
+    console.print("crash has a cold path", crash_path)
+    var fallback_path = has_a_cold_path(lines, "fell")
+    console.print("fallback has a cold path", fallback_path)
+    var if_path = has_a_cold_path(lines, "tested")
+    console.print("if has a cold path", if_path)
+    var kept_path = has_a_cold_path(lines, "kept")
+    console.print("unproven crash has a cold path", kept_path)
+}
+
+func crashed(value: Integer): Integer {
+    var masked = value.bits_and(15)
+    var maybe: Tiny? = masked
+    crash maybe
+    return maybe
+}
+
+func fell(value: Integer): Integer {
+    var low = value.bits_and(7)
+    var maybe: Byte? = low
+    fallback maybe
+    return maybe
+}
+
+func tested(value: Integer): Integer {
+    var low = value.bits_and(3)
+    var maybe: Short? = low
+    if maybe {
+        return maybe
+    } else {
+        return 99
+    }
+}
+
+func kept(value: Integer): Integer {
+    var maybe: Tiny? = value
+    crash maybe
+    return maybe
+}
+
+func function_lines(): List<String> {
+    var path = program.executable_path()
+    crash path
+    var length = path.length()
+    var stem = path.slice(0, length - 4)
+    crash stem
+    var map_path: Path? = "{stem}.functions"
+    crash map_path
+    var map = File(map_path)
+    var text = map.read_as_string()
+    crash text
+    return text.split("\n")
+}
+
+func has_a_cold_path(lines: List<String>, function: String): Boolean {
+    var ending = ".{function}$cold0"
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var trimmed = line.replace("\r", "")
+        if trimmed.ends_with(ending) {
+            return true
+        }
+        index = index + 1
+    }
+    return false
+}

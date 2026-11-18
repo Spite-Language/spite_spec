@@ -1,0 +1,25 @@
+var console = Console()
+var _wide: UnsignedLong = 81985529216486895
+var _word: UnsignedInteger = 4000000000
+var _count: Long = 987654321987
+var _forty_bits: Long = 1099511627775
+
+func ShiftedRightBoundsANarrowing() {
+    var half = high_half(_wide)
+    var top = top_byte(_word)
+    var scaled = scaled_count(_count)
+    console.print(half, top, scaled)
+}
+
+func high_half(wide: UnsignedLong): UnsignedInteger {
+    return wide.shifted_right(32)
+}
+
+func top_byte(word: UnsignedInteger): Byte {
+    return word.shifted_right(24)
+}
+
+func scaled_count(count: Long): Integer {
+    var masked = count.bits_and(_forty_bits)
+    return masked.shifted_right(9)
+}

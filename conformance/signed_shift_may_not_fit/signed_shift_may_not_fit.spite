@@ -1,0 +1,11 @@
+var console = Console()
+var _count: Long = -987654321987
+
+func SignedShiftMayNotFit() {
+    var scaled = scaled_count(_count)
+    console.print(scaled)
+}
+
+func scaled_count(count: Long): Integer {
+    return count.shifted_right(32)
+}
