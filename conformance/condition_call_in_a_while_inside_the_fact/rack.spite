@@ -1,0 +1,3 @@
+var shelf = Shelf()
+var item: Item? = null
+var turns = 0
