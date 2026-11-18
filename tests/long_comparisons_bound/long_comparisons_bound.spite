@@ -1,0 +1,50 @@
+var console = Console()
+var _small: Long = 70
+var _large: Long = 7000000000
+var _below: Long = -7000000000
+var _nearly: Long = 900
+var _few: UnsignedLong = 200
+var _byte_top: UnsignedLong = 255
+
+func LongComparisonsBound() {
+    both_sides(_small)
+    both_sides(_large)
+    one_side_at_a_time(_nearly)
+    one_side_at_a_time(_large)
+    one_side_at_a_time(_below)
+    var zero: UnsignedLong = 0
+    var top = zero.wrapping_subtract(1)
+    unsigned_ceiling(top)
+    unsigned_ceiling(_few)
+}
+
+func both_sides(value: Long) {
+    if value <= 100 and value >= 0 {
+        var small: Byte = value
+        console.print(small)
+        return
+    }
+    console.print("outside")
+}
+
+func one_side_at_a_time(value: Long) {
+    if value > 1000 {
+        console.print("above")
+        return
+    }
+    if value < -1000 {
+        console.print("below")
+        return
+    }
+    var fitted: Short = value
+    console.print(fitted)
+}
+
+func unsigned_ceiling(value: UnsignedLong) {
+    if value <= _byte_top {
+        var small: Byte = value
+        console.print(small)
+        return
+    }
+    console.print("too big")
+}

@@ -1,0 +1,36 @@
+var console = Console()
+var _length: Long = 1000
+var _position: Long = 10
+var _count = 50
+var _negative: Long = -1234
+var _positive: Long = 5678
+
+func ClampingIfKeepsItsBound() {
+    show_part(_length, _position, _count)
+    show_part(_length, _length, _count)
+    show_part(_count, _position, _count)
+    scaled_digit(_negative)
+    scaled_digit(_positive)
+}
+
+func show_part(length: Long, position: Long, count: Integer) {
+    var available = length - position
+    if available > count {
+        available = count
+    }
+    if available <= 0 {
+        console.print("none")
+        return
+    }
+    var wanted: Integer = available
+    console.print(wanted)
+}
+
+func scaled_digit(value: Long) {
+    var remainder = value % 10
+    if remainder < 0 {
+        remainder = 0 - remainder
+    }
+    var scaled: Byte = remainder * 20
+    console.print(scaled)
+}

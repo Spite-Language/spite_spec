@@ -1,0 +1,7 @@
+70
+outside
+900
+above
+below
+too big
+200
