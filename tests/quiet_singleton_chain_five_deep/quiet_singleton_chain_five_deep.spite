@@ -1,0 +1,13 @@
+var console = Console()
+var first = First()
+var rounds = 1000
+
+func QuietSingletonChainFiveDeep() {
+    var total = 0
+    var round = 0
+    while round < rounds {
+        total = total + first.second.third.fourth.fifth.step
+        round = round + 1
+    }
+    console.print("total", total)
+}

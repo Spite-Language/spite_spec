@@ -1,0 +1,32 @@
+var console = Console()
+
+func BackReferenceOtherWayPastTheKeyBudget() {
+    var lone = Beta("lone")
+    make_an_alpha(lone)
+    var box = Box()
+    pair(box)
+    var first = box.inner.deeper.deepest.first
+    crash lone.alpha
+    console.print(lone.alpha.name, "holds", lone.name)
+    if first.beta {
+        console.print(first.name, "still holds", first.beta.name)
+    } else {
+        console.print("freed early")
+    }
+}
+
+func make_an_alpha(other: Beta) {
+    var first = Alpha("made")
+    first.beta = other
+    other.alpha = first
+}
+
+func pair(box: Box) {
+    var second = Beta("bee")
+    attach(box, second)
+}
+
+func attach(box: Box, second: Beta) {
+    box.inner.deeper.deepest.first.beta = second
+    second.alpha = box.inner.deeper.deepest.first
+}
