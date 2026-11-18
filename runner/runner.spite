@@ -583,11 +583,16 @@ func copy_of(folder: String): String? {
 }
 
 func mirrored(folder: String, copy: String): Boolean {
+    var last_copy = folder_at(copy)
+    if last_copy.exists() and not last_copy.remove_all() {
+        fail(folder, "its copy from the last run, {copy}, could not be removed, and every run copies it fresh")
+        return null
+    }
     var windows_folder = folder.replace("/", "\\")
     var windows_copy = copy.replace("/", "\\")
     var no_arguments = List<String>()
     var copying = Process(
-        "robocopy {windows_folder} {windows_copy} /MIR /XD .spite /NFL /NDL /NJH /NJS /NP 2>&1",
+        "robocopy {windows_folder} {windows_copy} /E /XD .spite /NFL /NDL /NJH /NJS /NP 2>&1",
         no_arguments,
     )
     var copied = copying.run()

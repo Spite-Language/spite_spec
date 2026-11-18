@@ -1,0 +1,21 @@
+var console = Console()
+var build = Build()
+
+func ATestCopyIsFreshEveryRun() {
+    var marker_path: Path? = "{build.program}/marker.txt"
+    crash marker_path
+    var marker = File(marker_path)
+    var text = marker.read_as_string()
+    crash text
+    console.print(text)
+    var folder = build.program.replace("/", "\\")
+    var checked_in = "tests\\a_test_copy_is_fresh_every_run\\marker.txt"
+    var copying = "copy /y {folder}\\rewritten.txt {folder}\\marker.txt >nul"
+    var same_time = "(Get-Item '{folder}\\marker.txt').LastWriteTime = (Get-Item '{checked_in}').LastWriteTime"
+    var no_arguments = List<String>()
+    var rewriting = Process("{copying} && powershell -NoProfile -Command \"{same_time}\"", no_arguments)
+    var rewritten = rewriting.run()
+    if rewritten != 0 {
+        console.print("marker.txt could not be rewritten")
+    }
+}
