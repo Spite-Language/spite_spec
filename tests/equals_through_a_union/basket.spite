@@ -1,0 +1,6 @@
+union Fruit {
+    Apple
+    Pear
+}
+
+var held: Fruit? = null

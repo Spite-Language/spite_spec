@@ -1,0 +1,13 @@
+var wing: String
+
+func Flyer(starting_wing: String) {
+    wing = starting_wing
+}
+
+func name_of(): String {
+    return "flyer {wing}"
+}
+
+func equals(other: Flyer): Boolean {
+    return wing == other.wing
+}

@@ -1,0 +1,9 @@
+var step: String
+
+func Walker(starting_step: String) {
+    step = starting_step
+}
+
+func name_of(): String {
+    return "walker {step}"
+}

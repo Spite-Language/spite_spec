@@ -1,0 +1,7 @@
+both empty true
+one empty false
+equal apples true false
+apples that differ false
+an apple and a pear false
+1 1
+fruit true false true

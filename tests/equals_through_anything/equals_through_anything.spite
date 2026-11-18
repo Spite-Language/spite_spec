@@ -1,0 +1,26 @@
+var console = Console()
+
+func EqualsThroughAnything() {
+    var first = Shelf()
+    var second = Shelf()
+    console.print("both empty", first == second)
+    var book = Book("tale")
+    first.kept = book
+    console.print("one empty", first == second)
+    var other_book = Book("tale")
+    second.kept = other_book
+    console.print("equal books", first == second)
+    var poem = Book("poem")
+    second.kept = poem
+    console.print("books that differ", first == second)
+    first.kept = 7
+    second.kept = 7
+    console.print("equal numbers", first == second)
+    second.kept = 8
+    console.print("numbers that differ", first == second)
+    second.kept = "7"
+    console.print("a number and a text", first == second)
+    first.kept = "7"
+    console.print("equal texts", first == second)
+    console.print(book.title)
+}

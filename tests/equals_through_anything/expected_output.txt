@@ -1,0 +1,9 @@
+both empty true
+one empty false
+equal books true
+books that differ false
+equal numbers true
+numbers that differ false
+a number and a text false
+equal texts true
+tale

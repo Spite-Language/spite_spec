@@ -1,0 +1,36 @@
+var console = Console()
+
+func EqualsThroughAUnion() {
+    compare_baskets()
+    compare_fruit()
+}
+
+func compare_baskets() {
+    var first = Basket()
+    var second = Basket()
+    console.print("both empty", first == second)
+    var apple = Apple(1)
+    first.held = apple
+    console.print("one empty", first == second)
+    var other_apple = Apple(1)
+    second.held = other_apple
+    console.print("equal apples", first == second, first != second)
+    var heavy_apple = Apple(2)
+    second.held = heavy_apple
+    console.print("apples that differ", first == second)
+    var pear = Pear(1)
+    second.held = pear
+    console.print("an apple and a pear", first == second)
+    console.print(apple.weight, pear.weight)
+}
+
+func compare_fruit() {
+    var basket = Basket()
+    var apple = Apple(3)
+    var other_apple = Apple(3)
+    var pear = Pear(3)
+    basket.held = apple
+    var held = basket.held
+    crash held
+    console.print("fruit", held == other_apple, held == pear, held != pear)
+}

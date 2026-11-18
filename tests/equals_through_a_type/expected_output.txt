@@ -1,0 +1,9 @@
+no drivers true
+one driver false false
+equal walkers true false
+walkers that differ false
+a walker and a flyer false true
+equal flyers true
+walker walk flyer walk
+drivers true false
+a driver and a walker true false

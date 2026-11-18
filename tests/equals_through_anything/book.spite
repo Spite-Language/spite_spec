@@ -1,0 +1,5 @@
+var title: String
+
+func Book(starting_title: String) {
+    title = starting_title
+}

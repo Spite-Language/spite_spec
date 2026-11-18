@@ -1,0 +1,54 @@
+type Driver {
+    name_of: Spite.Function<String>
+}
+
+var console = Console()
+
+func EqualsThroughAType() {
+    compare_nodes()
+    compare_drivers()
+}
+
+func compare_nodes() {
+    var first = Node()
+    var second = Node()
+    console.print("no drivers", first == second)
+    var walking = Walker("walk")
+    first.driver = walking
+    console.print("one driver", first == second, second == first)
+    var other_walking = Walker("walk")
+    second.driver = other_walking
+    console.print("equal walkers", first == second, first != second)
+    var running = Walker("run")
+    second.driver = running
+    console.print("walkers that differ", first == second)
+    var flying = Flyer("walk")
+    second.driver = flying
+    console.print("a walker and a flyer", first == second, first != second)
+    var other_flying = Flyer("walk")
+    first.driver = other_flying
+    console.print("equal flyers", first == second)
+    var named = walking.name_of()
+    var flown = flying.name_of()
+    console.print(named, flown)
+}
+
+func compare_drivers() {
+    var walking = Walker("walk")
+    var other_walking = Walker("walk")
+    var flying = Flyer("walk")
+    var same_walkers = same_driver(walking, other_walking)
+    var walker_and_flyer = same_driver(walking, flying)
+    console.print("drivers", same_walkers, walker_and_flyer)
+    var walking_walker = walking_driver(walking, other_walking)
+    var flying_walker = walking_driver(flying, walking)
+    console.print("a driver and a walker", walking_walker, flying_walker)
+}
+
+func same_driver(first: Driver, second: Driver): Boolean {
+    return first == second
+}
+
+func walking_driver(first: Driver, second: Walker): Boolean {
+    return first == second
+}
