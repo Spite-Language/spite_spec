@@ -1,0 +1,19 @@
+parts: 8 root
+dropping root
+dropping first
+made made in a drop
+dropping made in a drop
+dropping inner of the made
+dropping first left
+dropping first right
+dropping second
+dropping shared
+dropping second right
+after the parts
+groups: 5 top
+dropping top
+dropping one
+dropping one one
+dropping one two
+dropping two
+after the groups

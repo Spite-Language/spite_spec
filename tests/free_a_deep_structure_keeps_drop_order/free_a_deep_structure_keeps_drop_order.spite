@@ -1,0 +1,41 @@
+var console = Console()
+
+func FreeADeepStructureKeepsDropOrder() {
+    parts_let_go()
+    console.print("after the parts")
+    groups_let_go()
+    console.print("after the groups")
+}
+
+func parts_let_go() {
+    var root = Part("root")
+    var first = Part("first")
+    var first_left = Part("first left")
+    var first_right = Part("first right")
+    var shared = Part("shared")
+    var second = Part("second")
+    var second_right = Part("second right")
+    first_left.left = shared
+    first.left = first_left
+    first.right = first_right
+    second.left = shared
+    second.right = second_right
+    root.left = first
+    root.right = second
+    var size = root.size()
+    console.print("parts:", size, root.name)
+}
+
+func groups_let_go() {
+    var top = Group("top")
+    var one = Group("one")
+    var one_one = Group("one one")
+    var one_two = Group("one two")
+    var two = Group("two")
+    one.children.append(one_one)
+    one.children.append(one_two)
+    top.children.append(one)
+    top.children.append(two)
+    var size = top.size()
+    console.print("groups:", size, top.name)
+}

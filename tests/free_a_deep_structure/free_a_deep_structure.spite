@@ -1,0 +1,74 @@
+var console = Console()
+var program = Program()
+var _depth = 1000000
+
+func FreeADeepStructure() {
+    spine_let_go()
+    console.print("the spine is freed")
+    tree_let_go()
+    console.print("the tree is freed")
+    steps_let_go()
+    console.print("the steps are freed")
+    var text = functions_text()
+    var branches_wait = text.contains("\t_free_onto_Branch")
+    var steps_wait = text.contains("\t_free_onto_Step")
+    console.print("branches wait on a list:", branches_wait)
+    console.print("steps wait on a list:", steps_wait)
+}
+
+func spine_let_go() {
+    var root = Branch()
+    var count = 1
+    while count < _depth {
+        var branch = Branch()
+        var leaf = Branch()
+        branch.left = root
+        branch.right = leaf
+        root = branch
+        count = count + 1
+    }
+    var right = root.right
+    crash right
+    var is_a_leaf = right.is_a_leaf()
+    console.print("made a spine", count, "deep, its right is a leaf:", is_a_leaf)
+}
+
+func tree_let_go() {
+    var leaf = Node()
+    var root = Node()
+    var count = 1
+    while count < _depth {
+        var node = Node()
+        node.children.append(root)
+        node.children.append(leaf)
+        root = node
+        count = count + 1
+    }
+    var children = root.children.count()
+    console.print("made a tree", count, "deep through its first child, with", children, "children at its root")
+}
+
+func steps_let_go() {
+    var first = Step()
+    var count = 1
+    while count < _depth {
+        var step = Step()
+        step.next = first
+        first = step
+        count = count + 1
+    }
+    var second = first.next
+    crash second
+    console.print("made", count, "steps, each with a note:", second.note.text)
+}
+
+func functions_text(): String {
+    var path = program.executable_path()
+    crash path
+    var functions_path = path.replace(".exe", ".functions")
+    var text_path: Path? = functions_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    return text
+}

@@ -1,0 +1,31 @@
+var console = Console()
+var left: Part? = null
+var right: Part? = null
+var name: String
+
+func Part(given: String) {
+    name = given
+}
+
+func size(): Integer {
+    var total = 1
+    if left {
+        var left_size = left.size()
+        total = total + left_size
+    }
+    if right {
+        var right_size = right.size()
+        total = total + right_size
+    }
+    return total
+}
+
+func drop() {
+    console.print("dropping", name)
+    if name == "first" {
+        var made = Part("made in a drop")
+        var inner = Part("inner of the made")
+        made.left = inner
+        console.print("made", made.name)
+    }
+}

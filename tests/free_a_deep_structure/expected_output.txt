@@ -1,0 +1,8 @@
+made a spine 1000000 deep, its right is a leaf: true
+the spine is freed
+made a tree 1000000 deep through its first child, with 2 children at its root
+the tree is freed
+made 1000000 steps, each with a note: kept
+the steps are freed
+branches wait on a list: true
+steps wait on a list: false

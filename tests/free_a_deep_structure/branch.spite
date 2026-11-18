@@ -1,0 +1,7 @@
+var left: Branch? = null
+var right: Branch? = null
+
+func is_a_leaf(): Boolean {
+    fallback not left
+    return true
+}

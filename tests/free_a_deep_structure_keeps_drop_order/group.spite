@@ -1,0 +1,23 @@
+var console = Console()
+var children = List<Group>()
+var name: String
+
+func Group(given: String) {
+    name = given
+}
+
+func size(): Integer {
+    var total = 1
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var child_size = child.size()
+        total = total + child_size
+        index = index + 1
+    }
+    return total
+}
+
+func drop() {
+    console.print("dropping", name)
+}
