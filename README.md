@@ -64,7 +64,8 @@ the compiler first with `bash scripts/bootstrap.sh --install` in `../spite_compi
 With no `--tests` it runs every test; `--tests` names the ones to run, separated by commas. A name ending in `*`
 runs every folder that starts with it (`--tests=tests/float*`), and `--failed` runs again only the tests that failed in the last run, so the
 loop while fixing something is the tests it touches, not the whole corpus. It compiles each one with the new compiler,
-`../spite_compiler/.spite/spite.exe`, run inside a copy of its folder, prints `FAILED <folder>: <why>` for each that fails, then how many passed
+`../spite_compiler/.spite/spite.exe`, run inside a copy of its folder made fresh every run (`.copies/<name>`, so a test may change
+files in it), prints `FAILED <folder>: <why>` for each that fails, then how many passed
 and failed, and leaves 1 when any failed.
 
 The tests run in parallel, as many at once as the machine has processors; `--jobs=4` sets how many. Each has
@@ -72,6 +73,9 @@ The tests run in parallel, as many at once as the machine has processors; `--job
 every process it started, and fails with `stopped after 300 seconds, the program did not finish`, so a hang
 fails one test and never stops the run. Each test runs in a process of its own, the runner itself started with
 `--one-test=<folder>`, which is also how to run one test with nothing else around it.
+A runner keeps what its tests print in a folder of its own, `.spite/runner/<process id>`, removed when it finishes,
+so two runners can share a checkout as long as they do not run the same test at once (a test's copy and its
+`.spite/build` are shared).
 
 One program by hand (the compiler builds it and runs it, or only builds it with `--build`):
 
