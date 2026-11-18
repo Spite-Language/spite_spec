@@ -1,0 +1,11 @@
+var console = Console()
+var _beyond_an_integer: Long = 4294967296
+
+func ComparisonSwappedToFit() {
+    compare(3, _beyond_an_integer)
+}
+
+func compare(count: Integer, total: Long) {
+    var smaller = count < total
+    console.print(smaller, missing)
+}

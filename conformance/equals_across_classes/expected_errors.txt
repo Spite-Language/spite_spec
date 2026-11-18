@@ -1,1 +1,1 @@
-conformance/equals_across_classes/equals_across_classes.spite:6: error: a Badge cannot be used where a Medal is needed (in EqualsAcrossClasses.EqualsAcrossClasses)
+conformance/equals_across_classes/equals_across_classes.spite:6: error: a Medal cannot be used where a Badge is needed: a value is cast to the class a place wants through that class's conversion, and Badge declares no 'Badge(from: Medal)' (in EqualsAcrossClasses.EqualsAcrossClasses)

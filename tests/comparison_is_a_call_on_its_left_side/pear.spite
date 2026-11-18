@@ -1,0 +1,5 @@
+var weight: Integer
+
+func Pear(starting_weight: Integer) {
+    weight = starting_weight
+}

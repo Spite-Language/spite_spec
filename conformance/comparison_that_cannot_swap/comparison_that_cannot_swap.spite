@@ -1,0 +1,15 @@
+var console = Console()
+var _beyond_an_integer: Long = 4294967296
+
+func ComparisonThatCannotSwap() {
+    var counts = List<Integer>()
+    counts.append(3)
+    var smaller = counts.count() < total_of(counts)
+    console.print(smaller)
+}
+
+func total_of(counts: List<Integer>): Long {
+    var first = counts.first()
+    crash first
+    return _beyond_an_integer + first
+}

@@ -1,0 +1,55 @@
+var console = Console()
+var _color_type = 6
+var _past_a_byte = 262
+var _beyond_an_integer: Long = 4294967296
+
+func ComparisonIsACallOnItsLeftSide() {
+    var encoded = Buffer(2)
+    encoded.append(6)
+    compare_a_read_byte(encoded, _color_type)
+    compare_a_read_byte(encoded, _past_a_byte)
+    compare_widths(_color_type)
+    compare_decimals(_color_type)
+    compare_missing(encoded)
+    compare_fruit()
+}
+
+func compare_a_read_byte(encoded: Buffer, color_type: Integer) {
+    var written = encoded[0]
+    console.print("read byte", color_type == written, color_type != written)
+    var missing = encoded[5]
+    console.print("missing byte", color_type == missing, color_type != missing)
+}
+
+func compare_widths(count: Integer) {
+    var small: Byte = 6
+    console.print("integer and byte", count == small, count > small, count <= small)
+    var total = _beyond_an_integer
+    console.print("long and integer", total > count, total == count, total != count)
+}
+
+func compare_decimals(count: Integer) {
+    var progress = count - _color_type
+    console.print("float and integer", -0.5 < progress, 0.5 > progress)
+    var real: Float = 0.1
+    var exact: Double = 0.1
+    console.print("double and float", exact == real, exact > real)
+}
+
+func compare_missing(encoded: Buffer) {
+    var first = encoded[3]
+    var second = encoded[4]
+    var present = encoded[0]
+    console.print("two missing", first == second, first == present, present != first)
+}
+
+func compare_fruit() {
+    var basket = Basket()
+    var apple = Apple(3)
+    var pear = Pear(3)
+    basket.held = apple
+    var held = basket.held
+    crash held
+    console.print("fruit", held == apple, held == pear)
+    console.print(apple.weight, pear.weight)
+}

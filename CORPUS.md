@@ -697,7 +697,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | diagnostics/weak_across_threads | not applicable (D755) | - | there is no Weak |
 | diagnostics/whole_number_rotation | covered | conformance/whole_number_rotation |  |
 | diagnostics/wider_bitwise_operand | covered | conformance/wider_bitwise_operand |  |
-| diagnostics/wider_comparison | covered | tests/comparison_in_the_wider_type | a comparison is done in the wider type now (spite_compiler#603) |
+| diagnostics/wider_comparison | covered | tests/comparison_is_a_call_on_its_left_side, conformance/comparison_swapped_to_fit, conformance/comparison_that_cannot_swap | a comparison is a call on its left side: the wider side goes left, swapped by a fix when it fits (spite_compiler#613) |
 | diagnostics/wider_right_operand | covered | conformance/wider_right_operand |  |
 | diagnostics/written_handle_type | not applicable (D1715) | - | conformance/written_handle_type removed with spite_compiler#224 |
 | diagnostics/written_not_read | covered | conformance/written_not_read |  |
@@ -981,7 +981,7 @@ Ported programs the compiler (`spite_all2`, 2026-10-24) gets wrong, one line eac
 | docs/values_and_types.md#wrapping_by_name | covered | tests/wrapping_functions |  |
 | docs/values_and_types.md#wider_first | covered | conformance/wider_multiplication_order |  |
 | docs/values_and_types.md#constant_overflow | covered | conformance/constant_overflow |  |
-| docs/values_and_types.md#casting_edge | covered | tests/comparison_in_the_wider_type | a comparison is done in the wider type now (spite_compiler#603) |
+| docs/values_and_types.md#casting_edge | covered | tests/comparison_is_a_call_on_its_left_side | a comparison is a call on its left side (spite_compiler#613) |
 | docs/values_and_types.md#casting_fixed | ported | tests/casting_fixed |  |
 | docs/values_and_types.md#number_methods | covered | tests/live_settings | reopened Integer; bits() in tests/maths_folding |
 | docs/values_and_types.md#bitwise_basics | covered | tests/bitwise_functions |  |

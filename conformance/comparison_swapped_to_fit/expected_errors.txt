@@ -1,0 +1,2 @@
+conformance/comparison_swapped_to_fit/comparison_swapped_to_fit.spite:9: fixed: 'count < total' called on an Integer, which a Long on the right may not fit; swapped the sides to 'total > count' (in ComparisonSwappedToFit.compare)
+conformance/comparison_swapped_to_fit/comparison_swapped_to_fit.spite:10: error: 'missing' is not a local, an attribute or a function of 'ComparisonSwappedToFit' (in ComparisonSwappedToFit.compare)

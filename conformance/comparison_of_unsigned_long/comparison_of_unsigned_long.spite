@@ -1,0 +1,12 @@
+var console = Console()
+var _huge: UnsignedLong = 7
+var _below_zero = -1
+
+func ComparisonOfUnsignedLong() {
+    compare(_huge, _below_zero)
+}
+
+func compare(big: UnsignedLong, small: Integer) {
+    var same = big == small
+    console.print(same)
+}

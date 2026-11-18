@@ -1,1 +1,1 @@
-conformance/time_reading_is_not_instant/time_reading_is_not_instant.spite:11: error: a DateTime cannot be used where an Instant is needed (in TimeReadingIsNotInstant.TimeReadingIsNotInstant)
+conformance/time_reading_is_not_instant/time_reading_is_not_instant.spite:11: error: an Instant cannot be used where a DateTime is needed: a value is cast to the class a place wants through that class's conversion, and DateTime declares no 'DateTime(from: Instant)' (in TimeReadingIsNotInstant.TimeReadingIsNotInstant)

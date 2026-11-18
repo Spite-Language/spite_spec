@@ -1,0 +1,1 @@
+conformance/comparison_that_cannot_swap/comparison_that_cannot_swap.spite:7: error: this value is a Long, which may not fit in an Integer: write 'var converted: Integer? = value' on its own line, which is null when it does not fit, and narrow that, or swap the sides ('total_of(counts) > counts.count()') (in ComparisonThatCannotSwap.ComparisonThatCannotSwap)

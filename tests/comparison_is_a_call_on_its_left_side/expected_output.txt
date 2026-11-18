@@ -1,0 +1,11 @@
+read byte true false
+missing byte false true
+read byte false true
+missing byte false true
+integer and byte true false true
+long and integer true false true
+float and integer true true
+double and float false false
+two missing true false true
+fruit true false
+3 3

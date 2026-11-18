@@ -1,1 +1,1 @@
-conformance/time_instant_against_local/time_instant_against_local.spite:10: error: ...an Instant cannot be used where a DateTime is needed... (in TimeInstantAgainstLocal.TimeInstantAgainstLocal)
+conformance/time_instant_against_local/time_instant_against_local.spite:10: error: a DateTime cannot be used where an Instant is needed: a value is cast to the class a place wants through that class's conversion, and Instant declares no 'Instant(from: DateTime)' (in TimeInstantAgainstLocal.TimeInstantAgainstLocal)
