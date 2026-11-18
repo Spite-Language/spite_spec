@@ -1,0 +1,1 @@
+conformance/set_value_of_a_maybe_null_into_a_plain_attribute/set_value_of_a_maybe_null_into_a_plain_attribute.spite:14: error: this value may be null (it is a String?), but a String is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in SetValueOfAMaybeNullIntoAPlainAttribute.write_text)

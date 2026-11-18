@@ -1,1 +1,1 @@
-spite: set_value() gives 'Meter.whole' null, and it is not nullable
+whole 0

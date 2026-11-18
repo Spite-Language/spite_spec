@@ -1,0 +1,20 @@
+var console = Console()
+
+func SetValueOfAMaybeNullIntoAPlainAttribute() {
+    var label = Label()
+    var found = maybe(false)
+    write_text(label, found)
+    console.print(label.text)
+}
+
+func write_text(held: Anything, given: String?) {
+    var attributes = held.attributes
+    var text = attributes["text"]
+    crash text
+    text.value = given
+}
+
+func maybe(wanted: Boolean): String? {
+    fallback wanted
+    return "found"
+}
