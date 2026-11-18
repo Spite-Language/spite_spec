@@ -1,0 +1,6 @@
+made 1000000 links, the first two are link 999999 link 999998
+the chain is freed
+made a tree 200000 deep with 2 children at its root
+the tree is freed
+made 1000000 wraps
+the wraps are freed

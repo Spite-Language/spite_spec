@@ -1,0 +1,19 @@
+var console = Console()
+var next: Part? = null
+var tag = "part"
+var name: String
+
+func Part(given: String) {
+    name = given
+}
+
+func is_linked(): Boolean {
+    if next {
+        return true
+    }
+    return false
+}
+
+func drop() {
+    console.print("dropping", name)
+}

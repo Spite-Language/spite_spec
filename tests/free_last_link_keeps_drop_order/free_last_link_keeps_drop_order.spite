@@ -1,0 +1,12 @@
+var console = Console()
+
+func FreeLastLinkKeepsDropOrder() {
+    made_and_let_go()
+    console.print("after")
+}
+
+func made_and_let_go() {
+    var owner = Owner()
+    var linked = owner.second.is_linked()
+    console.print("owning", owner.label, owner.first.tag, linked)
+}

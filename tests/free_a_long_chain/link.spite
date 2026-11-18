@@ -1,0 +1,6 @@
+var next: Link? = null
+var label: String
+
+func Link(given: String) {
+    label = given
+}

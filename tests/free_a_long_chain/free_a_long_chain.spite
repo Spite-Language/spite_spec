@@ -1,0 +1,60 @@
+union Holder {
+    Wrap
+    Link
+}
+
+var console = Console()
+var _links = 1000000
+var _depth = 200000
+
+func FreeALongChain() {
+    chain_let_go()
+    console.print("the chain is freed")
+    tree_let_go()
+    console.print("the tree is freed")
+    wraps_let_go()
+    console.print("the wraps are freed")
+}
+
+func chain_let_go() {
+    var first = Link("link 0")
+    var count = 1
+    while count < _links {
+        var link = Link("link {count}")
+        link.next = first
+        first = link
+        count = count + 1
+    }
+    var second = first.next
+    crash second
+    console.print("made", count, "links, the first two are", first.label, second.label)
+}
+
+func tree_let_go() {
+    var root = Node()
+    var count = 1
+    while count < _depth {
+        var node = Node()
+        var leaf = Node()
+        node.children.append(leaf)
+        node.children.append(root)
+        root = node
+        count = count + 1
+    }
+    var children = root.children.count()
+    console.print("made a tree", count, "deep with", children, "children at its root")
+}
+
+func wraps_let_go() {
+    var held: Holder = Link("the end")
+    var count = 1
+    while count < _links {
+        var wrap = Wrap(held)
+        held = wrap
+        count = count + 1
+    }
+    var outer = Wrap(held)
+    var inner = outer.held
+    held = inner
+    console.print("made", count, "wraps")
+}

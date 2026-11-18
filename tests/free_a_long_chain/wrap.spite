@@ -1,0 +1,5 @@
+var held: FreeALongChain.Holder
+
+func Wrap(given: FreeALongChain.Holder) {
+    held = given
+}

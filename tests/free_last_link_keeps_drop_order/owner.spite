@@ -1,0 +1,22 @@
+var console = Console()
+var first = Part("first")
+var label = "owner"
+var parts = List<Part>()
+var second = Part("second")
+
+func Owner() {
+    var listed = Part("listed one")
+    parts.append(listed)
+    var chained = Part("listed two")
+    var after_it = Part("listed three")
+    chained.next = after_it
+    parts.append(chained)
+    var third = Part("third")
+    var fourth = Part("fourth")
+    third.next = fourth
+    second.next = third
+}
+
+func drop() {
+    console.print("dropping", label)
+}
