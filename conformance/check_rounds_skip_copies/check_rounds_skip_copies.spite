@@ -1,0 +1,16 @@
+var console = Console()
+
+func CheckRoundsSkipCopies() {
+    var price = Price()
+    show_attributes(price)
+    tell(price)
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, price: Price) {
+    var shown = price.attributes[attribute].value
+    console.print(shown.missing_function())
+}
+
+func tell(price: Price) {
+    console.print(price.missing_attribute)
+}
