@@ -1,0 +1,5 @@
+var size = 1
+
+func Loader() {
+    load "../../two"
+}

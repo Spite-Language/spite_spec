@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReopeningFromALateRoot() {
+    load "one"
+    var renderer = Engine.Renderer()
+    console.print(renderer.quality)
+    var loader = Engine.Loader()
+    console.print(loader.size)
+}

@@ -1,0 +1,5 @@
+var size = 2
+
+func doubled(): Integer {
+    return size * 2
+}
