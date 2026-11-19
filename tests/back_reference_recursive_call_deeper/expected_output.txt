@@ -5,4 +5,4 @@ the chain is out of reach
 spite: --debug-memory: 2 allocation(s) leaked
   Alpha: 1 leaked object(s)
   Beta: 1 leaked object(s)
-allocations: 38 frees: 36
+allocations: 39 frees: 37
