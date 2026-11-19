@@ -1,0 +1,16 @@
+var children = List<Child>()
+var console = Console()
+var name: String
+
+func Parent(new_name: String) {
+    name = new_name
+}
+
+func adopt(child_name: String) {
+    var child = Child(child_name, this)
+    children.append(child)
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

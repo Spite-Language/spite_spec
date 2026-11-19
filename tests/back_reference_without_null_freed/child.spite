@@ -1,0 +1,16 @@
+var console = Console()
+var parent: Parent
+var name: String
+
+func Child(new_name: String, new_parent: Parent) {
+    name = new_name
+    parent = new_parent
+}
+
+func describe(): String {
+    return "{name} of {parent.name}"
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

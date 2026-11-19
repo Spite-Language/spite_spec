@@ -1,0 +1,27 @@
+var console = Console()
+
+func BackReferenceWithoutNullLeaving() {
+    var kept = raise_a_family()
+    console.print(kept.name, "still belongs to", kept.parent.name)
+    var described = kept.describe()
+    console.print(described)
+    raise_a_small_family()
+    console.print("the small family is out of reach, and leaks with the first")
+}
+
+func raise_a_family(): Child {
+    var parent = Parent("ada")
+    parent.adopt("grace")
+    parent.adopt("linus")
+    var first = parent.children.first()
+    crash first
+    return first
+}
+
+func raise_a_small_family() {
+    var parent = Parent("dee")
+    parent.adopt("cy")
+    var child = parent.children.first()
+    crash child
+    console.print(child.name, "belongs to", child.parent.name)
+}

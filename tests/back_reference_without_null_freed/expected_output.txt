@@ -1,0 +1,22 @@
+grace belongs to ada
+linus of ada
+hello grace of ada
+hello linus of ada
+hello barbara of ada
+barbara left home, still a child of ada
+ada keeps 2 children
+ada is freed
+grace is freed
+linus is freed
+barbara is freed
+the family is out of reach
+hello cy of dee
+round 0 ends
+dee is freed
+cy is freed
+hello cy of dee
+round 1 ends
+dee is freed
+cy is freed
+every family is freed
+allocations: 161 frees: 161

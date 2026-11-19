@@ -1,0 +1,10 @@
+grace still belongs to ada
+grace of ada
+cy belongs to dee
+the small family is out of reach, and leaks with the first
+spite: --debug-memory: 9 allocation(s) leaked
+  Buffer: 2 leaked object(s)
+  Child: 3 leaked object(s)
+  Parent: 2 leaked object(s)
+  List_of_Child: 2 leaked object(s)
+allocations: 38 frees: 29

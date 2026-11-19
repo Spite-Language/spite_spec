@@ -1,0 +1,48 @@
+var console = Console()
+
+func BackReferenceWithoutNullFreed() {
+    raise_a_family()
+    console.print("the family is out of reach")
+    var round = 0
+    while round < 2 {
+        raise_a_small_family(round)
+        round = round + 1
+    }
+    console.print("every family is freed")
+}
+
+func raise_a_family() {
+    var parent = Parent("ada")
+    parent.adopt("grace")
+    parent.adopt("linus")
+    parent.adopt("barbara")
+    var first = parent.children.first()
+    crash first
+    console.print(first.name, "belongs to", first.parent.name)
+    var second = parent.children[1]
+    crash second
+    var described = second.describe()
+    console.print(described)
+    parent.children.each(greet)
+    var youngest = parent.children.remove_last()
+    crash youngest
+    console.print(youngest.name, "left home, still a child of", youngest.parent.name)
+    var count = parent.children.count()
+    console.print(parent.name, "keeps", count, "children")
+}
+
+func raise_a_small_family(round: Integer) {
+    var parent = Parent("dee")
+    parent.adopt("cy")
+    var index = 0
+    while index < parent.children.count() {
+        var child = parent.children[index]
+        greet(child)
+        index = index + 1
+    }
+    console.print("round", round, "ends")
+}
+
+func greet(child: Child) {
+    console.print("hello", child.name, "of", child.parent.name)
+}
