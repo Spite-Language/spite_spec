@@ -1,0 +1,12 @@
+var console = Console()
+
+func SetterInsideItsClass() {
+    var outfit = Outfit("cap")
+    console.print(outfit.helmet, outfit.writes)
+    outfit.wear("hood")
+    var other = Outfit("bare")
+    outfit.lend(other)
+    console.print(other.helmet, other.writes)
+    outfit.helmet = "crown"
+    console.print(outfit.helmet, outfit.writes)
+}

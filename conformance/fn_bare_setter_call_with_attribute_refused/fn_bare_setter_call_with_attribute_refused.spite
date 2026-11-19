@@ -1,6 +1,6 @@
 var console = Console()
 
-func FnBareSetterCallWithAttribute() {
+func FnBareSetterCallWithAttributeRefused() {
     var meter = Meter()
     var shown = meter.show()
     console.print(shown)

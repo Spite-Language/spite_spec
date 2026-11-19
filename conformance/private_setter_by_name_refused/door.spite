@@ -1,0 +1,15 @@
+var _open = false
+var _times = 0
+
+func _set_open(value: Boolean) {
+    _times = _times + 1
+    _open = value
+}
+
+func open_it() {
+    _set_open(true)
+}
+
+func get_times(): Integer {
+    return _times
+}

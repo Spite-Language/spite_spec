@@ -1,0 +1,17 @@
+var console = Console()
+var label: String? = null
+
+func set_label(value: String?) {
+    label = value
+}
+
+func get_label(): String? {
+    return label
+}
+
+func show() {
+    label = "books"
+    fallback label
+    var length = label.length()
+    console.print(label, length)
+}

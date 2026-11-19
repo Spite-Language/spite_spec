@@ -1,0 +1,8 @@
+var console = Console()
+
+func ConstructorWritesTheStorage() {
+    var meter = Meter(3, 4)
+    console.print(meter.turns, meter.checked)
+    meter.turns = 5
+    console.print(meter.turns)
+}

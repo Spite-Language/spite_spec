@@ -1,0 +1,9 @@
+var console = Console()
+
+func PrivateSetterAndGetter() {
+    var door = Door()
+    door.toggle()
+    door.toggle()
+    door.toggle()
+    console.print(door.open, door.times)
+}

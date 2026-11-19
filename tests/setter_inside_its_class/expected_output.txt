@@ -1,0 +1,7 @@
+[cap] 0
+was cap
+wearing [HOOD] 1
+was bare
+[[HOOD]] 1
+was HOOD
+[CROWN] 2

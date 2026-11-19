@@ -1,0 +1,4 @@
+func PlainAccessorsKeepNarrowing() {
+    var shelf = Shelf()
+    shelf.show()
+}

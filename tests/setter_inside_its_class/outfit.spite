@@ -1,0 +1,26 @@
+var console = Console()
+var writes = 0
+var helmet: String
+
+func Outfit(starting_helmet: String) {
+    helmet = starting_helmet
+}
+
+func set_helmet(value: String) {
+    writes = writes + 1
+    console.print("was", helmet)
+    helmet = value.upper_case()
+}
+
+func get_helmet(): String {
+    return "[{helmet}]"
+}
+
+func wear(value: String) {
+    helmet = value
+    console.print("wearing", helmet, writes)
+}
+
+func lend(other: Outfit) {
+    other.helmet = helmet
+}

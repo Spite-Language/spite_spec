@@ -1,0 +1,7 @@
+var console = Console()
+
+func PrivateSetterByNameRefused() {
+    var door = Door()
+    door.open_it()
+    console.print(door.times)
+}

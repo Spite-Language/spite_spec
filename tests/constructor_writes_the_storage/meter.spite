@@ -1,0 +1,15 @@
+var checked = 0
+var turns: Integer
+
+func Meter(starting_turns: Integer, checked_turns: Integer) {
+    turns = starting_turns
+    set_checked(checked_turns)
+}
+
+func set_turns(value: Integer) {
+    turns = value * 2
+}
+
+func set_checked(value: Integer) {
+    checked = value * 10
+}

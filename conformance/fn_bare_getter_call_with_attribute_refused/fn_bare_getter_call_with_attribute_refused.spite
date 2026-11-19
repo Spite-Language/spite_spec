@@ -1,6 +1,6 @@
 var console = Console()
 
-func FnBareGetterCallNotCovered() {
+func FnBareGetterCallWithAttributeRefused() {
     var counter = Counter()
     var read = counter.read_both()
     console.print(read)

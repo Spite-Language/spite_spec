@@ -1,0 +1,25 @@
+var console = Console()
+var _open = false
+var _times = 0
+
+func _set_open(value: Boolean) {
+    _times = _times + 1
+    _open = value
+}
+
+func _get_open(): Boolean {
+    console.print("asked")
+    return _open
+}
+
+func toggle() {
+    _open = not _open
+}
+
+func get_open(): Boolean {
+    return _open
+}
+
+func get_times(): Integer {
+    return _times
+}

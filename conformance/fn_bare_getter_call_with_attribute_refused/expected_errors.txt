@@ -1,0 +1,1 @@
+conformance/fn_bare_getter_call_with_attribute_refused/counter.spite:9: error: 'get_count' is what reading 'count' calls: write 'count' (in Counter.read_both)
