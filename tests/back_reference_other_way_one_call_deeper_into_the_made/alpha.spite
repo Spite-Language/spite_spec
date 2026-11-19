@@ -1,0 +1,6 @@
+var beta: Beta? = null
+var name: String
+
+func Alpha(new_name: String) {
+    name = new_name
+}

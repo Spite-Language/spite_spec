@@ -11,12 +11,24 @@ func hold_a_chain() {
     var last = Link("ce")
     head.next = middle
     middle.next = last
-    var second = Beta("bee")
-    pair_down(head, second, 2)
+    pair(head)
     var last_first = last.first
     crash last_first.beta
-    crash second.alpha
-    console.print(last_first.name, "holds", last_first.beta.name, "and", second.name, "holds", second.alpha.name)
+    crash last_first.beta.alpha
+    console.print(
+        last_first.name,
+        "holds",
+        last_first.beta.name,
+        "and",
+        last_first.beta.name,
+        "holds",
+        last_first.beta.alpha.name,
+    )
+}
+
+func pair(head: Link) {
+    var second = Beta("bee")
+    pair_down(head, second, 2)
 }
 
 func pair_down(link: Link, second: Beta, steps: Integer) {

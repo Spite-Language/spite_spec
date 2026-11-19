@@ -1,0 +1,39 @@
+var console = Console()
+
+func BackReferenceOtherWayOneCallDeeper() {
+    var lone = Beta("lone")
+    make_an_alpha(lone)
+    crash lone.alpha
+    console.print(lone.alpha.name, "holds", lone.name)
+    var head = Link("ay")
+    head.next = Link("be")
+    pair(head)
+    crash head.next
+    var first = head.next.first
+    if first.beta {
+        console.print(first.name, "still holds", first.beta.name)
+    } else {
+        console.print("freed early")
+    }
+}
+
+func make_an_alpha(other: Beta) {
+    var first = Alpha("made")
+    first.beta = other
+    other.alpha = first
+}
+
+func pair(head: Link) {
+    var second = Beta("bee")
+    pair_down(head, second, 1)
+}
+
+func pair_down(link: Link, second: Beta, steps: Integer) {
+    if steps == 0 {
+        second.alpha = link.first
+        return
+    }
+    crash link.next
+    link.next.first.beta = second
+    pair_down(link.next, second, steps - 1)
+}
