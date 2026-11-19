@@ -1,0 +1,9 @@
+bee holds ay
+other replaced it
+ay two still holds bee two
+other is freed
+both pairs are out of reach
+spite: --debug-memory: 4 allocation(s) leaked
+  Alpha: 2 leaked object(s)
+  Beta: 2 leaked object(s)
+allocations: 39 frees: 35

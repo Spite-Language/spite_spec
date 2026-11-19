@@ -1,0 +1,33 @@
+var console = Console()
+
+func BackReferenceMadeTogetherOtherWay() {
+    pair_through_a_link()
+    pair_through_a_box()
+    console.print("both pairs are out of reach")
+}
+
+func pair_through_a_link() {
+    var head = Link("ay")
+    var second = Beta("bee")
+    tie(head.first, second)
+    crash second.alpha
+    console.print(second.name, "holds", second.alpha.name)
+}
+
+func pair_through_a_box() {
+    var box = Box("bee two")
+    var first = Alpha("ay two")
+    tie(first, box.inner)
+    box.inner = Beta("other")
+    console.print(box.inner.name, "replaced it")
+    if first.beta {
+        console.print(first.name, "still holds", first.beta.name)
+    } else {
+        console.print("freed early")
+    }
+}
+
+func tie(first: Alpha, second: Beta) {
+    first.beta = second
+    second.alpha = first
+}

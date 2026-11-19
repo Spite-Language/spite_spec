@@ -1,0 +1,35 @@
+var console = Console()
+var kept = Link("kept")
+var spare: Beta? = null
+
+func BackReferenceMadeTogetherLinkedElsewhere() {
+    hold_a_chain()
+    spare = Beta("spare")
+    attach_the_spare()
+    var first = kept.first
+    if first.beta {
+        console.print(first.name, "still holds", first.beta.name)
+    } else {
+        console.print("freed early")
+    }
+}
+
+func hold_a_chain() {
+    var head = Link("ay")
+    var second = Beta("bee")
+    pair(head, second)
+    crash second.alpha
+    console.print(second.name, "holds", second.alpha.name)
+}
+
+func attach_the_spare() {
+    var lone = spare
+    crash lone
+    pair(kept, lone)
+    spare = null
+}
+
+func pair(link: Link, second: Beta) {
+    link.first.beta = second
+    second.alpha = link.first
+}

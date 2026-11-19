@@ -1,0 +1,6 @@
+bee holds ay
+ay still holds bee
+spite: --debug-memory: 2 allocation(s) leaked
+  Alpha: 1 leaked object(s)
+  Beta: 1 leaked object(s)
+allocations: 20 frees: 18

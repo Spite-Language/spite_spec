@@ -1,0 +1,5 @@
+var first: Alpha
+
+func Link(name: String) {
+    first = Alpha(name)
+}

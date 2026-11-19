@@ -1,0 +1,25 @@
+var console = Console()
+
+func BackReferenceMadeTogetherLeaving() {
+    var head = hold_a_chain()
+    var first = head.first
+    if first.beta {
+        console.print(first.name, "still holds", first.beta.name)
+    } else {
+        console.print("freed early")
+    }
+}
+
+func hold_a_chain(): Link {
+    var head = Link("ay")
+    var second = Beta("bee")
+    pair(head, second)
+    crash second.alpha
+    console.print(second.name, "holds", second.alpha.name)
+    return head
+}
+
+func pair(link: Link, second: Beta) {
+    link.first.beta = second
+    second.alpha = link.first
+}
