@@ -1,0 +1,12 @@
+true
+equal owner true false
+owner that differs false true
+other function false false
+nulls true false
+a maybe true false true
+texts true false
+numbers true false
+holders true
+holders that differ false
+a rests
+held back true false

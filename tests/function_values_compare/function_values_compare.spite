@@ -1,0 +1,71 @@
+var console = Console()
+
+func FunctionValuesCompare() {
+    var reader = Reader()
+    var first: Spite.Function<Integer, Nothing> = reader.changed
+    var second: Spite.Function<Integer, Nothing> = reader.changed
+    console.print(first == second)
+    var other_reader = Reader()
+    var equal_owner: Spite.Function<Integer, Nothing> = other_reader.changed
+    console.print("equal owner", first == equal_owner, first != equal_owner)
+    other_reader.changed(5)
+    console.print("owner that differs", first == equal_owner, first != equal_owner)
+    var ada = Counter("ada")
+    var adding: Spite.Function<Integer, Nothing> = ada.add
+    var taking: Spite.Function<Integer, Nothing> = ada.take
+    console.print("other function", adding == taking, first == adding)
+    compare_the_maybes(ada, first)
+    compare_the_texts()
+    compare_the_numbers()
+    compare_the_holders(ada)
+    compare_the_sleepers()
+}
+
+func compare_the_maybes(ada: Counter, first: Spite.Function<Integer, Nothing>) {
+    var maybe: Spite.Function<Integer, Nothing>? = null
+    var nothing_here: Spite.Function<Integer, Nothing>? = null
+    console.print("nulls", maybe == nothing_here, maybe == first)
+    maybe = ada.add
+    var adding: Spite.Function<Integer, Nothing> = ada.add
+    var taking: Spite.Function<Integer, Nothing> = ada.take
+    console.print("a maybe", maybe == adding, maybe == taking, maybe != taking)
+}
+
+func compare_the_texts() {
+    var greeting = "hi"
+    var also = "hi"
+    var other_text = "ho"
+    var asks: Spite.Function<String, Boolean> = greeting.contains
+    var also_asks: Spite.Function<String, Boolean> = also.contains
+    var other_asks: Spite.Function<String, Boolean> = other_text.contains
+    console.print("texts", asks == also_asks, asks == other_asks)
+}
+
+func compare_the_numbers() {
+    var five = 5
+    var also_five = 5
+    var six = 6
+    var shown: Spite.Function<String> = five.to_string
+    var also_shown: Spite.Function<String> = also_five.to_string
+    var six_shown: Spite.Function<String> = six.to_string
+    console.print("numbers", shown == also_shown, shown == six_shown)
+}
+
+func compare_the_holders(ada: Counter) {
+    var also_ada = Counter("ada")
+    var left_holder = Holder("one")
+    var right_holder = Holder("one")
+    left_holder.act = ada.add
+    right_holder.act = also_ada.add
+    console.print("holders", left_holder == right_holder)
+    right_holder.act = ada.take
+    console.print("holders that differ", left_holder == right_holder)
+}
+
+func compare_the_sleepers() {
+    var one = Sleeper("a")
+    var two = Sleeper("a")
+    var three = Sleeper("b")
+    one.act()
+    console.print("held back", one == two, one == three)
+}

@@ -1,0 +1,14 @@
+var console = Console()
+var name: String
+
+func Screen(starting_name: String) {
+    name = starting_name
+}
+
+func show(value: Integer) {
+    console.print(name, "shows", value)
+}
+
+func show_text(value: String) {
+    console.print(name, "shows text", value)
+}

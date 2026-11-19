@@ -1,0 +1,11 @@
+var console = Console()
+var act: Spite.Function<Nothing> = rest
+var label: String
+
+func Sleeper(starting_label: String) {
+    label = starting_label
+}
+
+func rest() {
+    console.print(label, "rests")
+}

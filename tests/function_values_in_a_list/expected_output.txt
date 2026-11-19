@@ -1,0 +1,10 @@
+ada heard 1
+bob heard 1
+bob ignored 1
+index of 1 2
+an equal owner 0 true
+missing null false
+ada heard 2
+bob ignored 2
+removed 2 false true
+lists true

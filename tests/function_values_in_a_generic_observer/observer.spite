@@ -1,0 +1,23 @@
+generic $value_type
+
+var listeners = List<Spite.Function<$value_type, Nothing>>()
+
+func subscribe(listener: Spite.Function<$value_type, Nothing>) {
+    fallback not listeners.contains(listener)
+    listeners.append(listener)
+}
+
+func unsubscribe(listener: Spite.Function<$value_type, Nothing>): Boolean {
+    var found = listeners.index_of(listener)
+    fallback found
+    listeners.remove_at(found)
+    return true
+}
+
+func tell(value: $value_type) {
+    var index = 0
+    while index < listeners.count() {
+        listeners[index](value)
+        index = index + 1
+    }
+}

@@ -1,0 +1,6 @@
+var act: Spite.Function<Integer, Nothing>? = null
+var label: String
+
+func Holder(starting_label: String) {
+    label = starting_label
+}

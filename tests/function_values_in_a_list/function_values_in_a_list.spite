@@ -1,0 +1,41 @@
+var console = Console()
+var handlers = List<Spite.Function<Integer, Nothing>>()
+
+func FunctionValuesInAList() {
+    var ada = Listener("ada")
+    var bob = Listener("bob")
+    var also_ada = Listener("ada")
+    handlers.append(ada.heard)
+    handlers.append(bob.heard)
+    handlers.append(bob.ignored)
+    tell(1)
+    var heard_at = handlers.index_of(bob.heard)
+    var ignored_at = handlers.index_of(bob.ignored)
+    console.print("index of", heard_at, ignored_at)
+    var equal_at = handlers.index_of(also_ada.heard)
+    var holds_equal = handlers.contains(also_ada.heard)
+    console.print("an equal owner", equal_at, holds_equal)
+    var missing_at = handlers.index_of(ada.ignored)
+    var holds_missing = handlers.contains(ada.ignored)
+    console.print("missing", missing_at, holds_missing)
+    var found = handlers.index_of(bob.heard)
+    crash found
+    handlers.remove_at(found)
+    tell(2)
+    var left = handlers.count()
+    var holds_heard = handlers.contains(bob.heard)
+    var holds_ignored = handlers.contains(bob.ignored)
+    console.print("removed", left, holds_heard, holds_ignored)
+    var kept = List<Spite.Function<Integer, Nothing>>()
+    kept.append(ada.heard)
+    kept.append(bob.ignored)
+    console.print("lists", handlers == kept)
+}
+
+func tell(amount: Integer) {
+    var index = 0
+    while index < handlers.count() {
+        handlers[index](amount)
+        index = index + 1
+    }
+}

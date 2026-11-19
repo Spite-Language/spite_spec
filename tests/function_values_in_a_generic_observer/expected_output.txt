@@ -1,0 +1,7 @@
+subscribed 2
+left shows 1
+right shows 1
+unsubscribed true 1
+right shows 2
+again false 1
+an equal screen true 0

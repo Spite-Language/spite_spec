@@ -1,0 +1,14 @@
+var console = Console()
+var name: String
+
+func Listener(starting_name: String) {
+    name = starting_name
+}
+
+func heard(amount: Integer) {
+    console.print(name, "heard", amount)
+}
+
+func ignored(amount: Integer) {
+    console.print(name, "ignored", amount)
+}
