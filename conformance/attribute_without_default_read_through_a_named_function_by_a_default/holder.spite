@@ -1,0 +1,17 @@
+var console = Console()
+var act: Spite.Function<Nothing> = rest
+var ran: Boolean = run()
+var name: String
+
+func Holder(given: String) {
+    name = given
+}
+
+func run(): Boolean {
+    act()
+    return true
+}
+
+func rest() {
+    console.print(name, "rests")
+}

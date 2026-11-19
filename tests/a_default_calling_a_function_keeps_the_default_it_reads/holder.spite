@@ -1,0 +1,10 @@
+var name = "nobody"
+var label: String = describe()
+
+func Holder(given: String) {
+    name = given
+}
+
+func describe(): String {
+    return "made for {name}"
+}

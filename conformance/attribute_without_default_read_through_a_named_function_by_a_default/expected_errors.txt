@@ -1,0 +1,1 @@
+conformance/attribute_without_default_read_through_a_named_function_by_a_default/holder.spite:3: error: the default of 'ran' reads 'name', which has no default: the defaults run before the constructor gives 'name' its value, so give 'ran' a default that does not read 'name' and set it in the constructor (in Holder)

@@ -1,0 +1,12 @@
+var console = Console()
+var act: Spite.Function<Nothing> = rest
+var name: String
+
+func Holder(given: String) {
+    act()
+    name = given
+}
+
+func rest() {
+    console.print(name, "rests")
+}

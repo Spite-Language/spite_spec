@@ -1,0 +1,4 @@
+func ADefaultNamingAFunctionReadsNothing() {
+    var holder = Holder("ivy")
+    holder.act()
+}

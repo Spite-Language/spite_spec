@@ -1,0 +1,1 @@
+conformance/attribute_without_default_read_through_a_named_function_in_the_constructor/holder.spite:3: error: the attribute 'name' has no default, so the constructor gives it its value, but line 6 calls 'rest', which uses it, before it has one: give it its value before anything reads it, or write a default (in Holder)

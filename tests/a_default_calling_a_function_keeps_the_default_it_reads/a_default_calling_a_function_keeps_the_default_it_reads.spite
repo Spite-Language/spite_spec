@@ -1,0 +1,6 @@
+var console = Console()
+
+func ADefaultCallingAFunctionKeepsTheDefaultItReads() {
+    var holder = Holder("ivy")
+    console.print(holder.label, holder.name)
+}

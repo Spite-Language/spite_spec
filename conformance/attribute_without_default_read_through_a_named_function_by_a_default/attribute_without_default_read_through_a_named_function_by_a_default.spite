@@ -1,0 +1,6 @@
+var console = Console()
+
+func AttributeWithoutDefaultReadThroughANamedFunctionByADefault() {
+    var holder = Holder("ivy")
+    console.print(holder.ran)
+}
