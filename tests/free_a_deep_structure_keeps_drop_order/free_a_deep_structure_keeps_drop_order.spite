@@ -5,6 +5,8 @@ func FreeADeepStructureKeepsDropOrder() {
     console.print("after the parts")
     groups_let_go()
     console.print("after the groups")
+    many_let_go()
+    console.print("after the many")
 }
 
 func parts_let_go() {
@@ -38,4 +40,17 @@ func groups_let_go() {
     top.children.append(two)
     var size = top.size()
     console.print("groups:", size, top.name)
+}
+
+func many_let_go() {
+    var many = Group("many")
+    var _children = 24
+    var index = 0
+    while index < _children {
+        var child = Group("child {index}")
+        many.children.append(child)
+        index = index + 1
+    }
+    var size = many.size()
+    console.print("many:", size, many.name)
 }

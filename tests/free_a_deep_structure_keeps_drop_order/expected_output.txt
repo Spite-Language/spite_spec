@@ -17,3 +17,30 @@ dropping one one
 dropping one two
 dropping two
 after the groups
+many: 25 many
+dropping many
+dropping child 0
+dropping child 1
+dropping child 2
+dropping child 3
+dropping child 4
+dropping child 5
+dropping child 6
+dropping child 7
+dropping child 8
+dropping child 9
+dropping child 10
+dropping child 11
+dropping child 12
+dropping child 13
+dropping child 14
+dropping child 15
+dropping child 16
+dropping child 17
+dropping child 18
+dropping child 19
+dropping child 20
+dropping child 21
+dropping child 22
+dropping child 23
+after the many
