@@ -1,0 +1,11 @@
+var console = Console()
+
+func FunctionValueHandedToAFunctionThatCallsIt() {
+    var keeper = Keeper()
+    var clearer = Clearer()
+    clearer.keeper = keeper
+    keeper.listener = clearer.clear
+    keeper.thing = Thing()
+    keeper.show()
+    console.print(keeper.label)
+}

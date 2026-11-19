@@ -1,0 +1,14 @@
+var label = ""
+var thing: Thing? = null
+var listener: Spite.Function<Integer, Nothing>? = null
+
+func apply(function: Spite.Function<Integer, Nothing>) {
+    function(1)
+}
+
+func show() {
+    crash thing
+    crash listener
+    apply(listener)
+    label = thing.name
+}

@@ -1,0 +1,6 @@
+var keeper: Keeper? = null
+
+func clear(_amount: Integer) {
+    fallback keeper
+    keeper.thing = null
+}
