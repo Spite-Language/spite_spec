@@ -1,0 +1,30 @@
+var console = Console()
+
+func ListRemoveByValue() {
+    var numbers = [3, 1, 4, 1, 5]
+    numbers.remove(1)
+    var shown = numbers.join(" ")
+    console.print(shown)
+    numbers.remove(9)
+    var shown_again = numbers.join(" ")
+    console.print(shown_again)
+    var tools = List<Tool>()
+    var saw = Tool("saw")
+    var axe = Tool("axe")
+    tools.append(saw)
+    tools.append(axe)
+    var other_saw = Tool("saw")
+    tools.remove(other_saw)
+    var left = tools.count()
+    var first = tools.first()
+    crash first
+    console.print(left, first.name)
+    var drill = Tool("drill")
+    tools.remove(drill)
+    var still = tools.count()
+    console.print(still)
+    var empty = List<String>()
+    empty.remove("nothing")
+    var emptied = empty.count()
+    console.print(emptied)
+}

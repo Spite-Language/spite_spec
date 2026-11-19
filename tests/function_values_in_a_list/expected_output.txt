@@ -7,4 +7,5 @@ missing null false
 ada heard 2
 bob ignored 2
 removed 2 false true
+an equal owner removed 1 false
 lists true

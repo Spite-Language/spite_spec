@@ -7,11 +7,8 @@ func subscribe(listener: Spite.Function<$value_type, Nothing>) {
     listeners.append(listener)
 }
 
-func unsubscribe(listener: Spite.Function<$value_type, Nothing>): Boolean {
-    var found = listeners.index_of(listener)
-    fallback found
-    listeners.remove_at(found)
-    return true
+func unsubscribe(listener: Spite.Function<$value_type, Nothing>) {
+    listeners.remove(listener)
 }
 
 func tell(value: $value_type) {
