@@ -6,6 +6,10 @@ func Person(new_name: String) {
     name = new_name
 }
 
+func join(other: Person) {
+    partner = other
+}
+
 func partner_name(): String {
     fallback partner
     return partner.name

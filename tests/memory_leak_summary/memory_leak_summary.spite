@@ -8,8 +8,8 @@ func MemoryLeakSummary() {
 func make_a_cycle() {
     var first = Person("ann")
     var second = Person("bob")
-    first.partner = second
-    second.partner = first
+    first.join(second)
+    second.join(first)
     first.marks.append(1)
     var named = first.partner_name()
     console.print(first.name, "is with", named)

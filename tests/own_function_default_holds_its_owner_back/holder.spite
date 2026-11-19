@@ -1,0 +1,11 @@
+var console = Console()
+var name = "nobody"
+var act: Spite.Function<Nothing> = rest
+
+func rest() {
+    console.print(name, "rests")
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

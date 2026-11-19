@@ -1,0 +1,13 @@
+var console = Console()
+var shelf = Shelf()
+var name = "nobody"
+var act: Spite.Function<Nothing>? = leave
+
+func leave() {
+    shelf.held.clear()
+    console.print(name, "left the shelf")
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

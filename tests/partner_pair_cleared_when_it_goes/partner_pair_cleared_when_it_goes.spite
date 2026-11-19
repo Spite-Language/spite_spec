@@ -1,0 +1,27 @@
+var console = Console()
+
+func PartnerPairClearedWhenItGoes() {
+    make_a_pair()
+    console.print("the pair is out of reach")
+    var round = 0
+    while round < 2 {
+        var first = Person("cy")
+        var second = Person("dee")
+        first.partner = second
+        second.partner = first
+        var first_partner = first.partner_name()
+        var second_partner = second.partner_name()
+        console.print("round", round, first_partner, second_partner)
+        round = round + 1
+    }
+    console.print("every round is freed")
+}
+
+func make_a_pair() {
+    var first = Person("ann")
+    var second = Person("bob")
+    first.partner = second
+    second.partner = first
+    var named = first.partner_name()
+    console.print(first.name, "is with", named)
+}

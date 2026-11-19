@@ -1,0 +1,12 @@
+ann is with bob
+ann is freed, still with bob
+bob is freed alone
+the pair is out of reach
+round 0 dee cy
+cy is freed, still with dee
+dee is freed alone
+round 1 dee cy
+cy is freed, still with dee
+dee is freed alone
+every round is freed
+allocations: 83 frees: 83

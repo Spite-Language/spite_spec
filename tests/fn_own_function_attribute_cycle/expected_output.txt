@@ -2,6 +2,7 @@ plain rings
 plain dropped
 plain made
 cyclic rings
+cyclic dropped
 cyclic made
 cyclic rings
 cyclic dropped

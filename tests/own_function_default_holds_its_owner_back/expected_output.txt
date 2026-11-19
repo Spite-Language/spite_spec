@@ -1,0 +1,13 @@
+ivy rests
+ivy rests
+ivy is freed
+one is out of reach
+jay rests
+kim rests
+jay is freed
+kim is freed
+both are out of reach
+lou left the shelf
+lou is freed
+the shelf is empty
+allocations: 83 frees: 83

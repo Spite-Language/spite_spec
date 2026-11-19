@@ -1,0 +1,40 @@
+var console = Console()
+var shelf = Shelf()
+
+func OwnFunctionDefaultHoldsItsOwnerBack() {
+    use_one()
+    console.print("one is out of reach")
+    copy_one()
+    console.print("both are out of reach")
+    put_one_on_the_shelf()
+    call_from_the_shelf()
+    console.print("the shelf is empty")
+}
+
+func use_one() {
+    var holder = Holder()
+    holder.name = "ivy"
+    holder.act()
+    holder.act.call_function()
+}
+
+func copy_one() {
+    var original = Holder()
+    original.name = "jay"
+    var copied = original.copy()
+    copied.name = "kim"
+    original.act()
+    copied.act()
+}
+
+func put_one_on_the_shelf() {
+    var leaver = Leaver()
+    leaver.name = "lou"
+    shelf.held.append(leaver)
+}
+
+func call_from_the_shelf() {
+    var leaver = shelf.held.first()
+    crash leaver
+    leaver.act()
+}
