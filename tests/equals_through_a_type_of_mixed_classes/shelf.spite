@@ -1,0 +1,5 @@
+type Kept {
+    to_debug: Spite.Function<String>
+}
+
+var kept: Kept? = null

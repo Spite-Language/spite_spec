@@ -1,0 +1,12 @@
+union Held {
+    Box
+    Anything
+}
+
+var console = Console()
+
+func AnythingUnionMemberIsNotAType() {
+    var box = Box()
+    var held: Held = box
+    console.print(held.class.name)
+}

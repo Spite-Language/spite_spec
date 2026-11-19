@@ -11,15 +11,11 @@ func pet(): Pet {
     return Cat()
 }
 
-func anything(): Anything {
-    return 1
-}
-
 func named(): Named {
     return Dog()
 }
 
-func never(): Nothing {
+func never() {
     crash
 }
 
@@ -31,5 +27,4 @@ func maybe(): Integer? {
     return null
 }
 
-func nothing_written() {
-}
+func nothing_written() { }

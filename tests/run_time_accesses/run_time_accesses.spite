@@ -9,8 +9,8 @@ func RunTimeAccesses() {
     var remember = movement.remember
     kept.append(remember)
     kept.each(describe)
-    var anything: Anything = movement
-    var kind = anything.class
+    var held: Movement = movement
+    var kind = held.class
     var functions = kind.functions
     var first = functions["update_each"]
     crash first

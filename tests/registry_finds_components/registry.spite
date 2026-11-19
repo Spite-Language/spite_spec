@@ -1,5 +1,9 @@
+type Component {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
-var held: Anything? = null
+var held: Component? = null
 var shown = List<String>()
 
 func find_every_component() {
@@ -22,7 +26,7 @@ func bind(part: Spite.Class) {
     }
 }
 
-func show(value: Anything) {
+func show(value: Component) {
     held = value
     Spite.Class.instances.each(show_if_it_is)
 }

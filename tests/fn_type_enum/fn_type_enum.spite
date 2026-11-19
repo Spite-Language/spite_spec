@@ -1,0 +1,25 @@
+enum Weather {
+    'sunny'
+    'rainy'
+}
+
+type Shown {
+    to_string: Spite.Function<String>
+}
+
+var console = Console()
+var _today: Weather = 'rainy'
+
+func FnTypeEnum() {
+    var today: Weather = _today
+    describe(today)
+    var things = List<Shown>()
+    things.append(today)
+    var first = things[0]
+    crash first
+    console.print(first.class.name)
+}
+
+func describe(component: Shown) {
+    console.print(component.class.name, component)
+}

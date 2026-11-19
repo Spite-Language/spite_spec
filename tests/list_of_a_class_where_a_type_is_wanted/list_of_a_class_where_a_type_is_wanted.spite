@@ -1,0 +1,22 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+
+func ListOfAClassWhereATypeIsWanted() {
+    var healths = List<Health>()
+    var first = Health()
+    var second = Health()
+    healths.append(first)
+    healths.append(second)
+    var counted = shown(healths)
+    console.print(counted)
+}
+
+func shown(items: List<Shown>): Integer {
+    var last = items.last()
+    crash last
+    console.print(last.class.name)
+    return items.count()
+}

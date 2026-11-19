@@ -7,7 +7,7 @@ func AttributeWrittenAtRunTimeNull() {
     console.print("whole", meter.whole)
 }
 
-func write_whole(held: Anything, given: Anything?) {
+func write_whole(held: Meter, given: Integer?) {
     var attributes = held.attributes
     var whole = attributes["whole"]
     crash whole

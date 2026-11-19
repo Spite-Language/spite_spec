@@ -1,0 +1,1 @@
+conformance/type_declared_empty/type_declared_empty.spite:1: error: 'type Held' lists no members, so it says nothing of what its values are: list the functions and attributes they are used through, or name their class, or a union of their classes (in TypeDeclaredEmpty)

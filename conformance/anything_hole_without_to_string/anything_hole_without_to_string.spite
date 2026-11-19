@@ -1,8 +1,0 @@
-var console = Console()
-
-func AnythingHoleWithoutToString() {
-    var crate = Crate()
-    var shelf = Shelf(crate)
-    var label = shelf.label()
-    console.print(label)
-}

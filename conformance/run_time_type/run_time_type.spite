@@ -1,8 +1,12 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func RunTimeType() {
     var gadget = Gadget()
-    var anything: Anything = gadget
+    var anything: Shown = gadget
     var attributes = anything.attributes
     var first = attributes.values().first()
     crash first

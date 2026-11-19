@@ -1,6 +1,6 @@
 func AnOrOfClassTestsRefusesWhatAClassLacks() {
-    var number = 4
-    var counted = Holder(number)
+    var circle = Circle(4)
+    var counted = Holder(circle)
     counted.show()
     var pen = Pen()
     pen.draw()

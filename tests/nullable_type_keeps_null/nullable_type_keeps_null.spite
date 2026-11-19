@@ -1,0 +1,28 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+
+func NullableTypeKeepsNull() {
+    var items = List<Shown?>()
+    items.append(null)
+    items.append(3)
+    var first = items[0]
+    if first {
+        console.print("first present")
+    } else {
+        console.print("first null")
+    }
+    var second = items[1]
+    crash second
+    console.print(second.class.name)
+    var held = Dictionary<String, Shown?>()
+    held["count"] = null
+    var count = held["count"]
+    if count {
+        console.print("count present")
+    } else {
+        console.print("count null")
+    }
+}

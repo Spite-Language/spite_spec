@@ -1,7 +1,0 @@
-var console = Console()
-
-func AnythingNullToString() {
-    var thing = Thing()
-    var text = thing.held.to_string()
-    console.print(text)
-}

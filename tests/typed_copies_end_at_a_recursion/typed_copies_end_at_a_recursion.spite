@@ -1,3 +1,7 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func TypedCopiesEndAtARecursion() {
@@ -5,7 +9,7 @@ func TypedCopiesEndAtARecursion() {
     console.print(counted)
 }
 
-func wrapped(value: Anything, rounds: Integer): Integer {
+func wrapped(value: Shown, rounds: Integer): Integer {
     fallback rounds != 0
     var listed = [value]
     var fewer = rounds - 1

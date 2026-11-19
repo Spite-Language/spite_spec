@@ -1,3 +1,7 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func SetValueOfAConversionAnsweringNull() {
@@ -7,7 +11,7 @@ func SetValueOfAConversionAnsweringNull() {
     console.print(meter.reading.length)
 }
 
-func write_named(held: Anything, name: String, given: Anything) {
+func write_named(held: Shown, name: String, given: Shown) {
     var attributes = held.attributes
     var found = attributes[name]
     crash found

@@ -1,1 +1,5 @@
-var anything: Anything = Cat()
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var shown: Shown = Cat()

@@ -1,3 +1,7 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func SetValueOfAClassNoCastTakes() {
@@ -8,7 +12,7 @@ func SetValueOfAClassNoCastTakes() {
     console.print("whole", meter.whole)
 }
 
-func write_whole(held: Anything, given: Anything) {
+func write_whole(held: Shown, given: Shown) {
     var attributes = held.attributes
     var whole = attributes["whole"]
     crash whole

@@ -1,11 +1,15 @@
-var pages = List<Anything>()
+type Child {
+    to_debug: Spite.Function<String>
+}
 
-func append_child(child: Anything?) {
+var pages = List<Child>()
+
+func append_child(child: Child?) {
     fallback child
     crash child.class == Page
     pages.append(child)
 }
 
-func append_children(items: List<Anything?>) {
+func append_children(items: List<Child?>) {
     items.each(append_child)
 }

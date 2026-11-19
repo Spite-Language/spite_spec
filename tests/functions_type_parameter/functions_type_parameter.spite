@@ -1,0 +1,15 @@
+type Component {
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+
+func FunctionsTypeParameter() {
+    describe(3)
+    describe(true)
+    describe("text")
+}
+
+func describe(component: Component) {
+    console.print(component.class.name)
+}

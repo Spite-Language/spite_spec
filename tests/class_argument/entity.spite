@@ -1,11 +1,15 @@
-var components = List<Anything>()
+type Component {
+    to_debug: Spite.Function<String>
+}
 
-func add_component(component: Anything) {
+var components = List<Component>()
+
+func add_component(component: Component) {
     components.append(component)
 }
 
 func remove_component(component_class: Spite.Class) {
-    var kept = List<Anything>()
+    var kept = List<Component>()
     var index = 0
     while index < components.count() {
         var component = components[index]

@@ -1,5 +1,9 @@
+type Thing {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
-var kept = List<Anything>()
+var kept = List<Thing>()
 
 func RunTimeKinds() {
     var gadget = Gadget()
@@ -9,7 +13,7 @@ func RunTimeKinds() {
     kept.each(describe)
 }
 
-func describe(thing: Anything) {
+func describe(thing: Thing) {
     var described = thing.class
     console.print(described.name, "stateful", described.is_stateful, "list", described.is_list)
     var attributes = thing.attributes

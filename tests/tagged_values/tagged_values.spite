@@ -3,6 +3,10 @@ enum Level {
     'high'
 }
 
+type Tagged {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 var kinds = List<String>()
 var _sample_total: Long = 40000000000
@@ -13,7 +17,7 @@ func TaggedValues() {
     var ratio = 0.5
     var level: Level = 'high'
     console.print(count, total, ratio, true, level)
-    var held = List<Anything>()
+    var held = List<Tagged>()
     held.append(count)
     held.append(total)
     held.append(level)
@@ -23,7 +27,7 @@ func TaggedValues() {
     held.each(add_kind)
     var joined = kinds.join(" ")
     console.print(joined)
-    var first: Anything? = held.first()
+    var first: Tagged? = held.first()
     if first.class == Integer {
         var doubled = first * 2
         console.print("first doubled", doubled)
@@ -31,7 +35,7 @@ func TaggedValues() {
     console.debug(count, level, crate)
 }
 
-func add_kind(item: Anything) {
+func add_kind(item: Tagged) {
     if item.class == Integer {
         kinds.append("integer {item}")
     } else if item.class == Long {

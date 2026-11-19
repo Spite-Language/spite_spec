@@ -1,8 +1,12 @@
+type Component {
+    to_debug: Spite.Function<String>
+}
+
 var positions = Column<Position>()
-var component: Anything?
+var component: Component?
 var entity: Integer
 
-func AddComponent(new_entity: Integer, new_component: Anything) {
+func AddComponent(new_entity: Integer, new_component: Component) {
     entity = new_entity
     component = new_component
 }

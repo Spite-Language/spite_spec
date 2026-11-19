@@ -1,3 +1,7 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func SetValueOfAMaybeNullIntoAPlainAttribute() {
@@ -7,7 +11,7 @@ func SetValueOfAMaybeNullIntoAPlainAttribute() {
     console.print(label.text)
 }
 
-func write_text(held: Anything, given: String?) {
+func write_text(held: Shown, given: String?) {
     var attributes = held.attributes
     var text = attributes["text"]
     crash text

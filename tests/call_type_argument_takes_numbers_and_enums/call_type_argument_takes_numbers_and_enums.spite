@@ -6,7 +6,7 @@ func CallTypeArgumentTakesNumbersAndEnums() {
     tell_by("tell", teller, teller)
 }
 
-func tell_by(name: String, said: Anything, teller: Teller) {
+func tell_by(name: String, said: Teller.Shown, teller: Teller) {
     var declaration = Teller.functions[name]
     crash declaration
     var call = Spite.Call(declaration, teller)

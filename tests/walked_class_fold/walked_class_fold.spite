@@ -1,5 +1,9 @@
+type Given {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
-var walked_given: Anything? = null
+var walked_given: Given? = null
 var found = List<String>()
 
 func WalkedClassFold() {
@@ -24,11 +28,11 @@ func WalkedClassFold() {
     console.print(hero.health, mark, fallen.health, potion.owner.id)
 }
 
-func same_kind(given: Anything, known: Targeting): Boolean {
+func same_kind(given: Given, known: Targeting): Boolean {
     return given == known.class
 }
 
-func describe(given: Anything) {
+func describe(given: Given) {
     walked_given = given
     found.clear()
     Bundle.classes.each(queue_bundle)

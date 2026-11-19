@@ -1,0 +1,6 @@
+var console = Console()
+
+func AnythingIsNotAType() {
+    var shelf = Shelf()
+    console.print(shelf.count)
+}

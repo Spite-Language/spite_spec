@@ -1,9 +1,0 @@
-var _values = Dictionary<String, Anything?>()
-
-func get_values(): Dictionary<String, Anything?> {
-    return _values
-}
-
-func passed(): Dictionary<String, Anything?> {
-    return _values
-}

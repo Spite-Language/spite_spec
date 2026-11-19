@@ -1,5 +1,10 @@
+union Child {
+    Panel
+    Note
+}
+
 var title = ""
-var children = List<Anything>()
+var children = List<Child>()
 
 func describe(): String {
     var parts = List<String>()
@@ -14,7 +19,7 @@ func describe(): String {
     return "Panel '{title}' [{inside}]"
 }
 
-func shown_child(child: Anything): String {
+func shown_child(child: Child): String {
     if child.class == Panel {
         return child.describe()
     }

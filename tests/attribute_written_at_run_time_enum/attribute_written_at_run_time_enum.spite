@@ -12,7 +12,7 @@ func AttributeWrittenAtRunTimeEnum() {
     console.print(meter.label)
 }
 
-func write_label(held: Anything, given: Anything) {
+func write_label(held: Meter, given: Mood) {
     var label = held.attributes["label"]
     crash label
     label.value = given

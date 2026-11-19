@@ -1,0 +1,21 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+var kept = List<Shown>()
+
+func SwitchOnATypeValue() {
+    kept.append("text")
+    var first = kept[0]
+    crash first
+    var shown = shown_of(first)
+    console.print(shown)
+}
+
+func shown_of(held: Shown): String {
+    switch held {
+        String: return "text"
+        Boolean: return "truth"
+    }
+}

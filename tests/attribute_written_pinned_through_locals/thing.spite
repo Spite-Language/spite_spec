@@ -1,2 +1,2 @@
-var held: Anything? = null
-var other: Anything? = null
+var held: Widget? = null
+var other: Gadget? = null

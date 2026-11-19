@@ -16,12 +16,12 @@ func Written() {
     console.print("done")
 }
 
-func loud(value: Anything?): Anything? {
+func loud(value: Console.Debuggable?): Console.Debuggable? {
     console.print("written")
     return value
 }
 
-func making(_value: Anything?): Anything? {
+func making(_value: Console.Debuggable?): Console.Debuggable? {
     console.print("made")
     return Monster()
 }

@@ -1,0 +1,1 @@
+conformance/anything_members_is_gone/anything_members_is_gone.spite:4: error: 'Anything' is not part of Spite: every place names what it holds, so there is no union of every class; 'Spite.Class.instances' lists the classes of the program (in AnythingMembersIsGone.AnythingMembersIsGone)

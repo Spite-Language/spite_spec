@@ -1,7 +1,11 @@
-var console = Console()
-var components = List<Anything>()
+type Component {
+    to_debug: Spite.Function<String>
+}
 
-func add_component(component: Anything) {
+var console = Console()
+var components = List<Component>()
+
+func add_component(component: Component) {
     components.append(component)
 }
 

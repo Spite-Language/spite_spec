@@ -1,7 +1,11 @@
-var console = Console()
-var held: Anything?
+type Held {
+    to_debug: Spite.Function<String>
+}
 
-func Holder(starting_held: Anything?) {
+var console = Console()
+var held: Held
+
+func Holder(starting_held: Held) {
     held = starting_held
 }
 

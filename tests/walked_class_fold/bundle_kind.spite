@@ -1,5 +1,5 @@
 generic $bundle_type
 
-func is_kind(given: Anything): Boolean {
+func is_kind(given: WalkedClassFold.Given): Boolean {
     return given.class == $bundle_type
 }

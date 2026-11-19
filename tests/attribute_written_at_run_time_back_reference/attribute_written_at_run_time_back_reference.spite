@@ -19,7 +19,7 @@ func visit() {
     console.print(ida.name, "now names", ida.parent.name)
 }
 
-func copy_every_attribute(source: Anything, target: Anything) {
+func copy_every_attribute(source: Child, target: Child) {
     var from = source.attributes.values()
     var into = target.attributes
     var index = 0

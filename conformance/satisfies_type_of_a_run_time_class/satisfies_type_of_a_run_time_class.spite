@@ -1,8 +1,12 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func SatisfiesTypeOfARunTimeClass() {
     var gadget = Gadget()
-    var held: Anything = gadget
+    var held: Shown = gadget
     var answer = held.class.satisfies_type(Number)
     console.print(answer, gadget.power)
 }

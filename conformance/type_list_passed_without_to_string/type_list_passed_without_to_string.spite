@@ -1,0 +1,23 @@
+type Labelled {
+    to_string: Spite.Function<String>
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+
+func TypeListPassedWithoutToString() {
+    var crates = List<Labelled?>()
+    var crate = Crate()
+    crates.append(crate)
+    var gauges = List<Labelled?>()
+    var gauge = Gauge()
+    gauges.append(gauge)
+    print_first(gauges)
+    var held = crates
+    print_first(held)
+}
+
+func print_first(items: List<Labelled?>) {
+    var first = items.first()
+    console.print("first {first}")
+}

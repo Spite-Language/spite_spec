@@ -1,3 +1,7 @@
+type Given {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func AttributeWrittenAtRunTimeText() {
@@ -12,14 +16,14 @@ func AttributeWrittenAtRunTimeText() {
     console.print(meter.ratio)
 }
 
-func write_label(held: Anything, given: Anything) {
+func write_label(held: Meter, given: Given) {
     var attributes = held.attributes
     var label = attributes["label"]
     crash label
     label.value = given
 }
 
-func write_ratio(held: Anything, given: Anything) {
+func write_ratio(held: Meter, given: Integer) {
     var ratio = held.attributes["ratio"]
     crash ratio
     ratio.value = given

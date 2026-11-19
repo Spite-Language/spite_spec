@@ -1,0 +1,13 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var _held: Shown
+
+func Shelf(starting_held: Shown) {
+    _held = starting_held
+}
+
+func label(): String {
+    return "holds {_held}"
+}

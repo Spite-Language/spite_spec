@@ -1,0 +1,10 @@
+var console = Console()
+
+func SetValueIntoATypePrintedWithoutToString() {
+    var thing = Thing()
+    var gadget = Gadget()
+    var held = thing.attributes["held"]
+    crash held
+    held.value = gadget
+    console.print(thing.held)
+}

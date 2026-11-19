@@ -1,7 +1,11 @@
+type Item {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func TestedClasses() {
-    var held = List<Anything>()
+    var held = List<Item>()
     var coin = Coin()
     held.append(coin)
     held.append(3)
@@ -13,7 +17,7 @@ func TestedClasses() {
     }
 }
 
-func described(item: Anything): String {
+func described(item: Item): String {
     if item.class == Ghost {
         return item.haunt()
     }

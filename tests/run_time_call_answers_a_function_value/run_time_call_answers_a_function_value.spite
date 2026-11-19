@@ -2,7 +2,7 @@ var console = Console()
 
 func RunTimeCallAnswersAFunctionValue() {
     var picker = Picker()
-    var held: Anything = picker
+    var held: Picker = picker
     var declaration = held.class.functions["picked"]
     crash declaration
     var call = Spite.Call(declaration, held)

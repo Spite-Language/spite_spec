@@ -1,0 +1,5 @@
+var held: Shelf.Shown? = null
+
+func to_string(): String {
+    return "thing {held}"
+}

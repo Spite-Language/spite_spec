@@ -6,7 +6,7 @@ union Pet {
 var console = Console()
 
 func ClassTestOnAUnion() {
-    var cat: Anything = Cat()
+    var cat: Pet = Cat()
     var held = cat.class == Pet
     console.print(held)
 }

@@ -16,15 +16,15 @@ func MaybeNullIntoType() {
     keep(box.pet)
 }
 
-func pick(flag: Boolean): Anything? {
+func pick(flag: Boolean): Pet? {
     if flag {
-        return 3
+        return Cat()
     }
     return null
 }
 
-func show(value: Anything) {
-    console.print(value.class == Integer)
+func show(value: Pet) {
+    console.print(value.class == Dog)
 }
 
 func empty(box: Box) {

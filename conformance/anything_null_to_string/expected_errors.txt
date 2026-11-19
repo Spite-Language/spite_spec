@@ -1,1 +1,0 @@
-conformance/anything_null_to_string/anything_null_to_string.spite:5: error: this value may be null (it is an Anything?): narrow it first with 'if value { }', 'fallback value' or 'crash value' (in AnythingNullToString.AnythingNullToString)

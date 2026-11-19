@@ -1,0 +1,5 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var held: Shown? = null

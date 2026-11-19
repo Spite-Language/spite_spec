@@ -6,7 +6,7 @@ func AttributeWrittenAtRunTimeCasts() {
     console.print(meter.reading, meter.whole, meter.shown, meter.answer)
 }
 
-func write_by_name(held: Anything) {
+func write_by_name(held: Meter) {
     var attributes = held.attributes
     var reading = attributes["reading"]
     crash reading

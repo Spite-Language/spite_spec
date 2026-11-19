@@ -1,0 +1,1 @@
+conformance/type_list_passed_without_to_string/type_list_passed_without_to_string.spite:11: error: 'Crate' does not fit type 'Labelled': it has no function 'to_string' (in TypeListPassedWithoutToString.TypeListPassedWithoutToString)

@@ -1,5 +1,0 @@
-var sound = "meow"
-
-func speak(): String {
-    return sound
-}

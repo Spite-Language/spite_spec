@@ -1,0 +1,14 @@
+type Labelled {
+    to_string: Spite.Function<String>
+    to_debug: Spite.Function<String>
+}
+
+var _held: Labelled
+
+func Shelf(starting_held: Labelled) {
+    _held = starting_held
+}
+
+func label(): String {
+    return _held.to_string()
+}

@@ -1,3 +1,7 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func ClassAsValueTypeArgument() {
@@ -7,6 +11,6 @@ func ClassAsValueTypeArgument() {
     console.print(strong)
 }
 
-func keep(held: Anything) {
+func keep(held: Shown) {
     console.print(held)
 }

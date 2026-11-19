@@ -1,16 +1,20 @@
-var books = List<Anything>()
+type Child {
+    to_debug: Spite.Function<String>
+}
+
+var books = List<Child>()
 var counted = 0
 
-func append_child(child: Anything?) {
+func append_child(child: Child?) {
     fallback child
     books.append(child)
 }
 
-func append_children(items: List<Anything?>) {
+func append_children(items: List<Child?>) {
     items.each(append_child)
 }
 
-func append_counted(items: List<Anything?>) {
+func append_counted(items: List<Child?>) {
     items.each(append_child)
     counted = counted + items.count()
 }
@@ -28,7 +32,7 @@ func describe(): String {
     return "{books.count()} [{inside}] counted {counted}"
 }
 
-func shown_book(book: Anything): String {
+func shown_book(book: Child): String {
     if book.class == Book {
         return "Book {book.pages}"
     }

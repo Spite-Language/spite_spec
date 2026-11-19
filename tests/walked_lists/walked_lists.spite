@@ -17,18 +17,18 @@ func built(round: Integer): Shelf {
     var first = Book(round)
     var second = Book(round + 1)
     var third = Book(round + 2)
-    var missing: Anything? = null
+    var missing: Shelf.Child? = null
     var pages = round % 7
     var shelf = Shelf()
-    var with_first: List<Anything?> = [first]
+    var with_first: List<Shelf.Child?> = [first]
     shelf.append_children(with_first)
-    var with_missing: List<Anything?> = [missing]
+    var with_missing: List<Shelf.Child?> = [missing]
     shelf.append_children(with_missing)
-    var with_pages: List<Anything?> = [pages]
+    var with_pages: List<Shelf.Child?> = [pages]
     shelf.append_children(with_pages)
-    var several: List<Anything?> = [second, third, first]
+    var several: List<Shelf.Child?> = [second, third, first]
     shelf.append_children(several)
-    var kept: List<Anything?> = [third]
+    var kept: List<Shelf.Child?> = [third]
     shelf.append_counted(kept)
     return shelf
 }

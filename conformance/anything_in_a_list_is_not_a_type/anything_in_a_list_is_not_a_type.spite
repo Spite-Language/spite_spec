@@ -1,0 +1,7 @@
+var console = Console()
+
+func AnythingInAListIsNotAType() {
+    var kept = List<Anything>()
+    kept.append(3)
+    console.print(kept.count())
+}

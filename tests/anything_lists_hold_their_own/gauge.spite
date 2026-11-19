@@ -1,5 +1,0 @@
-var reading = 7
-
-func to_string(): String {
-    return "gauge {reading}"
-}

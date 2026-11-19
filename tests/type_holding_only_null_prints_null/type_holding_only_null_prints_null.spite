@@ -1,0 +1,20 @@
+var console = Console()
+
+func TypeHoldingOnlyNullPrintsNull() {
+    var empty = Thing()
+    console.print(empty.held)
+    console.debug(empty.held)
+    console.print("[{empty.held}]")
+    var described = empty.to_string()
+    console.print(described)
+    console.debug(empty)
+    var stocked = Crate()
+    console.print(stocked.held)
+    console.debug(stocked.held)
+    stocked.held = Gadget()
+    console.print(stocked.held)
+    console.print("[{stocked.held}]")
+    var shelf = Shelf()
+    console.print(shelf.shown)
+    console.debug(shelf.shown)
+}

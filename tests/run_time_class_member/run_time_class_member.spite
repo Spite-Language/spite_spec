@@ -1,3 +1,7 @@
+type Thing {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 var kind: Spite.Class = Gadget
 
@@ -16,7 +20,7 @@ func RunTimeClassMember() {
     if shelved.class == Rock {
         console.print("a Shelf's attribute makes a Rock weighing", shelved.weight)
     }
-    var kept = List<Anything>()
+    var kept = List<Thing>()
     var rock = Rock()
     rock.weight = 1
     kept.append(rock)
@@ -29,7 +33,7 @@ func RunTimeClassMember() {
     functions.each(describe_taken)
 }
 
-func remake(thing: Anything) {
+func remake(thing: Thing) {
     var made = thing.class()
     if made.class == Rock {
         console.print("another Rock weighing", made.weight)

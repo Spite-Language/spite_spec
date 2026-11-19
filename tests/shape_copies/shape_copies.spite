@@ -7,6 +7,10 @@ type Printable {
     to_string: Spite.Function<String>
 }
 
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func ShapeCopies() {
@@ -17,7 +21,7 @@ func ShapeCopies() {
     var level: Level = 'high'
     var fourth = describe(level)
     console.print(first, second, third, fourth)
-    var held = List<Anything>()
+    var held = List<Shown>()
     held.append(gadget)
     var widget = Widget()
     held.append(widget)
@@ -35,7 +39,7 @@ func describe(item: Printable): String {
     return "{text}:{kind}"
 }
 
-func kind_of(item: Anything): String {
+func kind_of(item: Shown): String {
     if item.class == Gadget {
         return "gadget"
     }

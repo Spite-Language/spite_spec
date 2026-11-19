@@ -1,5 +1,0 @@
-var held: Anything? = null
-
-func to_string(): String {
-    return "thing {held}"
-}

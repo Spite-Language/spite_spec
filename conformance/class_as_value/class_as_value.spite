@@ -1,3 +1,7 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func ClassAsValue() {
@@ -6,6 +10,6 @@ func ClassAsValue() {
     keep(Health)
 }
 
-func keep(component: Anything) {
+func keep(component: Shown) {
     console.print(component.class)
 }

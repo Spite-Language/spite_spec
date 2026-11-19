@@ -20,7 +20,7 @@ func AttributeCopiedAtRunTimeCounts() {
     }
 }
 
-func copy_every_attribute(source: Anything, target: Anything) {
+func copy_every_attribute(source: Box, target: Box) {
     var from = source.attributes.values()
     var into = target.attributes
     var index = 0

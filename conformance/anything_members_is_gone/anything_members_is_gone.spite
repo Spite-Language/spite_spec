@@ -1,0 +1,6 @@
+var console = Console()
+
+func AnythingMembersIsGone() {
+    var classes = Anything.members
+    console.print(classes.count())
+}

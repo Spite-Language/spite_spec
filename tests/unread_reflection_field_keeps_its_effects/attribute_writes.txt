@@ -1,5 +1,5 @@
 
-func remember_through(writer: Spite.Function<Anything?, Anything?>, value: Anything?) {
+func remember_through(writer: Spite.Function<Console.Debuggable?, Console.Debuggable?>, value: Console.Debuggable?) {
     _value = writer(value)
 }
 
@@ -16,6 +16,6 @@ func remember_a_shout() {
     _owner = Spite.Shout()
 }
 
-func remember_quietly(value: Anything?) {
+func remember_quietly(value: Console.Debuggable?) {
     _value = value
 }

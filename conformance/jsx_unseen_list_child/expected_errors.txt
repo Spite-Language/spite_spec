@@ -1,1 +1,1 @@
-conformance/jsx_unseen_list_child/jsx_unseen_list_child.spite:12: error: 'List<Anything?>' does not fit type 'Component': it has no function 'describe' (in JsxUnseenListChild.built)
+conformance/jsx_unseen_list_child/jsx_unseen_list_child.spite:12: error: 'List<Label?>' does not fit type 'Component': it has no function 'describe' (in JsxUnseenListChild.built)

@@ -1,1 +1,0 @@
-conformance/union_member_anything/union_member_anything.spite:3: error: 'Anything' cannot be a member of union 'Held': a union lists classes directly, and Anything is a union the compiler fills with every class; list the classes themselves, or type the parameter 'Anything' where any class will do (in UnionMemberAnything.)

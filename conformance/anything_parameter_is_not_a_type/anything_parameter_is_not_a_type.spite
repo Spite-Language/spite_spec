@@ -1,0 +1,9 @@
+var console = Console()
+
+func AnythingParameterIsNotAType() {
+    show(3)
+}
+
+func show(held: Anything) {
+    console.print(held.class.name)
+}

@@ -1,0 +1,8 @@
+type Held {
+}
+
+var console = Console()
+
+func TypeDeclaredEmpty() {
+    console.print("never")
+}

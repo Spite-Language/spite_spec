@@ -1,5 +1,9 @@
-var items = List<Anything>()
+type Item {
+    to_debug: Spite.Function<String>
+}
 
-func add(item: Anything) {
+var items = List<Item>()
+
+func add(item: Item) {
     items.append(item)
 }

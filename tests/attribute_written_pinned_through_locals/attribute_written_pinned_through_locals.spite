@@ -14,7 +14,7 @@ func show_other(thing: Thing) {
     console.print("other is set")
 }
 
-func write_both(thing: Thing, shown: Anything, kept: Anything) {
+func write_both(thing: Thing, shown: Widget, kept: Gadget) {
     var attributes = thing.attributes
     var held = attributes["held"]
     crash held

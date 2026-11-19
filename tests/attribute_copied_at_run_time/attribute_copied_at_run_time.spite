@@ -50,7 +50,7 @@ func pressed() {
     console.print("pressed")
 }
 
-func copy_every_attribute(source: Anything, target: Anything) {
+func copy_every_attribute(source: Button, target: Button) {
     var from = source.attributes.values()
     var into = target.attributes
     var index = 0
@@ -63,7 +63,7 @@ func copy_every_attribute(source: Anything, target: Anything) {
     }
 }
 
-func clear_every_attribute(target: Anything) {
+func clear_every_attribute(target: Button) {
     var held = target.attributes.values()
     var index = 0
     while index < held.count() {

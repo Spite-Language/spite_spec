@@ -7,6 +7,10 @@ type Named {
     name: String
 }
 
+type Debugged {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 var program = Program()
 
@@ -27,8 +31,8 @@ func SatisfiesType() {
     console.print("pets:", cat_is_a_pet, monster_is_a_pet)
     var monster_is_itself = Monster.satisfies_type(Monster)
     var cat_is_a_monster = Cat.satisfies_type(Monster)
-    var cat_is_anything = Cat.satisfies_type(Anything)
-    console.print("classes:", monster_is_itself, cat_is_a_monster, cat_is_anything)
+    var cat_is_debugged = Cat.satisfies_type(Debugged)
+    console.print("classes:", monster_is_itself, cat_is_a_monster, cat_is_debugged)
     Monster.attributes.each(describe)
     var monster = Monster()
     monster.health = 12

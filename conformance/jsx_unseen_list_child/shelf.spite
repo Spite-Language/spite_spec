@@ -1,5 +1,5 @@
-func items(): List<Anything?> {
-    var found = List<Anything?>()
+func items(): List<Label?> {
+    var found = List<Label?>()
     var label = Label()
     found.append(label)
     return found

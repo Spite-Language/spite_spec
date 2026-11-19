@@ -1,7 +1,7 @@
 var title = "ace"
 var seen = 0
 
-func render(): Anything? {
+func render(): String? {
     seen = seen + 1
     return "card {title}"
 }

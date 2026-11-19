@@ -5,7 +5,7 @@ func Entity(new_id: Integer) {
     id = new_id
 }
 
-func add_component(component: Anything) {
+func add_component(component: AddComponent.Component) {
     var command = AddComponent(id, component)
     world.queue(command)
 }

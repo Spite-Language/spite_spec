@@ -1,0 +1,9 @@
+type Shown {
+    to_string: Spite.Function<String>
+}
+
+var console = Console()
+
+func tell(said: Shown) {
+    console.print("told", said)
+}

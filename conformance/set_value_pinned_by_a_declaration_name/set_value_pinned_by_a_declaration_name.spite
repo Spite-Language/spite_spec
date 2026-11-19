@@ -1,3 +1,7 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
 var console = Console()
 
 func SetValuePinnedByADeclarationName() {
@@ -7,7 +11,7 @@ func SetValuePinnedByADeclarationName() {
     console.print(meter.whole, meter.label)
 }
 
-func write_one(held: Meter, given: Anything) {
+func write_one(held: Meter, given: Shown) {
     var declaration = Meter.attributes["whole"]
     var whole = held.attributes[declaration.name]
     crash whole

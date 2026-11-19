@@ -1,13 +1,19 @@
-var console = Console()
-var held: Anything
+union Held {
+    Circle
+    Square
+    Holder
+}
 
-func Holder(starting_held: Anything) {
+var console = Console()
+var held: Held
+
+func Holder(starting_held: Held) {
     held = starting_held
 }
 
 func show() {
-    if held.class == Integer or held.class == Holder {
-        var counted: Integer = held
-        console.print(counted)
+    if held.class == Circle or held.class == Holder {
+        var counted: Circle = held
+        console.print(counted.size)
     }
 }

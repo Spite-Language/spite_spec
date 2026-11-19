@@ -4,7 +4,6 @@ func ReturnsDeclared() {
     var zoo = Zoo()
     var functions = zoo.class.functions
     show(functions["pet"])
-    show(functions["anything"])
     show(functions["named"])
     show(functions["never"])
     show(functions["number"])

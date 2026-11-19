@@ -1,0 +1,24 @@
+type Thing {
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+
+func FunctionsListOfAType() {
+    var things = List<Thing>()
+    var health = Health()
+    things.append(health)
+    var name = Name()
+    things.append(name)
+    var count = 0
+    var index = 0
+    while index < things.count() {
+        var thing = things[index]
+        if thing.class == Health {
+            console.print("health", thing.points)
+            count = count + 1
+        }
+        index = index + 1
+    }
+    console.print(count, name.text)
+}

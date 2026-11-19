@@ -1,0 +1,1 @@
+conformance/anything_union_member_is_not_a_type/anything_union_member_is_not_a_type.spite:3: error: 'Anything' is not a type: say what the union 'Held' holds, with its class, a union of its classes, a 'type' of the functions and attributes it is used through (like a 'Component'), or a generic class's '$name' (in AnythingUnionMemberIsNotAType.)
