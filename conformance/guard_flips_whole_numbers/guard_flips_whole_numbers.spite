@@ -1,0 +1,23 @@
+var console = Console()
+var limit = 10
+var highest = 1000.0
+
+func GuardFlipsWholeNumbers() {
+    var kept = kept_count(3)
+    var mixed = mixed_count(3, 2.0)
+    console.print(kept, mixed)
+}
+
+func kept_count(count: Integer): Integer {
+    if count < 0 or count > limit {
+        return 0
+    }
+    return count
+}
+
+func mixed_count(count: Integer, scaled: Double): Integer {
+    if count < 0 or scaled > highest {
+        return 0
+    }
+    return count + 1
+}

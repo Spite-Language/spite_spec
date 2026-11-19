@@ -1,0 +1,31 @@
+var console = Console()
+var _limit = 10
+var _highest = 1000.0
+
+func AWholeNumberGuardKeepsItsAnswer() {
+    var below = kept_inside(-1)
+    console.print(below)
+    var above = kept_inside(11)
+    console.print(above)
+    var edge = kept_inside(10)
+    console.print(edge)
+    var nothing = Double.NotANumber()
+    var through_nan = mixed_inside(3, nothing)
+    console.print(through_nan)
+    var negative = mixed_inside(-3, 1.0)
+    console.print(negative)
+}
+
+func kept_inside(count: Integer): Integer {
+    if count < 0 or count > _limit {
+        return 0
+    }
+    return count
+}
+
+func mixed_inside(count: Integer, scaled: Double): Integer {
+    if count < 0 or scaled > _highest {
+        return 0
+    }
+    return count
+}

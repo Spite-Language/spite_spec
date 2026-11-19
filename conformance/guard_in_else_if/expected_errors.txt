@@ -1,1 +1,2 @@
 conformance/guard_in_else_if/guard_in_else_if.spite:10: fixed: this 'else if' only returned, and no value passes both it and the 'if' above it; wrote 'fallback not value < 0' above that 'if' (in GuardInElseIf.checked)
+conformance/guard_in_else_if/guard_in_else_if.spite:8: fixed: 'not value < 0' only compares whole numbers, which are never NaN, so the 'not' goes in: wrote 'fallback value >= 0' in its place (in GuardInElseIf.checked)
