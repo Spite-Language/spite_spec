@@ -1,0 +1,8 @@
+ce holds bee and bee holds ce
+ay is freed
+be is freed
+the chain is out of reach
+spite: --debug-memory: 2 allocation(s) leaked
+  Alpha: 1 leaked object(s)
+  Beta: 1 leaked object(s)
+allocations: 38 frees: 36

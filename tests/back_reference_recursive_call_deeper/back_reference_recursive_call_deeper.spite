@@ -1,0 +1,30 @@
+var console = Console()
+
+func BackReferenceRecursiveCallDeeper() {
+    hold_a_chain()
+    console.print("the chain is out of reach")
+}
+
+func hold_a_chain() {
+    var head = Link("ay")
+    var middle = Link("be")
+    var last = Link("ce")
+    head.next = middle
+    middle.next = last
+    var second = Beta("bee")
+    pair_down(head, second, 2)
+    var last_first = last.first
+    crash last_first.beta
+    crash second.alpha
+    console.print(last_first.name, "holds", last_first.beta.name, "and", second.name, "holds", second.alpha.name)
+}
+
+func pair_down(link: Link, second: Beta, steps: Integer) {
+    if steps == 0 {
+        link.first.beta = second
+        second.alpha = link.first
+        return
+    }
+    crash link.next
+    pair_down(link.next, second, steps - 1)
+}

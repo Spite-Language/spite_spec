@@ -1,0 +1,5 @@
+ay holds bee and bee holds ay
+ay is freed
+bee is freed
+the pair is out of reach
+allocations: 36 frees: 36

@@ -1,6 +1,6 @@
 var console = Console()
 
-func BackReferenceOtherWayPastTheKeyBudget() {
+func BackReferenceOtherWaySixPartsDeep() {
     var lone = Beta("lone")
     make_an_alpha(lone)
     var box = Box()

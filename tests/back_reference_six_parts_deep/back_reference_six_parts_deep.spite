@@ -1,0 +1,25 @@
+var console = Console()
+
+func BackReferenceSixPartsDeep() {
+    hold_a_pair()
+    console.print("the pair is out of reach")
+}
+
+func hold_a_pair() {
+    var box = Box()
+    pair(box)
+    var first = box.inner.deeper.deepest.first
+    crash first.beta
+    crash first.beta.alpha
+    console.print(first.name, "holds", first.beta.name, "and", first.beta.name, "holds", first.beta.alpha.name)
+}
+
+func pair(box: Box) {
+    var second = Beta("bee")
+    attach(box, second)
+}
+
+func attach(box: Box, second: Beta) {
+    box.inner.deeper.deepest.first.beta = second
+    second.alpha = box.inner.deeper.deepest.first
+}
