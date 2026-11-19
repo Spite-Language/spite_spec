@@ -1,0 +1,67 @@
+union Fruit {
+    Apple
+    Pear
+}
+
+type Part {
+    name_of: Spite.Function<String>
+}
+
+var console = Console()
+
+func SameInstanceThroughATypeAndAUnion() {
+    find_parts()
+    compare_fruit()
+}
+
+func find_parts() {
+    var parts = List<Part>()
+    var title = Label("title")
+    var other_title = Label("title")
+    var ok = Button("ok")
+    parts.append(other_title)
+    parts.append(ok)
+    parts.append(title)
+    var title_at = place_of(parts, title)
+    var ok_at = place_of(parts, ok)
+    console.print("title at", title_at, "ok at", ok_at)
+    var first = parts[0]
+    crash first
+    console.print("equal", first == title, "same", first === title, "not same", first !== title)
+    var itself = same_part(title, title)
+    var equal_part = same_part(title, other_title)
+    var other_class = same_part(ok, title)
+    console.print("a part and a part", itself, equal_part, other_class)
+    var named = ok.name_of()
+    console.print(named)
+}
+
+func place_of(parts: List<Part>, wanted: Part): Integer {
+    var index = 0
+    while index < parts.count() {
+        var part = parts[index]
+        if part === wanted {
+            return index
+        }
+        index = index + 1
+    }
+    return -1
+}
+
+func same_part(first: Part, second: Part): Boolean {
+    return first === second
+}
+
+func compare_fruit() {
+    var apple = Apple(3)
+    var other_apple = Apple(3)
+    var pear = Pear(3)
+    var held: Fruit = apple
+    console.print("fruit", held === apple, held === other_apple, held === pear, held !== pear, held == other_apple)
+    var basket: Fruit? = null
+    var empty: Fruit? = null
+    console.print("missing", basket === empty, basket === held)
+    basket = pear
+    console.print("held", basket === pear, basket === held)
+    console.print(apple.weight, other_apple.weight, pear.weight)
+}

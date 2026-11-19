@@ -26,8 +26,8 @@ func DeepCopySharesALeafThroughAUnion() {
 }
 
 func report(left: Leaf, right: Leaf, original: Leaf) {
-    var one_leaf = left.is_same_instance(right)
-    var is_the_original = left.is_same_instance(original)
+    var one_leaf = left === right
+    var is_the_original = left === original
     left.name = "changed"
     console.print("one leaf:", one_leaf, is_the_original, right.name)
 }

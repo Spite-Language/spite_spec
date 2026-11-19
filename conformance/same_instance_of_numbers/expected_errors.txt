@@ -1,0 +1,1 @@
+conformance/same_instance_of_numbers/same_instance_of_numbers.spite:6: error: '!==' asks whether two names hold the very same object, and a 'Integer' is a value, not an object: compare it with '!=' (in SameInstanceOfNumbers.SameInstanceOfNumbers)

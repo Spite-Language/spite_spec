@@ -1,0 +1,8 @@
+title at 2 ok at 1
+equal true same false not same true
+a part and a part true false false
+button ok
+fruit true false false true true
+missing true false
+held true false
+3 3 3

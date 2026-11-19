@@ -58,7 +58,7 @@ func compare_children() {
     console.print("an equal parent compares by value", child == twin, root == other_root)
     root.children.append(child)
     var copied = root.deep_copy()
-    var is_the_root = copied.is_same_instance(root)
+    var is_the_root = copied === root
     var child_count = copied.children.count()
     console.print("a copied tree", copied == root, is_the_root, child_count)
 }

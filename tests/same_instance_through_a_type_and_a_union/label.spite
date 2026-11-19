@@ -1,0 +1,9 @@
+var text: String
+
+func Label(starting_text: String) {
+    text = starting_text
+}
+
+func name_of(): String {
+    return "label {text}"
+}

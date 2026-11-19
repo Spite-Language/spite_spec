@@ -1,0 +1,8 @@
+var console = Console()
+
+func SameInstanceOfNumbers() {
+    var count = 3
+    var other = 3
+    var same = count !== other
+    console.print(same)
+}

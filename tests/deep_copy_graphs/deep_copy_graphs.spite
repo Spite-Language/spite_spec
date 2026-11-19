@@ -9,8 +9,8 @@ func DeepCopyGraphs() {
     var copied_child = copied.children.first()
     crash copied_child
     crash copied_child.parent
-    var back_to_copy = copied_child.parent.is_same_instance(copied)
-    var back_to_original = copied_child.parent.is_same_instance(root)
+    var back_to_copy = copied_child.parent === copied
+    var back_to_original = copied_child.parent === root
     console.print(copied_child.parent.name, back_to_copy, back_to_original)
     var holder = Holder()
     var lamp = Item("lamp")
@@ -22,8 +22,8 @@ func DeepCopyGraphs() {
     crash first
     crash first.holder
     crash copied_holder.favorite
-    var own_lamp = copied_holder.favorite.is_same_instance(first)
-    var original_lamp = copied_holder.favorite.is_same_instance(lamp)
-    var own_holder = first.holder.is_same_instance(copied_holder)
+    var own_lamp = copied_holder.favorite === first
+    var original_lamp = copied_holder.favorite === lamp
+    var own_holder = first.holder === copied_holder
     console.print(copied_holder.favorite.name, own_lamp, original_lamp, own_holder)
 }

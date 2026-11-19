@@ -3,3 +3,7 @@ var size: Integer
 func Box(starting_size: Integer) {
     size = starting_size
 }
+
+func is_itself(other: Box): Boolean {
+    return this === other
+}

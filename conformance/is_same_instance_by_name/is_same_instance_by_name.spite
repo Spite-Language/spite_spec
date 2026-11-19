@@ -1,0 +1,8 @@
+var console = Console()
+
+func IsSameInstanceByName() {
+    var first = Box(1)
+    var second = first
+    var same = first.is_same_instance(second)
+    console.print(same, second.size)
+}

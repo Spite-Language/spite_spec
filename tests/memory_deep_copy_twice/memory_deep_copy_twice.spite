@@ -7,7 +7,7 @@ func MemoryDeepCopyTwice() {
     pair.right = leaf
     var copied = pair.deep_copy()
     copied.left.weight = 9
-    var shared_before = pair.left.is_same_instance(pair.right)
-    var shared_after = copied.left.is_same_instance(copied.right)
+    var shared_before = pair.left === pair.right
+    var shared_after = copied.left === copied.right
     console.print(shared_before, shared_after, copied.right.weight, pair.left.weight)
 }

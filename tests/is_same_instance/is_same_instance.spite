@@ -5,11 +5,14 @@ func IsSameInstance() {
     var equal = Box(1)
     var kept = first
     var maybe: Box? = null
-    var same = first.is_same_instance(kept)
-    var other = first.is_same_instance(equal)
-    var missing = first.is_same_instance(maybe)
+    var same = first === kept
+    var other = first === equal
+    var missing = first === maybe
     console.print(same, other, missing, first == equal, kept.size)
     maybe = first
-    var found = first.is_same_instance(maybe)
-    console.print(found)
+    var found = first === maybe
+    var apart = first !== equal
+    var kept_is_first = kept.is_itself(first)
+    var equal_is_first = equal.is_itself(first)
+    console.print(found, apart, maybe === first, kept_is_first, equal_is_first)
 }

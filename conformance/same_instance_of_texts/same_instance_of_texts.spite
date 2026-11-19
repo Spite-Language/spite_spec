@@ -1,0 +1,7 @@
+var console = Console()
+
+func SameInstanceOfTexts() {
+    var name = "ann"
+    var other = "ann"
+    console.print(name === other)
+}

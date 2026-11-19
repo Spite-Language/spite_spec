@@ -1,0 +1,1 @@
+conformance/same_instance_against_null/same_instance_against_null.spite:5: error: 'null' is not a value to compare against or pass around: narrow the value instead, with 'if value { } else { }', 'fallback value', 'crash value' or 'switch value { <Type>: ... Null: ... }' (in SameInstanceAgainstNull.SameInstanceAgainstNull)

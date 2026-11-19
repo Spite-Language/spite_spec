@@ -7,6 +7,6 @@ func DeepCopyBackReferenceAlone() {
     child.parent = root
     var copied = child.deep_copy()
     crash copied.parent
-    var holds_original = copied.parent.is_same_instance(root)
+    var holds_original = copied.parent === root
     console.print(copied.name, copied.parent.name, holds_original)
 }
