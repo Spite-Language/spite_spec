@@ -1,0 +1,1 @@
+conformance/long_else_if_chain/long_else_if_chain.spite: error: this file holds 4002 statements, over its file content budget of 1200: clean it up until it is back within it, grouping state into an object and giving each concern a file of its own (in LongElseIfChain)

@@ -1,0 +1,34 @@
+var console = Console()
+var _highest = 1000.0
+var _lowest = -1000.0
+
+func ANanThroughARewrittenGuardKeepsItsAnswer() {
+    var nothing = Double.NotANumber()
+    var inside = inside_the_range(nothing)
+    console.print(inside)
+    var below = below_the_top(nothing)
+    console.print(below)
+    var counted = counted_up_to(3)
+    console.print(counted)
+}
+
+func inside_the_range(scaled: Double): Integer {
+    if scaled > _highest or scaled < _lowest {
+        return 0
+    }
+    return 1
+}
+
+func below_the_top(scaled: Double): Integer {
+    if scaled >= _highest {
+        return 0
+    }
+    return 2
+}
+
+func counted_up_to(limit: Integer): Integer {
+    if limit < 0 or limit > 10 {
+        return 0
+    }
+    return limit
+}
