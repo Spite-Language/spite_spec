@@ -1,0 +1,17 @@
+var console = Console()
+var log = Log()
+
+func FunctionValueReachThroughAWatcher() {
+    var card = Card()
+    var clearer = Clearer()
+    clearer.card = card
+    var texts = Watcher<String>()
+    texts.subscribe(clearer.clear)
+    texts.notify("cleared")
+    var forget: Spite.Function<Integer, Nothing> = clearer.clear_after
+    forget(1)
+    card.width_watcher.subscribe(log.saw)
+    card.outfit = Thing()
+    card.show()
+    console.print(card.label, card.width, log.seen)
+}

@@ -1,0 +1,12 @@
+var console = Console()
+
+func FunctionValueReach() {
+    var holder = Holder()
+    var clearer = Clearer()
+    clearer.holder = holder
+    var action: Spite.Function<Integer, Nothing> = clearer.clear
+    action(1)
+    holder.thing = Thing()
+    holder.show()
+    console.print(holder.label)
+}

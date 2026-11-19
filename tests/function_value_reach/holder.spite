@@ -1,0 +1,14 @@
+var label = ""
+var thing: Thing? = null
+var listener: Spite.Function<String, Nothing>? = null
+
+func show() {
+    crash thing
+    tell("shown")
+    label = thing.name
+}
+
+func tell(text: String) {
+    fallback listener
+    listener(text)
+}

@@ -1,0 +1,16 @@
+generic $value
+
+var subscribers = List<Spite.Function<$value, Nothing>>()
+
+func subscribe(function: Spite.Function<$value, Nothing>) {
+    subscribers.append(function)
+}
+
+func notify(value: $value) {
+    var index = 0
+    while index < subscribers.count() {
+        var subscriber = subscribers[index]
+        subscriber(value)
+        index = index + 1
+    }
+}

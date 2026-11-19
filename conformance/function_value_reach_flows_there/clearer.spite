@@ -1,0 +1,12 @@
+var holder: Holder? = null
+var card: Card? = null
+
+func clear(_text: String) {
+    fallback holder
+    holder.thing = null
+}
+
+func clear_after(_count: Integer) {
+    fallback card
+    card.outfit = null
+}

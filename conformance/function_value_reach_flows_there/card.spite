@@ -1,0 +1,15 @@
+var label = ""
+var outfit: Thing? = null
+var width = 0
+var width_watcher = Watcher<Integer>()
+
+func resize(value: Integer) {
+    width = value
+    width_watcher.notify(value)
+}
+
+func show() {
+    crash outfit
+    resize(3)
+    label = outfit.name
+}

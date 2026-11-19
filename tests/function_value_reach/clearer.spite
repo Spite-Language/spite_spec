@@ -1,0 +1,6 @@
+var holder: Holder? = null
+
+func clear(_amount: Integer) {
+    fallback holder
+    holder.thing = null
+}

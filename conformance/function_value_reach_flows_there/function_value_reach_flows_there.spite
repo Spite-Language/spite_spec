@@ -1,0 +1,15 @@
+var console = Console()
+
+func FunctionValueReachFlowsThere() {
+    var holder = Holder()
+    var card = Card()
+    var clearer = Clearer()
+    clearer.holder = holder
+    clearer.card = card
+    holder.listener = clearer.clear
+    card.width_watcher.subscribe(clearer.clear_after)
+    holder.show()
+    card.outfit = Thing()
+    card.show()
+    console.print(holder.label, card.label, card.width)
+}
