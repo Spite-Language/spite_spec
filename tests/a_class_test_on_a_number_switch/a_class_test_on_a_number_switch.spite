@@ -1,0 +1,42 @@
+var console = Console()
+var turns = 0
+
+func AClassTestOnANumberSwitch() {
+    var count: Integer? = null
+    var ratio: Float? = null
+    var flag: Boolean? = null
+    if turns == 0 {
+        count = 0
+        flag = false
+    }
+    tell(count)
+    tell_a_ratio(ratio)
+    var small: Byte? = null
+    if turns == 0 {
+        small = 3
+    }
+    switch small {
+        Byte: console.print("a Byte", small)
+        Null: console.print("no byte")
+    }
+    console.print(count.class == Integer, ratio.class == Float, flag.class == Boolean)
+    console.print(count.class != Integer, ratio.class != Float, count.class == Float)
+    var held: Anything = 4
+    if held.class == Integer {
+        console.print("held Integer", held.class == String, held + 1)
+    }
+}
+
+func tell(count: Integer?) {
+    switch count {
+        Integer: console.print("an Integer", count)
+        Null: console.print("no count")
+    }
+}
+
+func tell_a_ratio(ratio: Float?) {
+    switch ratio {
+        Float: console.print("a Float", ratio)
+        Null: console.print("no ratio")
+    }
+}

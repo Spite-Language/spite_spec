@@ -1,0 +1,6 @@
+an Integer 0
+no ratio
+a Byte 3
+true false true
+false true false
+held Integer false 5

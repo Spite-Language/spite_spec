@@ -1,0 +1,5 @@
+an Integer 5
+false false
+true 2.5
+true false true
+true false 7

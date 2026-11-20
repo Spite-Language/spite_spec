@@ -1,0 +1,30 @@
+var console = Console()
+
+func AClassTestOnANumberParameter() {
+    tell_an_integer(5)
+    tell_a_float(2.5)
+    tell_a_boolean(true)
+    tell_a_long(7)
+}
+
+func tell_an_integer(count: Integer) {
+    if count.class == Integer {
+        console.print("an Integer", count)
+    }
+    console.print(count.class != Integer, count.class == Float)
+}
+
+func tell_a_float(ratio: Float) {
+    if ratio.class != Float {
+        console.print("never")
+    }
+    console.print(ratio.class == Float, ratio)
+}
+
+func tell_a_boolean(flag: Boolean) {
+    console.print(flag.class == Boolean, flag.class == Integer, flag)
+}
+
+func tell_a_long(large: Long) {
+    console.print(large.class == Long, large.class == Integer, large)
+}

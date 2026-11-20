@@ -1,0 +1,9 @@
+var console = Console()
+
+func AClassTestOnANumber() {
+    var amount = 5
+    if amount.class == Integer {
+        console.print("integer")
+    }
+    console.print(amount)
+}

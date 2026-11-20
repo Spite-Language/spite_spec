@@ -1,0 +1,19 @@
+var console = Console()
+var count = 5
+var ratio = 2.5
+var flag = false
+var small: Byte = 3
+var large: Long = 7
+
+func AClassTestOnANumberAttribute() {
+    console.print(count.class == Integer, count.class != Integer, count.class == Long)
+    console.print(ratio.class == Float, ratio.class == Double)
+    console.print(flag.class == Boolean, flag.class != Boolean)
+    console.print(small.class == Byte, small.class != Byte)
+    console.print(large.class == Long, large.class == Integer)
+    if count.class == Integer {
+        console.print("count is an Integer")
+    }
+    count = count + 1
+    console.print(count, ratio, flag, small, large)
+}

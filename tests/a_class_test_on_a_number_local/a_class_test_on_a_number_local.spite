@@ -1,0 +1,32 @@
+var console = Console()
+
+enum Shade {
+    'light'
+    'dark'
+}
+
+func AClassTestOnANumberLocal() {
+    var count = 5
+    var ratio = 2.5
+    var precise: Double = 0.25
+    var flag = true
+    var small: Byte = 3
+    var large: Long = 7
+    var shade: Shade = 'dark'
+    console.print(count.class == Integer, count.class != Integer, count.class == Float)
+    console.print(ratio.class == Float, ratio.class != Float, ratio.class == Integer)
+    console.print(precise.class == Double, precise.class == Float)
+    console.print(flag.class == Boolean, flag.class != Boolean, flag.class == Integer)
+    console.print(small.class == Byte, small.class == Integer)
+    console.print(large.class == Long, large.class != Integer)
+    console.print(shade.class == Shade, shade.class == Integer)
+    if count.class == Integer {
+        console.print("count is an Integer")
+    }
+    if ratio.class != Float {
+        console.print("never")
+    } else {
+        console.print("ratio is a Float")
+    }
+    console.print(count, ratio, precise, flag, small, large, shade)
+}

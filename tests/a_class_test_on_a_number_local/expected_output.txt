@@ -1,0 +1,10 @@
+true false false
+true false false
+true false
+true false false
+true false
+true true
+true false
+count is an Integer
+ratio is a Float
+5 2.5 0.25 true 3 7 dark
