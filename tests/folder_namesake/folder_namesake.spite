@@ -3,7 +3,7 @@ var console = Console()
 func FolderNamesake() {
     load "kal"
     load "mod"
-    var physics = Physics.Physics()
+    var physics = Physics()
     var step = physics.step()
     console.print(step)
     var gravity = physics.gravity()

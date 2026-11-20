@@ -17,7 +17,7 @@ func never_called(): Pair<Bloom> {
 
 func show(part: Spite.Class) {
     var name = part.name
-    var shown = part.name_with_namespaces
+    var shown = part.name_with_outer_classes
     var given = part.generics.count()
     console.print("walked: {name} {shown} {given}")
 }

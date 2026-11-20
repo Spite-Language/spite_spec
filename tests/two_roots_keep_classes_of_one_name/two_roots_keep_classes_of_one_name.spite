@@ -1,0 +1,17 @@
+var console = Console()
+
+func TwoRootsKeepClassesOfOneName() {
+    load "first"
+    load "second"
+    var first = Plugin()
+    var first_text = first.describe()
+    console.print(first_text)
+    var named = First.Plugin()
+    var named_text = named.describe()
+    console.print(named_text)
+    var engine = Physics.Engine()
+    var engine_text = engine.plugin_text()
+    console.print(engine_text)
+    var second = Second.Physics.Plugin()
+    console.print(second.class.name_with_outer_classes)
+}

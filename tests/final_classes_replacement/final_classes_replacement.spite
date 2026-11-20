@@ -8,7 +8,7 @@ func FinalClassesReplacement() {
     var monster = Creatures.Monster("rat")
     var described = monster.describe()
     console.print(described)
-    var printed_path: Path? = "{build.program}/.spite/final_replacement/creatures/monster.spite"
+    var printed_path: Path? = "{build.program}/.spite/final_replacement/package/creatures/monster.spite"
     crash printed_path
     var printed = File(printed_path)
     var text = printed.read_as_string()
@@ -20,8 +20,8 @@ func FinalClassesReplacement() {
         if line.starts_with("func describe") {
             var comment = lines[index - 1]
             crash comment
-            var from_mod = comment.ends_with("mod/creatures/monster.spite")
-            var from_package = comment.ends_with("package/creatures/monster.spite")
+            var from_mod = comment.ends_with("mod/package/creatures/monster.spite")
+            var from_package = comment.ends_with("../package/creatures/monster.spite")
             console.print("describe comes from the mod:", from_mod, "from the package:", from_package)
         }
         index = index + 1

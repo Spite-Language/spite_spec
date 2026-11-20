@@ -1,8 +1,0 @@
-var console = Console()
-var program_plugin = Plugin()
-
-func ClassesPackageClassHidesProgramClass() {
-    load "package"
-    var plugin = Physics.Plugin()
-    console.print(program_plugin.name, plugin.name)
-}

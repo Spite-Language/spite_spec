@@ -1,0 +1,4 @@
+func plugin_text(): String {
+    var plugin = Plugin()
+    return plugin.describe()
+}

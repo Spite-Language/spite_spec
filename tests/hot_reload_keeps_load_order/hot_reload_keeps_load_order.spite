@@ -9,7 +9,7 @@ func HotReloadKeepsLoadOrder() {
     var monster = Creatures.Monster("rat")
     var description = monster.describe()
     console.print(description)
-    write_over("mod")
+    write_over("mod/package")
     wait_for_the_earlier_describe(monster)
     description = monster.describe()
     console.print("the replacement removed:", description)

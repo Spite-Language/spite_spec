@@ -16,6 +16,6 @@ func DevelopmentKeepsAPackagesUnusedFunction() {
     var map = File(map_path)
     var text = map.read_as_string()
     crash text
-    var kept = text.contains("\tTint.unused")
+    var kept = text.contains("\tPaint.Tint.unused")
     console.print("unused kept", kept)
 }

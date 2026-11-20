@@ -1,5 +1,5 @@
 hurt package/creatures/monster.spite
-harden mod/creatures/monster.spite
-armor mod/creatures/monster.spite
+harden mod/package/creatures/monster.spite
+armor mod/package/creatures/monster.spite
 bound hurt package/creatures/monster.spite
 bound health package/creatures/monster.spite
