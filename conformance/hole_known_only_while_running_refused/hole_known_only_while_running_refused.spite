@@ -1,0 +1,9 @@
+func HoleKnownOnlyWhileRunningRefused() {
+    var kept = Watched()
+    var names = ["label"]
+    names.append("told")
+    var name = names[1]
+    var call = Spite.Call(Watched.functions["set_{name}"], kept)
+    call.arguments["value"] = 3
+    call.call()
+}

@@ -1,6 +1,6 @@
 var console = Console()
 var writes = 0
-var helmet: String
+var helmet = "none"
 
 func Outfit(starting_helmet: String) {
     helmet = starting_helmet
@@ -8,12 +8,13 @@ func Outfit(starting_helmet: String) {
 
 func set_helmet(value: String) {
     writes = writes + 1
-    console.print("was", helmet)
-    helmet = value.upper_case()
+    console.print("was", attributes["helmet"].value)
+    attributes["helmet"].value = value.upper_case()
 }
 
 func get_helmet(): String {
-    return "[{helmet}]"
+    var stored = attributes["helmet"].value
+    return "[{stored}]"
 }
 
 func wear(value: String) {

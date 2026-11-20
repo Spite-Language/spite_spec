@@ -1,0 +1,22 @@
+var console = Console()
+
+func CopyAttributeThroughSetters() {
+    var kept = Watched()
+    var fresh = Watched()
+    fresh.label = "fresh"
+    copy_attributes(kept, fresh)
+    console.print(kept.label)
+    console.print(kept.told)
+}
+
+func copy_attribute(attribute: Spite.AttributeDeclaration, kept: Watched, fresh: Watched) {
+    var name = attribute.name
+    var setter = Watched.functions["set_{name}"]
+    if setter {
+        var call = Spite.Call(setter, kept)
+        call.arguments["value"] = fresh.attributes[attribute].value
+        call.call()
+    } else {
+        kept.attributes[attribute].value = fresh.attributes[attribute].value
+    }
+}

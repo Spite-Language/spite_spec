@@ -1,0 +1,9 @@
+var turns = 0
+
+func Meter() {
+    set_turns(3)
+}
+
+func set_turns(value: Integer) {
+    attributes["turns"].value = value * 2
+}

@@ -1,0 +1,8 @@
+var console = Console()
+
+func OwnAccessorBareNameIsFixed() {
+    var lamp = Lamp()
+    lamp.level = 3
+    lamp.level = 3
+    console.print(lamp.level, lamp.changes)
+}

@@ -1,0 +1,7 @@
+var label = ""
+var told = 0
+
+func set_label(value: String) {
+    told = told + 1
+    attributes["label"].value = value
+}

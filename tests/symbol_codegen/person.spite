@@ -20,10 +20,9 @@ func describe_attribute(attribute: Spite.AttributeDeclaration): String {
 }
 
 func set_name(new_name: String) {
-    name = "exact: {new_name}"
+    attributes["name"].value = "exact: {new_name}"
 }
 
 func birthday() {
-    var current_age = get_age()
-    set_age(current_age + 1)
+    age = age + 1
 }

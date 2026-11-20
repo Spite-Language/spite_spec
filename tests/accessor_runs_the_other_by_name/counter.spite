@@ -1,0 +1,11 @@
+var shown = 0
+var count = 0
+
+func set_count(value: Integer) {
+    shown = get_count()
+    attributes["count"].value = value
+}
+
+func get_count(): Integer {
+    return attributes["count"].value * 10
+}

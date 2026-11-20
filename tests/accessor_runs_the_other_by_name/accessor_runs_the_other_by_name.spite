@@ -1,0 +1,8 @@
+var console = Console()
+
+func AccessorRunsTheOtherByName() {
+    var counter = Counter()
+    counter.count = 2
+    counter.count = 5
+    console.print(counter.count, counter.shown)
+}

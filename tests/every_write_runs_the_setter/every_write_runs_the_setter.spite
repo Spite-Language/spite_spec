@@ -1,0 +1,16 @@
+var console = Console()
+
+func EveryWriteRunsTheSetter() {
+    var gauge = Gauge(3)
+    console.print(gauge.level, gauge.writes)
+    gauge.raise()
+    console.print(gauge.level, gauge.writes)
+    var other = Gauge(0)
+    gauge.copy_to(other)
+    console.print(other.level, other.writes)
+    gauge.reset()
+    gauge.attributes["writes"].value = 10
+    console.print(gauge.level, gauge.writes)
+    gauge.level = 7
+    console.print(gauge.level, gauge.writes)
+}

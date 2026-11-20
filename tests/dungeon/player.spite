@@ -1,8 +1,8 @@
 var name = "Hero"
-var age = 0
+var age: Integer
 
 func Player() {
-    set_age(20)
+    age = 20
 }
 
 func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {

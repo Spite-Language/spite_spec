@@ -1,0 +1,13 @@
+var changes = 0
+var level = 0
+
+func set_level(value: Integer) {
+    if level != value {
+        changes = changes + 1
+    }
+    level = value
+}
+
+func get_level(): Integer {
+    return level
+}

@@ -1,0 +1,1 @@
+conformance/automatic_setter_declaration_only_called/automatic_setter_declaration_only_called.spite:10: error: 'setter' is 'set_told', which the compiler writes for every attribute and keeps no declaration of while running: test it with 'if setter' and call it through 'Spite.Call(setter, ...)', and nothing else (in AutomaticSetterDeclarationOnlyCalled.show_told)

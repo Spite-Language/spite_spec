@@ -1,7 +1,9 @@
-[cap] 0
-was cap
-wearing [HOOD] 1
-was bare
-[[HOOD]] 1
+was none
+[CAP] 1
+was CAP
+wearing [HOOD] 2
+was none
+was BARE
+[[HOOD]] 2
 was HOOD
-[CROWN] 2
+[CROWN] 3

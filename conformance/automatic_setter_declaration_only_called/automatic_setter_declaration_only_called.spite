@@ -1,0 +1,13 @@
+var console = Console()
+
+func AutomaticSetterDeclarationOnlyCalled() {
+    var kept = Watched()
+    show_attributes(kept)
+}
+
+func show_attribute(attribute: Spite.AttributeDeclaration, kept: Watched) {
+    var name = attribute.name
+    var setter = Watched.functions["set_{name}"]
+    fallback setter
+    console.print(setter.name, kept.attributes[attribute].value)
+}

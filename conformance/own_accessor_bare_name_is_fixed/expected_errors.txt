@@ -1,0 +1,3 @@
+conformance/own_accessor_bare_name_is_fixed/lamp.spite:5: fixed: 'level' inside 'set_level' would run 'set_level' again: wrote 'attributes["level"].value', which reaches the storage (in Lamp.set_level)
+conformance/own_accessor_bare_name_is_fixed/lamp.spite:8: fixed: 'level' inside 'set_level' would run 'set_level' again: wrote 'attributes["level"].value', which reaches the storage (in Lamp.set_level)
+conformance/own_accessor_bare_name_is_fixed/lamp.spite:12: fixed: 'level' inside 'get_level' would run 'get_level' again: wrote 'attributes["level"].value', which reaches the storage (in Lamp.get_level)

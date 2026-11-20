@@ -1,0 +1,6 @@
+var console = Console()
+
+func BareSetterCallInTheConstructorRefused() {
+    var meter = Meter()
+    console.print(meter.turns)
+}

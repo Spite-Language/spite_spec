@@ -1,0 +1,23 @@
+var writes = 0
+var level: Integer
+
+func Gauge(starting_level: Integer) {
+    level = starting_level
+}
+
+func set_level(value: Integer) {
+    writes = writes + 1
+    attributes["level"].value = value
+}
+
+func raise() {
+    level = level + 1
+}
+
+func copy_to(other: Gauge) {
+    other.level = level
+}
+
+func reset() {
+    attributes["level"].value = 0
+}

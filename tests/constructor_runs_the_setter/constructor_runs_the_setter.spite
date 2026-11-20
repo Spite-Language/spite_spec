@@ -1,6 +1,6 @@
 var console = Console()
 
-func ConstructorWritesTheStorage() {
+func ConstructorRunsTheSetter() {
     var meter = Meter(3, 4)
     console.print(meter.turns, meter.checked)
     meter.turns = 5
