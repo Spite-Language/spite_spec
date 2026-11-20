@@ -36,7 +36,7 @@ func DeclaredWalks() {
 
 func show_enum(described: Spite.Enum) {
     var count = described.values.count()
-    console.print("enum", described.name_with_namespaces, count)
+    console.print("enum", described.name_with_outer_classes, count)
 }
 
 func show_union(described: Spite.Union) {

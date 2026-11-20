@@ -13,17 +13,17 @@ func ReflectionObjects() {
     var heavy = hammer.heavy()
     console.print(heavy, till.coins)
     var tools = Shop.Tools
-    console.print(tools.name, tools.name_with_namespaces, tools.parent)
-    var shop_names = Shop.namespaces.map_names()
+    console.print(tools.name, tools.name_with_outer_classes, tools.outer_class)
+    var shop_names = Shop.nested_classes.map_names()
     var joined_shop_names = shop_names.join(", ")
     console.print("Shop holds", joined_shop_names)
-    var every = Spite.Namespace.instances.map_name_with_namespaces()
+    var every = Spite.Class.instances.map_name_with_outer_classes()
     var joined_every = every.join(", ")
-    console.print("every namespace:", joined_every)
-    if namespace {
-        console.print("the entry class is in a namespace")
+    console.print("every class:", joined_every)
+    if class.outer_class {
+        console.print("the entry class is in a folder's class")
     } else {
-        console.print("the entry class is in no namespace")
+        console.print("the entry class is in no folder's class")
     }
     console.print(Monster.is_singleton, Console.is_singleton, Monster.is_fixed_size, Monster.is_stateful)
     var alive = Monster.functions["alive"]

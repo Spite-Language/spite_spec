@@ -4,7 +4,7 @@ func EntryUnionNamedThrough() {
     var cat = Shelter.Cat()
     var keeper = Shelter.Keeper()
     var room = Shelter.Rooms.Room()
-    var shelter = Shelter.Shelter()
+    var shelter = Shelter()
     var first = keeper.named(cat)
     var second = room.named(cat)
     var third = shelter.named(cat)

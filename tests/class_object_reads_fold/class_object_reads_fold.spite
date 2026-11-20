@@ -10,9 +10,9 @@ func ClassObjectReadsFold() {
     var monster = Monster()
     monster.hit()
     var its = monster.class
-    console.print(its.name_with_namespaces, monster.health)
-    crash Part.Crate.namespace
-    console.print(Part.Crate.namespace.name, Part.Crate.is_fixed_size)
+    console.print(its.name_with_outer_classes, monster.health)
+    crash Part.Crate.outer_class
+    console.print(Part.Crate.outer_class.name, Part.Crate.is_fixed_size)
     show_what_still_reads()
 }
 
@@ -25,7 +25,7 @@ func show_what_still_reads() {
     var text = File(text_path).read_as_string()
     crash text
     var reads_a_class = function_holds("ClassObjectReadsFold.ClassObjectReadsFold(", "Spite.Class.get_", text)
-    var reads_a_namespace = function_holds("ClassObjectReadsFold.ClassObjectReadsFold(", "Spite.Namespace.get_", text)
+    var reads_a_namespace = function_holds("ClassObjectReadsFold.ClassObjectReadsFold(", "Spite.Class.get_", text)
     console.print("reads a class object while it runs", reads_a_class)
     console.print("reads a namespace object while it runs", reads_a_namespace)
 }

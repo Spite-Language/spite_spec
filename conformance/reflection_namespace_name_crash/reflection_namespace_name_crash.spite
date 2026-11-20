@@ -4,6 +4,6 @@ var beta = Part.Beta()
 
 func ReflectionNamespaceNameCrash() {
     console.print(alpha.first_value, beta.second_value)
-    crash Part.name_with_namespaces == "Other"
+    crash Part.name_with_outer_classes == "Other"
     console.print("never printed")
 }

@@ -15,6 +15,6 @@ func encode_component(component: Spite.Class) {
 
 func encode(): String {
     lines.clear()
-    Component.classes.each(encode_component)
+    Component.nested_classes.each(encode_component)
     return lines.join("\n")
 }

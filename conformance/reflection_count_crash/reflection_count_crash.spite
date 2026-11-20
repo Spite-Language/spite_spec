@@ -4,6 +4,6 @@ var beta = Part.Beta()
 
 func ReflectionCountCrash() {
     console.print(alpha.first_value, beta.second_value)
-    crash Part.classes.count() == 3
+    crash Part.nested_classes.count() == 3
     console.print("never printed")
 }

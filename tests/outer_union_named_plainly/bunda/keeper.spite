@@ -1,0 +1,3 @@
+func take(pet: Pet): String {
+    return pet.name()
+}

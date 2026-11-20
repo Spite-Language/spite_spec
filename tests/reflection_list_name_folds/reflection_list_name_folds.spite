@@ -2,11 +2,11 @@ var console = Console()
 var program = Program()
 
 func ReflectionListNameFolds() {
-    var axle = Gear.classes["Axle"]
-    var outer = Gear.namespaces["Outer"]
-    console.print(axle.name_with_namespaces, outer.name_with_namespaces)
-    if Gear.classes["Wheel"] {
-        console.print(Gear.classes["Wheel"].name)
+    var axle = Gear.nested_classes["Axle"]
+    var outer = Gear.nested_classes["Outer"]
+    console.print(axle.name_with_outer_classes, outer.name_with_outer_classes)
+    if Gear.nested_classes["Wheel"] {
+        console.print(Gear.nested_classes["Wheel"].name)
     }
     var built = lists_built_in("ReflectionListNameFolds.ReflectionListNameFolds")
     console.print("lists built:", built)
@@ -14,7 +14,7 @@ func ReflectionListNameFolds() {
 }
 
 func look_for_a_pulley() {
-    var missing = Gear.classes["Pulley"]
+    var missing = Gear.nested_classes["Pulley"]
     if missing {
         console.print("never printed", missing.name)
     } else {
@@ -39,10 +39,7 @@ func lists_built_in(function_key: String): Integer {
         if line.starts_with("function ") {
             inside = line.starts_with("function {function_key}(")
         }
-        if inside and line.contains("get_classes(") {
-            built = built + 1
-        }
-        if inside and line.contains("get_namespaces(") {
+        if inside and line.contains("get_nested_classes(") {
             built = built + 1
         }
         index = index + 1

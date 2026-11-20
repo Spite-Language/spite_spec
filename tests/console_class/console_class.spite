@@ -4,8 +4,8 @@ var local_console = Console()
 
 func ConsoleClass() {
     var namespace_text = ""
-    if console.class.namespace {
-        namespace_text = console.class.namespace.name_with_namespaces
+    if console.class.outer_class {
+        namespace_text = console.class.outer_class.name_with_outer_classes
     }
     console.print(console == another, console.class.name, "{namespace_text}|")
     another.write("written")

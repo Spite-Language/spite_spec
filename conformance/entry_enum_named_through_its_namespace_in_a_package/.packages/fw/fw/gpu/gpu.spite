@@ -1,4 +1,0 @@
-enum DataKind {
-    'uniform'
-    'storage'
-}

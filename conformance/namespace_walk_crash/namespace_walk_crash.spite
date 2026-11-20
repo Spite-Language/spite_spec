@@ -4,15 +4,15 @@ var beta = Passes.Beta.Helper()
 
 func NamespaceWalkCrash() {
     console.print(alpha.runs, beta.runs)
-    Spite.Namespace.instances.each(check_a_folder)
+    Spite.Class.instances.each(check_a_folder)
     console.print("never printed")
 }
 
-func check_a_folder(namespace: Spite.Namespace) {
-    var path = namespace.name_with_namespaces
-    var names = namespace.classes.map_names()
+func check_a_folder(namespace: Spite.Class) {
+    var path = namespace.name_with_outer_classes
+    var names = namespace.nested_classes.map_names()
     var depth = path.split(".").count()
-    fallback depth == 2 and path.starts_with("Passes.")
+    fallback depth == 3 and path.starts_with("NamespaceWalkCrash.Passes.")
     var has_a_pass = names.contains("Pass")
     crash has_a_pass
 }

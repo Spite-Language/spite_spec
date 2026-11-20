@@ -2,9 +2,9 @@ var console = Console()
 var program = Program()
 
 func ReflectionListIndexFolds() {
-    var first_part = Gear.classes[0]
-    var second_part = Gear.classes[1]
-    var below = Gear.namespaces[1]
+    var first_part = Gear.nested_classes[0]
+    var second_part = Gear.nested_classes[1]
+    var below = Gear.nested_classes[4]
     console.print(first_part.name, second_part.name, below.name)
     var built = lists_built_in("ReflectionListIndexFolds.ReflectionListIndexFolds")
     console.print("lists built:", built)
@@ -12,7 +12,7 @@ func ReflectionListIndexFolds() {
 }
 
 func past_the_end() {
-    var missing = Gear.classes[3]
+    var missing = Gear.nested_classes[5]
     console.print("never printed", missing.name)
 }
 
@@ -33,10 +33,7 @@ func lists_built_in(function_key: String): Integer {
         if line.starts_with("function ") {
             inside = line.starts_with("function {function_key}(")
         }
-        if inside and line.contains("get_classes(") {
-            built = built + 1
-        }
-        if inside and line.contains("get_namespaces(") {
+        if inside and line.contains("get_nested_classes(") {
             built = built + 1
         }
         index = index + 1

@@ -20,7 +20,7 @@ func show(declared: Spite.FunctionDeclaration?) {
     var answer = declared.returns
     var is_nothing = answer == Nothing
     var is_number = answer == Integer
-    console.print(declared.name, answer, answer.name_with_namespaces, is_nothing, is_number)
+    console.print(declared.name, answer, answer.name_with_outer_classes, is_nothing, is_number)
     switch answer {
         Spite.Class: console.print("  a class", answer.is_optional)
         Spite.Union: show_union(answer)

@@ -1,7 +1,7 @@
 var console = Console()
 
 func ClassesPrefixOwnFolderNotCounted() {
-    var entry = Backend.Backend()
+    var entry = Backend()
     var block = Backend.BackendBlock()
     var value = Backend.BackendValue()
     console.print(entry.size, block.size, value.size)

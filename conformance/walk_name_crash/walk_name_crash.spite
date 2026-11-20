@@ -4,7 +4,7 @@ var beta = Part.Beta()
 
 func WalkNameCrash() {
     console.print(alpha.first, beta.second)
-    Part.classes.each(visit)
+    Part.nested_classes.each(visit)
 }
 
 func visit(item: Spite.Class) {

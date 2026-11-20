@@ -1,10 +1,9 @@
 func described(): String {
-    crash namespace
-    return "{class.name} in {namespace}"
+    crash class.outer_class
+    return "{class.name} in {class.outer_class}"
 }
 
 func shadowed(): String {
-    crash namespace
     var class = "a local named class"
-    return "{class}, not {namespace}"
+    return "{class}, not the class itself"
 }

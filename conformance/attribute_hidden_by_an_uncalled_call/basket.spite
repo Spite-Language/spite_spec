@@ -9,7 +9,7 @@ func Basket(starting_held: $item_type) {
 }
 
 func shown(): Integer {
-    fallback $item_type != Tally.Tally
+    fallback $item_type != Tally
     return items.count()
 }
 

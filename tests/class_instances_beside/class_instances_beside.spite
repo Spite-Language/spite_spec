@@ -4,7 +4,7 @@ var names = List<String>()
 func ClassInstancesBeside() {
     load "../class_instances_beside/side"
     Spite.Class.instances.each(note)
-    Spite.Namespace.instances.each(walk)
+    Spite.Class.instances.each(walk)
     var front = Front()
     var shown = front.render()
     crash not shown
@@ -13,10 +13,10 @@ func ClassInstancesBeside() {
 }
 
 func note(part: Spite.Class) {
-    names.append(part.name_with_namespaces)
+    names.append(part.name_with_outer_classes)
 }
 
-func walk(space: Spite.Namespace) {
+func walk(space: Spite.Class) {
     names.append(space.name)
-    space.classes.each(note)
+    space.nested_classes.each(note)
 }

@@ -5,9 +5,9 @@ func PathNarrowElse() {
 }
 
 func probe() {
-    if PathNarrowElse.namespace {
-        console.print(PathNarrowElse.namespace.name)
+    if PathNarrowElse.outer_class {
+        console.print(PathNarrowElse.outer_class.name)
     } else {
-        console.print(PathNarrowElse.namespace.name)
+        console.print(PathNarrowElse.outer_class.name)
     }
 }

@@ -7,27 +7,27 @@ var kept = List<Spite.Class>()
 func ClassNameIsShort() {
     console.print(alpha.first, beta.second, gamma.third)
     var named = Part.Alpha.name
-    var dotted = Part.Inner.Gamma.name_with_namespaces
+    var dotted = Part.Inner.Gamma.name_with_outer_classes
     console.print(named, dotted)
-    Part.classes.each(visit)
-    Part.Inner.classes.each(visit)
-    Spite.Namespace.instances.each(through)
+    Part.nested_classes.each(visit)
+    Part.Inner.nested_classes.each(visit)
+    Spite.Class.instances.each(through)
     keep_a_class()
-    Part.classes.each(hold_the_name)
+    Part.nested_classes.each(hold_the_name)
 }
 
-func through(namespace: Spite.Namespace) {
-    namespace.classes.each(visit)
+func through(namespace: Spite.Class) {
+    namespace.nested_classes.each(visit)
 }
 
 func visit(item: Spite.Class) {
-    console.print(item.name, item.name_with_namespaces, item)
+    console.print(item.name, item.name_with_outer_classes, item)
 }
 
 func keep_a_class() {
     kept.append(Part.Beta)
     var item = kept[0]
-    console.print(item.name, item.name_with_namespaces)
+    console.print(item.name, item.name_with_outer_classes)
 }
 
 func hold_the_name(item: Spite.Class) {

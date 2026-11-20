@@ -1,12 +1,12 @@
 var console = Console()
 
 func WalkClassNamespaceClasses() {
-    crash Gear.Axle.namespace
-    Gear.Axle.namespace.classes.each(note)
+    crash Gear.Axle.outer_class
+    Gear.Axle.outer_class.nested_classes.each(note)
 }
 
 func note(sibling: Spite.Class) {
     var fresh = sibling()
     var shown = fresh.to_debug()
-    console.print(sibling.name_with_namespaces, shown)
+    console.print(sibling.name_with_outer_classes, shown)
 }

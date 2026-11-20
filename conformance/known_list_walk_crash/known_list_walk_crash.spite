@@ -8,8 +8,8 @@ func KnownListWalkCrash() {
     stages.each(check_a_stage)
 }
 
-func check_a_stage(stage: Spite.Namespace) {
-    var names = stage.classes.map_names()
+func check_a_stage(stage: Spite.Class) {
+    var names = stage.nested_classes.map_names()
     var has_the_alpha = names.contains("Alpha")
     crash has_the_alpha
 }

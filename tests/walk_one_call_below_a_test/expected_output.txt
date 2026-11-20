@@ -1,2 +1,2 @@
-pass Tests.HostTests.test_a_host_binds_components
+pass WalkOneCallBelowATest.Tests.HostTests.test_a_host_binds_components
 1 tests, 1 passed, 0 failed

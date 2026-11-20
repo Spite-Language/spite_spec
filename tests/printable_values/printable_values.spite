@@ -30,8 +30,8 @@ func PrintableValues() {
     console.print("literal", name, "{name} {count}", tag, weather)
     var ticket = Pack.Ticket("A12", 3)
     console.print(ticket, ticket.class)
-    crash ticket.class.namespace
-    console.print(ticket.class.namespace)
+    crash ticket.class.outer_class
+    console.print(ticket.class.outer_class)
     console.print()
     console.write("written", 1)
     console.write(" and", 2.5)

@@ -6,7 +6,7 @@ var runners = List<Runnable>()
 var console = Console()
 
 func HoleFromAnotherRange() {
-    System.classes.each(add_system)
+    System.nested_classes.each(add_system)
     runners.each_run()
 }
 

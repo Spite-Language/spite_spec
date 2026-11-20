@@ -53,7 +53,7 @@ func WholeLibrary() {
     classes.append(Spite.Function)
     classes.append(Spite.FunctionDeclaration)
     classes.append(Spite.HotReload)
-    classes.append(Spite.Namespace)
+    classes.append(Spite.Class)
     classes.append(String)
     classes.append(Tcp.Client)
     classes.append(Tcp.Connection)
@@ -102,7 +102,7 @@ func WholeLibrary() {
     var index = 0
     while index < classes.count() {
         var described = classes[index]
-        console.print(described.name_with_namespaces)
+        console.print(described.name_with_outer_classes)
         index = index + 1
     }
 }

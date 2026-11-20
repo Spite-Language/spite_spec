@@ -1,32 +1,34 @@
 var console = Console()
-var stage = Stages.First.First()
+var stage = Stages.First()
 var first = Proofs.One.Proof()
 var second = Proofs.Two.Proof()
 var rule = Rules.One.Validator()
 
 func NamespaceWalkDecided() {
     rule.check_it()
-    console.print(stage.runs, first.runs, second.runs, rule.runs)
-    Spite.Namespace.instances.each(check_a_namespace)
+    var stage_runs = stage.count()
+    console.print(stage_runs, first.runs, second.runs, rule.runs)
+    Spite.Class.instances.each(check_a_folder)
     console.print("the layout holds")
 }
 
-func check_a_namespace(namespace: Spite.Namespace) {
-    var path = namespace.name_with_namespaces
-    var names = namespace.classes.map_names()
+func check_a_folder(folder: Spite.Class) {
+    var path = folder.name_with_outer_classes
     var depth = path.split(".").count()
     if depth == 2 and path.starts_with("Stages.") {
-        var has_the_entry = names.contains(namespace.name)
+        var has_the_entry = not folder.functions.is_empty()
         crash has_the_entry
     }
-    check_a_rule_folder(namespace, path, depth)
-    check_a_proof_folder(namespace, path, names, depth)
+    var names = folder.nested_classes.map_names()
+    fallback not names.is_empty()
+    check_a_rule_folder(folder, path, depth)
+    check_a_proof_folder(folder, path, names, depth)
     check_a_named_folder(path, names, depth)
 }
 
-func check_a_rule_folder(namespace: Spite.Namespace, path: String, depth: Integer) {
+func check_a_rule_folder(folder: Spite.Class, path: String, depth: Integer) {
     fallback path.starts_with("Rules.") and depth == 2
-    namespace.classes.each(check_a_validator)
+    folder.nested_classes.each(check_a_validator)
 }
 
 func check_a_validator(validator: Spite.Class) {
@@ -36,11 +38,11 @@ func check_a_validator(validator: Spite.Class) {
     crash has_a_check
 }
 
-func check_a_proof_folder(namespace: Spite.Namespace, path: String, names: List<String>, depth: Integer) {
+func check_a_proof_folder(folder: Spite.Class, path: String, names: List<String>, depth: Integer) {
     fallback depth == 2 and path.starts_with("Proofs.")
     var has_a_proof = names.contains("Proof")
     crash has_a_proof
-    var is_named_for_its_folder = names.contains(namespace.name)
+    var is_named_for_its_folder = not folder.functions.is_empty()
     crash not is_named_for_its_folder
 }
 

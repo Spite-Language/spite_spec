@@ -2,7 +2,7 @@ var console = Console()
 var holder = Holder()
 
 func WalkerObjectReadOnce() {
-    Part.classes.each(holder.registry.add)
+    Part.nested_classes.each(holder.registry.add)
     var found = holder.registry_found()
     var reads = holder.reads
     console.print("registry read", reads, "times, found", found)

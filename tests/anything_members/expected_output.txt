@@ -1,0 +1,5 @@
+members AnythingMembers AnythingMembers.Cat AnythingMembers.Dog
+same as instances true
+nothing has 0
+walked AnythingMembers AnythingMembers.Cat AnythingMembers.Dog
+walked the same true

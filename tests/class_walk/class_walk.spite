@@ -25,8 +25,8 @@ func check_kinds() {
 }
 
 func check_kind(kind: Spite.Class) {
-    var name: String = kind.name_with_namespaces
-    if name.starts_with("Walk") or name.starts_with("Parts.") {
+    var name: String = kind.name_with_outer_classes
+    if name.starts_with("ClassWalk.Walk") or name.starts_with("ClassWalk.Parts.") {
         var stateful = kind.is_stateful
         var files = kind.source_files
         var shown = file_name(files)

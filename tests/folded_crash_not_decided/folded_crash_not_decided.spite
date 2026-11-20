@@ -7,7 +7,7 @@ var settings = Settings()
 func FoldedCrashNotDecided() {
     mixer.blend()
     console.print(alpha.first_value, beta.second_value, mixer.level)
-    Spite.Namespace.instances.each(check_a_folder)
+    Spite.Class.instances.each(check_a_folder)
     var given = settings.given
     under_a_condition(given)
     in_a_loop(given)
@@ -34,11 +34,12 @@ func called_only_from_a_dropped_branch() {
     crash 1 == 2
 }
 
-func check_a_folder(namespace: Spite.Namespace) {
-    if namespace.name == "Never" {
+func check_a_folder(folder: Spite.Class) {
+    fallback folder.outer_class and not folder.nested_classes.is_empty()
+    if folder.name == "Never" {
         crash 1 == 2
     }
-    if namespace.name != "Part" {
+    if folder.name != "Part" {
         crash Part.name == "Other"
     }
 }
@@ -49,7 +50,7 @@ func under_a_condition(given: Integer) {
         console.print("not compiled")
     }
     if given > 1000 {
-        crash Part.classes.count() == 7
+        crash Part.nested_classes.count() == 7
     }
 }
 
@@ -86,7 +87,7 @@ func beside_a_condition(given: Integer) {
 }
 
 func written_after_a_change() {
-    var names = Part.classes.map_names()
+    var names = Part.nested_classes.map_names()
     names.append("Gamma")
     crash names.contains("Gamma")
     var count = names.count()

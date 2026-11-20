@@ -1,6 +1,6 @@
 enums Diet
 ClassDeclarations.Diet meat plants
-Pet ClassDeclarations Cat Dog
+Pet ClassDeclarations ClassDeclarations.Cat ClassDeclarations.Dog
 Cat false
 ClassDeclarations.Named 1
 hello Tom

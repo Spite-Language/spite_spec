@@ -5,7 +5,7 @@ func NamespaceNullable() {
 }
 
 func probe() {
-    var ns = NamespaceNullable.namespace
+    var ns = NamespaceNullable.outer_class
     fallback ns
-    console.print(NamespaceNullable.namespace.name)
+    console.print(NamespaceNullable.outer_class.name)
 }

@@ -7,7 +7,7 @@ func MapUncountableMembers() {
     var blue = Team("blue", 5, "bob")
     teams.append(blue)
     var healths = teams.map_health().join(",")
-    var names = teams.map_name_with_namespaces().join(",")
+    var names = teams.map_name_with_outer_classes().join(",")
     var people = teams.map_people().join(",")
     console.print(healths)
     console.print(names)

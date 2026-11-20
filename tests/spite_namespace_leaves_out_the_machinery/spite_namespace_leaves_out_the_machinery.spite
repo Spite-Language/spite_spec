@@ -2,8 +2,8 @@ var console = Console()
 
 func SpiteNamespaceLeavesOutTheMachinery() {
     var described = Spite.Class
-    crash described.namespace
-    var classes = described.namespace.classes
+    crash described.outer_class
+    var classes = described.outer_class.nested_classes
     var listed = List<String>()
     var index = 0
     while index < classes.count() {

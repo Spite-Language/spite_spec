@@ -2,8 +2,8 @@ var console = Console()
 
 func NamespacesCompareByIdentity() {
     var monster = Monster()
-    var first = monster.class.namespace
-    var second = monster.class.namespace
+    var first = monster.class.outer_class
+    var second = monster.class.outer_class
     var same = first == second
     console.print(same)
 }

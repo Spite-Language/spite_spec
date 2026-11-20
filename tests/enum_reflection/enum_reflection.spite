@@ -9,7 +9,7 @@ var console = Console()
 func EnumReflection() {
     var tag: Part = 'tail'
     var described = tag.class
-    console.print(described, described.name_with_namespaces, described.owner)
+    console.print(described, described.name_with_outer_classes, described.owner)
     var declared = described.values
     var names = declared.keys().join(" ")
     console.print(names)

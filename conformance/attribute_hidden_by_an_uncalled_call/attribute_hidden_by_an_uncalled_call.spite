@@ -5,9 +5,9 @@ type Counting {
 var console = Console()
 
 func AttributeHiddenByAnUncalledCall() {
-    var tally = Tally.Tally(3)
+    var tally = Tally(3)
     var said = tally.name()
-    var basket = Basket<Tally.Tally>(tally)
+    var basket = Basket<Tally>(tally)
     var shown = basket.shown()
     console.print(said, shown)
 }

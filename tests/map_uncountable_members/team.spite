@@ -1,9 +1,9 @@
-var name_with_namespaces: String
+var name_with_outer_classes: String
 var health: Integer
 var person: String
 
 func Team(new_name: String, new_health: Integer, new_person: String) {
-    name_with_namespaces = "Game.{new_name}"
+    name_with_outer_classes = "Game.{new_name}"
     health = new_health
     person = new_person
 }

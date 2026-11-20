@@ -9,8 +9,8 @@ func NamespaceArgumentFolds() {
     made_by(Parts.Wheel)
 }
 
-func count_classes(namespace: Spite.Namespace) {
-    var count = namespace.classes.count()
+func count_classes(namespace: Spite.Class) {
+    var count = namespace.nested_classes.count()
     console.print(namespace.name, "holds", count)
 }
 

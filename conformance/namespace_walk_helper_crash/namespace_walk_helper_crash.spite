@@ -6,21 +6,21 @@ var rule = Rules.One.Validator()
 func NamespaceWalkHelperCrash() {
     rule.check_it()
     console.print(first.runs, second.runs, rule.runs)
-    Spite.Namespace.instances.each(check_a_namespace)
+    Spite.Class.instances.each(check_a_namespace)
     console.print("never printed")
 }
 
-func check_a_namespace(namespace: Spite.Namespace) {
-    var path = namespace.name_with_namespaces
-    var names = namespace.classes.map_names()
+func check_a_namespace(namespace: Spite.Class) {
+    var path = namespace.name_with_outer_classes
+    var names = namespace.nested_classes.map_names()
     var depth = path.split(".").count()
     check_a_rule_folder(namespace, path, depth)
     check_a_proof_folder(path, names, depth)
 }
 
-func check_a_rule_folder(namespace: Spite.Namespace, path: String, depth: Integer) {
-    fallback path.starts_with("Rules.") and depth == 2
-    namespace.classes.each(check_a_validator)
+func check_a_rule_folder(namespace: Spite.Class, path: String, depth: Integer) {
+    fallback path.starts_with("NamespaceWalkHelperCrash.Rules.") and depth == 3
+    namespace.nested_classes.each(check_a_validator)
 }
 
 func check_a_validator(validator: Spite.Class) {
@@ -31,7 +31,7 @@ func check_a_validator(validator: Spite.Class) {
 }
 
 func check_a_proof_folder(path: String, names: List<String>, depth: Integer) {
-    fallback depth == 2 and path.starts_with("Proofs.")
+    fallback depth == 3 and path.starts_with("NamespaceWalkHelperCrash.Proofs.")
     var has_a_proof = names.contains("Proof")
     crash has_a_proof
 }

@@ -1,13 +1,14 @@
 1 2
-Alpha Part.Inner.Beta
-Alpha Part.Alpha
-Beta Part.Inner.Beta
-Inner Part.Inner
-Inner Part.Inner
-1 1 2
-1 1
+Alpha ReflectionNamesFold.Part.Inner.Beta
+Alpha ReflectionNamesFold.Part.Alpha
+Beta ReflectionNamesFold.Part.Inner.Beta
+Inner ReflectionNamesFold.Part.Inner
+Inner ReflectionNamesFold.Part.Inner
+2 1 5
+2 2
+Alpha,Inner
+Alpha,Inner
 Alpha
-Alpha
-Alpha
-Part Part 1 1 Alpha
-Part.Inner Part.Inner 2 1 Beta
+ReflectionNamesFold ReflectionNamesFold 1 1 Part
+Part ReflectionNamesFold.Part 2 2 Alpha,Inner
+Inner ReflectionNamesFold.Part.Inner 3 1 Beta

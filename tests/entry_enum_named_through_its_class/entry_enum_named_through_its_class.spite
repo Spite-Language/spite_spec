@@ -8,7 +8,7 @@ func EntryEnumNamedThroughItsClass() {
     console.print(named)
     var counted = keeper.kinds()
     console.print(counted)
-    var picked: Fw.Fw.Shade = 'light'
+    var picked: Fw.Shade = 'light'
     console.print(picked)
     var painted = paint()
     console.print(painted)

@@ -1,11 +1,15 @@
 1 2 3
-Alpha Part.Inner.Gamma
-Alpha Part.Alpha Alpha
-Beta Part.Beta Beta
-Gamma Part.Inner.Gamma Gamma
-Alpha Part.Alpha Alpha
-Beta Part.Beta Beta
-Gamma Part.Inner.Gamma Gamma
-Beta Part.Beta
+Alpha ClassNameIsShort.Part.Inner.Gamma
+Alpha ClassNameIsShort.Part.Alpha Alpha
+Beta ClassNameIsShort.Part.Beta Beta
+Inner ClassNameIsShort.Part.Inner Inner
+Gamma ClassNameIsShort.Part.Inner.Gamma Gamma
+Part ClassNameIsShort.Part Part
+Alpha ClassNameIsShort.Part.Alpha Alpha
+Beta ClassNameIsShort.Part.Beta Beta
+Inner ClassNameIsShort.Part.Inner Inner
+Gamma ClassNameIsShort.Part.Inner.Gamma Gamma
+Beta ClassNameIsShort.Part.Beta
 Alpha!
 Beta!
+Inner!

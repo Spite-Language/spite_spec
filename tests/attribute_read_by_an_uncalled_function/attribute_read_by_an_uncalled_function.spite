@@ -1,11 +1,11 @@
 var console = Console()
 
 func AttributeReadByAnUncalledFunction() {
-    var reader = Reader.Reader("here")
+    var reader = Reader("here")
     var said = reader.name()
     console.print(said)
 }
 
-func unused(other: Reader.Reader): String {
+func unused(other: Reader): String {
     return other.path
 }

@@ -1,7 +1,7 @@
 var console = Console()
 
 func WalkNamespaceUnknown() {
-    Missing.classes.each(visit)
+    Missing.nested_classes.each(visit)
 }
 
 func visit(part: Spite.Class) {

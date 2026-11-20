@@ -14,8 +14,8 @@ func ClassObjectReadThroughAnAttribute() {
     var chosen = chooser.chosen_name()
     console.print(chosen)
     var text = high_text()
-    var keeper_reads = function_holds("Keeper.held_name(", "Spite.Class.get_", text)
-    var chooser_reads = function_holds("Chooser.chosen_name(", "Spite.Class.get_", text)
+    var keeper_reads = function_holds("ClassObjectReadThroughAnAttribute.Keeper.held_name(", "Spite.Class.get_", text)
+    var chooser_reads = function_holds("ClassObjectReadThroughAnAttribute.Chooser.chosen_name(", "Spite.Class.get_", text)
     console.print("Keeper reads its class object while it runs", keeper_reads)
     console.print("Chooser reads its class object while it runs", chooser_reads)
 }

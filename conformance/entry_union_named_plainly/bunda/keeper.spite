@@ -1,3 +1,0 @@
-func take(pet: Pet) {
-    pet.to_debug()
-}

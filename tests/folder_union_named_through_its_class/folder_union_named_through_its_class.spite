@@ -1,0 +1,8 @@
+var console = Console()
+
+func FolderUnionNamedThroughItsClass() {
+    var cat = Bunda.Cat()
+    var keeper = Other.Keeper()
+    var name = keeper.take(cat)
+    console.print(name)
+}

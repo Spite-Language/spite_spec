@@ -4,6 +4,6 @@ var beta = Part.Beta()
 
 func ReflectionStartsWithCrash() {
     console.print(alpha.first_value, beta.second_value)
-    crash Part.Alpha.name_with_namespaces.starts_with("Other.")
+    crash Part.Alpha.name_with_outer_classes.starts_with("Other.")
     console.print("never printed")
 }

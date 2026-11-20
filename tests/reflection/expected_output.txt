@@ -1,4 +1,4 @@
-Monster Monster Creatures|
+Monster Monster Reflection.Creatures|
 alive Boolean true|
 mood Mood angry|
 friends List<Monster> []|

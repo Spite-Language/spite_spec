@@ -1,0 +1,8 @@
+var console = Console()
+
+func OuterUnionNamedPlainly() {
+    var cat = Bunda.Cat()
+    var keeper = Bunda.Keeper()
+    var name = keeper.take(cat)
+    console.print(name)
+}

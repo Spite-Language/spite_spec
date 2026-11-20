@@ -1,8 +1,8 @@
 Gadget Gadget Cog Gear
-Pack.Widgets Widgets
-Pack Pack
+NamespaceObjects.Pack.Widgets Widgets
+NamespaceObjects.Pack Pack
 Pack
-Pack Pack
-Pack.Widgets
+NamespaceObjects.Pack Pack
+Widgets
 2
-1
+2

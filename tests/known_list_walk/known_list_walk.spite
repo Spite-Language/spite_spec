@@ -5,21 +5,21 @@ var gamma = Part.Inner.Gamma()
 
 func KnownListWalk() {
     console.print(alpha.first, beta.second, gamma.third)
-    var namespaces = [Part, Other, Part.Inner]
+    var namespaces: List<Spite.Class> = [Part, Other, Part.Inner]
     namespaces.each(check_a_namespace)
     var classes = [Part.Alpha, Other.Beta]
     classes.each(check_a_class)
     var count = namespaces.count()
     console.print(count)
-    var written_to = [Part, Other]
+    var written_to: List<Spite.Class> = [Part, Other]
     written_to.append(Part.Inner)
     written_to.each(show_a_namespace)
 }
 
-func check_a_namespace(namespace: Spite.Namespace) {
-    var names = namespace.classes.map_names()
+func check_a_namespace(namespace: Spite.Class) {
+    var names = namespace.nested_classes.map_names()
     crash not names.is_empty()
-    console.print(namespace.name_with_namespaces)
+    console.print(namespace.name_with_outer_classes)
 }
 
 func check_a_class(item: Spite.Class) {
@@ -28,6 +28,6 @@ func check_a_class(item: Spite.Class) {
     console.print(named)
 }
 
-func show_a_namespace(namespace: Spite.Namespace) {
+func show_a_namespace(namespace: Spite.Class) {
     console.print(namespace.name)
 }

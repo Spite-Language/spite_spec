@@ -2,7 +2,7 @@ var console = Console()
 
 func WalkerOfAnotherObject() {
     var registry = Registry()
-    Part.classes.each(registry.add)
+    Part.nested_classes.each(registry.add)
     Registry.Phase.values.each(registry.note)
     console.print(registry.count)
 }

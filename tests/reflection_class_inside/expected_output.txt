@@ -1,2 +1,2 @@
 Gadget in Tools
-a local named class, not Tools
+a local named class, not the class itself

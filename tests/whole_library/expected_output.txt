@@ -49,7 +49,7 @@ Spite.Class
 Spite.Function
 Spite.FunctionDeclaration
 Spite.HotReload
-Spite.Namespace
+Spite.Class
 String
 Tcp.Client
 Tcp.Connection

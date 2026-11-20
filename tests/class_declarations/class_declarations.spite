@@ -23,20 +23,20 @@ func ClassDeclarations() {
     var diets = enums["Diet"]
     crash diets
     var diet_names = diets.values.keys().join(" ")
-    console.print(diets.name_with_namespaces, diet_names)
+    console.print(diets.name_with_outer_classes, diet_names)
     var unions = ClassDeclarations.unions
     var pet = unions["Pet"]
     crash pet
     var members = pet.members.keys().join(" ")
     console.print(pet, pet.owner, members)
-    var cat = pet.members["Cat"]
+    var cat = pet.members["ClassDeclarations.Cat"]
     crash cat
     console.print(cat.name, cat.is_singleton)
     var types = ClassDeclarations.types
     var named = types["Named"]
     crash named
     var type_count = types.count()
-    console.print(named.name_with_namespaces, type_count)
+    console.print(named.name_with_outer_classes, type_count)
     var tom = Cat()
     greet(tom)
     var rex = Dog()

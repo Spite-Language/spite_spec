@@ -1,11 +1,11 @@
-var shade: Fw.Fw.Shade = 'dark'
+var shade: Fw.Shade = 'dark'
 
 func kind_name(): String {
-    var data_kind: Fw.Gpu.Gpu.DataKind = 'uniform'
+    var data_kind: Fw.Gpu.DataKind = 'uniform'
     return data_kind.to_string()
 }
 
 func kinds(): Integer {
-    var many: List<Fw.Gpu.Gpu.DataKind> = ['storage']
+    var many: List<Fw.Gpu.DataKind> = ['storage']
     return many.count()
 }

@@ -10,5 +10,5 @@ func ListOfClassesIsConstant() {
 func visit(part: Spite.Class) {
     var fresh = part()
     var shown = fresh.to_debug()
-    console.print(part.name_with_namespaces, shown)
+    console.print(part.name_with_outer_classes, shown)
 }

@@ -1,1 +1,5 @@
+type Goods {
+    name: Spite.Function<String>
+}
+
 var title = "the store"

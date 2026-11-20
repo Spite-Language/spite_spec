@@ -1,7 +1,7 @@
 var console = Console()
 
 func AttributeCalledByAnUncalledFunction() {
-    var chore = Chore.Chore(three)
+    var chore = Chore(three)
     var said = chore.name()
     console.print(said)
 }
@@ -10,7 +10,7 @@ func three(): Integer {
     return 3
 }
 
-func unused(callback: Spite.Function<Integer>, chore: Chore.Chore): Boolean {
+func unused(callback: Spite.Function<Integer>, chore: Chore): Boolean {
     var answer = callback()
     var done = chore.job()
     return answer > done

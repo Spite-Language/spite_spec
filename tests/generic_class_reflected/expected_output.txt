@@ -9,7 +9,7 @@ nested List<Float> Float
 value Integer
 attribute held Float?
 function make_it Boolean
-crate Crate Game.Crate<Float> Float
+crate Crate GenericClassReflected.Game.Crate<Float> Float
 test true true false
 shown List<Float>
 shown Crate

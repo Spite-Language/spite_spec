@@ -1,10 +1,10 @@
 ran 1 42 1 1
 at run time walk_part.spite
-Parts.WalkPart false 'walk_part.spite'
-WalkBoard false 'walk_board.spite'
-WalkCounter true 'walk_counter.spite'
-WalkHolder true 'walk_holder.spite'
-WalkPlain false 'walk_plain.spite'
-WalkScribbler true 'walk_scribbler.spite'
-WalkTally true 'walk_tally.spite'
-WalkWatcher true 'walk_watcher.spite'
+ClassWalk.Parts.WalkPart false 'walk_part.spite'
+ClassWalk.WalkBoard false 'walk_board.spite'
+ClassWalk.WalkCounter true 'walk_counter.spite'
+ClassWalk.WalkHolder true 'walk_holder.spite'
+ClassWalk.WalkPlain false 'walk_plain.spite'
+ClassWalk.WalkScribbler true 'walk_scribbler.spite'
+ClassWalk.WalkTally true 'walk_tally.spite'
+ClassWalk.WalkWatcher true 'walk_watcher.spite'

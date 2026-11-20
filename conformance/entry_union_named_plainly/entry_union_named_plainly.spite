@@ -1,5 +1,0 @@
-func EntryUnionNamedPlainly() {
-    var cat = Bunda.Cat()
-    var keeper = Bunda.Keeper()
-    keeper.take(cat)
-}

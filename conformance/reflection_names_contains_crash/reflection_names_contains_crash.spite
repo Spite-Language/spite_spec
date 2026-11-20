@@ -4,6 +4,6 @@ var beta = Part.Beta()
 
 func ReflectionNamesContainsCrash() {
     console.print(alpha.first_value, beta.second_value)
-    crash Part.classes.map_names().contains("Gamma")
+    crash Part.nested_classes.map_names().contains("Gamma")
     console.print("never printed")
 }

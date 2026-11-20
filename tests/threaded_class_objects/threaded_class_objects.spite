@@ -25,8 +25,8 @@ func count_parts(): Integer {
     while index < classes.count() {
         var described = classes[index]
         var in_part = false
-        if described.namespace {
-            in_part = described.namespace.name_with_namespaces == "Part"
+        if described.outer_class {
+            in_part = described.outer_class.name_with_outer_classes == "ThreadedClassObjects.Part"
         }
         if in_part {
             counted = counted + described.functions.count()

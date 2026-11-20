@@ -11,11 +11,11 @@ func find_every_component() {
 }
 
 func find_by_namespace() {
-    Spite.Namespace.instances.each(walk)
+    Spite.Class.instances.each(walk)
 }
 
-func walk(namespace: Spite.Namespace) {
-    namespace.classes.each(bind)
+func walk(namespace: Spite.Class) {
+    namespace.nested_classes.each(bind)
 }
 
 func bind(part: Spite.Class) {

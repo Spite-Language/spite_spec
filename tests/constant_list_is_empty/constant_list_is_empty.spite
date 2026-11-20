@@ -1,17 +1,17 @@
 var console = Console()
 
 func ConstantListIsEmpty() {
-    Gear.classes.each(check)
+    Gear.nested_classes.each(check)
 }
 
 func check(part: Spite.Class) {
-    if Gear.classes.is_empty() {
+    if Gear.nested_classes.is_empty() {
         never_declared()
     } else {
-        console.print(part.name_with_namespaces, "Gear has classes")
+        console.print(part.name_with_outer_classes, "Gear has classes")
     }
-    if Gear.namespaces.is_empty() {
-        console.print(part.name_with_namespaces, "Gear holds no folders")
+    if part.nested_classes.is_empty() {
+        console.print(part.name_with_outer_classes, "holds no classes")
     } else {
         never_declared_either()
     }

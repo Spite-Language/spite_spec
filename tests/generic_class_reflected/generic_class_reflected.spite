@@ -25,7 +25,7 @@ func GenericClassReflected() {
     crash function
     console.print("function", function.name, function.returns)
     var crate_held = Game.Crate<Float>.generics["held_type"]
-    console.print("crate", Game.Crate<Float>.name, Game.Crate<Float>.name_with_namespaces, crate_held)
+    console.print("crate", Game.Crate<Float>.name, Game.Crate<Float>.name_with_outer_classes, crate_held)
     var crate = Game.Crate<Float>()
     var empty = crate.is_empty()
     var crate_class: Spite.Class = crate.class

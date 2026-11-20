@@ -21,7 +21,7 @@ func ReflectionWalks() {
     run_time_functions.append(runner.reset)
     var resets = run_time_functions.count_name_starts_with("re")
     console.print("run-time functions starting with re:", resets)
-    var parts = Spite.Namespace.instances.filter(holds_parts)
+    var parts = Spite.Class.instances.filter(holds_parts)
     parts.each(count_classes)
 }
 
@@ -66,12 +66,12 @@ func made(argument: Spite.Argument): argument.class {
     return argument.class()
 }
 
-func holds_parts(namespace: Spite.Namespace): Boolean {
+func holds_parts(namespace: Spite.Class): Boolean {
     return namespace.name == "Part"
 }
 
-func count_classes(namespace: Spite.Namespace) {
-    namespace.classes.each(describe_part)
+func count_classes(namespace: Spite.Class) {
+    namespace.nested_classes.each(describe_part)
 }
 
 func describe_part(part: Spite.Class) {

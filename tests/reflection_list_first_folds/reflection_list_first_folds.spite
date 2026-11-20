@@ -2,12 +2,12 @@ var console = Console()
 var program = Program()
 
 func ReflectionListFirstFolds() {
-    var part = Gear.classes.first()
-    var below = Gear.namespaces.first()
+    var part = Gear.nested_classes.first()
+    var below = Gear.Inner.nested_classes.first()
     console.print(part.name, below.name)
-    var parts = Gear.classes
+    var parts = Gear.nested_classes
     var kept = parts.first()
-    console.print(kept.name_with_namespaces)
+    console.print(kept.name_with_outer_classes)
     var built = lists_built_in("ReflectionListFirstFolds.ReflectionListFirstFolds")
     console.print("lists built:", built)
 }
@@ -29,10 +29,7 @@ func lists_built_in(function_key: String): Integer {
         if line.starts_with("function ") {
             inside = line.starts_with("function {function_key}(")
         }
-        if inside and line.contains("get_classes(") {
-            built = built + 1
-        }
-        if inside and line.contains("get_namespaces(") {
+        if inside and line.contains("get_nested_classes(") {
             built = built + 1
         }
         index = index + 1

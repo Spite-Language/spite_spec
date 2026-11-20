@@ -10,8 +10,8 @@ func ReflectionSources() {
     var described = monster.class
     var files = described.source_files
     files.each(show_file)
-    crash described.namespace
-    var directories = described.namespace.source_directories
+    crash described.outer_class
+    var directories = described.outer_class.source_directories
     directories.each(show_directory)
 }
 

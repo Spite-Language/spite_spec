@@ -1,15 +1,15 @@
 var console = Console()
 
 func WalkFunctionWaits() {
-    Resting.classes.each(visit)
+    Resting.nested_classes.each(visit)
 }
 
 func visit(part: Spite.Class) {
     var rests = part.function_waits("rest")
-    console.print(part.name_with_namespaces, "rest waits", rests)
+    console.print(part.name_with_outer_classes, "rest waits", rests)
     if part.function_waits("rest") {
         var made = part()
         made.rest()
-        console.print(part.name_with_namespaces, "rested", made.naps)
+        console.print(part.name_with_outer_classes, "rested", made.naps)
     }
 }

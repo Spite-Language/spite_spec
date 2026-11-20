@@ -1,7 +1,7 @@
 var names = List<String>()
 
 func add_every_system() {
-    System.classes.each(add_system)
+    System.nested_classes.each(add_system)
 }
 
 func add_system(system: Spite.Class) {

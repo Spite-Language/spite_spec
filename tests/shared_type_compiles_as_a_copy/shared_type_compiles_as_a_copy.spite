@@ -42,7 +42,7 @@ func SharedTypeCompilesAsACopy() {
     console.print("same:", shared_body == copied_body, picked_body == picked_copy_body)
 }
 
-func shown(component: Framework.Framework.Component): String {
+func shown(component: Framework.Component): String {
     return component.render()
 }
 
@@ -50,11 +50,7 @@ func shown_by_copy(component: Drawn): String {
     return component.render()
 }
 
-func picked(
-    first: Framework.Framework.Component,
-    second: Framework.Framework.Component,
-    takes_the_first: Boolean,
-): Framework.Framework.Component {
+func picked(first: Framework.Component, second: Framework.Component, takes_the_first: Boolean): Framework.Component {
     if takes_the_first {
         return first
     }

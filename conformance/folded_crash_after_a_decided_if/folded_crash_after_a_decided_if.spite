@@ -3,11 +3,11 @@ var alpha = Part.Alpha()
 
 func FoldedCrashAfterADecidedIf() {
     console.print(alpha.first_value)
-    Spite.Namespace.instances.each(check_a_folder)
+    Spite.Class.instances.each(check_a_folder)
     console.print("never printed")
 }
 
-func check_a_folder(namespace: Spite.Namespace) {
+func check_a_folder(namespace: Spite.Class) {
     if namespace.name == "Part" {
         crash 3 > 4
     }

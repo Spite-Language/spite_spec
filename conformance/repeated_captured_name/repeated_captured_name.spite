@@ -4,6 +4,6 @@ func RepeatedCapturedName() {
     var cat = Cat()
     first.take(cat)
     second.take(cat)
-    var kit = Kit.Kit()
+    var kit = Kit()
     crash kit.open()
 }

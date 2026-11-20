@@ -35,7 +35,7 @@ func same_kind(given: Given, known: Targeting): Boolean {
 func describe(given: Given) {
     walked_given = given
     found.clear()
-    Bundle.classes.each(queue_bundle)
+    Bundle.nested_classes.each(queue_bundle)
     var joined = found.join(" ")
     console.print("[{joined}]")
 }

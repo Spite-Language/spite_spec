@@ -1,0 +1,5 @@
+conformance/doubled_path_is_fixed/other/keeper.spite:1: fixed: 'Fw.Fw.Shade' names 'Fw' twice, and a folder is its own class: wrote 'Fw.Shade' (in Keeper)
+conformance/doubled_path_is_fixed/other/keeper.spite:4: fixed: 'Fw.Gpu.Gpu.DataKind' names 'Gpu' twice, and a folder is its own class: wrote 'Fw.Gpu.DataKind' (in Keeper)
+conformance/doubled_path_is_fixed/other/keeper.spite:9: fixed: 'Fw.Gpu.Gpu.DataKind' names 'Gpu' twice, and a folder is its own class: wrote 'Fw.Gpu.DataKind' (in Keeper)
+conformance/doubled_path_is_fixed/.packages/fw/fw/painter.spite:2: fixed: 'Gpu.Gpu.DataKind' names 'Gpu' twice, and a folder is its own class: wrote 'Gpu.DataKind' (in Painter)
+conformance/doubled_path_is_fixed/doubled_path_is_fixed.spite:11: fixed: 'Fw.Fw.Shade' names 'Fw' twice, and a folder is its own class: wrote 'Fw.Shade' (in DoubledPathIsFixed)

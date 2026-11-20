@@ -1,8 +1,8 @@
 true 2
-Tools Shop.Tools Shop
+Tools ReflectionObjects.Shop.Tools Shop
 Shop holds Counter, Tools
-every namespace: Shop, Shop.Counter, Shop.Tools
-the entry class is in no namespace
+every class: ReflectionObjects, ReflectionObjects.Monster, ReflectionObjects.Shop, ReflectionObjects.Shop.Counter, ReflectionObjects.Shop.Counter.Till, ReflectionObjects.Shop.Tools, ReflectionObjects.Shop.Tools.Hammer
+the entry class is in no folder's class
 false true true true
 alive answers Boolean and is resumable: false
 greeting returns grr

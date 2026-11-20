@@ -1,7 +1,7 @@
 var shown = List<String>()
 
-func register_namespace(namespace: Spite.Namespace) {
-    namespace.classes.each(register)
+func register_namespace(namespace: Spite.Class) {
+    namespace.nested_classes.each(register)
 }
 
 func register(component_class: Spite.Class) {
