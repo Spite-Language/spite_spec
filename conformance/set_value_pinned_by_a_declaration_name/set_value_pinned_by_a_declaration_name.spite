@@ -14,9 +14,7 @@ func SetValuePinnedByADeclarationName() {
 func write_one(held: Meter, given: Shown) {
     var declaration = Meter.attributes["whole"]
     var whole = held.attributes[declaration.name]
-    crash whole
     whole.value = given
     var label = held.attributes["label"]
-    crash label
     label.value = given
 }

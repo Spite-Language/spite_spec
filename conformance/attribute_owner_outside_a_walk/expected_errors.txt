@@ -1,0 +1,1 @@
+conformance/attribute_owner_outside_a_walk/attribute_owner_outside_a_walk.spite:6: error: a Spite.Attribute<Integer> has no 'owner': the object whose '.attributes' you read is it (in AttributeOwnerOutsideAWalk.AttributeOwnerOutsideAWalk)

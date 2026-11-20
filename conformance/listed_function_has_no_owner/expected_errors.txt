@@ -1,0 +1,1 @@
+conformance/listed_function_has_no_owner/listed_function_has_no_owner.spite:7: error: a Spite.Function listed by '.functions' has no 'owner': the object whose '.functions' you read is it, and a function value named in the code ('troll.roar') answers '.owner' with its class (in ListedFunctionHasNoOwner.ListedFunctionHasNoOwner)

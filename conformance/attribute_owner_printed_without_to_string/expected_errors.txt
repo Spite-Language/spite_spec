@@ -1,1 +1,1 @@
-conformance/attribute_owner_printed_without_to_string/attribute_owner_printed_without_to_string.spite:8: error: 'Gauge' does not fit type 'Printable': it has no function 'to_string' (in AttributeOwnerPrintedWithoutToString.AttributeOwnerPrintedWithoutToString)
+conformance/attribute_owner_printed_without_to_string/attribute_owner_printed_without_to_string.spite:7: error: a Spite.Attribute<Integer> has no 'owner': the object whose '.attributes' you read is it (in AttributeOwnerPrintedWithoutToString.AttributeOwnerPrintedWithoutToString)

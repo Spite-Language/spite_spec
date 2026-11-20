@@ -1,0 +1,7 @@
+func CallOfARunTimeDeclaration() {
+    var troll = Monster()
+    var name = "hurt"
+    var call = Spite.Call(troll.class.functions[name], troll)
+    call.arguments["amount"] = 3
+    call.call()
+}

@@ -19,12 +19,10 @@ func describe(attribute: Spite.AttributeDeclaration) {
     console.print("declared", attribute.index, attribute.name, attribute.class)
 }
 
-func show(attribute: Spite.Attribute) {
+func show(attribute: Spite.Attribute<Console.Printable>) {
     console.print("troll's", attribute.name, "=", attribute.value)
 }
 
-func heal(attribute: Spite.Attribute) {
-    if attribute.class == Integer {
-        attribute.value = attribute.value + 5
-    }
+func heal(attribute: Spite.Attribute<Integer>) {
+    attribute.value = attribute.value + 5
 }

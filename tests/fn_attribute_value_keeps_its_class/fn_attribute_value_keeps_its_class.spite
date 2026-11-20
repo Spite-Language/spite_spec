@@ -2,14 +2,10 @@ var console = Console()
 
 func FnAttributeValueKeepsItsClass() {
     var hero = Hero("ada", 3)
-    var held = hero.attributes.values()
-    var index = 0
-    while index < held.count() {
-        var attribute = held[index]
-        if attribute.value {
-            var class_name = attribute.value.class.name
-            console.print(attribute.name, class_name)
-        }
-        index = index + 1
-    }
+    hero.attributes.each(show_class)
+}
+
+func show_class(attribute: Spite.Attribute<Console.Debuggable>) {
+    var class_name = attribute.value.class.name
+    console.print(attribute.name, class_name, attribute.value)
 }

@@ -7,12 +7,22 @@ func FunctionValueDeclaration() {
     console.print(hurt.declaration.name, hurt.declaration.returns, taken)
     var file = hurt.declaration.source_file.file_name
     console.print(file)
-    monster.attributes.each(show)
+    monster.attributes.each(show_console)
+    monster.attributes.each(show_health)
 }
 
-func show(attribute: Spite.Attribute) {
-    var file = attribute.declaration.source_file.file_name
+func show_console(attribute: Spite.Attribute<Console>) {
     var asked = attribute.class.is_singleton
-    var declared = attribute.declaration.class.is_singleton
-    console.print(attribute.name, file, asked, declared)
+    show_declared(attribute.declaration, asked)
+}
+
+func show_health(attribute: Spite.Attribute<Integer>) {
+    var asked = attribute.class.is_singleton
+    show_declared(attribute.declaration, asked)
+}
+
+func show_declared(declaration: Spite.AttributeDeclaration, asked: Boolean) {
+    var file = declaration.source_file.file_name
+    var declared = declaration.class.is_singleton
+    console.print(declaration.name, file, asked, declared)
 }

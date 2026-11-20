@@ -1,2 +1,0 @@
-widget 2
-other is set

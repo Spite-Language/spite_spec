@@ -5,7 +5,7 @@ func show_attribute(attribute: Spite.AttributeDeclaration, value: Recipe): Strin
 }
 
 func held_attribute(attribute: Spite.AttributeDeclaration, value: Recipe, holder: Holder): String {
-    if holder.box.attributes["label"] {
+    if holder.box {
         return "{attribute.name} held {value.attributes[attribute].value}"
     }
     return "{attribute.name} alone {value.attributes[attribute].value}"

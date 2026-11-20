@@ -13,26 +13,12 @@ func EveryClass() {
         console.print(described.name, "{text}|", joined_map_name)
         index = index + 1
     }
-    index = 0
-    while index < classes.count() {
-        var zoo_namespace = classes[index].namespace
-        if zoo_namespace and zoo_namespace.name_with_namespaces == "Zoo" {
-            run_speakers(classes[index])
-        }
-        index = index + 1
-    }
+    Spite.Class.instances.each(run_speakers)
 }
 
 func run_speakers(described: Spite.Class) {
-    var speaker = described()
-    var functions = described.functions.values()
-    var index = 0
-    while index < functions.count() {
-        var declaration = functions[index]
-        if declaration.name == "speak" {
-            var call = Spite.Call(declaration, speaker)
-            call.call()
-        }
-        index = index + 1
+    if described.has_function("speak") {
+        var speaker = described()
+        speaker.speak()
     }
 }

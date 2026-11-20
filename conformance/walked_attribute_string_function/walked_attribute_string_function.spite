@@ -6,7 +6,7 @@ func WalkedAttributeStringFunction() {
     price.attributes.each(show)
 }
 
-func show(attribute: Spite.Attribute) {
+func show(attribute: Spite.Attribute<Integer>) {
     var counted = attribute.length()
     console.print(counted)
 }

@@ -3,20 +3,20 @@ declared _secret
 taken _secret
 equal to its name: false
 copy _secret 0 Integer
-members 0 6
+members 6
 declared level
 taken level
 equal to its name: true
 copy level 1 Integer
-members 0 6
+members 6
 bound _secret
 taken _secret
 equal to its name: false
 copy _secret 0 Integer
-members 0 9
+members 8
 bound level
 taken level
 equal to its name: true
 copy level 1 Integer
-members 0 9
+members 8
 kept 2

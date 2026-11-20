@@ -8,10 +8,9 @@ func FunctionValueReadThroughATypeIsFreed() {
     var button = Button()
     button.on_press = shout
     var attribute = button.attributes["on_press"]
-    crash attribute
-    crash attribute.value
-    if attribute.value.class == Spite.Function {
-        attribute.value.call_function()
+    var held_press: Held? = attribute.value
+    if held_press.class == Spite.Function {
+        held_press.call_function()
     }
     var pressed = button.on_press
     crash pressed

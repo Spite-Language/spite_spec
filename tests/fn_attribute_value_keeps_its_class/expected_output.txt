@@ -1,2 +1,2 @@
-name String
-level Integer
+name String ada
+level Integer 3

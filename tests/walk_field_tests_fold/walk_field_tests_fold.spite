@@ -9,7 +9,7 @@ func WalkFieldTestsFold() {
     var word_count = shape.words.count()
     console.print(shape.x, shape.label, number_count, word_count)
     Shape.attributes.each(describe)
-    shape.attributes.each(show_field)
+    shape.attributes.each(show_kind)
     var tests = tests_left_to_the_run()
     console.print("tests left to the run:", tests)
 }
@@ -27,7 +27,7 @@ func describe(attribute: Spite.AttributeDeclaration) {
     }
 }
 
-func show_field(field: Spite.Attribute) {
+func show_kind(field: Spite.AttributeDeclaration) {
     var kind = Kind<field.class>()
     var kind_name = kind.name()
     if field.name != "label" and field.class != List<String> {

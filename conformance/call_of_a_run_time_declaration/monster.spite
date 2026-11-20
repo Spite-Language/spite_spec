@@ -1,0 +1,5 @@
+var health = 10
+
+func hurt(amount: Integer) {
+    health = health - amount
+}

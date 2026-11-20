@@ -7,7 +7,7 @@ func DeclarationWalk() {
     monster.attributes.each(declared)
 }
 
-func describe(attribute: Spite.Attribute) {
+func describe(attribute: Spite.Attribute<Integer>) {
     console.print(attribute.name)
 }
 

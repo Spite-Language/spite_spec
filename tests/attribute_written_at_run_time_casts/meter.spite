@@ -1,4 +1,0 @@
-var reading = 1.5
-var whole: Integer? = 0
-var shown = ""
-var answer = ""

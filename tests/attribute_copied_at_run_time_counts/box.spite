@@ -1,3 +1,0 @@
-var label = "none"
-var part = Gadget("plain")
-var spare: Gadget? = null

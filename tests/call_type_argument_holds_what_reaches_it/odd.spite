@@ -1,5 +1,0 @@
-var depth = 1
-
-func deeper(): Integer {
-    return depth + depth
-}

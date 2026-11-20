@@ -30,18 +30,16 @@ func describe(attribute: Spite.AttributeDeclaration) {
     console.print(attribute.index, attribute.name, attribute.class, "starts as", fresh)
 }
 
-func show(attribute: Spite.Attribute) {
+func show(attribute: Spite.Attribute<Console.Printable>) {
     console.print(attribute.name, "=", attribute.value)
 }
 
-func bump(attribute: Spite.Attribute) {
-    if attribute.class == Integer {
-        attribute.value = attribute.value + 1
-        console.print(attribute.name, "is now", attribute.value)
-    }
+func bump(attribute: Spite.Attribute<Integer>) {
+    attribute.value = attribute.value + 1
+    console.print(attribute.name, "is now", attribute.value)
 }
 
-func add_line(attribute: Spite.Attribute) {
+func add_line(attribute: Spite.Attribute<Console.Printable>) {
     lines.append("{attribute.name.pascal_case()}: {attribute.value}")
 }
 

@@ -6,7 +6,7 @@ func WalkedBoundAttributeJoined() {
     price.attributes.each(show)
 }
 
-func show(attribute: Spite.Attribute) {
+func show(attribute: Spite.Attribute<Integer>) {
     var suffix = "x"
     var joined = attribute + suffix
     console.print(joined)

@@ -1,5 +1,5 @@
 
-func remember_through(writer: Spite.Function<Console.Debuggable?, Console.Debuggable?>, value: Console.Debuggable?) {
+func remember_through(writer: Spite.Function<$value, $value>, value: $value) {
     _value = writer(value)
 }
 
@@ -13,9 +13,10 @@ func counted(names: List<String>): Integer {
 }
 
 func remember_a_shout() {
-    _owner = Spite.Shout()
+    var shout = Spite.Shout()
+    _name = shout.text
 }
 
-func remember_quietly(value: Console.Debuggable?) {
+func remember_quietly(value: $value) {
     _value = value
 }

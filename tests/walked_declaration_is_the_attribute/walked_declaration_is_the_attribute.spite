@@ -15,7 +15,7 @@ func WalkedDeclarationIsTheAttribute() {
 
 func show(attribute: Spite.AttributeDeclaration) {
     var bound = price.attributes[attribute]
-    console.print(bound.name, bound.value, bound.owner.class)
+    console.print(bound.name, bound.value, bound.declaration.index)
 }
 
 func copied(attribute: Spite.AttributeDeclaration) {

@@ -17,18 +17,20 @@ func shout() {
 }
 
 func show(fresh: Button) {
-    var attributes = fresh.attributes.values()
-    var index = 0
-    while index < attributes.count() {
-        var attribute = attributes[index]
-        if attribute.value {
-            console.print(attribute.name, attribute.value.class.name, "'{attribute.value}'")
-            if attribute.value.class == Spite.Function {
-                attribute.value.call_function()
-            }
-        } else {
-            console.print(attribute.name, "is null")
-        }
-        index = index + 1
+    fresh.attributes.each(show_text)
+    fresh.attributes.each(show_function)
+}
+
+func show_text(attribute: Spite.Attribute<String>) {
+    console.print(attribute.name, attribute.value.class.name, "'{attribute.value}'")
+}
+
+func show_function(attribute: Spite.Attribute<Spite.Function<Nothing>?>) {
+    var named: Shown? = attribute.value
+    if named.class == Spite.Function {
+        console.print(attribute.name, named.class.name, "'{named}'")
+        named.call_function()
+    } else {
+        console.print(attribute.name, "is null")
     }
 }

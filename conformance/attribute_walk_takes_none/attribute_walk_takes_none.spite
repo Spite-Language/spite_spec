@@ -1,0 +1,8 @@
+func AttributeWalkTakesNone() {
+    var monster = Monster()
+    monster.attributes.each(flip)
+}
+
+func flip(attribute: Spite.Attribute<Boolean>) {
+    attribute.value = not attribute.value
+}

@@ -18,26 +18,22 @@ func declared(attribute: Spite.AttributeDeclaration) {
     console.print("equal to its name:", same)
     var other = attribute
     console.print("copy", other.name, other.index, other.class)
-    var listed = attribute.attributes
-    var listed_count = listed.count()
     var functions = attribute.functions
     var function_count = functions.count()
-    console.print("members", listed_count, function_count)
+    console.print("members", function_count)
     kept.append(attribute)
 }
 
-func bound(attribute: Spite.Attribute) {
+func bound(attribute: Spite.Attribute<Integer>) {
     console.print("bound {attribute}")
     take(attribute)
     var same = attribute == "level"
     console.print("equal to its name:", same)
     var other = attribute
     console.print("copy", other.name, other.index, other.class)
-    var listed = attribute.attributes
-    var listed_count = listed.count()
     var functions = attribute.functions
     var function_count = functions.count()
-    console.print("members", listed_count, function_count)
+    console.print("members", function_count)
 }
 
 func take(text: String) {

@@ -1,17 +1,16 @@
+var building = Entity()
+
 func create_entity(): Entity {
     return Entity()
 }
 
 func create_entity_from_bundle(bundle: PlayerBundle): Entity {
     var entity = create_entity()
-    var attributes = bundle.attributes.values()
-    var index = 0
-    while index < attributes.count() {
-        var attribute = attributes[index]
-        if attribute.value {
-            entity.add_component(attribute.value)
-        }
-        index = index + 1
-    }
+    building = entity
+    bundle.attributes.each(add_to_the_entity)
     return entity
+}
+
+func add_to_the_entity(attribute: Spite.Attribute<Entity.Component>) {
+    building.add_component(attribute.value)
 }

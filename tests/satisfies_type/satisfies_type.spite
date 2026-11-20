@@ -36,7 +36,8 @@ func SatisfiesType() {
     Monster.attributes.each(describe)
     var monster = Monster()
     monster.health = 12
-    monster.attributes.each(grow)
+    monster.attributes.each(grow_whole)
+    monster.attributes.each(grow_decimal)
     console.print(monster.name, monster.health, monster.speed, monster.hungry)
     var left = calls_left_to_the_run()
     console.print("satisfies_type calls left to the run:", left)
@@ -50,10 +51,12 @@ func describe(attribute: Spite.AttributeDeclaration) {
     }
 }
 
-func grow(attribute: Spite.Attribute) {
-    if attribute.class.satisfies_type(Number) {
-        attribute.value = attribute.value * 2
-    }
+func grow_whole(attribute: Spite.Attribute<Integer>) {
+    attribute.value = attribute.value * 2
+}
+
+func grow_decimal(attribute: Spite.Attribute<Float>) {
+    attribute.value = attribute.value * 2
 }
 
 func calls_left_to_the_run(): Integer {

@@ -1,5 +1,0 @@
-var weight = 1
-
-func heavy(): Boolean {
-    return weight > 0
-}

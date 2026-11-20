@@ -2,17 +2,14 @@ var console = Console()
 var build = Build()
 
 func SettingsAndLibrariesReflected() {
-    var attributes = build.attributes.values()
-    var index = 0
-    while index < attributes.count() {
-        if attributes[index].name == "check" or attributes[index].name == "optimized" {
-            var value_text = text_of(attributes[index])
-            console.print(value_text)
-        }
-        index = index + 1
-    }
+    var check = build.attributes["check"]
+    var check_text = text_of(check)
+    console.print(check_text)
+    var optimized = build.attributes["optimized"]
+    var optimized_text = text_of(optimized)
+    console.print(optimized_text)
     var shelf = Shelf()
-    var shelf_attributes = shelf.attributes
+    var shelf_attributes = Shelf.attributes
     var functions = console.class.functions
     var shelf_count = shelf_attributes.count()
     var held = shelf.libraries.count()
@@ -20,8 +17,7 @@ func SettingsAndLibrariesReflected() {
     console.print("shelf", shelf_count, held, function_count > 0)
 }
 
-func text_of(attribute: Spite.Attribute): String {
-    crash attribute.value
+func text_of(attribute: Spite.Attribute<Boolean>): String {
     var shown = attribute.value.to_debug()
     return "{attribute.name} {shown}"
 }

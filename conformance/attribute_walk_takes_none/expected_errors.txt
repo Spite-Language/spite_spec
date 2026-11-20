@@ -1,0 +1,1 @@
+conformance/attribute_walk_takes_none/attribute_walk_takes_none.spite:3: error: 'flip' takes a 'Spite.Attribute<Boolean>', and no attribute of 'Monster' holds one, so this walk would call it on none: take the 'Spite.Attribute' of a class, a union or a type its attributes hold (in AttributeWalkTakesNone.AttributeWalkTakesNone)

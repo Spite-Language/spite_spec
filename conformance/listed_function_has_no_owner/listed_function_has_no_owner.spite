@@ -1,0 +1,8 @@
+var console = Console()
+
+func ListedFunctionHasNoOwner() {
+    var troll = Monster()
+    var roar = troll.functions["roar"]
+    crash roar
+    console.debug(roar.owner)
+}

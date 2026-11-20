@@ -1,1 +1,0 @@
-conformance/set_value_of_a_conversion_answering_null/set_value_of_a_conversion_answering_null.spite:18: error: this value may be null (it is a Feet?), but a Feet is needed: narrow it first with 'if value { }', 'fallback value' or 'crash value' (in SetValueOfAConversionAnsweringNull.write_named)

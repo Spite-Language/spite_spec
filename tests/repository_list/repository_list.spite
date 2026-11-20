@@ -26,18 +26,11 @@ func RepositoryList() {
         console.print(repository.name, repository.stars)
         index = index + 1
     }
-    var attributes = first.attributes.values()
-    var attribute_index = 0
-    while attribute_index < attributes.count() {
-        var attribute = attributes[attribute_index]
-        var value_text = text_of(attribute)
-        console.print(attribute.name, attribute.class, value_text)
-        attribute_index = attribute_index + 1
-    }
+    first.attributes.each(show_value)
     console.print("done")
 }
 
-func text_of(attribute: Spite.Attribute): String {
-    fallback attribute.value
-    return attribute.value.to_string()
+func show_value(attribute: Spite.Attribute<Console.Printable>) {
+    var value_text = attribute.value.to_string()
+    console.print(attribute.name, attribute.class, value_text)
 }

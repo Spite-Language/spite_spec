@@ -2,83 +2,14 @@ var console = Console()
 
 func ANumberHeldInAnAttributeShowsItself() {
     var edges = Edges()
-    var names = List<String>()
-    names.append("low_boolean")
-    names.append("high_boolean")
-    names.append("low_byte")
-    names.append("high_byte")
-    names.append("low_short")
-    names.append("high_short")
-    names.append("low_unsigned_short")
-    names.append("high_unsigned_short")
-    names.append("low_integer")
-    names.append("high_integer")
-    names.append("low_unsigned_integer")
-    names.append("high_unsigned_integer")
-    names.append("low_long")
-    names.append("high_long")
-    names.append("low_unsigned_long")
-    names.append("high_unsigned_long")
-    names.append("low_float")
-    names.append("high_float")
-    names.append("low_double")
-    names.append("high_double")
-    names.append("low_rune")
-    names.append("high_rune")
-    names.append("low_shade")
-    names.append("high_shade")
-    var index = 0
-    while index < names.count() {
-        var name = names[index]
-        var found = edges.attributes[name]
-        crash found
-        var narrowed = shown(found)
-        console.print(name, narrowed, "held {found.value}")
-        index = index + 1
-    }
+    edges.attributes.each(show)
     var flag = edges.attributes["low_boolean"]
-    crash flag
     var said = flag.value.to_string()
     console.print(said, edges.low_boolean)
 }
 
-func shown(found: Spite.Attribute): String {
-    crash found.value
-    if found.value.class == Boolean {
-        return found.value.to_string()
-    }
-    if found.value.class == Byte {
-        return found.value.to_string()
-    }
-    if found.value.class == Short {
-        return found.value.to_string()
-    }
-    if found.value.class == UnsignedShort {
-        return found.value.to_string()
-    }
-    if found.value.class == Integer {
-        return found.value.to_string()
-    }
-    if found.value.class == UnsignedInteger {
-        return found.value.to_string()
-    }
-    if found.value.class == Long {
-        return found.value.to_string()
-    }
-    if found.value.class == UnsignedLong {
-        return found.value.to_string()
-    }
-    if found.value.class == Float {
-        return found.value.to_string()
-    }
-    if found.value.class == Double {
-        return found.value.to_string()
-    }
-    if found.value.class == Rune {
-        return found.value.to_string()
-    }
-    if found.value.class == Edges.Shade {
-        return found.value.to_string()
-    }
-    return "held by no number class"
+func show(found: Spite.Attribute<Console.Printable>) {
+    fallback not found.name.starts_with("_")
+    var narrowed = found.value.to_string()
+    console.print(found.name, narrowed, "held {found.value}")
 }

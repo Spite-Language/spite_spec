@@ -32,10 +32,8 @@ func describe(attribute: Spite.AttributeDeclaration) {
     console.print(attribute.index, attribute.name, attribute.class)
 }
 
-func double(attribute: Spite.Attribute) {
-    if attribute.class == Integer {
-        attribute.value = attribute.value * 2
-    }
+func double(attribute: Spite.Attribute<Integer>) {
+    attribute.value = attribute.value * 2
 }
 
 func reset_attribute(attribute: Spite.AttributeDeclaration, gadget: Gadget) {

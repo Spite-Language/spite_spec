@@ -1,0 +1,9 @@
+func AttributeWrittenThroughAType() {
+    var monster = Monster()
+    monster.attributes.each(reset)
+}
+
+func reset(attribute: Spite.Attribute<Console.Printable>) {
+    var kept = attribute
+    kept.value = 0
+}

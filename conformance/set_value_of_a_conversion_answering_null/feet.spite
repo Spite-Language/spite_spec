@@ -1,8 +1,0 @@
-var length = 0
-
-func Feet(from: Integer): Feet? {
-    fallback from >= 0
-    var made = Feet()
-    made.length = from
-    return made
-}

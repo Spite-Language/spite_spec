@@ -1,0 +1,1 @@
+conformance/attribute_without_its_value/attribute_without_its_value.spite:8: error: 'Attribute' takes 1 codegen value(s), in this order: $value. Write them between < and > before the arguments

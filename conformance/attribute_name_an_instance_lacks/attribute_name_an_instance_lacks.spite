@@ -1,0 +1,7 @@
+var console = Console()
+
+func AttributeNameAnInstanceLacks() {
+    var whisper = Whisper()
+    var shout = whisper.attributes["shout"]
+    console.print(shout.name)
+}

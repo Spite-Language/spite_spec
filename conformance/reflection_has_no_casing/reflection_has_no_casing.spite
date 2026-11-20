@@ -6,7 +6,7 @@ func ReflectionHasNoCasing() {
     price.attributes.each(show)
 }
 
-func show(attribute: Spite.Attribute) {
+func show(attribute: Spite.Attribute<Integer>) {
     var pascal = attribute.declaration.pascal_case_name
     console.print(pascal)
 }

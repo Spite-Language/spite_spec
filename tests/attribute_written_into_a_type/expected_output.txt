@@ -1,5 +1,0 @@
-gadget 3
-written
-7
-true
-loud

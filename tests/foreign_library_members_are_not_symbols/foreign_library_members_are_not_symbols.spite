@@ -15,7 +15,7 @@ func ForeignLibraryMembersAreNotSymbols() {
     console.print("first by file name:", first.file_name)
     var opened = c_runtime.handle != 0
     console.print("a handle is the attribute, not a symbol:", opened)
-    var attribute_count = c_runtime.attributes.count()
+    var attribute_count = DynamicLibrary.attributes.count()
     var function_count = c_runtime.functions.count()
     var is_listed = attribute_count > 0 and function_count > 0
     console.print("attributes and functions are reflection:", is_listed)

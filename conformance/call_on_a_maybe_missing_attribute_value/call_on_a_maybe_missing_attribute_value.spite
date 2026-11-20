@@ -1,7 +1,0 @@
-var console = Console()
-
-func CallOnAMaybeMissingAttributeValue() {
-    var recipe = Recipe()
-    var shouted = recipe.attributes["title"].value.upper_case()
-    console.print(shouted)
-}

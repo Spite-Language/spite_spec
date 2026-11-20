@@ -1,5 +1,0 @@
-var amount = 3
-
-func to_string(): String {
-    return "reading {amount}"
-}

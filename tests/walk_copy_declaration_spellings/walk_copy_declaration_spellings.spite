@@ -5,12 +5,7 @@ func WalkCopyDeclarationSpellings() {
     troll.attributes.each(describe)
 }
 
-func describe(attribute: Spite.Attribute) {
+func describe(attribute: Spite.Attribute<Console.Printable>) {
     var pascal = attribute.declaration.name.pascal_case()
-    console.print(
-        attribute.declaration.name,
-        pascal,
-        attribute.declaration.class,
-        attribute.value,
-    )
+    console.print(attribute.declaration.name, pascal, attribute.declaration.class, attribute.value)
 }

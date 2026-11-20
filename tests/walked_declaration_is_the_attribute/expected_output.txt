@@ -1,5 +1,5 @@
-cost 7 Price
-label jam Price
+cost 7 0
+label jam 1
 7 jam
 cost 8
 doubled 16

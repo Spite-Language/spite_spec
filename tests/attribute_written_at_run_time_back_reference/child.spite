@@ -1,7 +1,0 @@
-var name: String
-var parent: Parent?
-
-func Child(new_name: String, new_parent: Parent) {
-    name = new_name
-    parent = new_parent
-}

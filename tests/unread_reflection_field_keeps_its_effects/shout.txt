@@ -1,5 +1,6 @@
 var console = Console()
+var text = "shouted"
 
 func Shout() {
-    console.print("shouted")
+    console.print(text)
 }

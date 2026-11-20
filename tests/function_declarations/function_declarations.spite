@@ -10,8 +10,7 @@ func FunctionDeclarations() {
     var bound = troll.functions["roar"]
     crash bound
     var same = bound.declaration.name == declared.name
-    var owner = bound.owner
-    var owner_class = owner.class
+    var owner_class = troll.class
     console.print(bound.name, same, owner_class)
     bound.call_function()
     var hurt = Monster.functions["hurt"]

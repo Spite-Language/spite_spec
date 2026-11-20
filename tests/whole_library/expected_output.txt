@@ -44,9 +44,7 @@ SecureRandom
 Sha256
 Short
 Spite.Argument
-Spite.Attribute
 Spite.AttributeDeclaration
-Spite.Call
 Spite.Class
 Spite.Function
 Spite.FunctionDeclaration

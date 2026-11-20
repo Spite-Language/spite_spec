@@ -1,0 +1,10 @@
+var console = Console()
+
+func AttributeWithoutItsValue() {
+    var troll = Monster()
+    troll.attributes.each(show)
+}
+
+func show(attribute: Spite.Attribute) {
+    console.print(attribute.name)
+}

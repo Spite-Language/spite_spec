@@ -132,7 +132,7 @@ func queues_directly(row: Row) {
     row.counter.ledger.entries.append(row.health)
 }
 
-func clears(attribute: Spite.Attribute) {
+func clears(attribute: Spite.Attribute<Integer>) {
     var cleared = attribute.assign_null()
     console.print(cleared)
 }

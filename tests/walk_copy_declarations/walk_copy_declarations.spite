@@ -9,7 +9,7 @@ func WalkCopyDeclarations() {
     Mover.attributes.each(locate)
 }
 
-func show(attribute: Spite.Attribute) {
+func show(attribute: Spite.Attribute<Console.Printable>) {
     var declared = attribute.declaration
     var same = declared.name == attribute.name
     console.print(attribute.declaration.name, attribute.declaration.index, same, attribute.value)

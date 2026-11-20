@@ -7,9 +7,7 @@ func AttributeUses() {
     show_attributes(lamp, lines)
     var joined = lines.join(", ")
     console.print(joined)
-    var reflected = shelf.attributes.values()
-    var first = reflected.first()
-    crash first
+    var first = shelf.attributes["books"]
     var first_text = text_of(first)
     console.print(first.name, first_text)
 }
@@ -18,7 +16,6 @@ func show_attribute(attribute: Spite.AttributeDeclaration, shown: Lamp, lines: L
     lines.append("{attribute.name} = {shown.attributes[attribute].value}")
 }
 
-func text_of(attribute: Spite.Attribute): String {
-    fallback attribute.value
+func text_of(attribute: Spite.Attribute<Integer>): String {
     return attribute.value.to_string()
 }

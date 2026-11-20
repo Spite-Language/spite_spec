@@ -1,2 +1,0 @@
-var held: Widget? = null
-var other: Gadget? = null

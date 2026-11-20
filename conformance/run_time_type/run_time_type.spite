@@ -1,19 +1,15 @@
-type Shown {
-    to_debug: Spite.Function<String>
-}
-
 var console = Console()
 
 func RunTimeType() {
-    var gadget = Gadget()
-    var anything: Shown = gadget
-    var attributes = anything.attributes
-    var first = attributes.values().first()
+    var power = Gadget.attributes["power"]
+    var kept = List<Spite.AttributeDeclaration>()
+    kept.append(power)
+    var first = kept.first()
     crash first
     var made = fresh(first)
     console.print(made)
 }
 
-func fresh(attribute: Spite.Attribute): attribute.class {
+func fresh(attribute: Spite.AttributeDeclaration): attribute.class {
     return attribute.class()
 }

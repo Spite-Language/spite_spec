@@ -1,5 +1,5 @@
 EveryClass | 
-Cat Zoo| speak,to_debug
-Dog Zoo| speak,fetch,to_debug
+Cat Zoo| speak
+Dog Zoo| speak,fetch
 the cat says meow
 the dog says WOOF, from its constructor

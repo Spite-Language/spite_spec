@@ -9,16 +9,10 @@ func ClassAttributes() {
         index = index + 1
     }
     var sticker = Sticker("pinned")
-    var values = sticker.attributes.values()
-    index = 0
-    while index < values.count() {
-        var value_text = text_of(values[index])
-        console.print(value_text)
-        index = index + 1
-    }
+    sticker.attributes.each(show_value)
 }
 
-func text_of(attribute: Spite.Attribute): String {
-    fallback attribute.value
-    return attribute.value.to_string()
+func show_value(attribute: Spite.Attribute<Console.Printable>) {
+    var value_text = attribute.value.to_string()
+    console.print(value_text)
 }

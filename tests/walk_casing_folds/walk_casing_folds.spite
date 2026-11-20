@@ -22,7 +22,7 @@ func WalkCasingFolds() {
     console.print("a walk holds the cased names", holds_camel, holds_pascal, holds_snake)
 }
 
-func show(attribute: Spite.Attribute) {
+func show(attribute: Spite.Attribute<Console.Printable>) {
     var camel = attribute.name.camel_case()
     var pascal = attribute.declaration.name.pascal_case()
     console.print(camel, pascal, attribute.value)

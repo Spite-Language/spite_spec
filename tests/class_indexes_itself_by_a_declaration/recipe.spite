@@ -7,15 +7,13 @@ func described(): String {
     var found = attributes[declaration]
     var other = Recipe.attributes["title"]
     var named = attributes[other]
-    return "{found.name}={found.value} {named.name}={named.value} {found.owner.class}"
+    return "{found.name}={found.value} {named.name}={named.value}"
 }
 
 func by_name(): String {
     var declaration = Recipe.attributes["title"]
     var found = attributes[declaration.name]
-    crash found
     var literal = attributes["servings"]
-    crash literal
     return "{found.name}={found.value} {literal.name}={literal.value}"
 }
 
@@ -31,7 +29,7 @@ func listed(): String {
     return shown
 }
 
-func add_name(attribute: Spite.Attribute) {
+func add_name(attribute: Spite.AttributeDeclaration) {
     shown = "{shown}[{attribute.name}]"
 }
 
