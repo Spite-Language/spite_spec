@@ -1,0 +1,28 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+}
+
+var console = Console()
+
+func ClassComparedWithATypeIsFixed() {
+    var custom = Custom()
+    var held: Component = custom
+    var key = key_of(held)
+    var other = is_other(held)
+    console.print(key, other)
+}
+
+func key_of(value: Component): String {
+    if value.class == AnyCustom {
+        return value.key
+    }
+    return "none"
+}
+
+func is_other(value: Component): Boolean {
+    return value.class != AnyCustom
+}

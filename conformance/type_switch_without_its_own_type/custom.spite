@@ -1,5 +1,0 @@
-var key = "custom"
-
-func render(): TypeSwitchWithoutItsOwnType.Component? {
-    return this
-}

@@ -1,0 +1,15 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+}
+
+var console = Console()
+
+func ClassComparedWithAType() {
+    var custom = Custom()
+    var held: Component = custom
+    console.print(held.class == AnyCustom)
+}

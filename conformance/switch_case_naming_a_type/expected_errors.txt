@@ -1,0 +1,1 @@
+conformance/switch_case_naming_a_type/switch_case_naming_a_type.spite:22: error: 'Named' is a type, so it is not a case: a case names a class, and a class is never a type: ask whether the class fits it with 'if creature.class.satisfies_type(Named)', which narrows 'creature' to that type inside (in SwitchCaseNamingAType.shown_of)

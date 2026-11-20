@@ -9,7 +9,7 @@ type AnyCustom {
 var console = Console()
 var kept = List<Component>()
 
-func TypeSwitchWithoutItsOwnType() {
+func SwitchOverAValueOfAType() {
     var custom = Custom()
     kept.append(custom)
     var first = kept[0]

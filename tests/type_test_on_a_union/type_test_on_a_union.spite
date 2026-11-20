@@ -4,6 +4,11 @@ union Creature {
     Fish
 }
 
+union Furry {
+    Cat
+    Dog
+}
+
 type Named {
     name: String
 }
@@ -32,15 +37,15 @@ func TypeTestOnAUnion() {
 }
 
 func name_of(creature: Creature): String {
-    if creature.class == Named {
+    if creature.class.satisfies_type(Named) {
         return creature.name
     }
     return "nameless"
 }
 
 func chosen_of(creature: Creature): String {
-    switch creature {
-        Named: return creature.name
-        Fish: return "fish"
+    if creature.class.satisfies_type(Furry) {
+        return "furry"
     }
+    return "fish"
 }

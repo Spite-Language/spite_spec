@@ -1,0 +1,1 @@
+conformance/class_compared_with_a_type/class_compared_with_a_type.spite:14: error: 'AnyCustom' is a type, not a class, so 'held.class' is never equal to it: ask whether the class fits it with 'held.class.satisfies_type(AnyCustom)' (in ClassComparedWithAType.ClassComparedWithAType)

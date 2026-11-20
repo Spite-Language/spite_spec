@@ -1,5 +1,0 @@
-var shown = "plain"
-
-func render(): TypeSwitch.Component? {
-    return null
-}

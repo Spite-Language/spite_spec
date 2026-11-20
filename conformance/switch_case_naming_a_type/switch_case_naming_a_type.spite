@@ -1,0 +1,25 @@
+union Creature {
+    Cat
+    Dog
+    Fish
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func SwitchCaseNamingAType() {
+    var cat = Cat()
+    var creature: Creature = cat
+    var fish = Fish()
+    console.print(shown_of(creature), fish.fins)
+}
+
+func shown_of(creature: Creature): String {
+    switch creature {
+        Named: return creature.name
+        Fish: return "fish"
+    }
+}

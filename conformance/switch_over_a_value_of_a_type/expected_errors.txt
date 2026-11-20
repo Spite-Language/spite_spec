@@ -1,0 +1,1 @@
+conformance/switch_over_a_value_of_a_type/switch_over_a_value_of_a_type.spite:21: error: 'switch value' chooses among values with no closed set, so no case list is ever whole: switch on an enum's values or a union's members, or write the choice as 'if' tests, asking 'if value.class.satisfies_type(...)' for a type it may fit (in SwitchOverAValueOfAType.shown_of)

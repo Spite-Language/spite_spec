@@ -1,0 +1,23 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+}
+
+var console = Console()
+
+func SatisfiesTypeNarrowsAValueOfAType() {
+    var glow = Custom<Glow>()
+    var held: Component = glow
+    var key = key_of(held)
+    console.print(key)
+}
+
+func key_of(value: Component): String {
+    if value.class.satisfies_type(AnyCustom) {
+        return value.key
+    }
+    return "none"
+}

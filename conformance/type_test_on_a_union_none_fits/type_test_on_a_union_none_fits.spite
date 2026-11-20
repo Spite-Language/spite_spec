@@ -12,6 +12,6 @@ var console = Console()
 func TypeTestOnAUnionNoneFits() {
     var cat = Cat()
     var creature: Creature = cat
-    var named = creature.class == Named
+    var named = creature.class.satisfies_type(Named)
     console.print(named, cat.lives)
 }

@@ -1,0 +1,5 @@
+var key = "custom"
+
+func render(): ClassComparedWithAType.Component? {
+    return this
+}

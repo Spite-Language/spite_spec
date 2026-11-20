@@ -1,0 +1,11 @@
+generic $uniforms_type
+
+var key = "custom"
+var uniforms = $uniforms_type()
+
+func render(): SatisfiesTypeInATypedCopy.Component? {
+    if uniforms.strength > 0.0 {
+        return this
+    }
+    return null
+}

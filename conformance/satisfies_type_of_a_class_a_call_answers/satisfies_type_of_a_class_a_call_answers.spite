@@ -1,0 +1,15 @@
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+var gadget = Gadget()
+
+func SatisfiesTypeOfAClassACallAnswers() {
+    var answer = first_shown().class.satisfies_type(Number)
+    console.print(answer, gadget.power)
+}
+
+func first_shown(): Shown {
+    return gadget
+}

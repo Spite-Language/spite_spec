@@ -35,19 +35,19 @@ func TypeTestNarrows() {
 }
 
 func key_of(value: Component): String {
-    if value.class == AnyCustom {
+    if value.class.satisfies_type(AnyCustom) {
         return value.key
     }
     return "none"
 }
 
 func strength_of(value: Component): Float {
-    if value.class == AnyCustom {
+    if value.class.satisfies_type(AnyCustom) {
         return value.strength()
     }
     return 0.0
 }
 
 func is_plain(value: Component): Boolean {
-    return value.class != AnyCustom
+    return not value.class.satisfies_type(AnyCustom)
 }
