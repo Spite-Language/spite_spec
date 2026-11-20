@@ -1,0 +1,5 @@
+one owner true false
+equal owners true false true
+other function false
+nulls true false
+a maybe true false

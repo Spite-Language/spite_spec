@@ -1,0 +1,22 @@
+var console = Console()
+
+func FunctionValuesAreTheSameInstance() {
+    var ada = Counter("ada")
+    var also_ada = Counter("ada")
+    var adding: Spite.Function<Integer, Nothing> = ada.add
+    var adding_again: Spite.Function<Integer, Nothing> = ada.add
+    var taking: Spite.Function<Integer, Nothing> = ada.take
+    var also_adding: Spite.Function<Integer, Nothing> = also_ada.add
+    console.print("one owner", adding === adding_again, adding !== adding_again)
+    console.print("equal owners", adding == also_adding, adding === also_adding, adding !== also_adding)
+    console.print("other function", adding === taking)
+    compare_the_maybes(ada, adding)
+}
+
+func compare_the_maybes(ada: Counter, adding: Spite.Function<Integer, Nothing>) {
+    var maybe: Spite.Function<Integer, Nothing>? = null
+    var nothing_here: Spite.Function<Integer, Nothing>? = null
+    console.print("nulls", maybe === nothing_here, maybe === adding)
+    maybe = ada.add
+    console.print("a maybe", maybe === adding, maybe !== adding)
+}

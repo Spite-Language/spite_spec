@@ -1,0 +1,14 @@
+var total = 0
+var name: String
+
+func Counter(starting_name: String) {
+    name = starting_name
+}
+
+func add(amount: Integer) {
+    total = total + amount
+}
+
+func take(amount: Integer) {
+    total = total - amount
+}
