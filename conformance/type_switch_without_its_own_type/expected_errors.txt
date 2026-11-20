@@ -1,0 +1,1 @@
+conformance/type_switch_without_its_own_type/type_switch_without_its_own_type.spite:21: error: this switch over 'value' has no case for every Component: more classes may fit the type 'Component' than a switch can list, so its last case is 'Component:', for every value no case before it takes (in TypeSwitchWithoutItsOwnType.shown_of)

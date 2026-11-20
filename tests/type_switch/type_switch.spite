@@ -1,0 +1,35 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+    strength: Spite.Function<Float>
+}
+
+var console = Console()
+
+func TypeSwitch() {
+    var glow = Custom<Glow>()
+    var plain = Plain()
+    var components = List<Component>()
+    components.append(glow)
+    components.append(plain)
+    var index = 0
+    while index < components.count() {
+        var component = components[index]
+        var shown = shown_of(component)
+        console.print(shown)
+        index = index + 1
+    }
+    var copied = shown_of(glow)
+    var plain_copied = shown_of(plain)
+    console.print(copied, plain_copied, plain.shown)
+}
+
+func shown_of(value: Component): String {
+    switch value {
+        AnyCustom: return value.key
+        Component: return "other"
+    }
+}

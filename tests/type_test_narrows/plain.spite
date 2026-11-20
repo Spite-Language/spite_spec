@@ -1,0 +1,5 @@
+var shown = "plain"
+
+func render(): TypeTestNarrows.Component? {
+    return null
+}

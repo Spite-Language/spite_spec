@@ -1,0 +1,24 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+}
+
+var console = Console()
+var kept = List<Component>()
+
+func TypeSwitchWithoutItsOwnType() {
+    var custom = Custom()
+    kept.append(custom)
+    var first = kept[0]
+    var shown = shown_of(first)
+    console.print(shown)
+}
+
+func shown_of(value: Component): String {
+    switch value {
+        AnyCustom: return value.key
+    }
+}

@@ -1,0 +1,12 @@
+generic $uniforms_type
+
+var key = "custom"
+var uniforms = $uniforms_type()
+
+func render(): TypeSwitch.Component? {
+    return this
+}
+
+func strength(): Float {
+    return uniforms.strength
+}

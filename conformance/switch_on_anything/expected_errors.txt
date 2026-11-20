@@ -1,0 +1,1 @@
+conformance/switch_on_anything/switch_on_anything.spite:13: error: this switch over 'held' has no case for every Anything: more classes may fit the type 'Anything' than a switch can list, so its last case is 'Anything:', for every value no case before it takes (in SwitchOnAnything.shown_of)

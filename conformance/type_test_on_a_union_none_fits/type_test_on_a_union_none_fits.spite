@@ -1,0 +1,17 @@
+union Creature {
+    Cat
+    Fish
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func TypeTestOnAUnionNoneFits() {
+    var cat = Cat()
+    var creature: Creature = cat
+    var named = creature.class == Named
+    console.print(named, cat.lives)
+}

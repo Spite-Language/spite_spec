@@ -1,0 +1,5 @@
+custom
+none plain
+custom 1 false
+none 0 true
+shine 2.5 false

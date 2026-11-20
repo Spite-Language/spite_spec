@@ -1,0 +1,1 @@
+conformance/type_test_on_a_union_none_fits/type_test_on_a_union_none_fits.spite:15: error: 'creature' is a 'Creature', which holds only Cat, Fish, and none of them fits the type 'Named', so it never fits it: test for a type one of them fits (in TypeTestOnAUnionNoneFits.TypeTestOnAUnionNoneFits)

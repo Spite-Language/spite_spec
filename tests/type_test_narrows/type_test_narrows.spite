@@ -1,0 +1,53 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+    strength: Spite.Function<Float>
+}
+
+var console = Console()
+
+func TypeTestNarrows() {
+    var glow = Custom<Glow>()
+    var held: Component = glow
+    var first = key_of(held)
+    console.print(first)
+    var plain = Plain()
+    var plain_key = key_of(plain)
+    console.print(plain_key, plain.shown)
+    var shine = Custom<Shine>()
+    shine.key = "shine"
+    var components = List<Component>()
+    components.append(glow)
+    components.append(plain)
+    components.append(shine)
+    var index = 0
+    while index < components.count() {
+        var component = components[index]
+        var found = key_of(component)
+        var strength = strength_of(component)
+        var plain_one = is_plain(component)
+        console.print(found, strength, plain_one)
+        index = index + 1
+    }
+}
+
+func key_of(value: Component): String {
+    if value.class == AnyCustom {
+        return value.key
+    }
+    return "none"
+}
+
+func strength_of(value: Component): Float {
+    if value.class == AnyCustom {
+        return value.strength()
+    }
+    return 0.0
+}
+
+func is_plain(value: Component): Boolean {
+    return value.class != AnyCustom
+}

@@ -1,0 +1,46 @@
+union Creature {
+    Cat
+    Dog
+    Fish
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+var kept = List<Creature>()
+
+func TypeTestOnAUnion() {
+    var cat = Cat()
+    var dog = Dog()
+    var fish = Fish()
+    kept.append(cat)
+    kept.append(dog)
+    kept.append(fish)
+    var index = 0
+    while index < kept.count() {
+        var creature = kept[index]
+        var shown = name_of(creature)
+        var chosen = chosen_of(creature)
+        console.print(shown, chosen)
+        index = index + 1
+    }
+    var cat_lives = cat.lives
+    var fish_fins = fish.fins
+    console.print(cat_lives, fish_fins)
+}
+
+func name_of(creature: Creature): String {
+    if creature.class == Named {
+        return creature.name
+    }
+    return "nameless"
+}
+
+func chosen_of(creature: Creature): String {
+    switch creature {
+        Named: return creature.name
+        Fish: return "fish"
+    }
+}
