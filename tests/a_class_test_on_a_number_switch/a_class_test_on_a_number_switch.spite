@@ -1,3 +1,7 @@
+type Shown {
+    to_string: Spite.Function<String>
+}
+
 var console = Console()
 var turns = 0
 
@@ -21,7 +25,7 @@ func AClassTestOnANumberSwitch() {
     }
     console.print(count.class == Integer, ratio.class == Float, flag.class == Boolean)
     console.print(count.class != Integer, ratio.class != Float, count.class == Float)
-    var held: Anything = 4
+    var held: Shown = 4
     if held.class == Integer {
         console.print("held Integer", held.class == String, held + 1)
     }

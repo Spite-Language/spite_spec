@@ -1,7 +1,7 @@
 var console = Console()
 
 func FunctionValuesInAGenericObserver() {
-    var scores = Observer<Integer>()
+    var scores = Announcer<Integer>()
     var left = Screen("left")
     var right = Screen("right")
     scores.subscribe(left.show)
@@ -17,7 +17,7 @@ func FunctionValuesInAGenericObserver() {
     scores.unsubscribe(left.show)
     var after_again = scores.listeners.count()
     console.print("again", after_again)
-    var names = Observer<String>()
+    var names = Announcer<String>()
     names.subscribe(right.show_text)
     var also_right = Screen("right")
     names.unsubscribe(also_right.show_text)

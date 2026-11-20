@@ -12,4 +12,5 @@ func FunctionValuesAreEqualWhenTheyNameOneFunctionOfOneObject() {
     var same_function_only = one == other
     var different = one != other
     console.print(same, same_owner_only, same_function_only, different)
+    console.print(one === again, one === other)
 }
