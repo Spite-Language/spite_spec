@@ -1,1 +1,0 @@
-conformance/anything_list_passed_without_to_string/anything_list_passed_without_to_string.spite:17: error: 'AnythingListPassedWithoutToString.Crate' reaches this Anything and has no function 'to_string': match the value first against a class or a type that has one (in AnythingListPassedWithoutToString.print_first)
