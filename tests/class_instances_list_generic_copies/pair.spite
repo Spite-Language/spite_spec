@@ -1,0 +1,5 @@
+generic $first_type
+
+func made(): Custom<$first_type> {
+    return Custom<$first_type>()
+}

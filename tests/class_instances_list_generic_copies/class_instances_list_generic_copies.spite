@@ -1,0 +1,23 @@
+var console = Console()
+
+func ClassInstancesListGenericCopies() {
+    var glow = Custom<Glow>()
+    console.print(glow.key)
+    var strength = Glow().strength
+    var radius = Bloom().radius
+    console.print(strength, radius)
+    var name = glow.class.name
+    console.print("copy's own name: {name}")
+    Spite.Class.instances.each(show)
+}
+
+func never_called(): Pair<Bloom> {
+    return Pair<Bloom>()
+}
+
+func show(part: Spite.Class) {
+    var name = part.name
+    var shown = part.name_with_namespaces
+    var given = part.generics.count()
+    console.print("walked: {name} {shown} {given}")
+}

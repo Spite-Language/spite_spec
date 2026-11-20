@@ -1,5 +1,5 @@
-ClassInstancesScope,Sprocket
-generic listed false
+ClassInstancesScope,Crate,Sprocket
+generic listed true
 library listed false
 package listed true
 true 12
