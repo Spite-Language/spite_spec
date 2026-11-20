@@ -1,4 +1,0 @@
-start
-made
-took
-spite: call() fills an argument 'speed' that 'RunTimeCallNoArguments.QuietTargets.take_one' does not have: it takes no arguments
