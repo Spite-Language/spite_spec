@@ -1,1 +1,1 @@
-conformance/hole_values/runner.spite:6: error: 'run_updat_all' is 'run_phase_all' with 'updat' for 'phase', but 'Move' has no function 'updat_all': the functions there that fit 'phase_all' are 'update_all', 'step_all' (in Runner.run)
+conformance/hole_values/runner.spite:6: error: 'run_updat_all' is 'run_phase_all' with 'updat' for 'phase', but 'HoleValues.Move' has no function 'updat_all': the functions there that fit 'phase_all' are 'update_all', 'step_all' (in HoleValues.Runner.run)

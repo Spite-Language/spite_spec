@@ -1,1 +1,1 @@
-conformance/declared_attribute_value_unprintable/declared_attribute_value_unprintable.spite:6: error: 'Box' does not fit type 'Printable': it has no function 'to_string' (in DeclaredAttributeValueUnprintable.DeclaredAttributeValueUnprintable)
+conformance/declared_attribute_value_unprintable/declared_attribute_value_unprintable.spite:6: error: 'DeclaredAttributeValueUnprintable.Box' does not fit type 'Printable': it has no function 'to_string' (in DeclaredAttributeValueUnprintable.DeclaredAttributeValueUnprintable)

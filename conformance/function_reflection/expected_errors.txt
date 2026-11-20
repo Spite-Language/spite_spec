@@ -1,1 +1,1 @@
-conformance/function_reflection/runner.spite:7: error: '$system_type.has_function(...)' is decided while compiling, so the name it asks for is written as a literal: '$system_type.has_function("run_each")', or a pattern such as "<phase>_each" (in Runner.run)
+conformance/function_reflection/runner.spite:7: error: '$system_type.has_function(...)' is decided while compiling, so the name it asks for is written as a literal: '$system_type.has_function("run_each")', or a pattern such as "<phase>_each" (in FunctionReflection.Runner.run)

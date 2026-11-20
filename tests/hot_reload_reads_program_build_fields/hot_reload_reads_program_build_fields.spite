@@ -12,8 +12,8 @@ func HotReloadReadsProgramBuildFields() {
     crash text_path
     var text = File(text_path).read_as_string()
     crash text
-    var reads_the_field = function_holds("Choice.answer(", ".serve", text)
-    var has_the_other_branch = function_holds("Choice.answer(", "not serving", text)
+    var reads_the_field = function_holds("HotReloadReadsProgramBuildFields.Choice.answer(", ".serve", text)
+    var has_the_other_branch = function_holds("HotReloadReadsProgramBuildFields.Choice.answer(", "not serving", text)
     console.print("reads build.serve while it runs", reads_the_field)
     console.print("holds the branch it did not take", has_the_other_branch)
 }

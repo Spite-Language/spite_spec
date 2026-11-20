@@ -28,7 +28,7 @@ func print_report() {
     var index = 0
     while index < lines.count() {
         var line = lines[index]
-        var is_ours = line.starts_with("- [") and (line.contains("`Journal`") or line.contains("`Rules`"))
+        var is_ours = line.starts_with("- [") and (line.contains("`BandSingletonCallsReplayed.Journal`") or line.contains("`BandSingletonCallsReplayed.Rules`"))
         if line.starts_with("## Singletons other threads reach") or is_ours {
             console.print(line)
         }

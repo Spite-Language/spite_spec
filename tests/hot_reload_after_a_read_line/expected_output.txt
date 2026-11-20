@@ -1,5 +1,5 @@
 hello
 hello
-spite: rebuilt Greeter
+spite: rebuilt HotReloadAfterAReadLine.Greeter
 read go
 goodbye

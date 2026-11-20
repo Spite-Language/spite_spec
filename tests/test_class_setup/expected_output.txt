@@ -1,5 +1,5 @@
-pass Bank.AccountTests.test_withdraws
+pass TestClassSetup.Bank.AccountTests.test_withdraws
     set up an account holding 100
-pass Bank.AccountTests.test_starts_from_its_own_setup
+pass TestClassSetup.Bank.AccountTests.test_starts_from_its_own_setup
     set up an account holding 100
 2 tests, 2 passed, 0 failed

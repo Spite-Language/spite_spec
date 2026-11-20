@@ -1,1 +1,1 @@
-conformance/every_attribute/holder.spite:6: error: a List<Integer> has no codegen value named '$value_type': List<$element_type>, Dictionary<$key_type, $value_type> and $value_type? name theirs, and a generic class names its own (in Holder.describe)
+conformance/every_attribute/holder.spite:6: error: a List<Integer> has no codegen value named '$value_type': List<$element_type>, Dictionary<$key_type, $value_type> and $value_type? name theirs, and a generic class names its own (in EveryAttribute.Holder.describe)

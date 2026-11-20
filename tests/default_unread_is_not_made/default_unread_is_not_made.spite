@@ -19,8 +19,8 @@ func DefaultUnreadIsNotMade() {
     var text = map.read_as_string()
     crash text
     var lines = text.split("\n")
-    var gone_size = size_of(lines, "\tGone.Gone$defaults")
-    var stays_size = size_of(lines, "\tStays.Stays$defaults")
+    var gone_size = size_of(lines, "\tDefaultUnreadIsNotMade.Gone.Gone$defaults")
+    var stays_size = size_of(lines, "\tDefaultUnreadIsNotMade.Stays.Stays$defaults")
     var is_smaller = gone_size > 0 and gone_size < stays_size
     console.print("makes less than its twin", is_smaller)
 }

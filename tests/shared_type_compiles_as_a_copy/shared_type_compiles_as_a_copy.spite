@@ -28,13 +28,13 @@ func SharedTypeCompilesAsACopy() {
     var text = File(text_path).read_as_string()
     crash text
     written = text
-    var shared_body = body_with_stops_alike("SharedTypeCompilesAsACopy.shown_typed_Framework_Button")
-    var copied_body = body_with_stops_alike("SharedTypeCompilesAsACopy.shown_by_copy_typed_Framework_Button")
+    var shared_body = body_with_stops_alike("SharedTypeCompilesAsACopy.shown_typed_SharedTypeCompilesAsACopy_Framework_Button")
+    var copied_body = body_with_stops_alike("SharedTypeCompilesAsACopy.shown_by_copy_typed_SharedTypeCompilesAsACopy_Framework_Button")
     var picked_body = body_with_stops_alike(
-        "SharedTypeCompilesAsACopy.picked_typed_Framework_Button_and_Framework_Label",
+        "SharedTypeCompilesAsACopy.picked_typed_SharedTypeCompilesAsACopy_Framework_Button_and_SharedTypeCompilesAsACopy_Framework_Label",
     )
     var picked_copy_body = body_with_stops_alike(
-        "SharedTypeCompilesAsACopy.picked_by_copy_typed_Framework_Button_and_Framework_Label",
+        "SharedTypeCompilesAsACopy.picked_by_copy_typed_SharedTypeCompilesAsACopy_Framework_Button_and_SharedTypeCompilesAsACopy_Framework_Label",
     )
     var shared_found = not shared_body.is_empty()
     var picked_found = not picked_body.is_empty()

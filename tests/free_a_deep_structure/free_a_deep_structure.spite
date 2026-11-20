@@ -10,8 +10,8 @@ func FreeADeepStructure() {
     steps_let_go()
     console.print("the steps are freed")
     var text = functions_text()
-    var branches_wait = text.contains("\t_free_onto_Branch")
-    var steps_wait = text.contains("\t_free_onto_Step")
+    var branches_wait = text.contains("\t_free_onto_FreeADeepStructure.Branch")
+    var steps_wait = text.contains("\t_free_onto_FreeADeepStructure.Step")
     console.print("branches wait on a list:", branches_wait)
     console.print("steps wait on a list:", steps_wait)
 }

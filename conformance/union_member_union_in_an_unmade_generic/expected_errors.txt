@@ -1,1 +1,1 @@
-conformance/union_member_union_in_an_unmade_generic/shelf.spite:10: error: 'Inner' cannot be a member of union 'Outer': a union lists classes directly, and 'Inner' is a union; list the classes of 'Inner' in 'Outer' themselves (in Shelf.)
+conformance/union_member_union_in_an_unmade_generic/shelf.spite:10: error: 'Inner' cannot be a member of union 'Outer': a union lists classes directly, and 'Inner' is a union; list the classes of 'Inner' in 'Outer' themselves (in UnionMemberUnionInAnUnmadeGeneric.Shelf.)

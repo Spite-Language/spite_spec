@@ -1,3 +1,3 @@
 reshaped: 58589 tallied: 100
 ## Loops run in order (2)
-- [tests/loops_run_in_order_reported/driver.spite:30](../../driver.spite#L30): a loop over the positions of a `List<Shape>` runs in order: it writes into a `Buffer` it does not own (in `Buffer._reserve`, reached from `Worker.tallied`)
+- [tests/loops_run_in_order_reported/driver.spite:30](../../driver.spite#L30): a loop over the positions of a `List<LoopsRunInOrderReported.Shape>` runs in order: it writes into a `Buffer` it does not own (in `Buffer._reserve`, reached from `Worker.tallied`)

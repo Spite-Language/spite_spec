@@ -1,4 +1,4 @@
 old
-spite: rebuilt Greeter, String, Badge
+spite: rebuilt HotReloadFreesAPieceItBringsIn.Greeter, String, HotReloadFreesAPieceItBringsIn.Badge
 which: Badge { title: "gold", inner: null }
 allocations: ... frees: ...

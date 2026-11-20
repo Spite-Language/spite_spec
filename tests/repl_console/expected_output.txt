@@ -2,7 +2,7 @@ spite> the console belongs to the REPL
 Hero
 spite> 2
 spite> spite> Aria
-spite> monsters[0].roar(): error: 'monsters[0]' may be missing, since every '[ ]' answers a 'T?' (this one is a Monster?), so 'roar' cannot be called on it yet: narrow it first with 'crash monsters[0]', 'fallback monsters[0]' or 'if monsters[0] { }', or prove the count first, 'crash monsters.count() > 0'
+spite> monsters[0].roar(): error: 'monsters[0]' may be missing, since every '[ ]' answers a 'T?' (this one is a ReplConsole.Monster?), so 'roar' cannot be called on it yet: narrow it first with 'crash monsters[0]', 'fallback monsters[0]' or 'if monsters[0] { }', or prove the count first, 'crash monsters.count() > 0'
 spite> spite> Ogre
 spite> spite> 75
 spite> Monster { name: "Ogre", health: 75 }

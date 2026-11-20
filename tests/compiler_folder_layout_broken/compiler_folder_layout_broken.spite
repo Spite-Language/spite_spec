@@ -13,19 +13,19 @@ func CompilerFolderLayoutBroken() {
     copy_a_folder("../spite_documentation", "{copy}/spite_documentation")
     var printer_folder = "{compiler_copy}/printers/folder_without_printer"
     write_a_folder(printer_folder, "helper")
-    var wanted = wanted_error("crash has_a_printer", "Printers.FolderWithoutPrinter")
+    var wanted = wanted_error("crash has_a_printer", "SpiteCompiler.Printers.FolderWithoutPrinter")
     judge_a_refusal("--check", wanted)
     judge_a_refusal("--build", wanted)
     remove_a_folder(printer_folder)
     var low_pass_folder = "{compiler_copy}/low_optimization_passes/pass_without_entry"
     write_a_folder(low_pass_folder, "pass")
-    var wanted_entry = wanted_error("crash holds_its_entry", "LowOptimizationPasses.PassWithoutEntry")
+    var wanted_entry = wanted_error("crash holds_its_entry", "SpiteCompiler.LowOptimizationPasses.PassWithoutEntry")
     judge_a_refusal("--check", wanted_entry)
     remove_a_folder(low_pass_folder)
     var rule_folder = "{compiler_copy}/validators/command_line/rule_with_a_helper"
     write_a_folder(rule_folder, "validator")
     write_a_file(rule_folder, "helper")
-    var wanted_alone = wanted_error("crash is_the_rule", "Validators.CommandLine.RuleWithAHelper.Helper")
+    var wanted_alone = wanted_error("crash is_the_rule", "SpiteCompiler.Validators.CommandLine.RuleWithAHelper.Helper")
     judge_a_refusal("--check", wanted_alone)
     remove_the_old_copy()
 }

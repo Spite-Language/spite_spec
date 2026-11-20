@@ -1,1 +1,1 @@
-conformance/declaration_of_another_class/declaration_of_another_class.spite:6: error: 'health' is a declaration of Monster, and 'rat' is a Rat: an instance is indexed only by a declaration of its own class (in DeclarationOfAnotherClass.DeclarationOfAnotherClass)
+conformance/declaration_of_another_class/declaration_of_another_class.spite:6: error: 'health' is a declaration of DeclarationOfAnotherClass.Monster, and 'rat' is a DeclarationOfAnotherClass.Rat: an instance is indexed only by a declaration of its own class (in DeclarationOfAnotherClass.DeclarationOfAnotherClass)

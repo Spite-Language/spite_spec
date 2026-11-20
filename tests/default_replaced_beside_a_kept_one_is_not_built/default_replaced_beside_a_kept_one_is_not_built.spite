@@ -26,8 +26,8 @@ func DefaultReplacedBesideAKeptOneIsNotBuilt() {
 }
 
 func say_how_much_is_left(lines: List<String>, class_name: String) {
-    var whole = size_of(lines, "\t{class_name}._attribute_defaults")
-    var left = size_of(lines, "\t{class_name}.{class_name}$defaults")
+    var whole = size_of(lines, "\tDefaultReplacedBesideAKeptOneIsNotBuilt.{class_name}._attribute_defaults")
+    var left = size_of(lines, "\tDefaultReplacedBesideAKeptOneIsNotBuilt.{class_name}.{class_name}$defaults")
     var is_trimmed = left > 0 and left < whole
     console.print(class_name, "makes less than its whole defaults", is_trimmed)
 }

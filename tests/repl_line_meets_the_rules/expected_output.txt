@@ -1,6 +1,6 @@
 spite> ready 1
-counter._reset(): error: '_reset' is private to 'Counter': a name starting with '_' is used only inside its own class
-spite> counter._steps: error: '_steps' is private to 'Counter': a name starting with '_' is used only inside its own class
+counter._reset(): error: '_reset' is private to 'ReplLineMeetsTheRules.Counter': a name starting with '_' is used only inside its own class
+spite> counter._steps: error: '_steps' is private to 'ReplLineMeetsTheRules.Counter': a name starting with '_' is used only inside its own class
 spite> console.print(counter.shown()): error: 'counter.shown()' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name
 spite> ...> ...> console.print(counter.shown()): error: 'counter.shown()' is called inside an argument of 'console.print': compute it first into a named 'var' and pass the name
 spite> 1

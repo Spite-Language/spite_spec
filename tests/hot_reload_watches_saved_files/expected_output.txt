@@ -1,5 +1,5 @@
 hello
-spite: rebuilt Greeter
+spite: rebuilt HotReloadWatchesSavedFiles.Greeter
 goodbye
 generation 1
-rebuilt Greeter
+rebuilt HotReloadWatchesSavedFiles.Greeter

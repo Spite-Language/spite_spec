@@ -1,1 +1,1 @@
-conformance/codegen_values/box.spite:9: error: this class has no 'generic $other_type' line, so '$other_type' cannot be used as a type (in Box.)
+conformance/codegen_values/box.spite:9: error: this class has no 'generic $other_type' line, so '$other_type' cannot be used as a type (in CodegenValues.Box.)

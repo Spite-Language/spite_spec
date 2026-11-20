@@ -14,13 +14,13 @@ func FinalClassesJson() {
     var template_lines = template_text.split("\n")
     var first_line = template_lines[0]
     console.print("the generic class is printed once:", first_line)
-    var instance_path: Path? = "{build.program}/.spite/final_classes_json/instantiated/json_writer_order.spite"
+    var instance_path: Path? = "{build.program}/.spite/final_classes_json/instantiated/json_writer_final_classes_json_order.spite"
     crash instance_path
     var instance = File(instance_path)
     var instance_text = instance.read_as_string()
     crash instance_text
     var instance_lines = instance_text.split("\n")
     var instance_first = instance_lines[0]
-    var shows_the_type = instance_text.contains("write(value: Order?): String")
+    var shows_the_type = instance_text.contains("write(value: FinalClassesJson.Order?): String")
     console.print("the JsonWriter<Order> copy is printed as a type:", instance_first, shows_the_type)
 }

@@ -1,1 +1,1 @@
-conformance/template_type_member_copy_string_function/runner.spite:14: error: a Spite.AttributeDeclaration has no attribute or function 'upper_case' (in Runner.show_name)
+conformance/template_type_member_copy_string_function/runner.spite:14: error: a Spite.AttributeDeclaration has no attribute or function 'upper_case' (in TemplateTypeMemberCopyStringFunction.Runner.show_name)

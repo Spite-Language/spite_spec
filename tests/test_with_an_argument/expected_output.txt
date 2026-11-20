@@ -1,3 +1,3 @@
-fail Checks.ArgumentChecks.test_takes_an_argument
-    spite: call() cannot run 'Checks.ArgumentChecks.test_takes_an_argument' when the call is known only at run time, since it takes arguments and such a call passes none: build the call from a function named in the code, 'Spite.Call(Checks.ArgumentChecks.functions["test_takes_an_argument"], instance)'
+fail TestWithAnArgument.Checks.ArgumentChecks.test_takes_an_argument
+    spite: call() leaves the argument 'count' of 'TestWithAnArgument.Checks.ArgumentChecks.test_takes_an_argument' unfilled: set 'call.arguments["count"]' before 'call()'
 1 tests, 0 passed, 1 failed

@@ -1,1 +1,1 @@
-conformance/argument_count/runner.spite:13: error: '$system_type.argument_count(...)' is decided while compiling, so the name it asks for is written as a literal: '$system_type.argument_count("update_each")', or a pattern such as "<phase>_each" (in Runner.run)
+conformance/argument_count/runner.spite:13: error: '$system_type.argument_count(...)' is decided while compiling, so the name it asks for is written as a literal: '$system_type.argument_count("update_each")', or a pattern such as "<phase>_each" (in ArgumentCount.Runner.run)

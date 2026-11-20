@@ -1,2 +1,2 @@
 conformance/check_rounds_skip_copies/check_rounds_skip_copies.spite:11: error: an Integer has no attribute or function 'missing_function' (in CheckRoundsSkipCopies.show_alpha_alpha)
-conformance/check_rounds_skip_copies/check_rounds_skip_copies.spite:15: error: a Price has no attribute or function 'missing_attribute' (in CheckRoundsSkipCopies.tell)
+conformance/check_rounds_skip_copies/check_rounds_skip_copies.spite:15: error: a CheckRoundsSkipCopies.Price has no attribute or function 'missing_attribute' (in CheckRoundsSkipCopies.tell)

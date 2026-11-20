@@ -1,5 +1,5 @@
 old body begins
-spite: rebuilt Greeter
+spite: rebuilt HotReloadCallInProgressFinishesTheOldBody.Greeter
 old body ends
 which: new
 new body

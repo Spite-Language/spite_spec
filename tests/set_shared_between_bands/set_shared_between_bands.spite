@@ -24,7 +24,7 @@ func SetSharedBetweenBands() {
     driver.seek(jobs, names)
     var found = jobs.sum_found()
     console.print("found in bands:", found)
-    var plain = plain_searches_in("function Seeker.noted")
+    var plain = plain_searches_in("function SetSharedBetweenBands.Seeker.noted")
     console.print("plain searches in Seeker.noted:", plain)
 }
 

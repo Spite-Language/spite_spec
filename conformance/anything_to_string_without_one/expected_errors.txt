@@ -1,0 +1,1 @@
+conformance/anything_to_string_without_one/shelf.spite:8: error: 'AnythingToStringWithoutOne.Crate' reaches this Anything and has no function 'to_string': match the value first against a class or a type that has one (in AnythingToStringWithoutOne.Shelf.label)

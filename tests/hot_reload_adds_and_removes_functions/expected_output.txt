@@ -1,8 +1,8 @@
 spite> hello
-rebuilt Greeter
-removed Greeter.old
+rebuilt HotReloadAddsAndRemovesFunctions.Greeter
+removed HotReloadAddsAndRemovesFunctions.Greeter.old
 spite> farewell
 spite> hello
-spite> greeter.old(): error: a Greeter has no attribute or function 'old'
+spite> greeter.old(): error: a HotReloadAddsAndRemovesFunctions.Greeter has no attribute or function 'old'
 spite> unchanged
 spite>

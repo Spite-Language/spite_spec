@@ -1,9 +1,9 @@
-pass Checks.Sums.test_adds
-fail Checks.Sums.test_wrong_answer
+pass TestClassFailing.Checks.Sums.test_adds
+fail TestClassFailing.Checks.Sums.test_wrong_answer
     the sum is 5
-    spite: the program stopped at test_class_failing/checks/sums.spite:11 in Checks.Sums.test_wrong_answer, site 64dd2e6e (sum=5)
-    spite.frame	test_class_failing/checks/sums.spite:11	Checks.Sums	test_wrong_answer
+    spite: the program stopped at test_class_failing/checks/sums.spite:11 in TestClassFailing.Checks.Sums.test_wrong_answer, site cc977d82 (sum=5)
+    spite.frame	test_class_failing/checks/sums.spite:11	TestClassFailing.Checks.Sums	test_wrong_answer
     spite.frame	test_class_failing/test_class_failing.spite:3	TestClassFailing	TestClassFailing
-pass Checks.Sums.test_still_runs
+pass TestClassFailing.Checks.Sums.test_still_runs
     this test ran after a failing one
 3 tests, 2 passed, 1 failed

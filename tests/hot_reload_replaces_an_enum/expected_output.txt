@@ -1,4 +1,4 @@
 spite> 2
-rebuilt Palette
+rebuilt HotReloadReplacesAnEnum.Palette
 spite> 3
 spite>

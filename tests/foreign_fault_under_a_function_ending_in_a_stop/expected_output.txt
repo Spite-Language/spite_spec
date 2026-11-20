@@ -1,4 +1,4 @@
 before the fault
-spite: 'largest + 1' does not fit in an Integer (2147483647 + 1), at foreign_fault_under_a_function_ending_in_a_stop/adder.spite:8 in Adder.add_one
+spite: 'largest + 1' does not fit in an Integer (2147483647 + 1), at foreign_fault_under_a_function_ending_in_a_stop/adder.spite:8 in ForeignFaultUnderAFunctionEndingInAStop.Adder.add_one
 the frame under the fault is read as its own function's
 spite.fault	write-violation	-	-	-	address=0x0	code=0xc0000005	at=fixture.dll+0x...	foreign=call_back_guarded	library=tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll	from=foreign_fault_under_a_function_ending_in_a_stop/foreign_fault_under_a_function_ending_in_a_stop.spite:8

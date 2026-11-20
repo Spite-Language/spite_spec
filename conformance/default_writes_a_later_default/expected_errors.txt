@@ -1,1 +1,1 @@
-conformance/default_writes_a_later_default/holder.spite:2: fixed: 'ready' was declared below 'started', whose default writes it; moved it above, since a default may only read or write attributes already given a value (in Holder.)
+conformance/default_writes_a_later_default/holder.spite:2: fixed: 'ready' was declared below 'started', whose default writes it; moved it above, since a default may only read or write attributes already given a value (in DefaultWritesALaterDefault.Holder.)

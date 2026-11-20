@@ -1,7 +1,7 @@
 before the fault
 spite.fault	read-violation	-	-	-	address=0x0	code=0xc0000005	at=fixture.dll+0x...
 spite.function	
-spite.caller	Worker.work$step
+spite.caller	NativeFaultInARoutineFromAResumableFunction.Worker.work$step
 spite.caller	_scheduler_step
 spite.caller	_scheduler_run_once
 spite.caller	_scheduler_sleep

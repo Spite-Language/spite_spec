@@ -4,4 +4,7 @@ be is freed
 ce is freed
 bee is freed
 the chain is out of reach
-allocations: 51 frees: 51
+spite: --debug-memory: 2 allocation(s) leaked
+  BackReferenceRecursiveCallDeeper.Alpha: 1 leaked object(s)
+  BackReferenceRecursiveCallDeeper.Beta: 1 leaked object(s)
+allocations: 39 frees: 37

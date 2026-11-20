@@ -1,1 +1,1 @@
-conformance/walked_declaration_needs_get_at/walked_declaration_needs_get_at.spite:10: error: indexing a 'Monster' needs it to define 'get_at(index)' (in WalkedDeclarationNeedsGetAt.show_health)
+conformance/walked_declaration_needs_get_at/walked_declaration_needs_get_at.spite:10: error: indexing a 'WalkedDeclarationNeedsGetAt.Monster' needs it to define 'get_at(index)' (in WalkedDeclarationNeedsGetAt.show_health)

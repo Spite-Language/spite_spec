@@ -1,1 +1,1 @@
-conformance/handed_on_attribute_copy_string_function/handed_on_attribute_copy_string_function.spite:13: error: a Spite.AttributeDeclaration has no attribute or function 'upper_case' (in HandedOnAttributeCopyStringFunction.describe_for_Price_cost)
+conformance/handed_on_attribute_copy_string_function/handed_on_attribute_copy_string_function.spite:13: error: a Spite.AttributeDeclaration has no attribute or function 'upper_case' (in HandedOnAttributeCopyStringFunction.describe_for_HandedOnAttributeCopyStringFunction_Price_cost)

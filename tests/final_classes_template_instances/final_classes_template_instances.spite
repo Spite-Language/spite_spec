@@ -7,7 +7,7 @@ func FinalClassesTemplateInstances() {
     one.run_one(1)
     var steps = one.read_steps()
     console.print("steps", steps)
-    var printed_path: Path? = "{build.program}/.spite/final_template_instances/instantiated/runner_mover.spite"
+    var printed_path: Path? = "{build.program}/.spite/final_template_instances/instantiated/final_classes_template_instances_runner_final_classes_template_instances_mover.spite"
     crash printed_path
     var printed = File(printed_path)
     var text = printed.read_as_string()

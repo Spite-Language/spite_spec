@@ -1,1 +1,1 @@
-conformance/parameter_write_question/asker.spite:6: error: 'Mover.move' takes 2 arguments, so it has no parameter 2 to ask about: 'function_writes_parameter' counts parameters from 0 (in Asker.ask)
+conformance/parameter_write_question/asker.spite:6: error: 'ParameterWriteQuestion.Mover.move' takes 2 arguments, so it has no parameter 2 to ask about: 'function_writes_parameter' counts parameters from 0 (in ParameterWriteQuestion.Asker.ask)

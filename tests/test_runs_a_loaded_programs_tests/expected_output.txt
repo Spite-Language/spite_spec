@@ -1,2 +1,2 @@
-pass Checks.CartChecks.test_cart_adds_prices
+pass TestRunsALoadedProgramsTests.Checks.CartChecks.test_cart_adds_prices
 1 tests, 1 passed, 0 failed

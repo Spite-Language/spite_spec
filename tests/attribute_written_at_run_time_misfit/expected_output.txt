@@ -1,0 +1,2 @@
+5 true
+spite: set_value() gives 'AttributeWrittenAtRunTimeMisfit.Meter.whole' a value that is not an Integer and that no conversion of Integer takes, so it cannot be cast the way an assignment would cast it

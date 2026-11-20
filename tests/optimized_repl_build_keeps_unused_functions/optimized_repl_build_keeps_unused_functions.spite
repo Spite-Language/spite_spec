@@ -15,6 +15,6 @@ func OptimizedReplBuildKeepsUnusedFunctions() {
     var map = File(map_path)
     var text = map.read_as_string()
     crash text
-    var kept = text.contains("\tKeeper.unused")
+    var kept = text.contains("\tOptimizedReplBuildKeepsUnusedFunctions.Keeper.unused")
     console.print("unused kept", kept)
 }

@@ -1,6 +1,6 @@
 before
 null
-spite: the program stopped at crash_names_its_file_from_the_program_folder/parts/shelf.spite:11 in Parts.Shelf.take, site b48ace4e (wanted=3, count=2)
-spite.fallback	8164a38f	crash_names_its_file_from_the_program_folder/parts/shelf.spite:6	Shelf	label_of	returned=null
-spite.frame	crash_names_its_file_from_the_program_folder/parts/shelf.spite:11	Parts.Shelf	take
+spite: the program stopped at crash_names_its_file_from_the_program_folder/parts/shelf.spite:11 in CrashNamesItsFileFromTheProgramFolder.Parts.Shelf.take, site b81c3705 (wanted=3, count=2)
+spite.fallback	3f8a72ea	crash_names_its_file_from_the_program_folder/parts/shelf.spite:6	Shelf	label_of	returned=null
+spite.frame	crash_names_its_file_from_the_program_folder/parts/shelf.spite:11	CrashNamesItsFileFromTheProgramFolder.Parts.Shelf	take
 spite.frame	crash_names_its_file_from_the_program_folder/crash_names_its_file_from_the_program_folder.spite:8	CrashNamesItsFileFromTheProgramFolder	CrashNamesItsFileFromTheProgramFolder

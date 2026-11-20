@@ -1,1 +1,1 @@
-conformance/template_function_declaration_copy_string_function/runner.spite:6: error: a Spite.FunctionDeclaration has no attribute or function 'upper_case' (in Runner.run_update_each)
+conformance/template_function_declaration_copy_string_function/runner.spite:6: error: a Spite.FunctionDeclaration has no attribute or function 'upper_case' (in TemplateFunctionDeclarationCopyStringFunction.Runner.run_update_each)

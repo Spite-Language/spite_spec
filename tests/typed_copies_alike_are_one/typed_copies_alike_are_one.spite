@@ -33,6 +33,6 @@ func keep(named: Named) {
 
 func is_a_copy_of_keep(line: String): Boolean {
     var is_written = line.ends_with("TypedCopiesAlikeAreOne.keep")
-    var is_a_copy = line.ends_with("TypedCopiesAlikeAreOne.keep_typed_Cat") or line.ends_with("TypedCopiesAlikeAreOne.keep_typed_Dog")
+    var is_a_copy = line.ends_with("TypedCopiesAlikeAreOne.keep_typed_TypedCopiesAlikeAreOne_Cat") or line.ends_with("TypedCopiesAlikeAreOne.keep_typed_TypedCopiesAlikeAreOne_Dog")
     return is_written or is_a_copy
 }

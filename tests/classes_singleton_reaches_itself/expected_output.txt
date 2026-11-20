@@ -1,1 +1,1 @@
-spite: singleton 'Solo' binds 'Solo': singletons initialise each other in a circle
+spite: singleton 'ClassesSingletonReachesItself.Solo' binds 'ClassesSingletonReachesItself.Solo': singletons initialise each other in a circle

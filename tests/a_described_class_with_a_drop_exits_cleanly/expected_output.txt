@@ -1,2 +1,2 @@
-pass Tests.HolderTests.test_a_holder_holds
+pass ADescribedClassWithADropExitsCleanly.Tests.HolderTests.test_a_holder_holds
 1 tests, 1 passed, 0 failed

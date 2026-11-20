@@ -1,5 +1,5 @@
-pass Shop.Cart.test_counts
+pass TestClassPassing.Shop.Cart.test_counts
     two items
-pass Shop.Cart.test_finds
-pass Shop.Tools.Hammer.test
+pass TestClassPassing.Shop.Cart.test_finds
+pass TestClassPassing.Shop.Tools.Hammer.test
 3 tests, 3 passed, 0 failed

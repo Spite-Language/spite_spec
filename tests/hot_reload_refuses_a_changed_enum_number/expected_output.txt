@@ -1,5 +1,5 @@
 spite> 1
 error: the reload was refused, and the program keeps all of its code: palette.spite changed since the program loaded it, and a line is compiled against the files as the program loaded them: load "palette.spite" takes the change, then type the line again
-spite> error: the reload was refused, and the program keeps all of its code: the reload changes Palette.Shade's 'red' from 1 to 5, and every value the program holds keeps the number it was made with: start the program again, or give 'red' its number 1 back
+spite> error: the reload was refused, and the program keeps all of its code: the reload changes HotReloadRefusesAChangedEnumNumber.Palette.Shade's 'red' from 1 to 5, and every value the program holds keeps the number it was made with: start the program again, or give 'red' its number 1 back
 spite> error: the reload was refused, and the program keeps all of its code: palette.spite changed since the program loaded it, and a line is compiled against the files as the program loaded them: load "palette.spite" takes the change, then type the line again
 spite>
