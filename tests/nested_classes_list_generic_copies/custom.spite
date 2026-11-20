@@ -1,0 +1,5 @@
+generic $effect
+
+func shade(): String {
+    return "shaded"
+}

@@ -1,0 +1,12 @@
+var console = Console()
+var custom = Custom<Glow>()
+
+func NestedClassesListGenericCopies() {
+    var shaded = custom.shade()
+    console.print(shaded)
+    NestedClassesListGenericCopies.nested_classes.each(show)
+}
+
+func show(described: Spite.Class) {
+    console.print(described.name, described.name_with_outer_classes)
+}

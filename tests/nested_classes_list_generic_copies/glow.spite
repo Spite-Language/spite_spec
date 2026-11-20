@@ -1,0 +1,3 @@
+func strength(): Integer {
+    return 2
+}

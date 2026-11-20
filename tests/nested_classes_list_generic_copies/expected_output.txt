@@ -1,0 +1,3 @@
+shaded
+Custom NestedClassesListGenericCopies.Custom<NestedClassesListGenericCopies.Glow>
+Glow NestedClassesListGenericCopies.Glow
