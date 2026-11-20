@@ -1,0 +1,7 @@
+kitchen 21
+hall 21
+hall 22
+leaving 24
+hall 24
+hall 25
+late 25

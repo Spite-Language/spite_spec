@@ -1,0 +1,13 @@
+var console = Console()
+
+func write(change: ListChange<String>) {
+    if change.item {
+        console.print(change.kind, change.index, change.item)
+    } else {
+        console.print(change.kind, change.index)
+    }
+}
+
+func is_short(name: String): Boolean {
+    return name.length() < 4
+}

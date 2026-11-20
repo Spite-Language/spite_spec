@@ -1,0 +1,20 @@
+var temperature = Observer<Integer>()
+
+func ObserverTellsWhoSubscribed() {
+    var kitchen = Display("kitchen")
+    var hall = Display("hall")
+    temperature.subscribe(kitchen.show)
+    temperature.subscribe(kitchen.show)
+    temperature.subscribe(hall.show)
+    temperature.notify(21)
+    temperature.unsubscribe(kitchen.show)
+    temperature.notify(22)
+    temperature.unsubscribe(hall.show)
+    temperature.notify(23)
+    var late = Display("late")
+    var leaving = Leaving(temperature, late.show)
+    temperature.subscribe(leaving.show)
+    temperature.subscribe(hall.show)
+    temperature.notify(24)
+    temperature.notify(25)
+}

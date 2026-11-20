@@ -1,0 +1,9 @@
+var console = Console()
+
+func shout(text: String) {
+    console.print(text)
+}
+
+func whisper(text: String) {
+    console.print(text)
+}

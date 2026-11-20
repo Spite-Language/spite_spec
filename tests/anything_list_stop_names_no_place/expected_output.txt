@@ -1,3 +1,3 @@
 before
-spite: the program stopped at spite_standard_library://common/list.spite:81 in List_of_Anything_maybe.remove_at, site e29d834b (index=5, _length=1)
+spite: the program stopped at spite_standard_library://common/list.spite:99 in List_of_Anything_maybe.remove_at, site e29d834b (index=5, _length=1)
 spite.frame	anything_list_stop_names_no_place/anything_list_stop_names_no_place.spite:9	AnythingListStopNamesNoPlace	AnythingListStopNamesNoPlace

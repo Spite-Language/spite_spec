@@ -1,0 +1,20 @@
+var console = Console()
+var names: List<String>
+
+func Row(starting_names: List<String>) {
+    names = starting_names
+    names.subscribe(changed)
+}
+
+func changed(change: ListChange<String>) {
+    console.print("changed", change.kind)
+}
+
+func show() {
+    var shown = names.join(",")
+    console.print(shown)
+}
+
+func drop() {
+    console.print("row freed")
+}

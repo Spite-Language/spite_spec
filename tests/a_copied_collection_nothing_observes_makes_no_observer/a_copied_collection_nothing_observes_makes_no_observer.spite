@@ -1,0 +1,13 @@
+var console = Console()
+
+func ACopiedCollectionNothingObservesMakesNoObserver() {
+    var shelf = Shelf()
+    shelf.names.append("ada")
+    shelf.ages["ada"] = 3
+    var copied = shelf.copy()
+    var deep = shelf.deep_copy()
+    copied.names.append("x")
+    var counted = deep.names.count()
+    var aged = copied.ages.count()
+    console.print(counted, aged)
+}

@@ -1,0 +1,17 @@
+var console = Console()
+
+func DictionaryTellsItsChanges() {
+    var ages = Dictionary<String, Integer>()
+    var log = ChangeLog()
+    ages.subscribe(log.write)
+    ages["ada"] = 36
+    ages["grace"] = 85
+    ages["ada"] = 37
+    ages.remove_at("grace")
+    ages.remove_at("nobody")
+    ages.clear()
+    ages.unsubscribe(log.write)
+    ages["unseen"] = 1
+    var counted = ages.count()
+    console.print(counted)
+}

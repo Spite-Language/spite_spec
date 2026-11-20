@@ -1,0 +1,15 @@
+var console = Console()
+
+func FunctionValuesAreEqualWhenTheyNameOneFunctionOfOneObject() {
+    var first = Shouter()
+    var second = Shouter()
+    var one: Spite.Function<String, Nothing> = first.shout
+    var again: Spite.Function<String, Nothing> = first.shout
+    var other: Spite.Function<String, Nothing> = second.shout
+    var whisper: Spite.Function<String, Nothing> = first.whisper
+    var same = one == again
+    var same_owner_only = one == whisper
+    var same_function_only = one == other
+    var different = one != other
+    console.print(same, same_owner_only, same_function_only, different)
+}

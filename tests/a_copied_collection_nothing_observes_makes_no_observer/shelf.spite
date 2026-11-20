@@ -1,0 +1,2 @@
+var names = List<String>()
+var ages = Dictionary<String, Integer>()

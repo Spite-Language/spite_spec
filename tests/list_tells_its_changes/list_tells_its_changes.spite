@@ -1,0 +1,28 @@
+var console = Console()
+
+func ListTellsItsChanges() {
+    var names = List<String>()
+    var log = ChangeLog()
+    names.subscribe(log.write)
+    names.append("ada")
+    names.append("grace")
+    names.insert(1, "alan")
+    names.prepend("edsger")
+    names[0] = "barbara"
+    names.remove_at(1)
+    var last = names.remove_last()
+    var first = names.remove_first()
+    console.print(last, first)
+    names.append("ken")
+    names.append("dennis")
+    names.swap(0, 2)
+    names.reverse()
+    names.remove_swapping(0)
+    names.truncate(1)
+    names.remove_where(log.is_short)
+    names.clear()
+    names.unsubscribe(log.write)
+    names.append("unseen")
+    var shown = names.to_debug()
+    console.print(shown)
+}

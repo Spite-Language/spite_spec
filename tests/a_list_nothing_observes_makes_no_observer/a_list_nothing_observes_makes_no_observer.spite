@@ -1,0 +1,19 @@
+var console = Console()
+
+func AListNothingObservesMakesNoObserver() {
+    var numbers = List<Integer>()
+    numbers.append(1)
+    numbers.append(2)
+    numbers.insert(0, 3)
+    numbers[0] = 5
+    numbers.remove_at(1)
+    numbers.reverse()
+    var ages = Dictionary<String, Integer>()
+    ages["ada"] = 36
+    ages["ada"] = 37
+    ages.remove_at("ada")
+    var counted = numbers.count()
+    var aged = ages.count()
+    console.print(counted, aged)
+    numbers.clear()
+}

@@ -1,0 +1,9 @@
+var console = Console()
+
+func seen(change: ListChange<String>) {
+    console.print("watcher saw", change.index)
+}
+
+func drop() {
+    console.print("watcher freed")
+}

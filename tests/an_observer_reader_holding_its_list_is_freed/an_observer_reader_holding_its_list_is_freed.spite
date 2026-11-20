@@ -1,0 +1,21 @@
+var console = Console()
+
+func AnObserverReaderHoldingItsListIsFreed() {
+    visit()
+    console.print("done")
+}
+
+func visit() {
+    var names = List<String>()
+    var row = Row(names)
+    names.append("ada")
+    row.show()
+    watch_briefly(names)
+    names.append("grace")
+}
+
+func watch_briefly(names: List<String>) {
+    var watcher = Watcher()
+    names.subscribe(watcher.seen)
+    names.append("alan")
+}

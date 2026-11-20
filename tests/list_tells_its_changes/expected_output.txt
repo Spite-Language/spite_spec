@@ -1,0 +1,20 @@
+appended 0 ada
+appended 1 grace
+inserted 1 alan
+inserted 0 edsger
+set 0 barbara
+removed 1 ada
+removed 2 grace
+removed 0 barbara
+grace barbara
+appended 1 ken
+appended 2 dennis
+set 0 dennis
+set 2 alan
+rewritten 0
+set 0 dennis
+removed 2
+rewritten 1
+rewritten 0
+cleared 0
+["unseen"]

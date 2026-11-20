@@ -1,0 +1,10 @@
+var console = Console()
+var place: String
+
+func Display(starting_place: String) {
+    place = starting_place
+}
+
+func show(degrees: Integer) {
+    console.print(place, degrees)
+}

@@ -1,0 +1,11 @@
+var console = Console()
+
+func write(change: DictionaryChange<String, Integer>) {
+    if change.key and change.value {
+        console.print(change.kind, change.key, change.value)
+    } else if change.key {
+        console.print(change.kind, change.key)
+    } else {
+        console.print(change.kind)
+    }
+}

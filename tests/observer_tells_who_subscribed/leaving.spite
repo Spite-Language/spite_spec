@@ -1,0 +1,14 @@
+var console = Console()
+var observer: Observer<Integer>
+var added: Spite.Function<Integer, Nothing>
+
+func Leaving(starting_observer: Observer<Integer>, starting_added: Spite.Function<Integer, Nothing>) {
+    observer = starting_observer
+    added = starting_added
+}
+
+func show(degrees: Integer) {
+    console.print("leaving", degrees)
+    observer.unsubscribe(show)
+    observer.subscribe(added)
+}

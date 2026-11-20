@@ -1,0 +1,9 @@
+changed appended
+ada
+changed appended
+watcher saw 1
+watcher freed
+changed appended
+row freed
+done
+allocations: 64 frees: 64
