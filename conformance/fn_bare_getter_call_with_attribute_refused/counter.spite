@@ -1,7 +1,7 @@
 var count = 2
 
 func get_count(): Integer {
-    return count * 10
+    return attributes["count"].value * 10
 }
 
 func read_both(): String {

@@ -7,7 +7,7 @@ func Holder() {
 }
 
 func set_flag(value: Boolean) {
-    flag = value
+    attributes["flag"].value = value
 }
 
 func flag_is_set(): Boolean {

@@ -4,12 +4,12 @@ var _times = 0
 
 func _set_open(value: Boolean) {
     _times = _times + 1
-    _open = value
+    attributes["_open"].value = value
 }
 
 func _get_open(): Boolean {
     console.print("asked")
-    return _open
+    return attributes["_open"].value
 }
 
 func toggle() {

@@ -3,10 +3,10 @@ var age = 3
 
 func get_age(): Integer {
     console.print("read")
-    return age
+    return attributes["age"].value
 }
 
 func set_age(value: Integer) {
     console.print("wrote", value)
-    age = value
+    attributes["age"].value = value
 }

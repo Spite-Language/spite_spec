@@ -14,7 +14,7 @@ var justify_content: Justify = 'start'
 var children = List<Component>()
 
 func set_padding(value: Integer) {
-    padding = value * 2
+    attributes["padding"].value = value * 2
 }
 
 func describe(): String {

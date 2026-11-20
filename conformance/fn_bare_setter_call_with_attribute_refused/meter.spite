@@ -1,7 +1,7 @@
 var turns = 0
 
 func set_turns(value: Integer) {
-    turns = value * 2
+    attributes["turns"].value = value * 2
 }
 
 func show(): String {

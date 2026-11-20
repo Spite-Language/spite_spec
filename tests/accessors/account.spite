@@ -11,12 +11,12 @@ func set_balance(new_balance: Integer) {
         history.append("rejected {new_balance}")
         return
     }
-    balance = new_balance
+    attributes["balance"].value = new_balance
     history.append("balance {new_balance}")
 }
 
 func get_owner(): String {
-    return "owner:{owner}"
+    return "owner:{attributes["owner"].value}"
 }
 
 func set_attribute(attribute: Spite.AttributeDeclaration, value: attribute.class) {

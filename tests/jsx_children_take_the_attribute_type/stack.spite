@@ -6,7 +6,7 @@ var console = Console()
 var children = List<Piece>()
 
 func set_children(given: List<Piece>) {
-    children = given
+    attributes["children"].value = given
     var count = given.count()
     console.print("set", count)
 }

@@ -2,11 +2,11 @@ var console = Console()
 var label: String? = null
 
 func set_label(value: String?) {
-    label = value
+    attributes["label"].value = value
 }
 
 func get_label(): String? {
-    return label
+    return attributes["label"].value
 }
 
 func show() {
