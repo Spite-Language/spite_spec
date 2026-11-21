@@ -1,0 +1,29 @@
+var console = Console()
+var clock = Clock()
+var readers: List<Reader> = []
+var _fewer = 8000
+var _more = 32000
+var _quadratic_growth_left_out = 8
+
+func SubscribingManyFunctionsGrowsLinearly() {
+    var fewer = microseconds_to_subscribe(_fewer)
+    var more = microseconds_to_subscribe(_more)
+    var grows_linearly = more < fewer * _quadratic_growth_left_out
+    console.print("four times the subscribers in less than eight times the time:", grows_linearly)
+}
+
+func microseconds_to_subscribe(count: Integer): Long {
+    var names = ["ada"]
+    readers = []
+    var start = clock.elapsed()
+    var round = 0
+    while round < count {
+        var reader = Reader(round)
+        readers.append(reader)
+        names.subscribe(reader.changed)
+        round = round + 1
+    }
+    var spent = clock.elapsed() - start
+    names.append("alan")
+    return spent.total('microseconds') + 1
+}

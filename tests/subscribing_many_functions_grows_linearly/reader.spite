@@ -1,0 +1,10 @@
+var told = 0
+var id: Integer
+
+func Reader(given_id: Integer) {
+    id = given_id
+}
+
+func changed(_change: ListChange<String>) {
+    told = told + 1
+}

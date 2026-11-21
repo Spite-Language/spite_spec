@@ -1,0 +1,15 @@
+var console = Console()
+var acts: List<Spite.Function<ListChange<String>, Nothing>> = []
+var names: List<String>
+
+func Row(given: List<String>) {
+    names = given
+    acts.append(changed)
+    var act = acts[0]
+    crash act
+    names.subscribe(act)
+}
+
+func changed(change: ListChange<String>) {
+    console.print("told", change.kind, change.index)
+}

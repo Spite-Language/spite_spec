@@ -1,0 +1,5 @@
+kitchen 1
+kitchen 3
+told after leaving: 67
+in the order they subscribed: true
+last told: 198

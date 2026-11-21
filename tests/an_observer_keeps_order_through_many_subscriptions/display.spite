@@ -1,0 +1,18 @@
+var console = Console()
+var place: String
+var number: Integer
+var record: List<Integer>
+
+func Display(starting_place: String, starting_number: Integer, starting_record: List<Integer>) {
+    place = starting_place
+    number = starting_number
+    record = starting_record
+}
+
+func show(told: Integer) {
+    if place == "kitchen" {
+        console.print(place, told)
+    } else {
+        record.append(number)
+    }
+}

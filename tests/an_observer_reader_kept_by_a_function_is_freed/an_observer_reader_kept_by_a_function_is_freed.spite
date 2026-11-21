@@ -1,0 +1,13 @@
+var console = Console()
+
+func AnObserverReaderKeptByAFunctionIsFreed() {
+    show_one()
+}
+
+func show_one() {
+    var names = ["ada"]
+    var row = Row(names)
+    names.append("alan")
+    var held = row.names.count()
+    console.print("held", held)
+}

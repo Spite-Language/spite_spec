@@ -1,0 +1,18 @@
+var console = Console()
+var act: Spite.Function<ListChange<String>, Nothing>? = null
+var names: List<String>
+
+func Row(given: List<String>) {
+    names = given
+    keep(changed)
+    crash act
+    names.subscribe(act)
+}
+
+func keep(given: Spite.Function<ListChange<String>, Nothing>) {
+    act = given
+}
+
+func changed(change: ListChange<String>) {
+    console.print("told", change.kind, change.index)
+}

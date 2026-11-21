@@ -1,0 +1,53 @@
+var console = Console()
+var heard = Observer<Integer>()
+var shown: List<Integer> = []
+var _kitchen = 1000
+var _many = 200
+
+func AnObserverKeepsOrderThroughManySubscriptions() {
+    var first = Display("kitchen", _kitchen, shown)
+    var twin = Display("kitchen", _kitchen, shown)
+    heard.subscribe(first.show)
+    heard.subscribe(twin.show)
+    heard.notify(1)
+    heard.unsubscribe(twin.show)
+    heard.notify(2)
+    var displays: List<Display> = []
+    var round = 0
+    while round < _many {
+        var display = Display("room", round, shown)
+        displays.append(display)
+        heard.subscribe(display.show)
+        round = round + 1
+    }
+    round = 0
+    while round < _many {
+        if round % 3 != 0 {
+            var leaving = displays[round]
+            crash leaving
+            heard.unsubscribe(leaving.show)
+        }
+        round = round + 1
+    }
+    heard.subscribe(first.show)
+    heard.subscribe(twin.show)
+    shown.clear()
+    heard.notify(3)
+    var told = shown.count()
+    console.print("told after leaving:", told)
+    var ordered = true
+    var index = 1
+    while index < shown.count() {
+        var before = shown[index - 1]
+        var after = shown[index]
+        crash before
+        crash after
+        if after <= before {
+            ordered = false
+        }
+        index = index + 1
+    }
+    console.print("in the order they subscribed:", ordered)
+    var last = shown.last()
+    console.print("last told:", last)
+}
