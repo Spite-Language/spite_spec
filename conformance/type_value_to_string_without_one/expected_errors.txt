@@ -1,1 +1,1 @@
-conformance/type_value_to_string_without_one/type_value_to_string_without_one.spite:5: error: 'Crate' does not fit type 'Labelled': it has no function 'to_string' (in TypeValueToStringWithoutOne.TypeValueToStringWithoutOne)
+conformance/type_value_to_string_without_one/type_value_to_string_without_one.spite:5: error: 'TypeValueToStringWithoutOne.Crate' does not fit type 'Labelled': it has no function 'to_string' (in TypeValueToStringWithoutOne.TypeValueToStringWithoutOne)

@@ -1,1 +1,1 @@
-conformance/type_value_hole_without_to_string/shelf.spite:12: error: a Shelf.Shown has no attribute or function 'to_string' (in Shelf.label)
+conformance/type_value_hole_without_to_string/shelf.spite:12: error: a TypeValueHoleWithoutToString.Shelf.Shown has no attribute or function 'to_string' (in TypeValueHoleWithoutToString.Shelf.label)

@@ -1,6 +1,6 @@
 EveryClass | 
-Zoo EveryClass| to_debug
-Cat EveryClass.Zoo| speak,to_debug
-Dog EveryClass.Zoo| speak,fetch,to_debug
+Zoo EveryClass| 
+Cat EveryClass.Zoo| speak
+Dog EveryClass.Zoo| speak,fetch
 the cat says meow
 the dog says WOOF, from its constructor

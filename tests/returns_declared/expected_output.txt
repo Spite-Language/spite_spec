@@ -1,7 +1,5 @@
 pet Pet ReturnsDeclared.Zoo.Pet false false
   a union of 2 Zoo
-anything Anything Anything false false
-  a union of 4 Spite
 named Named ReturnsDeclared.Zoo.Named false false
   a type of Zoo
 never Nothing Nothing true false

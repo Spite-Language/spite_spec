@@ -4,11 +4,11 @@ Alpha ReflectionNamesFold.Part.Alpha
 Beta ReflectionNamesFold.Part.Inner.Beta
 Inner ReflectionNamesFold.Part.Inner
 Inner ReflectionNamesFold.Part.Inner
-2 1 5
+2 1 6
 2 2
 Alpha,Inner
 Alpha,Inner
 Alpha
-ReflectionNamesFold ReflectionNamesFold 1 1 Part
+ReflectionNamesFold ReflectionNamesFold 1 2 Shelf,Part
 Part ReflectionNamesFold.Part 2 2 Alpha,Inner
 Inner ReflectionNamesFold.Part.Inner 3 1 Beta

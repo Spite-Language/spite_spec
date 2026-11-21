@@ -1,1 +1,1 @@
-conformance/private_setter_by_name_refused/door.spite:10: error: '_set_open' is what writing '_open' calls: write '_open = true' (in Door.open_it)
+conformance/private_setter_by_name_refused/door.spite:10: error: '_set_open' is what writing '_open' calls: write '_open = true' (in PrivateSetterByNameRefused.Door.open_it)

@@ -1,1 +1,1 @@
-conformance/reopened_function_answer/second/game/hero.spite:1: error: 'level' answers an Integer where the class first declares it, and this reopening makes it answer a String: a reopening replaces a function's body, never what it answers, so give the new function a name of its own
+conformance/reopened_function_answer/second/first/game/hero.spite:1: error: 'level' answers an Integer where the class first declares it, and this reopening makes it answer a String: a reopening replaces a function's body, never what it answers, so give the new function a name of its own

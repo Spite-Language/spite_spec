@@ -1,1 +1,1 @@
-ClassInstancesBeside Front Shop Shop.Counter ClassInstancesBeside Front Shop Shop.Counter Counter
+ClassInstancesBeside Side Side.Front Side.Shop Side.Shop.Counter ClassInstancesBeside Side Side.Front Side.Shop Front Shop Side.Shop.Counter Counter

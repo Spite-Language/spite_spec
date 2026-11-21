@@ -1,1 +1,1 @@
-conformance/fn_bare_setter_call_with_attribute_refused/meter.spite:8: error: 'set_turns' is what writing 'turns' calls: write 'turns = 3' (in Meter.show)
+conformance/fn_bare_setter_call_with_attribute_refused/meter.spite:8: error: 'set_turns' is what writing 'turns' calls: write 'turns = 3' (in FnBareSetterCallWithAttributeRefused.Meter.show)

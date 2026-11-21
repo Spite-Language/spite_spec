@@ -1,4 +1,4 @@
-pass Pkg.Tests.SetupTests.test_starts_from_its_setup
-pass Pkg.Tests.TextTests.test_split_keeps_empty_pieces
-pass Pkg.Tests.TextTests.test_trim_removes_the_spaces
+pass Pkg.Pkg.Tests.SetupTests.test_starts_from_its_setup
+pass Pkg.Pkg.Tests.TextTests.test_split_keeps_empty_pieces
+pass Pkg.Pkg.Tests.TextTests.test_trim_removes_the_spaces
 3 tests, 3 passed, 0 failed

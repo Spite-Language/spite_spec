@@ -1,6 +1,6 @@
 made holds lone
 be still holds bee
 spite: --debug-memory: 4 allocation(s) leaked
-  Beta: 2 leaked object(s)
-  Alpha: 2 leaked object(s)
+  BackReferenceOtherWayOneCallDeeperIntoTheMade.Beta: 2 leaked object(s)
+  BackReferenceOtherWayOneCallDeeperIntoTheMade.Alpha: 2 leaked object(s)
 allocations: 22 frees: 18

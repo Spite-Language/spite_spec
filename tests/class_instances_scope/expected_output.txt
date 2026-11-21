@@ -1,5 +1,5 @@
-ClassInstancesScope,Gear,Sprocket
-generic listed false
+ClassInstancesScope,Crate,Vendor,Gear,Sprocket
+generic listed true
 library listed false
 package listed true
 true 12
