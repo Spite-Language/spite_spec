@@ -1,1 +1,1 @@
-conformance/known_fact_class_again_an_apple/known_fact_class_again_an_apple.spite:12: fixed: 'fruit' was already an Apple, narrowed by 'if fruit.class == Apple' on line 10; removed the 'if' and kept the code it runs (in KnownFactClassAgainAnApple.KnownFactClassAgainAnApple)
+conformance/known_fact_class_again_an_apple/known_fact_class_again_an_apple.spite:12: fixed: 'fruit' was already a KnownFactClassAgainAnApple.Apple, narrowed by 'if fruit.class == Apple' on line 10; removed the 'if' and kept the code it runs (in KnownFactClassAgainAnApple.KnownFactClassAgainAnApple)

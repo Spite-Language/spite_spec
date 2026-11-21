@@ -1,1 +1,1 @@
-conformance/import_text_outside_a_function_is_refused/import_text_outside_a_function_is_refused.spite:2: error: there are no imports: 'load "folder"' inside a function brings a folder into the program, and everything shares one namespace
+conformance/import_text_outside_a_function_is_refused/import_text_outside_a_function_is_refused.spite:2: error: there are no imports: 'load "folder"' inside a function brings a folder into the program, and every class is named by its folders

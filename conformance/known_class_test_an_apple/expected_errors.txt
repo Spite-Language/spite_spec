@@ -1,1 +1,1 @@
-conformance/known_class_test_an_apple/known_class_test_an_apple.spite:6: error: 'apple' is an Apple here, so this test is decided while compiling: remove it (in KnownClassTestAnApple.KnownClassTestAnApple)
+conformance/known_class_test_an_apple/known_class_test_an_apple.spite:6: error: 'apple' is a KnownClassTestAnApple.Apple here, so this test is decided while compiling: remove it (in KnownClassTestAnApple.KnownClassTestAnApple)

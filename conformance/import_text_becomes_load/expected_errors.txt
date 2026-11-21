@@ -1,1 +1,1 @@
-conformance/import_text_becomes_load/import_text_becomes_load.spite:4: fixed: there are no imports: 'load "folder"' inside a function brings a folder into the program, and everything shares one namespace; wrote 'load "tools"' (in ImportTextBecomesLoad)
+conformance/import_text_becomes_load/import_text_becomes_load.spite:4: fixed: there are no imports: 'load "folder"' inside a function brings a folder into the program, and every class is named by its folders; wrote 'load "tools"' (in ImportTextBecomesLoad)
