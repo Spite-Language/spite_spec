@@ -1,0 +1,14 @@
+type Component {
+    to_string: Spite.Function<String>
+}
+
+var console = Console()
+
+func SwitchOverANullableTypeValue() {
+    var badge = Badge()
+    var held: Component? = badge
+    switch held {
+        Label: console.print("label")
+        Null: console.print("none")
+    }
+}

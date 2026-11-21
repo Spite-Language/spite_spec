@@ -1,0 +1,5 @@
+var text = "hello"
+
+func to_string(): String {
+    return text
+}
