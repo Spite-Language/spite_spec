@@ -1,0 +1,25 @@
+type Textual {
+    to_string: Spite.Function<String>
+}
+
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var console = Console()
+
+func NullablePrintableTypePrintsNull() {
+    var present = maybe_label(true)
+    var missing = maybe_label(false)
+    var textual_present: Textual? = present
+    var textual_missing: Textual? = missing
+    console.print(textual_present)
+    console.print(textual_missing)
+    var shown_missing: Shown? = missing
+    console.print(shown_missing)
+}
+
+func maybe_label(wanted: Boolean): Label? {
+    fallback wanted
+    return Label()
+}
