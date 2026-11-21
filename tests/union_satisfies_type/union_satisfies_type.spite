@@ -1,0 +1,53 @@
+union Pet {
+    Cat
+    Dog
+}
+
+union Found {
+    Cat
+    Rock
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func UnionSatisfiesType() {
+    var pets_named = Pet.satisfies_type(Named)
+    var found_named = Found.satisfies_type(Named)
+    var through_the_owner = UnionSatisfiesType.Pet.satisfies_type(Named)
+    console.print("named:", pets_named, found_named, through_the_owner)
+    var read_by_name = UnionSatisfiesType.unions["Pet"].satisfies_type(Named)
+    var pets_are_pets = Pet.satisfies_type(Pet)
+    var found_are_pets = Found.satisfies_type(Pet)
+    console.print("read:", read_by_name, pets_are_pets, found_are_pets)
+    var pet_shelf = Shelf<Pet>()
+    var found_shelf = Shelf<Found>()
+    var cat_shelf = Shelf<Cat>()
+    var rock_shelf = Shelf<Rock>()
+    var pet_answer = pet_shelf.holds_named()
+    var found_answer = found_shelf.holds_named()
+    var cat_answer = cat_shelf.holds_named()
+    var rock_answer = rock_shelf.holds_named()
+    console.print("shelves:", pet_answer, found_answer, cat_answer, rock_answer)
+    var dog = Dog()
+    var pet: Pet = dog
+    var pet_fits = pet.class.satisfies_type(Named)
+    console.print("pet:", pet_fits, pet.name)
+    var rock = Rock()
+    var found: Found = rock
+    show(found)
+    var cat = Cat()
+    var found_cat: Found = cat
+    show(found_cat)
+}
+
+func show(found: Found) {
+    if found.class.satisfies_type(Named) {
+        console.print("found", found.name)
+    } else {
+        console.print("found no name")
+    }
+}

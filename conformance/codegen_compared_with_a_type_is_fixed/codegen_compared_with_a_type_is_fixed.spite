@@ -1,0 +1,26 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func CodegenComparedWithATypeIsFixed() {
+    var cat_shelf = Shelf<Cat>()
+    var cat_answer = cat_shelf.kind()
+    var rock_shelf = Shelf<Rock>()
+    var rock_answer = rock_shelf.kind()
+    console.print(cat_answer, rock_answer)
+    var rock = Rock()
+    rock.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    if attribute.class == Named {
+        console.print(attribute.name, "is named")
+    }
+}

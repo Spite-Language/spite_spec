@@ -1,0 +1,19 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func UnionSatisfiesTypeKnownOnlyAtRunTime() {
+    UnionSatisfiesTypeKnownOnlyAtRunTime.unions.each(show)
+}
+
+func show(described: Spite.Union) {
+    var fits = described.satisfies_type(Named)
+    console.print(described.name, fits)
+}

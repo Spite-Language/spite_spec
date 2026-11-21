@@ -1,0 +1,6 @@
+named: true false true
+read: true true false
+shelves: named unnamed named unnamed
+pet: true rex
+found no name
+found tom

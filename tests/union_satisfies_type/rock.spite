@@ -1,0 +1,5 @@
+var weight = 3
+
+func to_string(): String {
+    return "rock {weight}"
+}

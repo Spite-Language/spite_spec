@@ -1,0 +1,11 @@
+generic $item_type
+
+var console = Console()
+
+func show() {
+    console.print($item_type == CodegenComparedWithAType.Named)
+}
+
+func hide() {
+    console.print($item_type != CodegenComparedWithAType.Pet)
+}

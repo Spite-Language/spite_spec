@@ -1,0 +1,16 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func CodegenComparedWithAType() {
+    var shelf = Shelf<Cat>()
+    shelf.show()
+    shelf.hide()
+}

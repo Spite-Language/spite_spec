@@ -1,0 +1,8 @@
+generic $item_type
+
+func holds_named(): String {
+    if $item_type.satisfies_type(UnionSatisfiesType.Named) {
+        return "named"
+    }
+    return "unnamed"
+}

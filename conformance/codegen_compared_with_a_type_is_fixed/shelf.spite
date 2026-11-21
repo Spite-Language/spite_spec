@@ -1,0 +1,12 @@
+generic $item_type
+
+func kind(): String {
+    if $item_type == CodegenComparedWithATypeIsFixed.Named {
+        return "named"
+    }
+    var is_a_pet = $item_type != CodegenComparedWithATypeIsFixed.Pet
+    if is_a_pet {
+        return "not a pet"
+    }
+    return "a pet"
+}
