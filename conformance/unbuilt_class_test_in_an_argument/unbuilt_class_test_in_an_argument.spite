@@ -1,0 +1,18 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+}
+
+var console = Console()
+
+func UnbuiltClassTestInAnArgument() {
+    var custom = Custom()
+    console.print(custom.key)
+}
+
+func show(value: Component) {
+    console.print(value.class == AnyCustom)
+}

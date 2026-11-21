@@ -1,0 +1,5 @@
+generic $item_type
+
+func holds(value: UnbuiltClassTestIsFixed.Component): Boolean {
+    return value.class != UnbuiltClassTestIsFixed.AnyCustom
+}

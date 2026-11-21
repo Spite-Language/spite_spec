@@ -1,0 +1,4 @@
+var cat = Cat()
+var maybe_cat: Cat? = null
+var count = 3
+var maybe_count: Integer? = null

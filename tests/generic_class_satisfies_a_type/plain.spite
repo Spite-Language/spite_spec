@@ -1,0 +1,3 @@
+func render(): GenericClassSatisfiesAType.Component? {
+    return null
+}

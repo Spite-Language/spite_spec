@@ -3,11 +3,8 @@ union Pet {
     Dog
 }
 
-var console = Console()
-
 func CodegenClassTestOnAUnion() {
     var checker = Checker<Pet>()
     var cat = Cat()
-    var held = checker.holds(cat)
-    console.print(held)
+    checker.show(cat)
 }

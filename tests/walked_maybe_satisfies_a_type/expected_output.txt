@@ -1,0 +1,5 @@
+cat true false
+maybe_cat false false
+count false true
+maybe_count false false
+tom 3 null

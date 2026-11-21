@@ -1,0 +1,16 @@
+generic $wanted_type
+
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+func holds(item: Shown): Boolean {
+    return item.class.satisfies_type($wanted_type)
+}
+
+func misses(item: Shown): Boolean {
+    if not item.class.satisfies_type($wanted_type) {
+        return true
+    }
+    return false
+}

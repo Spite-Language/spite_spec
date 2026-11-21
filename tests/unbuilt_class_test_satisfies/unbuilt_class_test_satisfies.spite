@@ -1,0 +1,22 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+}
+
+var console = Console()
+
+func UnbuiltClassTestSatisfies() {
+    var custom = Custom()
+    var box = Box<Dog>()
+    var key = box.key_of(custom)
+    var cat = Cat()
+    var dog = Dog()
+    console.print(key, custom.key, cat.name, dog.name)
+}
+
+func is_custom(value: Component): Boolean {
+    return value.class.satisfies_type(AnyCustom)
+}

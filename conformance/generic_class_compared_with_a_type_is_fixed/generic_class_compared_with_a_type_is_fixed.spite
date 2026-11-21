@@ -1,0 +1,27 @@
+type Component {
+    render: Spite.Function<Component?>
+}
+
+type AnyCustom {
+    key: String
+}
+
+var console = Console()
+
+func GenericClassComparedWithATypeIsFixed() {
+    var custom = Custom()
+    var box = Box<Cat>()
+    var key = box.key_of(custom)
+    var other = box.is_other(custom)
+    console.print(key, other)
+    var cat = Cat()
+    cat.attributes.each(show)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var custom = Custom()
+    var held: Component = custom
+    if held.class == AnyCustom {
+        console.print(attribute.name, held.key)
+    }
+}

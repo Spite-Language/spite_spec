@@ -4,6 +4,8 @@ type Shown {
     to_debug: Spite.Function<String>
 }
 
-func holds(item: Shown): Boolean {
-    return item.class == $wanted_type
+var console = Console()
+
+func show(item: Shown) {
+    console.print(item.class == $wanted_type)
 }

@@ -1,0 +1,12 @@
+generic $item_type
+
+func key_of(value: GenericClassSatisfiesAType.Component): String {
+    if value.class.satisfies_type(GenericClassSatisfiesAType.AnyCustom) {
+        return value.key
+    }
+    return "none"
+}
+
+func is_other(value: GenericClassSatisfiesAType.Component): Boolean {
+    return not value.class.satisfies_type(GenericClassSatisfiesAType.AnyCustom)
+}

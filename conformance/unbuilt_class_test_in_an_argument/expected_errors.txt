@@ -1,0 +1,1 @@
+conformance/unbuilt_class_test_in_an_argument/unbuilt_class_test_in_an_argument.spite:17: error: 'AnyCustom' is a type, not a class, so 'value.class' is never equal to it: ask whether the class fits it with 'value.class.satisfies_type(AnyCustom)' (in UnbuiltClassTestInAnArgument.show)

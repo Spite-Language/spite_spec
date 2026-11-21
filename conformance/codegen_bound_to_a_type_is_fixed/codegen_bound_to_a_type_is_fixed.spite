@@ -1,0 +1,22 @@
+union Pet {
+    Cat
+    Dog
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func CodegenBoundToATypeIsFixed() {
+    var cat = Cat()
+    var rock = Rock()
+    var named = Checker<Named>()
+    var pets = Checker<Pet>()
+    var cats = Checker<Cat>()
+    var first = named.holds(cat)
+    var second = pets.misses(rock)
+    var third = cats.holds(cat)
+    console.print(first, second, third)
+}

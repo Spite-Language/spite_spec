@@ -1,0 +1,3 @@
+func render(): UnbuiltClassTestIsFixed.Component? {
+    return this
+}

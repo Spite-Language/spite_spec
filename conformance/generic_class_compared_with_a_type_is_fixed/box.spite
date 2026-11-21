@@ -1,0 +1,12 @@
+generic $item_type
+
+func key_of(value: GenericClassComparedWithATypeIsFixed.Component): String {
+    if value.class == GenericClassComparedWithATypeIsFixed.AnyCustom {
+        return value.key
+    }
+    return "none"
+}
+
+func is_other(value: GenericClassComparedWithATypeIsFixed.Component): Boolean {
+    return value.class != GenericClassComparedWithATypeIsFixed.AnyCustom
+}

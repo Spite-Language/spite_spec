@@ -1,0 +1,20 @@
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func WalkedMaybeSatisfiesAType() {
+    var holder = Holder()
+    holder.attributes.each(show)
+    if holder.maybe_cat {
+        console.print(holder.maybe_cat.name)
+    }
+    console.print(holder.cat.name, holder.count, holder.maybe_count)
+}
+
+func show(attribute: Spite.AttributeDeclaration) {
+    var named = attribute.class.satisfies_type(Named)
+    var number = attribute.class.satisfies_type(Number)
+    console.print(attribute.name, named, number)
+}

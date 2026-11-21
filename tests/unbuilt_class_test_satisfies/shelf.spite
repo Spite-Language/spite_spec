@@ -1,0 +1,5 @@
+generic $item_type
+
+func holds(value: UnbuiltClassTestSatisfies.Component): Boolean {
+    return not value.class.satisfies_type(UnbuiltClassTestSatisfies.AnyCustom)
+}

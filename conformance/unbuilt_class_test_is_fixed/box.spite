@@ -1,0 +1,13 @@
+generic $item_type
+
+var console = Console()
+
+func key_of(value: UnbuiltClassTestIsFixed.Component): String {
+    if $item_type == Cat {
+        console.print("a cat box")
+        if value.class == UnbuiltClassTestIsFixed.AnyCustom {
+            return value.key
+        }
+    }
+    return "none"
+}
