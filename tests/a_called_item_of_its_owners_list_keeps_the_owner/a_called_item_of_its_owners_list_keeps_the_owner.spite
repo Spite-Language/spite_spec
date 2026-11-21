@@ -1,0 +1,8 @@
+func ACalledItemOfItsOwnersListKeepsTheOwner() {
+    var holder = Holder()
+    var act = holder.row.acts[0]
+    crash act
+    holder.row = Row("other")
+    act(3)
+    holder.row.say()
+}
