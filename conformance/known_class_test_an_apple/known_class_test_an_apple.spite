@@ -1,0 +1,9 @@
+var console = Console()
+
+func KnownClassTestAnApple() {
+    var apple = Apple()
+    var ready = true
+    if apple.class == Apple and ready {
+        console.print(apple.weight)
+    }
+}

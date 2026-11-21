@@ -1,0 +1,16 @@
+union Fruit {
+    Apple
+    Pear
+}
+
+var console = Console()
+
+func KnownFactClassAgainAnApple() {
+    var fruit: Fruit = Apple()
+    if fruit.class == Apple {
+        console.print("apple")
+        if fruit.class == Apple {
+            console.print(fruit.weight)
+        }
+    }
+}
