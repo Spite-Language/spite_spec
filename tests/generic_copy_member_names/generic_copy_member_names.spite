@@ -1,0 +1,30 @@
+var console = Console()
+
+func GenericCopyMemberNames() {
+    var tight = Shapes.Lid().tight()
+    var made = Shapes.Box<Shapes.Lid>()
+    console.print(tight, made.size, made.phase)
+    var phase_class = made.phase.class
+    var folded_name = phase_class.name
+    console.print("phase", folded_name)
+    var unions = Shapes.Box<Shapes.Lid>.unions
+    unions.each(show_union)
+    var types = Shapes.Box<Shapes.Lid>.types
+    types.each(show_type)
+    var enums = Shapes.Box<Shapes.Lid>.enums
+    enums.each(show_enum)
+    var held = Spite.Class.instances["Box<Lid>"]
+    console.print("held", held.name)
+}
+
+func show_union(found: Spite.Union) {
+    console.print("union", found.name)
+}
+
+func show_type(found: Spite.Type) {
+    console.print("type", found.name)
+}
+
+func show_enum(found: Spite.Enum) {
+    console.print("enum", found.name)
+}

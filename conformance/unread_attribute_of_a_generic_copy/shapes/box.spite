@@ -1,0 +1,8 @@
+generic $inside
+
+var size = 3
+var kind = "box"
+
+func kind_of(): String {
+    return kind
+}

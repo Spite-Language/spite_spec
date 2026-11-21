@@ -1,0 +1,18 @@
+generic $inside
+
+enum Phase {
+    'open'
+    'shut'
+}
+
+union Held {
+    Lid
+    Shapes
+}
+
+type Shown {
+    to_debug: Spite.Function<String>
+}
+
+var size = 3
+var phase: Phase = 'open'

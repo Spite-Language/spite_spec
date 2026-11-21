@@ -1,0 +1,1 @@
+conformance/unread_attribute_of_a_generic_copy/shapes/box.spite:3: error: the attribute 'size' is never read: remove it (in Box<Lid>.)

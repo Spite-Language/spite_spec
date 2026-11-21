@@ -1,0 +1,7 @@
+var console = Console()
+
+func UnreadAttributeOfAGenericCopy() {
+    var tight = Shapes.Lid().tight()
+    var kind = Shapes.Box<Shapes.Lid>().kind_of()
+    console.print(tight, kind)
+}

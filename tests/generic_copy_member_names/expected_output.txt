@@ -1,0 +1,6 @@
+true 3 open
+phase Phase
+union Held
+type Shown
+enum Phase
+held Box<Lid>
