@@ -1,1 +1,1 @@
-conformance/bare_setter_call_in_the_constructor_refused/meter.spite:4: error: 'set_turns' is what writing 'turns' calls: write 'turns = 3' (in Meter.Meter)
+conformance/bare_setter_call_in_the_constructor_refused/meter.spite:4: error: 'set_turns' is what writing 'turns' calls: write 'turns = 3' (in BareSetterCallInTheConstructorRefused.Meter.Meter)
