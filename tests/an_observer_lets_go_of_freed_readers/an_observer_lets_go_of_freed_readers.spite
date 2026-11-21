@@ -1,0 +1,24 @@
+var console = Console()
+var names = ["ada"]
+var program = Program()
+
+func AnObserverLetsGoOfFreedReaders() {
+    var before = program.live_allocations()
+    var round = 0
+    while round < 1000 {
+        subscribe_a_reader(round)
+        round = round + 1
+    }
+    var after = program.live_allocations()
+    var grown = after - before
+    console.print("live allocations grown by", grown)
+    names.append("alan")
+    var told = program.live_allocations()
+    var grown_after_notify = told - before
+    console.print("after one notify", grown_after_notify)
+}
+
+func subscribe_a_reader(round: Integer) {
+    var reader = Reader(round)
+    names.subscribe(reader.changed)
+}

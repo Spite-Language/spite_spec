@@ -1,0 +1,15 @@
+var console = Console()
+
+func AnObserverReaderSubscribingItsAttributeIsFreed() {
+    show_one()
+}
+
+func show_one() {
+    var names = ["ada"]
+    var row = Row(names)
+    names.append("alan")
+    row.stop()
+    names.append("grace")
+    var held = row.names.count()
+    console.print("held", held)
+}

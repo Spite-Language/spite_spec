@@ -1,0 +1,16 @@
+var console = Console()
+var act: Spite.Function<ListChange<String>, Nothing> = changed
+var names: List<String>
+
+func Row(given: List<String>) {
+    names = given
+    names.subscribe(act)
+}
+
+func changed(change: ListChange<String>) {
+    console.print("told", change.kind, change.index)
+}
+
+func stop() {
+    names.unsubscribe(changed)
+}

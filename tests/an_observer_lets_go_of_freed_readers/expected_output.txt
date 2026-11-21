@@ -1,0 +1,3 @@
+live allocations grown by 3
+after one notify 3
+allocations: 3022 frees: 3022

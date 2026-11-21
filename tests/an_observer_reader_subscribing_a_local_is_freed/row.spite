@@ -1,0 +1,12 @@
+var console = Console()
+var names: List<String>
+
+func Row(given: List<String>) {
+    names = given
+    var act = changed
+    names.subscribe(act)
+}
+
+func changed(change: ListChange<String>) {
+    console.print("told", change.kind, change.index)
+}

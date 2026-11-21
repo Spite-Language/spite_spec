@@ -1,0 +1,10 @@
+var console = Console()
+var id: Integer
+
+func Reader(given_id: Integer) {
+    id = given_id
+}
+
+func changed(change: ListChange<String>) {
+    console.print("reader", id, "told", change.kind)
+}
