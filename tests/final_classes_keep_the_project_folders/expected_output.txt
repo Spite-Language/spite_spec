@@ -1,0 +1,6 @@
+4 ok
+final_classes_keep_the_project_folders.spite true
+ui/button.spite true
+libs/kit/tools/hammer.spite true
+tools/hammer.spite false
+string.spite true

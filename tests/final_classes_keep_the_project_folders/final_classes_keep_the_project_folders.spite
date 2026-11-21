@@ -1,0 +1,22 @@
+var console = Console()
+var build = Build()
+
+func FinalClassesKeepTheProjectFolders() {
+    load "libs/kit"
+    var hammer = Tools.Hammer()
+    var button = Ui.Button()
+    console.print(hammer.size, button.label)
+    show("final_classes_keep_the_project_folders.spite")
+    show("ui/button.spite")
+    show("libs/kit/tools/hammer.spite")
+    show("tools/hammer.spite")
+    show("string.spite")
+}
+
+func show(place: String) {
+    var printed_path: Path? = "{build.program}/.spite/final_project_folders/{place}"
+    crash printed_path
+    var printed = File(printed_path)
+    var is_there = printed.exists()
+    console.print(place, is_there)
+}
