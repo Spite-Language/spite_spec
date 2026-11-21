@@ -1,0 +1,1 @@
+conformance/generic_class_made_without_its_classes/generic_class_made_without_its_classes.spite:7: error: 'Custom' takes 1 codegen value(s), in this order: $uniforms_type. Write them between < and > before the arguments

@@ -1,0 +1,25 @@
+var console = Console()
+
+func ClassInstancesFindAGenericCopy() {
+    var glow = Custom<Glow>()
+    var bloom = Custom<Bloom>()
+    var strength = Glow().strength
+    var petals = Bloom().petals
+    console.print(glow.key, bloom.key, strength, petals)
+    var bare = Spite.Class.instances["Custom"]
+    if bare {
+        console.print("Custom is a key")
+    } else {
+        console.print("Custom is not a key")
+    }
+    var found = Spite.Class.instances["Custom<Glow>"]
+    crash found
+    console.print("found", found.name, found.name_with_outer_classes)
+    var other = Spite.Class.instances["Custom<Bloom>"]
+    crash other
+    console.print("found", other.name, other.name_with_outer_classes)
+    var made = found()
+    var made_class = made.class
+    console.print("made", made_class.name)
+    console.debug(made)
+}

@@ -9,6 +9,6 @@ Inner ReflectionNamesFold.Part.Inner
 Alpha,Inner
 Alpha,Inner
 Alpha
-ReflectionNamesFold ReflectionNamesFold 1 2 Shelf,Part
+ReflectionNamesFold ReflectionNamesFold 1 2 Shelf<Alpha>,Part
 Part ReflectionNamesFold.Part 2 2 Alpha,Inner
 Inner ReflectionNamesFold.Part.Inner 3 1 Beta

@@ -1,0 +1,6 @@
+custom custom 1 5
+Custom is not a key
+found Custom<Glow> ClassInstancesFindAGenericCopy.Custom<ClassInstancesFindAGenericCopy.Glow>
+found Custom<Bloom> ClassInstancesFindAGenericCopy.Custom<ClassInstancesFindAGenericCopy.Bloom>
+made Custom<Glow>
+Custom<Glow> { key: "custom" }

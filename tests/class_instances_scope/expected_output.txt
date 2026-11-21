@@ -1,4 +1,4 @@
-ClassInstancesScope,Crate,Vendor,Gear,Sprocket
+ClassInstancesScope,Crate<Float>,Vendor,Gear,Sprocket
 generic listed true
 library listed false
 package listed true

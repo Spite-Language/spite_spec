@@ -1,9 +1,9 @@
 custom
 1 2
-copy's own name: Custom
+copy's own name: Custom<Glow>
 walked: ClassInstancesListGenericCopies ClassInstancesListGenericCopies 0
 walked: Bloom ClassInstancesListGenericCopies.Bloom 0
-walked: Custom ClassInstancesListGenericCopies.Custom<ClassInstancesListGenericCopies.Bloom> 1
-walked: Custom ClassInstancesListGenericCopies.Custom<ClassInstancesListGenericCopies.Glow> 1
+walked: Custom<Bloom> ClassInstancesListGenericCopies.Custom<ClassInstancesListGenericCopies.Bloom> 1
+walked: Custom<Glow> ClassInstancesListGenericCopies.Custom<ClassInstancesListGenericCopies.Glow> 1
 walked: Glow ClassInstancesListGenericCopies.Glow 0
-walked: Pair ClassInstancesListGenericCopies.Pair<ClassInstancesListGenericCopies.Bloom> 1
+walked: Pair<Bloom> ClassInstancesListGenericCopies.Pair<ClassInstancesListGenericCopies.Bloom> 1

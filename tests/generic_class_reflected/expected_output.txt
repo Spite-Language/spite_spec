@@ -2,18 +2,18 @@ element Float
 listed 1
 vector true false
 is list true true
-names Box Box
+names Box<Float> Box<String>
 held Float String
 pair Float String
 nested List<Float> Float
 value Integer
 attribute held Float?
 function make_it Boolean
-crate Crate GenericClassReflected.Game.Crate<Float> Float
+crate Crate<Float> GenericClassReflected.Game.Crate<Float> Float
 test true true false
 shown List<Float>
-shown Crate
-shown Box
+shown Crate<Integer>
+shown Box<Integer>
 namespace Game
 plain true
 walked held Float?

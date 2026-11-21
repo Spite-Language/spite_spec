@@ -7,7 +7,7 @@ func ClassInstancesScope() {
     var names = Spite.Class.instances.map_names()
     var joined = names.join(",")
     console.print(joined)
-    var has_crate = names.contains("Crate")
+    var has_crate = names.contains("Crate<Float>")
     var has_console = names.contains("Console")
     var has_sprocket = names.contains("Sprocket")
     console.print("generic listed", has_crate)

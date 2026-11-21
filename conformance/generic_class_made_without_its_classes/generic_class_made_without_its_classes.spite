@@ -1,0 +1,10 @@
+var console = Console()
+
+func GenericClassMadeWithoutItsClasses() {
+    var glow = Custom<Glow>()
+    var strength = Glow().strength
+    console.print(glow.key, strength)
+    var held: Spite.Class = Custom
+    var made = held()
+    console.debug(made)
+}
