@@ -11,14 +11,14 @@ func describe(): String {
         return "may be null"
     } else if $value_type.is_number {
         return "a number"
-    } else if $value_type == CodegenKindTests.Shape {
+    } else if $value_type.satisfies_type(CodegenKindTests.Shape) {
         return "a shape: {is_named()}"
-    } else if $value_type == CodegenKindTests.Named {
+    } else if $value_type.satisfies_type(CodegenKindTests.Named) {
         return "named"
     }
     return "something else"
 }
 
 func is_named(): Boolean {
-    return $value_type == CodegenKindTests.Named
+    return $value_type.satisfies_type(CodegenKindTests.Named)
 }
