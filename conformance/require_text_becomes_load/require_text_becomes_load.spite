@@ -1,0 +1,7 @@
+var console = Console()
+
+func RequireTextBecomesLoad() {
+    require "tools"
+    var sign = Sign()
+    console.print(sign.word)
+}

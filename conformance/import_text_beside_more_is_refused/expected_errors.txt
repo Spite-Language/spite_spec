@@ -1,0 +1,1 @@
+conformance/import_text_beside_more_is_refused/import_text_beside_more_is_refused.spite:4: error: there are no imports: 'load "folder"' inside a function brings a folder into the program, and everything shares one namespace

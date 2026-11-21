@@ -1,0 +1,7 @@
+var console = Console()
+
+func ImportTextBesideMoreIsRefused() {
+    import "tools", "shapes"
+    var sign = Sign()
+    console.print(sign.word)
+}
