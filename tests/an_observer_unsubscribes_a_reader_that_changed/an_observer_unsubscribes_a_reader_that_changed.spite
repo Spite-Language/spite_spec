@@ -1,0 +1,14 @@
+var heard = Observer<Integer>()
+
+func AnObserverUnsubscribesAReaderThatChanged() {
+    var counter = Counter(1)
+    heard.subscribe(counter.show)
+    heard.notify(10)
+    counter.step()
+    heard.unsubscribe(counter.show)
+    heard.notify(20)
+    counter.step()
+    heard.subscribe(counter.show)
+    heard.subscribe(counter.show)
+    heard.notify(30)
+}

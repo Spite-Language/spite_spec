@@ -1,0 +1,14 @@
+var console = Console()
+var count: Integer
+
+func Counter(starting_count: Integer) {
+    count = starting_count
+}
+
+func step() {
+    count = count + 1
+}
+
+func show(told: Integer) {
+    console.print("count", count, "told", told)
+}
