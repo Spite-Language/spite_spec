@@ -1,0 +1,2 @@
+told 2
+allocations: 10 frees: 10

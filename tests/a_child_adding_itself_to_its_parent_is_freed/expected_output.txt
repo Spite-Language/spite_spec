@@ -1,0 +1,5 @@
+grace belongs to ada
+grace is freed
+ada is freed
+the family is gone
+allocations: 31 frees: 31

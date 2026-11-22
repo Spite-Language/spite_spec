@@ -1,0 +1,2 @@
+total 450000
+allocations: 100009 frees: 100009

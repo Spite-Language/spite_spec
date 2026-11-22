@@ -6,9 +6,12 @@ func Row() {
 }
 
 func tell() {
-    var kept = act
-    crash kept
-    kept(2)
+    run(act)
+}
+
+func run(given: Spite.Function<Integer, Nothing>?) {
+    crash given
+    given(2)
 }
 
 func changed(amount: Integer) {
