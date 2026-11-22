@@ -1,0 +1,29 @@
+union Payload {
+    List<Integer>
+    Note
+}
+
+var console = Console()
+
+func UnionListMember() {
+    var numbers = List<Integer>()
+    numbers.append(1)
+    numbers.append(2)
+    var payloads = List<Payload>()
+    payloads.append(numbers)
+    var note = Note()
+    payloads.append(note)
+    payloads.each(show)
+}
+
+func show(value: Payload) {
+    switch value {
+        List<Integer>: show_numbers(value)
+        Note: console.print("a note", value.text)
+    }
+}
+
+func show_numbers(numbers: List<Integer>) {
+    var count = numbers.count()
+    console.print("numbers", count)
+}

@@ -1,0 +1,23 @@
+union Butt {
+    Bunda<Cu>
+    Cu
+}
+
+var console = Console()
+
+func UnionCodegenClassMember() {
+    var held: Butt = Bunda<Cu>()
+    show(held)
+}
+
+func show(value: Butt) {
+    switch value {
+        Bunda<Cu>: show_a_bunda(value)
+        Cu: console.print("a cu", value.size)
+    }
+}
+
+func show_a_bunda(bunda: Bunda<Cu>) {
+    var name = bunda.name()
+    console.print("a", name)
+}

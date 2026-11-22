@@ -1,0 +1,22 @@
+union Butt {
+    Bunda<Cu>
+    Bunda<Glow>
+}
+
+var console = Console()
+
+func UnionTwoCopiesOfOneGeneric() {
+    var held = List<Butt>()
+    var plain = Bunda<Cu>()
+    held.append(plain)
+    var bright = Bunda<Glow>()
+    held.append(bright)
+    held.each(show)
+}
+
+func show(value: Butt) {
+    switch value {
+        Bunda<Cu>: console.print("a cu of size", value.filling.size)
+        Bunda<Glow>: console.print("a glow of shine", value.filling.shine)
+    }
+}

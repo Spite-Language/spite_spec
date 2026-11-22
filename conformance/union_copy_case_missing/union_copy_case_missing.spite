@@ -1,0 +1,17 @@
+union Butt {
+    Bunda<Cu>
+    Bunda<Glow>
+}
+
+var console = Console()
+
+func UnionCopyCaseMissing() {
+    var held: Butt = Bunda<Cu>()
+    show(held)
+}
+
+func show(value: Butt) {
+    switch value {
+        Bunda<Cu>: console.print("a cu of size", value.filling.size)
+    }
+}

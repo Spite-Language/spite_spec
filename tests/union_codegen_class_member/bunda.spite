@@ -1,0 +1,11 @@
+generic $filling
+
+var filling = $filling()
+
+func name(): String {
+    var size = filling.size
+    if size > 1 {
+        return "big bunda"
+    }
+    return "bunda"
+}

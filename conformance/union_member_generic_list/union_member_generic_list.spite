@@ -1,9 +1,0 @@
-union Message {
-    List<Integer>
-}
-
-var console = Console()
-
-func UnionMemberGenericList() {
-    console.print("never compiled")
-}

@@ -1,0 +1,1 @@
+conformance/union_copy_case_missing/union_copy_case_missing.spite:14: error: this switch over 'Butt' has no case for Bunda<Glow>: a switch over a union covers every member, so a member added later cannot be forgotten; add the cases (in UnionCopyCaseMissing.show)

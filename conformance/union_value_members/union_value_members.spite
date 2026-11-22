@@ -1,6 +1,5 @@
 union Message {
     String
-    List<Integer>
     Integer
 }
 
