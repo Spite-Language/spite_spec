@@ -1,0 +1,14 @@
+var console = Console()
+
+func APairJoinedByAFunctionIsFreed() {
+    pair_up()
+    console.print("the pair is gone")
+}
+
+func pair_up() {
+    var first = Person("ann")
+    var second = Person("bob")
+    first.join(second)
+    second.join(first)
+    console.print(first.name, "and", second.name, "are partners")
+}

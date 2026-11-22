@@ -1,0 +1,12 @@
+var console = Console()
+
+func AChildAddingItselfToItsParentIsFreed() {
+    visit()
+    console.print("the family is gone")
+}
+
+func visit() {
+    var parent = Parent("ada")
+    var child = Child("grace", parent)
+    console.print(child.name, "belongs to", child.parent.name)
+}

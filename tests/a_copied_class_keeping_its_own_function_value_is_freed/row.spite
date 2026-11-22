@@ -1,0 +1,17 @@
+var console = Console()
+var act: Spite.Function<Integer, Nothing>? = null
+var name: String
+
+func Row(given_name: String) {
+    name = given_name
+    act = changed
+}
+
+func tell() {
+    crash act
+    act(3)
+}
+
+func changed(amount: Integer) {
+    console.print(name, "told", amount)
+}

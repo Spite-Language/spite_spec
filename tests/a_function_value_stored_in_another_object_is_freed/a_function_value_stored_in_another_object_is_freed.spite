@@ -1,0 +1,11 @@
+func AFunctionValueStoredInAnotherObjectIsFreed() {
+    show_one()
+}
+
+func show_one() {
+    var row = Row()
+    var box = Box()
+    box.act = row.changed
+    row.box = box
+    row.tell()
+}

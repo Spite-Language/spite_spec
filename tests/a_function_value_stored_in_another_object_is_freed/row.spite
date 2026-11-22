@@ -1,0 +1,11 @@
+var console = Console()
+var box: Box? = null
+
+func tell() {
+    crash box
+    box.tell()
+}
+
+func changed(amount: Integer) {
+    console.print("told", amount)
+}

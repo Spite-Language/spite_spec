@@ -1,0 +1,8 @@
+func AnOwnFunctionValueReadForAnythingElseIsFreed() {
+    show_one()
+}
+
+func show_one() {
+    var row = Row()
+    row.tell()
+}

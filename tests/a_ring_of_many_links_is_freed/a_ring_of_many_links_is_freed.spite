@@ -1,0 +1,29 @@
+var console = Console()
+var _ring_length = 100000
+
+func ARingOfManyLinksIsFreed() {
+    var total = make_a_ring(_ring_length)
+    console.print("total", total)
+}
+
+func make_a_ring(length: Integer): Integer {
+    var first = Link(0)
+    var last = first
+    var index = 1
+    while index < length {
+        var next = Link(index)
+        last.next = next
+        last = next
+        index = index + 1
+    }
+    last.next = first
+    var total = 0
+    var at: Link? = first
+    var steps = 0
+    while at and steps < length {
+        total = total + at.number % 10
+        at = at.next
+        steps = steps + 1
+    }
+    return total
+}

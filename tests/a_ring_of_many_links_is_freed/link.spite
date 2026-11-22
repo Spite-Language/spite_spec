@@ -1,0 +1,6 @@
+var next: Link? = null
+var number: Integer
+
+func Link(given_number: Integer) {
+    number = given_number
+}

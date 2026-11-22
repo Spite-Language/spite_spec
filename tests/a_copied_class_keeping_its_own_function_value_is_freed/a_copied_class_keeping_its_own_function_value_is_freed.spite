@@ -1,0 +1,11 @@
+func ACopiedClassKeepingItsOwnFunctionValueIsFreed() {
+    show_one()
+}
+
+func show_one() {
+    var row = Row("first")
+    var other = row.copy()
+    other.name = "second"
+    row.tell()
+    other.tell()
+}

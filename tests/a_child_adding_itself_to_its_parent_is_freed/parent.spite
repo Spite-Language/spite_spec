@@ -1,0 +1,11 @@
+var console = Console()
+var children = List<Child>()
+var name: String
+
+func Parent(new_name: String) {
+    name = new_name
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

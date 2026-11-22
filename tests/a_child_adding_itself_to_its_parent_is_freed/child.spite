@@ -1,0 +1,13 @@
+var console = Console()
+var parent: Parent
+var name: String
+
+func Child(new_name: String, new_parent: Parent) {
+    name = new_name
+    parent = new_parent
+    parent.children.append(this)
+}
+
+func drop() {
+    console.print(name, "is freed")
+}

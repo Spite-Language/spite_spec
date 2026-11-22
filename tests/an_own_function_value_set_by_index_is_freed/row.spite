@@ -1,0 +1,11 @@
+var console = Console()
+var acts: List<Spite.Function<Integer, Nothing>> = []
+
+func Row() {
+    acts.append(changed)
+    acts[0] = changed
+}
+
+func changed(amount: Integer) {
+    console.print("told", amount)
+}

@@ -1,0 +1,8 @@
+func AnOwnFunctionValueSetByIndexIsFreed() {
+    show_one()
+}
+
+func show_one() {
+    var row = Row()
+    row.changed(1)
+}
