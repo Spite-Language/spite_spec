@@ -1,0 +1,42 @@
+var total = 0
+var first: Corner? = null
+var _corner_count = 40
+var _spins = 200
+var _modulus = 13
+var seed: Integer
+
+func Shape(starting_seed: Integer) {
+    seed = starting_seed
+}
+
+func settle() {
+    var start = Corner(seed % 97)
+    var last = start
+    var sum = 0
+    var step = 1
+    while step < _corner_count {
+        var corner = Corner(step * seed % 97)
+        last.next = corner
+        last = corner
+        var spin = 0
+        while spin < _spins {
+            sum = sum + corner.place * spin % _modulus
+            spin = spin + 1
+        }
+        step = step + 1
+    }
+    last.next = start
+    first = start
+    total = total + sum % 1000
+}
+
+func ring_length(): Integer {
+    fallback first
+    var length = 1
+    var walked = first.next
+    while walked and walked !== first {
+        length = length + 1
+        walked = walked.next
+    }
+    return length
+}

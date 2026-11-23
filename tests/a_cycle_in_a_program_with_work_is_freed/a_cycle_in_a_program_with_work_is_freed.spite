@@ -1,0 +1,25 @@
+var console = Console()
+var program = Program()
+var waiter = Waiter()
+var frames = 0
+
+func ACycleInAProgramWithWorkIsFreed() {
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not waiter.finished {
+        frames = frames + 1
+        if frames == 1 {
+            waiter.run()
+            pair_up()
+        }
+        program.sleep(one_millisecond)
+    }
+    console.print("the waiter is done")
+}
+
+func pair_up() {
+    var first = Person("ann")
+    var second = Person("bob")
+    first.join(second)
+    second.join(first)
+    console.print(first.name, "and", second.name, "are partners")
+}

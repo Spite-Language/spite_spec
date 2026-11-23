@@ -1,0 +1,3 @@
+settled: 15819594
+first ring: 40
+allocations: 2420111 frees: 2420111

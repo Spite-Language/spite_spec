@@ -1,7 +1,3 @@
 ann is with bob
 the cycle is out of reach
-spite: --debug-memory: 6 allocation(s) leaked
-  Buffer: 2 leaked object(s)
-  MemoryLeakSummary.Person: 2 leaked object(s)
-  List_of_Integer: 2 leaked object(s)
-allocations: 26 frees: 20
+allocations: 26 frees: 26

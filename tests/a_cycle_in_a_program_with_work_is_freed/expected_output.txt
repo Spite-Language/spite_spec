@@ -1,0 +1,5 @@
+ann and bob are partners
+ann is freed, still with bob
+bob is freed, still with ann
+the waiter is done
+allocations: 39 frees: 39

@@ -1,0 +1,23 @@
+var console = Console()
+var _element_count = 20000
+
+func ARingMadeInBandsIsFreed() {
+    var shapes = List<Shape>()
+    var index = 0
+    while index < _element_count {
+        var shape = Shape(index)
+        shapes.append(shape)
+        index = index + 1
+    }
+    var round = 0
+    while round < 3 {
+        shapes.each_settle()
+        round = round + 1
+    }
+    var settled = shapes.sum_total()
+    console.print("settled:", settled)
+    var first = shapes.first()
+    crash first
+    var length = first.ring_length()
+    console.print("first ring:", length)
+}

@@ -1,0 +1,6 @@
+var next: Corner? = null
+var place: Integer
+
+func Corner(starting_place: Integer) {
+    place = starting_place
+}

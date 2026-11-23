@@ -1,0 +1,19 @@
+var console = Console()
+var partner: Person? = null
+var name: String
+
+func Person(new_name: String) {
+    name = new_name
+}
+
+func join(other: Person) {
+    partner = other
+}
+
+func drop() {
+    if partner {
+        console.print(name, "is freed, still with", partner.name)
+    } else {
+        console.print(name, "is freed alone")
+    }
+}
