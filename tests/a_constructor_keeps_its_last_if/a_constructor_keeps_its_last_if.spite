@@ -1,0 +1,8 @@
+var console = Console()
+
+func AConstructorKeepsItsLastIf() {
+    var tally = Tally(null)
+    console.print("counted", tally.counted)
+    var other = Tally("x")
+    console.print("counted", other.counted)
+}

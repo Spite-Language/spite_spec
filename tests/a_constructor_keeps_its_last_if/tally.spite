@@ -1,0 +1,9 @@
+var counted = 0
+var held: String?
+
+func Tally(given: String?) {
+    held = given
+    if held {
+        counted = 1
+    }
+}

@@ -1,6 +1,0 @@
-var console = Console()
-
-func TerminalIfInAConstructor() {
-    var thing = Thing()
-    console.print(thing.size)
-}
