@@ -1,0 +1,5 @@
+counted 1
+spite: the program stopped at default_kept_runs_into_a_crash/tally.spite:11 in DefaultKeptRunsIntoACrash.Tally.Tally, site ba7d798f (counted=0, index=0)
+spite.frame	default_kept_runs_into_a_crash/tally.spite:11	DefaultKeptRunsIntoACrash.Tally	Tally
+spite.frame	default_kept_runs_into_a_crash/default_kept_runs_into_a_crash.spite:2	DefaultKeptRunsIntoACrash	DefaultKeptRunsIntoACrash
+spite.frame	default_kept_runs_into_a_crash/default_kept_runs_into_a_crash.spite:8	DefaultKeptRunsIntoACrash	DefaultKeptRunsIntoACrash

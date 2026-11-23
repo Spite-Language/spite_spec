@@ -1,0 +1,39 @@
+var catalog = Catalog()
+var positions = Dictionary<String, Integer>()
+var held = List<String>()
+var next_position = 1
+
+func Index(starting_catalog: Catalog) {
+    catalog = starting_catalog
+    positions["first"] = 16
+    positions["second"] = 24
+    catalog.entries.each(note_an_entry)
+    var owners = catalog.owners()
+    owners.each(hold)
+    catalog.watched.each(hold)
+    if catalog.host {
+        seed(catalog.host)
+    }
+    var index = 0
+    while index < catalog.entries.count() {
+        var entry = catalog.entries[index]
+        positions[entry] = next_position
+        next_position = next_position + 1
+        index = index + 1
+    }
+}
+
+func note_an_entry(entry: String) {
+    held.append(entry)
+}
+
+func hold(name: String) {
+    fallback not held.contains(name)
+    held.append(name)
+}
+
+func seed(host: Host) {
+    var id = host.ids["first"]
+    crash id
+    next_position = id
+}

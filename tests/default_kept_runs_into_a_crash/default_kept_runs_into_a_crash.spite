@@ -1,0 +1,10 @@
+var console = Console()
+
+func DefaultKeptRunsIntoACrash() {
+    var catalog = Catalog()
+    catalog.entries.append("wing")
+    var tally = Tally(catalog)
+    console.print("counted", tally.counted)
+    var counter = Counter(tally)
+    console.print("not reached", counter.tally.counted)
+}

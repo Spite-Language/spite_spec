@@ -1,0 +1,2 @@
+var empty = Catalog()
+var index = Index(empty)

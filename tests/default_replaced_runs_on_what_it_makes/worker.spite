@@ -1,0 +1,9 @@
+var state = State()
+
+func Worker(given: State) {
+    state = given
+}
+
+func held_count(): Integer {
+    return state.index.held.count()
+}

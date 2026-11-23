@@ -1,0 +1,25 @@
+var is_learned = false
+var owners = List<String>()
+var candidates = List<String>()
+
+func owners_of(catalog: Catalog): List<String> {
+    learn(catalog)
+    return owners
+}
+
+func learn(catalog: Catalog) {
+    fallback not is_learned
+    is_learned = true
+    catalog.entries.each(read_an_entry)
+    fallback not candidates.is_empty()
+    var index = 0
+    while index < candidates.count() {
+        var candidate = candidates[index]
+        owners.append(candidate)
+        index = index + 1
+    }
+}
+
+func read_an_entry(entry: String) {
+    candidates.append(entry)
+}

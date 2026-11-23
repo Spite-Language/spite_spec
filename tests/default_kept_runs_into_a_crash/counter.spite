@@ -1,0 +1,6 @@
+var empty = Catalog()
+var tally = Tally(empty)
+
+func Counter(starting_tally: Tally) {
+    tally = starting_tally
+}

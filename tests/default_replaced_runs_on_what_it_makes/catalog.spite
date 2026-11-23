@@ -1,0 +1,8 @@
+var entries = List<String>()
+var learner = Learner()
+var host: Host? = null
+var watched = List<String>()
+
+func owners(): List<String> {
+    return learner.owners_of(this)
+}

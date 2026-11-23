@@ -1,0 +1,12 @@
+var catalog = Catalog()
+var counted = 0
+
+func Tally(starting_catalog: Catalog) {
+    catalog = starting_catalog
+    var index = 0
+    while index < catalog.entries.count() {
+        counted = counted + 1
+        index = index + 1
+    }
+    crash counted > 0
+}
