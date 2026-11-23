@@ -1,0 +1,124 @@
+var console = Console()
+var program = Program()
+var seen = List<String>()
+var counts = List<Integer>()
+var kinds = Dictionary<String, String>()
+var mixed = List<String>()
+var last_site = ""
+var _rounds = 3
+
+func TextsComparedByAddress() {
+    var index = 0
+    while index < _rounds {
+        note("first site")
+        note("first site")
+        note("second site")
+        index = index + 1
+    }
+    var seen_count = seen.count()
+    var first_count = counts.first()
+    var last_count = counts.last()
+    console.print("seen:", seen_count, "first:", first_count, "last:", last_count)
+    kinds["a"] = "alpha"
+    kinds["b"] = "beta"
+    var is_alpha = is_kind("a", "alpha")
+    var is_beta = is_kind("a", "beta")
+    console.print("alpha found:", is_alpha, "beta found:", is_beta)
+    var repeated = remembered("first site")
+    var changed = remembered("second site")
+    console.print("repeated:", repeated, "changed:", changed)
+    var word = "site"
+    var built = "first {word}"
+    mixed.append("first site")
+    mixed.append(built)
+    var joined_equal = are_mixed_equal()
+    var joined_different = not joined_equal
+    console.print("joined equal:", joined_equal, "joined different:", joined_different)
+    var piece = built.slice(0, 5)
+    var slice_equal = piece == "first"
+    console.print("slice equal:", slice_equal)
+    var kept = positive(1)
+    var dropped = positive(-1)
+    var dropped_again = positive(-2)
+    console.print("positive:", kept, dropped, dropped_again)
+    var by_bytes = compared_byte_by_byte()
+    console.print("compared byte by byte:{by_bytes}")
+}
+
+func positive(value: Integer): Integer {
+    fallback value > 0
+    return value
+}
+
+func is_kind(key: String, kind: String): Boolean {
+    var found = kinds[key]
+    return found == kind
+}
+
+func are_mixed_equal(): Boolean {
+    var left = mixed.first()
+    var right = mixed.last()
+    return left == right
+}
+
+func compared_byte_by_byte(): String {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var text_path: Path? = low_path
+    crash text_path
+    var text = File(text_path).read_as_string()
+    crash text
+    var lines = text.split("\n")
+    var compared = ""
+    var function = ""
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.starts_with("function ") {
+            function = line
+        } else if line.contains("String._matches_at(") or line.contains("String.equals(") {
+            var name = named(function)
+            if not name.is_empty() and not compared.contains(name) {
+                compared = "{compared} {name}"
+            }
+        }
+        index = index + 1
+    }
+    return compared
+}
+
+func named(heading: String): String {
+    var names = ["note", "remembered", "is_kind", "are_mixed_equal"]
+    if heading.starts_with("function Spite.Asserts.failed:") {
+        return "Spite.Asserts.failed"
+    }
+    var index = 0
+    while index < names.count() {
+        var name = names[index]
+        if heading.starts_with("function TextsComparedByAddress.{name}:") {
+            return name
+        }
+        index = index + 1
+    }
+    return ""
+}
+
+func note(site: String) {
+    var newest = seen.last()
+    if newest == site {
+        var at = counts.count() - 1
+        var count = counts[at]
+        crash count
+        counts[at] = count + 1
+        return
+    }
+    seen.append(site)
+    counts.append(1)
+}
+
+func remembered(site: String): Boolean {
+    var same = last_site == site
+    last_site = site
+    return same or site == "first site"
+}
