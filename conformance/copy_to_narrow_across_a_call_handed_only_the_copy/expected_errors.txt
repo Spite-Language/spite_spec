@@ -1,0 +1,1 @@
+conformance/copy_to_narrow_across_a_call_handed_only_the_copy/copy_to_narrow_across_a_call_handed_only_the_copy.spite:10: fixed: 'inner' only copied 'holder.inner' so it could be narrowed; narrowed 'holder.inner' itself and used it directly (in CopyToNarrowAcrossACallHandedOnlyTheCopy.show_a_copy)

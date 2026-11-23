@@ -1,0 +1,18 @@
+var console = Console()
+
+func CopyToNarrowAcrossACallHandedOnlyTheCopy() {
+    var holder = Holder()
+    holder.inner = Inner()
+    show_a_copy(holder)
+}
+
+func show_a_copy(holder: Holder) {
+    fallback holder.inner
+    fill(holder.inner)
+    var is_empty = holder.inner.empty()
+    console.print(is_empty)
+}
+
+func fill(inner: Inner) {
+    inner.items.append(1)
+}

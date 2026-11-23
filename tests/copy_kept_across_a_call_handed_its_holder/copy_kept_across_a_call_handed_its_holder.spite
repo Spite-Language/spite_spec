@@ -1,0 +1,29 @@
+var console = Console()
+
+func CopyKeptAcrossACallHandedItsHolder() {
+    var holder = Holder()
+    holder.inner = Inner()
+    show_a_copy(holder)
+    show_a_check(holder)
+}
+
+func show_a_copy(holder: Holder) {
+    var inner = holder.inner
+    fallback inner
+    clean(holder)
+    var is_empty = inner.empty()
+    console.print(is_empty)
+}
+
+func show_a_check(holder: Holder) {
+    fallback holder.inner
+    clean(holder)
+    fallback holder.inner
+    var is_empty = holder.inner.empty()
+    console.print(is_empty)
+}
+
+func clean(holder: Holder) {
+    holder.cleaned = holder.cleaned + 1
+    console.print(holder.cleaned)
+}

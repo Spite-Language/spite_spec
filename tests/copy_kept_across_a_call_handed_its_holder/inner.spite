@@ -1,0 +1,5 @@
+var items = List<Integer>()
+
+func empty(): Boolean {
+    return items.is_empty()
+}
