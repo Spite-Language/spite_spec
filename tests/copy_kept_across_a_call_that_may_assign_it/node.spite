@@ -1,0 +1,4 @@
+var driver: Driver? = null
+var mounted = true
+var started = true
+var value = 4

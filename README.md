@@ -45,6 +45,12 @@ A test shares no file with another, so it can be read, changed or moved without 
 conformance program ported from the old repository keeps the old error text exactly: the new compiler must
 write the same words, and a conformance test that fails is a part of the port still to do.
 
+### A fixed program is compiled again
+
+A test whose compile prints a `fixed:` line is compiled again in its copy, which now holds the rewritten source. The
+second compile must fix nothing more and refuse nothing the first did not (the same words, at any line), so a fix
+never writes code the same compiler refuses (spite_compiler#666).
+
 ## The format
 
 A program has the standard library with no `load` line. The repositories sit side by side under one folder, as

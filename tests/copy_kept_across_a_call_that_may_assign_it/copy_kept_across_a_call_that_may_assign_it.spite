@@ -1,0 +1,30 @@
+var console = Console()
+var mounted = 0
+
+func CopyKeptAcrossACallThatMayAssignIt() {
+    var node = Node()
+    node.driver = Driver()
+    unmount(node)
+}
+
+func unmount(node: Node) {
+    console.print(node.mounted)
+    console.print(mounted)
+    var driver = node.driver
+    fallback driver
+    release_kept(node, driver)
+    fallback node.started
+    driver.disabled(node.value)
+    driver.destroyed(node.value)
+}
+
+func release_kept(node: Node, driver: Driver) {
+    if driver.count > 3 {
+        mount_component(node)
+    }
+}
+
+func mount_component(node: Node) {
+    node.driver = Driver()
+    mounted = mounted + 1
+}

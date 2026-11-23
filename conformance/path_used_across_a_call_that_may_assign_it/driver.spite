@@ -1,0 +1,11 @@
+var console = Console()
+
+var count = 1
+
+func disabled(value: Integer) {
+    count = count + value
+}
+
+func destroyed(value: Integer) {
+    console.print(count + value)
+}

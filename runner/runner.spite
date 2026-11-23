@@ -317,6 +317,11 @@ func run_test(folder: String) {
         return
     }
     fallback source_is_unchanged(folder, copy)
+    var output = compile.read_output_as_string()
+    crash output
+    var moved = in_the_folder(output, copy, folder)
+    var printed = cleaned(moved)
+    fallback fixed_source_checks_clean(folder, copy, "{flags} --build", printed)
     var built = build_moved_back(copy, folder)
     fallback built
     var executable = executable_of(folder)
@@ -475,7 +480,65 @@ func run_conformance(folder: String) {
         check_formatted_once(folder, copy, flags)
         return
     }
+    fallback fixed_source_checks_clean(folder, copy, flags, errors)
     passed = passed + 1
+}
+
+# ../README.md#a-fixed-program-is-compiled-again
+func fixed_source_checks_clean(folder: String, copy: String, flags: String, first: String): Boolean {
+    fallback first.contains(": fixed: ")
+    var no_arguments = List<String>()
+    var compiling = compiling_in(copy, flags)
+    var again = Process("{compiling} {flags} 2>&1 1>nul", no_arguments)
+    var compiled = again.run()
+    crash compiled
+    var output = again.read_output_as_string()
+    crash output
+    var moved = in_the_folder(output, copy, folder)
+    var printed = cleaned(moved)
+    var second = without_formatting(printed)
+    var refused_before = mistakes_of(first)
+    var lines = second.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var mistake = without_digits(line)
+        var is_new = not line.is_empty() and not refused_before.contains(mistake)
+        if line.contains(": fixed: ") or is_new {
+            fail(folder, "its fixed source, compiled again, was not taken as it is: {second}")
+            return false
+        }
+        index = index + 1
+    }
+    return true
+}
+
+func mistakes_of(printed: String): List<String> {
+    var mistakes = List<String>()
+    var lines = printed.split("\n")
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        var mistake = without_digits(line)
+        if not line.contains(": fixed: ") {
+            mistakes.append(mistake)
+        }
+        index = index + 1
+    }
+    return mistakes
+}
+
+# ../README.md#a-fixed-program-is-compiled-again
+func without_digits(line: String): String {
+    var digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    var bare = line
+    var index = 0
+    while index < digits.count() {
+        var digit = digits[index]
+        bare = bare.replace(digit, "")
+        index = index + 1
+    }
+    return bare
 }
 
 func built_only(folder: String): String {

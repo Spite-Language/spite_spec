@@ -1,0 +1,29 @@
+var console = Console()
+var mounted = 0
+
+func PathUsedAcrossACallThatMayAssignIt() {
+    var node = Node()
+    node.driver = Driver()
+    unmount(node)
+}
+
+func unmount(node: Node) {
+    console.print(node.mounted)
+    console.print(mounted)
+    fallback node.driver
+    release_kept(node, node.driver)
+    fallback node.started
+    node.driver.disabled(node.value)
+    node.driver.destroyed(node.value)
+}
+
+func release_kept(node: Node, driver: Driver) {
+    if driver.count > 3 {
+        mount_component(node)
+    }
+}
+
+func mount_component(node: Node) {
+    node.driver = Driver()
+    mounted = mounted + 1
+}
