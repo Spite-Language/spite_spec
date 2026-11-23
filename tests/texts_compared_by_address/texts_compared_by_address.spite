@@ -37,12 +37,23 @@ func TextsComparedByAddress() {
     var piece = built.slice(0, 5)
     var slice_equal = piece == "first"
     console.print("slice equal:", slice_equal)
+    var holder = Holder()
+    var held_folder = holder.folder
+    var resolved = resolved_folder(held_folder)
+    console.print("resolved:", resolved, holder.count)
     var kept = positive(1)
     var dropped = positive(-1)
     var dropped_again = positive(-2)
     console.print("positive:", kept, dropped, dropped_again)
     var by_bytes = compared_byte_by_byte()
     console.print("compared byte by byte:{by_bytes}")
+}
+
+func resolved_folder(given: String): String {
+    if given == "." {
+        return "working"
+    }
+    return given
 }
 
 func positive(value: Integer): Integer {

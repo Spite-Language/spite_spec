@@ -1,0 +1,6 @@
+var folder = "."
+var count: Integer
+
+func Holder() {
+    count = 3
+}
