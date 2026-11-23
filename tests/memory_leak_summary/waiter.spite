@@ -1,0 +1,9 @@
+var program = Program()
+var finished = false
+var _pause_milliseconds = 2
+
+func run() {
+    var pause = Duration(_pause_milliseconds, 'milliseconds')
+    program.sleep(pause)
+    finished = true
+}

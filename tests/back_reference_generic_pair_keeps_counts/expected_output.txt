@@ -1,8 +1,5 @@
 2 1 1
+child freed
+parent freed
 linked pair is out of reach
-spite: --debug-memory: 4 allocation(s) leaked
-  Buffer: 1 leaked object(s)
-  BackReferenceGenericPairKeepsCounts.Parent_of_Integer: 1 leaked object(s)
-  BackReferenceGenericPairKeepsCounts.Child_of_Integer: 1 leaked object(s)
-  List_of_BackReferenceGenericPairKeepsCounts_Child_of_Integer: 1 leaked object(s)
-allocations: 22 frees: 18
+allocations: 32 frees: 32

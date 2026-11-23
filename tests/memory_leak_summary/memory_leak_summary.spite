@@ -1,7 +1,18 @@
 var console = Console()
+var program = Program()
+var waiter = Waiter()
+var frames = 0
 
 func MemoryLeakSummary() {
     make_a_cycle()
+    var one_millisecond = Duration(1, 'milliseconds')
+    while not waiter.finished {
+        frames = frames + 1
+        if frames == 1 {
+            waiter.run()
+        }
+        program.sleep(one_millisecond)
+    }
     console.print("the cycle is out of reach")
 }
 

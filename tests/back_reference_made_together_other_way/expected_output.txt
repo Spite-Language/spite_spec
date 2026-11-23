@@ -1,9 +1,10 @@
 bee holds ay
+ay is freed
+bee is freed
 other replaced it
 ay two still holds bee two
 other is freed
+ay two is freed
+bee two is freed
 both pairs are out of reach
-spite: --debug-memory: 4 allocation(s) leaked
-  BackReferenceMadeTogetherOtherWay.Alpha: 2 leaked object(s)
-  BackReferenceMadeTogetherOtherWay.Beta: 2 leaked object(s)
-allocations: 39 frees: 35
+allocations: 65 frees: 65

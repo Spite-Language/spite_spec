@@ -1,6 +1,5 @@
 bee holds ay
 ay still holds bee
-spite: --debug-memory: 2 allocation(s) leaked
-  BackReferenceMadeTogetherLeaving.Alpha: 1 leaked object(s)
-  BackReferenceMadeTogetherLeaving.Beta: 1 leaked object(s)
-allocations: 20 frees: 18
+ay is freed
+bee is freed
+allocations: 32 frees: 32
