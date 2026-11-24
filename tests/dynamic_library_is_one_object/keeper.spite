@@ -1,1 +1,5 @@
 var library = DynamicLibrary("ucrtbase.dll", 'identity', "")
+
+func text_length(text: String): Integer {
+    return library.strlen(text)
+}

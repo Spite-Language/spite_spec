@@ -6,12 +6,24 @@ var heard = 1
 var _last = 9
 
 func Speaker() {
-    plain.keep_click(clicking.address)
+    keep_click(clicking.address)
 }
 
 func drop() {
     console.print("drop begins")
-    plain.click(_last)
-    plain.forget_click()
+    click(_last)
+    forget_click()
     console.print("drop ends")
+}
+
+func keep_click(click: Long) {
+    plain.keep_click(click)
+}
+
+func click(count: Integer) {
+    plain.click(count)
+}
+
+func forget_click() {
+    plain.forget_click()
 }

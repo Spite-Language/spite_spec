@@ -3,6 +3,10 @@ var fixture = DynamicLibrary("tests/foreign_fault_the_library_handles/fixture.dl
 
 func ForeignFaultTheLibraryHandles() {
     var nowhere: Long = 0
-    var answer = fixture.read_or_answer(nowhere)
+    var answer = read_or_answer(nowhere)
     console.print("the library handled its own fault", answer)
+}
+
+func read_or_answer(address: Long): Integer {
+    return fixture.read_or_answer(address)
 }

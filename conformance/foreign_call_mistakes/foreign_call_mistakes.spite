@@ -3,11 +3,15 @@ var library = DynamicLibrary("fixture.dll", 'identity', "")
 
 func ForeignCallMistakes() {
     call_through(library)
-    var stored = library.store(console)
+    var stored = store(console)
     console.print(stored, library.fixture_answer)
 }
 
 func call_through(passed: DynamicLibrary) {
     var sum = passed.add_numbers(1, 2)
     console.print(sum)
+}
+
+func store(value: Console): Integer {
+    return library.store(value)
 }

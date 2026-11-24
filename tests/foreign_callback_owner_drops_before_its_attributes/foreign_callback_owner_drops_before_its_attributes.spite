@@ -6,12 +6,16 @@ var _second = 2
 func ForeignCallbackOwnerDropsBeforeItsAttributes() {
     make_and_lose_a_speaker()
     console.print("the owner is gone")
-    plain.click(_second)
+    click(_second)
     console.print("C called nothing after the owner unregistered")
 }
 
 func make_and_lose_a_speaker() {
     var speaker = Speaker()
-    plain.click(_first)
+    click(_first)
     console.print("speaker made, clicked", speaker.heard)
+}
+
+func click(count: Integer) {
+    plain.click(count)
 }

@@ -5,7 +5,7 @@ var _ten = 10
 func ASplitCopyKeepsItsOwnInstructions() {
     var plain = Meter(false)
     var squared = Meter(true)
-    var start = library.labs(-1)
+    var start = long_magnitude(-1)
     measure(start, plain)
     measure(start, squared)
     console.print(plain.total, squared.total)
@@ -15,7 +15,7 @@ func measure(start: Integer, meter: Meter) {
     var index = start
     while index < _ten {
         var negative = 0 - index
-        var size = library.abs(negative)
+        var size = magnitude(negative)
         if meter.is_squared {
             meter.total = meter.total + size * size
         } else {
@@ -23,4 +23,12 @@ func measure(start: Integer, meter: Meter) {
         }
         index = index + 1
     }
+}
+
+func long_magnitude(value: Integer): Integer {
+    return library.labs(value)
+}
+
+func magnitude(value: Integer): Integer {
+    return library.abs(value)
 }

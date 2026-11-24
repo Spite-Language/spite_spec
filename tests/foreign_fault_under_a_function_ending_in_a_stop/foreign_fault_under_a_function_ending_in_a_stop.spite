@@ -5,6 +5,10 @@ var adding = ForeignCallback(adder.add_one, 'no_context')
 
 func ForeignFaultUnderAFunctionEndingInAStop() {
     console.print("before the fault")
-    var answer = fixture.call_back_guarded(adding.address)
+    var answer = call_back_guarded(adding.address)
     console.print("never printed", answer)
+}
+
+func call_back_guarded(callback: Long): Integer {
+    return fixture.call_back_guarded(callback)
 }

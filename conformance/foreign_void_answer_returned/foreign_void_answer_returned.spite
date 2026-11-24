@@ -2,10 +2,10 @@ var console = Console()
 var windows = DynamicLibrary("fixture.dll", 'windows', "fixture.h")
 
 func ForeignVoidAnswerReturned() {
-    var answer = forgotten()
+    var answer = forgotten(2)
     console.print(answer)
 }
 
-func forgotten(): Long {
-    return windows.quiet_forget_as_long(2)
+func forgotten(value: Integer): Long {
+    return windows.quiet_forget_as_long(value)
 }

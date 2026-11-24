@@ -19,18 +19,18 @@ func Child(starting_folder: String, starting_output_path: String) {
 
 func start(command: String): Boolean {
     var no_value: Long = 0
-    job = kernel.CreateJobObjectA_as_long(no_value, no_value)
+    job = create_job_object(no_value, no_value)
     fallback job != 0
     var limits = zeroed(limit_size)
     limits.write_integer_little_endian_at(16, kills_on_close)
-    kernel.SetInformationJobObject(job, extended_limits, limits, limit_size)
+    set_information_job_object(job, extended_limits, limits, limit_size)
     var line = command.to_buffer()
     var ending: Byte = 0
     line.append(ending)
     var startup = zeroed(startup_size)
     startup.write_integer_little_endian_at(0, startup_size)
     var information = zeroed(information_size)
-    var made = kernel.CreateProcessA(
+    var made = create_process(
         no_value,
         line,
         no_value,
@@ -47,10 +47,10 @@ func start(command: String): Boolean {
     var made_thread = information.read_long_little_endian_at(8)
     crash made_process and made_thread
     process = made_process
-    kernel.AssignProcessToJobObject(job, process)
-    kernel.ResumeThread(made_thread)
-    kernel.CloseHandle(made_thread)
-    started = kernel.GetTickCount64_as_long()
+    assign_process_to_job_object(job, process)
+    resume_thread(made_thread)
+    close_handle(made_thread)
+    started = tick_count()
     return true
 }
 
@@ -66,18 +66,18 @@ func zeroed(size: Integer): Buffer {
 }
 
 func has_finished(): Boolean {
-    var waited = kernel.WaitForSingleObject(process, 0)
+    var waited = wait_for_single_object(process, 0)
     return waited == finished_waiting
 }
 
 func seconds_running(): Long {
-    var now = kernel.GetTickCount64_as_long()
+    var now = tick_count()
     return (now - started) / 1000
 }
 
 func exit_code(): Integer {
     var answer = zeroed(4)
-    var read = kernel.GetExitCodeProcess(process, answer)
+    var read = exit_code_of_process(process, answer)
     crash read != 0
     var code = answer.read_integer_little_endian_at(0)
     crash code
@@ -85,11 +85,66 @@ func exit_code(): Integer {
 }
 
 func stop() {
-    kernel.TerminateJobObject(job, 1)
-    kernel.WaitForSingleObject(process, -1)
+    terminate_job_object(job, 1)
+    wait_for_process(process, -1)
 }
 
 func close() {
-    kernel.CloseHandle(process)
-    kernel.CloseHandle(job)
+    close_handle(process)
+    close_handle(job)
+}
+
+func create_job_object(security: Long, name: Long): Long {
+    return kernel.CreateJobObjectA_as_long(security, name)
+}
+
+func set_information_job_object(job: Long, kind: Integer, information: Buffer, size: Integer){
+    kernel.SetInformationJobObject(job, kind, information, size)
+}
+
+func create_process(
+    application: Long,
+    command_line: Buffer,
+    process_security: Long,
+    thread_security: Long,
+    inherits_handles: Integer,
+    flags: Integer,
+    environment: Long,
+    directory: Long,
+    startup: Buffer,
+    information: Buffer,
+): Integer {
+    return kernel.CreateProcessA(application, command_line, process_security, thread_security, inherits_handles, flags, environment, directory, startup, information)
+}
+
+func assign_process_to_job_object(job: Long, process: Long){
+    kernel.AssignProcessToJobObject(job, process)
+}
+
+func resume_thread(thread: Long){
+    kernel.ResumeThread(thread)
+}
+
+func close_handle(handle: Long){
+    kernel.CloseHandle(handle)
+}
+
+func tick_count(): Long {
+    return kernel.GetTickCount64_as_long()
+}
+
+func wait_for_single_object(handle: Long, milliseconds: Integer): Integer {
+    return kernel.WaitForSingleObject(handle, milliseconds)
+}
+
+func exit_code_of_process(process: Long, exit_code: Buffer): Integer {
+    return kernel.GetExitCodeProcess(process, exit_code)
+}
+
+func terminate_job_object(job: Long, exit_code: Integer){
+    kernel.TerminateJobObject(job, exit_code)
+}
+
+func wait_for_process(handle: Long, milliseconds: Integer) {
+    kernel.WaitForSingleObject(handle, milliseconds)
 }

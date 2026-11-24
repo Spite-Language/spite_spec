@@ -7,5 +7,9 @@ func NativeFaultIllegal() {
 }
 
 func halt() {
+    stop_here()
+}
+
+func stop_here(){
     fixture.stop_here()
 }

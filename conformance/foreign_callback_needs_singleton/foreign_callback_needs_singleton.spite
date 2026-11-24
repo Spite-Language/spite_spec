@@ -3,5 +3,9 @@ var library = DynamicLibrary("fixture.dll", 'identity', "")
 func ForeignCallbackNeedsSingleton() {
     var counter = Counter()
     var calling = ForeignCallback(counter.counted, 'no_context')
-    library.keep(calling.address)
+    keep(calling.address)
+}
+
+func keep(procedure: Long) {
+    library.keep(procedure)
 }

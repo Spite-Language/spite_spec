@@ -5,11 +5,19 @@ var clicks = Clicks()
 func ForeignCallbackDropped() {
     keep_and_click()
     console.print("the callback is dropped")
-    plain.click(3)
+    click(3)
 }
 
 func keep_and_click() {
     var clicking = ForeignCallback(clicks.clicked, 'no_context')
-    plain.keep_click(clicking.address)
-    plain.click(1)
+    keep_click(clicking.address)
+    click(1)
+}
+
+func keep_click(click: Long) {
+    plain.keep_click(click)
+}
+
+func click(count: Integer) {
+    plain.click(count)
 }

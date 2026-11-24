@@ -8,6 +8,10 @@ var library = DynamicLibrary("fixture.dll", 'identity', "")
 
 func ForeignTypeWithText() {
     var labelled: Labelled = {label: "one", count: 1}
-    var stored = library.store(labelled)
+    var stored = store(labelled)
     console.print(stored)
+}
+
+func store(labelled: Labelled): Integer {
+    return library.store(labelled)
 }

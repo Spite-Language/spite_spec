@@ -6,12 +6,16 @@ var _second = 2
 func ForeignCallbackKeptByItsOwnerIsFreed() {
     listen_and_let_go()
     console.print("the listener is gone")
-    plain.tick(_second)
+    tick(_second)
     console.print("C called nothing after the listener unregistered")
 }
 
 func listen_and_let_go() {
     var listener = Listener("first")
-    plain.tick(_first)
+    tick(_first)
     console.print(listener.name, "heard", listener.heard)
+}
+
+func tick(count: Integer) {
+    plain.tick(count)
 }

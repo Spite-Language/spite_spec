@@ -22,7 +22,7 @@ func buffer_is_filled_by_c() {
         index = index + 1
     }
     var count = bytes.count()
-    var filled = plain.fill_bytes(bytes, count)
+    var filled = fill_bytes(bytes, count)
     var first = bytes[0]
     var last = bytes[3]
     crash first
@@ -34,17 +34,17 @@ func boolean_and_enum_arguments() {
     var yes = true
     var no = false
     var loud: Mode = 'loud'
-    var chosen_yes = plain.choose(yes)
-    var chosen_no = plain.choose(no)
-    var loudness = plain.mode_number(loud)
+    var chosen_yes = choose(yes)
+    var chosen_no = choose(no)
+    var loudness = mode_number(loud)
     console.print("Boolean arguments", chosen_yes, chosen_no, "enum argument", loudness)
 }
 
 func floats_without_a_header() {
     var narrow: Float = 2.5
     var wide: Double = 2.5
-    var from_float = plain.whole_of_float(narrow)
-    var from_double = plain.whole_of_double(wide)
+    var from_float = whole_of_float(narrow)
+    var from_double = whole_of_double(wide)
     console.print("a Float and a Double each pass as themselves:", from_float, from_double)
 }
 
@@ -55,7 +55,42 @@ func widths_with_a_header() {
     var port: UnsignedShort = UnsignedShort.Largest()
     var big: UnsignedInteger = UnsignedInteger.Largest()
     var huge: UnsignedLong = 5
-    var added = windows.widths_added_as_long(tiny, small, byte, port, big, huge)
-    windows.forget(1)
+    var added = widths_added(tiny, small, byte, port, big, huge)
+    forget(1)
     console.print("each width reaches its C type:", added)
+}
+
+func fill_bytes(bytes: Buffer, count: Integer): Integer {
+    return plain.fill_bytes(bytes, count)
+}
+
+func choose(chosen: Boolean): Integer {
+    return plain.choose(chosen)
+}
+
+func mode_number(mode: Mode): Integer {
+    return plain.mode_number(mode)
+}
+
+func whole_of_float(value: Float): Integer {
+    return plain.whole_of_float(value)
+}
+
+func whole_of_double(value: Double): Integer {
+    return plain.whole_of_double(value)
+}
+
+func widths_added(
+    tiny: Tiny,
+    small: Short,
+    byte: Byte,
+    port: UnsignedShort,
+    big: UnsignedInteger,
+    huge: UnsignedLong,
+): Long {
+    return windows.widths_added_as_long(tiny, small, byte, port, big, huge)
+}
+
+func forget(value: Integer) {
+    windows.forget(value)
 }

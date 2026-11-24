@@ -5,7 +5,7 @@ var _two = 2
 var _three = 3
 
 func ForeignCallWithoutCallbacksCarriesNoTrampoline() {
-    var sum = fixture.add_numbers(_two, _three)
+    var sum = add_numbers(_two, _three)
     console.print("the foreign call answered", sum)
     var path = program.executable_path()
     crash path
@@ -34,4 +34,8 @@ func ForeignCallWithoutCallbacksCarriesNoTrampoline() {
     }
     console.print("the called symbol is looked up in the build:", foreign_symbols > 0)
     console.print("trampolines:", trampolines, "callback class functions:", callback_classes)
+}
+
+func add_numbers(first: Integer, second: Integer): Integer {
+    return fixture.add_numbers(first, second)
 }

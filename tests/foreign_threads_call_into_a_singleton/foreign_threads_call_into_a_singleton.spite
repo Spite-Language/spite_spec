@@ -6,6 +6,10 @@ var _threads = 4
 var _calls = 5000
 
 func ForeignThreadsCallIntoASingleton() {
-    fixture.hit_from_threads(_threads, _calls, counting.address)
+    hit_from_threads(_threads, _calls, counting.address)
     console.print("no call was lost:", hits.total)
+}
+
+func hit_from_threads(threads: Integer, calls: Integer, hit: Long) {
+    fixture.hit_from_threads(threads, calls, hit)
 }

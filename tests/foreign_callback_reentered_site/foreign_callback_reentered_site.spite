@@ -8,6 +8,10 @@ func ForeignCallbackReenteredSite() {
 
 func count_down(value: Integer): Integer {
     fallback value > 0
-    var below = library.call_with(value - 1, count_down)
+    var below = call_with(value - 1, count_down)
     return below + value
+}
+
+func call_with(value: Integer, function: Spite.Function<Integer, Integer>): Integer {
+    return library.call_with(value, function)
 }

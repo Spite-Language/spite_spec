@@ -8,6 +8,10 @@ var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
 
 func ForeignTypeWithAList() {
     var labelled: Labelled = Tray()
-    var sum = c_runtime.strlen(labelled)
+    var sum = length_of(labelled)
     console.print(sum)
+}
+
+func length_of(labelled: Labelled): Integer {
+    return c_runtime.strlen(labelled)
 }

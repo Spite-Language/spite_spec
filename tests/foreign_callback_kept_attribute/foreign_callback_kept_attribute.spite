@@ -4,11 +4,19 @@ var clicking: ForeignCallback? = null
 
 func ForeignCallbackKeptAttribute() {
     hand_over()
-    plain.click(4)
+    click(4)
 }
 
 func hand_over() {
     var made = ForeignCallback(clicks.clicked, 'no_context')
-    plain.keep_click(made.address)
+    keep_click(made.address)
     clicking = made
+}
+
+func keep_click(click: Long) {
+    plain.keep_click(click)
+}
+
+func click(count: Integer) {
+    plain.click(count)
 }

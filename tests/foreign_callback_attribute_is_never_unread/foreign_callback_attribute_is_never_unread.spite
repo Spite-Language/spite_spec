@@ -5,11 +5,19 @@ var _count = 4
 
 func ForeignCallbackAttributeIsNeverUnread() {
     hand_over()
-    plain.click(_count)
+    click(_count)
 }
 
 func hand_over() {
     var made = ForeignCallback(clicks.clicked, 'no_context')
-    plain.keep_click(made.address)
+    keep_click(made.address)
     clicking = made
+}
+
+func keep_click(click: Long) {
+    plain.keep_click(click)
+}
+
+func click(count: Integer) {
+    plain.click(count)
 }

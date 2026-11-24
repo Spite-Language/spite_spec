@@ -3,6 +3,10 @@ var absent = DynamicLibrary("tests/foreign_missing_library/absent.dll", 'identit
 
 func ForeignMissingLibrary() {
     console.print("before the library is used")
-    absent.click(1)
+    click(1)
     console.print("never printed")
+}
+
+func click(times: Integer) {
+    absent.click(times)
 }

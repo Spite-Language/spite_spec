@@ -7,12 +7,20 @@ func ForeignCallbackKeptElsewhereKeepsItsOwner() {
     var keeper = Keeper()
     listen_and_hand_over(keeper)
     console.print("the keeper holds", keeper.count, "callback")
-    plain.tick(_second)
-    plain.forget_tick()
+    tick(_second)
+    forget_tick()
 }
 
 func listen_and_hand_over(keeper: Keeper) {
     var listener = Listener("first")
     listener.hand_to(keeper)
-    plain.tick(_first)
+    tick(_first)
+}
+
+func tick(count: Integer) {
+    plain.tick(count)
+}
+
+func forget_tick() {
+    plain.forget_tick()
 }

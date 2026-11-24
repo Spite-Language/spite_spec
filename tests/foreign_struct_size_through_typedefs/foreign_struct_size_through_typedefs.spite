@@ -8,6 +8,10 @@ var windows = DynamicLibrary("tests/foreign_struct_size_through_typedefs/fixture
 
 func ForeignStructSizeThroughTypedefs() {
     var spot: PointPair = {down: 1, across: 2}
-    windows.move_point(spot)
+    move_point(spot)
     console.print("a struct named through a pointer typedef measures the same:", spot.down, spot.across)
+}
+
+func move_point(point: PointPair) {
+    windows.move_point(point)
 }

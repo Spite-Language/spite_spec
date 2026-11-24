@@ -7,9 +7,17 @@ var _first_voice = 7
 var _second_voice = 9
 
 func ForeignComTableFromAnotherThread() {
-    fixture.keep_table(starting.address, ending.address)
-    fixture.play_on_a_thread(_first_voice)
-    fixture.play_on_a_thread(_second_voice)
+    keep_table(starting.address, ending.address)
+    play_on_a_thread(_first_voice)
+    play_on_a_thread(_second_voice)
     console.print("the table's entries were called:", voices.started_count, voices.ended_count)
     console.print("the second entry got its buffer:", voices.last_buffer)
+}
+
+func keep_table(started: Long, ended: Long) {
+    fixture.keep_table(started, ended)
+}
+
+func play_on_a_thread(voice: Integer) {
+    fixture.play_on_a_thread(voice)
 }

@@ -11,7 +11,7 @@ var _links = 100000
 func work() {
     var pause = Duration(1, 'milliseconds')
     program.sleep(pause)
-    fixture.start_later(blocking.address)
+    start_later(blocking.address)
     var turned = turned_over()
     var head = Link(null, turned)
     var index = 0
@@ -31,4 +31,8 @@ func turned_over(): Integer {
         round = round + 1
     }
     return sum
+}
+
+func start_later(callback: Long) {
+    fixture.start_later(callback)
 }

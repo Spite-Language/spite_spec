@@ -7,6 +7,10 @@ var _calls = 2000
 func ForeignCallbacksCountReferencesAtomically() {
     var ledger = Ledger("ledger")
     var reporting = ForeignCallback(ledger.report, 'context_first')
-    fixture.report_from_threads(_threads, _calls, reporting.address, reporting.context)
+    report_from_threads(_threads, _calls, reporting.address, reporting.context)
     console.print("no call was lost:", hits.total)
+}
+
+func report_from_threads(threads: Integer, calls: Integer, report: Long, context: Long) {
+    fixture.report_from_threads(threads, calls, report, context)
 }

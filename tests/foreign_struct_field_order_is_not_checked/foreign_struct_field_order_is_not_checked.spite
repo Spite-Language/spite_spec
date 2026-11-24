@@ -8,6 +8,10 @@ var windows = DynamicLibrary("tests/foreign_struct_field_order_is_not_checked/fi
 
 func ForeignStructFieldOrderIsNotChecked() {
     var spot: PointPair = Spot()
-    windows.move_point(spot)
+    move_point(spot)
     console.print("C moved the first field by 10 and the second by 20:", spot.down, spot.across)
+}
+
+func move_point(point: PointPair) {
+    windows.move_point(point)
 }

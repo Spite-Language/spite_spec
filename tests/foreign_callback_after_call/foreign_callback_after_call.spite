@@ -2,11 +2,19 @@ var console = Console()
 var plain = DynamicLibrary("tests/foreign_callback_after_call/fixture.dll", 'identity', "")
 
 func ForeignCallbackAfterCall() {
-    plain.keep_click(clicked)
+    keep_click(clicked)
     console.print("the call that handed it over has returned")
-    plain.click(2)
+    click(2)
 }
 
 func clicked(count: Integer) {
     console.print("clicked", count)
+}
+
+func keep_click(click: Spite.Function<Integer, Nothing>) {
+    plain.keep_click(click)
+}
+
+func click(count: Integer) {
+    plain.click(count)
 }

@@ -3,12 +3,20 @@ var windows = DynamicLibrary("tests/foreign_float_argument/fixture.dll", 'window
 
 func ForeignFloatArgument() {
     var factor: Float = 1.5
-    var from_a_float = windows.scaled(factor, 4)
-    var from_a_literal = windows.scaled(2.5, 4)
+    var from_a_float = scaled(factor, 4)
+    var from_a_literal = scaled(2.5, 4)
     var wide: Double = 0.25
     var single: Float? = wide
     crash single
-    var from_a_double = windows.scaled(single, 8)
-    var declared_sum = windows.wide_sum_as_long(-1, 3)
+    var from_a_double = scaled(single, 8)
+    var declared_sum = wide_sum(-1, 3)
     console.print(from_a_float, from_a_literal, from_a_double, declared_sum)
+}
+
+func scaled(factor: Float, count: Integer): Integer {
+    return windows.scaled(factor, count)
+}
+
+func wide_sum(first: Long, second: UnsignedLong): Long {
+    return windows.wide_sum_as_long(first, second)
 }

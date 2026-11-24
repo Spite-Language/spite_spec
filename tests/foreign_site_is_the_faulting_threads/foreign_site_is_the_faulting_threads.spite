@@ -7,7 +7,7 @@ var _kept = 2
 
 func ForeignSiteIsTheFaultingThreads() {
     console.print("before the fault")
-    fixture.start_later(blocking.address)
+    start_later(blocking.address)
     var turned = turned_over()
     var depth = descend(turned)
     console.print(depth)
@@ -28,4 +28,8 @@ func descend(depth: Integer): Integer {
         return -1
     }
     return descend(depth + 1) + 1
+}
+
+func start_later(callback: Long) {
+    fixture.start_later(callback)
 }

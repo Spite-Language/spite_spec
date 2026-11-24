@@ -3,5 +3,9 @@ singleton
 var fixture = DynamicLibrary("tests/native_fault_in_a_routine_from_a_resumable_function/fixture.dll", 'identity', "")
 
 func block() {
+    block_forever()
+}
+
+func block_forever() {
     fixture.block_forever()
 }

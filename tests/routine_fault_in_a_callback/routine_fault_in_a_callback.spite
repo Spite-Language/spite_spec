@@ -5,6 +5,10 @@ var filling = ForeignCallback(filler.fill, 'no_context')
 
 func RoutineFaultInACallback() {
     console.print("before the fault")
-    fixture.call_back_broken(filling.address)
+    call_back_broken(filling.address)
     console.print("never printed")
+}
+
+func call_back_broken(callback: Long) {
+    fixture.call_back_broken(callback)
 }

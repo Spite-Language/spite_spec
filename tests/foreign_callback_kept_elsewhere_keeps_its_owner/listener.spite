@@ -7,7 +7,7 @@ func Listener(starting_name: String) {
     name = starting_name
     var ticking = ForeignCallback(ticked, 'context_last')
     _ticking = ticking
-    plain.keep_tick(ticking.address, ticking.context)
+    keep_tick(ticking.address, ticking.context)
 }
 
 func hand_to(keeper: Keeper) {
@@ -17,4 +17,8 @@ func hand_to(keeper: Keeper) {
 
 func ticked(count: Integer) {
     console.print(name, "ticked", count)
+}
+
+func keep_tick(tick: Long, context: Long) {
+    plain.keep_tick(tick, context)
 }

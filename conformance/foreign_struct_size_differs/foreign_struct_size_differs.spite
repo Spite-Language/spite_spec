@@ -9,6 +9,10 @@ var windows = DynamicLibrary("conformance/foreign_struct_size_differs/fixture.dl
 
 func ForeignStructSizeDiffers() {
     var spot: PointPair = {down: 0, across: 0, depth: 0}
-    windows.move_point(spot)
+    move_point(spot)
     console.print(spot.down, spot.across, spot.depth)
+}
+
+func move_point(point: PointPair) {
+    windows.move_point(point)
 }

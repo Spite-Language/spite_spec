@@ -146,7 +146,7 @@ func finish_one(child: Child) {
 func make_the_runner_folder() {
     make_a_folder(".spite")
     make_a_folder(runners_folder)
-    var process_id = kernel.GetCurrentProcessId()
+    var process_id = current_process_identifier()
     runner_folder = "{runners_folder}/{process_id}"
     remove_the_runner_folder()
     make_a_folder(runner_folder)
@@ -771,4 +771,8 @@ func fail(folder: String, why: String) {
     failed_folders.append(folder)
     console.print("FAILED {folder}: {why}")
     failed = failed + 1
+}
+
+func current_process_identifier(): Integer {
+    return kernel.GetCurrentProcessId()
 }

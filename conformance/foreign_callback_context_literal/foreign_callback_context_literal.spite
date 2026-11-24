@@ -3,5 +3,9 @@ var counter = Counter()
 
 func ForeignCallbackContextLiteral() {
     var calling = ForeignCallback(counter.counted, 'somewhere')
-    library.keep(calling.address)
+    keep(calling.address)
+}
+
+func keep(procedure: Long) {
+    library.keep(procedure)
 }

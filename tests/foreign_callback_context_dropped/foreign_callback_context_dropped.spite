@@ -6,12 +6,20 @@ func ForeignCallbackContextDropped() {
     var second = Ticker("second")
     var replacing = ForeignCallback(second.ticked, 'context_last')
     console.print("the first callback is dropped and its place is taken", replacing.address != 0)
-    plain.tick(2)
+    tick(2)
 }
 
 func keep_and_tick() {
     var first = Ticker("first")
     var ticking = ForeignCallback(first.ticked, 'context_last')
-    plain.keep_tick(ticking.address, ticking.context)
-    plain.tick(1)
+    keep_tick(ticking.address, ticking.context)
+    tick(1)
+}
+
+func keep_tick(tick: Long, context: Long) {
+    plain.keep_tick(tick, context)
+}
+
+func tick(count: Integer) {
+    plain.tick(count)
 }

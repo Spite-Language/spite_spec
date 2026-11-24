@@ -3,5 +3,9 @@ var library = DynamicLibrary("fixture.dll", 'identity', "")
 func ForeignCallbackThreadReachThroughACall() {
     var recorder = Recorder()
     var calling = ForeignCallback(recorder.marked, 'context_first')
-    library.keep(calling.address, calling.context)
+    keep(calling.address, calling.context)
+}
+
+func keep(procedure: Long, context: Long) {
+    library.keep(procedure, context)
 }

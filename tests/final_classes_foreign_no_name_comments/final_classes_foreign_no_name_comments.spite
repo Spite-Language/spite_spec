@@ -5,7 +5,7 @@ var _two = 2
 var _three = 3
 
 func FinalClassesForeignNoNameComments() {
-    var sum = fixture.add_numbers(_two, _three)
+    var sum = add_numbers(_two, _three)
     console.print("the call answered", sum)
     var printed_path: Path? = "{build.program}/.spite/final_classes_foreign_no_name_comments/dynamic_library.spite"
     crash printed_path
@@ -16,4 +16,8 @@ func FinalClassesForeignNoNameComments() {
     var has_a_comment = text.contains("resolved")
     console.print("the class was printed with its own functions:", has_its_functions)
     console.print("a resolved name is written as a comment:", has_a_comment)
+}
+
+func add_numbers(first: Integer, second: Integer): Integer {
+    return fixture.add_numbers(first, second)
 }

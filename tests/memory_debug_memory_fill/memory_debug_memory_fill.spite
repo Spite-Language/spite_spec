@@ -25,7 +25,7 @@ func MemoryDebugMemoryFill() {
     crash tail
     console.print("kept", kept, "grown tail", tail)
     var joined = "count {index}"
-    var counted = c_runtime.strlen(joined)
+    var counted = length_of(joined)
     console.print("a joined text ends where its bytes end:", counted)
     var words = List<String>()
     words.insert(0, "second")
@@ -34,4 +34,8 @@ func MemoryDebugMemoryFill() {
     words.insert(2, "third")
     var listed = words.join(" ")
     console.print(listed)
+}
+
+func length_of(text: String): Integer {
+    return c_runtime.strlen(text)
 }

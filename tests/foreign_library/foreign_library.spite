@@ -10,38 +10,102 @@ var headerless = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', 
 var windows = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', "fixture.h")
 
 func ForeignLibrary() {
-    var add_numbers = plain.add_numbers(2, 3)
-    var multiply_numbers = camel.multiply_numbers(4, 5)
-    var windows_answer_position = headerless.get_answer_position()
+    var add_numbers = sum_of_numbers(2, 3)
+    var multiply_numbers = product_of_numbers(4, 5)
+    var windows_answer_position = answer_position()
     console.print(add_numbers, multiply_numbers, windows_answer_position)
-    var half_of_as_double = plain.half_of_as_double(7)
-    var big_number_as_long = plain.big_number_as_long()
-    var greeting_as_text = plain.greeting_as_text()
+    var half_of_as_double = half_of(7)
+    var big_number_as_long = big_number()
+    var greeting_as_text = greeting()
     console.print(half_of_as_double, big_number_as_long, greeting_as_text)
-    var text_length = plain.text_length("spite")
+    var text_length = length_of("spite")
     console.print(text_length, windows.fixture_answer, windows.fixture_limit)
     var spot: PointPair = Spot()
-    var sum_point = plain.sum_point(spot)
+    var sum_point = point_sum(spot)
     console.print(sum_point)
-    windows.move_point(spot)
+    move_point(spot)
     console.print(spot.across, spot.down)
     var values = [1, 2, 3]
     var values_count = values.count()
-    var sum_values = plain.sum_values(values, values_count)
+    var sum_values = values_sum(values, values_count)
     console.print(sum_values)
     values_count = values.count()
-    plain.double_values(values, values_count)
+    double_values(values, values_count)
     var joined_values = values.join(",")
     console.print(joined_values)
     wide_arguments()
 }
 
 func wide_arguments() {
-    var guessed_sum = plain.wide_sum_as_long(-1, 0)
-    var declared_sum = windows.wide_sum_as_long(-1, 3)
-    var scaled = windows.scaled(1.5, 4)
+    var guessed_sum = guessed_wide_sum(-1, 0)
+    var declared_sum = declared_wide_sum(-1, 3)
+    var scaled = scaled_value(1.5, 4)
     var handle: Long = 21
-    var handle_twice = windows.handle_twice_as_long(handle)
-    windows.forget(1)
+    var handle_twice = doubled_handle(handle)
+    forget(1)
     console.print(guessed_sum, declared_sum, scaled, handle_twice)
+}
+
+func sum_of_numbers(first: Integer, second: Integer): Integer {
+    return plain.add_numbers(first, second)
+}
+
+func product_of_numbers(first: Integer, second: Integer): Integer {
+    return camel.multiply_numbers(first, second)
+}
+
+func answer_position(): Integer {
+    return headerless.get_answer_position()
+}
+
+func half_of(value: Integer): Double {
+    return plain.half_of_as_double(value)
+}
+
+func big_number(): Long {
+    return plain.big_number_as_long()
+}
+
+func greeting(): String {
+    return plain.greeting_as_text()
+}
+
+func length_of(text: String): Integer {
+    return plain.text_length(text)
+}
+
+func point_sum(point: PointPair): Integer {
+    return plain.sum_point(point)
+}
+
+func move_point(point: PointPair) {
+    windows.move_point(point)
+}
+
+func values_sum(values: List<Integer>, count: Integer): Integer {
+    return plain.sum_values(values, count)
+}
+
+func double_values(values: List<Integer>, count: Integer) {
+    plain.double_values(values, count)
+}
+
+func guessed_wide_sum(first: Long, second: Long): Long {
+    return plain.wide_sum_as_long(first, second)
+}
+
+func declared_wide_sum(first: Long, second: UnsignedLong): Long {
+    return windows.wide_sum_as_long(first, second)
+}
+
+func scaled_value(factor: Float, value: Integer): Integer {
+    return windows.scaled(factor, value)
+}
+
+func doubled_handle(handle: Long): Long {
+    return windows.handle_twice_as_long(handle)
+}
+
+func forget(value: Integer) {
+    windows.forget(value)
 }

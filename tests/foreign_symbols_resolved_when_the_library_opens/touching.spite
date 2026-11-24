@@ -1,6 +1,14 @@
 var library = DynamicLibrary("tests/foreign_symbols_resolved_when_the_library_opens/fixture.dll", 'identity', "")
 
 func touch_then_ask_for_another() {
+    touch()
+    absent_symbol()
+}
+
+func touch(){
     library.touch()
+}
+
+func absent_symbol() {
     library.absent_symbol()
 }

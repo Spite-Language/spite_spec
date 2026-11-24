@@ -9,8 +9,16 @@ func DynamicLibraryIsOneObject() {
     var kept = keeper.library
     console.print(first == second, first == kept, first == other_rule, first == other_file)
     console.print(first.handle == other_file.handle, first.file_name)
-    var text_length = kept.strlen("spite")
-    var text_size = other_rule.strlen("spite")
-    var process = other_file.GetCurrentProcessId()
+    var text_length = keeper.text_length("spite")
+    var text_size = size_of("spite")
+    var process = current_process_identifier()
     console.print(text_length, text_size, process > 0)
+}
+
+func size_of(text: String): Integer {
+    return other_rule.strlen(text)
+}
+
+func current_process_identifier(): Integer {
+    return other_file.GetCurrentProcessId()
 }

@@ -8,33 +8,33 @@ func ForeignCallbackMistakes() {
     not_a_singleton()
     text_from_c()
     shared_list()
-    library.each_name(named)
+    each_name(named)
 }
 
 func through_a_variable() {
     var chosen = counted
     var calling = ForeignCallback(chosen, 'no_context')
-    library.keep(calling.address)
+    keep(calling.address)
 }
 
 func nowhere() {
     var calling = ForeignCallback(counted, 'somewhere')
-    library.keep(calling.address)
+    keep(calling.address)
 }
 
 func not_a_singleton() {
     var calling = ForeignCallback(counted, 'no_context')
-    library.keep(calling.address)
+    keep(calling.address)
 }
 
 func text_from_c() {
     var calling = ForeignCallback(named, 'context_last')
-    library.keep(calling.address, calling.context)
+    keep_with_context(calling.address, calling.context)
 }
 
 func shared_list() {
     var calling = ForeignCallback(marked, 'context_first')
-    library.keep(calling.address, calling.context)
+    keep_with_context(calling.address, calling.context)
 }
 
 func counted(value: Integer): Integer {
@@ -47,4 +47,16 @@ func named(name: String) {
 
 func marked(value: Integer) {
     marks.append(value)
+}
+
+func keep(procedure: Long) {
+    library.keep(procedure)
+}
+
+func keep_with_context(procedure: Long, context: Long) {
+    library.keep(procedure, context)
+}
+
+func each_name(each: Spite.Function<String, Nothing>) {
+    library.each_name(each)
 }

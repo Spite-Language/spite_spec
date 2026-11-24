@@ -3,9 +3,17 @@ var clicks = Clicks()
 
 func ForeignCallbackSecondAlive() {
     var first = ForeignCallback(clicks.clicked, 'no_context')
-    plain.keep_click(first.address)
-    plain.click(1)
+    keep_click(first.address)
+    click(1)
     var second = ForeignCallback(clicks.clicked, 'no_context')
-    plain.keep_click(second.address)
-    plain.click(2)
+    keep_click(second.address)
+    click(2)
+}
+
+func keep_click(click: Long) {
+    plain.keep_click(click)
+}
+
+func click(count: Integer) {
+    plain.click(count)
 }

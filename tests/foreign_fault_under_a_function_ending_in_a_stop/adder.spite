@@ -4,7 +4,11 @@ var console = Console()
 var fixture = DynamicLibrary("tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll", 'identity', "")
 
 func add_one() {
-    var largest = fixture.largest_integer()
+    var largest = largest_integer()
     var bigger = largest + 1
     console.print(bigger)
+}
+
+func largest_integer(): Integer {
+    return fixture.largest_integer()
 }

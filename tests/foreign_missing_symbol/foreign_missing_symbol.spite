@@ -3,6 +3,10 @@ var plain = DynamicLibrary("tests/foreign_missing_symbol/fixture.dll", 'identity
 
 func ForeignMissingSymbol() {
     console.print("before the library is used")
-    plain.ring_bell(1)
+    ring_bell(1)
     console.print("never printed")
+}
+
+func ring_bell(times: Integer) {
+    plain.ring_bell(times)
 }

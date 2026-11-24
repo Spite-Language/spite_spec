@@ -3,6 +3,10 @@ var chosen = "fixture.dll"
 var library = DynamicLibrary(chosen, 'identity', "")
 
 func ForeignLiteralArguments() {
-    var sum = library.add_numbers(1, 2)
+    var sum = add_numbers(1, 2)
     console.print(sum, chosen)
+}
+
+func add_numbers(first: Integer, second: Integer): Integer {
+    return library.add_numbers(first, second)
 }

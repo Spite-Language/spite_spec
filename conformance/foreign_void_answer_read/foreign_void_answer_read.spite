@@ -2,7 +2,15 @@ var console = Console()
 var windows = DynamicLibrary("fixture.dll", 'windows', "fixture.h")
 
 func ForeignVoidAnswerRead() {
-    windows.forget(1)
-    var forgotten = windows.forget(2)
+    forget(1)
+    var forgotten = forget_read(2)
     console.print(forgotten)
+}
+
+func forget(value: Integer) {
+    windows.forget(value)
+}
+
+func forget_read(value: Integer): Integer {
+    return windows.forget(value)
 }

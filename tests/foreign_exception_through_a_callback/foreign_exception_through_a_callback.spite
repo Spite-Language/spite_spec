@@ -3,10 +3,14 @@ var fixture = DynamicLibrary("tests/foreign_exception_through_a_callback/fixture
 
 func ForeignExceptionThroughACallback() {
     console.print("before the throw")
-    var answer = fixture.call_and_catch(throwing)
+    var answer = call_and_catch(throwing)
     console.print("never printed", answer)
 }
 
 func throwing(count: Integer) {
     fixture.throw_now(count)
+}
+
+func call_and_catch(callback: Spite.Function<Integer, Nothing>): Integer {
+    return fixture.call_and_catch(callback)
 }

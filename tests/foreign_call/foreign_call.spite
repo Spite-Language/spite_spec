@@ -2,6 +2,10 @@ var console = Console()
 var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
 
 func ForeignCall() {
-    var text_length = c_runtime.strlen("spite")
+    var text_length = length_of("spite")
     console.print(text_length)
+}
+
+func length_of(text: String): Integer {
+    return c_runtime.strlen(text)
 }

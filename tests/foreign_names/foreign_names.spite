@@ -2,7 +2,15 @@ var console = Console()
 var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
 
 func ForeignNames() {
-    var tick = kernel.GetTickCount64()
-    var running = kernel.GetCurrentProcessId()
+    var tick = tick_count()
+    var running = current_process_identifier()
     console.print("asked", tick > 0, running > 0)
+}
+
+func tick_count(): Long {
+    return kernel.GetTickCount64()
+}
+
+func current_process_identifier(): Integer {
+    return kernel.GetCurrentProcessId()
 }

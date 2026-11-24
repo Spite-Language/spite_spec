@@ -1,0 +1,4 @@
+func length_of(text: String): Long {
+    var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
+    return c_runtime.strlen(text)
+}
