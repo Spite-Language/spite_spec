@@ -18,5 +18,5 @@ func scaled(factor: Float, count: Integer): Integer {
 }
 
 func wide_sum(first: Long, second: UnsignedLong): Long {
-    return windows.wide_sum_as_long(first, second)
+    return windows.wide_sum(first, second)
 }

@@ -7,5 +7,5 @@ func ForeignVoidAnswerReturned() {
 }
 
 func forgotten(value: Integer): Long {
-    return windows.quiet_forget_as_long(value)
+    return windows.quiet_forget(value)
 }

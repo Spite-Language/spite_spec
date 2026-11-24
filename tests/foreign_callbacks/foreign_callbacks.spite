@@ -54,7 +54,7 @@ func keep_procedure(procedure: Long) {
 }
 
 func send_message(window: Long, message: UnsignedInteger, parameter: Long): Long {
-    return declared.send_message_as_long(window, message, parameter)
+    return declared.send_message(window, message, parameter)
 }
 
 func visit_each(count: Integer, visitor: Long, context: Long): Integer {

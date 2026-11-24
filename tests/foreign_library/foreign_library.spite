@@ -59,15 +59,15 @@ func answer_position(): Integer {
 }
 
 func half_of(value: Integer): Double {
-    return plain.half_of_as_double(value)
+    return plain.half_of(value)
 }
 
 func big_number(): Long {
-    return plain.big_number_as_long()
+    return plain.big_number()
 }
 
 func greeting(): String {
-    return plain.greeting_as_text()
+    return plain.greeting()
 }
 
 func length_of(text: String): Integer {
@@ -91,11 +91,11 @@ func double_values(values: List<Integer>, count: Integer) {
 }
 
 func guessed_wide_sum(first: Long, second: Long): Long {
-    return plain.wide_sum_as_long(first, second)
+    return plain.wide_sum(first, second)
 }
 
 func declared_wide_sum(first: Long, second: UnsignedLong): Long {
-    return windows.wide_sum_as_long(first, second)
+    return windows.wide_sum(first, second)
 }
 
 func scaled_value(factor: Float, value: Integer): Integer {
@@ -103,7 +103,7 @@ func scaled_value(factor: Float, value: Integer): Integer {
 }
 
 func doubled_handle(handle: Long): Long {
-    return windows.handle_twice_as_long(handle)
+    return windows.handle_twice(handle)
 }
 
 func forget(value: Integer) {
