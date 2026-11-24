@@ -1,0 +1,17 @@
+var shelf = Shelf()
+var large_total = 0
+
+func Rack(start: Integer) {
+    shelf.put(16)
+    shelf.put(24)
+    shelf.put(start)
+    var index = 0
+    while index < shelf.count() {
+        var held = shelf.at(index)
+        crash held
+        if held > 20 {
+            large_total = large_total + held
+        }
+        index = index + 1
+    }
+}

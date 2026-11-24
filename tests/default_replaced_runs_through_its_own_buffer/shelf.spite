@@ -1,0 +1,15 @@
+var _bytes = Buffer(0)
+var _count = 0
+
+func put(number: Integer) {
+    _bytes.append_integer_little_endian(number)
+    _count = _count + 1
+}
+
+func at(index: Integer): Integer? {
+    return _bytes.read_integer_little_endian_at(index * 4)
+}
+
+func count(): Integer {
+    return _count
+}

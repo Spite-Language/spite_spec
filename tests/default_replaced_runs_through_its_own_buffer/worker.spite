@@ -1,0 +1,9 @@
+var rack = Rack(3)
+
+func Worker(given: Rack) {
+    rack = given
+}
+
+func total(): Integer {
+    return rack.large_total
+}
