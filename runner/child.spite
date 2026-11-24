@@ -95,10 +95,10 @@ func close() {
 }
 
 func create_job_object(security: Long, name: Long): Long {
-    return kernel.CreateJobObjectA_as_long(security, name)
+    return kernel.CreateJobObjectA(security, name)
 }
 
-func set_information_job_object(job: Long, kind: Integer, information: Buffer, size: Integer){
+func set_information_job_object(job: Long, kind: Integer, information: Buffer, size: Integer) {
     kernel.SetInformationJobObject(job, kind, information, size)
 }
 
@@ -114,35 +114,46 @@ func create_process(
     startup: Buffer,
     information: Buffer,
 ): Integer {
-    return kernel.CreateProcessA(application, command_line, process_security, thread_security, inherits_handles, flags, environment, directory, startup, information)
+    return kernel.CreateProcessA(
+        application,
+        command_line,
+        process_security,
+        thread_security,
+        inherits_handles,
+        flags,
+        environment,
+        directory,
+        startup,
+        information,
+    )
 }
 
-func assign_process_to_job_object(job: Long, process: Long){
+func assign_process_to_job_object(job: Long, process: Long) {
     kernel.AssignProcessToJobObject(job, process)
 }
 
-func resume_thread(thread: Long){
+func resume_thread(thread: Long) {
     kernel.ResumeThread(thread)
 }
 
-func close_handle(handle: Long){
+func close_handle(handle: Long) {
     kernel.CloseHandle(handle)
 }
 
 func tick_count(): Long {
-    return kernel.GetTickCount64_as_long()
+    return kernel.GetTickCount64()
 }
 
 func wait_for_single_object(handle: Long, milliseconds: Integer): Integer {
     return kernel.WaitForSingleObject(handle, milliseconds)
 }
 
-func exit_code_of_process(process: Long, exit_code: Buffer): Integer {
-    return kernel.GetExitCodeProcess(process, exit_code)
+func exit_code_of_process(process: Long, code: Buffer): Integer {
+    return kernel.GetExitCodeProcess(process, code)
 }
 
-func terminate_job_object(job: Long, exit_code: Integer){
-    kernel.TerminateJobObject(job, exit_code)
+func terminate_job_object(job: Long, code: Integer) {
+    kernel.TerminateJobObject(job, code)
 }
 
 func wait_for_process(handle: Long, milliseconds: Integer) {

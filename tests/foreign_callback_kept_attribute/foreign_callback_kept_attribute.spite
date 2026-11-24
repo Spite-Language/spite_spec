@@ -13,8 +13,8 @@ func hand_over() {
     clicking = made
 }
 
-func keep_click(click: Long) {
-    plain.keep_click(click)
+func keep_click(clicking: Long) {
+    plain.keep_click(clicking)
 }
 
 func click(count: Integer) {

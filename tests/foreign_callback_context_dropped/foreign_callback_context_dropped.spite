@@ -16,8 +16,8 @@ func keep_and_tick() {
     tick(1)
 }
 
-func keep_tick(tick: Long, context: Long) {
-    plain.keep_tick(tick, context)
+func keep_tick(ticking: Long, context: Long) {
+    plain.keep_tick(ticking, context)
 }
 
 func tick(count: Integer) {

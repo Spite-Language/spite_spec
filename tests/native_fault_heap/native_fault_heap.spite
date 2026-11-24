@@ -10,6 +10,6 @@ func corrupt() {
     free_inside()
 }
 
-func free_inside(){
+func free_inside() {
     fixture.free_inside()
 }

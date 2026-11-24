@@ -14,8 +14,8 @@ func keep_and_click() {
     click(1)
 }
 
-func keep_click(click: Long) {
-    plain.keep_click(click)
+func keep_click(clicking: Long) {
+    plain.keep_click(clicking)
 }
 
 func click(count: Integer) {

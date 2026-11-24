@@ -5,7 +5,7 @@ func touch_then_ask_for_another() {
     absent_symbol()
 }
 
-func touch(){
+func touch() {
     library.touch()
 }
 

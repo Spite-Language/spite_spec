@@ -11,8 +11,8 @@ func clicked(count: Integer) {
     console.print("clicked", count)
 }
 
-func keep_click(click: Spite.Function<Integer, Nothing>) {
-    plain.keep_click(click)
+func keep_click(clicking: Spite.Function<Integer, Nothing>) {
+    plain.keep_click(clicking)
 }
 
 func click(count: Integer) {
