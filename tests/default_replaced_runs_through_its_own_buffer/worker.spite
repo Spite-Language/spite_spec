@@ -1,9 +1,11 @@
 var rack = Rack(3)
+var visits = 0
 
 func Worker(given: Rack) {
     rack = given
 }
 
 func total(): Integer {
-    return rack.large_total
+    visits = visits + 1
+    return rack.large_total + visits
 }

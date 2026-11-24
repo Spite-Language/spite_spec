@@ -1,2 +1,2 @@
-total 64000
+total 65000
 Worker makes less than its whole defaults true
