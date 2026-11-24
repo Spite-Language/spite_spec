@@ -486,7 +486,9 @@ func run_conformance(folder: String) {
 
 # ../README.md#a-fixed-program-is-compiled-again
 func fixed_source_checks_clean(folder: String, copy: String, flags: String, first: String): Boolean {
-    fallback first.contains(": fixed: ")
+    if not first.contains(": fixed: ") {
+        return true
+    }
     var no_arguments = List<String>()
     var compiling = compiling_in(copy, flags)
     var again = Process("{compiling} {flags} 2>&1 1>nul", no_arguments)
