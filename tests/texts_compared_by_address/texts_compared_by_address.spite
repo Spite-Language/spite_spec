@@ -4,6 +4,8 @@ var seen = List<String>()
 var counts = List<Integer>()
 var kinds = Dictionary<String, String>()
 var mixed = List<String>()
+var tallies = Dictionary<String, Tally>()
+var measures = Dictionary<String, Double>()
 var last_site = ""
 var _rounds = 3
 
@@ -41,12 +43,51 @@ func TextsComparedByAddress() {
     var held_folder = holder.folder
     var resolved = resolved_folder(held_folder)
     console.print("resolved:", resolved, holder.count)
+    tally("red")
+    tally("blue")
+    tally("red")
+    tally("green")
+    var first_order = tallies.keys()
+    var first_names = first_order.join(" ")
+    var red_count = count_of("red")
+    var blue_count = count_of("blue")
+    var has_blue = tallies.contains("blue")
+    var has_white = tallies.contains("white")
+    console.print("tallies:", first_names, red_count, blue_count, has_blue, has_white)
+    tallies.remove_at("blue")
+    tally("blue")
+    var second_order = tallies.keys()
+    var second_names = second_order.join(" ")
+    console.print("after removing:", second_names)
+    var shade = "re"
+    var built_key = "{shade}d"
+    measures[built_key] = 1.5
+    measures["blue"] = 2.5
+    var red_measure = measures["red"]
+    var shown_measures = measures.to_debug()
+    console.print("measures:", red_measure, shown_measures)
     var kept = positive(1)
     var dropped = positive(-1)
     var dropped_again = positive(-2)
     console.print("positive:", kept, dropped, dropped_again)
     var by_bytes = compared_byte_by_byte()
     console.print("compared byte by byte:{by_bytes}")
+}
+
+func tally(name: String) {
+    var known = tallies[name]
+    if known {
+        known.count = known.count + 1
+        return
+    }
+    var made = Tally()
+    tallies[name] = made
+}
+
+func count_of(name: String): Integer {
+    var known = tallies[name]
+    crash known
+    return known.count
 }
 
 func resolved_folder(given: String): String {
@@ -88,7 +129,7 @@ func compared_byte_by_byte(): String {
         var line = lines[index]
         if line.starts_with("function ") {
             function = line
-        } else if line.contains("String._matches_at(") or line.contains("String.equals(") {
+        } else if compares_bytes(line) {
             var name = named(function)
             if not name.is_empty() and not compared.contains(name) {
                 compared = "{compared} {name}"
@@ -99,7 +140,18 @@ func compared_byte_by_byte(): String {
     return compared
 }
 
+func compares_bytes(line: String): Boolean {
+    var compares_texts = line.contains("String._matches_at(") or line.contains("String.equals(")
+    return compares_texts or line.contains("._text_hash(") or line.contains("._same_text(")
+}
+
 func named(heading: String): String {
+    if heading.starts_with("function Dictionary_of_String_and_TextsComparedByAddress_Tally.") {
+        return "tallies"
+    }
+    if heading.starts_with("function Dictionary_of_String_and_Double.") {
+        return "measures"
+    }
     var names = ["note", "remembered", "is_kind", "are_mixed_equal"]
     if heading.starts_with("function Spite.Asserts.failed:") {
         return "Spite.Asserts.failed"
