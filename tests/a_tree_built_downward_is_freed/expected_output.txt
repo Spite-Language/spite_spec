@@ -1,0 +1,2 @@
+root has 1093 nodes
+allocations: 4382 frees: 4382

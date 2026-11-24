@@ -1,0 +1,23 @@
+var console = Console()
+var _depth = 6
+var _width = 3
+
+func ATreeBuiltDownwardIsFreed() {
+    var root = grown("root", _depth)
+    var counted = root.size()
+    console.print(root.name, "has", counted, "nodes")
+}
+
+func grown(name: String, depth: Integer): Node {
+    var node = Node(name)
+    if depth == 0 {
+        return node
+    }
+    var index = 0
+    while index < _width {
+        var child = grown("{name}.{index}", depth - 1)
+        node.children.append(child)
+        index = index + 1
+    }
+    return node
+}

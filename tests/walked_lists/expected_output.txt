@@ -1,2 +1,2 @@
 600 6 [Book 3, something else, Book 4, Book 5, Book 3, Book 5] counted 1
-allocations: 1139 frees: 1139
+allocations: 1138 frees: 1138
