@@ -4,8 +4,12 @@ var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
 
 func ForeignCallOutsideItsDeclaration() {
     var text_length = c_runtime.strlen("spite")
+    var written = working_directory_length()
+    console.print(text_length, written)
+}
+
+func working_directory_length(): Integer {
     var size = 260
     var room = Buffer(size * 2)
-    var written = kernel.GetCurrentDirectoryW(size, room)
-    console.print(text_length, written)
+    return kernel.GetCurrentDirectoryW(size, room)
 }
