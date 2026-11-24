@@ -1,0 +1,19 @@
+var character = Character()
+var color = "white"
+
+func render(): String {
+    var described = character.describe()
+    return "{described} in {color}"
+}
+
+func hit() {
+    character.hurt(1)
+}
+
+func weight(): Integer {
+    return character.log.sum_by(weight_of)
+}
+
+func weight_of(entry: String): Integer {
+    return entry.length() * character.armor
+}

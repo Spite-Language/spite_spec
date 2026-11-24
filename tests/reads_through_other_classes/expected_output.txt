@@ -1,0 +1,9 @@
+reads character Character
+reads color String
+reads name String
+reads health Integer
+writes character
+writes health
+writes log
+weight reads: character, armor, log
+Hero (9) in white 2 1 8

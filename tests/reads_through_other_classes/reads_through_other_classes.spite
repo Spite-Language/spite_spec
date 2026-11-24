@@ -1,0 +1,29 @@
+var console = Console()
+
+func ReadsThroughOtherClasses() {
+    var render = Nameplate.functions["render"]
+    crash render
+    render.reads.each(describe_read)
+    var hit = Nameplate.functions["hit"]
+    crash hit
+    hit.writes.each(describe_write)
+    var weight = Nameplate.functions["weight"]
+    crash weight
+    var weighed = weight.reads.map_names()
+    var joined = weighed.join(", ")
+    console.print("weight reads:", joined)
+    var plate = Nameplate()
+    plate.hit()
+    var rendered = plate.render()
+    var logged = plate.character.log.count()
+    var weighed_now = plate.weight()
+    console.print(rendered, plate.character.armor, logged, weighed_now)
+}
+
+func describe_read(attribute: Spite.AttributeDeclaration) {
+    console.print("reads", attribute.name, attribute.class)
+}
+
+func describe_write(attribute: Spite.AttributeDeclaration) {
+    console.print("writes", attribute.name)
+}
