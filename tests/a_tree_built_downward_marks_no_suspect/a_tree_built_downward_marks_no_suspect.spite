@@ -1,0 +1,47 @@
+var console = Console()
+var program = Program()
+var _depth = 6
+var _width = 3
+
+func ATreeBuiltDownwardMarksNoSuspect() {
+    var root = grown("root", _depth)
+    var counted = root.size()
+    console.print(root.name, "has", counted, "nodes")
+    var marked = suspects_marked()
+    console.print("stores that mark a suspect:", marked)
+}
+
+func grown(name: String, depth: Integer): Node {
+    var node = Node(name)
+    if depth == 0 {
+        return node
+    }
+    var index = 0
+    while index < _width {
+        var child = grown("{name}.{index}", depth - 1)
+        node.children.append(child)
+        index = index + 1
+    }
+    return node
+}
+
+func suspects_marked(): Integer {
+    var path = program.executable_path()
+    crash path
+    var low_path = path.replace(".exe", ".low_ir.txt")
+    var written_path: Path? = low_path
+    crash written_path
+    var written = File(written_path).read_as_string()
+    crash written
+    var lines = written.split("\n")
+    var counted = 0
+    var index = 0
+    while index < lines.count() {
+        var line = lines[index]
+        if line.contains("_cycle_suspect") and not line.starts_with("function ") {
+            counted = counted + 1
+        }
+        index = index + 1
+    }
+    return counted
+}

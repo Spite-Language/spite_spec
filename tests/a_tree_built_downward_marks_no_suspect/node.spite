@@ -1,0 +1,17 @@
+var children = List<Node>()
+var name: String
+
+func Node(starting_name: String) {
+    name = starting_name
+}
+
+func size(): Integer {
+    var total = 1
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        total = total + child.size()
+        index = index + 1
+    }
+    return total
+}

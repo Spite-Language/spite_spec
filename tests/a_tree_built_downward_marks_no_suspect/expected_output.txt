@@ -1,0 +1,3 @@
+root has 1093 nodes
+stores that mark a suspect: 0
+allocations: 56984 frees: 56984
