@@ -1,0 +1,19 @@
+var console = Console()
+var cleaned = 0
+var inner: Inner?
+
+func CopyToNarrowAcrossAnOwnCall() {
+    inner = Inner()
+    show_a_copy()
+}
+
+func show_a_copy() {
+    fallback inner
+    clean()
+    var is_empty = inner.empty()
+    console.print(is_empty)
+}
+
+func clean() {
+    cleaned = cleaned + 1
+}

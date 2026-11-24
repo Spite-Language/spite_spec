@@ -1,0 +1,1 @@
+conformance/copy_to_narrow_across_an_own_call/copy_to_narrow_across_an_own_call.spite:11: fixed: 'held' only copied 'inner' so it could be narrowed; narrowed 'inner' itself and used it directly (in CopyToNarrowAcrossAnOwnCall.show_a_copy)
