@@ -1,0 +1,4 @@
+func scaled(factor: Integer?): Integer {
+    fallback factor
+    return factor * 3
+}

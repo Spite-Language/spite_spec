@@ -1,0 +1,4 @@
+func greet(friend: Cat): String {
+    var lives = friend.lives
+    return "{friend.name} {lives}"
+}

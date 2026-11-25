@@ -1,0 +1,1 @@
+conformance/shape_parameter_wider_than_the_type/shape_parameter_wider_than_the_type.spite:9: error: 'ShapeParameterWiderThanTheType.Loose' does not fit type 'Scaled': argument 1 of its 'scaled' is an Integer?, but the type needs an Integer (in ShapeParameterWiderThanTheType.ShapeParameterWiderThanTheType)

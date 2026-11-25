@@ -1,0 +1,1 @@
+conformance/shape_parameter_narrower_than_the_type/shape_parameter_narrower_than_the_type.spite:13: error: 'ShapeParameterNarrowerThanTheType.Picky' does not fit type 'Greeter': argument 1 of its 'greet' is a ShapeParameterNarrowerThanTheType.Cat, but the type needs a ShapeParameterNarrowerThanTheType.Named (in ShapeParameterNarrowerThanTheType.ShapeParameterNarrowerThanTheType)

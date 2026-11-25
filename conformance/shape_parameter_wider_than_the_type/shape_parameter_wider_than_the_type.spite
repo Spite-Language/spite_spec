@@ -1,0 +1,15 @@
+type Scaled {
+    scaled: Spite.Function<Integer, Integer>
+}
+
+var console = Console()
+
+func ShapeParameterWiderThanTheType() {
+    var loose = Loose()
+    show(loose)
+}
+
+func show(part: Scaled) {
+    var result = part.scaled(2)
+    console.print(result)
+}

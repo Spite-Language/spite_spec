@@ -1,0 +1,20 @@
+type Named {
+    name: String
+}
+
+type Greeter {
+    greet: Spite.Function<Named, String>
+}
+
+var console = Console()
+
+func ShapeParameterNarrowerThanTheType() {
+    var picky = Picky()
+    show(picky)
+}
+
+func show(part: Greeter) {
+    var cat = Cat()
+    var said = part.greet(cat)
+    console.print(said)
+}
