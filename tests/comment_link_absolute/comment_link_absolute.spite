@@ -1,0 +1,6 @@
+var console = Console()
+
+# https://github.com/Spite-Language/spite_documentation/blob/master/style.md#comments-are-links
+func CommentLinkAbsolute() {
+    console.print("linked")
+}

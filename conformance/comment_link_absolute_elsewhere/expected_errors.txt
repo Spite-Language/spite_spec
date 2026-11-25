@@ -1,0 +1,1 @@
+conformance/comment_link_absolute_elsewhere/comment_link_absolute_elsewhere.spite:3: error: this comment links to 'https://example.com/notes.md', and an absolute link names a markdown file of a Spite repository on master, like 'https://github.com/Spite-Language/spite_documentation/blob/master/style.md#comments-are-links' (in CommentLinkAbsoluteElsewhere)
