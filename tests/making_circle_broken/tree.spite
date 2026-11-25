@@ -1,0 +1,9 @@
+var name = "tree"
+var leaf: Leaf? = null
+
+func has_a_leaf(): Boolean {
+    if leaf {
+        return true
+    }
+    return false
+}

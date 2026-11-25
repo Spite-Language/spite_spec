@@ -1,0 +1,9 @@
+var name = "flow"
+var grid: Grid? = null
+
+func grid_name(): String {
+    if grid {
+        return grid.flow.name
+    }
+    return "none"
+}

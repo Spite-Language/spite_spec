@@ -1,0 +1,5 @@
+var tree: Tree
+
+func Leaf(starting_tree: Tree) {
+    tree = starting_tree
+}

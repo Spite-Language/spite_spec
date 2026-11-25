@@ -1,0 +1,14 @@
+var console = Console()
+
+func MakingCircleBroken() {
+    var flow = Flow()
+    flow.grid = Grid()
+    var grid_name = flow.grid_name()
+    var branch = Branch(2)
+    var depth = branch.depth()
+    var tree = Tree()
+    var leaf = Leaf(tree)
+    tree.leaf = leaf
+    var has_a_leaf = tree.has_a_leaf()
+    console.print(flow.name, grid_name, depth, leaf.tree.name, has_a_leaf)
+}

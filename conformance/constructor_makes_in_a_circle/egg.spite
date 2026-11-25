@@ -1,0 +1,6 @@
+var weight = 50
+var chicken: Chicken
+
+func Egg() {
+    chicken = Chicken()
+}
