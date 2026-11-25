@@ -1,0 +1,12 @@
+var console = Console()
+
+func BufferRoomByHand() {
+    var bytes = Buffer(8)
+    bytes.append(1)
+    console.print(bytes.count())
+}
+
+func taken(bytes: Buffer) {
+    bytes.take_written(4)
+    console.print(bytes.count())
+}

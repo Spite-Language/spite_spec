@@ -4,7 +4,7 @@ var _second_record: Long = 2222
 
 func FileAsBuffer() {
     var store = File(".spite/file_as_buffer_records.bin")
-    var record = Buffer(0)
+    var record = Buffer()
     record.append_long_little_endian(_first_record)
     record.append_long_little_endian(_second_record)
     crash store.write_buffer(record)

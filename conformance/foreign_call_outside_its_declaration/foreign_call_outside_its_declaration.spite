@@ -10,6 +10,6 @@ func ForeignCallOutsideItsDeclaration() {
 
 func working_directory_length(): Integer {
     var size = 260
-    var room = Buffer(size * 2)
+    var room = Buffer()
     return kernel.GetCurrentDirectoryW(size, room)
 }

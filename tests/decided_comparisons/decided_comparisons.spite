@@ -55,7 +55,7 @@ func below_ten(value: Integer): Boolean {
 }
 
 func byte_tests(value: Integer): Integer {
-    var bytes = Buffer(1)
+    var bytes = Buffer()
     var held: Byte? = value
     crash held
     bytes.append(held)

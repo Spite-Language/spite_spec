@@ -59,7 +59,7 @@ func list_counts() {
 
 func counts_too_large() {
     var reader = BinaryReader<Row>()
-    var largest = Buffer(0)
+    var largest = Buffer()
     largest.append(_all_bits)
     largest.append(_all_bits)
     largest.append(_all_bits)
@@ -75,15 +75,15 @@ func counts_too_large() {
 
 func presence_bytes() {
     var reader = BinaryReader<Maybe>()
-    var absent = Buffer(0)
+    var absent = Buffer()
     absent.append(0)
-    var present = Buffer(0)
+    var present = Buffer()
     present.append(1)
     present.append(7)
     present.append(0)
     present.append(0)
     present.append(0)
-    var odd = Buffer(0)
+    var odd = Buffer()
     odd.append(2)
     odd.append(7)
     odd.append(0)

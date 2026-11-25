@@ -1,7 +1,7 @@
 var console = Console()
 
 func BufferAppendString() {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     bytes.append(1)
     bytes.append_string("é!")
     bytes.append_string("")

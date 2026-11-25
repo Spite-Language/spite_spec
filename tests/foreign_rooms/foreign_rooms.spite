@@ -1,0 +1,91 @@
+type PathRoom {
+    text: DynamicLibrary.WideText
+}
+
+type NameRoom {
+    text: DynamicLibrary.Text
+}
+
+type Counter {
+    value: Long
+}
+
+var console = Console()
+var kernel = DynamicLibrary(
+    "kernel32.dll",
+    "",
+    {
+        "current_directory": DynamicLibrary.FunctionDeclaration("GetCurrentDirectoryW", [DynamicLibrary.Argument("size", Integer), DynamicLibrary.Argument("room", PathRoom)], Integer, 'answer_is_the_size_needed')
+        "module_file_name": DynamicLibrary.FunctionDeclaration("GetModuleFileNameW", [DynamicLibrary.Argument("module", Long), DynamicLibrary.Argument("room", PathRoom), DynamicLibrary.Argument("size", Integer)], Integer, 'doubled_until_it_fits')
+        "wide_of": DynamicLibrary.FunctionDeclaration("MultiByteToWideChar", [DynamicLibrary.Argument("code_page", Integer), DynamicLibrary.Argument("flags", Integer), DynamicLibrary.Argument("text", String), DynamicLibrary.Argument("length", Integer), DynamicLibrary.Argument("room", PathRoom), DynamicLibrary.Argument("size", Integer)], Integer, 'asked_with_no_room_first')
+        "frequency": DynamicLibrary.FunctionDeclaration("QueryPerformanceFrequency", [DynamicLibrary.Argument("counter", Counter)], Integer, 'fixed_size')
+    },
+)
+var c_runtime = DynamicLibrary(
+    "ucrtbase.dll",
+    "",
+    {
+        "transformed": DynamicLibrary.FunctionDeclaration("strxfrm", [DynamicLibrary.Argument("room", NameRoom), DynamicLibrary.Argument("text", String), DynamicLibrary.Argument("size", Integer)], Integer, 'answer_is_what_arrived')
+    },
+)
+var _utf8_code_page = 65001
+var _transformed_room = 64
+
+func ForeignRooms() {
+    sized_by_the_answer()
+    doubled()
+    asked_first()
+    what_arrived()
+    fixed()
+}
+
+func sized_by_the_answer() {
+    var directory_call = DynamicLibrary.Call(kernel.functions["current_directory"])
+    var directory = directory_call.call()
+    crash directory
+    var path = directory.text.to_string()
+    var is_read = path.length() > 0
+    console.print("the working directory is read:", is_read)
+}
+
+func doubled() {
+    var module_call = DynamicLibrary.Call(kernel.functions["module_file_name"])
+    module_call.arguments["module"] = 0
+    var module = module_call.call()
+    crash module
+    var path = module.text.to_string()
+    var is_an_executable = path.ends_with(".exe")
+    console.print("the executable ends in .exe:", is_an_executable)
+}
+
+func asked_first() {
+    var text = "héllo"
+    var length = text.length()
+    var wide_call = DynamicLibrary.Call(kernel.functions["wide_of"])
+    wide_call.arguments["code_page"] = _utf8_code_page
+    wide_call.arguments["flags"] = 0
+    wide_call.arguments["text"] = text
+    wide_call.arguments["length"] = length
+    var wide = wide_call.call()
+    crash wide
+    var read = wide.text.to_string()
+    console.print("text made wide and read back:", read)
+}
+
+func what_arrived() {
+    var transforming = DynamicLibrary.Call(c_runtime.functions["transformed"])
+    transforming.arguments["text"] = "spite"
+    transforming.arguments["size"] = _transformed_room
+    var transformed = transforming.call()
+    crash transformed
+    var read = transformed.text.to_string()
+    console.print("what arrived:", read)
+}
+
+func fixed() {
+    var frequency_call = DynamicLibrary.Call(kernel.functions["frequency"])
+    var counter = frequency_call.call()
+    crash counter
+    var is_read = counter.value > 0
+    console.print("the counter's frequency is read:", is_read)
+}

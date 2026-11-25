@@ -1,5 +1,0 @@
-func BufferNegativeSize(): Integer {
-    var size = 0 - 1
-    var bytes = Buffer(size)
-    return bytes.count()
-}

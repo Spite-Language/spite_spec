@@ -1,7 +1,7 @@
 var console = Console()
 
 func BufferFloatBits() {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     var double_not_a_number = Double.NotANumber()
     bytes.append_double_little_endian(double_not_a_number)
     bytes.append_float_big_endian(1.5)

@@ -23,12 +23,12 @@ func SocketBytes() {
     crash third
     var received_count = received.count()
     console.print("peer received:", received_count, first, third)
-    var answer = Buffer(0)
+    var answer = Buffer()
     answer.append(7)
     answer.append(8)
     answer.append(9)
     crash peer.write_buffer(answer)
-    var from_peer = Buffer(0)
+    var from_peer = Buffer()
     while from_peer.count() < 3 and not client.closed {
         var more = client.read_as_buffer()
         if more {
@@ -44,7 +44,7 @@ func SocketBytes() {
     var line = client.read_line()
     crash line
     console.print("client read the line:", line)
-    var not_text = Buffer(0)
+    var not_text = Buffer()
     not_text.append(_invalid_utf8_byte)
     not_text.append(10)
     crash peer.write_buffer(not_text)
@@ -70,7 +70,7 @@ func SocketBytes() {
 }
 
 func send(client: Tcp.Client, first: Byte, second: Byte, third: Byte) {
-    var message = Buffer(0)
+    var message = Buffer()
     message.append(first)
     message.append(second)
     message.append(third)
@@ -79,7 +79,7 @@ func send(client: Tcp.Client, first: Byte, second: Byte, third: Byte) {
 }
 
 func receive(connection: Tcp.Connection, wanted: Integer): Buffer {
-    var received = Buffer(0)
+    var received = Buffer()
     while received.count() < wanted and not connection.closed {
         var more = connection.read_as_buffer()
         if more {

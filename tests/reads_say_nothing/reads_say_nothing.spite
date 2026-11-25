@@ -8,7 +8,7 @@ func ReadsSayNothing() {
     var before_bytes = echoing.read_output_as_buffer()
     console.print("output before run: text", not before_text, "bytes", not before_bytes)
     var binary = File(".spite/reads_say_nothing.bin")
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     bytes.append(_letter_h_code)
     bytes.append(_invalid_utf8_byte)
     crash binary.write_buffer(bytes)

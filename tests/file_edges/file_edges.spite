@@ -8,7 +8,7 @@ func FileEdges() {
 
 func unopenable_paths() {
     var missing = File(".spite/file_edges_no_such_folder/data.bin")
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     bytes.append(7)
     var appended = missing.append_buffer(bytes)
     var written = missing.write_buffer(bytes)

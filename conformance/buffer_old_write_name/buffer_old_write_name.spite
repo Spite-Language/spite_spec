@@ -1,4 +1,4 @@
 func BufferOldWriteName() {
-    var bytes = Buffer(8)
+    var bytes = Buffer()
     bytes.write_integer(0, 5)
 }

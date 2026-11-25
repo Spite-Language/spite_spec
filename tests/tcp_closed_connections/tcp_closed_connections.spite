@@ -54,7 +54,7 @@ func not_text() {
     var client = connect()
     var peer = server.accept()
     crash peer
-    var broken = Buffer(0)
+    var broken = Buffer()
     var invalid = Byte.Largest()
     broken.append(invalid)
     crash peer.write_buffer(broken)
@@ -62,7 +62,7 @@ func not_text() {
     var refused_text = answer(refused)
     var open = not client.closed
     console.print("bytes that are not UTF-8 read as text:", refused_text, "and the peer is still open:", open)
-    var cut = Buffer(0)
+    var cut = Buffer()
     cut.append(invalid)
     cut.append(_euro_first_byte)
     cut.append(_euro_second_byte)
@@ -70,7 +70,7 @@ func not_text() {
     var cut_refused = client.read_as_string()
     var cut_text = answer(cut_refused)
     console.print("a cut character after bytes that are not UTF-8 is not waited for:", cut_text)
-    var euro = Buffer(0)
+    var euro = Buffer()
     euro.append(_euro_first_byte)
     euro.append(_euro_second_byte)
     euro.append(_euro_third_byte)

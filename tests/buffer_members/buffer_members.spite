@@ -9,7 +9,7 @@ func BufferMembers() {
 }
 
 func filled(): Buffer {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     var value = 1
     while value <= 6 {
         var held: Byte = value
@@ -33,7 +33,7 @@ func listing(bytes: Buffer): String {
 }
 
 func emptiness_and_truncation() {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     var empty_at_first = bytes.is_empty()
     bytes = filled()
     var empty_after = bytes.is_empty()
@@ -65,7 +65,7 @@ func copies() {
 }
 
 func both_orders() {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     bytes.append_integer_big_endian(_two_fifty_eight)
     bytes.append_integer_little_endian(_two_fifty_eight)
     var listed = listing(bytes)

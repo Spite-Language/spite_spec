@@ -19,7 +19,7 @@ func refused_text() {
     var empty: Path? = nothing
     var empty_is_refused = not empty
     console.print("empty text is refused", empty_is_refused)
-    var bytes = Buffer(3)
+    var bytes = Buffer()
     bytes.append(97)
     bytes.append(0)
     bytes.append(98)

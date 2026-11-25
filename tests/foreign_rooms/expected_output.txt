@@ -1,0 +1,5 @@
+the working directory is read: true
+the executable ends in .exe: true
+text made wide and read back: héllo
+what arrived: spite
+the counter's frequency is read: true

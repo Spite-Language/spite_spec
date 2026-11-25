@@ -8,7 +8,7 @@ func UdpWaits() {
     crash client.open()
     var address: IpAddress? = "127.0.0.1"
     crash address
-    var message = Buffer(0)
+    var message = Buffer()
     message.append(10)
     message.append(20)
     message.append(30)

@@ -4,11 +4,11 @@ var _header_stamp: Long = 1234567890123
 
 func BinaryFiles() {
     var store = File(".spite/binary_files.bin")
-    var header = Buffer(0)
+    var header = Buffer()
     header.append_integer_little_endian(7)
     header.append_long_little_endian(_header_stamp)
     var saved = store.write_buffer(header)
-    var record = Buffer(0)
+    var record = Buffer()
     record.append_long_little_endian(-42)
     var record_start = store.append_buffer(record)
     crash record_start
@@ -54,7 +54,7 @@ func BinaryFiles() {
         console.print("a missing file answers null")
     }
     var empty = File(".spite/binary_files_empty.bin")
-    var nothing_written = Buffer(0)
+    var nothing_written = Buffer()
     crash empty.write_buffer(nothing_written)
     var no_bytes = empty.read_as_buffer()
     crash no_bytes

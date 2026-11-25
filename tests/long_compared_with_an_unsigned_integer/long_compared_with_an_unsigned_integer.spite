@@ -2,7 +2,7 @@ var console = Console()
 var _tag = 1953658213
 
 func LongComparedWithAnUnsignedInteger() {
-    var bytes = Buffer(4)
+    var bytes = Buffer()
     bytes.append_unsigned_integer_big_endian(_tag)
     var tag = bytes.read_unsigned_integer_big_endian_at(0)
     crash tag

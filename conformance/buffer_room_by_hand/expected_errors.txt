@@ -1,0 +1,2 @@
+conformance/buffer_room_by_hand/buffer_room_by_hand.spite:4: error: a Buffer is made with 'Buffer()': how much room it keeps is the compiler's. Room for C to write into is a room declared in its library's functions (in BufferRoomByHand.BufferRoomByHand)
+conformance/buffer_room_by_hand/buffer_room_by_hand.spite:10: error: 'take_written' is gone: what C writes into a room is read back by the compiler, so declare the room in its library's functions and read the room 'call()' answers (in BufferRoomByHand.taken)

@@ -32,7 +32,7 @@ func ForeignArgumentKinds() {
 }
 
 func buffer_is_filled_by_c() {
-    var bytes = Buffer(8)
+    var bytes = Buffer()
     var index = 0
     while index < 4 {
         bytes.append(0)

@@ -71,7 +71,7 @@ func start(command: String): Boolean {
 }
 
 func zeroed(size: Integer): Buffer {
-    var room = Buffer(size)
+    var room = Buffer()
     var zero: Byte = 0
     var index = 0
     while index < size {

@@ -20,7 +20,7 @@ func binary_body() {
     crash loopback
     var asking = Tcp.Client()
     crash asking.connect(loopback, _http_port)
-    var body = Buffer(0)
+    var body = Buffer()
     body.append(_letter_h_code)
     body.append(_largest_byte)
     var head = "POST /bytes HTTP/1.1\r\nhost: 127.0.0.1\r\ncontent-length: 2\r\n\r\n"
@@ -57,7 +57,7 @@ func read_response(asking: Tcp.Client): Http.Response {
             body_length = length
         }
     }
-    var received = Buffer(0)
+    var received = Buffer()
     while received.count() < body_length {
         var more = asking.read_as_buffer()
         crash more
@@ -84,8 +84,8 @@ func split_character() {
     var sender = Tcp.Client()
     crash sender.connect_locally(_tcp_port)
     var character = "é".to_buffer()
-    var first = Buffer(0)
-    var second = Buffer(0)
+    var first = Buffer()
+    var second = Buffer()
     var lead = character[0]
     var rest = character[1]
     crash lead and rest

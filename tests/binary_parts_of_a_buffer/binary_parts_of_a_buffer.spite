@@ -12,7 +12,7 @@ func BinaryPartsOfABuffer() {
     var name_bytes = name_writer.write(name)
     var point_size = point_bytes.count()
     var name_size = name_bytes.count()
-    var both = Buffer(0)
+    var both = Buffer()
     both.append_buffer(point_bytes, 0, point_size)
     both.append_buffer(name_bytes, 0, name_size)
     var total = both.count()

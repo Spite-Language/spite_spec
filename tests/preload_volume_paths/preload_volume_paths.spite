@@ -52,7 +52,7 @@ func show_the_writers(kept: File) {
     var written = kept.write_string("other")
     var appended = kept.append_string("more")
     console.print("write:", written, "append:", appended)
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     var buffer_written = kept.write_buffer(bytes)
     var buffer_appended = kept.append_buffer(bytes)
     console.print("write a buffer:", buffer_written, "append a buffer:", buffer_appended)

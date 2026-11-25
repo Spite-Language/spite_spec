@@ -1,7 +1,7 @@
 var console = Console()
 
 func BufferIndexOutOfRange() {
-    var bytes = Buffer(4)
+    var bytes = Buffer()
     bytes.append(7)
     var inside = bytes[0]
     var past = bytes[1]

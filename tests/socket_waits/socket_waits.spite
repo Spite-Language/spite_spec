@@ -10,14 +10,14 @@ func SocketWaits() {
     var address: IpAddress? = "127.0.0.1"
     crash address
     crash client.connect(address, _port)
-    var message = Buffer(0)
+    var message = Buffer()
     message.append(10)
     message.append(20)
     message.append(30)
     message.append(40)
     crash client.write_buffer(message)
     var serving = echo_once()
-    var answer = Buffer(0)
+    var answer = Buffer()
     while answer.count() < 4 and not client.closed {
         var more = client.read_as_buffer()
         if more {
@@ -41,7 +41,7 @@ func SocketWaits() {
 func echo_once(): Integer {
     var peer = server.accept()
     crash peer
-    var buffer = Buffer(0)
+    var buffer = Buffer()
     while buffer.count() < 4 and not peer.closed {
         var more = peer.read_as_buffer()
         if more {

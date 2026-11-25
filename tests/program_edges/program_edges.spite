@@ -60,7 +60,7 @@ func counting() {
 }
 
 func hold_a_buffer(): Buffer {
-    return Buffer(_buffer_size)
+    return Buffer()
 }
 
 func long_environment_value() {

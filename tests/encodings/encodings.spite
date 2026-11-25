@@ -9,7 +9,7 @@ var _third_sample_byte: Byte = 191
 func Encodings() {
     var samples = ["", "f", "fo", "foo", "foob", "fooba", "foobar"]
     samples.each(show_base64)
-    var binary = Buffer(0)
+    var binary = Buffer()
     binary.append(_first_sample_byte)
     binary.append(_second_sample_byte)
     binary.append(_third_sample_byte)
@@ -31,7 +31,7 @@ func Encodings() {
     read_zlib("eJzLSM3JyVfIQCcBaAMIsQ==")
     read_zlib("eJwDAAAAAAE=")
     read_gzip("H4sIAAAAAAACCstIzcnJBwCGphA2BQAAAA==")
-    var repeated = Buffer(0)
+    var repeated = Buffer()
     while repeated.count() < 100000 {
         var value: Byte = repeated.count() % 7 + 97
         repeated.append(value)

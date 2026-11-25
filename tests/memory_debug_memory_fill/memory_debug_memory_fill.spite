@@ -6,28 +6,16 @@ var c_runtime = DynamicLibrary(
 )
 
 func MemoryDebugMemoryFill() {
-    var small = Buffer(8)
-    small.take_written(8)
-    var inline_read = small.read_long_little_endian_at(0)
-    crash inline_read
-    console.print("unwritten inline room", inline_read)
-    var large = Buffer(64)
-    large.take_written(64)
-    var large_read = large.read_long_little_endian_at(56)
-    crash large_read
-    console.print("unwritten room", large_read)
-    var grown = Buffer(64)
+    var grown = Buffer()
     var index = 0
     while index < 65 {
         grown.append(7)
         index = index + 1
     }
-    grown.take_written(128)
     var kept = grown[64]
-    var tail = grown[100]
     crash kept
-    crash tail
-    console.print("kept", kept, "grown tail", tail)
+    var grown_count = grown.count()
+    console.print("kept", kept, "grown to", grown_count)
     var joined = "count {index}"
     var counted = length_of(joined)
     console.print("a joined text ends where its bytes end:", counted)

@@ -1,0 +1,26 @@
+type PathRoom {
+    text: DynamicLibrary.WideText
+}
+
+var console = Console()
+var kernel = DynamicLibrary(
+    "kernel32.dll",
+    "",
+    {
+        "current_directory": DynamicLibrary.FunctionDeclaration("GetCurrentDirectoryW", [DynamicLibrary.Argument("size", Integer), DynamicLibrary.Argument("room", PathRoom)], Integer, 'grown_by_hand')
+        "tick_count": DynamicLibrary.FunctionDeclaration("GetTickCount", [], Integer, 'doubled_until_it_fits')
+    },
+)
+
+func ForeignRoomMistakes() {
+    var directory_call = DynamicLibrary.Call(kernel.functions["current_directory"])
+    var directory = directory_call.call()
+    console.print(directory)
+    ticks()
+}
+
+func ticks() {
+    var ticks_call = DynamicLibrary.Call(kernel.functions["tick_count"])
+    var counted = ticks_call.call()
+    console.print(counted)
+}

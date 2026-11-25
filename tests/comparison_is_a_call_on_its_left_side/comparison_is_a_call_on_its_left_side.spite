@@ -4,7 +4,7 @@ var _past_a_byte = 262
 var _beyond_an_integer: Long = 4294967296
 
 func ComparisonIsACallOnItsLeftSide() {
-    var encoded = Buffer(2)
+    var encoded = Buffer()
     encoded.append(6)
     compare_a_read_byte(encoded, _color_type)
     compare_a_read_byte(encoded, _past_a_byte)

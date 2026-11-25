@@ -1,7 +1,7 @@
 var console = Console()
 
 func NullableBufferReadAdded() {
-    var bytes = Buffer(2)
+    var bytes = Buffer()
     var pair = bytes.read_short_little_endian_at(100)
     var total = 5
     total = total + pair

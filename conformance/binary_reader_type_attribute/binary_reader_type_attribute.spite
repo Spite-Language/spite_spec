@@ -7,7 +7,7 @@ var console = Console()
 
 func BinaryReaderTypeAttribute() {
     var reader = BinaryReader<Holder>()
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     var holder = reader.read(bytes)
     console.print(holder)
 }

@@ -55,7 +55,7 @@ func footer_start_of(data: Buffer): Integer {
 }
 
 func with_footer(data: Buffer, footer_start: Integer, footer: String): Buffer {
-    var rebuilt = Buffer(0)
+    var rebuilt = Buffer()
     rebuilt.append_buffer(data, 0, footer_start)
     var text = "{footer}\n"
     var bytes = text.to_buffer()

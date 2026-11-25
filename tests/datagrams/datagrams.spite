@@ -34,7 +34,7 @@ func Datagrams() {
     var answer_buffer = answer.read_as_buffer()
     var answer_count = answer_buffer.count()
     console.print("replied: {replied}, client got {answer_count} bytes")
-    var empty = Buffer(0)
+    var empty = Buffer()
     var local_host: IpAddress? = "localhost"
     crash local_host
     crash client.send_to(local_host, _server_port, empty)

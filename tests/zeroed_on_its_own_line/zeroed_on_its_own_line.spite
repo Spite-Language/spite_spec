@@ -3,7 +3,7 @@ var seen = List<Integer>()
 var stored: Long = 7
 
 func ZeroedOnItsOwnLine() {
-    var bytes = Buffer(2)
+    var bytes = Buffer()
     var missing_short = bytes.read_short_little_endian_at(100)
     var present_short = bytes.read_short_little_endian_at(0)
     var zeroed: Integer = missing_short

@@ -94,7 +94,7 @@ func read_head(client: Tcp.Client): List<String> {
 }
 
 func read_bytes(client: Tcp.Client, wanted: Integer): Buffer {
-    var received = Buffer(0)
+    var received = Buffer()
     while received.count() < wanted and not client.closed {
         var more = client.read_as_buffer()
         if more {
@@ -121,7 +121,7 @@ func listing(bytes: Buffer): String {
 func frame(first: Integer, payload: String): Buffer {
     var bytes = payload.to_buffer()
     var size = bytes.count()
-    var made = Buffer(0)
+    var made = Buffer()
     var opening: Byte? = first
     crash opening
     made.append(opening)
@@ -271,7 +271,7 @@ func messages() {
 }
 
 func filled(size: Integer): Buffer {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     var index = 0
     while index < size {
         var value: Byte = index % 10
@@ -341,7 +341,7 @@ func violate(label: String, bytes: Buffer) {
 }
 
 func bytes_of(values: List<Integer>): Buffer {
-    var made = Buffer(0)
+    var made = Buffer()
     var index = 0
     while index < values.count() {
         var value: Byte? = values[index]

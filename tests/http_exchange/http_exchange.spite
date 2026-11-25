@@ -101,7 +101,7 @@ func read_answer(client: Tcp.Client, path: String): String {
             }
         }
     }
-    var body_bytes = Buffer(0)
+    var body_bytes = Buffer()
     while body_bytes.count() < body_length {
         var more = client.read_as_buffer()
         crash more

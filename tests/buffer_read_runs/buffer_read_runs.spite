@@ -1,7 +1,7 @@
 var console = Console()
 
 func BufferReadRuns() {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     bytes.append(10)
     bytes.append(20)
     bytes.append(30)
@@ -13,7 +13,7 @@ func BufferReadRuns() {
     var anywhere_first = anywhere[0]
     var outside = bytes.read_buffer_at(2, 2)
     console.print(front_count, anywhere_first, not outside)
-    var copied = Buffer(0)
+    var copied = Buffer()
     copied.append_buffer(bytes, 1, 2)
     var copied_count = copied.count()
     var copied_last = copied[1]

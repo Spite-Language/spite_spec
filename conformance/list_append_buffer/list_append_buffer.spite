@@ -2,7 +2,7 @@ var console = Console()
 
 func ListAppendBuffer() {
     var numbers = [1, 2, 3]
-    var other = Buffer(0)
+    var other = Buffer()
     numbers.append_buffer(other, 0, 0)
     console.print(numbers)
 }

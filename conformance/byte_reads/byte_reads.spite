@@ -1,7 +1,7 @@
 var console = Console()
 
 func ByteReads() {
-    var header = Buffer(0)
+    var header = Buffer()
     header.append_integer_little_endian(12)
     unproven(header)
     undone(header)

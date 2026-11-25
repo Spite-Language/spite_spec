@@ -92,7 +92,7 @@ func both_flags() {
 }
 
 func bytes_as_written() {
-    var data = Buffer(0)
+    var data = Buffer()
     data.append(65)
     data.append(26)
     data.append(13)

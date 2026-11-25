@@ -9,7 +9,7 @@ var _sample_unsigned_long: UnsignedLong = 9000000000000000000
 var _first_record_value = 1200
 
 func ListByteNumbers() {
-    var bytes = Buffer(0)
+    var bytes = Buffer()
     var tiny: Tiny = -5
     bytes.append_tiny(tiny)
     var short: Short = _sample_short
@@ -31,7 +31,7 @@ func ListByteNumbers() {
     var counted = bytes.count()
     console.print("appended", counted, "bytes")
     show_numbers(bytes)
-    var big = Buffer(10)
+    var big = Buffer()
     big.append_unsigned_short_big_endian(_sample_unsigned_short)
     big.append_integer_big_endian(_sample_integer)
     big.append_float_big_endian(1.5)
@@ -59,18 +59,18 @@ func ListByteNumbers() {
         missed = missed + 1
     }
     console.print("a read past the end and one below 0 are null:", missed == 2)
-    var copied = Buffer(0)
+    var copied = Buffer()
     copied.append_buffer(bytes, 3, 4)
     var copied_number = copied.read_integer_little_endian_at(0)
     crash copied_number
     console.print("a run copied out:", copied_number)
-    var header = Buffer(0)
+    var header = Buffer()
     header.append_integer_little_endian(1)
     header.append_integer_little_endian(2)
     header.append_short_little_endian(3)
     var read_header = sum_header(header, 0)
     console.print("a header read under one bound:", read_header)
-    var image = Buffer(0)
+    var image = Buffer()
     var pixel = 0
     while pixel < 12 {
         image.append(pixel)
@@ -80,7 +80,7 @@ func ListByteNumbers() {
     console.print("an image read by row and column:", brightness)
     var walked = walk_records(bytes)
     console.print("whole integers walked:", walked)
-    var message = Buffer(0)
+    var message = Buffer()
     message.append_unsigned_short_little_endian(2)
     message.append_integer_little_endian(_first_record_value)
     message.append_integer_little_endian(-35)

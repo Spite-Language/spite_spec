@@ -1,16 +1,16 @@
 var console = Console()
 
 func BufferEquals() {
-    var first = Buffer(0)
+    var first = Buffer()
     first.append_string("spite")
-    var same_bytes = Buffer(0)
+    var same_bytes = Buffer()
     same_bytes.append_string("spite")
-    var other_bytes = Buffer(0)
+    var other_bytes = Buffer()
     other_bytes.append_string("spice")
-    var shorter = Buffer(0)
+    var shorter = Buffer()
     shorter.append_string("spit")
-    var empty = Buffer(0)
-    var also_empty = Buffer(0)
+    var empty = Buffer()
+    var also_empty = Buffer()
     console.print("same bytes", first == same_bytes, "other bytes", first == other_bytes, "shorter", first == shorter)
     console.print("not equal", first != other_bytes, "both empty", empty == also_empty, "itself", first == first)
     same_bytes[0] = 83

@@ -3,12 +3,12 @@ var _largest = 1000
 var position = 0
 
 func NullableReadKeepsItsBound() {
-    var small = Buffer(8)
+    var small = Buffer()
     small.append(0)
     small.append(0)
     small.append(0)
     small.append(5)
-    var large = Buffer(8)
+    var large = Buffer()
     large.append(0)
     large.append(1)
     large.append(0)

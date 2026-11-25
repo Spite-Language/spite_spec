@@ -1,10 +1,10 @@
 var console = Console()
 
 func BufferAppendNegativeStart() {
-    var source = Buffer(4)
+    var source = Buffer()
     source.append(1)
     source.append(2)
-    var copied = Buffer(0)
+    var copied = Buffer()
     copied.append_buffer(source, -1, 1)
     console.print("never printed")
 }
