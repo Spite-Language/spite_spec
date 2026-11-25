@@ -1,0 +1,1 @@
+conformance/reopened_unread_parameter_is_named_ignored/second/first/game/hero.spite:1: fixed: the parameter 'damage' was never read, and 'hit' replaces the function of the class it reopens, so it keeps its parameters; renamed it '_damage' (in Hero.hit)

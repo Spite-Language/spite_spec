@@ -1,0 +1,9 @@
+var console = Console()
+
+func ReopenedUnreadParameterIsNamedIgnored() {
+    load "first"
+    load "second"
+    var hero = Game.Hero()
+    var hit = hero.hit(4)
+    console.print(hit)
+}
