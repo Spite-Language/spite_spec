@@ -6,14 +6,7 @@ var plain = DynamicLibrary(
     "tests/foreign_library/fixture.dll",
     "",
     {
-        "sum_of": DynamicLibrary.FunctionDeclaration(
-            "add_numbers",
-            [
-                DynamicLibrary.Argument("first", Integer),
-                DynamicLibrary.Argument("second", Integer),
-            ],
-            Integer,
-        ),
+        "sum_of": DynamicLibrary.FunctionDeclaration("add_numbers", [DynamicLibrary.Argument("first", Integer), DynamicLibrary.Argument("second", Integer)], Integer)
     },
 )
 var ledger = Ledger()

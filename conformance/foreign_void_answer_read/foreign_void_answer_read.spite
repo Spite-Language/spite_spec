@@ -3,14 +3,8 @@ var windows = DynamicLibrary(
     "fixture.dll",
     "fixture.h",
     {
-        "forget": DynamicLibrary.FunctionDeclaration("Forget", [DynamicLibrary.Argument("value", Integer)], Nothing),
-        "forget_read": DynamicLibrary.FunctionDeclaration(
-            "Forget",
-            [
-                DynamicLibrary.Argument("value", Integer),
-            ],
-            Integer,
-        ),
+        "forget": DynamicLibrary.FunctionDeclaration("Forget", [DynamicLibrary.Argument("value", Integer)], Nothing)
+        "forget_read": DynamicLibrary.FunctionDeclaration("Forget", [DynamicLibrary.Argument("value", Integer)], Integer)
     },
 )
 

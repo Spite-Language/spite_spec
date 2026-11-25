@@ -3,21 +3,8 @@ var fixture = DynamicLibrary(
     "tests/native_fault_foreign_hot_reload/fixture.dll",
     "",
     {
-        "add_numbers": DynamicLibrary.FunctionDeclaration(
-            "add_numbers",
-            [
-                DynamicLibrary.Argument("first", Integer),
-                DynamicLibrary.Argument("second", Integer),
-            ],
-            Integer,
-        ),
-        "read_integer_at": DynamicLibrary.FunctionDeclaration(
-            "read_integer_at",
-            [
-                DynamicLibrary.Argument("address", Long),
-            ],
-            Integer,
-        ),
+        "add_numbers": DynamicLibrary.FunctionDeclaration("add_numbers", [DynamicLibrary.Argument("first", Integer), DynamicLibrary.Argument("second", Integer)], Integer)
+        "read_integer_at": DynamicLibrary.FunctionDeclaration("read_integer_at", [DynamicLibrary.Argument("address", Long)], Integer)
     },
 )
 

@@ -3,15 +3,9 @@ var plain = DynamicLibrary(
     "tests/foreign_callback_owner_drops_before_its_attributes/fixture.dll",
     "",
     {
-        "keep_click": DynamicLibrary.FunctionDeclaration(
-            "keep_click",
-            [
-                DynamicLibrary.Argument("clicking", Long),
-            ],
-            Nothing,
-        ),
-        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing),
-        "forget_click": DynamicLibrary.FunctionDeclaration("forget_click", [], Nothing),
+        "keep_click": DynamicLibrary.FunctionDeclaration("keep_click", [DynamicLibrary.Argument("clicking", Long)], Nothing)
+        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing)
+        "forget_click": DynamicLibrary.FunctionDeclaration("forget_click", [], Nothing)
     },
 )
 var clicks = Clicks()

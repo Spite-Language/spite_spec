@@ -2,9 +2,7 @@ var console = Console()
 var fixture = DynamicLibrary(
     "tests/native_fault_illegal/fixture.dll",
     "",
-    {
-        "stop_here": DynamicLibrary.FunctionDeclaration("stop_here", [], Nothing),
-    },
+    {"stop_here": DynamicLibrary.FunctionDeclaration("stop_here", [], Nothing)},
 )
 
 func NativeFaultIllegal() {

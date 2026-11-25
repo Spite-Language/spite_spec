@@ -3,13 +3,7 @@ var fixture = DynamicLibrary(
     "tests/foreign_site_is_the_faulting_threads/fixture.dll",
     "",
     {
-        "start_later": DynamicLibrary.FunctionDeclaration(
-            "start_later",
-            [
-                DynamicLibrary.Argument("callback", Long),
-            ],
-            Nothing,
-        ),
+        "start_later": DynamicLibrary.FunctionDeclaration("start_later", [DynamicLibrary.Argument("callback", Long)], Nothing)
     },
 )
 var waiter = Waiter()

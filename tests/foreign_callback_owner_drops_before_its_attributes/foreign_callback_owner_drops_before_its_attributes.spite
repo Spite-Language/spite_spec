@@ -2,9 +2,7 @@ var console = Console()
 var plain = DynamicLibrary(
     "tests/foreign_callback_owner_drops_before_its_attributes/fixture.dll",
     "",
-    {
-        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing),
-    },
+    {"click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing)},
 )
 var _first = 1
 var _second = 2

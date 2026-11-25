@@ -1,9 +1,7 @@
 var library = DynamicLibrary(
     "ucrtbase.dll",
     "",
-    {
-        "text_length": DynamicLibrary.FunctionDeclaration("strlen", [DynamicLibrary.Argument("text", String)], Integer),
-    },
+    {"text_length": DynamicLibrary.FunctionDeclaration("strlen", [DynamicLibrary.Argument("text", String)], Integer)},
 )
 
 func text_length(text: String): Integer {

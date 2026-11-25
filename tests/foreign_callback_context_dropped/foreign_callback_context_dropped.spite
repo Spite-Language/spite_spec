@@ -3,15 +3,8 @@ var plain = DynamicLibrary(
     "tests/foreign_callback_context_dropped/fixture.dll",
     "",
     {
-        "keep_tick": DynamicLibrary.FunctionDeclaration(
-            "keep_tick",
-            [
-                DynamicLibrary.Argument("ticking", Long),
-                DynamicLibrary.Argument("context", Long),
-            ],
-            Nothing,
-        ),
-        "tick": DynamicLibrary.FunctionDeclaration("tick", [DynamicLibrary.Argument("count", Integer)], Nothing),
+        "keep_tick": DynamicLibrary.FunctionDeclaration("keep_tick", [DynamicLibrary.Argument("ticking", Long), DynamicLibrary.Argument("context", Long)], Nothing)
+        "tick": DynamicLibrary.FunctionDeclaration("tick", [DynamicLibrary.Argument("count", Integer)], Nothing)
     },
 )
 

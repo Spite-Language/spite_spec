@@ -3,8 +3,8 @@ var plain = DynamicLibrary(
     "tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll",
     "",
     {
-        "tick": DynamicLibrary.FunctionDeclaration("tick", [DynamicLibrary.Argument("count", Integer)], Nothing),
-        "forget_tick": DynamicLibrary.FunctionDeclaration("forget_tick", [], Nothing),
+        "tick": DynamicLibrary.FunctionDeclaration("tick", [DynamicLibrary.Argument("count", Integer)], Nothing)
+        "forget_tick": DynamicLibrary.FunctionDeclaration("forget_tick", [], Nothing)
     },
 )
 var _first = 1

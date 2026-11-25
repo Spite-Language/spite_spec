@@ -3,14 +3,7 @@ var library = DynamicLibrary(
     "tests/foreign_callback_reentered_site/fixture.dll",
     "",
     {
-        "call_with": DynamicLibrary.FunctionDeclaration(
-            "call_with",
-            [
-                DynamicLibrary.Argument("value", Integer),
-                DynamicLibrary.Argument("function", Spite.Function<Integer, Integer>),
-            ],
-            Integer,
-        ),
+        "call_with": DynamicLibrary.FunctionDeclaration("call_with", [DynamicLibrary.Argument("value", Integer), DynamicLibrary.Argument("function", Spite.Function<Integer, Integer>)], Integer)
     },
 )
 

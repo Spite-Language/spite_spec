@@ -3,14 +3,7 @@ var plain = DynamicLibrary(
     "tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll",
     "",
     {
-        "keep_tick": DynamicLibrary.FunctionDeclaration(
-            "keep_tick",
-            [
-                DynamicLibrary.Argument("ticking", Long),
-                DynamicLibrary.Argument("context", Long),
-            ],
-            Nothing,
-        ),
+        "keep_tick": DynamicLibrary.FunctionDeclaration("keep_tick", [DynamicLibrary.Argument("ticking", Long), DynamicLibrary.Argument("context", Long)], Nothing)
     },
 )
 var _ticking: ForeignCallback? = null

@@ -3,13 +3,7 @@ var plain = DynamicLibrary(
     "tests/foreign_missing_symbol/fixture.dll",
     "",
     {
-        "ring_bell": DynamicLibrary.FunctionDeclaration(
-            "ring_bell",
-            [
-                DynamicLibrary.Argument("times", Integer),
-            ],
-            Nothing,
-        ),
+        "ring_bell": DynamicLibrary.FunctionDeclaration("ring_bell", [DynamicLibrary.Argument("times", Integer)], Nothing)
     },
 )
 

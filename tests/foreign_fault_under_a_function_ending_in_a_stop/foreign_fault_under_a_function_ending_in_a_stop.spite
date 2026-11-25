@@ -3,13 +3,7 @@ var fixture = DynamicLibrary(
     "tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll",
     "",
     {
-        "call_back_guarded": DynamicLibrary.FunctionDeclaration(
-            "call_back_guarded",
-            [
-                DynamicLibrary.Argument("callback", Long),
-            ],
-            Integer,
-        ),
+        "call_back_guarded": DynamicLibrary.FunctionDeclaration("call_back_guarded", [DynamicLibrary.Argument("callback", Long)], Integer)
     },
 )
 var adder = Adder()

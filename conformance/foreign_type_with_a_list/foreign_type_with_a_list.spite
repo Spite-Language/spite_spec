@@ -8,13 +8,7 @@ var c_runtime = DynamicLibrary(
     "ucrtbase.dll",
     "",
     {
-        "length_of": DynamicLibrary.FunctionDeclaration(
-            "strlen",
-            [
-                DynamicLibrary.Argument("labelled", Labelled),
-            ],
-            Integer,
-        ),
+        "length_of": DynamicLibrary.FunctionDeclaration("strlen", [DynamicLibrary.Argument("labelled", Labelled)], Integer)
     },
 )
 

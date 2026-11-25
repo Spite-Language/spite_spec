@@ -3,15 +3,7 @@ var fixture = DynamicLibrary(
     "tests/foreign_threads_call_into_a_singleton/fixture.dll",
     "",
     {
-        "hit_from_threads": DynamicLibrary.FunctionDeclaration(
-            "hit_from_threads",
-            [
-                DynamicLibrary.Argument("threads", Integer),
-                DynamicLibrary.Argument("calls", Integer),
-                DynamicLibrary.Argument("hit", Long),
-            ],
-            Nothing,
-        ),
+        "hit_from_threads": DynamicLibrary.FunctionDeclaration("hit_from_threads", [DynamicLibrary.Argument("threads", Integer), DynamicLibrary.Argument("calls", Integer), DynamicLibrary.Argument("hit", Long)], Nothing)
     },
 )
 var hits = Hits()

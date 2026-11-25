@@ -4,16 +4,7 @@ var fixture = DynamicLibrary(
     "tests/foreign_callbacks_count_references_atomically/fixture.dll",
     "",
     {
-        "report_from_threads": DynamicLibrary.FunctionDeclaration(
-            "report_from_threads",
-            [
-                DynamicLibrary.Argument("threads", Integer),
-                DynamicLibrary.Argument("calls", Integer),
-                DynamicLibrary.Argument("report", Long),
-                DynamicLibrary.Argument("context", Long),
-            ],
-            Nothing,
-        ),
+        "report_from_threads": DynamicLibrary.FunctionDeclaration("report_from_threads", [DynamicLibrary.Argument("threads", Integer), DynamicLibrary.Argument("calls", Integer), DynamicLibrary.Argument("report", Long), DynamicLibrary.Argument("context", Long)], Nothing)
     },
 )
 var _threads = 4

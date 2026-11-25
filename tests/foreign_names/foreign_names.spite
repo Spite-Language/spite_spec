@@ -3,8 +3,8 @@ var kernel = DynamicLibrary(
     "kernel32.dll",
     "",
     {
-        "tick_count": DynamicLibrary.FunctionDeclaration("GetTickCount64", [], Long),
-        "current_process_identifier": DynamicLibrary.FunctionDeclaration("GetCurrentProcessId", [], Integer),
+        "tick_count": DynamicLibrary.FunctionDeclaration("GetTickCount64", [], Long)
+        "current_process_identifier": DynamicLibrary.FunctionDeclaration("GetCurrentProcessId", [], Integer)
     },
 )
 

@@ -4,9 +4,7 @@ var console = Console()
 var fixture = DynamicLibrary(
     "tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll",
     "",
-    {
-        "largest_integer": DynamicLibrary.FunctionDeclaration("largest_integer", [], Integer),
-    },
+    {"largest_integer": DynamicLibrary.FunctionDeclaration("largest_integer", [], Integer)},
 )
 
 func add_one() {

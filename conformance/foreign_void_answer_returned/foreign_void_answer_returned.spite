@@ -2,15 +2,7 @@ var console = Console()
 var windows = DynamicLibrary(
     "fixture.dll",
     "fixture.h",
-    {
-        "forgotten": DynamicLibrary.FunctionDeclaration(
-            "QuietForget",
-            [
-                DynamicLibrary.Argument("value", Integer),
-            ],
-            Long,
-        ),
-    },
+    {"forgotten": DynamicLibrary.FunctionDeclaration("QuietForget", [DynamicLibrary.Argument("value", Integer)], Long)},
 )
 
 func ForeignVoidAnswerReturned() {

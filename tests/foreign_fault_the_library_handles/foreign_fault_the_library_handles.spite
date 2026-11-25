@@ -3,13 +3,7 @@ var fixture = DynamicLibrary(
     "tests/foreign_fault_the_library_handles/fixture.dll",
     "",
     {
-        "read_or_answer": DynamicLibrary.FunctionDeclaration(
-            "read_or_answer",
-            [
-                DynamicLibrary.Argument("address", Long),
-            ],
-            Integer,
-        ),
+        "read_or_answer": DynamicLibrary.FunctionDeclaration("read_or_answer", [DynamicLibrary.Argument("address", Long)], Integer)
     },
 )
 

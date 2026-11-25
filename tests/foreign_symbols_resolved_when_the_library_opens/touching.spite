@@ -2,8 +2,8 @@ var library = DynamicLibrary(
     "tests/foreign_symbols_resolved_when_the_library_opens/fixture.dll",
     "",
     {
-        "touch": DynamicLibrary.FunctionDeclaration("touch", [], Nothing),
-        "absent_symbol": DynamicLibrary.FunctionDeclaration("absent_symbol", [], Nothing),
+        "touch": DynamicLibrary.FunctionDeclaration("touch", [], Nothing)
+        "absent_symbol": DynamicLibrary.FunctionDeclaration("absent_symbol", [], Nothing)
     },
 )
 

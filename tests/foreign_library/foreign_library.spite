@@ -8,113 +8,38 @@ var plain = DynamicLibrary(
     "tests/foreign_library/fixture.dll",
     "",
     {
-        "sum_of_numbers": DynamicLibrary.FunctionDeclaration(
-            "add_numbers",
-            [
-                DynamicLibrary.Argument("first", Integer),
-                DynamicLibrary.Argument("second", Integer),
-            ],
-            Integer,
-        ),
-        "half_of": DynamicLibrary.FunctionDeclaration("half_of", [DynamicLibrary.Argument("value", Integer)], Double),
-        "big_number": DynamicLibrary.FunctionDeclaration("big_number", [], Long),
-        "greeting": DynamicLibrary.FunctionDeclaration("greeting", [], String),
-        "length_of": DynamicLibrary.FunctionDeclaration(
-            "text_length",
-            [
-                DynamicLibrary.Argument("text", String),
-            ],
-            Integer,
-        ),
-        "point_sum": DynamicLibrary.FunctionDeclaration(
-            "sum_point",
-            [
-                DynamicLibrary.Argument("point", PointPair),
-            ],
-            Integer,
-        ),
-        "values_sum": DynamicLibrary.FunctionDeclaration(
-            "sum_values",
-            [
-                DynamicLibrary.Argument("values", List<Integer>),
-                DynamicLibrary.Argument("count", Integer),
-            ],
-            Integer,
-        ),
-        "double_values": DynamicLibrary.FunctionDeclaration(
-            "double_values",
-            [
-                DynamicLibrary.Argument("values", List<Integer>),
-                DynamicLibrary.Argument("count", Integer),
-            ],
-            Nothing,
-        ),
-        "guessed_wide_sum": DynamicLibrary.FunctionDeclaration(
-            "wide_sum",
-            [
-                DynamicLibrary.Argument("first", Long),
-                DynamicLibrary.Argument("second", Long),
-            ],
-            Long,
-        ),
+        "sum_of_numbers": DynamicLibrary.FunctionDeclaration("add_numbers", [DynamicLibrary.Argument("first", Integer), DynamicLibrary.Argument("second", Integer)], Integer)
+        "half_of": DynamicLibrary.FunctionDeclaration("half_of", [DynamicLibrary.Argument("value", Integer)], Double)
+        "big_number": DynamicLibrary.FunctionDeclaration("big_number", [], Long)
+        "greeting": DynamicLibrary.FunctionDeclaration("greeting", [], String)
+        "length_of": DynamicLibrary.FunctionDeclaration("text_length", [DynamicLibrary.Argument("text", String)], Integer)
+        "point_sum": DynamicLibrary.FunctionDeclaration("sum_point", [DynamicLibrary.Argument("point", PointPair)], Integer)
+        "values_sum": DynamicLibrary.FunctionDeclaration("sum_values", [DynamicLibrary.Argument("values", List<Integer>), DynamicLibrary.Argument("count", Integer)], Integer)
+        "double_values": DynamicLibrary.FunctionDeclaration("double_values", [DynamicLibrary.Argument("values", List<Integer>), DynamicLibrary.Argument("count", Integer)], Nothing)
+        "guessed_wide_sum": DynamicLibrary.FunctionDeclaration("wide_sum", [DynamicLibrary.Argument("first", Long), DynamicLibrary.Argument("second", Long)], Long)
     },
 )
 var camel = DynamicLibrary(
     "tests/foreign_library/fixture.dll",
     "",
     {
-        "product_of_numbers": DynamicLibrary.FunctionDeclaration(
-            "multiplyNumbers",
-            [
-                DynamicLibrary.Argument("first", Integer),
-                DynamicLibrary.Argument("second", Integer),
-            ],
-            Integer,
-        ),
+        "product_of_numbers": DynamicLibrary.FunctionDeclaration("multiplyNumbers", [DynamicLibrary.Argument("first", Integer), DynamicLibrary.Argument("second", Integer)], Integer)
     },
 )
 var headerless = DynamicLibrary(
     "tests/foreign_library/fixture.dll",
     "",
-    {
-        "answer_position": DynamicLibrary.FunctionDeclaration("GetAnswerPos", [], Integer),
-    },
+    {"answer_position": DynamicLibrary.FunctionDeclaration("GetAnswerPos", [], Integer)},
 )
 var windows = DynamicLibrary(
     "tests/foreign_library/fixture.dll",
     "fixture.h",
     {
-        "move_point": DynamicLibrary.FunctionDeclaration(
-            "MovePoint",
-            [
-                DynamicLibrary.Argument("point", PointPair),
-            ],
-            Nothing,
-        ),
-        "declared_wide_sum": DynamicLibrary.FunctionDeclaration(
-            "WideSum",
-            [
-                DynamicLibrary.Argument("first", Long),
-                DynamicLibrary.Argument("second", UnsignedLong),
-            ],
-            Long,
-        ),
-        "scaled_value": DynamicLibrary.FunctionDeclaration(
-            "Scaled",
-            [
-                DynamicLibrary.Argument("factor", Float),
-                DynamicLibrary.Argument("value", Integer),
-            ],
-            Integer,
-        ),
-        "doubled_handle": DynamicLibrary.FunctionDeclaration(
-            "HandleTwice",
-            [
-                DynamicLibrary.Argument("handle", Long),
-            ],
-            Long,
-        ),
-        "forget": DynamicLibrary.FunctionDeclaration("Forget", [DynamicLibrary.Argument("value", Integer)], Nothing),
+        "move_point": DynamicLibrary.FunctionDeclaration("MovePoint", [DynamicLibrary.Argument("point", PointPair)], Nothing)
+        "declared_wide_sum": DynamicLibrary.FunctionDeclaration("WideSum", [DynamicLibrary.Argument("first", Long), DynamicLibrary.Argument("second", UnsignedLong)], Long)
+        "scaled_value": DynamicLibrary.FunctionDeclaration("Scaled", [DynamicLibrary.Argument("factor", Float), DynamicLibrary.Argument("value", Integer)], Integer)
+        "doubled_handle": DynamicLibrary.FunctionDeclaration("HandleTwice", [DynamicLibrary.Argument("handle", Long)], Long)
+        "forget": DynamicLibrary.FunctionDeclaration("Forget", [DynamicLibrary.Argument("value", Integer)], Nothing)
     },
 )
 

@@ -2,9 +2,7 @@ var console = Console()
 var absent = DynamicLibrary(
     "tests/foreign_missing_library/absent.dll",
     "",
-    {
-        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("times", Integer)], Nothing),
-    },
+    {"click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("times", Integer)], Nothing)},
 )
 
 func ForeignMissingLibrary() {

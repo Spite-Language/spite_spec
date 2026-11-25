@@ -4,14 +4,7 @@ var fixture = DynamicLibrary(
     "tests/foreign_call_without_callbacks_carries_no_trampoline/fixture.dll",
     "",
     {
-        "add_numbers": DynamicLibrary.FunctionDeclaration(
-            "add_numbers",
-            [
-                DynamicLibrary.Argument("first", Integer),
-                DynamicLibrary.Argument("second", Integer),
-            ],
-            Integer,
-        ),
+        "add_numbers": DynamicLibrary.FunctionDeclaration("add_numbers", [DynamicLibrary.Argument("first", Integer), DynamicLibrary.Argument("second", Integer)], Integer)
     },
 )
 var _two = 2

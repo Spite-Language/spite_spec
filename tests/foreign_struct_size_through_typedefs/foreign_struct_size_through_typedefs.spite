@@ -8,13 +8,7 @@ var windows = DynamicLibrary(
     "tests/foreign_struct_size_through_typedefs/fixture.dll",
     "fixture.h",
     {
-        "move_point": DynamicLibrary.FunctionDeclaration(
-            "MovePoint",
-            [
-                DynamicLibrary.Argument("point", PointPair),
-            ],
-            Nothing,
-        ),
+        "move_point": DynamicLibrary.FunctionDeclaration("MovePoint", [DynamicLibrary.Argument("point", PointPair)], Nothing)
     },
 )
 

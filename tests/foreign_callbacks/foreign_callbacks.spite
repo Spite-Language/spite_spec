@@ -3,62 +3,18 @@ var plain = DynamicLibrary(
     "tests/foreign_callbacks/fixture.dll",
     "",
     {
-        "sum_mapped": DynamicLibrary.FunctionDeclaration(
-            "sum_mapped",
-            [
-                DynamicLibrary.Argument("count", Integer),
-                DynamicLibrary.Argument("mapping", Spite.Function<Integer, Integer>),
-            ],
-            Integer,
-        ),
-        "visit_each": DynamicLibrary.FunctionDeclaration(
-            "visit_each",
-            [
-                DynamicLibrary.Argument("count", Integer),
-                DynamicLibrary.Argument("visitor", Long),
-                DynamicLibrary.Argument("context", Long),
-            ],
-            Integer,
-        ),
-        "run_on_thread": DynamicLibrary.FunctionDeclaration(
-            "run_on_thread",
-            [
-                DynamicLibrary.Argument("reporter", Long),
-                DynamicLibrary.Argument("context", Long),
-                DynamicLibrary.Argument("value", Integer),
-            ],
-            Nothing,
-        ),
+        "sum_mapped": DynamicLibrary.FunctionDeclaration("sum_mapped", [DynamicLibrary.Argument("count", Integer), DynamicLibrary.Argument("mapping", Spite.Function<Integer, Integer>)], Integer)
+        "visit_each": DynamicLibrary.FunctionDeclaration("visit_each", [DynamicLibrary.Argument("count", Integer), DynamicLibrary.Argument("visitor", Long), DynamicLibrary.Argument("context", Long)], Integer)
+        "run_on_thread": DynamicLibrary.FunctionDeclaration("run_on_thread", [DynamicLibrary.Argument("reporter", Long), DynamicLibrary.Argument("context", Long), DynamicLibrary.Argument("value", Integer)], Nothing)
     },
 )
 var declared = DynamicLibrary(
     "tests/foreign_callbacks/fixture.dll",
     "fixture.h",
     {
-        "declared_sum_mapped": DynamicLibrary.FunctionDeclaration(
-            "sum_mapped",
-            [
-                DynamicLibrary.Argument("count", Integer),
-                DynamicLibrary.Argument("mapping", Spite.Function<Integer, Integer>),
-            ],
-            Integer,
-        ),
-        "keep_procedure": DynamicLibrary.FunctionDeclaration(
-            "keep_procedure",
-            [
-                DynamicLibrary.Argument("procedure", Long),
-            ],
-            Nothing,
-        ),
-        "send_message": DynamicLibrary.FunctionDeclaration(
-            "send_message",
-            [
-                DynamicLibrary.Argument("window", Long),
-                DynamicLibrary.Argument("message", UnsignedInteger),
-                DynamicLibrary.Argument("parameter", Long),
-            ],
-            Long,
-        ),
+        "declared_sum_mapped": DynamicLibrary.FunctionDeclaration("sum_mapped", [DynamicLibrary.Argument("count", Integer), DynamicLibrary.Argument("mapping", Spite.Function<Integer, Integer>)], Integer)
+        "keep_procedure": DynamicLibrary.FunctionDeclaration("keep_procedure", [DynamicLibrary.Argument("procedure", Long)], Nothing)
+        "send_message": DynamicLibrary.FunctionDeclaration("send_message", [DynamicLibrary.Argument("window", Long), DynamicLibrary.Argument("message", UnsignedInteger), DynamicLibrary.Argument("parameter", Long)], Long)
     },
 )
 var scale = 3

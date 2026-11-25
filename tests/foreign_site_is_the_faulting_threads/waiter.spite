@@ -3,9 +3,7 @@ singleton
 var fixture = DynamicLibrary(
     "tests/foreign_site_is_the_faulting_threads/fixture.dll",
     "",
-    {
-        "block_forever": DynamicLibrary.FunctionDeclaration("block_forever", [], Nothing),
-    },
+    {"block_forever": DynamicLibrary.FunctionDeclaration("block_forever", [], Nothing)},
 )
 
 func block() {

@@ -3,20 +3,8 @@ var fixture = DynamicLibrary(
     "tests/foreign_exception_through_a_callback/fixture.dll",
     "",
     {
-        "throwing": DynamicLibrary.FunctionDeclaration(
-            "throw_now",
-            [
-                DynamicLibrary.Argument("count", Integer),
-            ],
-            Nothing,
-        ),
-        "call_and_catch": DynamicLibrary.FunctionDeclaration(
-            "call_and_catch",
-            [
-                DynamicLibrary.Argument("callback", Spite.Function<Integer, Nothing>),
-            ],
-            Integer,
-        ),
+        "throwing": DynamicLibrary.FunctionDeclaration("throw_now", [DynamicLibrary.Argument("count", Integer)], Nothing)
+        "call_and_catch": DynamicLibrary.FunctionDeclaration("call_and_catch", [DynamicLibrary.Argument("callback", Spite.Function<Integer, Nothing>)], Integer)
     },
 )
 

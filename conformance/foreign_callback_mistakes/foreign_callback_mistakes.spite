@@ -3,22 +3,9 @@ var library = DynamicLibrary(
     "fixture.dll",
     "",
     {
-        "keep": DynamicLibrary.FunctionDeclaration("keep", [DynamicLibrary.Argument("procedure", Long)], Nothing),
-        "keep_with_context": DynamicLibrary.FunctionDeclaration(
-            "keep",
-            [
-                DynamicLibrary.Argument("procedure", Long),
-                DynamicLibrary.Argument("context", Long),
-            ],
-            Nothing,
-        ),
-        "each_name": DynamicLibrary.FunctionDeclaration(
-            "each_name",
-            [
-                DynamicLibrary.Argument("each", Spite.Function<String, Nothing>),
-            ],
-            Nothing,
-        ),
+        "keep": DynamicLibrary.FunctionDeclaration("keep", [DynamicLibrary.Argument("procedure", Long)], Nothing)
+        "keep_with_context": DynamicLibrary.FunctionDeclaration("keep", [DynamicLibrary.Argument("procedure", Long), DynamicLibrary.Argument("context", Long)], Nothing)
+        "each_name": DynamicLibrary.FunctionDeclaration("each_name", [DynamicLibrary.Argument("each", Spite.Function<String, Nothing>)], Nothing)
     },
 )
 var marks = List<Integer>()

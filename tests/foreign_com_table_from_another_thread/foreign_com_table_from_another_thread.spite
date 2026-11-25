@@ -3,21 +3,8 @@ var fixture = DynamicLibrary(
     "tests/foreign_com_table_from_another_thread/fixture.dll",
     "",
     {
-        "keep_table": DynamicLibrary.FunctionDeclaration(
-            "keep_table",
-            [
-                DynamicLibrary.Argument("started", Long),
-                DynamicLibrary.Argument("ended", Long),
-            ],
-            Nothing,
-        ),
-        "play_on_a_thread": DynamicLibrary.FunctionDeclaration(
-            "play_on_a_thread",
-            [
-                DynamicLibrary.Argument("voice", Integer),
-            ],
-            Nothing,
-        ),
+        "keep_table": DynamicLibrary.FunctionDeclaration("keep_table", [DynamicLibrary.Argument("started", Long), DynamicLibrary.Argument("ended", Long)], Nothing)
+        "play_on_a_thread": DynamicLibrary.FunctionDeclaration("play_on_a_thread", [DynamicLibrary.Argument("voice", Integer)], Nothing)
     },
 )
 var voices = Voices()

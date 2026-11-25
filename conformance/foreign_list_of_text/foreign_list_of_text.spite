@@ -3,14 +3,7 @@ var library = DynamicLibrary(
     "fixture.dll",
     "",
     {
-        "store_names": DynamicLibrary.FunctionDeclaration(
-            "store_names",
-            [
-                DynamicLibrary.Argument("names", List<String>),
-                DynamicLibrary.Argument("count", Integer),
-            ],
-            Integer,
-        ),
+        "store_names": DynamicLibrary.FunctionDeclaration("store_names", [DynamicLibrary.Argument("names", List<String>), DynamicLibrary.Argument("count", Integer)], Integer)
     },
 )
 

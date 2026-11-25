@@ -2,9 +2,7 @@ var console = Console()
 var library = DynamicLibrary(
     "fixture.dll",
     "",
-    {
-        "store": DynamicLibrary.FunctionDeclaration("store", [DynamicLibrary.Argument("value", Console)], Integer),
-    },
+    {"store": DynamicLibrary.FunctionDeclaration("store", [DynamicLibrary.Argument("value", Console)], Integer)},
 )
 
 func ForeignCallMistakes() {

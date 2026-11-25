@@ -3,22 +3,8 @@ var windows = DynamicLibrary(
     "tests/foreign_float_argument/fixture.dll",
     "fixture.h",
     {
-        "scaled": DynamicLibrary.FunctionDeclaration(
-            "Scaled",
-            [
-                DynamicLibrary.Argument("factor", Float),
-                DynamicLibrary.Argument("count", Integer),
-            ],
-            Integer,
-        ),
-        "wide_sum": DynamicLibrary.FunctionDeclaration(
-            "WideSum",
-            [
-                DynamicLibrary.Argument("first", Long),
-                DynamicLibrary.Argument("second", UnsignedLong),
-            ],
-            Long,
-        ),
+        "scaled": DynamicLibrary.FunctionDeclaration("Scaled", [DynamicLibrary.Argument("factor", Float), DynamicLibrary.Argument("count", Integer)], Integer)
+        "wide_sum": DynamicLibrary.FunctionDeclaration("WideSum", [DynamicLibrary.Argument("first", Long), DynamicLibrary.Argument("second", UnsignedLong)], Long)
     },
 )
 

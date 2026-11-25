@@ -3,20 +3,8 @@ var library = DynamicLibrary(
     "tests/foreign_unreached_symbol_is_not_imported/fixture.dll",
     "",
     {
-        "sum_of": DynamicLibrary.FunctionDeclaration(
-            "add_numbers",
-            [
-                DynamicLibrary.Argument("first", Integer),
-                DynamicLibrary.Argument("second", Integer),
-            ],
-            Integer,
-        ),
-        "symbol_the_library_does_not_export": DynamicLibrary.FunctionDeclaration(
-            "symbol_the_library_does_not_export",
-            [
-            ],
-            Nothing,
-        ),
+        "sum_of": DynamicLibrary.FunctionDeclaration("add_numbers", [DynamicLibrary.Argument("first", Integer), DynamicLibrary.Argument("second", Integer)], Integer)
+        "symbol_the_library_does_not_export": DynamicLibrary.FunctionDeclaration("symbol_the_library_does_not_export", [], Nothing)
     },
 )
 

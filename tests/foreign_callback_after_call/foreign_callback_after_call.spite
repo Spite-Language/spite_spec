@@ -3,14 +3,8 @@ var plain = DynamicLibrary(
     "tests/foreign_callback_after_call/fixture.dll",
     "",
     {
-        "keep_click": DynamicLibrary.FunctionDeclaration(
-            "keep_click",
-            [
-                DynamicLibrary.Argument("clicking", Spite.Function<Integer, Nothing>),
-            ],
-            Nothing,
-        ),
-        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing),
+        "keep_click": DynamicLibrary.FunctionDeclaration("keep_click", [DynamicLibrary.Argument("clicking", Spite.Function<Integer, Nothing>)], Nothing)
+        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing)
     },
 )
 

@@ -3,14 +3,8 @@ var library = DynamicLibrary(
     "ucrtbase.dll",
     "",
     {
-        "long_magnitude": DynamicLibrary.FunctionDeclaration(
-            "labs",
-            [
-                DynamicLibrary.Argument("value", Integer),
-            ],
-            Integer,
-        ),
-        "magnitude": DynamicLibrary.FunctionDeclaration("abs", [DynamicLibrary.Argument("value", Integer)], Integer),
+        "long_magnitude": DynamicLibrary.FunctionDeclaration("labs", [DynamicLibrary.Argument("value", Integer)], Integer)
+        "magnitude": DynamicLibrary.FunctionDeclaration("abs", [DynamicLibrary.Argument("value", Integer)], Integer)
     },
 )
 var _ten = 10

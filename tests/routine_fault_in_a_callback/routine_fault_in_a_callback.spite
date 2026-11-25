@@ -3,13 +3,7 @@ var fixture = DynamicLibrary(
     "tests/routine_fault_in_a_callback/fixture.dll",
     "",
     {
-        "call_back_broken": DynamicLibrary.FunctionDeclaration(
-            "call_back_broken",
-            [
-                DynamicLibrary.Argument("callback", Long),
-            ],
-            Nothing,
-        ),
+        "call_back_broken": DynamicLibrary.FunctionDeclaration("call_back_broken", [DynamicLibrary.Argument("callback", Long)], Nothing)
     },
 )
 var filler = Filler()

@@ -1,9 +1,7 @@
 var library = DynamicLibrary(
     "fixture.dll",
     "",
-    {
-        "keep": DynamicLibrary.FunctionDeclaration("keep", [DynamicLibrary.Argument("procedure", Long)], Nothing),
-    },
+    {"keep": DynamicLibrary.FunctionDeclaration("keep", [DynamicLibrary.Argument("procedure", Long)], Nothing)},
 )
 var counter = Counter()
 

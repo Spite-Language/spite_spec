@@ -4,16 +4,12 @@ var second = DynamicLibrary("ucrtbase.dll", "", {})
 var other_rule = DynamicLibrary(
     "ucrtbase.dll",
     "",
-    {
-        "size_of": DynamicLibrary.FunctionDeclaration("strlen", [DynamicLibrary.Argument("text", String)], Integer),
-    },
+    {"size_of": DynamicLibrary.FunctionDeclaration("strlen", [DynamicLibrary.Argument("text", String)], Integer)},
 )
 var other_file = DynamicLibrary(
     "kernel32.dll",
     "",
-    {
-        "current_process_identifier": DynamicLibrary.FunctionDeclaration("GetCurrentProcessId", [], Integer),
-    },
+    {"current_process_identifier": DynamicLibrary.FunctionDeclaration("GetCurrentProcessId", [], Integer)},
 )
 
 func DynamicLibraryIsOneObject() {

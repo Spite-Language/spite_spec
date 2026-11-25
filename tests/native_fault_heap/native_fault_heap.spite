@@ -2,9 +2,7 @@ var console = Console()
 var fixture = DynamicLibrary(
     "tests/native_fault_heap/fixture.dll",
     "",
-    {
-        "free_inside": DynamicLibrary.FunctionDeclaration("free_inside", [], Nothing),
-    },
+    {"free_inside": DynamicLibrary.FunctionDeclaration("free_inside", [], Nothing)},
 )
 
 func NativeFaultHeap() {
