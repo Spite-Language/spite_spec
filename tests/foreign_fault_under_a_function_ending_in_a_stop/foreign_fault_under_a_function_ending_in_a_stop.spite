@@ -1,5 +1,17 @@
 var console = Console()
-var fixture = DynamicLibrary("tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll",
+    "",
+    {
+        "call_back_guarded": DynamicLibrary.FunctionDeclaration(
+            "call_back_guarded",
+            [
+                DynamicLibrary.Argument("callback", Long),
+            ],
+            Integer,
+        ),
+    },
+)
 var adder = Adder()
 var adding = ForeignCallback(adder.add_one, 'no_context')
 
@@ -10,5 +22,7 @@ func ForeignFaultUnderAFunctionEndingInAStop() {
 }
 
 func call_back_guarded(callback: Long): Integer {
-    return fixture.call_back_guarded(callback)
+    var call = DynamicLibrary.Call(fixture.functions["call_back_guarded"])
+    call.arguments["callback"] = callback
+    return call.call()
 }

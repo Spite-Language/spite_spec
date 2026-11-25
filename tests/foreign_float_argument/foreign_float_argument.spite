@@ -1,5 +1,26 @@
 var console = Console()
-var windows = DynamicLibrary("tests/foreign_float_argument/fixture.dll", 'windows', "fixture.h")
+var windows = DynamicLibrary(
+    "tests/foreign_float_argument/fixture.dll",
+    "fixture.h",
+    {
+        "scaled": DynamicLibrary.FunctionDeclaration(
+            "Scaled",
+            [
+                DynamicLibrary.Argument("factor", Float),
+                DynamicLibrary.Argument("count", Integer),
+            ],
+            Integer,
+        ),
+        "wide_sum": DynamicLibrary.FunctionDeclaration(
+            "WideSum",
+            [
+                DynamicLibrary.Argument("first", Long),
+                DynamicLibrary.Argument("second", UnsignedLong),
+            ],
+            Long,
+        ),
+    },
+)
 
 func ForeignFloatArgument() {
     var factor: Float = 1.5
@@ -14,9 +35,15 @@ func ForeignFloatArgument() {
 }
 
 func scaled(factor: Float, count: Integer): Integer {
-    return windows.scaled(factor, count)
+    var call = DynamicLibrary.Call(windows.functions["scaled"])
+    call.arguments["factor"] = factor
+    call.arguments["count"] = count
+    return call.call()
 }
 
 func wide_sum(first: Long, second: UnsignedLong): Long {
-    return windows.wide_sum(first, second)
+    var call = DynamicLibrary.Call(windows.functions["wide_sum"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }

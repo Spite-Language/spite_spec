@@ -1,5 +1,18 @@
 var console = Console()
-var library = DynamicLibrary("fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "fixture.dll",
+    "",
+    {
+        "store_names": DynamicLibrary.FunctionDeclaration(
+            "store_names",
+            [
+                DynamicLibrary.Argument("names", List<String>),
+                DynamicLibrary.Argument("count", Integer),
+            ],
+            Integer,
+        ),
+    },
+)
 
 func ForeignListOfText() {
     var names = ["ada", "grace"]
@@ -9,5 +22,8 @@ func ForeignListOfText() {
 }
 
 func store_names(names: List<String>, count: Integer): Integer {
-    return library.store_names(names, count)
+    var call = DynamicLibrary.Call(library.functions["store_names"])
+    call.arguments["names"] = names
+    call.arguments["count"] = count
+    return call.call()
 }

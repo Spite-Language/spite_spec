@@ -1,3 +1,3 @@
 clicked 1
 the callback is dropped
-spite: C called 'ForeignCallbackDropped.Clicks.clicked' (foreign_callback_dropped/foreign_callback_dropped.spite:12) after its ForeignCallback was dropped: keep the ForeignCallback for as long as C may call it
+spite: C called 'ForeignCallbackDropped.Clicks.clicked' (foreign_callback_dropped/foreign_callback_dropped.spite:19) after its ForeignCallback was dropped: keep the ForeignCallback for as long as C may call it

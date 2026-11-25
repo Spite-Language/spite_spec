@@ -1,4 +1,10 @@
-var library = DynamicLibrary("fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "fixture.dll",
+    "",
+    {
+        "keep": DynamicLibrary.FunctionDeclaration("keep", [DynamicLibrary.Argument("procedure", Long)], Nothing),
+    },
+)
 
 func ForeignCallbackNeedsSingleton() {
     var counter = Counter()
@@ -7,5 +13,7 @@ func ForeignCallbackNeedsSingleton() {
 }
 
 func keep(procedure: Long) {
-    library.keep(procedure)
+    var call = DynamicLibrary.Call(library.functions["keep"])
+    call.arguments["procedure"] = procedure
+    call.call()
 }

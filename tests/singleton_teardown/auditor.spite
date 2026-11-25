@@ -2,7 +2,20 @@ singleton
 
 var console = Console()
 var clerk = Clerk()
-var plain = DynamicLibrary("tests/foreign_library/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_library/fixture.dll",
+    "",
+    {
+        "sum_of": DynamicLibrary.FunctionDeclaration(
+            "add_numbers",
+            [
+                DynamicLibrary.Argument("first", Integer),
+                DynamicLibrary.Argument("second", Integer),
+            ],
+            Integer,
+        ),
+    },
+)
 var ledger = Ledger()
 
 func check(): Integer {
@@ -17,5 +30,8 @@ func drop() {
 }
 
 func sum_of(first: Integer, second: Integer): Integer {
-    return plain.add_numbers(first, second)
+    var call = DynamicLibrary.Call(plain.functions["sum_of"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }

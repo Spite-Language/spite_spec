@@ -1,2 +1,2 @@
 clicked 1
-spite: 'ForeignCallbackSecondAlive.Clicks.clicked' (foreign_callback_second_alive/foreign_callback_second_alive.spite:8) was handed to C by a second ForeignCallback while the first is alive: C calls it with no context, so a function has one at a time; keep the first and hand C its address
+spite: 'ForeignCallbackSecondAlive.Clicks.clicked' (foreign_callback_second_alive/foreign_callback_second_alive.spite:15) was handed to C by a second ForeignCallback while the first is alive: C calls it with no context, so a function has one at a time; keep the first and hand C its address

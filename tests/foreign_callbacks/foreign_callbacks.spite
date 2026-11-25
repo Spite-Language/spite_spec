@@ -1,6 +1,66 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_callbacks/fixture.dll", 'identity', "")
-var declared = DynamicLibrary("tests/foreign_callbacks/fixture.dll", 'identity', "fixture.h")
+var plain = DynamicLibrary(
+    "tests/foreign_callbacks/fixture.dll",
+    "",
+    {
+        "sum_mapped": DynamicLibrary.FunctionDeclaration(
+            "sum_mapped",
+            [
+                DynamicLibrary.Argument("count", Integer),
+                DynamicLibrary.Argument("mapping", Spite.Function<Integer, Integer>),
+            ],
+            Integer,
+        ),
+        "visit_each": DynamicLibrary.FunctionDeclaration(
+            "visit_each",
+            [
+                DynamicLibrary.Argument("count", Integer),
+                DynamicLibrary.Argument("visitor", Long),
+                DynamicLibrary.Argument("context", Long),
+            ],
+            Integer,
+        ),
+        "run_on_thread": DynamicLibrary.FunctionDeclaration(
+            "run_on_thread",
+            [
+                DynamicLibrary.Argument("reporter", Long),
+                DynamicLibrary.Argument("context", Long),
+                DynamicLibrary.Argument("value", Integer),
+            ],
+            Nothing,
+        ),
+    },
+)
+var declared = DynamicLibrary(
+    "tests/foreign_callbacks/fixture.dll",
+    "fixture.h",
+    {
+        "declared_sum_mapped": DynamicLibrary.FunctionDeclaration(
+            "sum_mapped",
+            [
+                DynamicLibrary.Argument("count", Integer),
+                DynamicLibrary.Argument("mapping", Spite.Function<Integer, Integer>),
+            ],
+            Integer,
+        ),
+        "keep_procedure": DynamicLibrary.FunctionDeclaration(
+            "keep_procedure",
+            [
+                DynamicLibrary.Argument("procedure", Long),
+            ],
+            Nothing,
+        ),
+        "send_message": DynamicLibrary.FunctionDeclaration(
+            "send_message",
+            [
+                DynamicLibrary.Argument("window", Long),
+                DynamicLibrary.Argument("message", UnsignedInteger),
+                DynamicLibrary.Argument("parameter", Long),
+            ],
+            Long,
+        ),
+    },
+)
 var scale = 3
 var windows = Windows()
 
@@ -42,25 +102,45 @@ func thread_reports() {
 }
 
 func sum_mapped(count: Integer, mapping: Spite.Function<Integer, Integer>): Integer {
-    return plain.sum_mapped(count, mapping)
+    var call = DynamicLibrary.Call(plain.functions["sum_mapped"])
+    call.arguments["count"] = count
+    call.arguments["mapping"] = mapping
+    return call.call()
 }
 
 func declared_sum_mapped(count: Integer, mapping: Spite.Function<Integer, Integer>): Integer {
-    return declared.sum_mapped(count, mapping)
+    var call = DynamicLibrary.Call(declared.functions["declared_sum_mapped"])
+    call.arguments["count"] = count
+    call.arguments["mapping"] = mapping
+    return call.call()
 }
 
 func keep_procedure(procedure: Long) {
-    declared.keep_procedure(procedure)
+    var call = DynamicLibrary.Call(declared.functions["keep_procedure"])
+    call.arguments["procedure"] = procedure
+    call.call()
 }
 
 func send_message(window: Long, message: UnsignedInteger, parameter: Long): Long {
-    return declared.send_message(window, message, parameter)
+    var call = DynamicLibrary.Call(declared.functions["send_message"])
+    call.arguments["window"] = window
+    call.arguments["message"] = message
+    call.arguments["parameter"] = parameter
+    return call.call()
 }
 
 func visit_each(count: Integer, visitor: Long, context: Long): Integer {
-    return plain.visit_each(count, visitor, context)
+    var call = DynamicLibrary.Call(plain.functions["visit_each"])
+    call.arguments["count"] = count
+    call.arguments["visitor"] = visitor
+    call.arguments["context"] = context
+    return call.call()
 }
 
 func run_on_thread(reporter: Long, context: Long, value: Integer) {
-    plain.run_on_thread(reporter, context, value)
+    var call = DynamicLibrary.Call(plain.functions["run_on_thread"])
+    call.arguments["reporter"] = reporter
+    call.arguments["context"] = context
+    call.arguments["value"] = value
+    call.call()
 }

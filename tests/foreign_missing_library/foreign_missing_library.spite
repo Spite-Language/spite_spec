@@ -1,5 +1,11 @@
 var console = Console()
-var absent = DynamicLibrary("tests/foreign_missing_library/absent.dll", 'identity', "")
+var absent = DynamicLibrary(
+    "tests/foreign_missing_library/absent.dll",
+    "",
+    {
+        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("times", Integer)], Nothing),
+    },
+)
 
 func ForeignMissingLibrary() {
     console.print("before the library is used")
@@ -8,5 +14,7 @@ func ForeignMissingLibrary() {
 }
 
 func click(times: Integer) {
-    absent.click(times)
+    var call = DynamicLibrary.Call(absent.functions["click"])
+    call.arguments["times"] = times
+    call.call()
 }

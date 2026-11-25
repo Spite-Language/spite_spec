@@ -1,5 +1,19 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_callback_context_dropped/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_callback_context_dropped/fixture.dll",
+    "",
+    {
+        "keep_tick": DynamicLibrary.FunctionDeclaration(
+            "keep_tick",
+            [
+                DynamicLibrary.Argument("ticking", Long),
+                DynamicLibrary.Argument("context", Long),
+            ],
+            Nothing,
+        ),
+        "tick": DynamicLibrary.FunctionDeclaration("tick", [DynamicLibrary.Argument("count", Integer)], Nothing),
+    },
+)
 
 func ForeignCallbackContextDropped() {
     keep_and_tick()
@@ -17,9 +31,14 @@ func keep_and_tick() {
 }
 
 func keep_tick(ticking: Long, context: Long) {
-    plain.keep_tick(ticking, context)
+    var call = DynamicLibrary.Call(plain.functions["keep_tick"])
+    call.arguments["ticking"] = ticking
+    call.arguments["context"] = context
+    call.call()
 }
 
 func tick(count: Integer) {
-    plain.tick(count)
+    var call = DynamicLibrary.Call(plain.functions["tick"])
+    call.arguments["count"] = count
+    call.call()
 }

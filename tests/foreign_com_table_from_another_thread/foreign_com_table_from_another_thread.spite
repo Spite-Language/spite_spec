@@ -1,5 +1,25 @@
 var console = Console()
-var fixture = DynamicLibrary("tests/foreign_com_table_from_another_thread/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/foreign_com_table_from_another_thread/fixture.dll",
+    "",
+    {
+        "keep_table": DynamicLibrary.FunctionDeclaration(
+            "keep_table",
+            [
+                DynamicLibrary.Argument("started", Long),
+                DynamicLibrary.Argument("ended", Long),
+            ],
+            Nothing,
+        ),
+        "play_on_a_thread": DynamicLibrary.FunctionDeclaration(
+            "play_on_a_thread",
+            [
+                DynamicLibrary.Argument("voice", Integer),
+            ],
+            Nothing,
+        ),
+    },
+)
 var voices = Voices()
 var starting = ForeignCallback(voices.started, 'no_context')
 var ending = ForeignCallback(voices.ended, 'no_context')
@@ -15,9 +35,14 @@ func ForeignComTableFromAnotherThread() {
 }
 
 func keep_table(started: Long, ended: Long) {
-    fixture.keep_table(started, ended)
+    var call = DynamicLibrary.Call(fixture.functions["keep_table"])
+    call.arguments["started"] = started
+    call.arguments["ended"] = ended
+    call.call()
 }
 
 func play_on_a_thread(voice: Integer) {
-    fixture.play_on_a_thread(voice)
+    var call = DynamicLibrary.Call(fixture.functions["play_on_a_thread"])
+    call.arguments["voice"] = voice
+    call.call()
 }

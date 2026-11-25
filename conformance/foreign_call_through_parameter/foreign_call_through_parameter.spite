@@ -1,5 +1,5 @@
 var console = Console()
-var library = DynamicLibrary("fixture.dll", 'identity', "")
+var library = DynamicLibrary("fixture.dll", "", {})
 
 func ForeignCallThroughParameter() {
     call_through(library)

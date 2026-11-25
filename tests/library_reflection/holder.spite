@@ -1,1 +1,1 @@
-var fixture = DynamicLibrary("tests/foreign_library/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary("tests/foreign_library/fixture.dll", "", {})

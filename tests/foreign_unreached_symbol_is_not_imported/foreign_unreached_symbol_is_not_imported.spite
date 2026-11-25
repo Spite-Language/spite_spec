@@ -1,5 +1,24 @@
 var console = Console()
-var library = DynamicLibrary("tests/foreign_unreached_symbol_is_not_imported/fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "tests/foreign_unreached_symbol_is_not_imported/fixture.dll",
+    "",
+    {
+        "sum_of": DynamicLibrary.FunctionDeclaration(
+            "add_numbers",
+            [
+                DynamicLibrary.Argument("first", Integer),
+                DynamicLibrary.Argument("second", Integer),
+            ],
+            Integer,
+        ),
+        "symbol_the_library_does_not_export": DynamicLibrary.FunctionDeclaration(
+            "symbol_the_library_does_not_export",
+            [
+            ],
+            Nothing,
+        ),
+    },
+)
 
 func ForeignUnreachedSymbolIsNotImported() {
     var sum = sum_of(2, 3)
@@ -11,9 +30,13 @@ func never_called() {
 }
 
 func sum_of(first: Integer, second: Integer): Integer {
-    return library.add_numbers(first, second)
+    var call = DynamicLibrary.Call(library.functions["sum_of"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }
 
 func symbol_the_library_does_not_export() {
-    library.symbol_the_library_does_not_export()
+    var call = DynamicLibrary.Call(library.functions["symbol_the_library_does_not_export"])
+    call.call()
 }

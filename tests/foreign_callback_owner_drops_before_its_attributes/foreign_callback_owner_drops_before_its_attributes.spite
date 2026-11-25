@@ -1,5 +1,11 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_callback_owner_drops_before_its_attributes/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_callback_owner_drops_before_its_attributes/fixture.dll",
+    "",
+    {
+        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing),
+    },
+)
 var _first = 1
 var _second = 2
 
@@ -17,5 +23,7 @@ func make_and_lose_a_speaker() {
 }
 
 func click(count: Integer) {
-    plain.click(count)
+    var call = DynamicLibrary.Call(plain.functions["click"])
+    call.arguments["count"] = count
+    call.call()
 }

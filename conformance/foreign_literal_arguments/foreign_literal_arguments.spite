@@ -1,12 +1,7 @@
 var console = Console()
 var chosen = "fixture.dll"
-var library = DynamicLibrary(chosen, 'identity', "")
+var library = DynamicLibrary(chosen, "", {})
 
 func ForeignLiteralArguments() {
-    var sum = add_numbers(1, 2)
-    console.print(sum, chosen)
-}
-
-func add_numbers(first: Integer, second: Integer): Integer {
-    return library.add_numbers(first, second)
+    console.print(library.file_name, chosen)
 }

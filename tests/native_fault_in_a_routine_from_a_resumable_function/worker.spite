@@ -1,5 +1,17 @@
 var program = Program()
-var fixture = DynamicLibrary("tests/native_fault_in_a_routine_from_a_resumable_function/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/native_fault_in_a_routine_from_a_resumable_function/fixture.dll",
+    "",
+    {
+        "start_later": DynamicLibrary.FunctionDeclaration(
+            "start_later",
+            [
+                DynamicLibrary.Argument("callback", Long),
+            ],
+            Nothing,
+        ),
+    },
+)
 var waiter = Waiter()
 var blocking = ForeignCallback(waiter.block, 'no_context')
 var done = false
@@ -34,5 +46,7 @@ func turned_over(): Integer {
 }
 
 func start_later(callback: Long) {
-    fixture.start_later(callback)
+    var call = DynamicLibrary.Call(fixture.functions["start_later"])
+    call.arguments["callback"] = callback
+    call.call()
 }

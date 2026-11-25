@@ -1,4 +1,20 @@
-var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
+var kernel = DynamicLibrary(
+    "kernel32.dll",
+    "",
+    {
+        "create_job_object": DynamicLibrary.FunctionDeclaration("CreateJobObjectA", [DynamicLibrary.Argument("security", Long), DynamicLibrary.Argument("name", Long)], Long)
+        "set_information_job_object": DynamicLibrary.FunctionDeclaration("SetInformationJobObject", [DynamicLibrary.Argument("job", Long), DynamicLibrary.Argument("kind", Integer), DynamicLibrary.Argument("information", Buffer), DynamicLibrary.Argument("size", Integer)], Nothing)
+        "create_process": DynamicLibrary.FunctionDeclaration("CreateProcessA", [DynamicLibrary.Argument("application", Long), DynamicLibrary.Argument("command_line", Buffer), DynamicLibrary.Argument("process_security", Long), DynamicLibrary.Argument("thread_security", Long), DynamicLibrary.Argument("inherits_handles", Integer), DynamicLibrary.Argument("flags", Integer), DynamicLibrary.Argument("environment", Long), DynamicLibrary.Argument("directory", Long), DynamicLibrary.Argument("startup", Buffer), DynamicLibrary.Argument("information", Buffer)], Integer)
+        "assign_process_to_job_object": DynamicLibrary.FunctionDeclaration("AssignProcessToJobObject", [DynamicLibrary.Argument("job", Long), DynamicLibrary.Argument("process", Long)], Nothing)
+        "resume_thread": DynamicLibrary.FunctionDeclaration("ResumeThread", [DynamicLibrary.Argument("thread", Long)], Nothing)
+        "close_handle": DynamicLibrary.FunctionDeclaration("CloseHandle", [DynamicLibrary.Argument("handle", Long)], Nothing)
+        "tick_count": DynamicLibrary.FunctionDeclaration("GetTickCount64", [], Long)
+        "wait_for_single_object": DynamicLibrary.FunctionDeclaration("WaitForSingleObject", [DynamicLibrary.Argument("handle", Long), DynamicLibrary.Argument("milliseconds", Integer)], Integer)
+        "exit_code_of_process": DynamicLibrary.FunctionDeclaration("GetExitCodeProcess", [DynamicLibrary.Argument("process", Long), DynamicLibrary.Argument("code", Buffer)], Integer)
+        "terminate_job_object": DynamicLibrary.FunctionDeclaration("TerminateJobObject", [DynamicLibrary.Argument("job", Long), DynamicLibrary.Argument("code", Integer)], Nothing)
+        "wait_for_process": DynamicLibrary.FunctionDeclaration("WaitForSingleObject", [DynamicLibrary.Argument("handle", Long), DynamicLibrary.Argument("milliseconds", Integer)], Nothing)
+    },
+)
 var job: Long = 0
 var process: Long = 0
 var started: Long = 0
@@ -95,11 +111,19 @@ func close() {
 }
 
 func create_job_object(security: Long, name: Long): Long {
-    return kernel.CreateJobObjectA(security, name)
+    var call = DynamicLibrary.Call(kernel.functions["create_job_object"])
+    call.arguments["security"] = security
+    call.arguments["name"] = name
+    return call.call()
 }
 
 func set_information_job_object(job: Long, kind: Integer, information: Buffer, size: Integer) {
-    kernel.SetInformationJobObject(job, kind, information, size)
+    var call = DynamicLibrary.Call(kernel.functions["set_information_job_object"])
+    call.arguments["job"] = job
+    call.arguments["kind"] = kind
+    call.arguments["information"] = information
+    call.arguments["size"] = size
+    call.call()
 }
 
 func create_process(
@@ -114,48 +138,68 @@ func create_process(
     startup: Buffer,
     information: Buffer,
 ): Integer {
-    return kernel.CreateProcessA(
-        application,
-        command_line,
-        process_security,
-        thread_security,
-        inherits_handles,
-        flags,
-        environment,
-        directory,
-        startup,
-        information,
-    )
+    var call = DynamicLibrary.Call(kernel.functions["create_process"])
+    call.arguments["application"] = application
+    call.arguments["command_line"] = command_line
+    call.arguments["process_security"] = process_security
+    call.arguments["thread_security"] = thread_security
+    call.arguments["inherits_handles"] = inherits_handles
+    call.arguments["flags"] = flags
+    call.arguments["environment"] = environment
+    call.arguments["directory"] = directory
+    call.arguments["startup"] = startup
+    call.arguments["information"] = information
+    return call.call()
 }
 
 func assign_process_to_job_object(job: Long, process: Long) {
-    kernel.AssignProcessToJobObject(job, process)
+    var call = DynamicLibrary.Call(kernel.functions["assign_process_to_job_object"])
+    call.arguments["job"] = job
+    call.arguments["process"] = process
+    call.call()
 }
 
 func resume_thread(thread: Long) {
-    kernel.ResumeThread(thread)
+    var call = DynamicLibrary.Call(kernel.functions["resume_thread"])
+    call.arguments["thread"] = thread
+    call.call()
 }
 
 func close_handle(handle: Long) {
-    kernel.CloseHandle(handle)
+    var call = DynamicLibrary.Call(kernel.functions["close_handle"])
+    call.arguments["handle"] = handle
+    call.call()
 }
 
 func tick_count(): Long {
-    return kernel.GetTickCount64()
+    var call = DynamicLibrary.Call(kernel.functions["tick_count"])
+    return call.call()
 }
 
 func wait_for_single_object(handle: Long, milliseconds: Integer): Integer {
-    return kernel.WaitForSingleObject(handle, milliseconds)
+    var call = DynamicLibrary.Call(kernel.functions["wait_for_single_object"])
+    call.arguments["handle"] = handle
+    call.arguments["milliseconds"] = milliseconds
+    return call.call()
 }
 
 func exit_code_of_process(process: Long, code: Buffer): Integer {
-    return kernel.GetExitCodeProcess(process, code)
+    var call = DynamicLibrary.Call(kernel.functions["exit_code_of_process"])
+    call.arguments["process"] = process
+    call.arguments["code"] = code
+    return call.call()
 }
 
 func terminate_job_object(job: Long, code: Integer) {
-    kernel.TerminateJobObject(job, code)
+    var call = DynamicLibrary.Call(kernel.functions["terminate_job_object"])
+    call.arguments["job"] = job
+    call.arguments["code"] = code
+    call.call()
 }
 
 func wait_for_process(handle: Long, milliseconds: Integer) {
-    kernel.WaitForSingleObject(handle, milliseconds)
+    var call = DynamicLibrary.Call(kernel.functions["wait_for_process"])
+    call.arguments["handle"] = handle
+    call.arguments["milliseconds"] = milliseconds
+    call.call()
 }

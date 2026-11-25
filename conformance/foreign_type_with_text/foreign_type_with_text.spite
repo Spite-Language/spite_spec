@@ -4,7 +4,13 @@ type Labelled {
 }
 
 var console = Console()
-var library = DynamicLibrary("fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "fixture.dll",
+    "",
+    {
+        "store": DynamicLibrary.FunctionDeclaration("store", [DynamicLibrary.Argument("labelled", Labelled)], Integer),
+    },
+)
 
 func ForeignTypeWithText() {
     var labelled: Labelled = {label: "one", count: 1}
@@ -13,5 +19,7 @@ func ForeignTypeWithText() {
 }
 
 func store(labelled: Labelled): Integer {
-    return library.store(labelled)
+    var call = DynamicLibrary.Call(library.functions["store"])
+    call.arguments["labelled"] = labelled
+    return call.call()
 }

@@ -1,8 +1,23 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_callback_after_call/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_callback_after_call/fixture.dll",
+    "",
+    {
+        "keep_click": DynamicLibrary.FunctionDeclaration(
+            "keep_click",
+            [
+                DynamicLibrary.Argument("clicking", Spite.Function<Integer, Nothing>),
+            ],
+            Nothing,
+        ),
+        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing),
+    },
+)
 
 func ForeignCallbackAfterCall() {
-    keep_click(clicked)
+    var keeping = DynamicLibrary.Call(plain.functions["keep_click"])
+    keeping.arguments["clicking"] = clicked
+    keeping.call()
     console.print("the call that handed it over has returned")
     click(2)
 }
@@ -11,10 +26,8 @@ func clicked(count: Integer) {
     console.print("clicked", count)
 }
 
-func keep_click(clicking: Spite.Function<Integer, Nothing>) {
-    plain.keep_click(clicking)
-}
-
 func click(count: Integer) {
-    plain.click(count)
+    var call = DynamicLibrary.Call(plain.functions["click"])
+    call.arguments["count"] = count
+    call.call()
 }

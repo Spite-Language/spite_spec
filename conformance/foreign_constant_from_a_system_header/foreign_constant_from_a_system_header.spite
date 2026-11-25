@@ -1,5 +1,5 @@
 var console = Console()
-var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "stdlib.h")
+var c_runtime = DynamicLibrary("ucrtbase.dll", "stdlib.h", {})
 
 func ForeignConstantFromASystemHeader() {
     console.print("RAND_MAX from stdlib.h:", c_runtime.rand_max)

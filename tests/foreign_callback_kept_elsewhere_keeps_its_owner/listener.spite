@@ -1,5 +1,18 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll",
+    "",
+    {
+        "keep_tick": DynamicLibrary.FunctionDeclaration(
+            "keep_tick",
+            [
+                DynamicLibrary.Argument("ticking", Long),
+                DynamicLibrary.Argument("context", Long),
+            ],
+            Nothing,
+        ),
+    },
+)
 var _ticking: ForeignCallback? = null
 var name: String
 
@@ -20,5 +33,8 @@ func ticked(count: Integer) {
 }
 
 func keep_tick(ticking: Long, context: Long) {
-    plain.keep_tick(ticking, context)
+    var call = DynamicLibrary.Call(plain.functions["keep_tick"])
+    call.arguments["ticking"] = ticking
+    call.arguments["context"] = context
+    call.call()
 }

@@ -1,5 +1,26 @@
 var console = Console()
-var library = DynamicLibrary("fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "fixture.dll",
+    "",
+    {
+        "keep": DynamicLibrary.FunctionDeclaration("keep", [DynamicLibrary.Argument("procedure", Long)], Nothing),
+        "keep_with_context": DynamicLibrary.FunctionDeclaration(
+            "keep",
+            [
+                DynamicLibrary.Argument("procedure", Long),
+                DynamicLibrary.Argument("context", Long),
+            ],
+            Nothing,
+        ),
+        "each_name": DynamicLibrary.FunctionDeclaration(
+            "each_name",
+            [
+                DynamicLibrary.Argument("each", Spite.Function<String, Nothing>),
+            ],
+            Nothing,
+        ),
+    },
+)
 var marks = List<Integer>()
 
 func ForeignCallbackMistakes() {
@@ -50,13 +71,20 @@ func marked(value: Integer) {
 }
 
 func keep(procedure: Long) {
-    library.keep(procedure)
+    var call = DynamicLibrary.Call(library.functions["keep"])
+    call.arguments["procedure"] = procedure
+    call.call()
 }
 
 func keep_with_context(procedure: Long, context: Long) {
-    library.keep(procedure, context)
+    var call = DynamicLibrary.Call(library.functions["keep_with_context"])
+    call.arguments["procedure"] = procedure
+    call.arguments["context"] = context
+    call.call()
 }
 
 func each_name(each: Spite.Function<String, Nothing>) {
-    library.each_name(each)
+    var call = DynamicLibrary.Call(library.functions["each_name"])
+    call.arguments["each"] = each
+    call.call()
 }

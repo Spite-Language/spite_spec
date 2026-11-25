@@ -1,5 +1,5 @@
 var console = Console()
-var windows = DynamicLibrary("fixture.dll", 'windows', "fixture.h")
+var windows = DynamicLibrary("fixture.dll", "fixture.h", {})
 
 func ForeignTypeNameReadsAsAConstant() {
     var point_type = windows.PointPair

@@ -1,5 +1,19 @@
 var console = Console()
-var fixture = DynamicLibrary("tests/foreign_threads_call_into_a_singleton/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/foreign_threads_call_into_a_singleton/fixture.dll",
+    "",
+    {
+        "hit_from_threads": DynamicLibrary.FunctionDeclaration(
+            "hit_from_threads",
+            [
+                DynamicLibrary.Argument("threads", Integer),
+                DynamicLibrary.Argument("calls", Integer),
+                DynamicLibrary.Argument("hit", Long),
+            ],
+            Nothing,
+        ),
+    },
+)
 var hits = Hits()
 var counting = ForeignCallback(hits.hit, 'no_context')
 var _threads = 4
@@ -11,5 +25,9 @@ func ForeignThreadsCallIntoASingleton() {
 }
 
 func hit_from_threads(threads: Integer, calls: Integer, hit: Long) {
-    fixture.hit_from_threads(threads, calls, hit)
+    var call = DynamicLibrary.Call(fixture.functions["hit_from_threads"])
+    call.arguments["threads"] = threads
+    call.arguments["calls"] = calls
+    call.arguments["hit"] = hit
+    call.call()
 }

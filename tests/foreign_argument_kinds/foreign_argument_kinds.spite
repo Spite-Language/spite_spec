@@ -4,8 +4,61 @@ enum Mode {
 }
 
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_argument_kinds/fixture.dll", 'identity', "")
-var windows = DynamicLibrary("tests/foreign_argument_kinds/fixture.dll", 'windows', "fixture.h")
+var plain = DynamicLibrary(
+    "tests/foreign_argument_kinds/fixture.dll",
+    "",
+    {
+        "fill_bytes": DynamicLibrary.FunctionDeclaration(
+            "fill_bytes",
+            [
+                DynamicLibrary.Argument("bytes", Buffer),
+                DynamicLibrary.Argument("count", Integer),
+            ],
+            Integer,
+        ),
+        "choose": DynamicLibrary.FunctionDeclaration("choose", [DynamicLibrary.Argument("chosen", Boolean)], Integer),
+        "mode_number": DynamicLibrary.FunctionDeclaration(
+            "mode_number",
+            [
+                DynamicLibrary.Argument("mode", Mode),
+            ],
+            Integer,
+        ),
+        "whole_of_float": DynamicLibrary.FunctionDeclaration(
+            "whole_of_float",
+            [
+                DynamicLibrary.Argument("value", Float),
+            ],
+            Integer,
+        ),
+        "whole_of_double": DynamicLibrary.FunctionDeclaration(
+            "whole_of_double",
+            [
+                DynamicLibrary.Argument("value", Double),
+            ],
+            Integer,
+        ),
+    },
+)
+var windows = DynamicLibrary(
+    "tests/foreign_argument_kinds/fixture.dll",
+    "fixture.h",
+    {
+        "widths_added": DynamicLibrary.FunctionDeclaration(
+            "WidthsAdded",
+            [
+                DynamicLibrary.Argument("tiny", Tiny),
+                DynamicLibrary.Argument("small", Short),
+                DynamicLibrary.Argument("byte", Byte),
+                DynamicLibrary.Argument("port", UnsignedShort),
+                DynamicLibrary.Argument("big", UnsignedInteger),
+                DynamicLibrary.Argument("huge", UnsignedLong),
+            ],
+            Long,
+        ),
+        "forget": DynamicLibrary.FunctionDeclaration("Forget", [DynamicLibrary.Argument("value", Integer)], Nothing),
+    },
+)
 
 func ForeignArgumentKinds() {
     buffer_is_filled_by_c()
@@ -61,23 +114,34 @@ func widths_with_a_header() {
 }
 
 func fill_bytes(bytes: Buffer, count: Integer): Integer {
-    return plain.fill_bytes(bytes, count)
+    var call = DynamicLibrary.Call(plain.functions["fill_bytes"])
+    call.arguments["bytes"] = bytes
+    call.arguments["count"] = count
+    return call.call()
 }
 
 func choose(chosen: Boolean): Integer {
-    return plain.choose(chosen)
+    var call = DynamicLibrary.Call(plain.functions["choose"])
+    call.arguments["chosen"] = chosen
+    return call.call()
 }
 
 func mode_number(mode: Mode): Integer {
-    return plain.mode_number(mode)
+    var call = DynamicLibrary.Call(plain.functions["mode_number"])
+    call.arguments["mode"] = mode
+    return call.call()
 }
 
 func whole_of_float(value: Float): Integer {
-    return plain.whole_of_float(value)
+    var call = DynamicLibrary.Call(plain.functions["whole_of_float"])
+    call.arguments["value"] = value
+    return call.call()
 }
 
 func whole_of_double(value: Double): Integer {
-    return plain.whole_of_double(value)
+    var call = DynamicLibrary.Call(plain.functions["whole_of_double"])
+    call.arguments["value"] = value
+    return call.call()
 }
 
 func widths_added(
@@ -88,9 +152,18 @@ func widths_added(
     big: UnsignedInteger,
     huge: UnsignedLong,
 ): Long {
-    return windows.widths_added(tiny, small, byte, port, big, huge)
+    var call = DynamicLibrary.Call(windows.functions["widths_added"])
+    call.arguments["tiny"] = tiny
+    call.arguments["small"] = small
+    call.arguments["byte"] = byte
+    call.arguments["port"] = port
+    call.arguments["big"] = big
+    call.arguments["huge"] = huge
+    return call.call()
 }
 
 func forget(value: Integer) {
-    windows.forget(value)
+    var call = DynamicLibrary.Call(windows.functions["forget"])
+    call.arguments["value"] = value
+    call.call()
 }

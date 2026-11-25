@@ -1,5 +1,17 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_missing_symbol/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_missing_symbol/fixture.dll",
+    "",
+    {
+        "ring_bell": DynamicLibrary.FunctionDeclaration(
+            "ring_bell",
+            [
+                DynamicLibrary.Argument("times", Integer),
+            ],
+            Nothing,
+        ),
+    },
+)
 
 func ForeignMissingSymbol() {
     console.print("before the library is used")
@@ -8,5 +20,7 @@ func ForeignMissingSymbol() {
 }
 
 func ring_bell(times: Integer) {
-    plain.ring_bell(times)
+    var call = DynamicLibrary.Call(plain.functions["ring_bell"])
+    call.arguments["times"] = times
+    call.call()
 }

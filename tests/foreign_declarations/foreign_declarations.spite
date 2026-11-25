@@ -1,5 +1,11 @@
 var console = Console()
-var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
+var c_runtime = DynamicLibrary(
+    "ucrtbase.dll",
+    "",
+    {
+        "magnitude_of": DynamicLibrary.FunctionDeclaration("abs", [DynamicLibrary.Argument("value", Integer)], Integer),
+    },
+)
 
 func ForeignDeclarations() {
     var measurer = Measurer()
@@ -11,5 +17,7 @@ func ForeignDeclarations() {
 }
 
 func magnitude_of(value: Integer): Integer {
-    return c_runtime.abs(value)
+    var call = DynamicLibrary.Call(c_runtime.functions["magnitude_of"])
+    call.arguments["value"] = value
+    return call.call()
 }

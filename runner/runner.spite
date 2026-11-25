@@ -5,7 +5,11 @@ union Entry {
 
 var console = Console()
 var program = Program()
-var kernel = DynamicLibrary("kernel32.dll", 'identity', "")
+var kernel = DynamicLibrary(
+    "kernel32.dll",
+    "",
+    {"current_process_identifier": DynamicLibrary.FunctionDeclaration("GetCurrentProcessId", [], Integer)},
+)
 var compiler = "..\\spite_compiler\\.spite\\spite.exe"
 var library = "../spite_standard_library"
 var passed = 0
@@ -774,5 +778,6 @@ func fail(folder: String, why: String) {
 }
 
 func current_process_identifier(): Integer {
-    return kernel.GetCurrentProcessId()
+    var call = DynamicLibrary.Call(kernel.functions["current_process_identifier"])
+    return call.call()
 }

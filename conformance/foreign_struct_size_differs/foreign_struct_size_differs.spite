@@ -5,7 +5,19 @@ type PointPair {
 }
 
 var console = Console()
-var windows = DynamicLibrary("conformance/foreign_struct_size_differs/fixture.dll", 'windows', "fixture.h")
+var windows = DynamicLibrary(
+    "conformance/foreign_struct_size_differs/fixture.dll",
+    "fixture.h",
+    {
+        "move_point": DynamicLibrary.FunctionDeclaration(
+            "MovePoint",
+            [
+                DynamicLibrary.Argument("point", PointPair),
+            ],
+            Nothing,
+        ),
+    },
+)
 
 func ForeignStructSizeDiffers() {
     var spot: PointPair = {down: 0, across: 0, depth: 0}
@@ -14,5 +26,7 @@ func ForeignStructSizeDiffers() {
 }
 
 func move_point(point: PointPair) {
-    windows.move_point(point)
+    var call = DynamicLibrary.Call(windows.functions["move_point"])
+    call.arguments["point"] = point
+    call.call()
 }

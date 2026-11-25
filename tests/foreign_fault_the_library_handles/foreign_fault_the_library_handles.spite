@@ -1,5 +1,17 @@
 var console = Console()
-var fixture = DynamicLibrary("tests/foreign_fault_the_library_handles/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/foreign_fault_the_library_handles/fixture.dll",
+    "",
+    {
+        "read_or_answer": DynamicLibrary.FunctionDeclaration(
+            "read_or_answer",
+            [
+                DynamicLibrary.Argument("address", Long),
+            ],
+            Integer,
+        ),
+    },
+)
 
 func ForeignFaultTheLibraryHandles() {
     var nowhere: Long = 0
@@ -8,5 +20,7 @@ func ForeignFaultTheLibraryHandles() {
 }
 
 func read_or_answer(address: Long): Integer {
-    return fixture.read_or_answer(address)
+    var call = DynamicLibrary.Call(fixture.functions["read_or_answer"])
+    call.arguments["address"] = address
+    return call.call()
 }

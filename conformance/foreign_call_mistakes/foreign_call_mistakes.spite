@@ -1,5 +1,11 @@
 var console = Console()
-var library = DynamicLibrary("fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "fixture.dll",
+    "",
+    {
+        "store": DynamicLibrary.FunctionDeclaration("store", [DynamicLibrary.Argument("value", Console)], Integer),
+    },
+)
 
 func ForeignCallMistakes() {
     call_through(library)
@@ -13,5 +19,7 @@ func call_through(passed: DynamicLibrary) {
 }
 
 func store(value: Console): Integer {
-    return library.store(value)
+    var call = DynamicLibrary.Call(library.functions["store"])
+    call.arguments["value"] = value
+    return call.call()
 }

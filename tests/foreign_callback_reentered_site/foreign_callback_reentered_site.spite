@@ -1,5 +1,18 @@
 var console = Console()
-var library = DynamicLibrary("tests/foreign_callback_reentered_site/fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "tests/foreign_callback_reentered_site/fixture.dll",
+    "",
+    {
+        "call_with": DynamicLibrary.FunctionDeclaration(
+            "call_with",
+            [
+                DynamicLibrary.Argument("value", Integer),
+                DynamicLibrary.Argument("function", Spite.Function<Integer, Integer>),
+            ],
+            Integer,
+        ),
+    },
+)
 
 func ForeignCallbackReenteredSite() {
     var total = count_down(4)
@@ -13,5 +26,8 @@ func count_down(value: Integer): Integer {
 }
 
 func call_with(value: Integer, function: Spite.Function<Integer, Integer>): Integer {
-    return library.call_with(value, function)
+    var call = DynamicLibrary.Call(library.functions["call_with"])
+    call.arguments["value"] = value
+    call.arguments["function"] = function
+    return call.call()
 }

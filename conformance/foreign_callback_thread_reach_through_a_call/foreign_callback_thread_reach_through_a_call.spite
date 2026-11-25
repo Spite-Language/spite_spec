@@ -1,4 +1,17 @@
-var library = DynamicLibrary("fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "fixture.dll",
+    "",
+    {
+        "keep": DynamicLibrary.FunctionDeclaration(
+            "keep",
+            [
+                DynamicLibrary.Argument("procedure", Long),
+                DynamicLibrary.Argument("context", Long),
+            ],
+            Nothing,
+        ),
+    },
+)
 
 func ForeignCallbackThreadReachThroughACall() {
     var recorder = Recorder()
@@ -7,5 +20,8 @@ func ForeignCallbackThreadReachThroughACall() {
 }
 
 func keep(procedure: Long, context: Long) {
-    library.keep(procedure, context)
+    var call = DynamicLibrary.Call(library.functions["keep"])
+    call.arguments["procedure"] = procedure
+    call.arguments["context"] = context
+    call.call()
 }

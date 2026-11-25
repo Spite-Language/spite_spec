@@ -1,5 +1,5 @@
 var console = Console()
-var library = DynamicLibrary("fixture.dll", 'identity', "fixture.h")
+var library = DynamicLibrary("fixture.dll", "fixture.h", {})
 
 func ForeignConstantWrittenInHexadecimal() {
     var mask = library.fixture_mask

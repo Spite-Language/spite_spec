@@ -1,4 +1,11 @@
-var library = DynamicLibrary("tests/foreign_symbols_resolved_when_the_library_opens/fixture.dll", 'identity', "")
+var library = DynamicLibrary(
+    "tests/foreign_symbols_resolved_when_the_library_opens/fixture.dll",
+    "",
+    {
+        "touch": DynamicLibrary.FunctionDeclaration("touch", [], Nothing),
+        "absent_symbol": DynamicLibrary.FunctionDeclaration("absent_symbol", [], Nothing),
+    },
+)
 
 func touch_then_ask_for_another() {
     touch()
@@ -6,9 +13,11 @@ func touch_then_ask_for_another() {
 }
 
 func touch() {
-    library.touch()
+    var call = DynamicLibrary.Call(library.functions["touch"])
+    call.call()
 }
 
 func absent_symbol() {
-    library.absent_symbol()
+    var call = DynamicLibrary.Call(library.functions["absent_symbol"])
+    call.call()
 }

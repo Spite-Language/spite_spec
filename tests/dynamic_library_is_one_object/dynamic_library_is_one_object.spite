@@ -1,8 +1,20 @@
 var console = Console()
-var first = DynamicLibrary("ucrtbase.dll", 'identity', "")
-var second = DynamicLibrary("ucrtbase.dll", 'identity', "")
-var other_rule = DynamicLibrary("ucrtbase.dll", 'camel_case', "")
-var other_file = DynamicLibrary("kernel32.dll", 'identity', "")
+var first = DynamicLibrary("ucrtbase.dll", "", {})
+var second = DynamicLibrary("ucrtbase.dll", "", {})
+var other_rule = DynamicLibrary(
+    "ucrtbase.dll",
+    "",
+    {
+        "size_of": DynamicLibrary.FunctionDeclaration("strlen", [DynamicLibrary.Argument("text", String)], Integer),
+    },
+)
+var other_file = DynamicLibrary(
+    "kernel32.dll",
+    "",
+    {
+        "current_process_identifier": DynamicLibrary.FunctionDeclaration("GetCurrentProcessId", [], Integer),
+    },
+)
 
 func DynamicLibraryIsOneObject() {
     var keeper = Keeper()
@@ -16,9 +28,12 @@ func DynamicLibraryIsOneObject() {
 }
 
 func size_of(text: String): Integer {
-    return other_rule.strlen(text)
+    var call = DynamicLibrary.Call(other_rule.functions["size_of"])
+    call.arguments["text"] = text
+    return call.call()
 }
 
 func current_process_identifier(): Integer {
-    return other_file.GetCurrentProcessId()
+    var call = DynamicLibrary.Call(other_file.functions["current_process_identifier"])
+    return call.call()
 }

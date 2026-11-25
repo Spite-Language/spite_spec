@@ -1,1 +1,0 @@
-conformance/foreign_answer_asked_by_its_name/foreign_answer_asked_by_its_name.spite:10: error: 'strlen_as_long' asks for its answer by its name, and a foreign function's answer is its declaration's: call 'strlen' and declare the function's answer as 'Long' (in ForeignAnswerAskedByItsName.length_of)

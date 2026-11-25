@@ -1,5 +1,19 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_callback_owner_drops_before_its_attributes/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_callback_owner_drops_before_its_attributes/fixture.dll",
+    "",
+    {
+        "keep_click": DynamicLibrary.FunctionDeclaration(
+            "keep_click",
+            [
+                DynamicLibrary.Argument("clicking", Long),
+            ],
+            Nothing,
+        ),
+        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing),
+        "forget_click": DynamicLibrary.FunctionDeclaration("forget_click", [], Nothing),
+    },
+)
 var clicks = Clicks()
 var clicking = ForeignCallback(clicks.clicked, 'no_context')
 var heard = 1
@@ -17,13 +31,18 @@ func drop() {
 }
 
 func keep_click(clicking: Long) {
-    plain.keep_click(clicking)
+    var call = DynamicLibrary.Call(plain.functions["keep_click"])
+    call.arguments["clicking"] = clicking
+    call.call()
 }
 
 func click(count: Integer) {
-    plain.click(count)
+    var call = DynamicLibrary.Call(plain.functions["click"])
+    call.arguments["count"] = count
+    call.call()
 }
 
 func forget_click() {
-    plain.forget_click()
+    var call = DynamicLibrary.Call(plain.functions["forget_click"])
+    call.call()
 }

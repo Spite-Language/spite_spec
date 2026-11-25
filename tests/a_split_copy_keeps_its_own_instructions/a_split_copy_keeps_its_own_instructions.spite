@@ -1,5 +1,18 @@
 var console = Console()
-var library = DynamicLibrary("ucrtbase.dll", 'identity', "")
+var library = DynamicLibrary(
+    "ucrtbase.dll",
+    "",
+    {
+        "long_magnitude": DynamicLibrary.FunctionDeclaration(
+            "labs",
+            [
+                DynamicLibrary.Argument("value", Integer),
+            ],
+            Integer,
+        ),
+        "magnitude": DynamicLibrary.FunctionDeclaration("abs", [DynamicLibrary.Argument("value", Integer)], Integer),
+    },
+)
 var _ten = 10
 
 func ASplitCopyKeepsItsOwnInstructions() {
@@ -26,9 +39,13 @@ func measure(start: Integer, meter: Meter) {
 }
 
 func long_magnitude(value: Integer): Integer {
-    return library.labs(value)
+    var call = DynamicLibrary.Call(library.functions["long_magnitude"])
+    call.arguments["value"] = value
+    return call.call()
 }
 
 func magnitude(value: Integer): Integer {
-    return library.abs(value)
+    var call = DynamicLibrary.Call(library.functions["magnitude"])
+    call.arguments["value"] = value
+    return call.call()
 }

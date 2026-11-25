@@ -1,5 +1,11 @@
 var console = Console()
-var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "stdlib.h")
+var c_runtime = DynamicLibrary(
+    "ucrtbase.dll",
+    "stdlib.h",
+    {
+        "magnitude_of": DynamicLibrary.FunctionDeclaration("abs", [DynamicLibrary.Argument("value", Integer)], Integer),
+    },
+)
 
 func ForeignSystemHeader() {
     var magnitude = magnitude_of(-7)
@@ -7,5 +13,7 @@ func ForeignSystemHeader() {
 }
 
 func magnitude_of(value: Integer): Integer {
-    return c_runtime.abs(value)
+    var call = DynamicLibrary.Call(c_runtime.functions["magnitude_of"])
+    call.arguments["value"] = value
+    return call.call()
 }

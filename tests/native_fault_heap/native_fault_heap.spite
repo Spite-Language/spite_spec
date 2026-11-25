@@ -1,5 +1,11 @@
 var console = Console()
-var fixture = DynamicLibrary("tests/native_fault_heap/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/native_fault_heap/fixture.dll",
+    "",
+    {
+        "free_inside": DynamicLibrary.FunctionDeclaration("free_inside", [], Nothing),
+    },
+)
 
 func NativeFaultHeap() {
     console.print("before the fault")
@@ -11,5 +17,6 @@ func corrupt() {
 }
 
 func free_inside() {
-    fixture.free_inside()
+    var call = DynamicLibrary.Call(fixture.functions["free_inside"])
+    call.call()
 }

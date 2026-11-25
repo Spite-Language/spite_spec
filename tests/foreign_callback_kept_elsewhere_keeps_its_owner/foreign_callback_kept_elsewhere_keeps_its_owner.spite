@@ -1,5 +1,12 @@
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_callback_kept_by_its_owner_is_freed/fixture.dll",
+    "",
+    {
+        "tick": DynamicLibrary.FunctionDeclaration("tick", [DynamicLibrary.Argument("count", Integer)], Nothing),
+        "forget_tick": DynamicLibrary.FunctionDeclaration("forget_tick", [], Nothing),
+    },
+)
 var _first = 1
 var _second = 2
 
@@ -18,9 +25,12 @@ func listen_and_hand_over(keeper: Keeper) {
 }
 
 func tick(count: Integer) {
-    plain.tick(count)
+    var call = DynamicLibrary.Call(plain.functions["tick"])
+    call.arguments["count"] = count
+    call.call()
 }
 
 func forget_tick() {
-    plain.forget_tick()
+    var call = DynamicLibrary.Call(plain.functions["forget_tick"])
+    call.call()
 }

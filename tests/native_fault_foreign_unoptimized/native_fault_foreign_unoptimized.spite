@@ -1,5 +1,25 @@
 var console = Console()
-var fixture = DynamicLibrary("tests/native_fault_foreign_unoptimized/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/native_fault_foreign_unoptimized/fixture.dll",
+    "",
+    {
+        "add_numbers": DynamicLibrary.FunctionDeclaration(
+            "add_numbers",
+            [
+                DynamicLibrary.Argument("first", Integer),
+                DynamicLibrary.Argument("second", Integer),
+            ],
+            Integer,
+        ),
+        "read_integer_at": DynamicLibrary.FunctionDeclaration(
+            "read_integer_at",
+            [
+                DynamicLibrary.Argument("address", Long),
+            ],
+            Integer,
+        ),
+    },
+)
 
 func NativeFaultForeignUnoptimized() {
     var sum = add_numbers(2, 3)
@@ -15,9 +35,14 @@ func read_nothing() {
 }
 
 func add_numbers(first: Integer, second: Integer): Integer {
-    return fixture.add_numbers(first, second)
+    var call = DynamicLibrary.Call(fixture.functions["add_numbers"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }
 
 func read_integer_at(address: Long): Integer {
-    return fixture.read_integer_at(address)
+    var call = DynamicLibrary.Call(fixture.functions["read_integer_at"])
+    call.arguments["address"] = address
+    return call.call()
 }

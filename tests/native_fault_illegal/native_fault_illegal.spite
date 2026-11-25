@@ -1,5 +1,11 @@
 var console = Console()
-var fixture = DynamicLibrary("tests/native_fault_illegal/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/native_fault_illegal/fixture.dll",
+    "",
+    {
+        "stop_here": DynamicLibrary.FunctionDeclaration("stop_here", [], Nothing),
+    },
+)
 
 func NativeFaultIllegal() {
     console.print("before the fault")
@@ -11,5 +17,6 @@ func halt() {
 }
 
 func stop_here() {
-    fixture.stop_here()
+    var call = DynamicLibrary.Call(fixture.functions["stop_here"])
+    call.call()
 }

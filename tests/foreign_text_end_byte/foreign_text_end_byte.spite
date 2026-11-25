@@ -1,5 +1,11 @@
 var console = Console()
-var c_runtime = DynamicLibrary("ucrtbase.dll", 'identity', "")
+var c_runtime = DynamicLibrary(
+    "ucrtbase.dll",
+    "",
+    {
+        "length_of": DynamicLibrary.FunctionDeclaration("strlen", [DynamicLibrary.Argument("text", String)], Integer),
+    },
+)
 
 func ForeignTextEndByte() {
     var written = "plain"
@@ -26,5 +32,7 @@ func ForeignTextEndByte() {
 }
 
 func length_of(text: String): Integer {
-    return c_runtime.strlen(text)
+    var call = DynamicLibrary.Call(c_runtime.functions["length_of"])
+    call.arguments["text"] = text
+    return call.call()
 }

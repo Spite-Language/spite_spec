@@ -1,6 +1,21 @@
 var console = Console()
 var hits = Hits()
-var fixture = DynamicLibrary("tests/foreign_callbacks_count_references_atomically/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/foreign_callbacks_count_references_atomically/fixture.dll",
+    "",
+    {
+        "report_from_threads": DynamicLibrary.FunctionDeclaration(
+            "report_from_threads",
+            [
+                DynamicLibrary.Argument("threads", Integer),
+                DynamicLibrary.Argument("calls", Integer),
+                DynamicLibrary.Argument("report", Long),
+                DynamicLibrary.Argument("context", Long),
+            ],
+            Nothing,
+        ),
+    },
+)
 var _threads = 4
 var _calls = 2000
 
@@ -12,5 +27,10 @@ func ForeignCallbacksCountReferencesAtomically() {
 }
 
 func report_from_threads(threads: Integer, calls: Integer, report: Long, context: Long) {
-    fixture.report_from_threads(threads, calls, report, context)
+    var call = DynamicLibrary.Call(fixture.functions["report_from_threads"])
+    call.arguments["threads"] = threads
+    call.arguments["calls"] = calls
+    call.arguments["report"] = report
+    call.arguments["context"] = context
+    call.call()
 }

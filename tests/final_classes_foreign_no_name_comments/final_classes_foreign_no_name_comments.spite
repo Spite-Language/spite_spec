@@ -1,13 +1,26 @@
 var console = Console()
 var build = Build()
-var fixture = DynamicLibrary("tests/final_classes_foreign_no_name_comments/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/final_classes_foreign_no_name_comments/fixture.dll",
+    "",
+    {
+        "add_numbers": DynamicLibrary.FunctionDeclaration(
+            "add_numbers",
+            [
+                DynamicLibrary.Argument("first", Integer),
+                DynamicLibrary.Argument("second", Integer),
+            ],
+            Integer,
+        ),
+    },
+)
 var _two = 2
 var _three = 3
 
 func FinalClassesForeignNoNameComments() {
     var sum = add_numbers(_two, _three)
     console.print("the call answered", sum)
-    var printed_path: Path? = "{build.program}/.spite/final_classes_foreign_no_name_comments/dynamic_library.spite"
+    var printed_path: Path? = "{build.program}/.spite/final_classes_foreign_no_name_comments/dynamic_library/dynamic_library.spite"
     crash printed_path
     var printed = File(printed_path)
     var text = printed.read_as_string()
@@ -19,5 +32,8 @@ func FinalClassesForeignNoNameComments() {
 }
 
 func add_numbers(first: Integer, second: Integer): Integer {
-    return fixture.add_numbers(first, second)
+    var call = DynamicLibrary.Call(fixture.functions["add_numbers"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }

@@ -1,5 +1,24 @@
 var console = Console()
-var fixture = DynamicLibrary("tests/foreign_exception_through_a_callback/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/foreign_exception_through_a_callback/fixture.dll",
+    "",
+    {
+        "throwing": DynamicLibrary.FunctionDeclaration(
+            "throw_now",
+            [
+                DynamicLibrary.Argument("count", Integer),
+            ],
+            Nothing,
+        ),
+        "call_and_catch": DynamicLibrary.FunctionDeclaration(
+            "call_and_catch",
+            [
+                DynamicLibrary.Argument("callback", Spite.Function<Integer, Nothing>),
+            ],
+            Integer,
+        ),
+    },
+)
 
 func ForeignExceptionThroughACallback() {
     console.print("before the throw")
@@ -8,9 +27,13 @@ func ForeignExceptionThroughACallback() {
 }
 
 func throwing(count: Integer) {
-    fixture.throw_now(count)
+    var call = DynamicLibrary.Call(fixture.functions["throwing"])
+    call.arguments["count"] = count
+    call.call()
 }
 
 func call_and_catch(callback: Spite.Function<Integer, Nothing>): Integer {
-    return fixture.call_and_catch(callback)
+    var call = DynamicLibrary.Call(fixture.functions["call_and_catch"])
+    call.arguments["callback"] = callback
+    return call.call()
 }

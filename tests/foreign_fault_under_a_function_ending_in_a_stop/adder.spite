@@ -1,7 +1,13 @@
 singleton
 
 var console = Console()
-var fixture = DynamicLibrary("tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/foreign_fault_under_a_function_ending_in_a_stop/fixture.dll",
+    "",
+    {
+        "largest_integer": DynamicLibrary.FunctionDeclaration("largest_integer", [], Integer),
+    },
+)
 
 func add_one() {
     var largest = largest_integer()
@@ -10,5 +16,6 @@ func add_one() {
 }
 
 func largest_integer(): Integer {
-    return fixture.largest_integer()
+    var call = DynamicLibrary.Call(fixture.functions["largest_integer"])
+    return call.call()
 }

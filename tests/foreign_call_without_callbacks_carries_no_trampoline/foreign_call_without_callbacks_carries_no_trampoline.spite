@@ -1,6 +1,19 @@
 var console = Console()
 var program = Program()
-var fixture = DynamicLibrary("tests/foreign_call_without_callbacks_carries_no_trampoline/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/foreign_call_without_callbacks_carries_no_trampoline/fixture.dll",
+    "",
+    {
+        "add_numbers": DynamicLibrary.FunctionDeclaration(
+            "add_numbers",
+            [
+                DynamicLibrary.Argument("first", Integer),
+                DynamicLibrary.Argument("second", Integer),
+            ],
+            Integer,
+        ),
+    },
+)
 var _two = 2
 var _three = 3
 
@@ -37,5 +50,8 @@ func ForeignCallWithoutCallbacksCarriesNoTrampoline() {
 }
 
 func add_numbers(first: Integer, second: Integer): Integer {
-    return fixture.add_numbers(first, second)
+    var call = DynamicLibrary.Call(fixture.functions["add_numbers"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }

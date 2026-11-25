@@ -1,4 +1,17 @@
-var plain = DynamicLibrary("tests/foreign_callback_second_alive/fixture.dll", 'identity', "")
+var plain = DynamicLibrary(
+    "tests/foreign_callback_second_alive/fixture.dll",
+    "",
+    {
+        "keep_click": DynamicLibrary.FunctionDeclaration(
+            "keep_click",
+            [
+                DynamicLibrary.Argument("clicking", Long),
+            ],
+            Nothing,
+        ),
+        "click": DynamicLibrary.FunctionDeclaration("click", [DynamicLibrary.Argument("count", Integer)], Nothing),
+    },
+)
 var clicks = Clicks()
 
 func ForeignCallbackSecondAlive() {
@@ -11,9 +24,13 @@ func ForeignCallbackSecondAlive() {
 }
 
 func keep_click(clicking: Long) {
-    plain.keep_click(clicking)
+    var call = DynamicLibrary.Call(plain.functions["keep_click"])
+    call.arguments["clicking"] = clicking
+    call.call()
 }
 
 func click(count: Integer) {
-    plain.click(count)
+    var call = DynamicLibrary.Call(plain.functions["click"])
+    call.arguments["count"] = count
+    call.call()
 }

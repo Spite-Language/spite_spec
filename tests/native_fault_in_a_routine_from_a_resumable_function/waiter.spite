@@ -1,11 +1,18 @@
 singleton
 
-var fixture = DynamicLibrary("tests/native_fault_in_a_routine_from_a_resumable_function/fixture.dll", 'identity', "")
+var fixture = DynamicLibrary(
+    "tests/native_fault_in_a_routine_from_a_resumable_function/fixture.dll",
+    "",
+    {
+        "block_forever": DynamicLibrary.FunctionDeclaration("block_forever", [], Nothing),
+    },
+)
 
 func block() {
     block_forever()
 }
 
 func block_forever() {
-    fixture.block_forever()
+    var call = DynamicLibrary.Call(fixture.functions["block_forever"])
+    call.call()
 }

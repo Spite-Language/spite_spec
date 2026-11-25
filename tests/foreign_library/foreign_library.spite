@@ -4,10 +4,119 @@ type PointPair {
 }
 
 var console = Console()
-var plain = DynamicLibrary("tests/foreign_library/fixture.dll", 'identity', "")
-var camel = DynamicLibrary("tests/foreign_library/fixture.dll", 'camel_case', "")
-var headerless = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', "")
-var windows = DynamicLibrary("tests/foreign_library/fixture.dll", 'windows', "fixture.h")
+var plain = DynamicLibrary(
+    "tests/foreign_library/fixture.dll",
+    "",
+    {
+        "sum_of_numbers": DynamicLibrary.FunctionDeclaration(
+            "add_numbers",
+            [
+                DynamicLibrary.Argument("first", Integer),
+                DynamicLibrary.Argument("second", Integer),
+            ],
+            Integer,
+        ),
+        "half_of": DynamicLibrary.FunctionDeclaration("half_of", [DynamicLibrary.Argument("value", Integer)], Double),
+        "big_number": DynamicLibrary.FunctionDeclaration("big_number", [], Long),
+        "greeting": DynamicLibrary.FunctionDeclaration("greeting", [], String),
+        "length_of": DynamicLibrary.FunctionDeclaration(
+            "text_length",
+            [
+                DynamicLibrary.Argument("text", String),
+            ],
+            Integer,
+        ),
+        "point_sum": DynamicLibrary.FunctionDeclaration(
+            "sum_point",
+            [
+                DynamicLibrary.Argument("point", PointPair),
+            ],
+            Integer,
+        ),
+        "values_sum": DynamicLibrary.FunctionDeclaration(
+            "sum_values",
+            [
+                DynamicLibrary.Argument("values", List<Integer>),
+                DynamicLibrary.Argument("count", Integer),
+            ],
+            Integer,
+        ),
+        "double_values": DynamicLibrary.FunctionDeclaration(
+            "double_values",
+            [
+                DynamicLibrary.Argument("values", List<Integer>),
+                DynamicLibrary.Argument("count", Integer),
+            ],
+            Nothing,
+        ),
+        "guessed_wide_sum": DynamicLibrary.FunctionDeclaration(
+            "wide_sum",
+            [
+                DynamicLibrary.Argument("first", Long),
+                DynamicLibrary.Argument("second", Long),
+            ],
+            Long,
+        ),
+    },
+)
+var camel = DynamicLibrary(
+    "tests/foreign_library/fixture.dll",
+    "",
+    {
+        "product_of_numbers": DynamicLibrary.FunctionDeclaration(
+            "multiplyNumbers",
+            [
+                DynamicLibrary.Argument("first", Integer),
+                DynamicLibrary.Argument("second", Integer),
+            ],
+            Integer,
+        ),
+    },
+)
+var headerless = DynamicLibrary(
+    "tests/foreign_library/fixture.dll",
+    "",
+    {
+        "answer_position": DynamicLibrary.FunctionDeclaration("GetAnswerPos", [], Integer),
+    },
+)
+var windows = DynamicLibrary(
+    "tests/foreign_library/fixture.dll",
+    "fixture.h",
+    {
+        "move_point": DynamicLibrary.FunctionDeclaration(
+            "MovePoint",
+            [
+                DynamicLibrary.Argument("point", PointPair),
+            ],
+            Nothing,
+        ),
+        "declared_wide_sum": DynamicLibrary.FunctionDeclaration(
+            "WideSum",
+            [
+                DynamicLibrary.Argument("first", Long),
+                DynamicLibrary.Argument("second", UnsignedLong),
+            ],
+            Long,
+        ),
+        "scaled_value": DynamicLibrary.FunctionDeclaration(
+            "Scaled",
+            [
+                DynamicLibrary.Argument("factor", Float),
+                DynamicLibrary.Argument("value", Integer),
+            ],
+            Integer,
+        ),
+        "doubled_handle": DynamicLibrary.FunctionDeclaration(
+            "HandleTwice",
+            [
+                DynamicLibrary.Argument("handle", Long),
+            ],
+            Long,
+        ),
+        "forget": DynamicLibrary.FunctionDeclaration("Forget", [DynamicLibrary.Argument("value", Integer)], Nothing),
+    },
+)
 
 func ForeignLibrary() {
     var add_numbers = sum_of_numbers(2, 3)
@@ -47,65 +156,101 @@ func wide_arguments() {
 }
 
 func sum_of_numbers(first: Integer, second: Integer): Integer {
-    return plain.add_numbers(first, second)
+    var call = DynamicLibrary.Call(plain.functions["sum_of_numbers"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }
 
 func product_of_numbers(first: Integer, second: Integer): Integer {
-    return camel.multiply_numbers(first, second)
+    var call = DynamicLibrary.Call(camel.functions["product_of_numbers"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }
 
 func answer_position(): Integer {
-    return headerless.get_answer_position()
+    var call = DynamicLibrary.Call(headerless.functions["answer_position"])
+    return call.call()
 }
 
 func half_of(value: Integer): Double {
-    return plain.half_of(value)
+    var call = DynamicLibrary.Call(plain.functions["half_of"])
+    call.arguments["value"] = value
+    return call.call()
 }
 
 func big_number(): Long {
-    return plain.big_number()
+    var call = DynamicLibrary.Call(plain.functions["big_number"])
+    return call.call()
 }
 
 func greeting(): String {
-    return plain.greeting()
+    var call = DynamicLibrary.Call(plain.functions["greeting"])
+    return call.call()
 }
 
 func length_of(text: String): Integer {
-    return plain.text_length(text)
+    var call = DynamicLibrary.Call(plain.functions["length_of"])
+    call.arguments["text"] = text
+    return call.call()
 }
 
 func point_sum(point: PointPair): Integer {
-    return plain.sum_point(point)
+    var call = DynamicLibrary.Call(plain.functions["point_sum"])
+    call.arguments["point"] = point
+    return call.call()
 }
 
 func move_point(point: PointPair) {
-    windows.move_point(point)
+    var call = DynamicLibrary.Call(windows.functions["move_point"])
+    call.arguments["point"] = point
+    call.call()
 }
 
 func values_sum(values: List<Integer>, count: Integer): Integer {
-    return plain.sum_values(values, count)
+    var call = DynamicLibrary.Call(plain.functions["values_sum"])
+    call.arguments["values"] = values
+    call.arguments["count"] = count
+    return call.call()
 }
 
 func double_values(values: List<Integer>, count: Integer) {
-    plain.double_values(values, count)
+    var call = DynamicLibrary.Call(plain.functions["double_values"])
+    call.arguments["values"] = values
+    call.arguments["count"] = count
+    call.call()
 }
 
 func guessed_wide_sum(first: Long, second: Long): Long {
-    return plain.wide_sum(first, second)
+    var call = DynamicLibrary.Call(plain.functions["guessed_wide_sum"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }
 
 func declared_wide_sum(first: Long, second: UnsignedLong): Long {
-    return windows.wide_sum(first, second)
+    var call = DynamicLibrary.Call(windows.functions["declared_wide_sum"])
+    call.arguments["first"] = first
+    call.arguments["second"] = second
+    return call.call()
 }
 
 func scaled_value(factor: Float, value: Integer): Integer {
-    return windows.scaled(factor, value)
+    var call = DynamicLibrary.Call(windows.functions["scaled_value"])
+    call.arguments["factor"] = factor
+    call.arguments["value"] = value
+    return call.call()
 }
 
 func doubled_handle(handle: Long): Long {
-    return windows.handle_twice(handle)
+    var call = DynamicLibrary.Call(windows.functions["doubled_handle"])
+    call.arguments["handle"] = handle
+    return call.call()
 }
 
 func forget(value: Integer) {
-    windows.forget(value)
+    var call = DynamicLibrary.Call(windows.functions["forget"])
+    call.arguments["value"] = value
+    call.call()
 }

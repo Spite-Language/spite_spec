@@ -1,5 +1,13 @@
-var library = DynamicLibrary("ucrtbase.dll", 'identity', "")
+var library = DynamicLibrary(
+    "ucrtbase.dll",
+    "",
+    {
+        "text_length": DynamicLibrary.FunctionDeclaration("strlen", [DynamicLibrary.Argument("text", String)], Integer),
+    },
+)
 
 func text_length(text: String): Integer {
-    return library.strlen(text)
+    var call = DynamicLibrary.Call(library.functions["text_length"])
+    call.arguments["text"] = text
+    return call.call()
 }

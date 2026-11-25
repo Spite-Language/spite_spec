@@ -4,7 +4,19 @@ type PointPair {
 }
 
 var console = Console()
-var windows = DynamicLibrary("tests/foreign_struct_size_through_typedefs/fixture.dll", 'windows', "fixture.h")
+var windows = DynamicLibrary(
+    "tests/foreign_struct_size_through_typedefs/fixture.dll",
+    "fixture.h",
+    {
+        "move_point": DynamicLibrary.FunctionDeclaration(
+            "MovePoint",
+            [
+                DynamicLibrary.Argument("point", PointPair),
+            ],
+            Nothing,
+        ),
+    },
+)
 
 func ForeignStructSizeThroughTypedefs() {
     var spot: PointPair = {down: 1, across: 2}
@@ -13,5 +25,7 @@ func ForeignStructSizeThroughTypedefs() {
 }
 
 func move_point(point: PointPair) {
-    windows.move_point(point)
+    var call = DynamicLibrary.Call(windows.functions["move_point"])
+    call.arguments["point"] = point
+    call.call()
 }
