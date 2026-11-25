@@ -1,3 +1,7 @@
+type Counter {
+    value: Long
+}
+
 type PathRoom {
     text: DynamicLibrary.WideText
 }
@@ -7,8 +11,11 @@ var kernel = DynamicLibrary(
     "kernel32.dll",
     "",
     {
-        "current_directory": DynamicLibrary.FunctionDeclaration("GetCurrentDirectoryW", [DynamicLibrary.Argument("size", Integer), DynamicLibrary.Room("room", PathRoom, 'grown_by_hand')], Integer)
-        "system_directory": DynamicLibrary.FunctionDeclaration("GetSystemDirectoryW", [DynamicLibrary.Room("room", Integer, 'doubled_until_it_fits'), DynamicLibrary.Argument("size", Integer)], Integer)
+        "current_directory": DynamicLibrary.FunctionDeclaration("GetCurrentDirectoryW", [DynamicLibrary.RoomSize("size", Integer), DynamicLibrary.Room("room", PathRoom, 'grown_by_hand')], Integer)
+        "system_directory": DynamicLibrary.FunctionDeclaration("GetSystemDirectoryW", [DynamicLibrary.Room("room", Integer, 'doubled_until_it_fits'), DynamicLibrary.RoomSize("size", Integer)], Integer)
+        "windows_directory": DynamicLibrary.FunctionDeclaration("GetWindowsDirectoryW", [DynamicLibrary.Room("room", PathRoom, 'doubled_until_it_fits'), DynamicLibrary.Argument("size", Integer)], Integer)
+        "temporary_path": DynamicLibrary.FunctionDeclaration("GetTempPathW", [DynamicLibrary.RoomSize("size", Integer), DynamicLibrary.Argument("path", Long)], Integer)
+        "frequency": DynamicLibrary.FunctionDeclaration("QueryPerformanceFrequency", [DynamicLibrary.Room("counter", Counter, 'fixed_size'), DynamicLibrary.RoomSize("size", Integer)], Integer)
     },
 )
 
@@ -17,10 +24,35 @@ func ForeignRoomMistakes() {
     var directory = directory_call.call()
     console.print(directory)
     system_directory()
+    windows_directory()
+    temporary_path()
+    frequency()
 }
 
 func system_directory() {
     var directory_call = DynamicLibrary.Call(kernel.functions["system_directory"])
     var directory = directory_call.call()
     console.print(directory)
+}
+
+func windows_directory() {
+    var windows_call = DynamicLibrary.Call(kernel.functions["windows_directory"])
+    windows_call.arguments["size"] = 260
+    var windows = windows_call.call()
+    console.print(windows)
+}
+
+func temporary_path() {
+    var path_call = DynamicLibrary.Call(kernel.functions["temporary_path"])
+    path_call.arguments["size"] = 0
+    path_call.arguments["path"] = 0
+    var path_length = path_call.call()
+    console.print(path_length)
+}
+
+func frequency() {
+    var frequency_call = DynamicLibrary.Call(kernel.functions["frequency"])
+    frequency_call.arguments["size"] = 8
+    var counter = frequency_call.call()
+    console.print(counter)
 }

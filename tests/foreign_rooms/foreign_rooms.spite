@@ -15,9 +15,9 @@ var kernel = DynamicLibrary(
     "kernel32.dll",
     "",
     {
-        "current_directory": DynamicLibrary.FunctionDeclaration("GetCurrentDirectoryW", [DynamicLibrary.Argument("size", Integer), DynamicLibrary.Room("room", PathRoom, 'answer_is_the_size_needed')], Integer)
-        "module_file_name": DynamicLibrary.FunctionDeclaration("GetModuleFileNameW", [DynamicLibrary.Argument("module", Long), DynamicLibrary.Room("room", PathRoom, 'doubled_until_it_fits'), DynamicLibrary.Argument("size", Integer)], Integer)
-        "wide_of": DynamicLibrary.FunctionDeclaration("MultiByteToWideChar", [DynamicLibrary.Argument("code_page", Integer), DynamicLibrary.Argument("flags", Integer), DynamicLibrary.Argument("text", String), DynamicLibrary.Argument("length", Integer), DynamicLibrary.Room("room", PathRoom, 'asked_with_no_room_first'), DynamicLibrary.Argument("size", Integer)], Integer)
+        "current_directory": DynamicLibrary.FunctionDeclaration("GetCurrentDirectoryW", [DynamicLibrary.RoomSize("size", Integer), DynamicLibrary.Room("room", PathRoom, 'answer_is_the_size_needed')], Integer)
+        "module_file_name": DynamicLibrary.FunctionDeclaration("GetModuleFileNameW", [DynamicLibrary.Argument("module", Long), DynamicLibrary.Room("room", PathRoom, 'doubled_until_it_fits'), DynamicLibrary.RoomSize("size", Integer)], Integer)
+        "wide_of": DynamicLibrary.FunctionDeclaration("MultiByteToWideChar", [DynamicLibrary.Argument("code_page", Integer), DynamicLibrary.Argument("flags", Integer), DynamicLibrary.Argument("text", String), DynamicLibrary.Argument("length", Integer), DynamicLibrary.Room("room", PathRoom, 'asked_with_no_room_first'), DynamicLibrary.RoomSize("size", Integer)], Integer)
         "frequency": DynamicLibrary.FunctionDeclaration("QueryPerformanceFrequency", [DynamicLibrary.Room("counter", Counter, 'fixed_size')], Integer)
     },
 )
@@ -25,7 +25,7 @@ var c_runtime = DynamicLibrary(
     "ucrtbase.dll",
     "",
     {
-        "transformed": DynamicLibrary.FunctionDeclaration("strxfrm", [DynamicLibrary.Room("room", NameRoom, 'answer_is_what_arrived'), DynamicLibrary.Argument("text", String), DynamicLibrary.Argument("size", Integer)], Integer)
+        "transformed": DynamicLibrary.FunctionDeclaration("strxfrm", [DynamicLibrary.Room("room", NameRoom, 'answer_is_what_arrived'), DynamicLibrary.Argument("text", String), DynamicLibrary.RoomSize("size", Integer)], Integer)
     },
 )
 var _utf8_code_page = 65001
