@@ -1,0 +1,66 @@
+enum Mood {
+    'calm'
+    'cross'
+}
+
+union Held {
+    Crate
+    Barrel
+}
+
+type Shown {
+    to_string: Spite.Function<String>
+}
+
+var console = Console()
+
+func AHoleOnAnyNullableShowsNull() {
+    var name: String? = null
+    var count: Integer? = null
+    var ratio: Double? = null
+    var mood: Mood? = null
+    var crate: Crate? = null
+    var held: Held? = null
+    var shown: Shown? = null
+    console.print("[{name}] [{count}] [{ratio}] [{mood}] [{crate}] [{held}] [{shown}]")
+    name = maybe_name(true)
+    count = maybe_count(true)
+    ratio = maybe_ratio(true)
+    mood = maybe_mood(true)
+    crate = maybe_crate(true)
+    held = maybe_held(true)
+    shown = maybe_crate(true)
+    console.print("[{name}] [{count}] [{ratio}] [{mood}] [{crate}] [{held}] [{shown}]")
+    var missing = maybe_name(false)
+    console.print("[{missing}] and [{maybe_count(false)}]")
+}
+
+func maybe_name(there: Boolean): String? {
+    fallback there
+    return "Ada"
+}
+
+func maybe_count(there: Boolean): Integer? {
+    fallback there
+    return 3
+}
+
+func maybe_ratio(there: Boolean): Double? {
+    fallback there
+    return 0.5
+}
+
+func maybe_mood(there: Boolean): Mood? {
+    fallback there
+    return 'calm'
+}
+
+func maybe_crate(there: Boolean): Crate? {
+    fallback there
+    return Crate()
+}
+
+func maybe_held(there: Boolean): Held? {
+    fallback there
+    return Barrel()
+}

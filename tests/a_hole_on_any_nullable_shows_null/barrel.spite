@@ -1,0 +1,5 @@
+var volume = 7
+
+func to_string(): String {
+    return "barrel {volume}"
+}
