@@ -1,0 +1,4 @@
+generic $item_type
+
+var held: $item_type? = null
+var label = "shelf"

@@ -1,0 +1,48 @@
+var console = Console()
+var queue = List<Card>()
+
+func JsxRenderKeepsWhatItMade() {
+    var card = Card()
+    card.items.append("a")
+    card.jsx_attach(queue)
+    var made = card.jsx_replay()
+    var root = card.jsx_root()
+    crash root
+    var first = root.describe()
+    console.print(made, first)
+    var again = card.jsx_replay()
+    var kept = card.jsx_root()
+    console.print(again, kept === root)
+    card.title = "Bye"
+    card.count = 2
+    var marked = card.jsx_pending()
+    var queued = queue.count()
+    queue.clear()
+    var reshaped = card.jsx_update(marked)
+    var second = root.describe()
+    console.print(queued, reshaped, second)
+    card.items.append("b")
+    marked = card.jsx_pending()
+    queued = queue.count()
+    queue.clear()
+    reshaped = card.jsx_update(marked)
+    var third = root.describe()
+    console.print(queued, reshaped, third)
+    card.shown = false
+    marked = card.jsx_pending()
+    queued = queue.count()
+    queue.clear()
+    reshaped = card.jsx_update(marked)
+    var still = card.jsx_root()
+    var fourth = root.describe()
+    console.print(queued, reshaped, fourth, still === root)
+    var frames = card.jsx_replays_each_frame()
+    var update = Card.functions["jsx_update"]
+    crash update
+    var render = Card.functions["render"]
+    crash render
+    console.print(frames, update.source, render.source)
+    var fresh = card.render()
+    var fifth = fresh.describe()
+    console.print(fifth, fresh === root)
+}

@@ -1,0 +1,8 @@
+box Box Crate
+count Integer Crate
+box Box Crate
+count Integer Crate
+weight Integer Box
+held Box? Shelf<Box>
+label String Shelf<Box>
+weight Box 3 shelf 3

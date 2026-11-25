@@ -1,0 +1,9 @@
+var console = Console()
+
+func FunctionSource() {
+    var raise = Gauge.functions["raise"]
+    crash raise
+    var gauge = Gauge()
+    gauge.raise()
+    console.print(raise.name, raise.source, gauge.level)
+}

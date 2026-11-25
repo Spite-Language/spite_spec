@@ -1,0 +1,6 @@
+var box = Box()
+var count = 1
+
+func total(): Integer {
+    return box.weight * count
+}

@@ -1,0 +1,20 @@
+var title = "Hello"
+var count = 1
+var shown = true
+var items = List<String>()
+
+func render(): View {
+    var labels = List<View.Component>()
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        var label = <Label content={item}/>
+        labels.append(label)
+        index = index + 1
+    }
+    if shown {
+        var extra = <Label content="extra"/>
+        labels.append(extra)
+    }
+    return <View title={title} badge={count} children={labels}/>
+}

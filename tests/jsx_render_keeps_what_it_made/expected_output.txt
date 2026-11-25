@@ -1,0 +1,7 @@
+true Hello (1) [a, extra]
+false true
+1 false Bye (2) [a, extra]
+1 true Bye (2) [a, b, extra]
+1 true Bye (2) [a, b] true
+false compiler jsx written
+Bye (2) [a, b] false

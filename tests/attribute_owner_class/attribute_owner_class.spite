@@ -1,0 +1,21 @@
+var console = Console()
+
+func AttributeOwnerClass() {
+    Crate.attributes.each(describe)
+    var total = Crate.functions["total"]
+    crash total
+    total.reads.each(describe)
+    var shelf = Shelf<Box>()
+    shelf.held = Box()
+    Shelf<Box>.attributes.each(describe)
+    var crate = Crate()
+    var weight = crate.box.attributes["weight"]
+    var total_now = crate.total()
+    var held = shelf.held
+    crash held
+    console.print(weight.name, weight.declaration.owner_class, total_now, shelf.label, held.weight)
+}
+
+func describe(attribute: Spite.AttributeDeclaration) {
+    console.print(attribute.name, attribute.class, attribute.owner_class)
+}
