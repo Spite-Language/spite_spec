@@ -7,8 +7,8 @@ var kernel = DynamicLibrary(
     "kernel32.dll",
     "",
     {
-        "current_directory": DynamicLibrary.FunctionDeclaration("GetCurrentDirectoryW", [DynamicLibrary.Argument("size", Integer), DynamicLibrary.Argument("room", PathRoom)], Integer, 'grown_by_hand')
-        "tick_count": DynamicLibrary.FunctionDeclaration("GetTickCount", [], Integer, 'doubled_until_it_fits')
+        "current_directory": DynamicLibrary.FunctionDeclaration("GetCurrentDirectoryW", [DynamicLibrary.Argument("size", Integer), DynamicLibrary.Room("room", PathRoom, 'grown_by_hand')], Integer)
+        "system_directory": DynamicLibrary.FunctionDeclaration("GetSystemDirectoryW", [DynamicLibrary.Room("room", Integer, 'doubled_until_it_fits'), DynamicLibrary.Argument("size", Integer)], Integer)
     },
 )
 
@@ -16,11 +16,11 @@ func ForeignRoomMistakes() {
     var directory_call = DynamicLibrary.Call(kernel.functions["current_directory"])
     var directory = directory_call.call()
     console.print(directory)
-    ticks()
+    system_directory()
 }
 
-func ticks() {
-    var ticks_call = DynamicLibrary.Call(kernel.functions["tick_count"])
-    var counted = ticks_call.call()
-    console.print(counted)
+func system_directory() {
+    var directory_call = DynamicLibrary.Call(kernel.functions["system_directory"])
+    var directory = directory_call.call()
+    console.print(directory)
 }
