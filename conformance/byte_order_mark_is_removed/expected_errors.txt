@@ -1,0 +1,1 @@
+conformance/byte_order_mark_is_removed/byte_order_mark_is_removed.spite: fixed: the file started with a byte order mark (U+FEFF), which a Spite file does not hold; removed it (in ByteOrderMarkIsRemoved)

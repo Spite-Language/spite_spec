@@ -1,0 +1,1 @@
+conformance/byte_order_mark_inside_a_file/byte_order_mark_inside_a_file.spite:4: error: a byte order mark (U+FEFF) is not something Spite reads here: only one at the very start of a file is removed for you, so remove this one

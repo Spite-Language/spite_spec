@@ -1,0 +1,5 @@
+﻿var console = Console()
+
+func ByteOrderMarkIsRemoved() {
+    console.print("read")
+}
