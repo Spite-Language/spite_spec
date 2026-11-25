@@ -13,10 +13,10 @@ func built(): View {
         padding={count}
         wrap
     >
-        <Label content="first"/>
+        <Label content="first" />
         <Label>spread over two lines with {count} holes</Label>
         <View title="nested">
-            <Label content="deep"/>
+            <Label content="deep" />
         </View>
     </View>
 }

@@ -7,5 +7,5 @@ func JsxAttributeSetTwice() {
 }
 
 func built(): View {
-    return <View title="one" title="two"/>
+    return <View title="one" title="two" />
 }

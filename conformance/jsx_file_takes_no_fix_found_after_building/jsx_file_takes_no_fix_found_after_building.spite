@@ -10,9 +10,9 @@ func JsxFileTakesNoFixFoundAfterBuilding() {
 }
 
 func built(): View {
-    return <View title="plain"/>
+    return <View title="plain" />
 }
 
 func dotted(): Parts.Badge {
-    return <Parts.Badge content="dotted"/>
+    return <Parts.Badge content="dotted" />
 }

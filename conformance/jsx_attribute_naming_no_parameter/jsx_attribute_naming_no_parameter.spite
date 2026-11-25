@@ -8,7 +8,7 @@ func JsxAttributeNamingNoParameter() {
 
 func built(): View {
     return <View title="parts">
-        <health_bar filled={1} colour="red"/>
+        <health_bar filled={1} colour="red" />
     </View>
 }
 

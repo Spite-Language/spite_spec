@@ -10,8 +10,8 @@ func built(): View {
     var health = 7
     var missing = 3
     return <View title="parts">
-        <health_bar missing={missing} filled={health}/>
-        <framed title="box"/>
+        <health_bar missing={missing} filled={health} />
+        <framed title="box" />
     </View>
 }
 
@@ -24,6 +24,6 @@ func render_health_bar(filled: Integer, missing: Integer): Label {
 
 func render_framed(title: String): View {
     return <View title={title}>
-        <Label content="inside"/>
+        <Label content="inside" />
     </View>
 }

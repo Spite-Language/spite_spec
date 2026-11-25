@@ -1,0 +1,19 @@
+var console = Console()
+
+func TagSpacingIsRewritten() {
+    var made = built()
+    var shown = made.describe()
+    console.print(shown)
+}
+
+func built(): View {
+    return <View title="spaced" >
+        <Label content="first"/>
+        <Label content="second"   />
+        <View
+            title="a title long enough that the attributes cannot stay on the line of the tag, so they are broken"
+            padding={2}
+            wrap
+        />
+    </View>
+}

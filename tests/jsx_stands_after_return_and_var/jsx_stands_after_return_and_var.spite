@@ -1,9 +1,9 @@
 var console = Console()
 
 func JsxStandsAfterReturnAndVar() {
-    var plain = <View title="var"/>
+    var plain = <View title="var" />
     var typed: View = <View title="typed">
-        <Label content="child"/>
+        <Label content="child" />
     </View>
     var first = plain.describe()
     console.print(first)
@@ -16,7 +16,7 @@ func JsxStandsAfterReturnAndVar() {
 
 func built(inside: Boolean): View {
     if inside {
-        return <View title="in a branch" padding={1}/>
+        return <View title="in a branch" padding={1} />
     }
-    return <View title="after"/>
+    return <View title="after" />
 }

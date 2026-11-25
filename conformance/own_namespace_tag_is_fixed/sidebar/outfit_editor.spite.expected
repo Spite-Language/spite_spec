@@ -1,9 +1,9 @@
 func render(): Theme.Panel {
     return <Theme.Panel title="Wardrobe">
-        <ClassPicker label="class"/>
+        <ClassPicker label="class" />
     </Theme.Panel>
 }
 
 func render_alone(): ClassPicker {
-    return <ClassPicker label="alone"/>
+    return <ClassPicker label="alone" />
 }

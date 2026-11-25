@@ -8,6 +8,6 @@ func JsxUnclosedTag() {
 
 func built(): View {
     return <View title="parts">
-        <Label content="inside"/>
+        <Label content="inside" />
     </Label>
 }

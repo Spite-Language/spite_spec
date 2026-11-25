@@ -8,6 +8,6 @@ func JsxConstructorWithParameters() {
 
 func built(): View {
     return <View title="parts">
-        <Sized/>
+        <Sized />
     </View>
 }

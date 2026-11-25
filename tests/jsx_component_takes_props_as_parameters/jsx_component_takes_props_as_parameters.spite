@@ -17,9 +17,9 @@ func built(): View {
     inside.content = "inside"
     parts.append(inside)
     return <View title="armory">
-        <weapon grade={1}/>
-        <sword name="Axe" grade="3" rarity='rare' tint="#ff8000" weight={2} shiny/>
-        <framed title="box" children={parts}/>
+        <weapon grade={1} />
+        <sword name="Axe" grade="3" rarity='rare' tint="#ff8000" weight={2} shiny />
+        <framed title="box" children={parts} />
     </View>
 }
 

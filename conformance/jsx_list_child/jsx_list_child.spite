@@ -9,7 +9,7 @@ func JsxListChild() {
 func built(): View {
     var parts = List<View.Component>()
     return <View title="parts">
-        <Label content="first"/>
+        <Label content="first" />
         {parts}
     </View>
 }

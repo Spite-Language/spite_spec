@@ -25,7 +25,7 @@ func JsxMatchesHandWritten() {
 
 func with_tags(count: Integer): View {
     return <View title="same" padding={count}>
-        <Label content="first"/>
+        <Label content="first" />
         <Label>{count} items</Label>
     </View>
 }
