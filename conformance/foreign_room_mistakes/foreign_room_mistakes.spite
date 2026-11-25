@@ -18,6 +18,14 @@ var kernel = DynamicLibrary(
         "frequency": DynamicLibrary.FunctionDeclaration("QueryPerformanceFrequency", [DynamicLibrary.Room("counter", Counter, 'fixed_size'), DynamicLibrary.RoomSize("size", Integer)], Integer)
     },
 )
+var c_runtime = DynamicLibrary(
+    "ucrtbase.dll",
+    "",
+    {
+        "transformed": DynamicLibrary.FunctionDeclaration("strxfrm", [DynamicLibrary.Room("room", PathRoom, 'answer_is_what_arrived'), DynamicLibrary.Argument("text", String), DynamicLibrary.RoomSize("size", Long)], Long)
+        "copied": DynamicLibrary.FunctionDeclaration("strxfrm", [DynamicLibrary.Room("room", PathRoom, 'answer_is_what_arrived'), DynamicLibrary.Argument("text", String), DynamicLibrary.RoomSize("size", Integer)], Long)
+    },
+)
 
 func ForeignRoomMistakes() {
     var directory_call = DynamicLibrary.Call(kernel.functions["current_directory"])
@@ -27,6 +35,8 @@ func ForeignRoomMistakes() {
     windows_directory()
     temporary_path()
     frequency()
+    transformed()
+    copied()
 }
 
 func system_directory() {
@@ -55,4 +65,20 @@ func frequency() {
     frequency_call.arguments["size"] = 8
     var counter = frequency_call.call()
     console.print(counter)
+}
+
+func transformed() {
+    var transforming = DynamicLibrary.Call(c_runtime.functions["transformed"])
+    transforming.arguments["text"] = "spite"
+    transforming.arguments["size"] = 64
+    var room = transforming.call()
+    console.print(room)
+}
+
+func copied() {
+    var copying = DynamicLibrary.Call(c_runtime.functions["copied"])
+    copying.arguments["text"] = "spite"
+    copying.arguments["size"] = 64
+    var room = copying.call()
+    console.print(room)
 }
