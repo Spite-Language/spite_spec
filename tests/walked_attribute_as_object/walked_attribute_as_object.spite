@@ -14,7 +14,7 @@ func WalkedAttributeAsObject() {
 func declared(attribute: Spite.AttributeDeclaration) {
     console.print("declared {attribute}")
     take(attribute)
-    var same = attribute == "level"
+    var same = "level" == attribute
     console.print("equal to its name:", same)
     var other = attribute
     console.print("copy", other.name, other.index, other.class)
@@ -27,7 +27,7 @@ func declared(attribute: Spite.AttributeDeclaration) {
 func bound(attribute: Spite.Attribute<Integer>) {
     console.print("bound {attribute}")
     take(attribute)
-    var same = attribute == "level"
+    var same = "level" == attribute
     console.print("equal to its name:", same)
     var other = attribute
     console.print("copy", other.name, other.index, other.class)

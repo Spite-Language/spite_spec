@@ -22,7 +22,7 @@ func run() {
 
 func run_phase_each(phase: Spite.FunctionDeclaration) {
     var other = phase
-    var same = phase == "update_each"
+    var same = "update_each" == phase
     console.print("function {phase} {other.name} {other.returns} {same}")
     kept.append(phase)
     task.phase_each()
