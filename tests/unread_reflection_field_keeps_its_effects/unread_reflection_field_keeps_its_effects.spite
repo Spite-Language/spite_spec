@@ -89,7 +89,7 @@ func copy_a_folder(from: String, to: String) {
 
 func copy_a_subfolder(folder: Directory, to: String) {
     var name = folder.folder_name
-    fallback not name.starts_with(".")
+    fallback not name.starts_with(".") and name != "docs"
     copy_a_folder(folder.path, "{to}/{name}")
 }
 
