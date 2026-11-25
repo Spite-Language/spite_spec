@@ -56,11 +56,17 @@ func counting() {
         more_bytes >= _buffer_size,
     )
     var size = room.count()
-    console.print("the buffer is empty:", size)
+    console.print("the buffer holds:", size)
 }
 
 func hold_a_buffer(): Buffer {
-    return Buffer()
+    var room = Buffer()
+    var index = 0
+    while index < _buffer_size {
+        room.append(0)
+        index = index + 1
+    }
+    return room
 }
 
 func long_environment_value() {
