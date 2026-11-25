@@ -1,0 +1,14 @@
+var console = Console()
+
+func ATextComparedCastsLikeAnyArgument() {
+    var word = "café"
+    var accent = word[3]
+    crash accent
+    var cast: Rune = "é"
+    console.print("literal", accent == "é", accent == "e", accent == cast)
+    console.print("text first", "é" == accent, "e" != accent)
+    var maybe = word[0]
+    console.print("maybe", maybe == "c", maybe == "é")
+    var crate = Crate()
+    console.print("class on the right", "crate 2" == crate, "crate 3" == crate)
+}

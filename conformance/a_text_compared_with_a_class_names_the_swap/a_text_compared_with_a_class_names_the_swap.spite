@@ -1,0 +1,6 @@
+var console = Console()
+
+func ATextComparedWithAClassNamesTheSwap() {
+    var crate = Crate()
+    console.print(crate == "crate 2")
+}
