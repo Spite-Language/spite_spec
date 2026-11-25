@@ -1,0 +1,1 @@
+conformance/generic_constraint_given_a_type/generic_constraint_given_a_type.spite:12: error: 'GenericConstraintGivenAType.Named' does not fit type 'Priced', which 'Shelf' requires of $item_type: it has no function 'price' (in GenericConstraintGivenAType.GenericConstraintGivenAType)

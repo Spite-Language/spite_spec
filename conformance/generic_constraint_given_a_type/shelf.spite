@@ -1,0 +1,3 @@
+generic $item_type: GenericConstraintGivenAType.Priced
+
+var items = List<$item_type>()

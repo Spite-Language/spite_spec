@@ -1,0 +1,14 @@
+generic $item_type: GenericConstraintGivenATypeThatFits.Priced
+
+var items = List<$item_type>()
+
+func total(): Integer {
+    var sum = 0
+    var index = 0
+    while index < items.count() {
+        var item = items[index]
+        sum = sum + item.price()
+        index = index + 1
+    }
+    return sum
+}

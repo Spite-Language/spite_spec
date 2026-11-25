@@ -1,0 +1,15 @@
+type Priced {
+    price: Spite.Function<Integer>
+}
+
+type Named {
+    name: String
+}
+
+var console = Console()
+
+func GenericConstraintGivenAType() {
+    var shelf = Shelf<Named>()
+    var count = shelf.items.count()
+    console.print(count)
+}
