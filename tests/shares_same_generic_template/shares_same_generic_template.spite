@@ -1,0 +1,14 @@
+var console = Console()
+
+func SharesSameGenericTemplate() {
+    var glowing = Custom<Glow>()
+    var blooming = Custom<Bloom>()
+    var glow = Glow()
+    var bloom = Bloom()
+    var numbers = List<Integer>()
+    var same = glowing.class.shares_same_generic_template(blooming.class)
+    var written = glowing.class.shares_same_generic_template(Custom<Bloom>)
+    var plain = glow.class.shares_same_generic_template(Glow)
+    var listed = glowing.class.shares_same_generic_template(numbers.class)
+    console.print(glowing.key, glow.strength, bloom.radius, same, written, plain, listed)
+}
