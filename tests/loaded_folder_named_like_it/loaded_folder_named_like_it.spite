@@ -1,0 +1,16 @@
+var console = Console()
+
+func LoadedFolderNamedLikeIt() {
+    load "pack"
+    load "tool"
+    var field = Pack.Ui.Field()
+    console.print(field.class.name_with_outer_classes, field.class.name)
+    crash field.class.outer_class
+    console.print(field.class.outer_class.name_with_outer_classes, field.class.outer_class.name)
+    console.print(Pack.Ui.Field.name_with_outer_classes, Pack.Ui.name_with_outer_classes, Pack.Ui.name)
+    var listed = List<Pack.Ui.Field>()
+    console.print(listed.class.name_with_outer_classes, listed.class.name)
+    console.print(Pack.Ui.Field.Shade.name_with_outer_classes)
+    var knob = Tool.Knob()
+    console.print(knob.class.name_with_outer_classes, Tool.name_with_outer_classes, field.value, knob.turns)
+}

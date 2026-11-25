@@ -1,0 +1,6 @@
+enum Shade {
+    'light'
+    'dark'
+}
+
+var value = "field"
