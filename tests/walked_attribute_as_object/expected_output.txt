@@ -3,12 +3,12 @@ declared _secret
 taken _secret
 equal to its name: false
 copy _secret 0 Integer
-members 6
+members 7
 declared level
 taken level
 equal to its name: true
 copy level 1 Integer
-members 6
+members 7
 bound _secret
 taken _secret
 equal to its name: false
