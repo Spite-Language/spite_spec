@@ -67,10 +67,8 @@ func outer_if_with_else(amount: Integer, other: Integer): Integer {
     var result = 0
     if amount > 9 {
         result = 3
-    } else {
-        if other > 2 {
-            result = 6
-        }
+    } else if other > 2 {
+        result = 6
     }
     return result
 }

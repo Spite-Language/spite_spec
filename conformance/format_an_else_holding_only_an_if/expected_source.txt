@@ -1,0 +1,16 @@
+var console = Console()
+
+func FormatAnElseHoldingOnlyAnIf() {
+    var three = named(3)
+    console.print(three)
+}
+
+func named(count: Integer): String {
+    var name = "many"
+    if count == 1 {
+        name = "one"
+    } else if count == 3 {
+        name = "three"
+    }
+    return name
+}
