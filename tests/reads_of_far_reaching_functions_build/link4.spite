@@ -1,0 +1,32 @@
+var next = Link5()
+var value_0 = 0
+var value_1 = 1
+var value_2 = 2
+var value_3 = 3
+var value_4 = 4
+var value_5 = 5
+var value_6 = 6
+var value_7 = 7
+var value_8 = 8
+var value_9 = 9
+var value_10 = 10
+var value_11 = 11
+var value_12 = 12
+var value_13 = 13
+var value_14 = 14
+var value_15 = 15
+var value_16 = 16
+var value_17 = 17
+var value_18 = 18
+var value_19 = 19
+var value_20 = 20
+var value_21 = 21
+var value_22 = 22
+var value_23 = 23
+var value_24 = 24
+
+func total(): Integer {
+    var own = value_0 + value_1 + value_2 + value_3 + value_4 + value_5 + value_6 + value_7 + value_8 + value_9 + value_10 + value_11 + value_12 + value_13 + value_14 + value_15 + value_16 + value_17 + value_18 + value_19 + value_20 + value_21 + value_22 + value_23 + value_24
+    var further = next.total()
+    return own + further
+}
