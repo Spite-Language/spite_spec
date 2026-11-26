@@ -1,0 +1,15 @@
+var console = Console()
+
+func BackReferenceConstructorKeepsThis() {
+    grow()
+    console.print("the tree is out of reach")
+}
+
+func grow() {
+    var tree = Tree()
+    if tree.leaf {
+        console.print("leaf", tree.leaf.tree.name)
+    } else {
+        console.print("no leaf")
+    }
+}

@@ -1,0 +1,11 @@
+var console = Console()
+var name = "tree"
+var leaf: Leaf? = null
+
+func Tree() {
+    leaf = Leaf(this)
+}
+
+func drop() {
+    console.print("tree", name, "is freed")
+}
