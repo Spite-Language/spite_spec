@@ -1,0 +1,8 @@
+var console = Console()
+
+func JsxConstructorAssemblesItsTags() {
+    var inventory = Inventory()
+    var shown = inventory.describe()
+    var count = inventory.children.count()
+    console.print(count, shown)
+}

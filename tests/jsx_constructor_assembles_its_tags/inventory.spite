@@ -1,0 +1,24 @@
+var title = "bag"
+var children = List<Panel>()
+
+func Inventory() {
+    <Panel title={title}>
+        <Panel title="first"/>
+        <Panel title="second">
+            <Panel title="deep"/>
+        </Panel>
+    </Panel>
+    <Panel title="below"/>
+}
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown = child.describe()
+        parts.append(shown)
+        index = index + 1
+    }
+    return parts.join(", ")
+}

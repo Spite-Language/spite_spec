@@ -1,0 +1,4 @@
+none x0 [in plain], fixed
+cup x0 [in plain], fixed
+cup x3 [in plain], fixed
+cup x3 [in red], fixed 1

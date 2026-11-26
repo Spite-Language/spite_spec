@@ -1,0 +1,28 @@
+union Holder {
+    Panel
+    Row
+}
+
+var title = ""
+var parent: Holder? = null
+var children = List<Panel>()
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown = child.describe()
+        parts.append(shown)
+        index = index + 1
+    }
+    var inside = parts.join(", ")
+    var above = "nothing"
+    if parent {
+        above = parent.title
+    }
+    if inside.is_empty() {
+        return "{title} in {above}"
+    }
+    return "{title} in {above} [{inside}]"
+}

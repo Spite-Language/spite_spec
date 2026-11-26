@@ -1,0 +1,11 @@
+var console = Console()
+var children = List<Panel>()
+
+func JsxTagStandingOutsideAConstructor() {
+    show()
+    console.print(children.count())
+}
+
+func show() {
+    <Panel title="lost"/>
+}

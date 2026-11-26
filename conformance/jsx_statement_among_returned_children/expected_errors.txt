@@ -1,0 +1,1 @@
+conformance/jsx_statement_among_returned_children/jsx_statement_among_returned_children.spite:11: error: '<Panel>' holds the statement 'if shown {' among its children, and only a tag a constructor that takes no arguments assembles holds statements: build its children in a local list and hand it as 'children={list}'

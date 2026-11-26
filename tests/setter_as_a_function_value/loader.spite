@@ -1,0 +1,6 @@
+var on_load: Spite.Function<Integer?, Nothing>? = null
+
+func finish(value: Integer) {
+    fallback on_load
+    on_load(value)
+}

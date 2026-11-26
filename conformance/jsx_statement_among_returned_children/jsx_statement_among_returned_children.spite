@@ -1,0 +1,15 @@
+var console = Console()
+var shown = true
+
+func JsxStatementAmongReturnedChildren() {
+    var built = panel()
+    console.print(built.children.count())
+}
+
+func panel(): Panel {
+    return <Panel title="outer">
+        if shown {
+            <Panel title="inner"/>
+        }
+    </Panel>
+}

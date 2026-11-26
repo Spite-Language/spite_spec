@@ -1,0 +1,23 @@
+var title = "row"
+var cells = List<Panel>()
+var children = List<Panel>()
+
+func Row() {
+    var first = Panel()
+    first.title = "made by hand"
+    cells.append(first)
+    var second = Panel()
+    second.title = "also by hand"
+    cells.append(second)
+    <Panel title="cells">
+        <Panel title="written"/>
+        {cells}
+        <Panel title="last"/>
+    </Panel>
+}
+
+func describe(): String {
+    var only = children[0]
+    crash only
+    return only.describe()
+}
