@@ -42,7 +42,7 @@ func FrameWaits() {
     while batch.done < 12 {
         program.sleep(one_millisecond)
     }
-    console.print("never more than eight in flight from one line:", most_in_flight <= 8, "and all", batch.done, "done")
+    console.print("more than eight in flight from one line:", most_in_flight > 8, "and all", batch.done, "done")
     var passes = 0
     while passes < 1 {
         passes = passes + 1

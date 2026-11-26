@@ -5,25 +5,32 @@ var second = Batch()
 var launched = 0
 var most_in_first = 0
 var most_in_second = 0
-var most_together = 0
+var _both_waves = 120
 
-func FrameSiteLimitIsPerSite() {
+func FrameSiteGrowsOnDemand() {
     var one_millisecond = Duration(1, 'milliseconds')
-    while launched < 12 {
+    while launched < 60 {
         launched = launched + 1
         first.slow_job()
         second.slow_job()
         most_in_first = maximum(most_in_first, first.in_flight)
         most_in_second = maximum(most_in_second, second.in_flight)
-        most_together = maximum(most_together, first.in_flight + second.in_flight)
         program.sleep(one_millisecond)
     }
-    while first.done < 12 or second.done < 12 {
+    while first.done < 60 or second.done < 60 {
         program.sleep(one_millisecond)
     }
-    console.print("no line had more than eight in flight:", most_in_first <= 8, most_in_second <= 8)
-    console.print("two lines had more than eight together:", most_together > 8)
+    console.print("each line kept more than eight in flight:", most_in_first > 8, most_in_second > 8)
     console.print("none was dropped:", first.done, second.done)
+    while launched < _both_waves {
+        launched = launched + 1
+        first.slow_job()
+        program.sleep(one_millisecond)
+    }
+    while first.done < _both_waves {
+        program.sleep(one_millisecond)
+    }
+    console.print("the room was used again:", first.done)
 }
 
 func maximum(left: Integer, right: Integer): Integer {

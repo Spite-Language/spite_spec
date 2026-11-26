@@ -1,3 +1,0 @@
-no line had more than eight in flight: true true
-two lines had more than eight together: true
-none was dropped: 12 12
