@@ -1,0 +1,16 @@
+var console = Console()
+
+func JsxBraceRunsAgainWhenAPropIsWritten() {
+    var slot = Slot()
+    var first = slot.describe()
+    console.print(first)
+    slot.label = "cup"
+    var second = slot.describe()
+    console.print(second)
+    slot.count = 3
+    var third = slot.describe()
+    console.print(third)
+    slot.tint = "red"
+    var fourth = slot.describe()
+    console.print(fourth, slot.changes)
+}

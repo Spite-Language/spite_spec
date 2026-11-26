@@ -1,0 +1,30 @@
+var label = "none"
+var count = 0
+var changes = 0
+var tint = "plain"
+var children = List<Panel>()
+
+func Slot() {
+    var shown = "{label} x{count}"
+    <Panel title={shown}>
+        <Panel title="in {tint}"/>
+    </Panel>
+    <Panel title="fixed"/>
+}
+
+func set_tint(value: String) {
+    changes = changes + 1
+    attributes["tint"].value = value
+}
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown = child.describe()
+        parts.append(shown)
+        index = index + 1
+    }
+    return parts.join(", ")
+}
