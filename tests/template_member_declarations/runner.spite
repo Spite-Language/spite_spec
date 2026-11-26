@@ -30,7 +30,7 @@ func run_phase_each(phase: Spite.FunctionDeclaration) {
 
 func describe_member(member: Spite.AttributeDeclaration) {
     var other = member
-    var same = member == "urgent"
+    var same = "urgent" == member
     var value = task.attributes[member].value
     console.print("member {member} {other.name} {other.returns} {same} {value}")
 }
