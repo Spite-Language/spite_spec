@@ -7,9 +7,9 @@ var children = List<Panel>()
 func Slot() {
     var shown = "{label} x{count}"
     <Panel title={shown}>
-        <Panel title="in {tint}"/>
+        <Panel title="in {tint}" />
     </Panel>
-    <Panel title="fixed"/>
+    <Panel title="fixed" />
 }
 
 func set_tint(value: String) {

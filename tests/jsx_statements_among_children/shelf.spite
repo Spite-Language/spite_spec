@@ -14,25 +14,25 @@ func Shelf() {
     names.append("plate")
     <Panel title="shelf">
         var count = names.count()
-        <Panel title="{count} things"/>
+        <Panel title="{count} things" />
         if chosen {
-            <Panel title="chosen"/>
+            <Panel title="chosen" />
         } else {
-            <Panel title="none chosen"/>
+            <Panel title="none chosen" />
         }
         var index = 0
         while index < names.count() {
             var name = names[index]
-            <Panel title={name}/>
+            <Panel title={name} />
             index = index + 1
         }
         switch size {
-            'single': <Panel title="one"/>
-            'pair': <Panel title="a pair"/>
+            'single': <Panel title="one" />
+            'pair': <Panel title="a pair" />
         }
     </Panel>
     if not chosen {
-        <Panel title="never"/>
+        <Panel title="never" />
     }
 }
 

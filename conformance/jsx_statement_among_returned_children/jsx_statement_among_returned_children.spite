@@ -9,7 +9,7 @@ func JsxStatementAmongReturnedChildren() {
 func panel(): Panel {
     return <Panel title="outer">
         if shown {
-            <Panel title="inner"/>
+            <Panel title="inner" />
         }
     </Panel>
 }

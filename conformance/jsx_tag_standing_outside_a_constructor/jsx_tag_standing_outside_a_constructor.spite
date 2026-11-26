@@ -7,5 +7,5 @@ func JsxTagStandingOutsideAConstructor() {
 }
 
 func show() {
-    <Panel title="lost"/>
+    <Panel title="lost" />
 }

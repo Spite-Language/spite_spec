@@ -3,12 +3,12 @@ var children = List<Panel>()
 
 func Inventory() {
     <Panel title={title}>
-        <Panel title="first"/>
+        <Panel title="first" />
         <Panel title="second">
-            <Panel title="deep"/>
+            <Panel title="deep" />
         </Panel>
     </Panel>
-    <Panel title="below"/>
+    <Panel title="below" />
 }
 
 func describe(): String {

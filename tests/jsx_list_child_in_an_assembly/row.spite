@@ -10,9 +10,9 @@ func Row() {
     second.title = "also by hand"
     cells.append(second)
     <Panel title="cells">
-        <Panel title="written"/>
+        <Panel title="written" />
         {cells}
-        <Panel title="last"/>
+        <Panel title="last" />
     </Panel>
 }
 
