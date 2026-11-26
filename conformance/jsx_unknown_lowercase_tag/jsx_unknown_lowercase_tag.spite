@@ -8,6 +8,6 @@ func JsxUnknownLowercaseTag() {
 
 func built(): View {
     return <View title="parts">
-        <health_bar filled={1}/>
+        <health_bar filled={1} />
     </View>
 }

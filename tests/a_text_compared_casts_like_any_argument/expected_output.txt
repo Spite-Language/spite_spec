@@ -1,0 +1,4 @@
+literal true false true
+text first true true
+maybe true false
+class on the right true false

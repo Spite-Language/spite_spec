@@ -1,0 +1,5 @@
+var size = 2
+
+func to_string(): String {
+    return "crate {size}"
+}

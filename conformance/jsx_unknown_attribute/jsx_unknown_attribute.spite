@@ -7,5 +7,5 @@ func JsxUnknownAttribute() {
 }
 
 func built(): View {
-    return <View title="parts" colour="red"/>
+    return <View title="parts" colour="red" />
 }

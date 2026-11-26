@@ -8,5 +8,5 @@ func JsxAttributeAssignsThroughSetter() {
 
 func built(): View {
     var count = 4
-    return <View title="set" padding={count} justify_content='center' wrap/>
+    return <View title="set" padding={count} justify_content='center' wrap />
 }

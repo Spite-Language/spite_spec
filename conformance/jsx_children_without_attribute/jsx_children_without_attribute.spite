@@ -9,7 +9,7 @@ func JsxChildrenWithoutAttribute() {
 func built(): View {
     return <View title="parts">
         <Label content="outer">
-            <Label content="inner"/>
+            <Label content="inner" />
         </Label>
     </View>
 }

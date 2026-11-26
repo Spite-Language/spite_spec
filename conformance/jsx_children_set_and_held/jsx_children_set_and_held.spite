@@ -10,7 +10,7 @@ func built(): View {
     var parts = List<View.Component>()
     return <View title="parts">
         <View title="box" children={parts}>
-            <Label content="inside"/>
+            <Label content="inside" />
         </View>
     </View>
 }

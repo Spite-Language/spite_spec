@@ -1,0 +1,3 @@
+[null] [null] [null] [null] [null] [null] [null]
+[Ada] [3] [0.5] [calm] [crate 2] [barrel 7] [crate 2]
+[null] and [null]

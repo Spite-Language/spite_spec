@@ -15,9 +15,9 @@ func JsxNestedTagsSetChildren() {
 
 func built(): Panel {
     return <Panel title="outer">
-        <Note content="first"/>
+        <Note content="first" />
         <Panel title="inner">
-            <Note content="second"/>
+            <Note content="second" />
         </Panel>
         <Note>third</Note>
     </Panel>

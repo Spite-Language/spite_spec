@@ -1,0 +1,3 @@
+one true
+spite: the program stopped at ...
+spite.frame	a_rune_from_a_longer_text_halts/a_rune_from_a_longer_text_halts.spite:8	ARuneFromALongerTextHalts	ARuneFromALongerTextHalts

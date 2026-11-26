@@ -8,10 +8,10 @@ func JsxChildTagsBuildLeavesFirst() {
 
 func built(): View {
     return <View title="outer">
-        <Label content="first"/>
+        <Label content="first" />
         <View title="inner">
-            <Label content="deep"/>
+            <Label content="deep" />
         </View>
-        <Label content="last"/>
+        <Label content="last" />
     </View>
 }

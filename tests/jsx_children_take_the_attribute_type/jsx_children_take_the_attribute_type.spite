@@ -13,10 +13,10 @@ func built(): Stack {
     var stone = Stone()
     stone.weight = 3
     return <Stack>
-        <Brick colour="red"/>
+        <Brick colour="red" />
         {stone}
         <Stack>
-            <Brick colour="blue"/>
+            <Brick colour="blue" />
         </Stack>
     </Stack>
 }

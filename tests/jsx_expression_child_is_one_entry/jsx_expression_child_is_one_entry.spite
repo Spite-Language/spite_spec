@@ -14,7 +14,7 @@ func built(): View {
     single.content = "single"
     return <View title="children">
         {single}
-        <Label content="tag"/>
+        <Label content="tag" />
         {render_badge()}
     </View>
 }
@@ -24,7 +24,7 @@ func listed(): View {
     var first = Label()
     first.content = "from a list"
     extras.append(first)
-    return <View title="handed" children={extras}/>
+    return <View title="handed" children={extras} />
 }
 
 func render_badge(): Label {

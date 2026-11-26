@@ -9,7 +9,7 @@ func JsxChildOfTheWrongType() {
 func built(): View {
     var count = 2
     return <View title="parts">
-        <Label content="first"/>
+        <Label content="first" />
         {count}
     </View>
 }

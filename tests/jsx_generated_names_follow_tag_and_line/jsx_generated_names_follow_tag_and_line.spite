@@ -25,10 +25,10 @@ func JsxGeneratedNamesFollowTagAndLine() {
 func built(): View {
     var view_28 = "taken"
     return <View title={view_28}>
-        <Label content="one"/>
+        <Label content="one" />
         {render_badge()}
         <View title="inner">
-            <Label content="three"/>
+            <Label content="three" />
         </View>
     </View>
 }

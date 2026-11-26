@@ -1,0 +1,10 @@
+var console = Console()
+
+func ARuneFromALongerTextHalts() {
+    var word = "ab"
+    var first = word[0]
+    crash first
+    console.print("one", first == "a")
+    var cast: Rune? = word
+    console.print("never printed", cast)
+}

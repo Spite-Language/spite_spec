@@ -14,7 +14,7 @@ func show(attribute: Spite.AttributeDeclaration) {
 
 func describe(attribute: Spite.AttributeDeclaration, how: String) {
     console.print("{how} {attribute}")
-    var same = attribute == "cost"
+    var same = "cost" == attribute
     console.print("equal to its name:", same)
     var other = attribute
     console.print("copy", other.name, other.index, other.class)

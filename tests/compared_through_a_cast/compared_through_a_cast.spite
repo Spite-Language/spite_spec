@@ -5,6 +5,6 @@ func ComparedThroughACast() {
     var price = Price(_starting_cost)
     console.print("cast price", price == "10", price != "10", price == "11", price != "11")
     var tag = Tag("cost")
-    console.print("tag as text", tag == "cost", tag != "cost", tag == "price")
-    console.print("attribute as text", Price.attributes["cost"] == "cost", Price.attributes["cost"] != "cost")
+    console.print("tag as text", "cost" == tag, "cost" != tag, "price" == tag)
+    console.print("attribute as text", "cost" == Price.attributes["cost"], "cost" != Price.attributes["cost"])
 }

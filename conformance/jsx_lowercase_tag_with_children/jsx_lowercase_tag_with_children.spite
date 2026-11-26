@@ -9,7 +9,7 @@ func JsxLowercaseTagWithChildren() {
 func built(): View {
     return <View title="parts">
         <framed title="box">
-            <Label content="inside"/>
+            <Label content="inside" />
         </framed>
     </View>
 }
