@@ -1,0 +1,25 @@
+var console = Console()
+
+func FilteredWalkSkipsRejected() {
+    var walked = Runner.functions.filter(walks_each)
+    walked.each(run)
+}
+
+func walks_each(function: Spite.FunctionDeclaration): Boolean {
+    return function.name.ends_with("_each")
+}
+
+func run(function: Spite.FunctionDeclaration) {
+    var arguments_count = function.arguments.count()
+    console.print(function.name, "takes", arguments_count)
+    function.arguments.each(describe_taken)
+}
+
+func describe_taken(argument: Spite.Argument) {
+    var fresh = made(argument)
+    console.print(" ", argument.index, argument.name, argument.class, fresh)
+}
+
+func made(argument: Spite.Argument): argument.class {
+    return argument.class()
+}

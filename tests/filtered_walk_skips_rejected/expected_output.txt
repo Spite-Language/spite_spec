@@ -1,0 +1,5 @@
+update_each takes 2
+  0 amount Integer 0
+  1 label String 
+render_each takes 1
+  0 scale Float 0
