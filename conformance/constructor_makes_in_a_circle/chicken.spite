@@ -1,0 +1,5 @@
+var egg = Egg()
+
+func weight(): Integer {
+    return egg.weight
+}

@@ -1,0 +1,1 @@
+conformance/defaults_make_each_other/flow.spite:1: error: 'DefaultsMakeEachOther.Flow' makes 'DefaultsMakeEachOther.Grid', which makes 'DefaultsMakeEachOther.Flow': objects that make each other in a circle never finish being made, so one of them has to be handed in through a constructor or made only where it is needed (in DefaultsMakeEachOther.Flow.)
