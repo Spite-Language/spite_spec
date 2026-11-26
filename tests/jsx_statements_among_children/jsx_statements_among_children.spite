@@ -1,0 +1,7 @@
+var console = Console()
+
+func JsxStatementsAmongChildren() {
+    var shelf = Shelf()
+    var shown = shelf.describe()
+    console.print(shown)
+}

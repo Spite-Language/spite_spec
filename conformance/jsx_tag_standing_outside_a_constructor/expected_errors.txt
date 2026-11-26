@@ -1,0 +1,1 @@
+conformance/jsx_tag_standing_outside_a_constructor/jsx_tag_standing_outside_a_constructor.spite:10: error: '<Panel>' stands on its own line in 'show', and only a constructor that takes no arguments attaches a tag written there: write it in 'JsxTagStandingOutsideAConstructor()', or after 'return' or 'var name ='

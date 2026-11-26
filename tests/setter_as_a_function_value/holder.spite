@@ -1,0 +1,17 @@
+var title = ""
+var _body: Integer? = null
+
+func wire(loader: Loader) {
+    loader.on_load = _set_body
+}
+
+func renamer(): Spite.Function<String, Nothing> {
+    return set_title
+}
+
+func shown(): Integer {
+    if _body {
+        return _body
+    }
+    return 0
+}

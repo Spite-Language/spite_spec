@@ -1,0 +1,14 @@
+var console = Console()
+
+func SetterAsAFunctionValue() {
+    var holder = Holder()
+    var loader = Loader()
+    holder.wire(loader)
+    loader.finish(3)
+    var shown = holder.shown()
+    console.print(shown)
+    var titled = Holder()
+    var rename = titled.renamer()
+    rename("kept")
+    console.print(titled.title)
+}

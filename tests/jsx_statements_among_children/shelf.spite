@@ -1,0 +1,36 @@
+var title = "the shelf"
+var names = List<String>()
+var chosen = true
+var children = List<Panel>()
+
+func Shelf() {
+    names.append("cup")
+    names.append("plate")
+    <Panel title="shelf">
+        var count = names.count()
+        <Panel title="{count} things"/>
+        if chosen {
+            <Panel title="chosen"/>
+        } else {
+            <Panel title="none chosen"/>
+        }
+        var index = 0
+        while index < names.count() {
+            var name = names[index]
+            <Panel title={name}/>
+            index = index + 1
+        }
+        switch count {
+            2: <Panel title="a pair"/>
+        }
+    </Panel>
+    if not chosen {
+        <Panel title="never"/>
+    }
+}
+
+func describe(): String {
+    var only = children[0]
+    crash only
+    return only.describe()
+}

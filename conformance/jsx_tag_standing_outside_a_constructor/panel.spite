@@ -1,0 +1,2 @@
+var title = ""
+var parent: JsxTagStandingOutsideAConstructor? = null
