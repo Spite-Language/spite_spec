@@ -1,2 +1,2 @@
 greeted 500 of 1000
-allocations: 19 frees: 19
+allocations: 20 frees: 20

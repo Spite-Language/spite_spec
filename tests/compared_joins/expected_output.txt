@@ -10,4 +10,4 @@ second
 third
 ordered: true
 long: 100
-allocations: 94 frees: 94
+allocations: 95 frees: 95

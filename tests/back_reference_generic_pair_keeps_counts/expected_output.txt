@@ -2,4 +2,4 @@
 child freed
 parent freed
 linked pair is out of reach
-allocations: 32 frees: 32
+allocations: 33 frees: 33

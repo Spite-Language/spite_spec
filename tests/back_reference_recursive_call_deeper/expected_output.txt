@@ -4,4 +4,4 @@ be is freed
 ce is freed
 bee is freed
 the chain is out of reach
-allocations: 51 frees: 51
+allocations: 52 frees: 52

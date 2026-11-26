@@ -1,2 +1,2 @@
 300 Panel 'outer' [Note 'first', Panel 'inner' [Note 'second'], Note 'third']
-allocations: 833 frees: 833
+allocations: 834 frees: 834

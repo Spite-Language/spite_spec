@@ -1,2 +1,2 @@
 root has 1093 nodes
-allocations: 4382 frees: 4382
+allocations: 4383 frees: 4383

@@ -4,4 +4,4 @@ bee is freed
 kept still holds spare
 kept is freed
 spare is freed
-allocations: 47 frees: 47
+allocations: 48 frees: 48

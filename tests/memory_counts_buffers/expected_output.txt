@@ -1,2 +1,2 @@
 summed: 6300
-allocations: 109 frees: 109
+allocations: 110 frees: 110

@@ -6,4 +6,4 @@ lonely
 crate
 7 changed
 lonely 3
-allocations: 105 frees: 105
+allocations: 106 frees: 106

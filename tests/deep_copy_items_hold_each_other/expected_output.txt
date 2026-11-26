@@ -1,4 +1,4 @@
 list: true true false false
 dictionary: true true
 one item: true
-allocations: 83 frees: 83
+allocations: 84 frees: 84

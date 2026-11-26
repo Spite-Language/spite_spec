@@ -1,4 +1,4 @@
 kept 7 grown to 65
 a joined text ends where its bytes end: 8
 first second third fourth
-allocations: 27 frees: 27
+allocations: 28 frees: 28

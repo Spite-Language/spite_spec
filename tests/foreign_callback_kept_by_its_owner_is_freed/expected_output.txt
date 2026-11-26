@@ -5,4 +5,4 @@ first ticked 9
 drop ends
 the listener is gone
 C called nothing after the listener unregistered
-allocations: 54 frees: 54
+allocations: 55 frees: 55

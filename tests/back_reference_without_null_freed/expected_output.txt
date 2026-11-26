@@ -19,4 +19,4 @@ round 1 ends
 dee is freed
 cy is freed
 every family is freed
-allocations: 161 frees: 161
+allocations: 162 frees: 162

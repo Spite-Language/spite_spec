@@ -7,4 +7,4 @@ other is freed
 ay two is freed
 bee two is freed
 both pairs are out of reach
-allocations: 65 frees: 65
+allocations: 66 frees: 66

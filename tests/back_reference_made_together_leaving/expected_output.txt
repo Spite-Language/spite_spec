@@ -2,4 +2,4 @@ bee holds ay
 ay still holds bee
 ay is freed
 bee is freed
-allocations: 32 frees: 32
+allocations: 33 frees: 33

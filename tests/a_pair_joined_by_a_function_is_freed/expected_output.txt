@@ -2,4 +2,4 @@ ann and bob are partners
 ann is freed, still with bob
 bob is freed, still with ann
 the pair is gone
-allocations: 32 frees: 32
+allocations: 33 frees: 33

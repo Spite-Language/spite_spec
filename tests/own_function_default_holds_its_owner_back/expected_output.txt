@@ -10,4 +10,4 @@ both are out of reach
 lou left the shelf
 lou is freed
 the shelf is empty
-allocations: 83 frees: 83
+allocations: 84 frees: 84

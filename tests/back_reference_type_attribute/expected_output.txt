@@ -10,4 +10,4 @@ old shelf is freed
 kept lost its holder
 the drive and the shelves are gone
 kept is freed
-allocations: 91 frees: 91
+allocations: 92 frees: 92

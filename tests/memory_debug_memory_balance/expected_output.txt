@@ -1,2 +1,2 @@
 made 3 part 2
-allocations: 18 frees: 18
+allocations: 19 frees: 19

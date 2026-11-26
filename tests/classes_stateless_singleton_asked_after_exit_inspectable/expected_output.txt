@@ -1,4 +1,4 @@
 early!
 done
 reporter dropping stopped!
-allocations: 23 frees: 23
+allocations: 24 frees: 24

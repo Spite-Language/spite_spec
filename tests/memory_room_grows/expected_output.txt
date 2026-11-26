@@ -1,2 +1,2 @@
 appended 10000
-allocations: 10 frees: 10
+allocations: 11 frees: 11

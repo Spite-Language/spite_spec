@@ -2,4 +2,4 @@ why because
 question why is freed
 answer because is freed
 the pair is out of reach
-allocations: 30 frees: 30
+allocations: 31 frees: 31

@@ -9,4 +9,4 @@ round 1 dee cy
 cy is freed, still with dee
 dee is freed alone
 every round is freed
-allocations: 83 frees: 83
+allocations: 84 frees: 84

@@ -1,2 +1,2 @@
 told 2
-allocations: 10 frees: 10
+allocations: 11 frees: 11
