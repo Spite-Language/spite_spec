@@ -1,0 +1,201 @@
+var chain = Link0()
+
+func work_0(): Integer {
+    var started = chain.total()
+    return started * 2
+}
+
+func work_1(): Integer {
+    var started = chain.total()
+    return started * 3
+}
+
+func work_2(): Integer {
+    var started = chain.total()
+    return started * 4
+}
+
+func work_3(): Integer {
+    var started = chain.total()
+    return started * 5
+}
+
+func work_4(): Integer {
+    var started = chain.total()
+    return started * 6
+}
+
+func work_5(): Integer {
+    var started = chain.total()
+    return started * 7
+}
+
+func work_6(): Integer {
+    var started = chain.total()
+    return started * 8
+}
+
+func work_7(): Integer {
+    var started = chain.total()
+    return started * 9
+}
+
+func work_8(): Integer {
+    var started = chain.total()
+    return started * 10
+}
+
+func work_9(): Integer {
+    var started = chain.total()
+    return started * 11
+}
+
+func work_10(): Integer {
+    var started = chain.total()
+    return started * 12
+}
+
+func work_11(): Integer {
+    var started = chain.total()
+    return started * 13
+}
+
+func work_12(): Integer {
+    var started = chain.total()
+    return started * 14
+}
+
+func work_13(): Integer {
+    var started = chain.total()
+    return started * 15
+}
+
+func work_14(): Integer {
+    var started = chain.total()
+    return started * 16
+}
+
+func work_15(): Integer {
+    var started = chain.total()
+    return started * 17
+}
+
+func work_16(): Integer {
+    var started = chain.total()
+    return started * 18
+}
+
+func work_17(): Integer {
+    var started = chain.total()
+    return started * 19
+}
+
+func work_18(): Integer {
+    var started = chain.total()
+    return started * 20
+}
+
+func work_19(): Integer {
+    var started = chain.total()
+    return started * 21
+}
+
+func work_20(): Integer {
+    var started = chain.total()
+    return started * 22
+}
+
+func work_21(): Integer {
+    var started = chain.total()
+    return started * 23
+}
+
+func work_22(): Integer {
+    var started = chain.total()
+    return started * 24
+}
+
+func work_23(): Integer {
+    var started = chain.total()
+    return started * 25
+}
+
+func work_24(): Integer {
+    var started = chain.total()
+    return started * 26
+}
+
+func work_25(): Integer {
+    var started = chain.total()
+    return started * 27
+}
+
+func work_26(): Integer {
+    var started = chain.total()
+    return started * 28
+}
+
+func work_27(): Integer {
+    var started = chain.total()
+    return started * 29
+}
+
+func work_28(): Integer {
+    var started = chain.total()
+    return started * 30
+}
+
+func work_29(): Integer {
+    var started = chain.total()
+    return started * 31
+}
+
+func work_30(): Integer {
+    var started = chain.total()
+    return started * 32
+}
+
+func work_31(): Integer {
+    var started = chain.total()
+    return started * 33
+}
+
+func work_32(): Integer {
+    var started = chain.total()
+    return started * 34
+}
+
+func work_33(): Integer {
+    var started = chain.total()
+    return started * 35
+}
+
+func work_34(): Integer {
+    var started = chain.total()
+    return started * 36
+}
+
+func work_35(): Integer {
+    var started = chain.total()
+    return started * 37
+}
+
+func work_36(): Integer {
+    var started = chain.total()
+    return started * 38
+}
+
+func work_37(): Integer {
+    var started = chain.total()
+    return started * 39
+}
+
+func work_38(): Integer {
+    var started = chain.total()
+    return started * 40
+}
+
+func work_39(): Integer {
+    var started = chain.total()
+    return started * 41
+}

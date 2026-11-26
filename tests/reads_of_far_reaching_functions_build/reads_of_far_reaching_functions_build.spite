@@ -1,0 +1,10 @@
+var console = Console()
+
+func ReadsOfFarReachingFunctionsBuild() {
+    var work = Hub.functions["work_0"]
+    crash work
+    var reads = work.reads.count()
+    var hub = Hub()
+    var worked = hub.work_0()
+    console.print(reads, worked)
+}
