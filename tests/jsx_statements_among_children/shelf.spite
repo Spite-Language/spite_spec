@@ -1,4 +1,10 @@
+enum Size {
+    'single'
+    'pair'
+}
+
 var title = "the shelf"
+var size: Size = 'pair'
 var names = List<String>()
 var chosen = true
 var children = List<Panel>()
@@ -20,8 +26,9 @@ func Shelf() {
             <Panel title={name}/>
             index = index + 1
         }
-        switch count {
-            2: <Panel title="a pair"/>
+        switch size {
+            'single': <Panel title="one"/>
+            'pair': <Panel title="a pair"/>
         }
     </Panel>
     if not chosen {
