@@ -1,0 +1,7 @@
+none | cup of nobody | 0 items, first - | 0 prices, cup/1
+cup x2 | cup of nobody | 0 items, first - | 0 prices, cup/1
+cup x2 | pot of ann | 0 items, first - | 0 prices, pot/1
+cup x2 | pan of nobody | 0 items, first - | 0 prices, pan/1
+cup x2 | pan of nobody | 0 items, first - | 0 prices, pan/5
+cup x2 | pan of nobody | 1 items, first pan | 1 prices, pan/5
+cup x2 | lid of nobody | 1 items, first pan | 1 prices, lid/5

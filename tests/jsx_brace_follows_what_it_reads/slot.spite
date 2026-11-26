@@ -1,0 +1,38 @@
+var item = Item()
+var items = List<Item>()
+var prices = Dictionary<String, Integer>()
+var label = "none"
+var count = 0
+var children = List<Panel>()
+
+func Slot() {
+    var shown = "none"
+    if count > 0 {
+        shown = "{label} x{count}"
+    }
+    var held = item
+    <Panel title={shown}/>
+    <Panel title="{held.name} of {item.owner.title}"/>
+    <Panel title="{items.count()} items, first {first_name()}"/>
+    <Panel title="{prices.count()} prices, {item.describe()}"/>
+}
+
+func first_name(): String {
+    var first = items[0]
+    if first {
+        return first.name
+    }
+    return "-"
+}
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown = child.describe()
+        parts.append(shown)
+        index = index + 1
+    }
+    return parts.join(" | ")
+}

@@ -1,0 +1,1 @@
+conformance/jsx_live_piece_writes/jsx_live_piece_writes.spite:6: error: 'if shown' is live, so it runs again whenever what it reads is written, and a live piece only reads: it writes in 'count = count + 1'. Write it in a function a handler calls, and let the piece read what it wrote

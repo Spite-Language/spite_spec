@@ -1,0 +1,17 @@
+var console = Console()
+
+func JsxBraceChildRunsAgain() {
+    var board = Board()
+    show(board)
+    board.count = 3
+    show(board)
+    board.label = "y"
+    show(board)
+    board.count = 0
+    show(board)
+}
+
+func show(board: Board) {
+    var shown = board.describe()
+    console.print(shown)
+}

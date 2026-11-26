@@ -1,0 +1,59 @@
+enum Kind {
+    'box'
+    'ball'
+}
+
+var names = List<String>()
+var crates = List<Crate>()
+var shown = false
+var kind: Kind = 'box'
+var children = List<Panel>()
+
+func Shelf() {
+    <Panel title="top"/>
+    if shown {
+        <Panel title="chosen"/>
+    }
+    <Panel title="rows">
+        var index = 0
+        while index < names.count() {
+            var name = names[index]
+            <Panel key={name} title="row {name}">
+                <Panel title="in {name}"/>
+            </Panel>
+            index = index + 1
+        }
+        <Panel title="end"/>
+    </Panel>
+    var place = 0
+    while place < crates.count() {
+        var crate = crates[place]
+        <Panel title={crate.label}/>
+        place = place + 1
+    }
+    switch kind {
+        'box': <Panel title="a box"/>
+        'ball': <Panel title="a ball"/>
+    }
+}
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown_child = child.describe()
+        parts.append(shown_child)
+        index = index + 1
+    }
+    return parts.join(" | ")
+}
+
+func row(at: Integer): Panel? {
+    var rows = children[1]
+    if shown {
+        rows = children[2]
+    }
+    fallback rows
+    return rows.children[at]
+}

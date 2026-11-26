@@ -1,0 +1,33 @@
+var count = 1
+var label = "x"
+var children = List<Panel>()
+
+func Board() {
+    <Panel title="head">
+        {rows()}
+        <Panel title="tail"/>
+    </Panel>
+}
+
+func rows(): List<Panel> {
+    var made = List<Panel>()
+    var index = 0
+    while index < count {
+        var row = <Panel title="{label}{index}"/>
+        made.append(row)
+        index = index + 1
+    }
+    return made
+}
+
+func describe(): String {
+    var parts = List<String>()
+    var index = 0
+    while index < children.count() {
+        var child = children[index]
+        var shown = child.describe()
+        parts.append(shown)
+        index = index + 1
+    }
+    return parts.join(" | ")
+}

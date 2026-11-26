@@ -1,0 +1,16 @@
+var shown = false
+var count = 0
+var children = List<Panel>()
+
+func JsxLivePieceWrites() {
+    if shown {
+        count = count + 1
+        <Panel title="shown"/>
+    }
+    <Panel title={next_title()}/>
+}
+
+func next_title(): String {
+    count = count + 1
+    return "{shown}"
+}

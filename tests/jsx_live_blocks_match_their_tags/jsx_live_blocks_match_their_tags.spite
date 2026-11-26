@@ -1,0 +1,37 @@
+var console = Console()
+
+func JsxLiveBlocksMatchTheirTags() {
+    var shelf = Shelf()
+    show(shelf)
+    shelf.shown = true
+    show(shelf)
+    shelf.names.append("a")
+    shelf.names.append("b")
+    show(shelf)
+    var first = shelf.row(0)
+    crash first
+    shelf.names.insert(0, "z")
+    show(shelf)
+    var moved = shelf.row(1)
+    crash moved
+    console.print("kept by key:", moved === first)
+    shelf.kind = 'ball'
+    shelf.shown = false
+    show(shelf)
+    shelf.names.remove_at(1)
+    var gone = false
+    if not first.parent {
+        gone = true
+    }
+    var crate = Crate()
+    shelf.crates.append(crate)
+    show(shelf)
+    crate.label = "lid"
+    var last = shelf.describe()
+    console.print(last, gone)
+}
+
+func show(shelf: Shelf) {
+    var shown = shelf.describe()
+    console.print(shown)
+}

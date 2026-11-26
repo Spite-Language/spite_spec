@@ -1,0 +1,3 @@
+var title = ""
+var parent: JsxLivePieceWrites? = null
+var children = List<Panel>()

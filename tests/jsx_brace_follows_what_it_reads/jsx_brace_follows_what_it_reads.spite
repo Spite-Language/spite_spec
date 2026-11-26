@@ -1,0 +1,31 @@
+var console = Console()
+
+func JsxBraceFollowsWhatItReads() {
+    var slot = Slot()
+    show(slot)
+    slot.label = "cup"
+    slot.count = 2
+    show(slot)
+    slot.item.name = "pot"
+    slot.item.owner.title = "ann"
+    show(slot)
+    var first = slot.item
+    var other = Item()
+    other.name = "pan"
+    slot.item = other
+    first.name = "old"
+    first.owner.title = "bob"
+    show(slot)
+    other.count = 5
+    show(slot)
+    slot.items.append(other)
+    slot.prices["tea"] = 3
+    show(slot)
+    other.name = "lid"
+    show(slot)
+}
+
+func show(slot: Slot) {
+    var shown = slot.describe()
+    console.print(shown)
+}

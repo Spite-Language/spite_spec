@@ -1,0 +1,8 @@
+top | rows [end] | a box
+top | chosen | rows [end] | a box
+top | chosen | rows [row a [in a], row b [in b], end] | a box
+top | chosen | rows [row z [in z], row a [in a], row b [in b], end] | a box
+kept by key: true
+top | rows [row z [in z], row a [in a], row b [in b], end] | a ball
+top | rows [row z [in z], row b [in b], end] | crate | a ball
+top | rows [row z [in z], row b [in b], end] | lid | a ball true

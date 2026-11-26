@@ -1,0 +1,4 @@
+head [x0, tail]
+head [x0, x1, x2, tail]
+head [y0, y1, y2, tail]
+head [tail]
