@@ -1,0 +1,25 @@
+var console = Console()
+
+func ConsoleLooksArePlainOffATerminal() {
+    var warning = Console.Look()
+    var orange: Color = "#ff8000"
+    warning.color = orange
+    warning.bold = true
+    var underlined = Console.Look()
+    underlined.underline = true
+    var dark: Color = "#202020"
+    underlined.background = dark
+    var inner = Console.Styled("inner", underlined)
+    var outer = Console.Styled(inner, warning)
+    var word = Console.Styled("careful", warning)
+    console.print("a", word, "step", outer, 3)
+    var shown = outer.to_string()
+    var shown_length = shown.length()
+    console.print("[{word}] [{shown}]", shown_length)
+    console.write('output', "", "no break")
+    console.write('output', "|\n", " then", 2.5)
+    console.write('error', "!\n", "to errors", 3)
+    var output_terminal = console.is_a_terminal('output')
+    var error_terminal = console.is_a_terminal('error')
+    console.print("terminals", output_terminal, error_terminal)
+}

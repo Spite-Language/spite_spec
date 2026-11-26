@@ -33,8 +33,8 @@ func PrintableValues() {
     crash ticket.class.outer_class
     console.print(ticket.class.outer_class)
     console.print()
-    console.write("written", 1)
-    console.write(" and", 2.5)
+    console.write('output', "", "written", 1)
+    console.write('output', "", " and", 2.5)
     console.print("")
     var said = weather.to_string()
     console.print(said)

@@ -2,7 +2,7 @@ var console = Console()
 var program = Program()
 
 func ProgramExitFlushes() {
-    console.write("written without a line end")
+    console.write('output', "", "written without a line end")
     program.exit(3)
     console.print("never printed")
 }

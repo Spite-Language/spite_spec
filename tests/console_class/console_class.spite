@@ -8,8 +8,8 @@ func ConsoleClass() {
         namespace_text = console.class.outer_class.name_with_outer_classes
     }
     console.print(console == another, console.class.name, "{namespace_text}|")
-    another.write("written")
-    another.write(" and written again")
+    another.write('output', "", "written")
+    another.write('output', "", " and written again")
     console.print("")
     var greeter = Greeter()
     greeter.greet()

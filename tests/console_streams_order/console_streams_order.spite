@@ -3,7 +3,7 @@ var console = Console()
 func ConsoleStreamsOrder() {
     console.print("first")
     console.error("second")
-    console.write("third")
+    console.write('output', "", "third")
     console.error("fourth")
     console.print(" fifth")
 }
