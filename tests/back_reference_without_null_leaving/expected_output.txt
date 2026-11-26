@@ -1,10 +1,10 @@
 grace still belongs to ada
 grace of ada
 cy belongs to dee
+cy is freed
+dee is freed
 the small family is out of reach, and leaks with the first
 grace is freed
 linus is freed
-cy is freed
 ada is freed
-dee is freed
-allocations: 68 frees: 68
+allocations: 69 frees: 69
