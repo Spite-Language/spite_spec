@@ -1,0 +1,5 @@
+leaf tree
+tree tree is freed
+leaf is freed
+the tree is out of reach
+allocations: 28 frees: 28

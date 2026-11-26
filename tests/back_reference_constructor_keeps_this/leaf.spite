@@ -1,0 +1,10 @@
+var console = Console()
+var tree: Tree
+
+func Leaf(starting_tree: Tree) {
+    tree = starting_tree
+}
+
+func drop() {
+    console.print("leaf is freed")
+}
