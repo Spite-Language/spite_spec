@@ -16,9 +16,13 @@ func describe(): String {
         parts.append(shown)
         index = index + 1
     }
+    var shown = title
+    if not parent {
+        shown = "{title} (loose)"
+    }
     if parts.is_empty() {
-        return title
+        return shown
     }
     var inside = parts.join(", ")
-    return "{title} [{inside}]"
+    return "{shown} [{inside}]"
 }
